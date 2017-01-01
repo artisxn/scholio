@@ -137,7 +137,7 @@
             <div class="">   <!-- class="card-box" -->
 
 
-                <div class="col-xs-12 scholar-header">
+                <div class="col-xs-12 scholar-header" style="{{ $scholarship->active ? '' : 'background-color: red'}}">
                     {{--<div class="scholar-name">{{ $scholarship->study->section[0]->name }}</div>--}}
                     <div class="scholar-name">  {{ $scholarship->study->name }}</div>
                     <div class="level-name">{{ $scholarship->study->section[0]->level->name }}</div>

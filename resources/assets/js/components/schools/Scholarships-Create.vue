@@ -118,7 +118,7 @@
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-open.png" alt="" v-if="criteria_id==5">
                                 </div>
 
-                                <select class="selectpicker" data-live-search="false" data-mobile="false" data-size='4' data-width="100%"  v-model="criteria_id" >
+                                <select class="selectpicker" data-live-search="true" data-mobile="false" data-size='4' data-width="100%"  v-model="criteria_id" multiple data-actions-box="true">
                                     <option data-icon="fa " value="1">&nbsp; Υποτροφία Ταλέντου/Δεξιοτήτων</option>
                                     <option data-icon="fa " value="2">&nbsp; Υποτροφία Αριστείας</option>
                                     <option data-icon="fa " value="3">&nbsp; Υποτροφια με Κοινωνικά Κριτήρια</option>

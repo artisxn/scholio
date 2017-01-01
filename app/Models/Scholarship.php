@@ -173,14 +173,21 @@ class Scholarship extends Model
          return $this->belongsToMany(Study::class, 'scholarship_study');   
     }
 
+     public function scopeActive($query)
+    {
+        return $query->where('active', 1)->get();
+    }
+
     public function end()
     {
+        dd(request());
         $this->end_at = Carbon::now();
         $this->active = 0;
         $this->save();
         $alg = AlgoliaScholarship::where('scholarship_id', $this->id)->get()->first();
         $alg->delete();
         // WINNERS (create a pivot table 'scholarship_winner' to show multiple winners in one scholarship) 
+        // Update statistics (algolia dummy)
         return 'Done';
     }
 }

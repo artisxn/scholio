@@ -183,6 +183,7 @@ class ApiController extends Controller
         $school->lengthTeachers = $school->lengthTeachers();
         $school->lengthStudies = $school->lengthStudies();
         $school->lengthScholarships = $school->lengthScholarships();
+        $school->activeScholarships = $school->activeScholarships()->count();
         $school->name = $school->name();
         $school->email = $school->email();
         $school->teachers = $school->teachers;
@@ -237,6 +238,7 @@ class ApiController extends Controller
         $school->lengthTeachers = $school->lengthTeachers();
         $school->lengthStudies = $school->lengthStudies();
         $school->lengthScholarships = $school->lengthScholarships();
+        $school->activeScholarships = $school->activeScholarships()->count();
         $school->name = $school->name();
         $school->email = $school->email();
         $school->teachers = $school->teachers;

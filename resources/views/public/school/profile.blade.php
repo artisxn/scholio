@@ -496,7 +496,7 @@
 
                         @if($school->settings->scholarships)
                     <!-- Υποτροφίες -->
-                    <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.lengthScholarships" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
+                    <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.activeScholarships" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
                         <div class="section-header3">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
                                 <i class="fa fa-trophy fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.scholarships') </span>
@@ -803,7 +803,7 @@
                             <div class="col-lg-12 margin-top-30" id="box-2nd" style="">
                                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-5">@lang('profile.statistics.scholarships')</span>
-                                <span class="pull-right badge" style="margin-right: -4px"> @{{contactInfo.lengthScholarships}}</span>
+                                <span class="pull-right badge" style="margin-right: -4px"> @{{contactInfo.activeScholarships}}</span>
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>

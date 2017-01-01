@@ -301,6 +301,11 @@ class School extends Model
         return $this->belongsToMany(Tag::class, 'school_tag');
     }
 
+    public function activeScholarships()
+    {
+        return $this->scholarship()->where('active',1)->get();
+    }
+
     // public function fullAdmission()
     // {
     //     $result = [];

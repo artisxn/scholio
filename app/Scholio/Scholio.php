@@ -220,7 +220,7 @@ class Scholio
             $dummy->lengthStudents = $s->lengthStudents();
             $dummy->lengthTeachers = $s->lengthTeachers();
             $dummy->lengthStudies = $s->lengthStudies();
-            $dummy->lengthScholarships = $s->lengthScholarships();
+            $dummy->lengthScholarships = $s->activeScholarships();
             $dummy->stars = $s->averageStars();
             $dummy->reviews = $s->countReviews();
             $dummy->username = $s->admin->username ?? 'nousername';
