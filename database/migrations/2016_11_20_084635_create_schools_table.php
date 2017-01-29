@@ -21,7 +21,7 @@ class CreateSchoolsTable extends Migration
             $table->integer('type_id')->unsigned();
             $table->string('address');
             $table->string('city');
-            $table->integer('phone');
+            $table->bigInteger('phone');
             $table->string('website')->unique();
             $table->integer('logo_id')->nullable();
             $table->boolean('approved')->default(1);

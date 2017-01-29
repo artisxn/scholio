@@ -1,4 +1,6 @@
-<p align="center"><img src="https://github.com/schol-io/scholio/blob/master/public/new/img/favicon-144.png"></p>
+<p align="center">
+<img src="https://github.com/schol-io/scholio/blob/master/public/new/img/logo.png">
+</p>
 
 <p align="center">
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
