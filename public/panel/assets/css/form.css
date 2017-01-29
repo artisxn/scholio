@@ -1,0 +1,40 @@
+.updateButton{
+     margin-left: 43%;
+ }
+/*.center-block /* Bootsrap Class */
+
+.centered-text {
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+}
+
+@media (min-width: 992px) and (max-width: 1119px) {
+    .updateButton{
+        background-color: yellow;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .updateButton{
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .updateButton{
+        background-color: orange;
+    }
+}
+
+@media (max-width: 480px) {
+    .updateButton{
+        margin-left: 35%;
+    }
+
+}
+/* 767--> sm
+768-991 --> md
+992-1119 --> lg
+*/

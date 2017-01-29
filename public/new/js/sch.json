@@ -1,0 +1,167 @@
+[
+ {"id":1,
+"category":"Κολλέγια",
+"schoolName":"American College of Thessaloniki",
+"ratingStar":4.5,
+"ratingCounter":8,  
+
+"password":"pass",
+
+"address":"Σεβενίδη, 17, Πυλαία",
+"city":"Θεσσαλονίκη",
+"phone":"2310-398398",
+"website":"www.act.edu",
+"email":"webmaster@act.edu",
+
+"facebook":"www.facebook.com/ACTGreece",
+"twitter":"twitter.com/actgreece",
+"instagram":"www.instagram.com/act_greece/",
+"youtube":"www.youtube.com/user/AnatoliaACT",
+  
+"scholarships":0,
+"studies":14,
+"students":52,
+"teachers":12,
+  
+"logo":"act-logo.png",
+"image":"act-pic1.jpg",
+"top":20,
+"photos":["act-pic1.jpg","act-pic2.jpg", "act-pic3.jpg","act-pic4.jpg","act-pic5.jpg", "act-pic6.jpg","act-pic7.jpg"],
+"BachelorStudies":[{"fa":"fa fa-line-chart","BS":"Διοίκηση Επιχειρήσεων"},{"fa":"fa fa-laptop","BS":"Εφαρμοσμένη Πληροφορική"},{"fa":"fa fa-link","BS":"Διεθνείς Σχέσεις"},{"fa":"fa fa-globe","BS":"Αγγλική Φιλολογία & Νέα Μέσα"}],
+"MasterStudies":[{"fa":"fa fa-line-chart","MS":"Διοίκηση Επιχειρήσεων"},{"fa":"fa fa-money","MS":"Τραπεζικά και Χρηματοοικονομικά"},{"fa":"fa fa-suitcase","MS":"Επιχειρηματικότητα"},{"fa":"fa fa-building-o","MS":"Διοίκηση"},{"fa":"fa fa-pie-chart","MS":"Ψηφιακό Μάρκετινγκ"},{"fa":"fa fa-bed","MS":"Hospitality and Tourism Management"}],
+"about1":"Το ACT είναι ένα ιδιωτικό, μη κερδοσκοπικό εκπαιδευτικό ίδρυμα.  Eίναι αναγνωρισμένο στις ΗΠΑ από την Επιτροπή για Ιδρύματα Ανώτατης Εκπαίδευσης (NEASC) και από το Υπουργείο Παιδείας.",
+"about2":" Το ολοκληρωμένο πρόγραμμα σπουδών του οδηγεί σε πτυχία Bachelor's στη Διοίκηση Επιχειρήσεων, στην Εφαρμοσμένη Πληροφορική, στις Διεθνείς Σχέσεις και στην Αγγλική Φιλολογία & Νέα Μέσα. Προσφέρει επίσης ένα μεταπτυχιακό πρόγραμμα στη Διοίκηση Επιχειρήσεων (MBA), στην Επιχειρηματικότητα και το Μάρκετινγκ.",
+"about3":" Προσφέρει τέλος ένα εκτεταμένο πρόγραμμα υποτροφιών με βάση όχι μόνο την οικονομική ανάγκη αλλά και τις επιδόσεις των υποψηφίων."
+ 
+ },
+    
+    
+    
+ {"id":2,
+"category":"Κολλέγια",
+"schoolName":"Μητροπολιτικό Κολλέγιο Θεσσαλονίκης",
+"ratingStar":0,
+"ratingCounter":0,  
+
+"password":"pass",
+
+"address":"Ελ. Βενιζέλου 14 & Τσιμισκή",
+"city":"Θεσσαλονίκη",
+"phone":"2310-241010",
+"website":"www.mitropolitiko.edu.gr",
+"email":"info@metropolitan.edu.gr",
+  
+"scholarships":6,
+"studies":12,
+"students":58,
+"teachers":14,
+  
+"logo":"amc-logo.png",
+"image":"AMC-pic1.jpg",
+"aboutCollege":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "top":0
+ },    
+    
+    
+     {"id":3,
+"category":"IEK",
+"schoolName":"ΑΚΜΗ",
+"ratingStar":4.1,
+"ratingCounter":4,  
+
+"password":"pass",
+
+"address":"Τσιμισκή 14",
+"city":"Θεσσαλονίκη",
+"phone":"2310-260200",
+"website":"www.iek-akmi.edu.gr",
+"email":"info@iek-akmi.edu.gr",
+  
+"scholarships":9,
+"studies":14,
+"students":48,
+"teachers":16,
+  
+"logo":"akmi-logo.png",
+"image":"akmi-pic1.jpg",
+"aboutCollege":"Nulla rhoncus lacus ac dapibus eleifend. Maecenas a laoreet odio, quis auctor arcu. Donec convallis ullamcorper augue, eget maximus nisl viverra id.",
+  "top":10
+     },
+
+     {"id":4,
+"category":"Κολλέγια",
+"schoolName":"New York College",
+"ratingStar":4.3,
+"ratingCounter":16,  
+
+"password":"pass",
+
+"address":"38 Amalias Avenue, Syntagma",
+"city":"Αθήνα",
+"phone":"210-3225961",
+"website":"www.nyc.gr",
+"email":"nycth@nyc.gr",
+  
+"scholarships":4,
+"studies":16,
+"students":54,
+"teachers":12,
+  
+"logo":"newyork-logo.png",
+"image":"newyork-pic1.jpg",
+"aboutCollege":"Aliquam at elit sed neque facilisis congue ac vitae sapien. Donec convallis ullamcorper augue, eget maximus nisl viverra id.",
+  "top":10
+     },
+
+     {"id":5,
+"category":"Ιδιωτικά Σχολεία",
+"schoolName":"Εκπαιδευτήρια Φρυγανιώτη",
+"ratingStar":4.2,
+"ratingCounter":16,  
+
+"password":"pass",
+
+"address":"Περιοχή Νοσ. Παπαγεωργίου, Πολίχνη",
+"city":"Θεσσαλονίκη",
+"phone":"2310-692940",
+"website":"www.fryganiotis.gr",
+"email":"info@fryganiotis.gr",
+  
+"scholarships":6,
+"studies":null,
+"students":54,
+"teachers":12,
+  
+"logo":"fryganioti-logo2.png",
+"image":"fryganioti-pic1.jpg",
+"aboutCollege":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at elit sed neque facilisis congue ac vitae sapien.",
+  "top":20
+     },
+
+          {"id":6,
+"category":"Ιδιωτικά Σχολεία",
+"schoolName":"Εκπαιδευτήρια Βασιλειάδη",
+"ratingStar":0,
+"ratingCounter":0, 
+
+"password":"pass",
+
+"address":"12o χλμ Θεσ/νίκης-Μουδανιών, Θέρμη",
+"city":"Θεσσαλονίκη",
+"phone":"2310-475958",
+"website":"www.vassiliadis.edu.gr",
+"email":"info@vassiliadis.edu.gr",
+  
+"scholarships":7,
+"studies":null,
+"students":90,
+"teachers":14,
+  
+"logo":"vasileiadi-logo.png",
+"image":"vasileiadi-pic1.jpg",
+"aboutCollege":"Nulla rhoncus lacus ac dapibus eleifend. Maecenas a laoreet odio, quis auctor arcu.",
+  "top":5
+     }
+
+
+]
