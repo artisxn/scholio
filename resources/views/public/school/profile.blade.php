@@ -45,7 +45,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap Select js  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>--}}
 
     <!-- Angular js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
@@ -65,8 +65,8 @@
 
     <script>
         window.Scholio = <?php echo json_encode([
-    'csrfToken' => csrf_token(),
-]); ?>
+                'csrfToken' => csrf_token(),
+        ]); ?>
     </script>
 
     <style>
@@ -182,7 +182,7 @@
                         <img id="img1"  class=" img-thumb pull-left margin-right-10 margin-top-15 margin-bot-10"
                              ng-src="/new/img/colleges/@{{school.logo}}">
                         <span class="pull-left pad-top-5 xs-pad-top">
-                            <h4 class="">  @{{school.schoolName}}</h4>
+                            <h4 class="">  @{{contactInfo.name}}..</h4>
                             <span  ng-show="school.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
                             <span ng-show="school.ratingCounter!=0" class="sc-t-orange"> @{{school.ratingStar}} </span>
                             <span class="xs-text-incr-85">  &nbsp; ( @{{school.ratingCounter}}  Αξιολογήσεις)</span>
@@ -194,22 +194,20 @@
                 </div>
             </div>
 
-            <!-- BX SLIDER -->
-            <div class="row xl-margin-right" style="">
-                <div  class="" ng-repeat="school in schools
-                                    | toArray
-                                    | filter: schoolFilter">
 
-                    <ul class="bxslider margin-left-7 "  data-bx-slider="
+
+            <!-- BX SLIDER -->
+            <div class="">
+                <div class="row xl-margin-right " style="padding-left: 0px; padding-right: -2px">
+                    <ul class="bxslider  "  data-bx-slider="
                 pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
                 slideWidth: 303, slideMargin:15, infiniteLoop: true, hideControlOnEnd: false">
-                        <li data-ng-repeat="photo in school.photos" data-notify-when-repeat-finished>
-                            <img data-ng-src="/new/img/colleges/img-act/@{{photo}}" />
+                        <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
+                            <img data-ng-src="/images/schools/@{{image.path}}" />
                         </li>
                     </ul>
                 </div>
             </div>
-
 
 
 
@@ -328,8 +326,6 @@
 
 
 
-
-
                     <!-- Υποτροφίες -->
                     <div class="row main-box margin-bot-25" id="ypotrofies">
                         <div class="section-header3">
@@ -423,33 +419,31 @@
             <!-- Right Sidebar  -->
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30">
                 <div  class="sidebar">
-                    <div class=" box left-box1 " ng-repeat="school in schools
-                                    | toArray
-                                    | filter: schoolFilter">
+                    <div class=" box left-box1">
                         <div class="col-lg-12">
                             <div class="pad-top-20"></div>
                             <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                            <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95">@{{school.address}}</span>
+                            <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
                             <br>
                             <div class="pad-top-20"></div>
                             <div class="hidden-xs">
                                 <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-5">@{{school.city}}</span>
+                                <span class="pull-left pad-left-5">@{{contactInfo.city}}</span>
                                 <br>
                             </div>
                             <div class="pad-top-20"></div>
                             <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
-                            <span class="pull-left pad-left-5">@{{school.phone}}</span>
+                            <span class="pull-left pad-left-5">@{{contactInfo.phone}}</span>
                             <br>
                             <div class="pad-top-20"></div>
                             <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                            <span class="pull-left pad-left-5"> <a href="http://@{{school.website}}/" target="_blank">@{{school.website}}</a></span>
+                            <span class="pull-left pad-left-5"> <a href="http://@{{contactInfo.website}}/" target="_blank">@{{contactInfo.website}}</a></span>
 
                             <div class="hidden-xs">
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-5"> <a href="mailto:@{{school.email}}">@{{school.email}}</a></span>
+                                <span class="pull-left pad-left-5"> <a href="mailto:@{{contactInfo.email}}">@{{contactInfo.email}}</a></span>
                             </div>
                         </div>
                     </div>
@@ -499,6 +493,10 @@
 
 </body>
 <script>
+
+
+
+
     ///// Rating Js //////
     $('rating').raty({
         score    : 4.2,
@@ -507,19 +505,42 @@
         starHalf : 'fa fa-fw fa-star-half'
     });
 
+
+
+
+
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http) {
 
 
                 $scope.init = function () {
+
+
                     $scope.allStudies = $http.get('/api/school/studies/', {
                         headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
                     }).success(function(data){
                         console.time('allStudies API');
                         $scope.allStudies = data['levels'];
+//                        console.log($scope.allStudies[0].name);
+//                        console.log($scope.allStudies[1].name);
+//                        console.log($scope.allStudies[0].section[0].name);
+//                        console.log($scope.allStudies[0].section[0].study[0].name);
                         chkdstudies();
                         console.timeEnd('allStudies API');
                     });
+
+
+                    $scope.contactInfo= $http.get('/ptest/6', {
+                        headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
+                    }).success(function(data){
+                        console.time('contactInfo API.');
+                        $scope.contactInfo=data;
+                        console.timeEnd('contactInfo API.');
+                    });
+
+
+
+
 
                     var chkdstudies = function(){
                         console.time('chkdstudies API');
@@ -527,6 +548,7 @@
                             headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
                         }).success(function(data){
                             $scope.studies = data;
+//                          console.log()
                             $scope.initial();
                             console.timeEnd('chkdstudies API');
                         });
@@ -559,8 +581,13 @@
                     $scope.initial=function (){
                         console.time('initial');
                         for (var level in $scope.allStudies ){
+//                            console.log(level)
                             for (var section in $scope.allStudies[level].section ){
+//                                console.log(level,section)
                                 for (var study in $scope.allStudies[level].section[section].study ){
+//                                    var std=$scope.allStudies[level].section[section].study[study].name
+//                                    console.log(std)
+//                                    console.log(level,section,study)
                                     $scope.allStudies[level].section[section].study[study].status=false;
 
                                 }
@@ -578,6 +605,9 @@
                                                 $scope.allStudies[level].section[section].study[study].status=true
                                                 $scope.allStudies[level].section[section].status=true
                                                 $scope.allStudies[level].status=true
+
+
+//                                                console.log(level,section,study)
                                             }
                                     }
                                 }
@@ -606,8 +636,13 @@
                         $scope.showContent=false;
                         $scope.icon='fa fa-angle-down'
                     };
+
+
                 }
+
+
             })
+
 
             /* this filter avoids Filter notTo Array error under angular v1.4 */
             .filter('toArray', function () {
@@ -652,9 +687,21 @@
                 }
             }]);
 
+
+
+
+
+
+
     $(document).ready(function(){
-        $("#main").hide().fadeIn(2500);
+        $("#main").hide().fadeIn(2000);
     });
 
+
+
 </script>
+
+
+
+
 </html>
