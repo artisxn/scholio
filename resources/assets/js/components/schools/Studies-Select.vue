@@ -2,7 +2,7 @@
     <div id="content">
 
         <div style="margin-left: 20px;">
-            <h3  class="title ml20" style="margin-left: -10px">Επιλογή Ειδικοτήτων Σπουδών</h3>
+            <h3  class="title ml20" style="margin-left: -10px">Επιλογή Ειδικοτήτων Σπουδώνmmm</h3>
             <div class="row margin-top-30">
 
                 <div v-if="studies.length">

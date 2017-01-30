@@ -8,7 +8,7 @@
                     <li><a href="#step-1">Βήμα 1<br /><small class="mar-le-10">Οικονομική <p style="margin-top: -18px;">Προσφορά</p> </small></a></li>
                     <li><a href="#step-2">Βήμα 2<br /><small class="mar-le-10">Σπουδές/Ειδικότητα</small></a></li>
                     <li><a href="#step-3">Βήμα 3<br /><small class="mar-le-10">Κριτήρια/Όροι</small></a></li>
-                    <!--<li><a href="#step-4">Βήμα 4<br /><small>Κριτήρια/Όροι</small></a></li>-->
+                    <li><a href="#step-4">Βήμα 4<br /><small class="mar-le-10">Όροι Συμμετοχής</small></a></li>
 
                 </ul>
 
@@ -94,11 +94,10 @@
                         </div>
                     </div>
 
-
                     <div id="step-3" class="step-anchor">
                         <div class="step centered-text">
                             <h2>Βήμα 3 </h2>
-                            <div class="step-box">
+                            <div class="step-box" >
                                 <div class="step-img">
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-skills1.png" alt="" v-if="step3Select=='talent'">
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-best.png" alt="" v-if="step3Select=='best'">
@@ -107,7 +106,7 @@
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-open.png" alt="" v-if="step3Select=='open'">
                                 </div>
 
-                                <select class="selectpicker" data-live-search="true" data-mobile="false" data-size='3' data-width="100%"  v-model="step3Select">
+                                <select class="selectpicker" data-live-search="true" data-mobile="false" data-size='3' data-width="100%"  v-model="step3Select" >
                                     <option data-icon="fa " value="talent">&nbsp; Υποτροφία Ταλέντου/Δεξιοτήτων</option>
                                     <option data-icon="fa " value="best">&nbsp; Υποτροφία Αριστείας</option>
                                     <option data-icon="fa " value="social">&nbsp; Υποτροφια με Κοινωνικά Κριτήρια</option>
@@ -119,6 +118,36 @@
                         </div>
                     </div>
 
+
+                    <div id="step-4" class="step-anchor">
+                        <div class="step centered-text">
+
+
+
+                            <h2>Βήμα 4 </h2>
+                            <div class="step-box">
+                                <h3>Όροι και Λεπτομέρειες Συμμετοχής</h3>
+                                <p>Υποτροφία ενεργή μέχρι: <input type="text" id="datepicker" size="30" class="ll-skin-cangas"></p>
+
+
+
+                                <div class="funkyradio pull-right" style="width: 295px; padding-right: 22px">
+                                    <div class="funkyradio-success">
+                                        <input type="checkbox" id="exams" value="examsOn">
+                                        <label for="exams"> Υποτροφία με γραπτές εξετάσεις</label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
                 </div>
             </div>
 
@@ -129,6 +158,10 @@
 
 
 <script>
+
+
+
+
 
     export default {
         computed: {
@@ -155,7 +188,8 @@
                 levelsName:[],
                 sectionsName:[],
                 studiesName:[],
-                sectionsCounter:0
+                sectionsCounter:0,
+                examsOn:true
             }
         },
 
@@ -183,16 +217,6 @@
                 }
             },
 
-            pullstudies: function(){
-                console.log(this.selectedLevel+' ++ '+this.selectedSection)
-                var std=this.all_studies;
-                this.studiesArray=[];
-                for (var stdy in this.all_studies[this.selectedLevel].section[this.selectedSection].study ) {
-//                  console.log((this.selectedLevel+1) +'.'+(this.selectedSection+1)+'.'+(stdy+1)+' '+std[this.selectedLevel].section[this.selectedSection].study[stdy].name );
-                    this.studiesArray[stdy]=std[this.selectedLevel].section[this.selectedSection].study[stdy].name;
-                }
-                this.selectedStudy=0;
-            },
             getCheckedStudies: function () {
                 axios.get('/api/school/getSchoolStudies')
                         .then(response => {

@@ -17,6 +17,7 @@
 #step-2 > .step >.step-box   {min-height: 460px;}
 
 #step-2 > .step >.step3check {min-height: 460px;}
+#step-3 > .step > .step-box  {min-height: 390px; margin-bottom: 50px;}
 
 .step-img{height: 220px; background-color: #fcfcfc; border-top-left-radius: 8px; border-top-right-radius: 8px;}
 
@@ -78,10 +79,9 @@
     border-radius: 3px 0 0 3px;
 }
 
-.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
-.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
-    color: #fff;
-}
+/*.funkyradio input[type="radio"]:hover:not(:checked) ~ label*/
+/*, .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label*/
+/*{  color: #fff;  }*/
 
 
 .funkyradio input[type="radio"]:checked ~ label:before,
