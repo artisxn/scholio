@@ -65,8 +65,8 @@
 
     <script>
         window.Scholio = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-        ]); ?>
+    'csrfToken' => csrf_token(),
+]); ?>
     </script>
 
     <style>
@@ -174,18 +174,15 @@
             <div class="up">
                 <div class=" margin-bot-15 ">
 
-                    <div
-                            ng-repeat="school in schools
-                                    | toArray
-                                    | filter: schoolFilter">
+                    <div>
 
                         <img id="img1"  class=" img-thumb pull-left margin-right-10 margin-top-15 margin-bot-10"
-                             ng-src="/new/img/colleges/@{{school.logo}}">
+                             ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
                         <span class="pull-left pad-top-5 xs-pad-top">
-                            <h4 class="">  @{{contactInfo.name}}..</h4>
-                            <span  ng-show="school.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
-                            <span ng-show="school.ratingCounter!=0" class="sc-t-orange"> @{{school.ratingStar}} </span>
-                            <span class="xs-text-incr-85">  &nbsp; ( @{{school.ratingCounter}}  Αξιολογήσεις)</span>
+                            <h4 class="">  @{{contactInfo.name}}</h4>
+                            <span  ng-show="contactInfo.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
+                            <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.ratingStar}} </span>
+                            <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.ratingCounter}}  Αξιολογήσεις)</span>
                         </span>
 
                     </div>
@@ -213,21 +210,19 @@
 
 
             <!-- Photo Grid  HIDDEN -->
-            <div class="hidden" ng-repeat="school in schools
-                                    | toArray
-                                    | filter: schoolFilter">
+            <div class="hidden">
 
                 <div class="row margin-top-30 hidden-xs hidden-sm hidden2">
-                    <div class="" ng-repeat ="photo in school.photos">
+                    <div class="" ng-repeat ="image in contactInfo.image">
 
                         <div class="col-md-3" ng-show="$index<4" >
                             <div class="">
-                                <img ng-src="/new/img/colleges/img-act/@{{photo}}" alt="profile-pic" style="" class=" img-grid2"/>
+                                <img data-ng-src="/images/schools/@{{image.path}}" alt="profile-pic" style="" class=" img-grid2"/>
                             </div>
                         </div>
                         <div class="col-md-4" ng-show="$index>3 " >
                             <div class="">
-                                <img ng-src="/new/img/colleges/img-act/@{{photo}}" alt="profile-pic" style="" class=" img-grid"/>
+                                <img data-ng-src="/images/schools/@{{image.path}}" alt="profile-pic" style="" class=" img-grid"/>
                             </div>
                         </div>
 
@@ -257,9 +252,7 @@
 
 
                 <!-- Main Info profile ng-repeat -->
-                <div ng-repeat="school in schools
-                                    | toArray
-                                    | filter: schoolFilter">
+
 
                     <!-- Σχετικά -->
                     <div class="row main-box margin-bot-25">
@@ -270,59 +263,60 @@
                         </div>
                         <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
                             <p class="margin-top-10">
-                                @{{school.about1}}
+                                Το ACT είναι ένα ιδιωτικό, μη κερδοσκοπικό εκπαιδευτικό ίδρυμα.
+                                Eίναι αναγνωρισμένο στις ΗΠΑ από την Επιτροπή για Ιδρύματα Ανώτατης Εκπαίδευσης (NEASC) και από το Υπουργείο Παιδείας
                             </p>
-                            <p class=" margin-top-15">
-                                @{{school.about2}}
-                            </p>
-                            <p class=" margin-top-15">
-                                @{{school.about3}}
-                            </p>
+
                         </div>
                     </div>
 
                     <!-- Σπουδές -->
+                    <div ng-if="studies.length">
+                        <div class="row main-box2 margin-bot-25" >
+                            <div ng-class="['content', {'hideContent':!showContent}]">
+                                <div class="section-header2" id="spoudes">
+                                    <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
+                                        <i class="fa fa-graduation-cap fa-linear margin-right-10" aria-hidden="true"></i> <span>Σπουδές-Ειδικότητες </span>
+                                    </p>
+                                </div>
 
-                    <div class="row main-box2 margin-bot-25" >
-                        <div ng-class="['content', {'hideContent':!showContent}]">
-                            <div class="section-header2" id="spoudes">
-                                <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
-                                    <i class="fa fa-graduation-cap fa-linear margin-right-10" aria-hidden="true"></i> <span>Σπουδές-Ειδικότητες </span>
-                                </p>
-                            </div>
+                                <div ng-repeat="(levIndex, level) in levelsName" >
+                                    <ul ng-class="[{'col-md-6': (levelsName.length>1)},'col-sm-12']">
+                                        <div class=" text-incr-175 font-weight-300 margin-top-10" style="text-decoration: underline;"> @{{ level}} </div>
+                                        <ul ng-repeat="(secIndex, section) in sectionsName[$index]">
 
-                            <div ng-repeat="level in allStudies" >
-                                <ul ng-if="level.status" ng-class="[{'col-md-6': (levelsCounter>1)},'col-sm-12']">
-                                    <div class=" text-incr-175 font-weight-300 margin-top-10" style="text-decoration: underline;"> @{{ level.name }} </div>
-                                    <ul ng-repeat="section in level.section">
-                                        <div ng-if="section.status">
                                             <li class="margin-top-20">
-                                                <img ng-src="/panel/assets/images/steps/@{{section.name}}.png" alt="" style="height: 22px; margin-top: -12px; filter: grayscale(90%); opacity: 0.8" class="margin-left-20">
-                                                <span class="pad-left-5 text-incr-150 font-weight-100" style="">@{{ section.name}} </span>
+                                                <img ng-src="/panel/assets/images/steps/@{{section}}.png" alt="" style="height: 22px; margin-top: -12px; filter: grayscale(90%); opacity: 0.8" class="margin-left-20">
+                                                <span class="pad-left-5 text-incr-150 font-weight-100" style="">@{{ section}} </span>
                                             </li>
-                                            <ul ng-repeat="study in section.study">
-                                                <li ng-if="study.status" class="pad-bot-5">
-                                                    <span class="pad-left-20 font-weight-100 ">@{{ study.name}}</span>
+
+                                           {{--@{{levIndex}} , , @{{secIndex}}--}}
+                                            <ul ng-repeat="study in studiesName[levIndex][secIndex]">
+                                                <li class="pad-bot-5">
+                                                    <span class="pad-left-20 font-weight-100 ">@{{ study}}</span>
                                                 </li>
                                             </ul>
 
-                                        </div>
+
+                                        </ul>
+
                                     </ul>
 
-                                </ul>
+                                </div>
 
                             </div>
 
-                        </div>
+                            <div style="clear: both"></div>
+                            <div class="show-more" ng-if="studies.length>8">
+                                <span ng-click="showMore()">@{{text}}</span>
+                                <i class="@{{ icon }}"></i>
+                            </div>
 
-                        <div style="clear: both"></div>
-                        <div class="show-more" ng-if="studies.length>8">
-                            <span ng-click="showMore()">@{{text}}</span>
-                            <i class="@{{ icon }}"></i>
-                        </div>
 
+                        </div>
 
                     </div>
+
 
 
 
@@ -377,9 +371,6 @@
 
 
 
-
-
-
                     </div>
 
 
@@ -404,7 +395,7 @@
 
                     </div>
 
-                </div>
+
 
 
 
@@ -450,32 +441,30 @@
                 </div>
 
                 <div data-spy="affix" data-offset-top="620" class="sidebar">
-                    <div class=" box left-box2 sc-t-grey" ng-repeat="school in schools
-                                    | toArray
-                                    | filter: schoolFilter">
+                    <div class=" box left-box2 sc-t-grey">
 
                         <div class="col-lg-11 margin-top-30">
                             <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                             <span class="pull-left pad-left-5">Υποτροφίες</span>
-                            <span class="pull-right badge"> @{{school.scholarships}}</span>
+                            <span class="pull-right badge"> @{{contactInfo.lengthScholarships}}</span>
                             <br>
                             <div class="pad-top-20"></div>
                             <span><i class="ion-person-stalker  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                            <span class="pull-left pad-left-10" ng-show="school.category=='Κολλέγια' || school.category=='IEK' ">Συνδ. Φοιτητές</span>
-                            <span class="pull-left pad-left-10" ng-show="school.category=='Ιδιωτικά Σχολεία'">Συνδ. Μαθητές</span>
-                            <span class="pull-right">@{{school.students}}</span>
+                            <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">Συνδ. Φοιτητές</span>
+                            <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==6">Συνδ. Μαθητές</span>
+                            <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
                             <br>
-                            <div ng-show="school.category=='Κολλέγια' || school.category=='IEK' ">
+                            <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-5">Ειδικότητες Σπουδών</span>
-                                <span class="pull-right">@{{school.studies}}</span>
+                                <span class="pull-right">@{{contactInfo.lengthStudies}}</span>
                                 <br>
                             </div>
                             <div class="pad-top-20"></div>
                             <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
                             <span class="pull-left pad-left-2 pad-bot-10">Συνδ. Καθηγητές</span>
-                            <span class="pull-right">@{{school.teachers}}</span>
+                            <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
 
                         </div>
                     </div>
@@ -493,6 +482,9 @@
 
 </body>
 <script>
+
+
+var lengthStudents = 0;
 
 
 
@@ -516,108 +508,127 @@
                 $scope.init = function () {
 
 
-                    $scope.allStudies = $http.get('/api/school/studies/', {
+                    $scope.contactInfo = $http.get('/profile/{{ $id }}', {
                         headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
                     }).success(function(data){
-                        console.time('allStudies API');
-                        $scope.allStudies = data['levels'];
-//                        console.log($scope.allStudies[0].name);
-//                        console.log($scope.allStudies[1].name);
-//                        console.log($scope.allStudies[0].section[0].name);
-//                        console.log($scope.allStudies[0].section[0].study[0].name);
-                        chkdstudies();
-                        console.timeEnd('allStudies API');
-                    });
-
-
-                    $scope.contactInfo= $http.get('/ptest/6', {
-                        headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
-                    }).success(function(data){
-                        console.time('contactInfo API.');
+                        console.time('contactInfo API');
                         $scope.contactInfo=data;
-                        console.timeEnd('contactInfo API.');
+                        $scope.studies = data.levels;
+//                        console.log($scope.studies);
+                        if( $scope.studies.length){
+                            $scope.initial();
+                        }
+                        console.timeEnd('contactInfo API');
                     });
 
+//                    var chkdstudies = function(){
+//                        console.time('chkdstudies API');
+//                        $scope.studies = $http.get('/api/school/getSchoolStudies', {
+//                            headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
+//                        }).success(function(data){
+//                            $scope.studies = data;
+////                         console.log(data)
+//                            $scope.initial();
+//                            console.timeEnd('chkdstudies API');
+//                        });
+//                    };
 
-
-
-
-                    var chkdstudies = function(){
-                        console.time('chkdstudies API');
-                        $scope.studies = $http.get('/api/school/getSchoolStudies', {
-                            headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
-                        }).success(function(data){
-                            $scope.studies = data;
-//                          console.log()
-                            $scope.initial();
-                            console.timeEnd('chkdstudies API');
-                        });
-                    };
-
-
-                    $scope.schools = $http.get("/sch.json")
-                            .success(function (data) {
-                                $scope.schools = data
-                                console.log(" API OK ");
-                                console.log(Scholio.csrfToken)
-                            })
-
-                    $scope.schools =  $scope.schools[1];
-
-                    $scope.schoolFilter = function(item){
-                        filtered = [];
-                        if(item.id == 1) {
-                            filtered.push(item);
-                            return  filtered;
-                        }
-                    };
 
                     $scope.levelsName=[];
                     $scope.sectionsName=[];
                     $scope.studiesName=[];
-                    $scope.levelsCounter=0;
 
 
                     $scope.initial=function (){
                         console.time('initial');
-                        for (var level in $scope.allStudies ){
-//                            console.log(level)
-                            for (var section in $scope.allStudies[level].section ){
-//                                console.log(level,section)
-                                for (var study in $scope.allStudies[level].section[section].study ){
-//                                    var std=$scope.allStudies[level].section[section].study[study].name
-//                                    console.log(std)
-//                                    console.log(level,section,study)
-                                    $scope.allStudies[level].section[section].study[study].status=false;
 
+                        /* ========== BUILD levelsName ARRAY============ */
+                        $scope.levelsName[0]=$scope.studies[0][0].section[0].level.name
+
+//                        console.log($scope.levelsName[0]);
+                        var length=0
+                        var found= false
+
+                        for (var std in $scope.studies ){
+//                            console.log('std='+std+' '+$scope.studies[std][0].section[0].level.name)
+//                            console.log('std='+std+' '+$scope.studies[std][0].section[0].name)
+                            found= false
+                            for (var lev in $scope.levelsName ){
+                                if ( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name){
+                                    found=true
                                 }
+                            }
+                            if (!found) {
+                                length++
+                                $scope.levelsName[length]=$scope.studies[std][0].section[0].level.name
                             }
                         }
 
-                        for (var std in $scope.studies ){
-                            for ( level in $scope.allStudies ){
-                                for ( section in $scope.allStudies[level].section ){
-                                    for ( study in $scope.allStudies[level].section[section].study ){
-
-                                        var stdy=$scope.allStudies[level].section[section].study[study]
-
-                                            if($scope.studies[std][0].id == stdy.id){
-                                                $scope.allStudies[level].section[section].study[study].status=true
-                                                $scope.allStudies[level].section[section].status=true
-                                                $scope.allStudies[level].status=true
+//                        console.log($scope.levelsName);
 
 
-//                                                console.log(level,section,study)
-                                            }
+                        /* ========== BUILD sectionsName ARRAY============ */
+                        for (lev in $scope.levelsName ){
+                            $scope.sectionsName[lev]=[];
+                        }
+                        length=0
+
+                            for (lev in $scope.levelsName ){
+                                for (std in $scope.studies ){
+                                if ( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name){
+                                    if(!length){
+//                                        console.log('RESET ='+std+' i= '+i+' section='+sec+' '+$scope.studies[std][0].section[0].name)
+                                        $scope.sectionsName[lev][0]=$scope.studies[std][0].section[0].name
+                                        length=1
+                                    }
+                                    found= false
+                                    for (var sec in $scope.sectionsName[lev] ){
+//                                        console.log($scope.sectionsName);
+                                        if($scope.sectionsName[lev][sec]==$scope.studies[std][0].section[0].name){
+//                                            console.log('FOUND study='+std+' i= '+i+' section='+sec+' '+$scope.studies[std][0].section[0].level.name+' '+$scope.studies[std][0].section[0].name+' '+$scope.studies[std][0].name)
+                                            found=true
+//                                            console.log($scope.sectionsName);
+                                        }
+                                    }
+                                    if (!found) {
+//                                        console.log('NOT FOUND study='+std+' i= '+i+' section='+sec+' '+$scope.studies[std][0].section[0].name)
+                                        $scope.sectionsName[lev][length]=$scope.studies[std][0].section[0].name
+                                        length++
                                     }
                                 }
                             }
+                            length=0
                         }
-                        for ( level in $scope.allStudies ){
-                            if($scope.allStudies[level].status){
-                                $scope.levelsCounter++
+
+//                        console.log($scope.sectionsName);
+
+
+
+                        /* ========== BUILD studiesName ARRAY============ */
+                        var study=0
+                        for (lev in $scope.levelsName ){
+                            $scope.studiesName[lev]=[];
+                            for (sec in $scope.sectionsName[lev] ){
+                                $scope.studiesName[lev][sec]=[];
+                                study=0
+                                for (std in $scope.studies){
+
+                                    if( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name
+                                    && $scope.sectionsName[lev][sec]==$scope.studies[std][0].section[0].name
+                                    ){
+                                        $scope.studiesName[lev][sec][study]=$scope.studies[std][0].name
+                                        study++
+                                    }
+
+                                }
+
+
                             }
                         }
+
+//                        console.log($scope.studiesName);
+
+
                         console.timeEnd('initial');
                     }
 
@@ -645,23 +656,23 @@
 
 
             /* this filter avoids Filter notTo Array error under angular v1.4 */
-            .filter('toArray', function () {
-                return function (obj, addKey) {
-                    if (!angular.isObject(obj)) return obj;
-                    if ( addKey === false ) {
-                        return Object.keys(obj).map(function(key) {
-                            return obj[key];
-                        });
-                    } else {
-                        return Object.keys(obj).map(function (key) {
-                            var value = obj[key];
-                            return angular.isObject(value) ?
-                                    Object.defineProperty(value, '$key', { enumerable: false, value: key}) :
-                            { $key: key, $value: value };
-                        });
-                    }
-                };
-            })
+//            .filter('toArray', function () {
+//                return function (obj, addKey) {
+//                    if (!angular.isObject(obj)) return obj;
+//                    if ( addKey === false ) {
+//                        return Object.keys(obj).map(function(key) {
+//                            return obj[key];
+//                        });
+//                    } else {
+//                        return Object.keys(obj).map(function (key) {
+//                            var value = obj[key];
+//                            return angular.isObject(value) ?
+//                                    Object.defineProperty(value, '$key', { enumerable: false, value: key}) :
+//                            { $key: key, $value: value };
+//                        });
+//                    }
+//                };
+//            })
 
             /* BxSlider Directives for ng-repeat*/
             .directive('bxSlider', [function () {
@@ -687,14 +698,8 @@
                 }
             }]);
 
-
-
-
-
-
-
     $(document).ready(function(){
-        $("#main").hide().fadeIn(2000);
+        $("#main").hide().fadeIn(1800);
     });
 
 

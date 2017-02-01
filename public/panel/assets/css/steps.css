@@ -8,23 +8,74 @@
     float: none;
 }
 
-.step {width: 100%; max-width: 500px;  margin-top: 200px; margin-bottom: -220px; }
+div.content{
+    /*background-color: orange; */
+    min-height: 600px;}
+div.row{
+    /*background-color: moccasin; */
+    padding-bottom: 90px;}
 
-.step-box {min-height: 380px; padding: 20px; background-color: #f4f4f4; border-radius: 8px; margin-bottom: 25px;}
+ul.clearfix.nav.nav-tabs.step-anchor{
+    /*background-color: greenyellow; margin-top: 100px;*/
+}
+/*.nav.nav-tabs.step-anchor{*/
+    /*!*background-color: pink; *!*/
+    /*z-index: 1;*/
+    /*padding-top: 0; top:70px; position: absolute; }*/
+div.row.sw-container.tab-content{
+    /*background-color: #0a6aa1;*/
 
-#step-1 > .step >.step-box , #step-3 > .step >.step-box  {height: 370px;}
+    /*min-height: 300px;*/
+}
+div#step-1.step-anchor.step-content,
+div#step-3.step-anchor.step-content{
+    /*background-color: yellow; */
+    min-height: 445px;
 
-#step-2 > .step >.step-box   {min-height: 460px;}
+}
+div#step-2.step-anchor.step-content
+{
+    min-height: 500px;
+}
 
-#step-2 > .step >.step3check {min-height: 460px;}
-#step-3 > .step > .step-box  {min-height: 390px; margin-bottom: 50px;}
+div#step-4.step-anchor.step-content
+{
+    min-height: 710px;
+}
+
+
+#smartwizard.sw-main.sw-theme-circles {
+    /*background-color: #00AA88; */
+    /*margin-top: 90px;*/
+}
+
+.navbar.btn-toolbar.sw-toolbar.sw-toolbar-bottom{
+    /*background-color: teal*/
+
+}
+
+
+.step {width: 100%; max-width: 530px; margin-top: 485px; margin-bottom: -590px;}
+.step-box { min-height: 400px; padding: 20px;  background-color: #f4f4f4; border-radius: 8px; margin-bottom: 5px;}
+
+#step-1 > .step >.step-box,
+#step-2 > .step >.step-box
+
+{margin-bottom: 1px!important;}
+
+
+#step-2 > .step >.step3check {min-height: 560px;}
+/*#step-3 > .step > .step-box  {min-height: 390px; margin-bottom: 50px;}*/
+#step-4 > .step > .step-box  {min-height: 680px; margin-bottom: 3px!important;}
 
 .step-img{height: 220px; background-color: #fcfcfc; border-top-left-radius: 8px; border-top-right-radius: 8px;}
 
-.step-image {height: 200px;  padding-top: 22px;}
+.step-image {height: 190px;  padding-top: 27px;}
 
-.step-anchor {  top: -240px; }
+.step-anchor {  top: -510px;}
 
+
+/*.step-1.step-anchor.step-conetnt {top: 300px;}*/
 .mar-le-10 {margin-left: -10px;}
 
 .checkBox-step2{width: 64%; margin-left: 17%;}
@@ -134,7 +185,7 @@
 
 @media  (max-width: 480px) {
     .step1 {width: 117%; margin-left: -25px;}
-    .step-box {padding: 8px;}
-    .checkBox-step2{width: 98%; margin-left: 1%;}
+    .step-box {padding: 6px;}
+    .checkBox-step2{width: 99.3%; margin-left: 0.3%;}
 
 }

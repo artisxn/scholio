@@ -1,3 +1,7 @@
+
+
+
+
 <template>
         <div class="row" >
 
@@ -17,8 +21,8 @@
                 <div class="row" >
                     <div id="step-1" class="step-anchor">
                         <div class="step centered-text">
-                            <h2>Βήμα 1 </h2>
-                            <div class="step-box">
+                            <!--<h2>Βήμα 1 </h2>-->
+                            <div class="step-box" style="">
                                 <div class="step-img">
                                     <img  class="step-image" src="/panel/assets/images/steps/step1-reduce2.png" alt="scholio logo" v-if="step1Select=='reduce'">
                                     <img  class="step-image" src="/panel/assets/images/steps/step1-hand2.png" alt="scholio logo" v-if="step1Select=='amount'">
@@ -52,7 +56,7 @@
                     </div>
                     <div id="step-2" class="step-anchor" >
                         <div class="step centered-text">
-                            <h2>Βήμα 2 </h2>
+                            <!--<h2>Βήμα 2 </h2>-->
                             <div class="step-box"  :class="{'step3check': (levelsName.length>2)}" >
                                 <div class="step-img" v-if="checkedStudies.length">
                                     <div v-for="image in studies[selectedLevel].section">
@@ -96,7 +100,7 @@
 
                     <div id="step-3" class="step-anchor">
                         <div class="step centered-text">
-                            <h2>Βήμα 3 </h2>
+                            <!--<h2>Βήμα 3 </h2>-->
                             <div class="step-box" >
                                 <div class="step-img">
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-skills1.png" alt="" v-if="step3Select=='talent'">
@@ -124,28 +128,32 @@
 
 
 
-                            <h2>Βήμα 4 </h2>
-                            <div class="step-box">
+                            <!--<h2>Βήμα 4 </h2>-->
+                            <div class="step-box" style="position: relative">
                                 <h3>Όροι και Λεπτομέρειες Συμμετοχής</h3>
-                                <p>Υποτροφία ενεργή μέχρι: <input type="text" id="datepicker" size="30" class="ll-skin-cangas"></p>
-
-
-
-                                <div class="funkyradio pull-right" style="width: 295px; padding-right: 22px">
+                                <div class="pull-left">
+                                <div style="left: 20px; top: 80px;  position: absolute"> Υποτροφία ενεργή μέχρι: </div>
+                                <input type="text" id="datepicker" size="30" class="ll-skin-cangas" 
+                                        style="margin-top: 30px; height: 35px; border: 1px solid #d2d2d2; border-radius: 3px;">  
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="funkyradio" style="width: 240px; margin: 15px 0 0 0;">
                                     <div class="funkyradio-success">
                                         <input type="checkbox" id="exams" value="examsOn">
-                                        <label for="exams"> Υποτροφία με γραπτές εξετάσεις</label>
+                                        <label for="exams"> Υποτροφία με εξετάσεις</label>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
+                                <div>
+                                    <div style="margin: 20px 0; left: 20px; position: absolute" >Δικαίωμα Συμμετοχής</div>
+                                     <div class="clearfix" style="margin: 0 0 45px 0"></div>
+                                    <textarea style="top: 370px; position: absolute"></textarea>
+                                </div>
 
 
                             </div>
                         </div>
                     </div>
-
-
-
 
 
                 </div>
@@ -157,11 +165,60 @@
 
 
 
+<style>
+
+/* jQuery Datepicker scholio Styling */
+.ui-widget-header {
+    background: #00bcd4; 
+    color: #fff}
+
+.ui-icon, .ui-icon:hover  {
+    width: 16px;
+    height: 16px;
+    /*background-color: #00bcd4;*/
+}
+
+.ui-widget-header .ui-icon {
+    background-image: url("/images/ui-icons_ffffff_256x240.png");
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+    border: none;
+    background: #f4f4f4;
+    /*font-weight: bold;*/
+    color: #004276;
+}
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+    border: none;
+    background: #008da5 ;
+    color: #fff;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+.ui-button:active,
+.ui-button.ui-state-active:hover{
+    background: #00bcd4;
+    /*font-weight: bold;*/
+    color: #fff;
+}
+
+
+
+</style>
+
+
+
+
 <script>
-
-
-
-
 
     export default {
         computed: {

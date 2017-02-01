@@ -66,6 +66,11 @@ class School extends Model
         return $this->hasMany(Scholarship::class);
     }
 
+    public function lengthScholarships()
+    {
+        return $this->scholarship()->count();
+    }
+
     /**
      *  Gets the user admin of the school
      *
@@ -96,6 +101,11 @@ class School extends Model
         return $this->users()->where('role', 'teacher');
     }
 
+    public function lengthTeachers()
+    {
+        return $this->teachers()->count();
+    }
+
     /**
      *  Gets all the students connected to the school
      *
@@ -106,6 +116,11 @@ class School extends Model
         return $this->users()->where('role', 'student');
     }
 
+    public function lengthStudents()
+    {
+        return $this->students()->count();
+    }
+
     /**
      *  Gets all the studies of the school
      *
@@ -114,6 +129,11 @@ class School extends Model
     public function study()
     {
         return $this->belongsToMany(Study::class, 'school_study');
+    }
+
+    public function lengthStudies()
+    {
+        return $this->study()->count();
     }
 
 }

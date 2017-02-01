@@ -106,8 +106,8 @@ Route::get('qaz', function () {
 });
 
 //===== New Testing PUBLIC pages ======
-Route::get('/public/profile', function () {
-    return view('public.school.profile');
+Route::get('/public/profile/{id}', function ($id) {
+    return view('public.school.profile')->withId($id);
 });
 
 Route::get('/public/results', function () {
@@ -136,10 +136,6 @@ Route::post('/qwe', function () {
     return 'OK';
 });
 
-Route::get('/ptest/{school}', function (School $school) {
-    return $school->load('image');
-});
-
 Route::post('/post/scholarship/test', function () {
     $scholarship = new Scholarship;
     $scholarship->school_id = request()->school_id;
@@ -152,4 +148,34 @@ Route::post('/post/scholarship/test', function () {
     $scholarship->save();
 
     return 'OK';
+});
+
+Route::get('/results/{type}', function ($type) {
+    $schools = School::with('image')->with('logo')->where('type_id', $type)->get();
+
+    foreach ($schools as $s) {
+        $s->lengthStudents = $s->lengthStudents();
+        $s->lengthTeachers = $s->lengthTeachers();
+        $s->lengthStudies = $s->lengthStudies();
+        $s->lengthScholarships = $s->lengthScholarships();
+    }
+    return $schools;
+});
+
+Route::get('/profile/{school}', function (School $school) {
+
+    $school->lengthStudents = $school->lengthStudents();
+    $school->lengthTeachers = $school->lengthTeachers();
+    $school->lengthStudies = $school->lengthStudies();
+    $school->lengthScholarships = $school->lengthScholarships();
+
+    $data = [];
+
+    foreach ($school->study as $study) {
+        array_push($data, App\Models\Study::with('section.level')->where('id', $study->id)->get());
+    }
+
+    $school->levels = $data;
+
+    return $school->load('image', 'logo');
 });
