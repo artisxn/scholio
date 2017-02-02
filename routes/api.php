@@ -146,3 +146,33 @@ Route::get('/public/profile', function () {
 Route::get('/school/{school}', function (School $school) {
     return $school->load('image');
 })->middleware('api');
+
+Route::get('/results/{type}', function ($type) {
+    $schools = School::with('image')->with('logo')->where('type_id', $type)->get();
+
+    foreach ($schools as $s) {
+        $s->lengthStudents = $s->lengthStudents();
+        $s->lengthTeachers = $s->lengthTeachers();
+        $s->lengthStudies = $s->lengthStudies();
+        $s->lengthScholarships = $s->lengthScholarships();
+    }
+    return $schools;
+})->middleware('api');
+
+Route::get('/profile/{school}', function (School $school) {
+
+    $school->lengthStudents = $school->lengthStudents();
+    $school->lengthTeachers = $school->lengthTeachers();
+    $school->lengthStudies = $school->lengthStudies();
+    $school->lengthScholarships = $school->lengthScholarships();
+
+    $data = [];
+
+    foreach ($school->study as $study) {
+        array_push($data, App\Models\Study::with('section.level')->where('id', $study->id)->get());
+    }
+
+    $school->levels = $data;
+
+    return $school->load('image', 'logo');
+})->middleware('api');

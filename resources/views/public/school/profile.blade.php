@@ -14,7 +14,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/new/img/favicon-72.ico">
     <link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">
 
-
     <!--====== CSS  Styles =======-->
     @include('public.styles')
 
@@ -62,7 +61,6 @@
 
     <!-- Angular App-->
     <script src="/new/js/profile-app.js"></script>
-
     <script>
         window.Scholio = <?php echo json_encode([
     'csrfToken' => csrf_token(),
@@ -81,9 +79,6 @@
         .show-more {  padding-top: 30px;  text-align: center; color: #777; font-weight: 200 }
         .show-more:hover {cursor: pointer; color: #008da5; font-weight: 300}
     </style>
-
-
-
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp">
 <!-- Scholio Header -->
@@ -91,8 +86,6 @@
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
     <div class="container">
         <div class="row">
-
-
             <div class="col-md-1 visible-lg visible-md nav-web">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="#home">
@@ -160,22 +153,15 @@
     </div><!-- container-->
 </header>
 
-
-
 <!-- Scholio Main Section. -->
 <div>
     <main id="main"  class="main"  ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
         <div class="container">
-
             <div class="row up">
             </div>
-
-
             <div class="up">
                 <div class=" margin-bot-15 ">
-
                     <div>
-
                         <img id="img1"  class=" img-thumb pull-left margin-right-10 margin-top-15 margin-bot-10"
                              ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
                         <span class="pull-left pad-top-5 xs-pad-top">
@@ -184,14 +170,9 @@
                             <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.ratingStar}} </span>
                             <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.ratingCounter}}  Αξιολογήσεις)</span>
                         </span>
-
                     </div>
-
-
                 </div>
             </div>
-
-
 
             <!-- BX SLIDER -->
             <div class="">
@@ -205,9 +186,6 @@
                     </ul>
                 </div>
             </div>
-
-
-
 
             <!-- Photo Grid  HIDDEN -->
             <div class="hidden">
@@ -225,19 +203,13 @@
                                 <img data-ng-src="/images/schools/@{{image.path}}" alt="profile-pic" style="" class=" img-grid"/>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
 
-
-
             <!-- MAIN Section-->
             <div class="col-lg-9 col-md-9 margin-top-30 margin-bot-25" >
-
-
                 <!-- Main scroll bar menu-->
-
                 <nav class="spy sticky-bar-affix hidden-sm hidden-xs" data-spy="affix"  data-offset-top="370" id="header2" >
                     <ul class="nav nav-ul sc-dark-blue" style="">
                         <li class=""><a class="pull-left sc-t-white " href="#sxetika">Σχετικά</a></li>
@@ -247,13 +219,7 @@
                         <li><a class="pull-left sc-t-white" href="#faculty">Διδάσκοντες</a></li>
                     </ul>
                 </nav>
-
-
-
-
                 <!-- Main Info profile ng-repeat -->
-
-
                     <!-- Σχετικά -->
                     <div class="row main-box margin-bot-25">
                         <div  class="section-header" id="sxetika">
@@ -296,14 +262,9 @@
                                                     <span class="pad-left-20 font-weight-100 ">@{{ study}}</span>
                                                 </li>
                                             </ul>
-
-
                                         </ul>
-
                                     </ul>
-
                                 </div>
-
                             </div>
 
                             <div style="clear: both"></div>
@@ -313,15 +274,8 @@
                                 <span ng-click="showMore()">@{{text}}</span>
                                 <i class="@{{ icon }}"></i>
                             </div>
-
-
                         </div>
-
                     </div>
-
-
-
-
                     <!-- Υποτροφίες -->
                     <div class="row main-box margin-bot-25" id="ypotrofies">
                         <div class="section-header3">
@@ -366,16 +320,8 @@
                                 <li><a href=""><button type="button" class="margin-left-30 col-xs-4 sc-button-landing sc-button sc-green sc-t-white">Προβολή</button></a></li>
                                 <li><a href=""><button type="button" class="col-xs-offset-1  col-xs-4 sc-button-landing sc-button sc-dark-green sc-t-white">Αίτημα</button></a></li>
                             </ul>
-
-
                         </div>
-
-
-
-
                     </div>
-
-
                     <!-- Αξιολογησεις -->
                     <div class="row main-box2 margin-bot-25" id="reviews">
                         <div class="section-header2">
@@ -393,22 +339,8 @@
                                 <i class="ion-ios-people-outline text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό </span>
                             </p>
                         </div>
-
-
                     </div>
-
-
-
-
-
-
-
-
             </div> <!-- //col-lg-9-->
-
-
-
-
             <!-- Right Sidebar  -->
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30">
                 <div  class="sidebar">
@@ -469,18 +401,8 @@
                             <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
 
                         </div>
-
                         <div class="clearfix"></div>
-
-
-
-
-
-
                     </div>
-
-
-
                 </div>
 
                 <button id="submButton" type="button" class="sc-button3 sc-dark-blue sc-t-white margin-top-10 center-block hidden"
@@ -521,48 +443,19 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
                         <button type="button" class="btn btn-info">Αποστολή</button>
                     </div>
-
-
-
                 </div>
             </div>
         </div><!-- /.modal -->
-
-
-
-
-
     </main>
-
-
-
-
-
-
-
-
 </div>
-
-
 
 <!-- Footer -->
 @include('public.footer')
 
 </body>
 
-
-
-
-
-
 <script>
-
-
 var lengthStudents = 0;
-
-
-
-
 $(function() {
     //caches a jQuery object containing the header element
     var sb = $("#submButton");
@@ -579,7 +472,6 @@ $(function() {
     });
 });
 
-
     ///// Rating Js //////
     $('rating').raty({
         score    : 4.2,
@@ -587,8 +479,6 @@ $(function() {
         half     : true,
         starHalf : 'fa fa-fw fa-star-half'
     });
-
-
 
 var lengthStudents = 0;
 
@@ -599,36 +489,23 @@ var lengthStudents = 0;
                 $scope.init = function () {
 
 
-                    $scope.contactInfo = $http.get('/profile/{{ $id }}', {
+                    $scope.contactInfo = $http.get('/api/profile/{{ $id }}', {
                         headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
                     }).success(function(data){
                         console.time('contactInfo API');
                         $scope.contactInfo=data;
                         $scope.studies = data.levels;
-//                        console.log($scope.studies);
                         if( $scope.studies.length){
                             $scope.initial();
                         }
                         console.timeEnd('contactInfo API');
                     });
 
-//                    var chkdstudies = function(){
-//                        console.time('chkdstudies API');
-//                        $scope.studies = $http.get('/api/school/getSchoolStudies', {
-//                            headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
-//                        }).success(function(data){
-//                            $scope.studies = data;
-////                         console.log(data)
-//                            $scope.initial();
-//                            console.timeEnd('chkdstudies API');
-//                        });
-//                    };
 
 
                     $scope.levelsName=[];
                     $scope.sectionsName=[];
                     $scope.studiesName=[];
-
 
                     $scope.initial=function (){
                         console.time('initial');
@@ -636,13 +513,10 @@ var lengthStudents = 0;
                         /* ========== BUILD levelsName ARRAY============ */
                         $scope.levelsName[0]=$scope.studies[0][0].section[0].level.name
 
-//                        console.log($scope.levelsName[0]);
                         var length=0
                         var found= false
 
                         for (var std in $scope.studies ){
-//                            console.log('std='+std+' '+$scope.studies[std][0].section[0].level.name)
-//                            console.log('std='+std+' '+$scope.studies[std][0].section[0].name)
                             found= false
                             for (var lev in $scope.levelsName ){
                                 if ( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name){
@@ -665,21 +539,16 @@ var lengthStudents = 0;
                                 for (std in $scope.studies ){
                                 if ( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name){
                                     if(!length){
-//                                        console.log('RESET ='+std+' i= '+i+' section='+sec+' '+$scope.studies[std][0].section[0].name)
                                         $scope.sectionsName[lev][0]=$scope.studies[std][0].section[0].name
                                         length=1
                                     }
                                     found= false
                                     for (var sec in $scope.sectionsName[lev] ){
-//                                        console.log($scope.sectionsName);
                                         if($scope.sectionsName[lev][sec]==$scope.studies[std][0].section[0].name){
-//                                            console.log('FOUND study='+std+' i= '+i+' section='+sec+' '+$scope.studies[std][0].section[0].level.name+' '+$scope.studies[std][0].section[0].name+' '+$scope.studies[std][0].name)
                                             found=true
-//                                            console.log($scope.sectionsName);
                                         }
                                     }
                                     if (!found) {
-//                                        console.log('NOT FOUND study='+std+' i= '+i+' section='+sec+' '+$scope.studies[std][0].section[0].name)
                                         $scope.sectionsName[lev][length]=$scope.studies[std][0].section[0].name
                                         length++
                                     }
@@ -687,10 +556,6 @@ var lengthStudents = 0;
                             }
                             length=0
                         }
-
-//                        console.log($scope.sectionsName);
-
-
 
                         /* ========== BUILD studiesName ARRAY============ */
                         var study=0
@@ -707,16 +572,9 @@ var lengthStudents = 0;
                                         $scope.studiesName[lev][sec][study]=$scope.studies[std][0].name
                                         study++
                                     }
-
                                 }
-
-
                             }
                         }
-
-//                        console.log($scope.studiesName);
-
-
                         console.timeEnd('initial');
                     }
 
@@ -735,32 +593,8 @@ var lengthStudents = 0;
                         $scope.showContent=false;
                         $scope.icon='fa fa-angle-down'
                     };
-
-
                 }
-
-
             })
-
-
-            /* this filter avoids Filter notTo Array error under angular v1.4 */
-//            .filter('toArray', function () {
-//                return function (obj, addKey) {
-//                    if (!angular.isObject(obj)) return obj;
-//                    if ( addKey === false ) {
-//                        return Object.keys(obj).map(function(key) {
-//                            return obj[key];
-//                        });
-//                    } else {
-//                        return Object.keys(obj).map(function (key) {
-//                            var value = obj[key];
-//                            return angular.isObject(value) ?
-//                                    Object.defineProperty(value, '$key', { enumerable: false, value: key}) :
-//                            { $key: key, $value: value };
-//                        });
-//                    }
-//                };
-//            })
 
             /* BxSlider Directives for ng-repeat*/
             .directive('bxSlider', [function () {
@@ -789,12 +623,5 @@ var lengthStudents = 0;
     $(document).ready(function(){
         $("#main").hide().fadeIn(1800);
     });
-
-
-
 </script>
-
-
-
-
 </html>
