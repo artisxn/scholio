@@ -14,7 +14,6 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Εκπαιδευτικό Ίδρυμα</th>
                                             <th>Πλάνο Υποτροφίας</th>
                                             <th>Υποτροφία</th>
                                             <th>Τύπος Σπουδών</th>
@@ -26,13 +25,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="scholarship in allScholarships">
+                                        <tr v-for="scholarship in scholarships">
                                             <td>{{ scholarship.id }}</td>
-                                            <td>{{ scholarship.school['name'] }}</td>
-                                            <td>{{ scholarship.financial['plan'] }}</td>
+                                            <td>{{ scholarship.financial.plan }}</td>
                                             <td>{{ scholarship.financial_amount }}</td>
-                                            <td>{{ scholarship.study_type }}</td>
-                                            <td>{{ scholarship.level['name'] }}</td>
+                                            <td>{{ scholarship.study.name}}</td>
+                                            <td>{{ scholarship.level.name}}</td>
                                             <td>{{ scholarship.criteria_id }}</td>
                                             <td>{{ scholarship.end_at }}</td>
                                             <td>{{ scholarship.winner_id }}</td>
@@ -53,38 +51,23 @@
 
         data: function() {
             return{
-                scholarship: {}
-            }
-        },
-
-        computed: {
-            allScholarships: function(){
-                return this.scholarship
+                scholarships: {}
             }
         },
 
         methods: {
-            getScholarship: function(){
-                axios.get('/api/scholarships/all')
+            getScholarships: function(){
+                axios.get('/api/scholarship/' + window.Connection)
                     .then(response => {
-                        this.scholarship = response.data['scholarships']
+                        console.log(response.data)
+                        this.scholarships = response.data
                     });
-            },
-
-            getSchoolFromId: function(id){
-                var name = ''
-                axios.get('/api/school/id/' + id)
-                    .then(response => {
-                        name = response.data.name
-                        console.log(name + 'name')
-                    });
-                return name
             }
         },
 
         mounted() {
             console.log('Scholarship-Table component mounted!')
-            this.getScholarship()
+            this.getScholarships()
         }
     }
 </script>

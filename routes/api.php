@@ -85,6 +85,12 @@ Route::get('/scholarships/all', function (Request $request) {
     return $data;
 })->middleware('auth:api');
 
+Route::get('/scholarship/{school}', function (School $school) {
+    $scholarships = $school->scholarship;
+
+    return $scholarships->load('financial', 'level', 'study');
+})->middleware('auth:api');
+
 Route::get('/school/studies', function () {
     $school = School::where('user_id', auth()->user()->id)->first();
     $levels = [];

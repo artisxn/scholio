@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Financial;
 use App\Models\Level;
 use App\Models\School;
+use App\Models\Study;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -38,6 +39,11 @@ class Scholarship extends Model
     public function level()
     {
         return $this->belongsTo(Level::class);
+    }
+
+    public function study()
+    {
+        return $this->belongsTo(Study::class);
     }
 
     /**

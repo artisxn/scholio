@@ -21,6 +21,13 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/ppp', function () {
+    $scholarship = Scholarship::find(1);
+
+    dd($scholarship->study());
+
+});
+
 Auth::routes();
 
 Route::get('/register/school', 'SchoolRegistrationController@showSchoolRegistrationForm');
