@@ -307,7 +307,9 @@
                             </div>
 
                             <div style="clear: both"></div>
-                            <div class="show-more" ng-if="studies.length>8">
+
+                            <div class="show-more" ng-if="studies.length>5">
+
                                 <span ng-click="showMore()">@{{text}}</span>
                                 <i class="@{{ icon }}"></i>
                             </div>
@@ -467,12 +469,78 @@
                             <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
 
                         </div>
+
+                        <div class="clearfix"></div>
+
+
+
+
+
+
                     </div>
+
+
+
                 </div>
+
+                <button id="submButton" type="button" class="sc-button3 sc-dark-blue sc-t-white margin-top-10 center-block hidden"
+                        style="z-index: 4000; width: 190px; top: 250px; margin-left: 55px; position: fixed;"
+                        data-toggle="modal" data-target="#con-close-modal">
+                    <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
+                </button>
+
 
             </div><!-- //col-lg-3-->
         </div> <!-- //container-->
+
+
+
+
+        <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="panel " style="background-color: #324c5a;">
+                        <div class="panel-heading" style="height: 55px; color: #fff">
+                            <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
+                                 x
+
+                            </button>
+                            <img src="/new/img/logo-light-m.png" alt="scholio logo" class="pull-left">
+                            <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Αίτημα Σύνδεσης</h3>
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+                        <img  class=" mini-thumb pull-left margin-right-10" style=""
+                              ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
+                        <span>Με τη σύνδεσή σας στο @{{contactInfo.type }} @{{ contactInfo.name }} θα έχετε τη δυνατότητα να το αξιολογήσετε.</span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
+                        <button type="button" class="btn btn-info">Αποστολή</button>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+
+
+
+
     </main>
+
+
+
+
+
+
+
+
 </div>
 
 
@@ -481,12 +549,35 @@
 @include('public.footer')
 
 </body>
+
+
+
+
+
+
 <script>
 
 
 var lengthStudents = 0;
 
 
+
+
+$(function() {
+    //caches a jQuery object containing the header element
+    var sb = $("#submButton");
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 595) {
+            sb.removeClass('hidden').addClass("vissible");
+
+        } else {
+            sb.removeClass("vissible").addClass('hidden');
+
+        }
+    });
+});
 
 
     ///// Rating Js //////
@@ -499,7 +590,7 @@ var lengthStudents = 0;
 
 
 
-
+var lengthStudents = 0;
 
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http) {
@@ -563,9 +654,6 @@ var lengthStudents = 0;
                                 $scope.levelsName[length]=$scope.studies[std][0].section[0].level.name
                             }
                         }
-
-//                        console.log($scope.levelsName);
-
 
                         /* ========== BUILD sectionsName ARRAY============ */
                         for (lev in $scope.levelsName ){
