@@ -13,35 +13,20 @@
                                 <table class="table m-0">
                                     <thead>
                                         <tr>
-                                            <!-- <th>ID</th> -->
                                             <th>Ρόλος</th>
-                                            <!-- <th>Notifiable Id</th> -->
-                                            <!-- <th>Notifiable Type</th> -->
                                             <th>Όνομα</th>
-                                            <!-- <th>Read At</th> -->
-                                            <!-- <th>Created At</th> -->
                                             <th>Επιλογή</th>
-                                            <!-- <th>Updated At</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="notification in allNotifications">
-                                            <!-- <td>{{ notification.id }}</td> -->
-    
+                                        <tr v-for="notification in notifications">
                                               <td v-if="notification.type === 'App\\Notifications\\StudentConnectNotification'">Μαθητής</td>
-
                                               <td v-if="notification.type === 'App\\Notifications\\TeacherConnectNotification'">Καθηγητής</td>
-                                            
-                                            <!-- <td>{{ notification.notifiable_id }}</td> -->
-                                            <!-- <td>{{ notification.notifiable_type }}</td> -->
                                             <td>{{ notification.data['user_name'] }}</td>
-                                            <!-- <td>{{ notification.read_at }}</td> -->
-                                            <!-- <td>{{ notification.created_at }}</td> -->
                                             <td>
                                                 <button type="button" class="btn btn-success">Αποδοχή</button>
                                                 <button type="button" class="btn btn-danger">Απόρριψη</button>
                                             </td>
-                                            <!-- <td>{{ notification.updated_at }}</td> -->
                                         </tr>
                                     </tbody>
                                 </table>
@@ -60,12 +45,6 @@
         data: function() {
             return{
                 notifications: {}
-            }
-        },
-
-        computed: {
-            allNotifications: function(){
-                return this.notifications
             }
         },
 

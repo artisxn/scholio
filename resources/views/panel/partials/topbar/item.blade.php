@@ -1,4 +1,4 @@
-@include('panel.partials.topbar.notifications')
+<notifications></notifications>
 
 <li class="hidden-xs">
     <a href="#" id="btn-fullreen" class="waves-effect"><i class="icon-size-fullscreen"></i></a>
@@ -23,7 +23,5 @@
                 {{ csrf_field() }}
             </form>
         </li>
-
-        {{-- <li><a href="javascript:void(0)"><i class="ti-power-off m-r-5"></i> Logout</a></li> --}}
     </ul>
 </li>

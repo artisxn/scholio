@@ -24,11 +24,10 @@
                                             <th>Logo</th>
                                             <th>Approved</th>
                                             <th>Created At</th>
-                                            <!-- <th>Updated At</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="school in allSchools">
+                                        <tr v-for="school in schools">
                                             <td>{{ school.id }}</td>
                                             <td>{{ school.name }}</td>
                                             <td>{{ school.email }}</td>
@@ -40,7 +39,6 @@
                                             <td>{{ school.logo_id }}</td>
                                             <td>{{ school.approved }}</td>
                                             <td>{{ school.created_at }}</td>
-                                            <!-- <td>{{ school.updated_at }}</td> -->
                                         </tr>
                                     </tbody>
                                 </table>
@@ -59,12 +57,6 @@
         data: function() {
             return{
                 schools: {}
-            }
-        },
-
-        computed: {
-            allSchools: function(){
-                return this.schools
             }
         },
 

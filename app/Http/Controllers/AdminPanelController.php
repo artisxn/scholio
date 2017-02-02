@@ -67,36 +67,57 @@ class AdminPanelController extends Controller
         return view('panel.pages.profile.main');
     }
 
+    /**
+     *  @return view
+     */
     public function teachers()
     {
         return view('panel.pages.teachers');
     }
 
+    /**
+     *  @return view
+     */
     public function students()
     {
         return view('panel.pages.students');
     }
 
+    /**
+     *  @return view
+     */
     public function dashboard()
     {
         return view('panel.pages.school.dashboard');
     }
 
+    /**
+     *  @return view
+     */
     public function scholarshipCreate()
     {
         return view('panel.pages.school.scholarships.create');
     }
 
+    /**
+     *  @return view
+     */
     public function scholarshipView()
     {
         return view('panel.pages.school.scholarships.view');
     }
 
+    /**
+     *  @return view
+     */
     public function studies()
     {
         return view('panel.pages.school.profile.studies');
     }
 
+    /**
+     *  @return view
+     */
     public function imageProfile()
     {
         $school = School::where('user_id', auth()->user()->id)->first();
@@ -107,10 +128,9 @@ class AdminPanelController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the profile
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return view
      */
     public function editProfile()
     {
@@ -158,6 +178,9 @@ class AdminPanelController extends Controller
         return back();
     }
 
+    /**
+     *  @return view
+     */
     public function requests()
     {
         return view('panel.pages.school.resource.requests');

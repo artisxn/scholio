@@ -15,8 +15,6 @@
         </ul>
     </li>
 
-
-
     <li class="has_sub link">
         <a href="#" >
             <i class="ion-android-user-menu"></i><span> Προφίλ </span> </a>
@@ -38,7 +36,6 @@
         </ul>
     </li>
 
-
     <li class="has_sub">
         <a href="#" class=""><i class="ion-ios7-star-half"></i><span> Αξιολογήσεις </span></a>
         <ul class="list-unstyled">
@@ -46,35 +43,6 @@
         </ul>
     </li>
 
-
 @section('scripts')
-    <script>
-        $(document).ready(function () {
-
-
-//            $('.link > a').click(function(){
-//                $('.active').removeClass('active');
-//                $(this).addClass('active');
-//            });
-//
-//            $('.submenu > li').click(function(){
-//                $('.active').removeClass('active');
-//                $(this).addClass('active');
-//                $(this).parent('ul').prev('a').addClass('active');
-//
-//            });
-
-
-        });
-
-//        jQuery(' li > a').click(function(){
-//            jQuery(this).toggleClass('active');
-//            console.log('click')
-//        });
-
-        // NAVIGATION HIGHLIGHT & OPEN PARENT
-       // $("#sidebar-menu ul li.has_sub a.active").parents("li:last").children("a:first").addClass("active").trigger("click");
-
-    </script>
 
 @endsection

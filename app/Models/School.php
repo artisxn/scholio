@@ -11,8 +11,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class School extends Model
 {
-
     /**
+     * The attributes that are mass assignable.
+     *
      * @var array
      */
     protected $fillable = [
@@ -66,6 +67,11 @@ class School extends Model
         return $this->hasMany(Scholarship::class);
     }
 
+    /**
+     *  Gets the length of all scholarships created by this school
+     *
+     * @return int
+     */
     public function lengthScholarships()
     {
         return $this->scholarship()->count();
@@ -76,7 +82,7 @@ class School extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function admin()
     {
         return $this->belongsTo(User::class);
     }
@@ -101,6 +107,11 @@ class School extends Model
         return $this->users()->where('role', 'teacher');
     }
 
+    /**
+     *  Gets the length of all teachers are connected with this school
+     *
+     * @return int
+     */
     public function lengthTeachers()
     {
         return $this->teachers()->count();
@@ -116,6 +127,11 @@ class School extends Model
         return $this->users()->where('role', 'student');
     }
 
+    /**
+     *  Gets the length of all students are connected with this school
+     *
+     * @return int
+     */
     public function lengthStudents()
     {
         return $this->students()->count();
@@ -131,9 +147,13 @@ class School extends Model
         return $this->belongsToMany(Study::class, 'school_study');
     }
 
+    /**
+     *  Gets the length of all studies this school offers
+     *
+     * @return int
+     */
     public function lengthStudies()
     {
         return $this->study()->count();
     }
-
 }

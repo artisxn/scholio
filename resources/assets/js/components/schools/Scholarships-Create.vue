@@ -44,7 +44,6 @@
                                         <span class="input-group-addon" id="basic-addon3">Μήνες</span>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -72,7 +71,6 @@
                                                  v-for="(sect,indexStudy) in studiesArray">
                                             {{sect}}
                                         </option>
-
                                     </select>
 
                                     <!--CheckBox  Επιλογή Level -->
@@ -108,7 +106,6 @@
                                     <option data-icon="fa " value="friends">&nbsp; 1+1 Φίλοι / Αδέλφια</option>
                                     <option data-icon="fa " value="open">&nbsp; Υποτροφία Ανοιχτού Τύπου</option>
                                 </select>
-
                             </div>
                         </div>
                     </div>
@@ -146,8 +143,6 @@
             </div>
         </div>
 </template>
-
-
 
 <style>
 
@@ -194,16 +189,9 @@ html .ui-button.ui-state-disabled:active {
     /*font-weight: bold;*/
     color: #fff;
 }
-
-
-
 </style>
 
-
-
-
 <script>
-
     export default {
         computed: {
             studies: function(){
@@ -269,7 +257,6 @@ html .ui-button.ui-state-disabled:active {
                     this.sectionsCounter++
                 }
             },
-
             getCheckedStudies: function () {
                 axios.get('/api/school/getSchoolStudies')
                         .then(response => {
@@ -281,7 +268,6 @@ html .ui-button.ui-state-disabled:active {
                 })
                 this.getStudies()
             })
-               
             },
 
             init: function () {

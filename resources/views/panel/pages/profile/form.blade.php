@@ -34,13 +34,9 @@
                             <label class="col-md-2 control-label">School type</label>
                             <div class="col-md-10">
                                 <select class="form-control" name="type">
-
                                     @foreach($schoolTypes as $schoolType)
-
                                         <option {{$schoolType->id == $school->type_id ? "selected" : ""}} value="{{ $schoolType->id }}"> {{ $schoolType->name }}</option>
-
                                     @endforeach
-
                                 </select>
                             </div>
                         </div>
@@ -65,13 +61,9 @@
                                 <input type="password" class="form-control" disabled="" value="Password">
                             </div>
                         </div>
-
-
                     </div>
 
                     <div class="col-md-6">
-
-
                         <div class="form-group">
                             <label class="col-md-2 control-label">Website</label>
                             <div class="col-md-10">
@@ -124,30 +116,20 @@
     </div>
 </div>
 
-
     @if(count($errors) > 0 )
-
         <div class="alert alert-danger">
-
             <ul>
                 @foreach($errors->all() as $error)
-
                     <li>{{$error}}</li>
-
                 @endforeach
             </ul>
-
         </div>
-
     @endif
-
 
     @if(Session::has('updated_profile'))
         <div class="row">
             <p class="alert alert-success col-lg-6"  style="margin: 0 10px">{{session('updated_profile')}}</p>
         </div>
     @endif
-
-
 
 @endsection

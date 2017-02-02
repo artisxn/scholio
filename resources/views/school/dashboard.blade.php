@@ -30,8 +30,6 @@
         galite.UA = 'UA-58279133-2'; // Insert your tracking code here
     </script>
 
-
-
     <!-- Javascript Files -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -160,8 +158,5 @@
         </div>
     </div>
 </main>
-
-
-
 </body>
 </html>

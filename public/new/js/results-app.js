@@ -1,27 +1,20 @@
-
-
-
 angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
-
     .controller("resultsCtrl",function ($timeout,$scope,$http) {
-
         $scope.orderSelect = 'ratingStar'; // set the default sort type
         $scope.sortReverse  = true;  // set the default sort order
-
         $scope.scholars=0;
         $scope.reviews=0;
         $scope.categoryFilter="null";
-
         $scope.currentPage = 1;
         $scope.itemsPerPage = 3;
         $scope.maxSize = 2;
 
-
         $scope.init = function () {
             console.log("initialize !");
 
-            $scope.schools = $http.get("/new/js/sch.json")
+            $scope.schools = $http.get("/sch.json")
                 .success(function (data) {
+                    console.log(data);
 
                     var st1= data;
                     var temp = JSON.stringify(data)
@@ -36,9 +29,6 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                         .replace(/city/g,"city2");
                     var st2= JSON.parse(temp);
                     $scope.schools  = angular.merge([], st2, st1);
-                    //$scope.page=$scope.schools.length;
-
-                    //$scope.schoolsOLD = data
 
                 })
                 .error(function (data) {
@@ -62,8 +52,6 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
             }
         };
-
-
 
         $timeout(function(){
             $scope.ready = true;
@@ -90,15 +78,3 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
             }
         };
     });
-
-
-
-
-
-
-
-
-
-
-
-

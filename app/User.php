@@ -32,13 +32,20 @@ class User extends Authenticatable
     ];
 
     /**
-     * @return
+     *  Gets the school object which is assosiated with this user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function school()
     {
         return $this->hasOne(School::class);
     }
 
+    /**
+     *  Gets the url to post the slack notifications
+     *
+     * @return String
+     */
     public function routeNotificationForSlack()
     {
         // Change it to pass only for admins
@@ -47,6 +54,11 @@ class User extends Authenticatable
         }
     }
 
+    /**
+     *  Gets all the scholarships which created by this user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function scholarship()
     {
         return $this->belongsToMany(Scholarship::class, 'scholarship_user')->withTimestamps();

@@ -13,7 +13,6 @@
     <!-- Page-Title -->
     <div class="row">
         <div class="col-sm-12">
-
             <div class="row">
                 <div class="col-sm-12">
                     <passport-clients></passport-clients>
@@ -21,7 +20,6 @@
                     <passport-personal-access-tokens></passport-personal-access-tokens>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

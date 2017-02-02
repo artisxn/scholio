@@ -21,7 +21,6 @@
                                             <th>Κριτήρια</th>
                                             <th>Ημερομηνία Λήξης</th>
                                             <th>Νικητής</th>
-                                            <!-- <th>Updated At</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>

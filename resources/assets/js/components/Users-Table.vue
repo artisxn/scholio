@@ -17,20 +17,16 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Role</th>
-                                            <!-- <th>Avatar</th> -->
                                             <th>Created At</th>
-                                            <!-- <th>Updated At</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="user in allUsers">
+                                        <tr v-for="user in users">
                                             <td>{{ user.id }}</td>
                                             <td>{{ user.name }}</td>
                                             <td>{{ user.email }}</td>
                                             <td>{{ user.role }}</td>
-                                            <!-- <td>{{ user.avatar }}</td> -->
                                             <td>{{ user.created_at }}</td>
-                                            <!-- <td>{{ user.updated_at }}</td> -->
                                         </tr>
                                     </tbody>
                                 </table>
@@ -51,13 +47,7 @@
                 users: {}
             }
         },
-
-        computed: {
-            allUsers: function(){
-                return this.users
-            }
-        },
-
+        
         methods: {
             getUsers: function(){
                 axios.get('/api/users/all')

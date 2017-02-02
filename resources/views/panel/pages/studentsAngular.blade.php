@@ -1,11 +1,5 @@
 
 @section('styles')
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.0/plugins/bootstrap/datatables.bootstrap.min.css">--}}
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/css/dataTables.bootstrap.min.css">--}}
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/css/dataTables.jqueryui.css">--}}
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.0/css/angular-datatables.min.css">--}}
-
-
     <style>
         @media (min-width: 1360px) {
             .col-xl-4 {  width: 33.33%;  }
@@ -22,20 +16,13 @@
 
 @section('content')
     <div class="row" ng-app="studentsApp" ng-controller="studentsCtrl" data-ng-init="init()" ng-cloak>
-
-
-        {{--all Users = @{{allStudents.users.length}}--}}
-
                     <div class="input-group pull-left " style="width: 200px; margin: 10px 0 0 10px;; border: 1px solid #d1d1d1; border-radius: 5px;" >
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
                         <input type="text" class="form-control" placeholder="Αναζήτηση...χ"
                                ng-model="searchStr">
                     </div>
 
-
             <button class="btn btn-info pull-right" ng-click="changeView()" style="margin: 10px 10px 10px 0; height: 38px;">Αλλαγή Προβολής</button>
-
-
 
             <div style="clear: both"></div>
             <div ng-if="selection==1">
@@ -89,10 +76,7 @@
             </div>
     </div>
 
-
-
             <div style="clear: both"></div>
-
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover"
                        style="background-color: #fff;" ng-if="selection==false" ng-cloak>
@@ -125,37 +109,20 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
-
     </div>
-
 
 @endsection
 
-
-
-
 @section('scriptsBefore')
-        <!-- Angular js-->
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>--}}
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/jquery.dataTables.min.js"></script>--}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.0/angular-datatables.min.js"></script>--}}
-
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/dataTables.bootstrap.min.js"></script>--}}
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.0/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>--}}
-
-
-
-
 
 <script>
 
     window.Scholio = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-        ]); ?>
+    'csrfToken' => csrf_token(),
+]); ?>
 
 
     angular.module("studentsApp",[])
@@ -163,7 +130,6 @@
 
                 $scope.sortType='name';
                 $scope.sortReverse=false;
-
 
                 $scope.selection=true;
                 $scope.init = function () {
@@ -188,7 +154,6 @@
                             var st2= JSON.parse(temp);
                             $scope.allStudents= angular.merge([], st2, st1);
 
-//                          $scope.allStudents = data;
                             console.log('users='+$scope.allStudents.users.length);
 
                         })
@@ -201,25 +166,5 @@
                 }
 
             })
-
-
-    /* this filter avoids Filter notTo Array error under angular v1.4 */
-    //.filter('toArray', function () {
-    //    return function (obj, addKey) {
-    //        if (!angular.isObject(obj)) return obj;
-    //        if ( addKey === false ) {
-    //            return Object.keys(obj).map(function(key) {
-    //                return obj[key];
-    //            });
-    //        } else {
-    //            return Object.keys(obj).map(function (key) {
-    //                var value = obj[key];
-    //                return angular.isObject(value) ?
-    //                    Object.defineProperty(value, '$key', { enumerable: false, value: key}) :
-    //                { $key: key, $value: value };
-    //            });
-    //        }
-    //    };
-    //});
 </script>
 @endsection

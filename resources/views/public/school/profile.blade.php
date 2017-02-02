@@ -17,13 +17,8 @@
     <!--====== CSS  Styles =======-->
     @include('public.styles')
 
-
     <!-- BX Slider CSS -->
     <link href="/new/css/jquery.bxslider.css" rel="stylesheet">
-    <!--<link href="http://bxslider.com/lib/jquery.bxslider.css" rel="stylesheet" />-->
-
-    <!-- Ribbon CSS -->
-    <!--<link href="new/css/ribbon.css" rel="stylesheet">-->
 
     <!-- Profile  CSS -->
     <link href="/new/css/profile.css" rel="stylesheet">
@@ -34,17 +29,11 @@
     <!-- Horizontal Ribbons  CSS -->
     <link href="/new/css/Hexagon.css" rel="stylesheet">
 
-
-    <!--====== Javascript Files =======-->
-
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Bootstrap Select js  -->
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>--}}
 
     <!-- Angular js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
@@ -232,7 +221,6 @@
                                 Το ACT είναι ένα ιδιωτικό, μη κερδοσκοπικό εκπαιδευτικό ίδρυμα.
                                 Eίναι αναγνωρισμένο στις ΗΠΑ από την Επιτροπή για Ιδρύματα Ανώτατης Εκπαίδευσης (NEASC) και από το Υπουργείο Παιδείας
                             </p>
-
                         </div>
                     </div>
 
@@ -266,11 +254,8 @@
                                     </ul>
                                 </div>
                             </div>
-
                             <div style="clear: both"></div>
-
                             <div class="show-more" ng-if="studies.length>5">
-
                                 <span ng-click="showMore()">@{{text}}</span>
                                 <i class="@{{ icon }}"></i>
                             </div>
@@ -329,7 +314,6 @@
                                 <i class="fa fa-star fa-linear margin-right-10" aria-hidden="true"></i> <span>Αξιολογήσεις </span>
                             </p>
                         </div>
-
                     </div>
 
                     <!-- Διδακτικό Προσωπικό  -->
@@ -410,13 +394,8 @@
                         data-toggle="modal" data-target="#con-close-modal">
                     <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                 </button>
-
-
             </div><!-- //col-lg-3-->
         </div> <!-- //container-->
-
-
-
 
         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
             <div class="modal-dialog">
@@ -464,10 +443,8 @@ $(function() {
 
         if (scroll >= 595) {
             sb.removeClass('hidden').addClass("vissible");
-
         } else {
             sb.removeClass("vissible").addClass('hidden');
-
         }
     });
 });
@@ -500,8 +477,6 @@ var lengthStudents = 0;
                         }
                         console.timeEnd('contactInfo API');
                     });
-
-
 
                     $scope.levelsName=[];
                     $scope.sectionsName=[];

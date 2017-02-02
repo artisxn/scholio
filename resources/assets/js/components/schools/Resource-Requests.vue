@@ -13,26 +13,20 @@
                                 <table class="table m-0">
                                     <thead>
                                         <tr>
-                                            <!-- <th>ID</th> -->
                                             <th>Type</th>
                                             <th>Notifiable Id</th>
                                             <th>Notifiable Type</th>
-                                            <!-- <th>Data</th> -->
                                             <th>Read At</th>
                                             <th>Created At</th>
-                                            <!-- <th>Updated At</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="notification in allNotifications">
-                                            <!-- <td>{{ notification.id }}</td> -->
+                                        <tr v-for="notification in notifications">
                                             <td>{{ notification.type }}</td>
                                             <td>{{ notification.notifiable_id }}</td>
                                             <td>{{ notification.notifiable_type }}</td>
-                                            <!-- <td>{{ notification.data }}</td> -->
                                             <td>{{ notification.read_at }}</td>
                                             <td>{{ notification.created_at }}</td>
-                                            <!-- <td>{{ notification.updated_at }}</td> -->
                                         </tr>
                                     </tbody>
                                 </table>
@@ -54,12 +48,6 @@
             }
         },
 
-        computed: {
-            allNotifications: function(){
-                return this.notifications
-            }
-        },
-
         methods: {
             getNotifications: function(){
                 axios.get('/api/notifications/all')
@@ -72,7 +60,6 @@
 
         mounted() {
             console.log('Notifications-Table component mounted!')
-
             this.getNotifications()
         }
     }

@@ -1,16 +1,10 @@
 @extends('panel.layouts.main')
 
-
 @section('styles')
     <link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />
 @endsection
 
-
-
 @section('content')
-
-
-
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
@@ -26,19 +20,13 @@
                         <div class="form-group" align="center">
                             <img src="/images/teachers/" height="100px">
                         </div>
-
-
                         <div class="col-md-6">
-
-
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="avatar">Avatar</label>
                                 <div class="col-md-10">
                                     <input type="file" class="form-control" name="logo">
                                 </div>
                             </div>
-
-
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Name</label>
                                 <div class="col-md-10">
@@ -60,12 +48,8 @@
                                 </div>
                             </div>
 
-
                         </div>
-
-
                         <div class="col-md-6">
-
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label">City</label>
@@ -105,31 +89,21 @@
             </div>
         </div>
     </div>
-
-
     @if(count($errors) > 0 )
 
         <div class="alert alert-danger">
-
             <ul>
                 @foreach($errors->all() as $error)
-
                     <li>{{$error}}</li>
-
                 @endforeach
             </ul>
-
         </div>
-
     @endif
-
 
     @if(Session::has('updated_profile'))
         <div class="row">
             <p class="alert alert-success col-lg-6"  style="margin: 0 10px">{{session('updated_profile')}}</p>
         </div>
     @endif
-
-
 
 @endsection

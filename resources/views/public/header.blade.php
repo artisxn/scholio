@@ -43,8 +43,6 @@
                 </div>
             </div>
 
-
-
             <!-- Mobile Menu -->
             <div class="col-xs-6 visible-sm visible-xs ">
                 <div class="">
@@ -81,9 +79,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </header>

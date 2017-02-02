@@ -46,6 +46,4 @@
             </div>
         </div>
     </div> <!-- end col -->
-
-
 </div>

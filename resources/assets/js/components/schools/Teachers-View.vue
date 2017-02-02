@@ -1,6 +1,6 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="row">
-        <div class="col-xs-12 col-sm-6 com-md-4" v-for="teacher in allTeachers" v-show="teacher.role=='teacher'">
+        <div class="col-xs-12 col-sm-6 com-md-4" v-for="teacher in teachers" v-show="teacher.role=='teacher'">
             <div class="card-box">
                 <div class="row">
                     <div class="contact-card">
@@ -47,12 +47,6 @@
         data: function() {
             return{
                 teachers: {}
-            }
-        },
-
-        computed: {
-            allTeachers: function(){
-                return this.teachers
             }
         },
 

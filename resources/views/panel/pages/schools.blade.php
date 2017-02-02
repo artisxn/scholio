@@ -13,13 +13,11 @@
     <!-- Page-Title -->
     <div class="row">
         <div class="col-sm-12">
-
             <div class="row">
                 <div class="col-sm-12">
                     <schools-table></schools-table>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

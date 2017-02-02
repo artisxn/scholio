@@ -52,9 +52,6 @@
             </div>
         </div>
 
-        <!--v-if="(student.role=='student' )"-->
-        <!--text-transform: capitalize-->
-
         <div class="clearfix"></div>
 
         <div class="table-responsive">
@@ -90,11 +87,8 @@
                 </tbody>
             </table>
         </div>
-
-
     </div>
 </template>
-
 
 <style>
     @media (min-width: 1360px) {
@@ -109,8 +103,6 @@
         .pull-right{ margin-right: 50px!important;}
     }
 </style>
-
-
 
 <script>
     export default{
@@ -128,7 +120,9 @@
                 var filtered_array1 = this.students,
                         searchString = this.searchStr;
 
-                if(!searchString){return filtered_array1;}
+                if(!searchString){
+                    return filtered_array1;
+                }
 
                 searchString = searchString.trim().toLowerCase();
                 filtered_array1 = filtered_array1.filter(function(item){
@@ -140,8 +134,6 @@
                 })
                 return filtered_array1;
             },
-
-
         },
 
         methods: {
@@ -175,22 +167,15 @@
                     }
                 },
 
-
             getAllStudents: function(){
                 axios.get('/api/users/all')
                     .then(response => {
                         this.students = response.data['users']
-
                         var st1= this.students;
-
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
-//                        console.log(st1)
-
                         for (var i in st1){
                                 st1[i].name=st1[i].name.toLowerCase()
                         }
-
-
                         var temp = JSON.stringify(st1)
                                 .replace(/ά/g,"α")
                                 .replace(/έ/g,"ε")
@@ -198,7 +183,6 @@
                                 .replace(/ί/g,"ι")
                                 .replace(/ό/g,"ο")
                                 .replace(/ύ/g,"υ")
-//                                .replace(/name/g,"nameL");
                         var st2= JSON.parse(temp);
 
                         var temp2 = JSON.stringify(st1)
@@ -236,18 +220,10 @@
                                 .replace(/ψ/g,"c")
                         var st3= JSON.parse(temp2);
 
-
-//                        String.prototype.capitalize = function(){
-//                            return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
-//                        };
-
                         for (var i in st1){
-//                            st1[i].name=st1[i].name.capitalize()
                             st1[i].nameL=st2[i].name
                             st1[i].nameENG=st3[i].name
                         }
-
-//                        console.log(st1)
                         this.students=st1
                     });
             },

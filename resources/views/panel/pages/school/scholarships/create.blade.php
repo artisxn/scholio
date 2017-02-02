@@ -18,9 +18,7 @@
     <!-- Include SmartWizard JavaScript source -->
     <script src="/panel/assets/js/wizard/jquery.smartWizard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.2/jquery.tinymce.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.2/tinymce.min.js"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.2/tinymce.jquery.min.js"></script> --}}
 
     <script>
         $(document).ready(function(){
@@ -34,11 +32,9 @@
                     toolbarExtraButtons: [
                         {label: 'Επαναφορά', css: 'btn sc-dark-grey sc-t-white', onClick: function(){ $('#smartwizard').smartWizard("reset"); }},
                         {label: 'Οριστικοποίηση', css: 'btn sc-dark-green sc-t-white', onClick: function(){ Event.$emit('saveScholarship', 'OK'); }}
-
                     ]
                 }
             });
-
         });
     </script>
 @endsection
@@ -83,18 +79,10 @@
 
         } ) );
 
-
-
-
-
         $( function() {
           $( "#datepicker" ).datepicker();
-//            $( "#datepicker" ).x({changeMonth: true, changeYear: true});
-//            $( "#datepicker" ).datepicker( "option", "dateFormat", "d MM, y")
 
         });
-
-
 
         tinymce.init({
           selector: 'textarea',
@@ -108,10 +96,5 @@
           toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
           content_css: '//www.tinymce.com/css/codepen.min.css'
         });
-
-
-
-
-
     </script>
 @endsection

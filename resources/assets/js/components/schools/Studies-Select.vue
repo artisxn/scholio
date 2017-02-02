@@ -1,17 +1,14 @@
 <template>
     <div id="content">
-
         <div style="margin-left: 20px;">
             <h3  class="title ml20" style="margin-left: -10px">Επιλογή Ειδικοτήτων Σπουδών</h3>
             <div class="row margin-top-30">
-
                 <div v-if="studies.length">
                     <!-- ====== Select DropDown LEVEL ====== -->
                     <div v-if="studies.length>1">
                         <!--Level-->
                         <select class="sel1" v-model="selectedLevel" style="margin: 10px; width: 280px;" @change="selectedSection=0">
                             <option v-for="(level,indexLevel) in studies" :value="indexLevel" >
-                                <!--{{ studies[indexLevel].id}} &nbsp-->
                                 {{ level.name}}
                             </option>
                         </select>
@@ -31,7 +28,6 @@
                         </option>
                     </select>
                 </span>
-
                     <!-- ========== Select CheckBox Studies ======== -->
                 <div v-if="studies[selectedLevel].section.length>0">
                     <div v-if="studies[selectedLevel].section[selectedSection].study" style="margin-top: 5px; padding: 0">
@@ -48,7 +44,6 @@
                         </div>
                     </div>
                 </div>
-
             </span>
                     <div class="clearfix" style="clear: both"></div>
 
@@ -142,9 +137,7 @@
 </style>
 
 <script>
-
     export default {
-
         computed: {
             studies: function () {
                 return this.all_studies
@@ -289,7 +282,6 @@
             },
 
             selectSection: function (se) {
-
                 this.selectedSection = se;
             },
 

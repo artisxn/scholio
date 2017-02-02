@@ -3,8 +3,8 @@ $(document).ready(function($) {
 
     //Landing Page Menu Toggle - Collapse
     var itempressed = $('.sc-landing-menu-mobile-item-pressed');
-    var menuopen =   $('.sc-landing-menu-sandwitch');
-    var menuclose =   $('.sc-landing-menu-mobile-close');
+    var menuopen = $('.sc-landing-menu-sandwitch');
+    var menuclose = $('.sc-landing-menu-mobile-close');
     var mobilemenu =$('.sc-landing-menu-mobile-holder');
 
     //Οταν θέλω να ανοιξω το μενου
@@ -24,19 +24,6 @@ $(document).ready(function($) {
     itempressed.click(function(){
         mobilemenu.css({"display":"none"});
     });
-
-
-    ///////////
-    /*
-
-     */
-    ///////////
-
-
-    //$('.selectpicker').selectpicker({
-    //    iconBase: 'fa',
-    //    tickIcon: 'fa-check'
-    //});
 
 
     $("#filter-btn").click(function(){

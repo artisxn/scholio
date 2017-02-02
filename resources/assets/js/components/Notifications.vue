@@ -37,13 +37,7 @@
 
         data: function() {
             return{
-                unread_notifications: {}
-            }
-        },
-
-        computed: {
-            unreadNotifications: function(){
-                return this.unread_notifications
+                unreadNotifications: {}
             }
         },
 
@@ -51,7 +45,7 @@
             getNotifications: function(){
                 axios.get('/api/notifications')
                     .then(response => {
-                        this.unread_notifications = response.data['unread']
+                        this.unreadNotifications = response.data['unread']
                     });
 
                     this.listenOnStudentToSchoolConnection()

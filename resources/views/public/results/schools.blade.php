@@ -14,11 +14,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon-72.ico">
     <link rel="apple-touch-icon-precomposed" href="img/favicon-57.ico">
 
-
-
     <!--====== CSS  Styles =======-->
     @include('public.styles')
-
 
     <!-- Bootstrap Select -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
@@ -29,9 +26,6 @@
     <!-- Results CSS -->
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
-
-
-    <!--====== Javascript Files =======-->
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -50,9 +44,6 @@
     <!-- No error Filter:noArray angular 1.3.20 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js"></script>
 
-
-
-
     <!-- Rating js-->
     <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
 
@@ -62,10 +53,6 @@
 
     <!--  Angular Results App -->
     <script src="{{asset('/new/js/results-app.js')}}"></script>
-
-
-
-
 
 
 </head>
@@ -114,8 +101,6 @@
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
                                 <img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">
-
-
                             </div>
                         </div>
                     </div>
@@ -151,10 +136,7 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>  <!-- row -->
         </div> <!-- container-->
     </header>
@@ -232,11 +214,8 @@
                                         </label>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
-
                 </div><!-- collapseMenu -->
 
 
@@ -257,14 +236,11 @@
                                 <option data-icon="glyphicon glyphicon-pencil" data-subtext="" class="kf-option" value="Φροντιστήρια">&nbsp;  Φροντιστήρια </option>
                             </select>
                         </form>
-
                         <div class="input-group centered-text pad-top-20">
                             <span class="input-group-addon text-incr-115 kf-gray" id="basic-addon1"><i class="fa fa-map-marker margin-right-5"></i></span>
                             <input type="text" class="kf-option" id="input1" placeholder="Περιοχή/πόλη" ng-model="cityFilter">
                         </div>
-
                     </div>
-
                     <div class=" box left-box2 ">
                         <p class="text-incr-115 margin-left-10"> Φίλτρα Αναζήτησης</p>
 
@@ -293,18 +269,12 @@
                                 </label>
                             </div>
                         </div>
-
-
                     </div>
-
                     <a href="">
                         <button type="button" class="sc-button2 sc-primary sc-t-white pull-right margin-top-15">
                         <i class="fa fa-search pad-right-15" aria-hidden="true"></i>Αναζήτηση</button>
                     </a>
-
                 </div>  <!-- //col-lg-3-->
-
-
                 <div class="col-lg-9 col-md-9 col-sm-12 kf-col-xs-10 kf-col-xs-offset-1" >
 
                     <div ng-repeat="school in schools
@@ -404,14 +374,11 @@
                                             <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
                                             <span class="pull-left pad-left-2 pad-bot-10">Συνδ. Καθηγητές</span>
                                             <span class="pull-right">@{{school.teachers}}</span>
-
                                         </div>
 
                                         <div ng-show="school.category=='Ιδιωτικά Σχολεία' ">
                                             <div class="margin-pad" style=" "></div>
                                         </div>
-
-
                                         <hr>
                                     </div>
 
@@ -442,8 +409,6 @@
                                                     <span class="pull-left pad-left-5"> <a href="mailto:@{{school.email}}">@{{school.email}}</a></span>
                                                 </div>
                                             </div>
-
-
                                             <div class="col-lg-2  col-md-1 col-sm-5 col-xs-12 margin-top-15 card-buttons text-incr-85">
                                                 <div class="hidden-xs but-pad">
                                                     <a href="">
@@ -466,14 +431,9 @@
                                                             <i class="fa fa-trophy pad-right-10" aria-hidden="true"></i> Υποτροφίες</button>
                                                     </a>
                                                 </div>
-
-
                                             </div>
-
                                         </div>
-
                                     </div>
-
                                 </div> <!-- ====================== -->
                             </li>
                         </ul>
@@ -489,22 +449,9 @@
                                 next-text="Επόμενα">
                         </ul>
                     </div>
-
-
                     </div> <!-- //col-lg-9-->
-
-
-
-
-
-
-
             </div> <!-- //row-->
-
         </div> <!-- //container-->
-
-
-
     </main>
 
     <!-- Footer -->
@@ -519,11 +466,6 @@ $('rating').raty({
     half     : true,
     starHalf : 'fa fa-fw fa-star-half'
 });
-
 </script>
-
-
-
-
 
 </html>

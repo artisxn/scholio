@@ -24,7 +24,7 @@ class Scholarship extends Model
     /**
      *  Gets the financial plan of this scholarship
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function financial()
     {
@@ -32,24 +32,29 @@ class Scholarship extends Model
     }
 
     /**
+     *  Gets the level which is assosiated with this scholarship
      *
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function level()
     {
         return $this->belongsTo(Level::class);
     }
 
+    /**
+     *  Gets the study which is assosiated with this scholarship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function study()
     {
         return $this->belongsTo(Study::class);
     }
 
     /**
-     *  Gets the financial plan of this scholarship
+     *  Gets the user which created this scholarship
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function user()
     {

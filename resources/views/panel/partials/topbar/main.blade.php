@@ -21,8 +21,6 @@
                 <ul class="nav navbar-nav navbar-right pull-right">
                     @include('panel.partials.topbar.item')
                 </ul>
-
-
             </div>
             <!--/.nav-collapse -->
         </div>

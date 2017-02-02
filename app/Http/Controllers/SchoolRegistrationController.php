@@ -11,22 +11,32 @@ use Illuminate\Validation\Rule;
 
 class SchoolRegistrationController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('schoolAdmin')->except('showSchoolUserRegistrationForm', 'registerUserSchool');
     }
 
+    /**
+     *  @return view
+     */
     public function showSchoolRegistrationForm()
     {
         $schoolTypes = SchoolTypes::all();
         return view('auth.register-school', compact('schoolTypes'));
     }
 
+    /**
+     *  @return view
+     */
     public function showSchoolUserRegistrationForm()
     {
         return view('auth.register-user-school');
     }
 
+    /**
+     *  @return response
+     */
     public function registerUserSchool()
     {
         $this->validate(request(), [
@@ -41,6 +51,9 @@ class SchoolRegistrationController extends Controller
         return redirect('/register/school');
     }
 
+    /**
+     *  @return response
+     */
     public function register()
     {
         $userName = session()->get('school.user.name');

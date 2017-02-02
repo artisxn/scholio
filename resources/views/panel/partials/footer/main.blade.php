@@ -1,3 +1,3 @@
 <footer class="footer">
-    2015 © Ubold.
+    2017 © Scholio.
 </footer>
