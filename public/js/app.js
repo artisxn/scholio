@@ -12644,7 +12644,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted: function mounted() {
         console.log('Users-Table component mounted!');
-
         this.getUsers();
     }
 };
@@ -13765,22 +13764,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
@@ -13790,11 +13773,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        //            this.checkedStudies=['empty'],
+        var _this = this;
+
         this.getCheckedStudies();
+
+        Event.$on('saveScholarship', function () {
+            return _this.saveScholarship();
+        });
+
+        Event.$on('datePick', function (val) {
+            return _this.end_at = val;
+        });
     },
     data: function data() {
         return {
+            financial_amount: 0,
             step1Select: 'reduce', // set the default value
             step3Select: 'talent',
             all_studies: [''],
@@ -13808,19 +13801,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             sectionsName: [],
             studiesName: [],
             sectionsCounter: 0,
-            examsOn: true
+            examsOn: true,
+            studiesId: [],
+            end_at: 13
         };
     },
 
     methods: {
+        eww: function eww() {
+            console.log('as');
+        },
         getStudies: function getStudies() {
-            var _this = this;
+            var _this2 = this;
 
             axios.get('/api/school/studies/').then(function (response) {
                 console.log('API 1 Full Studies OK ');
-                _this.all_studies = response.data['levels'];
-                _this.changeLevel();
-                _this.init();
+                _this2.all_studies = response.data['levels'];
+                _this2.changeLevel();
+                _this2.init();
             });
         },
         changeLevel: function changeLevel() {
@@ -13833,26 +13831,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.sectionsCounter = 0;
             for (var section in this.sectionsName[this.selectedLevel]) {
                 this.sectionsCounter++;
-                //                    console.log(this.sectionsCounter)
             }
         },
 
         getCheckedStudies: function getCheckedStudies() {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.get('/api/school/getSchoolStudies').then(function (response) {
-                _this2.studyTable = response.data;
-                //                console.log('>>>>' + response.data[0][0].section[0].level.id +' ' +response.data[0][0].section[0].level.name )
-                var parent = _this2;
+                _this3.studyTable = response.data;
+                var parent = _this3;
                 console.log('API 2 checkedStudies initial push OK');
-                _this2.studyTable.forEach(function (studies) {
+                _this3.studyTable.forEach(function (studies) {
                     parent.checkedStudies.push(studies[0].id);
                 });
-                _this2.getStudies();
+                _this3.getStudies();
             });
-
-            // setTimeout(this.getStudies, 110);
-            //              setTimeout(this.init, 900);
         },
 
         init: function init() {
@@ -13861,20 +13854,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var i = this.studyTable[level][0].section[0].level;
                 this.levelsName[i.id] = i.name;
             }
-            //                console.log('levelsName.length ='+this.levelsName.length)
-            //                console.log('sectionsName.length ='+this.sectionsName.length)
             this.levelsName = this.levelsName.filter(function (e) {
                 return e;
             }); //** Delete Empty Values **//
-            //                this.sectionsName=this.sectionsName.filter(Boolean)
-            //
-            //                this.lName = Array.from(new Set(this.levelsName))
-            //                this.sName = Array.from(new Set(this.sectionsName))
-            //                console.log('lName.length ='+this.lName.length)
-            //                console.log('sName.length ='+this.sName.length)
-            //                for (var name in this.lName) {
-            //                    console.log(name+' '+this.lName[name])
-            //                }
 
             for (level in this.levelsName) {
                 this.sectionsName[level] = [];
@@ -13893,7 +13875,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         if (!finded) {
                             this.studiesName[level][section] = [];
                             this.sectionsName[level][section] = sec;
-                            //                                   console.log(level,section,this.sectionsName[level][section] )
                             section++;
                         }
                     }
@@ -13904,21 +13885,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         pullStudies: function pullStudies() {
             this.studiesArray = [];
-            //                    console.log(this.selectedLevel+'.'+this.selectedSection)
+            this.studiesId = [];
             for (var study in this.studyTable) {
                 var levNm = this.studyTable[study][0].section[0].level.name;
                 var secNm = this.studyTable[study][0].section[0].name;
-                var stdNm = this.studyTable[study][0].name;
+                var stdNm = this.studyTable[study][0];
                 if (levNm == this.levelsName[this.selectedLevel] && secNm == this.sectionsName[this.selectedLevel][this.selectedSection]) {
-                    this.studiesArray.push(stdNm);
-                    //                              console.log('>>>'+this.studiesArray)
+                    this.studiesArray.push(stdNm.name);
+                    this.studiesId.push(stdNm.id);
                 }
                 this.selectedStudy = 0;
             }
+        },
+
+        saveScholarship: function saveScholarship() {
+            axios.post('/ppp', {
+                'school_id': window.Connection,
+                'financial_id': 1,
+                'financial_amount': this.financial_amount,
+                'study_id': this.studiesId[0],
+                'criteria_id': 2,
+                'end_at': this.end_at,
+                'winner_id': 0
+            }).then(function (response) {
+                console.log(response.data);
+            });
         }
-
     }
-
 };
 
 /***/ }),
@@ -17165,7 +17158,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* jQuery Datepicker scholio Styling */\n.ui-widget-header {\n    background: #00bcd4; \n    color: #fff\n}\n.ui-icon, .ui-icon:hover  {\n    width: 16px;\n    height: 16px;\n    /*background-color: #00bcd4;*/\n}\n.ui-widget-header .ui-icon {\n    background-image: url(\"/images/ui-icons_ffffff_256x240.png\");\n}\n.ui-state-default,\n.ui-widget-content .ui-state-default,\n.ui-widget-header .ui-state-default,\n.ui-button,\nhtml .ui-button.ui-state-disabled:hover,\nhtml .ui-button.ui-state-disabled:active {\n    border: none;\n    background: #f4f4f4;\n    /*font-weight: bold;*/\n    color: #004276;\n}\n.ui-state-highlight,\n.ui-widget-content .ui-state-highlight,\n.ui-widget-header .ui-state-highlight {\n    border: none;\n    background: #008da5 ;\n    color: #fff;\n}\n.ui-state-active,\n.ui-widget-content .ui-state-active,\n.ui-widget-header .ui-state-active,\n.ui-button:active,\n.ui-button.ui-state-active:hover{\n    background: #00bcd4;\n    /*font-weight: bold;*/\n    color: #fff;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* jQuery Datepicker scholio Styling */\n.ui-widget-header {\n    background: #00bcd4; \n    color: #fff\n}\n.ui-icon, .ui-icon:hover  {\n    width: 16px;\n    height: 16px;\n    /*background-color: #00bcd4;*/\n}\n.ui-widget-header .ui-icon {\n    background-image: url(\"/images/ui-icons_ffffff_256x240.png\");\n}\n.ui-state-default,\n.ui-widget-content .ui-state-default,\n.ui-widget-header .ui-state-default,\n.ui-button,\nhtml .ui-button.ui-state-disabled:hover,\nhtml .ui-button.ui-state-disabled:active {\n    border: none;\n    background: #f4f4f4;\n    /*font-weight: bold;*/\n    color: #004276;\n}\n.ui-state-highlight,\n.ui-widget-content .ui-state-highlight,\n.ui-widget-header .ui-state-highlight {\n    border: none;\n    background: #008da5 ;\n    color: #fff;\n}\n.ui-state-active,\n.ui-widget-content .ui-state-active,\n.ui-widget-header .ui-state-active,\n.ui-button:active,\n.ui-button.ui-state-active:hover{\n    background: #00bcd4;\n    /*font-weight: bold;*/\n    color: #fff;\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -18070,6 +18063,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text",
       "placeholder": "20",
       "aria-describedby": "basic-addon1"
+    },
+    domProps: {
+      "value": _vm.financial_amount
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "input-group-addon",
@@ -18088,6 +18084,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text",
       "placeholder": "800",
       "aria-describedby": "basic-addon2"
+    },
+    domProps: {
+      "value": _vm.financial_amount
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "input-group-addon",
@@ -18106,6 +18105,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text",
       "placeholder": "2",
       "aria-describedby": "basic-addon3"
+    },
+    domProps: {
+      "value": _vm.financial_amount
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "input-group-addon",
@@ -18310,7 +18312,48 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data-icon": "fa ",
       "value": "open"
     }
-  }, [_vm._v("  Υποτροφία Ανοιχτού Τύπου")])])])])]), _vm._v(" "), _vm._m(1)])])])
+  }, [_vm._v("  Υποτροφία Ανοιχτού Τύπου")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "step-anchor",
+    attrs: {
+      "id": "step-4"
+    }
+  }, [_c('div', {
+    staticClass: "step centered-text"
+  }, [_c('div', {
+    staticClass: "step-box",
+    staticStyle: {
+      "position": "relative"
+    }
+  }, [_c('h3', [_vm._v("Όροι και Λεπτομέρειες Συμμετοχής")]), _vm._v(" "), _c('div', {
+    staticClass: "pull-left"
+  }, [_c('div', {
+    staticStyle: {
+      "left": "20px",
+      "top": "80px",
+      "position": "absolute"
+    }
+  }, [_vm._v(" Υποτροφία ενεργή μέχρι: ")]), _vm._v(" "), _c('input', {
+    staticClass: "ll-skin-cangas",
+    staticStyle: {
+      "margin-top": "30px",
+      "height": "35px",
+      "border": "1px solid #d2d2d2",
+      "border-radius": "3px"
+    },
+    attrs: {
+      "type": "text",
+      "id": "datepicker",
+      "size": "30",
+      "onchange": "Event.$emit('datePick', event.target.value)"
+    },
+    domProps: {
+      "value": _vm.end_at
+    }
+  })]), _vm._v("\n                        " + _vm._s(_vm.end_at) + "\n                        "), _c('div', {
+    staticClass: "clearfix"
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  }), _vm._v(" "), _vm._m(2)])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
     staticClass: "clearfix"
@@ -18345,41 +18388,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Όροι Συμμετοχής")])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "step-anchor",
-    attrs: {
-      "id": "step-4"
-    }
-  }, [_c('div', {
-    staticClass: "step centered-text"
-  }, [_c('div', {
-    staticClass: "step-box",
-    staticStyle: {
-      "position": "relative"
-    }
-  }, [_c('h3', [_vm._v("Όροι και Λεπτομέρειες Συμμετοχής")]), _vm._v(" "), _c('div', {
-    staticClass: "pull-left"
-  }, [_c('div', {
-    staticStyle: {
-      "left": "20px",
-      "top": "80px",
-      "position": "absolute"
-    }
-  }, [_vm._v(" Υποτροφία ενεργή μέχρι: ")]), _vm._v(" "), _c('input', {
-    staticClass: "ll-skin-cangas",
-    staticStyle: {
-      "margin-top": "30px",
-      "height": "35px",
-      "border": "1px solid #d2d2d2",
-      "border-radius": "3px"
-    },
-    attrs: {
-      "type": "text",
-      "id": "datepicker",
-      "size": "30"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  }), _vm._v(" "), _c('div', {
     staticClass: "funkyradio",
     staticStyle: {
       "width": "240px",
@@ -18397,9 +18405,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "exams"
     }
-  }, [_vm._v(" Υποτροφία με εξετάσεις")])])]), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  }), _vm._v(" "), _c('div', [_c('div', {
+  }, [_vm._v(" Υποτροφία με εξετάσεις")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
     staticStyle: {
       "margin": "20px 0",
       "left": "20px",
@@ -18415,7 +18423,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "top": "370px",
       "position": "absolute"
     }
-  })])])])])
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {

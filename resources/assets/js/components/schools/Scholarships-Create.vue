@@ -1,7 +1,3 @@
-
-
-
-
 <template>
         <div class="row" >
 
@@ -15,8 +11,6 @@
                     <li><a href="#step-4">Βήμα 4<br /><small class="mar-le-10">Όροι Συμμετοχής</small></a></li>
 
                 </ul>
-
-
 
                 <div class="row" >
                     <div id="step-1" class="step-anchor">
@@ -36,17 +30,17 @@
 
                                 <div class="" style="width: 50%; margin-left: 25%;">
                                     <div class="input-group " style="padding: 15px 0; z-index: 1" v-if="step1Select=='reduce'">
-                                        <input type="text" class="form-control" placeholder="20" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="20" aria-describedby="basic-addon1" :value="financial_amount">
                                         <span class="input-group-addon" id="basic-addon1">%</span>
                                     </div>
 
                                     <div class="input-group" style=" padding: 15px 0; z-index: 1" v-if="step1Select=='amount'">
-                                        <input type="text" class="form-control" placeholder="800" aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control" placeholder="800" aria-describedby="basic-addon2" :value="financial_amount">
                                         <span class="input-group-addon" id="basic-addon2">€</span>
                                     </div>
 
                                     <div class="input-group" style=" padding: 15px 0; z-index: 1" v-if="step1Select=='time'">
-                                        <input type="text" class="form-control" placeholder="2" aria-describedby="basic-addon3">
+                                        <input type="text" class="form-control" placeholder="2" aria-describedby="basic-addon3" :value="financial_amount">
                                         <span class="input-group-addon" id="basic-addon3">Μήνες</span>
                                     </div>
                                 </div>
@@ -65,7 +59,6 @@
                                     </div>
                                 </div>
 
-
                                     <!--Select  Επιλογή Section -->
                                     <select class="select-step2"  v-model="selectedSection"  @change="pullStudies()" v-if="sectionsCounter>1">
                                         <option :value="indexSection"
@@ -75,7 +68,7 @@
 
                                     <!--Select  Επιλογή Study -->
                                     <select class="select-step2"  v-model="selectedStudy" v-if="checkedStudies.length">
-                                        <option  :value="indexStudy"
+                                        <option :value="indexStudy"
                                                  v-for="(sect,indexStudy) in studiesArray">
                                             {{sect}}
                                         </option>
@@ -92,8 +85,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -122,11 +113,8 @@
                         </div>
                     </div>
 
-
                     <div id="step-4" class="step-anchor">
                         <div class="step centered-text">
-
-
 
                             <!--<h2>Βήμα 4 </h2>-->
                             <div class="step-box" style="position: relative">
@@ -134,8 +122,10 @@
                                 <div class="pull-left">
                                 <div style="left: 20px; top: 80px;  position: absolute"> Υποτροφία ενεργή μέχρι: </div>
                                 <input type="text" id="datepicker" size="30" class="ll-skin-cangas" 
-                                        style="margin-top: 30px; height: 35px; border: 1px solid #d2d2d2; border-radius: 3px;">  
+                                        style="margin-top: 30px; height: 35px; border: 1px solid #d2d2d2; border-radius: 3px;" 
+                                        v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)">  
                                 </div>
+                                {{ end_at }}
                                 <div class="clearfix"></div>
                                 <div class="funkyradio" style="width: 240px; margin: 15px 0 0 0;">
                                     <div class="funkyradio-success">
@@ -149,17 +139,11 @@
                                      <div class="clearfix" style="margin: 0 0 45px 0"></div>
                                     <textarea style="top: 370px; position: absolute"></textarea>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
-
         </div>
 </template>
 
@@ -227,12 +211,20 @@ html .ui-button.ui-state-disabled:active {
             }
         },
         mounted: function () {
-//            this.checkedStudies=['empty'],
+            
             this.getCheckedStudies()
 
+            Event.$on('saveScholarship', () =>
+              this.saveScholarship()
+            )
+
+            Event.$on('datePick', (val) =>
+              this.end_at = val
+            )
         },
         data: function() {
             return{
+                financial_amount: 0,
                 step1Select:'reduce', // set the default value
                 step3Select: 'talent',
                 all_studies: [''],
@@ -246,11 +238,16 @@ html .ui-button.ui-state-disabled:active {
                 sectionsName:[],
                 studiesName:[],
                 sectionsCounter:0,
-                examsOn:true
+                examsOn:true,
+                studiesId:[],
+                end_at: 13
             }
         },
 
         methods: {
+            eww: function(){
+                console.log('as')
+            },
             getStudies: function () {
                 axios.get('/api/school/studies/')
                         .then(response => {
@@ -270,7 +267,6 @@ html .ui-button.ui-state-disabled:active {
                 this.sectionsCounter=0
                 for (var section in this.sectionsName[this.selectedLevel]){
                     this.sectionsCounter++
-//                    console.log(this.sectionsCounter)
                 }
             },
 
@@ -278,7 +274,6 @@ html .ui-button.ui-state-disabled:active {
                 axios.get('/api/school/getSchoolStudies')
                         .then(response => {
                     this.studyTable = response.data
-//                console.log('>>>>' + response.data[0][0].section[0].level.id +' ' +response.data[0][0].section[0].level.name )
                 var parent = this
                 console.log('API 2 checkedStudies initial push OK' )
                 this.studyTable.forEach(function (studies) {
@@ -287,28 +282,15 @@ html .ui-button.ui-state-disabled:active {
                 this.getStudies()
             })
                
-              // setTimeout(this.getStudies, 110);
-//              setTimeout(this.init, 900);
             },
 
             init: function () {
                 console.log('init DONE ! checkedStudies.length='+this.checkedStudies.length);
                 for (var level in this.studyTable ){
                     var i = this.studyTable[level][0].section[0].level;
-                    this.levelsName[i.id]= i.name;
+                    this.levelsName[i.id] = i.name;
                 }
-//                console.log('levelsName.length ='+this.levelsName.length)
-//                console.log('sectionsName.length ='+this.sectionsName.length)
                   this.levelsName=this.levelsName.filter(function(e){return e});  //** Delete Empty Values **//
-//                this.sectionsName=this.sectionsName.filter(Boolean)
-//
-//                this.lName = Array.from(new Set(this.levelsName))
-//                this.sName = Array.from(new Set(this.sectionsName))
-//                console.log('lName.length ='+this.lName.length)
-//                console.log('sName.length ='+this.sName.length)
-//                for (var name in this.lName) {
-//                    console.log(name+' '+this.lName[name])
-//                }
 
                    for (level in this.levelsName){
                        this.sectionsName[level]=[]
@@ -325,7 +307,6 @@ html .ui-button.ui-state-disabled:active {
                                if (!finded){
                                    this.studiesName[level][section]=[]
                                    this.sectionsName[level][section]= sec;
-//                                   console.log(level,section,this.sectionsName[level][section] )
                                    section++
                                }
                            }
@@ -334,23 +315,35 @@ html .ui-button.ui-state-disabled:active {
                 this.pullStudies()
                 this.countSections()
                 },
-            pullStudies: function(){
+                pullStudies: function(){
                     this.studiesArray=[];
-//                    console.log(this.selectedLevel+'.'+this.selectedSection)
+                    this.studiesId=[];
                     for ( var study in this.studyTable ){
                         var levNm=this.studyTable[study][0].section[0].level.name
                         var secNm=this.studyTable[study][0].section[0].name
-                        var stdNm=this.studyTable[study][0].name
+                        var stdNm=this.studyTable[study][0]
                             if( ( levNm == this.levelsName[this.selectedLevel] )  &&  ( secNm==this.sectionsName[this.selectedLevel][this.selectedSection] )  ) {
-                                this.studiesArray.push(stdNm);
-//                              console.log('>>>'+this.studiesArray)
+                                this.studiesArray.push(stdNm.name);
+                                this.studiesId.push(stdNm.id);
                             }
                         this.selectedStudy=0;
                     }
+                },
+
+                saveScholarship: function(){
+                    axios.post('/ppp', {
+                        'school_id': window.Connection,
+                        'financial_id': 1,
+                        'financial_amount': this.financial_amount,
+                        'study_id': this.studiesId[0],
+                        'criteria_id': 2,
+                        'end_at': this.end_at,
+                        'winner_id': 0
+                    })
+                    .then(response=>{
+                        console.log(response.data)
+                    })
                 }
-
             }
-
-
     }
 </script>

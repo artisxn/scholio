@@ -70,7 +70,6 @@
 
         mounted() {
             console.log('Users-Table component mounted!')
-
             this.getUsers()
         }
     }

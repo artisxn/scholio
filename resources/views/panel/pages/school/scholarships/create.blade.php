@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="/panel/assets/css/wizard/smart_wizard_theme_circles.css"/>
     <link rel="stylesheet" href="/panel/assets/css/steps.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-
-
-
 @endsection
 
 @section('content')
@@ -36,7 +33,7 @@
                 toolbarSettings: {toolbarPosition: 'bottom',
                     toolbarExtraButtons: [
                         {label: 'Επαναφορά', css: 'btn sc-dark-grey sc-t-white', onClick: function(){ $('#smartwizard').smartWizard("reset"); }},
-                        {label: 'Οριστικοποίηση', css: 'btn  sc-dark-green sc-t-white', onClick: function(){ alert('Finish Clicked'); }}
+                        {label: 'Οριστικοποίηση', css: 'btn sc-dark-green sc-t-white', onClick: function(){ Event.$emit('saveScholarship', 'OK'); }}
 
                     ]
                 }

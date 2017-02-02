@@ -21,11 +21,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/ppp', function () {
-    $scholarship = Scholarship::find(1);
+Route::post('/ppp', function () {
+    $study = Study::find(request()->study_id);
+    $section_name = $study->section[0]->name;
+    $level_name = $study->section[0]->level->name;
 
-    dd($scholarship->study());
-
+    return request()->end_at;
 });
 
 Auth::routes();
