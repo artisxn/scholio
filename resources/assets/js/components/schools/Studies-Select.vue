@@ -1,7 +1,7 @@
 <template>
     <div id="content">
 
-        <div style="margin-left: 20px;">
+        <div style="margin-left: 20px;" v-if="col_iek_eng_dan_mus">
             <h3  class="title ml20" style="margin-left: -10px">Επιλογή Ειδικοτήτων Σπουδών</h3>
             <div class="row margin-top-30">
 
@@ -89,6 +89,30 @@
             </div>
         </div>
 
+        <div v-if="!col_iek_eng_dan_mus">
+            <h3  class="title ml20" style="margin-left: -10px">Επιλογή Επιπέδων Σπουδών</h3>
+            <div>
+                <div v-for="(level,indexLevel) in all_studies">
+                    <div v-for="(section,indexSection) in all_studies[indexLevel].section">
+                        <div v-for="(study,indexStudy) in all_studies[indexLevel].section[indexSection].study">
+                            <input
+                                   type="checkbox"
+                                   :checked="study.status"
+                                   @click="IfCheck(indexStudy, study.status, study.id, studies[indexLevel].id, studies[indexLevel].section[indexSection].id,indexLevel,indexSection )"
+                                   :value="study.id"
+                                   v-model="checkedStudies"
+                            ><label for=""> </label>
+                            {{ study.name}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
 </template>
 
 <style>
@@ -164,8 +188,7 @@
                 levels: [],
                 sections: [],
                 testClass: true,
-                test: [],
-                testTable: []
+                col_iek_eng_dan_mus:false
             }
 
         },
@@ -234,7 +257,13 @@
                 this.init();
             },
 
-            IfCheck: function (ppp, check, studyID, levelID,sectionID) {
+            IfCheck: function (ppp, check, studyID, levelID,sectionID,indLev,indSec) {
+
+                if(!this.col_iek_eng_dan_mus){
+                    this.selectedLevel=indLev
+                    this.selectedSection=indSec
+                }
+
                 var i = this.selectedLevel;
                 var j = this.selectedSection;
                 var k = ppp;
@@ -294,6 +323,13 @@
             },
 
             init: function () {
+
+                /* This condition MUST CHANGE .. needed School_Type_ID from an API */
+              if (this.all_studies[0].section[0].study[0].name!=this.all_studies[0].name){
+                  this.col_iek_eng_dan_mus=true
+              }
+
+
                 console.log('init DONE ! checkedStudies.length='+this.checkedStudies.length);
                 for (var level = 0; level < this.checkedStudies.length; level++){
                     var i = this.testTable[level][0].section[0].level.id;

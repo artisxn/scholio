@@ -16,7 +16,6 @@ class StudiesTableSeeder extends Seeder
         $types = [
             ['name' => 'Διοίκηση Επιχειρήσεων', 'id' => 21], /**  IEK Επαγγελματικές Σπουδές 21-34 */
             ['name' => 'Στέλεχος Διοίκησης & Οικονομίας', 'id' => 21],
-            ['name' => 'Διοίκηση Επιχειρήσεων', 'id' => 21],
             ['name' => 'Στέλεχος Μηχανογραφημένου Λογιστηρίου - Φοροτεχνικού Γραφείου', 'id' => 21],
             ['name' => 'Μηχανογραφημένη Λογιστική', 'id' => 21],
             ['name' => 'Στέλεχος Εμπορίας & Διαφήμισης & Προώθησης Προϊόντων (Marketing)', 'id' => 21],
@@ -292,11 +291,8 @@ class StudiesTableSeeder extends Seeder
             ['name' => 'BSc (Hons) Physiotherapy (Φυσικοθεραπεία)', 'id' => 5],
             ['name' => 'BSc (Hons) Biomedical Sciences (Βιοϊατρικές Επιστήμες)', 'id' => 5],
             ['name' => 'BSc (Hons) Sports Coaching (Προπονητική)', 'id' => 5],
-            ['name' => 'BSc (Hons) Biomedical Sciences (Βιοϊατρικές Επιστήμες)', 'id' => 5],
-            ['name' => 'BSc (Hons) Sports Coaching (Προπονητική)', 'id' => 5],
             ['name' => 'BSc (Hons) Dietetics (Διαιτολογία)', 'id' => 5],
             ['name' => 'BSc (Hons) Occupational Therapy (Εργοθεραπεία)', 'id' => 5],
-            ['name' => 'BSc (Hons) in Biomedical Sciences', 'id' => 5],
             ['name' => 'BSc (Hons) in Human Nutrition', 'id' => 5],
             ['name' => 'BSc (Hons) in Psychology', 'id' => 5],
             ['name' => 'BSc (Hons) Extended in Science', 'id' => 5],
@@ -398,7 +394,7 @@ class StudiesTableSeeder extends Seeder
             ['name' => 'MArch Architecture and Urbanism (Μεταπτυχιακό στην Αρχιτεκτονική και τον Αστικό Σχεδιασμό)', 'id' => 17],
             ['name' => 'MSc Civil Engineering and the Built Environment (Μεταπτυχιακό Πολιτικών Μηχανικών)', 'id' => 17],
             ['name' => 'MSc Electronic Systems Engineering (Μεταπτυχιακό Ηλεκτρονικών Μηχανικών)', 'id' => 17],
-            ['name' => 'MSc Electrical Engineering and Computer Systems', 'id' => 17],
+            ['name' => 'MSc Electrical Engineering and Computer Systems (Μεταπτυχιακό Ηλεκτρολόγων Μηχανικών και ΗΥ)', 'id' => 17],
             ['name' => 'MSc in Civil Engineering', 'id' => 17],
 
             ['name' => 'Ανθρωπιστικές Επιστήμες', 'id' => 35], /**  Φροντιστήρια Μέσης Εκπαίδευσης   */
@@ -480,6 +476,10 @@ class StudiesTableSeeder extends Seeder
             ['name' => 'Ballroom', 'id' => 46],
             ['name' => 'Hip Hop', 'id' => 46],
             ['name' => 'Salsa', 'id' => 46],
+
+            ['name' => 'Α Λυκείου', 'id' => 62],
+            ['name' => 'Β Λυκείου', 'id' => 63],
+            ['name' => 'Γ Λυκείου', 'id' => 64],
 
 
         ];

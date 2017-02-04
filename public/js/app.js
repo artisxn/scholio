@@ -13764,9 +13764,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
+    watch: {},
     computed: {
         studies: function studies() {
             return this.all_studies;
@@ -13787,7 +13810,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
+            financial_id: 1,
             financial_amount: 0,
+            criteria_id: 1,
             step1Select: 'reduce', // set the default value
             step3Select: 'talent',
             all_studies: [''],
@@ -13801,16 +13826,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             sectionsName: [],
             studiesName: [],
             sectionsCounter: 0,
-            examsOn: true,
+            exams: false,
             studiesId: [],
-            end_at: 13
+            end_at: null,
+            today: null,
+            col_iek_eng_dan_mus: false,
+            error: false,
+            terms: null
         };
     },
 
     methods: {
+
         eww: function eww() {
             console.log('as');
         },
+
+        todayDate: function todayDate() {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            today = dd + '/' + mm + '/' + yyyy;
+            //                console.log(today)
+            this.end_at = today;
+            this.today = today;
+        },
+
         getStudies: function getStudies() {
             var _this2 = this;
 
@@ -13839,6 +13890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/api/school/getSchoolStudies').then(function (response) {
                 _this3.studyTable = response.data;
+                //                console.log(this.studyTable )
                 var parent = _this3;
                 console.log('API 2 checkedStudies initial push OK');
                 _this3.studyTable.forEach(function (studies) {
@@ -13849,6 +13901,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         init: function init() {
+            this.todayDate();
+
+            /* This condition MUST CHANGE .. needed School_Type_ID from an API */
+            if (this.studyTable[0][0].section[0].level.id < 4 || this.studyTable[0][0].section[0].level.id > 21) {
+                this.col_iek_eng_dan_mus = true;
+            }
+
             console.log('init DONE ! checkedStudies.length=' + this.checkedStudies.length);
             for (var level in this.studyTable) {
                 var i = this.studyTable[level][0].section[0].level;
@@ -13882,32 +13941,62 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             this.pullStudies();
             this.countSections();
+            this.todayDate();
         },
         pullStudies: function pullStudies() {
+
             this.studiesArray = [];
             this.studiesId = [];
             for (var study in this.studyTable) {
                 var levNm = this.studyTable[study][0].section[0].level.name;
                 var secNm = this.studyTable[study][0].section[0].name;
                 var stdNm = this.studyTable[study][0];
-                if (levNm == this.levelsName[this.selectedLevel] && secNm == this.sectionsName[this.selectedLevel][this.selectedSection]) {
+                //                        console.log(stdNm.id)
+                /* This condition may have to  CHANGE  for some schools types.. */
+                if (levNm == this.levelsName[this.selectedLevel] && secNm == this.sectionsName[this.selectedLevel][this.selectedSection] || !this.col_iek_eng_dan_mus) {
                     this.studiesArray.push(stdNm.name);
                     this.studiesId.push(stdNm.id);
+                    //                                console.log(stdNm.id)
                 }
                 this.selectedStudy = 0;
             }
         },
+        errorDate: function errorDate() {
+
+            var today = this.today;
+            var end = this.end_at;
+            today = new Date(today.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
+            end = new Date(end.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
+            console.log(today);
+            console.log(end);
+            if (today > end) {
+                this.error = true;
+            } else {
+                this.error = false;
+            }
+            //                    if(today>end){ return true}
+            //                    else{ return false }
+        },
 
         saveScholarship: function saveScholarship() {
+            var _this4 = this;
+
+            if (!this.col_iek_eng_dan_mus) {
+                this.selectedLevel = this.selectedStudy;
+            }
             axios.post('/ppp', {
                 'school_id': window.Connection,
-                'financial_id': 1,
+                'financial_id': this.financial_id,
                 'financial_amount': this.financial_amount,
-                'study_id': this.studiesId[0],
-                'criteria_id': 2,
+                'study_id': this.studiesId[this.selectedStudy],
+                'criteria_id': this.criteria_id,
                 'end_at': this.end_at,
-                'winner_id': 0
+                'winner_id': 0,
+                'exams': this.exams,
+                'terms': this.terms
             }).then(function (response) {
+                console.log('SAVE study= ' + _this4.studiesArray[_this4.selectedStudy]);
+                console.log('SAVE study_id= ' + _this4.studiesId[_this4.selectedStudy]);
                 console.log(response.data);
             });
         }
@@ -14468,6 +14557,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
@@ -14491,8 +14604,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             levels: [],
             sections: [],
             testClass: true,
-            test: [],
-            testTable: []
+            col_iek_eng_dan_mus: false
         };
     },
     mounted: function mounted() {
@@ -14560,7 +14672,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.init();
         },
 
-        IfCheck: function IfCheck(ppp, check, studyID, levelID, sectionID) {
+        IfCheck: function IfCheck(ppp, check, studyID, levelID, sectionID, indLev, indSec) {
+
+            if (!this.col_iek_eng_dan_mus) {
+                this.selectedLevel = indLev;
+                this.selectedSection = indSec;
+            }
+
             var i = this.selectedLevel;
             var j = this.selectedSection;
             var k = ppp;
@@ -14620,6 +14738,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         init: function init() {
+
+            /* This condition MUST CHANGE .. needed School_Type_ID from an API */
+            if (this.all_studies[0].section[0].study[0].name != this.all_studies[0].name) {
+                this.col_iek_eng_dan_mus = true;
+            }
+
             console.log('init DONE ! checkedStudies.length=' + this.checkedStudies.length);
             for (var level = 0; level < this.checkedStudies.length; level++) {
                 var i = this.testTable[level][0].section[0].level.id;
@@ -17158,7 +17282,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* jQuery Datepicker scholio Styling */\n.ui-widget-header {\n    background: #00bcd4; \n    color: #fff\n}\n.ui-icon, .ui-icon:hover  {\n    width: 16px;\n    height: 16px;\n    /*background-color: #00bcd4;*/\n}\n.ui-widget-header .ui-icon {\n    background-image: url(\"/images/ui-icons_ffffff_256x240.png\");\n}\n.ui-state-default,\n.ui-widget-content .ui-state-default,\n.ui-widget-header .ui-state-default,\n.ui-button,\nhtml .ui-button.ui-state-disabled:hover,\nhtml .ui-button.ui-state-disabled:active {\n    border: none;\n    background: #f4f4f4;\n    /*font-weight: bold;*/\n    color: #004276;\n}\n.ui-state-highlight,\n.ui-widget-content .ui-state-highlight,\n.ui-widget-header .ui-state-highlight {\n    border: none;\n    background: #008da5 ;\n    color: #fff;\n}\n.ui-state-active,\n.ui-widget-content .ui-state-active,\n.ui-widget-header .ui-state-active,\n.ui-button:active,\n.ui-button.ui-state-active:hover{\n    background: #00bcd4;\n    /*font-weight: bold;*/\n    color: #fff;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n.action-link[data-v-053df93e] {\n    cursor: pointer;\n}\n.m-b-none[data-v-053df93e] {\n    margin-bottom: 0;\n}\n", ""]);
 
 // exports
 
@@ -17172,7 +17296,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n.action-link[data-v-4558c92a] {\n    cursor: pointer;\n}\n.m-b-none[data-v-4558c92a] {\n    margin-bottom: 0;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* jQuery Datepicker scholio Styling */\n.ui-widget-header {\n    background: #00bcd4; \n    color: #fff\n}\n.ui-icon, .ui-icon:hover  {\n    width: 16px;\n    height: 16px;\n    /*background-color: #00bcd4;*/\n}\n.ui-widget-header .ui-icon {\n    background-image: url(\"/images/ui-icons_ffffff_256x240.png\");\n}\n.ui-state-default,\n.ui-widget-content .ui-state-default,\n.ui-widget-header .ui-state-default,\n.ui-button,\nhtml .ui-button.ui-state-disabled:hover,\nhtml .ui-button.ui-state-disabled:active {\n    border: none;\n    background: #f4f4f4;\n    /*font-weight: bold;*/\n    color: #004276;\n}\n.ui-state-highlight,\n.ui-widget-content .ui-state-highlight,\n.ui-widget-header .ui-state-highlight {\n    border: none;\n    background: #008da5 ;\n    color: #fff;\n}\n.ui-state-active,\n.ui-widget-content .ui-state-active,\n.ui-widget-header .ui-state-active,\n.ui-button:active,\n.ui-button.ui-state-active:hover{\n    background: #00bcd4;\n    /*font-weight: bold;*/\n    color: #fff;\n}\n.error {color: red\n}\n@media (min-width: 1420px) {\n#step-4 .step .step-box { width: 1100px;  margin-left: -290px; margin-right: auto\n}\n}\n@media (min-width: 1220px) and (max-width: 1419px) {\n#step-4 .step .step-box { width: 900px;  margin-left: -190px; margin-right: auto\n}\n}\n", ""]);
 
 // exports
 
@@ -17186,7 +17310,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n.action-link[data-v-4f7474f0] {\n    cursor: pointer;\n}\n.m-b-none[data-v-4f7474f0] {\n    margin-bottom: 0;\n}\n", ""]);
+exports.push([module.i, "\n.action-link[data-v-259beacc] {\n    cursor: pointer;\n}\n.m-b-none[data-v-259beacc] {\n    margin-bottom: 0;\n}\n", ""]);
 
 // exports
 
@@ -17214,7 +17338,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n@media (min-width: 1360px) {\n.col-xl-4 {  width: 33.33%;\n}\n}\n@media (min-width: 1840px) {\n.col-xxl-3 {  width: 25%;\n}\n}\n@media (min-width: 2280px) {\n.pull-right{ margin-right: 50px!important;\n}\n}\n", ""]);
+exports.push([module.i, "\n.action-link[data-v-9e2ac516] {\n    cursor: pointer;\n}\n.m-b-none[data-v-9e2ac516] {\n    margin-bottom: 0;\n}\n", ""]);
 
 // exports
 
@@ -17228,7 +17352,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n.action-link[data-v-7cf2cf86] {\n    cursor: pointer;\n}\n.m-b-none[data-v-7cf2cf86] {\n    margin-bottom: 0;\n}\n", ""]);
+exports.push([module.i, "\n@media (min-width: 1360px) {\n.col-xl-4 {  width: 33.33%;\n}\n}\n@media (min-width: 1840px) {\n.col-xxl-3 {  width: 25%;\n}\n}\n@media (min-width: 2280px) {\n.pull-right{ margin-right: 50px!important;\n}\n}\n", ""]);
 
 // exports
 
@@ -17241,13 +17365,13 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(31),
   /* template */
-  __webpack_require__(74),
+  __webpack_require__(65),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/Notifications-Table.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/Notifications-Table.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Notifications-Table.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17258,9 +17382,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6e8e5c1e", Component.options)
+    hotAPI.createRecord("data-v-00d413cf", Component.options)
   } else {
-    hotAPI.reload("data-v-6e8e5c1e", Component.options)
+    hotAPI.reload("data-v-00d413cf", Component.options)
   }
 })()}
 
@@ -17275,13 +17399,13 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(32),
   /* template */
-  __webpack_require__(68),
+  __webpack_require__(69),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/Notifications.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/Notifications.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Notifications.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17292,9 +17416,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2858a4bd", Component.options)
+    hotAPI.createRecord("data-v-1f2b95a4", Component.options)
   } else {
-    hotAPI.reload("data-v-2858a4bd", Component.options)
+    hotAPI.reload("data-v-1f2b95a4", Component.options)
   }
 })()}
 
@@ -17309,13 +17433,13 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(33),
   /* template */
-  __webpack_require__(77),
+  __webpack_require__(75),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/Users-Table.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/Users-Table.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Users-Table.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17326,9 +17450,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e2b98b84", Component.options)
+    hotAPI.createRecord("data-v-7e1032ef", Component.options)
   } else {
-    hotAPI.reload("data-v-e2b98b84", Component.options)
+    hotAPI.reload("data-v-7e1032ef", Component.options)
   }
 })()}
 
@@ -17341,19 +17465,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(79)
+__webpack_require__(80)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(34),
   /* template */
-  __webpack_require__(71),
+  __webpack_require__(70),
   /* scopeId */
-  "data-v-4558c92a",
+  "data-v-259beacc",
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/passport/AuthorizedClients.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/passport/AuthorizedClients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AuthorizedClients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17364,9 +17488,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4558c92a", Component.options)
+    hotAPI.createRecord("data-v-259beacc", Component.options)
   } else {
-    hotAPI.reload("data-v-4558c92a", Component.options)
+    hotAPI.reload("data-v-259beacc", Component.options)
   }
 })()}
 
@@ -17379,7 +17503,7 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(83)
+__webpack_require__(82)
 
 var Component = __webpack_require__(0)(
   /* script */
@@ -17387,11 +17511,11 @@ var Component = __webpack_require__(0)(
   /* template */
   __webpack_require__(76),
   /* scopeId */
-  "data-v-7cf2cf86",
+  "data-v-9e2ac516",
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/passport/Clients.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/passport/Clients.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Clients.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17402,9 +17526,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7cf2cf86", Component.options)
+    hotAPI.createRecord("data-v-9e2ac516", Component.options)
   } else {
-    hotAPI.reload("data-v-7cf2cf86", Component.options)
+    hotAPI.reload("data-v-9e2ac516", Component.options)
   }
 })()}
 
@@ -17417,19 +17541,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(80)
+__webpack_require__(78)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(36),
   /* template */
-  __webpack_require__(72),
+  __webpack_require__(66),
   /* scopeId */
-  "data-v-4f7474f0",
+  "data-v-053df93e",
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/passport/PersonalAccessTokens.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/passport/PersonalAccessTokens.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PersonalAccessTokens.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17440,9 +17564,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4f7474f0", Component.options)
+    hotAPI.createRecord("data-v-053df93e", Component.options)
   } else {
-    hotAPI.reload("data-v-4f7474f0", Component.options)
+    hotAPI.reload("data-v-053df93e", Component.options)
   }
 })()}
 
@@ -17457,13 +17581,13 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(37),
   /* template */
-  __webpack_require__(66),
+  __webpack_require__(72),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/schools/Resource-Requests.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/schools/Resource-Requests.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Resource-Requests.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17474,9 +17598,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0b16e708", Component.options)
+    hotAPI.createRecord("data-v-3d2655f9", Component.options)
   } else {
-    hotAPI.reload("data-v-0b16e708", Component.options)
+    hotAPI.reload("data-v-3d2655f9", Component.options)
   }
 })()}
 
@@ -17489,19 +17613,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(78)
+__webpack_require__(79)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(38),
   /* template */
-  __webpack_require__(69),
+  __webpack_require__(67),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/schools/Scholarships-Create.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/schools/Scholarships-Create.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Scholarships-Create.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17512,9 +17636,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2bfae65d", Component.options)
+    hotAPI.createRecord("data-v-17ea5d0e", Component.options)
   } else {
-    hotAPI.reload("data-v-2bfae65d", Component.options)
+    hotAPI.reload("data-v-17ea5d0e", Component.options)
   }
 })()}
 
@@ -17529,13 +17653,13 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(39),
   /* template */
-  __webpack_require__(70),
+  __webpack_require__(74),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/schools/Scholarships-View.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/schools/Scholarships-View.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Scholarships-View.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17546,9 +17670,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-432d21c6", Component.options)
+    hotAPI.createRecord("data-v-753c90b7", Component.options)
   } else {
-    hotAPI.reload("data-v-432d21c6", Component.options)
+    hotAPI.reload("data-v-753c90b7", Component.options)
   }
 })()}
 
@@ -17563,13 +17687,13 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(40),
   /* template */
-  __webpack_require__(67),
+  __webpack_require__(71),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/schools/Schools-Table.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/schools/Schools-Table.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Schools-Table.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17580,9 +17704,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-232c1425", Component.options)
+    hotAPI.createRecord("data-v-3ae2a396", Component.options)
   } else {
-    hotAPI.reload("data-v-232c1425", Component.options)
+    hotAPI.reload("data-v-3ae2a396", Component.options)
   }
 })()}
 
@@ -17595,19 +17719,19 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(82)
+__webpack_require__(83)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(41),
   /* template */
-  __webpack_require__(75),
+  __webpack_require__(77),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/schools/Students-View.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/schools/Students-View.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Students-View.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17618,9 +17742,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-72f4b91f", Component.options)
+    hotAPI.createRecord("data-v-eaa96ee0", Component.options)
   } else {
-    hotAPI.reload("data-v-72f4b91f", Component.options)
+    hotAPI.reload("data-v-eaa96ee0", Component.options)
   }
 })()}
 
@@ -17645,7 +17769,7 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/schools/Studies-Select.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/schools/Studies-Select.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Studies-Select.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17656,9 +17780,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5e696f0d", Component.options)
+    hotAPI.createRecord("data-v-3d84cdbc", Component.options)
   } else {
-    hotAPI.reload("data-v-5e696f0d", Component.options)
+    hotAPI.reload("data-v-3d84cdbc", Component.options)
   }
 })()}
 
@@ -17673,13 +17797,13 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(43),
   /* template */
-  __webpack_require__(65),
+  __webpack_require__(68),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/apostolossiokas/Documents/Work/scholio/resources/assets/js/components/schools/Teachers-View.vue"
+Component.options.__file = "/Volumes/Mac HD/DownLoads/GitHub/scholioGit/resources/assets/js/components/schools/Teachers-View.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Teachers-View.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17690,9 +17814,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-01915e06", Component.options)
+    hotAPI.createRecord("data-v-1947ed77", Component.options)
   } else {
-    hotAPI.reload("data-v-01915e06", Component.options)
+    hotAPI.reload("data-v-1947ed77", Component.options)
   }
 })()}
 
@@ -17706,121 +17830,6 @@ module.exports = Component.exports
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
-  }, _vm._l((_vm.allTeachers), function(teacher) {
-    return _c('div', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (teacher.role == 'teacher'),
-        expression: "teacher.role=='teacher'"
-      }],
-      staticClass: "col-xs-12 col-sm-6 com-md-4"
-    }, [_c('div', {
-      staticClass: "card-box"
-    }, [_c('div', {
-      staticClass: "row"
-    }, [_c('div', {
-      staticClass: "contact-card"
-    }, [_c('a', {
-      staticClass: "pull-left",
-      attrs: {
-        "href": "#"
-      }
-    }, [_c('img', {
-      staticClass: "img-circle",
-      attrs: {
-        "width": "80",
-        "height": "80",
-        "src": teacher.avatar,
-        "alt": ""
-      }
-    })]), _vm._v(" "), _c('div', {
-      staticClass: "member-info"
-    }, [_c('h4', {
-      staticClass: "m-t-0 m-b-5 header-title"
-    }, [_c('b', [_vm._v(_vm._s(teacher.name))])]), _vm._v(" "), _c('p', {
-      staticClass: "text-muted"
-    }, [_vm._v("Καθηγητής")]), _vm._v(" "), _c('p', {
-      staticClass: "text-dark"
-    }, [_c('i', {
-      staticClass: "md md-email"
-    }), _vm._v(" "), _c('small', [_vm._v(_vm._s(teacher.email))])])]), _vm._v(" "), _vm._m(0, true)])])])])
-  }))
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "social-links list-inline m-0"
-  }, [_c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "Facebook"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-facebook"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "Twitter"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-twitter"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "LinkedIn"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-linkedin"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "Skype"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-skype"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "Message"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-envelope-o"
-  })])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-01915e06", module.exports)
-  }
-}
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-12"
   }, [_c('div', {
@@ -17831,703 +17840,44 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-lg-12"
   }, [_vm._m(0), _vm._v(" "), _c('p', {
     staticClass: "text-muted font-13"
-  }, [_vm._v("\n                       Bla Bla\n                    ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                       Όλα τα αιτήματα\n                    ")]), _vm._v(" "), _c('div', {
     staticClass: "p-20"
   }, [_c('div', {
     staticClass: "table-responsive"
   }, [_c('table', {
     staticClass: "table m-0"
   }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.allNotifications), function(notification) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(notification.type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.notifiable_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.notifiable_type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.read_at))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.created_at))])])
+    return _c('tr', [(notification.type === 'App\\Notifications\\StudentConnectNotification') ? _c('td', [_vm._v("Μαθητής")]) : _vm._e(), _vm._v(" "), (notification.type === 'App\\Notifications\\TeacherConnectNotification') ? _c('td', [_vm._v("Καθηγητής")]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.data['user_name']))]), _vm._v(" "), _vm._m(2, true)])
   }))])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h4', {
     staticClass: "m-t-0 header-title"
-  }, [_c('b', [_vm._v("Notifications Table")])])
+  }, [_c('b', [_vm._v("Ειδποιήσεις για Σύνδεση")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Type")]), _vm._v(" "), _c('th', [_vm._v("Notifiable Id")]), _vm._v(" "), _c('th', [_vm._v("Notifiable Type")]), _vm._v(" "), _c('th', [_vm._v("Read At")]), _vm._v(" "), _c('th', [_vm._v("Created At")])])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Ρόλος")]), _vm._v(" "), _c('th', [_vm._v("Όνομα")]), _vm._v(" "), _c('th', [_vm._v("Επιλογή")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('td', [_c('button', {
+    staticClass: "btn btn-success",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Αποδοχή")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-danger",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Απόρριψη")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0b16e708", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-00d413cf", module.exports)
   }
 }
 
 /***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-sm-12"
-  }, [_c('div', {
-    staticClass: "card-box"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-lg-12"
-  }, [_vm._m(0), _vm._v(" "), _c('p', {
-    staticClass: "text-muted font-13"
-  }, [_vm._v("\n                       Bla Bla\n                    ")]), _vm._v(" "), _c('div', {
-    staticClass: "table-rep-plugin"
-  }, [_c('div', {
-    staticClass: "table-responsive",
-    attrs: {
-      "data-pattern": "priority-columns"
-    }
-  }, [_c('table', {
-    staticClass: "table  table-striped",
-    attrs: {
-      "id": "tech-companies-1"
-    }
-  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.allSchools), function(school) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(school.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.email))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.type_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.address))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.city))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.phone))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.website))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.logo_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.approved))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.created_at))])])
-  }))])])])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h4', {
-    staticClass: "m-t-0 header-title"
-  }, [_c('b', [_vm._v("Schools Table")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Email")]), _vm._v(" "), _c('th', [_vm._v("Type")]), _vm._v(" "), _c('th', [_vm._v("Address")]), _vm._v(" "), _c('th', [_vm._v("City")]), _vm._v(" "), _c('th', [_vm._v("Phone")]), _vm._v(" "), _c('th', [_vm._v("Website")]), _vm._v(" "), _c('th', [_vm._v("Logo")]), _vm._v(" "), _c('th', [_vm._v("Approved")]), _vm._v(" "), _c('th', [_vm._v("Created At")])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-232c1425", module.exports)
-  }
-}
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "dropdown hidden-xs"
-  }, [_c('a', {
-    staticClass: "dropdown-toggle waves-effect",
-    attrs: {
-      "href": "#",
-      "data-toggle": "dropdown",
-      "aria-expanded": "true"
-    }
-  }, [_c('i', {
-    staticClass: "icon-bell"
-  }), _vm._v(" "), (_vm.unreadNotifications) ? _c('span', {
-    staticClass: "badge badge-xs badge-danger"
-  }, [_vm._v("\n            " + _vm._s(_vm.unreadNotifications.length) + "\n        ")]) : _vm._e()]), _vm._v(" "), _c('ul', {
-    staticClass: "dropdown-menu dropdown-menu-lg"
-  }, [_vm._m(0), _vm._v(" "), _c('li', {
-    staticClass: "list-group nicescroll notification-list"
-  }, [_c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": "/panel/school/requests"
-    }
-  }, [_c('div', {
-    staticClass: "media"
-  }, [_vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "media-body"
-  }, [_c('h5', {
-    staticClass: "media-heading"
-  }, [_vm._v("Ειδοποίηση για σύνδεση")]), _vm._v(" "), _c('p', {
-    staticClass: "m-0"
-  }, [(_vm.unreadNotifications) ? _c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματα")]) : _vm._e()])])])])]), _vm._v(" "), _vm._m(2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "notifi-title"
-  }, [_c('span', {
-    staticClass: "label label-default pull-right"
-  }, [_vm._v("New 3")]), _vm._v("Notification")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "pull-left p-r-10"
-  }, [_c('em', {
-    staticClass: "fa fa-user-plus fa-2x text-info"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
-    staticClass: "list-group-item text-right",
-    attrs: {
-      "href": "/panel/school/requests"
-    }
-  }, [_c('small', {
-    staticClass: "font-600"
-  }, [_vm._v("See all notifications")])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2858a4bd", module.exports)
-  }
-}
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    attrs: {
-      "id": "smartwizard"
-    }
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "step-anchor",
-    attrs: {
-      "id": "step-1"
-    }
-  }, [_c('div', {
-    staticClass: "step centered-text"
-  }, [_c('div', {
-    staticClass: "step-box"
-  }, [_c('div', {
-    staticClass: "step-img"
-  }, [(_vm.step1Select == 'reduce') ? _c('img', {
-    staticClass: "step-image",
-    attrs: {
-      "src": "/panel/assets/images/steps/step1-reduce2.png",
-      "alt": "scholio logo"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.step1Select == 'amount') ? _c('img', {
-    staticClass: "step-image",
-    attrs: {
-      "src": "/panel/assets/images/steps/step1-hand2.png",
-      "alt": "scholio logo"
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.step1Select == 'time') ? _c('img', {
-    staticClass: "step-image",
-    attrs: {
-      "src": "/panel/assets/images/steps/step1-clock2.png",
-      "alt": "scholio logo"
-    }
-  }) : _vm._e()]), _vm._v(" "), _c('select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.step1Select),
-      expression: "step1Select"
-    }],
-    staticClass: "selectpicker",
-    attrs: {
-      "data-width": "100%"
-    },
-    on: {
-      "change": function($event) {
-        _vm.step1Select = Array.prototype.filter.call($event.target.options, function(o) {
-          return o.selected
-        }).map(function(o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val
-        })[0]
-      }
-    }
-  }, [_c('option', {
-    attrs: {
-      "data-icon": "fa fa-scissors",
-      "value": "reduce"
-    }
-  }, [_vm._v("  Μείωση Διδάκτρων")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "data-icon": "fa fa-money",
-      "value": "amount"
-    }
-  }, [_vm._v("  Ποσό Επιδότησης")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "data-icon": "fa fa-clock-o",
-      "value": "time"
-    }
-  }, [_vm._v("  Χρόνος Δωρεάν Φοίτησης")])]), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "width": "50%",
-      "margin-left": "25%"
-    }
-  }, [(_vm.step1Select == 'reduce') ? _c('div', {
-    staticClass: "input-group ",
-    staticStyle: {
-      "padding": "15px 0",
-      "z-index": "1"
-    }
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "20",
-      "aria-describedby": "basic-addon1"
-    },
-    domProps: {
-      "value": _vm.financial_amount
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-addon",
-    attrs: {
-      "id": "basic-addon1"
-    }
-  }, [_vm._v("%")])]) : _vm._e(), _vm._v(" "), (_vm.step1Select == 'amount') ? _c('div', {
-    staticClass: "input-group",
-    staticStyle: {
-      "padding": "15px 0",
-      "z-index": "1"
-    }
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "800",
-      "aria-describedby": "basic-addon2"
-    },
-    domProps: {
-      "value": _vm.financial_amount
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-addon",
-    attrs: {
-      "id": "basic-addon2"
-    }
-  }, [_vm._v("€")])]) : _vm._e(), _vm._v(" "), (_vm.step1Select == 'time') ? _c('div', {
-    staticClass: "input-group",
-    staticStyle: {
-      "padding": "15px 0",
-      "z-index": "1"
-    }
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "2",
-      "aria-describedby": "basic-addon3"
-    },
-    domProps: {
-      "value": _vm.financial_amount
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-addon",
-    attrs: {
-      "id": "basic-addon3"
-    }
-  }, [_vm._v("Μήνες")])]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
-    staticClass: "step-anchor",
-    attrs: {
-      "id": "step-2"
-    }
-  }, [_c('div', {
-    staticClass: "step centered-text"
-  }, [_c('div', {
-    staticClass: "step-box",
-    class: {
-      'step3check': (_vm.levelsName.length > 2)
-    }
-  }, [(_vm.checkedStudies.length) ? _c('div', {
-    staticClass: "step-img"
-  }, _vm._l((_vm.studies[_vm.selectedLevel].section), function(image) {
-    return _c('div', [(image.name == _vm.sectionsName[_vm.selectedLevel][_vm.selectedSection]) ? _c('img', {
-      staticClass: "step-image",
-      attrs: {
-        "src": '/panel/assets/images/steps/' + image.name + '.png',
-        "alt": ""
-      }
-    }) : _vm._e()])
-  })) : _vm._e(), _vm._v(" "), (_vm.sectionsCounter > 1) ? _c('select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.selectedSection),
-      expression: "selectedSection"
-    }],
-    staticClass: "select-step2",
-    on: {
-      "change": [function($event) {
-        _vm.selectedSection = Array.prototype.filter.call($event.target.options, function(o) {
-          return o.selected
-        }).map(function(o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val
-        })[0]
-      }, function($event) {
-        _vm.pullStudies()
-      }]
-    }
-  }, _vm._l((_vm.sectionsName[_vm.selectedLevel]), function(section, indexSection) {
-    return _c('option', {
-      domProps: {
-        "value": indexSection
-      }
-    }, [_vm._v("\n                                    " + _vm._s(section))])
-  })) : _vm._e(), _vm._v(" "), (_vm.checkedStudies.length) ? _c('select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.selectedStudy),
-      expression: "selectedStudy"
-    }],
-    staticClass: "select-step2",
-    on: {
-      "change": function($event) {
-        _vm.selectedStudy = Array.prototype.filter.call($event.target.options, function(o) {
-          return o.selected
-        }).map(function(o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val
-        })[0]
-      }
-    }
-  }, _vm._l((_vm.studiesArray), function(sect, indexStudy) {
-    return _c('option', {
-      domProps: {
-        "value": indexStudy
-      }
-    }, [_vm._v("\n                                    " + _vm._s(sect) + "\n                                ")])
-  })) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "checkBox-step2"
-  }, [(_vm.levelsName.length < 4) ? _c('div', {
-    staticClass: "funkyradio"
-  }, _vm._l((_vm.levelsName), function(level, indexLevel) {
-    return _c('div', {
-      staticClass: "funkyradio-success"
-    }, [_c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (_vm.selectedLevel),
-        expression: "selectedLevel"
-      }],
-      attrs: {
-        "type": "radio",
-        "name": 'radio-' + indexLevel,
-        "id": 'radio-' + indexLevel
-      },
-      domProps: {
-        "value": indexLevel,
-        "checked": _vm._q(_vm.selectedLevel, indexLevel)
-      },
-      on: {
-        "change": function($event) {
-          _vm.changeLevel()
-        },
-        "click": function($event) {
-          _vm.selectedLevel = indexLevel
-        }
-      }
-    }), _vm._v(" "), (level != null) ? _c('label', {
-      attrs: {
-        "for": 'radio-' + indexLevel
-      }
-    }, [_vm._v(" " + _vm._s(level) + "  ")]) : _vm._e()])
-  })) : _vm._e()])])])]), _vm._v(" "), _c('div', {
-    staticClass: "step-anchor",
-    attrs: {
-      "id": "step-3"
-    }
-  }, [_c('div', {
-    staticClass: "step centered-text"
-  }, [_c('div', {
-    staticClass: "step-box"
-  }, [_c('div', {
-    staticClass: "step-img"
-  }, [(_vm.step3Select == 'talent') ? _c('img', {
-    staticClass: "step-image",
-    attrs: {
-      "src": "/panel/assets/images/steps/step3-skills1.png",
-      "alt": ""
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.step3Select == 'best') ? _c('img', {
-    staticClass: "step-image",
-    attrs: {
-      "src": "/panel/assets/images/steps/step3-best.png",
-      "alt": ""
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.step3Select == 'social') ? _c('img', {
-    staticClass: "step-image",
-    attrs: {
-      "src": "/panel/assets/images/steps/step3-help.png",
-      "alt": ""
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.step3Select == 'friends') ? _c('img', {
-    staticClass: "step-image",
-    attrs: {
-      "src": "/panel/assets/images/steps/step3-friends2.png",
-      "alt": ""
-    }
-  }) : _vm._e(), _vm._v(" "), (_vm.step3Select == 'open') ? _c('img', {
-    staticClass: "step-image",
-    attrs: {
-      "src": "/panel/assets/images/steps/step3-open.png",
-      "alt": ""
-    }
-  }) : _vm._e()]), _vm._v(" "), _c('select', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.step3Select),
-      expression: "step3Select"
-    }],
-    staticClass: "selectpicker",
-    attrs: {
-      "data-live-search": "true",
-      "data-mobile": "false",
-      "data-size": "3",
-      "data-width": "100%"
-    },
-    on: {
-      "change": function($event) {
-        _vm.step3Select = Array.prototype.filter.call($event.target.options, function(o) {
-          return o.selected
-        }).map(function(o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val
-        })[0]
-      }
-    }
-  }, [_c('option', {
-    attrs: {
-      "data-icon": "fa ",
-      "value": "talent"
-    }
-  }, [_vm._v("  Υποτροφία Ταλέντου/Δεξιοτήτων")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "data-icon": "fa ",
-      "value": "best"
-    }
-  }, [_vm._v("  Υποτροφία Αριστείας")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "data-icon": "fa ",
-      "value": "social"
-    }
-  }, [_vm._v("  Υποτροφια με Κοινωνικά Κριτήρια")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "data-icon": "fa ",
-      "value": "friends"
-    }
-  }, [_vm._v("  1+1 Φίλοι / Αδέλφια")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "data-icon": "fa ",
-      "value": "open"
-    }
-  }, [_vm._v("  Υποτροφία Ανοιχτού Τύπου")])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "step-anchor",
-    attrs: {
-      "id": "step-4"
-    }
-  }, [_c('div', {
-    staticClass: "step centered-text"
-  }, [_c('div', {
-    staticClass: "step-box",
-    staticStyle: {
-      "position": "relative"
-    }
-  }, [_c('h3', [_vm._v("Όροι και Λεπτομέρειες Συμμετοχής")]), _vm._v(" "), _c('div', {
-    staticClass: "pull-left"
-  }, [_c('div', {
-    staticStyle: {
-      "left": "20px",
-      "top": "80px",
-      "position": "absolute"
-    }
-  }, [_vm._v(" Υποτροφία ενεργή μέχρι: ")]), _vm._v(" "), _c('input', {
-    staticClass: "ll-skin-cangas",
-    staticStyle: {
-      "margin-top": "30px",
-      "height": "35px",
-      "border": "1px solid #d2d2d2",
-      "border-radius": "3px"
-    },
-    attrs: {
-      "type": "text",
-      "id": "datepicker",
-      "size": "30",
-      "onchange": "Event.$emit('datePick', event.target.value)"
-    },
-    domProps: {
-      "value": _vm.end_at
-    }
-  })]), _vm._v("\n                        " + _vm._s(_vm.end_at) + "\n                        "), _c('div', {
-    staticClass: "clearfix"
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  }), _vm._v(" "), _vm._m(2)])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "clearfix"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "#step-1"
-    }
-  }, [_vm._v("Βήμα 1"), _c('br'), _c('small', {
-    staticClass: "mar-le-10"
-  }, [_vm._v("Οικονομική "), _c('p', {
-    staticStyle: {
-      "margin-top": "-18px"
-    }
-  }, [_vm._v("Προσφορά")])])])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#step-2"
-    }
-  }, [_vm._v("Βήμα 2"), _c('br'), _c('small', {
-    staticClass: "mar-le-10"
-  }, [_vm._v("Σπουδές/Ειδικότητα")])])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#step-3"
-    }
-  }, [_vm._v("Βήμα 3"), _c('br'), _c('small', {
-    staticClass: "mar-le-10"
-  }, [_vm._v("Κριτήρια/Όροι")])])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#step-4"
-    }
-  }, [_vm._v("Βήμα 4"), _c('br'), _c('small', {
-    staticClass: "mar-le-10"
-  }, [_vm._v("Όροι Συμμετοχής")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "funkyradio",
-    staticStyle: {
-      "width": "240px",
-      "margin": "15px 0 0 0"
-    }
-  }, [_c('div', {
-    staticClass: "funkyradio-success"
-  }, [_c('input', {
-    attrs: {
-      "type": "checkbox",
-      "id": "exams",
-      "value": "examsOn"
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": "exams"
-    }
-  }, [_vm._v(" Υποτροφία με εξετάσεις")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticStyle: {
-      "margin": "20px 0",
-      "left": "20px",
-      "position": "absolute"
-    }
-  }, [_vm._v("Δικαίωμα Συμμετοχής")]), _vm._v(" "), _c('div', {
-    staticClass: "clearfix",
-    staticStyle: {
-      "margin": "0 0 45px 0"
-    }
-  }), _vm._v(" "), _c('textarea', {
-    staticStyle: {
-      "top": "370px",
-      "position": "absolute"
-    }
-  })])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2bfae65d", module.exports)
-  }
-}
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-sm-12"
-  }, [_c('div', {
-    staticClass: "card-box"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-lg-12"
-  }, [_vm._m(0), _vm._v(" "), _c('p', {
-    staticClass: "text-muted font-13"
-  }, [_vm._v("\n                       Μπλά μπλά μπλά\n                    ")]), _vm._v(" "), _c('div', {
-    staticClass: "table-rep-plugin"
-  }, [_c('div', {
-    staticClass: "table-responsive",
-    attrs: {
-      "data-pattern": "priority-columns"
-    }
-  }, [_c('table', {
-    staticClass: "table  table-striped",
-    attrs: {
-      "id": "tech-companies-1"
-    }
-  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.scholarships), function(scholarship) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(scholarship.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.financial.plan))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.financial_amount))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.study.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.level.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.criteria_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.end_at))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.winner_id))])])
-  }))])])])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h4', {
-    staticClass: "m-t-0 header-title"
-  }, [_c('b', [_vm._v("Πίνακας Υποτροφιών")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Πλάνο Υποτροφίας")]), _vm._v(" "), _c('th', [_vm._v("Υποτροφία")]), _vm._v(" "), _c('th', [_vm._v("Τύπος Σπουδών")]), _vm._v(" "), _c('th', [_vm._v("Επίπεδο Σπουδών")]), _vm._v(" "), _c('th', [_vm._v("Κριτήρια")]), _vm._v(" "), _c('th', [_vm._v("Ημερομηνία Λήξης")]), _vm._v(" "), _c('th', [_vm._v("Νικητής")])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-432d21c6", module.exports)
-  }
-}
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.tokens.length > 0) ? _c('div', [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_vm._v("Authorized Applications")]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_c('table', {
-    staticClass: "table table-borderless m-b-none"
-  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.tokens), function(token) {
-    return _c('tr', [_c('td', {
-      staticStyle: {
-        "vertical-align": "middle"
-      }
-    }, [_vm._v("\n                                " + _vm._s(token.client.name) + "\n                            ")]), _vm._v(" "), _c('td', {
-      staticStyle: {
-        "vertical-align": "middle"
-      }
-    }, [(token.scopes.length > 0) ? _c('span', [_vm._v("\n                                    " + _vm._s(token.scopes.join(', ')) + "\n                                ")]) : _vm._e()]), _vm._v(" "), _c('td', {
-      staticStyle: {
-        "vertical-align": "middle"
-      }
-    }, [_c('a', {
-      staticClass: "action-link text-danger",
-      on: {
-        "click": function($event) {
-          _vm.revoke(token)
-        }
-      }
-    }, [_vm._v("\n                                    Revoke\n                                ")])])])
-  }))])])])]) : _vm._e()])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Scopes")]), _vm._v(" "), _c('th')])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4558c92a", module.exports)
-  }
-}
-
-/***/ }),
-/* 72 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -18722,7 +18072,844 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4f7474f0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-053df93e", module.exports)
+  }
+}
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    attrs: {
+      "id": "smartwizard"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "step-anchor",
+    attrs: {
+      "id": "step-1"
+    }
+  }, [_c('div', {
+    staticClass: "step centered-text"
+  }, [_c('div', {
+    staticClass: "step-box"
+  }, [_c('div', {
+    staticClass: "step-img"
+  }, [(_vm.financial_id == 1) ? _c('img', {
+    staticClass: "step-image",
+    attrs: {
+      "src": "/panel/assets/images/steps/step1-reduce2.png",
+      "alt": "scholio logo"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.financial_id == 2) ? _c('img', {
+    staticClass: "step-image",
+    attrs: {
+      "src": "/panel/assets/images/steps/step1-hand2.png",
+      "alt": "scholio logo"
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.financial_id == 3) ? _c('img', {
+    staticClass: "step-image",
+    attrs: {
+      "src": "/panel/assets/images/steps/step1-clock2.png",
+      "alt": "scholio logo"
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.financial_id),
+      expression: "financial_id"
+    }],
+    staticClass: "selectpicker",
+    attrs: {
+      "data-width": "100%"
+    },
+    on: {
+      "change": function($event) {
+        _vm.financial_id = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        })[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "data-icon": "fa fa-scissors"
+    },
+    domProps: {
+      "value": 1
+    }
+  }, [_vm._v("  Μείωση Διδάκτρων")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "data-icon": "fa fa-money"
+    },
+    domProps: {
+      "value": 2
+    }
+  }, [_vm._v("  Ποσό Επιδότησης")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "data-icon": "fa fa-clock-o"
+    },
+    domProps: {
+      "value": 3
+    }
+  }, [_vm._v("  Χρόνος Δωρεάν Φοίτησης")])]), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "width": "50%",
+      "margin-left": "25%"
+    }
+  }, [(_vm.financial_id == 1) ? _c('div', {
+    staticClass: "input-group ",
+    staticStyle: {
+      "padding": "15px 0",
+      "z-index": "1"
+    }
+  }, [_c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "20",
+      "aria-describedby": "basic-addon1"
+    },
+    domProps: {
+      "value": _vm.financial_amount
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-addon",
+    attrs: {
+      "id": "basic-addon1"
+    }
+  }, [_vm._v("%")])]) : _vm._e(), _vm._v(" "), (_vm.financial_id == 2) ? _c('div', {
+    staticClass: "input-group",
+    staticStyle: {
+      "padding": "15px 0",
+      "z-index": "1"
+    }
+  }, [_c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "800",
+      "aria-describedby": "basic-addon2"
+    },
+    domProps: {
+      "value": _vm.financial_amount
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-addon",
+    attrs: {
+      "id": "basic-addon2"
+    }
+  }, [_vm._v("€")])]) : _vm._e(), _vm._v(" "), (_vm.financial_id == 3) ? _c('div', {
+    staticClass: "input-group",
+    staticStyle: {
+      "padding": "15px 0",
+      "z-index": "1"
+    }
+  }, [_c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "2",
+      "aria-describedby": "basic-addon3"
+    },
+    domProps: {
+      "value": _vm.financial_amount
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-addon",
+    attrs: {
+      "id": "basic-addon3"
+    }
+  }, [_vm._v("Μήνες")])]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
+    staticClass: "step-anchor",
+    attrs: {
+      "id": "step-2"
+    }
+  }, [_c('div', {
+    staticClass: "step centered-text"
+  }, [_c('div', {
+    staticClass: "step-box",
+    class: {
+      'step3check': (_vm.levelsName.length > 2)
+    },
+    style: ([!_vm.col_iek_eng_dan_mus, {
+      minHeight: 380 + 'px'
+    }])
+  }, [(_vm.checkedStudies.length) ? _c('div', {
+    staticClass: "step-img"
+  }, _vm._l((_vm.studies[_vm.selectedLevel].section), function(image) {
+    return _c('div', [(image.name == _vm.sectionsName[_vm.selectedLevel][_vm.selectedSection]) ? _c('img', {
+      staticClass: "step-image",
+      attrs: {
+        "src": '/panel/assets/images/steps/' + image.name + '.png',
+        "alt": ""
+      }
+    }) : _vm._e()])
+  })) : _vm._e(), _vm._v(" "), (_vm.col_iek_eng_dan_mus) ? _c('div', [(_vm.sectionsCounter > 1) ? _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.selectedSection),
+      expression: "selectedSection"
+    }],
+    staticClass: "select-step2",
+    on: {
+      "change": [function($event) {
+        _vm.selectedSection = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        })[0]
+      }, function($event) {
+        _vm.pullStudies()
+      }]
+    }
+  }, _vm._l((_vm.sectionsName[_vm.selectedLevel]), function(section, indexSection) {
+    return _c('option', {
+      domProps: {
+        "value": indexSection
+      }
+    }, [_vm._v("\n                                    " + _vm._s(section))])
+  })) : _vm._e(), _vm._v(" "), (_vm.checkedStudies.length) ? _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.selectedStudy),
+      expression: "selectedStudy"
+    }],
+    staticClass: "select-step2",
+    on: {
+      "change": function($event) {
+        _vm.selectedStudy = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        })[0]
+      }
+    }
+  }, _vm._l((_vm.studiesArray), function(sect, indexStudy) {
+    return _c('option', {
+      domProps: {
+        "value": indexStudy
+      }
+    }, [_vm._v("\n                                    " + _vm._s(sect) + "\n                                ")])
+  })) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "checkBox-step2"
+  }, [(_vm.levelsName.length > 1) ? _c('div', {
+    staticClass: "funkyradio"
+  }, _vm._l((_vm.levelsName), function(level, indexLevel) {
+    return _c('div', {
+      staticClass: "funkyradio-success"
+    }, [_c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (_vm.selectedLevel),
+        expression: "selectedLevel"
+      }],
+      attrs: {
+        "type": "radio",
+        "name": 'radio-' + indexLevel,
+        "id": 'radio-' + indexLevel
+      },
+      domProps: {
+        "value": indexLevel,
+        "checked": _vm._q(_vm.selectedLevel, indexLevel)
+      },
+      on: {
+        "change": function($event) {
+          _vm.changeLevel()
+        },
+        "click": function($event) {
+          _vm.selectedLevel = indexLevel
+        }
+      }
+    }), _vm._v(" "), (level != null) ? _c('label', {
+      attrs: {
+        "for": 'radio-' + indexLevel
+      }
+    }, [_vm._v(" " + _vm._s(level) + "  ")]) : _vm._e()])
+  })) : _vm._e()])]) : _vm._e(), _vm._v(" "), (!_vm.col_iek_eng_dan_mus && _vm.checkedStudies.length) ? _c('div', [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.selectedStudy),
+      expression: "selectedStudy"
+    }],
+    staticClass: "select-step2",
+    on: {
+      "change": function($event) {
+        _vm.selectedStudy = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        })[0]
+      }
+    }
+  }, _vm._l((_vm.levelsName), function(study, indexStudy) {
+    return _c('option', {
+      domProps: {
+        "value": indexStudy
+      }
+    }, [_vm._v("\n                                        " + _vm._s(study))])
+  }))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "step-anchor",
+    attrs: {
+      "id": "step-3"
+    }
+  }, [_c('div', {
+    staticClass: "step centered-text"
+  }, [_c('div', {
+    staticClass: "step-box"
+  }, [_c('div', {
+    staticClass: "step-img"
+  }, [(_vm.criteria_id == 1) ? _c('img', {
+    staticClass: "step-image",
+    attrs: {
+      "src": "/panel/assets/images/steps/step3-skills1.png",
+      "alt": ""
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.criteria_id == 2) ? _c('img', {
+    staticClass: "step-image",
+    attrs: {
+      "src": "/panel/assets/images/steps/step3-best.png",
+      "alt": ""
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.criteria_id == 3) ? _c('img', {
+    staticClass: "step-image",
+    attrs: {
+      "src": "/panel/assets/images/steps/step3-help.png",
+      "alt": ""
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.criteria_id == 4) ? _c('img', {
+    staticClass: "step-image",
+    attrs: {
+      "src": "/panel/assets/images/steps/step3-friends2.png",
+      "alt": ""
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.criteria_id == 5) ? _c('img', {
+    staticClass: "step-image",
+    attrs: {
+      "src": "/panel/assets/images/steps/step3-open.png",
+      "alt": ""
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.criteria_id),
+      expression: "criteria_id"
+    }],
+    staticClass: "selectpicker",
+    attrs: {
+      "data-live-search": "true",
+      "data-mobile": "false",
+      "data-size": "3",
+      "data-width": "100%"
+    },
+    on: {
+      "change": function($event) {
+        _vm.criteria_id = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        })[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "data-icon": "fa ",
+      "value": "1"
+    }
+  }, [_vm._v("  Υποτροφία Ταλέντου/Δεξιοτήτων")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "data-icon": "fa ",
+      "value": "2"
+    }
+  }, [_vm._v("  Υποτροφία Αριστείας")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "data-icon": "fa ",
+      "value": "3"
+    }
+  }, [_vm._v("  Υποτροφια με Κοινωνικά Κριτήρια")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "data-icon": "fa ",
+      "value": "4"
+    }
+  }, [_vm._v("  1+1 Φίλοι / Αδέλφια")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "data-icon": "fa ",
+      "value": "5"
+    }
+  }, [_vm._v("  Υποτροφία Ανοιχτού Τύπου")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "step-anchor",
+    attrs: {
+      "id": "step-4"
+    }
+  }, [_c('div', {
+    staticClass: "step centered-text  "
+  }, [_c('div', {
+    staticClass: "step-box",
+    staticStyle: {
+      "position": "relative"
+    }
+  }, [_c('h3', [_vm._v("Όροι και Λεπτομέρειες Συμμετοχής")]), _vm._v(" "), _c('div', {
+    staticClass: "pull-left"
+  }, [_c('div', {
+    staticStyle: {
+      "left": "20px",
+      "top": "80px",
+      "position": "absolute"
+    }
+  }, [_vm._v(" Υποτροφία ενεργή μέχρι: ")]), _vm._v(" "), _c('input', {
+    staticClass: "ll-skin-cangas",
+    staticStyle: {
+      "margin-top": "30px",
+      "height": "35px",
+      "border": "1px solid #d2d2d2",
+      "border-radius": "3px"
+    },
+    attrs: {
+      "type": "text",
+      "id": "datepicker",
+      "size": "30",
+      "onchange": "Event.$emit('datePick', event.target.value)"
+    },
+    domProps: {
+      "value": _vm.end_at
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "funkyradio",
+    staticStyle: {
+      "width": "240px",
+      "margin": "15px 0 0 0"
+    }
+  }, [_c('div', {
+    staticClass: "funkyradio-success"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.exams),
+      expression: "exams"
+    }],
+    attrs: {
+      "type": "checkbox",
+      "id": "exams"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.exams) ? _vm._i(_vm.exams, null) > -1 : (_vm.exams)
+    },
+    on: {
+      "click": function($event) {
+        var $$a = _vm.exams,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$c) {
+            $$i < 0 && (_vm.exams = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.exams = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.exams = $$c
+        }
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    attrs: {
+      "for": "exams"
+    }
+  }, [_vm._v(" Υποτροφία με εξετάσεις")])])]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  }), _vm._v(" "), _vm._m(1)])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', {
+    staticClass: "clearfix"
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#step-1"
+    }
+  }, [_vm._v("Βήμα 1"), _c('br'), _c('small', {
+    staticClass: "mar-le-10"
+  }, [_vm._v("Οικονομική "), _c('p', {
+    staticStyle: {
+      "margin-top": "-18px"
+    }
+  }, [_vm._v("Προσφορά")])])])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#step-2"
+    }
+  }, [_vm._v("Βήμα 2"), _c('br'), _c('small', {
+    staticClass: "mar-le-10"
+  }, [_vm._v("Σπουδές/Ειδικότητα")])])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#step-3"
+    }
+  }, [_vm._v("Βήμα 3"), _c('br'), _c('small', {
+    staticClass: "mar-le-10"
+  }, [_vm._v("Κριτήρια/Όροι")])])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#step-4"
+    }
+  }, [_vm._v("Βήμα 4"), _c('br'), _c('small', {
+    staticClass: "mar-le-10"
+  }, [_vm._v("Όροι Συμμετοχής")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticStyle: {
+      "margin": "20px 0",
+      "left": "20px",
+      "position": "absolute"
+    }
+  }, [_vm._v("Δικαίωμα Συμμετοχής")]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix",
+    staticStyle: {
+      "margin": "0 0 45px 0"
+    }
+  }), _vm._v(" "), _c('textarea', {
+    staticStyle: {
+      "top": "370px",
+      "position": "absolute"
+    }
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-17ea5d0e", module.exports)
+  }
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, _vm._l((_vm.allTeachers), function(teacher) {
+    return _c('div', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (teacher.role == 'teacher'),
+        expression: "teacher.role=='teacher'"
+      }],
+      staticClass: "col-xs-12 col-sm-6 com-md-4"
+    }, [_c('div', {
+      staticClass: "card-box"
+    }, [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "contact-card"
+    }, [_c('a', {
+      staticClass: "pull-left",
+      attrs: {
+        "href": "#"
+      }
+    }, [_c('img', {
+      staticClass: "img-circle",
+      attrs: {
+        "width": "80",
+        "height": "80",
+        "src": teacher.avatar,
+        "alt": ""
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "member-info"
+    }, [_c('h4', {
+      staticClass: "m-t-0 m-b-5 header-title"
+    }, [_c('b', [_vm._v(_vm._s(teacher.name))])]), _vm._v(" "), _c('p', {
+      staticClass: "text-muted"
+    }, [_vm._v("Καθηγητής")]), _vm._v(" "), _c('p', {
+      staticClass: "text-dark"
+    }, [_c('i', {
+      staticClass: "md md-email"
+    }), _vm._v(" "), _c('small', [_vm._v(_vm._s(teacher.email))])])]), _vm._v(" "), _vm._m(0, true)])])])])
+  }))
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', {
+    staticClass: "social-links list-inline m-0"
+  }, [_c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "Facebook"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-facebook"
+  })])]), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "Twitter"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-twitter"
+  })])]), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "LinkedIn"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-linkedin"
+  })])]), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "Skype"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-skype"
+  })])]), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "Message"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-envelope-o"
+  })])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1947ed77", module.exports)
+  }
+}
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "dropdown hidden-xs"
+  }, [_c('a', {
+    staticClass: "dropdown-toggle waves-effect",
+    attrs: {
+      "href": "#",
+      "data-toggle": "dropdown",
+      "aria-expanded": "true"
+    }
+  }, [_c('i', {
+    staticClass: "icon-bell"
+  }), _vm._v(" "), (_vm.unreadNotifications) ? _c('span', {
+    staticClass: "badge badge-xs badge-danger"
+  }, [_vm._v("\n            " + _vm._s(_vm.unreadNotifications.length) + "\n        ")]) : _vm._e()]), _vm._v(" "), _c('ul', {
+    staticClass: "dropdown-menu dropdown-menu-lg"
+  }, [_vm._m(0), _vm._v(" "), _c('li', {
+    staticClass: "list-group nicescroll notification-list"
+  }, [_c('a', {
+    staticClass: "list-group-item",
+    attrs: {
+      "href": "/panel/school/requests"
+    }
+  }, [_c('div', {
+    staticClass: "media"
+  }, [_vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "media-body"
+  }, [_c('h5', {
+    staticClass: "media-heading"
+  }, [_vm._v("Ειδοποίηση για σύνδεση")]), _vm._v(" "), _c('p', {
+    staticClass: "m-0"
+  }, [(_vm.unreadNotifications) ? _c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματα")]) : _vm._e()])])])])]), _vm._v(" "), _vm._m(2)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "notifi-title"
+  }, [_c('span', {
+    staticClass: "label label-default pull-right"
+  }, [_vm._v("New 3")]), _vm._v("Notification")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "pull-left p-r-10"
+  }, [_c('em', {
+    staticClass: "fa fa-user-plus fa-2x text-info"
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
+    staticClass: "list-group-item text-right",
+    attrs: {
+      "href": "/panel/school/requests"
+    }
+  }, [_c('small', {
+    staticClass: "font-600"
+  }, [_vm._v("See all notifications")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1f2b95a4", module.exports)
+  }
+}
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [(_vm.tokens.length > 0) ? _c('div', [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("Authorized Applications")]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_c('table', {
+    staticClass: "table table-borderless m-b-none"
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.tokens), function(token) {
+    return _c('tr', [_c('td', {
+      staticStyle: {
+        "vertical-align": "middle"
+      }
+    }, [_vm._v("\n                                " + _vm._s(token.client.name) + "\n                            ")]), _vm._v(" "), _c('td', {
+      staticStyle: {
+        "vertical-align": "middle"
+      }
+    }, [(token.scopes.length > 0) ? _c('span', [_vm._v("\n                                    " + _vm._s(token.scopes.join(', ')) + "\n                                ")]) : _vm._e()]), _vm._v(" "), _c('td', {
+      staticStyle: {
+        "vertical-align": "middle"
+      }
+    }, [_c('a', {
+      staticClass: "action-link text-danger",
+      on: {
+        "click": function($event) {
+          _vm.revoke(token)
+        }
+      }
+    }, [_vm._v("\n                                    Revoke\n                                ")])])])
+  }))])])])]) : _vm._e()])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Scopes")]), _vm._v(" "), _c('th')])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-259beacc", module.exports)
+  }
+}
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-12"
+  }, [_c('div', {
+    staticClass: "card-box"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-lg-12"
+  }, [_vm._m(0), _vm._v(" "), _c('p', {
+    staticClass: "text-muted font-13"
+  }, [_vm._v("\n                       Bla Bla\n                    ")]), _vm._v(" "), _c('div', {
+    staticClass: "table-rep-plugin"
+  }, [_c('div', {
+    staticClass: "table-responsive",
+    attrs: {
+      "data-pattern": "priority-columns"
+    }
+  }, [_c('table', {
+    staticClass: "table  table-striped",
+    attrs: {
+      "id": "tech-companies-1"
+    }
+  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.allSchools), function(school) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(school.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.email))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.type_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.address))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.city))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.phone))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.website))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.logo_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.approved))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(school.created_at))])])
+  }))])])])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h4', {
+    staticClass: "m-t-0 header-title"
+  }, [_c('b', [_vm._v("Schools Table")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Email")]), _vm._v(" "), _c('th', [_vm._v("Type")]), _vm._v(" "), _c('th', [_vm._v("Address")]), _vm._v(" "), _c('th', [_vm._v("City")]), _vm._v(" "), _c('th', [_vm._v("Phone")]), _vm._v(" "), _c('th', [_vm._v("Website")]), _vm._v(" "), _c('th', [_vm._v("Logo")]), _vm._v(" "), _c('th', [_vm._v("Approved")]), _vm._v(" "), _c('th', [_vm._v("Created At")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3ae2a396", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-12"
+  }, [_c('div', {
+    staticClass: "card-box"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-lg-12"
+  }, [_vm._m(0), _vm._v(" "), _c('p', {
+    staticClass: "text-muted font-13"
+  }, [_vm._v("\n                       Bla Bla\n                    ")]), _vm._v(" "), _c('div', {
+    staticClass: "p-20"
+  }, [_c('div', {
+    staticClass: "table-responsive"
+  }, [_c('table', {
+    staticClass: "table m-0"
+  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.allNotifications), function(notification) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(notification.type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.notifiable_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.notifiable_type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.read_at))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.created_at))])])
+  }))])])])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h4', {
+    staticClass: "m-t-0 header-title"
+  }, [_c('b', [_vm._v("Notifications Table")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Type")]), _vm._v(" "), _c('th', [_vm._v("Notifiable Id")]), _vm._v(" "), _c('th', [_vm._v("Notifiable Type")]), _vm._v(" "), _c('th', [_vm._v("Read At")]), _vm._v(" "), _c('th', [_vm._v("Created At")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3d2655f9", module.exports)
   }
 }
 
@@ -18735,7 +18922,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "content"
     }
-  }, [_c('div', {
+  }, [(_vm.col_iek_eng_dan_mus) ? _c('div', {
     staticStyle: {
       "margin-left": "20px"
     }
@@ -18924,13 +19111,63 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         })])]) : _vm._e()])
       })], 2)])
     })], 2)])
-  })], 2) : _vm._e()])])])
+  })], 2) : _vm._e()])]) : _vm._e(), _vm._v(" "), (!_vm.col_iek_eng_dan_mus) ? _c('div', [_c('h3', {
+    staticClass: "title ml20",
+    staticStyle: {
+      "margin-left": "-10px"
+    }
+  }, [_vm._v("Επιλογή Επιπέδων Σπουδών")]), _vm._v(" "), _c('div', _vm._l((_vm.all_studies), function(level, indexLevel) {
+    return _c('div', _vm._l((_vm.all_studies[indexLevel].section), function(section, indexSection) {
+      return _c('div', _vm._l((_vm.all_studies[indexLevel].section[indexSection].study), function(study, indexStudy) {
+        return _c('div', [_c('input', {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: (_vm.checkedStudies),
+            expression: "checkedStudies"
+          }],
+          attrs: {
+            "type": "checkbox"
+          },
+          domProps: {
+            "checked": study.status,
+            "value": study.id,
+            "checked": Array.isArray(_vm.checkedStudies) ? _vm._i(_vm.checkedStudies, study.id) > -1 : (_vm.checkedStudies)
+          },
+          on: {
+            "click": [function($event) {
+              var $$a = _vm.checkedStudies,
+                $$el = $event.target,
+                $$c = $$el.checked ? (true) : (false);
+              if (Array.isArray($$a)) {
+                var $$v = study.id,
+                  $$i = _vm._i($$a, $$v);
+                if ($$c) {
+                  $$i < 0 && (_vm.checkedStudies = $$a.concat($$v))
+                } else {
+                  $$i > -1 && (_vm.checkedStudies = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.checkedStudies = $$c
+              }
+            }, function($event) {
+              _vm.IfCheck(indexStudy, study.status, study.id, _vm.studies[indexLevel].id, _vm.studies[indexLevel].section[indexSection].id, indexLevel, indexSection)
+            }]
+          }
+        }), _c('label', {
+          attrs: {
+            "for": ""
+          }
+        }), _vm._v("\n                        " + _vm._s(study.name) + "\n\n                    ")])
+      }))
+    }))
+  }))]) : _vm._e()])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5e696f0d", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-3d84cdbc", module.exports)
   }
 }
 
@@ -18951,39 +19188,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-lg-12"
   }, [_vm._m(0), _vm._v(" "), _c('p', {
     staticClass: "text-muted font-13"
-  }, [_vm._v("\n                       Όλα τα αιτήματα\n                    ")]), _vm._v(" "), _c('div', {
-    staticClass: "p-20"
+  }, [_vm._v("\n                       Μπλά μπλά μπλά\n                    ")]), _vm._v(" "), _c('div', {
+    staticClass: "table-rep-plugin"
   }, [_c('div', {
-    staticClass: "table-responsive"
+    staticClass: "table-responsive",
+    attrs: {
+      "data-pattern": "priority-columns"
+    }
   }, [_c('table', {
-    staticClass: "table m-0"
-  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.allNotifications), function(notification) {
-    return _c('tr', [(notification.type === 'App\\Notifications\\StudentConnectNotification') ? _c('td', [_vm._v("Μαθητής")]) : _vm._e(), _vm._v(" "), (notification.type === 'App\\Notifications\\TeacherConnectNotification') ? _c('td', [_vm._v("Καθηγητής")]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.data['user_name']))]), _vm._v(" "), _vm._m(2, true)])
+    staticClass: "table  table-striped",
+    attrs: {
+      "id": "tech-companies-1"
+    }
+  }, [_c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Πλάνο Υποτροφίας")]), _vm._v(" "), _c('th', [_vm._v("Υποτροφία")]), _vm._v(" "), (_vm.scholarships.level_id < 4 || _vm.scholarships.level_id > 21) ? _c('th', [_vm._v("Τύπος Σπουδών")]) : _vm._e(), _vm._v(" "), _c('th', [_vm._v("Επίπεδο Σπουδών")]), _vm._v(" "), _c('th', [_vm._v("Κριτήρια")]), _vm._v(" "), _c('th', [_vm._v("Ημερομηνία Λήξης")]), _vm._v(" "), _c('th', [_vm._v("Νικητής")])])]), _vm._v(" "), _c('tbody', _vm._l((_vm.scholarships), function(scholarship) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(scholarship.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.financial.plan))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.financial_amount) + " "), (scholarship.financial.id == 1) ? _c('span', [_vm._v("%")]) : _vm._e()]), _vm._v(" "), (scholarship.level_id < 4 || scholarship.level_id > 21) ? _c('td', [_vm._v(_vm._s(scholarship.study.name))]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.level.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.criteria_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.end_at))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.winner_id))])])
   }))])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h4', {
     staticClass: "m-t-0 header-title"
-  }, [_c('b', [_vm._v("Ειδποιήσεις για Σύνδεση")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Ρόλος")]), _vm._v(" "), _c('th', [_vm._v("Όνομα")]), _vm._v(" "), _c('th', [_vm._v("Επιλογή")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('td', [_c('button', {
-    staticClass: "btn btn-success",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Αποδοχή")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-danger",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Απόρριψη")])])
+  }, [_c('b', [_vm._v("Πίνακας Υποτροφιών")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6e8e5c1e", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-753c90b7", module.exports)
   }
 }
 
@@ -18995,205 +19224,36 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "input-group pull-left ",
-    staticStyle: {
-      "width": "210px",
-      "margin": "10px 0 10px 10px",
-      "border": "1px solid #d1d1d1",
-      "border-radius": "5px"
-    }
-  }, [_vm._m(0), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.searchStr),
-      expression: "searchStr"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Αναζήτηση"
-    },
-    domProps: {
-      "value": _vm._s(_vm.searchStr)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.searchStr = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-info pull-right",
-    staticStyle: {
-      "margin": "11px 10px 10px 0",
-      "height": "38px"
-    },
-    on: {
-      "click": _vm.changeView
-    }
-  }, [_vm._v("Αλλαγή Προβολής")]), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  }), _vm._v(" "), (_vm.selection == true) ? _c('div', _vm._l((_vm.filteredStudies), function(student) {
-    return ((student.role == 'student' || student.role == 'teacher')) ? _c('div', {
-      staticClass: "col-xs-12 col-sm-6 col-xl-4 col-xxl-3"
-    }, [_c('div', {
-      staticClass: "card-box"
-    }, [_c('div', {
-      staticClass: "row"
-    }, [_c('div', {
-      staticClass: "contact-card"
-    }, [_c('a', {
-      staticClass: "pull-left",
-      attrs: {
-        "href": "#"
-      }
-    }, [_c('img', {
-      staticClass: "img-circle",
-      attrs: {
-        "width": "80",
-        "height": "80",
-        "src": student.avatar,
-        "alt": ""
-      }
-    })]), _vm._v(" "), _c('div', {
-      staticClass: "member-info"
-    }, [_c('h4', {
-      staticClass: "m-t-0 m-b-5 header-title"
-    }, [_c('b', {
-      staticStyle: {
-        "text-transform": "capitalize"
-      }
-    }, [_vm._v(" " + _vm._s(student.name))])]), _vm._v(" "), _c('p', {
-      staticClass: "text-muted"
-    }, [_vm._v("Φοιτητής")]), _vm._v(" "), _c('p', {
-      staticClass: "text-dark"
-    }, [_c('i', {
-      staticClass: "md md-email"
-    }), _vm._v(" "), _c('small', [_vm._v(_vm._s(student.email))])])]), _vm._v(" "), _vm._m(1, true)])])])]) : _vm._e()
-  })) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  }), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-12"
+  }, [_c('div', {
+    staticClass: "card-box"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-lg-12"
+  }, [_vm._m(0), _vm._v(" "), _c('p', {
+    staticClass: "text-muted font-13"
+  }, [_vm._v("\n                       Bla Bla\n                    ")]), _vm._v(" "), _c('div', {
+    staticClass: "p-20"
+  }, [_c('div', {
     staticClass: "table-responsive"
-  }, [(_vm.selection == false) ? _c('table', {
-    staticClass: "table table-striped table-bordered table-hover",
-    staticStyle: {
-      "background-color": "#fff"
-    }
-  }, [_c('thead', [_c('tr', [_c('th', {
-    staticStyle: {
-      "width": "30px"
-    }
-  }), _vm._v(" "), _c('th', [_c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": _vm.nameChangeSort
-    }
-  }, [_vm._v("\n                    Ονοματεπώνυμο\n                    "), (_vm.sortType == 'name' && !_vm.sortReverse) ? _c('span', {
-    staticClass: "fa fa-sort-amount-asc"
-  }) : _vm._e(), _vm._v(" "), (_vm.sortType == 'name' && _vm.sortReverse) ? _c('span', {
-    staticClass: "fa fa-sort-amount-desc"
-  }) : _vm._e()])]), _vm._v(" "), _c('th', [_c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": _vm.emailChangeSort
-    }
-  }, [_vm._v("\n                    e-mail\n                    "), (_vm.sortType == 'email' && !_vm.sortReverse) ? _c('span', {
-    staticClass: "fa fa-sort-amount-asc"
-  }) : _vm._e(), _vm._v(" "), (_vm.sortType == 'email' && _vm.sortReverse) ? _c('span', {
-    staticClass: "fa fa-sort-amount-desc"
-  }) : _vm._e()])])])]), _vm._v(" "), _c('tbody', _vm._l((_vm.filteredStudies), function(student) {
-    return (student.role == 'student' || student.role == 'teacher') ? _c('tr', [_vm._m(2, true), _vm._v(" "), _c('td', {
-      staticStyle: {
-        "text-transform": "capitalize"
-      }
-    }, [_vm._v(_vm._s(student.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(student.email))])]) : _vm._e()
-  }))]) : _vm._e()])])
+  }, [_c('table', {
+    staticClass: "table m-0"
+  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.allUsers), function(user) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.role))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.created_at))])])
+  }))])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "input-group-addon"
-  }, [_c('i', {
-    staticClass: "fa fa-search"
-  })])
+  return _c('h4', {
+    staticClass: "m-t-0 header-title"
+  }, [_c('b', [_vm._v("Users Table")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "social-links list-inline m-0"
-  }, [_c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "Facebook"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-facebook"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "Twitter"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-twitter"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "LinkedIn"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-linkedin"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "Skype"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-skype"
-  })])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "tooltips",
-    attrs: {
-      "title": "",
-      "data-placement": "top",
-      "data-toggle": "tooltip",
-      "href": "",
-      "data-original-title": "Message"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-envelope-o"
-  })])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('td', [_c('i', {
-    staticClass: "fa fa-user",
-    staticStyle: {
-      "font-size": "140%"
-    },
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Email")]), _vm._v(" "), _c('th', [_vm._v("Role")]), _vm._v(" "), _c('th', [_vm._v("Created At")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-72f4b91f", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-7e1032ef", module.exports)
   }
 }
 
@@ -19505,7 +19565,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-7cf2cf86", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-9e2ac516", module.exports)
   }
 }
 
@@ -19517,36 +19577,205 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-sm-12"
-  }, [_c('div', {
-    staticClass: "card-box"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-lg-12"
-  }, [_vm._m(0), _vm._v(" "), _c('p', {
-    staticClass: "text-muted font-13"
-  }, [_vm._v("\n                       Bla Bla\n                    ")]), _vm._v(" "), _c('div', {
-    staticClass: "p-20"
-  }, [_c('div', {
+    staticClass: "input-group pull-left ",
+    staticStyle: {
+      "width": "210px",
+      "margin": "10px 0 10px 10px",
+      "border": "1px solid #d1d1d1",
+      "border-radius": "5px"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.searchStr),
+      expression: "searchStr"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Αναζήτηση"
+    },
+    domProps: {
+      "value": _vm._s(_vm.searchStr)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.searchStr = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-info pull-right",
+    staticStyle: {
+      "margin": "11px 10px 10px 0",
+      "height": "38px"
+    },
+    on: {
+      "click": _vm.changeView
+    }
+  }, [_vm._v("Αλλαγή Προβολής")]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  }), _vm._v(" "), (_vm.selection == true) ? _c('div', _vm._l((_vm.filteredStudies), function(student) {
+    return ((student.role == 'student' || student.role == 'teacher')) ? _c('div', {
+      staticClass: "col-xs-12 col-sm-6 col-xl-4 col-xxl-3"
+    }, [_c('div', {
+      staticClass: "card-box"
+    }, [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "contact-card"
+    }, [_c('a', {
+      staticClass: "pull-left",
+      attrs: {
+        "href": "#"
+      }
+    }, [_c('img', {
+      staticClass: "img-circle",
+      attrs: {
+        "width": "80",
+        "height": "80",
+        "src": student.avatar,
+        "alt": ""
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "member-info"
+    }, [_c('h4', {
+      staticClass: "m-t-0 m-b-5 header-title"
+    }, [_c('b', {
+      staticStyle: {
+        "text-transform": "capitalize"
+      }
+    }, [_vm._v(" " + _vm._s(student.name))])]), _vm._v(" "), _c('p', {
+      staticClass: "text-muted"
+    }, [_vm._v("Φοιτητής")]), _vm._v(" "), _c('p', {
+      staticClass: "text-dark"
+    }, [_c('i', {
+      staticClass: "md md-email"
+    }), _vm._v(" "), _c('small', [_vm._v(_vm._s(student.email))])])]), _vm._v(" "), _vm._m(1, true)])])])]) : _vm._e()
+  })) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  }), _vm._v(" "), _c('div', {
     staticClass: "table-responsive"
-  }, [_c('table', {
-    staticClass: "table m-0"
-  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.allUsers), function(user) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(user.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.role))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.created_at))])])
-  }))])])])])])])])])
+  }, [(_vm.selection == false) ? _c('table', {
+    staticClass: "table table-striped table-bordered table-hover",
+    staticStyle: {
+      "background-color": "#fff"
+    }
+  }, [_c('thead', [_c('tr', [_c('th', {
+    staticStyle: {
+      "width": "30px"
+    }
+  }), _vm._v(" "), _c('th', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": _vm.nameChangeSort
+    }
+  }, [_vm._v("\n                    Ονοματεπώνυμο\n                    "), (_vm.sortType == 'name' && !_vm.sortReverse) ? _c('span', {
+    staticClass: "fa fa-sort-amount-asc"
+  }) : _vm._e(), _vm._v(" "), (_vm.sortType == 'name' && _vm.sortReverse) ? _c('span', {
+    staticClass: "fa fa-sort-amount-desc"
+  }) : _vm._e()])]), _vm._v(" "), _c('th', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": _vm.emailChangeSort
+    }
+  }, [_vm._v("\n                    e-mail\n                    "), (_vm.sortType == 'email' && !_vm.sortReverse) ? _c('span', {
+    staticClass: "fa fa-sort-amount-asc"
+  }) : _vm._e(), _vm._v(" "), (_vm.sortType == 'email' && _vm.sortReverse) ? _c('span', {
+    staticClass: "fa fa-sort-amount-desc"
+  }) : _vm._e()])])])]), _vm._v(" "), _c('tbody', _vm._l((_vm.filteredStudies), function(student) {
+    return (student.role == 'student' || student.role == 'teacher') ? _c('tr', [_vm._m(2, true), _vm._v(" "), _c('td', {
+      staticStyle: {
+        "text-transform": "capitalize"
+      }
+    }, [_vm._v(_vm._s(student.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(student.email))])]) : _vm._e()
+  }))]) : _vm._e()])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h4', {
-    staticClass: "m-t-0 header-title"
-  }, [_c('b', [_vm._v("Users Table")])])
+  return _c('span', {
+    staticClass: "input-group-addon"
+  }, [_c('i', {
+    staticClass: "fa fa-search"
+  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Email")]), _vm._v(" "), _c('th', [_vm._v("Role")]), _vm._v(" "), _c('th', [_vm._v("Created At")])])])
+  return _c('ul', {
+    staticClass: "social-links list-inline m-0"
+  }, [_c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "Facebook"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-facebook"
+  })])]), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "Twitter"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-twitter"
+  })])]), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "LinkedIn"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-linkedin"
+  })])]), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "Skype"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-skype"
+  })])]), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "tooltips",
+    attrs: {
+      "title": "",
+      "data-placement": "top",
+      "data-toggle": "tooltip",
+      "href": "",
+      "data-original-title": "Message"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-envelope-o"
+  })])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('td', [_c('i', {
+    staticClass: "fa fa-user",
+    staticStyle: {
+      "font-size": "140%"
+    },
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-e2b98b84", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-eaa96ee0", module.exports)
   }
 }
 
@@ -19566,8 +19795,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2bfae65d!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Scholarships-Create.vue", function() {
-			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2bfae65d!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Scholarships-Create.vue");
+		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-053df93e&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue", function() {
+			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-053df93e&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -19592,8 +19821,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4558c92a&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue", function() {
-			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4558c92a&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue");
+		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-17ea5d0e!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Scholarships-Create.vue", function() {
+			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-17ea5d0e!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Scholarships-Create.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -19618,8 +19847,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4f7474f0&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue", function() {
-			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4f7474f0&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue");
+		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-259beacc&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue", function() {
+			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-259beacc&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -19644,8 +19873,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5e696f0d!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Studies-Select.vue", function() {
-			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-5e696f0d!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Studies-Select.vue");
+		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3d84cdbc!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Studies-Select.vue", function() {
+			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-3d84cdbc!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Studies-Select.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -19670,8 +19899,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-72f4b91f!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Students-View.vue", function() {
-			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-72f4b91f!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Students-View.vue");
+		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-9e2ac516&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue", function() {
+			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-9e2ac516&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -19696,8 +19925,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7cf2cf86&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue", function() {
-			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-7cf2cf86&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue");
+		module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-eaa96ee0!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Students-View.vue", function() {
+			var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-eaa96ee0!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Students-View.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
