@@ -157,3 +157,35 @@ Route::post('/post/scholarship/test', function () {
 
     return 'OK';
 });
+
+Route::get('connected/students', function () {
+    $school = School::where('user_id', auth()->user()->id)->first();
+    $users = $school->users;
+    $students = [];
+    foreach ($users as $user){
+        if($user->role == "student")
+            array_push($students,$user);
+    }
+
+    $data = array(
+        'students' => $students,
+    );
+
+    return $data;
+});
+
+Route::get('connected/teachers', function () {
+    $school = School::where('user_id', auth()->user()->id)->first();
+    $users = $school->users;
+    $teachers = [];
+    foreach ($users as $user){
+        if($user->role == "teacher")
+            array_push($teachers,$user);
+    }
+
+    $data = array(
+        'teachers' => $teachers,
+    );
+
+    return $data;
+});
