@@ -122,5 +122,4 @@ class FakeSeeder extends Seeder
         $scholarship->end_at = Carbon::now();
         $scholarship->save();
     }
-
 }
