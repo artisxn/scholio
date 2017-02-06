@@ -215,7 +215,7 @@
                         <span class="  col-lg-4 col-sm-6 col-xs-6 span-cont">
                             <div class="">
                                 <div class="grow pic">
-                                    <img class="" src="/images/schools/{{ $image->full_path }}" onclick=""
+                                    <img class="" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick=""
                                          {{--onmouseover="hov({{$image->id}})"--}}
                                     />
                                     <form method="POST" action="/panel/school/profile/images/upload">

@@ -19,7 +19,7 @@
                     {{ csrf_field() }}
 
                     <div class="form-group" align="center">
-                        <img src="/images/schools/{{ $logo->path }}" height="100px">
+                        <img src="{{substr($logo->path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ $logo->path }}" height="100px">
                     </div>
 
                     <div class="col-md-6">
