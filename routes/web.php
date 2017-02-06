@@ -17,6 +17,13 @@ use App\User;
 |
  */
 
+//ONLY FOR DEVELOPMENT
+Route::get('/lg', function () {
+    auth()->logout();
+    return redirect('/');
+});
+//
+
 Route::get('/', function () {
     return view('index');
 });
