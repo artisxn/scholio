@@ -459,7 +459,7 @@
                             <div class="pad-top-20"></div>
                             <span><i class="ion-person-stalker  pull-left pad-top-2 " aria-hidden="true"></i></span>
                             <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">Συνδ. Φοιτητές</span>
-                            <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==6">Συνδ. Μαθητές</span>
+                            <span class="pull-left pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">Συνδ. Μαθητές</span>
                             <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
                             <br>
                             <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
@@ -622,7 +622,7 @@ var lengthStudents = 0;
                         if( $scope.studies.length){
                             $scope.initial();
                         }
-                        if ($scope.contactInfo.type_id==1 || $scope.contactInfo.type_id==2  ||
+                        if ($scope.contactInfo.type_id==1 || $scope.contactInfo.type_id==2  || $scope.contactInfo.type_id==3 ||
                             $scope.contactInfo.type_id==4 || $scope.contactInfo.type_id==10 || $scope.contactInfo.type_id==11
                         )
                         {$scope.col_iek_eng_dan_mus  = true}

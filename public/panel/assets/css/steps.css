@@ -40,7 +40,7 @@ div#step-2.step-anchor.step-content
 
 div#step-4.step-anchor.step-content
 {
-    min-height: 710px;
+    min-height: 680px;
 }
 
 
@@ -66,7 +66,7 @@ div#step-4.step-anchor.step-content
 
 #step-2 > .step >.step3check {min-height: 560px;}
 /*#step-3 > .step > .step-box  {min-height: 390px; margin-bottom: 50px;}*/
-#step-4 > .step > .step-box  {min-height: 680px; margin-bottom: 3px!important;}
+#step-4 > .step > .step-box  {min-height: 600px; margin-bottom: 3px!important;}
 
 .step-img{height: 220px; background-color: #fcfcfc; border-top-left-radius: 8px; border-top-right-radius: 8px;}
 

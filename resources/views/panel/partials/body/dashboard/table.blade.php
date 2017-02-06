@@ -5,14 +5,10 @@
         <div class="portlet"><!-- /primary heading -->
             <div class="portlet-heading">
                 <h3 class="portlet-title text-uppercase">
-                    Newest Schools
+                    All Registered Schools
                 </h3>
                 <div class="portlet-widgets">
-                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
-                    <span class="divider"></span>
                     <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
-                    <span class="divider"></span>
-                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -22,10 +18,14 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>School id</th>
+                                    <th></th>
                                     <th>School Name</th>
-                                    <th>Date Registered</th>
                                     <th>Type</th>
+                                    <th>Type id</th>
+                                    <th>Login email</th>
+                                    <th>Login password</th>
+                                    <th>Date Registered</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -33,9 +33,13 @@
                             @foreach($data['schools'] as $school)
                                 <tr>
                                     <td>{{ $school->id }}</td>
+                                    <td><img style="height: 35px;" src="/images/schools/{{ $school->logo->path }}"> </td>
                                     <td>{{ $school->name }}</td>
-                                    <td>{{ $school->created_at }}</td>
                                     <td>{{ $school->type->name }}</td>
+                                    <td>{{ $school->type->id }}</td>
+                                    <td>{{ $school->user->email }}</td>
+                                    <td>123456</td>
+                                    <td>{{ $school->created_at }}</td>
                                     <td><span class="label label-warning">Pending</span></td>
                                 </tr>
                             @endforeach

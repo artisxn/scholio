@@ -15,8 +15,8 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Πλάνο Υποτροφίας</th>
-                                            <th>Υποτροφία</th>
-                                            <th v-if="scholarships.level_id<4 || scholarships.level_id>21">Τύπος Σπουδών</th>
+                                            <th>Ποσό</th>
+                                            <th v-if="showLevel">Τύπος Σπουδών</th> <!-- condition MUST CHANGE-->
                                             <th>Επίπεδο Σπουδών</th>
                                             <th>Κριτήρια</th>
                                             <th>Ημερομηνία Λήξης</th>
@@ -28,8 +28,12 @@
                                         <tr v-for="scholarship in scholarships">
                                             <td>{{ scholarship.id }}</td>
                                             <td>{{ scholarship.financial.plan }}</td>
-                                            <td>{{ scholarship.financial_amount }} <span v-if="scholarship.financial.id==1">%</span></td>
-                                            <td v-if="scholarship.level_id<4 || scholarship.level_id>21">{{ scholarship.study.name}}</td>
+                                            <td>{{ scholarship.financial_amount }}
+                                                <span v-if="scholarship.financial.id==1">%</span>
+                                                <span v-if="scholarship.financial.id==2">€</span>
+                                                <span v-if="scholarship.financial.id==3">μήνες</span></td>
+                                            </td>
+                                            <td v-if="showLevel">{{ scholarship.study.name}}</td>
                                             <td>{{ scholarship.level.name}}</td>
                                             <td>{{ scholarship.criteria_id }}</td>
                                             <td>{{ scholarship.end_at }}</td>
@@ -51,7 +55,8 @@
 
         data: function() {
             return{
-                scholarships: {}
+                scholarships: {},
+                showLevel:false
             }
         },
 
@@ -59,9 +64,11 @@
             getScholarships: function(){
                 axios.get('/api/scholarship/' + window.Connection)
                     .then(response => {
-                        console.log(response.data)
+//                        console.logo(response.data)
                         this.scholarships = response.data
+                        if(this.scholarships[0].level.id<4 || this.scholarships[0].level.id>21 ) {this.showLevel=true}
                     });
+
             }
         },
 

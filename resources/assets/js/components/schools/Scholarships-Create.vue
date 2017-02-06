@@ -73,18 +73,27 @@
                                                 v-for="(sect,indexStudy) in studiesArray">
                                             {{sect}}
                                         </option>
-
                                     </select>
 
                                     <!--CheckBox  Επιλογή Level -->
                                     <div class="checkBox-step2">
-                                        <div class="funkyradio" v-if="levelsName.length>1">
+
+                                        <div class="funkyradio" v-if="levelsName.length>1 && levelsName.length<3">
                                             <div class="funkyradio-success" v-for="(level, indexLevel) in levelsName">
                                                 <input type="radio" :name="'radio-'+indexLevel" @change="changeLevel() "
                                                        :id="'radio-'+indexLevel" :value="indexLevel" v-model="selectedLevel"/>
                                                 <label v-if="level!=null" :for="'radio-'+indexLevel" > {{level}}  </label>
                                             </div>
                                         </div>
+
+                                        <select class="select-step2"  v-if="levelsName.length>2" v-model="selectedLevel"  @change="changeLevel()" >
+                                            <option :value="indexLevel"
+                                                    v-for="(level, indexLevel) in levelsName">
+                                                    {{level}}
+                                            </option>
+                                        </select>
+
+
                                     </div>
                                 </div>
 
@@ -110,7 +119,7 @@
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-skills1.png" alt="" v-if="criteria_id==1">
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-best.png" alt="" v-if="criteria_id==2">
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-help.png" alt="" v-if="criteria_id==3">
-                                    <img  class="step-image" src="/panel/assets/images/steps/step3-friends2.png" alt="" v-if="criteria_id==4">
+                                    <img  class="step-image" src="/panel/assets/images/steps/step3-friends.png" alt="" v-if="criteria_id==4">
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-open.png" alt="" v-if="criteria_id==5">
                                 </div>
 
@@ -127,32 +136,64 @@
                     </div>
 
                     <div id="step-4" class="step-anchor">
-                        <div class="step centered-text  ">
+                        <div class="step centered-text" >
 
                             <!--<h2>Βήμα 4 </h2>-->
-                            <div class="step-box" style="position: relative;  " >
+                            <div class="step-box" style="" :class="{'step4MinHeight': !withTerms}">
                                 <h3>Όροι και Λεπτομέρειες Συμμετοχής</h3>
-                                <div class="pull-left">
-                                <div style="left: 20px; top: 80px;  position: absolute"> Υποτροφία ενεργή μέχρι: </div>
 
-                                    <!--v-on:click="errorDate" :class="{'error': error}"-->
-                                <input type="text" id="datepicker" size="30" class="ll-skin-cangas"
-                                        style="margin-top: 30px; height: 35px; border: 1px solid #d2d2d2; border-radius: 3px;" 
-                                        v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)">
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="funkyradio" style="width: 240px; margin: 15px 0 0 0;">
-                                    <div class="funkyradio-success">
-                                        <input type="checkbox" id="exams" v-model="exams">
-                                        <label for="exams"> Υποτροφία με εξετάσεις</label>
+                                    <div class="col-lg-4">
+                                        <div style="" class="pull-left"> Υποτροφία ενεργή μέχρι: </div>
+                                        <div class="clearfix"></div>
+                                        <!--v-on:click="errorDate" :class="{'error': error}"-->
+                                        <input type="text" id="datepicker" size="30" class="ll-skin-cangas pull-left"
+                                               style="margin-top: 10px; height: 35px; border: 1px solid #d2d2d2; border-radius: 3px;"
+                                               v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)">
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+
+
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="funkyradio" style="width: 240px; margin: 15px 0 0 0;">
+                                        <div class="funkyradio-success">
+                                            <input type="checkbox" id="exams" v-model="exams">
+                                            <label for="exams"> Υποτροφία με εξετάσεις</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
-                                <div>
-                                    <div style="margin: 20px 0; left: 20px; position: absolute" >Δικαίωμα Συμμετοχής</div>
-                                     <div class="clearfix" style="margin: 0 0 45px 0"></div>
-                                    <textarea style="top: 370px; position: absolute"></textarea>
+
+
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="funkyradio" style="width: 240px; margin: 15px 0 0 0;">
+                                        <div class="funkyradio-success">
+                                            <input type="checkbox" id="withTerms" v-model="withTerms">
+                                            <label for="withTerms"> Όροι και Προϋποθέσεις</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
                                 </div>
+
+
+
+                                <div id="" v-if="withTerms">
+                                    <span style="color: transparent">.</span>
+                                    <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
+                                    {{terms}}
+                                </div>
+
+                                <!--<div>-->
+                                    <!--<div style="margin: 20px 0; left: 20px; position: absolute" >Δικαίωμα Συμμετοχής</div>-->
+                                     <!--<div class="clearfix" style="margin: 0 0 45px 0"></div>-->
+                                    <!--<textarea style="top: 370px; position: absolute" :value="terms" v-model="terms"-->
+                                              <!--onchange="Event.$emit('tinyMCE', event.target.value)"-->
+                                    <!--&gt;</textarea>-->
+                                <!--</div>-->
+
+
+
                             </div>
                         </div>
                     </div>
@@ -211,6 +252,8 @@ html .ui-button.ui-state-disabled:active {
 
     .error {color: red}
 
+    .step4MinHeight {min-height: 300px!important;}
+
 @media (min-width: 1420px) {
     #step-4 .step .step-box { width: 1100px;  margin-left: -290px; margin-right: auto }
 }
@@ -247,35 +290,49 @@ html .ui-button.ui-state-disabled:active {
               this.end_at = val
 
             )
-
+            Event.$on('tinyMCE', (val) =>
+                this.terms = val
+            )
 
 
         },
         data: function() {
-            return{
+            return {
                 financial_id: 1,
-                financial_amount: 0,
-                criteria_id:1,
-                step1Select:'reduce', // set the default value
+                financial_amount: 20,
+                criteria_id: 1,
+                step1Select: 'reduce', // set the default value
                 step3Select: 'talent',
                 all_studies: [''],
-                selectedLevel:0,
-                selectedSection:0,
-                selectedStudy:0,
-                studiesArray:[],
-                checkedStudies:[],
-                studyTable:[],
-                levelsName:[],
-                sectionsName:[],
-                studiesName:[],
-                sectionsCounter:0,
-                exams:false,
-                studiesId:[],
+                selectedLevel: 0,
+                selectedSection: 0,
+                selectedStudy: 0,
+                studiesArray: [],
+                checkedStudies: [],
+                studyTable: [],
+                levelsName: [],
+                sectionsName: [],
+                studiesName: [],
+                sectionsCounter: 0,
+                exams: false,
+                studiesId: [],
                 end_at: null,
-                today:null,
-                col_iek_eng_dan_mus:false,
-                error:false,
-                terms:null
+                today: null,
+                col_iek_eng_dan_mus: false,
+                error: false,
+                content: ' <p>Scholarship <strong> Terms and Conditions</strong> rigth <span style="color: #ff0000;">here</span> &nbsp;&reg;</p>',
+                terms: 'Αναφέρετε τους  όρους και τις προϋποθέσεις της υποτροφίας',
+                withTerms:false,
+                tinyOptions: {
+                    height: 300,
+                    menubar: false,
+                    plugins: [
+                        'textcolor table autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code',
+                        'insertdatetime media table contextmenu paste code'
+                    ],
+                    toolbar: 'undo redo | insert copy paste | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor | table '
+                }
             }
         },
 
@@ -285,7 +342,9 @@ html .ui-button.ui-state-disabled:active {
             eww: function(){
                 console.log('as')
             },
+            tinyMCE: function() {
 
+            },
 
             todayDate: function() {
                 var today = new Date();
@@ -349,17 +408,21 @@ html .ui-button.ui-state-disabled:active {
                 this.todayDate();
 
                 /* This condition MUST CHANGE .. needed School_Type_ID from an API */
-                if (this.studyTable[0][0].section[0].level.id<4  ||  this.studyTable[0][0].section[0].level.id>21){
+                if (this.studyTable[0][0].section[0].level.id<7  ||  this.studyTable[0][0].section[0].level.id>21
+                ){
                     this.col_iek_eng_dan_mus=true
                 }
 
-
+                console.log(this.studyTable);
 
                 console.log('init DONE ! checkedStudies.length='+this.checkedStudies.length);
                 for (var level in this.studyTable ){
                     var i = this.studyTable[level][0].section[0].level;
                     this.levelsName[i.id] = i.name;
+//                    console.log(i.id)
                 }
+//                console.log(this.levelsName);
+
                   this.levelsName=this.levelsName.filter(function(e){return e});  //** Delete Empty Values **//
 
                    for (level in this.levelsName){
@@ -382,6 +445,7 @@ html .ui-button.ui-state-disabled:active {
                            }
                         }
                     }
+//                console.log(this.levelsName);
                 this.pullStudies()
                 this.countSections()
                 this.todayDate()
