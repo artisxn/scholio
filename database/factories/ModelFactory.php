@@ -46,7 +46,7 @@ $factory->define(App\Models\School::class, function (Faker\Generator $faker) {
 
     return [
         'name' => $faker->lastName,
-        'user_id' => factory(App\User::class)->create()->id,
+//        'user_id' => factory(App\User::class)->create()->id,
         'email' => $faker->unique()->safeEmail,
         'type_id' => $faker->numberBetween($min = 1, $max = 3),
         'address' => $faker->address,

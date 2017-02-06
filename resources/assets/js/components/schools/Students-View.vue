@@ -168,9 +168,10 @@
                 },
 
             getAllStudents: function(){
-                axios.get('/api/users/all')
+//                axios.get('/api/users/all')
+                axios.get('/connected/students')
                     .then(response => {
-                        this.students = response.data['users']
+                        this.students = response.data['students']
                         var st1= this.students;
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
                         for (var i in st1){

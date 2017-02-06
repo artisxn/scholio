@@ -146,7 +146,7 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image7);
         $school->image()->toggle($image8);
         $school->image()->toggle($image9);
-        $this->createUsers($school, 'students', [1,2,3,4,4,5]);
+        $this->createUsers($school, 'students', [1]);
         $this->createUsers($school, 'teachers', [12,13,14,15]);
         $this->createScholarship(3,2,600,4,2,1,1,1);
         $this->createScholarship(3,1,40,8,2,2,1,2);
@@ -505,6 +505,10 @@ class FakeSeeder extends Seeder
         $this->createScholarship(11,1,10,433,16,2,1,0);
         $this->createScholarship(11,2,200,437,20,1,1,3);
         $this->createScholarship(11,1,30,438,21,2,1,2);
+
+
+        factory(App\User::class, 15)->create(['role' => 'student']);
+
 
     }
 

@@ -14360,8 +14360,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getAllStudents: function getAllStudents() {
             var _this = this;
 
-            axios.get('/api/users/all').then(function (response) {
-                _this.students = response.data['users'];
+            //                axios.get('/api/users/all')
+            axios.get('/connected/students').then(function (response) {
+                _this.students = response.data['students'];
                 var st1 = _this.students;
                 st1.sort(_this.dynamicSort(_this.sortType, _this.sortReverse));
                 for (var i in st1) {
