@@ -3,6 +3,7 @@
 use App\Models\Financial;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Study;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -176,3 +177,31 @@ Route::get('/profile/{school}', function (School $school) {
 
     return $school->load('image', 'logo');
 })->middleware('api');
+
+Route::post('/scholarship/save', function () {
+    $message = [];
+    try {
+        $study = Study::find(request()->study_id);
+
+        $scholarship = new Scholarship;
+        $scholarship->school_id = request()->school_id;
+        $scholarship->financial_id = request()->financial_id;
+        $scholarship->financial_amount = request()->financial_amount;
+        $scholarship->study_id = request()->study_id;
+        $scholarship->level_id = $study->section[0]->level->id;
+        $scholarship->criteria_id = request()->criteria_id;
+        $scholarship->end_at = date("Y-m-d", strtotime(request()->end_at));
+        //$scholarship->winner_id = request()->winner_id;
+        $scholarship->terms = request()->terms;
+        if (request()->exams == 1) {
+            $scholarship->exams = true;
+        }
+        //$scholarship->exams_date = request()->exams_date;
+        $scholarship->save();
+        $message = ['SAVED SUCCESSFULY'];
+    } catch (\Exception $e) {
+        $message = ['ERROR ' . $e];
+    }
+
+    return $message;
+})->middleware('auth:api');

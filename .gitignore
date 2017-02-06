@@ -7,9 +7,9 @@ Homestead.json
 Homestead.yaml
 .env
 
-
 _public/storage
 _vendor
 
 node_modules/
 vendor/
+node_modules

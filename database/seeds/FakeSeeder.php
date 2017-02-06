@@ -48,13 +48,13 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image5);
         $school->image()->toggle($image6);
 
-        $this->createStudy($school, [206,207,208,209,210, 253,252, 279, 306,308,309,312,324]);
+        $this->createStudy($school, [206, 207, 208, 209, 210, 253, 252, 279, 306, 308, 309, 312, 324]);
         $this->createUsers($school, 'students', [1, 2]);
         $this->createUsers($school, 'teachers', [11, 12]);
-        $this->createScholarship(1,1,20,207,1,1,1,1);
-        $this->createScholarship(1,2,800,310,3,2,2,2);
-        $this->createScholarship(1,1,50,210,1,3,2,1);
-        $this->createScholarship(1,2,500,209,1,3,2,1);
+        $this->createScholarship(1, 1, 20, 207, 1, 1, 1, 1);
+        $this->createScholarship(1, 2, 800, 310, 3, 2, 2, 2);
+        $this->createScholarship(1, 1, 50, 210, 1, 3, 2, 1);
+        $this->createScholarship(1, 2, 500, 209, 1, 3, 2, 1);
 
         /*===============  2 AMC ================*/
         $school = factory(App\Models\School::class)->create([
@@ -90,15 +90,12 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image6);
         $school->image()->toggle($image7);
 
-
-        $this->createStudy($school, [202,204,205,240,241,244,245,246,249,250,255,256,257,258,259,260,261,
-        266,267,268,269,270, 281,282,283,284,285,286,287,  327,328,329, 330,331,332, 345,346, 349,350,351,352]);
-        $this->createUsers($school, 'students', [4,5]);
+        $this->createStudy($school, [202, 204, 205, 240, 241, 244, 245, 246, 249, 250, 255, 256, 257, 258, 259, 260, 261,
+            266, 267, 268, 269, 270, 281, 282, 283, 284, 285, 286, 287, 327, 328, 329, 330, 331, 332, 345, 346, 349, 350, 351, 352]);
+        $this->createUsers($school, 'students', [4, 5]);
         $this->createUsers($school, 'teachers', [11, 12]);
-        $this->createScholarship(2,2,500,240,1,1,1,5);
-        $this->createScholarship(2,1,30,350,3,2 ,1,5);
-
-
+        $this->createScholarship(2, 2, 500, 240, 1, 1, 1, 5);
+        $this->createScholarship(2, 1, 30, 350, 3, 2, 1, 5);
 
         /*===============  3 AKMH ================*/
         $school = factory(App\Models\School::class)->create([
@@ -120,13 +117,12 @@ class FakeSeeder extends Seeder
             ])->id,
         ]);
 
-        $this->createStudy($school, [1,4,6,8,11,13,15,17,18,19,20,22,24,25,28,29,
-        33,34,41,44,46,47,38,50,51,52,54,55,56,57,58,59,
-        65,67,69,71,73,77,78,79,
-        81,86,89,90,91,94,96,97,98,
-        106,108,110,113, 124,125,127, 130,132,134, 136, 140,141,142,
-        146,147,149,151,  155,157,159,161, 163,165,167,169, 174,175,177,178,179,180 ]);
-
+        $this->createStudy($school, [1, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
+            33, 34, 41, 44, 46, 47, 38, 50, 51, 52, 54, 55, 56, 57, 58, 59,
+            65, 67, 69, 71, 73, 77, 78, 79,
+            81, 86, 89, 90, 91, 94, 96, 97, 98,
+            106, 108, 110, 113, 124, 125, 127, 130, 132, 134, 136, 140, 141, 142,
+            146, 147, 149, 151, 155, 157, 159, 161, 163, 165, 167, 169, 174, 175, 177, 178, 179, 180]);
 
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/akmi-pic1.jpg', 'full_path' => 'fake/akmi-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/akmi-pic2.jpg', 'full_path' => 'fake/akmi-pic2.jpg']);
@@ -147,15 +143,13 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image8);
         $school->image()->toggle($image9);
         $this->createUsers($school, 'students', [1]);
-        $this->createUsers($school, 'teachers', [12,13,14,15]);
-        $this->createScholarship(3,2,600,4,2,1,1,1);
-        $this->createScholarship(3,1,40,8,2,2,1,2);
-        $this->createScholarship(3,2,1000,33,3,1,1,3);
-        $this->createScholarship(3,1,90,34,2,4 ,1,4);
-        $this->createScholarship(3,2,400,86,2,5,1,0);
-        $this->createScholarship(3,1,50,108,2,1 ,1,5);
-
-
+        $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
+        $this->createScholarship(3, 2, 600, 4, 2, 1, 1, 1);
+        $this->createScholarship(3, 1, 40, 8, 2, 2, 1, 2);
+        $this->createScholarship(3, 2, 1000, 33, 3, 1, 1, 3);
+        $this->createScholarship(3, 1, 90, 34, 2, 4, 1, 4);
+        $this->createScholarship(3, 2, 400, 86, 2, 5, 1, 0);
+        $this->createScholarship(3, 1, 50, 108, 2, 1, 1, 5);
 
         /*===============  4 Εκπαιδευτήρια Βασιλειάδη ================*/
         $school = factory(App\Models\School::class)->create([
@@ -177,8 +171,7 @@ class FakeSeeder extends Seeder
             ])->id,
         ]);
 
-        $this->createStudy($school, [423,424,425]);
-
+        $this->createStudy($school, [423, 424, 425]);
 
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/vasileiadi-pic1.jpg', 'full_path' => 'fake/vasileiadi-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/vasileiadi-pic2.jpg', 'full_path' => 'fake/vasileiadi-pic2.jpg']);
@@ -192,12 +185,11 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image4);
         $school->image()->toggle($image5);
         $school->image()->toggle($image6);
-        $this->createUsers($school, 'students', [1,2,3,4,4,5]);
-        $this->createUsers($school, 'teachers', [12,13,14,15]);
-        $this->createScholarship(4,2,400,423,4,1,1,1);
-        $this->createScholarship(4,1,30,424,5,2,1,0);
-        $this->createScholarship(4,2,300,425,6,1,1,3);
-
+        $this->createUsers($school, 'students', [1, 2, 3, 4, 4, 5]);
+        $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
+        $this->createScholarship(4, 2, 400, 423, 4, 1, 1, 1);
+        $this->createScholarship(4, 1, 30, 424, 5, 2, 1, 0);
+        $this->createScholarship(4, 2, 300, 425, 6, 1, 1, 3);
 
         /*===============  5 Εκπαιδευτήρια Φρυγανιώτη ================*/
         $school = factory(App\Models\School::class)->create([
@@ -219,8 +211,7 @@ class FakeSeeder extends Seeder
             ])->id,
         ]);
 
-        $this->createStudy($school, [423,424,425]);
-
+        $this->createStudy($school, [423, 424, 425]);
 
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/fryganioti-pic1.jpg', 'full_path' => 'fake/fryganioti-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/fryganioti-pic2.jpg', 'full_path' => 'fake/fryganioti-pic2.jpg']);
@@ -238,13 +229,11 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image6);
         $school->image()->toggle($image7);
         $school->image()->toggle($image8);
-        $this->createUsers($school, 'students', [1,2,3,4,4,5]);
-        $this->createUsers($school, 'teachers', [12,13,14,15]);
-        $this->createScholarship(5,2,500,423,4,1,1,0);
-        $this->createScholarship(5,1,30,424,5,2,1,0);
-        $this->createScholarship(5,2,200,425,6,1,1,0);
-
-
+        $this->createUsers($school, 'students', [1, 2, 3, 4, 4, 5]);
+        $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
+        $this->createScholarship(5, 2, 500, 423, 4, 1, 1, 0);
+        $this->createScholarship(5, 1, 30, 424, 5, 2, 1, 0);
+        $this->createScholarship(5, 2, 200, 425, 6, 1, 1, 0);
 
         /*===============   6 NYC   ================*/
         $school = factory(App\Models\School::class)->create([
@@ -276,16 +265,14 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image4);
         $school->image()->toggle($image5);
 
-        $this->createStudy($school, [211,212,213,214,215,216,217,218,219,220,227,234,235,237,242,243,247,248,250,252,258,262,265,270,271,272,273,274,295,296,297,
-        313,317,318,319,320,321,325,329,322,332,333,334,346,347,352]);
-        $this->createUsers($school, 'students', [1,2,3,4,5]);
-        $this->createUsers($school, 'teachers', [11, 12,13]);
-        $this->createScholarship(6,1,30,234,1,1,1,1);
-        $this->createScholarship(6,2,900,270,1,2,2,2);
-        $this->createScholarship(6,1,40,296,1,4,2,0);
-        $this->createScholarship(6,2,400,352,3,5,2,1);
-
-
+        $this->createStudy($school, [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 227, 234, 235, 237, 242, 243, 247, 248, 250, 252, 258, 262, 265, 270, 271, 272, 273, 274, 295, 296, 297,
+            313, 317, 318, 319, 320, 321, 325, 329, 322, 332, 333, 334, 346, 347, 352]);
+        $this->createUsers($school, 'students', [1, 2, 3, 4, 5]);
+        $this->createUsers($school, 'teachers', [11, 12, 13]);
+        $this->createScholarship(6, 1, 30, 234, 1, 1, 1, 1);
+        $this->createScholarship(6, 2, 900, 270, 1, 2, 2, 2);
+        $this->createScholarship(6, 1, 40, 296, 1, 4, 2, 0);
+        $this->createScholarship(6, 2, 400, 352, 3, 5, 2, 1);
 
         /*===============  7 Φροντιστήρια Μ.Ε.Υποδομή ================*/
         $school = factory(App\Models\School::class)->create([
@@ -307,8 +294,7 @@ class FakeSeeder extends Seeder
             ])->id,
         ]);
 
-        $this->createStudy($school, [353,354,355,356,357,358,359,426,427,428,429]);
-
+        $this->createStudy($school, [353, 354, 355, 356, 357, 358, 359, 426, 427, 428, 429]);
 
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/ypodomi-pic1.jpg', 'full_path' => 'fake/ypodomi-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/ypodomi-pic2.jpg', 'full_path' => 'fake/ypodomi-pic2.jpg']);
@@ -322,12 +308,11 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image4);
         $school->image()->toggle($image5);
         $school->image()->toggle($image6);
-        $this->createUsers($school, 'students', [1,2,3,4,4,5]);
-        $this->createUsers($school, 'teachers', [12,13,14,15]);
-        $this->createScholarship(7,2,400,353,5,1,1,1);
-        $this->createScholarship(7,1,30,356,6,2,1,0);
-        $this->createScholarship(7,2,300,358,6,1,1,3);
-
+        $this->createUsers($school, 'students', [1, 2, 3, 4, 4, 5]);
+        $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
+        $this->createScholarship(7, 2, 400, 353, 5, 1, 1, 1);
+        $this->createScholarship(7, 1, 30, 356, 6, 2, 1, 0);
+        $this->createScholarship(7, 2, 300, 358, 6, 1, 1, 3);
 
         /*===============  8 Εκπαιδευτήρια Απόστολος Παύλος  ================*/
         $school = factory(App\Models\School::class)->create([
@@ -335,7 +320,7 @@ class FakeSeeder extends Seeder
             'user_id' => factory(App\User::class)->create(['name' => 'Takis', 'email' => 'takis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Κένεντι 119, Πυλαία',
             'city' => 'Θεσσαλονίκη',
-            'email' =>'gymnasio@eap.edu.gr',
+            'email' => 'gymnasio@eap.edu.gr',
             'phone' => 2310329540,
             'type_id' => 7,
             'website' => 'eap.edu.gr',
@@ -349,8 +334,7 @@ class FakeSeeder extends Seeder
             ])->id,
         ]);
 
-        $this->createStudy($school, [430,431,432]);
-
+        $this->createStudy($school, [430, 431, 432]);
 
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/eap-pic1.jpg', 'full_path' => 'fake/eap-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/eap-pic2.jpg', 'full_path' => 'fake/eap-pic2.jpg']);
@@ -368,13 +352,11 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image6);
         $school->image()->toggle($image7);
         $school->image()->toggle($image8);
-        $this->createUsers($school, 'students', [1,2,3,4,4,5]);
-        $this->createUsers($school, 'teachers', [12,13,14,15]);
-        $this->createScholarship(8,2,400,430,13,1,1,1);
-        $this->createScholarship(8,1,30,431,14,2,1,0);
-        $this->createScholarship(8,2,300,432,15,1,1,3);
-
-
+        $this->createUsers($school, 'students', [1, 2, 3, 4, 4, 5]);
+        $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
+        $this->createScholarship(8, 2, 400, 430, 13, 1, 1, 1);
+        $this->createScholarship(8, 1, 30, 431, 14, 2, 1, 0);
+        $this->createScholarship(8, 2, 300, 432, 15, 1, 1, 3);
 
         /*===============  9 Ευρωγνώση Τσιμισκή ================*/
         $school = factory(App\Models\School::class)->create([
@@ -382,7 +364,7 @@ class FakeSeeder extends Seeder
             'user_id' => factory(App\User::class)->create(['name' => 'Makis', 'email' => 'makis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Τσιμισκή 102 & Παύλου Μελά',
             'city' => 'Θεσσαλονίκη',
-            'email' =>'tsimiski@eurognosi.info',
+            'email' => 'tsimiski@eurognosi.info',
             'phone' => 2310262255,
             'type_id' => 4,
             'website' => 'eurognosi.com',
@@ -396,8 +378,7 @@ class FakeSeeder extends Seeder
             ])->id,
         ]);
 
-        $this->createStudy($school, [360,361,362,363,371,372,373,382,384,387,388,390] );
-
+        $this->createStudy($school, [360, 361, 362, 363, 371, 372, 373, 382, 384, 387, 388, 390]);
 
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/eurognosi-pic1.jpg', 'full_path' => 'fake/eurognosi-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/eurognosi-pic2.jpg', 'full_path' => 'fake/eurognosi-pic2.jpg']);
@@ -411,13 +392,12 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image4);
         $school->image()->toggle($image5);
         $school->image()->toggle($image6);
-        $this->createUsers($school, 'students', [1,2,3,4,4,5]);
-        $this->createUsers($school, 'teachers', [12,13,14,15]);
-        $this->createScholarship(9,2,400,360,22,1,1,1);
-        $this->createScholarship(9,1,30,372,23,2,1,0);
-        $this->createScholarship(9,2,300,373,23,1,1,3);
-        $this->createScholarship(9,3,2,390,24,1,1,3);
-
+        $this->createUsers($school, 'students', [1, 2, 3, 4, 4, 5]);
+        $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
+        $this->createScholarship(9, 2, 400, 360, 22, 1, 1, 1);
+        $this->createScholarship(9, 1, 30, 372, 23, 2, 1, 0);
+        $this->createScholarship(9, 2, 300, 373, 23, 1, 1, 3);
+        $this->createScholarship(9, 3, 2, 390, 24, 1, 1, 3);
 
         /*===============  10 Danza Fuerte ================*/
         $school = factory(App\Models\School::class)->create([
@@ -425,7 +405,7 @@ class FakeSeeder extends Seeder
             'user_id' => factory(App\User::class)->create(['name' => 'Lakis', 'email' => 'lakis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Αριστοτέλους 23, Κέντρο',
             'city' => 'Θεσσαλονίκη',
-            'email' =>'danzafuerte@gmail.com',
+            'email' => 'danzafuerte@gmail.com',
             'phone' => 2310262255,
             'type_id' => 10,
             'website' => 'danzafuerte.gr',
@@ -439,8 +419,7 @@ class FakeSeeder extends Seeder
             ])->id,
         ]);
 
-        $this->createStudy($school, [393,395,396,397,402,  403,409,410,  413,414,415,422 ] );
-
+        $this->createStudy($school, [393, 395, 396, 397, 402, 403, 409, 410, 413, 414, 415, 422]);
 
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/danzafuerte-pic1.jpg', 'full_path' => 'fake/danzafuerte-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/danzafuerte-pic2.jpg', 'full_path' => 'fake/danzafuerte-pic2.jpg']);
@@ -454,15 +433,12 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image4);
         $school->image()->toggle($image5);
         $school->image()->toggle($image6);
-        $this->createUsers($school, 'students', [1,2,3,4,4,5]);
-        $this->createUsers($school, 'teachers', [12,13,14,15]);
-        $this->createScholarship(10,2,100,393,25,1,1,1);
-        $this->createScholarship(10,1,10,397,25,2,1,0);
-        $this->createScholarship(10,2,200,410,26,1,1,3);
-        $this->createScholarship(10,3,1,422,27,1,1,3);
-
-
-
+        $this->createUsers($school, 'students', [1, 2, 3, 4, 4, 5]);
+        $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
+        $this->createScholarship(10, 2, 100, 393, 25, 1, 1, 1);
+        $this->createScholarship(10, 1, 10, 397, 25, 2, 1, 0);
+        $this->createScholarship(10, 2, 200, 410, 26, 1, 1, 3);
+        $this->createScholarship(10, 3, 1, 422, 27, 1, 1, 3);
 
         /*===============  11 Αδαμάντιος Σχολή ================*/
         $school = factory(App\Models\School::class)->create([
@@ -470,7 +446,7 @@ class FakeSeeder extends Seeder
             'user_id' => factory(App\User::class)->create(['name' => 'Nakis', 'email' => 'nakis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Λεωφ. Γεωργικής Σχολής 44, Πυλαία',
             'city' => 'Θεσσαλονίκη',
-            'email' =>'info@adamantios.gr',
+            'email' => 'info@adamantios.gr',
             'phone' => 2310472474,
             'type_id' => 8,
             'website' => 'adamantios.gr',
@@ -484,8 +460,7 @@ class FakeSeeder extends Seeder
             ])->id,
         ]);
 
-        $this->createStudy($school, [433,434,435,436,437,438] );
-
+        $this->createStudy($school, [433, 434, 435, 436, 437, 438]);
 
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/adamantios-pic1.jpg', 'full_path' => 'fake/adamantios-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/adamantios-pic2.jpg', 'full_path' => 'fake/adamantios-pic2.jpg']);
@@ -499,24 +474,16 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image4);
         $school->image()->toggle($image5);
         $school->image()->toggle($image6);
-        $this->createUsers($school, 'students', [1,2,3,4,4,5]);
-        $this->createUsers($school, 'teachers', [12,13,14,15]);
-        $this->createScholarship(11,2,100,433,16,2,1,1);
-        $this->createScholarship(11,1,10,433,16,2,1,0);
-        $this->createScholarship(11,2,200,437,20,1,1,3);
-        $this->createScholarship(11,1,30,438,21,2,1,2);
-
+        $this->createUsers($school, 'students', [1, 2, 3, 4, 4, 5]);
+        $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
+        $this->createScholarship(11, 2, 100, 433, 16, 2, 1, 1);
+        $this->createScholarship(11, 1, 10, 434, 16, 2, 1, 0);
+        $this->createScholarship(11, 2, 200, 437, 20, 1, 1, 3);
+        $this->createScholarship(11, 1, 30, 438, 21, 2, 1, 2);
 
         factory(App\User::class, 15)->create(['role' => 'student']);
 
-
     }
-
-
-
-
-
-
 
     public function createStudy($school, $id)
     {
@@ -538,16 +505,16 @@ class FakeSeeder extends Seeder
         }
     }
 
-    public function createScholarship($id,$fid,$fam,$sid,$lid,$crid,$wid)
+    public function createScholarship($id, $financial_id, $financial_amount, $study_id, $level_id, $criteria_id, $winner_id)
     {
         $scholarship = new Scholarship;
         $scholarship->school_id = $id;
-        $scholarship->financial_id = $fid;
-        $scholarship->financial_amount = $fam;
-        $scholarship->study_id = $sid;
-        $scholarship->level_id = $lid;
-        $scholarship->criteria_id = $crid;
-        $scholarship->winner_id = $wid;
+        $scholarship->financial_id = $financial_id;
+        $scholarship->financial_amount = $financial_amount;
+        $scholarship->study_id = $study_id;
+        $scholarship->level_id = $level_id;
+        $scholarship->criteria_id = $criteria_id;
+        $scholarship->winner_id = $winner_id;
         $scholarship->end_at = Carbon::now();
         $scholarship->save();
     }

@@ -21,14 +21,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::post('/ppp', function () {
-    $study = Study::find(request()->study_id);
-    $section_name = $study->section[0]->name;
-    $level_name = $study->section[0]->level->name;
-
-    return request()->end_at;
-});
-
 Auth::routes();
 
 Route::get('/register/school', 'SchoolRegistrationController@showSchoolRegistrationForm');
@@ -162,9 +154,11 @@ Route::get('connected/students', function () {
     $school = School::where('user_id', auth()->user()->id)->first();
     $users = $school->users;
     $students = [];
-    foreach ($users as $user){
-        if($user->role == "student")
-            array_push($students,$user);
+    foreach ($users as $user) {
+        if ($user->role == "student") {
+            array_push($students, $user);
+        }
+
     }
 
     $data = array(
@@ -178,9 +172,11 @@ Route::get('connected/teachers', function () {
     $school = School::where('user_id', auth()->user()->id)->first();
     $users = $school->users;
     $teachers = [];
-    foreach ($users as $user){
-        if($user->role == "teacher")
-            array_push($teachers,$user);
+    foreach ($users as $user) {
+        if ($user->role == "teacher") {
+            array_push($teachers, $user);
+        }
+
     }
 
     $data = array(

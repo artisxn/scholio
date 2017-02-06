@@ -282,11 +282,9 @@ html .ui-button.ui-state-disabled:active {
             )
 
             Event.$on('datePick',function  (val) {
-                        vm.end_at = val
+                    vm.end_at = val
                     vm.errorDate()
-            }
-
-
+                }
             )
 
 
@@ -462,23 +460,23 @@ html .ui-button.ui-state-disabled:active {
                     }
                 },
                 errorDate: function (){
-
                     var today=this.today
                     var end=this.end_at
                     today = new Date( today.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
                     end = new Date( end.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
-                    console.log( today)
-                    console.log( end)
+                    console.log(today)
+                    console.log(end)
                     if(today>end){ this.error=true}
                     else{ this.error=false }
                     console.log( 'error='+this.error)
-
                 },
 
 
                 saveScholarship: function(){
+                    var temp = 0;
+                    if(this.exams) temp = 1;
                     if(!this.col_iek_eng_dan_mus){this.selectedLevel=this.selectedStudy}
-                    axios.post('/ppp', {
+                    axios.post('/api/scholarship/save', {
                         'school_id': window.Connection,
                         'financial_id': this.financial_id,
                         'financial_amount': this.financial_amount,
@@ -486,8 +484,8 @@ html .ui-button.ui-state-disabled:active {
                         'criteria_id': this.criteria_id,
                         'end_at': this.end_at,
                         'winner_id': 0,
-//                        'exams':this.exams,
-//                        'terms':this.terms
+                        'exams':temp,
+                        'terms':this.terms
                     })
                     .then(response=>{
                         console.log('SAVE study= '+this.studiesArray[this.selectedStudy])
