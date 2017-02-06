@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\File;
 
 Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate');
 
-Route::get('scholarships/view', 'AdminPanelController@scholarshipView');
+Route::get('scholarships/view', 'AdminPanelController@scholarshipView')->name('scholarship-view');
 
 Route::get('dashboard', 'AdminPanelController@dashboard');
 

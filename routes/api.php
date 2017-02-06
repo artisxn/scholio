@@ -179,7 +179,7 @@ Route::get('/profile/{school}', function (School $school) {
 })->middleware('api');
 
 Route::post('/scholarship/save', function () {
-    $message = [];
+    $data = [];
     try {
         $study = Study::find(request()->study_id);
 
@@ -198,10 +198,12 @@ Route::post('/scholarship/save', function () {
         }
         //$scholarship->exams_date = request()->exams_date;
         $scholarship->save();
-        $message = ['SAVED SUCCESSFULY'];
+        $data = ['message' => 'SAVED SUCCESSFULLY', 'redirect' => route('scholarship-view')];
     } catch (\Exception $e) {
-        $message = ['ERROR ' . $e];
+        $data = ['message' => 'ERROR ' . $e];
     }
 
-    return $message;
+    // return redirect()->route('scholarship-view');
+
+    return $data;
 })->middleware('auth:api');

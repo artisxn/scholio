@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/qwe', function () {
+    return redirect()->route('scholarship-view');
+});
+
 Auth::routes();
 
 Route::get('/register/school', 'SchoolRegistrationController@showSchoolRegistrationForm');

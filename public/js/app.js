@@ -13772,8 +13772,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     watch: {},
@@ -14002,6 +14000,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log('SAVE study= ' + _this4.studiesArray[_this4.selectedStudy]);
                 console.log('SAVE study_id= ' + _this4.studiesId[_this4.selectedStudy]);
                 console.log(response.data);
+                window.location = response.data.redirect;
             });
         }
     }
@@ -17279,7 +17278,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* jQuery Datepicker scholio Styling */\n.ui-widget-header {\n    background: #00bcd4; \n    color: #fff\n}\n.ui-icon, .ui-icon:hover  {\n    width: 16px;\n    height: 16px;\n    /*background-color: #00bcd4;*/\n}\n.ui-widget-header .ui-icon {\n    background-image: url(\"/images/ui-icons_ffffff_256x240.png\");\n}\n.ui-state-default,\n.ui-widget-content .ui-state-default,\n.ui-widget-header .ui-state-default,\n.ui-button,\nhtml .ui-button.ui-state-disabled:hover,\nhtml .ui-button.ui-state-disabled:active {\n    border: none;\n    background: #f4f4f4;\n    /*font-weight: bold;*/\n    color: #004276;\n}\n.ui-state-highlight,\n.ui-widget-content .ui-state-highlight,\n.ui-widget-header .ui-state-highlight {\n    border: none;\n    background: #008da5 ;\n    color: #fff;\n}\n.ui-state-active,\n.ui-widget-content .ui-state-active,\n.ui-widget-header .ui-state-active,\n.ui-button:active,\n.ui-button.ui-state-active:hover{\n    background: #00bcd4;\n    /*font-weight: bold;*/\n    color: #fff;\n}\n.error {color: red\n}\n.step4MinHeight {min-height: 300px!important;\n}\n@media (min-width: 1420px) {\n#step-4 .step .step-box { width: 1100px;  margin-left: -290px; margin-right: auto\n}\n}\n@media (min-width: 1220px) and (max-width: 1419px) {\n#step-4 .step .step-box { width: 900px;  margin-left: -190px; margin-right: auto\n}\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* jQuery Datepicker scholio Styling */\n.ui-widget-header {\n    background: #00bcd4; \n    color: #fff\n}\n.ui-icon, .ui-icon:hover  {\n    width: 16px;\n    height: 16px;\n    /*background-color: #00bcd4;*/\n}\n.ui-widget-header .ui-icon {\n    background-image: url(\"/images/ui-icons_ffffff_256x240.png\");\n}\n.ui-state-default,\n.ui-widget-content .ui-state-default,\n.ui-widget-header .ui-state-default,\n.ui-button,\nhtml .ui-button.ui-state-disabled:hover,\nhtml .ui-button.ui-state-disabled:active {\n    border: none;\n    background: #f4f4f4;\n    /*font-weight: bold;*/\n    color: #004276;\n}\n.ui-state-highlight,\n.ui-widget-content .ui-state-highlight,\n.ui-widget-header .ui-state-highlight {\n    border: none;\n    background: #008da5 ;\n    color: #fff;\n}\n.ui-state-active,\n.ui-widget-content .ui-state-active,\n.ui-widget-header .ui-state-active,\n.ui-button:active,\n.ui-button.ui-state-active:hover{\n    background: #00bcd4;\n    /*font-weight: bold;*/\n    color: #fff;\n}\n.error {color: red\n}\n.step4MinHeight {min-height: 300px!important;\n}\n@media (min-width: 1420px) {\n#step-4 .step .step-box { width: 1100px;  margin-left: -290px; margin-right: auto\n}\n}\n@media (min-width: 1220px) and (max-width: 1419px) {\n#step-4 .step .step-box { width: 900px;  margin-left: -190px; margin-right: auto\n}\n}\n\n", ""]);
 
 // exports
 

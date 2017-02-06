@@ -91,8 +91,6 @@
                                                     {{level}}
                                             </option>
                                         </select>
-
-
                                     </div>
                                 </div>
 
@@ -491,6 +489,7 @@ html .ui-button.ui-state-disabled:active {
                         console.log('SAVE study= '+this.studiesArray[this.selectedStudy])
                         console.log('SAVE study_id= '+this.studiesId[this.selectedStudy])
                         console.log(response.data)
+                        window.location = response.data.redirect
                     })
                 }
             }
