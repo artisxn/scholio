@@ -14,5 +14,8 @@
     "lodash": "^4.16.2",
     "vue": "^2.0.1",
     "laravel-echo": "0.0.16"
+  },
+  "dependencies": {
+    "vue-tinymce": "^1.0.5"
   }
 }

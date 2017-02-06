@@ -1,6 +1,8 @@
 <template>
     <div id="content">
-        <div style="margin-left: 20px;">
+
+
+        <div style="margin-left: 20px;" v-if="col_iek_eng_dan_mus">
             <h3  class="title ml20" style="margin-left: -10px">Επιλογή Ειδικοτήτων Σπουδών</h3>
             <div class="row margin-top-30">
                 <div v-if="studies.length">
@@ -47,6 +49,11 @@
             </span>
                     <div class="clearfix" style="clear: both"></div>
 
+                    <!--<button class="btn btn-info" v-on:click="setSchoolStudies" style="margin-top: 20px; margin-left: 10px;" >-->
+                        <!--<i class="fa fa-check-square-o"  aria-hidden="true" style="margin-right: 10px;"></i>-->
+                        <!--Οριστικοποίηση Επιλογών-->
+                    <!--</button>-->
+
                     <hr style="	height: 10px;!important; border: 0; box-shadow: 0 10px 10px -10px #324c5a inset; margin-top: 30px; margin-left: 10px; margin-right: 30px;">
 
                     <button class="btn btn-info" v-on:click="clearAllStudies" style="margin-top: 20px; margin-left: 10px;" v-if="checkedStudies.length">
@@ -82,6 +89,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div v-if="!col_iek_eng_dan_mus">
+            <h3  class="title ml20" style="margin-left: -10px">Επιλογή Επιπέδων Σπουδών</h3>
+            <div>
+                <div v-for="(level,indexLevel) in all_studies">
+                    <div v-for="(section,indexSection) in all_studies[indexLevel].section">
+                        <div v-for="(study,indexStudy) in all_studies[indexLevel].section[indexSection].study">
+                            <input
+                                   type="checkbox"
+                                   :checked="study.status"
+                                   @click="IfCheck(indexStudy, study.status, study.id, studies[indexLevel].id, studies[indexLevel].section[indexSection].id,indexLevel,indexStudy)"
+                                   :value="study.id"
+                                   v-model="checkedStudies"
+                            ><label for=""> </label>
+                            {{ study.name}}
+                            <!--&#45;&#45;{{indexLevel}}.{{indexLevel}}.{{indexStudy}}=={{study.id}}-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
 
 </template>
@@ -157,8 +189,8 @@
                 levels: [],
                 sections: [],
                 testClass: true,
-                test: [],
-                testTable: []
+                col_iek_eng_dan_mus:false,
+                checkedStudiesTemp:{}
             }
 
         },
@@ -227,21 +259,39 @@
                 this.init();
             },
 
-            IfCheck: function (ppp, check, studyID, levelID,sectionID) {
+            IfCheck: function (indexStudy, check, studyID, levelID,sectionID,indLev,indSec) {
+
+                if(!this.col_iek_eng_dan_mus){
+                    this.selectedLevel=indLev
+                    this.selectedSection=indSec
+                    console.log(indLev,indLev,indexStudy,studyID)
+                }
+
                 var i = this.selectedLevel;
                 var j = this.selectedSection;
-                var k = ppp;
+                var k = indexStudy;
                 this.all_studies[i].section[j].study[k].status = !this.all_studies[i].section[j].study[k].status;
                 this.studiesStatus[i][j][k] = !this.studiesStatus[i][j][k];
                 if (!check) {
                     this.levels[levelID]++;           // level[0]=3 έχουμε επιλεξει 3 sections apo to level[0]
                     this.sections[levelID][sectionID]++;      // sections[0][0]=3 έχουμε επιλεξει 3 studies apo to sections[0][0]
-                    this.checkedStudies.push(studyID);
+
+//                    NO PUSH with v-model >>> push item, pushes the item for 2nd time after v-model sync
+//              this.checkedStudies.push(studyID);
+
+                    console.log(this.checkedStudies)
+//                    console.log(this.checkedStudies.length)
                 } else {
                     this.levels[levelID]--;
-                    this.sections[levelID][sectionID]--;
+//                    this.sections[levelID][sectionID]--;
                     var index = this.checkedStudies.indexOf(studyID);
-                    this.checkedStudies.splice(index, 1);
+
+                    console.log(this.checkedStudies)
+//                    console.log(this.checkedStudies.length)
+
+//                    NO SPLICE  with vue model >>> splice item, delete the item for 2nd time
+//                    this.checkedStudies.splice(index, 1);
+                    console.log('studyId='+studyID,' index='+index)
                 }
                 this.setSchoolStudies();
             },
@@ -286,6 +336,13 @@
             },
 
             init: function () {
+
+                /* This condition MUST CHANGE .. needed School_Type_ID from an API */
+              if (this.all_studies[0].section[0].study[0].name!=this.all_studies[0].name){
+                  this.col_iek_eng_dan_mus=true
+              }
+                console.log(this.col_iek_eng_dan_mus)
+
                 console.log('init DONE ! checkedStudies.length='+this.checkedStudies.length);
                 for (var level = 0; level < this.checkedStudies.length; level++){
                     var i = this.testTable[level][0].section[0].level.id;
@@ -293,6 +350,8 @@
                     this.levels[i]++
                     this.sections[i][j]++
                 }
+                console.log(this.checkedStudies)
+                console.log(this.checkedStudies.length)
             }
         }
     }

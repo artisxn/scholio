@@ -15,8 +15,8 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Πλάνο Υποτροφίας</th>
-                                            <th>Υποτροφία</th>
-                                            <th>Τύπος Σπουδών</th>
+                                            <th>Ποσό</th>
+                                            <th v-if="showLevel">Τύπος Σπουδών</th> <!-- condition MUST CHANGE-->
                                             <th>Επίπεδο Σπουδών</th>
                                             <th>Κριτήρια</th>
                                             <th>Ημερομηνία Λήξης</th>
@@ -27,8 +27,12 @@
                                         <tr v-for="scholarship in scholarships">
                                             <td>{{ scholarship.id }}</td>
                                             <td>{{ scholarship.financial.plan }}</td>
-                                            <td>{{ scholarship.financial_amount }}</td>
-                                            <td>{{ scholarship.study.name}}</td>
+                                            <td>{{ scholarship.financial_amount }}
+                                                <span v-if="scholarship.financial.id==1">%</span>
+                                                <span v-if="scholarship.financial.id==2">€</span>
+                                                <span v-if="scholarship.financial.id==3">μήνες</span></td>
+                                            </td>
+                                            <td v-if="showLevel">{{ scholarship.study.name}}</td>
                                             <td>{{ scholarship.level.name}}</td>
                                             <td>{{ scholarship.criteria_id }}</td>
                                             <td>{{ scholarship.end_at }}</td>
@@ -46,11 +50,15 @@
 </template>
 
 <script>
+    import VueTinymce from 'vue-tinymce'
+    Vue.use(VueTinymce)
+
     export default {
 
         data: function() {
             return{
-                scholarships: {}
+                scholarships: {},
+                showLevel:false
             }
         },
 
@@ -58,9 +66,11 @@
             getScholarships: function(){
                 axios.get('/api/scholarship/' + window.Connection)
                     .then(response => {
-                        console.log(response.data)
+//                        console.logo(response.data)
                         this.scholarships = response.data
+                        if(this.scholarships[0].level.id<4 || this.scholarships[0].level.id>21 ) {this.showLevel=true}
                     });
+
             }
         },
 

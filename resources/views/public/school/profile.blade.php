@@ -67,14 +67,19 @@
 
         .show-more {  padding-top: 30px;  text-align: center; color: #777; font-weight: 200 }
         .show-more:hover {cursor: pointer; color: #008da5; font-weight: 300}
+
+        .bx-wrapper img {height: 220px !important;}
+
     </style>
 </head>
-<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp">
+<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp" ng-cloak>
 <!-- Scholio Header -->
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
-    <div class="container">
-        <div class="row">
+
+    <div class="container" style="">
+            <div class="row">
+
             <div class="col-md-1 visible-lg visible-md nav-web">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="#home">
@@ -99,7 +104,8 @@
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
                     <li class="sc-landing-menu-item"><a href="#sxetika" >ΣΧΕΤΙΚΑ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#spoudes">ΣΠΟΥΔΕΣ</a></li>
+                    {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
+                    <li class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#reviews">ΑΞΙΟΛΟΓΗΣΕΙΣ</a></li>
                     <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
@@ -145,7 +151,9 @@
 <!-- Scholio Main Section. -->
 <div>
     <main id="main"  class="main"  ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
-        <div class="container">
+
+        <div class="container" style="">
+
             <div class="row up">
             </div>
             <div class="up">
@@ -164,7 +172,7 @@
             </div>
 
             <!-- BX SLIDER -->
-            <div class="">
+            <div class=" ">
                 <div class="row xl-margin-right " style="padding-left: 0px; padding-right: -2px">
                     <ul class="bxslider  "  data-bx-slider="
                 pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
@@ -202,6 +210,7 @@
                 <nav class="spy sticky-bar-affix hidden-sm hidden-xs" data-spy="affix"  data-offset-top="370" id="header2" >
                     <ul class="nav nav-ul sc-dark-blue" style="">
                         <li class=""><a class="pull-left sc-t-white " href="#sxetika">Σχετικά</a></li>
+                                {{--ng-if="studies.length && col_iek_eng_dan_mus" --}}
                         <li><a class="pull-left sc-t-white" href="#spoudes">Σπουδές</a></li>
                         <li><a class="pull-left sc-t-white" href="#ypotrofies">Υποτροφίες</a></li>
                         <li><a class="pull-left sc-t-white" href="#reviews">Αξιολογήσεις</a></li>
@@ -225,7 +234,7 @@
                     </div>
 
                     <!-- Σπουδές -->
-                    <div ng-if="studies.length">
+                    <div ng-if="studies.length && col_iek_eng_dan_mus">
                         <div class="row main-box2 margin-bot-25" >
                             <div ng-class="['content', {'hideContent':!showContent}]">
                                 <div class="section-header2" id="spoudes">
@@ -234,14 +243,14 @@
                                     </p>
                                 </div>
 
-                                <div ng-repeat="(levIndex, level) in levelsName" >
+                                <div ng-repeat="(levIndex, level) in levelsName">
                                     <ul ng-class="[{'col-md-6': (levelsName.length>1)},'col-sm-12']">
-                                        <div class=" text-incr-175 font-weight-300 margin-top-10" style="text-decoration: underline;"> @{{ level}} </div>
-                                        <ul ng-repeat="(secIndex, section) in sectionsName[$index]">
+                                        <div class=" text-incr-175 font-weight-300 margin-top-10" style="text-decoration: underline;" ng-if="contactInfo.type_id!=2">  @{{ level}} </div>
+                                        <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="{'col-lg-6': (contactInfo.type_id==2)}">
 
                                             <li class="margin-top-20">
-                                                <img ng-src="/panel/assets/images/steps/@{{section}}.png" alt="" style="height: 22px; margin-top: -12px; filter: grayscale(90%); opacity: 0.8" class="margin-left-20">
-                                                <span class="pad-left-5 text-incr-150 font-weight-100" style="">@{{ section}} </span>
+                                                <img ng-src="/panel/assets/images/steps/@{{section}}.png" alt="" style="height: 22px; margin-top: -12px; filter: grayscale(90%); opacity: 0.8" class="margin-left-20" >
+                                                <span class="pad-left-5 text-incr-150 font-weight-100" style="" >@{{ section}} </span>
                                             </li>
 
                                            {{--@{{levIndex}} , , @{{secIndex}}--}}
@@ -369,7 +378,7 @@
                             <div class="pad-top-20"></div>
                             <span><i class="ion-person-stalker  pull-left pad-top-2 " aria-hidden="true"></i></span>
                             <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">Συνδ. Φοιτητές</span>
-                            <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==6">Συνδ. Μαθητές</span>
+                            <span class="pull-left pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">Συνδ. Μαθητές</span>
                             <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
                             <br>
                             <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
@@ -413,9 +422,9 @@
 
                     </div>
                     <div class="panel-body">
-                        <img  class=" mini-thumb pull-left margin-right-10" style=""
+                        <img  class="pull-left margin-right-10" style="height: 45px;"
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
-                        <span>Με τη σύνδεσή σας στο @{{contactInfo.type }} @{{ contactInfo.name }} θα έχετε τη δυνατότητα να το αξιολογήσετε.</span>
+                        <span>@{{contactInfo.type }} @{{ contactInfo.name }}:   Με τη σύνδεσή σας θα έχετε τη δυνατότητα να γράψετε την αξιολόγησή σας.</span>
                     </div>
 
                     <div class="modal-footer">
@@ -466,6 +475,12 @@ var lengthStudents = 0;
                 $scope.init = function () {
 
 
+
+
+                    $scope.col_iek_eng_dan_mus = false;
+
+
+
                     $scope.contactInfo = $http.get('/api/profile/{{ $id }}', {
                         headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
                     }).success(function(data){
@@ -475,8 +490,13 @@ var lengthStudents = 0;
                         if( $scope.studies.length){
                             $scope.initial();
                         }
+                        if ($scope.contactInfo.type_id==1 || $scope.contactInfo.type_id==2  || $scope.contactInfo.type_id==3 ||
+                            $scope.contactInfo.type_id==4 || $scope.contactInfo.type_id==10 || $scope.contactInfo.type_id==11
+                        )
+                        {$scope.col_iek_eng_dan_mus  = true}
                         console.timeEnd('contactInfo API');
                     });
+
 
                     $scope.levelsName=[];
                     $scope.sectionsName=[];
