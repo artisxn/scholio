@@ -24,6 +24,10 @@
             window.Connection = {{ $connection->id }}
         </script>
 
+        <script>
+            window.SchoolType = '{{ $connection->type->name }}'
+        </script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         @yield('scriptsBefore')
     </head>
