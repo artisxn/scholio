@@ -4,24 +4,25 @@ use App\Models\Image;
 use App\Models\School;
 use Illuminate\Support\Facades\File;
 
-Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate');
+Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate')->name('scholarship-create');
 
 Route::get('scholarships/view', 'AdminPanelController@scholarshipView')->name('scholarship-view');
 
-Route::get('dashboard', 'AdminPanelController@dashboard');
+Route::get('dashboard', 'AdminPanelController@dashboard')->name('dashboard');
 
-Route::get('studies', 'AdminPanelController@studies');
+Route::get('studies', 'AdminPanelController@studies')->name('studies-select');
 
-Route::get('/teachers', 'AdminPanelController@teachers');
+Route::get('/teachers', 'AdminPanelController@teachers')->name('teachers');
 
-Route::get('/students', 'AdminPanelController@students');
+Route::get('/students', 'AdminPanelController@students')->name('students');
 
-Route::get('profile/images', 'AdminPanelController@imageProfile');
+Route::get('profile/images', 'AdminPanelController@imageProfile')->name('profile-images');
 
-Route::get('profile', 'AdminPanelController@editProfile');
+Route::get('profile', 'AdminPanelController@editProfile')->name('profile-edit');
+
 Route::post('profile/{id}', 'AdminPanelController@updateProfile');
 
-Route::get('requests', 'AdminPanelController@requests');
+Route::get('requests', 'AdminPanelController@requests')->name('requests');
 
 Route::post('profile/images/upload', function () {
     $school = School::where('user_id', auth()->user()->id)->first();
