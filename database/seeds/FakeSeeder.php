@@ -481,7 +481,7 @@ class FakeSeeder extends Seeder
         $this->createScholarship(11, 2, 200, 437, 20, 1, 1, 3);
         $this->createScholarship(11, 1, 30, 438, 21, 2, 1, 2);
 
-        factory(App\User::class, 15)->create(['role' => 'student']);
+        factory(App\User::class, 15)->create(['password' => bcrypt('123456'), 'role' => 'student']);
 
     }
 

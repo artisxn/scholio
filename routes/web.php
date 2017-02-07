@@ -246,3 +246,8 @@ Route::get('/test/profile/{school}', function (School $school) {
 
     return $school->load('image', 'logo', 'teachers');
 });
+
+Route::get('/connection/school/{school}', function (School $school) {
+    $school->users()->attach(auth()->user());
+    return 'OK';
+})->middleware('auth');
