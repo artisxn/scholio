@@ -13509,7 +13509,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function($) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_tinymce__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_tinymce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_tinymce__);
 //
@@ -13776,8 +13776,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tinymce___default.a);
 
+var max_chars = 100; //max characters
+var chars_without_html = 0;
+
 /* harmony default export */ __webpack_exports__["default"] = {
-    watch: {},
     computed: {
         studies: function studies() {
             return this.all_studies;
@@ -13827,9 +13829,28 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tinymce___default.a);
             terms: null,
             withTerms: false,
             tinyOptions: {
+                language_url: '/el.js',
+                entity_encoding: "raw",
                 height: 300,
                 menubar: false,
                 plugins: ['textcolor table autolink lists link image charmap print preview anchor', 'searchreplace visualblocks code', 'insertdatetime media table contextmenu paste code'],
+                setup: function setup(ed) {
+                    ed.on("KeyDown", function (ed, evt) {
+                        chars_without_html = $.trim(tinyMCE.activeEditor.getContent().replace(/(<([^>]+)>)/ig, "")).length;
+                        var key = ed.keyCode;
+                        console.log(ed.keyCode);
+
+                        var remaining = max_chars - chars_without_html;
+
+                        $('#chars_left').html(remaining);
+
+                        if (remaining <= 0 && key != 8 && key != 46) {
+                            ed.stopPropagation();
+                            ed.preventDefault();
+                            $('#chars_left').html('ΟΧΙ ΑΛΛΟ!');
+                        }
+                    });
+                },
                 toolbar: 'undo redo | insert copy paste | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor | table '
             }
         };
@@ -13997,6 +14018,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tinymce___default.a);
         }
     }
 };
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
 /* 39 */
@@ -18677,7 +18699,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.terms = $event
       }
     }
-  }), _vm._v("\n                            " + _vm._s(_vm.terms) + "\n                        ")], 1) : _vm._e()])])])])])])
+  }), _vm._v("\n                            " + _vm._s(_vm.terms) + " - "), _c('br'), _vm._v(" "), _vm._m(1)], 1) : _vm._e()])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
     staticClass: "clearfix"
@@ -18710,6 +18732,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Βήμα 4"), _c('br'), _c('small', {
     staticClass: "mar-le-10"
   }, [_vm._v("Όροι Συμμετοχής")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('span', [_vm._v("Characters left:")]), _vm._v(" "), _c('span', {
+    attrs: {
+      "id": "chars_left"
+    }
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -179,7 +179,7 @@
                                 <div id="" v-if="withTerms">
                                     <span style="color: transparent">.</span>
                                     <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
-                                    {{terms}}
+                                    {{terms}} - <br> <div><span>Characters left:</span> <span id="chars_left"></span></div>
                                 </div>
 
                                 <!--<div>-->
@@ -261,11 +261,11 @@ html .ui-button.ui-state-disabled:active {
 <script>
     import VueTinymce from 'vue-tinymce'
     Vue.use(VueTinymce)
+
+    var max_chars = 100; //max characters
+    var chars_without_html = 0;
     
     export default {
-        watch:{
-
-        },
         computed: {
             studies: function(){
                 return this.all_studies
@@ -285,8 +285,6 @@ html .ui-button.ui-state-disabled:active {
                     vm.errorDate()
                 }
             )
-
-
         },
         data: function() {
             return {
@@ -316,6 +314,8 @@ html .ui-button.ui-state-disabled:active {
                 terms: null,
                 withTerms:false,
                 tinyOptions: {
+                    language_url : '/el.js',
+                    entity_encoding : "raw",
                     height: 300,
                     menubar: false,
                     plugins: [
@@ -323,6 +323,23 @@ html .ui-button.ui-state-disabled:active {
                         'searchreplace visualblocks code',
                         'insertdatetime media table contextmenu paste code'
                     ],
+                    setup: function (ed) {
+                    ed.on("KeyDown", function (ed, evt) {
+                                        chars_without_html = $.trim(tinyMCE.activeEditor.getContent().replace(/(<([^>]+)>)/ig, "")).length;
+                                        var key = ed.keyCode;
+                                        console.log(ed.keyCode)
+
+                                        var remaining = max_chars - chars_without_html;
+
+                                        $('#chars_left').html(remaining);
+
+                                        if (remaining <= 0  && (key != 8 && key != 46)) {
+                                            ed.stopPropagation();
+                                            ed.preventDefault();
+                                            $('#chars_left').html('ΟΧΙ ΑΛΛΟ!')
+                                        }
+                                    });
+                },
                     toolbar: 'undo redo | insert copy paste | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor | table '
                 }
             }
