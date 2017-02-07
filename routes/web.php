@@ -23,6 +23,25 @@ Route::get('/lg', function () {
     return redirect('/');
 });
 //
+//
+
+Route::get('/test/{school}', function (School $school) {
+
+    $school->lengthStudents = $school->lengthStudents();
+    $school->lengthTeachers = $school->lengthTeachers();
+    $school->lengthStudies = $school->lengthStudies();
+    $school->lengthScholarships = $school->lengthScholarships();
+
+    $data = [];
+
+    foreach ($school->study as $study) {
+        array_push($data, App\Models\Study::with('section.level')->where('id', $study->id)->get());
+    }
+
+    $school->levels = $data;
+
+    return $school->load('image', 'logo', 'scholarship.financial', 'scholarship.criteria');
+});
 
 Route::get('/', function () {
     return view('index');

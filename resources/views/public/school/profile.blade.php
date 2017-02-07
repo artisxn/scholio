@@ -273,6 +273,7 @@
                     <!-- Υποτροφίες -->
                     <div class="row main-box margin-bot-25" id="ypotrofies">
                         <div class="section-header3">
+
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
                                 <i class="fa fa-trophy fa-linear margin-right-10" aria-hidden="true"></i> <span>Υποτροφίες </span>
                             </p>
@@ -434,6 +435,13 @@
                 </div>
             </div>
         </div><!-- /.modal -->
+
+{{-------------------------------------- TEXT TO HTML ΓΙΑ ΤΟ ABOUT --------------------------------------}}
+        <div ng-repeat="scholarship in contactInfo.scholarship">
+            <div ng-bind-html="trustAsHtml(scholarship.terms)"></div>
+        </div>
+{{-------------------------------------- TEXT TO HTML ΓΙΑ ΤΟ ABOUT --------------------------------------}}
+
     </main>
 </div>
 
@@ -469,12 +477,14 @@ $(function() {
 var lengthStudents = 0;
 
     angular.module("profileApp",[])
-            .controller("profileCtrl",function ($timeout,$scope,$http) {
+            .controller("profileCtrl",function ($timeout,$scope,$http, $sce) {
 
 
                 $scope.init = function () {
 
+                    $scope.trustAsHtml = $sce.trustAsHtml;
 
+                    $scope.message = null;
 
 
                     $scope.col_iek_eng_dan_mus = false;
@@ -487,6 +497,7 @@ var lengthStudents = 0;
                         console.time('contactInfo API');
                         $scope.contactInfo=data;
                         $scope.studies = data.levels;
+                        $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);
                         if( $scope.studies.length){
                             $scope.initial();
                         }

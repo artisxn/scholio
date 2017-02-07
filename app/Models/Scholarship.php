@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Criteria;
 use App\Models\Financial;
 use App\Models\Level;
 use App\Models\School;
@@ -29,6 +30,16 @@ class Scholarship extends Model
     public function financial()
     {
         return $this->belongsTo(Financial::class);
+    }
+
+    /**
+     *  Gets the financial plan of this scholarship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function criteria()
+    {
+        return $this->belongsTo(Criteria::class);
     }
 
     /**
