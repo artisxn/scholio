@@ -162,7 +162,6 @@ Route::get('/results/{type}', function ($type) {
 })->middleware('api');
 
 Route::get('/profile/{school}', function (School $school) {
-
     $school->lengthStudents = $school->lengthStudents();
     $school->lengthTeachers = $school->lengthTeachers();
     $school->lengthStudies = $school->lengthStudies();
@@ -174,9 +173,17 @@ Route::get('/profile/{school}', function (School $school) {
         array_push($data, App\Models\Study::with('section.level')->where('id', $study->id)->get());
     }
 
+    foreach ($school->scholarship as $scholarship) {
+        $scholarship->level = $scholarship->level;
+        $scholarship->section = $scholarship->study->section;
+        $scholarship->criteria = $scholarship->criteria->name;
+        $scholarship->financial = $scholarship->financial->plan;
+        $scholarship->length = $scholarship->usersLength();
+    }
+
     $school->levels = $data;
 
-    return $school->load('image', 'logo', 'scholarship.financial', 'scholarship.criteria');
+    return $school->load('image', 'logo');
 })->middleware('api');
 
 Route::post('/scholarship/save', function () {
@@ -191,7 +198,6 @@ Route::post('/scholarship/save', function () {
         $scholarship->study_id = request()->study_id;
         $scholarship->level_id = $study->section[0]->level->id;
         $scholarship->criteria_id = request()->criteria_id;
-        // $scholarship->end_at = date("m-d-Y", strtotime(request()->end_at));
         //$scholarship->winner_id = request()->winner_id;
         $scholarship->terms = request()->terms;
         if (request()->exams == 1) {
@@ -209,3 +215,8 @@ Route::post('/scholarship/save', function () {
 
     return $data;
 })->middleware('auth:api');
+
+Route::get('/scholarship/{scholarship}', function (Scholarship $scholarship) {
+    $scholarship->length = $scholarship->usersLength();
+    return $scholarship->load('financial', 'criteria');
+})->middleware('api');

@@ -215,3 +215,34 @@ Route::get('connected/teachers', function () {
 
     return $data;
 });
+
+Route::get('/scholarship/{scholarship}', function (Scholarship $scholarship) {
+    $scholarship->length = $scholarship->usersLength();
+    return $scholarship->load('financial', 'criteria');
+});
+
+Route::get('/test/profile/{school}', function (School $school) {
+
+    $school->lengthStudents = $school->lengthStudents();
+    $school->lengthTeachers = $school->lengthTeachers();
+    $school->lengthStudies = $school->lengthStudies();
+    $school->lengthScholarships = $school->lengthScholarships();
+
+    $data = [];
+
+    foreach ($school->study as $study) {
+        array_push($data, App\Models\Study::with('section.level')->where('id', $study->id)->get());
+    }
+
+    foreach ($school->scholarship as $scholarship) {
+        $scholarship->level = $scholarship->level;
+        $scholarship->section = $scholarship->study->section;
+        $scholarship->criteria = $scholarship->criteria->name;
+        $scholarship->financial = $scholarship->financial->plan;
+        $scholarship->length = $scholarship->usersLength();
+    }
+
+    $school->levels = $data;
+
+    return $school->load('image', 'logo', 'teachers');
+});
