@@ -11504,6 +11504,7 @@ window.Event = new Vue();
 
 Vue.component('notifications', __webpack_require__(53));
 Vue.component('notifications-table', __webpack_require__(52));
+Vue.component('scholarships-create', __webpack_require__(59));
 Vue.component('users-table', __webpack_require__(54));
 Vue.component('schools-table', __webpack_require__(61));
 Vue.component('scholarships-view', __webpack_require__(60));
@@ -11511,7 +11512,6 @@ Vue.component('students-view', __webpack_require__(62));
 Vue.component('teachers-view', __webpack_require__(64));
 Vue.component('resource-requests', __webpack_require__(58));
 Vue.component('studies-select', __webpack_require__(63));
-Vue.component('scholarships-create', __webpack_require__(59));
 
 /*
  *  Laravel Passport Components
@@ -13510,6 +13510,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_tinymce__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_tinymce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_tinymce__);
 //
 //
 //
@@ -13770,8 +13772,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tinymce___default.a);
 
 /* harmony default export */ __webpack_exports__["default"] = {
     watch: {},
@@ -13821,7 +13824,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             col_iek_eng_dan_mus: false,
             error: false,
             content: ' <p>Scholarship <strong> Terms and Conditions</strong> rigth <span style="color: #ff0000;">here</span> &nbsp;&reg;</p>',
-            terms: 'Αναφέρετε τους  όρους και τις προϋποθέσεις της υποτροφίας',
+            terms: null,
             withTerms: false,
             tinyOptions: {
                 height: 300,
@@ -13853,7 +13856,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 mm = '0' + mm;
             }
 
-            today = dd + '/' + mm + '/' + yyyy;
+            today = dd + '-' + mm + '-' + yyyy;
+            // today = mm + '-' + dd + '-' + yyyy
             //                console.log(today)
             this.end_at = today;
             this.today = today;
@@ -13963,20 +13967,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.selectedStudy = 0;
             }
         },
-        errorDate: function errorDate() {
-            var today = this.today;
-            var end = this.end_at;
-            today = new Date(today.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
-            end = new Date(end.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
-            console.log(today);
-            console.log(end);
-            if (today > end) {
-                this.error = true;
-            } else {
-                this.error = false;
-            }
-            console.log('error=' + this.error);
-        },
+        errorDate: function errorDate() {},
 
         saveScholarship: function saveScholarship() {
             var _this4 = this;
@@ -13997,6 +13988,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'exams': temp,
                 'terms': this.terms
             }).then(function (response) {
+                console.log('END AT >> ' + _this4.end_at);
                 console.log('SAVE study= ' + _this4.studiesArray[_this4.selectedStudy]);
                 console.log('SAVE study_id= ' + _this4.studiesId[_this4.selectedStudy]);
                 console.log(response.data);
@@ -14012,8 +14004,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_tinymce__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_tinymce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_tinymce__);
 //
 //
 //
@@ -14065,9 +14055,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_tinymce___default.a);
 
 /* harmony default export */ __webpack_exports__["default"] = {
 
@@ -17278,7 +17265,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* jQuery Datepicker scholio Styling */\n.ui-widget-header {\n    background: #00bcd4; \n    color: #fff\n}\n.ui-icon, .ui-icon:hover  {\n    width: 16px;\n    height: 16px;\n    /*background-color: #00bcd4;*/\n}\n.ui-widget-header .ui-icon {\n    background-image: url(\"/images/ui-icons_ffffff_256x240.png\");\n}\n.ui-state-default,\n.ui-widget-content .ui-state-default,\n.ui-widget-header .ui-state-default,\n.ui-button,\nhtml .ui-button.ui-state-disabled:hover,\nhtml .ui-button.ui-state-disabled:active {\n    border: none;\n    background: #f4f4f4;\n    /*font-weight: bold;*/\n    color: #004276;\n}\n.ui-state-highlight,\n.ui-widget-content .ui-state-highlight,\n.ui-widget-header .ui-state-highlight {\n    border: none;\n    background: #008da5 ;\n    color: #fff;\n}\n.ui-state-active,\n.ui-widget-content .ui-state-active,\n.ui-widget-header .ui-state-active,\n.ui-button:active,\n.ui-button.ui-state-active:hover{\n    background: #00bcd4;\n    /*font-weight: bold;*/\n    color: #fff;\n}\n.error {color: red\n}\n.step4MinHeight {min-height: 300px!important;\n}\n@media (min-width: 1420px) {\n#step-4 .step .step-box { width: 1100px;  margin-left: -290px; margin-right: auto\n}\n}\n@media (min-width: 1220px) and (max-width: 1419px) {\n#step-4 .step .step-box { width: 900px;  margin-left: -190px; margin-right: auto\n}\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* jQuery Datepicker scholio Styling */\n.ui-widget-header {\n    background: #00bcd4; \n    color: #fff\n}\n.ui-icon, .ui-icon:hover  {\n    width: 16px;\n    height: 16px;\n    /*background-color: #00bcd4;*/\n}\n.ui-widget-header .ui-icon {\n    background-image: url(\"/images/ui-icons_ffffff_256x240.png\");\n}\n.ui-state-default,\n.ui-widget-content .ui-state-default,\n.ui-widget-header .ui-state-default,\n.ui-button,\nhtml .ui-button.ui-state-disabled:hover,\nhtml .ui-button.ui-state-disabled:active {\n    border: none;\n    background: #f4f4f4;\n    /*font-weight: bold;*/\n    color: #004276;\n}\n.ui-state-highlight,\n.ui-widget-content .ui-state-highlight,\n.ui-widget-header .ui-state-highlight {\n    border: none;\n    background: #008da5 ;\n    color: #fff;\n}\n.ui-state-active,\n.ui-widget-content .ui-state-active,\n.ui-widget-header .ui-state-active,\n.ui-button:active,\n.ui-button.ui-state-active:hover{\n    background: #00bcd4;\n    /*font-weight: bold;*/\n    color: #fff;\n}\n.error {color: red\n}\n.step4MinHeight {min-height: 300px!important;\n}\n@media (min-width: 1420px) {\n#step-4 .step .step-box { width: 1100px;  margin-left: -290px; margin-right: auto\n}\n}\n@media (min-width: 1220px) and (max-width: 1419px) {\n#step-4 .step .step-box { width: 900px;  margin-left: -190px; margin-right: auto\n}\n}\n\n", ""]);
 
 // exports
 
@@ -18184,6 +18171,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "z-index": "1"
     }
   }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.financial_amount),
+      expression: "financial_amount"
+    }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
@@ -18191,7 +18184,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-describedby": "basic-addon1"
     },
     domProps: {
-      "value": _vm.financial_amount
+      "value": _vm._s(_vm.financial_amount)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.financial_amount = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "input-group-addon",
@@ -18205,6 +18204,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "z-index": "1"
     }
   }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.financial_amount),
+      expression: "financial_amount"
+    }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
@@ -18212,7 +18217,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-describedby": "basic-addon2"
     },
     domProps: {
-      "value": _vm.financial_amount
+      "value": _vm._s(_vm.financial_amount)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.financial_amount = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "input-group-addon",
@@ -18226,6 +18237,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "z-index": "1"
     }
   }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.financial_amount),
+      expression: "financial_amount"
+    }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
@@ -18233,7 +18250,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-describedby": "basic-addon3"
     },
     domProps: {
-      "value": _vm.financial_amount
+      "value": _vm._s(_vm.financial_amount)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.financial_amount = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "input-group-addon",

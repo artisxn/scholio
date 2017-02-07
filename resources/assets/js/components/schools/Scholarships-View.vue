@@ -50,9 +50,6 @@
 </template>
 
 <script>
-    import VueTinymce from 'vue-tinymce'
-    Vue.use(VueTinymce)
-
     export default {
 
         data: function() {

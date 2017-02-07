@@ -5,6 +5,7 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 Route::get('/user', function (Request $request) {
@@ -190,13 +191,14 @@ Route::post('/scholarship/save', function () {
         $scholarship->study_id = request()->study_id;
         $scholarship->level_id = $study->section[0]->level->id;
         $scholarship->criteria_id = request()->criteria_id;
-        $scholarship->end_at = date("Y-m-d", strtotime(request()->end_at));
+        // $scholarship->end_at = date("m-d-Y", strtotime(request()->end_at));
         //$scholarship->winner_id = request()->winner_id;
         $scholarship->terms = request()->terms;
         if (request()->exams == 1) {
             $scholarship->exams = true;
         }
         //$scholarship->exams_date = request()->exams_date;
+        $scholarship->end_at = Carbon::createFromFormat('d-m-Y', request()->end_at);
         $scholarship->save();
         $data = ['message' => 'SAVED SUCCESSFULLY', 'redirect' => route('scholarship-view')];
     } catch (\Exception $e) {

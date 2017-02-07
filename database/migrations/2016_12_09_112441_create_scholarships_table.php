@@ -14,8 +14,8 @@ class CreateScholarshipsTable extends Migration
     public function up()
     {
         Schema::create('scholarships', function (Blueprint $table) {
-            $table->primary(['school_id', 'study_id']);
-            // $table->increments('id');
+            // $table->primary(['school_id', 'study_id']);
+            $table->increments('id');
             $table->integer('school_id')->index();
             $table->integer('financial_id')->index();
             $table->string('financial_amount');

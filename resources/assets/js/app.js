@@ -16,6 +16,7 @@ window.Event = new Vue();
 
 Vue.component('notifications', require('./components/Notifications.vue'));
 Vue.component('notifications-table', require('./components/Notifications-Table.vue'));
+Vue.component('scholarships-create', require('./components/schools/Scholarships-Create.vue'));
 Vue.component('users-table', require('./components/Users-Table.vue'));
 Vue.component('schools-table', require('./components/schools/Schools-Table.vue'));
 Vue.component('scholarships-view', require('./components/schools/Scholarships-View.vue'));
@@ -23,7 +24,7 @@ Vue.component('students-view', require('./components/schools/Students-View.vue')
 Vue.component('teachers-view', require('./components/schools/Teachers-View.vue'));
 Vue.component('resource-requests', require('./components/schools/Resource-Requests.vue'));
 Vue.component('studies-select', require('./components/schools/Studies-Select.vue'));
-Vue.component('scholarships-create', require('./components/schools/Scholarships-Create.vue'));
+
 
 /*
  *  Laravel Passport Components

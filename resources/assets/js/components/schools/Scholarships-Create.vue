@@ -30,17 +30,17 @@
 
                                 <div class="" style="width: 50%; margin-left: 25%;">
                                     <div class="input-group " style="padding: 15px 0; z-index: 1" v-if="financial_id==1">
-                                        <input type="text" class="form-control" placeholder="20" aria-describedby="basic-addon1" :value="financial_amount">
+                                        <input type="text" class="form-control" placeholder="20" aria-describedby="basic-addon1" v-model="financial_amount">
                                         <span class="input-group-addon" id="basic-addon1">%</span>
                                     </div>
 
                                     <div class="input-group" style=" padding: 15px 0; z-index: 1" v-if="financial_id==2">
-                                        <input type="text" class="form-control" placeholder="800" aria-describedby="basic-addon2" :value="financial_amount">
+                                        <input type="text" class="form-control" placeholder="800" aria-describedby="basic-addon2" v-model="financial_amount">
                                         <span class="input-group-addon" id="basic-addon2">€</span>
                                     </div>
 
                                     <div class="input-group" style=" padding: 15px 0; z-index: 1" v-if="financial_id==3">
-                                        <input type="text" class="form-control" placeholder="2" aria-describedby="basic-addon3" :value="financial_amount">
+                                        <input type="text" class="form-control" placeholder="2" aria-describedby="basic-addon3" v-model="financial_amount">
                                         <span class="input-group-addon" id="basic-addon3">Μήνες</span>
                                     </div>
                                 </div>
@@ -190,8 +190,6 @@
                                     <!--&gt;</textarea>-->
                                 <!--</div>-->
 
-
-
                             </div>
                         </div>
                     </div>
@@ -261,6 +259,9 @@ html .ui-button.ui-state-disabled:active {
 </style>
 
 <script>
+    import VueTinymce from 'vue-tinymce'
+    Vue.use(VueTinymce)
+    
     export default {
         watch:{
 
@@ -312,7 +313,7 @@ html .ui-button.ui-state-disabled:active {
                 col_iek_eng_dan_mus: false,
                 error: false,
                 content: ' <p>Scholarship <strong> Terms and Conditions</strong> rigth <span style="color: #ff0000;">here</span> &nbsp;&reg;</p>',
-                terms: 'Αναφέρετε τους  όρους και τις προϋποθέσεις της υποτροφίας',
+                terms: null,
                 withTerms:false,
                 tinyOptions: {
                     height: 300,
@@ -351,7 +352,8 @@ html .ui-button.ui-state-disabled:active {
                     mm='0'+mm
                 }
 
-                today = dd+'/'+mm+'/'+yyyy;
+                today = dd+'-'+mm+'-'+yyyy;
+                // today = mm + '-' + dd + '-' + yyyy
 //                console.log(today)
                 this.end_at=today
                 this.today=today
@@ -458,15 +460,6 @@ html .ui-button.ui-state-disabled:active {
                     }
                 },
                 errorDate: function (){
-                    var today=this.today
-                    var end=this.end_at
-                    today = new Date( today.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
-                    end = new Date( end.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
-                    console.log(today)
-                    console.log(end)
-                    if(today>end){ this.error=true}
-                    else{ this.error=false }
-                    console.log( 'error='+this.error)
                 },
 
 
@@ -486,6 +479,7 @@ html .ui-button.ui-state-disabled:active {
                         'terms':this.terms
                     })
                     .then(response=>{
+                        console.log('END AT >> ' + this.end_at)
                         console.log('SAVE study= '+this.studiesArray[this.selectedStudy])
                         console.log('SAVE study_id= '+this.studiesId[this.selectedStudy])
                         console.log(response.data)

@@ -41,7 +41,6 @@
 
 
 @section('scripts')
-    {{--<script src="/panel/assets/js/vue-tinymce.min.js"></script>--}}
     <script>
 
         ( function( factory ) {
@@ -69,7 +68,7 @@
                 dayNamesShort: [ "Κυρ","Δευ","Τρι","Τετ","Πεμ","Παρ","Σαβ" ],
                 dayNamesMin: [ "Κυ","Δε","Τρ","Τε","Πε","Πα","Σα" ],
                 weekHeader: "Εβδ",
-                dateFormat: "dd/mm/yy",
+                dateFormat: "dd-mm-yy",
                 firstDay: 1,
                 isRTL: false,
                 showMonthAfterYear: false,
@@ -80,8 +79,7 @@
         } ) );
 
         $( function() {
-          $( "#datepicker" ).datepicker();
-
+          $( "#datepicker" ).datepicker({ minDate: 0, maxDate: "+10M +10D" });
         });
 
 
