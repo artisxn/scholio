@@ -2,11 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Events\UserAppliedOnSchool;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Events\UserRegistered;
 
-class NotifySchool
+class SlackMessageForUserRegistration
 {
     /**
      * Create the event listener.
@@ -21,11 +19,11 @@ class NotifySchool
     /**
      * Handle the event.
      *
-     * @param  UserAppliedOnSchool  $event
+     * @param  UserRegistered  $event
      * @return void
      */
-    public function handle(UserAppliedOnSchool $event)
+    public function handle(UserRegistered $event)
     {
-        //
+        notify()
     }
 }

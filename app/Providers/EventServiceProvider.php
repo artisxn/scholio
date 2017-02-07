@@ -15,14 +15,25 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\UserRegistered' => [
             'App\Listeners\SendWelcomeEmail',
-            'App\Listeners\NotifyAdmin',
+            'App\Listeners\SlackMessageForUserRegistration',
         ],
-        'App\Events\StudentAppliedToSchool' => [
+        'App\Events\UserAppliedOnSchool' => [
             'App\Listeners\NotifySchool',
         ],
-        'App\Events\TeacherAppliedToSchool' => [
-            'App\Listeners\NotifySchool',
+        'App\Events\StudentAppliedOnTeacher' => [
+            'App\Listeners\NotifyTeacher',
         ],
+        'App\Events\SchoolConfirmsUser' => [
+            'App\Listeners\ConnectUserWithSchool',
+            'App\Listeners\NotifyUser',
+            'App\Listeners\SlackMessageForSchoolConfirmation',
+        ],
+        'App\Events\TeacherConfirmsStudent' => [
+            'App\Listeners\ConnectStudentWithTeacher',
+            'App\Listeners\NotifyStudent',
+            'App\Listeners\SlackMessageForTeacherConfirmation',
+        ],
+
     ];
 
     /**

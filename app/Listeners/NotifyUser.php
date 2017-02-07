@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\UserAppliedOnSchool;
+use App\Events\SchoolConfirmsUser;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifySchool
+class NotifyUser
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class NotifySchool
     /**
      * Handle the event.
      *
-     * @param  UserAppliedOnSchool  $event
+     * @param  SchoolConfirmsUser  $event
      * @return void
      */
-    public function handle(UserAppliedOnSchool $event)
+    public function handle(SchoolConfirmsUser $event)
     {
         //
     }

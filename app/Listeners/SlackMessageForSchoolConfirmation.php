@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\UserRegistered;
+use App\Events\SchoolConfirmsUser;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyAdmin
+class SlackMessageForSchoolConfirmation
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class NotifyAdmin
     /**
      * Handle the event.
      *
-     * @param  UserRegistered  $event
+     * @param  SchoolConfirmsUser  $event
      * @return void
      */
-    public function handle(UserRegistered $event)
+    public function handle(SchoolConfirmsUser $event)
     {
         //
     }
