@@ -8,6 +8,10 @@ class Scholio
 {
     public static function panelRoutes()
     {
+        if (app()->environment('local')) {
+            include 'development-routes.php';
+        }
+
         Route::get('/dashboard', function () {
             return redirect('/panel/dashboard');
         });

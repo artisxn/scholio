@@ -17,14 +17,6 @@ use App\User;
 |
  */
 
-//ONLY FOR DEVELOPMENT
-Route::get('/lg', function () {
-    auth()->logout();
-    return redirect('/');
-});
-//
-//
-
 Route::get('/test/{school}', function (School $school) {
 
     $school->lengthStudents = $school->lengthStudents();
@@ -40,15 +32,11 @@ Route::get('/test/{school}', function (School $school) {
 
     $school->levels = $data;
 
-    return $school->load('image', 'logo', 'scholarship.financial', 'scholarship.criteria');
+    return $school->load('image', 'scholarship.financial', 'scholarship.criteria');
 });
 
 Route::get('/', function () {
     return view('index');
-});
-
-Route::get('/qwe', function () {
-    return redirect()->route('scholarship-view');
 });
 
 Auth::routes();
@@ -80,58 +68,6 @@ Route::get('test/register/user', function () {
     event(new App\Events\UserRegistered(App\User::first()));
 });
 
-Route::get('ttt', function () {
-    $school = School::where('user_id', Auth::user()->id)->first();
-
-    $filtered = auth()->user()->notifications->filter(function ($value, $key) use ($school) {
-        return $value->data['school_id'] == $school->id;
-    });
-
-    dd($filtered);
-});
-
-Route::get('change/{role}', function ($role) {
-    auth()->user()->role = $role;
-    auth()->user()->save();
-    return 'OK';
-});
-
-Route::get('/www', function () {
-    $school = School::where('user_id', 21)->first();
-    $levels = [];
-
-    foreach ($school->type->level as $level) {
-        array_push($levels, $level);
-
-        foreach ($level->section as $section) {
-            foreach ($section->study as $study) {
-                $study->status = true;
-            }
-        }
-    }
-
-    $data = array(
-        'levels' => $levels,
-    );
-    return $data;
-});
-
-Route::get('/panel/studies', function () {
-    return view('panel.pages.profile.studies');
-});
-
-Route::get('qaz', function () {
-    $school = School::where('user_id', auth()->user()->id)->first();
-
-    $data = [];
-
-    foreach ($school->study as $study) {
-        array_push($data, Study::with('section.level')->where('id', $study->id)->get());
-    }
-
-    return $data;
-});
-
 //===== New Testing PUBLIC pages ======
 Route::get('/public/profile/{id}', function ($id) {
     return view('public.school.profile')->withId($id);
@@ -139,42 +75,6 @@ Route::get('/public/profile/{id}', function ($id) {
 
 Route::get('/public/results', function () {
     return view('public.results.schools');
-});
-
-Route::get('app/public/profile', function () {
-    $school = School::where('user_id', auth()->user()->id)->first();
-
-    return $school->name;
-});
-
-Route::post('/qwe', function () {
-    $school = School::where('user_id', auth()->user()->id)->first();
-
-    $school->study()->detach();
-
-    foreach (request()->checkedStudies as $studyID) {
-        $study = App\Models\Study::find($studyID);
-
-        if (!$study->school->contains($school)) {
-            $study->school()->attach($school);
-        }
-    }
-
-    return 'OK';
-});
-
-Route::post('/post/scholarship/test', function () {
-    $scholarship = new Scholarship;
-    $scholarship->school_id = request()->school_id;
-    $scholarship->financial_id = request()->financial_id;
-    $scholarship->financial_amount = request()->financial_amount;
-    $scholarship->study_id = request()->study_id;
-    $scholarship->criteria_id = request()->criteria_id;
-    $scholarship->end_at = request()->end_at;
-
-    $scholarship->save();
-
-    return 'OK';
 });
 
 Route::get('connected/students', function () {
@@ -218,33 +118,19 @@ Route::get('/scholarship/{scholarship}', function (Scholarship $scholarship) {
     return $scholarship->load('financial', 'criteria');
 });
 
-Route::get('/test/profile/{school}', function (School $school) {
-
-    $school->lengthStudents = $school->lengthStudents();
-    $school->lengthTeachers = $school->lengthTeachers();
-    $school->lengthStudies = $school->lengthStudies();
-    $school->lengthScholarships = $school->lengthScholarships();
-
-    $data = [];
-
-    foreach ($school->study as $study) {
-        array_push($data, App\Models\Study::with('section.level')->where('id', $study->id)->get());
-    }
-
-    foreach ($school->scholarship as $scholarship) {
-        $scholarship->level = $scholarship->level;
-        $scholarship->section = $scholarship->study->section;
-        $scholarship->criteria = $scholarship->criteria->name;
-        $scholarship->financial = $scholarship->financial->plan;
-        $scholarship->length = $scholarship->usersLength();
-    }
-
-    $school->levels = $data;
-
-    return $school->load('image', 'logo', 'teachers');
-});
-
 Route::get('/connection/school/{school}', function (School $school) {
     $school->users()->attach(auth()->user());
     return 'OK';
 })->middleware('auth');
+
+Route::get('/test/results/{type}', function ($type) {
+    $schools = School::with('image')->where('type_id', $type)->get();
+
+    foreach ($schools as $s) {
+        $s->lengthStudents = $s->lengthStudents();
+        $s->lengthTeachers = $s->lengthTeachers();
+        $s->lengthStudies = $s->lengthStudies();
+        $s->lengthScholarships = $s->lengthScholarships();
+    }
+    return $schools;
+});

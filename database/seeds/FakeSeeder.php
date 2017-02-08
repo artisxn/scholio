@@ -19,7 +19,7 @@ class FakeSeeder extends Seeder
         /*===============   1 ACT   ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'American College of Thessaloniki',
-            'user_id' => factory(App\User::class)->create(['name' => 'Apostolos', 'email' => 'apostolos@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'American College of Thessaloniki', 'email' => 'webmaster@act.edu', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Σεβενίδη, 17, Πυλαία',
             'city' => 'Θεσσαλονίκη',
             'email' => 'webmaster@act.edu',
@@ -27,13 +27,7 @@ class FakeSeeder extends Seeder
             'type_id' => 1,
             'website' => 'act.edu',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/act-logo.png',
-                'full_path' => 'fake/act-logo.png',
-                'name' => 'fake/act-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/act-logo.png',
         ]);
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/act-pic1.jpg', 'full_path' => 'fake/act-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/act-pic2.jpg', 'full_path' => 'fake/act-pic2.jpg']);
@@ -59,7 +53,7 @@ class FakeSeeder extends Seeder
         /*===============  2 AMC ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης',
-            'user_id' => factory(App\User::class)->create(['name' => 'kostis', 'email' => 'kostis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Ελ. Βενιζέλου 14 & Τσιμισκή',
             'city' => 'Θεσσαλονίκη',
             'email' => 'info@metropolitan.edu.gr',
@@ -67,13 +61,7 @@ class FakeSeeder extends Seeder
             'type_id' => 1,
             'website' => 'mitropolitiko.edu.gr',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/amc-logo.png',
-                'full_path' => 'fake/amc-logo.png',
-                'name' => 'fake/amc-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/amc-logo.png',
         ]);
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/amc-pic1.jpg', 'full_path' => 'fake/amc-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/amc-pic2.jpg', 'full_path' => 'fake/amc-pic2.jpg']);
@@ -100,7 +88,7 @@ class FakeSeeder extends Seeder
         /*===============  3 AKMH ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'ΑΚΜΗ',
-            'user_id' => factory(App\User::class)->create(['name' => 'Christos', 'email' => 'christos@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ', 'email' => 'info@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Τσιμισκή 14',
             'city' => 'Θεσσαλονίκη',
             'email' => 'info@iek-akmi.edu.gr',
@@ -108,13 +96,7 @@ class FakeSeeder extends Seeder
             'type_id' => 2,
             'website' => 'iek-akmi.edu.gr',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/akmi-logo.png',
-                'full_path' => 'fake/akmi-logo.png',
-                'name' => 'fake/akmi-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/akmi-logo.png',
         ]);
 
         $this->createStudy($school, [1, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
@@ -154,7 +136,7 @@ class FakeSeeder extends Seeder
         /*===============  4 Εκπαιδευτήρια Βασιλειάδη ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'Εκπαιδευτήρια Βασιλειάδη',
-            'user_id' => factory(App\User::class)->create(['name' => 'Petros', 'email' => 'petros@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Βασιλειάδη', 'email' => 'info@vassiliadis.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => '12o χλμ Θεσ/νίκης-Μουδανιών, Θέρμη',
             'city' => 'Θεσσαλονίκη',
             'email' => 'info@vassiliadis.edu.gr',
@@ -162,13 +144,7 @@ class FakeSeeder extends Seeder
             'type_id' => 6,
             'website' => 'vassiliadis.edu.gr',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/vasileiadi-logo.png',
-                'full_path' => 'fake/vasileiadi-logo.png',
-                'name' => 'fake/vasileiadi-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/vasileiadi-logo.png',
         ]);
 
         $this->createStudy($school, [423, 424, 425]);
@@ -194,7 +170,7 @@ class FakeSeeder extends Seeder
         /*===============  5 Εκπαιδευτήρια Φρυγανιώτη ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'Εκπαιδευτήρια Φρυγανιώτη',
-            'user_id' => factory(App\User::class)->create(['name' => 'Giannis', 'email' => 'giannis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Φρυγανιώτη', 'email' => 'info@fryganiotis.gr', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Περιοχή Νοσ. Παπαγεωργίου, Πολίχνη',
             'city' => 'Θεσσαλονίκη',
             'email' => 'info@fryganiotis.gr',
@@ -202,13 +178,7 @@ class FakeSeeder extends Seeder
             'type_id' => 6,
             'website' => 'fryganiotis.gr',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/fryganioti-logo.png',
-                'full_path' => 'fake/fryganioti-logo.png',
-                'name' => 'fake/fryganioti-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/fryganioti-logo.png',
         ]);
 
         $this->createStudy($school, [423, 424, 425]);
@@ -238,7 +208,7 @@ class FakeSeeder extends Seeder
         /*===============   6 NYC   ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'New York College',
-            'user_id' => factory(App\User::class)->create(['name' => 'Pakis', 'email' => 'pakis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => '38 Amalias Avenue, Syntagma',
             'city' => 'Αθήνα',
             'email' => 'nycth@nyc.gr',
@@ -246,13 +216,7 @@ class FakeSeeder extends Seeder
             'type_id' => 1,
             'website' => 'nyc.gr',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/newyork-logo.png',
-                'full_path' => 'fake/newyork-logo.png',
-                'name' => 'fake/newyork-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/newyork-logo.png',
         ]);
         $image1 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/newyork-pic1.jpg', 'full_path' => 'fake/newyork-pic1.jpg']);
         $image2 = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => 'fake/newyork-pic2.jpg', 'full_path' => 'fake/newyork-pic2.jpg']);
@@ -277,7 +241,7 @@ class FakeSeeder extends Seeder
         /*===============  7 Φροντιστήρια Μ.Ε.Υποδομή ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'Φροντιστήρια Υποδομή',
-            'user_id' => factory(App\User::class)->create(['name' => 'Sakis', 'email' => 'sakis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Υποδομή', 'email' => 'info@ypodomi.com', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Κουγιουμτζίδη 7',
             'city' => 'Γιαννιτσά, Πέλλας',
             'email' => 'info@ypodomi.com',
@@ -285,13 +249,7 @@ class FakeSeeder extends Seeder
             'type_id' => 3,
             'website' => 'ypodomi.com',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/ypodomi-logo.png',
-                'full_path' => 'fake/ypodomi-logo.png',
-                'name' => 'fake/ypodomi-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/ypodomi-logo.png',
         ]);
 
         $this->createStudy($school, [353, 354, 355, 356, 357, 358, 359, 426, 427, 428, 429]);
@@ -317,7 +275,7 @@ class FakeSeeder extends Seeder
         /*===============  8 Εκπαιδευτήρια Απόστολος Παύλος  ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'Εκπαιδευτήρια Απόστολος Παύλος',
-            'user_id' => factory(App\User::class)->create(['name' => 'Takis', 'email' => 'takis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Απόστολος Παύλος', 'email' => 'gymnasio@eap.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Κένεντι 119, Πυλαία',
             'city' => 'Θεσσαλονίκη',
             'email' => 'gymnasio@eap.edu.gr',
@@ -325,13 +283,7 @@ class FakeSeeder extends Seeder
             'type_id' => 7,
             'website' => 'eap.edu.gr',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/eap-logo.png',
-                'full_path' => 'fake/eap-logo.png',
-                'name' => 'fake/eap-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/eap-logo.png',
         ]);
 
         $this->createStudy($school, [430, 431, 432]);
@@ -361,7 +313,7 @@ class FakeSeeder extends Seeder
         /*===============  9 Ευρωγνώση Τσιμισκή ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'Ευρωγνώση Τσιμισκή',
-            'user_id' => factory(App\User::class)->create(['name' => 'Makis', 'email' => 'makis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Ευρωγνώση Τσιμισκή', 'email' => 'tsimiski@eurognosi.info', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Τσιμισκή 102 & Παύλου Μελά',
             'city' => 'Θεσσαλονίκη',
             'email' => 'tsimiski@eurognosi.info',
@@ -369,13 +321,7 @@ class FakeSeeder extends Seeder
             'type_id' => 4,
             'website' => 'eurognosi.com',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/eurognosi-logo.png',
-                'full_path' => 'fake/eurognosi-logo.png',
-                'name' => 'fake/eurognosi-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/eurognosi-logo.png',
         ]);
 
         $this->createStudy($school, [360, 361, 362, 363, 371, 372, 373, 382, 384, 387, 388, 390]);
@@ -402,7 +348,7 @@ class FakeSeeder extends Seeder
         /*===============  10 Danza Fuerte ================*/
         $school = factory(App\Models\School::class)->create([
             'name' => 'Danza Fuerte',
-            'user_id' => factory(App\User::class)->create(['name' => 'Lakis', 'email' => 'lakis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Danza Fuerte', 'email' => 'danzafuerte@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Αριστοτέλους 23, Κέντρο',
             'city' => 'Θεσσαλονίκη',
             'email' => 'danzafuerte@gmail.com',
@@ -410,13 +356,7 @@ class FakeSeeder extends Seeder
             'type_id' => 10,
             'website' => 'danzafuerte.gr',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/danzafuerte-logo.png',
-                'full_path' => 'fake/danzafuerte-logo.png',
-                'name' => 'fake/danzafuerte-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/danzafuerte-logo.png',
         ]);
 
         $this->createStudy($school, [393, 395, 396, 397, 402, 403, 409, 410, 413, 414, 415, 422]);
@@ -442,8 +382,8 @@ class FakeSeeder extends Seeder
 
         /*===============  11 Αδαμάντιος Σχολή ================*/
         $school = factory(App\Models\School::class)->create([
-            'name' => 'Αδαμάντιος Σχολή ',
-            'user_id' => factory(App\User::class)->create(['name' => 'Nakis', 'email' => 'nakis@scholio.dev', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
+            'name' => 'Αδαμάντιος Σχολή',
+            'user_id' => factory(App\User::class)->create(['name' => 'Αδαμάντιος Σχολή', 'email' => 'info@adamantios.gr', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Λεωφ. Γεωργικής Σχολής 44, Πυλαία',
             'city' => 'Θεσσαλονίκη',
             'email' => 'info@adamantios.gr',
@@ -451,13 +391,7 @@ class FakeSeeder extends Seeder
             'type_id' => 8,
             'website' => 'adamantios.gr',
             'approved' => 1,
-            'logo_id' => factory(App\Models\Image::class)->create([
-                'type' => 'Logo',
-                'path' => 'fake/adamantios-logo.png',
-                'full_path' => 'fake/adamantios-logo.png',
-                'name' => 'fake/adamantios-logo.png',
-                'extension' => 'png',
-            ])->id,
+            'logo' => 'fake/adamantios-logo.png',
         ]);
 
         $this->createStudy($school, [433, 434, 435, 436, 437, 438]);
@@ -481,7 +415,8 @@ class FakeSeeder extends Seeder
         $this->createScholarship(11, 2, 200, 437, 20, 1, 1, 3);
         $this->createScholarship(11, 1, 30, 438, 21, 2, 1, 2);
 
-        factory(App\User::class, 15)->create(['password' => bcrypt('123456'), 'role' => 'student']);
+        // factory(App\User::class, 15)->create(['password' => bcrypt('123456'), 'role' => 'student']);
+        factory(App\Models\Student::class, 10)->create();
 
     }
 

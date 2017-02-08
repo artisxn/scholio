@@ -183,7 +183,7 @@ Route::get('/profile/{school}', function (School $school) {
 
     $school->levels = $data;
 
-    return $school->load('image', 'logo');
+    return $school->load('image');
 })->middleware('api');
 
 Route::post('/scholarship/save', function () {

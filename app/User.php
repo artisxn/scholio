@@ -2,8 +2,11 @@
 
 namespace App;
 
+use App\Models\Parent as ParentUser;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Student;
+use App\Models\Teacher;
 use App\Traits\UserScopes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -75,7 +78,7 @@ class User extends Authenticatable
         }
 
         if ($this->role == 'parent') {
-            return $this->hasOne(Parent::class, 'user_id');
+            return $this->hasOne(ParentUser::class, 'user_id');
         }
     }
 }

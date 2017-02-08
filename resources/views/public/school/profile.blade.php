@@ -160,7 +160,7 @@
                 <div class=" margin-bot-15 ">
                     <div>
                         <img id="img1"  class=" img-thumb pull-left margin-right-10 margin-top-15 margin-bot-10"
-                             ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
+                             ng-src="/images/schools/@{{contactInfo.logo}}">
                         <span class="pull-left pad-top-5 xs-pad-top">
                             <h4 class="">  @{{contactInfo.name}}</h4>
                             <span  ng-show="contactInfo.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>

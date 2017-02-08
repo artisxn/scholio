@@ -75,3 +75,16 @@ $factory->define(App\Models\Scholarship::class, function (Faker\Generator $faker
         'winner_id' => $faker->numberBetween($min = 1, $max = 10),
     ];
 });
+
+$factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
+
+    $date = Carbon::now()->addDays(30); // In 30 days from now
+
+    return [
+        'user_id' => factory(App\User::class)->create(['role' => 'student'])->id,
+        'phone' => '6980000000',
+        'dob' => Carbon::now()->subYears(20),
+        'gender' => 'male',
+        'avatar' => 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png',
+    ];
+});
