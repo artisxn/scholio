@@ -63,4 +63,19 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Scholarship::class, 'scholarship_user')->withTimestamps();
     }
+
+    public function info()
+    {
+        if ($this->role == 'student') {
+            return $this->hasOne(Student::class, 'user_id');
+        }
+
+        if ($this->role == 'teacher') {
+            return $this->hasOne(Teacher::class, 'user_id');
+        }
+
+        if ($this->role == 'parent') {
+            return $this->hasOne(Parent::class, 'user_id');
+        }
+    }
 }

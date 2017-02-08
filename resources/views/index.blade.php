@@ -193,7 +193,7 @@
             <!-- Video Shadow -->
             <div class="sc-landing-video-filter"></div>
             <video autoplay loop muted id="video-bg">
-                <source src="{{asset('new/video/VideoMix2.mp4')}}" type="video/mp4">
+                <source src="{{asset('new/video/VideoMix3.mp4')}}" type="video/mp4">
             </video>
         </div>
         <!-- Searchbar -->

@@ -7,7 +7,7 @@
     </div>
 
         <div class="pull-left">
-            <img src="{{substr(Auth::user()->school->logo->path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->school->logo->path }}" alt="" class="thumb-md" style="margin-top: 5px">
+            <img src="{{substr(Auth::user()->school->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->school->logo }}" alt="" class="thumb-md" style="margin-top: 5px">
         </div>
         <div class="user-info">
             <div class="dropdown">

@@ -38,8 +38,9 @@
                 </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal m-t-20" method="POST" action="{{ url('/register/school') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal m-t-20" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    {{ session()->put('registration', 'school') }}
 
                     <div class="form-group">
                         <label for="type" class="col-md-4 control-label">Τύπος Εκπαιδευτικού Ιδρύματος</label>
@@ -81,73 +82,25 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                            <label for="address" class="col-md-4 control-label">Οδός</label>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-8">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required>
+                                <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('address'))
+                                @if ($errors->has('password'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('address') }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">Πόλη</label>
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-8">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required>
-
-                                @if ($errors->has('city'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                            <label for="phone" class="col-md-4 control-label">Τηλέφωνο</label>
-
-                            <div class="col-md-8">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required>
-
-                                @if ($errors->has('phone'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
-                            <label for="website" class="col-md-4 control-label">Ιστοσελίδα</label>
-
-                            <div class="col-md-8">
-                                <input id="website" type="text" class="form-control" name="website" value="{{ old('website') }}" required>
-
-                                @if ($errors->has('website'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('website') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
-                            <label for="avatar" class="col-md-4 control-label">Avatar</label>
-
-                            <div class="col-md-8">
-                                <input id="avatar" type="file" class="form-control" name="avatar" value="{{ old('avatar') }}">
-
-                                @if ($errors->has('avatar'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('avatar') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
 
@@ -170,10 +123,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
 
         <script>
             var resizefunc = [];

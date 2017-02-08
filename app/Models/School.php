@@ -48,16 +48,6 @@ class School extends Model
     }
 
     /**
-     *  Gets the logo of the school (which is an instance of Image model)
-     *
-     * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function logo()
-    {
-        return $this->belongsTo(Image::class, 'logo_id');
-    }
-
-    /**
      *  Gets all the scholarships of the school
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

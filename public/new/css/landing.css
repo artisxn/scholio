@@ -64,7 +64,7 @@ video {
     z-index: -100;
     transform:scale(1);
    }
-.sc-landing-video-container{  width: 100%;  height:700px!important;  overflow: hidden;  position: absolute;  top: 0;  right: 0;  z-index: -100;  }
+.sc-landing-video-container{  width: 100%;  height:700px!important;  overflow: hidden;  position: fixed;  top: 0;  right: 0;  z-index: -100;  }
 .sc-landing-video-filter{  width:100%;  height:700px!important; z-index:1;  position:fixed;
     background-image: -webkit-linear-gradient(rgba(5,5,40,0.22), rgba(5,5,20,0.8)),url(""); }
 
@@ -76,7 +76,7 @@ video {
 .sc-landing-search-bar-content input, .sc-landing-search-bar-content #options {margin-bottom: 20px;}
 
 /*Second Section*/
-.sc-landing-sec2{min-height:400px!important;width:100%;}
+.sc-landing-sec2{min-height:400px!important;width:100%; background-color: #fff}
 .sc-landing-sec2-content{}
 
 .sc-landing-sec2-content h2{font-weight:300}
@@ -84,7 +84,7 @@ video {
 .sc-landing-sec2-content p{color:#8e8e8e; max-width: 400px;}
 
 /*Third Section*/
-.sc-landing-sec3{min-height:400px!important}
+.sc-landing-sec3{min-height:400px!important;}
 
 .sc-landing-sec3-content{}
 .sc-landing-sec3 img{margin-top: 5px; margin-bottom: 25px;}
@@ -92,7 +92,7 @@ video {
 .sc-landing-sec3 h5{font-weight: 300;}
 
 /* Fourth Section */
-.sc-landing-sec4{min-height:400px!important}
+.sc-landing-sec4{min-height:400px!important;background-color: #fff}
 .sc-landing-sec4-content{}
 .sc-landing-sec4-content a{text-decoration:none!important; color:#ffffff!important;}
 

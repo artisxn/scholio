@@ -19,7 +19,7 @@
                     {{ csrf_field() }}
 
                     <div class="form-group" align="center">
-                        <img src="{{substr($logo->path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ $logo->path }}" height="100px">
+                        <img src="{{substr($logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ $logo }}" height="100px">
                     </div>
 
                     <div class="col-md-6">
@@ -35,7 +35,7 @@
                             <div class="col-md-10">
                                 <select class="form-control" name="type">
                                     @foreach($schoolTypes as $schoolType)
-                                        <option {{$schoolType->id == $school->type_id ? "selected" : ""}} value="{{ $schoolType->id }}"> {{ $schoolType->name }}</option>
+                                        <option {{ $schoolType->id == $school->type_id ? 'selected' : ''}} value="{{ $schoolType->id }}"> {{ $schoolType->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

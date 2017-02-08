@@ -56,9 +56,6 @@ Auth::routes();
 Route::get('/register/school', 'SchoolRegistrationController@showSchoolRegistrationForm');
 Route::post('/register/school', 'SchoolRegistrationController@register');
 
-Route::get('/register/user/school', 'SchoolRegistrationController@showSchoolUserRegistrationForm');
-Route::post('/register/user/school', 'SchoolRegistrationController@registerUserSchool');
-
 Scholio::panelRoutes();
 
 Route::get('/token/register', function () {

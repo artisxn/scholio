@@ -18,11 +18,12 @@ class CreateSchoolsTable extends Migration
             $table->integer('user_id')->index();
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('type_id')->unsigned();
-            $table->string('address');
-            $table->string('city');
-            $table->bigInteger('phone');
-            $table->string('website')->unique();
+            $table->integer('type_id')->unsigned()->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->bigInteger('phone')->nullable();
+            $table->string('website')->unique()->nullable();
+            $table->string('logo')->default('http://schooltree.org/static/launch/assets/school_avatar.png');
             $table->integer('logo_id')->nullable();
             $table->boolean('approved')->default(1);
             $table->timestamps();
