@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\UserRegistered;
+use App\Listeners\SlackMessageForUserRegistration;
 
 class SlackMessageForUserRegistration
 {
@@ -24,6 +25,6 @@ class SlackMessageForUserRegistration
      */
     public function handle(UserRegistered $event)
     {
-        notify()
+        $this->notify(new SlackMessageForUserRegistration($event->user));
     }
 }

@@ -489,8 +489,6 @@ var lengthStudents = 0;
 
                     $scope.col_iek_eng_dan_mus = false;
 
-
-
                     $scope.contactInfo = $http.get('/api/profile/{{ $id }}', {
                         headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
                     }).success(function(data){

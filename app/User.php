@@ -48,10 +48,7 @@ class User extends Authenticatable
      */
     public function routeNotificationForSlack()
     {
-        // Change it to pass only for admins
-        if ($this->id == 1) {
-            return 'https://hooks.slack.com/services/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';
-        }
+        return 'https://hooks.slack.com/services/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';
     }
 
     /**
