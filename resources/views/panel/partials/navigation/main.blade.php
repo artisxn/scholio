@@ -44,6 +44,10 @@
                     @include('panel.partials.navigation.links-teachers')
                 @endif
 
+                @if(Auth::user()->role == 'parent')
+                    @include('panel.partials.navigation.links-parents')
+                @endif
+
             </ul>
             <div class="clearfix"></div>
         </div>
