@@ -267,6 +267,21 @@ class FakeSeeder extends Seeder
         $this->createScholarship($school11->id, 2, 200, 437, 20, 1, 1, 3);
         $this->createScholarship($school11->id, 1, 30, 438, 21, 2, 1, 2);
 
+        // Interested
+        $this->interested(21, 1);
+        $this->interested(21, 2);
+        $this->interested(22, 2);
+        $this->interested(22, 3);
+        $this->interested(23, 1);
+        $this->interested(24, 2);
+
+    }
+
+    public function interested($studentID, $scholarshipID)
+    {
+        $student = App\User::find($studentID);
+        $scholarship = App\Models\Scholarship::find($scholarshipID);
+        $student->interested()->toggle($scholarship);
     }
 
     public function createImages($school, $path, $from, $until)

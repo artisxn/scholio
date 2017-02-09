@@ -86,4 +86,14 @@ class Scholarship extends Model
     {
         return $this->belongsToMany(User::class, 'interested')->withTimestamps();
     }
+
+    /**
+     *  Gets the length
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function interestsLength()
+    {
+        return $this->interested()->count();
+    }
 }

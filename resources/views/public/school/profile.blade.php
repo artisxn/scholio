@@ -296,11 +296,6 @@
                     </div>
                 </div>
 
-
-
-
-
-
                     <!-- Υποτροφίες -->
                     <div class="row main-box margin-bot-25" id="ypotrofies">
                         <div class="section-header3">
@@ -364,7 +359,7 @@
 
                                     <p class="" style="padding-top: 40px;  margin-bottom:2px;">@{{scholarship.level.name}}</p>
                                     <p class="" style="margin-right: 10px; ">@{{scholarship.study.name}}</p>
-                                    <p class="" style="margin-top: 30px; ">Αιτήθηκαν: @{{ scholarship.length}}</p>
+                                    <p class="" style="margin-top: 30px; ">Ενδιαφερθηκαν: @{{ scholarship.interests}} @{{scholarship.studentInterests}}</p>
 
                                 </div>
 
@@ -381,19 +376,15 @@
 
 
                                 <ul style="position: absolute; left: 2%; bottom: 30px;">
-                                        <a href=""><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
-                                                <i class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>Ενδιαφέρομαι</button></a>
+                                        <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
+                                                <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                                <span id="t@{{scholarship.id}}">Ενδιαφέρομαι</span>
+                                                </button>
+                                                </a>
                                 </ul>
 
                                 <div class="clearfix"></div>
-
-
                                 <div ng-if="($index%2==0)" style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  30px"></div>
-
-
-
-
-
                         </div>
 
                         </div>
@@ -570,18 +561,14 @@ var lengthStudents = 0;
                     $scope.trustAsHtml = $sce.trustAsHtml;
 
                     $scope.message = null;
-
+                    $scope.scholarship = ['sd'];
 
                     $scope.col_iek_eng_dan_mus = false;
 
-
-
-                    $scope.contactInfo = $http.get('/api/profile/{{ $id }}', {
-                        headers: {'X-CSRF-TOKEN': Scholio.csrfToken}
-                    }).success(function(data){
+                    $scope.contactInfo = $http.get('/api/profile/{{ $id }}').success(function(data){
                         console.time('contactInfo API');
                         $scope.contactInfo=data;
-                        console.log(data)
+                        console.log(data);
                         $scope.studies = data.levels;
                         $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);
                         console.timeEnd('contactInfo API');
@@ -594,6 +581,25 @@ var lengthStudents = 0;
                         console.log('SchoolTypeId= '+data.type_id)
 //                        console.timeEnd('contactInfo API');
                     });
+
+                    $scope.interestedCheck = function(id){
+                     $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': window.Scholio.csrfToken
+                        }
+                    })
+                     .success(function(data){
+                        console.log(data);
+                        if(data == 'YES'){
+                            $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
+                            $('#t'+ id).text('Ενδιαφέρθηκα')
+                        }else{
+                            $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
+                            $('#t'+ id).text('Ενδιαφέρομαι')
+                        }
+                    });
+                }
 
 
                     $scope.levelsName=[];
@@ -675,6 +681,25 @@ var lengthStudents = 0;
                     }
 
                 };
+
+                $scope.interested = function(id){
+                     $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': window.Scholio.csrfToken
+                        }
+                    })
+                     .success(function(data){
+                        console.log(data);
+                        if(data == 'YES'){
+                            $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
+                            $('#t'+ id).text('Ενδιαφέρθηκα')
+                        }else{
+                            $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
+                            $('#t'+ id).text('Ενδιαφέρομαι')
+                        }
+                    });
+                }
 
                 $scope.text='Περισσότερα';
                 $scope.showContent=false;

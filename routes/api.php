@@ -175,12 +175,24 @@ Route::get('/profile/{school}', function (School $school) {
         array_push($data, App\Models\Study::with('section.level')->where('id', $study->id)->get());
     }
 
+    $ints = [];
+
     foreach ($school->scholarship as $scholarship) {
         $scholarship->level = $scholarship->level;
         $scholarship->section = $scholarship->study->section;
         $scholarship->criteria = $scholarship->criteria->name;
         $scholarship->financial = $scholarship->financial->plan;
         $scholarship->length = $scholarship->usersLength();
+        $scholarship->interests = $scholarship->interestsLength();
+
+        if (auth()->check()) {
+            $ints = ['sd'];
+            $student = App\User::find(auth()->user()->id);
+            if ($student->interested->contains($scholarship)) {
+                array_push($ints, $scholarship->id);
+            }
+        }
+        $scholarship->studentInterests = $ints;
     }
 
     $school->levels = $data;
@@ -222,3 +234,26 @@ Route::get('/scholarship/{scholarship}', function (Scholarship $scholarship) {
     $scholarship->length = $scholarship->usersLength();
     return $scholarship->load('financial', 'criteria');
 })->middleware('api');
+
+Route::post('/interested/save', function () {
+    $student = App\User::find(auth()->user()->id);
+    $scholarship = App\Models\Scholarship::find(request()->scholarship);
+    $student->interested()->toggle($scholarship);
+
+    if ($student->interested->contains($scholarship)) {
+        return 'YES';
+    }
+
+    return 'NO';
+})->middleware('auth:api');
+
+Route::get('/interested/check', function () {
+    $student = App\User::find(auth()->user()->id);
+    $scholarship = App\Models\Scholarship::find(request()->scholarship);
+
+    if ($student->interested->contains($scholarship)) {
+        return 'YES';
+    }
+
+    return 'NO';
+})->middleware('auth:api');
