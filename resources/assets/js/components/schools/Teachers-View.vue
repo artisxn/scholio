@@ -52,9 +52,9 @@
 
         methods: {
             getAllTeachers: function(){
-                axios.get('/api/users/all')
+                axios.get('/connected/teachers')
                     .then(response => {
-                        this.teachers = response.data['users']
+                        this.teachers = response.data['teachers']
                     });
             }
         },
