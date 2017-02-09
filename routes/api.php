@@ -166,6 +166,8 @@ Route::get('/profile/{school}', function (School $school) {
     $school->lengthTeachers = $school->lengthTeachers();
     $school->lengthStudies = $school->lengthStudies();
     $school->lengthScholarships = $school->lengthScholarships();
+    $school->name = $school->name();
+    $school->email = $school->email();
 
     $data = [];
 

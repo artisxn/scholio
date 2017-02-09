@@ -34,10 +34,10 @@
                                 <tr>
                                     <td>{{ $school->id }}</td>
                                     <td><img style="height: 35px;" src="/images/schools/{{ $school->logo }}"> </td>
-                                    <td>{{ $school->name }}</td>
+                                    <td>{{ $school->name() }}</td>
                                     <td>{{ $school->type->name }}</td>
                                     <td>{{ $school->type->id }}</td>
-                                    <td>{{ $school->email }}</td>
+                                    <td>{{ $school->email() }}</td>
                                     <td>123456</td>
                                     <td>{{ $school->created_at }}</td>
                                     <td><span class="label label-warning">Pending</span></td>

@@ -146,4 +146,14 @@ class School extends Model
     {
         return $this->study()->count();
     }
+
+    public function email()
+    {
+        return $this->admin->email;
+    }
+
+    public function name()
+    {
+        return $this->admin->name;
+    }
 }

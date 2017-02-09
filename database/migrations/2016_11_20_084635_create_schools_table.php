@@ -16,15 +16,12 @@ class CreateSchoolsTable extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->string('name');
-            $table->string('email')->unique();
             $table->integer('type_id')->unsigned()->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->string('website')->unique()->nullable();
             $table->string('logo')->default('http://schooltree.org/static/launch/assets/school_avatar.png');
-            $table->integer('logo_id')->nullable();
             $table->boolean('approved')->default(1);
             $table->timestamps();
         });

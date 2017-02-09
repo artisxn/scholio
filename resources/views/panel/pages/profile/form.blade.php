@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Name</label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control" value="{{ $school->name }}" placeholder="Fullname" name="name">
+                                <input type="text" class="form-control" value="{{ $school->name() }}" placeholder="Fullname" name="name">
                             </div>
                         </div>
 

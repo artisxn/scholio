@@ -14,7 +14,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <span class="" style="font-weight: 100; font-size: 95%">
 
-                        {{ Auth::user()->school->name }}
+                        {{ Auth::user()->school->name() }}
                     </span> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                       <li><a href=""><i class="ti-user m-r-5"></i> Προφίλ</a></li>
