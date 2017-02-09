@@ -192,8 +192,9 @@
             <!-- Video Shadow -->
             <div class="sc-landing-video-filter"></div>
             <video autoplay loop muted id="video-bg">
-                <source src="{{asset('new/video/VideoMix2.mp4')}}" type="video/mp4">
                 <source src="{{asset('new/video/VideoMix2.ogg')}}" type="video/ogg">
+                <source src="{{asset('new/video/VideoMix2.mp4')}}" type="video/mp4">
+
                 {{--<source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm">--}}
             </video>
         </div>
@@ -288,7 +289,7 @@
                             <div class="margin-top-30"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
 
                             <div class="centered-text">
-                                <a href="/register/user/school"><button type="button" class="btn btn-danger centered-text " style=" margin-top: 200px;">
+                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text " style=" margin-top: 200px;">
                                         Εγγραφή Εκπαιδευτικού Φορέα</button></a>
                             </div>
 
