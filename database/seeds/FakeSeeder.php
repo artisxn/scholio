@@ -29,7 +29,7 @@ class FakeSeeder extends Seeder
 
         $this->createImages($school, 'fake/act-', 1, 6);
         $this->createStudy($school, [206, 207, 208, 209, 210, 253, 252, 279, 306, 308, 309, 312, 324]);
-        $this->createUsers($school, 'students', [1, 2]);
+        $this->createUsers($school, 'students', [21, 22]);
         $this->createUsers($school, 'teachers', [11, 12]);
         $this->createScholarship(1, 1, 20, 207, 1, 1, 1, 1);
         $this->createScholarship(1, 2, 800, 310, 3, 2, 2, 2);
