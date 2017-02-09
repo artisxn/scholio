@@ -314,7 +314,7 @@
                         <div class=" scholar-box " style="">
                             <div ng-repeat="scholarship in contactInfo.scholarship" class="col-md-6 col-sm-12"
                                  style="height: 410px!important;
-                                 position: relative;">
+                                 position: relative; margin: 20px 0 ;">
 
 
 
@@ -370,19 +370,22 @@
 
                                 <ul style="position: absolute; right: 19%; bottom: 30px;">
 
+                                        <a href=""><button type="button" class="margin-left-30 sc-button-landing sc-button sc-green sc-t-white">
+                                                <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή</button></a>
                                     {{--<span class="sc-t-grey font-weight-300" style="left: -210px; top: 10px; position: absolute">--}}
                                         {{--<i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i>Αιτήθηκαν: @{{ scholarship.length}} </span>--}}
-                                    <li><a href=""><button type="button" class="margin-left-30 col-xs-4 sc-button-landing sc-button sc-green sc-t-white">Προβολή</button></a></li>
-                                    {{--<li><a href=""><button type="button" class="col-xs-offset-1  col-xs-4 sc-button-landing sc-button sc-dark-green sc-t-white">Αίτημα</button></a></li>--}}
-                                    {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
+                                   {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
                                     {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
                                 </ul>
 
+
+
+                                <ul style="position: absolute; left: 2%; bottom: 30px;">
+                                        <a href=""><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
+                                                <i class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>Ενδιαφέρομαι</button></a>
+                                </ul>
+
                                 <div class="clearfix"></div>
-
-
-
-
 
 
                                 <div ng-if="($index%2==0)" style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  30px"></div>
