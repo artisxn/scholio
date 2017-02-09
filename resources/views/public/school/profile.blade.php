@@ -233,7 +233,8 @@
                         </div>
                     </div>
 
-                    <!-- Σπουδές -->
+                    <!-- ======= Σπουδές ========-->
+                    <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
                     <div ng-if="studies.length && col_iek_eng_dan_mus">
                         <div class="row main-box2 margin-bot-25" >
                             <div ng-class="['content', {'hideContent':!showContent}]">
@@ -243,7 +244,7 @@
                                     </p>
                                 </div>
 
-                                <div ng-repeat="(levIndex, level) in levelsName">
+                                <div ng-repeat="(levIndex, level) in levelsName" >
                                     <ul ng-class="[{'col-md-6': (levelsName.length>1)},'col-sm-12']">
                                         <div class=" text-incr-175 font-weight-300 margin-top-10" style="text-decoration: underline;" ng-if="contactInfo.type_id!=2">  @{{ level}} </div>
                                         <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="{'col-lg-6': (contactInfo.type_id==2)}">
@@ -270,6 +271,36 @@
                             </div>
                         </div>
                     </div>
+
+                <!-- Σπουδές Φροντιστηρια  -->
+                <div ng-if="studies.length && (contactInfo.type_id==3)">
+                    <div class="row main-box2 margin-bot-25" >
+                        <div ng-class="['content', {'hideContent':!showContent}]">
+                            <div class="section-header2" id="spoudes">
+                                <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
+                                    <i class="fa fa-graduation-cap fa-linear margin-right-10" aria-hidden="true"></i> <span>Τμήματα-Κατευθύνσεις</span>
+                                </p>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="pad-left-5 text-incr-150 font-weight-100  margin-left-10" >Τμήματα</div>
+                                <div ng-repeat="(levIndex, level) in levelsName " >
+                                    <ul >
+                                        <div class="pad-left-20 font-weight-100 " style="">  @{{ level}} </div
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
                     <!-- Υποτροφίες -->
                     <div class="row main-box margin-bot-25" id="ypotrofies">
                         <div class="section-header3">
@@ -279,43 +310,91 @@
                             </p>
                         </div>
 
-                        <div class="col-md-6 col-sm-12 scholar-box">
-                            <div class="ribbon-wrapper">
-                                <div class=" ribbon-front sc-green">
-                                    <i class="fa fa-diamond sc-t-white pad-left-20 text-incr-150 margin-top-10" aria-hidden="true"></i>
-                                    <span class="sc-t-white font-weight-100 text-incr-125 margin-left-10 "> Υποτροφία Αριστείας</span>
+
+                        <div class=" scholar-box " style="">
+                            <div ng-repeat="scholarship in contactInfo.scholarship" class="col-md-6 col-sm-12"
+                                 style="height: 410px!important;
+                                 position: relative;">
+
+
+
+                                <div class="ribbon-wrapper">
+                                    <div class=" ribbon-front sc-medium-grey">
+                                        {{--<i class="fa fa-diamond sc-t-white pad-left-20 text-incr-150 margin-top-10" aria-hidden="true"></i>--}}
+                                        <span class="">
+                                            <img  style="height: 25px; margin: 7px 0 0 10px" ng-src="/panel/assets/images/steps/step3-skills1.png" alt="" ng-if="scholarship.criteria.id==1">
+                                            <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-best.png" alt="" ng-if="scholarship.criteria.id==2">
+                                            <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-help.png" alt="" ng-if="scholarship.criteria.id==3">
+                                            <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-friends.png" alt="" ng-if="scholarship.criteria.id==4">
+                                            <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
+                                        </span>
+
+                                        <span class="sc-t-dark-green font-weight-100 text-incr-125 margin-left-10" style="top: 7px; position: absolute"> @{{scholarship.criteria.name}}</span>
+                                    </div>
+                                    <div class="ribbon-edge-topright"></div>
+                                    <div class="ribbon-edge-bottomright"></div>
+                                    <div class="ribbon-back-right sc-medium-grey"></div>
                                 </div>
-                                <div class="ribbon-edge-topright"></div>
-                                <div class="ribbon-edge-bottomright"></div>
-                                <div class="ribbon-back-right sc-green"></div>
-                            </div>
 
-                            <div class="hexagon" style="top: 37px;">
-                                <i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"
-                                   style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>
-                            </div>
+                                <div class="hexagon" style="top: 37px;">
+                                    <i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"
+                                       style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>
+                                </div>
 
-                            <div class="hexagon" style="top: 65px;">
-                                <i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"
-                                   style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>
-                            </div>
+                                <div class="hexagon" style="top: 65px; position: relative">
+                                    <i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"
+                                       style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>
+                                    {{--<img  style=" height: 25px;"--}}
+                                    {{--ng-src="panel/assets/images/steps/@{{ scholarship.section.name }}.png">--}}
 
-                            <div class="hexagon" style="top: 93px;">
-                                <i class="fa fa-pencil text-incr-200 sc-t-green text" aria-hidden="true"
-                                   style=" position: relative; top: 3px; left: 17px; z-index: 2;"></i>
-                            </div>
+                                </div>
 
-                            <div class="sc-t-grey font-weight-300" style="position: relative; left: 70px; top: -110px;">
-                                <p>Επιδότηση Διδάκτρων 1200 €</p>
-                                <p class="pad-top-50">Σπουδές στη Διοίκηση Επιχειρήσεων (Bachelor's)</p>
-                                <p class="pad-top-50"> Υποτροφία με γραπτές εξετάσεις</p>
-                            </div>
+                                <div class="hexagon" style="top: 93px;">
+                                    <i class="fa fa-pencil text-incr-200 sc-t-green text" aria-hidden="true"
+                                       style=" position: relative; top: 3px; left: 17px; z-index: 2;"></i>
 
-                            <ul style="position: relative; left: 0px; top: -40px;">
-                                <li><a href=""><button type="button" class="margin-left-30 col-xs-4 sc-button-landing sc-button sc-green sc-t-white">Προβολή</button></a></li>
-                                <li><a href=""><button type="button" class="col-xs-offset-1  col-xs-4 sc-button-landing sc-button sc-dark-green sc-t-white">Αίτημα</button></a></li>
-                            </ul>
+                                </div>
+
+                                <div class="sc-t-grey font-weight-300" style="position: relative; padding-left: 70px; margin-top: -112px">
+                                    <p>@{{scholarship.financial.plan}} @{{scholarship.financial_amount}}
+                                        <span ng-if="scholarship.financial.id==1"> %</span>
+                                        <span ng-if="scholarship.financial.id==2"> €  </span>
+                                        <span ng-if="scholarship.financial.id==3"> μήνες</span>
+                                    </p>
+
+                                    <p class="" style="padding-top: 40px;  margin-bottom:2px;">@{{scholarship.level.name}}</p>
+                                    <p class="" style="margin-right: 10px; ">@{{scholarship.study.name}}</p>
+                                    <p class="" style="margin-top: 30px; ">Αιτήθηκαν: @{{ scholarship.length}}</p>
+
+                                </div>
+
+                                <ul style="position: absolute; right: 19%; bottom: 30px;">
+
+                                    {{--<span class="sc-t-grey font-weight-300" style="left: -210px; top: 10px; position: absolute">--}}
+                                        {{--<i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i>Αιτήθηκαν: @{{ scholarship.length}} </span>--}}
+                                    <li><a href=""><button type="button" class="margin-left-30 col-xs-4 sc-button-landing sc-button sc-green sc-t-white">Προβολή</button></a></li>
+                                    {{--<li><a href=""><button type="button" class="col-xs-offset-1  col-xs-4 sc-button-landing sc-button sc-dark-green sc-t-white">Αίτημα</button></a></li>--}}
+                                    {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
+                                    {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
+                                </ul>
+
+                                <div class="clearfix"></div>
+
+
+
+
+
+
+                                <div ng-if="($index%2==0)" style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  30px"></div>
+
+
+
+
+
                         </div>
+
+                        </div>
+
                     </div>
                     <!-- Αξιολογησεις -->
                     <div class="row main-box2 margin-bot-25" id="reviews">
@@ -399,7 +478,7 @@
                     </div>
                 </div>
 
-                <button id="submButton" type="button" class="sc-button3 sc-dark-blue sc-t-white margin-top-10 center-block hidden"
+                <button id="submButton" type="button" class="hidden-sm hidden xs sc-button3 sc-dark-blue sc-t-white margin-top-10 center-block hidden"
                         style="z-index: 4000; width: 190px; top: 250px; margin-left: 55px; position: fixed;"
                         data-toggle="modal" data-target="#con-close-modal">
                     <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
@@ -407,6 +486,9 @@
             </div><!-- //col-lg-3-->
         </div> <!-- //container-->
 
+
+
+        <!-- ====== Modal Συνδεσης =======-->
         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -496,20 +578,23 @@ var lengthStudents = 0;
                     }).success(function(data){
                         console.time('contactInfo API');
                         $scope.contactInfo=data;
+                        console.log(data)
                         $scope.studies = data.levels;
                         $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);
+                        console.timeEnd('contactInfo API');
                         if( $scope.studies.length){
                             $scope.initial();
                         }
-                        if ($scope.contactInfo.type_id==1 || $scope.contactInfo.type_id==2  || $scope.contactInfo.type_id==3 ||
-                            $scope.contactInfo.type_id==4 || $scope.contactInfo.type_id==10 || $scope.contactInfo.type_id==11
-                        )
+                        var type=data.type_id
+                        if (type==1 || type==2)
                         {$scope.col_iek_eng_dan_mus  = true}
-                        console.timeEnd('contactInfo API');
+                        console.log('SchoolTypeId= '+data.type_id)
+//                        console.timeEnd('contactInfo API');
                     });
 
 
                     $scope.levelsName=[];
+
                     $scope.sectionsName=[];
                     $scope.studiesName=[];
 
@@ -518,7 +603,7 @@ var lengthStudents = 0;
 
                         /* ========== BUILD levelsName ARRAY============ */
                         $scope.levelsName[0]=$scope.studies[0][0].section[0].level.name
-
+//                        console.log($scope.levelsName[0])
                         var length=0
                         var found= false
 
@@ -532,8 +617,10 @@ var lengthStudents = 0;
                             if (!found) {
                                 length++
                                 $scope.levelsName[length]=$scope.studies[std][0].section[0].level.name
+//                                console.log($scope.levelsName[length])
                             }
                         }
+//                        console.log($scope.levelsName.length)
 
                         /* ========== BUILD sectionsName ARRAY============ */
                         for (lev in $scope.levelsName ){

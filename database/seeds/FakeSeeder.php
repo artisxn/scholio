@@ -48,7 +48,7 @@ class FakeSeeder extends Seeder
         $this->createScholarship(1, 1, 20, 207, 1, 1, 1, 1);
         $this->createScholarship(1, 2, 800, 310, 3, 2, 2, 2);
         $this->createScholarship(1, 1, 50, 210, 1, 3, 2, 1);
-        $this->createScholarship(1, 2, 500, 209, 1, 3, 2, 1);
+        $this->createScholarship(1, 2, 500, 209, 1, 4, 2, 1);
 
         /*===============  2 AMC ================*/
         $school = factory(App\Models\School::class)->create([
@@ -124,7 +124,7 @@ class FakeSeeder extends Seeder
         $school->image()->toggle($image7);
         $school->image()->toggle($image8);
         $school->image()->toggle($image9);
-        $this->createUsers($school, 'students', [1]);
+        $this->createUsers($school, 'students', [1,2,3,]);
         $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
         $this->createScholarship(3, 2, 600, 4, 2, 1, 1, 1);
         $this->createScholarship(3, 1, 40, 8, 2, 2, 1, 2);
@@ -236,7 +236,7 @@ class FakeSeeder extends Seeder
         $this->createScholarship(6, 1, 30, 234, 1, 1, 1, 1);
         $this->createScholarship(6, 2, 900, 270, 1, 2, 2, 2);
         $this->createScholarship(6, 1, 40, 296, 1, 4, 2, 0);
-        $this->createScholarship(6, 2, 400, 352, 3, 5, 2, 1);
+        $this->createScholarship(6, 2, 400, 352, 3, 3, 2, 1);
 
         /*===============  7 Φροντιστήρια Μ.Ε.Υποδομή ================*/
         $school = factory(App\Models\School::class)->create([
@@ -270,7 +270,7 @@ class FakeSeeder extends Seeder
         $this->createUsers($school, 'teachers', [12, 13, 14, 15]);
         $this->createScholarship(7, 2, 400, 353, 5, 1, 1, 1);
         $this->createScholarship(7, 1, 30, 356, 6, 2, 1, 0);
-        $this->createScholarship(7, 2, 300, 358, 6, 1, 1, 3);
+        $this->createScholarship(7, 2, 300, 358, 6, 4, 3, 3);
 
         /*===============  8 Εκπαιδευτήρια Απόστολος Παύλος  ================*/
         $school = factory(App\Models\School::class)->create([
