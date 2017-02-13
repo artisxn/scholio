@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 
 class UserRegistered
 {
-    protected $user;
+    public $user;
 
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

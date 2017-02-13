@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\UserRegistered;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
@@ -21,6 +22,10 @@ use App\User;
 Route::get('/lg', function () {
     auth()->logout();
     return redirect('/');
+});
+
+Route::get('register/{user}', function (User $user) {
+    event(new UserRegistered($user));
 });
 //
 //

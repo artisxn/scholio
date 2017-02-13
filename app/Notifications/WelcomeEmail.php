@@ -5,12 +5,11 @@ namespace App\Notifications;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 
-class SlackUserRegistered extends Notification
+class WelcomeEmail extends Notification
 {
-    public $user;
+    protected $user;
 
     use Queueable;
 
@@ -32,28 +31,33 @@ class SlackUserRegistered extends Notification
      */
     public function via($notifiable)
     {
-        return ['slack'];
+        return ['mail'];
     }
 
     /**
-     * Get the Slack representation of the notification.
+     * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toSlack($notifiable)
+    public function toMail($notifiable)
     {
-        return (new SlackMessage)
-            ->success()
-            ->content('We have a new user!')
-            ->attachment(function ($attachment) {
-                $attachment->title('User', url('/'))
-                    ->fields([
-                        'Name' => $this->user->name,
-                        'Email' => $this->user->email,
-                        'Role' => $this->user->role,
-                    ]);
-            });
+        return (new MailMessage)
+            ->subject('Welcome to Schol.io')
+            ->line('Hello ' . $this->user->name . '! We are glad to help you find the university you want!')
+            ->action('Find a Scholarship', url('/'));
     }
 
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        return [
+            //
+        ];
+    }
 }

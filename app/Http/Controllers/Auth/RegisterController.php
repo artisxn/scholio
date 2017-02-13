@@ -70,7 +70,7 @@ class RegisterController extends Controller
         $user->password = bcrypt($data['password']);
         $user->save();
 
-        // event(new UserRegistered($user));
+        event(new UserRegistered($user));
 
         return $user;
     }
