@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\UserAppliedOnSchool;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class NotifySchool
 {
@@ -26,6 +24,6 @@ class NotifySchool
      */
     public function handle(UserAppliedOnSchool $event)
     {
-        //
+        dd($event->school);
     }
 }

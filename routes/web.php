@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\UserAppliedOnSchool;
 use App\Events\UserRegistered;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -26,6 +27,10 @@ Route::get('/lg', function () {
 
 Route::get('register/{user}', function (User $user) {
     event(new UserRegistered($user));
+});
+
+Route::get('connect/school/{user}', function (User $user) {
+    event(new UserAppliedOnSchool(auth()->user, $user));
 });
 //
 //
