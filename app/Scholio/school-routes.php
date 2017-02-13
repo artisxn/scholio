@@ -34,7 +34,7 @@ Route::post('profile/images/upload', function () {
         $i->path = $savedImg;
         $i->full_path = $savedImg;
         $i->name = $savedImg;
-        $i->alt = $school->name . '-images';
+        $i->alt = $school->name() . '-images';
         $i->extension = $image->getClientOriginalExtension();
 
         $i->save();
@@ -46,7 +46,7 @@ Route::post('profile/images/upload', function () {
 });
 
 Route::delete('profile/images/upload', function () {
-    $school = School::where('user_id', Auth::user()->id)->first();
+    $school = School::where('user_id', auth()->user()->id)->first();
 
     $id = request()->image;
 
