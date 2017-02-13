@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\UserAppliedOnSchool;
+use App\Notifications\UserAppliedForConnection;
 
 class NotifySchool
 {
@@ -24,6 +25,6 @@ class NotifySchool
      */
     public function handle(UserAppliedOnSchool $event)
     {
-        dd($event->school);
+        $event->school->notify(new UserAppliedForConnection($event->user, $event->school));
     }
 }

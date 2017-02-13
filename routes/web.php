@@ -1,12 +1,12 @@
 <?php
 
-use App\Events\UserAppliedOnSchool;
 use App\Events\UserRegistered;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
-use App\Scholio\Scholio;
+// use App\Scholio\Scholio;
 use App\User;
+use Facades\App\Scholio\Scholio;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,18 +19,18 @@ use App\User;
 |
  */
 
-//ONLY FOR DEVELOPMENT
-Route::get('/lg', function () {
-    auth()->logout();
-    return redirect('/');
+Route::get('test/nots', function () {
+    return auth()->user()->unreadNotifications;
 });
 
-Route::get('register/{user}', function (User $user) {
+Route::get('connection/{id}/confirm', function ($id) {
+    Scholio::connectUserWithSchool(auth()->user()->info, User::find($id));
+    return 'OK';
+});
+
+Route::get('test/newuser', function () {
+    $user = App\User::find(25);
     event(new UserRegistered($user));
-});
-
-Route::get('connect/school/{user}', function (User $user) {
-    event(new UserAppliedOnSchool(auth()->user(), $user));
 });
 
 Route::get('/test/{school}', function (School $school) {
@@ -119,7 +119,6 @@ Route::get('connected/teachers', function () {
         if ($user->role == "teacher") {
             array_push($teachers, $user);
         }
-
     }
 
     $data = array(

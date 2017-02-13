@@ -82,5 +82,9 @@ class User extends Authenticatable
         if ($this->role == 'parent') {
             return $this->hasOne(ParentUser::class, 'user_id');
         }
+
+        if ($this->role == 'school') {
+            return $this->hasOne(School::class, 'user_id');
+        }
     }
 }

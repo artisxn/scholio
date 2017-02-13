@@ -20,12 +20,12 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="notification in notifications">
-                                              <td v-if="notification.type === 'App\\Notifications\\StudentConnectNotification'">Μαθητής</td>
-                                              <td v-if="notification.type === 'App\\Notifications\\TeacherConnectNotification'">Καθηγητής</td>
-                                            <td>{{ notification.data['user_name'] }}</td>
+                                              <td v-if="notification.data.role === 'student'">Μαθητής</td>
+                                              <td v-if="notification.data.role === 'teacher'">Καθηγητής</td>
+                                            <td>{{ notification.data.name }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-success">Αποδοχή</button>
-                                                <button type="button" class="btn btn-danger">Απόρριψη</button>
+                                                <a v-bind:href="notification.data.id" class="btn btn-success">Αποδοχή</a>
+                                                <a href="" class="btn btn-danger">Απόρριψη</a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -52,15 +52,15 @@
             getNotifications: function(){
                 axios.get('/api/notifications/requests')
                     .then(response => {
-                        this.notifications = response.data['notifications']
-                        console.log(response.data['notifications'])
+                        this.notifications = response.data
+                        console.log(response.data)
                     });
             },
             markAsRead: function(){
-              axios.post('/api/notifications/read')
-                .then(response => {
-                  console.log('Notifications are read')
-              });
+                axios.post('/api/notifications/read')
+                    .then(response => {
+                        console.log('Notifications are read')
+                });
             }
         },
 

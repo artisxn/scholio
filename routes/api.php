@@ -20,17 +20,13 @@ Route::get('/notifications', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('/notifications/requests', function () {
-    $school = School::where('user_id', Auth::user()->id)->first();
+    // $school = auth()->user()->info;
 
-    $filtered = auth()->user()->notifications->filter(function ($value, $key) use ($school) {
-        return $value->data['school_id'] == $school->id;
-    });
+    // $filtered = auth()->user()->notifications->filter(function ($value, $key) use ($school) {
+    //     return $value->data['id'] == $school->id;
+    // });
 
-    $data = array(
-        'notifications' => $filtered,
-    );
-
-    return $data;
+    return auth()->user()->notifications;
 })->middleware('auth:api');
 
 Route::post('/notifications/read', function () {
