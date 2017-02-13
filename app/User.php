@@ -2,8 +2,11 @@
 
 namespace App;
 
+use App\Models\Parent as ParentUser;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Student;
+use App\Models\Teacher;
 use App\Traits\UserScopes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -59,5 +62,25 @@ class User extends Authenticatable
     public function scholarship()
     {
         return $this->belongsToMany(Scholarship::class, 'scholarship_user')->withTimestamps();
+    }
+
+    public function interested()
+    {
+        return $this->belongsToMany(Scholarship::class, 'interested')->withTimestamps();
+    }
+
+    public function info()
+    {
+        if ($this->role == 'student') {
+            return $this->hasOne(Student::class, 'user_id');
+        }
+
+        if ($this->role == 'teacher') {
+            return $this->hasOne(Teacher::class, 'user_id');
+        }
+
+        if ($this->role == 'parent') {
+            return $this->hasOne(ParentUser::class, 'user_id');
+        }
     }
 }

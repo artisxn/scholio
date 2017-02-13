@@ -83,7 +83,7 @@
 
 
     </head>
-    <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home">
+    <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;">
     <!-- Scholio Header -->
     <header class="navbar navbar-top sc-landing-header" id="header" >
         <div class="container">
@@ -120,12 +120,11 @@
                 <div class="">
                     <ul class="nav navbar-nav navbar-right sc-landing-menu">
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec2">ΣΧΕΤΙΚΑ</a></li>
+                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">ΣΗΜΕΙΑ ΥΠΕΡΟΧΗΣ</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">ΕΚΠΑΙΔΕΥΤΗΡΙΑ</a></li>
-                        <li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
                         <li><a href="register"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
                         <li><a href="login"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
-                        <li><a href="/register/user/school"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">ΕΓΓΡΑΦΗ ΕΚΠΑΙΔΕΥΤΙΚΟΥ ΙΔΡΥΜΑΤΟΣ</button></a></li>
                     </ul>
                 </div>
             </div>
@@ -162,9 +161,9 @@
                         <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΥΠΟΤΡΟΦΙΕΣ</div>
                         <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΠΙΚΟΙΝΩΝΙΑ</div>
                         <div class=""><br></div>
-                        <a href=""><button type="button" class="sc-button sc-green sc-t-white pull-right">Εγγραφή</button></a>
+                        <a href="register"><button type="button" class="sc-button sc-green sc-t-white pull-right">Εγγραφή</button></a>
                         <div class=""><br><br><br></div>
-                        <a href=""><button type="button" class="sc-button sc-white sc-t-dark-grey pull-right">Σύνδεση</button></a>
+                        <a href="login"><button type="button" class="sc-button sc-white sc-t-dark-grey pull-right">Σύνδεση</button></a>
                     </div>
                 </div>
             </div>
@@ -189,11 +188,14 @@
             </div>
         </div>
         <!-- Full Background Video -->
-        <div class="sc-landing-video-container">
+        <div class="sc-landing-video-container" style="overflow-x: hidden">
             <!-- Video Shadow -->
             <div class="sc-landing-video-filter"></div>
             <video autoplay loop muted id="video-bg">
+                <source src="{{asset('new/video/VideoMix2.ogg')}}" type="video/ogg">
                 <source src="{{asset('new/video/VideoMix2.mp4')}}" type="video/mp4">
+
+                {{--<source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm">--}}
             </video>
         </div>
         <!-- Searchbar -->
@@ -258,23 +260,61 @@
                 <div class="row" >
                     <div class="col-md-4 col-md-offset-4">
                         <br>
-                        <button class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-1  col-lg-10 col-md-10 col-sm-6 col-xs-6 sc-button sc-green sc-t-white navbar-btn" >Ξεκίνησε Τώρα </button>
+                        <a href="register">
+                            <button class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-1  col-lg-10 col-md-10 col-sm-6 col-xs-6 sc-button sc-green sc-t-white navbar-btn" >Ξεκίνησε Τώρα </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- New Section -->
+    <section id="sc-landing-secNew" class="sc-landing-secNew sc-light-grey">
+        <div class="container">
+            <div class="sc-landing-secNew-content">
+                <div class="row">
+
+                    <div style="position: relative" class="hidden-sm hidden-xs">
+                        <img height="710px" width="auto;" src="/new/img/ipad2.png"  style="position: absolute; top:-163px; left: 20px">
+                    </div>
+
+                    <div style="position: relative" class="text-incr-125 sc-t-white">
+                        <img height="670px" width="355px;" src="/new/img/BannerVertical3.png" style="position: absolute; top:-130px; right: 40px">
+
+                        <div style=" position: absolute; right: 65px; width: 300px; text-shadow: 1px 1px #004a5f;" class="">
+                            {{--<div style="height: 50px; width: 300px; background-color: #00b9d2; margin: 20px 0;"></div>--}}
+                            <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
+                            <div class="margin-top-30"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
+                            <div class="margin-top-30"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
+
+                            <div class="centered-text">
+                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text " style=" margin-top: 200px;">
+                                        Εγγραφή Εκπαιδευτικού Φορέα</button></a>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
     <!-- Third Section -->
     <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey">
         <div class="container">
             <div class="sc-landing-sec3-content">
                 <div class="row">
-                    <div class="col-md-7  col-sm-7 col-xs-12">
+                    <div class=" col-sm-7 col-xs-12 margin-top-70" >
                         <img class="img-responsive" src="{{asset('new/img/screen2.png')}}">
 
                     </div>
 
-                    <div class="col-md-5 col-sm-5 col-xs-12">
+                    <div class="col-sm-4 col-xs-12 margin-top-70 margin-left-30">
                         <div class="col-xs-12">
                             <h2 class="text-left">Τα σημεία υπεροχής μας</h2>
                         </div>
@@ -410,7 +450,7 @@
     </section>
 </main>
 
-    <footer id="" class="sc-landing-footer sc-dark-blue">
+    <footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue">
         <div class="container">
             <div class="row  ">
                 <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-5 col-xs-4" >
@@ -438,4 +478,10 @@
     </footer>
 
 </body>
+
+
+<script>
+
+</script>
+
 </html>

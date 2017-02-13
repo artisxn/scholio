@@ -88,6 +88,7 @@ hr {
 .margin-right-30 { margin-right: 30px; }
 .margin-right-50 { margin-right: 80px; }
 
+
 .margin-top--8 { margin-top: -8px; }
 .margin-top-3  { margin-top: 3px; }
 .margin-top-5  { margin-top: 5px; }
@@ -96,6 +97,8 @@ hr {
 .margin-top-15 { margin-top: 15px; }
 .margin-top-20 { margin-top: 20px; }
 .margin-top-30 { margin-top: 30px; }
+.margin-top-50 { margin-top: 50px; }
+.margin-top-70 { margin-top: 70px; }
 .margin-bot-10 { margin-bottom: 10px; }
 .margin-bot-15 { margin-bottom: 15px; }
 .margin-bot-25 { margin-bottom: 25px; }
@@ -143,7 +146,10 @@ a:hover  {  color: orange;  }
 .sc-primary{background:#337AB7;}
 .sc-dark-primary{background:#1d4567;}
 
+
 .sc-t-white{color: white;}
+.sc-t-dark-blue{color:#324c5a;}
+.sc-t-dark-green{color: #008da5;}
 .sc-t-green{color: #00bcd4;}
 .sc-t-grey{color: #888;}
 .sc-t-dark-grey{color: #4a5a62;}

@@ -14,7 +14,7 @@ class SchoolRegistrationController extends Controller
 
     public function __construct()
     {
-        $this->middleware('schoolAdmin')->except('showSchoolUserRegistrationForm', 'registerUserSchool');
+        $this->middleware('guest')->except('showSchoolUserRegistrationForm', 'registerUserSchool');
     }
 
     /**
@@ -56,9 +56,10 @@ class SchoolRegistrationController extends Controller
      */
     public function register()
     {
-        $userName = session()->get('school.user.name');
-        $userEmail = session()->get('school.user.email');
-        $userPassword = session()->get('school.user.password');
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+        ]);
 
         $user = new User;
         $user->name = $userName;

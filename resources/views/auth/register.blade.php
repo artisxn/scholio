@@ -40,6 +40,7 @@
                 <div class="panel-body">
                     <form class="form-horizontal m-t-20" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
+                    {{ session()->put('registration', 'user') }}
 
                         <div class="form-group">
                             <label for="type" class="col-md-4 control-label">Type</label>

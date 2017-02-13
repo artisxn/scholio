@@ -54,9 +54,25 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Gender</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" value="{{ Auth::user()->gender }}" placeholder="Gender" name="gender">
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="col-md-6">
+
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Date of birth</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" value="{{ Auth::user()->dob }}" placeholder="Date of birth" name="dob">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="col-md-2 control-label">City</label>
                                 <div class="col-md-10">
@@ -74,7 +90,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Phone number</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->phone }}" placeholder="Phone number" name="phone">
+                                    <input type="text" class="form-control" value="{{ Auth::user()->mobile_phone }}" placeholder="Phone number" name="mobile_phone">
                                 </div>
                             </div>
 

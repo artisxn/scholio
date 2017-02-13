@@ -7,14 +7,14 @@
     </div>
 
         <div class="pull-left">
-            <img src="{{substr(Auth::user()->school->logo->path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->school->logo->path }}" alt="" class="thumb-md" style="margin-top: 5px">
+            <img src="{{substr(Auth::user()->school->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->school->logo }}" alt="" class="thumb-md" style="margin-top: 5px">
         </div>
         <div class="user-info">
             <div class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <span class="" style="font-weight: 100; font-size: 95%">
 
-                        {{ Auth::user()->school->name }}
+                        {{ Auth::user()->school->name() }}
                     </span> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                       <li><a href=""><i class="ti-user m-r-5"></i> Προφίλ</a></li>
@@ -42,6 +42,10 @@
 
                 @if(Auth::user()->role == 'teacher')
                     @include('panel.partials.navigation.links-teachers')
+                @endif
+
+                @if(Auth::user()->role == 'parent')
+                    @include('panel.partials.navigation.links-parents')
                 @endif
 
             </ul>

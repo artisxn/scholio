@@ -11,8 +11,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(StudentsTableSeeder::class);
-        $this->call(ParentsTableSeeder::class);
-        $this->call(TeachersTableSeeder::class);
+        // $this->call(StudentsTableSeeder::class);
+        // $this->call(ParentsTableSeeder::class);
+        // $this->call(TeachersTableSeeder::class);
     }
 }

@@ -179,16 +179,10 @@
                                 <div id="" v-if="withTerms">
                                     <span style="color: transparent">.</span>
                                     <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
-                                    {{terms}} - <br> <div><span>Characters left:</span> <span id="chars_left"></span></div>
+                                     <div><span>Υπολοιπο Χαρακτήρων:</span> <span id="chars_left"></span></div>
                                 </div>
 
-                                <!--<div>-->
-                                    <!--<div style="margin: 20px 0; left: 20px; position: absolute" >Δικαίωμα Συμμετοχής</div>-->
-                                     <!--<div class="clearfix" style="margin: 0 0 45px 0"></div>-->
-                                    <!--<textarea style="top: 370px; position: absolute" :value="terms" v-model="terms"-->
-                                              <!--onchange="Event.$emit('tinyMCE', event.target.value)"-->
-                                    <!--&gt;</textarea>-->
-                                <!--</div>-->
+
 
                             </div>
                         </div>
@@ -310,7 +304,7 @@ html .ui-button.ui-state-disabled:active {
                 today: null,
                 col_iek_eng_dan_mus: false,
                 error: false,
-                content: ' <p>Scholarship <strong> Terms and Conditions</strong> rigth <span style="color: #ff0000;">here</span> &nbsp;&reg;</p>',
+                content: '<p> Αναφέρετε εδώ τους <strong> Όρους και Προϋποθεσεις </strong> της Υποτροφίας</p>',
                 terms: null,
                 withTerms:false,
                 tinyOptions: {
@@ -421,7 +415,7 @@ html .ui-button.ui-state-disabled:active {
                     this.col_iek_eng_dan_mus=true
                 }
 
-                console.log(this.studyTable);
+//                console.log(this.studyTable);
 
                 console.log('init DONE ! checkedStudies.length='+this.checkedStudies.length);
                 for (var level in this.studyTable ){

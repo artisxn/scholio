@@ -44,16 +44,16 @@ $factory->define(App\Models\School::class, function (Faker\Generator $faker) {
 
     $faker = Faker\Factory::create('el_GR');
 
+    $name = $faker->lastName;
+    $email = $faker->unique()->safeEmail;
+
     return [
-        'name' => $faker->lastName,
-//        'user_id' => factory(App\User::class)->create()->id,
-        'email' => $faker->unique()->safeEmail,
+        // 'user_id' => factory(App\User::class)->create(['role' => 'school'])->id,
         'type_id' => $faker->numberBetween($min = 1, $max = 3),
         'address' => $faker->address,
         'city' => $faker->city,
         'phone' => $faker->numberBetween($min = 1, $max = 100),
         'website' => $faker->domainName,
-        'logo_id' => factory(App\Models\Image::class)->create(['type' => 'Logo'])->id,
     ];
 });
 
@@ -73,5 +73,27 @@ $factory->define(App\Models\Scholarship::class, function (Faker\Generator $faker
         'level_id' => $faker->numberBetween($min = 1, $max = 3),
         'end_at' => $date,
         'winner_id' => $faker->numberBetween($min = 1, $max = 10),
+    ];
+});
+
+$factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
+
+    return [
+        'user_id' => factory(App\User::class)->create(['role' => 'student'])->id,
+        'phone' => '6980000000',
+        'dob' => Carbon::now()->subYears(20),
+        'gender' => 'male',
+        'avatar' => 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png',
+    ];
+});
+
+$factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
+
+    return [
+        'user_id' => factory(App\User::class)->create(['role' => 'teacher'])->id,
+        'phone' => '6980000000',
+        'dob' => Carbon::now()->subYears(40),
+        'gender' => 'male',
+        'avatar' => 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png',
     ];
 });

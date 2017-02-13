@@ -136,7 +136,8 @@ class AdminPanelController extends Controller
     {
         $school = School::where('user_id', auth()->user()->id)->first();
 
-        $logo = Image::where('id', $school->logo_id)->first();
+        // $logo = Image::where('id', $school->logo_id)->first();
+        $logo = $school->logo;
 
         $schoolTypes = SchoolTypes::all();
 
