@@ -309,12 +309,7 @@
 
 
                         <ul>
-                            <li class="" ng-repeat="school in schools
-                            | toArray
-                            | orderBy: orderSelect:sortReverse
-                            | filter: cityFilter
-                            | filter: checkBoxFilter
-                            | limitTo:itemsPerPage:((currentPage-1)*itemsPerPage )">
+                            <li class="" ng-repeat="school in schools">
 
                                 <!--@{{$index+1+( (currentPage-1)*numPerPage )}}-->
 
@@ -329,21 +324,21 @@
                                     <con>
                                         <photo class="">
                                             <img id="img0" class=" card-photo pull-left "
-                                            ng-style="{'background-image':'linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/new/img/colleges/@{{school.image}})'}"
+                                            ng-style="{'background-image':'linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{school.image[0].path}})'}"
                                             >
                                         </photo>
                                         <div class="card-ribbon">
-                                            <img id="img2" class=" sc-white img-med hidden-lg hidden-xs" ng-src="/new/img/colleges/@{{school.logo}}">
-                                            <img id="img3" class=" sc-white img-thumb hidden-lg hidden-md hidden-sm " ng-src="/new/img/colleges/@{{school.logo}}">
+                                            <img id="img2" class=" sc-white img-med hidden-lg hidden-xs" ng-src="/images/schools/@{{school.logo}}">
+                                            <img id="img3" class=" sc-white img-thumb hidden-lg hidden-md hidden-sm " ng-src="/images/schools/@{{school.logo}}">
                                         </div>
                                     </con>
 
                                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
                                             <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs"
-                                                 ng-src="/new/img/colleges/@{{school.logo}}">
+                                                 ng-src="/images/schools/@{{school.logo}}">
                                             <span class="pull-left">
-                                                <h5 class="pad-top-10">  @{{school.schoolName}}</h5>
+                                                <h5 class="pad-top-10"> <a href="/public/profile/@{{school.id}}"> @{{school.name}}</a></h5>
                                                 <span  ng-show="school.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
                                                 <span ng-show="school.ratingCounter!=0" class="sc-t-orange"> @{{school.ratingStar}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{school.ratingCounter}}  Αξιολογήσεις)</span>
                                             </span>
@@ -352,31 +347,31 @@
                                         <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
                                             <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                                             <span class="pull-left pad-left-5">Υποτροφίες</span>
-                                            <span class="pull-right badge"> @{{school.scholarships}}</span>
+                                            <span class="pull-right badge"> @{{school.lengthScholarships}}</span>
                                             <br>
                                             <div class="pad-top-5"></div>
                                             <span><i class="ion-person-stalker  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                            <span class="pull-left pad-left-10" ng-show="school.category=='Κολλέγια' || school.category=='IEK' ">Συνδ. Φοιτητές</span>
-                                            <span class="pull-left pad-left-10" ng-show="school.category=='Ιδιωτικά Σχολεία'">Συνδ. Μαθητές</span>
-                                            <span class="pull-right">@{{school.students}}</span>
+                                            <span class="pull-left pad-left-10" ng-show="school.type_id=='1' || school.type_id=='2' ">Συνδ. Φοιτητές</span>
+                                            <span class="pull-left pad-left-10" ng-show="school.type_id!='1' && school.type_id!='2'">Συνδ. Μαθητές</span>
+                                            <span class="pull-right">@{{school.lengthStudents}}</span>
                                             <br>
                                         </div>
 
                                         <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3">
-                                            <div ng-show="school.category=='Κολλέγια' || school.category=='IEK' ">
+                                            <div ng-show="school.type_id=='1' || school.type_id=='2' ">
                                                 <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
                                                 <span class="pull-left pad-left-5">Ειδικότητες Σπουδών</span>
-                                                <span class="pull-right">@{{school.studies}}</span>
+                                                <span class="pull-right">@{{school.lengthStudies}}</span>
                                                 <br>
                                                 <div class="pad-top-5"></div>
                                             </div>
 
                                             <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
                                             <span class="pull-left pad-left-2 pad-bot-10">Συνδ. Καθηγητές</span>
-                                            <span class="pull-right">@{{school.teachers}}</span>
+                                            <span class="pull-right">@{{school.lengthTeachers}}</span>
                                         </div>
 
-                                        <div ng-show="school.category=='Ιδιωτικά Σχολεία' ">
+                                        <div ng-show="school.type_id=='6' ">
                                             <div class="margin-pad" style=" "></div>
                                         </div>
                                         <hr>

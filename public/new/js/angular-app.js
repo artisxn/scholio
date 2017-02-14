@@ -1,10 +1,18 @@
 (function(window, document) {
 
-
-
   angular.module("landingApp",[])
 
-      .controller("landCtrl",function ($scope) {
+      .controller("landCtrl",function ($scope, $http) {
+
+        
+
+        var fetchTypes = function(){
+          $http.get('api/school/types/all').success(function(data){
+            $scope.schoolTypes = data;
+          });
+        }
+
+        fetchTypes();
 
         $scope.result1 = '';
         $scope.options1 = {

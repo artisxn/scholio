@@ -120,7 +120,7 @@
 
 
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" scroll ng-cloak>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
 <!-- Scholio Header -->
 <header class="navbar navbar-top sc-landing-header" id="header" >
     <div class="container">
@@ -243,14 +243,12 @@
         <!-- Searchbar -->
         <div class="sc-landing-search-bar-holder">
             <div class="container sc-landing-search-bar-content">
-                <form>
+                <form action="/search/school/type" method="post">
+                {{ csrf_field() }}
                     <div class="col-md-5 col-sm-6" id="options">
-                        <select class="sc-no-border" >
-                            <option selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>
-                            <option>Κολλέγια</option>
-                            <option>Ιδιωτικά Σχολεία</option>
-                            <option>Ι.Ε.Κ.</option>
-                            <option>Φροντιστήρια</option>
+                        <select class="sc-no-border" name="type">
+                            <option value="all" selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>
+                            <option value="@{{ type.id }}" ng-repeat="type in schoolTypes">@{{ type.name }}</option>
                         </select>
                     </div>
 
@@ -262,11 +260,11 @@
                                 details="details2" options="options2" placeholder=" Στην Περιοχή:"/>
                          -->
 
-                        <input id="autocomplete" placeholder="Στην Περιοχή:" type="text"> </input>
+                        <input name="location" id="autocomplete" placeholder="Στην Περιοχή:" type="text"> </input>
                     </div>
 
                     <div class="col-md-2 col-sm-12">
-                        <input class="sc-no-border sc-green sc-t-white"type="submit" name="" value="Αναζήτηση">
+                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
                     </div>
                 </form>
             </div>
@@ -410,7 +408,7 @@
                                         <h2>Κολλέγια</h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/1')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -426,7 +424,7 @@
                                         <h2>Φροντιστήρια<span></span></h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/3')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -443,7 +441,7 @@
                                         <h2>Ξένες<span>Γλώσσες</span></h2>
                                         <p>Αναζήτηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/4')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -458,7 +456,7 @@
                                         <h2>Ιδιωτικά<span>Σχολεία</span></h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/6')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -492,7 +490,7 @@
                                         <h2>IEK  & Επαγγελματικές <span> Σχολές</span> </h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/2')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>

@@ -3,6 +3,7 @@
 use App\Models\Financial;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\SchoolTypes;
 use App\Models\Study;
 use App\User;
 use Carbon\Carbon;
@@ -257,3 +258,8 @@ Route::get('/interested/check', function () {
 
     return 'NO';
 })->middleware('auth:api');
+
+Route::get('/school/types/all', function () {
+    $types = SchoolTypes::all();
+    return $types;
+})->middleware('api');

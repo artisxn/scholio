@@ -12,8 +12,12 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         $scope.init = function () {
             console.log("initialize !");
 
-            $scope.schools = $http.get("/sch.json")
+            var path = window.location.pathname;
+            var id = path.substring(path.length,16);
+
+            $scope.schools = $http.get("/test/results/" + id)
                 .success(function (data) {
+                    console.log(id);
                     console.log(data);
 
                     var st1= data;
@@ -40,11 +44,15 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         };
 
         $scope.checkBoxFilter = function(item){
+
             filtered = [];
+            filtered.push(item);
+            console.log(filtered.length);
             if(item.scholarships >=  $scope.scholars && item.ratingCounter >=  $scope.reviews
                     //&& ( item.city == $scope.cityFilter || $scope.cityFilter==null )
                 && (item.category == $scope.categoryFilter || $scope.categoryFilter =="null") ) {
                 filtered.push(item);
+            console.log('dsd' + filtered);
                 //if (filtered.length > 0  ) {$scope.page=filtered.length;}
                 //console.log($scope.page);
 

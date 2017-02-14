@@ -17,6 +17,13 @@ use App\User;
 |
  */
 
+Route::post('search/school/type', function () {
+    $type = request()->type;
+    $location = request()->location;
+
+    return redirect('/public/results/' . $type);
+});
+
 Route::get('/test/{school}', function (School $school) {
 
     $school->lengthStudents = $school->lengthStudents();
@@ -73,7 +80,7 @@ Route::get('/public/profile/{id}', function ($id) {
     return view('public.school.profile')->withId($id);
 });
 
-Route::get('/public/results', function () {
+Route::get('/public/results/{id}', function ($id) {
     return view('public.results.schools');
 });
 
@@ -124,13 +131,19 @@ Route::get('/connection/school/{school}', function (School $school) {
 })->middleware('auth');
 
 Route::get('/test/results/{type}', function ($type) {
-    $schools = School::with('image')->where('type_id', $type)->get();
+    if ($type == 'all') {
+        $schools = School::all();
+    } else {
+        $schools = School::where('type_id', $type)->get();
+    }
 
     foreach ($schools as $s) {
         $s->lengthStudents = $s->lengthStudents();
         $s->lengthTeachers = $s->lengthTeachers();
         $s->lengthStudies = $s->lengthStudies();
         $s->lengthScholarships = $s->lengthScholarships();
+        $s->name = $s->name();
+        $s->email = $s->email();
     }
-    return $schools;
+    return $schools->load('image');
 });
