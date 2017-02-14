@@ -1,9 +1,6 @@
 <template>
         <div class="row" >
-
-
             <div id="smartwizard" class="" >
-
                 <ul class="clearfix">
                     <li><a href="#step-1">Βήμα 1<br /><small class="mar-le-10">Οικονομική <p style="margin-top: -18px;">Προσφορά</p> </small></a></li>
                     <li><a href="#step-2">Βήμα 2<br /><small class="mar-le-10">Σπουδές/Ειδικότητα</small></a></li>
@@ -340,8 +337,6 @@ html .ui-button.ui-state-disabled:active {
         },
 
         methods: {
-
-
             eww: function(){
                 console.log('as')
             },

@@ -223,7 +223,7 @@
                 });
             },
             setSchoolStudies: function (schoolCheckedStudies) {
-                axios.post('/qwe', { checkedStudies: this.checkedStudies })
+                axios.post('/api/school/studies', { checkedStudies: this.checkedStudies })
                 .then(response => {
                    console.log(response.data)
                 });

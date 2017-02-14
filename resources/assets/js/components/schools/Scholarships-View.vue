@@ -13,7 +13,7 @@
                                 <table id="tech-companies-1" class="table  table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <!-- <th>ID</th> -->
                                             <th>Πλάνο Υποτροφίας</th>
                                             <th>Ποσό</th>
                                             <th v-if="showLevel">Τύπος Σπουδών</th> <!-- condition MUST CHANGE-->
@@ -25,7 +25,7 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="scholarship in scholarships">
-                                            <td>{{ scholarship.id }}</td>
+                                            <!-- <td>{{ scholarship.id }}</td> -->
                                             <td>{{ scholarship.financial.plan }}</td>
                                             <td>{{ scholarship.financial_amount }}
                                                 <span v-if="scholarship.financial.id==1">%</span>
