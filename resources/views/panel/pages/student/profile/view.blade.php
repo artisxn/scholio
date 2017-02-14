@@ -19,13 +19,9 @@
                         {{ csrf_field() }}
 
                         <div class="form-group" align="center">
-                            <img src="/images/schools/" height="100px">
+                            <img src="{{ auth()->user()->info->avatar }}" height="100px">
                         </div>
-
-
                         <div class="col-md-6">
-
-
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="avatar">Avatar</label>
                                 <div class="col-md-10">

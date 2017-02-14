@@ -134,9 +134,8 @@ class AdminPanelController extends Controller
      */
     public function editProfile()
     {
-        $school = School::where('user_id', auth()->user()->id)->first();
+        $school = auth()->user()->info;
 
-        // $logo = Image::where('id', $school->logo_id)->first();
         $logo = $school->logo;
 
         $schoolTypes = SchoolTypes::all();
@@ -154,25 +153,23 @@ class AdminPanelController extends Controller
      */
     public function updateProfile(CreateSchoolRequest $request, $id)
     {
-        $input = $request->except('email', 'user_name', 'logo');
-
-        $school = School::findOrFail($id);
+        $school = auth()->user()->info;
 
         if ($file = $request->file('logo')) {
             $image_name = $file->store('logo');
-
-            $image = Image::whereId($school->logo_id)->first();
-
-            $image->update([
-                'path' => $image_name,
-                'full_path' => $image_name,
-                'name' => $image_name,
-            ]);
+            $school->logo = $image_name;
         }
 
-        auth()->user()->update(['name' => $request->user_name]);
+        auth()->user()->name = request()->name;
+        auth()->user()->save();
 
-        $school->update($input);
+        $school->website = request()->website;
+        $school->city = request()->city;
+        $school->address = request()->address;
+        $school->phone = request()->phone;
+        $school->about = request()->about;
+
+        $school->save();
 
         session()->flash('updated_profile', 'Your profile has been updated');
 

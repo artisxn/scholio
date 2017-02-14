@@ -20,11 +20,18 @@
             window.Scholio = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>
         </script>
 
-        <script>
-            window.Connection = {{ $connection->id }}
-            window.SchoolTypeId = '{{ $connection->type->id }}'
-            window.SchoolTypeName = '{{ $connection->type->name }}'
-        </script>
+        @if(auth()->user()->role == 'school')
+            <script>
+                window.Connection = {{ $connection->id }}
+                window.SchoolTypeId = '{{ $connection->type->id }}'
+                window.SchoolTypeName = '{{ $connection->type->name }}'
+            </script>
+        @else
+             <script>
+                window.Connection = {{ $connection->id }}
+            </script>
+        @endif
+
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
