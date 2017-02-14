@@ -160,8 +160,13 @@
                     <li ng-show="col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#reviews">ΑΞΙΟΛΟΓΗΣΕΙΣ</a></li>
-                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
-                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                    @if(auth()->check())
+                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Panel</button></a></li>
+                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
+                    @else
+                    <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
+                    <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                    @endif
                 </ul>
             </div>
 
@@ -282,6 +287,7 @@
                     </div>
                     <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
                         <p class="margin-top-10">
+                            <div ng-bind-html="trustAsHtml(contactInfo.about)"></div>
                             ACT is accredited in the United States by NEASC (New England Association of Schools and Colleges) through its Commission on Institutions of Higher Education.
                             In addition to ACT having full NEASC accreditation, the undergraduate programs delivered at ACT are also validated by Open University, UK.
                             <br>
@@ -491,9 +497,9 @@
 
                 </div>
                 <!-- Show More Scholarships  -->
-                <div class="row show-more" style="background-color: #fff"  >
-                    <div class="pad-top-20">
-                         <span ng-click="showMoreScholarships()" ng-if="contactInfo.lengthScholarships>2">@{{textScholarships}}
+                <div class="row show-more" style="background-color: #fff">
+                    <div class="pad-top-20" ng-if="contactInfo.lengthScholarships>2">
+                         <span ng-click="showMoreScholarships()">@{{textScholarships}}
                              <i class="@{{ iconScholarships }}"></i></span>
                     </div>
                 </div>

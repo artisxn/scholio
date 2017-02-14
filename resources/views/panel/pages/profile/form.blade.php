@@ -98,7 +98,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="email">Email</label>
                                 <div class="col-md-10">
-                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ Auth::user()->email }}" readonly="">
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ auth()->user()->email }}" readonly="">
                                 </div>
                             </div>
 
@@ -142,7 +142,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Contact manager name</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" placeholder="Contact manager name" name="user_name">
+                                    <input type="text" class="form-control" value="{{ auth()->user()->name }}" placeholder="Contact manager name" name="user_name">
                                 </div>
                             </div>
 
@@ -154,7 +154,7 @@
 
                             <div class=" col-xs-12  col-lg-8 col-lg-offset-2">
                                 <p>{{ $school->name() }}: Εδώ γράψτε μια σύντομη περιγραφή</p>
-                                <textarea value=""></textarea>
+                                <textarea value="" name="about">{{ $school->about }}</textarea>
                             </div>
                         </div>
 
