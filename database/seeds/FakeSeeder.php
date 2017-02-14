@@ -274,7 +274,6 @@ class FakeSeeder extends Seeder
         $this->interested(22, 3);
         $this->interested(23, 1);
         $this->interested(24, 2);
-
     }
 
     public function interested($studentID, $scholarshipID)

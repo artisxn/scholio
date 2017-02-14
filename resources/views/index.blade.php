@@ -63,11 +63,11 @@
 
 
     <!-- Angular js-->
-    <!--
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-    <script src="{{asset('new/js/angular-app.js')}}"></script>
-    ng-app="landingApp"
-    -->
+    <script src="/new/js/angular-app.js"></script>
+
+
 
 
 
@@ -79,21 +79,58 @@
     <!--  -->
 
 
+    <style>
+        /*.animate  #sec2 h5{color: red; opacity: 1;*/
+        /*-webkit-transition: all 2.5s ease;*/
+        /*transition: all 2.5s ease;}*/
+        .opacityLow{opacity: 0}
+        .opacityFull {opacity: 1}
+        #sec2{
+            -webkit-transition: all 0.9s linear ;
+            transition: all 0.9s linear;}
+        #sec2, #secNew {
+            -webkit-transition: all 0.3s linear ;
+            transition: all 0.3s linear;}
+
+        .right-out { bottom: -750px;}
+        .right-in { bottom: -240px;}
+
+        .sch-reg-title{left: 40%; width: 400px; position: absolute;}
 
 
+        @media  (max-width: 1500px) {
+            .sch-reg-title {left: 36%; width: 380px;}
+        }
 
-    </head>
-    <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;">
-    <!-- Scholio Header -->
-    <header class="navbar navbar-top sc-landing-header" id="header" >
-        <div class="container">
+        @media  (max-width: 1300px) {
+            .sch-reg-title {left: 31%; width: 370px;}
+        }
 
-            <div class="row">
-                <div class="col-md-1 visible-lg visible-md nav-web">
-                    <!-- Scholio Branding -->
-                    <a class="sc-landing-brand" href="#home">
-                        <div class="sc-landing-logo">
-                            <img src="{{asset('new/img/logo-light.png')}}" alt="scholio logo">
+        @media  (max-width: 1200px) {
+            .sch-reg-title {left: 30%; width: 330px;}
+        }
+
+        @media (min-width: 250px) and (max-width: 540px) {
+            .iphone-xs-position{ height: 260px; right: 190px!important; top: 170px!important;}
+            .banner-xs-position{right: 22px!important;}
+        }
+
+
+    </style>
+
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" scroll ng-cloak>
+<!-- Scholio Header -->
+<header class="navbar navbar-top sc-landing-header" id="header" >
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-1 visible-lg visible-md nav-web">
+                <!-- Scholio Branding -->
+                <a class="sc-landing-brand" href="#home">
+                    <div class="sc-landing-logo">
+                        <img src="{{asset('new/img/logo-light.png')}}" alt="scholio logo">
                     </div>
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
                         <img src="{{asset('new/img/logo.png')}}" alt="scholio logo">
@@ -238,11 +275,11 @@
             <div class="sc-landing-sec2-content">
                 <h2 class="text-center sc-t-white sc-t-dark-grey">Βρες τη δική σου υποτροφία με 3 βήματα</h2>
                 <br><br>
-                <div class="row" >
+                <div class="row">
                     <div class="col-md-4 text-center">
                         <img src="{{asset('new/img/landing-icon-1search.png')}}">
-                        <h5>Αναζήτησε Υποτροφίες</h5>
-                        <p class="centered-text">Επίλεξε την κατηγορία όπως Κολλέγιο, ΙΕΚ , Ιδιωτικό Λύκειο ή Φροντιστήριο και την πόλη που σε ενδιαφέρει</p>
+                        <h5 class="">Αναζήτησε Υποτροφίες</h5>
+                        <p class="centered-text">Επέλεξε την κατηγορία όπως Κολλέγιο, ΙΕΚ , Ιδιωτικό Λύκειο ή Φροντιστήριο και την πόλη που σε ενδιαφέρει</p>
                     </div>
                     <div class="visible-sm visible-xs"><br><br><br></div>
                     <div class="col-md-4 text-center">
@@ -257,7 +294,8 @@
                         <p class="centered-text">Ο εκπαιδευτικός φορέας εξετάζει το αίτημα σου και σε ενημερώνει αναλυτικά για τις περαιτέρω λεπτομέρειες.</p>
                     </div>
                 </div>
-                <div class="row" >
+
+                <div class="row opacityLow" id="sec2" >
                     <div class="col-md-4 col-md-offset-4">
                         <br>
                         <a href="register">
@@ -275,21 +313,32 @@
             <div class="sc-landing-secNew-content">
                 <div class="row">
 
+
+                    <div style=""
+                         class=" sch-reg-title text-incr-175 font-weight-300 centered-text hidden-sm hidden-xs">
+                        Η ολοκληρωμένη λύση προβολής για κάθε εκπαιδευτικό ίδρυμα</div>
+
+
                     <div style="position: relative" class="hidden-sm hidden-xs">
-                        <img height="710px" width="auto;" src="/new/img/ipad2.png"  style="position: absolute; top:-163px; left: 20px">
+                        {{--<img height="699px" width="auto;" src="/new/img/ipad4.png"--}}
+                        {{--style="position: absolute; top:-160px; left: 20px; z-index: 3">--}}
+                        <img height="660px" width="auto;" src="/new/img/ipad6.png"
+                             style="position: absolute; top:-160px; left: 20px; z-index: 3">
                     </div>
 
                     <div style="position: relative" class="text-incr-125 sc-t-white">
-                        <img height="670px" width="355px;" src="/new/img/BannerVertical3.png" style="position: absolute; top:-130px; right: 40px">
+                        <img height="670px" width="355px" src="/new/img/BannerVertical3.png" style="position: absolute; top:-130px; right: 30px" class="banner-xs-position">
+                        {{--<img height="200px" width="300px" src="/new/img/curve.png" style="position: absolute; bottom:-550px; left: 50px; z-index:0">--}}
 
-                        <div style=" position: absolute; right: 65px; width: 300px; text-shadow: 1px 1px #004a5f;" class="">
+                        <div style=" position: absolute; right: 65px; width: 300px; text-shadow: 2px 2px #7b909b;" class="">
+                            <img height="290px" width="auto" src="/new/img/iphone.png" style="position: absolute; top:120px; right: 245px;" class="hidden-md iphone-xs-position">
                             {{--<div style="height: 50px; width: 300px; background-color: #00b9d2; margin: 20px 0;"></div>--}}
-                            <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
-                            <div class="margin-top-30"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
-                            <div class="margin-top-30"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
+                            <div style="margin-top: -50px; margin-left: 20px;"> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
+                            <div class="margin-top-50 margin-left-20"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
+                            <div class="margin-top-50 margin-left-20"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
 
-                            <div class="centered-text">
-                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text " style=" margin-top: 200px;">
+                            <div class="centered-text right-out" id="secNew" style="position: absolute; left: 38px;">
+                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text " style=" margin-top: 200px; width: 260px; height: 50px;">
                                         Εγγραφή Εκπαιδευτικού Φορέα</button></a>
                             </div>
 
@@ -450,32 +499,32 @@
     </section>
 </main>
 
-    <footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue">
-        <div class="container">
-            <div class="row  ">
-                <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-5 col-xs-4" >
-                    <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
-                    <span  class="clear-fix pad-top-10 pad-bot-10">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
-                    <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
-                </div>
-
-                <div class="pull-right pad-top-40 text-incr-175  pad-right-20">
-                    <a href="#" class="sc-t-white "> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
-                    <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
-                    <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
-                    <br>
-                    <span>  <a href="#" class="sc-t-white "><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
-                    <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
-                    <span>  <a href="#" class="sc-t-white margin-left-20 "><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
-                </div>
+<footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue">
+    <div class="container">
+        <div class="row  ">
+            <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-5 col-xs-4" >
+                <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
+                <span  class="clear-fix pad-top-10 pad-bot-10">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
+                <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
             </div>
 
-            <div class=" centered-text">
-                <p class="sc-t-white pad-top-100">© 2016 schol.io . Με την επιφύλαξη κάθε δικαιώματος.</p>
+            <div class="pull-right pad-top-40 text-incr-175  pad-right-20">
+                <a href="#" class="sc-t-white "> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
+                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
+                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
+                <br>
+                <span>  <a href="#" class="sc-t-white "><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
+                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
+                <span>  <a href="#" class="sc-t-white margin-left-20 "><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
             </div>
         </div>
 
-    </footer>
+        <div class=" centered-text">
+            <p class="sc-t-white pad-top-100">© 2016 schol.io . Με την επιφύλαξη κάθε δικαιώματος.</p>
+        </div>
+    </div>
+
+</footer>
 
 </body>
 

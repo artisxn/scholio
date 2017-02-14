@@ -7,7 +7,7 @@
     top: 20px;
 }
 .ribbon-front {
-    width:80%;   /*++++++++++++*/
+    width:84%;   /*++++++++++++*/
     position: relative;
     left: 0;
     z-index: 2;
@@ -45,7 +45,7 @@
 .ribbon-edge-bottomright,
 .ribbon-edge-topright2,
 .ribbon-edge-bottomright2 {
-    left: 78%;        /*++++++++++++*/
+    left: 82%;        /*++++++++++++*/
     border-color: transparent #008da5;
 }
 
@@ -67,7 +67,7 @@
 .ribbon-back-right {
     position: absolute;
     top: 5px;
-    left: 78%;        /*++++++++++++*/
+    left: 82%;        /*++++++++++++*/
     width: 20px;
     height: 40px;
     z-index: 0;
