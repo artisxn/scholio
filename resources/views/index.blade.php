@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -122,9 +122,9 @@
 
     </style>
 
-
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
+
 <!-- Scholio Header -->
 <header class="navbar navbar-top sc-landing-header" id="header" >
     <div class="container">
@@ -539,7 +539,6 @@
 </footer>
 
 </body>
-
 
 <script>
 

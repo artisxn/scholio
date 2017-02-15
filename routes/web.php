@@ -1,5 +1,6 @@
 <?php
 
+use App\Dummy;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
@@ -130,20 +131,46 @@ Route::get('/connection/school/{school}', function (School $school) {
     return 'OK';
 })->middleware('auth');
 
-Route::get('/test/results/{type}', function ($type) {
-    if ($type == 'all') {
-        $schools = School::all();
-    } else {
-        $schools = School::where('type_id', $type)->get();
-    }
+Route::get('fake', function () {
+    $schools = School::all();
+
+    Dummy::query()->truncate();
 
     foreach ($schools as $s) {
-        $s->lengthStudents = $s->lengthStudents();
-        $s->lengthTeachers = $s->lengthTeachers();
-        $s->lengthStudies = $s->lengthStudies();
-        $s->lengthScholarships = $s->lengthScholarships();
-        $s->name = $s->name();
-        $s->email = $s->email();
+        $dummy = new Dummy;
+        $dummy->type_id = $s->type_id;
+        $dummy->name = $s->name();
+        $dummy->email = $s->email();
+        $dummy->phone = $s->phone;
+        $dummy->city = $s->city;
+        $dummy->address = $s->address;
+        $dummy->logo = $s->logo;
+        $dummy->image = $s->profileImage();
+        $dummy->website = $s->website;
+        $dummy->lengthStudents = $s->lengthStudents();
+        $dummy->lengthTeachers = $s->lengthTeachers();
+        $dummy->lengthStudies = $s->lengthStudies();
+        $dummy->lengthScholarships = $s->lengthScholarships();
+        $dummy->save();
     }
-    return $schools->load('image');
+
+});
+
+Route::get('/test/results/{type}', function ($type) {
+    if ($type == 'all') {
+        $schools = Dummy::all();
+    } else {
+        $schools = Dummy::where('type_id', $type)->get();
+    }
+
+    // foreach ($schools as $s) {
+    //     $s->lengthStudents = $s->lengthStudents();
+    //     $s->lengthTeachers = $s->lengthTeachers();
+    //     $s->lengthStudies = $s->lengthStudies();
+    //     $s->lengthScholarships = $s->lengthScholarships();
+    //     $s->image = $s->profileImage();
+    //     $s->name = $s->name();
+    //     $s->email = $s->email();
+    // }
+    return $schools;
 });
