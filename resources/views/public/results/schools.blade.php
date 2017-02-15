@@ -38,9 +38,9 @@
 
     <!-- Angular js-->
     <!--  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.20/angular.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-animate.js"></script>
     <!-- No error Filter:noArray angular 1.3.20 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js"></script>
 
@@ -171,11 +171,12 @@
                                         <option id="drop1" data-icon="glyphicon glyphicon-education" data-subtext="" value="null"
                                                 data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>
 
-                                        <option data-icon="glyphicon glyphicon-globe" data-subtext="" class="kf-option" value="Κολλέγια">&nbsp; Κολλέγια</option>
-                                        <option data-icon="glyphicon glyphicon-blackboard" data-subtext="" class="kf-option" value="Ιδιωτικά Σχολεία">&nbsp;  Ιδιωτικά Σχολεία</option>
-                                        <option data-icon="glyphicon glyphicon-briefcase" data-subtext="" class="kf-option" value="IEK">&nbsp; IEK </option>
-                                        <option data-icon="glyphicon glyphicon-grain" data-subtext="" class="kf-option" value="Επαγγελματικές Σχολές">&nbsp; Επαγγελματικές Σχολές</option>
-                                        <option data-icon="glyphicon glyphicon-pencil" data-subtext="" class="kf-option" value="Φροντιστήρια">&nbsp;  Φροντιστήρια </option>
+                                        <option data-icon="glyphicon glyphicon-globe" data-subtext="" class="kf-option" value="1">&nbsp; Κολλέγια</option>
+                                        <option data-icon="glyphicon glyphicon-briefcase" data-subtext="" class="kf-option" value="2">&nbsp; IEK </option>
+                                        <option data-icon="glyphicon glyphicon-pencil" data-subtext="" class="kf-option" value="3">&nbsp;  Φροντιστήρια </option>
+                                        <option data-icon="glyphicon glyphicon-pencil" data-subtext="" class="kf-option" value="4">&nbsp;  Ξένες Γλώσσες </option>
+                                        <option data-icon="glyphicon glyphicon-blackboard" data-subtext="" class="kf-option" value="6">&nbsp;  Ιδιωτικά Σχολεία</option>
+
                                     </select>
                                 </form>
 
@@ -226,14 +227,14 @@
                         <form class="centered-text" >
 
                             <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="90%" ng-model="categoryFilter">
-                                <option id="drop1" data-icon="glyphicon glyphicon-education" data-subtext="" value="null"
+                                <option id="drop1" data-icon="glyphicon glyphicon-education" data-subtext="" value="all"
                                         data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>
 
-                                <option data-icon="glyphicon glyphicon-globe" data-subtext="" class="kf-option" value="Κολλέγια">&nbsp; Κολλέγια</option>
-                                <option data-icon="glyphicon glyphicon-blackboard" data-subtext="" class="kf-option" value="Ιδιωτικά Σχολεία">&nbsp;  Ιδιωτικά Σχολεία</option>
-                                <option data-icon="glyphicon glyphicon-briefcase" data-subtext="" class="kf-option" value="IEK">&nbsp; IEK </option>
-                                <option data-icon="glyphicon glyphicon-grain" data-subtext="" class="kf-option" value="Επαγγελματικές Σχολές">&nbsp; Επαγγελματικές Σχολές</option>
-                                <option data-icon="glyphicon glyphicon-pencil" data-subtext="" class="kf-option" value="Φροντιστήρια">&nbsp;  Φροντιστήρια </option>
+                                <option data-icon="glyphicon glyphicon-globe" data-subtext="" class="kf-option" value="1">&nbsp; Κολλέγια</option>
+                                <option data-icon="glyphicon glyphicon-briefcase" data-subtext="" class="kf-option" value="2">&nbsp; IEK </option>
+                                <option data-icon="glyphicon glyphicon-pencil" data-subtext="" class="kf-option" value="3">&nbsp;  Φροντιστήρια </option>
+                                <option data-icon="glyphicon glyphicon-pencil" data-subtext="" class="kf-option" value="4">&nbsp;  Ξένες Γλώσσες </option>
+                                <option data-icon="glyphicon glyphicon-blackboard" data-subtext="" class="kf-option" value="6">&nbsp;  Ιδιωτικά Σχολεία</option>
                             </select>
                         </form>
                         <div class="input-group centered-text pad-top-20">
@@ -270,17 +271,18 @@
                             </div>
                         </div>
                     </div>
-                    <a href="">
-                        <button type="button" class="sc-button2 sc-primary sc-t-white pull-right margin-top-15">
-                        <i class="fa fa-search pad-right-15" aria-hidden="true"></i>Αναζήτηση</button>
-                    </a>
+                    {{--<a href="">--}}
+                        {{--<button type="button" class="sc-button2 sc-primary sc-t-white pull-right margin-top-15">--}}
+                        {{--<i class="fa fa-search pad-right-15" aria-hidden="true"></i>Αναζήτηση</button>--}}
+                    {{--</a>--}}
                 </div>  <!-- //col-lg-3-->
                 <div class="col-lg-9 col-md-9 col-sm-12 kf-col-xs-10 kf-col-xs-offset-1" >
 
                     <div ng-repeat="school in schools
-                        | toArray
-                        | filter: cityFilter
-                        | filter: checkBoxFilter as resultsFiltered">
+                            | toArray
+                            | orderBy: orderSelect:sortReverse
+                            | filter: cityFilter
+                            | filter: checkBoxFilter as resultsFiltered">
                         <!--<span ng-show="$last" >Βρεθηκαν @{{$index+1}} αποτελέσματα </span>  -->
                     </div>
                     <div class="pull-left margin-top-10 margin-bot-15">
@@ -300,8 +302,8 @@
                                         <!--<option id="drop2" data-subtext="" value=""-->
                                                 <!--&lt;!&ndash;data-content=" <i class='glyphicon glyphicon-filter margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'&ndash;&gt;-->
                                                 <!--&gt; &nbsp; </span>"></option>-->
-                                        <option data-icon="glyphicon glyphicon-star" data-subtext="" class="font-90" value="ratingStar">&nbsp; Αξιολόγηση</option>
-                                        <option data-icon="fa fa-trophy" data-subtext="" class="font-90" value="scholarships">&nbsp; Υποτροφίες</option>
+                                        <option data-icon="glyphicon glyphicon-star" data-subtext="" class="font-90" value="lengthStudents">&nbsp; Μαθητές</option>
+                                        <option data-icon="fa fa-trophy" data-subtext="" class="font-90" value="lengthScholarships">&nbsp; Υποτροφίες</option>
                                     </select>
                                 </form>
 
@@ -309,9 +311,15 @@
 
 
                         <ul>
-                            <li class="" ng-repeat="school in schools">
+                            <li class="" ng-repeat="school in schools
+                            | toArray
+                            | orderBy: orderSelect:sortReverse
+                            | filter: cityFilter
+                            | filter: checkBoxFilter
+                            | orderBy: orderSelect:sortReverse
+                            | limitTo:itemsPerPage:((currentPage-1)*itemsPerPage )">
 
-                                <!--@{{$index+1+( (currentPage-1)*numPerPage )}}-->
+
 
                                 <div class="card clear-fix margin-bot-25">
 
@@ -407,23 +415,15 @@
                                             <div class="col-lg-2  col-md-1 col-sm-5 col-xs-12 margin-top-15 card-buttons text-incr-85">
                                                 <div class="hidden-xs but-pad">
                                                     <a href="">
-                                                        <button type="button" class="sc-button3 sc-dark-grey sc-t-white pull-right" >
-                                                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης</button>
-                                                    </a>
-                                                    <a href="">
-                                                        <button type="button" class="sc-button3 sc-dark-green sc-t-white pull-right margin-top-15">
-                                                            <i class="fa fa-trophy pad-right-15" aria-hidden="true"></i>Αίτημα Υποτροφίας</button>
+                                                        <button type="button" class="sc-button3 sc-dark-green sc-t-white pull-right margin-top-70">
+                                                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα Σύνδεσης</button>
                                                     </a>
                                                 </div>
 
                                                 <div class="hidden-lg hidden-md hidden-sm  centered-text margin-top-30">
                                                     <a href="">
-                                                        <button type="button" class="sc-button3 sc-dark-grey sc-t-white margin-right-10" >
-                                                            <i class="fa fa-link pad-right-10" aria-hidden="true"></i>Σύνδεση</button>
-                                                    </a>
-                                                    <a href="">
                                                         <button type="button" class="sc-button3 sc-dark-green sc-t-white ">
-                                                            <i class="fa fa-trophy pad-right-10" aria-hidden="true"></i> Υποτροφίες</button>
+                                                            <i class="fa fa-link pad-right-10" aria-hidden="true"></i> Σύνδεση</button>
                                                     </a>
                                                 </div>
                                             </div>
@@ -438,7 +438,7 @@
                                 class="pull-right"
                                 uib-pagination
                                 total-items="resultsFiltered.length"
-                                items-per-page=3
+                                items-per-page=5
                                 ng-model="currentPage"
                                 previous-text="Προηγούμενα"
                                 next-text="Επόμενα">

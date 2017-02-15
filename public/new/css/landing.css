@@ -70,9 +70,9 @@ video {
 
 /* Search Bar */
 .sc-landing-search-bar-holder{
-    width:100%;  height:96px;  top:586px; opacity: 0.9;
+    width:100%;  height:80px;  top:603px; opacity: 0.9;
     position:absolute;  background:rgba(31,52,63,0.85);  z-index:100;  }
-.sc-landing-search-bar-content{padding-top:30px;}
+.sc-landing-search-bar-content{padding-top:20px;}
 .sc-landing-search-bar-content input, .sc-landing-search-bar-content #options {margin-bottom: 20px;}
 
 /*Second Section*/
@@ -170,7 +170,7 @@ video {
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
     /* Search Bar */
-    .sc-landing-search-bar-holder{height:150px;  top:550px;}
+    .sc-landing-search-bar-holder{height:150px;  top:534px;}
 
 }
 
@@ -179,7 +179,7 @@ video {
     /* First Section */
     .sc-landing-sec1-content{margin-top:90px;}
     /* Search Bar */
-    .sc-landing-search-bar-holder{height:200px;  top:500px;}
+    .sc-landing-search-bar-holder{height:200px;  top:482px;}
 
     .clear-fix {
         clear: both;
@@ -195,7 +195,7 @@ video {
     .sc-landing-sec1-content h3{font-size:26px!important;}
 
     /* Search Bar */
-    .sc-landing-search-bar-holder{height:205px;  top:495px;}
+    .sc-landing-search-bar-holder{height:205px;  top:476px;}
     /*Second Section*/
     .sc-landing-sec2-content img{ width:120px; height:auto}
 

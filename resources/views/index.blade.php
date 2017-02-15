@@ -52,6 +52,10 @@
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
+    <!-- Bootstrap Select js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+
     <!-- GoogleMap API -->
     <!--
     <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
@@ -241,34 +245,39 @@
             </video>
         </div>
         <!-- Searchbar -->
-        <div class="sc-landing-search-bar-holder">
-            <div class="container sc-landing-search-bar-content">
-                <form action="/search/school/type" method="post">
-                {{ csrf_field() }}
-                    <div class="col-md-5 col-sm-6" id="options">
-                        <select class="sc-no-border" name="type">
-                            <option value="all" selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>
-                            <option value="@{{ type.id }}" ng-repeat="type in schoolTypes">@{{ type.name }}</option>
-                        </select>
-                    </div>
 
-                    <div class="col-md-5 col-sm-6" >
-                        <!--
-                         <input class="sc-no-border" type="text" name="" placeholder="Στην τοποθεσία..">
-                         ng-controller="landCtrl"
-                          <input type="text" id="Autocomplete" class="form-control " ng-autocomplete="result2"
-                                details="details2" options="options2" placeholder=" Στην Περιοχή:"/>
-                         -->
+           <div class="sc-landing-search-bar-holder">
+               <div class="container sc-landing-search-bar-content">
+                   <form action="/search/school/type" method="post">
+                       {{ csrf_field() }}
+                       <div class="col-md-5 col-sm-6" id="options">
+                           <select class="sc-no-border" name="type">
+                               <option value="all" selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>
+                               <option value="@{{ type.id }}" ng-repeat="type in schoolTypes">@{{ type.name }}</option>
+                           </select>
+                       </div>
 
-                        <input name="location" id="autocomplete" placeholder="Στην Περιοχή:" type="text"> </input>
-                    </div>
+                       <div class="col-md-5 col-sm-6" >
+                           <!--
+                            <input class="sc-no-border" type="text" name="" placeholder="Στην τοποθεσία..">
+                            ng-controller="landCtrl"
+                             <input type="text" id="Autocomplete" class="form-control " ng-autocomplete="result2"
+                                   details="details2" options="options2" placeholder=" Στην Περιοχή:"/>
+                            -->
 
-                    <div class="col-md-2 col-sm-12">
-                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
-                    </div>
-                </form>
-            </div>
-        </div>
+                           <input name="location" id="autocomplete" placeholder="Στην Περιοχή:" type="text"> </input>
+                       </div>
+
+                       <div class="col-md-2 col-sm-12">
+                           <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
+                       </div>
+                   </form>
+               </div>
+           </div>
+
+
+
+
     </section>
 
 
