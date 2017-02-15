@@ -28,6 +28,15 @@ class School extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'user_id', 'about', 'approved', 'created_at', 'updated_at',
+    ];
+
+    /**
      *  Gets the type of the School
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -155,5 +164,10 @@ class School extends Model
     public function name()
     {
         return $this->admin->name;
+    }
+
+    public function profileImage()
+    {
+        return $this->image()->pluck('path')->first();
     }
 }

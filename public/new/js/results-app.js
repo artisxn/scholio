@@ -4,7 +4,11 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         var path = window.location.pathname;
         var id = path.substring(path.length,16);
 
-
+        $scope.update = function(){
+            if(id != 'all'){
+                window.location = '/public/results/' + $scope.categoryFilter;
+            }
+        }
 
         $scope.orderSelect = 'lengthScholarships'; // set the default sort type
         $scope.sortReverse  = true;  // set the default sort order
@@ -12,17 +16,17 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         $scope.reviews=0;
         $scope.categoryFilter=id;
         $scope.currentPage = 1;
-        $scope.itemsPerPage = 5;
+        $scope.itemsPerPage = 10;
         $scope.maxSize = 2;
 
         $scope.init = function () {
-            console.log("initialize !");
+            // console.log("initialize !");
 
 
             $scope.schools = $http.get("/test/results/" + id)
                 .success(function (data) {
-                    console.log(id);
-                    console.log(data);
+                    // console.log(id);
+                    // console.log(data);
 
                     var st1= data;
                     var temp = JSON.stringify(data)
@@ -38,16 +42,14 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                     var st2= JSON.parse(temp);
                     $scope.schools  = angular.merge([], st2, st1);
                     //
-                    //$scope.schools=data;
+                    // $scope.schools=data;
 
                 })
                 .error(function (data) {
                     console.log("something went wrong: ", data);
                 });
 
-
             $scope.totalItems = $scope.schools.length;
-
         };
 
 
@@ -67,7 +69,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
             //
             //
             //}
-                console.log(filtered.length);
+                // console.log(filtered.length);
             return filtered;
 
         };

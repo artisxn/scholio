@@ -16,12 +16,12 @@ use Carbon\Carbon;
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
 
-    $faker = Faker\Factory::create('el_GR');
+    // $faker = Faker\Factory::create('el_GR');
     static $password;
 
     return [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
+        'email' => $faker->unique()->email,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
@@ -42,10 +42,10 @@ $factory->define(App\Models\Image::class, function (Faker\Generator $faker) {
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\School::class, function (Faker\Generator $faker) {
 
-    $faker = Faker\Factory::create('el_GR');
+    // $faker = Faker\Factory::create('el_GR');
 
     $name = $faker->lastName;
-    $email = $faker->unique()->safeEmail;
+    $email = $faker->unique()->email;
 
     return [
         // 'user_id' => factory(App\User::class)->create(['role' => 'school'])->id,
@@ -53,7 +53,7 @@ $factory->define(App\Models\School::class, function (Faker\Generator $faker) {
         'address' => $faker->address,
         'city' => $faker->city,
         'phone' => $faker->numberBetween($min = 1, $max = 100),
-        'website' => $faker->domainName,
+        'website' => $faker->domainName . '.' . $faker->unique()->randomNumber,
     ];
 });
 

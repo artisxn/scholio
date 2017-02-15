@@ -54,7 +54,6 @@
     <!--  Angular Results App -->
     <script src="{{asset('/new/js/results-app.js')}}"></script>
 
-
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="resultsApp">
     <!-- Scholio Header -->
@@ -226,7 +225,7 @@
 
                         <form class="centered-text" >
 
-                            <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="90%" ng-model="categoryFilter">
+                            <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="90%" ng-model="categoryFilter" ng-change="update()">
                                 <option id="drop1" data-icon="glyphicon glyphicon-education" data-subtext="" value="all"
                                         data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>
 
@@ -306,9 +305,7 @@
                                         <option data-icon="fa fa-trophy" data-subtext="" class="font-90" value="lengthScholarships">&nbsp; Υποτροφίες</option>
                                     </select>
                                 </form>
-
                         </div>
-
 
                         <ul>
                             <li class="" ng-repeat="school in schools
@@ -318,8 +315,6 @@
                             | filter: checkBoxFilter
                             | orderBy: orderSelect:sortReverse
                             | limitTo:itemsPerPage:((currentPage-1)*itemsPerPage )">
-
-
 
                                 <div class="card clear-fix margin-bot-25">
 
@@ -332,7 +327,7 @@
                                     <con>
                                         <photo class="">
                                             <img id="img0" class=" card-photo pull-left "
-                                            ng-style="{'background-image':'linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{school.image[0].path}})'}"
+                                            ng-style="{'background-image':'linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{school.image}})'}"
                                             >
                                         </photo>
                                         <div class="card-ribbon">
@@ -438,7 +433,7 @@
                                 class="pull-right"
                                 uib-pagination
                                 total-items="resultsFiltered.length"
-                                items-per-page=5
+                                items-per-page=10
                                 ng-model="currentPage"
                                 previous-text="Προηγούμενα"
                                 next-text="Επόμενα">
