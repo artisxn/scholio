@@ -33,7 +33,6 @@
 
     <link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
 
-
     <!--photo hover animation -->
     <link href="{{asset('new/css/photo-hover.css')}}" rel="stylesheet">
 
@@ -56,23 +55,19 @@
     <!-- Bootstrap Select js  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
 
-    <!-- GoogleMap API -->
-    <!--
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script src=“https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBMIv89-oqimNek5dsVQMTY0PV5qmYRDjoE”></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places?&key=AIzaSyBUVNZRdxX2MnfOZ8NhpQC-Z8fxe4enEkI"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places?&key=AIzaSyBUVNZRdxX2MnfOZ8NhpQC-Z8fxe4enEkI"></script>
-    -->
 
+    <!-- GoogleMap API -->
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
 
 
     <!-- Angular js-->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    {{--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>--}}
+    {{--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script>--}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
     <script src="/new/js/angular-app.js"></script>
-
-
-
 
 
     <!-- Local javascript files -->
@@ -221,7 +216,6 @@
 </header>
 
 
-
 <!-- Scholio Main Section. -->
 <main id="main"  class="">
     <!-- Scholio Landing Page Firt Section -->
@@ -250,22 +244,45 @@
                <div class="container sc-landing-search-bar-content">
                    <form action="/search/school/type" method="post">
                        {{ csrf_field() }}
+                       <!-- SELECT Drop Down -->
+                       {{--<div class="col-md-5 col-sm-6" id="options">--}}
+                           {{--<select class="sc-no-border" name="type">--}}
+                               {{--<option value="all" selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>--}}
+                               {{--<option value="@{{ type.id }}" ng-repeat="type in schoolTypes">@{{ type.name }}</option>--}}
+                           {{--</select>--}}
+                       {{--</div>--}}
+
+                        <!-- Επιλογή Εκπαιδευτικών Ιδρυματων ==== angular typeahead  -->
                        <div class="col-md-5 col-sm-6" id="options">
-                           <select class="sc-no-border" name="type">
-                               <option value="all" selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>
-                               <option value="@{{ type.id }}" ng-repeat="type in schoolTypes">@{{ type.name }}</option>
-                           </select>
+                           <input type="text" name="type" ng-model="selected" value="selected" placeholder="Εκπαιδευτικό Ίδρυμα" autocomplete="off"
+                                  uib-typeahead="state.id as state.type for state in schoolTypess | filter:$viewValue | limitTo: 4"
+                                  typeahead-template-url="customTemplate.html" class="form-control test" typeahead-show-hint="true"
+                                  typeahead-min-length="1" typeahead-input-formatter="formatLabel($model)">
+
                        </div>
 
-                       <div class="col-md-5 col-sm-6" >
-                           <!--
-                            <input class="sc-no-border" type="text" name="" placeholder="Στην τοποθεσία..">
-                            ng-controller="landCtrl"
-                             <input type="text" id="Autocomplete" class="form-control " ng-autocomplete="result2"
-                                   details="details2" options="options2" placeholder=" Στην Περιοχή:"/>
-                            -->
+                       {{--<div style="color: white!important"> @{{ selected}}--}}
+                       {{--</div>--}}
 
-                           <input name="location" id="autocomplete" placeholder="Στην Περιοχή:" type="text"> </input>
+                       <div class="col-md-5 col-sm-6" >
+
+
+                             {{--<input type="text" id="Autocomplete" class="form-control " ng-autocomplete="result2"--}}
+                                   {{--details="details2" options="options2" placeholder=" Στην Περιοχή:"/>--}}
+
+                           <!-- Επιλογή Περιοχής ==== angular typeahead  -->
+                           <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:"
+                                  uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
+                                  typeahead-no-results="noResults"  typeahead-show-hint="true" autocomplete="off" class="form-control">
+                           {{--<div style="color: white;">--}}
+                               {{--<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>--}}
+                               {{--<div ng-show="noResults">--}}
+                                   {{--<i class="glyphicon glyphicon-remove"></i> Δε βρέθηκε περιοχή--}}
+                               {{--</div>--}}
+                           {{--</div>--}}
+
+
+
                        </div>
 
                        <div class="col-md-2 col-sm-12">
@@ -277,8 +294,10 @@
 
 
 
-
     </section>
+
+
+
 
 
     <!-- Second Section -->
@@ -363,7 +382,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Third Section -->
     <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey">
@@ -509,6 +527,7 @@
             </div>
         </div>
     </section>
+
 </main>
 
 <footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue">
@@ -540,8 +559,14 @@
 
 </body>
 
-<script>
+<script type="text/ng-template" id="customTemplate.html">
+    <a>
+        {{--<span>@{{ match.model.id }} &nbsp;</span>--}}
+        {{--<img ng-src="@{{match.model.png}}" width="16">--}}
+        <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+    </a>
 
 </script>
+
 
 </html>

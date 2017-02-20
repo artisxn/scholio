@@ -1,10 +1,9 @@
 (function(window, document) {
 
-  angular.module("landingApp",[])
+  angular.module("landingApp",['ui.bootstrap'])
 
       .controller("landCtrl",function ($scope, $http) {
 
-        
 
         var fetchTypes = function(){
           $http.get('api/school/types/all').success(function(data){
@@ -14,21 +13,108 @@
 
         fetchTypes();
 
-        $scope.result1 = '';
-        $scope.options1 = {
-          country: 'gr'
-        };
-        $scope.details1 = '';
 
 
-        $scope.result2 = '';
-        $scope.options2 = {
-          country: 'gr',
-          types: '(cities)'
+        //========Angular TypeAhead=================
+
+
+        var _selected;
+
+        $scope.selected = undefined;
+
+
+        $scope.ngModelOptionsSelected = function(value) {
+          if (arguments.length) {
+            _selected = value;
+          } else {
+            return _selected;
+          }
         };
-        $scope.details2 = '';
+
+        $scope.modelOptions = {
+          debounce: {
+            default: 500,
+            blur: 250
+          },
+          getterSetter: true
+        };
+
+        $scope.schoolTypess = [
+              { id:1, type: 'Κολλέγιο', tags:'Κολλέγιο,Κολέγιο,College,Πανεπιστήμιο' },
+              { id:2, type: 'ΙΕΚ - Επαγγελματική Σχολή',tags:'Τεχνική Σχολή, ΚΔΒΜ, Κέντρο διά βίου Μάθησης' },
+              { id:3, type: 'Φροντιστήριο Μέσης Εκπαίδευσης' },
+              { id:4, type: 'Φροντιστήριο Ξένων Γλωσσών / Πληροφορικής' },
+              { id:5, type: 'Φροντιστήριο Φοιτητικό' },
+              { id:6, type: 'Ιδιωτικό Λύκειο',tags:'σχολείο, εκπαιδευτήριο' },
+              { id:7, type: 'Ιδιωτικό Γυμνάσιο',tags:'σχολείο, εκπαιδευτήριο' },
+              { id:8, type: 'Ιδιωτικό Δημοτικό',tags:'σχολείο, εκπαιδευτήριο' },
+              { id:9, type: 'Παιδικός Σταθμός - Νηπιαγωγίο' },
+              { id:10, type: 'Σχολή Χορού' },
+              { id:11, type: 'Ωδείο' },
+              { id:12, type: 'Κέντρο Δημιουργικής Απασχόλησης',tags:'ΚΔΑΠ' }
+        ]
+
+
+          var st1=  $scope.schoolTypess
+          var temp = JSON.stringify(st1)
+              .replace(/ά/g,"α")
+              .replace(/έ/g,"ε")
+              .replace(/ή/g,"η")
+              .replace(/ί/g,"ι")
+              .replace(/ό/g,"ο")
+              .replace(/ύ/g,"υ")
+              .replace(/ώ/g,"ω")
+              .replace(/type/g,"type2")
+              .replace(/tags/g,"tags2");
+          var st2= JSON.parse(temp);
+          $scope.schoolTypess  = angular.merge([], st2, st1);
+
+
+          $scope.formatLabel = function(model) {
+              for (var i=0; i< $scope.schoolTypess.length; i++) {
+                  if (model === $scope.schoolTypess[i].id) {
+                      console.log('ng-model='+model)
+                      return $scope.schoolTypess[i].type;
+                  }
+              }
+          }
+
+          //========Google geoLocation=================
+
+          //?geocode=Greece &lang=el_GR &location=38.174248,23.726653 &radius=8000 &country=GR
+          $scope.locationSelected=null
+
+          $scope.getLocation = function(val) {
+              return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
+                  params: {
+                      language: 'el',
+                      address: val,
+                      sensor: false
+                  }
+              }).then(function(response){
+                  return response.data.results.map(function(item){
+                      return item.formatted_address;
+                  });
+              });
+          };
+
+          $scope.result1 = '';
+          $scope.options1 = {
+              country: 'gr'
+          };
+          $scope.details1 = '';
+
+
+          $scope.result2 = '';
+          $scope.options2 = {
+              country: 'gr',
+              types: '(cities)'
+          };
+          $scope.details2 = '';
+
 
       })
+
 
 
       .directive('ngAutocomplete', function($parse) {
@@ -93,7 +179,6 @@
           }
         };
       })
-
 
 
       .directive("scroll", function ($window) {

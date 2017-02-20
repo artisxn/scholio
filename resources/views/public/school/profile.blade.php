@@ -110,17 +110,24 @@
             background-color: transparent;
         }
 
+        #submButton{z-index: 4000; width: 190px; top: 250px; margin-left: 52px; position: fixed; }
+
+        #about-li { margin: 20px}
+
+        #about-li >div> ul > li { margin-left: 20px;}
 
         @media (min-width: 991px) and (max-width: 1199px) {
             .ribbon-front {height: 55px;}
             .ribbon-back-right {  height: 55px;}
             .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
+            #submButton{ top: 5px; margin-left: 15px; position: relative}
         }
-        @media  (max-width: 455px) {
+        @media  (max-width: 490px) {
             .ribbon-front {height: 55px;}
             .ribbon-back-right {  height: 55px;}
             .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
         }
+
 
     </style>
 </head>
@@ -286,20 +293,16 @@
                         </p>
                     </div>
                     <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
-                        <p class="margin-top-10">
+                        <div class="margin-top-10" id="about-li" >
                             <div ng-bind-html="trustAsHtml(contactInfo.about)"></div>
-                            ACT is accredited in the United States by NEASC (New England Association of Schools and Colleges) through its Commission on Institutions of Higher Education.
-                            In addition to ACT having full NEASC accreditation, the undergraduate programs delivered at ACT are also validated by Open University, UK.
-                            <br>
-                            ACT has also been granted a license by the Greek government to operate as a private post-secondary educational institution (“College”).
-                        </p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Show More About  -->
                 <div class="row show-more" style="background-color: #fff"  >
                     <div class="pad-top-20">
-                         <span ng-click="showMoreAbout()" ng-if="contactInfo.lengthScholarships>2">@{{textAbout}}
+                         <span ng-click="showMoreAbout('sxetika')" ng-if="contactInfo.lengthScholarships>2">@{{textAbout}}
                              <i class="@{{ iconAbout }}"></i></span>
                     </div>
                 </div>
@@ -311,7 +314,7 @@
                     <div id="sliderStudies" class=" main-box-2 row slideup slideStudies">
                         <div class="section-header2">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
-                                <i class="fa fa-graduation-cap fa-linear margin-right-10" aria-hidden="true"></i> <span>Σπουδές-Ειδικότητες </span>
+                                <i class="fa fa-book fa-linear margin-right-10" aria-hidden="true"></i> <span>Σπουδές-Ειδικότητες </span>
                             </p>
                         </div>
                         <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
@@ -319,7 +322,7 @@
                             <div ng-repeat="(levIndex, level) in levelsName" >
                                 <ul ng-class="[{'col-md-6': (levelsName.length>1)},'col-sm-12']">
                                     <div class=" text-incr-175 font-weight-300 margin-top-10 margin-left-10" style="" ng-if="contactInfo.type_id!=2">  @{{ level}} </div>
-                                    <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="{'col-lg-6': (contactInfo.type_id==2)}">
+                                    <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="{'col-lg-6': (contactInfo.type_id==2)}" style="list-style-type: none;">
 
                                         <li class="margin-top-20 margin-left-10">
                                             <img ng-src="/panel/assets/images/steps/@{{section}}.png" alt=""
@@ -328,7 +331,7 @@
                                         </li>
 
                                         {{--@{{levIndex}} , , @{{secIndex}}--}}
-                                        <ul ng-repeat="study in studiesName[levIndex][secIndex]">
+                                        <ul ng-repeat="study in studiesName[levIndex][secIndex]" style="list-style-type: none;">
                                             <li class="pad-top-7 margin-left-10">
                                                 <span class="  font-weight-100" style="">@{{ study}}</span>
                                             </li>
@@ -354,7 +357,7 @@
                     <!-- Show More Studies  -->
                     <div class="row show-more" style="background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">
                         <div class="pad-top-20">
-                         <span ng-click="showMoreStudies()" >@{{textStudies}}
+                         <span ng-click="showMoreStudies('spoudes')" >@{{textStudies}}
                              <i class="@{{ iconStudies }}"></i></span>
                         </div>
                     </div>
@@ -499,7 +502,7 @@
                 <!-- Show More Scholarships  -->
                 <div class="row show-more" style="background-color: #fff">
                     <div class="pad-top-20" ng-if="contactInfo.lengthScholarships>2">
-                         <span ng-click="showMoreScholarships()">@{{textScholarships}}
+                         <span ng-click="showMoreScholarships('ypotrofies')">@{{textScholarships}}
                              <i class="@{{ iconScholarships }}"></i></span>
                     </div>
                 </div>
@@ -531,7 +534,7 @@
                 <div class="row slideTeachers slideup margin-bot-25" id="faculty">
                     <div class="section-header3">
                         <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
-                            <i class="ion-ios-people-outline text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό </span>
+                            <i class="fa fa-graduation-cap fa-linear text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό </span>
                         </p>
                     </div>
                 </div>
@@ -618,7 +621,7 @@
                             <span class="pull-right badge"> @{{contactInfo.lengthScholarships}}</span>
                             <br>
                             <div class="pad-top-20"></div>
-                            <span><i class="ion-person-stalker  pull-left pad-top-2 " aria-hidden="true"></i></span>
+                            <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
                             <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">Φοιτητές</span>
                             <span class="pull-left pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">Μαθητές</span>
                             <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
@@ -641,7 +644,7 @@
                 </div>
 
                 <button id="submButton" type="button" class="hidden-sm hidden xs sc-button3 sc-dark-blue sc-t-white margin-top-10 center-block hidden"
-                        style="z-index: 4000; width: 190px; top: 250px; margin-left: 55px; position: fixed;"
+                        style=""
                         data-toggle="modal" data-target="#connect-modal">
                     <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                 </button>
@@ -905,7 +908,7 @@
 
                 $scope.textAbout='Περισσότερα';
                 $scope.iconAbout='fa fa-angle-down'
-                $scope.showMoreAbout= function (){
+                $scope.showMoreAbout= function (hash){
                     if($scope.textAbout === "Περισσότερα"){
                         $scope.textAbout= "Λιγότερα";
                         $scope.iconAbout='fa fa-angle-up'
@@ -914,13 +917,15 @@
                         $scope.textAbout = "Περισσότερα";
                         $scope.iconAbout='fa fa-angle-down'
                         $("#sxetika").toggleClass("slidedown slideup").addClass('slideAbout');
+//                        location.hash = '#';
+//                        location.hash = "#" + hash;
                     };
                 }
 
 
                 $scope.textStudies='Περισσότερα';
                 $scope.iconStudies='fa fa-angle-down'
-                $scope.showMoreStudies= function (){
+                $scope.showMoreStudies= function (hash){
                     if($scope.textStudies === "Περισσότερα"){
                         $scope.textStudies= "Λιγότερα";
                         $scope.iconStudies='fa fa-angle-up'
@@ -929,13 +934,17 @@
                         $scope.textStudies = "Περισσότερα";
                         $scope.iconStudies='fa fa-angle-down'
                         $("#sliderStudies").toggleClass("slidedown slideup").addClass('slideStudies');
+                        location.hash = '#';
+                        location.hash = "#" + hash;
+//
+
                     };
                 }
 
 
                 $scope.textScholarships='Περισσότερα';
                 $scope.iconScholarships='fa fa-angle-down'
-                $scope.showMoreScholarships= function (){
+                $scope.showMoreScholarships= function (hash){
                     if($scope.textScholarships === "Περισσότερα"){
                         $scope.textScholarships= "Λιγότερα";
                         $scope.iconScholarships='fa fa-angle-up'
@@ -944,7 +953,11 @@
                         $scope.textScholarships = "Περισσότερα";
                         $scope.iconScholarships='fa fa-angle-down'
                         $("#ypotrofies").toggleClass("slidedown slideup").addClass('slideScholarships');
+                        location.hash = '#';
+                        location.hash = "#" + hash;
                     };
+
+
                 }
 
                 $scope.textReviews='Περισσότερα';

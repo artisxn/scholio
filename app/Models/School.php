@@ -33,7 +33,7 @@ class School extends Model
      * @var array
      */
     protected $hidden = [
-        'user_id', 'about', 'approved', 'created_at', 'updated_at',
+        'user_id', 'approved', 'created_at', 'updated_at',
     ];
 
     /**

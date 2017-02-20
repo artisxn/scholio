@@ -170,7 +170,7 @@ video {
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
     /* Search Bar */
-    .sc-landing-search-bar-holder{height:150px;  top:534px;}
+    .sc-landing-search-bar-holder{height:150px;  top:530px;}
 
 }
 

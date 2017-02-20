@@ -91,7 +91,7 @@ class FakeSeeder extends Seeder
         $school7 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Υποδομή', 'email' => 'info@ypodomi.com', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Κουγιουμτζίδη 7',
-            'city' => 'Γιαννιτσά, Πέλλας',
+            'city' => 'Γιαννιτσά',
             'phone' => 2382027799,
             'type_id' => 3,
             'website' => 'ypodomi.com',
@@ -147,16 +147,16 @@ class FakeSeeder extends Seeder
             'logo' => 'fake/adamantios-logo.png',
         ]);
 
-        for ($i = 0; $i < 9; $i++) {
-            factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
-        }
+//        for ($i = 0; $i < 9; $i++) {
+//            factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+//        }
 
         factory(App\Models\Student::class, 30)->create();
         factory(App\Models\Teacher::class, 20)->create();
 
-        for ($i = 0; $i < 500; $i++) {
-            factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
-        }
+//        for ($i = 0; $i < 200; $i++) {
+//            factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+//        }
 
         /*===============   1 ACT   ================*/
         $this->createImages($school1, 'fake/act-', 1, 6);
