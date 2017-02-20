@@ -54,7 +54,9 @@ Route::delete('profile/images/upload', function () {
 
     $school->image()->toggle($image);
 
-    File::delete(public_path() . '/images/schools/school-5/aed1d580efb2407cd1efa85cb749ea94.png');
+//    File::delete(public_path() . '/images/schools/school-5/aed1d580efb2407cd1efa85cb749ea94.png');
+
+    unlink(public_path() . '/images/schools/' . $image->name);
 
     return back();
 });
