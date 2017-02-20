@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\UserAppliedOnSchool;
 use App\Models\Financial;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -252,4 +253,24 @@ Route::get('/interested/check', function () {
     }
 
     return 'NO';
+})->middleware('auth:api');
+
+Route::post('/request/school/', function () {
+    if (auth()->user()->role != 'school') {
+        event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school)));
+        return 'OK';
+    }
+
+    return 'Error';
+})->middleware('auth:api');
+
+Route::post('/connection/{id}/confirm', function ($id) {
+    $user = User::find($id);
+    auth()->user()->info->users()->toggle($user);
+    return 'Accepted';
+})->middleware('auth:api');
+
+Route::post('/connection/{id}/deny', function ($id) {
+    // Figure out what else to do here
+    return 'Denied';
 })->middleware('auth:api');

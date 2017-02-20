@@ -38,9 +38,11 @@ window.axios.defaults.headers.common = {
 
 // import Echo from "laravel-echo"
 
-// window.Echo = new Echo({
+// window.schol = new Echo({
 //     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
+//     key: '943717bf5769e7b902b4',
+//     cluster: 'eu',
+//     encrypted: true
 // });
 
 

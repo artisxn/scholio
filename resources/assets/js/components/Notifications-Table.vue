@@ -24,8 +24,8 @@
                                               <td v-if="notification.data.role === 'teacher'">Καθηγητής</td>
                                             <td>{{ notification.data.name }}</td>
                                             <td>
-                                                <a v-bind:href="notification.data.id" class="btn btn-success">Αποδοχή</a>
-                                                <a href="" class="btn btn-danger">Απόρριψη</a>
+                                                <button v-on:click="accept(notification.data.id)" class="btn btn-success">Αποδοχή</button>
+                                                <button v-on:click="deny(notification.data.id)" class="btn btn-danger">Απόρριψη</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -61,6 +61,18 @@
                     .then(response => {
                         console.log('Notifications are read')
                 });
+            },
+            accept: function(id){
+                axios.post('/api/connection/' + id + '/confirm')
+                    .then(response => {
+                        console.log(response.data)
+                    });
+            },
+            deny: function(id){
+                axios.post('/api/connection/' + id + '/deny')
+                    .then(response => {
+                        console.log(response.data)
+                    });
             }
         },
 

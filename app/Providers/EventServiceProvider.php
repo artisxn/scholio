@@ -26,12 +26,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SchoolConfirmsUser' => [
             'App\Listeners\ConnectUserWithSchool',
             'App\Listeners\NotifyUser',
-            'App\Listeners\SlackMessageForSchoolConfirmation',
         ],
         'App\Events\TeacherConfirmsStudent' => [
             'App\Listeners\ConnectStudentWithTeacher',
             'App\Listeners\NotifyStudent',
-            'App\Listeners\SlackMessageForTeacherConfirmation',
         ],
 
     ];

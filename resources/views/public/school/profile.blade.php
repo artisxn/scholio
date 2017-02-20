@@ -471,12 +471,14 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-
+                @if(auth()->check() && auth()->user()->role != 'school')
                 <button id="submButton" type="button" class="hidden-sm hidden xs sc-button3 sc-dark-blue sc-t-white margin-top-10 center-block hidden"
                         style="z-index: 4000; width: 190px; top: 250px; margin-left: 55px; position: fixed;"
                         data-toggle="modal" data-target="#con-close-modal">
+
                     <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                 </button>
+                @endif
             </div><!-- //col-lg-3-->
         </div> <!-- //container-->
 
@@ -499,14 +501,14 @@
 
                     </div>
                     <div class="panel-body">
-                        <img  class="pull-left margin-right-10" style="height: 45px;"
+                        <img class="pull-left margin-right-10" style="height: 45px;"
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
                         <span>@{{contactInfo.type }} @{{ contactInfo.name }}:   Με τη σύνδεσή σας θα έχετε τη δυνατότητα να γράψετε την αξιολόγησή σας.</span>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
-                        <button type="button" class="btn btn-info">Αποστολή</button>
+                        <button type="button" ng-click="sendRequest()" data-dismiss="modal" class="btn btn-info">Αποστολή</button>
                     </div>
                 </div>
             </div>
@@ -714,6 +716,18 @@ var lengthStudents = 0;
                         $scope.showContent=false;
                         $scope.icon='fa fa-angle-down'
                     };
+                }
+
+                $scope.sendRequest = function(){
+                     $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id}, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': window.Scholio.csrfToken
+                        }
+                    })
+                     .success(function(data){
+                        console.log(data);
+                    });
                 }
             })
 

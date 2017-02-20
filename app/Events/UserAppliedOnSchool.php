@@ -6,11 +6,11 @@ use App\Models\School;
 use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserAppliedOnSchool
+class UserAppliedOnSchool implements ShouldBroadcast
 {
     public $user;
     public $school;
@@ -35,6 +35,6 @@ class UserAppliedOnSchool
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('user-applied-on-School');
+        return new Channel('school.' . $this->school->id, $this->user);
     }
 }

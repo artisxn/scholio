@@ -6,6 +6,9 @@
         <meta name="description" content="Schol.io College Panel">
         <meta name="author" content="Coderthemes">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <title>Schol.io College Admin Panel</title>
@@ -24,6 +27,7 @@
             window.Connection = {{ $connection->id }}
             window.SchoolTypeId = '{{ $connection->type->id }}'
             window.SchoolTypeName = '{{ $connection->type->name }}'
+            window.AuthRole = '{{ auth()->user()->role }}'
         </script>
 
 

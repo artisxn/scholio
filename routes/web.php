@@ -4,7 +4,6 @@ use App\Events\UserRegistered;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
-// use App\Scholio\Scholio;
 use App\User;
 use Facades\App\Scholio\Scholio;
 

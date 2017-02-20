@@ -47,8 +47,15 @@
                     .then(response => {
                         this.unreadNotifications = response.data['unread']
                     });
-
+                    this.listen()
                     this.listenOnStudentToSchoolConnection()
+            },
+
+            listen: function(){
+              if(window.AuthRole == 'school'){
+                // console.log('PPPPP')
+                this.listenOnStudentToSchoolConnection()
+              }
             },
 
             listenOnStudentToSchoolConnection: function(){
@@ -58,11 +65,7 @@
                 });
 
                 var channel = pusher.subscribe('school.' + window.Connection);
-                channel.bind('App\\Events\\StudentAppliedToSchool', function(data) {
-                  this.getNotifications();
-                }.bind(this));
-
-                channel.bind('App\\Events\\TeacherAppliedToSchool', function(data) {
+                channel.bind('App\\Events\\UserAppliedOnSchool', function(data) {
                   this.getNotifications();
                 }.bind(this));
             }

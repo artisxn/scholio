@@ -12436,6 +12436,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/api/notifications/read').then(function (response) {
                 console.log('Notifications are read');
             });
+        },
+        accept: function accept(id) {
+            axios.post('/api/connection/' + id + '/confirm').then(function (response) {
+                console.log(response.data);
+            });
+        },
+        deny: function deny(id) {
+            axios.post('/api/connection/' + id + '/deny').then(function (response) {
+                console.log(response.data);
+            });
         }
     },
 
@@ -12505,8 +12515,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/notifications').then(function (response) {
                 _this.unreadNotifications = response.data['unread'];
             });
-
+            this.listen();
             this.listenOnStudentToSchoolConnection();
+        },
+
+        listen: function listen() {
+            if (window.AuthRole == 'school') {
+                // console.log('PPPPP')
+                this.listenOnStudentToSchoolConnection();
+            }
         },
 
         listenOnStudentToSchoolConnection: function listenOnStudentToSchoolConnection() {
@@ -12516,11 +12533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             var channel = pusher.subscribe('school.' + window.Connection);
-            channel.bind('App\\Events\\StudentAppliedToSchool', function (data) {
-                this.getNotifications();
-            }.bind(this));
-
-            channel.bind('App\\Events\\TeacherAppliedToSchool', function (data) {
+            channel.bind('App\\Events\\UserAppliedOnSchool', function (data) {
                 this.getNotifications();
             }.bind(this));
         }
@@ -14841,8 +14854,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 44 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 // window._ = require('lodash');
 
 /**
@@ -14883,9 +14897,11 @@ window.axios.defaults.headers.common = {
 
 // import Echo from "laravel-echo"
 
-// window.Echo = new Echo({
+// window.schol = new Echo({
 //     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
+//     key: '943717bf5769e7b902b4',
+//     cluster: 'eu',
+//     encrypted: true
 // });
 
 /***/ }),
@@ -19314,15 +19330,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('table', {
     staticClass: "table m-0"
   }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.notifications), function(notification) {
-    return _c('tr', [(notification.data.role === 'student') ? _c('td', [_vm._v("Μαθητής")]) : _vm._e(), _vm._v(" "), (notification.data.role === 'teacher') ? _c('td', [_vm._v("Καθηγητής")]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.data.name))]), _vm._v(" "), _c('td', [_c('a', {
+    return _c('tr', [(notification.data.role === 'student') ? _c('td', [_vm._v("Μαθητής")]) : _vm._e(), _vm._v(" "), (notification.data.role === 'teacher') ? _c('td', [_vm._v("Καθηγητής")]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.data.name))]), _vm._v(" "), _c('td', [_c('button', {
       staticClass: "btn btn-success",
-      attrs: {
-        "href": notification.data.id
+      on: {
+        "click": function($event) {
+          _vm.accept(notification.data.id)
+        }
       }
-    }, [_vm._v("Αποδοχή")]), _vm._v(" "), _c('a', {
+    }, [_vm._v("Αποδοχή")]), _vm._v(" "), _c('button', {
       staticClass: "btn btn-danger",
-      attrs: {
-        "href": ""
+      on: {
+        "click": function($event) {
+          _vm.deny(notification.data.id)
+        }
       }
     }, [_vm._v("Απόρριψη")])])])
   }))])])])])])])])])

@@ -16,6 +16,8 @@
     "laravel-echo": "0.0.16"
   },
   "dependencies": {
+    "laravel-echo": "0.0.16",
+    "pusher-js": "^4.0.0",
     "vue-tinymce": "^1.0.5"
   }
 }
