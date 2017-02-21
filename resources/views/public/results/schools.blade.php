@@ -72,6 +72,10 @@
 
     {{--<script src="{{asset('/new/js/ng-map.min.js')}}"></script>--}}
 
+    <script>
+    window.SelectedLocation = "{{ session()->pull('location') }}"
+    </script>
+
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="resultsApp" data-ng-init="" ng-cloak>
     <!-- Scholio Header -->
@@ -174,9 +178,6 @@
                                 </a>
                             </p>
 
-
-
-
                             <div class="centered-text" style="max-width: 335px;" ng-cloak>
 
                                 <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="90%" ng-model="categoryFilter" ng-change="update()">
@@ -195,7 +196,7 @@
                                 <span class="input-group-addon text-incr-115 kf-gray" id="basic-addon1"><i class="fa fa-map-marker margin-right-5"></i></span>
                                 <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
                                         uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                        typeahead-no-results="noResults" autocomplete="off" >
+                                        typeahead-no-results="noResults" autocomplete="off">
                             </div>
 
                         </div>
@@ -258,13 +259,12 @@
 
 
                             {{--typeahead-show-hint="true"--}}
-                            <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
+                            <input type="text" name="loc" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
                                    uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                   typeahead-no-results="noResults" autocomplete="off" >
+                                   typeahead-no-results="noResults" autocomplete="off">
 
 
-                            {{--<input type="text" id="Autocomplete" class="kf-option" ng-autocomplete="result2" ng-model="locationSelected"--}}
-                                   {{--details="details2" options="options2" placeholder=" Στην Περιοχή:"/>--}}
+                            {{-- <input type="text" id="Autocomplete" class="kf-option" ng-autocomplete="result2" ng-model="locationSelected"details="details2" options="options2" placeholder=" Στην Περιοχή:" onchange="ccc()" /> --}}
 
                         </div>
                                 {{--====== Input Range ======--}}
@@ -272,9 +272,6 @@
                             <input type="range" ng-model="maxDistance" min=1 max=400 step=1 class="margin-bot-10">
                             <span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>
                         </div>
-
-
-
 
                     </div>
                     <div class=" box left-box2 ">
@@ -524,10 +521,6 @@
 
 
                     </div>
-
-
-
-
                     </div> <!-- //col-lg-9-->
             </div> <!-- //row-->
         </div> <!-- //container-->
@@ -548,6 +541,7 @@ $('rating').raty({
 
 //====== This delay must change ====
 $(document).ready(function(){$("body").hide().fadeIn(1700);});
+
 </script>
 
 </html>

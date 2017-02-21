@@ -20,6 +20,7 @@ class CreateParentsTable extends Migration
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

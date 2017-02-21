@@ -18,9 +18,16 @@ use App\User;
 |
  */
 
+Route::get('maptest', function () {
+    dd(Scholio::geocode('Αθήνα, Ελλάδα')['lat']);
+
+});
+
 Route::post('search/school/type', function () {
     $type = request()->type;
     $location = request()->location;
+
+    session()->put('location', $location);
 
     return redirect('/public/results/' . $type);
 });
@@ -151,6 +158,8 @@ Route::get('fake', function () {
         $dummy->lengthTeachers = $s->lengthTeachers();
         $dummy->lengthStudies = $s->lengthStudies();
         $dummy->lengthScholarships = $s->lengthScholarships();
+        $dummy->lat = $s->lat;
+        $dummy->lng = $s->lng;
         $dummy->save();
     }
     return 'OK';
@@ -164,14 +173,5 @@ Route::get('/test/results/{type}', function ($type) {
         $schools = Dummy::where('type_id', $type)->get();
     }
 
-    // foreach ($schools as $s) {
-    //     $s->lengthStudents = $s->lengthStudents();
-    //     $s->lengthTeachers = $s->lengthTeachers();
-    //     $s->lengthStudies = $s->lengthStudies();
-    //     $s->lengthScholarships = $s->lengthScholarships();
-    //     $s->image = $s->profileImage();
-    //     $s->name = $s->name();
-    //     $s->email = $s->email();
-    // }
     return $schools;
 });

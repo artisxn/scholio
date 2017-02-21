@@ -1,7 +1,10 @@
 angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
     .controller("resultsCtrl",function ($timeout,$scope,$http,$rootScope) {
+        $scope.HERE = false
         $rootScope.plat=40.6357;
         $rootScope.plong=23.0079;
+
+        $scope.locationSelected = window.SelectedLocation;
 
         $scope.view='card';
         $scope.changeView= function(view){
@@ -30,6 +33,23 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
         $scope.init = function () {
             // console.log("initialize !");
+            // 
+            getLatLng = function (address) {
+                 var geocoder = new google.maps.Geocoder();
+                 // var address = $scope.schools[i].address + ', ' + $scope.schools[i].city;
+                 //console.log('geo '+address)
+
+                 geocoder.geocode({'address': address}, function (results, status) {
+                     if (status == google.maps.GeocoderStatus.OK) {
+                         $rootScope.plat = results[0].geometry.location.lat();
+                         $rootScope.plong = results[0].geometry.location.lng();
+                     }
+                 });
+             }
+
+             if(window.SelectedLocation != null){
+                getLatLng(window.SelectedLocation);
+            }
 
 
             $scope.schools = $http.get("/test/results/" + id)
@@ -52,45 +72,13 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                     $scope.schools  = angular.merge([], st2, st1);
 
                     for (var i = 0; i < $scope.schools.length; i++) {
-                        $scope.schools[i].pos=[]
-                        var lat, long
-                       cordinates = function (i) {
-                            var geocoder = new google.maps.Geocoder();
-                            var address = $scope.schools[i].address + ', ' + $scope.schools[i].city;
-                            //console.log('geo '+address)
-
-                            geocoder.geocode({'address': address}, function (results, status) {
-                                if (status == google.maps.GeocoderStatus.OK) {
-                                    lat = results[0].geometry.location.lat();
-                                    long = results[0].geometry.location.lng();
-                                    passLatLong(i)
-                                }
-                            });
-                        }
-
-                        //console.log($scope.schools[i].pos[1])
-                        function passLatLong(i){
-                            //console.log(i+' geoIn '+lat,long)
-                            $scope.schools[i].lat=lat;
-                            $scope.schools[i].long=long;
-                            $scope.schools[i].pos=lat+','+long;
-                            //console.log(i+' geoIn '+ $scope.schools[i].lat, $scope.schools[i].long)
-                            var dist= latLonToDistance(lat,long, $rootScope.plat, $rootScope.plong)
-                            $scope.schools[i].distance=parseFloat(dist)
-
-
-                            //console.log('distance '+$scope.schools[i].distance)
-
-                            }
-
-                        cordinates(i)
-
-
+                        var dist = latLonToDistance(data[i].lat,data[i].lng, $rootScope.plat, $rootScope.plong)
+                        console.log('lat -' + data[i].lat)
+                        console.log('lng -' + data[i].lat)
+                        $scope.schools[i].distance=parseFloat(dist)
                     }
-
-                     //$scope.schools=data;
-
-                    //console.log( $scope.schools)
+                    setTimeout(function() {$scope.HERE = true}, 1000);
+                    console.log($scope.schools)
                 })
                 .error(function (data) {
                     console.log("something went wrong: ", data);
@@ -113,6 +101,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         }
 
         function latLonToDistance(lat1, lon1, lat2, lon2) {
+            console.log('1 - ' + lat1 + ', 2 - ' + lon1)
             var R = 3958.7558657440545; // Radius of earth in Miles
             var dLat = toRadius(lat2-lat1);
             var dLon = toRadius(lon2-lon1);
@@ -125,15 +114,15 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
             return res;
         }
 
-
         $rootScope.lat=[]
         $rootScope.lng=[]
-        $scope.maxDistance=10
+        $scope.maxDistance=20
         $scope.checkBoxFilter = function(item){
             var filtered = [];
 
-            item.distance= parseFloat( latLonToDistance(item.lat, item.long, $rootScope.plat, $rootScope.plong) )
-
+            if($scope.HERE){
+                item.distance = parseFloat( latLonToDistance(item.lat, item.lng, $rootScope.plat, $rootScope.plong) )
+            }
 
             if(item.lengthScholarships >=  $scope.scholars && item.distance<$scope.maxDistance
                     //&& ( item.city == $scope.cityFilter || $scope.cityFilter==null )
@@ -141,11 +130,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                 //filtered.push(item)
                 return filtered;
             };
-
-
         }
-
-
 
         //========Google geoLocation=================
 
@@ -198,7 +183,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
                 for ( i = 0; i < filterMark.length; i++) {
                     marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(filterMark[i].lat, filterMark[i].long),
+                        position: new google.maps.LatLng(filterMark[i].lat, filterMark[i].lng),
                         name:filterMark[i].name,
                         logo:filterMark[i].logo,
                         map: map
@@ -209,12 +194,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
                 var infowindow = new google.maps.InfoWindow();
 
-
-
             }
-
-
-
         }
 
 

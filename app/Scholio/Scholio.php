@@ -38,4 +38,24 @@ class Scholio
             include 'admin-routes.php';
         });
     }
+
+    public static function geocode($address)
+    {
+        $address = urlencode($address);
+
+        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+
+        $resp_json = file_get_contents($url);
+        $resp = json_decode($resp_json, true);
+
+        if ($resp['status'] == 'OK') {
+            $lati = $resp['results'][0]['geometry']['location']['lat'];
+            $longi = $resp['results'][0]['geometry']['location']['lng'];
+            $formatted_address = $resp['results'][0]['formatted_address'];
+
+            return ['lat' => $lati, 'lng' => $longi];
+        } else {
+            dd('NO');
+        }
+    }
 }

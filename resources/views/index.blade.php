@@ -254,15 +254,13 @@
 
                         <!-- Επιλογή Εκπαιδευτικών Ιδρυματων ==== angular typeahead  -->
                        <div class="col-md-5 col-sm-6" id="options">
-                           <input type="text" name="type" ng-model="selected" value="selected" placeholder="Εκπαιδευτικό Ίδρυμα" autocomplete="off"
-                                  uib-typeahead="state.id as state.type for state in schoolTypess | filter:$viewValue | limitTo: 4"
+                           <input type="text" ng-model="selected" value="selected" placeholder="Εκπαιδευτικό Ίδρυμα" autocomplete="off"
+                                  uib-typeahead="state.id as state.type for state in schoolTypess | filter:$viewValue | limitTo: 8"
                                   typeahead-template-url="customTemplate.html" class="form-control test" typeahead-show-hint="true"
-                                  typeahead-min-length="1" typeahead-input-formatter="formatLabel($model)">
-
+                                  typeahead-min-length="0" typeahead-input-formatter="formatLabel($model)">
                        </div>
 
-                       <div style="color: white!important"> @{{ selected}}
-                       {{--</div>--}}
+                       <input class="hidden" style="color: black!important;" name="type" value="@{{ selected }}" />
 
                        <div class="col-md-5 col-sm-6" >
 
@@ -271,7 +269,7 @@
                                    {{--details="details2" options="options2" placeholder=" Στην Περιοχή:"/>--}}
 
                            <!-- Επιλογή Περιοχής ==== angular typeahead  -->
-                           <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:"
+                           <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" name="location"
                                   uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
                                   typeahead-no-results="noResults"  typeahead-show-hint="true" autocomplete="off" class="form-control">
                            {{--<div style="color: white;">--}}

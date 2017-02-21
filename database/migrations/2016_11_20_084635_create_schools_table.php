@@ -24,6 +24,8 @@ class CreateSchoolsTable extends Migration
             $table->string('logo')->default('fake/dummy.png');
             $table->text('about')->nullable();
             $table->boolean('approved')->default(1);
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->timestamps();
         });
     }

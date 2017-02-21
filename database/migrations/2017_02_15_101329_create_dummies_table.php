@@ -28,6 +28,8 @@ class CreateDummiesTable extends Migration
             $table->integer('lengthStudies')->nullable();
             $table->integer('lengthScholarships')->nullable();
             $table->string('image')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->timestamps();
         });
     }

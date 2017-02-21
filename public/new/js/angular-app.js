@@ -4,7 +4,6 @@
 
       .controller("landCtrl",function ($scope, $http) {
 
-
         var fetchTypes = function(){
           $http.get('api/school/types/all').success(function(data){
             $scope.schoolTypes = data;

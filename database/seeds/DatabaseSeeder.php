@@ -1,5 +1,7 @@
 <?php
 
+use App\Scholio\Scholio;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +23,18 @@ class DatabaseSeeder extends Seeder
         $this->call(StudiesTableSeeder::class);
         $this->call(CriteriasTableSeeder::class);
         $this->call(FakeSeeder::class);
+
+        foreach (User::all() as $user) {
+            if ($user->role == 'school' && $user->id <= 11) {
+                $address = Scholio::geocode($user->info->address . "," . $user->info->city);
+                $lat = $address['lat'];
+                $lng = $address['lng'];
+                $user->info->lat = $lat;
+                $user->info->lng = $lng;
+
+                $user->info->save();
+            }
+        }
 
     }
 }
