@@ -2,7 +2,7 @@
         <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="true">
                 <i class="icon-bell"></i> 
-                <span class="badge badge-xs badge-danger" v-if="unreadNotifications">
+                <span class="badge badge-xs badge-danger" v-if="unreadNotifications.length">
                     {{ unreadNotifications.length }}
                 </span>
             </a>
@@ -66,6 +66,7 @@
 
                 var channel = pusher.subscribe('school.' + window.Connection);
                 channel.bind('App\\Events\\UserAppliedOnSchool', function(data) {
+                  console.log('test')
                   this.getNotifications();
                 }.bind(this));
             }

@@ -18,6 +18,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\SlackMessageForUserRegistration',
         ],
         'App\Events\UserAppliedOnSchool' => [
+            'App\Listeners\UpdateRequestsTable',
             'App\Listeners\NotifySchool',
         ],
         'App\Events\StudentAppliedOnTeacher' => [

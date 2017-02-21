@@ -19,13 +19,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="notification in notifications">
+                                        <tr v-for="notification in notifications" v-show="!notification.read_at">
                                               <td v-if="notification.data.role === 'student'">Μαθητής</td>
                                               <td v-if="notification.data.role === 'teacher'">Καθηγητής</td>
                                             <td>{{ notification.data.name }}</td>
                                             <td>
                                                 <button v-on:click="accept(notification.data.id)" class="btn btn-success">Αποδοχή</button>
-                                                <button v-on:click="deny(notification.data.id)" class="btn btn-danger">Απόρριψη</button>
+                                                <button v-on:click="deny(notification.id)" class="btn btn-danger">Απόρριψη</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -56,22 +56,27 @@
                         console.log(response.data)
                     });
             },
-            markAsRead: function(){
-                axios.post('/api/notifications/read')
+            markAsRead: function(id){
+                axios.post('/api/notifications/read/' + id)
                     .then(response => {
                         console.log('Notifications are read')
+                        this.getNotifications()
+                        Event.$emit('readNotifications')
                 });
             },
             accept: function(id){
                 axios.post('/api/connection/' + id + '/confirm')
                     .then(response => {
                         console.log(response.data)
+                        this.getNotifications()
+                        Event.$emit('readNotifications')
                     });
             },
             deny: function(id){
                 axios.post('/api/connection/' + id + '/deny')
                     .then(response => {
-                        console.log(response.data)
+                        console.log(id)
+                        this.markAsRead(id)
                     });
             }
         },
@@ -80,7 +85,7 @@
             console.log('Notifications-Table component mounted!')
 
             this.getNotifications()
-            this.markAsRead()
+            // this.markAsRead()
 
             Event.$emit('readNotifications')
         }

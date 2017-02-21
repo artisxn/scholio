@@ -12432,19 +12432,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(response.data);
             });
         },
-        markAsRead: function markAsRead() {
-            axios.post('/api/notifications/read').then(function (response) {
+        markAsRead: function markAsRead(id) {
+            var _this2 = this;
+
+            axios.post('/api/notifications/read/' + id).then(function (response) {
                 console.log('Notifications are read');
+                _this2.getNotifications();
+                Event.$emit('readNotifications');
             });
         },
         accept: function accept(id) {
+            var _this3 = this;
+
             axios.post('/api/connection/' + id + '/confirm').then(function (response) {
                 console.log(response.data);
+                _this3.getNotifications();
+                Event.$emit('readNotifications');
             });
         },
         deny: function deny(id) {
+            var _this4 = this;
+
             axios.post('/api/connection/' + id + '/deny').then(function (response) {
-                console.log(response.data);
+                console.log(id);
+                _this4.markAsRead(id);
             });
         }
     },
@@ -12453,7 +12464,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Notifications-Table component mounted!');
 
         this.getNotifications();
-        this.markAsRead();
+        // this.markAsRead()
 
         Event.$emit('readNotifications');
     }
@@ -12534,6 +12545,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var channel = pusher.subscribe('school.' + window.Connection);
             channel.bind('App\\Events\\UserAppliedOnSchool', function (data) {
+                console.log('test');
                 this.getNotifications();
             }.bind(this));
         }
@@ -14854,9 +14866,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 44 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 // window._ = require('lodash');
 
 /**
@@ -18057,7 +18068,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "icon-bell"
-  }), _vm._v(" "), (_vm.unreadNotifications) ? _c('span', {
+  }), _vm._v(" "), (_vm.unreadNotifications.length) ? _c('span', {
     staticClass: "badge badge-xs badge-danger"
   }, [_vm._v("\n            " + _vm._s(_vm.unreadNotifications.length) + "\n        ")]) : _vm._e()]), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu dropdown-menu-lg"
@@ -19330,7 +19341,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('table', {
     staticClass: "table m-0"
   }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.notifications), function(notification) {
-    return _c('tr', [(notification.data.role === 'student') ? _c('td', [_vm._v("Μαθητής")]) : _vm._e(), _vm._v(" "), (notification.data.role === 'teacher') ? _c('td', [_vm._v("Καθηγητής")]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.data.name))]), _vm._v(" "), _c('td', [_c('button', {
+    return _c('tr', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!notification.read_at),
+        expression: "!notification.read_at"
+      }]
+    }, [(notification.data.role === 'student') ? _c('td', [_vm._v("Μαθητής")]) : _vm._e(), _vm._v(" "), (notification.data.role === 'teacher') ? _c('td', [_vm._v("Καθηγητής")]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.data.name))]), _vm._v(" "), _c('td', [_c('button', {
       staticClass: "btn btn-success",
       on: {
         "click": function($event) {
@@ -19341,7 +19359,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "btn btn-danger",
       on: {
         "click": function($event) {
-          _vm.deny(notification.data.id)
+          _vm.deny(notification.id)
         }
       }
     }, [_vm._v("Απόρριψη")])])])

@@ -30,8 +30,14 @@ Route::get('/notifications/requests', function () {
     return auth()->user()->notifications;
 })->middleware('auth:api');
 
-Route::post('/notifications/read', function () {
-    auth()->user()->unreadNotifications->markAsRead();
+Route::post('/notifications/read/{id}', function ($id) {
+    // auth()->user()->unreadNotifications->markAsRead();
+    foreach (auth()->user()->unreadNotifications as $notification) {
+        if ($notification->id == $id) {
+            $notification->markAsRead();
+        }
+    }
+    return 'OK';
 })->middleware('auth:api');
 
 Route::get('/notifications/all', function (Request $request) {
