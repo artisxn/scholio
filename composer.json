@@ -10,7 +10,9 @@
         "laravel/tinker": "~1.0",
         "laravel/passport": "^2.0",
         "laravel/socialite": "^3.0",
-        "pusher/pusher-php-server": "^2.6"
+        "pusher/pusher-php-server": "^2.6",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

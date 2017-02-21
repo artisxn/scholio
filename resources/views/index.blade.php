@@ -261,7 +261,7 @@
 
                        </div>
 
-                       {{--<div style="color: white!important"> @{{ selected}}--}}
+                       <div style="color: white!important"> @{{ selected}}
                        {{--</div>--}}
 
                        <div class="col-md-5 col-sm-6" >

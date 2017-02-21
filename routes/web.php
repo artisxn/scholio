@@ -153,6 +153,7 @@ Route::get('fake', function () {
         $dummy->lengthScholarships = $s->lengthScholarships();
         $dummy->save();
     }
+    return 'OK';
 
 });
 
