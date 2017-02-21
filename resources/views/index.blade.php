@@ -382,7 +382,7 @@
     </section>
 
     <!-- Third Section -->
-    <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey">
+    <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey" style="overflow-x: hidden!important;">
         <div class="container">
             <div class="sc-landing-sec3-content">
                 <div class="row">
