@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateSchoolRequest;
 use App\Models\Image;
 use App\Models\School;
 use App\Models\SchoolTypes;
+use App\Scholio\Scholio;
 use App\User;
 
 class AdminPanelController extends Controller
@@ -159,11 +159,11 @@ class AdminPanelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateProfile(CreateSchoolRequest $request, $id)
+    public function updateProfile()
     {
         $school = auth()->user()->info;
 
-        if ($file = $request->file('logo')) {
+        if ($file = request()->file('logo')) {
             $image_name = $file->store('logo');
             $school->logo = $image_name;
         }
@@ -180,6 +180,8 @@ class AdminPanelController extends Controller
         $school->save();
 
         session()->flash('updated_profile', 'Your profile has been updated');
+
+        Scholio::updateDummy($school);
 
         return back();
     }

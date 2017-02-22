@@ -2,6 +2,8 @@
 
 namespace App\Scholio;
 
+use App\Dummy;
+use App\Models\School;
 use Illuminate\Support\Facades\Route;
 
 class Scholio
@@ -57,5 +59,54 @@ class Scholio
         } else {
             dd('NO');
         }
+    }
+
+    public static function fakeDummy()
+    {
+        $schools = School::all();
+
+        Dummy::query()->truncate();
+
+        foreach ($schools as $s) {
+            $dummy = new Dummy;
+            $dummy->type_id = $s->type_id;
+            $dummy->school_id = $s->id;
+            $dummy->name = $s->name();
+            $dummy->email = $s->email();
+            $dummy->phone = $s->phone;
+            $dummy->city = $s->city;
+            $dummy->address = $s->address;
+            $dummy->logo = $s->logo;
+            $dummy->image = $s->profileImage();
+            $dummy->website = $s->website;
+            $dummy->lengthStudents = $s->lengthStudents();
+            $dummy->lengthTeachers = $s->lengthTeachers();
+            $dummy->lengthStudies = $s->lengthStudies();
+            $dummy->lengthScholarships = $s->lengthScholarships();
+            $dummy->lat = $s->lat;
+            $dummy->lng = $s->lng;
+            $dummy->save();
+        }
+        return 'OK';
+    }
+
+    public static function updateDummy(School $school)
+    {
+        $dummy = $school->dummy;
+        $dummy->name = $school->name();
+        $dummy->email = $school->email();
+        $dummy->phone = $school->phone;
+        $dummy->city = $school->city;
+        $dummy->address = $school->address;
+        $dummy->logo = $school->logo;
+        $dummy->image = $school->profileImage();
+        $dummy->website = $school->website;
+        $dummy->lengthStudents = $school->lengthStudents();
+        $dummy->lengthTeachers = $school->lengthTeachers();
+        $dummy->lengthStudies = $school->lengthStudies();
+        $dummy->lengthScholarships = $school->lengthScholarships();
+        $dummy->lat = $school->lat;
+        $dummy->lng = $school->lng;
+        $dummy->save();
     }
 }

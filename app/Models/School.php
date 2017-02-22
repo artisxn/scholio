@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Dummy;
 use App\Models\Image;
 use App\Models\Scholarship;
 use App\Models\SchoolTypes;
@@ -169,5 +170,10 @@ class School extends Model
     public function profileImage()
     {
         return $this->image()->pluck('path')->first();
+    }
+
+    public function dummy()
+    {
+        return $this->hasOne(Dummy::class);
     }
 }

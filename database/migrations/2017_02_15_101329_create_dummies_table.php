@@ -16,6 +16,7 @@ class CreateDummiesTable extends Migration
         Schema::create('dummies', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('type_id')->nullable();
+            $table->integer('school_id')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();

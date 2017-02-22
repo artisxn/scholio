@@ -5,6 +5,7 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolTypes;
 use App\Models\Study;
+use App\Scholio\Scholio;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -221,12 +222,11 @@ Route::post('/scholarship/save', function () {
         //$scholarship->exams_date = request()->exams_date;
         $scholarship->end_at = Carbon::createFromFormat('d-m-Y', request()->end_at);
         $scholarship->save();
+        Scholio::updateDummy($scholarship->school);
         $data = ['message' => 'SAVED SUCCESSFULLY', 'redirect' => route('scholarship-view')];
     } catch (\Exception $e) {
         $data = ['message' => 'ERROR ' . $e];
     }
-
-    // return redirect()->route('scholarship-view');
 
     return $data;
 })->middleware('auth:api');
@@ -244,6 +244,8 @@ Route::post('/interested/save', function () {
     if ($student->interested->contains($scholarship)) {
         return 'YES';
     }
+
+    Scholio::updateDummy($scholarship->school);
 
     return 'NO';
 })->middleware('auth:api');

@@ -18,11 +18,6 @@ use App\User;
 |
  */
 
-Route::get('maptest', function () {
-    dd(Scholio::geocode('Αθήνα, Ελλάδα')['lat']);
-
-});
-
 Route::post('search/school/type', function () {
     $type = request()->type;
     $location = request()->location;
@@ -135,6 +130,7 @@ Route::get('/scholarship/{scholarship}', function (Scholarship $scholarship) {
 
 Route::get('/connection/school/{school}', function (School $school) {
     $school->users()->attach(auth()->user());
+    Scholio::updateDummy($school);
     return 'OK';
 })->middleware('auth');
 
@@ -163,7 +159,6 @@ Route::get('fake', function () {
         $dummy->save();
     }
     return 'OK';
-
 });
 
 Route::get('/test/results/{type}', function ($type) {
