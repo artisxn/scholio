@@ -20,19 +20,27 @@ class AdminPanelController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $schools = School::all();
-        $scholarships = ['1', '2', '3'];
-        $pageviews = 1234;
+        if (auth()->user()->role == 'school') {
+            $school = auth()->user()->info;
 
-        $data = array(
-            'users' => $users,
-            'schools' => $schools,
-            'scholarships' => $scholarships,
-            'pageviews' => $pageviews,
-        );
+            $students = $school->students;
+            $teachers = $school->teachers;
+            $parents = $school->parents;
+            $scholarships = $school->scholarship;
 
-        return view('panel.index')->withData($data);
+            $pageviews = 1234;
+
+            $data = array(
+                'students' => $students,
+                'teachers' => $teachers,
+                'parents' => $parents,
+                'scholarships' => $scholarships,
+                'pageviews' => $pageviews,
+            );
+            return view('panel.pages.school.dashboard.main')->withData($data);
+        }
+
+        // return view('panel.index')->withData($data);
     }
 
     /**

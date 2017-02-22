@@ -16,7 +16,7 @@
                 </div>
             </div>
                 {{-- @include('panel.partials.body.dashboard.tiles') --}}
-                {{-- @include('panel.partials.body.dashboard.tiles2') --}}
+                @include('panel.partials.body.dashboard.tiles2')
 
                 {{-- @include('panel.partials.body.dashboard.table') --}}
 

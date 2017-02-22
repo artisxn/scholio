@@ -91,7 +91,7 @@ Route::get('/scholarships/all', function (Request $request) {
 Route::get('/scholarship/{school}', function (School $school) {
     $scholarships = $school->scholarship;
 
-    return $scholarships->load('financial', 'level', 'study');
+    return $scholarships->load('financial', 'level', 'study', 'user');
 })->middleware('auth:api');
 
 Route::get('/school/studies', function () {

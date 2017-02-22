@@ -20,6 +20,7 @@
                                             <th>Επίπεδο Σπουδών</th>
                                             <th>Κριτήρια</th>
                                             <th>Ημερομηνία Λήξης</th>
+                                            <th>Αιτήθηκαν</th>
                                             <th>Νικητής</th>
                                         </tr>
                                     </thead>
@@ -36,6 +37,7 @@
                                             <td>{{ scholarship.level.name}}</td>
                                             <td>{{ scholarship.criteria_id }}</td>
                                             <td>{{ scholarship.end_at }}</td>
+                                            <td>{{ scholarship.user.length }}</td>
                                             <td>{{ scholarship.winner_id }}</td>
                                         </tr>
                                     </tbody>

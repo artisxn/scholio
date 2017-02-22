@@ -24,6 +24,7 @@ class FakeSeeder extends Seeder
             'type_id' => 1,
             'website' => 'act.edu',
             'approved' => 1,
+            'about' => '<strong>dasdsad</strong> TEST Ακαλξενηρφγδη <ul><li>pesto</li></ul>',
             'logo' => 'fake/act-logo.png',
         ]);
 
@@ -154,9 +155,9 @@ class FakeSeeder extends Seeder
         factory(App\Models\Student::class, 30)->create();
         factory(App\Models\Teacher::class, 20)->create();
 
-        for ($i = 0; $i < 500; $i++) {
-            factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
-        }
+        // for ($i = 0; $i < 500; $i++) {
+        //     factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+        // }
 
         /*===============   1 ACT   ================*/
         $this->createImages($school1, 'fake/act-', 1, 6);
@@ -278,6 +279,9 @@ class FakeSeeder extends Seeder
         $this->interested(22, 3);
         $this->interested(23, 1);
         $this->interested(24, 2);
+
+        // Αιτούντες μαθητες αν υποτροφία (user, scholarship)
+        $this->userAppliedOnScholarship(21, 1);
     }
 
     public function interested($studentID, $scholarshipID)
@@ -327,6 +331,14 @@ class FakeSeeder extends Seeder
         $scholarship->winner_id = $winner_id;
         $scholarship->end_at = Carbon::now();
         $scholarship->save();
+    }
+
+    public function userAppliedOnScholarship($userID, $scholarshipID)
+    {
+        $user = User::find($userID);
+        $scholarship = Scholarship::find($scholarshipID);
+
+        $user->scholarship()->toggle($scholarship);
     }
 
 }
