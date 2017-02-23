@@ -64,13 +64,13 @@ video {
     z-index: -100;
     transform:scale(1);
 }
-.sc-landing-video-container{  width: 100%;  height:700px!important;  overflow: hidden;  position: fixed;  top: 0;  right: 0;  z-index: -100;  }
-.sc-landing-video-filter{  width:100%;  height:700px!important; z-index:1;  position:fixed;
+.sc-landing-video-container{  width: 100%;  height:690px!important;  overflow: hidden;  position: fixed;  top: 0;  right: 0;  z-index: -100;  }
+.sc-landing-video-filter{  width:100%;  height:690px!important; z-index:1;  position:fixed;
     background-image: -webkit-linear-gradient(rgba(5,5,40,0.2), rgba(5,5,20,0.85)),url(""); }
 
 /* Search Bar */
 .sc-landing-search-bar-holder{
-    width:100%;  height:80px;  top:603px; opacity: 0.9;
+    width:100%;  height:80px;  top:602px; opacity: 0.9;
     position:absolute;  background:rgba(31,52,63,0.85);  z-index:100;  }
 .sc-landing-search-bar-content{padding-top:20px;}
 .sc-landing-search-bar-content input, .sc-landing-search-bar-content #options {margin-bottom: 20px;}
@@ -84,8 +84,19 @@ video {
 .sc-landing-sec2-content p{color:#8e8e8e; max-width: 400px;}
 
 /*New Section*/
-.sc-landing-secNew {height: 600px; background-color: #deeaed  }
-/*background-color: #00bcd4*/
+.sc-landing-secNew {height: 550px; background-color: #deeaed; z-index: -50}
+
+.ipad{height: 590px; width: auto; position: absolute; top:-140px; left: 5px; z-index: 3}
+
+.iphone{height: 290px; width: auto;  position: absolute; top:120px; right: 245px;}
+
+.banner{height: 610px; width: 340px; position: absolute; top:-120px; right: 50px}
+
+.btn-school-reg{ margin-top: 160px; width: 260px; height: 50px;}
+
+.text-container{ position: absolute; right: 50px; width: 300px; text-shadow: 2px 2px #7b909b;}
+
+.banner-title{ text-shadow: none}
 
 
 /*Third Section*/
@@ -190,13 +201,66 @@ video {
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     /* First Section */
-    .sc-landing-sec1-content{margin-top:40px;}
-    .sc-landing-sec1-content h1{font-size:40px!important;}
-    .sc-landing-sec1-content h3{font-size:26px!important;}
+    .sc-landing-sec1-content {
+        margin-top: 40px;
+    }
+
+    .sc-landing-sec1-content h1 {
+        font-size: 40px !important;
+    }
+
+    .sc-landing-sec1-content h3 {
+        font-size: 26px !important;
+    }
 
     /* Search Bar */
-    .sc-landing-search-bar-holder{height:205px;  top:476px;}
+    .sc-landing-search-bar-holder {
+        height: 205px;
+        top: 476px;
+    }
+
     /*Second Section*/
-    .sc-landing-sec2-content img{ width:120px; height:auto}
+    .sc-landing-sec2-content img {
+        width: 120px;
+        height: auto
+    }
+
+    .grid figure {
+        /*background: none;*/
+        background-image: none;
+    }
+
+}
+@media (min-width: 250px) and (max-width: 540px) {
+    .iphone { height: 260px; right: 190px; top: 170px;}
+    /*.banner {right: 22px!important;}*/
+}
+
+
+
+
+@media (min-width: 491px) and (max-width: 550px) {
+    /*New Section*/
+    /*New Section*/
+    .text-container{left: 15%; width: 71%;}
+    .iphone{height: 290px; width: auto;  position: absolute; top:120px; right: 245px; visibility: hidden}
+
+    .banner{ left: 12%; width: 76%;}
+    .banner-text{ margin-left: 10%; padding-right: 15px;}
+    .btn-school-reg{ margin-top: 60px; margin-left: 14%}
+    .banner-title{margin-bottom: 40px;}
+}
+
+
+
+@media (max-width: 490px) {
+    /*New Section*/
+    .text-container{left: 15%; width: 71%;}
+    .iphone{height: 290px; width: auto;  position: absolute; top:120px; right: 245px; visibility: hidden}
+
+    .banner{ left: 10%; width: 80%;}
+    .banner-text{ margin-left: 3%}
+    .btn-school-reg{ margin-top: 60px; margin-left: 4%}
+    .banner-title{margin-bottom: 40px;}
 
 }

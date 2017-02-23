@@ -109,10 +109,7 @@
             .sch-reg-title {left: 30%; width: 330px;}
         }
 
-        @media (min-width: 250px) and (max-width: 540px) {
-            .iphone-xs-position{ height: 260px; right: 190px!important; top: 170px!important;}
-            .banner-xs-position{right: 22px!important;}
-        }
+
 
 
     </style>
@@ -228,7 +225,7 @@
             </div>
         </div>
         <!-- Full Background Video -->
-        <div class="sc-landing-video-container" style="overflow-x: hidden">
+        <div class="sc-landing-video-container hidden-xs" style="overflow-x: hidden; z-index: -500">
             <!-- Video Shadow -->
             <div class="sc-landing-video-filter"></div>
             <video autoplay loop muted id="video-bg">
@@ -237,6 +234,12 @@
 
                 {{--<source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm">--}}
             </video>
+        </div>
+
+
+        <div class="sc-landing-video-container vissible-xs hidden-sm hidden-md hidden-lg" style="overflow-x: hidden">
+            <div class="sc-landing-video-filter"></div>
+            <img class="responsive" style="min-width: 100%; min-height: 640px;" src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="">
         </div>
         <!-- Searchbar -->
 
@@ -324,7 +327,7 @@
                     </div>
                 </div>
 
-                <div class="row opacityLow" id="sec2" >
+                <div class="row" id="" >
                     <div class="col-md-4 col-md-offset-4">
                         <br>
                         <a href="register">
@@ -342,34 +345,28 @@
             <div class="sc-landing-secNew-content">
                 <div class="row">
 
+                    <div class=" sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm">Η ολοκληρωμένη λύση προβολής για κάθε εκπαιδευτικό ίδρυμα</div>
 
-                    <div style=""
-                         class=" sch-reg-title text-incr-175 font-weight-300 centered-text hidden-sm hidden-xs">
-                        Η ολοκληρωμένη λύση προβολής για κάθε εκπαιδευτικό ίδρυμα</div>
-
-
-                    <div style="position: relative" class="hidden-sm hidden-xs">
-                        {{--<img height="699px" width="auto;" src="/new/img/ipad4.png"--}}
-                        {{--style="position: absolute; top:-160px; left: 20px; z-index: 3">--}}
-                        <img height="660px" width="auto;" src="/new/img/ipad6.png"
-                             style="position: absolute; top:-160px; left: 20px; z-index: 3">
-                    </div>
+                    <div style="position: relative" class="hidden-xs"><img src="/new/img/ipad6.png" class="ipad"></div>
 
                     <div style="position: relative" class="text-incr-125 sc-t-white">
-                        <img height="670px" width="355px" src="/new/img/BannerVertical3.png" style="position: absolute; top:-130px; right: 30px" class="banner-xs-position">
-                        {{--<img height="200px" width="300px" src="/new/img/curve.png" style="position: absolute; bottom:-550px; left: 50px; z-index:0">--}}
+                        <img src="/new/img/BannerVertical3.png"  class="banner"  style="z-index: 0">
 
-                        <div style=" position: absolute; right: 65px; width: 300px; text-shadow: 2px 2px #7b909b;" class="">
-                            <img height="290px" width="auto" src="/new/img/iphone.png" style="position: absolute; top:120px; right: 245px;" class="hidden-md iphone-xs-position">
-                            {{--<div style="height: 50px; width: 300px; background-color: #00b9d2; margin: 20px 0;"></div>--}}
-                            <div style="margin-top: -50px; margin-left: 20px;"> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
-                            <div class="margin-top-50 margin-left-20"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
-                            <div class="margin-top-50 margin-left-20"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
+                        <div class="text-container">
+                            <img height="290px" width="auto" src="/new/img/iphone.png" class="hidden-sm iphone">
+                            {{--<div style="height: 400px; width: 300px; background-color: #00b9d2; margin: 20px 0; position: absolute; z-index: 0"></div>--}}
 
-                            <div class="centered-text right-out" id="secNew" style="position: absolute; left: 38px;">
-                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text " style=" margin-top: 200px; width: 260px; height: 50px;">
-                                        Εγγραφή Εκπαιδευτικού Φορέα</button></a>
+                            <div style="margin-top: -50px;" class="center-block">
+                                <div class="text-incr-125 font-weight-300 centered-text visible-xs hidden-sm hidden-md hidden-lg sc-t-dark-blue banner-title">Η ολοκληρωμένη λύση για κάθε εκπαιδευτικό ίδρυμα</div>
+                                <div class="banner-text">
+                                    <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
+                                    <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
+                                    <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
+                                </div>
+                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text btn-school-reg"> Εγγραφή Εκπαιδευτικού Φορέα</button></a>
                             </div>
+
+
 
 
                         </div>
@@ -425,7 +422,7 @@
                 <div class="row">
                     <div class=" col-lg-6 col-md-7 col-sm-8 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
-                            <figure class="effect-lily sc-landing-card " >
+                            <figure class="effect-lily sc-landing-card" >
                                 <img src="{{asset('new/img/sect-photo/college2.png')}}" alt="student" style="" class="img-responsive "/>
 
                                 <figcaption>
@@ -528,16 +525,16 @@
 
 </main>
 
-<footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue">
+<footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue" style="overflow-x: hidden!important;">
     <div class="container">
         <div class="row  ">
-            <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-5 col-xs-4" >
+            <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-5 col-xs-4" style="overflow-x: hidden!important;">
                 <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
                 <span  class="clear-fix pad-top-10 pad-bot-10">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
                 <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
             </div>
 
-            <div class="pull-right pad-top-40 text-incr-175  pad-right-20">
+            <div class="pull-right pad-top-40 text-incr-175  pad-right-20" style="overflow-x: hidden!important;">
                 <a href="#" class="sc-t-white "> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
                 <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
                 <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
