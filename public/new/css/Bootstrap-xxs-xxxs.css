@@ -67,7 +67,7 @@
     .col-xxs-12 { width: 100%; }
 }
 
-@media screen and (min-width:321px) and (max-width: 480px){
+@media screen and (min-width:200px) and (max-width: 480px){
 
     .col-xxxs-pull-12 { right:100%; }
     .col-xxxs-pull-11 { right:91.66666667%; }

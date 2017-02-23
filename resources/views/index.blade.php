@@ -239,7 +239,7 @@
 
         <div class="sc-landing-video-container vissible-xs hidden-sm hidden-md hidden-lg" style="overflow-x: hidden">
             <div class="sc-landing-video-filter"></div>
-            <img class="responsive" style="min-width: 100%; min-height: 640px;" src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="">
+            <img class="responsive mobile-hero" src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="">
         </div>
         <!-- Searchbar -->
 
@@ -352,22 +352,25 @@
                     <div style="position: relative" class="text-incr-125 sc-t-white">
                         <img src="/new/img/BannerVertical3.png"  class="banner"  style="z-index: 0">
 
-                        <div class="text-container">
-                            <img height="290px" width="auto" src="/new/img/iphone.png" class="hidden-sm iphone">
+                        <div class="text-container center-block">
+                            <img height="290px" width="auto" src="/new/img/iphone.png" class="iphone">
                             {{--<div style="height: 400px; width: 300px; background-color: #00b9d2; margin: 20px 0; position: absolute; z-index: 0"></div>--}}
 
-                            <div style="margin-top: -50px;" class="center-block">
-                                <div class="text-incr-125 font-weight-300 centered-text visible-xs hidden-sm hidden-md hidden-lg sc-t-dark-blue banner-title">Η ολοκληρωμένη λύση για κάθε εκπαιδευτικό ίδρυμα</div>
-                                <div class="banner-text">
+
+                                <div class="visible-xs hidden-sm hidden-md hidden-lg xxs-small-banner-content banner-text center-block">
+                                        <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title">Η λύση για κάθε εκπαιδευτικό ίδρυμα</div>
+                                        <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε εύκολα καινότομες υποτροφίες</div>
+                                        <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
+                                        <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια εκπαιδευτική κοινότητα</div>
+                                </div>
+                                <div class="banner-text banner-content center-block">
+                                    <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title hidden-sm hidden-md hidden-lg">Η λύση για κάθε εκπαιδευτικό ίδρυμα</div>
                                     <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
                                     <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
                                     <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
                                 </div>
+
                                 <a href="/register/school"><button type="button" class="btn btn-danger centered-text btn-school-reg"> Εγγραφή Εκπαιδευτικού Φορέα</button></a>
-                            </div>
-
-
-
 
                         </div>
 
@@ -376,6 +379,8 @@
 
             </div>
         </div>
+
+
     </section>
 
     <!-- Third Section -->
@@ -528,7 +533,7 @@
 <footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue" style="overflow-x: hidden!important;">
     <div class="container">
         <div class="row  ">
-            <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-5 col-xs-4" style="overflow-x: hidden!important;">
+            <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-6 col-xs-5" style="overflow-x: hidden!important;">
                 <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
                 <span  class="clear-fix pad-top-10 pad-bot-10">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
                 <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
