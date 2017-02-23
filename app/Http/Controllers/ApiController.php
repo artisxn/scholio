@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dummy;
 use App\Models\Financial;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -10,6 +11,7 @@ use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller

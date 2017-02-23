@@ -269,7 +269,7 @@
                         </div>
                                 {{--====== Input Range ======--}}
                         <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%;">
-                            <input type="range" ng-model="maxDistance" min=1 max=400 step=1 class="margin-bot-10">
+                            <input type="range" ng-model="maxDistance" min=1 max=25 step=1 class="margin-bot-10">
                             <span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>
                         </div>
 

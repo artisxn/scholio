@@ -155,10 +155,6 @@ class FakeSeeder extends Seeder
         factory(App\Models\Student::class, 30)->create();
         factory(App\Models\Teacher::class, 20)->create();
 
-        // for ($i = 0; $i < 500; $i++) {
-        //     factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
-        // }
-
         /*===============   1 ACT   ================*/
         $this->createImages($school1, 'fake/act-', 1, 6);
         $this->createStudy($school1, [206, 207, 208, 209, 210, 253, 252, 279, 306, 308, 309, 312, 324]);

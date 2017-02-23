@@ -59,14 +59,21 @@ Artisan::command('scholio:dummy', function () {
 
 })->describe('Flood the Dummy Data Table');
 
-Artisan::command('scholio:refresh {--s|show}', function () {
+Artisan::command('scholio:refresh {--s|show} {schools?}', function () {
 
     $show = $this->option('show');
+
+    $schools = $this->argument('schools');
 
     if ($show) {
         $this->call('migrate:refresh', ['--force' => true]);
         $this->info('Migrate Refresh Done!');
         $this->call('db:seed');
+        if ($schools) {
+            for ($i = 0; $i < (int) $schools; $i++) {
+                factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+            }
+        }
         $this->info('Database Seeding Done!');
         $this->call('scholio:dummy');
         $this->info('Dummy Data Table is Flooded!');
@@ -74,6 +81,11 @@ Artisan::command('scholio:refresh {--s|show}', function () {
         $this->callSilent('migrate:refresh', ['--force' => true]);
         $this->info('Migrate Refresh Done!');
         $this->callSilent('db:seed');
+        if ($schools) {
+            for ($i = 0; $i < (int) $schools; $i++) {
+                factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+            }
+        }
         $this->info('Database Seeding Done!');
         $this->callSilent('scholio:dummy');
         $this->info('Dummy Data Table is Flooded!');
