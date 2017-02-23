@@ -59,13 +59,24 @@ Artisan::command('scholio:dummy', function () {
 
 })->describe('Flood the Dummy Data Table');
 
-Artisan::command('scholio:refresh', function () {
+Artisan::command('scholio:refresh {--s|show}', function () {
 
-    $this->callSilent('migrate:refresh', ['--force' => true]);
-    $this->info('Migrate Refresh Done!');
-    $this->callSilent('db:seed');
-    $this->info('Database Seeding Done!');
-    $this->callSilent('scholio:dummy');
-    $this->info('Dummy Data Table is Flooded!');
+    $show = $this->option('show');
+
+    if ($show) {
+        $this->call('migrate:refresh', ['--force' => true]);
+        $this->info('Migrate Refresh Done!');
+        $this->call('db:seed');
+        $this->info('Database Seeding Done!');
+        $this->call('scholio:dummy');
+        $this->info('Dummy Data Table is Flooded!');
+    } else {
+        $this->callSilent('migrate:refresh', ['--force' => true]);
+        $this->info('Migrate Refresh Done!');
+        $this->callSilent('db:seed');
+        $this->info('Database Seeding Done!');
+        $this->callSilent('scholio:dummy');
+        $this->info('Dummy Data Table is Flooded!');
+    }
 
 })->describe('Refresh the Scholio App');

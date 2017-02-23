@@ -194,4 +194,45 @@ class AdminPanelController extends Controller
         return view('panel.pages.school.resource.requests');
     }
 
+    public function imagesUpload()
+    {
+        $school = auth()->user()->info;
+
+        foreach (request()->file('images') as $image) {
+            $savedImg = $image->store('school-' . $school->id);
+
+            $i = new Image;
+            $i->path = $savedImg;
+            $i->full_path = $savedImg;
+            $i->name = $savedImg;
+            $i->alt = $school->name() . '-images';
+            $i->extension = $image->getClientOriginalExtension();
+
+            $i->save();
+
+            $school->image()->toggle($i);
+        }
+
+        Scholio::updateDummy($school);
+
+        return back();
+    }
+
+    public function imageDelete()
+    {
+        $school = auth()->user()->info;
+
+        $id = request()->image;
+
+        $image = Image::find($id);
+
+        $school->image()->toggle($image);
+
+        unlink(public_path() . '/images/schools/' . $image->name);
+
+        Scholio::updateDummy($school);
+
+        return back();
+    }
+
 }

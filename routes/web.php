@@ -1,11 +1,6 @@
 <?php
 
-use App\Dummy;
-use App\Models\Scholarship;
-use App\Models\School;
-use App\Models\Study;
 use App\Scholio\Scholio;
-use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,36 +13,7 @@ use App\User;
 |
  */
 
-Route::post('search/school/type', function () {
-    $type = request()->type;
-    $location = request()->location;
-
-    session()->put('location', $location);
-
-    return redirect('/public/results/' . $type);
-});
-
-Route::get('/test/{school}', function (School $school) {
-
-    $school->lengthStudents = $school->lengthStudents();
-    $school->lengthTeachers = $school->lengthTeachers();
-    $school->lengthStudies = $school->lengthStudies();
-    $school->lengthScholarships = $school->lengthScholarships();
-
-    $data = [];
-
-    foreach ($school->study as $study) {
-        array_push($data, App\Models\Study::with('section.level')->where('id', $study->id)->get());
-    }
-
-    $school->levels = $data;
-
-    return $school->load('image', 'scholarship.financial', 'scholarship.criteria');
-});
-
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'RoutesController@index');
 
 Auth::routes();
 
@@ -56,9 +22,7 @@ Route::post('/register/school', 'SchoolRegistrationController@register');
 
 Scholio::panelRoutes();
 
-Route::get('/token/register', function () {
-    return view('panel.token');
-});
+Route::get('/token/register', 'RoutesController@token');
 
 /*
 |--------------------------------------------------------------------------
@@ -69,104 +33,13 @@ Route::get('/token/register', function () {
 Route::get('auth/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
-/*|--------------------------------------------------------------------------
-| Test Routes (FOR DEVELOPMENT PURPOSES ONLY)
-|--------------------------------------------------------------------------
- */
-
-Route::get('test/register/user', function () {
-    event(new App\Events\UserRegistered(App\User::first()));
-});
-
 //===== New Testing PUBLIC pages ======
-Route::get('/public/profile/{id}', function ($id) {
-    return view('public.school.profile')->withId($id);
-});
-
-Route::get('/public/results/{id}', function ($id) {
-    return view('public.results.schools');
-});
-
-Route::get('connected/students', function () {
-    $school = School::where('user_id', auth()->user()->id)->first();
-    $users = $school->users;
-    $students = [];
-    foreach ($users as $user) {
-        if ($user->role == "student") {
-            array_push($students, $user);
-        }
-
-    }
-
-    $data = array(
-        'students' => $students,
-    );
-
-    return $data;
-});
-
-Route::get('connected/teachers', function () {
-    $school = School::where('user_id', auth()->user()->id)->first();
-    $users = $school->users;
-    $teachers = [];
-    foreach ($users as $user) {
-        if ($user->role == "teacher") {
-            array_push($teachers, $user);
-        }
-
-    }
-
-    $data = array(
-        'teachers' => $teachers,
-    );
-
-    return $data;
-});
-
-Route::get('/scholarship/{scholarship}', function (Scholarship $scholarship) {
-    $scholarship->length = $scholarship->usersLength();
-    return $scholarship->load('financial', 'criteria');
-});
-
-Route::get('/connection/school/{school}', function (School $school) {
-    $school->users()->attach(auth()->user());
-    Scholio::updateDummy($school);
-    return 'OK';
-})->middleware('auth');
-
-Route::get('fake', function () {
-    $schools = School::all();
-
-    Dummy::query()->truncate();
-
-    foreach ($schools as $s) {
-        $dummy = new Dummy;
-        $dummy->type_id = $s->type_id;
-        $dummy->name = $s->name();
-        $dummy->email = $s->email();
-        $dummy->phone = $s->phone;
-        $dummy->city = $s->city;
-        $dummy->address = $s->address;
-        $dummy->logo = $s->logo;
-        $dummy->image = $s->profileImage();
-        $dummy->website = $s->website;
-        $dummy->lengthStudents = $s->lengthStudents();
-        $dummy->lengthTeachers = $s->lengthTeachers();
-        $dummy->lengthStudies = $s->lengthStudies();
-        $dummy->lengthScholarships = $s->lengthScholarships();
-        $dummy->lat = $s->lat;
-        $dummy->lng = $s->lng;
-        $dummy->save();
-    }
-    return 'OK';
-});
-
-Route::get('/test/results/{type}', function ($type) {
-    if ($type == 'all') {
-        $schools = Dummy::all();
-    } else {
-        $schools = Dummy::where('type_id', $type)->get();
-    }
-
-    return $schools;
-});
+Route::get('/public/profile/{id}', 'RoutesController@publicProfile');
+Route::get('/public/results/{id}', 'RoutesController@publicResults');
+Route::get('connected/students', 'ApiController@connectedStudents');
+Route::get('connected/teachers', 'ApiController@connectedTeachers');
+Route::get('/scholarship/{scholarship}', 'ApiController@scholarshipFind');
+Route::get('/connection/school/{school}', 'ApiController@connectionSchool')->middleware('auth');
+Route::get('/test/results/{type}', 'ApiController@testResults');
+Route::post('search/school/type', 'RoutesController@searchSchoolType');
+Route::get('/test/{school}', 'RoutesController@testSchools');

@@ -14,9 +14,7 @@ class Scholio
             include 'development-routes.php';
         }
 
-        Route::get('/dashboard', function () {
-            return redirect('/panel/dashboard');
-        });
+        Route::get('/dashboard', 'RoutesController@redirectDashboard');
 
         Route::get('/panel/dashboard', 'AdminPanelController@index');
 
