@@ -23,3 +23,4 @@ Route::get('/scholarship/{scholarship}', 'ApiController@getScholarship')->middle
 Route::post('/interested/save', 'ApiController@interestedSave')->middleware('auth:api');
 Route::get('/interested/check', 'ApiController@interestedCheck')->middleware('auth:api');
 Route::get('/school/types/all', 'ApiController@schoolTypes')->middleware('api');
+Route::get('/socialLinks/get/{user}', 'ApiController@getSocialLinks')->middleware('api');

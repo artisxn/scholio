@@ -347,4 +347,15 @@ class ApiController extends Controller
 
         return $schools;
     }
+
+    public function getSocialLinks(User $user)
+    {
+        $links = [];
+        foreach ($user->socialLinks->toArray() as $key => $value) {
+            if ($key != 'id' && $key != 'user_id' && $value != null) {
+                $links[$key] = $value;
+            }
+        }
+        return $links;
+    }
 }

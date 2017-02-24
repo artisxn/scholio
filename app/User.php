@@ -7,6 +7,7 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\SocialLink;
 use App\Traits\UserScopes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -89,5 +90,10 @@ class User extends Authenticatable
         if ($this->role == 'school') {
             return $this->hasOne(School::class, 'user_id');
         }
+    }
+
+    public function socialLinks()
+    {
+        return $this->hasOne(SocialLink::class, 'user_id');
     }
 }
