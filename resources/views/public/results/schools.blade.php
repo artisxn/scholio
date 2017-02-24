@@ -85,7 +85,7 @@
             <div class="row">
                 <div class="col-md-1 visible-lg visible-md nav-web">
                     <!-- Scholio Branding -->
-                    <a class="sc-landing-brand" href="#home">
+                    <a class="sc-landing-brand" href="{{ url('/') }}">
                         <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
                             <img src="{{asset('new/img/logo.png')}}" alt="scholio logo">
                         </div>
@@ -94,7 +94,7 @@
 
                 <div class="col-xs-6  visible-sm visible-xs">
                     <div class="nav-mobile">
-                        <a class="" href="#home">
+                        <a class="" href="{{ url('/') }}">
                             <div class="navbar-brand  sc-landing-logo-sticky">
                                 <img src="{{asset('new/img/logo-m.png')}}"alt="scholio logo">
                             </div>
@@ -540,7 +540,7 @@ $('rating').raty({
 });
 
 //====== This delay must change ====
-$(document).ready(function(){$("body").hide().fadeIn(1700);});
+$(document).ready(function(){$("body").hide().fadeIn(2300);});
 
 </script>
 

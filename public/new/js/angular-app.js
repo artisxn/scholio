@@ -19,7 +19,8 @@
 
         var _selected;
 
-        $scope.selected = undefined;
+        $scope.selected = 'all';
+        //$scope.locationSelected='Θεσσαλονίκη, Ελλάδα';
 
 
         $scope.ngModelOptionsSelected = function(value) {
@@ -82,6 +83,8 @@
 
           //?geocode=Greece &lang=el_GR &location=38.174248,23.726653 &radius=8000 &country=GR
           $scope.locationSelected=null
+
+
 
           $scope.getLocation = function(val) {
               return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
