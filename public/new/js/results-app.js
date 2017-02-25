@@ -4,12 +4,20 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         $rootScope.plat=40.6357;
         $rootScope.plong=23.0079;
 
+
         $scope.locationSelected = window.SelectedLocation;
+        //if(window.SelectedLocation){
+        //    $scope.locationSelected = window.SelectedLocation;
+        //}
+        //else{
+        //    $scope.locationSelected ='Θεσσαλονίκη, Ελλάδα'
+        //}
+
 
         $scope.view='card';
         $scope.changeView= function(view){
             $scope.view=view;
-            console.log(view)
+            //console.log(view)
             if( $scope.view=='map'){  setTimeout(function() { $scope.showMap(); }, 10) }
         }
 
@@ -73,15 +81,15 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
                     for (var i = 0; i < $scope.schools.length; i++) {
                         var dist = latLonToDistance(data[i].lat,data[i].lng, $rootScope.plat, $rootScope.plong)
-                        console.log('lat -' + data[i].lat)
-                        console.log('lng -' + data[i].lat)
+                        //console.log('lat -' + data[i].lat)
+                        //console.log('lng -' + data[i].lat)
                         $scope.schools[i].distance=parseFloat(dist)
                     }
-                    setTimeout(function() {$scope.HERE = true}, 1000);
-                    console.log($scope.schools)
+                    setTimeout(function() {$scope.HERE = true}, 20);
+                    //console.log($scope.schools)
                 })
                 .error(function (data) {
-                    console.log("something went wrong: ", data);
+                    //console.log("something went wrong: ", data);
                 });
 
 
@@ -101,7 +109,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         }
 
         function latLonToDistance(lat1, lon1, lat2, lon2) {
-            console.log('1 - ' + lat1 + ', 2 - ' + lon1)
+            //console.log('1 - ' + lat1 + ', 2 - ' + lon1)
             var R = 3958.7558657440545; // Radius of earth in Miles
             var dLat = toRadius(lat2-lat1);
             var dLon = toRadius(lon2-lon1);
@@ -177,7 +185,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                         filterMark.push(item[i])
                     };
                 }
-                console.log(filterMark)
+                //console.log(filterMark)
 
 
 
