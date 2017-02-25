@@ -384,7 +384,7 @@
                                             <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs"
                                                  ng-src="/images/schools/@{{school.logo}}">
                                             <span class="pull-left">
-                                                <h5 class="pad-top-10"> <a href="/public/profile/@{{school.id}}"> @{{school.name}}</a></h5>
+                                                <h5 class="pad-top-10"> <a href="/public/profile/@{{school.school_id}}"> @{{school.name}}</a></h5>
                                                 <span  ng-show="school.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
                                                 <span ng-show="school.ratingCounter!=0" class="sc-t-orange"> @{{school.ratingStar}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{school.ratingCounter}}  Αξιολογήσεις)</span>
                                             </span>

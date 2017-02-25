@@ -13,12 +13,6 @@ use App\Scholio\Scholio;
 |
  */
 
-Route::get('tt', function () {
-    $user = App\User::find(21);
-    $schol = App\Models\Scholarship::find(3);
-    return $user->interestedIn($schol);
-});
-
 Route::get('/', 'RoutesController@index');
 
 Auth::routes();
