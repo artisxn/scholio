@@ -2,7 +2,7 @@
 
 namespace App\Scholio;
 
-use App\Dummy;
+use App\Models\Dummy;
 use App\Models\School;
 use Illuminate\Support\Facades\Route;
 

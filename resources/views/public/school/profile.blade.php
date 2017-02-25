@@ -518,8 +518,19 @@
                 <div class="row slideTeachers slideup margin-bot-25" id="faculty">
                     <div class="section-header3">
                         <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
-                            <i class="fa fa-graduation-cap fa-linear text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό </span>
+                            <i class="fa fa-graduation-cap fa-linear text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό</span>
                         </p>
+                    </div>
+
+                    <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
+                        <div class="margin-top-10" id="about-li" >
+                            <div ng-repeat="teacher in contactInfo.teachers">
+                                <li><a href="/public/profile/teacher/@{{teacher.info.id}}">
+                                <!-- Αν δεν βαλλω το color παίρνει default τιμη το άσπρο χρώμα στο visited και όταν πατας πανω στο link μετά δεν φαίνεται -->
+                                <span style="color: #000 !important;" >@{{teacher.name}}</span>
+                                </a></li>
+                             </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Show More Reviews  -->
@@ -529,10 +540,6 @@
                              <i class="@{{ iconTeachers }}"></i></span>
                     </div>
                 </div>
-
-
-
-
 
             </div> <!-- //col-lg-9-->
             <!-- Right Sidebar  -->
@@ -563,7 +570,6 @@
                                         <i style="" class="fa fa-google-plus" aria-hidden="true"></i>
                                     </a></li>
                             </ul>
-
                         </div>
 
 

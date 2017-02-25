@@ -102,3 +102,23 @@ $factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
         'avatar' => 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png',
     ];
 });
+
+$factory->define(App\Models\Work::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->jobTitle,
+        'company' => $faker->company,
+        'from' => Carbon::now()->subYears(5),
+        'until' => Carbon::now(),
+    ];
+});
+
+$factory->define(App\Models\Certificate::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->jobTitle,
+        'university' => $faker->state,
+        'from' => Carbon::now()->subYears(5),
+        'until' => Carbon::now(),
+    ];
+});

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Dummy;
+use App\Models\Dummy;
 use App\Models\Image;
 use App\Models\Scholarship;
 use App\Models\SchoolTypes;

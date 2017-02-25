@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Dummy;
+use App\Models\Dummy;
 use App\Models\Financial;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -185,6 +185,11 @@ class ApiController extends Controller
         $school->lengthScholarships = $school->lengthScholarships();
         $school->name = $school->name();
         $school->email = $school->email();
+        $school->teachers = $school->teachers;
+
+        foreach ($school->teachers as $teacher) {
+            $teacher->info;
+        }
 
         $data = [];
 
@@ -201,7 +206,6 @@ class ApiController extends Controller
             $scholarship->financial = $scholarship->financial->plan;
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
-            // $scholarship->userInterested = auth()->user()->interestedIn($scholarship->id);
 
             if (auth()->check()) {
                 $ints = ['sd'];
@@ -226,6 +230,11 @@ class ApiController extends Controller
         $school->lengthScholarships = $school->lengthScholarships();
         $school->name = $school->name();
         $school->email = $school->email();
+        $school->teachers = $school->teachers;
+
+        foreach ($school->teachers as $teacher) {
+            $teacher->info;
+        }
 
         $data = [];
 

@@ -13,6 +13,8 @@ use App\Scholio\Scholio;
 |
  */
 
+Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
+
 Route::get('/', 'RoutesController@index');
 
 Auth::routes();

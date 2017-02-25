@@ -2,12 +2,14 @@
 
 namespace App;
 
+use App\Models\Certificate;
 use App\Models\Parent as ParentUser;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\SocialLink;
 use App\Models\Student;
 use App\Models\Teacher;
-use App\SocialLink;
+use App\Models\Work;
 use App\Traits\UserScopes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -106,5 +108,15 @@ class User extends Authenticatable
     public function socialLinks()
     {
         return $this->hasOne(SocialLink::class, 'user_id');
+    }
+
+    public function works()
+    {
+        return $this->hasMany(Work::class);
+    }
+
+    public function certificates()
+    {
+        return $this->hasMany(Certificate::class);
     }
 }
