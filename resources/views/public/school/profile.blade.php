@@ -394,7 +394,7 @@
                                             <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
                                         </span>
 
-                                    <span class="sc-t-dark-green font-weight-300 text-incr-125 margin-left-10" style="top: 7px; position: absolute"> @{{scholarship.criteria.name}}</span>
+                                    <span class="sc-t-dark-green font-weight-300 text-incr-125 margin-left-10" style="top: 7px; position: absolute"> @{{scholarship.criteria.name}} - @{{scholarship.id}}</span>
                                 </div>
                                 <div class="ribbon-edge-topright"></div>
                                 <div class="ribbon-edge-bottomright"></div>
@@ -448,16 +448,12 @@
                                     <img  style="height: 38px; position: absolute; top: 73px; left: 9px;" class=""
                                           ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
                                 </div>
-
-
-
-
                             </div>
 
 
                             <div style="position: absolute; top: 270px;" class="font-weight-300 sc-t-grey">
                                 <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
-                                    Ενδιαφέρθηκαν: <span class="pad-left-10">@{{ scholarship.interests}}</span>
+                                    Ενδιαφέρθηκαν: <span class="pad-left-10" ng-bind="scholarship.interests"></span>
                                 </span>
                             </div>
 
@@ -467,17 +463,17 @@
                                 </span>
                             </div>
 
-
-
+                            @if(auth()->check())
                             <ul style="position: absolute; left: 34px; bottom: 30px;">
-                                <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
+
+                                <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
+
                                         <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                                        <span id="t@{{scholarship.id}}">Ενδιαφέρομαι</span>
+                                        <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>
                                     </button>
                                 </a>
                             </ul>
-
-
+                            @endif
 
                             <ul style="position: absolute; right: 14%; bottom: 25px;">
                                 <a href=""><button type="button" class="margin-left-30 esc-button-landing sc-button sc-green sc-t-white"
@@ -488,9 +484,6 @@
                                 {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
                                 {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
                             </ul>
-
-
-
 
                             <div ng-if="($index%2==0)" class="hidden-xs hidden-sm"
                                  style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  5px"></div>
@@ -506,12 +499,6 @@
                              <i class="@{{ iconScholarships }}"></i></span>
                     </div>
                 </div>
-
-
-
-
-
-
 
                 <!-- Αξιολογησεις -->
                 <div class="row slideReviews slideup margin-bot-25" id="reviews">
@@ -759,6 +746,15 @@
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http, $sce) {
 
+                $scope.test = function(scholarship){
+                    setTimeout(function() {
+                        if(scholarship.userInterested){
+                        console.log('changed for id - ' + scholarship.id);
+                        $('#i'+ scholarship.id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
+                        $('#t'+ scholarship.id).text('Ενδιαφέρθηκα')
+                        }
+                     }, 30);
+                }
 
                 $scope.init = function () {
 
@@ -769,8 +765,22 @@
 
                     $scope.col_iek_eng_dan_mus = false;
 
-                    $scope.contactInfo = $http.get('/api/profile/{{ $id }}').success(function(data){
-                        console.time('contactInfo API');
+                    var apiLink = '';
+
+                    @if(auth()->check())
+                        apiLink = '/api/profile/auth/{{ $id }}';
+                    @else
+                        apiLink = '/api/profile/{{ $id }}';
+                    @endif
+
+                    $http.get(apiLink, {
+                                    headers: {
+                                        'X-Requested-With': 'XMLHttpRequest',
+                                        'X-CSRF-TOKEN': window.Scholio.csrfToken
+                                    }
+                                })
+                                .success(function(data)   {
+                                   console.time('contactInfo API');
                         $scope.contactInfo=data;
                         console.log(data);
                         $scope.studies = data.levels;
@@ -784,7 +794,7 @@
                         {$scope.col_iek_eng_dan_mus  = true}
                         console.log('SchoolTypeId= '+data.type_id)
 //                        console.timeEnd('contactInfo API');
-                    });
+                                });
 
                     $scope.interestedCheck = function(id){
                         $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
@@ -886,7 +896,7 @@
 
                 };
 
-                $scope.interested = function(id){
+                $scope.interested = function(id, index){
                     $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
                                 headers: {
                                     'X-Requested-With': 'XMLHttpRequest',
@@ -896,9 +906,11 @@
                             .success(function(data){
                                 console.log(data);
                                 if(data == 'YES'){
+                                    $scope.contactInfo.scholarship[index].interests++;
                                     $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
                                     $('#t'+ id).text('Ενδιαφέρθηκα')
                                 }else{
+                                    $scope.contactInfo.scholarship[index].interests--;
                                     $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
                                     $('#t'+ id).text('Ενδιαφέρομαι')
                                 }

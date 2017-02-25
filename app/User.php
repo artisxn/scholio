@@ -73,6 +73,17 @@ class User extends Authenticatable
         return $this->belongsToMany(Scholarship::class, 'interested')->withTimestamps();
     }
 
+    public function interestedIn($id)
+    {
+        foreach ($this->interested as $scholarship) {
+            if ($scholarship->id == $id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function info()
     {
         if ($this->role == 'student') {

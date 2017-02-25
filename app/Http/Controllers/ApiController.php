@@ -201,6 +201,48 @@ class ApiController extends Controller
             $scholarship->financial = $scholarship->financial->plan;
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
+            // $scholarship->userInterested = auth()->user()->interestedIn($scholarship->id);
+
+            if (auth()->check()) {
+                $ints = ['sd'];
+                $student = User::find(auth()->user()->id);
+                if ($student->interested->contains($scholarship)) {
+                    array_push($ints, $scholarship->id);
+                }
+            }
+            $scholarship->studentInterests = $ints;
+        }
+
+        $school->levels = $data;
+
+        return $school->load('image');
+    }
+
+    public function schoolAuthProfile(School $school)
+    {
+        $school->lengthStudents = $school->lengthStudents();
+        $school->lengthTeachers = $school->lengthTeachers();
+        $school->lengthStudies = $school->lengthStudies();
+        $school->lengthScholarships = $school->lengthScholarships();
+        $school->name = $school->name();
+        $school->email = $school->email();
+
+        $data = [];
+
+        foreach ($school->study as $study) {
+            array_push($data, Study::with('section.level')->where('id', $study->id)->get());
+        }
+
+        $ints = [];
+
+        foreach ($school->scholarship as $scholarship) {
+            $scholarship->level = $scholarship->level;
+            $scholarship->section = $scholarship->study->section;
+            $scholarship->criteria = $scholarship->criteria->name;
+            $scholarship->financial = $scholarship->financial->plan;
+            $scholarship->length = $scholarship->usersLength();
+            $scholarship->interests = $scholarship->interestsLength();
+            $scholarship->userInterested = auth()->user()->interestedIn($scholarship->id);
 
             if (auth()->check()) {
                 $ints = ['sd'];
