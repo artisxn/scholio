@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Skill;
 use App\Scholio\Scholio;
 
 /*
@@ -13,28 +12,6 @@ use App\Scholio\Scholio;
 | contains the "web" middleware group. Now create something great!
 |
  */
-
-Route::get('qqq', function () {
-    $user = App\User::find(46);
-
-    $skill = App\Models\Skill::find(1);
-    $user_from_id = auth()->user()->id;
-
-    $end = $user->toggleEndorsement($user_from_id, $skill);
-    return $end;
-});
-
-Route::get('ttt', function () {
-    $user = App\User::find(45);
-    $tskill = App\Models\Skill::find(2);
-
-    return $user->skills()->where('skill_id', $tskill->id)->wherePivot('user_from_id', 12)->get();
-});
-
-Route::get('aaa', function () {
-    $user = App\User::find(45);
-    return $user->getUniqueSkills()->pluck('name');
-});
 
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 
