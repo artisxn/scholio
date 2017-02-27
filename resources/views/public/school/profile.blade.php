@@ -522,13 +522,32 @@
                         </p>
                     </div>
 
-                    <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
+                    <div class="sc-t-grey text-justify">
                         <div class="margin-top-10" id="about-li" >
                             <div ng-repeat="teacher in contactInfo.teachers">
-                                <li><a href="/public/profile/teacher/@{{teacher.info.id}}">
-                                <!-- Αν δεν βαλλω το color παίρνει default τιμη το άσπρο χρώμα στο visited και όταν πατας πανω στο link μετά δεν φαίνεται -->
-                                <span style="color: #000 !important;" >@{{teacher.name}}</span>
-                                </a></li>
+
+                                <div class="col-sm-6">
+                                    <div class="col-sm-12 user-card">
+                                       <div class="user-header">
+                                           <img class="user-img img-circle" src="/new/img/user.png" alt="">
+
+                                            <span class="user-name">
+                                                <a href="/public/profile/teacher/@{{teacher.info.id}}">
+                                                    <!-- Αν δεν βαλλω το color παίρνει default τιμη το άσπρο χρώμα στο visited και όταν πατας πανω στο link μετά δεν φαίνεται -->
+                                                    <span style="color: #000 !important;" >@{{teacher.name}}</span>
+                                                </a>
+                                            </span>
+
+                                           <span class="user-info"> Marketing Evangelist</span>
+
+
+
+                                       </div>
+                                    </div>
+                                </div>
+
+
+
                              </div>
                         </div>
                     </div>
