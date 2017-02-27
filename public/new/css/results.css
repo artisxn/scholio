@@ -239,6 +239,8 @@ p {padding: 15px; color: #5d5d5d;  }
 }
 
 
+.info-window-text{padding-top: 6px; left: 12px}
+
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////    MEDIA QUERIES   ////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -316,6 +318,13 @@ p {padding: 15px; color: #5d5d5d;  }
     .btn-close { margin-left: 72%;}
 
 }
+
+
+@media (max-width: 767px) {
+    .info-window-text {  padding-top: 6px;  left: -30px  }
+    .info-window-text2 {margin-left: 90px }
+}
+
 
 @media (min-width: 541px) and (max-width: 600px) {
     /*  */

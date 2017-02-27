@@ -42,7 +42,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
 
     <!-- GoogleMap API -->
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
     <!-- Angular js-->
     <!--  -->
@@ -261,7 +262,7 @@
                             {{--typeahead-show-hint="true"--}}
                             <input type="text" name="loc" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
                                    uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                   typeahead-no-results="noResults" autocomplete="off">
+                                   typeahead-no-results="noResults" autocomplete="off" ng-enter="showMap()">
 
 
                             {{-- <input type="text" id="Autocomplete" class="kf-option" ng-autocomplete="result2" ng-model="locationSelected"details="details2" options="options2" placeholder=" Στην Περιοχή:" onchange="ccc()" /> --}}
@@ -269,7 +270,7 @@
                         </div>
                                 {{--====== Input Range ======--}}
                         <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%;">
-                            <input type="range" ng-model="maxDistance" min=1 max=25 step=1 class="margin-bot-10">
+                            <input type="range" ng-model="maxDistance" min=0 max=20 step=1 class="margin-bot-10" ng-change="showMap()">
                             <span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>
                         </div>
 
@@ -304,7 +305,7 @@
                         </div>
                     </div>
                     <a href="" ng-click="showMap()" ng-show="view=='map'">
-                        <button type="button" class="sc-button2 sc-primary sc-t-white margin-top-50 center-block" style="width: 230px">
+                        <button type="button" class="sc-button2 sc-green sc-t-white margin-top-50 center-block" style="width: 230px">
                         <i class="fa fa-map pad-right-15" aria-hidden="true"></i>Ανανέωση Χάρτη</button>
                     </a>
                 </div>  <!-- //col-lg-3-->

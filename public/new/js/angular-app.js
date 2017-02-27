@@ -87,7 +87,7 @@
 
 
           $scope.getLocation = function(val) {
-              return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
+              return $http.get('//maps.googleapis.com/maps/api/geocode/json?components=country:GR', {
                   params: {
                       language: 'el',
                       address: val,

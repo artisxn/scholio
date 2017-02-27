@@ -1,8 +1,8 @@
 angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
     .controller("resultsCtrl",function ($timeout,$scope,$http,$rootScope) {
         $scope.HERE = false
-        $rootScope.plat=40.6357;
-        $rootScope.plong=23.0079;
+        $rootScope.plat=40.622023;
+        $rootScope.plong=22.962298;
 
 
         $scope.locationSelected = window.SelectedLocation;
@@ -28,6 +28,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
             if(id != 'all'){
                 window.location = '/public/results/' + $scope.categoryFilter;
             }
+            $scope.showMap();
         }
 
         $scope.orderSelect = 'lengthScholarships'; // set the default sort type
@@ -124,7 +125,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
         $rootScope.lat=[]
         $rootScope.lng=[]
-        $scope.maxDistance=20
+        $scope.maxDistance=15
         $scope.checkBoxFilter = function(item){
             var filtered = [];
 
@@ -144,7 +145,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
 
         $scope.getLocation = function(val) {
-            return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
+            return $http.get('//maps.googleapis.com/maps/api/geocode/json?components=country:GR', {
                 params: {
                     language: 'el',
                     address: val,
@@ -165,12 +166,19 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
         $scope.showMap=function(){
             console.log('REFRESH Map')
+            var d=$scope.maxDistance
+            var zoom =11
+            if(d<=7){zoom=13}
+            else if (d<=13){zoom=12}
+
 
             if( $scope.view=='map'){
                 var latlng = new google.maps.LatLng($rootScope.plat,$rootScope.plong);
                 var myOptions = {
                     scrollwheel: false,
-                    zoom: 11,
+                    scaleControl:true,
+                    scaleControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT},
+                    zoom: zoom,
                     center: latlng,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
@@ -179,7 +187,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
                 var filterMark=[]
                 var item=$scope.schools
-                for ( i = 0; i < item.length; i++) {
+                for ( var i = 0; i < item.length; i++) {
                     if(item[i].lengthScholarships >=  $scope.scholars && item[i].distance<$scope.maxDistance
                         && (item[i].type_id == $scope.categoryFilter || $scope.categoryFilter =='all' || $scope.categoryFilter ==null) ) {
                         filterMark.push(item[i])
@@ -187,20 +195,112 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                 }
                 //console.log(filterMark)
 
+                var bounds = new google.maps.LatLngBounds();
 
+
+
+                console.log('center '+$rootScope.plat, $rootScope.plong)
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng($rootScope.plat, $rootScope.plong),
+                    //animation: google.maps.Animation.DROP,
+                    title:'Κέντρο Αναζήτησης',
+                    //icon:"/../new/img/markers/marker-scholio-40.png",
+                    map: map
+                });
+                bounds.extend(marker.getPosition());
+                //var markers=[]
 
                 for ( i = 0; i < filterMark.length; i++) {
-                    marker = new google.maps.Marker({
+                        marker = new google.maps.Marker({
                         position: new google.maps.LatLng(filterMark[i].lat, filterMark[i].lng),
-                        name:filterMark[i].name,
-                        logo:filterMark[i].logo,
+                        animation: google.maps.Animation.DROP,
+                        //title:filterMark[i].name,
+                        icon:"/../new/img/markers/marker-teal-sm.png",
                         map: map
                     });
+                    //markers.push(marker)
+
+                    bounds.extend(marker.getPosition());
+
+                    var infoWindow = new google.maps.InfoWindow({
+                        content:filterMark[i].name
+                    });
+
+                    google.maps.event.addListener(marker, "mouseover", (function(marker, i){
+                        return function () {
+                            var content= '<span class="col-sm-2" >' +
+                                '<img style="max-width: 44px;" src="' +'/images/schools/'+ filterMark[i].logo + '"/></span> ' +
+                                '<span class="col-sm-10 info-window-text" >' +filterMark[i].name+
+                                '<div style="padding-top: 3px;"> ' +
+                                //'Μαθητές: '+filterMark[i].lengthStudents+
+                                ' <span class="info-window-text2"><i class="fa fa-trophy margin-right-5"></i>Υποτροφίες: '+filterMark[i].lengthScholarships+'</span> </div>' +
+                                '</span> '
+                            infoWindow.setContent(content);
+                            infoWindow.open(map, marker);
+                        }
+
+                    })(marker, i));
+
+                    google.maps.event.addListener(marker, "mouseout", (function(marker, i){
+                        return function () {
+                            infoWindow.close(map, marker);
+                        }
+                    })(marker, i));
+                    //console.log(i,infoWindow.content)
                 }
 
-                var content = null
 
-                var infowindow = new google.maps.InfoWindow();
+                if(marker.length>1){
+                    map.setCenter(bounds.getCenter());
+                    map.fitBounds(bounds);
+                }
+
+
+                var styledMapType = new google.maps.StyledMapType(
+                    [
+                        {
+                            "featureType": "poi.park",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    //"color": "#9ec4ae"
+                                    //"color": "#A3BFA8"
+                                    //"color": "#B5C5B8"
+                                    //"color": "#D9F0D1"
+                                    "color": "#E2F0DA"
+
+                                    //"color": "#CBE6A3"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    //"color": "#00bcd4"
+                                    //"color": "#53D0D9"
+                                    //"color": "#00C9E1"
+                                    //"color": "#00D1E9"
+                                    //"color": "#00E2FF"
+
+                                    //"color": "#A4E2E7"
+                                    "color": "#A4DBE7"
+
+                                    //"color": "#A3CCFF"
+                                }
+                            ]
+                        }
+                    ]
+                    )
+
+                map.mapTypes.set('styled_map', styledMapType);
+                map.setMapTypeId('styled_map');
+
+
+
+
+
 
             }
         }
@@ -310,3 +410,18 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         }
     };
 })
+
+
+    .directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if(event.which === 13) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.ngEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    })

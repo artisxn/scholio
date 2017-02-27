@@ -554,7 +554,6 @@
             <p class="sc-t-white pad-top-100">© 2016 schol.io . Με την επιφύλαξη κάθε δικαιώματος.</p>
         </div>
     </div>
-
 </footer>
 
 </body>
@@ -567,6 +566,7 @@
     </a>
 
 </script>
+
 
 
 </html>
