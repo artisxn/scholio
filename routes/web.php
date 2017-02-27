@@ -28,7 +28,7 @@ Route::get('ttt', function () {
     $user = App\User::find(45);
     $tskill = App\Models\Skill::find(2);
 
-    return $user->skills()->where('skill_id', $tskill->id)->count();
+    return $user->skills()->where('skill_id', $tskill->id)->wherePivot('user_from_id', 12)->get();
 });
 
 Route::get('aaa', function () {

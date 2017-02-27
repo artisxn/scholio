@@ -145,7 +145,7 @@ class User extends Authenticatable
     public function toggleEndorsement($skill)
     {
         if ($this->checkSkill($skill)) {
-            $this->skills()->detach($skill);
+            $this->skills()->wherePivot('user_from_id', auth()->user()->id)->detach($skill);
             return ('ON');
         } else {
             $this->endorse($skill);
