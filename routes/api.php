@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Skill;
+use App\User;
+
 Route::get('/user', 'ApiController@users')->middleware('auth:api');
 Route::get('/users/all', 'ApiController@usersAll')->middleware('auth:api');
 Route::get('/notifications', 'ApiController@notifications')->middleware('auth:api');
@@ -25,3 +28,18 @@ Route::post('/interested/save', 'ApiController@interestedSave')->middleware('aut
 Route::get('/interested/check', 'ApiController@interestedCheck')->middleware('auth:api');
 Route::get('/school/types/all', 'ApiController@schoolTypes')->middleware('api');
 Route::get('/socialLinks/get/{user}', 'ApiController@getSocialLinks')->middleware('api');
+Route::post('/skills/set', function () {
+    $user = User::find(request()->user);
+    $skill = Skill::find(request()->skill);
+
+    $end = $user->toggleEndorsement($skill);
+    return $end;
+})->middleware('auth:api');
+
+Route::get('/skill/check', function () {
+    $user = User::find(request()->user);
+    $skill = Skill::find(request()->skill);
+
+    $end = $user->checkSkill($skill);
+    return $end;
+})->middleware('auth:api');

@@ -248,6 +248,19 @@
                             <br />
                             <hr>
                         @endforeach
+
+                        <h1>ΔΕΞΙΟΤΗΤΕΣ</h1>
+                        @foreach($teacher->user->getUniqueSkills() as $skill)
+                        SKILL NAME - {{ $skill->name }} - LIKES - {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
+                        @if(auth()->check() & auth()->user()->role != 'school')
+                            @if($teacher->user->checkSkill($skill))
+                            <button onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-danger">UnLike</button>
+                            @else
+                            <button onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-primary">Like</button>
+                            @endif
+                        @endif
+                        <br />
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -259,5 +272,27 @@
 {{-- @include('public.footer') --}}
 
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+window.axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': Scholio.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest'
+};
+
+function like(user, skill){
+    axios.post('/api/skills/set', {
+    user: user,
+    skill: skill
+  })
+  .then(function (response) {
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+</script>
 
 </html>
