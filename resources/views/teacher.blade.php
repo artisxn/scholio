@@ -248,6 +248,20 @@
                             <br />
                             <hr>
                         @endforeach
+
+                        <h1>ΔΕΞΙΟΤΗΤΕΣ</h1>
+                        @foreach($teacher->user->getUniqueSkills() as $skill)
+                        SKILL NAME - {{ $skill->name }} - LIKES -
+                        <span id="count{{$skill->id}}">{{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}</span>
+                        @if(auth()->check() & auth()->user()->role != 'school')
+                            @if($teacher->user->checkSkill($skill))
+                            <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-danger">UnLike</button>
+                            @else
+                            <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-primary">Like</button>
+                            @endif
+                        @endif
+                        <br />
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -259,5 +273,46 @@
 {{-- @include('public.footer') --}}
 
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+window.axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': Scholio.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest'
+};
+
+function like(user, skill){
+    axios.post('/api/skills/set', {
+    user: user,
+    skill: skill
+  })
+  .then(function (response) {
+    console.log(response.data);
+    changeButton(response.data, skill);
+    changeNumber(response.data, skill);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+function changeButton(data, id){
+    if(data == 'ON'){
+        document.getElementById('bt_like' + id).className = 'btn btn-primary';
+        document.getElementById('bt_like' + id).innerHTML = 'Like';
+    }
+    if(data == 'OFF') {
+        document.getElementById('bt_like' + id).className = 'btn btn-danger';
+        document.getElementById('bt_like' + id).innerHTML = 'UnLIKE';
+    }
+}
+
+function changeNumber(data, id){
+    var likes =  document.getElementById('count' + id).innerHTML;
+    if(data == 'ON') document.getElementById('count' + id).innerHTML = parseInt(likes)-1;
+    else document.getElementById('count' + id).innerHTML = parseInt(likes)+1;
+}
+
+</script>
 
 </html>

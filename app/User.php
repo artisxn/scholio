@@ -6,6 +6,7 @@ use App\Models\Certificate;
 use App\Models\Parent as ParentUser;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Skill;
 use App\Models\SocialLink;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -118,5 +119,61 @@ class User extends Authenticatable
     public function certificates()
     {
         return $this->hasMany(Certificate::class);
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'skill_user')->withPivot('user_from_id')->withTimestamps();
+    }
+
+    public function checkSkill($endorsement)
+    {
+        foreach ($this->skills as $skill) {
+            if ($skill->id == $endorsement->id && $skill->pivot->user_from_id == auth()->user()->id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function endorse($skill)
+    {
+        $this->skills()->save($skill, ['user_from_id' => auth()->user()->id]);
+    }
+
+    public function toggleEndorsement($skill)
+    {
+        if ($this->checkSkill($skill)) {
+            $this->skills()->wherePivot('user_from_id', auth()->user()->id)->detach($skill);
+            return ('ON');
+        } else {
+            $this->endorse($skill);
+            return ('OFF');
+        }
+    }
+
+    public function countSkill($skill)
+    {
+        return $user->skills()->where('skill_id', $skill->id)->count();
+    }
+
+    public function getUniqueSkills()
+    {
+        $array = [];
+        foreach ($this->skills as $skill) {
+            if (!in_array($skill->id, $array)) {
+
+                array_push($array, $skill->id);
+            }
+        }
+
+        $unique = [];
+        foreach ($array as $skillID) {
+            $skill = Skill::find($skillID);
+            array_push($unique, $skill);
+        }
+        $collection = collect($unique);
+        return $collection;
     }
 }
