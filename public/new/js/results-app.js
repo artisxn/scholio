@@ -208,17 +208,17 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                     map: map
                 });
                 bounds.extend(marker.getPosition());
-                //var markers=[]
+                var markers=[]
 
                 for ( i = 0; i < filterMark.length; i++) {
                         marker = new google.maps.Marker({
                         position: new google.maps.LatLng(filterMark[i].lat, filterMark[i].lng),
                         animation: google.maps.Animation.DROP,
+                        visible: false,
                         //title:filterMark[i].name,
                         icon:"/../new/img/markers/marker-teal-sm.png",
                         map: map
                     });
-                    //markers.push(marker)
 
                     bounds.extend(marker.getPosition());
 
@@ -226,29 +226,61 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                         content:filterMark[i].name
                     });
 
-                    google.maps.event.addListener(marker, "mouseover", (function(marker, i){
+                    google.maps.event.addListener(marker, "click", (function(marker, i){
                         return function () {
                             var content= '<span class="col-sm-2" >' +
                                 '<img style="max-width: 44px;" src="' +'/images/schools/'+ filterMark[i].logo + '"/></span> ' +
-                                '<span class="col-sm-10 info-window-text" >' +filterMark[i].name+
+                                '<a target="_blank" style="color: #000 !important" href="/public/profile/' +filterMark[i].id+ '"><span class="col-sm-10 info-window-text" > ' +filterMark[i].name+
                                 '<div style="padding-top: 3px;"> ' +
                                 //'Μαθητές: '+filterMark[i].lengthStudents+
                                 ' <span class="info-window-text2"><i class="fa fa-trophy margin-right-5"></i>Υποτροφίες: '+filterMark[i].lengthScholarships+'</span> </div>' +
-                                '</span> '
+                                '</span> </a>'
                             infoWindow.setContent(content);
                             infoWindow.open(map, marker);
                         }
 
                     })(marker, i));
 
-                    google.maps.event.addListener(marker, "mouseout", (function(marker, i){
-                        return function () {
-                            infoWindow.close(map, marker);
-                        }
-                    })(marker, i));
+                    // google.maps.event.addListener(marker, "mouseout", (function(marker, i){
+                    //     return function () {
+                    //         infoWindow.close(map, marker);
+                    //     }
+                    // })(marker, i));
                     //console.log(i,infoWindow.content)
-                }
+                    // console.log(marker.position.lng());
+                    markers.push({'lat': marker.position.lat(), 'lng': marker.position.lng(), 'name': filterMark[i].name});
 
+                }
+                console.log(markers);
+                var labels = '';
+                var markers = markers.map(function(location, i) {
+                          return new google.maps.Marker({
+                            position: location,
+                            icon:"/../new/img/markers/marker-teal-sm.png",
+                            animation: google.maps.Animation.DROP,
+                            label: labels[i % labels.length]
+                          });
+                        });
+
+                        // Add a marker clusterer to manage the markers.
+                        var markerCluster = new MarkerClusterer(map, markers,
+                            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+                        markers.forEach(function(key, i){
+                            google.maps.event.addListener(key, "click", (function(key, i){
+                                return function () {
+                                    var content= '<span class="col-sm-2" >' +
+                                        '<img style="max-width: 44px;" src="' +'/images/schools/'+ filterMark[i].logo + '"/></span> ' +
+                                        '<a target="_blank" style="color: #000 !important" href="/public/profile/' +filterMark[i].id+ '"><span class="col-sm-10 info-window-text" > ' +filterMark[i].name+
+                                        '<div style="padding-top: 3px;"> ' +
+                                        //'Μαθητές: '+filterMark[i].lengthStudents+
+                                        ' <span class="info-window-text2"><i class="fa fa-trophy margin-right-5"></i>Υποτροφίες: '+filterMark[i].lengthScholarships+'</span> </div>' +
+                                        '</span> </a>'
+                                    infoWindow.setContent(content);
+                                    infoWindow.open(map, key);
+                                }
+                            })(key, i));
+                        });
 
                 if(marker.length>1){
                     map.setCenter(bounds.getCenter());

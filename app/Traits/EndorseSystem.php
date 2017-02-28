@@ -33,6 +33,12 @@ trait EndorseSystem
         }
     }
 
+    public function deleteSkillForUser($skill)
+    {
+        $this->skills()->detach($skill);
+        return 'OK';
+    }
+
     public function countSkill($skill)
     {
         return $user->skills()->where('skill_id', $skill->id)->count();
