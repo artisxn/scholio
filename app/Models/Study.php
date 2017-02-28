@@ -3,20 +3,21 @@
 namespace App\Models;
 
 use App\Models\Level;
-use App\Models\SchoolTypes;
 use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Study extends Model
 {
+    use Searchable;
     /**
      *  Gets the school type that offeres this study
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function school_type()
+    public function type()
     {
-        return $this->belongsTo(SchoolTypes::class);
+        return $this->section[0]->level->type;
     }
 
     /**
@@ -26,7 +27,7 @@ class Study extends Model
      */
     public function level()
     {
-        return $this->belongsToMany(Level::class, 'level_study')->withTimestamps();
+        return $this->section[0]->level;
     }
 
     /**
@@ -47,5 +48,21 @@ class Study extends Model
     public function school()
     {
         return $this->belongsToMany(School::class, 'school_study')->withTimestamps();
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        array_push($array, $this->type()->toArray());
+        array_push($array, $this->level()->toArray());
+        array_push($array, $this->section->toArray());
+        array_push($array, $this->school->toArray());
+
+        return $array;
     }
 }

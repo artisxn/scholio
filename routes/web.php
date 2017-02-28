@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Scholarship;
+use App\Models\Study;
 use App\Scholio\Scholio;
 
 /*
@@ -12,6 +14,35 @@ use App\Scholio\Scholio;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+Route::get('qqq/{q}', function ($q) {
+    $computer = App\Models\Study::search($q)->get();
+    $schol = App\Models\Scholarship::search($q)->get();
+    $school = App\Models\School::search($q)->get();
+
+    echo '<h1>School</h1> ';
+    foreach ($school as $s) {
+        echo $s->name() . '<br />';
+    }
+
+    echo '<h1>Scholarships</h1> ';
+    foreach ($schol as $s) {
+        $scholarship = Scholarship::find($s->id);
+        echo 'ΙΔ: ' . $scholarship->id . '. Σχολείο: ' . $scholarship->school->name() . '<br />';
+    }
+
+    echo '<h1>Studies</h1> ';
+
+    foreach ($computer as $s) {
+        $study = Study::find($s->id);
+        echo 'Μαθημα: ' . $study->name . ' - ';
+        foreach ($study->school as $school) {
+            echo ' Σχολειο: ' . $school->name();
+        }
+        echo '<br />';
+    }
+    return 'ok';
+});
 
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 

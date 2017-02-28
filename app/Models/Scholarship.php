@@ -9,9 +9,11 @@ use App\Models\School;
 use App\Models\Study;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Scholarship extends Model
 {
+    use Searchable;
     /**
      *  Gets the school which created this scholarship
      *
@@ -95,5 +97,22 @@ class Scholarship extends Model
     public function interestsLength()
     {
         return $this->interested()->count();
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        array_push($array, $this->study->toArray());
+        array_push($array, $this->level->toArray());
+        array_push($array, $this->school->toArray());
+        array_push($array, $this->criteria->toArray());
+        array_push($array, $this->criteria->toArray());
+
+        return $array;
     }
 }
