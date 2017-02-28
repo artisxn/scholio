@@ -251,16 +251,22 @@
 
                         <h1>ΔΕΞΙΟΤΗΤΕΣ</h1>
                         @foreach($teacher->user->getUniqueSkills() as $skill)
-                        SKILL NAME - {{ $skill->name }} - LIKES -
-                        <span id="count{{$skill->id}}">{{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}</span>
-                        @if(auth()->check() & auth()->user()->role != 'school')
-                            @if($teacher->user->checkSkill($skill))
-                            <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-danger">UnLike</button>
-                            @else
-                            <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-primary">Like</button>
+                            SKILL NAME - {{ $skill->name }} - LIKES -
+                            <span id="count{{$skill->id}}">
+                            {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
+                            </span>
+
+                            <div id="bar{{$skill->id}}" style="height: 10px; width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 20}}px; background-color: #ccc;">
+                            </div>
+
+                            @if(auth()->check() && auth()->user()->role != 'school')
+                                @if($teacher->user->checkSkill($skill))
+                                <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-danger">UnLike</button>
+                                @else
+                                <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-primary">Like</button>
+                                @endif
                             @endif
-                        @endif
-                        <br />
+                            <br />
                         @endforeach
                     </div>
                 </div>
@@ -290,6 +296,7 @@ function like(user, skill){
     console.log(response.data);
     changeButton(response.data, skill);
     changeNumber(response.data, skill);
+    changeBar(response.data, skill);
   })
   .catch(function (error) {
     console.log(error);
@@ -311,6 +318,11 @@ function changeNumber(data, id){
     var likes =  document.getElementById('count' + id).innerHTML;
     if(data == 'ON') document.getElementById('count' + id).innerHTML = parseInt(likes)-1;
     else document.getElementById('count' + id).innerHTML = parseInt(likes)+1;
+}
+
+function changeBar(data, id){
+    var likes =  document.getElementById('count' + id).innerHTML;
+    document.getElementById('bar' + id).style.width = parseInt(likes) * 20 + 'px';
 }
 
 </script>

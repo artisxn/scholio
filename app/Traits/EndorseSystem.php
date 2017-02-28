@@ -23,6 +23,7 @@ trait EndorseSystem
 
     public function toggleEndorsement($skill)
     {
+        // Πρέπει να ελένξουμε αν ο auth user είναι connected με το σχολειο του καθηγητη
         if ($this->checkSkill($skill)) {
             $this->skills()->wherePivot('user_from_id', auth()->user()->id)->detach($skill);
             return ('ON');
@@ -52,7 +53,7 @@ trait EndorseSystem
             $skill = Skill::find($skillID);
             array_push($unique, $skill);
         }
-        $collection = collect($unique);
-        return $collection;
+
+        return collect($unique);
     }
 }

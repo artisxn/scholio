@@ -529,12 +529,12 @@
                                 <div class="col-sm-6">
                                     <div class="col-sm-12 user-card">
                                        <div class="user-header">
-                                           <img class="user-img img-circle" src="/new/img/user.png" alt="">
+                                           <img class="user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
 
                                             <span class="user-name">
                                                 <a href="/public/profile/teacher/@{{teacher.info.id}}">
                                                     <!-- Αν δεν βαλλω το color παίρνει default τιμη το άσπρο χρώμα στο visited και όταν πατας πανω στο link μετά δεν φαίνεται -->
-                                                    <span style="color: #000 !important;" >@{{teacher.name}}</span>
+                                                    <span style="color: #fff !important;" >@{{teacher.name}}</span>
                                                 </a>
                                             </span>
 

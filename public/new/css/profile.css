@@ -241,12 +241,12 @@ body {
 /* //////////////////////////////////////////////////////////////////// */
 .user-card { height: 300px; background-color: #fafafa; margin-bottom: 30px;  padding: 0;}
 
-.user-header{height: 120px; background-color: #dddddd; margin: 0; padding: 0; border-top-left-radius: 5px; border-top-right-radius: 5px;
+.user-header{height: 120px; background-color: #324C5A; margin: 0; padding: 0; border-top-left-radius: 5px; border-top-right-radius: 5px;
     /*background-image: url("/new/img/wood-grey-wide3.jpg");*/
-    background-image: url("/new/img/Grey-linen2.jpg");
+    /*background-image: url("/new/img/Grey-linen2.jpg");*/
 }
 
-.user-img{ background-color: #ebebeb; height: 90px; width: 90px;margin-top: 65px; margin-left: 20px; border: 3px solid white; box-shadow: 3px 3px 2px;}
+.user-img{ background-color: #ebebeb; height: 90px; width: 90px;margin-top: 65px; margin-left: 20px; border: 3px solid white;}
 
 .user-name{position: absolute; top: 82px;  margin-left: 10px; font-size: 175%; font-weight: 300}
 

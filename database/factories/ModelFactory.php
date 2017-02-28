@@ -99,7 +99,7 @@ $factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
         'phone' => '6980000000',
         'dob' => Carbon::now()->subYears(40),
         'gender' => 'male',
-        'avatar' => 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png',
+        'avatar' => $faker->imageUrl(128, 128, 'people'),
     ];
 });
 
