@@ -230,7 +230,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                         return function () {
                             var content= '<span class="col-sm-2" >' +
                                 '<img style="max-width: 44px;" src="' +'/images/schools/'+ filterMark[i].logo + '"/></span> ' +
-                                '<a target="_blank" style="color: #000 !important" href="/public/profile/' +filterMark[i].id+ '"><span class="col-sm-10 info-window-text" > ' +filterMark[i].name+
+                                '<a target="_blank" style="color: #000 !important" href="/public/profile/' +filterMark[i].school_id+ '"><span class="col-sm-10 info-window-text" > ' +filterMark[i].name+
                                 '<div style="padding-top: 3px;"> ' +
                                 //'Μαθητές: '+filterMark[i].lengthStudents+
                                 ' <span class="info-window-text2"><i class="fa fa-trophy margin-right-5"></i>Υποτροφίες: '+filterMark[i].lengthScholarships+'</span> </div>' +
@@ -271,7 +271,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                                 return function () {
                                     var content= '<span class="col-sm-2" >' +
                                         '<img style="max-width: 44px;" src="' +'/images/schools/'+ filterMark[i].logo + '"/></span> ' +
-                                        '<a target="_blank" style="color: #000 !important" href="/public/profile/' +filterMark[i].id+ '"><span class="col-sm-10 info-window-text" > ' +filterMark[i].name+
+                                        '<a target="_blank" style="color: #000 !important" href="/public/profile/' +filterMark[i].school_id+ '"><span class="col-sm-10 info-window-text" > ' +filterMark[i].name+
                                         '<div style="padding-top: 3px;"> ' +
                                         //'Μαθητές: '+filterMark[i].lengthStudents+
                                         ' <span class="info-window-text2"><i class="fa fa-trophy margin-right-5"></i>Υποτροφίες: '+filterMark[i].lengthScholarships+'</span> </div>' +
