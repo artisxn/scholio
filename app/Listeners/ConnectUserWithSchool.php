@@ -2,10 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Events\UserRegistered;
-use App\Notifications\WelcomeEmail;
+use App\Events\SchoolConfirmsUser;
 
-class SendWelcomeEmail
+class ConnectUserWithSchool
 {
     /**
      * Create the event listener.
@@ -20,11 +19,11 @@ class SendWelcomeEmail
     /**
      * Handle the event.
      *
-     * @param  UserRegistered  $event
+     * @param  SchoolConfirmsUser  $event
      * @return void
      */
-    public function handle(UserRegistered $event)
+    public function handle(SchoolConfirmsUser $event)
     {
-        $event->user->notify(new WelcomeEmail($event->user));
+        //
     }
 }

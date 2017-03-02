@@ -1,13 +1,38 @@
 <?php
 
+use App\Events\UserAppliedOnSchool;
+use App\Models\School;
 use App\Models\Skill;
+use App\Notifications\SchoolAcceptedUser;
 use App\User;
+use Illuminate\Http\Request;
+
+Route::post('/request/school', function () {
+    if (auth()->user()->role != 'school') {
+        event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school)));
+        return 'OK';
+    }
+
+    return 'Error';
+})->middleware('auth:api');
+
+Route::post('/connection/{id}/confirm', function ($id) {
+    $user = User::find($id);
+    auth()->user()->info->users()->toggle($user);
+    $user->notify(new SchoolAcceptedUser($user, auth()->user()));
+    return 'Accepted';
+})->middleware('auth:api');
+
+Route::post('/connection/{id}/deny', function ($id) {
+    // Figure out what else to do here
+    return 'Denied';
+})->middleware('auth:api');
 
 Route::get('/user', 'ApiController@users')->middleware('auth:api');
 Route::get('/users/all', 'ApiController@usersAll')->middleware('auth:api');
 Route::get('/notifications', 'ApiController@notifications')->middleware('auth:api');
 Route::get('/notifications/requests', 'ApiController@notificationsRequest')->middleware('auth:api');
-Route::post('/notifications/read', 'ApiController@notificationsRead')->middleware('auth:api');
+Route::post('/notifications/read/{id}', 'ApiController@notificationsRead')->middleware('auth:api');
 Route::get('/notifications/all', 'ApiController@notificationsAll')->middleware('auth:api');
 Route::get('/schools/all', 'ApiController@schoolsAll')->middleware('auth:api');
 Route::get('/school/id/{id}', 'ApiController@schoolId')->middleware('auth:api');

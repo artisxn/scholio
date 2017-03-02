@@ -5,7 +5,8 @@
                 <div class="row">
                     <div class="contact-card">
                         <a class="pull-left" href="#">
-                            <img class="img-circle" width="80" height="80" v-bind:src=teacher.avatar alt=""/>
+                            <img class="img-circle" width="80" height="80" v-bind:src=teacher.info.avatar alt=""/>
+                            <!-- <img class="img-circle" width="80" height="80" :src="teacher.avatar"/> -->
                         </a>
                         <div class="member-info">
                             <h4 class="m-t-0 m-b-5 header-title"><b>{{teacher.name}}</b></h4>
@@ -54,7 +55,8 @@
             getAllTeachers: function(){
                 axios.get('/connected/teachers')
                     .then(response => {
-                        this.teachers = response.data['teachers']
+                        this.teachers = response.data
+                        console.log(response.data)
                     });
             }
         },

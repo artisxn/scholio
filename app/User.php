@@ -77,19 +77,19 @@ class User extends Authenticatable
     public function info()
     {
         if ($this->role == 'student') {
-            return $this->hasOne(Student::class, 'user_id');
+            return $this->hasOne(Student::class);
         }
 
         if ($this->role == 'teacher') {
-            return $this->hasOne(Teacher::class, 'user_id');
+            return $this->hasOne(Teacher::class);
         }
 
         if ($this->role == 'parent') {
-            return $this->hasOne(ParentUser::class, 'user_id');
+            return $this->hasOne(ParentUser::class);
         }
 
         if ($this->role == 'school') {
-            return $this->hasOne(School::class, 'user_id');
+            return $this->hasOne(School::class);
         }
     }
 
@@ -101,5 +101,6 @@ class User extends Authenticatable
     public function socialLinks()
     {
         return $this->hasOne(SocialLink::class, 'user_id');
+
     }
 }

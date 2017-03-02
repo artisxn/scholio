@@ -57,15 +57,8 @@
     </script>
 
     <style>
-
         .main-box2  ul li{text-indent: -20px;}
-
-
-
         .bx-wrapper img {height: 220px !important;}
-
-
-
         .slideup, .slidedown {
             background-color: #fff;
             overflow-y: hidden;
@@ -291,7 +284,6 @@
                     </div>
                     <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
                         <div class="margin-top-10" id="about-li" >
-                            <!-- =======TEXT TO HTML ΓΙΑ ΤΟ ABOUT=========  -->
                             <div ng-bind-html="trustAsHtml(contactInfo.about)"></div>
                         </div>
                     </div>
@@ -391,23 +383,20 @@
                                             <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-friends.png" alt="" ng-if="scholarship.criteria.id==4">
                                             <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
                                         </span>
+
                                     <span class="sc-t-dark-green font-weight-300 text-incr-125 margin-left-10 scholar-title"> @{{scholarship.criteria.name}}</span>
                                 </div>
                                 <div class="ribbon-edge-topright"></div>
                                 <div class="ribbon-edge-bottomright"></div>
                                 <div class="ribbon-back-right sc-medium-grey"></div>
                             </div>
-
                             <div class="hexagon hex1">
                                 {{--<i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"--}}
                                 {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
                             </div>
-
                             <div class="hexagon hex2">
                                 {{--<i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"--}}
                                 {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
-
-
                             </div>
 
                             {{--<div class="hexagon" style="top: 93px;">--}}
@@ -457,7 +446,6 @@
 
                             </div>
 
-
                             @if(auth()->check())
                             <ul class="like-btn">
                                 <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
@@ -477,7 +465,6 @@
                                 {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
                                 {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
                             </ul>
-
                             <div ng-if="($index%2==0)" class="hidden-xs hidden-sm"
                                  style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  5px"></div>
 
@@ -539,15 +526,9 @@
                                             </span>
 
                                            <span class="user-info"> Marketing Evangelist</span>
-
-
-
                                        </div>
                                     </div>
                                 </div>
-
-
-
                              </div>
                         </div>
                     </div>
@@ -559,7 +540,6 @@
                              <i class="@{{ iconTeachers }}"></i></span>
                     </div>
                 </div>
-
             </div> <!-- //col-lg-9-->
             <!-- Right Sidebar  -->
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30">
@@ -651,12 +631,13 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-
+                @if(auth()->check() && auth()->user()->role != 'school')
                 <button id="submButton" type="button" class="hidden-sm hidden xs sc-button3 sc-dark-blue sc-t-white margin-top-10 center-block hidden"
                         style=""
                         data-toggle="modal" data-target="#connect-modal">
                     <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                 </button>
+                @endif
             </div><!-- //col-lg-3-->
         </div> <!-- //container-->
 
@@ -679,14 +660,14 @@
 
                     </div>
                     <div class="panel-body">
-                        <img  class="pull-left margin-right-10" style="height: 45px;"
+                        <img class="pull-left margin-right-10" style="height: 45px;"
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
                         <span>@{{contactInfo.type }} @{{ contactInfo.name }}:   Με τη σύνδεσή σας θα έχετε τη δυνατότητα να γράψετε την αξιολόγησή σας.</span>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
-                        <button type="button" class="btn btn-info">Αποστολή</button>
+                        <button type="button" ng-click="sendRequest()" data-dismiss="modal" class="btn btn-info">Αποστολή</button>
                     </div>
                 </div>
             </div>
@@ -739,7 +720,6 @@
         var sb = $("#submButton");
         $(window).scroll(function() {
             var scroll = $(window).scrollTop();
-
             if (scroll >= 595) {
                 sb.removeClass('hidden').addClass("vissible");
             } else {
@@ -747,7 +727,6 @@
             }
         });
     });
-
     ///// Rating Js //////
     $('rating').raty({
         score    : 4.2,
@@ -755,12 +734,9 @@
         half     : true,
         starHalf : 'fa fa-fw fa-star-half'
     });
-
     var lengthStudents = 0;
-
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http, $sce) {
-
                 $scope.test = function(scholarship){
                     setTimeout(function() {
                         if(scholarship.userInterested){
@@ -770,24 +746,17 @@
                         }
                      }, 30);
                 }
-
                 $scope.init = function () {
-
                     $scope.trustAsHtml = $sce.trustAsHtml;
-
                     $scope.message = null;
                     $scope.scholarship = ['sd'];
-
                     $scope.col_iek_eng_dan_mus = false;
-
                     var apiLink = '';
-
                     @if(auth()->check())
                         apiLink = '/api/profile/auth/{{ $id }}';
                     @else
                         apiLink = '/api/profile/{{ $id }}';
                     @endif
-
                     $http.get(apiLink, {
                                     headers: {
                                         'X-Requested-With': 'XMLHttpRequest',
@@ -810,7 +779,6 @@
                         console.log('SchoolTypeId= '+data.type_id)
 //                        console.timeEnd('contactInfo API');
                                 });
-
                     $scope.interestedCheck = function(id){
                         $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
                                     headers: {
@@ -827,26 +795,19 @@
                                         $('#t'+ id).text('Ενδιαφέθηκα')
                                         $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
                                         $('#b'+ id).style.backgroundColor='#ccc'
-
                                     }
                                 });
                     }
-
-
                     $scope.levelsName=[];
-
                     $scope.sectionsName=[];
                     $scope.studiesName=[];
-
                     $scope.initial=function (){
                         console.time('initial');
-
                         /* ========== BUILD levelsName ARRAY============ */
                         $scope.levelsName[0]=$scope.studies[0][0].section[0].level.name
 //                        console.log($scope.levelsName[0])
                         var length=0
                         var found= false
-
                         for (var std in $scope.studies ){
                             found= false
                             for (var lev in $scope.levelsName ){
@@ -861,13 +822,11 @@
                             }
                         }
 //                        console.log($scope.levelsName.length)
-
                         /* ========== BUILD sectionsName ARRAY============ */
                         for (lev in $scope.levelsName ){
                             $scope.sectionsName[lev]=[];
                         }
                         length=0
-
                         for (lev in $scope.levelsName ){
                             for (std in $scope.studies ){
                                 if ( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name){
@@ -889,7 +848,6 @@
                             }
                             length=0
                         }
-
                         /* ========== BUILD studiesName ARRAY============ */
                         var study=0
                         for (lev in $scope.levelsName ){
@@ -898,7 +856,6 @@
                                 $scope.studiesName[lev][sec]=[];
                                 study=0
                                 for (std in $scope.studies){
-
                                     if( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name
                                             && $scope.sectionsName[lev][sec]==$scope.studies[std][0].section[0].name
                                     ){
@@ -910,9 +867,7 @@
                         }
                         console.timeEnd('initial');
                     }
-
                 };
-
                 $scope.interested = function(id, index){
                     $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
                                 headers: {
@@ -936,6 +891,17 @@
                             });
                 }
 
+                $scope.sendRequest = function(){
+                     $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id}, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': window.Scholio.csrfToken
+                        }
+                    })
+                     .success(function(data){
+                        console.log(data);
+                    });
+                }
 
                 $scope.textAbout='Περισσότερα';
                 $scope.iconAbout='fa fa-angle-down'
@@ -952,8 +918,6 @@
 //                        location.hash = "#" + hash;
                     };
                 }
-
-
                 $scope.textStudies='Περισσότερα';
                 $scope.iconStudies='fa fa-angle-down'
                 $scope.showMoreStudies= function (hash){
@@ -968,11 +932,8 @@
                         location.hash = '#';
                         location.hash = "#" + hash;
 //
-
                     };
                 }
-
-
                 $scope.textScholarships='Περισσότερα';
                 $scope.iconScholarships='fa fa-angle-down'
                 $scope.showMoreScholarships= function (hash){
@@ -987,10 +948,7 @@
                         location.hash = '#';
                         location.hash = "#" + hash;
                     };
-
-
                 }
-
                 $scope.textReviews='Περισσότερα';
                 $scope.iconReviews='fa fa-angle-down'
                 $scope.showMoreReviews= function (){
@@ -1004,7 +962,6 @@
                         $("#reviews").toggleClass("slidedown slideup").addClass('slideReviews');
                     };
                 }
-
                 $scope.textTeachers='Περισσότερα';
                 $scope.iconTeachers='fa fa-angle-down'
                 $scope.showMoreTeachers= function (){
@@ -1018,12 +975,7 @@
                         $("#faculty").toggleClass("slidedown slideup").addClass('slideTeachers');
                     };
                 }
-
             })
-
-
-
-
             /* BxSlider Directives for ng-repeat*/
             .directive('bxSlider', [function () {
                 return {
@@ -1047,20 +999,9 @@
                     }
                 }
             }]);
-
     $(document).ready(function(){
         $("#main").hide().fadeIn(1800);
     });
-
-    //    $("#Trigger").click(function () {
-    //        $("#Slider").toggleClass("slidedown slideup");
-    //        //  if ($("#Slider").hasClass("slideup"))
-    //        //    $("#Slider").removeClass("slideup").addClass("slidedown");
-    //        //  else
-    //        //      $("#Slider").removeClass("slidedown").addClass("slideup");
-    //    });
-
-
 </script>
 
 

@@ -3,10 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\UserRegistered;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Listeners\SlackMessageForUserRegistration;
+use App\Notifications\SlackUserRegistered;
 
-class NotifyAdmin
+class SlackMessageForUserRegistration
 {
     /**
      * Create the event listener.
@@ -26,6 +26,6 @@ class NotifyAdmin
      */
     public function handle(UserRegistered $event)
     {
-        //
+        $event->user->notify(new SlackUserRegistered($event->user));
     }
 }

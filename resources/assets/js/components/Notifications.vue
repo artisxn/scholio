@@ -9,7 +9,7 @@
             <ul class="dropdown-menu dropdown-menu-lg">
                 <li class="notifi-title"><span class="label label-default pull-right"></span>Ειδοποιήσεις</li>
                 <li class="list-group nicescroll notification-list">
-                <a href="/panel/school/requests" class="list-group-item"  v-if="unreadNotifications.length">
+                <a href="/panel/school/requests" class="list-group-item" v-if="unreadNotifications.length">
                    <div class="media">
                       <div class="pull-left p-r-10">
                          <em class="fa fa-user-plus fa-2x text-info"></em>
@@ -17,7 +17,7 @@
                       <div class="media-body"> 
                          <h5 class="media-heading">Ειδοποίηση για σύνδεση</h5>
                          <p class="m-0">
-                             <small v-if="notification.type == 'something'">{{ unreadNotifications.length }} αιτήματα</small>
+                             <small>{{ unreadNotifications.length }} αιτήματα</small>
                          </p>
                       </div>
                    </div>

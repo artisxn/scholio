@@ -210,7 +210,7 @@
                                 <div class="[ btn-group ]" >
                                     <label for="checkbox-1" class="[ btn btn-default ]">
                                         <span class="[ glyphicon glyphicon-ok ] kf-gray"></span>
-                                        <span> </span>
+                                        <span> </span>
                                     </label>
                                     <label for="checkbox-1" class="[ btn btn-default ] kf-check kf-gray ">
                                         <i class="fa fa-trophy pad-right-15" aria-hidden="true"></i> Με &nbsp; υποτροφίες
@@ -223,7 +223,7 @@
                                 <div class="[ btn-group ]" >
                                     <label for="checkbox-2" class="[ btn btn-default ]">
                                         <span class="[ glyphicon glyphicon-ok ] kf-gray"></span>
-                                        <span> </span>
+                                        <span> </span>
                                     </label>
                                     <label for="checkbox-2" class="[ btn btn-default ] kf-check kf-gray  " >
                                         <i class="fa fa-star pad-right-15" aria-hidden="true"></i> Με αξιολογήσεις
@@ -283,7 +283,7 @@
                             <div class="[ btn-group ]" >
                                 <label for="checkbox-1" class="[ btn btn-default ]">
                                     <span class="[ glyphicon glyphicon-ok ] kf-gray"></span>
-                                    <span> </span>
+                                    <span> </span>
                                 </label>
                                 <label for="checkbox-1" class="[ btn btn-default ] kf-check kf-gray ">
                                     <i class="fa fa-trophy pad-right-15" aria-hidden="true"></i> Με &nbsp; υποτροφίες
@@ -296,7 +296,7 @@
                             <div class="[ btn-group ]" >
                                 <label for="checkbox-2" class="[ btn btn-default ]">
                                     <span class="[ glyphicon glyphicon-ok ] kf-gray"></span>
-                                    <span> </span>
+                                    <span> </span>
                                 </label>
                                 <label for="checkbox-2" class="[ btn btn-default ] kf-check kf-gray  " >
                                     <i class="fa fa-star pad-right-15" aria-hidden="true"></i> Με αξιολογήσεις

@@ -9,9 +9,10 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserRegistered
+class SchoolConfirmsUser
 {
     public $user;
+    public $school;
 
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,9 +21,10 @@ class UserRegistered
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, User $school)
     {
         $this->user = $user;
+        $this->school = $school;
     }
 
     /**
@@ -32,6 +34,6 @@ class UserRegistered
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel('school-confirms');
     }
 }

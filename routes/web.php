@@ -1,6 +1,7 @@
 <?php
 
 use App\Scholio\Scholio;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,8 +13,12 @@ use App\Scholio\Scholio;
 | contains the "web" middleware group. Now create something great!
 |
  */
-
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
+
+Route::get('connection/{id}/confirm', function ($id) {
+    Scholio::connectUserWithSchool(auth()->user()->info, User::find($id));
+    return 'OK';
+});
 
 Route::get('/', 'RoutesController@index');
 
@@ -35,7 +40,6 @@ Route::get('/token/register', 'RoutesController@token');
 Route::get('auth/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
-//===== New Testing PUBLIC pages ======
 Route::get('/public/profile/{id}', 'RoutesController@publicProfile');
 Route::get('/public/results/{id}', 'RoutesController@publicResults');
 Route::get('connected/students', 'ApiController@connectedStudents');

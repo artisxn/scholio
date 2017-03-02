@@ -39,22 +39,18 @@ class ApiController extends Controller
 
     public function notificationsRequest()
     {
-        $school = auht()->user()->info;
-
-        $filtered = auth()->user()->notifications->filter(function ($value, $key) use ($school) {
-            return $value->data['school_id'] == $school->id;
-        });
-
-        $data = array(
-            'notifications' => $filtered,
-        );
-
-        return $data;
+        return request()->user()->unreadNotifications;
     }
 
-    public function notificationsRead()
+    public function notificationsRead($id)
     {
-        auth()->user()->unreadNotifications->markAsRead();
+        // auth()->user()->unreadNotifications->markAsRead();
+        foreach (auth()->user()->unreadNotifications as $notification) {
+            if ($notification->data['id'] == $id) {
+                $notification->markAsRead();
+            }
+        }
+        return 'OK';
     }
 
     public function notificationsAll()
@@ -335,21 +331,7 @@ class ApiController extends Controller
 
     public function connectedTeachers()
     {
-        $school = auth()->user()->info;
-        $users = $school->users;
-        $teachers = [];
-        foreach ($users as $user) {
-            if ($user->role == "teacher") {
-                array_push($teachers, $user);
-            }
-
-        }
-
-        $data = array(
-            'teachers' => $teachers,
-        );
-
-        return $data;
+        return auth()->user()->info->teachers()->load('info');
     }
 
     public function connectedStudents()

@@ -6,6 +6,9 @@
         <meta name="description" content="Schol.io College Panel">
         <meta name="author" content="Coderthemes">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <title>Schol.io College Admin Panel</title>
@@ -31,8 +34,6 @@
                 window.Connection = {{ $connection->id }}
             </script>
         @endif
-
-
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         @yield('scriptsBefore')

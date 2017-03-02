@@ -12440,13 +12440,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.get('/api/notifications/requests').then(function (response) {
-                _this.notifications = response.data['notifications'];
-                console.log(response.data['notifications']);
+                _this.notifications = response.data;
+                console.log(response.data);
             });
         },
-        markAsRead: function markAsRead() {
-            axios.post('/api/notifications/read').then(function (response) {
+        markAsRead: function markAsRead(id) {
+            var _this2 = this;
+
+            axios.post('/api/notifications/read/' + id).then(function (response) {
                 console.log('Notifications are read');
+                _this2.getNotifications();
+                Event.$emit('readNotifications');
+            });
+        },
+        accept: function accept(id) {
+            var _this3 = this;
+
+            axios.post('/api/connection/' + id + '/confirm').then(function (response) {
+                console.log(response.data);
+                _this3.getNotifications();
+                _this3.markAsRead(id);
+                window.location.reload();
+            });
+        },
+        deny: function deny(id) {
+            var _this4 = this;
+
+            axios.post('/api/connection/' + id + '/deny').then(function (response) {
+                console.log(id);
+                _this4.markAsRead(id);
+                window.location.reload();
             });
         }
     },
@@ -12455,9 +12478,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Notifications-Table component mounted!');
 
         this.getNotifications();
-        this.markAsRead();
-
-        Event.$emit('readNotifications');
+        // Event.$on('readNotifications', () => {
+        //     this.markAsRead(id)
+        // });
     }
 };
 
@@ -14289,6 +14312,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     data: function data() {
@@ -14805,6 +14829,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     data: function data() {
@@ -14818,7 +14843,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.get('/connected/teachers').then(function (response) {
-                _this.teachers = response.data['teachers'];
+                _this.teachers = response.data;
+                console.log(response.data);
             });
         }
     },
@@ -14873,9 +14899,11 @@ window.axios.defaults.headers.common = {
 
 // import Echo from "laravel-echo"
 
-// window.Echo = new Echo({
+// window.schol = new Echo({
 //     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
+//     key: '943717bf5769e7b902b4',
+//     cluster: 'eu',
+//     encrypted: true
 // });
 
 /***/ }),
@@ -17844,7 +17872,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "width": "80",
         "height": "80",
-        "src": teacher.avatar,
+        "src": teacher.info.avatar,
         "alt": ""
       }
     })]), _vm._v(" "), _c('div', {
@@ -18050,7 +18078,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "media-heading"
   }, [_vm._v("Ειδοποίηση για σύνδεση")]), _vm._v(" "), _c('p', {
     staticClass: "m-0"
-  }, [(_vm.notification.type == 'something') ? _c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματα")]) : _vm._e()])])])]) : _vm._e()]), _vm._v(" "), _c('li', [_c('div', {
+  }, [_c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματα")])])])])]) : _vm._e()]), _vm._v(" "), _c('li', [_c('div', {
     staticClass: "list-group-item text-right"
   }, [(!_vm.unreadNotifications.length) ? _c('small', {
     staticClass: "font-600"
@@ -19306,7 +19334,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('table', {
     staticClass: "table m-0"
   }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.notifications), function(notification) {
-    return _c('tr', [(notification.type === 'App\\Notifications\\StudentConnectNotification') ? _c('td', [_vm._v("Μαθητής")]) : _vm._e(), _vm._v(" "), (notification.type === 'App\\Notifications\\TeacherConnectNotification') ? _c('td', [_vm._v("Καθηγητής")]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.data['user_name']))]), _vm._v(" "), _vm._m(2, true)])
+    return _c('tr', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!notification.read_at),
+        expression: "!notification.read_at"
+      }]
+    }, [(notification.data.role === 'student') ? _c('td', [_vm._v("Μαθητής")]) : _vm._e(), _vm._v(" "), (notification.data.role === 'teacher') ? _c('td', [_vm._v("Καθηγητής")]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(notification.data.name))]), _vm._v(" "), _c('td', [_c('button', {
+      staticClass: "btn btn-success",
+      on: {
+        "click": function($event) {
+          _vm.accept(notification.data.id)
+        }
+      }
+    }, [_vm._v("Αποδοχή")]), _vm._v(" "), _c('button', {
+      staticClass: "btn btn-danger",
+      on: {
+        "click": function($event) {
+          _vm.deny(notification.data.id)
+        }
+      }
+    }, [_vm._v("Απόρριψη")])])])
   }))])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h4', {
@@ -19314,18 +19363,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('b', [_vm._v("Ειδποιήσεις για Σύνδεση")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("Ρόλος")]), _vm._v(" "), _c('th', [_vm._v("Όνομα")]), _vm._v(" "), _c('th', [_vm._v("Επιλογή")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('td', [_c('button', {
-    staticClass: "btn btn-success",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Αποδοχή")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-danger",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Απόρριψη")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

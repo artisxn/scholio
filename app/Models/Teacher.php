@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\School;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,10 +30,5 @@ class Teacher extends Model
     public function certificates()
     {
         return $this->user->certificates;
-    }
-
-    public function scopeConnectedWith(School $school)
-    {
-
     }
 }

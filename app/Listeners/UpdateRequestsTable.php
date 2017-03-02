@@ -3,9 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\UserAppliedOnSchool;
-use App\Notifications\UserAppliedForConnection;
 
-class NotifySchool
+class UpdateRequestsTable
 {
     /**
      * Create the event listener.
@@ -25,6 +24,8 @@ class NotifySchool
      */
     public function handle(UserAppliedOnSchool $event)
     {
-        $event->school->notify(new UserAppliedForConnection($event->user, $event->school));
+        // $request = new Request;
+        // $request->user_id = $event->user->id;
+        // $request->school_id = $event->school->id;
     }
 }
