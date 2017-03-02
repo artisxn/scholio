@@ -27,12 +27,12 @@ $(document).ready(function($) {
 
 
     $("#filter-btn").click(function(){
-        $("#main-results").toggleClass("left left-240");
+        $(".main-results").toggleClass("left left-240");
         $("#mobFilt").toggleClass("left--300 left");
     });
 
     $("#close-btn").click(function(){
-        $("#main-results").toggleClass("left left-240");
+        $(".main-results").toggleClass("left left-240");
         $("#mobFilt").toggleClass("left--300 left");
     });
 

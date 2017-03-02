@@ -15,11 +15,12 @@
                     <p class="text-muted page-title-alt">Schol.io Admin Panel</p>
                 </div>
             </div>
-                @include('panel.partials.body.dashboard.tiles2')
+                {{-- @include('panel.partials.body.dashboard.tiles') --}}
+                {{-- @include('panel.partials.body.dashboard.tiles2') --}}
 
-                @include('panel.partials.body.dashboard.table')
+                {{-- @include('panel.partials.body.dashboard.table') --}}
 
-                @include('panel.partials.body.dashboard.revenue')
+                {{-- @include('panel.partials.body.dashboard.revenue') --}}
         </div>
     </div>
 @endsection

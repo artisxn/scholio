@@ -20,6 +20,9 @@ class CreateStudentsTable extends Migration
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('address')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->timestamps();
         });
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateSchoolRequest;
 use App\Models\Image;
 use App\Models\School;
 use App\Models\SchoolTypes;
+use App\Scholio\Scholio;
 use App\User;
 
 class AdminPanelController extends Controller
@@ -20,19 +20,27 @@ class AdminPanelController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $schools = School::all();
-        $scholarships = ['1', '2', '3'];
-        $pageviews = 1234;
+        if (auth()->user()->role == 'school') {
+            $school = auth()->user()->info;
 
-        $data = array(
-            'users' => $users,
-            'schools' => $schools,
-            'scholarships' => $scholarships,
-            'pageviews' => $pageviews,
-        );
+            $students = $school->students;
+            $teachers = $school->teachers;
+            $parents = $school->parents;
+            $scholarships = $school->scholarship;
 
-        return view('panel.index')->withData($data);
+            $pageviews = 1234;
+
+            $data = array(
+                'students' => $students,
+                'teachers' => $teachers,
+                'parents' => $parents,
+                'scholarships' => $scholarships,
+                'pageviews' => $pageviews,
+            );
+            return view('panel.pages.school.dashboard.main')->withData($data);
+        }
+
+        // return view('panel.index')->withData($data);
     }
 
     /**
@@ -134,9 +142,8 @@ class AdminPanelController extends Controller
      */
     public function editProfile()
     {
-        $school = School::where('user_id', auth()->user()->id)->first();
+        $school = auth()->user()->info;
 
-        // $logo = Image::where('id', $school->logo_id)->first();
         $logo = $school->logo;
 
         $schoolTypes = SchoolTypes::all();
@@ -152,29 +159,29 @@ class AdminPanelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateProfile(CreateSchoolRequest $request, $id)
+    public function updateProfile()
     {
-        $input = $request->except('email', 'user_name', 'logo');
+        $school = auth()->user()->info;
 
-        $school = School::findOrFail($id);
-
-        if ($file = $request->file('logo')) {
+        if ($file = request()->file('logo')) {
             $image_name = $file->store('logo');
-
-            $image = Image::whereId($school->logo_id)->first();
-
-            $image->update([
-                'path' => $image_name,
-                'full_path' => $image_name,
-                'name' => $image_name,
-            ]);
+            $school->logo = $image_name;
         }
 
-        auth()->user()->update(['name' => $request->user_name]);
+        auth()->user()->name = request()->name;
+        auth()->user()->save();
 
-        $school->update($input);
+        $school->website = request()->website;
+        $school->city = request()->city;
+        $school->address = request()->address;
+        $school->phone = request()->phone;
+        $school->about = request()->about;
+
+        $school->save();
 
         session()->flash('updated_profile', 'Your profile has been updated');
+
+        Scholio::updateDummy($school);
 
         return back();
     }
@@ -185,6 +192,47 @@ class AdminPanelController extends Controller
     public function requests()
     {
         return view('panel.pages.school.resource.requests');
+    }
+
+    public function imagesUpload()
+    {
+        $school = auth()->user()->info;
+
+        foreach (request()->file('images') as $image) {
+            $savedImg = $image->store('school-' . $school->id);
+
+            $i = new Image;
+            $i->path = $savedImg;
+            $i->full_path = $savedImg;
+            $i->name = $savedImg;
+            $i->alt = $school->name() . '-images';
+            $i->extension = $image->getClientOriginalExtension();
+
+            $i->save();
+
+            $school->image()->toggle($i);
+        }
+
+        Scholio::updateDummy($school);
+
+        return back();
+    }
+
+    public function imageDelete()
+    {
+        $school = auth()->user()->info;
+
+        $id = request()->image;
+
+        $image = Image::find($id);
+
+        $school->image()->toggle($image);
+
+        unlink(public_path() . '/images/schools/' . $image->name);
+
+        Scholio::updateDummy($school);
+
+        return back();
     }
 
 }

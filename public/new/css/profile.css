@@ -22,9 +22,9 @@ body {
 /*  /////////////////////////////////////////  */
 
 #header {
-background:rgba(240,240,240,0.92);
-border-bottom: 1px solid #c1c1c1;
-height: 61px;
+    background:rgba(240,240,240,0.92);
+    border-bottom: 1px solid #c1c1c1;
+    height: 61px;
 }
 
 #header .active a {
@@ -109,8 +109,15 @@ body {
 
 .main-box,.main-box2 {
     min-height: 380px;
-    border: solid 1px #e1e1e1;
+    /*border: solid 1px #e1e1e1;*/
     padding-bottom: 10px;
+}
+
+
+.main-box3 {
+    /*border: solid 1px #e1e1e1;*/
+    padding-bottom: 10px;
+    background-color: #fff;
 }
 
 .main-box{
@@ -127,7 +134,7 @@ body {
 .sidebar {  width: 300px;
     /*position: fixed;*/
     z-index: -1;
-   }
+}
 
 
 
@@ -138,7 +145,7 @@ body {
     /*position: fixed;*/
     width: 705px;
     z-index: 3;
-    }
+}
 
 .hidden {display: none}
 .visible {display: block}
@@ -267,7 +274,7 @@ body {
     .sidebar { width: 220px!important; position: relative; }
     .sticky-bar-affix{  width: 704px;}
 
-    }
+}
 
 
 /* Portrait tablets and small desktops */

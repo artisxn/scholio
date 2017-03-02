@@ -21,8 +21,11 @@ class CreateSchoolsTable extends Migration
             $table->string('city')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->string('website')->unique()->nullable();
-            $table->string('logo')->default('http://schooltree.org/static/launch/assets/school_avatar.png');
+            $table->string('logo')->default('fake/dummy.png');
+            $table->text('about')->nullable();
             $table->boolean('approved')->default(1);
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->timestamps();
         });
     }

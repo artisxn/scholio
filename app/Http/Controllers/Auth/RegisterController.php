@@ -93,6 +93,8 @@ class RegisterController extends Controller
         $school->name = $request->name;
         $school->email = $request->email;
         $school->type_id = $request->type;
+        $school->lat = '123';
+        $school->lng = '123';
 
         $school->save();
     }

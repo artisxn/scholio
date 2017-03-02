@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-
     <scholarships-create></scholarships-create>
 @endsection
 

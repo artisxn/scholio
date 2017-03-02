@@ -1,6 +1,7 @@
 <template>
     <div class="row">
 
+
         <div class="input-group pull-left " style="width: 210px; margin: 10px 0 10px 10px;; border: 1px solid #d1d1d1; border-radius: 5px;" >
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
             <input type="text" class="form-control" placeholder="Αναζήτηση"

@@ -3,7 +3,8 @@
             <a href="#" class="dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="true">
                 <i class="icon-bell"></i> 
                 <span class="badge badge-xs badge-danger" v-if="unreadNotifications.length">
-                    {{ unreadNotifications.length }}
+                    <!-- {{ unreadNotifications.length }} -->
+                    1
                 </span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg">
@@ -15,9 +16,9 @@
                          <em class="fa fa-user-plus fa-2x text-info"></em>
                       </div>
                       <div class="media-body">
-                         <h5 class="media-heading">Ειδοποίηση για σύνδεση</h5>
+                         <h5 class="media-heading">Ειδοποίηση για σύνδεσηerer</h5>
                          <p class="m-0">
-                             <small v-if="unreadNotifications">{{ unreadNotifications.length }} αιτήματα</small>
+                             <small v-if="unreadNotifications">{{ unreadNotifications.length }} αιτήματαsad</small>
                          </p>
                       </div>
                    </div>
@@ -51,34 +52,11 @@
                     this.listenOnStudentToSchoolConnection()
             },
 
-            listen: function(){
-              if(window.AuthRole == 'school'){
-                // console.log('PPPPP')
-                this.listenOnStudentToSchoolConnection()
-              }
-            },
+            mounted() {
+                console.log('Notifications Component ready.')
 
-            listenOnStudentToSchoolConnection: function(){
-                var pusher = new Pusher('943717bf5769e7b902b4', {
-                  cluster: 'eu',
-                  encrypted: true
-                });
-
-                var channel = pusher.subscribe('school.' + window.Connection);
-                channel.bind('App\\Events\\UserAppliedOnSchool', function(data) {
-                  console.log('test')
-                  this.getNotifications();
-                }.bind(this));
+                this.getNotifications()
             }
-        },
-
-        mounted() {
-            console.log('Notifications Component ready.')
-
-            this.getNotifications()
-            Event.$on('readNotifications', () =>
-              this.getNotifications()
-            )
         }
     }
 </script>

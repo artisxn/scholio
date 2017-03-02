@@ -6,7 +6,11 @@
 
 <li class="dropdown">
     <a href="" class="dropdown-toggle profile waves-effect" data-toggle="dropdown" aria-expanded="true">
-        <img src="{{substr(Auth::user()->school->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->school->logo }}" alt="user-img" class="img-circle">
+        @if(auth()->user()->role == 'school')
+        <img src="{{substr(Auth::user()->info->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->info->logo }}" alt="user-img" class="img-circle">
+        @else
+        <img src="{{substr(Auth::user()->info->avatar, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->info->avatar }}" alt="user-img" class="img-circle">
+        @endif
     </a>
     <ul class="dropdown-menu">
         <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i> Profile</a></li>

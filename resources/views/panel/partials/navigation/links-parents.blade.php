@@ -2,7 +2,7 @@
 <li class="has_sub">
     <a href="#" class=""><i class="ion-android-user-menu"></i><span> Προφίλ </span> </a>
     <ul class="list-unstyled">
-        <li><a href="/panel/parent/profile">Στοιχεία Επικοινωνίας</a></li>
+        <li><a href="{{ route('parents-profile') }}">Στοιχεία Επικοινωνίας</a></li>
         <li><a href="">Τα Εκπαιδευτήριά μου</a></li>
         <li><a href="">Το Βιογραφικό μου</a></li>
     </ul>

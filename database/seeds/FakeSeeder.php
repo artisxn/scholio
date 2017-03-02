@@ -24,6 +24,7 @@ class FakeSeeder extends Seeder
             'type_id' => 1,
             'website' => 'act.edu',
             'approved' => 1,
+            'about' => '<strong>dasdsad</strong> TEST Ακαλξενηρφγδη <ul><li>pesto</li></ul>',
             'logo' => 'fake/act-logo.png',
         ]);
 
@@ -91,7 +92,7 @@ class FakeSeeder extends Seeder
         $school7 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Υποδομή', 'email' => 'info@ypodomi.com', 'password' => bcrypt('123456'), 'role' => 'school'])->id,
             'address' => 'Κουγιουμτζίδη 7',
-            'city' => 'Γιαννιτσά, Πέλλας',
+            'city' => 'Γιαννιτσά',
             'phone' => 2382027799,
             'type_id' => 3,
             'website' => 'ypodomi.com',
@@ -147,9 +148,9 @@ class FakeSeeder extends Seeder
             'logo' => 'fake/adamantios-logo.png',
         ]);
 
-        for ($i = 0; $i < 9; $i++) {
-            factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
-        }
+//        for ($i = 0; $i < 9; $i++) {
+        //            factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+        //        }
 
         factory(App\Models\Student::class, 30)->create();
         factory(App\Models\Teacher::class, 20)->create();
@@ -275,6 +276,8 @@ class FakeSeeder extends Seeder
         $this->interested(23, 1);
         $this->interested(24, 2);
 
+        // Αιτούντες μαθητες αν υποτροφία (user, scholarship)
+        $this->userAppliedOnScholarship(21, 1);
     }
 
     public function interested($studentID, $scholarshipID)
@@ -324,6 +327,14 @@ class FakeSeeder extends Seeder
         $scholarship->winner_id = $winner_id;
         $scholarship->end_at = Carbon::now();
         $scholarship->save();
+    }
+
+    public function userAppliedOnScholarship($userID, $scholarshipID)
+    {
+        $user = User::find($userID);
+        $scholarship = Scholarship::find($scholarshipID);
+
+        $user->scholarship()->toggle($scholarship);
     }
 
 }

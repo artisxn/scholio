@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +33,6 @@
 
     <link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
 
-
     <!--photo hover animation -->
     <link href="{{asset('new/css/photo-hover.css')}}" rel="stylesheet">
 
@@ -52,23 +51,23 @@
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- GoogleMap API -->
-    <!--
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script src=“https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBMIv89-oqimNek5dsVQMTY0PV5qmYRDjoE”></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places?&key=AIzaSyBUVNZRdxX2MnfOZ8NhpQC-Z8fxe4enEkI"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places?&key=AIzaSyBUVNZRdxX2MnfOZ8NhpQC-Z8fxe4enEkI"></script>
-    -->
 
+    <!-- Bootstrap Select js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+
+
+    <!-- GoogleMap API -->
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
 
 
     <!-- Angular js-->
-    <!--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-    <script src="{{asset('new/js/angular-app.js')}}"></script>
-    ng-app="landingApp"
-    -->
+    {{--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>--}}
+    {{--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script>--}}
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="/new/js/angular-app.js"></script>
 
 
     <!-- Local javascript files -->
@@ -79,21 +78,55 @@
     <!--  -->
 
 
+    <style>
+        /*.animate  #sec2 h5{color: red; opacity: 1;*/
+        /*-webkit-transition: all 2.5s ease;*/
+        /*transition: all 2.5s ease;}*/
+        .opacityLow{opacity: 0}
+        .opacityFull {opacity: 1}
+        #sec2{
+            -webkit-transition: all 0.9s linear ;
+            transition: all 0.9s linear;}
+        #sec2, #secNew {
+            -webkit-transition: all 0.3s linear ;
+            transition: all 0.3s linear;}
+
+        .right-out { bottom: -750px;}
+        .right-in { bottom: -240px;}
+
+        .sch-reg-title{left: 40%; width: 400px; position: absolute;}
+
+
+        @media  (max-width: 1500px) {
+            .sch-reg-title {left: 36%; width: 380px;}
+        }
+
+        @media  (max-width: 1300px) {
+            .sch-reg-title {left: 31%; width: 370px;}
+        }
+
+        @media  (max-width: 1200px) {
+            .sch-reg-title {left: 30%; width: 330px;}
+        }
 
 
 
-    </head>
-    <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;">
-    <!-- Scholio Header -->
-    <header class="navbar navbar-top sc-landing-header" id="header" >
-        <div class="container">
 
-            <div class="row">
-                <div class="col-md-1 visible-lg visible-md nav-web">
-                    <!-- Scholio Branding -->
-                    <a class="sc-landing-brand" href="#home">
-                        <div class="sc-landing-logo">
-                            <img src="{{asset('new/img/logo-light.png')}}" alt="scholio logo">
+    </style>
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
+
+<!-- Scholio Header -->
+<header class="navbar navbar-top sc-landing-header" id="header" >
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-1 visible-lg visible-md nav-web">
+                <!-- Scholio Branding -->
+                <a class="sc-landing-brand" href="#home">
+                    <div class="sc-landing-logo">
+                        <img src="{{asset('new/img/logo-light.png')}}" alt="scholio logo">
                     </div>
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
                         <img src="{{asset('new/img/logo.png')}}" alt="scholio logo">
@@ -123,8 +156,13 @@
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">ΣΗΜΕΙΑ ΥΠΕΡΟΧΗΣ</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">ΕΚΠΑΙΔΕΥΤΗΡΙΑ</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
-                        <li><a href="register"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
-                        <li><a href="login"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                        @if(auth()->check())
+                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Panel</button></a></li>
+                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
+                    @else
+                    <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
+                    <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                    @endif
                     </ul>
                 </div>
             </div>
@@ -175,7 +213,6 @@
 </header>
 
 
-
 <!-- Scholio Main Section. -->
 <main id="main"  class="">
     <!-- Scholio Landing Page Firt Section -->
@@ -188,7 +225,7 @@
             </div>
         </div>
         <!-- Full Background Video -->
-        <div class="sc-landing-video-container" style="overflow-x: hidden">
+        <div class="sc-landing-video-container hidden-xs" style="overflow-x: hidden; z-index: -500">
             <!-- Video Shadow -->
             <div class="sc-landing-video-filter"></div>
             <video autoplay loop muted id="video-bg">
@@ -198,38 +235,70 @@
                 {{--<source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm">--}}
             </video>
         </div>
-        <!-- Searchbar -->
-        <div class="sc-landing-search-bar-holder">
-            <div class="container sc-landing-search-bar-content">
-                <form>
-                    <div class="col-md-5 col-sm-6" id="options">
-                        <select class="sc-no-border" >
-                            <option selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>
-                            <option>Κολλέγια</option>
-                            <option>Ιδιωτικά Σχολεία</option>
-                            <option>Ι.Ε.Κ.</option>
-                            <option>Φροντιστήρια</option>
-                        </select>
-                    </div>
 
-                    <div class="col-md-5 col-sm-6" >
-                        <!--
-                         <input class="sc-no-border" type="text" name="" placeholder="Στην τοποθεσία..">
-                         ng-controller="landCtrl"
-                          <input type="text" id="Autocomplete" class="form-control " ng-autocomplete="result2"
-                                details="details2" options="options2" placeholder=" Στην Περιοχή:"/>
-                         -->
 
-                        <input id="autocomplete" placeholder="Στην Περιοχή:" type="text"> </input>
-                    </div>
-
-                    <div class="col-md-2 col-sm-12">
-                        <input class="sc-no-border sc-green sc-t-white"type="submit" name="" value="Αναζήτηση">
-                    </div>
-                </form>
-            </div>
+        <div class="sc-landing-video-container vissible-xs hidden-sm hidden-md hidden-lg" style="overflow-x: hidden">
+            <div class="sc-landing-video-filter"></div>
+            <img class="responsive" style="min-width: 100%; min-height: 640px;" src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="">
         </div>
+        <!-- Searchbar -->
+
+           <div class="sc-landing-search-bar-holder">
+               <div class="container sc-landing-search-bar-content">
+                   <form action="/search/school/type" method="post">
+                       {{ csrf_field() }}
+                       <!-- SELECT Drop Down -->
+                       {{--<div class="col-md-5 col-sm-6" id="options">--}}
+                           {{--<select class="sc-no-border" name="type">--}}
+                               {{--<option value="all" selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>--}}
+                               {{--<option value="@{{ type.id }}" ng-repeat="type in schoolTypes">@{{ type.name }}</option>--}}
+                           {{--</select>--}}
+                       {{--</div>--}}
+
+                        <!-- Επιλογή Εκπαιδευτικών Ιδρυματων ==== angular typeahead  -->
+                       <div class="col-md-5 col-sm-6" id="options">
+                           <input type="text" ng-model="selected" value="selected" placeholder="Εκπαιδευτικό Ίδρυμα" autocomplete="off"
+                                  uib-typeahead="state.id as state.type for state in schoolTypess | filter:$viewValue | limitTo: 8"
+                                  typeahead-template-url="customTemplate.html" class="form-control test" typeahead-show-hint="true"
+                                  typeahead-min-length="0" typeahead-input-formatter="formatLabel($model)">
+                       </div>
+
+                       <input class="hidden" style="color: black!important;" name="type" value="@{{ selected }}" />
+
+                       <div class="col-md-5 col-sm-6" >
+
+
+                             {{--<input type="text" id="Autocomplete" class="form-control " ng-autocomplete="result2"--}}
+                                   {{--details="details2" options="options2" placeholder=" Στην Περιοχή:"/>--}}
+
+                           <!-- Επιλογή Περιοχής ==== angular typeahead  -->
+                           <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" name="location"
+                                  uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
+                                  typeahead-no-results="noResults"  typeahead-show-hint="true" autocomplete="off" class="form-control">
+                           {{--<div style="color: white;">--}}
+                               {{--<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>--}}
+                               {{--<div ng-show="noResults">--}}
+                                   {{--<i class="glyphicon glyphicon-remove"></i> Δε βρέθηκε περιοχή--}}
+                               {{--</div>--}}
+                           {{--</div>--}}
+
+
+
+                       </div>
+
+                       <div class="col-md-2 col-sm-12">
+                           <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
+                       </div>
+                   </form>
+               </div>
+           </div>
+
+
+
     </section>
+
+
+
 
 
     <!-- Second Section -->
@@ -238,11 +307,11 @@
             <div class="sc-landing-sec2-content">
                 <h2 class="text-center sc-t-white sc-t-dark-grey">Βρες τη δική σου υποτροφία με 3 βήματα</h2>
                 <br><br>
-                <div class="row" >
+                <div class="row">
                     <div class="col-md-4 text-center">
                         <img src="{{asset('new/img/landing-icon-1search.png')}}">
-                        <h5>Αναζήτησε Υποτροφίες</h5>
-                        <p class="centered-text">Επίλεξε την κατηγορία όπως Κολλέγιο, ΙΕΚ , Ιδιωτικό Λύκειο ή Φροντιστήριο και την πόλη που σε ενδιαφέρει</p>
+                        <h5 class="">Αναζήτησε Υποτροφίες</h5>
+                        <p class="centered-text">Επέλεξε την κατηγορία όπως Κολλέγιο, ΙΕΚ , Ιδιωτικό Λύκειο ή Φροντιστήριο και την πόλη που σε ενδιαφέρει</p>
                     </div>
                     <div class="visible-sm visible-xs"><br><br><br></div>
                     <div class="col-md-4 text-center">
@@ -257,7 +326,8 @@
                         <p class="centered-text">Ο εκπαιδευτικός φορέας εξετάζει το αίτημα σου και σε ενημερώνει αναλυτικά για τις περαιτέρω λεπτομέρειες.</p>
                     </div>
                 </div>
-                <div class="row" >
+
+                <div class="row" id="" >
                     <div class="col-md-4 col-md-offset-4">
                         <br>
                         <a href="register">
@@ -275,23 +345,28 @@
             <div class="sc-landing-secNew-content">
                 <div class="row">
 
-                    <div style="position: relative" class="hidden-sm hidden-xs">
-                        <img height="710px" width="auto;" src="/new/img/ipad2.png"  style="position: absolute; top:-163px; left: 20px">
-                    </div>
+                    <div class=" sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm">Η ολοκληρωμένη λύση προβολής για κάθε εκπαιδευτικό ίδρυμα</div>
+
+                    <div style="position: relative" class="hidden-xs"><img src="/new/img/ipad6.png" class="ipad"></div>
 
                     <div style="position: relative" class="text-incr-125 sc-t-white">
-                        <img height="670px" width="355px;" src="/new/img/BannerVertical3.png" style="position: absolute; top:-130px; right: 40px">
+                        <img src="/new/img/BannerVertical3.png"  class="banner"  style="z-index: 0">
 
-                        <div style=" position: absolute; right: 65px; width: 300px; text-shadow: 1px 1px #004a5f;" class="">
-                            {{--<div style="height: 50px; width: 300px; background-color: #00b9d2; margin: 20px 0;"></div>--}}
-                            <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
-                            <div class="margin-top-30"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
-                            <div class="margin-top-30"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
+                        <div class="text-container">
+                            <img height="290px" width="auto" src="/new/img/iphone.png" class="hidden-sm iphone">
+                            {{--<div style="height: 400px; width: 300px; background-color: #00b9d2; margin: 20px 0; position: absolute; z-index: 0"></div>--}}
 
-                            <div class="centered-text">
-                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text " style=" margin-top: 200px;">
-                                        Εγγραφή Εκπαιδευτικού Φορέα</button></a>
+                            <div style="margin-top: -50px;" class="center-block">
+                                <div class="text-incr-125 font-weight-300 centered-text visible-xs hidden-sm hidden-md hidden-lg sc-t-dark-blue banner-title">Η ολοκληρωμένη λύση για κάθε εκπαιδευτικό ίδρυμα</div>
+                                <div class="banner-text">
+                                    <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
+                                    <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
+                                    <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
+                                </div>
+                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text btn-school-reg"> Εγγραφή Εκπαιδευτικού Φορέα</button></a>
                             </div>
+
+
 
 
                         </div>
@@ -303,9 +378,8 @@
         </div>
     </section>
 
-
     <!-- Third Section -->
-    <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey">
+    <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey" style="overflow-x: hidden!important;">
         <div class="container">
             <div class="sc-landing-sec3-content">
                 <div class="row">
@@ -348,7 +422,7 @@
                 <div class="row">
                     <div class=" col-lg-6 col-md-7 col-sm-8 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
-                            <figure class="effect-lily sc-landing-card " >
+                            <figure class="effect-lily sc-landing-card" >
                                 <img src="{{asset('new/img/sect-photo/college2.png')}}" alt="student" style="" class="img-responsive "/>
 
                                 <figcaption>
@@ -356,7 +430,7 @@
                                         <h2>Κολλέγια</h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/1')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -372,7 +446,7 @@
                                         <h2>Φροντιστήρια<span></span></h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/3')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -389,7 +463,7 @@
                                         <h2>Ξένες<span>Γλώσσες</span></h2>
                                         <p>Αναζήτηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/4')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -404,7 +478,7 @@
                                         <h2>Ιδιωτικά<span>Σχολεία</span></h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/6')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -438,7 +512,7 @@
                                         <h2>IEK  & Επαγγελματικές <span> Σχολές</span> </h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="#">Αναζήτηση</a>
+                                    <a href="{{url('/public/results/2')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -448,40 +522,46 @@
             </div>
         </div>
     </section>
+
 </main>
 
-    <footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue">
-        <div class="container">
-            <div class="row  ">
-                <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-5 col-xs-4" >
-                    <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
-                    <span  class="clear-fix pad-top-10 pad-bot-10">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
-                    <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
-                </div>
-
-                <div class="pull-right pad-top-40 text-incr-175  pad-right-20">
-                    <a href="#" class="sc-t-white "> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
-                    <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
-                    <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
-                    <br>
-                    <span>  <a href="#" class="sc-t-white "><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
-                    <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
-                    <span>  <a href="#" class="sc-t-white margin-left-20 "><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
-                </div>
+<footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue" style="overflow-x: hidden!important;">
+    <div class="container">
+        <div class="row  ">
+            <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-5 col-xs-4" style="overflow-x: hidden!important;">
+                <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
+                <span  class="clear-fix pad-top-10 pad-bot-10">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
+                <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
             </div>
 
-            <div class=" centered-text">
-                <p class="sc-t-white pad-top-100">© 2016 schol.io . Με την επιφύλαξη κάθε δικαιώματος.</p>
+            <div class="pull-right pad-top-40 text-incr-175  pad-right-20" style="overflow-x: hidden!important;">
+                <a href="#" class="sc-t-white "> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
+                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
+                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
+                <br>
+                <span>  <a href="#" class="sc-t-white "><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
+                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
+                <span>  <a href="#" class="sc-t-white margin-left-20 "><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
             </div>
         </div>
 
-    </footer>
+        <div class=" centered-text">
+            <p class="sc-t-white pad-top-100">© 2016 schol.io . Με την επιφύλαξη κάθε δικαιώματος.</p>
+        </div>
+    </div>
+
+</footer>
 
 </body>
 
-
-<script>
+<script type="text/ng-template" id="customTemplate.html">
+    <a>
+        {{--<span>@{{ match.model.id }} &nbsp;</span>--}}
+        {{--<img ng-src="@{{match.model.png}}" width="16">--}}
+        <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+    </a>
 
 </script>
+
 
 </html>

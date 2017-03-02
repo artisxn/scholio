@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Dummy;
 use App\Models\Image;
 use App\Models\Scholarship;
 use App\Models\SchoolTypes;
@@ -25,6 +26,15 @@ class School extends Model
         'address',
         'phone',
         'user_id',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'user_id', 'approved', 'created_at', 'updated_at',
     ];
 
     /**
@@ -155,5 +165,15 @@ class School extends Model
     public function name()
     {
         return $this->admin->name;
+    }
+
+    public function profileImage()
+    {
+        return $this->image()->pluck('path')->first();
+    }
+
+    public function dummy()
+    {
+        return $this->hasOne(Dummy::class);
     }
 }

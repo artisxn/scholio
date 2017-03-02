@@ -9,7 +9,7 @@
                         </a>
                         <div class="member-info">
                             <h4 class="m-t-0 m-b-5 header-title"><b>{{teacher.name}}</b></h4>
-                            <p class="text-muted">Καθηγητής</p>
+                            <p class="text-muted">Καθηγητήςdasdasdasdasdasd</p>
                             <p class="text-dark">
                                 <i class="md md-email"></i>
                                 <small>{{teacher.email}}</small>

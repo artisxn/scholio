@@ -11,18 +11,18 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js');
-// .sass('resources/assets/sass/core.scss', 'public/css')
-// .sass('resources/assets/sass/icons.scss', 'public/css')
+mix.js('resources/assets/js/app.js', 'public/js')
+ .sass('resources/assets/sass/core.scss', 'public/css')
+ .sass('resources/assets/sass/icons.scss', 'public/css');
 // .sass('resources/assets/sass/responsive.scss', 'public/css')
 // .sass('resources/assets/sass/bootstrap-select-min.scss', 'public/css');
 
-    // mix.combine([
-    //     'public/css/core.css',
-    //     'public/css/icons.css',
-    //     'public/css/responsive.css',
-    //     'public/css/bootstrap-select-min.css'
-    //     ], 'public/css/panel.css');
+     // mix.combine([
+     //     'public/css/core.css',
+     //     'public/css/icons.css',
+     //     'public/css/responsive.css',
+     //     'public/css/bootstrap-select-min.css'
+     //     ], 'public/css/panel.css');
 
     // mix.sass('resources/assets/sass/steps.scss', 'public/css')
     //     .sass('resources/assets/sass/studies.scss', 'public/css');

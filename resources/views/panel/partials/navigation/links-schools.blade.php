@@ -4,6 +4,8 @@
     </style>
 @endsection
 
+<li class="link"><a href="{{ url('dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}"><i class="fa fa-tachometer"></i> <span> Dashboard </span> </a></li>
+
     <li class="text-muted menu-title">Διαχειριση</li>
 
     <li class="has_sub link">
