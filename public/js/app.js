@@ -12459,7 +12459,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/api/connection/' + id + '/confirm').then(function (response) {
                 console.log(response.data);
                 _this3.getNotifications();
-                Event.$emit('readNotifications');
+                _this3.markAsRead(id);
+                window.location.reload();
             });
         },
         deny: function deny(id) {
@@ -12468,6 +12469,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/api/connection/' + id + '/deny').then(function (response) {
                 console.log(id);
                 _this4.markAsRead(id);
+                window.location.reload();
             });
         }
     },
@@ -12476,9 +12478,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Notifications-Table component mounted!');
 
         this.getNotifications();
-        // this.markAsRead()
-
-        Event.$emit('readNotifications');
+        // Event.$on('readNotifications', () => {
+        //     this.markAsRead(id)
+        // });
     }
 };
 
@@ -12488,6 +12490,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -12539,15 +12543,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/notifications').then(function (response) {
                 _this.unreadNotifications = response.data['unread'];
             });
-            this.listen();
-            this.listenOnStudentToSchoolConnection();
-        },
-
-        mounted: function mounted() {
-            console.log('Notifications Component ready.');
-
-            this.getNotifications();
         }
+    },
+
+    mounted: function mounted() {
+        console.log('Notifications Component ready.');
+
+        this.getNotifications();
     }
 };
 
@@ -18057,11 +18059,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "icon-bell"
   }), _vm._v(" "), (_vm.unreadNotifications.length) ? _c('span', {
     staticClass: "badge badge-xs badge-danger"
-  }, [_vm._v("\n            1\n        ")]) : _vm._e()]), _vm._v(" "), _c('ul', {
+  }, [_vm._v("\n            " + _vm._s(_vm.unreadNotifications.length) + "\n        ")]) : _vm._e()]), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu dropdown-menu-lg"
   }, [_vm._m(0), _vm._v(" "), _c('li', {
     staticClass: "list-group nicescroll notification-list"
-  }, [_c('a', {
+  }, [(_vm.unreadNotifications.length) ? _c('a', {
     staticClass: "list-group-item",
     attrs: {
       "href": "/panel/school/requests"
@@ -18072,30 +18074,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "media-body"
   }, [_c('h5', {
     staticClass: "media-heading"
-  }, [_vm._v("Ειδοποίηση για σύνδεσηerer")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("Ειδοποίηση για σύνδεση")]), _vm._v(" "), _c('p', {
     staticClass: "m-0"
-  }, [(_vm.unreadNotifications) ? _c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματαsad")]) : _vm._e()])])])])]), _vm._v(" "), _vm._m(2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "notifi-title"
-  }, [_c('span', {
-    staticClass: "label label-default pull-right"
-  }, [_vm._v("New 3")]), _vm._v("Notification")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "pull-left p-r-10"
-  }, [_c('em', {
-    staticClass: "fa fa-user-plus fa-2x text-info"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
+  }, [_c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματα")])])])])]) : _vm._e()]), _vm._v(" "), _c('li', [_c('div', {
+    staticClass: "list-group-item text-right"
+  }, [(!_vm.unreadNotifications.length) ? _c('small', {
+    staticClass: "font-600"
+  }, [_vm._v("Δεν υπάρχουν νεες ειδοποιησεις")]) : _vm._e()]), _vm._v(" "), (_vm.unreadNotifications.length) ? _c('a', {
     staticClass: "list-group-item text-right",
     attrs: {
       "href": "/panel/school/requests"
     }
   }, [_c('small', {
     staticClass: "font-600"
-  }, [_vm._v("See all notifications")])])])
+  }, [_vm._v("Δείτε όλες τις ειδοποιησεις")])]) : _vm._e()])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "notifi-title"
+  }, [_c('span', {
+    staticClass: "label label-default pull-right"
+  }), _vm._v("Ειδοποιήσεις")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "pull-left p-r-10"
+  }, [_c('em', {
+    staticClass: "fa fa-user-plus fa-2x text-info"
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -19346,7 +19350,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "btn btn-danger",
       on: {
         "click": function($event) {
-          _vm.deny(notification.id)
+          _vm.deny(notification.data.id)
         }
       }
     }, [_vm._v("Απόρριψη")])])])

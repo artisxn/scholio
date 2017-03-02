@@ -25,7 +25,7 @@
                                             <td>{{ notification.data.name }}</td>
                                             <td>
                                                 <button v-on:click="accept(notification.data.id)" class="btn btn-success">Αποδοχή</button>
-                                                <button v-on:click="deny(notification.id)" class="btn btn-danger">Απόρριψη</button>
+                                                <button v-on:click="deny(notification.data.id)" class="btn btn-danger">Απόρριψη</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -69,7 +69,8 @@
                     .then(response => {
                         console.log(response.data)
                         this.getNotifications()
-                        Event.$emit('readNotifications')
+                        this.markAsRead(id)
+                        window.location.reload();
                     });
             },
             deny: function(id){
@@ -77,6 +78,7 @@
                     .then(response => {
                         console.log(id)
                         this.markAsRead(id)
+                        window.location.reload();
                     });
             }
         },
@@ -85,9 +87,9 @@
             console.log('Notifications-Table component mounted!')
 
             this.getNotifications()
-            // this.markAsRead()
-
-            Event.$emit('readNotifications')
+            // Event.$on('readNotifications', () => {
+            //     this.markAsRead(id)
+            // });
         }
     }
 </script>

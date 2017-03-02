@@ -3,8 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\SchoolConfirmsUser;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Notifications\SchoolAcceptedUser;
 
 class NotifyUser
 {
@@ -26,6 +25,6 @@ class NotifyUser
      */
     public function handle(SchoolConfirmsUser $event)
     {
-        //
+        $event->user->notify(new SchoolAcceptedUser($event->user, $event->school));
     }
 }

@@ -39,22 +39,32 @@ class ApiController extends Controller
 
     public function notificationsRequest()
     {
-        $school = auth()->user()->info;
+        // $school = auth()->user()->info;
 
-        $filtered = auth()->user()->notifications->filter(function ($value, $key) use ($school) {
-            return $value->data['school_id'] == $school->id;
-        });
+        // $filtered = auth()->user()->notifications->filter(function ($value, $key) use ($school) {
+        //     return $value->notifiable_id == $school->id;
+        // });
 
-        $data = array(
-            'notifications' => $filtered,
-        );
+        // $data = array(
+        //     'notifications' => $filtered,
+        // );
 
-        return $data;
+        // return $data;
+        // $data = array(
+        //     'notifications' => request()->user()->unreadNotifications,
+        // );
+        return request()->user()->unreadNotifications;
     }
 
-    public function notificationsRead()
+    public function notificationsRead($id)
     {
-        auth()->user()->unreadNotifications->markAsRead();
+        // auth()->user()->unreadNotifications->markAsRead();
+        foreach (auth()->user()->unreadNotifications as $notification) {
+            if ($notification->data['id'] == $id) {
+                $notification->markAsRead();
+            }
+        }
+        return 'OK';
     }
 
     public function notificationsAll()
