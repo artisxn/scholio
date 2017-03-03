@@ -24,7 +24,7 @@ class AdminPanelController extends Controller
             $school = auth()->user()->info;
 
             $students = $school->students;
-            $teachers = $school->teachers;
+            $teachers = $school->teachers();
             $parents = $school->parents;
             $scholarships = $school->scholarship;
 
@@ -40,7 +40,7 @@ class AdminPanelController extends Controller
             return view('panel.pages.school.dashboard.main')->withData($data);
         }
 
-        // return view('panel.index')->withData($data);
+        return view('panel.index')->withData($data);
     }
 
     /**
