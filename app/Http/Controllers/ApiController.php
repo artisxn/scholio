@@ -181,7 +181,7 @@ class ApiController extends Controller
         $school->lengthScholarships = $school->lengthScholarships();
         $school->name = $school->name();
         $school->email = $school->email();
-        $school->teachers = $school->teachers;
+        $school->teachers = $school->teachers();
 
         foreach ($school->teachers as $teacher) {
             $teacher->info;
@@ -226,7 +226,7 @@ class ApiController extends Controller
         $school->lengthScholarships = $school->lengthScholarships();
         $school->name = $school->name();
         $school->email = $school->email();
-        $school->teachers = $school->teachers;
+        $school->teachers = $school->teachers();
 
         foreach ($school->teachers as $teacher) {
             $teacher->info;
