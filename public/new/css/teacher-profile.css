@@ -102,7 +102,7 @@ body {
 }
 
 .main {
-    min-height: 1200px;
+    min-height: 1400px;
 }
 
 
@@ -111,24 +111,35 @@ body {
 }
 
 
-.up {margin-top: 150px;}
-.photo-box{ min-height: 550px;
-
+.up {margin-top: 50px;}
+.photo-box{ min-height: 530px;
     background-size: cover;
     background-position: center;
-
     background-image: linear-gradient( rgba(187, 218, 222, 0.2), rgba(0, 67, 79, 0.8)), url("/new/img/teacher/back1.jpg");
     /*background-image: url("/new/img/pen1.jpg");*/
     /*background-position: 0px 60px;*/
-
 
 }
 
 
 .avatar {height: 180px; width: auto; margin: -100px 0 0 20px; border: 6px solid #fff}
 .row1{margin-top: -130px;}
-.name { font-weight: 300; font-size: 230%; margin:0 0 0 220px; color: #fff}
+.name,.social { font-weight: 300; font-size: 230%; margin:0 0 0 220px; color: #fff}
 .work {font-weight: 400; font-size: 130%; margin: 10px 0 0 220px; color: #888}
+.xs-display, .xs-social {display: none}
+
+
+.title{font-size: 185%; font-weight: 300; margin: -45px 0 30px 90px;}
+.png-title{ height: 50px; width: auto}
+.text{text-align: justify;}
+.sidebar{ margin: 70px 0; height: 540px; background-color: #eceff0;  border: 1px solid #dde0e1;  }
+
+.t1{font-size: 135%; font-weight: 400;}
+.t2,.t3{font-size: 120%; font-weight: 300;}
+.t3{ font-weight: 300; margin-bottom: 20px; }
+
+.skill-bar{height: 12px;  background-color: #00bcd4; margin: -15px 0 0 20px;
+    background-image: linear-gradient( to left, rgba(166, 206, 212, 0.85), rgba(0, 67, 79, 0.8))}
 
 /*=============================================*/
 /*  /////////////////////////////////////////  */
@@ -193,20 +204,27 @@ body {
 
 /* Landscape tablets IPAD  col-md-class */
 @media (min-width: 992px) and (max-width: 1199px) {
-
+.mail{font-size: 125%}
 
 }
 
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
-
+.avatar{margin: -100px 0 0 5px;}
+.row1{margin-top: -117px;}
+.name,.social{font-size: 170%; margin:0 0 0 200px;}
+.work{font-size: 110%; margin:15px 0 0 200px;}
+.mail{font-size: 110%; margin-top: -20px;}
 }
 
 
 /* Landscape phones and portrait tablets */
 @media (min-width: 481px) and (max-width: 767px) {
-
+    .avatar{width:auto; height:170px; margin: -100px 0 0 5px;}
+    .row1{margin-top: -113px;}
+    .name { font-size: 180%; margin:10px 0 0 185px;}
+    .work{ margin:15px 0 0 185px;}
 
 
 }
@@ -227,7 +245,17 @@ body {
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
-
+    .photo-box{ min-height: 390px; }
+    .avatar {width: 48%; height: auto; margin-left:26%;}
+    .row1 {margin-top: 10px;}
+    .name {margin:0; color: black; font-size: 185%}
+    .work { float: none}
+    .xs-centered {text-align:center;  margin-left: auto;  margin-right: auto;  float: none;}
+    .xs-display{display: block}
+    .social,.xs-hidden {display: none}
+    .xs-social{ display: block; font-size: 140%; }
+    .xs-social>a>span>i{padding: 20px 0; color: #888;}
+    .xs-social>a>span>i:hover{ color: orange;}
 }
 
 

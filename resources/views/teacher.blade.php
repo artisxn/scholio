@@ -146,88 +146,130 @@
 
 
 <!-- Teacher Profile Section. -->
-<div>
+
     <main id="main"  class="main">
 
         <div class="container">
             <img src="{{ $teacher->avatar }}" class="avatar img-circle" >
 
-            <div class="row1">
+            <div class="row1 xs-centered">
                 <span class="name">
                         <span>{{ $teacher->name() }} </span>
                 </span>
 
-                <span class="name">
+                <span class="social hidden-xs">
                         <a href=""> <span class="pull-right "><i class="fa fa-instagram"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-twitter"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-facebook"></i></span> </a>
-
                 </span>
             </div>
 
+                <span class="pull-left work xs-hidden">Biological Scientist </span>
+                <div class="work xs-centered xs-display">Biological Scientist </div>
+                <span class="pull-right work hidden-xs mail"> <i class="fa fa-envelope"></i> {{ $teacher->email() }} </span>
 
-            <span class="work pull-left"> Biological Scientist </span>
-            <span class="work pull-right"> <i class="fa fa-envelope"></i> {{ $teacher->email() }} </span>
+
+                <div class="xs-social xs-centered ">
+                    <a href=""> <span class="margin-right-25 "><i class="fa fa-facebook"></i></span> </a>
+                    <a href=""> <span class="margin-right-25"><i class="fa fa-twitter"></i></span> </a>
+                    <a href=""> <span class="margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
+                    <a href=""> <span class=""><i class="fa fa-instagram"></i></span> </a>
+                </div>
+                <hr class="xs-display">
 
 
-
-        <div class="row up">
-            </div>
-            <div class="up">
-                <div class=" margin-bot-15 ">
+            <div class="up" style="overflow-x: hidden">
+                <div class=" margin-bot-15 sc-t-dark-grey">
                     {{-- TEACHER STARTS HERE --}}
-                    <div>
-                        
+                    <div class="row">
+                        <div class="up"></div>
+                        <div class="col-md-9">
 
-                        <h1>ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ</h1>
-                        @foreach($works as $work)
-                            WORK NAME - {{ $work->name }}
-                            <br />
-                            WORK COMPANY - {{ $work->company }}
-                            <br />
-                            WORK DATE - {{ $work->from }} - {{ $work->until }}
-                            <br />
-                            <hr>
-                        @endforeach
-
-                        <h1>ΣΠΟΥΔΕΣ</h1>
-                        @foreach($certificates as $certificate)
-                            certificate NAME - {{ $certificate->name }}
-                            <br />
-                            certificate university - {{ $certificate->university }}
-                            <br />
-                            certificate DATE - {{ $certificate->from }} - {{ $work->until }}
-                            <br />
-                            <hr>
-                        @endforeach
-
-                        <h1>ΔΕΞΙΟΤΗΤΕΣ</h1>
-                        @foreach($teacher->user->getUniqueSkills() as $skill)
-                            SKILL NAME - {{ $skill->name }} - LIKES -
-                            <span id="count{{$skill->id}}">
-                            {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
-                            </span>
-
-                            <div id="bar{{$skill->id}}" style="height: 10px; width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 20}}px; background-color: #ccc;">
+                            <img class="up png-title" src="/new/img/teacher/info.png" alt="">
+                            <div class="title">Λίγα Λόγια</div>
+                            <div class="text">
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                                beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
                             </div>
+                            <hr>
 
-                            @if(auth()->check() && auth()->user()->role != 'school')
-                                @if($teacher->user->checkSkill($skill))
-                                <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-danger">UnLike</button>
-                                @else
-                                <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-primary">Like</button>
+
+                            <img class="up png-title" src="/new/img/teacher/desk.png" alt="">
+                            <div class="title">Επαγγελματική Εμπειρία</div>
+                            @foreach($works as $work)
+                                <div class="t1">
+                                    {{ $work->name }}
+                                </div>
+                                <div class="t2">
+                                      {{ $work->company }}
+                                </div>
+                                <div class="t3">
+                                    {{ $work->from }}
+                                </div>
+                            @endforeach
+                            <hr>
+
+
+                            <img class="up png-title" src="/new/img/teacher/graduate.png" alt="">
+                            <div class="title">Σπουδές</div>
+                            @foreach($certificates as $certificate)
+                                <div class="t1">
+                                    {{ $certificate->name  }}
+                                </div>
+                                <div class="t2">
+                                    {{ $certificate->university  }}
+                                </div>
+                                <div class="t3">
+                                    {{ $certificate->from }}
+                                </div>
+                            @endforeach
+                            <hr>
+
+
+
+                            <img class="up png-title" src="/new/img/teacher/skillsb.png" alt="">
+                            <div class="title">Δεξιότητες</div>
+                            @foreach($teacher->user->getUniqueSkills() as $skill)
+                                <div class="row">
+                                    <span class="t2 col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                                        {{ $skill->name }} :
+                                    </span>
+
+                                    <span class="col-lg-9 col-md-8 col-sm-8 col-xs-6">
+                                        <span id="count{{$skill->id}}">
+                                            {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
+                                        </span>
+                                        <div id="bar{{$skill->id}}" class="skill-bar" style="width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 20}}px;" >
+                                        </div>
+                                    </span>
+                                </div>
+                                @if(auth()->check() && auth()->user()->role != 'school')
+                                    @if($teacher->user->checkSkill($skill))
+                                        <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-danger">UnLike</button>
+                                    @else
+                                        <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-primary">Like</button>
+                                    @endif
                                 @endif
-                            @endif
-                            <br />
-                        @endforeach
+                            @endforeach
+                            <hr>
 
+                        </div>
+
+                        <div class="col-md-3 hidden-sm hidden-xs">
+                            <div class="sidebar"></div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
+
     </main>
-</div>
+
 
 <!-- Footer -->
 {{-- @include('public.footer') --}}
