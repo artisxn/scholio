@@ -125,7 +125,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
         $rootScope.lat=[]
         $rootScope.lng=[]
-        $scope.maxDistance=15
+        $scope.maxDistance=20
         $scope.checkBoxFilter = function(item){
             var filtered = [];
 

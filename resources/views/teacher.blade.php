@@ -18,16 +18,16 @@
     @include('public.styles')
 
     <!-- BX Slider CSS -->
-    <link href="/new/css/jquery.bxslider.css" rel="stylesheet">
+    {{--<link href="/new/css/jquery.bxslider.css" rel="stylesheet">--}}
 
     <!-- Profile  CSS -->
-    <link href="/new/css/profile.css" rel="stylesheet">
+    <link href="/new/css/teacher-profile.css" rel="stylesheet">
 
     <!-- Horizontal Ribbons  CSS -->
-    <link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
+    {{--<link href="/new/css/ribbonHorizontal.css" rel="stylesheet">--}}
 
     <!-- Horizontal Ribbons  CSS -->
-    <link href="/new/css/Hexagon.css" rel="stylesheet">
+    {{--<link href="/new/css/Hexagon.css" rel="stylesheet">--}}
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -36,14 +36,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Angular js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>--}}
 
     <!-- Rating js-->
-    <script src="/new/js/jquery.raty-fa.js"></script>
+    {{--<script src="/new/js/jquery.raty-fa.js"></script>--}}
 
     <!-- BX Slider-->
-    <script src="/new/js/jquery.bxslider412.js"></script>
-    <!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->
+    {{--<script src="/new/js/jquery.bxslider412.js"></script>--}}
+    {{--<!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->--}}
 
     <script>
         window.Scholio = <?php echo json_encode([
@@ -53,72 +53,6 @@
 
     <style>
 
-        .main-box2  ul li{text-indent: -20px;}
-
-
-
-        .bx-wrapper img {height: 220px !important;}
-
-
-
-        .slideup, .slidedown {
-            background-color: #fff;
-            overflow-y: hidden;
-            -webkit-transition: max-height 0.3s ease-in-out;
-            transition: max-height 0.3s ease-in-out;
-            margin-bottom: 0;
-        }
-        .slidedown {  max-height: 3000px ;   }
-        .slideAbout {max-height: 400px;}
-        .slideStudies {max-height: 400px;}
-        .slideScholarships {max-height: 500px;}
-        .slideReviews {max-height: 500px;}
-        .slideTeacheers {max-height: 500px;}
-
-        #horizontal-style {
-            text-align: justify;
-        }
-
-        #horizontal-style:after {
-            content: '';
-            display: inline-block;
-            width: 100%;
-        }
-        #horizontal-style li {
-            display: inline-block;
-            height: 100%;
-        }
-
-        #horizontal-style li a {
-            height: 100%;
-        }
-        #horizontal-style li a:hover {
-            color: orange!important;
-            background-color: #00bcd4;
-        }
-        #horizontal-style li a:visited,
-        #horizontal-style li a:focus,
-        #horizontal-style li a:active {
-            background-color: transparent;
-        }
-
-        #submButton{z-index: 4000; width: 190px; top: 250px; margin-left: 52px; position: fixed; }
-
-        #about-li { margin: 20px}
-
-        #about-li >div> ul > li { margin-left: 20px;}
-
-        @media (min-width: 991px) and (max-width: 1450px) {
-            .ribbon-front {height: 55px;}
-            .ribbon-back-right {  height: 55px;}
-            .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
-            #submButton{ top: 5px; margin-left: 15px; position: relative}
-        }
-        @media  (max-width: 490px) {
-            .ribbon-front {height: 55px;}
-            .ribbon-back-right {  height: 55px;}
-            .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
-        }
 
 
     </style>
@@ -204,29 +138,48 @@
     </div><!-- container-->
 </header>
 
-<!-- Scholio Main Section. -->
+
+
+<div class="photo-box"></div>
+
+
+
+
+<!-- Teacher Profile Section. -->
 <div>
     <main id="main"  class="main">
 
-        <div class="container" style="">
+        <div class="container">
+            <img src="{{ $teacher->avatar }}" class="avatar img-circle" >
+
+            <div class="row1">
+                <span class="name">
+                        <span>{{ $teacher->name() }} </span>
+                </span>
+
+                <span class="name">
+                        <a href=""> <span class="pull-right "><i class="fa fa-instagram"></i></span> </a>
+                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
+                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-twitter"></i></span> </a>
+                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-facebook"></i></span> </a>
+
+                </span>
+            </div>
+
+
+            <span class="work pull-left"> Biological Scientist </span>
+            <span class="work pull-right"> <i class="fa fa-envelope"></i> {{ $teacher->email() }} </span>
+
+
+
         <div class="row up">
             </div>
             <div class="up">
                 <div class=" margin-bot-15 ">
-{{-- TEACHER STARTS HERE --}}   {{-- TEACHER STARTS HERE --}}   {{-- TEACHER STARTS HERE --}}   {{-- TEACHER STARTS HERE --}}
+                    {{-- TEACHER STARTS HERE --}}
                     <div>
-                        <h1>ΣΤΟΙΧΕΙΑ</h1>
-                        Teacher Avatar - <img src="{{ $teacher->avatar }}" width="100" height="100">
-                        <br />
-                        Teacher Name - {{ $teacher->name() }}
-                        <br />
-                        Teacher Email - {{ $teacher->email() }}
-                        <br />
-                        Teacher Phone - {{ $teacher->phone }}
-                        <br />
-                        Teacher Date Of Birth - {{ $teacher->dob }}
-                        <br />
-                        <hr>
+                        
+
                         <h1>ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ</h1>
                         @foreach($works as $work)
                             WORK NAME - {{ $work->name }}
@@ -268,6 +221,7 @@
                             @endif
                             <br />
                         @endforeach
+
                     </div>
                 </div>
             </div>
