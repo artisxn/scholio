@@ -113,6 +113,26 @@
 
         #about-li >div> ul > li { margin-left: 20px;}
 
+        .lead {
+            font-weight: bold;
+        }
+
+        .raty {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        #total-reviews {
+            padding-top: 40px !important;
+            padding-bottom: 80px !important;
+        }
+
+        hr {
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+        }
+
         @media (min-width: 991px) and (max-width: 1450px) {
             .ribbon-front {height: 55px;}
             .ribbon-back-right {  height: 55px;}
@@ -504,6 +524,114 @@
                             <i class="fa fa-star fa-linear margin-right-10" aria-hidden="true"></i> <span>Αξιολογήσεις </span>
                         </p>
                     </div>
+                    <section id="total-reviews">
+                        <div class="font-weight-300 sc-t-grey col-md-4">
+                            <i class="fa fa-book  margin-right-10" aria-hidden="true"></i>
+                            <span>Πρόγραμμα Σπουδών</span>
+                            <br />
+                            <i class="fa fa-cog  margin-right-10" aria-hidden="true"></i>
+                            <span>Οργάνωση</span>
+                            <br />
+                            <i class="fa fa-user  margin-right-10" aria-hidden="true"></i>
+                            <span>Ανθρώπινο Δυναμικό</span>
+                            <br />
+                            <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
+                            <span>Εγκαταστάσεις</span>
+                            <br />
+                            <i class="fa fa-share-alt margin-right-10" aria-hidden="true"></i>
+                            <span>Διασύνδεση με αγορά εργασίας </span>
+                            <br />
+                        </div>
+
+                        <div class="font-weight-300 sc-t-grey col-md-4 row">
+
+                            <div value="@{{getAVG('studyProgram')}}" class="col-md-6 raty" id="studyProgram"></div>
+                            <span class="col-md-6"> @{{getAVG("studyProgram")}}</span>
+                            <br />
+
+                            <div  value="@{{getAVG('organization')}}" class=" col-md-6 raty" id="organization"></div>
+                            <span class="col-md-6"> @{{getAVG("organization")}}</span>
+                            <br />
+
+                            <div  value="@{{getAVG('personnel')}}" class="col-md-6 raty" id="personnel"></div>
+                            <span class="col-md-6"> @{{getAVG("personnel")}}</span>
+                            <br />
+
+                            <div  value="@{{getAVG('facilities')}}" class="col-md-6 raty" id="facilities"></div>
+                            <span class="col-md-6"> @{{getAVG("facilities")}}</span>
+                            <br />
+
+                            <div  value="@{{getAVG('jobLink')}}" class="col-md-6 raty" id="jobLink"></div>
+                            <span class="col-md-6"> @{{getAVG("jobLink")}}</span>
+                            <br />
+                        </div>
+
+                        <div class="font-weight-300 sc-t-grey col-md-4 row text-center">
+                            <span class="lead">@{{getAVG("total")}}</span>
+                            <br />
+                            <span>Συνολική Βαθμολογία</span>
+                            <br />
+                            <br />
+                            <div class="raty" id="totalRating"></div>
+                            <span>(@{{reviews.length}} Αξιολογήσεις)</span>
+                        </div>
+
+                    </section>
+
+                    <section id="reviews-container" ng-repeat="review in reviews">
+                        <hr class="sc-t-grey" />
+                        <div class="font-weight-300 sc-t-grey col-md-5 row">
+
+                            <div class="col-md-9">
+                                <i class="fa fa-book fa-linear margin-right-10" aria-hidden="true"></i>
+                                <span>Πρόγραμμα Σπουδών</span>
+                                <br />
+                                <i class="fa fa-cog fa-linear margin-right-10" aria-hidden="true"></i>
+                                <span>Οργάνωση</span>
+                                <br />
+                                <i class="fa fa-user fa-linear margin-right-10" aria-hidden="true"></i>
+                                <span>Ανθρώπινο Δυναμικό</span>
+                                <br />
+                                <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
+                                <span>Εγκαταστάσεις</span>
+                                <br />
+                                <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
+                                <span>Διασύνδεση με αγορά εργασίας </span>
+                            </div>
+
+                            <div class="col-md-3">
+                                <span>@{{review.stars.studyProgram}}</span>
+                                <br />
+                                <span> @{{review.stars.organization}}</span>
+                                <br />
+                                <span> @{{review.stars.personnel}}</span>
+                                <br />
+                                <span>@{{review.stars.facilities}}</span>
+                                <br />
+                                <span>@{{review.stars.jobLink}}</span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-7 row">
+                            <div class="col-md-6">
+                                <span>@{{review.author}}</span>
+                                <br />
+                                <div value="@{{review.stars.total}}" class="col-md-7 raty"></div>
+                                <span class="col-md-1"> @{{review.stars.total}}</span>
+                                <br />
+                                <span class="text-info">@{{review.date}}</span>
+                                <br />
+                            </div>
+
+
+                            <i class="col-md-6 fa fa-user fa-5x"></i>
+
+                            <p class="col-md-12 font-weight-300 sc-t-grey">@{{review.text}}</p>
+
+                        </div>
+
+                    </section>
                 </div>
                 <!-- Show More Reviews  -->
                 <div class="row show-more" style="background-color: #fff"  >
@@ -1019,7 +1147,79 @@
                     };
                 }
 
+
+
+                $scope.reviews = [{
+                    author: "Ιωαννίδης Β.",
+                    date: "20/11/2016",
+                    text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ",
+                    stars: {
+                        total: 4.4,
+                        studyProgram: 5,
+                        organization: 4,
+                        personnel: 4.5,
+                        facilities: 5,
+                        jobLink: 4
+                    }
+                },
+                    {
+                        author: "Jay L.",
+                        date: "5/12/2016",
+                        text: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+                        stars: {
+                            total: 4.8,
+                            studyProgram: 4,
+                            organization: 5,
+                            personnel: 5,
+                            facilities: 5,
+                            jobLink: 5
+                        }
+                    },{
+                        author: "Giannis D.",
+                        date: "27/02/2017",
+                        text: "lorem ipsum dolor sit amet",
+                        stars: {
+                            total: 3,
+                            studyProgram: 1,
+                            organization: 2,
+                            personnel: 3,
+                            facilities: 4,
+                            jobLink: 5
+                        }
+                    }
+                ];
+
+                $scope.getAVG = function(category) {
+
+                    var avg = 0;
+
+                    for (var i = $scope.reviews.length - 1; i >= 0; i--) {
+                        avg += $scope.reviews[i].stars[category];
+                    }
+
+                    if($scope.reviews.length>0)
+                        return Math.round((avg/$scope.reviews.length)*10) / 10;
+                    else
+                        return "?";
+                }
+
+
+
+
+
+
+
+
+
+
+
             })
+
+
+
+
+
+
 
 
 
@@ -1050,6 +1250,17 @@
 
     $(document).ready(function(){
         $("#main").hide().fadeIn(1800);
+        $(".raty").each(function(index,element){
+            if(this.id!="totalRating")
+                window.stars = parseFloat($(this).next().text());
+            else
+                window.stars = parseFloat($(this).prev().prev().prev().prev().prev().text());
+
+            $(this).raty({
+                score: window.stars,
+                readOnly: true
+            });
+        });
     });
 
     //    $("#Trigger").click(function () {

@@ -138,8 +138,11 @@ body {
 .t2,.t3{font-size: 120%; font-weight: 300;}
 .t3{ font-weight: 300; margin-bottom: 20px; }
 
-.skill-bar{height: 12px;  background-color: #00bcd4; margin: -15px 0 0 20px;
+.skill-bar{height: 12px;  background-color: #00bcd4; margin: -15px 0 0 35px;
     background-image: linear-gradient( to left, rgba(166, 206, 212, 0.85), rgba(0, 67, 79, 0.8))}
+
+#counter {margin-right: 10px;}
+#thumps{margin-right: 20px;}
 
 /*=============================================*/
 /*  /////////////////////////////////////////  */

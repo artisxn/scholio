@@ -240,20 +240,24 @@
                                     </span>
 
                                     <span class="col-lg-9 col-md-8 col-sm-8 col-xs-6">
-                                        <span id="count{{$skill->id}}">
+
+                                        @if(auth()->check() && auth()->user()->role != 'school')
+                                            @if($teacher->user->checkSkill($skill))
+                                                <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-o-down"></i>
+                                            @else
+                                                <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-o-up"></i>
+                                            @endif
+                                        @endif
+
+                                        <span id="count{{$skill->id}}" class="counter">
                                             {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
                                         </span>
                                         <div id="bar{{$skill->id}}" class="skill-bar" style="width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 20}}px;" >
                                         </div>
+
                                     </span>
                                 </div>
-                                @if(auth()->check() && auth()->user()->role != 'school')
-                                    @if($teacher->user->checkSkill($skill))
-                                        <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-danger">UnLike</button>
-                                    @else
-                                        <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-primary">Like</button>
-                                    @endif
-                                @endif
+
                             @endforeach
                             <hr>
 
@@ -301,12 +305,12 @@ function like(user, skill){
 
 function changeButton(data, id){
     if(data == 'ON'){
-        document.getElementById('bt_like' + id).className = 'btn btn-primary';
-        document.getElementById('bt_like' + id).innerHTML = 'Like';
+        document.getElementById('bt_like' + id).className = 'fa fa-thumbs-o-up';
+//        document.getElementById('bt_like' + id).innerHTML = 'Like';
     }
     if(data == 'OFF') {
-        document.getElementById('bt_like' + id).className = 'btn btn-danger';
-        document.getElementById('bt_like' + id).innerHTML = 'UnLIKE';
+        document.getElementById('bt_like' + id).className = 'fa fa-thumbs-o-down';
+//        document.getElementById('bt_like' + id).innerHTML = 'UnLIKE';
     }
 }
 
