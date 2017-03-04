@@ -443,7 +443,7 @@ class FakeSeeder extends Seeder
     public function createImages($school, $path, $from, $until)
     {
         for ($i = $from; $i <= $until; $i++) {
-            $image = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => $path . 'pic' . $i . '.jpg', 'full_path' => $path . 'pic' . $i . '.jpg']);
+            $image = factory(App\Models\Image::class)->create(['type' => 'Image', 'path' => $path . 'pic' . $i . '.jpg', 'full_path' => $path . 'pic' . $i . '.jpg', 'name' => $path . 'pic' . $i . '.jpg']);
             $school->image()->toggle($image);
         }
     }

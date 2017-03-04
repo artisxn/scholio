@@ -62,4 +62,9 @@ trait EndorseSystem
 
         return collect($unique);
     }
+
+    public function addFakeSkill($skill, $from)
+    {
+        $this->skills()->save($skill, ['user_from_id' => $from->id]);
+    }
 }

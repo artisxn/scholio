@@ -1,6 +1,7 @@
 <?php
 
 use App\Scholio\Scholio;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,13 @@ use App\Scholio\Scholio;
 |
  */
 
+Route::get('qqq', function () {
+    $teacher = User::find(42);
+    return $teacher->info->user;
+});
+
 Route::get('@{username}', function ($username) {
-    $user = App\User::where('username', $username)->first();
+    $user = User::where('username', $username)->first();
     $url = '';
     if ($user->role == 'teacher') {
         $url = '/public/profile/teacher';
@@ -48,7 +54,7 @@ Route::get('auth/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
 //===== New Testing PUBLIC pages ======
-Route::get('/public/profile/{id}', 'RoutesController@publicProfile');
+Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
 Route::get('/public/results/{id}', 'RoutesController@publicResults');
 Route::get('connected/students', 'ApiController@connectedStudents');
 Route::get('connected/teachers', 'ApiController@connectedTeachers');
