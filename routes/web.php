@@ -13,6 +13,18 @@ use App\Scholio\Scholio;
 |
  */
 
+Route::get('@{username}', function ($username) {
+    $user = App\User::where('username', $username)->first();
+    $url = '';
+    if ($user->role == 'teacher') {
+        $url = '/public/profile/teacher';
+    }
+    if ($user->role == 'school') {
+        $url = '/public/profile';
+    }
+    return redirect($url . '/' . $user->info->id);
+});
+
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 
 Route::get('/', 'RoutesController@index');
