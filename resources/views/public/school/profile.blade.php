@@ -762,7 +762,7 @@
                             <div class="clearfix"></div>
                         </div>
                         @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))
-                        <button id="submButton" type="button" class="hidden-sm hidden-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
+                        <button id="submButton" type="button" class=" hidden-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 style=""
                                 data-toggle="modal" data-target="#connect-modal">
                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
