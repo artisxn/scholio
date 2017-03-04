@@ -263,7 +263,7 @@ body {
     /*background-image: url("/new/img/Grey-linen2.jpg");*/
 }
 
-.user-card { height: 200px; background-color: red; margin-bottom: 30px;  padding: 0;
+.user-card { height: 200px; margin-bottom: 30px;  padding: 0;
  background-image: linear-gradient(#b8b8b8, #F2F2F2);
 }
 
@@ -383,6 +383,7 @@ body {
     .img-med {width: 50px;}
     .xs-pad-top{padding-top: 6px; }
     h4 {font-size: 120%;}
+    #img1{height: 78px}
 }
 
 

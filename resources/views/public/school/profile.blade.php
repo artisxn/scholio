@@ -133,8 +133,14 @@
             .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
 /*            #submButton{ top: 5px; margin-left: 15px; position: relative}
 */        }
-   @media (min-width: 991px) and (max-width: 1450px) {
-            /*#submButton{ top: 330px; margin-left: 40px; position: fixed;}*/
+
+/*  @media (min-width: 481px) and  (max-width: 769px) {
+            #xs-submButton{ z-index: 2000; top: 90%; margin-left: 1%;  width: 70%;  position: fixed; }
+        }*/
+
+
+   @media (max-width: 769px) {
+            #xs-submButton{ z-index: 2000; top: 90%; margin-left: 4%;  width: 91%;  position: fixed; }
         }
 
 
@@ -241,7 +247,7 @@
             <div class="up">
                 <div class=" margin-bot-15 ">
                     <div>
-                        <img id="img1"  class="img-thumb2 pull-left margin-right-10 margin-top-15 margin-bot-10"
+                        <img id="img1"  class=" pull-left margin-right-10 margin-top-15 margin-bot-10"
                              ng-src="/images/schools/@{{contactInfo.logo}}">
                         <span class="pull-left pad-top-5 xs-pad-top">
                             <h4>@{{contactInfo.name}}</h4>
@@ -312,6 +318,20 @@
             </div>
 
             <div class="row">
+
+           @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))
+                        <button id="xs-submButton" type="button" class="hidden-lg hidden-md-hidden-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
+                                style=""
+                                data-toggle="modal" data-target="#connect-modal">
+                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
+                        </button>
+                        @endif
+
+
+
+
+
+
 
                 <!-- MAIN Section-->
                 <div class="col-lg-9 col-md-9 margin-top-30 margin-bot-25" >
@@ -667,7 +687,7 @@
                             <div class="margin-top-10" id="about-li" >
                                 <div ng-repeat="teacher in contactInfo.teachers">
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12 col-md-6">
                                         <div class="col-sm-12 user-card">
                                            <div class="user-header">
                                                <img class="user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
@@ -762,7 +782,7 @@
                             <div class="clearfix"></div>
                         </div>
                         @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))
-                        <button id="submButton" type="button" class=" hidden-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
+                        <button id="submButton" type="button" class=" sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 style=""
                                 data-toggle="modal" data-target="#connect-modal">
                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
