@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
@@ -13,6 +14,12 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+Route::get('qqq', function () {
+    $school = School::find(1);
+    return $school->teachers->pluck('name');
+});
+
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 
 Route::get('connection/{id}/confirm', function ($id) {

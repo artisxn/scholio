@@ -104,7 +104,7 @@ class School extends Model
      */
     public function teachers()
     {
-        return $this->users->where('role', 'teacher');
+        return $this->users()->where('role', 'teacher');
     }
 
     /**
