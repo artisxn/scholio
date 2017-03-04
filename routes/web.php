@@ -15,7 +15,12 @@ use App\User;
  */
 
 Route::get('qqq', function () {
-    return auth()->user()->info->teachers->load('info');
+    $user = auth()->user();
+    if ($user->checkConnection(1)) {
+
+        return 'OK';
+    }
+    return 'NO';
 });
 
 Route::get('@{username}', function ($username) {
@@ -59,6 +64,9 @@ Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallb
 
 //===== New Testing PUBLIC pages ======
 Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
+Route::get('/public/results/', function () {
+    return redirect('public/results/all');
+});
 Route::get('/public/results/{id}', 'RoutesController@publicResults');
 Route::get('connected/students', 'ApiController@connectedStudents');
 Route::get('connected/teachers', 'ApiController@connectedTeachers');

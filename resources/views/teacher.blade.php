@@ -237,11 +237,11 @@
                             <div class="title">Δεξιότητες</div>
                             @foreach($teacher->user->getUniqueSkills() as $skill)
                                 <div class="row">
-                                    <span class="t2 col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                                    <span class="t2 col-lg-4 col-md-5 col-sm-5 col-xs-6">
                                         {{ $skill->name }} :
                                     </span>
 
-                                    <span class="col-lg-9 col-md-8 col-sm-8 col-xs-6">
+                                    <span class="col-lg-8 col-md-7 col-sm-7 col-xs-6">
 
                                         @if(auth()->check() && auth()->user()->role != 'school')
                                             @if($teacher->user->checkSkill($skill))

@@ -164,6 +164,11 @@ body {
 /*  /////////////////////////////////////////  */
 /* ---------------  LEFT BOX    -------------- */
 /*  /////////////////////////////////////////  */
+.box {
+    height: 210px;
+    border: solid 1px #e1e1e1;
+}
+
 
 .box2 {
     height: 250px;
@@ -171,10 +176,7 @@ body {
 }
 
 
-.box {
-    height: 250px;
-    border: solid 1px #e1e1e1;
-}
+
 
 
 .left-box1{
@@ -238,19 +240,44 @@ body {
 
 .scholar-title{top: 7px; position: absolute}
 
-/* //////////////////////////////////////////////////////////////////// */
-.user-card { height: 300px; background-color: #fafafa; margin-bottom: 30px;  padding: 0;}
+#img1 {height: 88px}
+.social{color: #888; font-size: 105%}
+.socials{margin:-35px -5px; padding:0;}
 
-.user-header{height: 120px; background-color: #324C5A; margin: 0; padding: 0; border-top-left-radius: 5px; border-top-right-radius: 5px;
+.socials>li>a{padding:5px 9px;}
+.socials>li:first-child a{padding-left: 0px;}
+.socials>li>a:hover{background-color: transparent;}
+.socials>li>a>i:hover{color: orange!important;}
+
+
+/* //////////////////////////////////////////////////////////////////// */
+.user-header{height: 100px; background-color: #b8b8b8; margin: 0; padding: 0; 
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1.7px solid #00bcd4;
+
+
+
+    /*324c5a*/
     /*background-image: url("/new/img/wood-grey-wide3.jpg");*/
     /*background-image: url("/new/img/Grey-linen2.jpg");*/
 }
 
-.user-img{ background-color: #ebebeb; height: 90px; width: 90px;margin-top: 65px; margin-left: 20px; border: 3px solid white;}
+.user-card { height: 200px; background-color: red; margin-bottom: 30px;  padding: 0;
+ background-image: linear-gradient(#b8b8b8, #F2F2F2);
+}
 
-.user-name{position: absolute; top: 82px;  margin-left: 10px; font-size: 175%; font-weight: 300}
 
-.user-info{position: absolute; top: 127px;  margin-left: 10px; font-size: 125%; font-weight: 100}
+.user-img{ background-color: #ebebeb; height: 90px; width: 90px;margin-top: 45px; margin-left: 20px; 
+    border: 1.7px solid #00bcd4; 
+
+
+
+}
+
+.user-name{position: absolute; top: 62px;  margin-left: 10px; font-size: 175%; font-weight: 300}
+
+.user-info{position: absolute; top: 107px;  margin-left: 10px; font-size: 125%; font-weight: 100}
 
 
 /* //////////////////////////////////////////////////////////////////// */

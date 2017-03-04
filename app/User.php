@@ -108,4 +108,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(School::class, 'school_user');
     }
+
+    public function checkConnection($user)
+    {
+        foreach ($this->connectedSchool as $connections) {
+            if ($connections->admin->id == $user) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

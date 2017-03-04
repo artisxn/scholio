@@ -105,11 +105,13 @@ hr {
 .margin-top-30 { margin-top: 30px; }
 .margin-top-40 { margin-top: 40px; }
 .margin-top-50 { margin-top: 50px; }
+.margin-top-60 { margin-top: 60px; }
 .margin-top-70 { margin-top: 70px; }
 .margin-bot-10 { margin-bottom: 10px; }
 .margin-bot-15 { margin-bottom: 15px; }
 .margin-bot-25 { margin-bottom: 25px; }
 .margin-bot-50 { margin-bottom: 50px; }
+
 
 .overflow-x{overflow-x: hidden}
 
@@ -152,6 +154,8 @@ a:hover  {  color: orange;  }
 .sc-white{background:#ffffff;}
 .sc-primary{background:#337AB7;}
 .sc-dark-primary{background:#1d4567;}
+.sc-orange {background: #FD6A33;}
+
 
 
 .sc-t-white{color: white;}
@@ -206,7 +210,7 @@ h5{font-size:18px;}
 .sc-button2:focus{outline:none;}
 .sc-button2:active{outline:none;}
 
-.sc-button3{min-width:160px;height:35px;text-align:center;border-radius:30px;border:0;outline:none; margin-bottom: 10px;}
+.sc-button3{min-width:160px;height:35px;text-align:center;border-radius:5px;border:0;outline:none; margin-bottom: 10px;}
 
 /*=============================================*/
 /*  /////////////////////////////////////////  */
