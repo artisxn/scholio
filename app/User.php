@@ -103,4 +103,9 @@ class User extends Authenticatable
         return $this->hasOne(SocialLink::class, 'user_id');
 
     }
+
+    public function connectedSchool()
+    {
+        return $this->belongsToMany(School::class, 'school_user');
+    }
 }

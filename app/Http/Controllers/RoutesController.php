@@ -109,6 +109,11 @@ class RoutesController extends Controller
         return back();
     }
 
+    public function mySchools()
+    {
+        return view('panel.pages.student.schools.mySchools');
+    }
+
     public function devOut()
     {
         auth()->logout();

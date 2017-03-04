@@ -68,3 +68,9 @@ Route::get('/skill/check', function () {
     $end = $user->checkSkill($skill);
     return $end;
 })->middleware('auth:api');
+
+Route::get('/student/mySchools', function () {
+    $schools = auth()->user()->connectedSchool;
+    return $schools->load('admin');
+
+})->middleware('auth:api');

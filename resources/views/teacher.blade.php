@@ -212,7 +212,7 @@
                                       {{ $work->company }}
                                 </div>
                                 <div class="t3">
-                                    {{ $work->from }}
+                                    {{ \Carbon\Carbon::parse($work->from)->year }} - {{ \Carbon\Carbon::parse($work->until)->year }}
                                 </div>
                             @endforeach
                             <hr>
@@ -228,12 +228,10 @@
                                     {{ $certificate->university  }}
                                 </div>
                                 <div class="t3">
-                                    {{ $certificate->from }}
+                                    {{ \Carbon\Carbon::parse($certificate->from)->year }} - {{ \Carbon\Carbon::parse($certificate->until)->year }}
                                 </div>
                             @endforeach
                             <hr>
-
-
 
                             <img class="up png-title" src="/new/img/teacher/skillsb.png" alt="">
                             <div class="title">Δεξιότητες</div>
