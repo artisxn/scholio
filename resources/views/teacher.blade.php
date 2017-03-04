@@ -18,16 +18,16 @@
     @include('public.styles')
 
     <!-- BX Slider CSS -->
-    <link href="/new/css/jquery.bxslider.css" rel="stylesheet">
+    {{--<link href="/new/css/jquery.bxslider.css" rel="stylesheet">--}}
 
     <!-- Profile  CSS -->
-    <link href="/new/css/profile.css" rel="stylesheet">
+    <link href="/new/css/teacher-profile.css" rel="stylesheet">
 
     <!-- Horizontal Ribbons  CSS -->
-    <link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
+    {{--<link href="/new/css/ribbonHorizontal.css" rel="stylesheet">--}}
 
     <!-- Horizontal Ribbons  CSS -->
-    <link href="/new/css/Hexagon.css" rel="stylesheet">
+    {{--<link href="/new/css/Hexagon.css" rel="stylesheet">--}}
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -36,14 +36,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Angular js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>--}}
 
     <!-- Rating js-->
-    <script src="/new/js/jquery.raty-fa.js"></script>
+    {{--<script src="/new/js/jquery.raty-fa.js"></script>--}}
 
     <!-- BX Slider-->
-    <script src="/new/js/jquery.bxslider412.js"></script>
-    <!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->
+    {{--<script src="/new/js/jquery.bxslider412.js"></script>--}}
+    {{--<!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->--}}
 
     <script>
         window.Scholio = <?php echo json_encode([
@@ -53,72 +53,6 @@
 
     <style>
 
-        .main-box2  ul li{text-indent: -20px;}
-
-
-
-        .bx-wrapper img {height: 220px !important;}
-
-
-
-        .slideup, .slidedown {
-            background-color: #fff;
-            overflow-y: hidden;
-            -webkit-transition: max-height 0.3s ease-in-out;
-            transition: max-height 0.3s ease-in-out;
-            margin-bottom: 0;
-        }
-        .slidedown {  max-height: 3000px ;   }
-        .slideAbout {max-height: 400px;}
-        .slideStudies {max-height: 400px;}
-        .slideScholarships {max-height: 500px;}
-        .slideReviews {max-height: 500px;}
-        .slideTeacheers {max-height: 500px;}
-
-        #horizontal-style {
-            text-align: justify;
-        }
-
-        #horizontal-style:after {
-            content: '';
-            display: inline-block;
-            width: 100%;
-        }
-        #horizontal-style li {
-            display: inline-block;
-            height: 100%;
-        }
-
-        #horizontal-style li a {
-            height: 100%;
-        }
-        #horizontal-style li a:hover {
-            color: orange!important;
-            background-color: #00bcd4;
-        }
-        #horizontal-style li a:visited,
-        #horizontal-style li a:focus,
-        #horizontal-style li a:active {
-            background-color: transparent;
-        }
-
-        #submButton{z-index: 4000; width: 190px; top: 250px; margin-left: 52px; position: fixed; }
-
-        #about-li { margin: 20px}
-
-        #about-li >div> ul > li { margin-left: 20px;}
-
-        @media (min-width: 991px) and (max-width: 1450px) {
-            .ribbon-front {height: 55px;}
-            .ribbon-back-right {  height: 55px;}
-            .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
-            #submButton{ top: 5px; margin-left: 15px; position: relative}
-        }
-        @media  (max-width: 490px) {
-            .ribbon-front {height: 55px;}
-            .ribbon-back-right {  height: 55px;}
-            .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
-        }
 
 
     </style>
@@ -204,76 +138,146 @@
     </div><!-- container-->
 </header>
 
-<!-- Scholio Main Section. -->
-<div>
+
+
+<div class="photo-box"></div>
+
+
+
+
+<!-- Teacher Profile Section. -->
+
     <main id="main"  class="main">
 
-        <div class="container" style="">
-        <div class="row up">
+        <div class="container">
+            <img src="{{ $teacher->avatar }}" class="avatar img-circle" >
+
+            <div class="row1 xs-centered">
+                <span class="name">
+                        <span>{{ $teacher->name() }} </span>
+                </span>
+
+                <span class="social hidden-xs">
+                        <a href=""> <span class="pull-right "><i class="fa fa-instagram"></i></span> </a>
+                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
+                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-twitter"></i></span> </a>
+                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-facebook"></i></span> </a>
+                </span>
             </div>
-            <div class="up">
-                <div class=" margin-bot-15 ">
-{{-- TEACHER STARTS HERE --}}   {{-- TEACHER STARTS HERE --}}   {{-- TEACHER STARTS HERE --}}   {{-- TEACHER STARTS HERE --}}
-                    <div>
-                        <h1>ΣΤΟΙΧΕΙΑ</h1>
-                        Teacher Avatar - <img src="{{ $teacher->avatar }}" width="100" height="100">
-                        <br />
-                        Teacher Name - {{ $teacher->name() }}
-                        <br />
-                        Teacher Email - {{ $teacher->email() }}
-                        <br />
-                        Teacher Phone - {{ $teacher->phone }}
-                        <br />
-                        Teacher Date Of Birth - {{ $teacher->dob }}
-                        <br />
-                        <hr>
-                        <h1>ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ</h1>
-                        @foreach($works as $work)
-                            WORK NAME - {{ $work->name }}
-                            <br />
-                            WORK COMPANY - {{ $work->company }}
-                            <br />
-                            WORK DATE - {{ $work->from }} - {{ $work->until }}
-                            <br />
-                            <hr>
-                        @endforeach
 
-                        <h1>ΣΠΟΥΔΕΣ</h1>
-                        @foreach($certificates as $certificate)
-                            certificate NAME - {{ $certificate->name }}
-                            <br />
-                            certificate university - {{ $certificate->university }}
-                            <br />
-                            certificate DATE - {{ $certificate->from }} - {{ $work->until }}
-                            <br />
-                            <hr>
-                        @endforeach
+                <span class="pull-left work xs-hidden">{{$works->first()->name}} </span>
+                <div class="work xs-centered xs-display">{{$works->first()->name}} </div>
+                <span class="pull-right work hidden-xs mail"> <i class="fa fa-envelope"></i> {{ $teacher->email() }} </span>
+                <br />
+                <span class="pull-right work hidden-xs mail"> <i class="fa fa-user"></i>
+                 {{ $teacher->user->username }} </span>
 
-                        <h1>ΔΕΞΙΟΤΗΤΕΣ</h1>
-                        @foreach($teacher->user->getUniqueSkills() as $skill)
-                            SKILL NAME - {{ $skill->name }} - LIKES -
-                            <span id="count{{$skill->id}}">
-                            {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
-                            </span>
 
-                            <div id="bar{{$skill->id}}" style="height: 10px; width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 20}}px; background-color: #ccc;">
+
+                <div class="xs-social xs-centered ">
+                    <a href=""> <span class="margin-right-25 "><i class="fa fa-facebook"></i></span> </a>
+                    <a href=""> <span class="margin-right-25"><i class="fa fa-twitter"></i></span> </a>
+                    <a href=""> <span class="margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
+                    <a href=""> <span class=""><i class="fa fa-instagram"></i></span> </a>
+                </div>
+                <hr class="xs-display">
+
+
+            <div class="up" style="overflow-x: hidden">
+                <div class=" margin-bot-15 sc-t-dark-grey">
+                    {{-- TEACHER STARTS HERE --}}
+                    <div class="row">
+                        <div class="up"></div>
+                        <div class="col-md-9">
+
+                            <img class="up png-title" src="/new/img/teacher/info.png" alt="">
+                            <div class="title">Λίγα Λόγια</div>
+                            <div class="text">
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                                beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
                             </div>
+                            <hr>
 
-                            @if(auth()->check() && auth()->user()->role != 'school')
-                                @if($teacher->user->checkSkill($skill))
-                                <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-danger">UnLike</button>
-                                @else
-                                <button id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="btn btn-primary">Like</button>
-                                @endif
-                            @endif
-                            <br />
-                        @endforeach
+
+                            <img class="up png-title" src="/new/img/teacher/desk.png" alt="">
+                            <div class="title">Επαγγελματική Εμπειρία</div>
+                            @foreach($works as $work)
+                                <div class="t1">
+                                    {{ $work->name }}
+                                </div>
+                                <div class="t2">
+                                      {{ $work->company }}
+                                </div>
+                                <div class="t3">
+                                    {{ $work->from }}
+                                </div>
+                            @endforeach
+                            <hr>
+
+
+                            <img class="up png-title" src="/new/img/teacher/graduate.png" alt="">
+                            <div class="title">Σπουδές</div>
+                            @foreach($certificates as $certificate)
+                                <div class="t1">
+                                    {{ $certificate->name  }}
+                                </div>
+                                <div class="t2">
+                                    {{ $certificate->university  }}
+                                </div>
+                                <div class="t3">
+                                    {{ $certificate->from }}
+                                </div>
+                            @endforeach
+                            <hr>
+
+
+
+                            <img class="up png-title" src="/new/img/teacher/skillsb.png" alt="">
+                            <div class="title">Δεξιότητες</div>
+                            @foreach($teacher->user->getUniqueSkills() as $skill)
+                                <div class="row">
+                                    <span class="t2 col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                                        {{ $skill->name }} :
+                                    </span>
+
+                                    <span class="col-lg-9 col-md-8 col-sm-8 col-xs-6">
+
+                                        @if(auth()->check() && auth()->user()->role != 'school')
+                                            @if($teacher->user->checkSkill($skill))
+                                                <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-o-down"></i>
+                                            @else
+                                                <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-o-up"></i>
+                                            @endif
+                                        @endif
+
+                                        <span id="count{{$skill->id}}" class="counter">
+                                            {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
+                                        </span>
+                                        <div id="bar{{$skill->id}}" class="skill-bar" style="width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 20}}px;" >
+                                        </div>
+
+                                    </span>
+                                </div>
+
+                            @endforeach
+                            <hr>
+
+                        </div>
+
+                        <div class="col-md-3 hidden-sm hidden-xs">
+                            <div class="sidebar"></div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
+
     </main>
-</div>
+
 
 <!-- Footer -->
 {{-- @include('public.footer') --}}
@@ -305,12 +309,12 @@ function like(user, skill){
 
 function changeButton(data, id){
     if(data == 'ON'){
-        document.getElementById('bt_like' + id).className = 'btn btn-primary';
-        document.getElementById('bt_like' + id).innerHTML = 'Like';
+        document.getElementById('bt_like' + id).className = 'fa fa-thumbs-o-up';
+//        document.getElementById('bt_like' + id).innerHTML = 'Like';
     }
     if(data == 'OFF') {
-        document.getElementById('bt_like' + id).className = 'btn btn-danger';
-        document.getElementById('bt_like' + id).innerHTML = 'UnLIKE';
+        document.getElementById('bt_like' + id).className = 'fa fa-thumbs-o-down';
+//        document.getElementById('bt_like' + id).innerHTML = 'UnLIKE';
     }
 }
 

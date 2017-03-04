@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
@@ -16,8 +15,19 @@ use App\User;
  */
 
 Route::get('qqq', function () {
-    $school = School::find(1);
-    return $school->teachers->pluck('name');
+    return auth()->user()->info->teachers->load('info');
+});
+
+Route::get('@{username}', function ($username) {
+    $user = User::where('username', $username)->first();
+    $url = '';
+    if ($user->role == 'teacher') {
+        $url = '/public/profile/teacher';
+    }
+    if ($user->role == 'school') {
+        $url = '/public/profile';
+    }
+    return redirect($url . '/' . $user->info->id);
 });
 
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
@@ -47,7 +57,8 @@ Route::get('/token/register', 'RoutesController@token');
 Route::get('auth/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
-Route::get('/public/profile/{id}', 'RoutesController@publicProfile');
+//===== New Testing PUBLIC pages ======
+Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
 Route::get('/public/results/{id}', 'RoutesController@publicResults');
 Route::get('connected/students', 'ApiController@connectedStudents');
 Route::get('connected/teachers', 'ApiController@connectedTeachers');

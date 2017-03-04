@@ -1,0 +1,275 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.clear-fix {
+    clear: both;
+    display: block;
+}
+
+body {
+    padding-top:140px;
+    margin-top: -140px;
+}
+
+
+
+
+
+/*=============================================*/
+/*  /////////////////////////////////////////  */
+/* -------------  HEADER      ------------- */
+/*  /////////////////////////////////////////  */
+
+#header {
+    background:rgba(240,240,240,0.92);
+    border-bottom: 1px solid #c1c1c1;
+    height: 61px;
+}
+
+#header .active a {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #8e8e8e;
+}
+
+#header2 {z-index: 90}
+
+#header2 a:link, #header2 a:visited  {
+    background-color: transparent!important;
+    color: #fff;
+}
+
+
+#header2 .active a {
+    color: orange;
+}
+#header2 a:hover {
+    color: #dde0e1 !important;
+}
+
+/*  /////////////////////////////////////////  */
+
+.navbar-scroll li {
+    top: -11px;
+}
+
+.nav-web .sc-landing-logo, .nav-web .sc-landing-logo-sticky {
+    padding-top: 15px;
+}
+
+.nav-mobile {
+    padding-top: 11px;
+}
+
+section{padding-top:100px!important; padding-bottom:100px!important;}
+/*Landing Header */
+.sc-landing-header{height:79px;background:transparent; }
+
+.sc-landing-header-sticky{background:transparent; }
+
+.sc-landing-brand{padding-top:26px!important;}
+
+.sc-landing-menu{  padding-top:10px;  }
+
+.sc-landing-menu a{  color:#324c5a;}
+.sc-landing-menu li>a:hover{background-color:transparent}
+.sc-landing-menu li>a:focus{background-color:transparent}
+/*.sc-landing-menu li>a:hover{color:#ffffff;}*/
+/*.sc-landing-menu li>a:focus{color:#ffffff;}*/
+
+.sc-landing-menu-item{padding-top:8px;}
+
+.sc-button-landing{margin-top:-4px;}
+
+.sc-landing-logo-sticky{display:block}
+.sc-landing-logo{}
+
+.sc-landing-menu-mobile-sandwitch{padding-right:20px;margin-top: 25px!important; cursor:pointer;}
+.sc-landing-menu-button-sandwitch{}
+.sc-landing-menu-sandwitch-button-sticky{display:block;}
+.sc-landing-menu-sandwitch{}
+
+.sc-landing-menu-mobile-holder{padding:20px;width:230px;height:100%;position:fixed;right:0; top:0;z-index: 999;display:none;}
+.sc-landing-menu-mobile-close{font-size:25px;cursor:pointer;}
+.sc-landing-menu-mobile-item{font-size:18px;text-align:right;color:white;font-weight:300;padding-top:20px;}
+/*=============================================*/
+
+
+/*=============================================*/
+
+body {
+    background-color: #F1F4F5;
+}
+
+.main {
+    min-height: 1400px;
+}
+
+
+.main-box {
+
+}
+
+
+.up {margin-top: 50px;}
+.photo-box{ min-height: 530px;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient( rgba(187, 218, 222, 0.2), rgba(0, 67, 79, 0.8)), url("/new/img/teacher/back1.jpg");
+    /*background-image: url("/new/img/pen1.jpg");*/
+    /*background-position: 0px 60px;*/
+
+}
+
+
+.avatar {height: 180px; width: auto; margin: -100px 0 0 20px; border: 6px solid #fff}
+.row1{margin-top: -130px;}
+.name,.social { font-weight: 300; font-size: 230%; margin:0 0 0 220px; color: #fff}
+.work {font-weight: 400; font-size: 130%; margin: 10px 0 0 220px; color: #888}
+.xs-display, .xs-social {display: none}
+
+
+.title{font-size: 185%; font-weight: 300; margin: -45px 0 30px 90px;}
+.png-title{ height: 50px; width: auto}
+.text{text-align: justify;}
+.sidebar{ margin: 70px 0; height: 540px; background-color: #eceff0;  border: 1px solid #dde0e1;  }
+
+.t1{font-size: 135%; font-weight: 400;}
+.t2,.t3{font-size: 120%; font-weight: 300;}
+.t3{ font-weight: 300; margin-bottom: 20px; }
+
+.skill-bar{height: 12px;  background-color: #00bcd4; margin: -15px 0 0 35px;
+    background-image: linear-gradient( to left, rgba(166, 206, 212, 0.85), rgba(0, 67, 79, 0.8))}
+
+#counter {margin-right: 10px;}
+#thumps{margin-right: 20px;}
+
+/*=============================================*/
+/*  /////////////////////////////////////////  */
+/* ---------------  LEFT BOX    -------------- */
+/*  /////////////////////////////////////////  */
+
+
+
+
+/* ///////////////////////  Section headers   ////////////////////////////// */
+
+
+.section-header {
+    /*opacity: 0.8;*/
+    background-size: cover;
+    background-position: center;
+    /* background-attachment: fixed;*/
+    height:106px;
+    border: none;
+}
+
+.section-header{
+    background-image: -webkit-linear-gradient(rgba(5,5,16,0.4), rgba(0,0,5,1)),url("../img/section-headers/hero11c.png") ;
+    background-image: linear-gradient(rgba(199, 199, 199, 0.4), #fff),url("../img/section-headers/hero11c2.png") ;
+}
+
+
+
+
+/* //////////////////////////////////////////////////////////////////// */
+
+
+
+/* //////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////// */
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////    MEDIA QUERIES   ////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+@media (min-width: 1450px)  {
+
+}
+
+
+
+
+@media (min-width: 1200px) and (max-width: 1449px) {
+
+}
+
+
+
+
+
+
+/* Landscape tablets IPAD  col-md-class */
+@media (min-width: 992px) and (max-width: 1199px) {
+.mail{font-size: 125%}
+
+}
+
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+.avatar{margin: -100px 0 0 5px;}
+.row1{margin-top: -117px;}
+.name,.social{font-size: 170%; margin:0 0 0 200px;}
+.work{font-size: 110%; margin:15px 0 0 200px;}
+.mail{font-size: 110%; margin-top: -20px;}
+}
+
+
+/* Landscape phones and portrait tablets */
+@media (min-width: 481px) and (max-width: 767px) {
+    .avatar{width:auto; height:170px; margin: -100px 0 0 5px;}
+    .row1{margin-top: -113px;}
+    .name { font-size: 180%; margin:10px 0 0 185px;}
+    .work{ margin:15px 0 0 185px;}
+
+
+}
+/* Bootstrap xs class */
+@media (min-width:601px) and (max-width: 767px) {
+
+}
+
+@media (min-width: 541px) and (max-width: 600px) {
+
+}
+
+
+@media (min-width: 481px) and (max-width: 540px) {
+
+}
+
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+    .photo-box{ min-height: 390px; }
+    .avatar {width: 48%; height: auto; margin-left:26%;}
+    .row1 {margin-top: 10px;}
+    .name {margin:0; color: black; font-size: 185%}
+    .work { float: none}
+    .xs-centered {text-align:center;  margin-left: auto;  margin-right: auto;  float: none;}
+    .xs-display{display: block}
+    .social,.xs-hidden {display: none}
+    .xs-social{ display: block; font-size: 140%; }
+    .xs-social>a>span>i{padding: 20px 0; color: #888;}
+    .xs-social>a>span>i:hover{ color: orange;}
+}
+
+
+@media (max-width: 400px) {
+
+}
+
+@media (min-width: 362px) and (max-width: 405px) {
+
+}
+
+@media (max-width: 361px) {
+
+}

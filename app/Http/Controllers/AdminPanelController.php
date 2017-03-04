@@ -39,8 +39,7 @@ class AdminPanelController extends Controller
             );
             return view('panel.pages.school.dashboard.main')->withData($data);
         }
-
-        return view('panel.index')->withData($data);
+        return view('panel.index');
     }
 
     /**
