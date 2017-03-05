@@ -140,7 +140,7 @@
 
 
    @media (max-width: 769px) {
-            #xs-submButton{ z-index: 2000; top: 90%; margin-left: 4%;  width: 91%;  position: fixed; }
+            #xs-submButton{ z-index: 2000; top: 90%; margin-left: 4%;  width: 92%;  position: fixed; }
         }
 
 
@@ -871,6 +871,12 @@
 
 <script>
     var lengthStudents = 0;
+
+$(document).on("scroll",function(){
+    var documentHeight = $(window).height();
+    $('#xs-submButton').css('bottom',documentHeight);
+});
+
     $(function() {
         //caches a jQuery object containing the header element
         var sb = $("#submButton1");
