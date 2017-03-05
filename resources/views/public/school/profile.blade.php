@@ -320,7 +320,7 @@
 
             <div class="row">
 
-           @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))
+           {{-- @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id)) --}}
            <div class="nonbounce">
                         <button id="xs-submButton" type="button" class="hidden-lg hidden-md-hidden-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 style=""
@@ -328,7 +328,7 @@
                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                         </button>
                         </div>
-                        @endif
+                        {{-- @endif --}}
 
 
 
