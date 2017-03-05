@@ -254,7 +254,7 @@ body {
 
 
 /* //////////////////////////////////////////////////////////////////// */
-.user-header{height: 100px; background-color: #b8b8b8; margin: 0; padding: 0; 
+.user-header{height: 90px; background-color: #b8b8b8; margin: 0; padding: 0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom: 1.7px solid #00bcd4;
@@ -266,7 +266,7 @@ body {
     /*background-image: url("/new/img/Grey-linen2.jpg");*/
 }
 
-.user-card { height: 200px; margin-bottom: 30px;  padding: 0;
+.user-card { height: 180px; margin-bottom: 30px;  padding: 0;
  background-image: linear-gradient(#b8b8b8, #F2F2F2);
 }
 
@@ -278,9 +278,9 @@ body {
 
 }
 
-.user-name{position: absolute; top: 62px;  margin-left: 10px; font-size: 175%; font-weight: 300}
+.user-name{position: absolute; top: 50px;  margin-left: 5px; font-size: 150%; font-weight: 300}
 
-.user-info{position: absolute; top: 107px;  margin-left: 10px; font-size: 125%; font-weight: 100}
+.user-info{position: absolute; top: 105px;  margin-left: 5px; font-size: 120%; font-weight: 100}
 
 
 /* //////////////////////////////////////////////////////////////////// */

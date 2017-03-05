@@ -168,9 +168,7 @@
                 <span class="pull-left work xs-hidden">{{$works->first()->name}} </span>
                 <div class="work xs-centered xs-display">{{$works->first()->name}} </div>
                 <span class="pull-right work hidden-xs mail"> <i class="fa fa-envelope"></i> {{ $teacher->email() }} </span>
-                <br />
-                <span class="pull-right work hidden-xs mail"> <i class="fa fa-user"></i>
-                 {{ $teacher->user->username }} </span>
+
 
 
 

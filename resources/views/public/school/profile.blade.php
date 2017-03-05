@@ -71,7 +71,7 @@
         .slideStudies {max-height: 400px;}
         .slideScholarships {max-height: 500px;}
         .slideReviews {max-height: 500px;}
-        .slideTeacheers {max-height: 500px;}
+        .slideTeachers {max-height: 520px;}
 
         #horizontal-style {
             text-align: justify;
@@ -109,22 +109,28 @@
 
         .lead {
             font-weight: bold;
+            padding: 0; margin: 0;
         }
+        .total-score{margin-top: -8px;}
 
         .raty {
             padding-left: 0 !important;
             padding-right: 0 !important;
         }
 
-        #total-reviews {
-            padding-top: 40px !important;
-            padding-bottom: 80px !important;
-        }
+        .total-reviews{ margin-top: 50px; margin-bottom: 25px;}
+
+        .person-review{margin: 25px 0 5px 16px;}
+        .review-text{ margin-bottom: 25px}
+
+        #xs-total-reviews{margin: 35px 0;}
+        .xs-stars{margin: 27px 0;}
 
         hr {
             margin-left: auto;
             margin-right: auto;
-            width: 90%;
+            width: 94%;
+            margin-top: 30px;
         }
 
         @media (min-width: 991px) and (max-width: 1450px) {
@@ -187,9 +193,10 @@
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
                     <li class="sc-landing-menu-item"><a href="#sxetika" >ΣΧΕΤΙΚΑ</a></li>
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
-                    <li ng-show="col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
+                    <li ng-if="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#reviews">ΑΞΙΟΛΟΓΗΣΕΙΣ</a></li>
+                    <li class="sc-landing-menu-item"><a href="#faculty">ΔΙΔΑΣΚΟΝΤΕΣ</a></li>
                     @if(auth()->check())
                     <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Panel</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
@@ -377,7 +384,7 @@
 
                     <!-- ======= Σπουδές ========-->
 
-                    <div ng-if="studies.length && ( col_iek_eng_dan_mus || (contactInfo.type_id==3) )" id="spoudes">
+                    <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes">
                         <div id="sliderStudies" class=" main-box-2 slideup slideStudies">
                             <div class="section-header2">
                                 <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
@@ -561,33 +568,36 @@
                         </div>
                     </div>
 
+
                     <!-- Αξιολογησεις -->
-                    <div class="slideReviews slideup margin-bot-25" id="reviews">
+                    <div class="slideReviews slideup margin-bot-25 " id="reviews">
                         <div class="section-header2">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
                                 <i class="fa fa-star fa-linear margin-right-10" aria-hidden="true"></i> <span>Αξιολογήσεις </span>
                             </p>
                         </div>
-                        <section id="total-reviews">
-                            <div class="font-weight-300 sc-t-grey col-md-4">
-                                <i class="fa fa-book  margin-right-10" aria-hidden="true"></i>
+
+                        <!--  Total Score Large Medium -->
+                        <div id="total-reviews " class="col-sm-12 hidden-xs hidden-sm visible-md visible-lg total-reviews" >
+                            <div class="font-weight-400 sc-t-grey col-xs-6 col-sm-6 col-md-4">
+                                <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
                                 <span>Πρόγραμμα Σπουδών</span>
                                 <br />
-                                <i class="fa fa-cog  margin-right-10" aria-hidden="true"></i>
+                                <i class="fa fa-cog  fa-linear margin-right-10" aria-hidden="true"></i>
                                 <span>Οργάνωση</span>
                                 <br />
-                                <i class="fa fa-user  margin-right-10" aria-hidden="true"></i>
+                                <i class="fa fa-user fa-linear  margin-right-10" aria-hidden="true"></i>
                                 <span>Ανθρώπινο Δυναμικό</span>
                                 <br />
-                                <i class="fa fa-home margin-right-10" aria-hidden="true"></i>
+                                <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
                                 <span>Εγκαταστάσεις</span>
                                 <br />
-                                <i class="fa fa-share-alt margin-right-10" aria-hidden="true"></i>
+                                <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
                                 <span>Διασύνδεση με αγορά εργασίας </span>
                                 <br />
                             </div>
 
-                            <div class="font-weight-300 sc-t-grey col-md-4 row">
+                            <div class="font-weight-400 sc-t-grey col-xs-6 col-sm-6  col-md-4">
 
                                 <div value="@{{getAVG('studyProgram')}}" class="col-md-6 raty" id="studyProgram"></div>
                                 <span class="col-md-6"> @{{getAVG("studyProgram")}}</span>
@@ -610,72 +620,87 @@
                                 <br />
                             </div>
 
-                            <div class="font-weight-300 sc-t-grey col-md-4 row text-center">
+                            <div class="font-weight-400 sc-t-green col-xs-6 col-sm-6 col-md-4  text-center total-score">
                                 <span class="lead">@{{getAVG("total")}}</span>
                                 <br />
-                                <span>Συνολική Βαθμολογία</span>
+                                <span class="sc-t-grey">Συνολική Βαθμολογία</span>
                                 <br />
                                 <br />
                                 <div class="raty" id="totalRating"></div>
-                                <span>(@{{reviews.length}} Αξιολογήσεις)</span>
+                                <span class="sc-t-grey">(@{{reviews.length}} Αξιολογήσεις)</span>
                             </div>
 
-                        </section>
+                        </div>
 
-                        <section id="reviews-container" ng-repeat="review in reviews">
+
+                        <!--  Total Score Extra Small Small-->
+                        <div id="xs-total-reviews" class="col-sm-12 visible-xs visible-sm hidden-md hidden-lg">
+                            <div class="font-weight-400 sc-t-green col-xs-12 text-center total-score">
+                                <span class="lead">@{{getAVG("total")}}</span>
+                                <br />
+                                <span class="sc-t-grey">Συνολική Βαθμολογία</span>
+                                <br />
+                                <br />
+                                <div class="raty" id="totalRating"></div>
+                                <span class="sc-t-grey">(@{{reviews.length}} Αξιολογήσεις)</span>
+                            </div>
+                            <div class="font-weight-400 sc-t-grey col-xs-12 xs-stars">
+                                <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
+                                <span>Πρόγραμμα Σπουδών</span>
+                                <br />
+                                <span value="@{{getAVG('studyProgram')}}" class="  margin-left-20 raty" id="studyProgram"></span>
+                                <span class="col-md-6"> @{{getAVG("studyProgram")}}</span>
+                                <br />
+
+                                <i class="fa fa-cog  fa-linear margin-right-10" aria-hidden="true"></i>
+                                <span>Οργάνωση</span>
+                                <br />
+                                <span  value="@{{getAVG('organization')}}" class=" margin-left-20 col-md-6 raty" id="organization"></span>
+                                <span class="col-md-6"> @{{getAVG("organization")}}</span>
+                                <br />
+
+
+                                <i class="fa fa-user fa-linear  margin-right-10" aria-hidden="true"></i>
+                                <span>Ανθρώπινο Δυναμικό</span>
+                                <br />
+                                <span  value="@{{getAVG('personnel')}}" class="  margin-left-20 col-md-6 raty" id="personnel"></span>
+                                <span class="col-md-6"> @{{getAVG("personnel")}}</span>
+                                <br />
+
+                                <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
+                                <span>Εγκαταστάσεις</span>
+                                <br />
+                                <span  value="@{{getAVG('facilities')}}" class=" margin-left-20 col-md-6 raty" id="facilities"></span>
+                                <span class="col-md-6"> @{{getAVG("facilities")}}</span>
+                                <br />
+
+                                <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
+                                <span>Διασύνδεση με αγορά εργασίας </span>
+                                <br />
+                                <span  value="@{{getAVG('jobLink')}}" class=" margin-left-20 col-md-6 raty" id="jobLink"></span>
+                                <span class="col-md-6"> @{{getAVG("jobLink")}}</span>
+                            </div>
+                        </div>
+
+
+                        <!--  Personal Reviews-->
+                        <div id="reviews-container" ng-repeat="review in reviews">
                             <hr class="sc-t-grey" />
-                            <div class="font-weight-300 sc-t-grey col-md-5 row">
 
-                                <div class="col-md-9">
-                                    <i class="fa fa-book fa-linear margin-right-10" aria-hidden="true"></i>
-                                    <span>Πρόγραμμα Σπουδών</span>
-                                    <br />
-                                    <i class="fa fa-cog fa-linear margin-right-10" aria-hidden="true"></i>
-                                    <span>Οργάνωση</span>
-                                    <br />
-                                    <i class="fa fa-user fa-linear margin-right-10" aria-hidden="true"></i>
-                                    <span>Ανθρώπινο Δυναμικό</span>
-                                    <br />
-                                    <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
-                                    <span>Εγκαταστάσεις</span>
-                                    <br />
-                                    <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
-                                    <span>Διασύνδεση με αγορά εργασίας </span>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <span>@{{review.stars.studyProgram}}</span>
-                                    <br />
-                                    <span> @{{review.stars.organization}}</span>
-                                    <br />
-                                    <span> @{{review.stars.personnel}}</span>
-                                    <br />
-                                    <span>@{{review.stars.facilities}}</span>
-                                    <br />
-                                    <span>@{{review.stars.jobLink}}</span>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-7 row">
-                                <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="margin-left-10  person-review">
                                     <span>@{{review.author}}</span>
                                     <br />
-                                    <div value="@{{review.stars.total}}" class="col-md-7 raty"></div>
-                                    <span class="col-md-1"> @{{review.stars.total}}</span>
+                                    <span value="@{{review.stars.total}}" class="raty margin-right-10 sc-t-grey" style="margin-left: -3px"></span>
+                                    <span class="sc-t-grey"> @{{review.stars.total}}</span>
                                     <br />
-                                    <span class="text-info">@{{review.date}}</span>
+                                    <span class="sc-t-grey">@{{review.date}}</span>
                                     <br />
                                 </div>
-
-
-                                <i class="col-md-6 fa fa-user fa-5x"></i>
-
-                                <p class="col-md-12 font-weight-300 sc-t-grey">@{{review.text}}</p>
-
+                                <span class="col-md-12 font-weight-300 sc-t-grey review-text">@{{review.text}}</span>
                             </div>
 
-                        </section>
+                        </div>
                     </div>
                     <!-- Show More Reviews  -->
                     <div class="show-more" style="background-color: #fff"  >
@@ -949,7 +974,7 @@
                             $scope.initial();
                         }
                         var type=data.type_id
-                        if (type==1 || type==2)
+                        if (type==1 || type==2 || type==4 || type==10 || type==11)
                         {$scope.col_iek_eng_dan_mus  = true}
                         console.log('SchoolTypeId= '+data.type_id)
 //                        console.timeEnd('contactInfo API');
