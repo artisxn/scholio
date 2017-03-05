@@ -50,6 +50,7 @@
 
     <!-- Angular App-->
     <script src="/new/js/profile-app.js"></script>
+    <script src="/new/js/nonb.js"></script>
     <script>
         window.Scholio = <?php echo json_encode([
     'csrfToken' => csrf_token(),
@@ -320,11 +321,13 @@
             <div class="row">
 
            @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))
+           <div class="nonbounce">
                         <button id="xs-submButton" type="button" class="hidden-lg hidden-md-hidden-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 style=""
                                 data-toggle="modal" data-target="#connect-modal">
                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                         </button>
+                        </div>
                         @endif
 
 
@@ -871,6 +874,8 @@
 
 <script>
     var lengthStudents = 0;
+
+$.nonbounce();
 
 $(document).on("scroll",function(){
     var documentHeight = $(window).height();
