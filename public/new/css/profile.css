@@ -41,7 +41,7 @@ body {
 
 
 #header2 .active a {
-    color: orange;
+    color: #FD6A33;
 }
 #header2 a:hover {
     color: #dde0e1 !important;
@@ -56,6 +56,9 @@ body {
 .nav-web .sc-landing-logo, .nav-web .sc-landing-logo-sticky {
     padding-top: 15px;
 }
+
+
+
 
 .nav-mobile {
     padding-top: 11px;
@@ -165,7 +168,7 @@ body {
 /* ---------------  LEFT BOX    -------------- */
 /*  /////////////////////////////////////////  */
 .box {
-    height: 210px;
+    height: 213px;
     border: solid 1px #e1e1e1;
 }
 
@@ -248,7 +251,7 @@ body {
 .socials>li>a{padding:5px 9px;}
 .socials>li:first-child a{padding-left: 0px;}
 .socials>li>a:hover{background-color: transparent;}
-.socials>li>a>i:hover{color: orange!important;}
+.socials>li>a>i:hover{color: #FD6A33!important;}
 
 .xs-h4{padding-top: 15px;}
 
@@ -278,9 +281,13 @@ body {
 
 }
 
-.user-name{position: absolute; top: 50px;  margin-left: 5px; font-size: 150%; font-weight: 300}
+.user-name{position: absolute; top: 50px;  margin-left: 5px; font-size: 150%; font-weight: 400}
 
-.user-info{position: absolute; top: 105px;  margin-left: 5px; font-size: 120%; font-weight: 100}
+.user-info{position: absolute; top: 105px;  margin-left: 5px; font-size: 120%; font-weight: 300}
+
+.affix-button {min-width:160px;height:35px;text-align:center;border-radius:5px;border:0;outline:none; margin-bottom: 10px; margin-top: 33px!important;
+    width: 294px!important;
+}
 
 
 /* //////////////////////////////////////////////////////////////////// */
@@ -315,11 +322,18 @@ body {
     .sticky-bar-affix{  width: 906px; }
     .sidebar { width: 288px!important;  }
     .xl-margin-right { margin-right: -9px;}
+
+
+    .affix-button {  width: 280px!important;}
+
 }
 
 
 @media (min-width: 1200px) and (max-width: 1238px) {
     .sticky-bar-affix{  width: 854px; }
+
+    .affix-button {  width: 265px!important;}
+
 }
 
 
@@ -333,6 +347,8 @@ body {
 
     .sidebar { width: 220px!important; position: relative; }
     .sticky-bar-affix{  width: 704px;}
+
+    .affix-button {  width: 211px!important;}
 
 }
 

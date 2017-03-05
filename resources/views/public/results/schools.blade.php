@@ -108,11 +108,14 @@
                 <div class="col-md-11 visible-md visible-lg">
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
-                            <li class="sc-landing-menu-item"><a href="#sc-landing-sec2">ΣΧΕΤΙΚΑ</a></li>
-                            <li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>
-                            <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
-                            <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
-                            <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                            {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
+                            @if(auth()->check())
+                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
+                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
+                            @else
+                                <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
+                                <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -129,7 +132,7 @@
 
                     {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
                     <div class="">
-                        <div class="navbar-right pull-right margin-right-30"  id="filter-btn">
+                        <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
                             <a class="" role="button"
                                href="" aria-expanded="false">
                                 <i class="fa fa-filter margin-right-30 margin-top-30 text-incr-175 sc-t-dark-grey" aria-hidden="true"></i>
@@ -143,12 +146,18 @@
                                 <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
                             </div>
                             <br><br>
-                            <div class="pull-right">
-
-                                <div class=""><br></div>
-                                <a href=""><button type="button" class="sc-button sc-green sc-t-white pull-right">Εγγραφή</button></a>
-                                <div class=""><br><br><br></div>
-                                <a href=""><button type="button" class="sc-button sc-white sc-dark-blue pull-right">Σύνδεση</button></a>
+                            <div class="sign-links">
+                                @if(auth()->check())
+                                    <div class=""><br></div>
+                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
+                                    <div><br><br><br></div>
+                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
+                                @else
+                                    <div class=""><br></div>
+                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
+                                    <div class=""><br><br><br></div>
+                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -171,7 +180,7 @@
                      style="padding: 0 ; width: 254px; box-shadow: 2px 0px 40px 6px #4e4e4e;  margin-top: -79px;">
 
                     <div class="" style="">
-                        <div class=" box left-box1" style="z-index: 195;">
+                        <div class="box left-box1" style="z-index: 195;">
                             <p class="text-incr-115 centered-text box1-title"> Πεδία Αναζήτησης
                                 <a class="" role="button" id="close-btn"
                                    aria-expanded="false" aria-controls="">
@@ -179,9 +188,9 @@
                                 </a>
                             </p>
 
-                            <div class="centered-text" style="max-width: 335px;" ng-cloak>
+                            <div class="centered-text" style="max-width: 338px;" ng-cloak>
 
-                                <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="90%" ng-model="categoryFilter" ng-change="update()">
+                                <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="91%" ng-model="categoryFilter" ng-change="update()">
                                     <option id="drop1" data-icon="glyphicon glyphicon-education" data-subtext="" value="null"
                                             data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>
 
@@ -199,6 +208,14 @@
                                         uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
                                         typeahead-no-results="noResults" autocomplete="off">
                             </div>
+
+                            <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%; margin-top: 15px;">
+                                <input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="showMap()">
+                                <span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>
+                            </div>
+
+
+
 
                         </div>
 
@@ -230,6 +247,13 @@
                                     </label>
                                 </div>
                             </div>
+
+                            <div class="pull-left margin-top-10 sc-t-green" style="margin-left: 32px;" ng-cloak>
+                                <span ng-if="resultsFiltered.length==0" ng-cloak class="sc-t-primary"> Δεν Βρέθηκαν αποτελέσματα</span>
+                                <span ng-if="resultsFiltered.length==1" ng-cloak>Βρέθηκε @{{resultsFiltered.length}} αποτελέσμα </span>
+                                <span ng-if="resultsFiltered.length>1" ng-cloakclass="">Βρέθηκαν @{{resultsFiltered.length}} αποτελέσματα </span>
+                            </div>
+
 
                         </div>
 
@@ -303,6 +327,8 @@
                                 </label>
                             </div>
                         </div>
+
+
                     </div>
                     <a href="" ng-click="showMap()" ng-show="view=='map'">
                         <button type="button" class="sc-button2 sc-green sc-t-white margin-top-50 center-block" style="width: 230px">
@@ -323,7 +349,7 @@
                         <span ng-if="resultsFiltered.length==1" ng-cloak>Βρέθηκε @{{resultsFiltered.length}} αποτελέσμα </span>
                         <span ng-if="resultsFiltered.length>1" ng-cloakclass="">Βρέθηκαν @{{resultsFiltered.length}} αποτελέσματα </span>
 
-                        <a ng-click="changeView('card')" style="margin: 0 10px"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+                        <a ng-click="changeView('card')" class="" style="margin:0 10px"><i class=" fa fa-file-text-o" aria-hidden="true"></i></a>
                         <a ng-click="changeView('map')"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
                     </div>
 

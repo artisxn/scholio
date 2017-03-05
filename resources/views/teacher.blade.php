@@ -45,6 +45,11 @@
     {{--<script src="/new/js/jquery.bxslider412.js"></script>--}}
     {{--<!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->--}}
 
+
+    <script src="/new/js/profile.js"></script>
+
+
+
     <script>
         window.Scholio = <?php echo json_encode([
     'csrfToken' => csrf_token(),
@@ -88,13 +93,12 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΣΧΕΤΙΚΑ</a></li>
-                    {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
-                    <li ng-show="col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#reviews">ΑΞΙΟΛΟΓΗΣΕΙΣ</a></li>
+                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΛΙΓΑ ΛΟΓΙΑ</a></li>
+                    <li class="sc-landing-menu-item"><a href="#experience" >ΕΜΠΕΙΡΙΑ</a></li>
+                    <li class="sc-landing-menu-item"><a href="#spoudes">ΣΠΟΥΔΕΣ</a></li>
+                    <li class="sc-landing-menu-item"><a href="#skills">ΔΕΞΙΟΤΗΤΕΣ</a></li>
                     @if(auth()->check())
-                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Panel</button></a></li>
+                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                     @else
                     <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
@@ -119,17 +123,32 @@
                         </div>
                         <br><br>
                         <div class="pull-right">
-                            <a href="#">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΧΕΤΙΚΑ</div>
+                            <a href="#sxetika">
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΛΙΓΑ ΛΟΓΙΑ</div>
                             </a>
-                            <a href="#">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΥΠΟΤΡΟΦΙΕΣ</div>
+                            <a href="#experience">
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΜΠΕΙΡΙΑ</div>
                             </a>
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΠΙΚΟΙΝΩΝΙΑ</div>
+                            <a href="#spoudes">
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΠΟΥΔΕΣ</div>
+                            </a>
+                            <a href="#skills">
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΔΕΞΙΟΤΗΤΕΣ</div>
+                            </a>
                             <div class=""><br></div>
-                            <a href=""><button type="button" class="sc-button sc-green sc-t-white pull-right">Εγγραφή</button></a>
-                            <div class=""><br><br><br></div>
-                            <a href=""><button type="button" class="sc-button sc-white sc-dark-blue pull-right">Σύνδεση</button></a>
+                            <div class="sign-links">
+                                @if(auth()->check())
+                                    <div class=""><br></div>
+                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
+                                    <div><br><br><br></div>
+                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
+                                @else
+                                    <div class=""><br></div>
+                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
+                                    <div class=""><br><br><br></div>
+                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
+                                @endif
+                            </div>>
                         </div>
                     </div>
                 </div>
@@ -181,7 +200,7 @@
                 <hr class="xs-display">
 
 
-            <div class="up" style="overflow-x: hidden">
+            <div class="up" style="overflow-x: hidden" id="sxetika">
                 <div class=" margin-bot-15 sc-t-dark-grey">
                     {{-- TEACHER STARTS HERE --}}
                     <div class="row">
@@ -201,7 +220,7 @@
 
 
                             <img class="up png-title" src="/new/img/teacher/desk.png" alt="">
-                            <div class="title">Επαγγελματική Εμπειρία</div>
+                            <div id="experience" class="title">Επαγγελματική Εμπειρία</div>
                             @foreach($works as $work)
                                 <div class="t1">
                                     {{ $work->name }}
@@ -217,7 +236,7 @@
 
 
                             <img class="up png-title" src="/new/img/teacher/graduate.png" alt="">
-                            <div class="title">Σπουδές</div>
+                            <div id="spoudes" class="title">Σπουδές</div>
                             @foreach($certificates as $certificate)
                                 <div class="t1">
                                     {{ $certificate->name  }}
@@ -232,7 +251,7 @@
                             <hr>
 
                             <img class="up png-title" src="/new/img/teacher/skillsb.png" alt="">
-                            <div class="title">Δεξιότητες</div>
+                            <div  id="skills" class="title">Δεξιότητες</div>
                             @foreach($teacher->user->getUniqueSkills() as $skill)
                                 <div class="row">
                                     <span class="t2 col-lg-4 col-md-5 col-sm-5 col-xs-6">

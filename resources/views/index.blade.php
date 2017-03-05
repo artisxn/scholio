@@ -157,7 +157,7 @@
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">ΕΚΠΑΙΔΕΥΤΗΡΙΑ</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
                         @if(auth()->check())
-                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Panel</button></a></li>
+                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                     @else
                     <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
@@ -193,15 +193,31 @@
 
                             <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΧΕΤΙΚΑ</div>
                         </a>
+                        <a href="#sc-landing-sec3">
+                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΗΜΕΙΑ ΥΠΕΡΟΧΗΣ</div>
+                        </a>
                         <a href="#sc-landing-sec4">
                             <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΚΠΑΙΔΕΥΤΗΡΙΑ</div>
                         </a>
-                        <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΥΠΟΤΡΟΦΙΕΣ</div>
+                        <a href="#sc-landing-sec5">
                         <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΠΙΚΟΙΝΩΝΙΑ</div>
+                        </a>
+
                         <div class=""><br></div>
-                        <a href="register"><button type="button" class="sc-button sc-green sc-t-white pull-right">Εγγραφή</button></a>
-                        <div class=""><br><br><br></div>
-                        <a href="login"><button type="button" class="sc-button sc-white sc-t-dark-grey pull-right">Σύνδεση</button></a>
+                        <div class="sign-links">
+                            @if(auth()->check())
+                                <div class=""><br></div>
+                                <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
+                                <div><br><br><br></div>
+                                <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
+                            @else
+                                <div class=""><br></div>
+                                <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
+                                <div class=""><br><br><br></div>
+                                <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
+                            @endif
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -370,7 +386,7 @@
                                     <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
                                 </div>
 
-                                <a href="/register/school"><button type="button" class="btn btn-danger centered-text btn-school-reg"> Εγγραφή Εκπαιδευτικού Φορέα</button></a>
+                                <a href="/register/school"><button type="button" class="btn sc-orange sc-t-white centered-text btn-school-reg"> Εγγραφή Εκπαιδευτικού Φορέα</button></a>
 
                         </div>
 

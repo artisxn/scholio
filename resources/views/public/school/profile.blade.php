@@ -92,7 +92,7 @@
             height: 100%;
         }
         #horizontal-style li a:hover {
-            color: orange!important;
+            color: #FD6A33!important;
             background-color: #00bcd4;
         }
         #horizontal-style li a:visited,
@@ -191,14 +191,14 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΣΧΕΤΙΚΑ</a></li>
+                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΛΙΓΑ ΛΟΓΙΑ</a></li>
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
-                    <li ng-if="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
+                    <li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#reviews">ΑΞΙΟΛΟΓΗΣΕΙΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#faculty">ΔΙΔΑΣΚΟΝΤΕΣ</a></li>
                     @if(auth()->check())
-                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Panel</button></a></li>
+                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                     @else
                     <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
@@ -217,23 +217,43 @@
                     </div>
                 </div>
                 <div class="visible-xs visible-sm">
-                    <div class="sc-landing-menu-mobile-holder sc-dark-blue">
+                    <div class="sc-landing-menu-mobile-holder sc-dark-blue" >
                         <div class="pull-right">
                             <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
                         </div>
                         <br><br>
                         <div class="pull-right">
-                            <a href="#">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΧΕΤΙΚΑ</div>
+                            <a href="#sxetika">
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΛΙΓΑ ΛΟΓΙΑ</div>
                             </a>
-                            <a href="#">
+                            <a href="#spoudes">
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΠΟΥΔΕΣ</div>
+                            </a>
+                            <a href="#ypotrofies">
                                 <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΥΠΟΤΡΟΦΙΕΣ</div>
                             </a>
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΠΙΚΟΙΝΩΝΙΑ</div>
+                            <a href="#reviews">
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΑΞΙΟΛΟΓΗΣΕΙΣ</div>
+                            </a>
+                            <a href="#faculty">
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΔΙΔΑΣΚΟΝΤΕΣ</div>
+                            </a>
+
+
                             <div class=""><br></div>
-                            <a href=""><button type="button" class="sc-button sc-green sc-t-white pull-right">Εγγραφή</button></a>
-                            <div class=""><br><br><br></div>
-                            <a href=""><button type="button" class="sc-button sc-white sc-dark-blue pull-right">Σύνδεση</button></a>
+                            <div class="sign-links">
+                                @if(auth()->check())
+                                    <div class=""><br></div>
+                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
+                                    <div><br><br><br></div>
+                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
+                                @else
+                                    <div class=""><br></div>
+                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
+                                    <div class=""><br><br><br></div>
+                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -244,9 +264,9 @@
 
 <!-- Scholio Main Section. -->
 <div>
-    <main id="main"  class="main">
+    <main id="main"  class="main" style="overflow-x: hidden">
 
-        <div class="container" style="">
+        <div class="container" style="overflow-x: hidden">
 
             <div class="row up">
             </div>
@@ -304,7 +324,7 @@
             </div>
 
             <!-- BX SLIDER -->
-            <div class="margin-top-70 xs-slider">
+            <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
                 <div class="row xl-margin-right " style="padding-left: 7px;">
                     <ul class="bxslider  "  data-bx-slider="
                 pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
@@ -362,8 +382,8 @@
                     <!-- Σχετικά -->
                     <div class="margin-bot-25 slideup slideAbout" id="sxetika">
                         <div  class="section-header">
-                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100" style="">
-                                <i class="fa fa-info-circle fa-linear margin-right-10" aria-hidden="true"></i> <span>Σχετικά </span>
+                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300" style="">
+                                <i class="fa fa-info-circle fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Σχετικά </span>
                             </p>
                         </div>
                         <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
@@ -384,30 +404,30 @@
 
                     <!-- ======= Σπουδές ========-->
 
-                    <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes">
+                    <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes" style="overflow-x: hidden">
                         <div id="sliderStudies" class=" main-box-2 slideup slideStudies">
                             <div class="section-header2">
-                                <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
-                                    <i class="fa fa-book fa-linear margin-right-10" aria-hidden="true"></i> <span>Σπουδές-Ειδικότητες </span>
+                                <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
+                                    <i class="fa fa-book fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Σπουδές-Ειδικότητες </span>
                                 </p>
                             </div>
                             <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
                             <div ng-if="col_iek_eng_dan_mus" >
                                 <div ng-repeat="(levIndex, level) in levelsName" >
                                     <ul ng-class="[{'col-md-6': (levelsName.length>1)},'col-sm-12']">
-                                        <div class=" text-incr-175 font-weight-300 margin-top-10 margin-left-10" style="" ng-if="contactInfo.type_id!=2">  @{{ level}} </div>
+                                        <div class=" text-incr-175 font-weight-400 margin-top-10 margin-left-10" style="" ng-if="contactInfo.type_id!=2">  @{{ level}} </div>
                                         <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="{'col-lg-6': (contactInfo.type_id==2)}" style="list-style-type: none;">
 
                                             <li class="margin-top-20 margin-left-10">
                                                 <img ng-src="/panel/assets/images/steps/@{{section}}.png" alt=""
                                                      style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
-                                                <span class="pad-left-5 text-incr-150 font-weight-100" style="text-indent: 100%" >@{{ section}} </span>
+                                                <span class="pad-left-5 text-incr-150 font-weight-300" style="text-indent: 100%" >@{{ section}} </span>
                                             </li>
 
                                             {{--@{{levIndex}} , , @{{secIndex}}--}}
                                             <ul ng-repeat="study in studiesName[levIndex][secIndex]" style="list-style-type: none;">
                                                 <li class="pad-top-7 margin-left-10">
-                                                    <span class="  font-weight-100" style="">@{{ study}}</span>
+                                                    <span class="  font-weight-300" style="">@{{ study}}</span>
                                                 </li>
                                             </ul>
                                         </ul>
@@ -416,12 +436,12 @@
                             </div>
 
                             <!-- Σπουδές Φροντιστηρια  -->
-                            <div ng-if=" (contactInfo.type_id==3 || contactInfo.type_id==6)" >
+                            <div ng-if=" (contactInfo.type_id==3 || contactInfo.type_id==6)" style="overflow-x: hidden">
                                 <div class="col-md-6 col-sm-12" style="margin-bottom: 40px;">
-                                    <div class="pad-left-5 text-incr-150 font-weight-100  margin-left-10" >Τμήματα
+                                    <div class="pad-left-5 text-incr-150 font-weight-300  margin-left-10" >Τμήματα
                                     </div>
                                     <div ng-repeat="(levIndex, level) in levelsName " >
-                                        <ul><div class="pad-left-20 font-weight-100 " style="">  @{{ level}} </div>
+                                        <ul><div class="pad-left-20 font-weight-300 " style="">  @{{ level}} </div>
                                         </ul>
                                     </div>
                                 </div>
@@ -442,10 +462,10 @@
 
 
                     <!-- Υποτροφίες -->
-                    <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.lengthScholarships" >
+                    <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.lengthScholarships" style="overflow-x: hidden">
                         <div class="section-header3">
-                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
-                                <i class="fa fa-trophy fa-linear margin-right-10" aria-hidden="true"></i> <span>Υποτροφίες </span>
+                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
+                                <i class="fa fa-trophy fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Υποτροφίες </span>
                             </p>
                         </div>
 
@@ -468,7 +488,7 @@
                                                 <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
                                             </span>
 
-                                        <span class="sc-t-dark-green font-weight-300 text-incr-125 margin-left-10 scholar-title"> @{{scholarship.criteria.name}}</span>
+                                        <span class="sc-t-dark-green font-weight-400 text-incr-125 margin-left-10 scholar-title"> @{{scholarship.criteria.name}}</span>
                                     </div>
                                     <div class="ribbon-edge-topright"></div>
                                     <div class="ribbon-edge-bottomright"></div>
@@ -489,7 +509,7 @@
 
                                 {{--</div>--}}
 
-                                <div class="scholar-content sc-t-grey font-weight-300">
+                                <div class="scholar-content sc-t-grey font-weight-400">
                                     <p class="scholar-left xxs-up">@{{scholarship.financial.plan}} @{{scholarship.financial_amount}}
                                         <span ng-if="scholarship.financial.id==1"> %</span>
                                         <span ng-if="scholarship.financial.id==2"> €  </span>
@@ -516,13 +536,13 @@
                                 </div>
 
                                 <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}">
-                                    <div style="position: absolute; top: 270px;" class="font-weight-300 sc-t-grey">
+                                    <div style="position: absolute; top: 270px;" class="font-weight-400 sc-t-grey">
                                         <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
                                             Ενδιαφέρθηκαν: <span class="pad-left-10" ng-bind="scholarship.interests"></span>
                                         </span>
                                     </div>
 
-                                    <div style="position: absolute; top: 290px;" class="font-weight-300 sc-t-grey">
+                                    <div style="position: absolute; top: 290px;" class="font-weight-400 sc-t-grey">
                                         <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
                                             Αιτήθηκαν: <span class="pad-left-42"> @{{ scholarship.length}}</span>
                                         </span>
@@ -544,7 +564,7 @@
                                     <a href=""><button type="button" class="margin-left-30 esc-button-landing sc-button sc-green sc-t-white"
                                                        data-toggle="modal" data-target="#scholarship-modal">
                                             <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή</button></a>
-                                    {{--<span class="sc-t-grey font-weight-300" style="left: -210px; top: 10px; position: absolute">--}}
+                                    {{--<span class="sc-t-grey font-weight-400" style="left: -210px; top: 10px; position: absolute">--}}
                                     {{--<i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i>Αιτήθηκαν: @{{ scholarship.length}} </span>--}}
                                     {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
                                     {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
@@ -570,10 +590,10 @@
 
 
                     <!-- Αξιολογησεις -->
-                    <div class="slideReviews slideup margin-bot-25 " id="reviews">
+                    <div class="slideReviews slideup margin-bot-25 " id="reviews" style="overflow-x: hidden">
                         <div class="section-header2">
-                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
-                                <i class="fa fa-star fa-linear margin-right-10" aria-hidden="true"></i> <span>Αξιολογήσεις </span>
+                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
+                                <i class="fa fa-star fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Αξιολογήσεις </span>
                             </p>
                         </div>
 
@@ -697,7 +717,7 @@
                                     <span class="sc-t-grey">@{{review.date}}</span>
                                     <br />
                                 </div>
-                                <span class="col-md-12 font-weight-300 sc-t-grey review-text">@{{review.text}}</span>
+                                <span class="col-md-12 font-weight-400 sc-t-grey review-text">@{{review.text}}</span>
                             </div>
 
                         </div>
@@ -705,17 +725,17 @@
                     <!-- Show More Reviews  -->
                     <div class="show-more" style="background-color: #fff"  >
                         <div class="pad-top-20">
-                             <span ng-click="showMoreReviews()">@{{textReviews}}
+                             <span ng-click="showMoreReviews('reviews')">@{{textReviews}}
                                  <i class="@{{ iconReviews }}"></i></span>
                         </div>
                     </div>
 
 
                     <!-- Διδακτικό Προσωπικό  -->
-                    <div class="slideTeachers slideup margin-bot-25" id="faculty">
+                    <div class="slideTeachers slideup margin-bot-25" id="faculty" style="overflow-x: hidden">
                         <div class="section-header3">
-                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-100">
-                                <i class="fa fa-graduation-cap fa-linear text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό</span>
+                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
+                                <i class="fa fa-graduation-cap fa-linear4 text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό</span>
                             </p>
                         </div>
 
@@ -746,7 +766,7 @@
                     <!-- Show More Reviews  -->
                     <div class="show-more" style="background-color: #fff"  >
                         <div class="pad-top-20">
-                             <span ng-click="showMoreTeachers()">@{{textTeachers}}
+                             <span ng-click="showMoreTeachers('faculty')">@{{textTeachers}}
                                  <i class="@{{ iconTeachers }}"></i></span>
                         </div>
                     </div>
@@ -817,13 +837,15 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))
-                        <button id="submButton" type="button" class=" sc-button3 sc-orange sc-t-white margin-top-10 center-block"
-                                style=""
-                                data-toggle="modal" data-target="#connect-modal">
-                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
-                        </button>
-                        @endif
+{{--                        @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))--}}
+                        <nav data-spy="affix" data-offset-top="870">
+                            <button id="submButton" type="button" class="affix-button sc-orange sc-t-white margin-top-10 center-block"
+                                    data-toggle="modal" data-target="#connect-modal">
+                                <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
+                            </button>
+                        </nav>
+
+                        {{--@endif--}}
 
                     </div>
                 </div><!-- //col-lg-3-->
@@ -1151,7 +1173,7 @@
                 }
                 $scope.textReviews='Περισσότερα';
                 $scope.iconReviews='fa fa-angle-down'
-                $scope.showMoreReviews= function (){
+                $scope.showMoreReviews= function (hash){
                     if($scope.textReviews === "Περισσότερα"){
                         $scope.textReviews= "Λιγότερα";
                         $scope.iconReviewst='fa fa-angle-up'
@@ -1160,6 +1182,8 @@
                         $scope.textReviews = "Περισσότερα";
                         $scope.iconReviews='fa fa-angle-down'
                         $("#reviews").toggleClass("slidedown slideup").addClass('slideReviews');
+                        location.hash = '#';
+                        location.hash = "#" + hash;
                     };
                 }
                 $scope.textTeachers='Περισσότερα';
@@ -1173,6 +1197,8 @@
                         $scope.textTeachers = "Περισσότερα";
                         $scope.iconTeachers='fa fa-angle-down'
                         $("#faculty").toggleClass("slidedown slideup").addClass('slideTeachers');
+                        location.hash = '#';
+                        location.hash = "#" + hash;
                     };
                 }
 

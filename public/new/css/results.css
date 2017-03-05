@@ -68,7 +68,7 @@ section{padding-top:100px!important; padding-bottom:100px!important;}
 .sc-landing-menu-mobile-close{font-size:25px;cursor:pointer;}
 .sc-landing-menu-mobile-item{font-size:18px;text-align:right;color:white;font-weight:300;padding-top:20px;}
 
-
+.filter-icon{margin-top: -10px!important;}
 
 /*=============================================*/
 
@@ -93,6 +93,7 @@ section{padding-top:100px!important; padding-bottom:100px!important;}
 .left-box1{
     background-color: #fff;
     border: solid 1px #e1e1e1;
+    height: 245px!important;
 }
 
 .left-box2{
