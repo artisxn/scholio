@@ -268,7 +268,7 @@
 
                         <div class="clearfix"></div>
                             <ul class="nav nav-ul socials" id="" style="">
-                            <li><a class="lg-pull-left xs-no-float"  href="http://google.com">
+                            <li><a class="lg-pull-left"  href="">
                                     <i style="" class="social fa fa-facebook" aria-hidden="true"></i>
                                 </a></li>
                             <li><a class="lg-pull-left"  href="/">

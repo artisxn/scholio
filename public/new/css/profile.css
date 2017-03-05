@@ -241,8 +241,9 @@ body {
 .scholar-title{top: 7px; position: absolute}
 
 #img1 {height: 88px}
-.social{color: #888; font-size: 105%}
+.social{color: #888; font-size: 105%;}
 .socials{margin:-35px -5px; padding:0;}
+.lg-pull-left{float: left;}
 
 .socials>li>a{padding:5px 9px;}
 .socials>li:first-child a{padding-left: 0px;}
@@ -386,10 +387,10 @@ body {
     .xs-pad-top{padding-top: 6px; }
     .xs-slider{margin-top: 180px;}
     .xs-h4{font-size: 135%;}
-    .socials{margin-top: 20px;    width: 100%;     text-align:center;}
+    .socials{margin-top: 20px;    width: 107%;     text-align:center;}
     .social {font-size: 120%; }
     .socials>li{display: inline-block;}
-    .xs-no-float{}
+    .lg-pull-left{float: none;}
     .xs-center{display: flex; justify-content: center; align-items: center;}
     #img1{  max-width: 30%; padding-top:5px;}
     .xs-review{float: none; clear: both;}
