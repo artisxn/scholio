@@ -141,7 +141,7 @@
 
 
    @media (max-width: 769px) {
-            #xs-submButton{ z-index: 2000; bottom: 20px; margin-left: 4%;  width: 92%;  position: fixed; }
+            #xs-submButton{ z-index: 2000; bottom: 20px; margin-left: 4%;  width: 92%;  height: 45px; position: fixed; }
         }
 
 
