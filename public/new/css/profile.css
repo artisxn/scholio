@@ -249,6 +249,8 @@ body {
 .socials>li>a:hover{background-color: transparent;}
 .socials>li>a>i:hover{color: orange!important;}
 
+.xs-h4{padding-top: 15px;}
+
 
 /* //////////////////////////////////////////////////////////////////// */
 .user-header{height: 100px; background-color: #b8b8b8; margin: 0; padding: 0; 
@@ -380,11 +382,30 @@ body {
 @media (max-width: 480px) {
     /* */
     .sticky-bar-affix{   width: 93.3%}
-    .img-med {width: 50px;}
+    .img-med {width: 40px;}
     .xs-pad-top{padding-top: 6px; }
-    h4 {font-size: 120%;}
-    #img1{height: 76px}
+    .xs-slider{margin-top: 180px;}
+    .xs-h4{font-size: 135%;}
+    .socials{margin-top: 20px;    width: 100%;     text-align:center;}
+    .social {font-size: 120%; }
+    .socials>li{display: inline-block;}
+    .xs-no-float{}
+    .xs-center{display: flex; justify-content: center; align-items: center;}
+    #img1{  max-width: 30%; padding-top:5px;}
+    .xs-review{float: none; clear: both;}
+
+    .xs-centered-text {
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
 }
+
+.lg-pull-left{display: inline; float: left;}
+
+}
+
+
 
 
 @media (max-width: 400px) {

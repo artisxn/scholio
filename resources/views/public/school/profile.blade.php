@@ -50,7 +50,6 @@
 
     <!-- Angular App-->
     <script src="/new/js/profile-app.js"></script>
-    <script src="/new/js/nonb.js"></script>
     <script>
         window.Scholio = <?php echo json_encode([
     'csrfToken' => csrf_token(),
@@ -247,47 +246,58 @@
             <!-- Logo & School Name -->
             <div class="up">
                 <div class=" margin-bot-15 ">
-                    <div>
+                    <div class="">
+                    <div class="xs-center">
                         <img id="img1"  class=" pull-left margin-right-10 margin-top-15 margin-bot-10"
                              ng-src="/images/schools/@{{contactInfo.logo}}">
-                        <span class="pull-left pad-top-5 xs-pad-top">
-                            <h4>@{{contactInfo.name}}</h4>
-                            <span ng-show="contactInfo.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating>
-                            </span>
-                            <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.ratingStar}} </span>
-                            <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.ratingCounter}}  Αξιολογήσεις)</span>
-                        </span>
+                    </div>
+
+                    <div class=" xs-centered-text">
+                                                <h4 class="xs-h4">@{{contactInfo.name}}</h4>
+
+                                                 <span class="pad-top-5 xs-pad-top xs-review">
+
+                        <span ng-show="contactInfo.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating>
+                                                </span>
+                                                <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.ratingStar}} </span>
+                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.ratingCounter}}  Αξιολογήσεις)</span>
+                         </span>
+
+                    </div>
+
 
                         <div class="clearfix"></div>
-                        <ul class="nav nav-ul socials" id="" style="">
-                            <li><a class="pull-left"  href="http://google.com">
+                            <ul class="nav nav-ul socials" id="" style="">
+                            <li><a class="lg-pull-left xs-no-float"  href="http://google.com">
                                     <i style="" class="social fa fa-facebook" aria-hidden="true"></i>
                                 </a></li>
-                            <li><a class="pull-left"  href="/">
+                            <li><a class="lg-pull-left"  href="/">
                                     <i style="" class="social fa fa-twitter" aria-hidden="true"></i>
                                 </a></li>
-                            <li><a class="pull-left"  href="">
+                            <li><a class="lg-pull-left"  href="">
                                     <i style="" class="social fa fa-linkedin" aria-hidden="true"></i>
                                 </a></li>
 
-                            <li><a class="pull-left"  href="">
+                            <li><a class="lg-pull-left"  href="">
                                     <i style="" class="social fa fa-instagram" aria-hidden="true"></i>
                                 </a></li>
 
-                            <li><a class="pull-left"  href="">
+                            <li><a class="lg-pull-left"  href="">
                                     <i style="" class=" social fa fa-youtube" aria-hidden="true"></i>
                                 </a></li>
 
-                            <li><a class="pull-left"  href="">
+                            <li><a class="lg-pull-left"  href="">
                                     <i style="" class="social fa fa-google-plus" aria-hidden="true"></i>
                                 </a></li>
                         </ul>
+
+
                     </div>
                 </div>
             </div>
 
             <!-- BX SLIDER -->
-            <div class="margin-top-70">
+            <div class="margin-top-70 xs-slider">
                 <div class="row xl-margin-right " style="padding-left: 7px;">
                     <ul class="bxslider  "  data-bx-slider="
                 pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
@@ -321,13 +331,11 @@
             <div class="row">
 
            {{-- @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id)) --}}
-           <div class="nonbounce">
                         <button id="xs-submButton" type="button" class="hidden-lg hidden-md-hidden-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 style=""
                                 data-toggle="modal" data-target="#connect-modal">
                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                         </button>
-                        </div>
                         {{-- @endif --}}
 
 
