@@ -217,10 +217,13 @@ h5{font-size:18px;}
 
 .sc-button3 {min-width:160px;height:35px;text-align:center;border-radius:5px;border:0;outline:none; margin-bottom: 10px;
 }
+.btn-succes{background-color: #00bcd4!important;}
+.btn-primary{background-color: #008da5!important;}
 
+button:focus, button:active {outline: none;!important;}
+.btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus {border: none!important; outline: none!important;}
 
-
-/*=============================================*/
+    /*=============================================*/
 /*  /////////////////////////////////////////  */
 /* ------------- INPUTS ------------- */
 /*  /////////////////////////////////////////  */

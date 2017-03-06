@@ -300,7 +300,7 @@
 
                     </div>
                     <div class=" box left-box2 ">
-                        <p class="text-incr-115 margin-left-10"> Φίλτρα Αναζήτησης</p>
+                        <p class="text-incr-115 margin-left-10 margin-top-20"> Φίλτρα Αναζήτησης</p>
 
                         <div class="[ form-group ] centered-text" >
                             <input type="checkbox" name="checkbox-1" id="checkbox-1" autocomplete="off" ng-model="scholars" ng-value-true=1 ng-value-false=0/>
@@ -330,6 +330,20 @@
 
 
                     </div>
+
+                    <div class="btn-group btn-toggle" style="width: 100%; margin-top: 15px">
+                        <button class="btn btn-primary active" style="width: 50%; height: 40px" ng-click="changeView('card')">
+                            <i class="fa fa-th-list pad-right-15" aria-hidden="true"></i>Κάρτες
+                        </button>
+
+                        <button class="btn btn-default " style="width: 50%; height: 40px"ng-click="changeView('map')" >
+                            <i class="fa fa-map pad-right-10" aria-hidden="true"></i>Χάρτης
+                        </button>
+
+                    </div>
+
+
+
                     <a href="" ng-click="showMap()" ng-show="view=='map'">
                         <button type="button" class="sc-button2 sc-green sc-t-white margin-top-50 center-block" style="width: 230px">
                         <i class="fa fa-map pad-right-15" aria-hidden="true"></i>Ανανέωση Χάρτη</button>
@@ -349,8 +363,11 @@
                         <span ng-if="resultsFiltered.length==1" ng-cloak>Βρέθηκε @{{resultsFiltered.length}} αποτελέσμα </span>
                         <span ng-if="resultsFiltered.length>1" ng-cloakclass="">Βρέθηκαν @{{resultsFiltered.length}} αποτελέσματα </span>
 
-                        <a ng-click="changeView('card')" class="" style="margin:0 10px"><i class=" fa fa-file-text-o" aria-hidden="true"></i></a>
-                        <a ng-click="changeView('map')"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                        <span class="hidden-lg hidden-md">
+                            <a ng-click="changeView('card')" class="" style="margin:0 10px"><i class=" fa fa-file-text-o" aria-hidden="true"></i></a>
+                            <a ng-click="changeView('map')"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                        </span>
+
                     </div>
 
 
@@ -396,9 +413,11 @@
 
                                     <con>
                                         <photo class="">
-                                            <img id="img0" class=" card-photo pull-left "
-                                            ng-style="{'background-image':'linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{school.image}})'}"
-                                            >
+                                            <a href="/public/profile/@{{school.school_id}}">
+                                                <img id="img0" class=" card-photo pull-left "
+                                                ng-style="{'background-image':'linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{school.image}})'}"
+                                                >
+                                            </a>
                                         </photo>
                                         <div class="card-ribbon">
                                             <img id="img2" class=" sc-white img-med hidden-lg hidden-xs" ng-src="/images/schools/@{{school.logo}}">
@@ -408,8 +427,10 @@
 
                                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
+                                            <a href="/public/profile/@{{school.school_id}}">
                                             <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs"
                                                  ng-src="/images/schools/@{{school.logo}}">
+                                            </a>
                                             <span class="pull-left">
                                                 <h5 class="pad-top-10"> <a href="/public/profile/@{{school.school_id}}"> @{{school.name}}</a></h5>
                                                 <span  ng-show="school.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
@@ -521,7 +542,7 @@
 
                     <!-- MAP VIEW-->
                     <div ng-if="view=='map'" class="main-results">
-                        <div class="col-xs-12"  id="map" style=" height: 500px;"></div>
+                        <div class="col-xs-12"  id="map" style=" height: 555px;"></div>
                     </div>
 
 
@@ -565,6 +586,19 @@ $('rating').raty({
     half     : true,
     starHalf : 'fa fa-fw fa-star-half'
 });
+
+
+$('.btn-toggle').click(function() {
+    $(this).find('.btn').toggleClass('active');
+
+    if ($(this).find('.btn-primary').size()>0) {
+        $(this).find('.btn').toggleClass('btn-primary');
+    }
+
+    $(this).find('.btn').toggleClass('btn-default');
+
+});
+
 
 //====== This delay must change ====
 $(document).ready(function(){$("body").hide().fadeIn(2300);});

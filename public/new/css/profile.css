@@ -257,37 +257,40 @@ body {
 
 
 /* //////////////////////////////////////////////////////////////////// */
-.user-header{height: 90px; background-color: #b8b8b8; margin: 0; padding: 0;
+.user-header{height: 90px; margin: 0; padding: 0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom: 1.7px solid #00bcd4;
-
-
-
-    /*324c5a*/
     /*background-image: url("/new/img/wood-grey-wide3.jpg");*/
     /*background-image: url("/new/img/Grey-linen2.jpg");*/
 }
 
-.user-card { height: 180px; margin-bottom: 30px;  padding: 0;
- background-image: linear-gradient(#b8b8b8, #F2F2F2);
-}
+.user-header,.xs-user-header{background-image: linear-gradient(#b4bebe, #c8c8c8); }
+.user-card ,.xs-user-card {  background-image: linear-gradient(#c8c8c8, #F2F2F2);  }
 
 
-.user-img{ background-color: #ebebeb; height: 90px; width: 90px;margin-top: 45px; margin-left: 20px; 
-    border: 1.7px solid #00bcd4; 
+.user-card { height: 180px; margin-bottom: 30px;  padding: 0;  }
+.user-img{ height: 90px; width: 90px;margin-top: 45px; margin-left: 20px; border: 1.7px solid #00bcd4; }
+.user-name{position: absolute; top: 54px;  margin-left: 5px; font-size: 150%; font-weight: 400}
+.user-info{position: absolute; top: 101px;  margin-left: 5px; font-size: 120%; font-weight: 300}
+
+.xs-user-header{height: 120px; border-bottom: 2px solid #00bcd4;}
+.xs-user-card {margin-bottom: 30px; height: 370px;}
+.xs-user-img{ height: 115px; margin-top: 55px; border: 2px solid #00bcd4;}
+.xs-user-name{font-size: 150%; font-weight: 300;  margin-top: 15px; margin-bottom: 10px; }
+.xs-name{ border-bottom: 0.2px solid #00bcd4;}
+.xs-user-info{font-size: 130%;  font-weight: 300; color: #fff; text-shadow: 1px 1px #a5a5a5;  }
 
 
 
-}
 
-.user-name{position: absolute; top: 50px;  margin-left: 5px; font-size: 150%; font-weight: 400}
 
-.user-info{position: absolute; top: 105px;  margin-left: 5px; font-size: 120%; font-weight: 300}
+
 
 .affix-button {min-width:160px;height:35px;text-align:center;border-radius:5px;border:0;outline:none; margin-bottom: 10px; margin-top: 33px!important;
     width: 294px!important;
 }
+
 
 
 /* //////////////////////////////////////////////////////////////////// */
@@ -426,7 +429,6 @@ body {
 
 
 @media (max-width: 400px) {
-
     .sticky-bar-affix{   width: 91.4%}
     .img-med {width: 50px;}
 }

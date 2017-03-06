@@ -191,7 +191,7 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΛΙΓΑ ΛΟΓΙΑ</a></li>
+                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΣΧΕΤΙΚΑ</a></li>
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
                     <li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
                     <li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>
@@ -224,7 +224,7 @@
                         <br><br>
                         <div class="pull-right">
                             <a href="#sxetika">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΛΙΓΑ ΛΟΓΙΑ</div>
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΧΕΤΙΚΑ</div>
                             </a>
                             <a href="#spoudes">
                                 <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΠΟΥΔΕΣ</div>
@@ -415,13 +415,13 @@
                             <div ng-if="col_iek_eng_dan_mus" >
                                 <div ng-repeat="(levIndex, level) in levelsName" >
                                     <ul ng-class="[{'col-md-6': (levelsName.length>1)},'col-sm-12']">
-                                        <div class=" text-incr-175 font-weight-400 margin-top-10 margin-left-10" style="" ng-if="contactInfo.type_id!=2">  @{{ level}} </div>
+                                        <div class=" text-incr-150 font-weight-300 margin-top-10 margin-left-10" style="" ng-if="contactInfo.type_id!=2">  @{{ level}} </div>
                                         <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="{'col-lg-6': (contactInfo.type_id==2)}" style="list-style-type: none;">
 
                                             <li class="margin-top-20 margin-left-10">
                                                 <img ng-src="/panel/assets/images/steps/@{{section}}.png" alt=""
                                                      style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
-                                                <span class="pad-left-5 text-incr-150 font-weight-300" style="text-indent: 100%" >@{{ section}} </span>
+                                                <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%" >@{{ section}} </span>
                                             </li>
 
                                             {{--@{{levIndex}} , , @{{secIndex}}--}}
@@ -659,7 +659,7 @@
                                 <span class="lead">@{{getAVG("total")}}</span>
                                 <br />
                                 <span class="sc-t-grey">Συνολική Βαθμολογία</span>
-                                <br />
+
                                 <br />
                                 <div class="raty" id="totalRating"></div>
                                 <span class="sc-t-grey">(@{{reviews.length}} Αξιολογήσεις)</span>
@@ -671,6 +671,7 @@
                                 <span value="@{{getAVG('studyProgram')}}" class="  margin-left-20 raty" id="studyProgram"></span>
                                 <span class="col-md-6"> @{{getAVG("studyProgram")}}</span>
                                 <br />
+                                <br />
 
                                 <i class="fa fa-cog  fa-linear margin-right-10" aria-hidden="true"></i>
                                 <span>Οργάνωση</span>
@@ -678,7 +679,7 @@
                                 <span  value="@{{getAVG('organization')}}" class=" margin-left-20 col-md-6 raty" id="organization"></span>
                                 <span class="col-md-6"> @{{getAVG("organization")}}</span>
                                 <br />
-
+                                <br />
 
                                 <i class="fa fa-user fa-linear  margin-right-10" aria-hidden="true"></i>
                                 <span>Ανθρώπινο Δυναμικό</span>
@@ -686,12 +687,14 @@
                                 <span  value="@{{getAVG('personnel')}}" class="  margin-left-20 col-md-6 raty" id="personnel"></span>
                                 <span class="col-md-6"> @{{getAVG("personnel")}}</span>
                                 <br />
+                                <br />
 
                                 <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
                                 <span>Εγκαταστάσεις</span>
                                 <br />
                                 <span  value="@{{getAVG('facilities')}}" class=" margin-left-20 col-md-6 raty" id="facilities"></span>
                                 <span class="col-md-6"> @{{getAVG("facilities")}}</span>
+                                <br />
                                 <br />
 
                                 <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
@@ -743,14 +746,13 @@
                             <div class="margin-top-10" id="about-li" >
                                 <div ng-repeat="teacher in contactInfo.teachers">
 
-                                    <div class="col-sm-12 col-md-6">
+                                    <div class="col-sm-12 col-md-6 hidden-xs">
                                         <div class="col-sm-12 user-card">
-                                           <div class="user-header">
+                                           <div class="user-header ">
                                                <img class="user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
 
                                                 <span class="user-name">
                                                     <a href="/public/profile/teacher/@{{teacher.info.id}}">
-                                                        <!-- Αν δεν βαλλω το color παίρνει default τιμη το άσπρο χρώμα στο visited και όταν πατας πανω στο link μετά δεν φαίνεται -->
                                                         <span style="color: #fff !important;" >@{{teacher.name}}</span>
                                                     </a>
                                                 </span>
@@ -759,7 +761,28 @@
                                            </div>
                                         </div>
                                     </div>
-                                 </div>
+
+
+                                    <div class="xs-user-card visible-xs hidden-sm hidden-md">
+                                        <div class="xs-user-header  center-block centered-text">
+                                            <img class="xs-user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
+
+                                            <div class="xs-user-name">
+                                                <a href="/public/profile/teacher/@{{teacher.info.id}}">
+                                                    <span class="xs-name" style="color: #888 !important;" >@{{teacher.name}}</span>
+                                                </a>
+                                            </div>
+
+                                            <span class="xs-user-info"> Marketing Evangelist</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -814,7 +837,7 @@
                             <div class="col-lg-11 margin-top-30" id="box-2nd" style="">
                                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-5">Υποτροφίες</span>
-                                <span class="pull-right badge"> @{{contactInfo.lengthScholarships}}</span>
+                                <span class="pull-right badge" style="margin-right: -4px"> @{{contactInfo.lengthScholarships}}</span>
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
