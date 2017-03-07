@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Scholarship;
+
 class RoutesController extends Controller
 {
     public function index()
@@ -118,5 +120,10 @@ class RoutesController extends Controller
     {
         auth()->logout();
         return redirect('/');
+    }
+
+    public function scholarship(Scholarship $scholarship)
+    {
+        return view('public.school.scholarship')->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
     }
 }

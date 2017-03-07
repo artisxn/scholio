@@ -35,6 +35,8 @@ Route::get('@{username}', function ($username) {
     return redirect($url . '/' . $user->info->id);
 });
 
+Route::get('/scholarship/{scholarship}', 'RoutesController@scholarship');
+
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 
 Route::get('connection/{id}/confirm', function ($id) {
@@ -70,7 +72,7 @@ Route::get('/public/results/', function () {
 Route::get('/public/results/{id}', 'RoutesController@publicResults');
 Route::get('connected/students', 'ApiController@connectedStudents');
 Route::get('connected/teachers', 'ApiController@connectedTeachers');
-Route::get('/scholarship/{scholarship}', 'ApiController@scholarshipFind');
+
 Route::get('/connection/school/{school}', 'ApiController@connectionSchool')->middleware('auth');
 Route::get('/test/results/{type}', 'ApiController@testResults');
 Route::post('search/school/type', 'RoutesController@searchSchoolType');

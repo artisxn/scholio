@@ -1,5 +1,5 @@
 <?php
-
+Route::get('scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate')->name('scholarship-create');
 Route::get('scholarships/view', 'AdminPanelController@scholarshipView')->name('scholarship-view');
 Route::get('dashboard', 'AdminPanelController@dashboard')->name('dashboard');
