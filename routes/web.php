@@ -1,5 +1,6 @@
 <?php
 
+use App\CategoryReview;
 use App\Scholio\Scholio;
 use App\User;
 
@@ -15,12 +16,25 @@ use App\User;
  */
 
 Route::get('qqq', function () {
-    $user = auth()->user();
-    if ($user->checkConnection(1)) {
+    $reviews = App\Models\Review::all();
+    // foreach ($reviews as $review) {
 
-        return 'OK';
-    }
-    return 'NO';
+    // }
+    return $reviews->load('category.category');
+});
+
+Route::get('aaa', function () {
+    $review = new App\Models\Review;
+    $review->user_id = 13;
+    $review->school_id = 1;
+    $review->text = 'RRR123';
+    $review->save();
+
+    $c = new CategoryReview;
+    $c->review_id = 2;
+    $c->category_id = 3;
+    $c->stars = 5;
+    $c->save();
 });
 
 Route::get('@{username}', function ($username) {

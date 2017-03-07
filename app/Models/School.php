@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Dummy;
 use App\Models\Image;
+use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\SchoolTypes;
 use App\Models\Study;
@@ -175,5 +176,10 @@ class School extends Model
     public function dummy()
     {
         return $this->hasOne(Dummy::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

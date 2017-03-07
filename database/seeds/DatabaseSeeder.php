@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FakeSeeder::class);
         $this->call(TeacherDetailsTableSeeder::class);
         $this->call(SkillsTableSeeder::class);
+        $this->call(ReviewsTableSeeder::class);
 
         foreach (User::all() as $user) {
             if ($user->role == 'school' && $user->id <= 11) {
