@@ -1,8 +1,16 @@
 angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
     .controller("resultsCtrl",function ($timeout,$scope,$http,$rootScope) {
+        $scope.showAll = true
+        $scope.onEnter = false
         $scope.HERE = false
+
         $rootScope.plat=40.622023;
         $rootScope.plong=22.962298;
+
+        if($scope.showAll){
+            $rootScope.plat=37.990832;
+            $rootScope.plong=23.7033199;
+        }
 
 
         $scope.locationSelected = window.SelectedLocation;
@@ -126,6 +134,9 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
         $rootScope.lat=[]
         $rootScope.lng=[]
         $scope.maxDistance=20
+        if($scope.showAll){
+            $scope.maxDistance=2000
+        }
         $scope.checkBoxFilter = function(item){
             var filtered = [];
 
@@ -162,17 +173,32 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
 
         //========Google geoLocation=================
+         $scope.ppi = 0
 
+        $scope.showMap=function(distance){
 
-        $scope.showMap=function(){
-            console.log('REFRESH Map')
+            if($scope.onEnter){
+                if($scope.showAll) {
+                    $scope.maxDistance = 20
+                    $scope.showAll = false
+                    $scope.ppi++;
+                }
+                $scope.maxDistance = distance
+
+                if(distance == null){
+                    $scope.maxDistance = 20
+                }   
+            }
             var d=$scope.maxDistance
             var zoom =11
+            if($scope.showAll){
+                zoom = 6
+            }
             if(d<=7){zoom=13}
             else if (d<=13){zoom=12}
 
 
-            if( $scope.view=='map'){
+            if($scope.view=='map'){
                 var latlng = new google.maps.LatLng($rootScope.plat,$rootScope.plong);
                 var myOptions = {
                     scrollwheel: false,
@@ -200,13 +226,14 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
 
 
                 console.log('center '+$rootScope.plat, $rootScope.plong)
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng($rootScope.plat, $rootScope.plong),
-                    //animation: google.maps.Animation.DROP,
-                    title:'Κέντρο Αναζήτησης',
-                    //icon:"/../new/img/markers/marker-scholio-40.png",
-                    map: map
-                });
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng($rootScope.plat, $rootScope.plong),
+                        //animation: google.maps.Animation.DROP,
+                        title:'Κέντρο Αναζήτησης',
+                        //icon:"/../new/img/markers/marker-scholio-40.png",
+                        map: map,
+                        visible: !($scope.showAll)
+                    });
                 bounds.extend(marker.getPosition());
                 var markers=[]
 

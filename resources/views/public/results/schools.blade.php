@@ -209,7 +209,7 @@
                                         typeahead-no-results="noResults" autocomplete="off">
                             </div>
 
-                            <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%; margin-top: 15px;">
+                            <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%; margin-top: 15px;" ng-if="!showAll">
                                 <input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="showMap()">
                                 <span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>
                             </div>
@@ -286,15 +286,15 @@
                             {{--typeahead-show-hint="true"--}}
                             <input type="text" name="loc" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
                                    uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                   typeahead-no-results="noResults" autocomplete="off" ng-enter="showMap()">
+                                   typeahead-no-results="noResults" autocomplete="off" ng-enter="showMap(); onEnter = true">
 
 
                             {{-- <input type="text" id="Autocomplete" class="kf-option" ng-autocomplete="result2" ng-model="locationSelected"details="details2" options="options2" placeholder=" Στην Περιοχή:" onchange="ccc()" /> --}}
 
                         </div>
                                 {{--====== Input Range ======--}}
-                        <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%;">
-                            <input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="showMap()">
+                        <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%;" ng-if="!showAll">
+                            <input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="showMap(maxDistance)">
                             <span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>
                         </div>
 
@@ -341,8 +341,6 @@
                         </button>
 
                     </div>
-
-
 
                     <a href="" ng-click="showMap()" ng-show="view=='map'">
                         <button type="button" class="sc-button2 sc-green sc-t-white margin-top-50 center-block" style="width: 230px">
@@ -427,7 +425,7 @@
 
                                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
-                                            <a href="/public/profile/@{{school.school_id}}">
+                                            <a href="/public/profile/@{{school.school_id}}" target="_blank">
                                             <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs"
                                                  ng-src="/images/schools/@{{school.logo}}">
                                             </a>
