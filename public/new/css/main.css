@@ -40,6 +40,7 @@ hr {
 .text-incr-90{  font-size: 90%;  }
 .text-incr-95{  font-size: 95%;  }
 .text-incr-115{  font-size: 115%;  }
+.text-incr-120{  font-size: 120%;  }
 .text-incr-125{  font-size: 125%;  }
 .text-incr-150{  font-size: 150%;  }
 .text-incr-175{  font-size: 175%;  }
@@ -149,7 +150,7 @@ a:hover  {  color: #FD6A33;  }
 .sc-green{background:#00bcd4;}
 .sc-dark-green{background: #008da5;}
 .sc-light-grey{background:#f5f5f5;}
-.sc-medium-grey{background:#d2d2d2;}
+.sc-medium-grey{background: #dde5e8;}
 .sc-dark-grey{background: #888;}
 .sc-white{background:#ffffff;}
 .sc-primary{background:#337AB7;}

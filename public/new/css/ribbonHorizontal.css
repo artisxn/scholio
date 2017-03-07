@@ -12,6 +12,7 @@
     left: 0;
     z-index: 2;
     height: 40px;
+    height: 40px;
 }
 
 /*.ribbon-front {background-color: #00bcd4;}*/
@@ -47,6 +48,7 @@
 .ribbon-edge-bottomright2 {
     left: 82%;        /*++++++++++++*/
     border-color: transparent #008da5;
+    z-index: 1;
 }
 
 .ribbon-edge-topright2,

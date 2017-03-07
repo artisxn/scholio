@@ -69,7 +69,7 @@
         .slidedown {  max-height: 3000px ;   }
         .slideAbout {max-height: 400px;}
         .slideStudies {max-height: 400px;}
-        .slideScholarships {max-height: 500px;}
+        .slideScholarships {max-height: 522px;}
         .slideReviews {max-height: 500px;}
         .slideTeachers {max-height: 520px;}
 
@@ -134,9 +134,9 @@
         }
 
         @media (min-width: 991px) and (max-width: 1450px) {
-            .ribbon-front {height: 55px;}
-            .ribbon-back-right {  height: 55px;}
-            .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
+            /*.ribbon-front {height: 55px;}*/
+            /*.ribbon-back-right {  height: 55px;}*/
+            /*.ribbon-edge-bottomright{  top: 55px;  left: 81%;  }*/
 /*            #submButton{ top: 5px; margin-left: 15px; position: relative}
 */        }
 
@@ -145,16 +145,16 @@
         }*/
 
 
-   @media (max-width: 769px) {
+        @media (max-width: 769px) {
             #xs-submButton{ z-index: 2000; bottom: 20px; margin-left: 4%;  width: 92%;  height: 45px; position: fixed; }
         }
 
 
 
         @media  (max-width: 490px) {
-            .ribbon-front {height: 55px;}
-            .ribbon-back-right {  height: 55px;}
-            .ribbon-edge-bottomright{  top: 55px;  left: 81%;  }
+            /*!*.ribbon-front {height: 55px;}*!*/
+            /*.ribbon-back-right {  height: 55px;}*/
+            /*.ribbon-edge-bottomright{  top: 55px;  left: 81%;  }*/
         }
 
 
@@ -470,113 +470,116 @@
                         </div>
 
 
-                        <div class=" scholar-box ">
-                            <div ng-repeat="scholarship in contactInfo.scholarship" class="col-md-6 col-sm-12"
-                                 style="height: 410px!important;
-                                     position: relative; margin: 20px 0 ; padding-left: 40px;">
+                        <div class=" scholar-box col-sm-12">
+                            <div ng-repeat="scholarship in contactInfo.scholarship" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                                 style="height: 400px!important; position: relative; margin: 20px 0 ; padding-left: 40px;">
+
+                                    <div class="scholar-frame " ng-class="{'sm-margin-left':($index%2==1)}">
+                                            <div class="ribbon-wrapper">
+                                                <div class="ribbon-front sc-medium-grey">
+                                                    {{--<i class="fa fa-diamond sc-t-white pad-left-20 text-incr-150 margin-top-10" aria-hidden="true"></i>--}}
+                                                    <span class="">
+                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-skills1.png" alt="" ng-if="scholarship.criteria.id==1">
+                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-best.png" alt="" ng-if="scholarship.criteria.id==2">
+                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-help.png" alt="" ng-if="scholarship.criteria.id==3">
+                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-friends.png" alt="" ng-if="scholarship.criteria.id==4">
+                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
+                                                    </span>
+
+                                                    <span class="sc-t-dark-green font-weight-400 text-incr-120 margin-left-10 scholar-title"> @{{scholarship.criteria.name}}</span>
+                                                </div>
+                                                <div class="ribbon-edge-topright"></div>
+                                                <div class="ribbon-edge-bottomright"></div>
+                                                <div class="ribbon-back-right sc-medium-grey"></div>
+                                            </div>
+                                            <div class="hexagon hex1">
+                                                {{--<i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"--}}
+                                                {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
+                                            </div>
+                                            <div class="hexagon hex2">
+                                                {{--<i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"--}}
+                                                {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
+                                            </div>
+
+                                            {{--<div class="hexagon" style="top: 93px;">--}}
+                                            {{--<i class="fa fa-pencil text-incr-200 sc-t-green text" aria-hidden="true"--}}
+                                            {{--style=" position: relative; top: 3px; left: 17px; z-index: 2;"></i>--}}
+
+                                            {{--</div>--}}
+
+                                            <div class="scholar-content sc-t-grey font-weight-400">
+                                                <p class="scholar-left xxs-up">@{{scholarship.financial.plan}} @{{scholarship.financial_amount}}
+                                                    <span ng-if="scholarship.financial.id==1"> %</span>
+                                                    <span ng-if="scholarship.financial.id==2"> €  </span>
+                                                    <span ng-if="scholarship.financial.id==3"> μήνες</span>
+                                                </p>
+
+                                                <div class="scholar-left xxs-text" style="padding-top: 40px;"ng-if="contactInfo.type_id==1 || contactInfo.type_id==3" >@{{scholarship.level.name}}</div>
+                                                <div class="margin-top-50 scholar-left xxs-text"  ng-if="contactInfo.type_id==2">@{{scholarship.section[0].name}}</div>
+                                                <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
+                                                     ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),
+                                                                                          'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }">
+                                                    @{{scholarship.study.name}}</div>
+
+                                                <div>
+                                                    <img  ng-if="scholarship.financial_id==1" style="height: 34px; top: -6px; left: 5px;" class="hex1-img"
+                                                          ng-src="/panel/assets/images/steps/step1-reduce2.png">
+                                                    <img  ng-if="scholarship.financial_id==2" style="height: 37px; top: -6px; left: 19px;" class="hex1-img"
+                                                          ng-src="/panel/assets/images/steps/step1-hand2.png">
+                                                    <img  ng-if="scholarship.financial_id==3" style="height: 38px; top: -8px; left: 10px;" class="hex1-img"
+                                                          ng-src="/panel/assets/images/steps/step1-clock2.png">
+                                                </div>
+
+                                                <img class="hex2-img" ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
+                                            </div>
+
+                                            <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}">
+                                                <div style="position: absolute; top: 282px;" class="font-weight-400 sc-t-grey">
+                                                    <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
+                                                        Ενδιαφέρθηκαν: <span class="pad-left-10" ng-bind="scholarship.interests"></span>
+                                                    </span>
+                                                </div>
+
+                                                <div style="position: absolute; top: 301px;" class="font-weight-400 sc-t-grey">
+                                                    <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
+                                                        Αιτήθηκαν: <span class="pad-left-42"> @{{ scholarship.length}}</span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                            @if(auth()->check())
+                                                <ul class="like-btn">
+                                                    <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
+                                                            <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>
+                                                        </button>
+                                                    </a>
+                                                </ul>
+                                            @endif
+
+                                            <ul class="show-btn">
+                                                <a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white provoli"
+                                                                   data-toggle="modal" data-target="#scholarship-modal">
+                                                        <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή</button></a>
+                                                {{--<span class="sc-t-grey font-weight-400" style="left: -210px; top: 10px; position: absolute">--}}
+                                                {{--<i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i>Αιτήθηκαν: @{{ scholarship.length}} </span>--}}
+                                                {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
+                                                {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
+                                            </ul>
+                                            {{--<div ng-if="($index%2==0)" class="hidden-xs hidden-sm"--}}
+                                                 {{--style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  5px"></div>--}}
+
+
+                                            {{--<hr class="mob-hr">--}}
+                                        </div>
 
 
 
-                                <div class="ribbon-wrapper">
-                                    <div class="ribbon-front sc-medium-grey">
-                                        {{--<i class="fa fa-diamond sc-t-white pad-left-20 text-incr-150 margin-top-10" aria-hidden="true"></i>--}}
-                                        <span class="">
-                                                <img  style="height: 25px; margin: 7px 0 0 10px" ng-src="/panel/assets/images/steps/step3-skills1.png" alt="" ng-if="scholarship.criteria.id==1">
-                                                <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-best.png" alt="" ng-if="scholarship.criteria.id==2">
-                                                <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-help.png" alt="" ng-if="scholarship.criteria.id==3">
-                                                <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-friends.png" alt="" ng-if="scholarship.criteria.id==4">
-                                                <img  style="height: 25px; margin: 7px 0 0 10px;" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
-                                            </span>
-
-                                        <span class="sc-t-dark-green font-weight-400 text-incr-125 margin-left-10 scholar-title"> @{{scholarship.criteria.name}}</span>
-                                    </div>
-                                    <div class="ribbon-edge-topright"></div>
-                                    <div class="ribbon-edge-bottomright"></div>
-                                    <div class="ribbon-back-right sc-medium-grey"></div>
-                                </div>
-                                <div class="hexagon hex1">
-                                    {{--<i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                    {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
-                                </div>
-                                <div class="hexagon hex2">
-                                    {{--<i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                    {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
-                                </div>
-
-                                {{--<div class="hexagon" style="top: 93px;">--}}
-                                {{--<i class="fa fa-pencil text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                {{--style=" position: relative; top: 3px; left: 17px; z-index: 2;"></i>--}}
-
-                                {{--</div>--}}
-
-                                <div class="scholar-content sc-t-grey font-weight-400">
-                                    <p class="scholar-left xxs-up">@{{scholarship.financial.plan}} @{{scholarship.financial_amount}}
-                                        <span ng-if="scholarship.financial.id==1"> %</span>
-                                        <span ng-if="scholarship.financial.id==2"> €  </span>
-                                        <span ng-if="scholarship.financial.id==3"> μήνες</span>
-                                    </p>
-
-                                    <div class="scholar-left xxs-text" style="padding-top: 40px;"ng-if="contactInfo.type_id==1 || contactInfo.type_id==3" >@{{scholarship.level.name}}</div>
-                                    <div class="margin-top-50 scholar-left xxs-text"  ng-if="contactInfo.type_id==2">@{{scholarship.section[0].name}}</div>
-                                    <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
-                                         ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),
-                                                  'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }">
-                                        @{{scholarship.study.name}}</div>
-
-                                    <div>
-                                        <img  ng-if="scholarship.financial_id==1" style="height: 34px; top: -6px; left: 5px;" class="hex1-img"
-                                              ng-src="/panel/assets/images/steps/step1-reduce2.png">
-                                        <img  ng-if="scholarship.financial_id==2" style="height: 37px; top: -6px; left: 19px;" class="hex1-img"
-                                              ng-src="/panel/assets/images/steps/step1-hand2.png">
-                                        <img  ng-if="scholarship.financial_id==3" style="height: 38px; top: -8px; left: 10px;" class="hex1-img"
-                                              ng-src="/panel/assets/images/steps/step1-clock2.png">
-                                    </div>
-
-                                        <img class="hex2-img" ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
-                                </div>
-
-                                <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}">
-                                    <div style="position: absolute; top: 270px;" class="font-weight-400 sc-t-grey">
-                                        <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
-                                            Ενδιαφέρθηκαν: <span class="pad-left-10" ng-bind="scholarship.interests"></span>
-                                        </span>
-                                    </div>
-
-                                    <div style="position: absolute; top: 290px;" class="font-weight-400 sc-t-grey">
-                                        <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
-                                            Αιτήθηκαν: <span class="pad-left-42"> @{{ scholarship.length}}</span>
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                                @if(auth()->check())
-                                <ul class="like-btn">
-                                    <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
-                                            <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>
-                                        </button>
-                                    </a>
-                                </ul>
-                                @endif
-
-                                <ul class="show-btn">
-                                    <a href=""><button type="button" class="margin-left-30 esc-button-landing sc-button sc-green sc-t-white"
-                                                       data-toggle="modal" data-target="#scholarship-modal">
-                                            <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή</button></a>
-                                    {{--<span class="sc-t-grey font-weight-400" style="left: -210px; top: 10px; position: absolute">--}}
-                                    {{--<i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i>Αιτήθηκαν: @{{ scholarship.length}} </span>--}}
-                                    {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
-                                    {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
-                                </ul>
-                                <div ng-if="($index%2==0)" class="hidden-xs hidden-sm"
-                                     style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  5px"></div>
-
-
-                                <hr class="mob-hr">
                             </div>
 
                         </div>
+
 
                     </div>
                     <!-- Show More Scholarships  -->
@@ -762,7 +765,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="xs-user-card visible-xs hidden-sm hidden-md">
                                         <div class="xs-user-header  center-block centered-text">
                                             <img class="xs-user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
@@ -776,11 +778,6 @@
                                             <span class="xs-user-info"> Marketing Evangelist</span>
                                         </div>
                                     </div>
-
-
-
-
-
 
                                 </div>
                             </div>
