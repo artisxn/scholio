@@ -64,8 +64,13 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                  });
              }
 
-             if(window.SelectedLocation != null){
+
+             if(window.SelectedLocation != ''){
                 getLatLng(window.SelectedLocation);
+                 console.log('location='+window.SelectedLocation)
+                 //====== MUST ADD on new changes =====
+                 $scope.showAll = false
+                 $scope.maxDistance=20
             }
 
 
