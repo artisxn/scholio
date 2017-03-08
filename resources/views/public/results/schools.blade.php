@@ -579,7 +579,7 @@
 <script>
 
 $(window).load(function(){
-    console.log('FORTO');
+    alert('F');
 })
 
 ///// Rating Js //////

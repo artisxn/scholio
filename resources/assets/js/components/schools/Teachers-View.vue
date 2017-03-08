@@ -9,7 +9,7 @@
                             <!-- <img class="img-circle" width="80" height="80" :src="teacher.avatar"/> -->
                         </a>
                         <div class="member-info">
-                            <h4 class="m-t-0 m-b-5 header-title"><b>{{teacher.name}}</b></h4>
+                            <h4 class="m-t-0 m-b-5 header-title"><b><a href="">{{teacher.name}}</a></b></h4>
                             <p class="text-muted">Καθηγητής</p>
                             <p class="text-dark">
                                 <i class="md md-email"></i>
@@ -56,7 +56,6 @@
                 axios.get('/connected/teachers')
                     .then(response => {
                         this.teachers = response.data
-                        console.log(response.data)
                     });
             }
         },

@@ -15,12 +15,8 @@ use App\User;
  */
 
 Route::get('qqq', function () {
-    $user = auth()->user();
-    if ($user->checkConnection(1)) {
-
-        return 'OK';
-    }
-    return 'NO';
+    $school = auth()->user()->info;
+    return $school->students->load('info');
 });
 
 Route::get('@{username}', function ($username) {

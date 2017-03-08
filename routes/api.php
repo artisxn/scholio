@@ -78,4 +78,9 @@ Route::get('/student/mySchools', function () {
 
 Route::get('/scholarship/{id}', function (Scholarship $id) {
     return $scholarship->load('school', 'level', 'financial', 'criteria');
-});
+})->middleware('api');
+
+Route::get('/connected/students', function () {
+    $school = auth()->user()->info;
+    return $school->students->load('info');
+})->middleware('auth:api');

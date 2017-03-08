@@ -1,7 +1,5 @@
 <template>
     <div class="row">
-
-
         <div class="input-group pull-left " style="width: 210px; margin: 10px 0 10px 10px;; border: 1px solid #d1d1d1; border-radius: 5px;" >
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
             <input type="text" class="form-control" placeholder="Αναζήτηση"
@@ -16,7 +14,7 @@
                     <div class="row">
                         <div class="contact-card">
                             <a class="pull-left" href="#">
-                                <img class="img-circle" width="80" height="80" v-bind:src=student.avatar alt=""/>
+                                <img class="img-circle" width="80" height="80" v-bind:src=student.info.avatar alt=""/>
                             </a>
                             <div class="member-info">
                                 <h4 class="m-t-0 m-b-5 header-title"><b style="text-transform: capitalize"> {{ student.name }}</b></h4>
@@ -169,10 +167,10 @@
                 },
 
             getAllStudents: function(){
-//                axios.get('/api/users/all')
-                axios.get('/connected/students')
+                axios.get('/api/connected/students')
                     .then(response => {
-                        this.students = response.data['students']
+                        console.log(response.data)
+                        this.students = response.data
                         var st1= this.students;
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
                         for (var i in st1){
