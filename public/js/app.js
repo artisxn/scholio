@@ -14085,6 +14085,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
 
@@ -14106,6 +14110,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.showLevel = true;
                 }
             });
+        },
+        onEdit: function onEdit(id) {
+            window.location = '/scholarship/' + id + '/edit';
+        },
+        onDelete: function onDelete(id) {
+            window.location = '/scholarship/' + id + '/delete';
         }
     },
 
@@ -18967,8 +18977,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "tech-companies-1"
     }
-  }, [_c('thead', [_c('tr', [_c('th', [_vm._v("Πλάνο Υποτροφίας")]), _vm._v(" "), _c('th', [_vm._v("Ποσό")]), _vm._v(" "), (_vm.showLevel) ? _c('th', [_vm._v("Τύπος Σπουδών")]) : _vm._e(), _vm._v(" "), _c('th', [_vm._v("Επίπεδο Σπουδών")]), _vm._v(" "), _c('th', [_vm._v("Κριτήρια")]), _vm._v(" "), _c('th', [_vm._v("Ημερομηνία Λήξης")]), _vm._v(" "), _c('th', [_vm._v("Αιτήθηκαν")]), _vm._v(" "), _c('th', [_vm._v("Νικητής")])])]), _vm._v(" "), _c('tbody', _vm._l((_vm.scholarships), function(scholarship) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(scholarship.financial.plan))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.financial_amount) + "\n                                            "), (scholarship.financial.id == 1) ? _c('span', [_vm._v("%")]) : _vm._e(), _vm._v(" "), (scholarship.financial.id == 2) ? _c('span', [_vm._v("€")]) : _vm._e(), _vm._v(" "), (scholarship.financial.id == 3) ? _c('span', [_vm._v("μήνες")]) : _vm._e()]), _vm._v(" "), (_vm.showLevel) ? _c('td', [_vm._v(_vm._s(scholarship.study.name))]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.level.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.criteria_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.end_at))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.user.length))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.winner_id))])])
+  }, [_c('thead', [_c('tr', [_c('th', [_vm._v("Πλάνο Υποτροφίας")]), _vm._v(" "), _c('th', [_vm._v("Ποσό")]), _vm._v(" "), (_vm.showLevel) ? _c('th', [_vm._v("Τύπος Σπουδών")]) : _vm._e(), _vm._v(" "), _c('th', [_vm._v("Επίπεδο Σπουδών")]), _vm._v(" "), _c('th', [_vm._v("Κριτήρια")]), _vm._v(" "), _c('th', [_vm._v("Ημερομηνία Λήξης")]), _vm._v(" "), _c('th', [_vm._v("Αιτήθηκαν")]), _vm._v(" "), _c('th', [_vm._v("Νικητής")]), _vm._v(" "), _c('th', [_vm._v("Αλλαγή")]), _vm._v(" "), _c('th', [_vm._v("Διαγραφή")])])]), _vm._v(" "), _c('tbody', _vm._l((_vm.scholarships), function(scholarship) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(scholarship.financial.plan))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.financial_amount) + "\n                                            "), (scholarship.financial.id == 1) ? _c('span', [_vm._v("%")]) : _vm._e(), _vm._v(" "), (scholarship.financial.id == 2) ? _c('span', [_vm._v("€")]) : _vm._e(), _vm._v(" "), (scholarship.financial.id == 3) ? _c('span', [_vm._v("μήνες")]) : _vm._e()]), _vm._v(" "), (_vm.showLevel) ? _c('td', [_vm._v(_vm._s(scholarship.study.name))]) : _vm._e(), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.level.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.criteria_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.end_at))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.user.length))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(scholarship.winner_id))]), _vm._v(" "), _c('td', [_c('button', {
+      staticClass: "btn btn-warning",
+      on: {
+        "click": function($event) {
+          _vm.onEdit(scholarship.id)
+        }
+      }
+    }, [_vm._v("EDIT")])]), _vm._v(" "), _c('td', [_c('button', {
+      staticClass: "btn btn-danger",
+      on: {
+        "click": function($event) {
+          _vm.onDelete(scholarship.id)
+        }
+      }
+    }, [_vm._v("DELETE")])])])
   }))])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h4', {

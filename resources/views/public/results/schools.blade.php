@@ -578,10 +578,6 @@
 </body>
 <script>
 
-$(window).load(function(){
-    alert('F');
-})
-
 ///// Rating Js //////
 $('rating').raty({
     score    : 4.2,

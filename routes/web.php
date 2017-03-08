@@ -32,6 +32,9 @@ Route::get('@{username}', function ($username) {
 });
 
 Route::get('/scholarship/{scholarship}', 'RoutesController@scholarship');
+Route::get('/scholarship/{scholarship}/edit', 'RoutesController@scholarshipEdit');
+Route::post('/scholarship/{scholarship}/update', 'RoutesController@scholarshipUpdate');
+Route::get('/scholarship/{scholarship}/delete', 'RoutesController@scholarshipDelete');
 
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 

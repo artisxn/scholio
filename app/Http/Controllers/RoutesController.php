@@ -126,4 +126,21 @@ class RoutesController extends Controller
     {
         return view('public.school.scholarship')->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
     }
+
+    public function scholarshipEdit(Scholarship $scholarship)
+    {
+        return view('panel.pages.school.scholarships.edit')->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
+    }
+
+    public function scholarshipUpdate(Scholarship $scholarship)
+    {
+        return redirect('/panel/school/scholarships/view');
+        // return view('panel.pages.school.scholarships.edit')->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
+    }
+
+    public function scholarshipDelete(Scholarship $scholarship)
+    {
+        $scholarship->delete();
+        return redirect('/panel/school/scholarships/view');
+    }
 }

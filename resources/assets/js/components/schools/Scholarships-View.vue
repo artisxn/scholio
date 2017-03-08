@@ -22,6 +22,8 @@
                                             <th>Ημερομηνία Λήξης</th>
                                             <th>Αιτήθηκαν</th>
                                             <th>Νικητής</th>
+                                            <th>Αλλαγή</th>
+                                            <th>Διαγραφή</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,6 +41,8 @@
                                             <td>{{ scholarship.end_at }}</td>
                                             <td>{{ scholarship.user.length }}</td>
                                             <td>{{ scholarship.winner_id }}</td>
+                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-warning">EDIT</button></td>
+                                            <td><button v-on:click="onDelete(scholarship.id)" class="btn btn-danger">DELETE</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -70,6 +74,12 @@
                         if(this.scholarships[0].level.id<4 || this.scholarships[0].level.id>21 ) {this.showLevel=true}
                     });
 
+            },
+            onEdit: function(id){
+                window.location = '/scholarship/' + id + '/edit'
+            },
+            onDelete: function(id){
+                window.location = '/scholarship/' + id + '/delete'
             }
         },
 
