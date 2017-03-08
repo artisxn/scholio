@@ -25,8 +25,8 @@ class CreateScholarshipsTable extends Migration
             $table->date('end_at');
             $table->integer('winner_id')->index()->nullable();
             $table->text('terms')->nullable();
-            $table->boolean('exams')->default(0);
-            $table->date('exams_date')->nullable();
+            $table->boolean('exam')->default(0);
+            $table->date('exam_date')->nullable();
             $table->timestamps();
 
             // $table->primary(['school_id', 'study_id']);

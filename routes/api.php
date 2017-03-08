@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\UserAppliedOnSchool;
+use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Skill;
 use App\Notifications\SchoolAcceptedUser;
@@ -74,3 +75,7 @@ Route::get('/student/mySchools', function () {
     return $schools->load('admin');
 
 })->middleware('auth:api');
+
+Route::get('/scholarship/{id}', function (Scholarship $id) {
+    return $scholarship->load('school', 'level', 'financial', 'criteria');
+});

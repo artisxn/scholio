@@ -363,7 +363,11 @@ class FakeSeeder extends Seeder
         $this->createScholarship($school11->id, 2, 100, 433, 16, 2, 1, 1);
         $this->createScholarship($school11->id, 1, 10, 434, 16, 2, 1, 0);
         $this->createScholarship($school11->id, 2, 200, 437, 20, 1, 1, 3);
-        $this->createScholarship($school11->id, 1, 30, 438, 21, 2, 1, 2);
+        $s = $this->createScholarship($school11->id, 1, 30, 438, 21, 2, 1);
+
+        $this->createTerms($school11->id, 'dafjvjhadfjdf', true);
+        $this->createTerms($school11->id, '<strong>KEIMENO</strong>', false, 38);
+        $this->createTerms($school11->id, '<strong>TEST</strong>', false, $s->id);
 
         // Interested
         $this->interested(21, 1);
@@ -478,8 +482,28 @@ class FakeSeeder extends Seeder
         $scholarship->level_id = $level_id;
         $scholarship->criteria_id = $criteria_id;
         $scholarship->winner_id = $winner_id;
-        $scholarship->end_at = Carbon::now();
+        $scholarship->exam = true;
+        $scholarship->exam_date = Carbon::now();
+        // $scholarship->terms = $terms;
+        $scholarship->end_at = Carbon::now()->addWeeks(3);
         $scholarship->save();
+        return $scholarship;
+    }
+
+    public function createTerms($schoolID, $terms, $all, $scholarshipID = null)
+    {
+        $scholarships = Scholarship::where('school_id', $schoolID)->get();
+
+        if ($all) {
+            foreach ($scholarships as $scholarship) {
+                $scholarship->terms = $terms;
+                $scholarship->save();
+            }
+        } else {
+            $scholarship = Scholarship::find($scholarshipID);
+            $scholarship->terms = $terms;
+            $scholarship->save();
+        }
     }
 
     public function userAppliedOnScholarship($userID, $scholarshipID)

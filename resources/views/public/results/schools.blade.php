@@ -577,6 +577,11 @@
 
 </body>
 <script>
+
+$(window).load(function(){
+    console.log('FORTO');
+})
+
 ///// Rating Js //////
 $('rating').raty({
     score    : 4.2,
