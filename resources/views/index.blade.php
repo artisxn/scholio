@@ -59,6 +59,8 @@
     <!-- GoogleMap API -->
     <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
 
+    <!-- Knob Circular Counters-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
 
     <!-- Angular js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
@@ -313,10 +315,6 @@
 
     </section>
 
-
-
-
-
     <!-- Second Section -->
     <section id="sc-landing-sec2" class="sc-landing-sec2">
         <div class="container ">
@@ -544,6 +542,119 @@
         </div>
     </section>
 
+
+    <!-- Fifth Section -->
+    <section id="sc-landing-sec5" class="sc-landing-sec3" style="overflow-x: hidden!important;">
+       <div class="container">
+           <div class="row">
+
+               <div class="text-center text-incr-175 sc-t-dark-grey font-weight-300 margin-bot-50" >
+                   Στο  Schol.io θα βρείς τη μεγαλύτερη εκπαιδευτική κοινότητα
+               </div>
+
+
+               <div class="col-sm-6 col-md-3 margin-top-50 sc-t-grey">
+                   <div class="text-center">
+                       <input type="text" class="knob1"
+                              data-min="0"
+                              data-max="2000"
+                              data-fgcolor="#00bcd4"
+                              data-bgColor="#fff"
+                              data-angleArc="250"
+                              data-angleOffset="-125"
+                              data-thickness=".05"
+                              data-displayInput=false
+                              data-readOnly=true
+                              data-linecap="round"
+                              data-width="215"
+                       >
+                       <div class="counter-icon text-incr-200 ">
+                           <div>1790</div>
+                           <div><i class="fa fa-search text-incr-200 sc-t-green "></i></div>
+                       </div>
+                       <div class="counter-text text-incr-125 font-weight-300">Αναζητήσεις κάθε ημέρα</div>
+
+                   </div>
+               </div>
+
+               <div class="col-sm-6 col-md-3 margin-top-50 sc-t-grey">
+                   <div class="text-center  ">
+                       <input type="text" class="knob2"
+                              data-min="0"
+                              data-max="200"
+                              data-fgcolor="#00bcd4"
+                              data-bgColor="#fff"
+                              data-angleArc="250"
+                              data-angleOffset="-125"
+                              data-thickness=".05"
+                              data-displayInput=false
+                              data-readOnly=true
+                              data-linecap="round"
+                              data-width="215"
+                       >
+                       <div class="counter-icon text-incr-200">
+                           <div>128</div>
+                           <div><i class="fa fa-trophy text-incr-200 sc-t-green"></i></div>
+                       </div>
+                       <div class="counter-text text-incr-125 font-weight-300">Υποτροφίες</div>
+
+                   </div>
+               </div>
+
+               <div class="col-sm-6 col-md-3 margin-top-50 sc-t-grey">
+                   <div class="text-center">
+                       <input type="text" class="knob3"
+                              data-min="0"
+                              data-max="500"
+                              data-fgcolor="#00bcd4"
+                              data-bgColor="#fff"
+                              data-angleArc="250"
+                              data-angleOffset="-125"
+                              data-thickness=".05"
+                              data-displayInput=false
+                              data-readOnly=true
+                              data-linecap="round"
+                              data-width="215"
+                       >
+                       <div class="counter-icon text-incr-200">
+                           <div>268</div>
+                           <div><i class="fa fa-user text-incr-200 sc-t-green"></i></div>
+                       </div>
+                       <div class="counter-text text-incr-125 font-weight-300">Γονείς & Μαθητές</div>
+
+                   </div>
+               </div>
+
+               <div class="col-sm-6 col-md-3 margin-top-50 sc-t-grey">
+                   <div class="text-center ">
+                       <input type="text" class="knob4"
+                              data-min="0"
+                              data-max="160"
+                              data-fgcolor="#00bcd4"
+                              data-bgColor="#fff"
+                              data-angleArc="250"
+                              data-angleOffset="-125"
+                              data-thickness=".05"
+                              data-displayInput=false
+                              data-readOnly=true
+                              data-linecap="round"
+                              data-width="215"
+                       >
+                       <div class="counter-icon text-incr-200">
+                           <div>130</div>
+                           <div><i class="fa fa-graduation-cap text-incr-200 sc-t-green"></i></div>
+                       </div>
+                       <div class="counter-text text-incr-125 font-weight-300">Καθηγητές & Εκπαιδευτικά Ιδρύματα</div>
+
+                   </div>
+               </div>
+
+
+
+           </div>
+       </div>
+    </section>
+
 </main>
 
 <footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue" style="overflow-x: hidden!important;">
@@ -574,12 +685,33 @@
 
 </body>
 
+
+    <!-- TypeAhead custom dropdown view --->
 <script type="text/ng-template" id="customTemplate.html">
     <a>
         {{--<span>@{{ match.model.id }} &nbsp;</span>--}}
         {{--<img ng-src="@{{match.model.png}}" width="16">--}}
         <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
     </a>
+
+</script>
+
+
+<script>
+
+    $('.knob1').val(1790).knob();
+    $('.knob2').val(128).knob();
+    $('.knob3').val(268).knob();
+    $('.knob4').val(130).knob();
+
+//    var graph = $('.knob');
+//    $({value: 0}).animate({ value: 1790 }, {
+//        duration:900,
+//        easing: 'swing',
+//        progress: function () {graph.val(Math.ceil(this.value)).trigger('change')
+//        }
+//    });
+
 
 </script>
 </html>

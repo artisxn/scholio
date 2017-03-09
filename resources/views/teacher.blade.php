@@ -35,6 +35,7 @@
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
     <!-- Angular js-->
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>--}}
 
@@ -206,6 +207,10 @@
                     <div class="row">
                         <div class="up"></div>
                         <div class="col-md-9">
+
+
+
+
 
                             <img class="up png-title" src="/new/img/teacher/info.png" alt="">
                             <div class="title">Λίγα Λόγια</div>

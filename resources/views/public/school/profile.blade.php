@@ -32,6 +32,13 @@
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+
+
+
+    {{--<!-- GoogleMap API -->--}}
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+
+
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -146,7 +153,7 @@
 
 
         @media (max-width: 769px) {
-            #xs-submButton{ z-index: 2000; bottom: 20px; margin-left: 4%;  width: 92%;  height: 45px; position: fixed; }
+            #xs-submButton{ z-index: 2000; bottom: -1px; margin-left: 5%;  width: 90%;  height: 37px; position: fixed; }
         }
 
 
@@ -359,7 +366,6 @@
 
            {{-- @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id)) --}}
                         <button id="xs-submButton" type="button" class="hidden-lg hidden-md-hidden-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
-                                style=""
                                 data-toggle="modal" data-target="#connect-modal">
                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                         </button>
@@ -740,7 +746,7 @@
                     <div class="slideTeachers slideup margin-bot-25" id="faculty" style="overflow-x: hidden">
                         <div class="section-header3">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
-                                <i class="fa fa-graduation-cap fa-linear4 text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό</span>
+                                <i class="fa fa-graduation-cap fa-linear4 text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό<span class="hidden-xs"> - Συνεργάτες </span></span>
                             </p>
                         </div>
 
@@ -751,29 +757,26 @@
                                     <div class="col-sm-12 col-md-6 hidden-xs">
                                         <div class="col-sm-12 user-card">
                                            <div class="user-header ">
+                                               <a href="/public/profile/teacher/@{{teacher.info.id}}">
                                                <img class="user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
-
                                                 <span class="user-name">
-                                                    <a href="/public/profile/teacher/@{{teacher.info.id}}">
                                                         <span style="color: #fff !important;" >@{{teacher.name}}</span>
-                                                    </a>
                                                 </span>
-
+                                               </a>
                                                <span class="user-info"> Marketing Evangelist</span>
+
                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="xs-user-card visible-xs hidden-sm hidden-md">
                                         <div class="xs-user-header  center-block centered-text">
+                                            <a href="/public/profile/teacher/@{{teacher.info.id}}">
                                             <img class="xs-user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
-
                                             <div class="xs-user-name">
-                                                <a href="/public/profile/teacher/@{{teacher.info.id}}">
                                                     <span class="xs-name" style="color: #888 !important;" >@{{teacher.name}}</span>
-                                                </a>
                                             </div>
-
+                                            </a>
                                             <span class="xs-user-info"> Marketing Evangelist</span>
                                         </div>
                                     </div>
@@ -829,8 +832,7 @@
 
                     <div class="">
                         <div class=" box left-box2 sc-t-grey">
-
-                            <div class="col-lg-11 margin-top-30" id="box-2nd" style="">
+                            <div class="col-lg-12 margin-top-30" id="box-2nd" style="">
                                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-5">Υποτροφίες</span>
                                 <span class="pull-right badge" style="margin-right: -4px"> @{{contactInfo.lengthScholarships}}</span>
@@ -856,9 +858,16 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
+
+                        <div class="box" style="margin-top: 30px; margin-bottom: 90px;">
+                            <div class=""  id="googleMap" style="height: 270px; width: 100%; "></div>
+                        </div>
+
+
+
 {{--                        @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))--}}
-                        <nav data-spy="affix" data-offset-top="870">
-                            <button id="submButton" type="button" class="affix-button sc-orange sc-t-white margin-top-10 center-block"
+                        <nav data-spy="affix" data-offset-top="1120">
+                            <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                     data-toggle="modal" data-target="#connect-modal">
                                 <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
                             </button>
@@ -867,6 +876,10 @@
                         {{--@endif--}}
 
                     </div>
+
+
+
+
                 </div><!-- //col-lg-3-->
 
             </div>
@@ -956,6 +969,8 @@
 //     $('#xs-submButton').css('bottom',documentHeight);
 // });
 
+
+
     $(function() {
         //caches a jQuery object containing the header element
         var sb = $("#submButton1");
@@ -978,6 +993,9 @@
     var lengthStudents = 0;
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http, $sce) {
+
+
+
                 $scope.test = function(scholarship){
                     setTimeout(function() {
                         if(scholarship.userInterested){
@@ -988,6 +1006,7 @@
                      }, 30);
                 }
                 $scope.init = function () {
+
                     $scope.trustAsHtml = $sce.trustAsHtml;
                     $scope.message = null;
                     $scope.scholarship = ['sd'];
@@ -999,9 +1018,9 @@
                         apiLink = '/api/profile/{{ $id }}';
                     @endif
                     $http.get(apiLink, {
-                                    headers: {
-                                        'X-Requested-With': 'XMLHttpRequest',
-                                        'X-CSRF-TOKEN': window.Scholio.csrfToken
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': window.Scholio.csrfToken
                                     }
                                 })
                                 .success(function(data)   {
@@ -1019,6 +1038,9 @@
                         {$scope.col_iek_eng_dan_mus  = true}
                         console.log('SchoolTypeId= '+data.type_id)
 //                        console.timeEnd('contactInfo API');
+
+
+
                                 });
                     $scope.interestedCheck = function(id){
                         $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
@@ -1037,6 +1059,7 @@
                                         $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
                                         $('#b'+ id).style.backgroundColor='#ccc'
                                     }
+
                                 });
                     }
                     $scope.levelsName=[];
@@ -1107,6 +1130,8 @@
                             }
                         }
                         console.timeEnd('initial');
+
+                        $scope.mapInitial()
                     }
                 };
                 $scope.interested = function(id, index){
@@ -1131,6 +1156,83 @@
                                 }
                             });
                 }
+
+
+                $scope.mapInitial=function () {
+                    var myLatlng = new google.maps.LatLng($scope.contactInfo.lat, $scope.contactInfo.lng);
+                    var myOptions = {
+                        zoom: 15,
+                        center: myLatlng,
+                        scrollwheel: false,
+                        scaleControl:true,
+                    }
+                    var map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+                    console.log('map')
+
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        //animation: google.maps.Animation.DROP,
+                        title:$scope.contactInfo.name,
+                        icon:"/../new/img/markers/marker-teal-sm.png",
+                        map: map,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+
+                    });
+
+
+                    var styledMapType = new google.maps.StyledMapType(
+                            [
+                                {
+                                    "featureType": "poi.park",
+                                    "elementType": "geometry.fill",
+                                    "stylers": [
+                                        {
+                                            //"color": "#9ec4ae"
+                                            //"color": "#A3BFA8"
+                                            //"color": "#B5C5B8"
+                                            //"color": "#D9F0D1"
+                                            "color": "#E2F0DA"
+
+                                            //"color": "#CBE6A3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "featureType": "water",
+                                    "elementType": "geometry.fill",
+                                    "stylers": [
+                                        {
+                                            //"color": "#00bcd4"
+                                            //"color": "#53D0D9"
+                                            //"color": "#00C9E1"
+                                            //"color": "#00D1E9"
+                                            //"color": "#00E2FF"
+
+                                            //"color": "#A4E2E7"
+                                            "color": "#A4DBE7"
+
+                                            //"color": "#A3CCFF"
+                                        }
+                                    ]
+                                }
+                            ]
+                    )
+
+                    map.mapTypes.set('styled_map', styledMapType);
+                    map.setMapTypeId('styled_map');
+
+
+
+
+
+                }
+
+
+
+
+
+
+
 
                 $scope.sendRequest = function(){
                      $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id}, {
@@ -1317,7 +1419,6 @@
         });
     });
 </script>
-
 
 
 </html>

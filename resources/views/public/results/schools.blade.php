@@ -333,7 +333,7 @@
 
                     <div class="btn-group btn-toggle" style="width: 100%; margin-top: 15px">
                         <button class="btn btn-primary active" style="width: 50%; height: 40px" ng-click="changeView('card')">
-                            <i class="fa fa-th-list pad-right-15" aria-hidden="true"></i>Κάρτες
+                            <i class="fa fa-th-list pad-right-15" aria-hidden="true"></i>Λίστα
                         </button>
 
                         <button class="btn btn-default " style="width: 50%; height: 40px"ng-click="changeView('map')" >

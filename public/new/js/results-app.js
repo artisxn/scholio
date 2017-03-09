@@ -283,7 +283,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                     markers.push({'lat': marker.position.lat(), 'lng': marker.position.lng(), 'name': filterMark[i].name});
 
                 }
-                console.log(markers);
+                //console.log(markers);
                 var labels = '';
                 var markers = markers.map(function(location, i) {
                           return new google.maps.Marker({
