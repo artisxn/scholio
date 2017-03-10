@@ -3,6 +3,7 @@
 namespace App\Scholio;
 
 use App\Models\Dummy;
+use App\Models\Image;
 use App\Models\School;
 use Illuminate\Support\Facades\Route;
 
@@ -56,7 +57,7 @@ class Scholio
 
             return ['lat' => $lati, 'lng' => $longi];
         } else {
-            dd('NO');
+            return 'GEOCODE ERROR';
         }
     }
 
@@ -106,6 +107,8 @@ class Scholio
         $dummy->lengthScholarships = $school->lengthScholarships();
         $dummy->lat = $school->lat;
         $dummy->lng = $school->lng;
+        $img = Image::find($school->background);
+        $dummy->background = $img->path;
         $dummy->save();
     }
 }

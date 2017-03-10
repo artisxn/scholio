@@ -31,6 +31,7 @@ class CreateDummiesTable extends Migration
             $table->string('image')->nullable();
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
+            $table->string('background')->nullable();
             $table->timestamps();
         });
     }

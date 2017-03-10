@@ -22,6 +22,7 @@ class CreateSchoolsTable extends Migration
             $table->bigInteger('phone')->nullable();
             $table->string('website')->unique()->nullable();
             $table->string('logo')->default('fake/dummy.png');
+            $table->integer('background')->nullable();
             $table->text('about')->nullable();
             $table->boolean('approved')->default(1);
             $table->string('lat')->nullable();

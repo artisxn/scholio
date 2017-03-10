@@ -13,6 +13,7 @@
         .btn-del:hover{color: #ee980e; background-color: #1b2b37;}
         .btn-vis {visibility: visible}
         .info {font-size: 150%;  padding: 3px  10px 0 0;}   /* -webkit-text-stroke: 1px white;  color: transparent; */
+        .selectedImg{border-style: solid; border-width: 5px; border-color: yellow;}
 
        /*.pic:before {*/
              /*content: '';*/
@@ -215,13 +216,20 @@
                         <span class="  col-lg-4 col-sm-6 col-xs-6 span-cont">
                             <div class="">
                                 <div class="grow pic">
-                                    <img class="" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick=""
+                                @if(auth()->user()->info->background == $image->id)
+                                    <img id="img{{$image->id}}" class="selectedImg" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
                                          {{--onmouseover="hov({{$image->id}})"--}}
                                     />
+                                    @else
+                                    <img id="img{{$image->id}}" class="" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
+                                         {{--onmouseover="hov({{$image->id}})"--}}
+                                    />
+                                    @endif
                                     <form method="POST" action="/panel/school/profile/images/upload">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
-                                        <input type="hidden" value="{{ $image->id }}" name="image"/>
+
+                                            <input type="hidden" value="{{ $image->id }}" name="image"/>
 
                                         <button id="bt-{{ $image->id }}" type="submit" class="btn-del btn"> <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
                                     </form>
@@ -238,7 +246,36 @@
     {{--<script src="/panel/assets/js/cropper.min.js"></script>--}}
     {{--<script src="/panel/assets/js/mainCrop.js"></script>--}}
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
     <script>
+        window.axios.defaults.headers.common = {
+            'X-CSRF-TOKEN': Scholio.csrfToken,
+            'X-Requested-With': 'XMLHttpRequest'
+        };
+
+    function background(vm, img){
+        axios.post('/api/image/background/save', {image: img})
+          .then(function (response) {
+            console.log(response.data);
+            if(response.data == 'OK'){
+                uncheckAll();
+                vm.className = 'selectedImg';
+                console.log('LEME');
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+      });
+    }
+
+    function uncheckAll(){
+        @foreach($images as $image)
+            document.getElementById('img{{$image->id}}').className = '';
+        @endforeach
+    }
         // $("span").hover(
         //         function () {
         //             $('button').addClass('btn-vis');

@@ -5,6 +5,7 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Skill;
 use App\Notifications\SchoolAcceptedUser;
+use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -96,4 +97,12 @@ Route::get('/terms/last', function () {
         return $scholarship->last()->terms;
     }
     return 'NO';
+})->middleware('auth:api');
+
+Route::post('/image/background/save', function () {
+    $school = auth()->user()->info;
+    $school->background = request()->image;
+    $school->save();
+    Scholio::updateDummy($school);
+    return 'OK';
 })->middleware('auth:api');

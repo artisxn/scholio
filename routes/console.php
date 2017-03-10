@@ -52,7 +52,7 @@ Artisan::command('scholio:dummy', function () {
 
     $dummy = Scholio::fakeDummy();
     if ($dummy == 'OK') {
-        $this->info('Dummy Data Table is Flooded!');
+        // $this->info('Dummy Data Table is Flooded!');
     } else {
         $this->error('Something went wrong');
     }

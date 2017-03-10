@@ -169,7 +169,9 @@ class School extends Model
 
     public function profileImage()
     {
-        return $this->image()->pluck('path')->first();
+        $img = Image::find($this->background);
+        return $img->path;
+        // return $this->image()->pluck('path')->first();
     }
 
     public function dummy()
