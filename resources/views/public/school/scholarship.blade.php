@@ -187,8 +187,12 @@
             <img  height="90" class="" style="margin-left: -185px; margin-top: 134px;"  src="/panel/assets/images/steps/Διοίκηση Επιχειρήσεων & Οικονομικά - Business.png" alt="">
         </div>
         <div style="position: absolute; right: 295px; top: 30px;">
-            <div class="sc-t-grey text-incr-175 font-weight-300 pull-right">
+            <div class="sc-t-dark-grey text-incr-175 font-weight-300 pull-left margin-left-20">
                 {{ $scholarship->study->name}}
+            </div>
+            <div class="clear-fix sc-t-grey margin-left-20 margin-right-10 text-incr-115">
+                Το αντικείμενο σπουδών αφορά τους υποψηφίους που στοχεύουν σε <strong> {{ $scholarship->level->name }} </strong> με εξιδίκευση
+                σε  {{ $scholarship->study->name}} .
             </div>
         </div>
     </div>
@@ -201,8 +205,12 @@
             <img  height="90" class="" style="margin-left: -200px; margin-top: 134px;"  src="/panel/assets/images/steps/step1-reduce2.png" alt="">
         </div>
         <div style="position: absolute; left: 290px; top: 30px;">
-            <div class="sc-t-grey text-incr-175 font-weight-300">
-                {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }}
+            <div class="sc-t-dark-grey text-incr-175 font-weight-300 margin-left-10">
+                {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} %
+            </div>
+            <div class="sc-t-grey margin-top-20 margin-left-10 margin-right-10 text-incr-115">
+                Ο τελικός νικητής μέσα από όλους τους συμμετέχοντες για τη συγκεκριμένη
+                υποτροφία, θα επιδοτηθεί για τις σπουδές του με  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} %.
             </div>
         </div>
     </div>
@@ -230,10 +238,7 @@
 
                    <div class="col-sm-12">
 
-
-                       Επίπεδο: <h3>{{ $scholarship->level->name }}</h3>
-                       <hr>
-                       Terms(Προσοχή αυτό επιστρέφει html): <h4>{{ $scholarship->terms }}</h4>
+                       Terms( σε html): <h4>{{ $scholarship->terms }}</h4>
                        <hr>
                        Exams(Boolean): <h4>{{ $scholarship->exams }}</h4>
                        <hr>
