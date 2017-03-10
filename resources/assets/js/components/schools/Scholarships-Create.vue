@@ -266,6 +266,7 @@ html .ui-button.ui-state-disabled:active {
             var vm=this
 
             this.getCheckedStudies()
+            this.getTerms()
 
             Event.$on('saveScholarship', () =>
               this.saveScholarship()
@@ -279,6 +280,7 @@ html .ui-button.ui-state-disabled:active {
         },
         data: function() {
             return {
+                lastTerms: '',
                 financial_id: 1,
                 financial_amount: 20,
                 criteria_id: 1,
@@ -466,6 +468,15 @@ html .ui-button.ui-state-disabled:active {
                     }
                 },
                 errorDate: function (){
+                },
+
+                getTerms: function(){
+                    axios.get('/api/terms/last')
+                        .then(response => {
+                            if(response.data != 'NO'){
+                                this.content = response.data
+                            }
+                        })
                 },
 
 

@@ -88,3 +88,12 @@ Route::get('/connected/students', function () {
 Route::post('/registration/social', function () {
     return request()->type;
 })->middleware('api');
+
+Route::get('/terms/last', function () {
+    $school = auth()->user();
+    $scholarship = Scholarship::where('school_id', $school->id)->get();
+    if ($scholarship->last()->terms != null) {
+        return $scholarship->last()->terms;
+    }
+    return 'NO';
+})->middleware('auth:api');
