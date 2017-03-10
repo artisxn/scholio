@@ -84,3 +84,7 @@ Route::get('/connected/students', function () {
     $school = auth()->user()->info;
     return $school->students->load('info');
 })->middleware('auth:api');
+
+Route::post('/registration/social', function () {
+    return request()->type;
+})->middleware('api');

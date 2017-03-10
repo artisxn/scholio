@@ -48,7 +48,7 @@ class SocialAuthController extends Controller
         $user = new User;
         $user->name = $user_provider->name;
         $user->email = $user_provider->email;
-        $user->avatar = $user_provider->avatar;
+        // $user->avatar = $user_provider->avatar;
         $user->password = bcrypt(str_random(10));
         // $user->gender = $user_provider->user['gender'];
         // $user->facebook_id = $user_provider->id;

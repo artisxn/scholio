@@ -40,13 +40,14 @@
                 <div class="panel-body">
                     <form class="form-horizontal m-t-20" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
-                    {{ session()->put('registration', 'user') }}
+{{--                     {{ session()->put('registration', 'user') }} --}}
 
                         <div class="form-group">
                             <label for="type" class="col-md-4 control-label">Type</label>
 
                             <div class="col-md-8">
-                                <select id="type" type="password" class="form-control" name="type">
+                                <select id="type" type="password" class="form-control" name="type" onchange="social()">
+                                <option value="no" selected>Επέλεξε Ιδιότητα</option>
                                   <option value="student">Student</option>
                                   <option value="parent">Parent</option>
                                   <option value="teacher">Teacher</option>
@@ -129,7 +130,7 @@
 
                         <div class="form-group m-b-0 text-center">
                             <div class="col-sm-12">
-                                <a href="{{ url('/auth/facebook') }}" type="button" class="btn btn-facebook waves-effect waves-light m-t-20">
+                                <a href="#" type="button" onclick="" class="btn btn-facebook waves-effect waves-light m-t-20">
                                    <i class="fa fa-facebook m-r-5"></i> Facebook
                                 </a>
 
@@ -176,6 +177,34 @@
 
         <script src="/panel/assets/js/jquery.core.js"></script>
         <script src="/panel/assets/js/jquery.app.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        <script>
+            function social(){
+                axios.post('/api/registration/social', {
+                    type: document.getElementById('type').value,
+                  })
+                  .then(function (response) {
+                    console.log(response.data);
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+            }
+
+            function login(media){
+                var url = '';
+                if(media == 'google'){
+                    url = '/auth/google';
+                }else{
+                    url = '/auth/facebook';
+                }
+                if(document.getElementById('type').value != 'no'){
+                    window.location(url);
+                }
+                // {{ url('/auth/facebook') }}
+            }
+        </script>
 
     </body>
 </html>
