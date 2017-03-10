@@ -74,7 +74,7 @@ class RoutesController extends Controller
         return view('panel.pages.parent.profile.view');
     }
 
-    public function devIn($data)
+    public function devIn($data, $dash = null)
     {
         if (auth()->check()) {
             auth()->logout();
@@ -108,6 +108,10 @@ class RoutesController extends Controller
             }
 
         }
+        if ($dash) {
+            return redirect('/dashboard');
+        }
+
         return back();
     }
 

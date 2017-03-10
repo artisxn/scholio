@@ -1,4 +1,4 @@
 <?php
 
 Route::get('/out', 'RoutesController@devOut');
-Route::get('in/{data}', 'RoutesController@devIn');
+Route::get('in/{data}/{dash?}', 'RoutesController@devIn');
