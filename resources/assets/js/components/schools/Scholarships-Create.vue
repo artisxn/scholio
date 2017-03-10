@@ -393,6 +393,10 @@ html .ui-button.ui-state-disabled:active {
                 axios.get('/api/school/getSchoolStudies')
                         .then(response => {
                     this.studyTable = response.data
+                    if(this.studyTable == 0){
+                        console.log('KKJSJSKSK')
+                        window.location = '/panel/school/studies'
+                    }
 //                console.log(this.studyTable )
                 var parent = this
                 console.log('API 2 checkedStudies initial push OK' )

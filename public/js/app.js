@@ -13919,6 +13919,10 @@ var chars_without_html = 0;
 
             axios.get('/api/school/getSchoolStudies').then(function (response) {
                 _this3.studyTable = response.data;
+                if (_this3.studyTable == 0) {
+                    console.log('KKJSJSKSK');
+                    window.location = '/panel/school/studies';
+                }
                 //                console.log(this.studyTable )
                 var parent = _this3;
                 console.log('API 2 checkedStudies initial push OK');
@@ -14005,7 +14009,6 @@ var chars_without_html = 0;
                 if (response.data != 'NO') {
                     _this4.content = response.data;
                 }
-                console.log('TERMS' + response.data);
             });
         },
 
