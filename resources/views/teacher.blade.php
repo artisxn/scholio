@@ -240,25 +240,29 @@
                             <hr>
 
 
-                            <img class="up png-title" src="/new/img/teacher/graduate.png" alt="">
-                            <div id="spoudes" class="title">Σπουδές</div>
-                            @foreach($certificates as $certificate)
-                                <div class="t1">
-                                    {{ $certificate->name  }}
-                                </div>
-                                <div class="t2">
-                                    {{ $certificate->university  }}
-                                </div>
-                                <div class="t3">
-                                    {{ \Carbon\Carbon::parse($certificate->from)->year }} - {{ \Carbon\Carbon::parse($certificate->until)->year }}
-                                </div>
-                            @endforeach
-                            <hr>
+                            <div id="spoudes">
+                                <img class="up png-title" src="/new/img/teacher/graduate.png" alt="">
+                                <div class="title">Σπουδές</div>
+                                @foreach($certificates as $certificate)
+                                    <div class="t1">
+                                        {{ $certificate->name  }}
+                                    </div>
+                                    <div class="t2">
+                                        {{ $certificate->university  }}
+                                    </div>
+                                    <div class="t3">
+                                        {{ \Carbon\Carbon::parse($certificate->from)->year }} - {{ \Carbon\Carbon::parse($certificate->until)->year }}
+                                    </div>
+                                @endforeach
+                                <hr>
+                            </div>
 
-                            <img class="up png-title" src="/new/img/teacher/skillsb.png" alt="">
-                            <div  id="skills" class="title">Δεξιότητες</div>
-                            @foreach($teacher->user->getUniqueSkills() as $skill)
-                                <div class="row">
+
+                            <div class="margin-bot-50" id="skills">
+                                <img class="up png-title" src="/new/img/teacher/skillsb.png" alt="">
+                                <div   class="title ">Δεξιότητες</div>
+                                @foreach($teacher->user->getUniqueSkills() as $skill)
+                                    <div class="row ">
                                     <span class="t2 col-lg-4 col-md-5 col-sm-5 col-xs-6">
                                         {{ $skill->name }} :
                                     </span>
@@ -280,10 +284,12 @@
                                         </div>
 
                                     </span>
-                                </div>
+                                    </div>
 
-                            @endforeach
-                            <hr>
+                                @endforeach
+                            </div>
+
+
 
                         </div>
 
@@ -300,7 +306,7 @@
 
 
 <!-- Footer -->
-{{-- @include('public.footer') --}}
+ @include('public.footer')
 
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

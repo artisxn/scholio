@@ -866,7 +866,7 @@
 
 
 {{--                        @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))--}}
-                        <nav data-spy="affix" data-offset-top="1120">
+                        <nav data-spy="affix" data-offset-top="1160">
                             <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                     data-toggle="modal" data-target="#connect-modal">
                                 <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
