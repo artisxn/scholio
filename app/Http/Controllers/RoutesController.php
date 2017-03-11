@@ -128,7 +128,7 @@ class RoutesController extends Controller
 
     public function scholarship(Scholarship $scholarship)
     {
-        return view('public.school.scholarship')->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
+        return view('public.school.scholarship')->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria', 'study.section'));
     }
 
     public function scholarshipEdit(Scholarship $scholarship)

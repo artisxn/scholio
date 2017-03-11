@@ -40,9 +40,8 @@
                 <div class="panel-body">
                     <form class="form-horizontal m-t-20" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
-{{--                     {{ session()->put('registration', 'user') }} --}}
 
-                        <div class="form-group">
+                        <div id="form-type" class="form-group">
                             <label for="type" class="col-md-4 control-label">Type</label>
 
                             <div class="col-md-8">
@@ -53,6 +52,10 @@
                                   <option value="teacher">Teacher</option>
                                 </select>
                             </div>
+
+                            <span id="span-type" class="help-block hidden">
+                                <strong>Πρέπει να επιλέξετε ιδιότητα</strong>
+                            </span>
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -130,13 +133,13 @@
 
                         <div class="form-group m-b-0 text-center">
                             <div class="col-sm-12">
-                                <a href="#" type="button" onclick="" class="btn btn-facebook waves-effect waves-light m-t-20">
+                                <button type="button" onclick="login('facebook')" class="btn btn-facebook waves-effect waves-light m-t-20">
                                    <i class="fa fa-facebook m-r-5"></i> Facebook
-                                </a>
+                                </button>
 
-                                <a href="{{ url('/auth/google') }}" type="button" class="btn btn-googleplus waves-effect waves-light m-t-20">
+                                <button type="button" onclick="login('google')" class="btn btn-googleplus waves-effect waves-light m-t-20">
                                    <i class="fa fa-google-plus m-r-5"></i> Google+
-                                </a>
+                                </button>
                             </div>
                         </div>
 
@@ -186,6 +189,7 @@
                   })
                   .then(function (response) {
                     console.log(response.data);
+                    removeErrors();
                   })
                   .catch(function (error) {
                     console.log(error);
@@ -200,9 +204,24 @@
                     url = '/auth/facebook';
                 }
                 if(document.getElementById('type').value != 'no'){
-                    window.location(url);
+                    window.location = url;
+                }else{
+                    showErrors();
                 }
-                // {{ url('/auth/facebook') }}
+            }
+
+            function showErrors(){
+                var form = document.getElementById('form-type');
+                form.className += ' has-error';
+                var span = document.getElementById('span-type');
+                span.classList.remove("hidden");
+            }
+
+            function removeErrors(){
+                var form = document.getElementById('form-type');
+                form.classList.remove("has-error");
+                var span = document.getElementById('span-type');
+                span.className += ' hidden';
             }
         </script>
 

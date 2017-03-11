@@ -108,7 +108,9 @@ class Scholio
         $dummy->lat = $school->lat;
         $dummy->lng = $school->lng;
         $img = Image::find($school->background);
-        $dummy->background = $img->path;
+        if ($img) {
+            $dummy->background = $img->path;
+        }
         $dummy->save();
     }
 }

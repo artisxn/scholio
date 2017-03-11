@@ -48,8 +48,8 @@
 
     <script>
         window.Scholio = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-        ]); ?>
+    'csrfToken' => csrf_token(),
+]); ?>
     </script>
 
     <style>
