@@ -15,8 +15,20 @@ use App\User;
  */
 
 Route::get('qqq', function () {
-    $school = auth()->user()->info;
-    return $school->students->load('info');
+    foreach (User::all() as $user) {
+        if ($user->role == 'school' && $user->id <= 11) {
+            $address = Scholio::geocode($user->info->address . "," . $user->info->city);
+            if ($address = 'GEOCODE ERROR') {
+                dd($address);
+            } else {
+                $lat = $address['lat'];
+                $lng = $address['lng'];
+                $user->info->lat = $lat;
+                $user->info->lng = $lng;
+                $user->info->save();
+            }
+        }
+    }
 });
 
 Route::get('@{username}', function ($username) {
@@ -60,7 +72,7 @@ Route::get('/token/register', 'RoutesController@token');
 |--------------------------------------------------------------------------
  */
 
-Route::get('auth/{provider}', 'SocialAuthController@redirectToProvider');
+Route::get('auth/{provider}/', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
 //===== New Testing PUBLIC pages ======

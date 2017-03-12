@@ -44,16 +44,20 @@ class SocialAuthController extends Controller
             auth()->loginUsingId($user->id);
             return redirect('/dashboard');
         }
+        dd(session()->pull('role', 'guest'));
 
         $user = new User;
         $user->name = $user_provider->name;
         $user->email = $user_provider->email;
+        $user->role = $this->role;
         // $user->avatar = $user_provider->avatar;
         $user->password = bcrypt(str_random(10));
         // $user->gender = $user_provider->user['gender'];
         // $user->facebook_id = $user_provider->id;
         // $user->facebook_link = $user_provider->profileUrl;
         $user->save();
+
+        dd($this->role);
 
         Auth::login($user);
         return redirect('/dashboard');

@@ -198,12 +198,26 @@
 
             function login(media){
                 var url = '';
-                if(media == 'google'){
-                    url = '/auth/google';
-                }else{
-                    url = '/auth/facebook';
-                }
-                if(document.getElementById('type').value != 'no'){
+                var type = document.getElementById('type').value;
+                if(type!= 'no'){
+                    if(media == 'google'){
+                        url = '/auth/google/';
+                    }else{
+                        url = '/auth/facebook/';
+                    }
+                    {{session()->flush()}}
+                    if(type=='student'){
+                            console.log('student');
+                            {{session()->put('role', 'student')}}
+                        }
+                        if(type=='teacher'){
+                            console.log('teacher');
+                            {{session()->put('role', 'teacher')}}
+                        }
+                        if(type=='parent'){
+                            console.log('parent');
+                            {{session()->put('role', 'parent')}}
+                        }
                     window.location = url;
                 }else{
                     showErrors();

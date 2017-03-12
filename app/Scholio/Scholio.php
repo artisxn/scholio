@@ -41,14 +41,15 @@ class Scholio
         });
     }
 
-    public static function geocode($address)
+    public static function geocode($ad)
     {
-        $address = urlencode($address);
+        $address = urlencode($ad);
 
         $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
 
         $resp_json = file_get_contents($url);
         $resp = json_decode($resp_json, true);
+        // dd($resp['results'][0]['geometry']['location']['lat']);
 
         if ($resp['status'] == 'OK') {
             $lati = $resp['results'][0]['geometry']['location']['lat'];
