@@ -64,6 +64,11 @@
     </script>
 
     <style>
+
+        span.fulltext {
+            text-indent: 0;
+        }
+
         .main-box2  ul li{text-indent: -20px;}
         .bx-wrapper img {height: 220px !important;}
         .slideup, .slidedown {
@@ -125,13 +130,12 @@
             padding-right: 0 !important;
         }
 
-        .total-reviews{ margin-top: 50px; margin-bottom: 25px;}
-
         .person-review{margin: 25px 0 5px 16px;}
         .review-text{ margin-bottom: 25px}
 
-        #xs-total-reviews{margin: 35px 0;}
+        #total-reviews{margin: 35px 0;}
         .xs-stars{margin: 27px 0;}
+
 
         hr {
             margin-left: auto;
@@ -605,65 +609,10 @@
                             </p>
                         </div>
 
-                        <!--  Total Score Large Medium -->
-                        <div id="total-reviews " class="col-sm-12 hidden-xs hidden-sm visible-md visible-lg total-reviews" >
-                            <div class="font-weight-400 sc-t-grey col-xs-6 col-sm-6 col-md-4">
-                                <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
-                                <span>Πρόγραμμα Σπουδών</span>
-                                <br />
-                                <i class="fa fa-cog  fa-linear margin-right-10" aria-hidden="true"></i>
-                                <span>Οργάνωση</span>
-                                <br />
-                                <i class="fa fa-user fa-linear  margin-right-10" aria-hidden="true"></i>
-                                <span>Ανθρώπινο Δυναμικό</span>
-                                <br />
-                                <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
-                                <span>Εγκαταστάσεις</span>
-                                <br />
-                                <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
-                                <span>Διασύνδεση με αγορά εργασίας </span>
-                                <br />
-                            </div>
+                        <!--  Total Score -->
+                        <div id="total-reviews" class="row col-sm-12">
 
-                            <div class="font-weight-400 sc-t-grey col-xs-6 col-sm-6  col-md-4">
-
-                                <div value="@{{getAVG('studyProgram')}}" class="col-md-6 raty" id="studyProgram"></div>
-                                <span class="col-md-6"> @{{getAVG("studyProgram")}}</span>
-                                <br />
-
-                                <div  value="@{{getAVG('organization')}}" class=" col-md-6 raty" id="organization"></div>
-                                <span class="col-md-6"> @{{getAVG("organization")}}</span>
-                                <br />
-
-                                <div  value="@{{getAVG('personnel')}}" class="col-md-6 raty" id="personnel"></div>
-                                <span class="col-md-6"> @{{getAVG("personnel")}}</span>
-                                <br />
-
-                                <div  value="@{{getAVG('facilities')}}" class="col-md-6 raty" id="facilities"></div>
-                                <span class="col-md-6"> @{{getAVG("facilities")}}</span>
-                                <br />
-
-                                <div  value="@{{getAVG('jobLink')}}" class="col-md-6 raty" id="jobLink"></div>
-                                <span class="col-md-6"> @{{getAVG("jobLink")}}</span>
-                                <br />
-                            </div>
-
-                            <div class="font-weight-400 sc-t-green col-xs-6 col-sm-6 col-md-4  text-center total-score">
-                                <span class="lead">@{{getAVG("total")}}</span>
-                                <br />
-                                <span class="sc-t-grey">Συνολική Βαθμολογία</span>
-                                <br />
-                                <br />
-                                <div class="raty" id="totalRating"></div>
-                                <span class="sc-t-grey">(@{{reviews.length}} Αξιολογήσεις)</span>
-                            </div>
-
-                        </div>
-
-
-                        <!--  Total Score Extra Small Small-->
-                        <div id="xs-total-reviews" class="col-sm-12 visible-xs visible-sm hidden-md hidden-lg">
-                            <div class="font-weight-400 sc-t-green col-xs-12 text-center total-score">
+                            <div class="font-weight-400 sc-t-green col-xs-12 col-lg-4 col-lg-push-8 text-center total-score">
                                 <span class="lead">@{{getAVG("total")}}</span>
                                 <br />
                                 <span class="sc-t-grey">Συνολική Βαθμολογία</span>
@@ -672,45 +621,57 @@
                                 <div class="raty" id="totalRating"></div>
                                 <span class="sc-t-grey">(@{{reviews.length}} Αξιολογήσεις)</span>
                             </div>
-                            <div class="font-weight-400 sc-t-grey col-xs-12 xs-stars">
-                                <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
-                                <span>Πρόγραμμα Σπουδών</span>
-                                <br />
-                                <span value="@{{getAVG('studyProgram')}}" class="  margin-left-20 raty" id="studyProgram"></span>
-                                <span class="col-md-6"> @{{getAVG("studyProgram")}}</span>
-                                <br />
-                                <br />
 
-                                <i class="fa fa-cog  fa-linear margin-right-10" aria-hidden="true"></i>
-                                <span>Οργάνωση</span>
-                                <br />
-                                <span  value="@{{getAVG('organization')}}" class=" margin-left-20 col-md-6 raty" id="organization"></span>
-                                <span class="col-md-6"> @{{getAVG("organization")}}</span>
-                                <br />
-                                <br />
+                            <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
+                                
+                                <div class="col-xs-12 col-sm-6">
+                                    <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
+                                    <span>Πρόγραμμα Σπουδών</span>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <span value="@{{getAVG('studyProgram')}}" class="margin-left-20 raty" id="studyProgram"></span>
+                                    <span> @{{getAVG("studyProgram")}}</span>
+                                </div>
 
-                                <i class="fa fa-user fa-linear  margin-right-10" aria-hidden="true"></i>
-                                <span>Ανθρώπινο Δυναμικό</span>
-                                <br />
-                                <span  value="@{{getAVG('personnel')}}" class="  margin-left-20 col-md-6 raty" id="personnel"></span>
-                                <span class="col-md-6"> @{{getAVG("personnel")}}</span>
-                                <br />
-                                <br />
+                                <div class="col-xs-12 col-sm-6">
+                                    <i class="fa fa-cog  fa-linear margin-right-10" aria-hidden="true"></i>
+                                    <span>Οργάνωση</span>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <span  value="@{{getAVG('organization')}}" class="margin-left-20 raty" id="organization"></span>
+                                    <span> @{{getAVG("organization")}}</span>
+                                </div>
 
-                                <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
-                                <span>Εγκαταστάσεις</span>
-                                <br />
-                                <span  value="@{{getAVG('facilities')}}" class=" margin-left-20 col-md-6 raty" id="facilities"></span>
-                                <span class="col-md-6"> @{{getAVG("facilities")}}</span>
-                                <br />
-                                <br />
+                                <div class="col-xs-12 col-sm-6">
+                                    <i class="fa fa-user fa-linear  margin-right-10" aria-hidden="true"></i>
+                                    <span>Ανθρώπινο Δυναμικό</span>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <span  value="@{{getAVG('personnel')}}" class="margin-left-20 raty" id="personnel"></span>
+                                    <span> @{{getAVG("personnel")}}</span>
+                                </div>
 
-                                <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
-                                <span>Διασύνδεση με αγορά εργασίας </span>
-                                <br />
-                                <span  value="@{{getAVG('jobLink')}}" class=" margin-left-20 col-md-6 raty" id="jobLink"></span>
-                                <span class="col-md-6"> @{{getAVG("jobLink")}}</span>
+                                <div class="col-xs-12 col-sm-6">
+                                    <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
+                                    <span>Εγκαταστάσεις</span>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <span  value="@{{getAVG('facilities')}}" class="margin-left-20 raty" id="facilities"></span>
+                                    <span> @{{getAVG("facilities")}}</span>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
+                                    <span>Διασύνδεση με αγορά εργασίας </span>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <span  value="@{{getAVG('jobLink')}}" class=" margin-left-20 raty" id="jobLink"></span>
+                                    <span> @{{getAVG("jobLink")}}</span>
+                                </div>
+                                
+                               
                             </div>
+
                         </div>
 
 
@@ -718,7 +679,7 @@
                         <div id="reviews-container" ng-repeat="review in reviews">
                             <hr class="sc-t-grey" />
 
-                            <div class="col-md-12">
+                            <div class="col-lg-12">
                                 <div class="margin-left-10  person-review">
                                     <span>@{{review.author}}</span>
                                     <br />
@@ -728,7 +689,7 @@
                                     <span class="sc-t-grey">@{{review.date}}</span>
                                     <br />
                                 </div>
-                                <span class="col-md-12 font-weight-400 sc-t-grey review-text">@{{review.text}}</span>
+                                <span class="col-lg-12 font-weight-400 sc-t-grey review-text fulltext">@{{review.text}}</span>
                             </div>
 
                         </div>
@@ -1407,10 +1368,14 @@
     $(document).ready(function(){
         $("#main").hide().fadeIn(1800);
         $(".raty").each(function(index,element){
+
+            console.log($(this));
+
             if(this.id!="totalRating")
-                window.stars = parseFloat($(this).next().text());
-            else
-                window.stars = parseFloat($(this).prev().prev().prev().prev().prev().text());
+                window.stars = parseFloat($(this).next(".ng-binding").text());
+            else 
+                window.stars = parseFloat($(this).parent().find(".lead").text());
+            
 
             $(this).raty({
                 score: window.stars,
