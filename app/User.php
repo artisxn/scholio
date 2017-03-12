@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Link;
 use App\Models\Parent as ParentUser;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -101,7 +102,11 @@ class User extends Authenticatable
     public function socialLinks()
     {
         return $this->hasOne(SocialLink::class, 'user_id');
+    }
 
+    public function links()
+    {
+        return $this->hasMany(Link::class, 'user_id');
     }
 
     public function connectedSchool()

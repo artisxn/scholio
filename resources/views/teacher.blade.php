@@ -56,12 +56,16 @@
     'csrfToken' => csrf_token(),
 ]); ?>
     </script>
-
+@if($teacher->cover != null)
     <style>
-
-
-
+    .photo-box{ min-height: 530px;
+        background-size: cover;
+        background-position: center;
+        background-image: linear-gradient( rgba(187, 218, 222, 0.2), rgba(0, 67, 79, 0.8)),
+        url("{{$teacher->cover}}");
+    }
     </style>
+    @endif
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home">
 <!-- Scholio Header -->
@@ -178,10 +182,15 @@
                 </span>
 
                 <span class="social hidden-xs">
-                        <a href=""> <span class="pull-right "><i class="fa fa-instagram"></i></span> </a>
+                        {{-- <a href=""> <span class="pull-right "><i class="fa fa-instagram"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-twitter"></i></span> </a>
-                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-facebook"></i></span> </a>
+                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-facebook"></i></span> </a> --}}
+                        @foreach($links as $link)
+                        <a href="{{$link->link}}" style="color: white;">
+                            <span class="pull-right margin-right-25"><i class="fa fa-{{$link->name}}"></i></span>
+                        </a>
+                        @endforeach
                 </span>
             </div>
 
@@ -208,18 +217,15 @@
                         <div class="up"></div>
                         <div class="col-md-9">
 
-
-
-
-
                             <img class="up png-title" src="/new/img/teacher/info.png" alt="">
                             <div class="title">Λίγα Λόγια</div>
                             <div class="text">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                            {{ $teacher->about }}
+                                {{-- Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
                                 beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
                                 Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
                                 Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? --}}
                             </div>
                             <hr>
 

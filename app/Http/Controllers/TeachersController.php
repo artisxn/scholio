@@ -16,7 +16,8 @@ class TeachersController extends Controller
     {
         $works = $teacher->works();
         $certificates = $teacher->certificates();
-        return view('teacher', compact('teacher', 'works', 'certificates'));
+        $links = $teacher->links;
+        return view('teacher', compact('teacher', 'works', 'certificates', 'links'));
     }
 
     /**

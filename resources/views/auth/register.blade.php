@@ -185,7 +185,7 @@
         <script>
             function social(){
                 axios.post('/api/registration/social', {
-                    type: document.getElementById('type').value,
+                    role: document.getElementById('type').value,
                   })
                   .then(function (response) {
                     console.log(response.data);
@@ -205,19 +205,6 @@
                     }else{
                         url = '/auth/facebook/';
                     }
-                    {{session()->flush()}}
-                    if(type=='student'){
-                            console.log('student');
-                            {{session()->put('role', 'student')}}
-                        }
-                        if(type=='teacher'){
-                            console.log('teacher');
-                            {{session()->put('role', 'teacher')}}
-                        }
-                        if(type=='parent'){
-                            console.log('parent');
-                            {{session()->put('role', 'parent')}}
-                        }
                     window.location = url;
                 }else{
                     showErrors();

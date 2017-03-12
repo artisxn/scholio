@@ -31,4 +31,9 @@ class Teacher extends Model
     {
         return $this->user->certificates;
     }
+
+    public function links()
+    {
+        return $this->user->links();
+    }
 }

@@ -16,6 +16,8 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
+            $table->string('fname')->nullable();
+            $table->string('lname')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
@@ -23,6 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('address')->nullable();
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
+            $table->text('about')->nullable();
             $table->timestamps();
         });
     }

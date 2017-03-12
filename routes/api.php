@@ -4,6 +4,7 @@ use App\Events\UserAppliedOnSchool;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Skill;
+use App\Models\Temp;
 use App\Notifications\SchoolAcceptedUser;
 use App\Scholio\Scholio;
 use App\User;
@@ -87,7 +88,16 @@ Route::get('/connected/students', function () {
 })->middleware('auth:api');
 
 Route::post('/registration/social', function () {
-    return request()->type;
+
+    $temp = Temp::firstOrNew(array('name' => 'social-role'));
+    $temp->value = request()->role;
+    $temp->save();
+
+    // $temp = new Temp;
+    // $temp->name = 'social-role';
+    // $temp->value = request()->role;
+    // $temp->save();
+    return 'Stored!';
 })->middleware('api');
 
 Route::get('/terms/last', function () {
