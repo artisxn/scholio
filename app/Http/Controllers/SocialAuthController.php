@@ -88,7 +88,8 @@ class SocialAuthController extends Controller
         $this->createInfo($user, $role, $user_provider->avatar, $provider, $profileBuilder);
 
         Auth::login($user);
-        return redirect('/dashboard');
+        return redirect('/dashboard/profile');
+        // return redirect('/new/user');
     }
 
     public function createInfo($user, $role, $avatar, $provider, $profileBuilder)

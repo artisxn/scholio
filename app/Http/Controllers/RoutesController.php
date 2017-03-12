@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Scholarship;
+use App\Models\SocialLink;
 
 class RoutesController extends Controller
 {
@@ -66,7 +67,8 @@ class RoutesController extends Controller
 
     public function teacherProfile()
     {
-        return view('panel.pages.teacher.profile.view');
+        $links = SocialLink::all();
+        return view('panel.pages.teacher.profile.view', compact('links'));
     }
 
     public function parentProfile()

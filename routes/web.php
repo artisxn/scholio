@@ -14,22 +14,19 @@ use App\User;
 |
  */
 
-Route::get('qqq', function () {
-    foreach (User::all() as $user) {
-        if ($user->role == 'school' && $user->id <= 11) {
-            $address = Scholio::geocode($user->info->address . "," . $user->info->city);
-            if ($address = 'GEOCODE ERROR') {
-                dd($address);
-            } else {
-                $lat = $address['lat'];
-                $lng = $address['lng'];
-                $user->info->lat = $lat;
-                $user->info->lng = $lng;
-                $user->info->save();
-            }
-        }
+Route::get('dashboard/profile', function () {
+    if (auth()->user()->role == 'student') {
+        return redirect(route('students-profile'));
     }
-});
+
+    if (auth()->user()->role == 'teacher') {
+        return redirect(route('teachers-profile'));
+    }
+
+    if (auth()->user()->role == 'parent') {
+        return redirect(route('parent-profile'));
+    }
+})->middleware('auth');
 
 Route::get('@{username}', function ($username) {
     $user = User::where('username', $username)->first();

@@ -19,7 +19,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group" align="center">
-                            <img src="/images/schools/" height="100px">
+                            <img src="{{auth()->user()->info->avatar}}" height="100px">
                         </div>
 
 
@@ -36,14 +36,14 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Name</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" placeholder="Fullname" name="name">
+                                    <input type="text" class="form-control" value="{{ auth()->user()->name }}" placeholder="Fullname" name="name">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="email">Email</label>
                                 <div class="col-md-10">
-                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ Auth::user()->email }}" readonly="">
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ auth()->user()->email }}" readonly="">
                                 </div>
                             </div>
 
@@ -57,7 +57,16 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Gender</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->gender }}" placeholder="Gender" name="gender">
+                                    <input type="text" class="form-control" value="{{ auth()->user()->info->gender }}" placeholder="Gender" name="gender">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">About</label>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" name="about">
+                                        {{ auth()->user()->info->about }}
+                                    </textarea>
                                 </div>
                             </div>
 
@@ -69,28 +78,41 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Date of birth</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->dob }}" placeholder="Date of birth" name="dob">
+                                    <input type="text" class="form-control" value="{{ auth()->user()->dob }}" placeholder="Date of birth" name="dob">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label">City</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->city }}" placeholder="City" name="city">
+                                    <input type="text" class="form-control" value="{{ auth()->user()->city }}" placeholder="City" name="city">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Address</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->address }}" placeholder="Address" name="address">
+                                    <input type="text" class="form-control" value="{{ auth()->user()->address }}" placeholder="Address" name="address">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Phone number</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ Auth::user()->mobile_phone }}" placeholder="Phone number" name="mobile_phone">
+                                    <input type="text" class="form-control" value="{{ auth()->user()->mobile_phone }}" placeholder="Phone number" name="mobile_phone">
+                                </div>
+                            </div>
+
+                             <div class="form-group">
+                                <label class="col-md-2 control-label">Add Link</label>
+                                <div class="col-md-10">
+                                <select name="link-name" class="form-control">
+                                <option value="no">Επιλέξτε social media</option>
+                                    @foreach($links as $link)
+                                        <option value="{{$link->name}}">{{$link->name}}</option>
+                                    @endforeach
+                                </select>
+                                <input type="text" class="form-control" name="link-url" />
                                 </div>
                             </div>
 

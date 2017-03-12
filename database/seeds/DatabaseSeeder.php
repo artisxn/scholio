@@ -13,18 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
         $this->call(SchoolTypesTableSeeder::class);
-        // $this->call(SchoolsTableSeeder::class);
         $this->call(LevelsTableSeeder::class);
         $this->call(FinancialsTableSeeder::class);
-        // $this->call(ScholarshipsTableSeeder::class);
         $this->call(SectionsTableSeeder::class);
         $this->call(StudiesTableSeeder::class);
         $this->call(CriteriasTableSeeder::class);
         $this->call(FakeSeeder::class);
         $this->call(TeacherDetailsTableSeeder::class);
         $this->call(SkillsTableSeeder::class);
+        $this->call(SocialLinksTableSeeder::class);
 
         foreach (User::all() as $user) {
             if ($user->role == 'school' && $user->id <= 11) {
