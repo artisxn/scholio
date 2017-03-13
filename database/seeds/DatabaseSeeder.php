@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
         foreach (User::all() as $user) {
             if ($user->role == 'school' && $user->id <= 11) {
                 $address = Scholio::geocode($user->info->address . "," . $user->info->city);
-                if ($address == 'GEOCODE ERROR') {
-                    dd($address);
+                if ($address == 'Geocode Error') {
+                    dd('Geocode Error');
                 } else {
                     $lat = $address['lat'];
                     $lng = $address['lng'];

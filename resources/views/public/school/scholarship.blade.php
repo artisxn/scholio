@@ -38,7 +38,7 @@
 
 
     <!-- Angular js-->
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 
 
 
@@ -58,7 +58,7 @@
 
     </style>
 </head>
-<body data-spy="scroll" data-target=".spy" data-offset="270" id="home">
+<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="scholarshipApp"  ng-controller="scholarshipCtrl" data-ng-init="" ng-cloak  >
 <!-- Scholio Header -->
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
@@ -89,7 +89,7 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΛΙΓΑ ΛΟΓΙΑ</a></li>
+                    <li class="sc-landing-menu-item"><a href="#sxetika" >info</a></li>
                     @if(auth()->check())
                         <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                         <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
@@ -117,16 +117,7 @@
                         <br><br>
                         <div class="pull-right">
                             <a href="#sxetika">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΛΙΓΑ ΛΟΓΙΑ</div>
-                            </a>
-                            <a href="#experience">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΜΠΕΙΡΙΑ</div>
-                            </a>
-                            <a href="#spoudes">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΠΟΥΔΕΣ</div>
-                            </a>
-                            <a href="#skills">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΔΕΞΙΟΤΗΤΕΣ</div>
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">info</div>
                             </a>
                             <div class=""><br></div>
                             <div class="sign-links">
@@ -151,113 +142,247 @@
 </header>
 
 
-<div class="container">
-    <div class="photo-box">
-        <div class="school-name">
-            {{ $scholarship->school->name() }}
+{{--<div class="container">--}}
+    {{--<div class="photo-box">--}}
+        {{--<div class="">--}}
+            {{--<div class="school-name ">--}}
+                {{--{{ $scholarship->school->name() }}--}}
+            {{--</div>--}}
+            {{--<img class="logo " src="/images/schools/{{ $scholarship->school->logo}}" alt="">--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
+
+<div class="container cover">
+    <img class="trophy" src="/new/img/trophy.png" alt="">
+    {{--<img class="grad" src="/new/img/Graduation.png" alt="">--}}
+
+    <div class="Hero1"> Υποτροφία που προσφέρεται από: </div>
+    <div class="Hero2"> {{ $scholarship->school->name() }}</div>
+</div>
+<div class="line"></div>
+
+
+<div class="container stats hidden-sm sc-xs-visible">
+    <div class="col-lg-11 box-in sc-t-grey row ">
+        <div class="col-md-4 col-sm-6  col-xs-12 col-lg-3 colmn ">
+            {{--col-md-offset-2 col-lg-offset-2--}}
+            <span class="col-xs-10  col-sm-10  col-md-10 col-lg-9  first-col">
+                <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
+                <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
+            </span>
+            <span class="col-xs-2 col-sm-2 col-md-1 col-lg-3 align-right">
+                <div class="">34</div>
+                <div class="margin-top-10">123</div>
+            </span>
+
         </div>
-        <img class="logo " src="/images/schools/{{ $scholarship->school->logo}}" alt="">
+
+        <div class="col-md-4  col-xxxs-12 col-sm-6 col-xs-12 col-lg-4 colmn ">
+            {{--col-lg-offset-1--}}
+            <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6  ">
+                <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
+                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
+            </span>
+            <span class="col-xxxs-5 col-xs-4 col-sm-5 col-md-5 col-lg-5 align-right">
+                <div class="">10 Μαϊ 2017</div>
+                <div class="margin-top-10">30 Σεπ 2017</div>
+            </span>
+
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12 col-lg-5 ">
+            {{--col-lg-offset-1--}}
+            <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6">
+                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
+                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
+            </span>
+            <span class=" col-xxxs-5 col-xs-4 col-sm-5 col-md-5col-lg-4 align-right" >
+                <div class="" >{{ $scholarship->exams }} NAI</div>
+                <div class="margin-top-10">{{ $scholarship->exams_date }} 25 Σεπ 2017</div>
+            </span>
+
+        </div>
     </div>
 </div>
 
 
-<div class="container">
-    <div class="" style="height: 200px; background-color: #fff; border: 1px solid #e6e6e6;  border-radius: 10px; margin-top:130px; position: relative">
 
-        <div style="position: absolute; top: -50px; left: 17px">
-            {{--<img height="180px"  width="220px" src="/new/img/banner.png" alt="">--}}
-            <img height="300px" src="/new/img/hex01.png" alt="">
-            <img  height="90" class="" style="margin-left: -165px; margin-top: 134px;"  src="/panel/assets/images/steps/step3-best.png" alt="">
+<div class="container stats sc-xs-hidden hidden-md hidden-lg">
+    <div class="box-in sc-t-grey  ">
+        <div class="col-sm-4  col-xs-5 colmn ">
+            {{--col-md-offset-2 col-lg-offset-2--}}
+            <span class="col-sm-10  col-xs-10 first-col">
+                <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
+                <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
+                <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
+            </span>
+            <span class="col-sm-1 col-xs-1 align-right">
+                <div class="">34</div>
+                <div class="margin-top-10">123</div>
+                  <div class="margin-top-10" >{{ $scholarship->exams }} NAI</div>
+            </span>
+
         </div>
 
-        <div style="position: absolute; left: 290px; top: 30px;">
-            <div class="sc-t-grey text-incr-175 font-weight-300">
-                {{ $scholarship->criteria->name }}
-            </div>
+        <div class="col-sm-5  col-xs-7">
+            {{--col-lg-offset-1--}}
+            <span class=" col-sm-7   col-xs-6">
+                <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
+                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
+                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξετ.:</div>
+            </span>
+            <span class="col-sm-5  col-xs-6 align-right">
+                <div class="">10 Μαϊ 2017</div>
+                <div class="margin-top-10">30 Σεπ 2017</div>
+                <div class="margin-top-10">{{ $scholarship->exams_date }} 25 Σεπ 2017</div>
+            </span>
+
         </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="degra">
+
+<div class="container back ">
+
+    <div class=" buttons centered-text">
+        {{--@if(auth()->check())--}}
+        <span class="margin-right-20">
+            <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
+                               class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
+                    <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                    <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>
+                </button>
+            </a>
+        </span>
+        {{--@endif--}}
+
+        <span class="">
+        <a href=""><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
+        </span>
 
     </div>
 
 
-
-    <div class="" style="height: 200px; background-color: #fff; border: 1px solid #e6e6e6;  border-radius: 10px; margin-top:130px; position: relative">
-
-        <div style="position: absolute; right: 17px; top: -50px">
-            <img height="300px" src="/new/img/hex02.png" alt="">
-            <img  height="90" class="" style="margin-left: -185px; margin-top: 134px;"  src="/panel/assets/images/steps/Διοίκηση Επιχειρήσεων & Οικονομικά - Business.png" alt="">
+    <!-- ========== 1 ============= -->
+    <div class="scholar-box">
+        <div class="centered-text hex-box-left">
+                <img height="170px" src="/new/img/hex01.png" alt="">
+                <img  height="50" class="" style=" margin-top: -110px;"  src="/panel/assets/images/steps/{{$scholarship->study->section[0]->name}}.png" alt="">
         </div>
-        <div style="position: absolute; right: 295px; top: 30px;">
-            <div class="sc-t-dark-grey text-incr-175 font-weight-300 pull-left margin-left-20">
-                {{ $scholarship->study->name}}
+        <div class="xs-hex-box-left">
+            <img height="88px" src="/new/img/hex01upb.png" alt="">
+        </div>
+        <div class="box-left">
+            <div class="title">
+                Σπούδασε {{ $scholarship->study->name}}
             </div>
-            <div class="clear-fix sc-t-grey margin-left-20 margin-right-10 text-incr-115">
-                Το αντικείμενο σπουδών αφορά τους υποψηφίους που στοχεύουν σε <strong> {{ $scholarship->level->name }} </strong> με εξιδίκευση
-                σε  {{ $scholarship->study->name}} .
+            <div class="text">
+                Το αντικείμενο σπουδών αφορά τους υποψηφίους που στοχεύουν σε {{ $scholarship->level->name }}  με ειδικότητα
+                  {{ $scholarship->study->name}} .
             </div>
         </div>
     </div>
 
-
-    <div class="" style="height: 200px; background-color: #fff; border: 1px solid #e6e6e6;  border-radius: 10px; margin-top:130px; position: relative">
-        <div style="position: absolute; top: -50px; left: 17px">
-            {{--<img height="180px"  width="220px" src="/new/img/banner.png" alt="">--}}
-            <img height="300px" src="/new/img/hex03.png" alt="">
-            <img  height="90" class="" style="margin-left: -200px; margin-top: 134px;"  src="/panel/assets/images/steps/step1-reduce2.png" alt="">
+    <!-- ========== 2 ============= -->
+    <div class="scholar-box">
+        <div class="centered-text hex-box-right">
+                <img height="170px" src="/new/img/hex02.png" alt="">
+                <img  height="50" class="" style=" margin-top: -115px;"  src="/images/schools/{{ $scholarship->school->logo}}"  alt="">
         </div>
-        <div style="position: absolute; left: 290px; top: 30px;">
-            <div class="sc-t-dark-grey text-incr-175 font-weight-300 margin-left-10">
+        <div class="xs-hex-box-right">
+            <img height="170px" src="/new/img/hex02upb.png" alt="">
+        </div>
+        <div class="box-right">
+            <div class="title right" style="">
+             Υποτροφία από {{ $scholarship->school->name() }}
+            </div>
+            <div class="text-right" style="" >
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- ========== 3 ============= -->
+    <div class="scholar-box">
+        <div class="centered-text hex-box-left">
+            <img height="170px" src="/new/img/hex03.png" alt="">
+            <img  height="50" class="" style=" margin-top: -118px;"  src="/panel/assets/images/steps/{{ $scholarship->financial->plan}}.png" alt="">
+
+        </div>
+        <div style="" class="box-left">
+            <div class="title">
                 {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} %
             </div>
-            <div class="sc-t-grey margin-top-20 margin-left-10 margin-right-10 text-incr-115">
-                Ο τελικός νικητής μέσα από όλους τους συμμετέχοντες για τη συγκεκριμένη
-                υποτροφία, θα επιδοτηθεί για τις σπουδές του με  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} %.
+            <div class="text">
+                Ο τελικός νικητής από όλους τους συμμετέχοντες για τη συγκεκριμένη
+                υποτροφία, θα αποκτήσει για τις σπουδές του  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} %.
             </div>
         </div>
     </div>
 
+    <!-- ========== 4 ============= -->
+    <div class="scholar-box">
+        <div class="centered-text hex-box-right">
+                <img height="170px" src="/new/img/hex04.png" alt="">
+                <img  height="50" class="" style="margin-top: -115px;"  src="/panel/assets/images/steps/{{$scholarship->criteria->name}}.png" alt="">
+        </div>
+        <div style="" class="box-right">
+            <div class="title right">
+                {{ $scholarship->criteria->name }}
+            </div>
+            <div class="text-right">
+                Morbi efficitur urna quis sapien viverra consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ligula augue,
+                facilisis ut blandit sed, lobortis dignissim quam.
+            </div>
+        </div>
+    </div>
 
-
-
+    <!-- ========== 5 ============= -->
+    <div class="scholar-box">
+        <div class="centered-text hex-box-left">
+            <img height="170px" src="/new/img/hex05.png" alt="">
+            <img  height="50" class="" style="margin-top: -118px;"  src="/panel/assets/images/steps/terms.png" alt="">
+        </div>
+        <div class="box-left" style="">
+            <div class="title">
+               Όροι & Δικαίωμα Συμμετοχής
+            </div>
+            <div class="text">
+                {{--htmlentities()--}}
+                {{ $scholarship->terms }}
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
-
-
-
-
-
-<!-- Teacher Profile Section. -->
-
-<main id="main"  class="">
-
-   <div class="container">
-
-       <div class="" style="overflow-x: hidden" id="">
-           <div class="margin-bot-15 sc-t-dark-grey margin-top-50">
-
-               <div class="row">
-
-                   <div class="col-sm-12">
-
-                       Terms( σε html): <h4>{{ $scholarship->terms }}</h4>
-                       <hr>
-                       Exams(Boolean): <h4>{{ $scholarship->exams }}</h4>
-                       <hr>
-                       Exam Date(Carbon): <h4>{{ $scholarship->exams_date }}</h4>
-
-                   </div>
-
-               </div>
-
-           </div>
-       </div>
-   </div>
-
-</main>
-
-
+{{--<div style="margin-top: 140px"></div>--}}
 <!-- Footer -->
 @include('public.footer')
 
 </body>
 
+
+<script>
+    angular.module("scholarshipApp",[])
+            .controller("scholarshipCtrl",function ($scope,$http) {
+
+//                $scope.scholarship = $http.get("/api/scholarship/"+id)
+//                        .success(function (data) {
+//                             console.log(data);
+//                            $scope.scholarship=data
+//
+//                        })
+            })
+</script>
 </html>

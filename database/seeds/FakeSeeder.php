@@ -376,7 +376,19 @@ class FakeSeeder extends Seeder
         $this->createScholarship($school11->id, 2, 200, 437, 20, 1, 1, 3);
         $s = $this->createScholarship($school11->id, 1, 30, 438, 21, 2, 1);
 
-        $this->createTerms($school11->id, 'dafjvjhadfjdf', true);
+        $this->createTerms($school1->id, '<ul>
+<li>Οι υποψήφιοι που επιθυμούν να συμμετάσχουν στις εξετάσεις για προπτυχιακές σπουδές θα πρέπει να είναι <strong> έως 24 ετών </strong>.</li>
+<li>Οι υποψήφιοι θα πρέπει να κατέχουν απολυτήριο του ενιαίου Λυκείου.</li>
+<li>Οι υποψήφιοι θα πρέπει να είναι κάτοχοι πτυχίου Αγγλικών σε επίπεδο Β2 της τελευταίας διετίας.</li>
+<li>Δεν έχουν δικαίωμα συμμετοχής στις υποτροφίες προπτυχιακών προγραμμάτων όσοι φοιτητές είναι ήδη εγγεγραμμένοι στο ACT.</li>
+</ul>', true);
+        $this->createTerms($school2->id, 'Κείμενο όρων συμμετοχής στην υποτροφία College. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ligula augue, f
+        acilisis ut blandit sed, lobortis dignissim quam. Cras eros orci, mattis a tincidunt a, mollis in ex. Nam leo quam, molestie vel nisl et, sodales accumsan risus.
+        Vestibulum eu ultricies nisi, eget facilisis ligula. Curabitur sit amet lacinia justo, non feugiat eros.', true);
+        $this->createTerms($school3->id, 'Κείμενο όρων συμμετοχής στην υποτροφία IEK. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+        Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin viverra odio eget justo volutpat, ac scelerisque lacus malesuada. Morbi efficitur urna quis sapien
+        viverra consectetur.', true);
+        $this->createTerms($school11->id, 'Κείμενο όρων συμμετοχής στην υποτροφία', true);
         $this->createTerms($school11->id, '<strong>KEIMENO</strong>', false, 38);
         $this->createTerms($school11->id, '<strong>TEST</strong>', false, $s->id);
 

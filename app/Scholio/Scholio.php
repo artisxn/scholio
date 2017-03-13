@@ -58,7 +58,7 @@ class Scholio
 
             return ['lat' => $lati, 'lng' => $longi];
         } else {
-            return 'GEOCODE ERROR';
+            return( 'Geocode Error');
         }
     }
 
