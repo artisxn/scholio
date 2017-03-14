@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +55,7 @@
 
     </style>
 </head>
-<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="scholarshipApp"  ng-controller="scholarshipCtrl" data-ng-init="" ng-cloak  >
+<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="scholarshipApp"  ng-controller="scholarshipCtrl" data-ng-init="init()" ng-cloak  >
 <!-- Scholio Header -->
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
@@ -172,8 +169,8 @@
                 <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
             </span>
             <span class="col-xs-2 col-sm-2 col-md-1 col-lg-3 align-right">
-                <div class="">34</div>
-                <div class="margin-top-10">123</div>
+                <div class="">@{{scholarship.length}}</div>
+                <div class="margin-top-10">@{{scholarship.interested}}</div>
             </span>
 
         </div>
@@ -185,8 +182,8 @@
                 <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
             </span>
             <span class="col-xxxs-5 col-xs-4 col-sm-5 col-md-5 col-lg-5 align-right">
-                <div class="">10 Μαϊ 2017</div>
-                <div class="margin-top-10">30 Σεπ 2017</div>
+                <div class="">@{{scholarship.created}}</div>
+                <div class="margin-top-10">@{{scholarship.end}}</div>
             </span>
 
         </div>
@@ -199,7 +196,7 @@
             </span>
             <span class=" col-xxxs-5 col-xs-4 col-sm-5 col-md-5col-lg-4 align-right" >
                 <div class="" >{{ $scholarship->exams }} NAI</div>
-                <div class="margin-top-10">{{ $scholarship->exams_date }} 25 Σεπ 2017</div>
+                <div class="margin-top-10">@{{scholarship.exams}}</div>
             </span>
 
         </div>
@@ -366,12 +363,21 @@
     angular.module("scholarshipApp",[])
             .controller("scholarshipCtrl",function ($scope,$http) {
 
-//                $scope.scholarship = $http.get("/api/scholarship/"+id)
-//                        .success(function (data) {
-//                             console.log(data);
-//                            $scope.scholarship=data
-//
-//                        })
+                 $scope.init = function(){
+                    $scope.scholarship = $http.get("/api/scholarship/get/1", {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': window.Scholio.csrfToken
+                                    }
+                                })
+                            .success(function (data) {
+                                 console.log(data);
+                                $scope.scholarship=data
+
+                            })
+                }
+
+
             })
 </script>
 </html>

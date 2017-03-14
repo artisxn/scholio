@@ -93,8 +93,7 @@ Route::get('/test/results/{type}', 'ApiController@testResults');
 Route::post('search/school/type', 'RoutesController@searchSchoolType');
 Route::get('/test/{school}', 'RoutesController@testSchools');
 
-
 /* ===== TESTING ROUTE FOR SCHOLARSIPS RESULTS ====== */
 Route::get('/public/scholarships/', function () {
-    return ('/public/results/scholarships');
+    return view('public.results.scholarships');
 });

@@ -294,11 +294,13 @@
                         </div>
 
                         <ul style="list-style-type: none;" id="cards">
-                            <li class="" ng-repeat="">
+                            <li class=""
+                            {{-- ng-repeat="" --}}
+                            >
 
                                 <div class="card clear-fix margin-bot-25">
 
-                                    <div class="card-ribbon">
+                                    <div class="card-ribbon hidden">
                                         <div  ng-show="school.top==5" class="ribbon top5"><span style="font-size: smaller">t@{{school.top}}</span></div>
                                         <div  ng-show="school.top==10" class="ribbon top10"><span style="font-size: smaller">top@{{school.top}}</span></div>
                                         <div  ng-show="school.top==20" class="ribbon top20"><span style="font-size: smaller">top@{{school.top}}</span></div>
@@ -334,7 +336,7 @@
                                         <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
                                             <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                                             <span class="pull-left pad-left-5">Υποτροφίες</span>
-                                            <span class="pull-right badge"> @{{school.lengthScholarships}}</span>
+                                            <span class="pull-right badge"></span>
                                             <br>
                                             <div class="pad-top-5"></div>
                                             <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
