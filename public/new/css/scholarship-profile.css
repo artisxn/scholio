@@ -176,20 +176,26 @@ body {
 .logo{position: absolute; top: 285px; left: 30px; width: 100px;}
 
 /*.box1{min-height: 200px; background-color: #fafafa; border: 1px solid #ccc}*/
-.scholar-box{min-height: 150px; background-color: #fff; border: 1px solid #00bcd4;  border-radius: 10px; margin-top:120px; position: relative}
-.hex-box-left{position: absolute; top:-65px; left: 17px; width: 150px;height: 175px; }
-.hex-box-right{position: absolute; top:-65px; right: 17px; width: 150px;height: 175px;}
+.scholar-box{min-height: 140px; background-color: #fff; border: 1px solid #00bcd4;
+    border-radius: 10px; margin-top:120px; position: relative; padding-bottom: 12px;}
+.hex-box-left{position: absolute; top:-61px; left: 17px; width: 150px;height: 175px; }
+.hex-box-right{position: absolute; top:-61px; right: 17px; width: 150px;height: 175px;}
 
-.box-left{ color: #888; margin-top: 25px; margin-left: 190px; margin-right: 5px}
-.box-right{color: #888; margin-top: 25px; margin-right: 190px;}
+.hex {height: 160px}
+.hex-in{height: 50px}
+.hex-in-xs{height: 80px}
+
+.box-left{ color: #888; margin-top: 25px; margin-left: 180px; margin-right: 5px}
+.box-right{color: #888; margin-top: 25px; margin-right: 180px;}
 .title{font-weight: 400; font-size: 150%; margin-top: 10px;}
 .right{float: right; clear-after: both; text-align: right; }
 .text{font-weight: 300; font-size: 110%;  clear: both; padding-right: 5px;}
 .text-right{font-weight: 300; font-size: 110%;  clear: both; padding-left: 20%; float: right}
 
-.xs-hex-box-left,.xs-hex-box-right{display: none; position: absolute; top: -64px;}
+.xs-hex-box-left,.xs-hex-box-right{display: none; position: absolute; top: -58px;}
 .xs-hex-box-left{left: 20px;}
-.xs-hex-box-right{right: 20px; top: -64px;}
+.xs-hex-box-right{right: 20px;}
+
 
 
 /*=============================================*/
@@ -287,19 +293,18 @@ body {
 
 }
 @media (max-width: 800px) {
-    .scholar-box {  min-height: 165px;  }
+    /*.scholar-box {  min-height: 165px;  }*/
 }
 
 @media (max-width: 750px) {
-    .scholar-box {  min-height: 185px;  }
+    /*.scholar-box {  min-height: 185px;  }*/
 }
 
 @media (max-width: 600px) {
 
-    .scholar-box{min-height: 190px; margin-top: 90px;}
+    /*.scholar-box{min-height: 190px; margin-top: 90px;}*/
     .hex-box-left,.hex-box-right{display: none}
     .xs-hex-box-left,.xs-hex-box-right{display: block}
-    .xs-hex-box-right{top: -65px}
     .box-right{margin: 30px 0; padding: 0 20px 0 0;}
     .box-left {margin-top: 30px; margin-left: 30px; }
     .right{padding: 0  0 0 20px;  margin: 0}
@@ -337,14 +342,14 @@ body {
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     .photo-box{ min-height: 390px; }
-    .scholar-box{min-height: 200px; padding-bottom: 20px;}
+    /*.scholar-box{min-height: 200px; padding-bottom: 20px;}*/
 
 }
 
 
 @media (max-width: 414px) {
     .line{margin-top: 20px}
-    .scholar-box{min-height: 225px;}
+    /*.scholar-box{min-height: 225px;}*/
 }
 
 @media (max-width: 370px) {

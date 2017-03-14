@@ -154,7 +154,7 @@
 {{--</div>--}}
 
 <div class="container cover">
-    <img class="trophy" src="/new/img/trophy.png" alt="">
+    <img class="trophy" src="/new/img/trophy3.png" alt="">
     {{--<img class="grad" src="/new/img/Graduation.png" alt="">--}}
 
     <div class="Hero1"> Υποτροφία που προσφέρεται από: </div>
@@ -272,11 +272,11 @@
     <!-- ========== 1 ============= -->
     <div class="scholar-box">
         <div class="centered-text hex-box-left">
-                <img height="170px" src="/new/img/hex01.png" alt="">
-                <img  height="50" class="" style=" margin-top: -110px;"  src="/panel/assets/images/steps/{{$scholarship->study->section[0]->name}}.png" alt="">
+                <img class="hex" src="/new/img/hex01.png" alt="">
+                <img class="hex-in" style="margin-top: -110px;"  src="/panel/assets/images/steps/{{$scholarship->study->section[0]->name}}.png" alt="">
         </div>
         <div class="xs-hex-box-left">
-            <img height="88px" src="/new/img/hex01upb.png" alt="">
+            <img class="hex-in-xs" src="/new/img/hex01upb.png" alt="">
         </div>
         <div class="box-left">
             <div class="title">
@@ -292,22 +292,21 @@
     <!-- ========== 2 ============= -->
     <div class="scholar-box">
         <div class="centered-text hex-box-right">
-                <img height="170px" src="/new/img/hex02.png" alt="">
-                <img  height="50" class="" style=" margin-top: -115px;"  src="/images/schools/{{ $scholarship->school->logo}}"  alt="">
+                <img class="hex" src="/new/img/hex02.png" alt="">
+                <img class="hex-in" style=" margin-top: -115px;"  src="/panel/assets/images/steps/{{$scholarship->criteria->name}}.png"  alt="">
         </div>
         <div class="xs-hex-box-right">
-            <img height="170px" src="/new/img/hex02upb.png" alt="">
+            <img class="hex-in-xs" src="/new/img/hex02upb.png" alt="">
         </div>
         <div class="box-right">
             <div class="title right" style="">
-             Υποτροφία από {{ $scholarship->school->name() }}
+                {{ $scholarship->criteria->name }}
             </div>
             <div class="text-right" style="" >
                 Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
                 Interdum et malesuada fames ac ante ipsum primis in faucibus.
             </div>
-
-
+            <div class="clearfix"></div>
         </div>
 
     </div>
@@ -315,17 +314,20 @@
     <!-- ========== 3 ============= -->
     <div class="scholar-box">
         <div class="centered-text hex-box-left">
-            <img height="170px" src="/new/img/hex03.png" alt="">
-            <img  height="50" class="" style=" margin-top: -118px;"  src="/panel/assets/images/steps/{{ $scholarship->financial->plan}}.png" alt="">
-
+            <img class="hex"  src="/new/img/hex03.png" alt="">
+            <img class="hex-in" style=" margin-top: -118px;"  src="/panel/assets/images/steps/terms.png" alt="">
+        </div>
+        <div class="xs-hex-box-left">
+            <img class="hex-in-xs" src="/new/img/hex03upb.png" alt="">
         </div>
         <div style="" class="box-left">
             <div class="title">
-                {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} %
+                Όροι & Δικαίωμα Συμμετοχής
             </div>
             <div class="text">
-                Ο τελικός νικητής από όλους τους συμμετέχοντες για τη συγκεκριμένη
-                υποτροφία, θα αποκτήσει για τις σπουδές του  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} %.
+                {{--htmlentities()--}}
+                {{ $scholarship->terms }}
+
             </div>
         </div>
     </div>
@@ -333,34 +335,21 @@
     <!-- ========== 4 ============= -->
     <div class="scholar-box">
         <div class="centered-text hex-box-right">
-                <img height="170px" src="/new/img/hex04.png" alt="">
-                <img  height="50" class="" style="margin-top: -115px;"  src="/panel/assets/images/steps/{{$scholarship->criteria->name}}.png" alt="">
+                <img class="hex"  src="/new/img/hex04.png" alt="">
+                <img class="hex-in"  style="margin-top: -115px;"  src="/panel/assets/images/steps/{{ $scholarship->financial->plan}}.png" alt="">
+        </div>
+        <div class="xs-hex-box-right">
+            <img class="hex-in-xs" src="/new/img/hex04upb.png" alt="">
         </div>
         <div style="" class="box-right">
             <div class="title right">
-                {{ $scholarship->criteria->name }}
+                {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} %
             </div>
             <div class="text-right">
-                Morbi efficitur urna quis sapien viverra consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ligula augue,
-                facilisis ut blandit sed, lobortis dignissim quam.
+                Ο τελικός νικητής από όλους τους συμμετέχοντες για τη συγκεκριμένη
+                υποτροφία, θα αποκτήσει για τις σπουδές του  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} %.
             </div>
-        </div>
-    </div>
-
-    <!-- ========== 5 ============= -->
-    <div class="scholar-box">
-        <div class="centered-text hex-box-left">
-            <img height="170px" src="/new/img/hex05.png" alt="">
-            <img  height="50" class="" style="margin-top: -118px;"  src="/panel/assets/images/steps/terms.png" alt="">
-        </div>
-        <div class="box-left" style="">
-            <div class="title">
-               Όροι & Δικαίωμα Συμμετοχής
-            </div>
-            <div class="text">
-                {{--htmlentities()--}}
-                {{ $scholarship->terms }}
-            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>
