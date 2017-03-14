@@ -305,6 +305,8 @@
 
 
                         <div class="clearfix"></div>
+
+                        @if($school->settings->social)
                             <ul class="nav nav-ul socials" id="" style="">
                             <li><a class="lg-pull-left"  href="">
                                     <i style="" class="social fa fa-facebook" aria-hidden="true"></i>
@@ -328,6 +330,7 @@
                                     <i style="" class="social fa fa-google-plus" aria-hidden="true"></i>
                                 </a></li>
                         </ul>
+                        @endif
 
 
                     </div>
@@ -388,7 +391,7 @@
 
                     <!-- Main Info profile ng-repeat -->
 
-
+@if($school->settings->about)
                     <!-- Σχετικά -->
                     <div class="margin-bot-25 slideup slideAbout" id="sxetika">
                         <div  class="section-header">
@@ -410,8 +413,9 @@
                                  <i class="@{{ iconAbout }}"></i></span>
                         </div>
                     </div>
+@endif
 
-
+@if($school->settings->studies)
                     <!-- ======= Σπουδές ========-->
 
                     <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes" style="overflow-x: hidden">
@@ -468,9 +472,9 @@
 
 
                     </div>
+@endif
 
-
-
+@if($school->settings->scholarships)
                     <!-- Υποτροφίες -->
                     <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.lengthScholarships" style="overflow-x: hidden">
                         <div class="section-header3">
@@ -599,8 +603,9 @@
                                  <i class="@{{ iconScholarships }}"></i></span>
                         </div>
                     </div>
+@endif
 
-
+@if($school->settings->reviews)
                     <!-- Αξιολογησεις -->
                     <div class="slideReviews slideup margin-bot-25 " id="reviews" style="overflow-x: hidden">
                         <div class="section-header2">
@@ -623,7 +628,7 @@
                             </div>
 
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
-                                
+
                                 <div class="col-xs-12 col-sm-6">
                                     <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
                                     <span>Πρόγραμμα Σπουδών</span>
@@ -668,8 +673,8 @@
                                     <span  value="@{{getAVG('jobLink')}}" class=" margin-left-20 raty" id="jobLink"></span>
                                     <span> @{{getAVG("jobLink")}}</span>
                                 </div>
-                                
-                               
+
+
                             </div>
 
                         </div>
@@ -701,8 +706,9 @@
                                  <i class="@{{ iconReviews }}"></i></span>
                         </div>
                     </div>
+@endif
 
-
+@if($school->settings->teachers)
                     <!-- Διδακτικό Προσωπικό  -->
                     <div class="slideTeachers slideup margin-bot-25" id="faculty" style="overflow-x: hidden">
                         <div class="section-header3">
@@ -753,11 +759,13 @@
                                  <i class="@{{ iconTeachers }}"></i></span>
                         </div>
                     </div>
+                @endif
                 </div> <!-- //col-lg-9-->
 
 
                 <!-- Right Sidebar  -->
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30">
+                @if($school->settings->info)
                     <div >
                         <div class="box left-box1" style="height: 240px;">
 
@@ -790,8 +798,11 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+
 
                     <div class="">
+                    @if($school->settings->statistics)
                         <div class=" box left-box2 sc-t-grey">
                             <div class="col-lg-12 margin-top-30" id="box-2nd" style="">
                                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
@@ -817,12 +828,16 @@
                                 <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
 
                             </div>
+
                             <div class="clearfix"></div>
                         </div>
+                        @endif
 
+                        @if($school->settings->map)
                         <div class="box" style="margin-top: 30px; margin-bottom: 90px;">
                             <div class=""  id="googleMap" style="height: 270px; width: 100%; "></div>
                         </div>
+                        @endif
 
 
 
@@ -1373,9 +1388,9 @@
 
             if(this.id!="totalRating")
                 window.stars = parseFloat($(this).next(".ng-binding").text());
-            else 
+            else
                 window.stars = parseFloat($(this).parent().find(".lead").text());
-            
+
 
             $(this).raty({
                 score: window.stars,

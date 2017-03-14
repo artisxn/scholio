@@ -181,4 +181,9 @@ class School extends Model
     {
         return $this->hasOne(Dummy::class);
     }
+
+    public function settings()
+    {
+        return $this->hasOne(SchoolSetting::class, 'school_id');
+    }
 }

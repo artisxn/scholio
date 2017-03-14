@@ -14,6 +14,13 @@ use App\User;
 |
  */
 
+Route::get('/settings', function () {
+    if (auth()->user()->role == 'teacher') {
+
+    }
+    return view('panel.pages.school.settings.index');
+})->middleware('auth');
+
 Route::get('dashboard/profile', function () {
     if (auth()->user()->role == 'student') {
         return redirect(route('students-profile'));
