@@ -116,3 +116,11 @@ Route::post('/image/background/save', function () {
     Scholio::updateDummy($school);
     return 'OK';
 })->middleware('auth:api');
+
+Route::post('/school/settings', function () {
+    $school = auth()->user()->info;
+    $settings = $school->settings;
+    $settings->{request()->name} = request()->section;
+    $settings->save();
+    return 'OK';
+})->middleware('auth:api');

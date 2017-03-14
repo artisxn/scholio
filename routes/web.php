@@ -18,7 +18,7 @@ Route::get('/settings', function () {
     if (auth()->user()->role == 'teacher') {
 
     }
-    return;
+    return view('panel.pages.school.settings.index');
 })->middleware('auth');
 
 Route::get('dashboard/profile', function () {

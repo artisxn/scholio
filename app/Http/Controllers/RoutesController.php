@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Scholarship;
+use App\Models\School;
 use App\Models\SocialLink;
 
 class RoutesController extends Controller
@@ -52,7 +53,9 @@ class RoutesController extends Controller
 
     public function publicProfile($id)
     {
-        return view('public.school.profile')->withId($id);
+        $school = School::find(1);
+        // dd($school->settings);
+        return view('public.school.profile')->withId($id)->withSchool($school);
     }
 
     public function redirectDashboard()

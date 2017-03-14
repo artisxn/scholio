@@ -38,6 +38,8 @@
         </ul>
     </li>
 
+    <li class="link"><a href="{{ url('settings') }}" class="{{ request()->path() == 'school/settings' ? 'active' : ''}}"><i class="fa fa-cogs"></i> <span> Ρυθμίσεις </span> </a></li>
+
     <li class="has_sub">
         <a href="#" class=""><i class="ion-ios7-star-half"></i><span> Αξιολογήσεις </span></a>
         <ul class="list-unstyled">

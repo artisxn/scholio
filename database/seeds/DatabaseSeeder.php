@@ -1,7 +1,8 @@
 <?php
 
+use App\Models\School;
+use App\Models\SchoolSetting;
 use App\Scholio\Scholio;
-use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,18 +25,20 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillsTableSeeder::class);
         $this->call(SocialLinksTableSeeder::class);
 
-        foreach (User::all() as $user) {
-            if ($user->role == 'school' && $user->id <= 11) {
-                $address = Scholio::geocode($user->info->address . "," . $user->info->city);
-                if ($address == 'GEOCODE ERROR') {
-                    dd($address);
-                } else {
-                    $lat = $address['lat'];
-                    $lng = $address['lng'];
-                    $user->info->lat = $lat;
-                    $user->info->lng = $lng;
-                    $user->info->save();
-                }
+        foreach (School::all() as $school) {
+            $settings = new SchoolSetting;
+            $settings->school_id = $school->id;
+            $settings->save();
+
+            $address = Scholio::geocode($school->address . "," . $school->city);
+            if ($address == 'GEOCODE ERROR') {
+                dd($address);
+            } else {
+                $lat = $address['lat'];
+                $lng = $address['lng'];
+                $school->lat = $lat;
+                $school->lng = $lng;
+                $school->save();
             }
         }
     }

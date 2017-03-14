@@ -128,7 +128,7 @@ class FakeSeeder extends Seeder
         /*===============   6 NYC   ================*/
         $school6 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nyc'])->id,
-            'address' => '38 Amalias Avenue, Syntagma',
+            'address' => 'Αμαλίας 38, Σύνταγμα',
             'city' => 'Αθήνα',
             'phone' => 2103225961,
             'type_id' => 1,
