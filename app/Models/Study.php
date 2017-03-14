@@ -5,11 +5,9 @@ namespace App\Models;
 use App\Models\Level;
 use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Study extends Model
 {
-    use Searchable;
     /**
      *  Gets the school type that offeres this study
      *
@@ -48,21 +46,5 @@ class Study extends Model
     public function school()
     {
         return $this->belongsToMany(School::class, 'school_study')->withTimestamps();
-    }
-
-    /**
-     * Get the indexable data array for the model.
-     *
-     * @return array
-     */
-    public function toSearchableArray()
-    {
-        $array = $this->toArray();
-        array_push($array, $this->type()->toArray());
-        array_push($array, $this->level()->toArray());
-        array_push($array, $this->section->toArray());
-        array_push($array, $this->school->toArray());
-
-        return $array;
     }
 }
