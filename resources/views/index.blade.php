@@ -94,7 +94,7 @@
         .right-out { bottom: -750px;}
         .right-in { bottom: -240px;}
 
-        .sch-reg-title{left: 40%; width: 400px; position: absolute;}
+        .sch-reg-title{left: 40%; : 400px; position: absolute;}
 
 
         @media  (max-width: 1500px) {
@@ -108,10 +108,52 @@
         @media  (max-width: 1200px) {
             .sch-reg-title {left: 30%; width: 330px;}
         }
+    </style>
 
 
+  <style>
 
 
+   .aa-input-container {
+      display: inline-block;
+      position: relative;
+  }
+    .aa-input-search {
+        width: 100%;
+      height: 40px;
+      border: 1px solid rgba(228, 228, 228, 0.6);
+      border-radius: 3px;
+      /*padding: 12px 28px 12px 12px;*/
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none; }
+      .aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button, .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
+        display: none; }
+    .aa-input-icon {
+      height: 16px;
+      width: 16px;
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+      fill: #e4e4e4; }
+    .aa-dropdown-menu {
+      background-color: #fff;
+      border: 1px solid rgba(228, 228, 228, 0.6);
+      min-width: 300px;
+      margin-top: 10px;
+      box-sizing: border-box; }
+    .aa-suggestion {
+      padding: 12px;
+      cursor: pointer;
+    }
+    .aa-suggestion + .aa-suggestion {
+        border-top: 1px solid rgba(228, 228, 228, 0.6);
+    }
+      .aa-suggestion:hover, .aa-suggestion.aa-cursor {
+        background-color: rgba(241, 241, 241, 0.35); }
     </style>
 
 </head>
@@ -256,12 +298,16 @@
                        {{--</div>--}}
 
                         <!-- Επιλογή Εκπαιδευτικών Ιδρυματων ==== angular typeahead  -->
-                       <div class="col-md-5 col-sm-6" id="options">
+                     {{--   <div class="col-md-5 col-sm-6" id="options">
                            <input type="text" ng-model="selected" value="selected" placeholder="Εκπαιδευτικό Ίδρυμα" autocomplete="off"
                                   uib-typeahead="state.id as state.type for state in schoolTypess | filter:$viewValue | limitTo: 8"
                                   typeahead-template-url="customTemplate.html" class="form-control test" typeahead-show-hint="true"
                                   typeahead-min-length="0" typeahead-input-formatter="formatLabel($model)">
-                       </div>
+                        </div> --}}
+                                  <div class="aa-input-container col-md-5 col-sm-6" id="options">
+                                            <input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου" name="search" autocomplete="on" />
+                                </div>
+
 
                        <input class="hidden" style="color: black!important;" name="type" value="@{{ selected }}" />
 
@@ -565,6 +611,30 @@
         <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
     </a>
 
+</script>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<!-- Initialize autocomplete menu -->
+<script>
+var client = algoliasearch("FM3GHJGA1T", "de6f693844a49775415380088208bc66");
+var index = client.initIndex('schools');
+//initialize autocomplete on search input (ID selector must match)
+autocomplete('#aa-search-input',
+{ hint: true , debug: true }, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    //value to be displayed in input control after user's suggestion selection
+    displayKey: '',
+    //hash of templates used when rendering dataset
+    templates: {
+        //'suggestion' templating function used to render a single suggestion
+        suggestion: function(suggestion) {
+            // console.log(suggestion);
+          return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
+            suggestion.admin.name + '</span></a>';
+        }
+    }
+});
 </script>
 
 
