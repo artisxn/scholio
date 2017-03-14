@@ -9,9 +9,11 @@ use App\Models\SchoolTypes;
 use App\Models\Study;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class School extends Model
 {
+    use Searchable;
     /**
      * The attributes that are mass assignable.
      *
@@ -36,6 +38,16 @@ class School extends Model
     protected $hidden = [
         'user_id', 'approved', 'created_at', 'updated_at',
     ];
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'schools';
+    }
 
     /**
      *  Gets the type of the School

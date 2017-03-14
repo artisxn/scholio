@@ -15,7 +15,7 @@ class Level extends Model
      */
     public function type()
     {
-        return $this->belongsTo(SchoolTypes::class, 'school_type_id');
+        return $this->belongsTo(SchoolTypes::class, 'school_types_id');
     }
 
     /**

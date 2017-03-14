@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Scholarship;
+use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
@@ -13,6 +15,19 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+Route::get('search/scholarship/{q}', function ($q) {
+    $scholarships = Scholarship::search($q)->get();
+    foreach ($scholarships as $s) {
+        echo $s->school->name() . ' - ' . $s->criteria->name . ' - ' . $s->study->name . '<br>';
+    }
+    // return view('public.results.algolia-schools', compact('schools'));
+});
+
+Route::get('search/school/{q}', function ($q) {
+    $schools = School::search($q)->get();
+    return view('public.results.algolia-schools', compact('schools'));
+});
 
 Route::get('/settings', function () {
     if (auth()->user()->role == 'teacher') {
@@ -52,6 +67,28 @@ Route::get('/scholarship/{scholarship}/edit', 'RoutesController@scholarshipEdit'
 Route::post('/scholarship/{scholarship}/update', 'RoutesController@scholarshipUpdate');
 Route::get('/scholarship/{scholarship}/delete', 'RoutesController@scholarshipDelete');
 
+Route::get('algolia', function () {
+    // $schools = School::all();
+    // $schools->load('study.section.level', 'type', 'scholarship.study.section.level', 'scholarship.criteria', 'admin');
+    // $schools->searchable();
+    // $scholarships = Scholarship::all();
+    // $scholarships->load('study.section.level', 'school.admin', 'school.type', 'criteria');
+    // $scholarships->searchable();
+    // return 'OK';
+    // return $schools;
+});
+
+Route::get('qqq/{q}', function ($q) {
+    // $computer = App\Models\Study::search($q)->get();
+    // $schol = App\Models\Scholarship::search($q)->get();
+    $school = App\Models\School::search($q)->get();
+
+    echo '<h1>School</h1> ';
+    foreach ($school as $s) {
+        echo $s->name() . '<br />';
+    }
+    return 'ok';
+});
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 
 Route::get('connection/{id}/confirm', function ($id) {
