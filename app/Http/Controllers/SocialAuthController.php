@@ -43,6 +43,7 @@ class SocialAuthController extends Controller
     public function handleProviderCallback($provider = null)
     {
         $user_provider = Socialite::driver($provider)->user();
+//        dd($user_provider);
         $token = $user_provider->token;
 
         $user = User::where('email', $user_provider->getEmail())->first();
