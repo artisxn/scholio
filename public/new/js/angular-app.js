@@ -1,8 +1,8 @@
 (function(window, document) {
 
-  angular.module("landingApp",['ui.bootstrap'])
+  angular.module("landingApp",['ui.bootstrap','algoliasearch', 'algolia.autocomplete'])
 
-      .controller("landCtrl",function ($scope, $http) {
+      .controller("landCtrl",function ($scope, $http,algolia) {
 
         var fetchTypes = function(){
           $http.get('api/school/types/all').success(function(data){
@@ -113,6 +113,40 @@
               types: '(cities)'
           };
           $scope.details2 = '';
+
+
+
+          //========Algolia Autocomplete=================
+
+
+          var client = algolia.Client('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
+          var index = client.initIndex('schools');
+
+          $scope.getDatasets = function() {
+            ;
+              return {
+                  source: algolia.sources.hits(index, { hitsPerPage: 5 }),
+                  displayKey: '',
+                  openOnFocus: true,
+                  templates: {
+                      suggestion: function(suggestion) {
+                          return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
+                              suggestion.admin.name + '</span></a>';
+                      }
+                  }
+              };
+              console.log(suggestion._highlightResult)
+          };
+
+          $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {
+              console.log(suggestion, dataset);
+          });
+
+
+
+
+
+
 
 
       })

@@ -67,6 +67,9 @@
     {{--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>--}}
     {{--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script>--}}
 
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.angular.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 
     <script src="/new/js/angular-app.js"></script>
@@ -114,48 +117,39 @@
 
 
   <style>
+      .algolia-autocomplete {
+          width: 100%;
+          outline:none!important;
+          border-radius:5px;
+      }
+      .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+          width: 100%;
+      }
+
+      .algolia-autocomplete .aa-hint {
+          /*color: black;*/
+      }
+      .algolia-autocomplete .aa-dropdown-menu {
+          width: 100%;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-top: none;
+      }
+      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+          cursor: pointer;
+          padding: 5px 4px;
+      }
+      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+          background-color: #ebebeb;
+          /*color: black;*/
+      }
+      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+          font-weight: bold;
+          font-style: normal;
+      }
 
 
-   .aa-input-container {
-      display: inline-block;
-      position: relative;
-  }
-    .aa-input-search {
-        width: 100%;
-      height: 40px;
-      border: 1px solid rgba(228, 228, 228, 0.6);
-      border-radius: 3px;
-      /*padding: 12px 28px 12px 12px;*/
-      box-sizing: border-box;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none; }
-      .aa-input-search::-webkit-search-decoration, .aa-input-search::-webkit-search-cancel-button, .aa-input-search::-webkit-search-results-button, .aa-input-search::-webkit-search-results-decoration {
-        display: none; }
-    .aa-input-icon {
-      height: 16px;
-      width: 16px;
-      position: absolute;
-      top: 50%;
-      right: 16px;
-      -webkit-transform: translateY(-50%);
-              transform: translateY(-50%);
-      fill: #e4e4e4; }
-    .aa-dropdown-menu {
-      background-color: #fff;
-      border: 1px solid rgba(228, 228, 228, 0.6);
-      min-width: 300px;
-      margin-top: 10px;
-      box-sizing: border-box; }
-    .aa-suggestion {
-      padding: 12px;
-      cursor: pointer;
-    }
-    .aa-suggestion + .aa-suggestion {
-        border-top: 1px solid rgba(228, 228, 228, 0.6);
-    }
-      .aa-suggestion:hover, .aa-suggestion.aa-cursor {
-        background-color: rgba(241, 241, 241, 0.35); }
+
     </style>
 
 </head>
@@ -322,9 +316,22 @@
                                   typeahead-template-url="customTemplate.html" class="form-control test" typeahead-show-hint="true"
                                   typeahead-min-length="0" typeahead-input-formatter="formatLabel($model)">
                         </div> --}}
-                                  <div class="aa-input-container col-md-5 col-sm-6" id="options">
-                                            <input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου" name="search" autocomplete="on" />
-                                </div>
+
+
+
+
+                                  {{--<div class="aa-input-container col-md-5 col-sm-6" id="options">--}}
+                                            {{--<input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου" name="search" autocomplete="on" />--}}
+                                {{--</div>--}}
+
+
+                       <div class="col-md-5 col-sm-6" id="">
+                       <div>
+                           <input type="text" id="search-input" autocomplete aa-datasets="getDatasets()" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου"/>
+                       </div>
+                           </div>
+
+
 
 
                        <input class="hidden" style="color: black!important;" name="type" value="@{{ selected }}" />
@@ -741,31 +748,6 @@
     </a>
 
 </script>
-
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-<!-- Initialize autocomplete menu -->
-<script>
-var client = algoliasearch("FM3GHJGA1T", "de6f693844a49775415380088208bc66");
-var index = client.initIndex('schools');
-//initialize autocomplete on search input (ID selector must match)
-autocomplete('#aa-search-input',
-{ hint: true , debug: true }, {
-    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
-    //value to be displayed in input control after user's suggestion selection
-    displayKey: '',
-    //hash of templates used when rendering dataset
-    templates: {
-        //'suggestion' templating function used to render a single suggestion
-        suggestion: function(suggestion) {
-            // console.log(suggestion);
-          return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
-            suggestion.admin.name + '</span></a>';
-        }
-    }
-});
-</script>
-
 
 <script>
 
