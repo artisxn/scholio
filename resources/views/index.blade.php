@@ -99,15 +99,24 @@
         .right-out { bottom: -750px;}
         .right-in { bottom: -240px;}
 
-        .sch-reg-title{left: 40%; : 400px; position: absolute;}
+        .sch-reg-title{left: 37%; : 400px; position: absolute; max-width: 400px}
 
 
-        @media  (max-width: 1500px) {
-            .sch-reg-title {left: 36%; width: 380px;}
+        @media  (max-width: 2500px) {
+            .sch-reg-title {left: 42%; width: 380px;}
         }
 
-        @media  (max-width: 1300px) {
-            .sch-reg-title {left: 31%; width: 370px;}
+        @media  (max-width: 2100px) {
+            .sch-reg-title {left: 41%; width: 380px;}
+        }
+
+
+        @media  (max-width: 1800px) {
+            .sch-reg-title {left: 39%; width: 380px;}
+        }
+
+        @media  (max-width: 1440px) {
+            .sch-reg-title {left: 35%; width: 370px;}
         }
 
         @media  (max-width: 1200px) {
@@ -153,7 +162,7 @@
     </style>
 
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
+<body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
 
 <!-- Scholio Header -->
 <header class="navbar navbar-top sc-landing-header" id="header" >
@@ -267,9 +276,9 @@
 </header>
 
 
-<!-- Scholio Main Section. -->
+<!-- Scholio Main Section -->
 <main id="main"  class="">
-    <!-- Scholio Landing Page Firt Section -->
+    <!-- Scholio Landing Page First Section -->
     <section id="sc-landing-sec1" class="sc-landing-sec1">
         <div class="container">
             <div class="sc-landing-sec1-content">
@@ -297,8 +306,8 @@
         </div>
         <!-- Searchbar -->
 
-           <div class="sc-landing-search-bar-holder">
-               <div class="container sc-landing-search-bar-content">
+           <div class="container search-container">
+               <div class=" sc-landing-search-bar-content">
                    <form action="/search/school/type" method="post">
                        {{ csrf_field() }}
                        <!-- SELECT Drop Down -->
@@ -327,7 +336,9 @@
 
                        <div class="col-md-5 col-sm-6" id="">
                        <div>
-                           <input type="text" id="search-input" autocomplete aa-datasets="getDatasets()" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου"/>
+                           <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets()" placeholder="Αναζήτησε πχ Νομική Κολλέγιο, ή Αγγλικά, ή Ιδιωτικό Λύκειο"/>
+                           <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
+                               <img height="18px" src="/new/img/Algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
                        </div>
                            </div>
 
@@ -363,8 +374,6 @@
                    </form>
                </div>
            </div>
-
-
 
     </section>
 
@@ -412,7 +421,7 @@
             <div class="sc-landing-secNew-content">
                 <div class="row">
 
-                    <div class=" sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm">Η ολοκληρωμένη λύση προβολής για κάθε εκπαιδευτικό ίδρυμα</div>
+                    <div class="sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm">Η ολοκληρωμένη λύση προβολής για κάθε εκπαιδευτικό ίδρυμα</div>
 
                     <div style="position: relative" class="hidden-xs"><img src="/new/img/ipad6.png" class="ipad"></div>
 
@@ -595,7 +604,6 @@
         </div>
     </section>
 
-
     <!-- Fifth Section -->
     <section id="sc-landing-sec5" class="sc-landing-sec3" style="overflow-x: hidden!important;">
        <div class="container">
@@ -710,31 +718,8 @@
 
 </main>
 
-<footer id="sc-landing-sec5" class="sc-landing-footer sc-dark-blue" style="overflow-x: hidden!important;">
-    <div class="container">
-        <div class="row  ">
-            <div class="pull-left pad-top-50 text-incr-125 col-md-5  col-sm-6 col-xs-5" style="overflow-x: hidden!important;">
-                <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
-                <span  class="clear-fix pad-top-10 pad-bot-10">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
-                <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
-            </div>
-
-            <div class="pull-right pad-top-40 text-incr-175  pad-right-20" style="overflow-x: hidden!important;">
-                <a href="#" class="sc-t-white "> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
-                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
-                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
-                <br>
-                <span>  <a href="#" class="sc-t-white "><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
-                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
-                <span>  <a href="#" class="sc-t-white margin-left-20 "><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
-            </div>
-        </div>
-
-        <div class=" centered-text">
-            <p class="sc-t-white pad-top-100">© 2016 schol.io . Με την επιφύλαξη κάθε δικαιώματος.</p>
-        </div>
-    </div>
-</footer>
+<!-- Footer -->
+@include('public.footer')
 
 </body>
 
