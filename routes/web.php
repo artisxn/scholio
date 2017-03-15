@@ -68,14 +68,13 @@ Route::post('/scholarship/{scholarship}/update', 'RoutesController@scholarshipUp
 Route::get('/scholarship/{scholarship}/delete', 'RoutesController@scholarshipDelete');
 
 Route::get('algolia', function () {
-    // $schools = School::all();
-    // $schools->load('study.section.level', 'type', 'scholarship.study.section.level', 'scholarship.criteria', 'admin');
-    // $schools->searchable();
-    // $scholarships = Scholarship::all();
-    // $scholarships->load('study.section.level', 'school.admin', 'school.type', 'criteria');
-    // $scholarships->searchable();
-    // return 'OK';
-    // return $schools;
+    $schools = School::all();
+    $schools->load('study.section.level', 'type', 'scholarship.study.section.level', 'scholarship.criteria', 'admin');
+    $schools->searchable();
+    $scholarships = Scholarship::all();
+    $scholarships->load('study.section.level', 'school.admin', 'school.type', 'criteria');
+    $scholarships->searchable();
+    return 'OK';
 });
 
 Route::get('qqq/{q}', function ($q) {
