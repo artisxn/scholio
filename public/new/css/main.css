@@ -189,6 +189,7 @@ a:hover  {  color: #FD6A33;  }
 
 
 
+
 /*=============================================*/
 /*  /////////////////////////////////////////  */
 /* ------------- TEXTS ------------- */
@@ -249,6 +250,47 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 .img-mini {width: 50px;}
 .img-med {width: 50px;}
 .img-thumb {width: 65px;}
+
+
+/*=============================================*/
+/*  /////////////////////////////////////////  */
+/* ------ Algolia Angular Search Input ------- */
+/*  /////////////////////////////////////////  */
+/*=============================================*/
+
+.algolia-autocomplete {
+    width: 100%;
+    outline:none!important;
+    border-radius:5px;
+}
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+    width: 100%;
+}
+
+.algolia-autocomplete .aa-hint {
+    /*color: black;*/
+}
+.algolia-autocomplete .aa-dropdown-menu {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+    cursor: pointer;
+    padding: 5px 4px;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+    background-color: #ebebeb;
+    /*color: black;*/
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+/*=============================================*/
+
 
 
 @media (min-width: 1450px)  {

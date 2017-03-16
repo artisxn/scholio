@@ -123,7 +123,6 @@
           var index = client.initIndex('schools');
 
           $scope.getDatasets = function() {
-            ;
               return {
                   source: algolia.sources.hits(index, { hitsPerPage: 5 }),
                   displayKey: '',
@@ -135,7 +134,7 @@
                       }
                   }
               };
-              console.log(suggestion._highlightResult)
+              //console.log(suggestion._highlightResult)
           };
 
           $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {

@@ -14,6 +14,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon-72.ico">
     <link rel="apple-touch-icon-precomposed" href="img/favicon-57.ico">
 
+
     <!--====== CSS  Styles =======-->
     @include('public.styles')
 
@@ -21,13 +22,22 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
     <!-- Ribbon CSS -->
-    <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">
+{{--    <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">--}}
 
     <!-- Results CSS -->
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
+
+    <!-- Algolia InstantSearch CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+
+
+    <!-- Algolia CSS -->
+    <link rel="stylesheet" href="/new/css/algolia.css"></link>
+
+
     <!-- Input Range CSS -->
-    <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">
+{{--    <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">--}}
 
     <!-- Angular Material  CSS -->
     {{-- <link href="{{asset('new/css/angular-material.css')}}" rel="stylesheet">--}}
@@ -47,9 +57,12 @@
 
     <!-- Angular js-->
     <!--  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.20/angular.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-animate.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-animate.js"></script>--}}
+    {{--<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script>--}}
+    {{--<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.angular.min.js"></script>--}}
+
 
     {{--Angular Library required By Angular Material UI--}}
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-aria.min.js"></script>--}}
@@ -62,7 +75,7 @@
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.min.js"></script>--}}
 
     <!-- Rating js-->
-    <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
+    {{--<script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>--}}
 
     <!-- javascript Results -->
     {{--<script src="{{asset('/new/js/')}}"></script>--}}
@@ -72,6 +85,15 @@
 {{--    <script src="{{asset('/new/js/')}}"></script>--}}
 
     {{--<script src="{{asset('/new/js/ng-map.min.js')}}"></script>--}}
+
+        <!--  Algolia & Algolia Autocomplete -->
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+
+    <!-- Algolia InstantSearch.JS -->
+    <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+
 
     <script>
     window.SelectedLocation = "{{ session()->pull('location') }}"
@@ -227,39 +249,22 @@
 
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs " style="">
                     <div class=" box left-box1">
-                        <p class="text-incr-115 margin-left-10"> Πεδία Αναζήτησης</p>
 
-                        <div class="centered-text"  ng-cloak>
-
-                            <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="90%" ng-model="categoryFilter" ng-change="" ng-cloak>
-                                <option id="drop1" data-icon="glyphicon glyphicon-education" data-subtext="" value="all"
-                                        data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>
-
-                                <option data-icon="fa fa-university" data-subtext="" class="kf-option" value="1">&nbsp; Κολλέγια</option>
-                                <option data-icon="fa fa-cogs" data-subtext="" class="kf-option" value="2">&nbsp; IEK </option>
-                                <option data-icon="fa fa-pencil" data-subtext="" class="kf-option" value="3">&nbsp;  Φροντιστήρια </option>
-                                <option data-icon="fa fa-flag" data-subtext="" class="kf-option" value="4">&nbsp;  Ξένες Γλώσσες </option>
-                                <option data-icon="fa fa-book" data-subtext="" class="kf-option" value="6">&nbsp;  Ιδιωτικά Σχολεία</option>
-                            </select>
-                        </div>
-                        <div class="input-group centered-text pad-top-20">
-                            <span class="input-group-addon text-incr-115 kf-gray" id="basic-addon1"><i class="fa fa-map-marker margin-right-5"></i></span>
-                            {{--<input type="text" class="kf-option" id="input1" placeholder="Περιοχή/πόλη" ng-model="cityFilter">--}}
+                        <div class="centered-text"  >
+                            <p class="text-incr-115">Αναζήτηση</p>
+                            <div class="aa-input-container" id="">
+                                <input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση..." name="search" autocomplete="on" />
+                            </div>
 
 
-                            {{--typeahead-show-hint="true"--}}
-                            <input type="text" name="loc" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
-                                   uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                   typeahead-no-results="noResults" autocomplete="off" ng-enter="">
-
+                            <div class="aa-input-container margin-top-20" id="search-box">
+                            </div>
 
 
                         </div>
-                                {{--====== Input Range ======--}}
-                        <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%;" ng-if="!showAll">
-                            <input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="showMap(maxDistance)">
-                            <span>Απόσταση μέχρι: &nbsp;&nbs@{{ maxDistance }} km </span>
-                        </div>
+
+
+
 
                     </div>
 
@@ -269,176 +274,21 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 kf-col-xs-10 kf-col-xs-offset-1" id="main">
 
 
-                    <div class="pull-left margin-top-10 margin-bot-15" ng-cloak>
-                        <span ng-if="resultsFiltered.length==0" ng-cloak class="sc-t-primary">  Βρέθηκαν αποτελέσματα</span>
+                    <div class="pull-left margin-top-10 margin-bot-15" >
+                        <span  ng-cloak class="sc-t-primary">  Βρέθηκαν αποτελέσματα</span>
 
-                    </div>
-
-
-
-                    <!-- CARD VIEW-->
-                    <div ng-show="view=='card'" class="main-results">
-
-                        <div class="pull-right margin-top-15 margin-bot-15 sm-pull-left xs-pull-left" >
-                            <span class="xs-text-incr-85">
-                                Ταξινόμηση με βάση
-                            </span>
-
-                                <form class="pull-right margin-left-10 margin-top--8 font-90">
-                                    <select title="" class="selectpicker font-90 shortDrop" data-width="140px" ng-model="orderSelect">
-                                        <option data-icon="fa fa-user" data-subtext="" class="font-90" value="lengthStudents">&nbsp; Αιτήσεις</option>
-                                        <option data-icon="fa fa-map-marker" data-subtext="" class="font-90" value="-distance">&nbsp; Ενδιαφέρον</option>
-                                        <option data-icon="fa fa-star-half-o" data-subtext="" class="font-90" value="reviews">&nbsp; Αξιολόγηση</option>
-                                    </select>
-                                </form>
-                        </div>
-
-                        <ul style="list-style-type: none;" id="cards">
-                            <li class=""
-                            {{-- ng-repeat="" --}}
-                            >
-
-                                <div class="card clear-fix margin-bot-25">
-
-                                    <div class="card-ribbon hidden">
-                                        <div  ng-show="school.top==5" class="ribbon top5"><span style="font-size: smaller">t@{{school.top}}</span></div>
-                                        <div  ng-show="school.top==10" class="ribbon top10"><span style="font-size: smaller">top@{{school.top}}</span></div>
-                                        <div  ng-show="school.top==20" class="ribbon top20"><span style="font-size: smaller">top@{{school.top}}</span></div>
-                                    </div>
-
-                                    <con>
-                                        <photo class="">
-                                            <a href="/public/profile@{{school.school_id}}">
-                                                <img id="img0" class=" card-photo pull-left "
-                                                ng-style="{'background-image':'linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url()'}"
-                                                >
-                                            </a>
-                                        </photo>
-                                        <div class="card-ribbon">
-                                            <img id="img2" class=" sc-white img-med hidden-lg hidden-xs" ng-src="">
-                                            <img id="img3" class=" sc-white img-thumb hidden-lg hidden-md hidden-sm " ng-src="">
-                                        </div>
-                                    </con>
-
-                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
-                                            <a href="" target="_blank">
-                                            <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs"
-                                                 ng-src="">
-                                            </a>
-                                            <span class="pull-left">
-                                                <h5 class="pad-top-10"> <a href=""> </a></h5>
-                                                <span  ng-show="school.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
-                                                <span ng-show="school.ratingCounter!=0" class="sc-t-orange"> </span> <span class="xs-text-incr-85">  &nbsp; ( Αξιολογήσεις)</span>
-                                            </span>
-                                        </div>
-
-                                        <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
-                                            <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                            <span class="pull-left pad-left-5">Υποτροφίες</span>
-                                            <span class="pull-right badge"></span>
-                                            <br>
-                                            <div class="pad-top-5"></div>
-                                            <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                            <span class="pull-left pad-left-10" ng-show="school.type_id=='1' || school.type_id=='2' ">Συνδ. Φοιτητές</span>
-                                            <span class="pull-left pad-left-10" ng-show="school.type_id!='1' && school.type_id!='2'">Συνδ. Μαθητές</span>
-                                            <span class="pull-right"@{{school.lengthStudents}}</span>
-                                            <br>
-                                        </div>
-
-                                        <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3">
-                                            <div ng-show="school.type_id==1 || school.type_id==2 ">
-                                                <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                                <span class="pull-left pad-left-5">Ειδικότητες Σπουδών</span>
-                                                <span class="pull-right"@{{school.lengthStudies}}</span>
-                                                <br>
-                                                <div class="pad-top-5"></div>
-                                            </div>
-
-                                            <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                            <span class="pull-left pad-left-2 pad-bot-10">Συνδ. Καθηγητές</span>
-                                            <span class="pull-right"@{{school.lengthTeachers}}</span>
-                                        </div>
-
-                                        <div ng-show="school.type_id!=1 && school.type_id!=2">
-                                            <div class="margin-pad" style=""></div>
-                                        </div>
-                                        <hr >
-                                    </div>
-
-                                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
-
-                                        <div class="" ng-cloak>
-                                            <div class="col-lg-10 col-md-11 col-sm-6 col-xs-12 sc-t-grey">
-                                                <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                                <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95">@{{school.address}}</span>
-                                                <br>
-                                                <div class="hidden-xs">
-                                                    <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                                    <span class="pull-left pad-left-@{{school.city}} </span>
-                                                    <span style="color: #333; font-weight: 100"> &nbsp; @{{school.distance}}km</span>
-                                                    <br>
-                                                </div>
-                                                <div class="pad-top-3"></div>
-                                                <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
-                                                <span class="pull-left pad-left-@{{school.phone}}</span>
-                                                <br>
-                                                <div class="pad-top-3"></div>
-                                                <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                                <span class="pull-left pad-left-5"> <a href="http://@{{school.website}}/" target="_blank@{{school.website}}</a></span>
-
-                                                <div class="hidden-xs">
-                                                    <br>
-                                                    <div class="pad-top-3"></div>
-                                                    <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                                    <span class="pull-left pad-left-5"> <a href="mailto:@{{school.email}@{{school.email}}</a></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2  col-md-1 col-sm-5 col-xs-12 margin-top-15 card-buttons text-incr-85">
-                                                <div class="hidden-xs but-pad">
-                                                    <a href="">
-                                                        <button type="button" class="sc-button3 sc-dark-green sc-t-white pull-right margin-top-70">
-                                                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα Σύνδεσης</button>
-                                                    </a>
-                                                </div>
-
-                                                <div class="hidden-lg hidden-md hidden-sm  centered-text margin-top-30">
-                                                    <a href="">
-                                                        <button type="button" class="sc-button3 sc-dark-green sc-t-white ">
-                                                            <i class="fa fa-link pad-right-10" aria-hidden="true"></i> Σύνδεση</button>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- ====================== -->
-                            </li>
-                        </ul>
-
-                        <div ng-show="resultsFiltered.length >1">
-                        <ul     style="list-style-type: none;"
-                                class="pull-right"
-                                uib-pagination
-                                boundary-link-numbers=true
-                                max-size=5
-                                rotate=true
-                                force-ellipses=true
-                                total-items="resultsFiltered.length"
-                                items-per-page=10
-                                ng-model="currentPage"
-                                previous-text="Προηγούμενα"
-                                next-text="Επόμενα"
-                        ng-click="">
-                        </ul>
-                    </div>
+                        <div id="hits-container"></div>
+                        <div id="pagination-container"></div>
 
                     </div>
 
 
 
 
-                    </div>
-                    </div> <!-- //col-lg-9-->
+
+
+
+                </div> <!-- //col-lg-9-->
             </div> <!-- //row-->
         </div> <!-- //container-->
     </main>
@@ -447,38 +297,101 @@
     @include('public.footer')
 
 </body>
+
+
+
+<!-- Algolia autocomplete menu -->
+<script>
+    var client = algoliasearch("FM3GHJGA1T", "de6f693844a49775415380088208bc66");
+    var index = client.initIndex('schools');
+    //initialize autocomplete on search input (ID selector must match)
+    autocomplete('#aa-search-input',
+            { hint: false }, {
+                source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+                //value to be displayed in input control after user's suggestion selection
+                displayKey: '',
+                //hash of templates used when rendering dataset
+                templates: {
+                    //'suggestion' templating function used to render a single suggestion
+                    suggestion: function(suggestion) {
+                        return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="25px" style="margin-right: 10px;">' +
+                                suggestion.admin.name + '</span></a>';
+                    }
+                }
+            });
+</script>
+
+<!-- Algolia instantSearch -->
+<script>
+    var search = instantsearch({
+        appId: 'FM3GHJGA1T',
+        apiKey: 'de6f693844a49775415380088208bc66',
+        indexName: 'schools',
+        urlSync: true
+    });
+
+    search.addWidget(
+            instantsearch.widgets.searchBox({
+                container: '#search-box',
+                placeholder: 'Search for schools...'
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.hits({
+                container: '#hits-container',
+                templates: {
+                    item: '<a style="color: #888;" href="/public/profile/@{{id}}}"><span><img src="/images/schools/@{{logo}}" height="25px" style=" margin-top:10px; margin-right: 10px;">@{{admin.name}}</span></a>'
+                    {{--item: ' @{{admin.name}} '--}}
+                }
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.pagination({
+                container: '#pagination-container'
+            })
+    );
+
+    search.start();
+</script>
+
+
+
 <script>
 
-///// Rating Js //////
-$('rating').raty({
-    score    : 4.2,
-    halfShow : true,
-    half     : true,
-    starHalf : 'fa fa-fw fa-star-half'
-});
 
 angular.module("scholarshipsResultsApp",[])
         .controller("scholarshipsResultsCtrl",function ($scope,$http) {
-
-            $scope.orderSelect = 'lengthScholarships'; // set the default sort type
-            $scope.sortReverse  = true;  // set the default sort order
-            $scope.scholars=0;
-            $scope.reviews=0;
-            $scope.categoryFilter=id;
-            $scope.currentPage = 1;
-            $scope.itemsPerPage = 10;
-            $scope.maxSize = 2;
-
-            $scope.init = function () {
-
-            }
 
 //            $scope.results = $http.get("api/...." + id)
 //                    .success(function (data) {
 //                        $scope.results = data
 //                    })
 
+//            console.log('start');
 
+            //========Algolia Angular Autocomplete=================
+
+//            var client = algolia.Client('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
+//            var index = client.initIndex('schools');
+//            $scope.getDatasets = function() {
+//                return {
+//                    source: algolia.sources.hits(index, { hitsPerPage: 5 }),
+//                    displayKey: '',
+//                    templates: {
+//                        suggestion: function(suggestion) {
+//                            return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
+//                                    suggestion.admin.name + '</span></a>';
+//                        }
+//                    }
+//                };
+////                console.log(suggestion._highlightResult)
+//            };
+//
+//            $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {
+//                console.log(suggestion, dataset);
+//            });
 
 
         })
