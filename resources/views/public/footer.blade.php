@@ -1,9 +1,9 @@
 <footer id="" class="sc-landing-footer sc-dark-blue">
     <div class="container">
         <div class="row  ">
-            <div class="pull-left pad-top-50 text-incr-125 col-md-7 col-sm-6 col-xs-4" >
+            <div class="pull-left pad-top-50 text-incr-125 col-lg-7 col-md-7 col-sm-11 col-xs-5" >
                 <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
-                <span  class="clear-fix pad-top-10 pad-bot-10">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
+                <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
                 <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
             </div>
 

@@ -125,42 +125,6 @@
     </style>
 
 
-  <style>
-      .algolia-autocomplete {
-          width: 100%;
-          outline:none!important;
-          border-radius:5px;
-      }
-      .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-          width: 100%;
-      }
-
-      .algolia-autocomplete .aa-hint {
-          /*color: black;*/
-      }
-      .algolia-autocomplete .aa-dropdown-menu {
-          width: 100%;
-          background-color: #fff;
-          border: 1px solid #ccc;
-          border-top: none;
-      }
-      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-          cursor: pointer;
-          padding: 5px 4px;
-      }
-      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-          background-color: #ebebeb;
-          /*color: black;*/
-      }
-      .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-          font-weight: bold;
-          font-style: normal;
-      }
-
-
-
-    </style>
-
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
 
@@ -335,12 +299,10 @@
 
 
                        <div class="col-md-5 col-sm-6" id="">
-                       <div>
                            <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets()" placeholder="Αναζήτησε πχ Νομική Κολλέγιο, ή Αγγλικά, ή Ιδιωτικό Λύκειο"/>
                            <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
                        </div>
-                           </div>
 
 
 
