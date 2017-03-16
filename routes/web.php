@@ -16,6 +16,47 @@ use App\User;
 |
  */
 
+Route::get('dummy/algolia', function () {
+    $studyDummy = '';
+
+    foreach (School::all() as $school) {
+        $al = new App\AlgoliaSchool;
+        $al->name = $school->name();
+        $al->username = $school->admin->username ?? 'nousername';
+        $al->address = $school->address;
+        $al->city = $school->city;
+        $al->type = $school->type->name;
+        $al->_geoloc = json_encode(array('lat' => $school->lat, 'lng' => $school->lng), JSON_FORCE_OBJECT);
+
+        foreach ($school->study as $study) {
+            $studyDummy .= $study->name . ',';
+
+            $section = $study->section[0]->name;
+            if (strpos($studyDummy, $section) == false) {
+                $studyDummy .= $study->section[0]->name . ',';
+            }
+            $level = $study->section[0]->level->name;
+            if (strpos($studyDummy, $level) == false) {
+                $studyDummy .= $study->section[0]->level->name . ',';
+            }
+
+        }
+
+        $al->study = $studyDummy;
+        $al->save();
+    }
+
+    foreach (Scholarship::all() as $scholarship) {
+        $alg = new App\AlgoliaScholarship;
+        $alg->study = $scholarship->study->name;
+        $alg->section = $scholarship->study->section[0]->name;
+        $alg->level = $scholarship->level->name;
+        $alg->criteria = $scholarship->criteria->name;
+        $alg->school = $scholarship->school->name;
+    }
+
+});
+
 Route::get('search/scholarship/{q}', function ($q) {
     $scholarships = Scholarship::search($q)->get();
     foreach ($scholarships as $s) {

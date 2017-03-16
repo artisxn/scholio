@@ -120,21 +120,36 @@
 
 
           var client = algolia.Client('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
-          var index = client.initIndex('schools');
+          var schools = client.initIndex('schools');
+          var studies = client.initIndex('studies')
 
           $scope.getDatasets = function() {
-              return {
-                  source: algolia.sources.hits(index, { hitsPerPage: 5 }),
-                  displayKey: '',
+              return [
+              {
+                  source: algolia.sources.hits(schools, { hitsPerPage: 3 }),
+                  displayKey: 'school',
                   openOnFocus: true,
                   templates: {
+                      header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
                       suggestion: function(suggestion) {
                           return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
-                              suggestion.admin.name + '</span></a>';
+                              suggestion._highlightResult.admin.name.value + '</span></a>';
                       }
                   }
-              };
-              //console.log(suggestion._highlightResult)
+              },
+              {
+                  source: algolia.sources.hits(studies, { hitsPerPage: 3 }),
+                  displayKey: 'study',
+                  openOnFocus: false,
+                  templates: {
+                    header: '<div class="aa-suggestions-category">Σπουδές-Τάξεις</div>',
+                      suggestion: function(suggestion) {
+                          return '<span>' +
+                              suggestion._highlightResult.name.value;
+                      }
+                  }
+              }
+              ];
           };
 
           $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {

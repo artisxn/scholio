@@ -42,6 +42,8 @@
     <!-- Landing CSS -->
     <link href="{{asset('new/css/landing.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('new/css/algolia.css') }}">
+
 
     <!--====== Javascript Files =======-->
 

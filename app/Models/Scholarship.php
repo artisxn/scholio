@@ -9,11 +9,12 @@ use App\Models\School;
 use App\Models\Study;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
+
+// use Laravel\Scout\Searchable;
 
 class Scholarship extends Model
 {
-    use Searchable;
+    // use Searchable;
     /**
      * Get the index name for the model.
      *
