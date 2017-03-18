@@ -73,7 +73,11 @@
     font-style: normal;
     background-color: rgba(58, 150, 207, 0.1);
     padding: 2px 0 2px 2px;}*/
-.aa-suggestions-category{
-    margin: 10px 0;
-    color: #252530;
+.aa-suggestions-category,.aa-suggestions-category2{
+    color: #324c5a;
+    font-size: 120%;
+    font-weight: 400;
+}
+.aa-suggestions-category2{
+    margin-top: 15px;
 }
