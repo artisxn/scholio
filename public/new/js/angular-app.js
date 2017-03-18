@@ -118,7 +118,7 @@
 
           //========Algolia Autocomplete=================
 
-
+          $scope.input=''
           var client = algolia.Client('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
           var schools = client.initIndex('schools');
           var studies = client.initIndex('studies')
@@ -126,9 +126,8 @@
           $scope.getDatasets = function() {
               return [
               {
-                  source: algolia.sources.hits(schools, { hitsPerPage: 3 }),
-                  displayKey: 'school',
-                  openOnFocus: true,
+                  source: algolia.sources.hits(schools, { hitsPerPage: 6 }),
+                  displayKey: 'admin',
                   templates: {
                       header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
                       suggestion: function(suggestion) {
@@ -138,11 +137,10 @@
                   }
               },
               {
-                  source: algolia.sources.hits(studies, { hitsPerPage: 3 }),
-                  displayKey: 'study',
-                  openOnFocus: false,
+                  source: algolia.sources.hits(studies, { hitsPerPage: 7 }),
+                  displayKey: 'name',
                   templates: {
-                    header: '<div class="aa-suggestions-category">Σπουδές-Τάξεις</div>',
+                    header: '<div class="aa-suggestions-category2">Σπουδές</div>',
                       suggestion: function(suggestion) {
                           return '<span>' +
                               suggestion._highlightResult.name.value;
@@ -153,7 +151,16 @@
           };
 
           $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {
-              console.log(suggestion, dataset);
+              //console.log(suggestion, dataset);
+              $scope.selection=suggestion.name
+
+              //if(suggestion.name!=undefined){
+              //    $scope.selection=suggestion.name
+              //}
+              //else {
+              //    $scope.selection=suggestion.admin.name
+              //}
+
           });
 
 
