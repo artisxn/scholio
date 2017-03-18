@@ -2,6 +2,7 @@
 
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
 
@@ -15,6 +16,12 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+Route::get('sss/', function () {
+    $users = DB::select('select * from studies where name like "%Διοίκ%"');
+
+    return $users;
+});
 
 Route::get('dummy/algolia', function () {
     $studyDummy = '';
