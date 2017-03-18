@@ -301,7 +301,10 @@
 
 
                        <div class="col-md-5 col-sm-6" id="">
-                           <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets()" placeholder="Αναζήτησε πχ Νομική Κολλέγιο, ή Αγγλικά, ή Ιδιωτικό Λύκειο"/>
+                           <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets()"
+                                  ng-model="selection"
+                                  placeholder="Αναζήτησε πχ Νομική Κολλέγιο, ή Αγγλικά, ή Ιδιωτικό Λύκειο"
+                           />
                            <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
                        </div>

@@ -100,6 +100,182 @@
     </script>
 
 </head>
+<style>
+
+    .searchbox {
+        display: inline-block;
+        position: relative;
+        width: 200px;
+        height: 37px;
+        white-space: nowrap;
+        box-sizing: border-box;
+        font-size: 13px;
+        font-family: arial, sans-serif;
+    .algolia-autocomplete {
+        display: block;
+        height: 100%;
+    }
+    }
+
+    .searchbox__wrapper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .searchbox__input {
+        display: inline-block;
+        -webkit-transition: box-shadow .4s ease, background .4s ease;
+        transition: box-shadow .4s ease, background .4s ease;
+        border: 0;
+        border-radius: 19px;
+        box-shadow: inset 0 0 0 1px #D9D9D9;
+        background: #FFFFFF;
+        padding: 0;
+        padding-right: 30px;
+        padding-left: 37px;
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+        white-space: normal;
+        font-size: inherit;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .searchbox__input::-webkit-search-decoration, .searchbox__input::-webkit-search-cancel-button, .searchbox__input::-webkit-search-results-button, .searchbox__input::-webkit-search-results-decoration {
+        display: none;
+    }
+
+    .searchbox__input:hover {
+        box-shadow: inset 0 0 0 1px silver;
+    }
+
+    .searchbox__input:focus, .searchbox__input:active {
+        outline: 0;
+        box-shadow: inset 0 0 0 1px #4098CE;
+        background: #FFFFFF;
+    }
+
+    .searchbox__input::-webkit-input-placeholder {
+        color: #AAAAAA;
+    }
+
+    .searchbox__input::-moz-placeholder {
+        color: #AAAAAA;
+    }
+
+    .searchbox__input:-ms-input-placeholder {
+        color: #AAAAAA;
+    }
+
+    .searchbox__input::placeholder {
+        color: #AAAAAA;
+    }
+
+
+    .searchbox__submit::before {
+        display: inline-block;
+        margin-right: -4px;
+        height: 100%;
+        vertical-align: middle;
+        content: '';
+    }
+
+    .searchbox__submit:hover, .searchbox__submit:active {
+        cursor: pointer;
+    }
+
+    .searchbox__submit:focus {
+        outline: 0;
+    }
+
+
+
+    @-webkit-keyframes sbx-reset-in {
+        0% {
+            -webkit-transform: translate3d(-20%, 0, 0);
+            transform: translate3d(-20%, 0, 0);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: none;
+            transform: none;
+            opacity: 1;
+        }
+    }
+
+    @keyframes sbx-reset-in {
+        0% {
+            -webkit-transform: translate3d(-20%, 0, 0);
+            transform: translate3d(-20%, 0, 0);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: none;
+            transform: none;
+            opacity: 1;
+        }
+    }
+
+    .aa-dropdown-menu {
+        position: relative;
+        top: -6px;
+        border-radius: 3px;
+        margin: 1px 0 0 -40px;
+        padding: 0 ;
+        text-align: left;
+        height: auto;
+        position: relative;
+        background: transparent;
+        border: none;
+        left: 0 !important;
+        box-shadow: 0 1px 0 0 rgba(0,0,0,0.2),0 2px 3px 0 rgba(0,0,0,0.1);
+        width: 265px!important;
+    }
+    .aa-dropdown-menu [class^="aa-dataset-"] {
+        position: relative;
+        border: solid 1px #D9D9D9;
+        border-radius: 3px;
+        overflow: auto;
+        padding: 2px;
+        width: 265px!important;
+    }
+
+    .aa-dropdown-menu .aa-suggestions {
+        position: relative;
+        z-index: 1000;
+    }
+
+
+
+    .aa-dropdown-menu * {
+        box-sizing: border-box;
+
+    }
+
+    em {
+        color: #4098CE;
+    }
+
+
+
+
+    #pagination-container a {
+        background: #eee;
+        padding: 3px 8px;
+        color: #00bcd4;
+        margin-right: 4px;}
+
+    #pagination-container a.active, #pagination-container a:active {
+         border-color: #888;
+         color: #888;
+         background: #ddd;
+     }
+
+</style>
+
+
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="scholarshipsResultsApp"  ng-controller="scholarshipsResultsCtrl" data-ng-init="init()"  ng-cloak>
     <!-- Scholio Header -->
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
@@ -255,34 +431,35 @@
                             <div class="aa-input-container" id="">
                                 <input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση..." name="search" autocomplete="on" />
                             </div>
-
-
+                            <form novalidate="novalidate" onsubmit="return false;" class="searchbox">
+                                <div role="search" class="searchbox__wrapper">
+                                    <input id="search-input" type="search" name="search" placeholder="Search for studies" autocomplete="off" required="required" class="searchbox__input"
+                                           style="height: 40px; width: 270px; margin-left: -40px; border-radius: 5px;">
+                                </div>
+                            </form>
                             <div class="aa-input-container margin-top-20" id="search-box">
                             </div>
-
-
                         </div>
 
 
-
+                        <div id="cat-school" class="margin-top-50"></div>
+                        <div id="cat-city" class="margin-top-20"></div>
+                        <div id="criteria" class="margin-top-20"></div>
+                        <div id="hierarchical-categories" class="margin-top-20"></div>
 
                     </div>
-
 
 
                 </div>  <!-- //col-lg-3-->
                 <div class="col-lg-9 col-md-9 col-sm-12 kf-col-xs-10 kf-col-xs-offset-1" id="main">
 
+                    <div id="hits-per-page-selector" class="col-sm-3"></div>
+                    <div id="pagination-container" style="margin-top: 10px"></div>
+                    <div class="clear-fix"></div>
 
-                    <div class="pull-left margin-top-10 margin-bot-15" >
-                        <span  ng-cloak class="sc-t-primary">  Βρέθηκαν αποτελέσματα</span>
-
+                    <div class=" margin-top-10 margin-bot-15 margin-left-20" >
                         <div id="hits-container"></div>
-                        <div id="pagination-container"></div>
-
                     </div>
-
-
 
 
 
@@ -323,12 +500,36 @@
 
 <!-- Algolia instantSearch -->
 <script>
+
+//    $(function(){
+//
+//        $('#pagination-container a').click(function(){
+//            console.log('a click');
+//            $('#pagination-container a.active').removeClass('active'); // remove the class from the currently selected
+//            $(this).addClass('active'); // add the class to the newly clicked link
+//
+//        });
+//
+//    });
+
     var search = instantsearch({
         appId: 'FM3GHJGA1T',
         apiKey: 'de6f693844a49775415380088208bc66',
         indexName: 'schools',
         urlSync: true
     });
+
+
+    search.addWidget(
+            instantsearch.widgets.hitsPerPageSelector({
+                container: '#hits-per-page-selector',
+                options: [
+                    {value: 5, label: '5 σε κάθε σελίδα'},
+                    {value: 10, label: '10 σε κάθε σελίδα'},
+                    {value: 20, label: '20 σε κάθε σελίδα'}
+                ]
+            })
+    );
 
     search.addWidget(
             instantsearch.widgets.searchBox({
@@ -341,9 +542,10 @@
             instantsearch.widgets.hits({
                 container: '#hits-container',
                 templates: {
-                    item: '<a style="color: #888;" href="/public/profile/@{{id}}}"><span><img src="/images/schools/@{{logo}}" height="25px" style=" margin-top:10px; margin-right: 10px;">@{{admin.name}}</span></a>'
-                    {{--item: ' @{{admin.name}} '--}}
-                }
+                    empty: 'Δεν βρέθηκαν αποτελέσματα',
+                    item: '<a style="color: #888;" href="/public/profile/@{{id}}}"><span><img src="/images/schools/@{{logo}}" height="25px" style=" margin-top:10px; margin-right: 10px;">@{{{ _highlightResult.admin.name.value}}}</span></a>'
+                },
+                hitsPerPage: 5
             })
     );
 
@@ -353,10 +555,81 @@
             })
     );
 
+
+    search.addWidget(
+            instantsearch.widgets.menu({
+                container: '#cat-school',
+                attributeName: 'type.name',
+                limit: 10,
+                sortBy:['name:asc','count:desc:'],
+                templates: {
+                    header: 'Εκπαιδευτικά Ιδρύματα'
+                }
+            })
+    );
+
+
+    search.addWidget(
+            instantsearch.widgets.menu({
+                container: '#cat-city',
+                attributeName: 'city',
+                limit: 10,
+                sortBy:['name:asc','count:desc:'],
+                templates: {
+                    header: 'Πόλη'
+                }
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#hierarchical-categories',
+                attributes: ['hierarchicalCategories.lvl0', 'hierarchicalCategories.lvl1'],
+                templates: {
+                    header: 'Hierarchical categories'
+                }
+            })
+    );
+
+    search.addWidget(
+        instantsearch.widgets.refinementList({
+            container: '#criteria',
+            attributeName: 'website',
+            operator: 'or',
+            limit: 10,
+            templates: {
+                header: 'Υποτροφίες'
+            }
+        })
+);
+
     search.start();
 </script>
 
+<script>
+    var client = algoliasearch("FM3GHJGA1T", "de6f693844a49775415380088208bc66")
+//    var client = algoliasearch("latency", "6be0576ff61c053d5f9a3225e2a90f76")
+//    var index = client.initIndex('movies');
+    var index = client.initIndex('studies');
+    var myAutocomplete = autocomplete('#search-input', {hint: false}, [
+        {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+//            displayKey: 'title',
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+//                    var sugTemplate = "<span>"+ suggestion._highlightResult.title.value +"</span>"
+                    var sugTemplate = "<span>"+ suggestion._highlightResult.name.value +"</span>"
+                    return sugTemplate;
+                }
+            }
+        }
+    ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+        console.log(suggestion, dataset);
+    });
 
+
+</script>
 
 <script>
 
