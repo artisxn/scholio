@@ -172,7 +172,7 @@ Route::get('/test/{school}', 'RoutesController@testSchools');
 
 /* ===== TESTING ROUTE FOR SCHOLARSIPS RESULTS ====== */
 Route::get('/public/scholarships/', function () {
-    return view('public.results.scholarships');
+    return view('public.results.scholarships-test');
 });
 
 /* ===== TESTING ROUTE FOR SCHOLARSIPS RESULTS ====== */

@@ -543,7 +543,8 @@
                 container: '#hits-container',
                 templates: {
                     empty: 'Δεν βρέθηκαν αποτελέσματα',
-                    item: '<a style="color: #888;" href="/public/profile/@{{id}}}"><span><img src="/images/schools/@{{logo}}" height="25px" style=" margin-top:10px; margin-right: 10px;">@{{{ _highlightResult.admin.name.value}}}</span></a>'
+                    item: '<a style="color: #888;" href="/public/profile/@{{id}}}"><span><img src="/images/schools/@{{logo}}" height="25px" style=" margin-top:10px; margin-right: 10px;">
+                    @{{{ _highlightResult.admin.name.value}}}</span></a>'
                 },
                 hitsPerPage: 5
             })
