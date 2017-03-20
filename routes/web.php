@@ -174,3 +174,9 @@ Route::get('/test/{school}', 'RoutesController@testSchools');
 Route::get('/public/scholarships/', function () {
     return view('public.results.scholarships');
 });
+
+/* ===== TESTING ROUTE FOR SCHOLARSIPS RESULTS ====== */
+Route::get('/public/algolia/', function () {
+    return view('public.results.algolia');
+});
+

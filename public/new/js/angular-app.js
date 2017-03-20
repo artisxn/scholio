@@ -127,13 +127,13 @@
               return [
               {
                   source: algolia.sources.hits(schools, { hitsPerPage: 6 }),
-                  displayKey: 'admin',
+                  displayKey: 'admin.name',
                   templates: {
                       header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
                       suggestion: function(suggestion) {
                           return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
                               suggestion._highlightResult.admin.name.value + '</span></a>';
-                      }
+                      },
                   }
               },
               {

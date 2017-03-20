@@ -26,7 +26,7 @@
     <!-- Horizontal Ribbons  CSS -->
     <link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
 
-    <!-- Horizontal Ribbons  CSS -->
+    <!-- Hexagon CSS -->
     <link href="/new/css/Hexagon.css" rel="stylesheet">
 
     <!-- jQuery js-->
@@ -507,10 +507,12 @@
                                                 <div class="ribbon-back-right sc-medium-grey"></div>
                                             </div>
                                             <div class="hexagon hex1">
+
                                                 {{--<i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"--}}
                                                 {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
                                             </div>
                                             <div class="hexagon hex2">
+
                                                 {{--<i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"--}}
                                                 {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
                                             </div>

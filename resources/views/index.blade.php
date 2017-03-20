@@ -597,10 +597,10 @@
                               data-width="215"
                        >
                        <div class="counter-icon text-incr-200 ">
-                           <div>1790</div>
-                           <div><i class="fa fa-search text-incr-200 sc-t-green "></i></div>
+                           <div>480</div>
+                           <div><i class="fa fa-book text-incr-200 sc-t-green "></i></div>
                        </div>
-                       <div class="counter-text text-incr-125 font-weight-300">Αναζητήσεις κάθε ημέρα</div>
+                       <div class="counter-text text-incr-125 font-weight-300">Αντικείμενα Σπουδών</div>
 
                    </div>
                </div>
