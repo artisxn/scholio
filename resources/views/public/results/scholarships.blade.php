@@ -406,7 +406,7 @@
                             {{--@endif--}}
 
 
-                            <a href="/scholarship/@{{scholarship.id}}">
+                            <a href="/scholarship/1">
                                 <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
                                     <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή
                                 </button>
@@ -522,7 +522,7 @@
                                 {{--@endif--}}
 
 
-                                <a href="/scholarship/@{{scholarship.id}}">
+                                <a href="/scholarship/5">
                                     <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
                                         <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή
                                     </button>
@@ -636,7 +636,7 @@
                                 {{--@endif--}}
 
 
-                                <a href="/scholarship/@{{scholarship.id}}">
+                                <a href="/scholarship/8">
                                     <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
                                         <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή
                                     </button>
