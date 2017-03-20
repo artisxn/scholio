@@ -497,7 +497,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.searchBox({
                 container: '#q',
-                placeholder: 'Αναζητησε υποτροφία'
+                placeholder: 'Αναζητησε υποτροφία by algolia'
             })
     );
 
