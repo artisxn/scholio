@@ -9,12 +9,11 @@ use App\Models\SchoolTypes;
 use App\Models\Study;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
-
-// use Lamrefravel\Scout\Searchable;
+use Laravel\Scout\Searchable;
 
 class School extends Model
 {
-    // use Searchable;
+    use Searchable;
     /**
      * The attributes that are mass assignable.
      *

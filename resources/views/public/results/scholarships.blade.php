@@ -99,6 +99,23 @@
     window.SelectedLocation = "{{ session()->pull('location') }}"
     </script>
 
+    <style>
+    .active-school a{
+        color: #000;
+    }
+
+    .active-item{
+        background-color: red;
+    }
+    .active-pagination{
+        border: 1px solid #888;
+        background-color: #ddd;
+    }
+    .count-school{
+        color: yellow;
+    }
+    </style>
+
 </head>
 <style>
 
@@ -258,20 +275,12 @@
         color: #4098CE;
     }
 
-
-
-
-    #pagination-container a {
-        background: #eee;
-        padding: 3px 8px;
+    #pagination-container a{
         color: #00bcd4;
-        margin-right: 4px;}
+        margin: 0 4px;
+    }
 
-    #pagination-container a.active, #pagination-container a:active {
-         border-color: #888;
-         color: #888;
-         background: #ddd;
-     }
+
 
 </style>
 
@@ -551,7 +560,10 @@
 
     search.addWidget(
             instantsearch.widgets.pagination({
-                container: '#pagination-container'
+                container: '#pagination-container',
+                cssClasses:{
+                    active: 'active-pagination'
+                }
             })
     );
 
@@ -562,6 +574,12 @@
                 attributeName: 'type.name',
                 limit: 10,
                 sortBy:['name:asc','count:desc:'],
+                cssClasses:{
+                    active: 'active-school',
+                    count: 'count-school'
+                    // link: 'active-school',
+                    // item: 'active-item'
+                },
                 templates: {
                     header: 'Εκπαιδευτικά Ιδρύματα'
                 }

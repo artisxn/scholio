@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SocialLink;
+use App\Models\Study;
 
 class RoutesController extends Controller
 {
@@ -15,12 +16,36 @@ class RoutesController extends Controller
 
     public function searchSchoolType()
     {
-        $type = request()->type;
+        $schools = School::search(request()->type)->get();
+        $studies = Study::search(request()->type)->get();
         $location = request()->location;
 
-        session()->put('location', $location);
+        // session()->put('location', $location);
+        // session()->put('schools', $schools);
+        // session()->put('studies', $studies);
 
-        return redirect('/public/results/' . $type);
+        // dd($studies);
+
+        return view('public.results.algolia-schools', compact('schools'));
+
+        // echo '<h1>Schools</h1>';
+        // foreach ($schools as $school) {
+        //     echo $school->name() . '<br />';
+        // }
+
+        // echo '<h1>Studies</h1>';
+        // foreach ($studies as $study) {
+        //     echo $study->name . '<br />';
+        // }
+
+        // dd('ok');
+
+        // $type = request()->type;
+        // $location = request()->location;
+
+        // session()->put('location', $location);
+
+        // return redirect('/public/results/' . $type);
     }
 
     public function token()

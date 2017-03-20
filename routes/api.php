@@ -124,3 +124,7 @@ Route::post('/school/settings', function () {
     $settings->save();
     return 'OK';
 })->middleware('auth:api');
+
+Route::get('/algolia/results', function () {
+    return session()->pull('schools', 'oxi');
+})->middleware('api');
