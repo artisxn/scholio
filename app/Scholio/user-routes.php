@@ -5,3 +5,7 @@ Route::get('/student/mySchools', 'RoutesController@mySchools')->name('students-m
 
 Route::get('/teacher/profile', 'RoutesController@teacherProfile')->name('teachers-profile');
 Route::get('/parent/profile', 'RoutesController@parentProfile')->name('parent-profile');
+
+Route::get('/review/create', function () {
+    return view('panel.pages.school.reviews.create');
+});

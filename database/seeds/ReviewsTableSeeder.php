@@ -18,9 +18,9 @@ class ReviewsTableSeeder extends Seeder
             ['name' => 'Ανθρώπινο Δυναμικό', 'type' => 1],
             ['name' => 'Εγκαταστάσεις', 'type' => 1],
             ['name' => 'Διασύνδεση με αγορά εργασίας', 'type' => 1],
-            ['name' => 'Όμιλοι Ενδιαφέροντος (Clubs)', 'type' => ''],
-            ['name' => 'Ευέλικτα Τμήματα', 'type' => ''],
-            ['name' => 'Ενημέρωση', 'type' => ''],
+            ['name' => 'Όμιλοι Ενδιαφέροντος (Clubs)', 'type' => 2],
+            ['name' => 'Ευέλικτα Τμήματα', 'type' => 2],
+            ['name' => 'Ενημέρωση', 'type' => 2],
         ];
 
         foreach ($categories as $category) {

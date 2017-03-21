@@ -25,6 +25,7 @@ Vue.component('teachers-view', require('./components/schools/Teachers-View.vue')
 Vue.component('resource-requests', require('./components/schools/Resource-Requests.vue'));
 Vue.component('studies-select', require('./components/schools/Studies-Select.vue'));
 Vue.component('my-schools', require('./components/students/My-Schools.vue'));
+Vue.component('reviews-create', require('./components/schools/Reviews-Create.vue'));
 
 
 /*

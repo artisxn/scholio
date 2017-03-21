@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Category;
 use App\Models\Level;
 use App\Models\School;
 use App\Models\Study;
@@ -37,5 +38,10 @@ class SchoolTypes extends Model
     public function level()
     {
         return $this->hasMany(Level::class);
+    }
+
+    public function review_categories()
+    {
+        return $this->hasMany(Category::class);
     }
 }

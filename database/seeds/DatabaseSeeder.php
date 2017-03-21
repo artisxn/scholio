@@ -38,18 +38,5 @@ class DatabaseSeeder extends Seeder
                 $user->info->save();
             }
         }
-
-        foreach (User::all() as $user) {
-            if ($user->role == 'school' && $user->id <= 11) {
-                $address = Scholio::geocode($user->info->address . "," . $user->info->city);
-                $lat = $address['lat'];
-                $lng = $address['lng'];
-                $user->info->lat = $lat;
-                $user->info->lng = $lng;
-
-                $user->info->save();
-            }
-        }
-
     }
 }
