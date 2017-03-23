@@ -182,4 +182,9 @@ class School extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function categories()
+    {
+        return $this->type->review_categories;
+    }
 }

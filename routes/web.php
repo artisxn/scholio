@@ -16,11 +16,17 @@ use App\User;
  */
 
 Route::get('qqq', function () {
-    $reviews = App\Models\Review::all();
-    // foreach ($reviews as $review) {
+    // $reviews = App\Models\Review::all();
+    // // foreach ($reviews as $review) {
 
+    // // }
+    // return $reviews->load('category.category');
+    // $school = School::find(3);
+    // return $school->categories();
+    // if (auth()->user()->reviewedSchool(School::find(1))) {
+    //     dd('ok');
     // }
-    return $reviews->load('category.category');
+    // return 'NO';
 });
 
 Route::get('aaa', function () {

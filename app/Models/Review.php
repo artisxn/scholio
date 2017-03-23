@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\CategoryReview;
 use App\Models\CategoryReview;
 use App\Models\School;
 use App\User;

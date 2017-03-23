@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Parent as ParentUser;
+use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SocialLink;
@@ -109,6 +110,15 @@ class User extends Authenticatable
         return $this->belongsToMany(School::class, 'school_user');
     }
 
+    public function isConnectedWithSchool($school)
+    {
+        if ($this->connectedSchool->contains('id', $school->id)) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function checkConnection($user)
     {
         foreach ($this->connectedSchool as $connections) {
@@ -116,6 +126,20 @@ class User extends Authenticatable
                 return true;
             }
         }
+        return false;
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function reviewedSchool($school)
+    {
+        if ($this->reviews->contains('school_id', $school->id)) {
+            return true;
+        }
+
         return false;
     }
 }

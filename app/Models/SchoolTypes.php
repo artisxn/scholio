@@ -42,6 +42,6 @@ class SchoolTypes extends Model
 
     public function review_categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class, 'type_id');
     }
 }

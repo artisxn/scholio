@@ -1,6 +1,8 @@
 <?php
 
 use App\Events\UserAppliedOnSchool;
+use App\Models\CategoryReview as Category;
+use App\Models\Review;
 use App\Models\School;
 use App\Models\Skill;
 use App\Notifications\SchoolAcceptedUser;
@@ -73,4 +75,33 @@ Route::get('/student/mySchools', function () {
     $schools = auth()->user()->connectedSchool;
     return $schools->load('admin');
 
+})->middleware('auth:api');
+
+Route::get('/user/reviews/', function () {
+    return auth()->user()->reviews;
+})->middleware('auth:api');
+
+Route::get('/categories/{school}', function (School $school) {
+    return $school->categories();
+})->middleware('auth:api');
+
+Route::post('/review/{school}/save', function (School $school) {
+    try {
+        $newReview = new Review;
+        $newReview->user_id = auth()->user()->id;
+        $newReview->school_id = $school->id;
+        $newReview->text = request()->text;
+        $newReview->save();
+        foreach (request()->review as $review) {
+            $r = new Category;
+            $r->review_id = $newReview->id;
+            $r->category_id = $review['category'];
+            $r->stars = $review['stars'];
+            $r->save();
+        }
+    } catch (\Exception $e) {
+        return 'Error';
+    }
+
+    return 'OK';
 })->middleware('auth:api');

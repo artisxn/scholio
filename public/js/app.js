@@ -13565,12 +13565,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
 
     data: function data() {
         return {
-            categories: {}
+            categories: {},
+            review: [],
+            text: null
         };
     },
 
@@ -13578,14 +13596,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchCategories: function fetchCategories() {
             var _this = this;
 
-            axios.get('/connected/teachers').then(function (response) {
-                _this.teachers = response.data;
+            axios.get('/api/categories/' + SchoolID).then(function (response) {
+                _this.categories = response.data;
                 console.log(response.data);
+            });
+        },
+
+        star: function star(category, stars, e) {
+            this.fillArray(category, stars);
+            this.fillStars(category, stars);
+        },
+
+        fillArray: function fillArray(category, stars) {
+            var contain = false;
+            var keys = null;
+            this.review.forEach(function (key) {
+                if (key.category == category) {
+                    keys = key;
+                }
+            });
+            if (keys) {
+                keys.category = category;
+                keys.stars = stars;
+            } else {
+                this.review.push({ category: category, stars: stars });
+            }
+        },
+
+        fillStars: function fillStars(row, stars) {
+            for (var i = 1; i <= 5; i++) {
+                document.getElementById(row + '-' + i).innerHTML = '☆';
+            }
+            for (var i = 1; i <= stars; i++) {
+                document.getElementById(row + '-' + i).innerHTML = '★';
+            }
+
+            return true;
+        },
+
+        save: function save() {
+            axios.post('/api/review/' + SchoolID + '/save', {
+                text: this.text,
+                review: this.review
+            }).then(function (response) {
+                if (response.data == 'OK') {
+                    window.location = '/panel/users/review/show';
+                }
+
+                // ERROR HERE
             });
         }
     },
 
     mounted: function mounted() {
+        this.fetchCategories();
         console.log('Notifications-Table component mounted!');
     }
 };
@@ -14971,11 +15035,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     data: function data() {
         return {
-            mySchools: {}
+            mySchools: {},
+            reviews: {}
         };
     },
 
@@ -14985,13 +15058,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/api/student/mySchools').then(function (response) {
                 _this.mySchools = response.data;
-                console.log(response.data);
             });
+        },
+
+        fetchReviews: function fetchReviews() {
+            var _this2 = this;
+
+            axios.get('/api/user/reviews').then(function (response) {
+                _this2.reviews = response.data;
+            });
+        },
+
+        hasNOTReviewed: function hasNOTReviewed(id) {
+            var result = true;
+            this.reviews.forEach(function (key) {
+                if (key.school_id === id) {
+                    result = false;
+                }
+            });
+            return result;
         }
     },
 
     mounted: function mounted() {
         console.log('mySchools-Table component mounted!');
+        this.fetchReviews();
         this.getAllMySchools();
     }
 };
@@ -18099,12 +18190,89 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
-  }, [_c('span', [_vm._v("☆")]), _c('span', [_vm._v("☆")]), _c('span', [_vm._v("☆")]), _c('span', [_vm._v("☆")]), _c('span', [_vm._v("☆")])])
-}]}
+  }, [_c('div', {
+    staticClass: "row"
+  }, _vm._l((_vm.categories), function(category) {
+    return _c('div', {
+      staticClass: "category"
+    }, [_c('span', [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c('span', {
+      attrs: {
+        "id": category.id + '-1'
+      },
+      on: {
+        "click": function($event) {
+          _vm.star(category.id, 1, $event)
+        }
+      }
+    }, [_vm._v("☆")]), _vm._v(" "), _c('span', {
+      attrs: {
+        "id": category.id + '-2'
+      },
+      on: {
+        "click": function($event) {
+          _vm.star(category.id, 2, $event)
+        }
+      }
+    }, [_vm._v("☆")]), _vm._v(" "), _c('span', {
+      attrs: {
+        "id": category.id + '-3'
+      },
+      on: {
+        "click": function($event) {
+          _vm.star(category.id, 3, $event)
+        }
+      }
+    }, [_vm._v("☆")]), _vm._v(" "), _c('span', {
+      attrs: {
+        "id": category.id + '-4'
+      },
+      on: {
+        "click": function($event) {
+          _vm.star(category.id, 4, $event)
+        }
+      }
+    }, [_vm._v("☆")]), _vm._v(" "), _c('span', {
+      attrs: {
+        "id": category.id + '-5'
+      },
+      on: {
+        "click": function($event) {
+          _vm.star(category.id, 5, $event)
+        }
+      }
+    }, [_vm._v("☆")])])
+  })), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('label', {
+    attrs: {
+      "for": "text"
+    }
+  }, [_vm._v("Text:")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.text),
+      expression: "text"
+    }],
+    domProps: {
+      "value": (_vm.text)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.text = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.save()
+      }
+    }
+  }, [_vm._v("Αποθήκευση")])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -19950,7 +20118,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "col-xs-12"
     }, [_c('i', {
       staticClass: "md md-email"
-    }), _vm._v(" "), _c('small', [_vm._v(_vm._s(mySchool.admin.email))])]), _vm._v(" "), _c('p')])])])])])
+    }), _vm._v(" "), _c('small', [_vm._v(_vm._s(mySchool.admin.email))])]), _vm._v(" "), _c('p')])])]), _vm._v(" "), (_vm.hasNOTReviewed(mySchool.id)) ? _c('div', [_c('a', {
+      staticClass: "btn btn-primary",
+      attrs: {
+        "href": '/panel/users/review/create/' + mySchool.id
+      }
+    }, [_vm._v("\n                    ΑΞΙΟΛΟΓΗΣΕ ΤΟ ΣΧΟΛΕΙΟ\n                ")])]) : _c('div', [_vm._v("\n                ΕΧΕΤΕ ΗΔΗ ΑΞΙΟΛΟΓΗΣΕΙ ΑΥΤΟ ΤΟ ΣΧΟΛΕΙΟ\n            ")])])])
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true
