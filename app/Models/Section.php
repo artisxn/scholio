@@ -5,12 +5,11 @@ namespace App\Models;
 use App\Models\Level;
 use App\Models\Study;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Section extends Model
 {
 
-    use Searchable;
+    // use Searchable;
     /**
      *  Gets all the levels of this section
      *

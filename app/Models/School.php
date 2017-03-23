@@ -10,11 +10,10 @@ use App\Models\SchoolTypes;
 use App\Models\Study;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class School extends Model
 {
-    use Searchable;
+    // use Searchable;
     /**
      * The attributes that are mass assignable.
      *
@@ -202,6 +201,17 @@ class School extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function averageStars()
+    {
+        $total = 0;
+        foreach ($this->reviews as $review) {
+            foreach ($review->allCategories() as $cat) {
+                $total += $cat->stars;
+            }
+        }
+        return $total / 5;
     }
 
     public function categories()

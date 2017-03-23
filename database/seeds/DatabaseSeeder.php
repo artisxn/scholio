@@ -41,7 +41,6 @@ class DatabaseSeeder extends Seeder
                 $school->lat = $lat;
                 $school->lng = $lng;
                 $school->save();
-                $user->info->save();
             }
         }
     }

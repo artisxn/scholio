@@ -7,12 +7,6 @@ use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
 
-Route::get('sss/', function () {
-    $users = DB::select('select * from studies where name like "%Διοίκ%"');
-
-    return $users;
-});
-
 Route::get('dummy/algolia', function () {
     $studyDummy = '';
 
