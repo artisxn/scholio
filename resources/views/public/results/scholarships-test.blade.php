@@ -19,7 +19,7 @@
     @include('public.styles')
 
     <!-- Algolia CSS -->
-    <link rel="stylesheet" href="/new/css/algolia.css"></link>
+    {{--<link rel="stylesheet" href="/new/css/algolia.css"></link>--}}
     <link rel="stylesheet" href="/new/css/algolia-search.css"></link>
 
 
@@ -27,7 +27,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
     <!-- Ribbon CSS -->
-    {{-- <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">--}}
+     <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">
 
     <!-- Hexagon CSS -->
     <link href="/new/css/Hexagon.css" rel="stylesheet">
@@ -262,56 +262,70 @@
                 </div><!-- collapseMenu -->
 
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs" >
-                    <div class="left-box1">
+                    {{--<div class="left-box1">--}}
 
-                        <div class="centered-text margin-top-30" style="max-width: 338px;" ng-cloak>
-                            <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="91%">
-                                <option id="" data-icon="glyphicon glyphicon-education" data-subtext="" value="null"
-                                        data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>
+                        {{--<div class="centered-text margin-top-30" style="max-width: 338px;" ng-cloak>--}}
+                            {{--<select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="91%">--}}
+                                {{--<option id="" data-icon="glyphicon glyphicon-education" data-subtext="" value="null"--}}
+                                        {{--data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>--}}
 
-                                <option data-icon="fa fa-university" data-subtext="" class="kf-option" value="1">&nbsp; Κολλέγια</option>
-                                <option data-icon="fa fa-cogs" data-subtext="" class="kf-option" value="2">&nbsp; IEK </option>
-                                <option data-icon="fa fa-pencil" data-subtext="" class="kf-option" value="3">&nbsp;  Φροντιστήρια </option>
-                                <option data-icon="fa fa-flag" data-subtext="" class="kf-option" value="4">&nbsp;  Ξένες Γλώσσες </option>
-                                <option data-icon="fa fa-book" data-subtext="" class="kf-option" value="6">&nbsp;  Ιδιωτικά Σχολεία</option>
-                            </select>
+                                {{--<option data-icon="fa fa-university" data-subtext="" class="kf-option" value="1">&nbsp; Κολλέγια</option>--}}
+                                {{--<option data-icon="fa fa-cogs" data-subtext="" class="kf-option" value="2">&nbsp; IEK </option>--}}
+                                {{--<option data-icon="fa fa-pencil" data-subtext="" class="kf-option" value="3">&nbsp;  Φροντιστήρια </option>--}}
+                                {{--<option data-icon="fa fa-flag" data-subtext="" class="kf-option" value="4">&nbsp;  Ξένες Γλώσσες </option>--}}
+                                {{--<option data-icon="fa fa-book" data-subtext="" class="kf-option" value="6">&nbsp;  Ιδιωτικά Σχολεία</option>--}}
+                            {{--</select>--}}
 
-                            <div class="input-container">
-                                <input class="input-box" type="text"  id="" placeholder="Αναζήτησε πχ Αγγλικά, ή Λύκειο"/>
-                            </div>
+                            {{--<div class="input-container">--}}
+                                {{--<input class="input-box" type="text"  id="" placeholder="Αναζήτησε πχ Αγγλικά, ή Λύκειο"/>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+
+                        {{--<div class="location-container font-weight-300">--}}
+                            {{--<div class="input-group centered-text pad-top-20" ng-cloak>--}}
+                                {{--<span class="input-group-addon text-incr-115 kf-gray " id="basic-addon1"><i class="fa fa-map-marker margin-right-5"></i></span>--}}
+                                {{--<input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"--}}
+                                       {{--uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"--}}
+                                       {{--typeahead-no-results="noResults" autocomplete="off">--}}
+                            {{--</div>--}}
+
+                            {{--<div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%; margin-top: 15px;" ng-if="!showAll">--}}
+                                {{--<input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="showMap()">--}}
+                                {{--<span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>--}}
+                            {{--</div>--}}
+
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="left-box4 font-weight-300 sc-t-grey centered-text margin-top-30">--}}
+                    {{--Βρέθηκαν 3 αποτελέσματα--}}
+                    {{--</div>--}}
+
+                    <div class="col-sm-12">
+                        <div class="input-group margin-bot-15" style="width:290px; padding: 0; margin-left: -16px; ">
+                            <input type="text" class="form-control font-weight-300" id="query" style="border-radius: 5px; font-size: 95%"/>
                         </div>
-
-                        <div class="location-container font-weight-300">
-                            <div class="input-group centered-text pad-top-20" ng-cloak>
-                                <span class="input-group-addon text-incr-115 kf-gray " id="basic-addon1"><i class="fa fa-map-marker margin-right-5"></i></span>
-                                <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
-                                       uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                       typeahead-no-results="noResults" autocomplete="off">
-                            </div>
-
-                            <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%; margin-top: 15px;" ng-if="!showAll">
-                                <input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="showMap()">
-                                <span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="left-box4 font-weight-300 sc-t-grey centered-text margin-top-30">
-                        Βρέθηκαν 3 αποτελέσματα
                     </div>
 
 
-                    <div class="input-group margin-top-50" style="width:91%; margin-left: 4.5%; padding: 0">
-                        <input type="text" class="form-control" id="q"/>
-                    </div>
-                    <div class="content-wrapper">
+
+                    <div class="content-wrapper col-sm-12">
                         <aside>
-                        <div id="clear-all"></div>
-                            <div id="stats" class="text-muted"></div>
+
+                            <div id="stats" class="text-muted "></div>
                             <div class="facet-category-title facet font-weight-300">Βρέθηκαν υποτροφίες από:</div>
-                            <div id="categories"></div>
+                            <div class="filter-title">Επαιδευτικά Ιδρύματα</div>
+                            <div id="categoriesType"></div>
+                            <div class="filter-title">Πόλεις</div>
+                            <div id="categoriesCity"></div>
+                            <div class="filter-title">Αντικείμενο Σπουδών</div>
+                            <div id="categoriesSection"></div>
+                            <div class="filter-title">Επίπεδο Σπουδών</div>
+                            <div id="categoriesLevel"></div>
+                            {{--<div id="financial" class="facet"></div>--}}
+
+
                         </aside>
+                        <div id="clear-all" style="width: 190px; margin-left: auto; margin-right: auto"></div>
                     </div>
 
 
@@ -322,125 +336,8 @@
                 <!-- ========== SCHOLARSHIPS  CONTAINER ============= -->
                 <div class="col-lg-9 col-md-9 col-sm-12 scholarship-container " id="">
 
-                    <!-- ===== SCHOLARSHIP1 ===== -->
-                    <div>
-                        {{--<div class=" col-xs-12 pad-0-mar-0 inner-container">--}}
 
-                            {{--<!-- ========== Scholarship Header ============= -->--}}
-                            {{--<div class="col-xs-12 scholar-header">--}}
-                                {{--<div class="circle margin-top-8 pull-left">--}}
-                                    {{--<div class=" trophy-container centered-abs">--}}
-                                        {{--<img class="trophy-img centered" src="/new/img/trophy4.png" alt="">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="header-text margin-top-20 pull-left margin-left-10"> Υποτροφία από: American College of Thessaloniki</div>--}}
-                                {{--<div class="header-line"></div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="col-xs-12 pad-0-mar-0 section-container">--}}
-                                {{--<!-- ========== Scholarship Section1 Αντικειμενο Σπουδών ============= -->--}}
-                                {{--<div class="col-lg-4 col-md-6 col-sm-4 section1 ">--}}
-                                    {{--<div class="hex-container centered">--}}
-                                        {{--<div class="hexagon3 hex">--}}
-                                            {{--<span></span>--}}
-                                            {{--<img class="centered-abs hex-img" src="/panel/assets/images/steps/Οικονομία & Διοίκηση.png" alt="">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="centered-text">--}}
-                                        {{--<div class="text-title">Αντικείμενο Σπουδών</div>--}}
-                                        {{--<div class="text-content">BSc in Business Administration, Concentration in Entrepreneurial Management</div>--}}
-                                        {{--<div class="text-title">Επίπεδο Σπουδών</div>--}}
-                                        {{--<div class="text-content">Προπτυχιακές Σπουδές-Bachelor</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-
-                                {{--<!-- ========== Scholarship Section2 Κριτήρια ============= -->--}}
-                                {{--<div class="col-lg-4 col-md-6 col-sm-4 section2">--}}
-                                    {{--<div class="hex-container centered">--}}
-                                        {{--<div class="hexagon3 hex">--}}
-                                            {{--<span></span>--}}
-                                            {{--<img class="centered-abs hex-img" src="/panel/assets/images/steps/step3-help.png" alt="">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="centered-text">--}}
-                                        {{--<div class="text-title">Υποτροφία με Κοινωνικά Κριτήρια</div>--}}
-                                        {{--<div class="text-content">Interdum et malesuada fames ac ante ipsum primis in faucibus.--}}
-                                            {{--Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.--}}
-
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-
-                                {{--<!-- ========== Scholarship Section3 Financial Plan ============= -->--}}
-                                {{--<div class="col-lg-4 col-sm-4 hidden-md section3 ">--}}
-                                    {{--<div class="hex-container centered">--}}
-                                        {{--<div class="hexagon3 hex" style="">--}}
-                                            {{--<span></span>--}}
-                                            {{--<img class="centered-abs hex-img" src="/panel/assets/images/steps/step1-hand2.png" alt="">--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="centered-text">--}}
-                                        {{--<div class="text-title">Ποσό Επιδότησης 800 €</div>--}}
-                                        {{--<div class="text-content">Ιn faucibus interdum et malesuada fames ac ante ipsum primis.--}}
-                                            {{--Torquent per conubia nostra.--}}
-
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="col-md-12 hidden-xs hidden-lg hidden-sm visible-md section4" ></div>--}}
-                            {{--</div>--}}
-
-                            {{--<!-- ========== Scholarship Footer============= -->--}}
-                            {{--<div class="col-xs-12 scholar-footer ">--}}
-                                {{--<div class="col-xs-9 sc-t-grey font-weight-300">--}}
-                                    {{--<div class="col-xs-5 pad-0-mar-0" >--}}
-                                {{--<span class="col-xs-7 pad-0-mar-0">--}}
-                                    {{--<div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>--}}
-                                    {{--<div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>--}}
-                                {{--</span>--}}
-                                {{--<span class="col-xs-3 text-right">--}}
-                                    {{--<div class="">34</div>--}}
-                                    {{--<div class="margin-top-5">123</div>--}}
-                                {{--</span>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-xs-6">--}}
-                                {{--<span class="col-xs-7">--}}
-                                    {{--<div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>--}}
-                                    {{--<div class="">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>--}}
-                                {{--</span>--}}
-                                {{--<span class="col-xs-5 text-right">--}}
-                                    {{--<div class="margin-top-5" > NAI</div>--}}
-                                    {{--<div class="">10 Μαϊ 2017</div>--}}
-                                {{--</span>--}}
-                                    {{--</div>--}}
-
-                                {{--</div>--}}
-
-
-                                {{--<div class="col-xs-3">--}}
-                                    {{--@if(auth()->check())--}}
-                                    {{--<a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white btn-like" >--}}
-                                    {{--<i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>--}}
-                                    {{--<span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>--}}
-                                    {{--</button>--}}
-                                    {{--</a>--}}
-                                    {{--@endif--}}
-
-
-                                    {{--<a href="/scholarship/1">--}}
-                                        {{--<button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">--}}
-                                            {{--<i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή--}}
-                                        {{--</button>--}}
-                                    {{--</a>--}}
-                                {{--</div>--}}
-
-                            {{--</div>  --}}
-                        {{--</div>--}}
-                    </div>
-
-
-                    <main id="hits"></main>
+                    <main id="scholarships"></main>
                     <section id="pagination"></section>
 
 
@@ -475,6 +372,8 @@ angular.module("scholarshipsResultsApp",[])
 
             console.log('start');
 
+            $scope.test=true;
+
 
 
         })
@@ -496,8 +395,8 @@ angular.module("scholarshipsResultsApp",[])
 
     search.addWidget(
             instantsearch.widgets.searchBox({
-                container: '#q',
-                placeholder: 'Αναζητησε υποτροφία by algolia'
+                container: '#query',
+                placeholder: 'Αναζήτησε υποτροφία: π.χ. marketing ή Λύκειο'
             })
     );
 
@@ -517,24 +416,10 @@ angular.module("scholarshipsResultsApp",[])
     });
 
     var hitTemplate =
-            {{--'<article class="hit">' +--}}
-{{--//            '<div class="product-picture-wrapper">' +--}}
-            {{--'<div class="product-picture"><img src="@{{study.section[0].name}}" /></div>' +--}}
-            {{--'</div>' +--}}
-            {{--'<div class="product-desc-wrapper">' +--}}
-            {{--'<div class="product-name">@{{{_highlightResult.school.admin.name.value}}}</div>' +--}}
-                {{--// '<div class="product-type">@{{school.type.name}}</div>' +--}}
-            {{--'<div class="product-type">Σπουδές: @{{{_highlightResult.study.name.value}}}</div>' +--}}
-            {{--'<div class="product-type">Level: @{{{_highlightResult.section.name.value}}}</div>' +--}}
-            {{--'<div class="product-type">Section: @{{study.section}}</div>' +--}}
-            {{--'<div class="product-type">Πόλη: @{{school.city}}</div>' +--}}
-            {{--'<div class="product-price">@{{criteria.name}}</div>' +--}}
-                {{--// '<div class="product-rating">@{{#stars}}<span class="ais-star-rating--star@{{^.}}__empty@{{/.}}"></span>@{{/stars}}</div>' +--}}
-            {{--'</div>' +--}}
-            {{--'</article>';--}}
 
             '  <div>'+
             '<div class=" col-xs-12 pad-0-mar-0 inner-container">'+
+//            '<div class="ribbon top20"><span style="font-size: 95%; ">Πλήρης</span></div>'+
 
                 <!-- ========== Scholarship Header ============= -->
             '<div class="col-xs-12 scholar-header">'+
@@ -547,8 +432,8 @@ angular.module("scholarshipsResultsApp",[])
             '<div class="header-line"></div>'+
             '</div>'+
 
+                <!-- ========== Scholarship Section1 Αντικειμενο Σπουδών ============= -->
             '<div class="col-xs-12 pad-0-mar-0 section-container">'+
-
             '<div class="col-lg-4 col-md-6 col-sm-4 section1 ">'+
             '<div class="hex-container centered">'+
             '<div class="hexagon3 hex">'+
@@ -565,6 +450,7 @@ angular.module("scholarshipsResultsApp",[])
             '</div>'+
             '</div>'+
 
+                <!-- ========== Scholarship Section2 Κριτήρια ============= -->
             '<div class="col-lg-4 col-md-6 col-sm-4 section2">'+
             '<div class="hex-container centered">'+
             '<div class="hexagon3 hex">'+
@@ -581,7 +467,7 @@ angular.module("scholarshipsResultsApp",[])
             '</div>'+
             '</div>'+
 
-
+                <!-- ========== Scholarship Section3 Financial Plan ============= -->
             '<div class="col-lg-4 col-sm-4 hidden-md section3 ">'+
                     '<div class="hex-container centered">'+
                     '<div class="hexagon3 hex" style="">'+
@@ -631,7 +517,7 @@ angular.module("scholarshipsResultsApp",[])
 
 
 
-            '<a href="/scholarship/1">'+
+            '<a href="/scholarship/@{{id }}">'+
             '<button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">'+
             '<i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή'+
             '</button>'+
@@ -659,8 +545,8 @@ angular.module("scholarshipsResultsApp",[])
 
     search.addWidget(
             instantsearch.widgets.hits({
-                container: '#hits',
-                hitsPerPage: 12,
+                container: '#scholarships',
+                hitsPerPage: 5,
                 templates: {
                     empty: noResultsTemplate,
                     item: hitTemplate
@@ -691,9 +577,43 @@ angular.module("scholarshipsResultsApp",[])
 
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
-                container: '#categories',
+                container: '#categoriesType',
                 attributes: ['school.type.name'],
-                // attributes: ['school.city','school.type.name'],
+//                 attributes: ['school.type.name','school.city'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCity',
+                attributes: ['school.city'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesSection',
+                attributes: ['study.section.name'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesLevel',
+                attributes: ['study.section.level.name'],
                 sortBy: ['name:asc'],
                 templates: {
                     item: menuTemplate
@@ -737,20 +657,20 @@ angular.module("scholarshipsResultsApp",[])
     //   })
     // );
 
-    // search.addWidget(
-    //   instantsearch.widgets.priceRanges({
-    //     container: '#prices',
-    //     attributeName: 'price',
-    //     cssClasses: {
-    //       list: 'nav nav-list',
-    //       count: 'badge pull-right',
-    //       active: 'active'
-    //     },
-    //     templates: {
-    //       header: '<div class="facet-title">Prices</div class="facet-title">'
-    //     }
-    //   })
-    // );
+//     search.addWidget(
+//       instantsearch.widgets.priceRanges({
+//         container: '#financial',
+//         attributeName: 'financial_amount',
+//         cssClasses: {
+//           list: 'nav nav-list',
+//           count: 'badge pull-right',
+//           active: 'active'
+//         },
+//         templates: {
+//           header: '<div class="facet-title">Ποσό Επιδότησης</div class="facet-title">'
+//         }
+//       })
+//     );
 
     // search.addWidget(
     //   instantsearch.widgets.sortBySelector({
@@ -764,18 +684,18 @@ angular.module("scholarshipsResultsApp",[])
     //   })
     // );
 
-//    search.addWidget(
-//            instantsearch.widgets.clearAll({
-//                container: '#clear-all',
-//                templates: {
-//                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
-//                },
-//                cssClasses: {
-//                    root: 'btn btn-block btn-default'
-//                },
-//                autoHideContainer: true
-//            })
-//    );
+    search.addWidget(
+            instantsearch.widgets.clearAll({
+                container: '#clear-all',
+                templates: {
+                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
+                },
+                cssClasses: {
+                    root: 'btn btn-block btn-default'
+                },
+                autoHideContainer: true
+            })
+    );
 
     search.start();
 

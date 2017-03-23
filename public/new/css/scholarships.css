@@ -171,6 +171,9 @@ p {padding: 15px; color: #5d5d5d;  }
 ::-webkit-input-placeholder {  color:    #888;   /* default placeholder text */  }
 
 
+/*======= Algolia Left =========*/
+.filter-title{ font-weight: 300; font-size: 120%; margin-top: 20px}
+
 
 /* ////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////// */
@@ -188,7 +191,7 @@ p {padding: 15px; color: #5d5d5d;  }
 
 }
 
-
+/* =========== Large ===========*/
 @media (min-width: 1200px) and (max-width: 1449px) {
     /*  */
 
@@ -197,24 +200,31 @@ p {padding: 15px; color: #5d5d5d;  }
 
 
 
-
+/* =========== Medium ===========*/
 @media (min-width: 992px) and (max-width: 1199px) {
-
+    .section1, .section2{ min-height: 220px}
+    .section3{ min-height: 150px}
     }
 
 
-/* Portrait tablets and small desktops */
+/* =========== Small ===========  Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
     /*  */
     .scholarship-container{min-height: 245px;}
+    .section1, .section2,  .section3{ min-height: 250px;}
+
+
 }
 
 
 
-/* Landscape phones and portrait tablets */
+/* =========== Extra Small =========== Landscape phones and portrait tablets */
 @media (min-width: 481px) and (max-width: 767px) {
     /*  */
-
+    .section1{ min-height: 220px;}
+    .section2,.section3{ min-height: 180px;}
+    .col-xs-12>a>.pull-right{float: none!important; }
+    .btn-provoli{ margin-left: auto!important; margin-right: auto!important;}
 }
 
 

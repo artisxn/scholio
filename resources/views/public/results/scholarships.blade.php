@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
     <!-- Ribbon CSS -->
-    {{-- <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">--}}
+     <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">
 
     <!-- Hexagon CSS -->
     <link href="/new/css/Hexagon.css" rel="stylesheet">
@@ -304,6 +304,12 @@
                     <!-- ===== SCHOLARSHIP1 ===== -->
                     <div class=" col-xs-12 pad-0-mar-0 inner-container">
 
+
+
+                            <div  class="ribbon top5"><span style="font-size: 95%">top 10</span></div>
+                            {{--<div  class="ribbon top20"><span style="font-size: smaller">top 20</span></div>--}}
+
+
                     <!-- ========== Scholarship Header ============= -->
                     <div class="col-xs-12 scholar-header">
                         <div class="circle margin-top-8 pull-left">
@@ -350,7 +356,7 @@
                         </div>
 
                         <!-- ========== Scholarship Section3 Financial Plan ============= -->
-                        <div class="col-lg-4 col-sm-4 hidden-md section3 ">
+                        <div class="col-lg-4 col-sm-4 col-md-12 section3 ">
                             <div class="hex-container centered">
                                 <div class="hexagon3 hex" style="">
                                     <span></span>
@@ -366,28 +372,28 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 hidden-xs hidden-lg hidden-sm visible-md section4" ></div>
+                        {{--<div class="col-md-12 hidden-xs hidden-lg hidden-sm visible-md section4" ></div>--}}
                     </div>
 
                     <!-- ========== Scholarship Footer============= -->
                     <div class="col-xs-12 scholar-footer ">
-                        <div class="col-xs-9 sc-t-grey font-weight-300">
-                            <div class="col-xs-5 pad-0-mar-0" >
-                                <span class="col-xs-7 pad-0-mar-0">
+                        <div class="col-sm-9  sc-t-grey font-weight-300 pad-0-mar-0">
+                            <div class=" col-xs-5 col-sm-5 col-md-6 pad-0-mar-0" >
+                                <span class="col-xs-9 col-sm-7 pad-0-mar-0">
                                     <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
                                     <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
                                 </span>
-                                <span class="col-xs-3 text-right">
+                                <span class="col-xs-2 col-sm-3 text-right">
                                     <div class="">34</div>
                                     <div class="margin-top-5">123</div>
                                 </span>
                             </div>
-                            <div class="col-xs-6">
-                                <span class="col-xs-7">
+                            <div class=" col-xs-7 col-sm-6 ">
+                                <span class="col-xs-7 col-sm-6 pad-0-mar-0">
                                     <div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
                                     <div class="">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
                                 </span>
-                                <span class="col-xs-5 text-right">
+                                <span class="col-xs-5 col-sm-6 pad-0-mar-0 text-right">
                                     <div class="margin-top-5" > NAI</div>
                                     <div class="">10 Μαϊ 2017</div>
                                 </span>
@@ -396,7 +402,7 @@
                         </div>
 
 
-                        <div class="col-xs-3">
+                        <div class="col-xs-12  pad-0-mar-0">
                             {{--@if(auth()->check())--}}
                                     {{--<a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white btn-like" >--}}
                                             {{--<i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>--}}
@@ -406,7 +412,7 @@
                             {{--@endif--}}
 
 
-                            <a href="/scholarship/1">
+                            <a href="/scholarship/1" >
                                 <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
                                     <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή
                                 </button>
@@ -419,7 +425,7 @@
 
                     <!-- ===== SCHOLARSHIP2 ===== -->
                     <div class=" col-xs-12 pad-0-mar-0 inner-container">
-
+                        <div  class="ribbon top20"><span style="font-size: 95%; ">Πλήρης</span></div>
                         <!-- ========== Scholarship Header ============= -->
                         <div class="col-xs-12 scholar-header">
                             <div class="circle margin-top-8 pull-left">
@@ -473,7 +479,7 @@
                                     </div>
                                 </div>
                                 <div class="centered-text">
-                                    <div class="text-title">Μείωση Διδάκτρων 30 %</div>
+                                    <div class="text-title">Μείωση Διδάκτρων 100 %</div>
                                     <div class="text-content">Interdum et malesuada fames ac ante ipsum primis in faucibus.
                                         Torquent per conubia nostra, per inceptos himenaeos.
 

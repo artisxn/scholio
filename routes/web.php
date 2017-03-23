@@ -175,6 +175,10 @@ Route::get('/public/scholarships/', function () {
     return view('public.results.scholarships-test');
 });
 
+Route::get('/public/scholarships/d', function () {
+    return view('public.results.scholarships');
+});
+
 /* ===== TESTING ROUTE FOR SCHOLARSIPS RESULTS ====== */
 Route::get('/public/algolia/', function () {
     return view('public.results.algolia');
