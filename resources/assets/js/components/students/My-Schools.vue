@@ -33,6 +33,14 @@
                         </div>
                     </div>
                 </div>
+                <div v-if="hasNOTReviewed(mySchool.id)">
+                    <a :href="'/panel/users/review/create/' + mySchool.id" class="btn btn-primary">
+                        ΑΞΙΟΛΟΓΗΣΕ ΤΟ ΣΧΟΛΕΙΟ
+                    </a>
+                </div>
+                <div v-else>
+                    ΕΧΕΤΕ ΗΔΗ ΑΞΙΟΛΟΓΗΣΕΙ ΑΥΤΟ ΤΟ ΣΧΟΛΕΙΟ
+                </div>
             </div>
         </div>
     </div>
@@ -41,7 +49,8 @@
     export default{
         data: function() {
             return{
-                mySchools: {}
+                mySchools: {},
+                reviews: {}
             }
         },
 
@@ -50,14 +59,30 @@
                 axios.get('/api/student/mySchools')
                     .then(response => {
                         this.mySchools = response.data;
-                        console.log(response.data);
                     });
+            },
 
+            fetchReviews: function(){
+                axios.get('/api/user/reviews')
+                    .then(response => {
+                        this.reviews = response.data
+                    });
+            },
+
+            hasNOTReviewed: function(id){
+                var result = true
+                this.reviews.forEach(function(key){
+                    if(key.school_id === id){
+                        result = false
+                    }
+                })
+                return result
             }
         },
 
         mounted() {
             console.log('mySchools-Table component mounted!')
+            this.fetchReviews()
             this.getAllMySchools()
         }
 

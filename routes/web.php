@@ -1,21 +1,11 @@
 <?php
 
+use App\CategoryReview;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
- */
 
 Route::get('sss/', function () {
     $users = DB::select('select * from studies where name like "%Διοίκ%"');
@@ -64,12 +54,32 @@ Route::get('dummy/algolia', function () {
 
 });
 
-Route::get('search/scholarship/{q}', function ($q) {
-    $scholarships = Scholarship::search($q)->get();
-    foreach ($scholarships as $s) {
-        echo $s->school->name() . ' - ' . $s->criteria->name . ' - ' . $s->study->name . '<br>';
-    }
-    // return view('public.results.algolia-schools', compact('schools'));
+Route::get('qqq', function () {
+    // $reviews = App\Models\Review::all();
+    // // foreach ($reviews as $review) {
+
+    // // }
+    // return $reviews->load('category.category');
+    // $school = School::find(3);
+    // return $school->categories();
+    // if (auth()->user()->reviewedSchool(School::find(1))) {
+    //     dd('ok');
+    // }
+    // return 'NO';
+});
+
+Route::get('aaa', function () {
+    $review = new App\Models\Review;
+    $review->user_id = 13;
+    $review->school_id = 1;
+    $review->text = 'RRR123';
+    $review->save();
+
+    $c = new CategoryReview;
+    $c->review_id = 2;
+    $c->category_id = 3;
+    $c->stars = 5;
+    $c->save();
 });
 
 Route::get('search/school/{q}', function ($q) {
