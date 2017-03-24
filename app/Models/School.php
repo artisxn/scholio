@@ -203,15 +203,23 @@ class School extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function countReviews()
+    {
+        return count($this->reviews);
+    }
+
     public function averageStars()
     {
         $total = 0;
+        $count = 0;
         foreach ($this->reviews as $review) {
             foreach ($review->allCategories() as $cat) {
                 $total += $cat->stars;
+                $count++;
             }
         }
-        return $total / 5;
+
+        return ($count != 0) ? ($total / $count) : 0;
     }
 
     public function categories()

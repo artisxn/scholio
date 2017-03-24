@@ -169,6 +169,7 @@ class ApiController extends Controller
             $s->lengthTeachers = $s->lengthTeachers();
             $s->lengthStudies = $s->lengthStudies();
             $s->lengthScholarships = $s->lengthScholarships();
+            $s->rating = $s->averageStars();
         }
         return $schools;
     }

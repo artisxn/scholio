@@ -7,6 +7,11 @@ use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
 
+Route::get('/qqq', function () {
+    $s = School::find(1);
+    return $s->countReviews();
+});
+
 Route::get('dummy/algolia', function () {
     $studyDummy = '';
 
@@ -46,20 +51,6 @@ Route::get('dummy/algolia', function () {
         $alg->school = $scholarship->school->name;
     }
 
-});
-
-Route::get('qqq', function () {
-    // $reviews = App\Models\Review::all();
-    // // foreach ($reviews as $review) {
-
-    // // }
-    // return $reviews->load('category.category');
-    // $school = School::find(3);
-    // return $school->categories();
-    // if (auth()->user()->reviewedSchool(School::find(1))) {
-    //     dd('ok');
-    // }
-    // return 'NO';
 });
 
 Route::get('aaa', function () {

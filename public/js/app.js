@@ -13598,7 +13598,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/api/categories/' + SchoolID).then(function (response) {
                 _this.categories = response.data;
-                console.log(response.data);
             });
         },
 
@@ -13639,18 +13638,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 text: this.text,
                 review: this.review
             }).then(function (response) {
+                console.log(response.data);
                 if (response.data == 'OK') {
                     window.location = '/panel/users/review/show';
+                } else {
+                    // ERROR HERE
+                    console.log('ERROR' + response);
                 }
-
-                // ERROR HERE
             });
         }
     },
 
     mounted: function mounted() {
         this.fetchCategories();
-        console.log('Notifications-Table component mounted!');
     }
 };
 

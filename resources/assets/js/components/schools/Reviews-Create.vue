@@ -36,7 +36,6 @@
                 axios.get('/api/categories/' + SchoolID)
                     .then(response => {
                         this.categories = response.data
-                        console.log(response.data)
                     });
             },
 
@@ -78,19 +77,19 @@
                         review: this.review
                     })
                     .then(response => {
+                        console.log(response.data)
                         if(response.data == 'OK'){
                             window.location = '/panel/users/review/show'
+                        }else{
+                            // ERROR HERE
+                            console.log('ERROR' + response)
                         }
-
-                        // ERROR HERE
-                        
                     });
             }
         },
 
         mounted() {
             this.fetchCategories()
-            console.log('Notifications-Table component mounted!')
         }
     }
 </script>

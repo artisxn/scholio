@@ -157,5 +157,6 @@ Route::post('/review/{school}/save', function (School $school) {
         return 'Error';
     }
 
+    Scholio::updateDummy($school);
     return 'OK';
 })->middleware('auth:api');

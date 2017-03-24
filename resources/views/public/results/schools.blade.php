@@ -431,8 +431,8 @@
                                             </a>
                                             <span class="pull-left">
                                                 <h5 class="pad-top-10"> <a href="/public/profile/@{{school.school_id}}"> @{{school.name}}</a></h5>
-                                                <span  ng-show="school.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
-                                                <span ng-show="school.ratingCounter!=0" class="sc-t-orange"> @{{school.ratingStar}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{school.ratingCounter}}  Αξιολογήσεις)</span>
+                                                <span  ng-show="school.stars!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
+                                                <span ng-show="school.stars!=0" class="sc-t-orange"> @{{school.stars}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{school.reviews}}  Αξιολογήσεις)</span>
                                             </span>
                                         </div>
 

@@ -32,6 +32,8 @@ class CreateDummiesTable extends Migration
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
             $table->string('background')->nullable();
+            $table->float('stars', 8, 2)->nullable();
+            $table->integer('reviews')->nullable();
             $table->timestamps();
         });
     }
