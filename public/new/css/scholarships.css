@@ -223,8 +223,7 @@ p {padding: 15px; color: #5d5d5d;  }
     /*  */
     .section1{ min-height: 220px;}
     .section2,.section3{ min-height: 180px;}
-    .col-xs-12>a>.pull-right{float: none!important; }
-    .btn-provoli{ margin-left: auto!important; margin-right: auto!important;}
+
 }
 
 
@@ -232,9 +231,9 @@ p {padding: 15px; color: #5d5d5d;  }
 
 
 
-@media (min-width: 541px) and (max-width: 600px) {
+@media  (max-width: 640px) {
     /*  */
-
+.xs-hidden{display: none}
 }
 
 

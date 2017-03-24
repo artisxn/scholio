@@ -21,6 +21,8 @@
     <!-- Bootstrap Select -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
+    <link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
+
     <!-- Ribbon CSS -->
      <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">
 
@@ -377,9 +379,9 @@
 
                     <!-- ========== Scholarship Footer============= -->
                     <div class="col-xs-12 scholar-footer ">
-                        <div class="col-sm-9  sc-t-grey font-weight-300 pad-0-mar-0">
-                            <div class=" col-xs-5 col-sm-5 col-md-6 pad-0-mar-0" >
-                                <span class="col-xs-9 col-sm-7 pad-0-mar-0">
+                        <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
+                            <div class=" col-xs-8 col-sm-5 col-md-6 pad-0-mar-0" >
+                                <span class=" col-xs-10 col-sm-7 pad-0-mar-0">
                                     <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
                                     <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
                                 </span>
@@ -388,12 +390,12 @@
                                     <div class="margin-top-5">123</div>
                                 </span>
                             </div>
-                            <div class=" col-xs-7 col-sm-6 ">
-                                <span class="col-xs-7 col-sm-6 pad-0-mar-0">
+                            <div class="  col-xs-6 col-sm-5 pad-0-mar-0 xs-hidden">
+                                <span class="col-xs-7 col-sm-7 pad-0-mar-0">
                                     <div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
                                     <div class="">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
                                 </span>
-                                <span class="col-xs-5 col-sm-6 pad-0-mar-0 text-right">
+                                <span class="col-xs-5 col-sm-5 pad-0-mar-0 text-right">
                                     <div class="margin-top-5" > NAI</div>
                                     <div class="">10 Μαϊ 2017</div>
                                 </span>
@@ -402,7 +404,7 @@
                         </div>
 
 
-                        <div class="col-xs-12  pad-0-mar-0">
+                        <div class="col-xs-3  col-sm-2 pad-0-mar-0">
                             {{--@if(auth()->check())--}}
                                     {{--<a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white btn-like" >--}}
                                             {{--<i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>--}}
