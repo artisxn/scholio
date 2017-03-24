@@ -221,7 +221,7 @@ p {padding: 15px; color: #5d5d5d;  }
 /* =========== Extra Small =========== Landscape phones and portrait tablets */
 @media (min-width: 481px) and (max-width: 767px) {
     /*  */
-    .section1{ min-height: 220px;}
+    .section1{ min-height: 220px; margin-top: 2px}
     .section2,.section3{ min-height: 180px;}
 
 }
@@ -233,7 +233,44 @@ p {padding: 15px; color: #5d5d5d;  }
 
 @media  (max-width: 640px) {
     /*  */
-.xs-hidden{display: none}
+    .section1{ min-height: 220px; margin-top: 2px}
+    .section2,.section3{ min-height: 175px;}
+    .xs-hidden {
+        display: none
+    }
+
+    .xxs-2 {
+        width: 16.66666667%;
+    }
+
+    .xxs-3 {
+        width: 25%;
+    }
+
+    .xxs-4 {
+        width: 33.33333333%;
+    }
+
+    .xxs-9 {
+        width: 75%;
+    }
+
+    .xxs-10 {
+        width: 83.33333333%;
+    }
+
+    .xxs-12 {
+        width: 100%;
+    }
+
+    .xxs-2,.xxs-3,.xxs-4,.xxs-9,.xxs-10,.xxs-12
+    {
+    position:relative;
+    min-height:1px;
+    padding-right:2px;
+    padding-left:2px;
+    float:left;
+    }
 }
 
 
