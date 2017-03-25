@@ -321,6 +321,7 @@
                         </div>
                         <div class="header-text margin-top-20 pull-left margin-left-10"> <span class="title-from">Υποτροφία από:</span>
                             <br class="break"> <span class="title-name">American College of Thessaloniki </span></div>
+                        <div class="xxs-title-name">American College of Thessaloniki </div>
                         <div class="header-line"></div>
                     </div>
 
@@ -381,7 +382,7 @@
                     <!-- ========== Scholarship Footer============= -->
                     <div class="col-xs-12 scholar-footer ">
                         <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
-                            <div class=" xxs-9 col-xs-6 col-sm-5 col-md-6 pad-0-mar-0" >
+                            <div class=" xxs-9 col-xs-6 col-sm-5 col-md-6 pad-0-mar-0 xxs-footer" >
                                 <span class=" xxs-8 col-xs-8 col-sm-7 pad-0-mar-0">
                                     <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
                                     <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>

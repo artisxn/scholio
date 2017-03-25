@@ -94,6 +94,8 @@ p {padding: 15px; color: #5d5d5d;  }
 .scholarship-container{min-height: 260px; margin-bottom: 30px;
     /*background-color: #fcfcfc; border: 1px solid #e1e1e1;   */
 }
+.xxs-title-name{display: none}
+.break{ display: none}
 
 .inner-container{ border: 1px solid #008da5; border-radius: 7px; background-color: #ebebeb; margin-bottom: 50px}
 .section-container{background-color: #f0f0f0; padding: 0 5px; }
@@ -221,11 +223,20 @@ p {padding: 15px; color: #5d5d5d;  }
 /* =========== Extra Small =========== Landscape phones and portrait tablets */
 @media (min-width: 481px) and (max-width: 767px) {
     /*  */
-    .section1{ min-height: 220px; margin-top: 2px}
-    .section2,.section3{ min-height: 180px;}
+    /*.section1{ min-height: 220px; margin-top: 5px; margin-bottom: 2px; border-radius: 10px; border: 5px solid #f0f0f0; }*/
+    /*.section2,.section3{ min-height: 180px; margin-bottom: 4px; border-radius: 10px; border: 5px solid #f0f0f0; border-top: 2px solid #f0f0f0;}*/
 
 }
 
+@media (max-width: 767px) {
+    .section1{ min-height: 220px; margin-top: 5px; margin-bottom: 2px; border-radius: 10px; border: 5px solid #f0f0f0; }
+    .section2,.section3{ min-height: 180px; margin-bottom: 4px; border-radius: 10px; border: 5px solid #f0f0f0; border-top: 2px solid #f0f0f0;}
+    .btn-provoli{ margin-right: -5px; padding-right: 0}
+    .break{display: block}
+    .header-text{margin-top: 7px}
+    .title-from{ font-size: 87%; color: #e1e1e1
+    }
+}
 
 
 
@@ -235,33 +246,15 @@ p {padding: 15px; color: #5d5d5d;  }
     /*  */
     .section1{ min-height: 220px; margin-top: 2px}
     .section2,.section3{ min-height: 175px;}
-    .xs-hidden {
-        display: none
-    }
+    .xs-hidden {  display: none  }
 
-    .xxs-2 {
-        width: 16.66666667%;
-    }
-
-    .xxs-3 {
-        width: 25%;
-    }
-
-    .xxs-4 {
-        width: 33.33333333%;
-    }
-
-    .xxs-9 {
-        width: 75%;
-    }
-
-    .xxs-10 {
-        width: 83.33333333%;
-    }
-
-    .xxs-12 {
-        width: 100%;
-    }
+    .xxs-2 {  width: 16.66666667%;  }
+    .xxs-3 {  width: 25%;  }
+    .xxs-4 {  width: 33.33333333%;  }
+    .xxs-8 {  width:66.66666667%; }
+    .xxs-9 {  width: 75%;  }
+    .xxs-10 {  width: 83.33333333%;  }
+    .xxs-12 {  width: 100%;  }
 
     .xxs-2,.xxs-3,.xxs-4,.xxs-9,.xxs-10,.xxs-12
     {
@@ -287,7 +280,30 @@ p {padding: 15px; color: #5d5d5d;  }
 
 }
 
+
+@media (max-width: 440px) {
+ .header-text{margin-top: 20px;}
+ .title-from{ font-size: 88%; }
+ .title-name{display: none}
+ .xxs-title-name{ display: block; clear: both; padding-top: 5px; margin-bottom: 15px; font-size: 130%; font-weight: 200; color: #fff; margin-left: -5px}
+ .circle{margin-left: -10px; width: 50px; height: 50px}
+ .trophy-container{ width: 32px;}
+ .trophy-img{width: 32px; margin-top: 12px}
+
+}
+
+
+
 @media (max-width: 400px) {
     /* */
+.xxs-footer{ font-size: 90%}
+.btn-provoli{ width: 100px; font-size: 95%; margin-right: -5px; padding-right: 0; margin-top: -2px}
+    .xxs-4 {  width:18%; }
+    .xxs-8 {  width:82%; }
+    .section1{ min-height: 240px;}
+    .section2{ min-height: 220px;}
+    .section3{ min-height: 190px;}
+
+
 
 }

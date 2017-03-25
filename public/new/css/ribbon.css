@@ -2,11 +2,11 @@
     position: relative;
 }
 
-.ribbon {  margin: 0 3px;}
+.ribbon {  margin: 0 }
 
 .ribbon {
     position: absolute;
-    right: -7px; top: -6px;
+    right: -5px; top: -6px;
     z-index: 1;
     overflow: hidden;
     width: 75px; height: 75px;
