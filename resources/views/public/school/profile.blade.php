@@ -297,8 +297,8 @@
 
                         <span ng-show="contactInfo.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating>
                                                 </span>
-                                                <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.ratingStar}} </span>
-                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.ratingCounter}}  Αξιολογήσεις)</span>
+                                                <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.stars}} </span>
+                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.stars}}  Αξιολογήσεις)</span>
                          </span>
 
                     </div>
@@ -605,6 +605,14 @@
                     </div>
 @endif
 
+
+
+
+
+
+
+
+
 @if($school->settings->reviews)
                     <!-- Αξιολογησεις -->
                     <div class="slideReviews slideup margin-bot-25 " id="reviews" style="overflow-x: hidden">
@@ -618,7 +626,7 @@
                         <div id="total-reviews" class="row col-sm-12">
 
                             <div class="font-weight-400 sc-t-green col-xs-12 col-lg-4 col-lg-push-8 text-center total-score">
-                                <span class="lead">@{{getAVG("total")}}</span>
+                                <span class="lead">@{{contactInfo.stars}}</span>
                                 <br />
                                 <span class="sc-t-grey">Συνολική Βαθμολογία</span>
 
@@ -629,7 +637,19 @@
 
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
 
+
+                            <div ng-repeat="reviews in contactInfo.avgReviews">
+                                <div class="col-xs-12 col-sm-6" >
+                                    <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
+                                    <span>@{{ reviews.name }}</span>
+                                </div>
                                 <div class="col-xs-12 col-sm-6">
+                                    <span value="@{{reviews.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
+                                    <span> @{{reviews.stars}}</span>
+                                </div>
+                            </div>
+
+{{--                                 <div class="col-xs-12 col-sm-6">
                                     <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
                                     <span>Πρόγραμμα Σπουδών</span>
                                 </div>
@@ -672,26 +692,25 @@
                                 <div class="col-xs-12 col-sm-6">
                                     <span  value="@{{getAVG('jobLink')}}" class=" margin-left-20 raty" id="jobLink"></span>
                                     <span> @{{getAVG("jobLink")}}</span>
-                                </div>
+                                </div> --}}
 
 
                             </div>
 
                         </div>
 
-
                         <!--  Personal Reviews-->
-                        <div id="reviews-container" ng-repeat="review in reviews">
+                        <div id="reviews-container" ng-repeat="review in contactInfo.reviews">
                             <hr class="sc-t-grey" />
 
                             <div class="col-lg-12">
                                 <div class="margin-left-10  person-review">
-                                    <span>@{{review.author}}</span>
+                                    <span>@{{review.user.name}}</span> - @{{ review.user.role }}
                                     <br />
                                     <span value="@{{review.stars.total}}" class="raty margin-right-10 sc-t-grey" style="margin-left: -3px"></span>
-                                    <span class="sc-t-grey"> @{{review.stars.total}}</span>
+                                    <span class="sc-t-grey"> STARS GOES HERE </span>
                                     <br />
-                                    <span class="sc-t-grey">@{{review.date}}</span>
+                                    <span class="sc-t-grey">@{{review.created_at}}</span>
                                     <br />
                                 </div>
                                 <span class="col-lg-12 font-weight-400 sc-t-grey review-text fulltext">@{{review.text}}</span>

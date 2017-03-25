@@ -242,10 +242,10 @@ class School extends Model
         }
 
         foreach ($this->categories() as $value => $cat) {
-            // $reviews['name'] = $cat->name;
+            $reviews[$value] = ['name' => $cat->name, 'stars' => $count[$value]];
             // $reviews['stars'] = $count[$value];
             // $reviews-> = $cat->name;
-            $reviews[$cat->name] = $count[$value];
+            // $reviews[$cat->name] = $count[$value];
         }
 
         return collect($reviews);

@@ -183,6 +183,9 @@ class ApiController extends Controller
         $school->name = $school->name();
         $school->email = $school->email();
         $school->teachers = $school->teachers;
+        $school->stars = $school->averageStars();
+        $school->avgReviews = $school->averageReviews();
+        $school->reviews = $school->reviews->load('user');
 
         foreach ($school->teachers as $teacher) {
             $teacher->info;
@@ -228,6 +231,8 @@ class ApiController extends Controller
         $school->name = $school->name();
         $school->email = $school->email();
         $school->teachers = $school->teachers;
+        $school->stars = $school->averageStars();
+        $school->avgReviews = $school->averageReviews();
 
         foreach ($school->teachers as $teacher) {
             $teacher->info;
