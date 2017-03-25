@@ -222,6 +222,35 @@ class School extends Model
         return ($count != 0) ? ($total / $count) : 0;
     }
 
+    public function averageReviews()
+    {
+        $count = [];
+        $reviews = [];
+
+        foreach ($this->reviews as $v => $review) {
+            foreach ($review->category as $value => $category) {
+                if ($this->reviews->first() == $review) {
+                    $count[$value] = $category->stars;
+                } else {
+                    $count[$value] += $category->stars;
+                }
+
+                if ($this->reviews->last() == $review) {
+                    $count[$value] /= count($this->reviews);
+                }
+            }
+        }
+
+        foreach ($this->categories() as $value => $cat) {
+            // $reviews['name'] = $cat->name;
+            // $reviews['stars'] = $count[$value];
+            // $reviews-> = $cat->name;
+            $reviews[$cat->name] = $count[$value];
+        }
+
+        return collect($reviews);
+    }
+
     public function categories()
     {
         return $this->type->review_categories;

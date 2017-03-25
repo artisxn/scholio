@@ -26,7 +26,7 @@ class Review extends Model
 
     public function category()
     {
-        return $this->hasMany(CategoryReview::class, 'category_id');
+        return $this->hasMany(CategoryReview::class);
     }
 
 }

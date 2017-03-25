@@ -9,7 +9,23 @@ use App\User;
 
 Route::get('/qqq', function () {
     $s = School::find(1);
-    return $s->countReviews();
+    $count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    foreach ($s->reviews as $v => $review) {
+        foreach ($review->category as $value => $category) {
+            $count[$value] += $category->stars;
+            if ($s->reviews->last() == $review) {
+                $count[$value] /= count($s->reviews);
+            }
+        }
+    }
+    dd($count);
+});
+
+Route::get('/www', function () {
+    $s = School::find(1);
+    $coll = $s->averageReviews();
+    return $coll;
 });
 
 Route::get('dummy/algolia', function () {
