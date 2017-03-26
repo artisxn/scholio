@@ -705,10 +705,10 @@
                             {{-- @{{ contactInfo.reviews }} --}}
                             <div class="col-lg-12">
                                 <div class="margin-left-10  person-review">
-                                    <span>@{{review.user}}</span> - @{{ review.user.role }}
+                                    <span>@{{review.user.name}}</span> - @{{ review.user.role }}
                                     <br />
                                     <span value="@{{review.stars.total}}" class="raty margin-right-10 sc-t-grey" style="margin-left: -3px"></span>
-                                    <span class="sc-t-grey"> STARS GOES HERE </span>
+                                    <span class="sc-t-grey"> <div class="raty" id="totalRating-@{{review.id}}" ng-init="rate(review.id, review.average)">@{{ review.average }}</div> </span>
                                     <br />
                                     <span class="sc-t-grey">@{{review.created_at}}</span>
                                     <br />
@@ -989,6 +989,19 @@
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http, $sce) {
 
+                $scope.rate = function(id, stars){
+                    setTimeout(function() {
+                        $('#totalRating-' +id).raty({
+                            score    : stars,
+                            halfShow : true,
+                            half     : true,
+                            readOnly: true,
+                            starHalf : 'fa fa-fw fa-star-half'
+                        });
+                    }, 20);
+
+                }
+
 
 
                 $scope.test = function(scholarship){
@@ -1021,6 +1034,7 @@
                                 .success(function(data)   {
                                    console.time('contactInfo API');
                         $scope.contactInfo=data;
+                        window.totalStars = data.stars
                         console.log(data);
                         $scope.studies = data.levels;
                         $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);
@@ -1403,6 +1417,7 @@
         $("#main").hide().fadeIn(1800);
         $(".raty").each(function(index,element){
 
+
             console.log($(this));
 
             if(this.id!="totalRating")
@@ -1410,11 +1425,17 @@
             else
                 window.stars = parseFloat($(this).parent().find(".lead").text());
 
+            var parent = this
+            setTimeout(function() {
+                $(parent).raty({
+                    score: window.totalStars,
+                    readOnly: true
+                });
+            }, 50);
 
-            $(this).raty({
-                score: window.stars,
-                readOnly: true
-            });
+
+
+
         });
     });
 </script>

@@ -140,6 +140,8 @@ Route::get('/categories/{school}', function (School $school) {
 })->middleware('auth:api');
 
 Route::post('/review/{school}/save', function (School $school) {
+    $total = 0;
+    $count = 0;
     try {
         $newReview = new Review;
         $newReview->user_id = auth()->user()->id;
@@ -151,10 +153,15 @@ Route::post('/review/{school}/save', function (School $school) {
             $r->review_id = $newReview->id;
             $r->category_id = $review['category'];
             $r->stars = $review['stars'];
+            $total += $review['stars'];
             $r->save();
+            $count++;
         }
+        $newReview->average = $total / $count;
+        $newReview->save();
+
     } catch (\Exception $e) {
-        return 'Error';
+        return $total / $count;
     }
 
     Scholio::updateDummy($school);

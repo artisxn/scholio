@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\CategoryReview;
 use App\Models\School;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
@@ -27,6 +28,13 @@ class Review extends Model
     public function category()
     {
         return $this->hasMany(CategoryReview::class);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        // Carbon::createFromFormat('d-m-Y', request()->end_at)
+        $date = Carbon::parse($value);
+        return $date->day . '/' . $date->month . '/' . $date->year;
     }
 
 }

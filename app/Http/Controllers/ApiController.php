@@ -233,6 +233,7 @@ class ApiController extends Controller
         $school->teachers = $school->teachers;
         $school->stars = $school->averageStars();
         $school->avgReviews = $school->averageReviews();
+        $school->reviews = $school->reviews->load('user');
 
         foreach ($school->teachers as $teacher) {
             $teacher->info;

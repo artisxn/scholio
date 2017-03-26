@@ -17,6 +17,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index();
             $table->integer('school_id')->index();
+            $table->float('average', 2, 1)->nullable();
             $table->text('text')->nullable();
             $table->timestamps();
         });
