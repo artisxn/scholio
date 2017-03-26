@@ -320,12 +320,8 @@
 
                     <!-- ===== SCHOLARSHIP1 ===== -->
                     <div class=" col-xs-12 pad-0-mar-0 inner-container">
-
-
-
-                            <div  class="ribbon top5"><span style="font-size: 95%">top 10</span></div>
-                            {{--<div  class="ribbon top20"><span style="font-size: smaller">top 20</span></div>--}}
-
+                        <div  class="ribbon top5"><span style="font-size: 95%">top 10</span></div>
+                        {{--<div  class="ribbon top20"><span style="font-size: smaller">top 20</span></div>--}}
 
                     <!-- ========== Scholarship Header ============= -->
                     <div class="col-xs-12 scholar-header">

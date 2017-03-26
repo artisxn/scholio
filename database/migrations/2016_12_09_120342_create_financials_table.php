@@ -16,6 +16,8 @@ class CreateFinancialsTable extends Migration
         Schema::create('financials', function (Blueprint $table) {
             $table->increments('id');
             $table->string('plan');
+            $table->string('icon')->nullable();
+            $table->string('metric')->nullable();
             $table->timestamps();
         });
     }

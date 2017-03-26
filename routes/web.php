@@ -1,72 +1,75 @@
 <?php
 
 use App\CategoryReview;
+use App\Models\AlgoliaScholarship;
+use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
+use Carbon\Carbon;
 
-Route::get('/qqq', function () {
-    $s = School::find(1);
-    $count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+Route::get('/algolia/upload', function () {
+    $schools = AlgoliaSchool::all();
+    $scholarships = AlgoliaScholarship::all();
 
-    foreach ($s->reviews as $v => $review) {
-        foreach ($review->category as $value => $category) {
-            $count[$value] += $category->stars;
-            if ($s->reviews->last() == $review) {
-                $count[$value] /= count($s->reviews);
-            }
-        }
-    }
-    dd($count);
-});
-
-Route::get('/www', function () {
-    $s = School::find(1);
-    $coll = $s->averageReviews();
-    return $coll;
+    $schools->searchable();
+    $scholarships->searchable();
+    return 'OK';
 });
 
 Route::get('dummy/algolia', function () {
-    $studyDummy = '';
-
+    AlgoliaSchool::truncate();
+    AlgoliaScholarship::truncate();
     foreach (School::all() as $school) {
-        $al = new App\AlgoliaSchool;
+        $studyDummy = '';
+        $al = new AlgoliaSchool;
+        $al->school_id = $school->id;
         $al->name = $school->name();
         $al->username = $school->admin->username ?? 'nousername';
         $al->address = $school->address;
         $al->city = $school->city;
         $al->type = $school->type->name;
-        $al->_geoloc = json_encode(array('lat' => $school->lat, 'lng' => $school->lng), JSON_FORCE_OBJECT);
+        // $al->_geoloc = json_encode(array('lat' => $school->lat, 'lng' => $school->lng), JSON_FORCE_OBJECT);
 
-        foreach ($school->study as $study) {
-            $studyDummy .= $study->name . ',';
-
-            $section = $study->section[0]->name;
+        foreach ($school->study as $s) {
+            $studyDummy .= $s->name . ',';
+            $section = $s->section[0]->name;
             if (strpos($studyDummy, $section) == false) {
-                $studyDummy .= $study->section[0]->name . ',';
+                $studyDummy .= $s->section[0]->name . ',';
             }
-            $level = $study->section[0]->level->name;
+            $level = $s->section[0]->level->name;
             if (strpos($studyDummy, $level) == false) {
-                $studyDummy .= $study->section[0]->level->name . ',';
+                $studyDummy .= $s->section[0]->level->name . ',';
             }
 
         }
-
         $al->study = $studyDummy;
         $al->save();
     }
 
     foreach (Scholarship::all() as $scholarship) {
-        $alg = new App\AlgoliaScholarship;
+        $alg = new AlgoliaScholarship;
+        $alg->scholarship_id = $scholarship->id;
         $alg->study = $scholarship->study->name;
         $alg->section = $scholarship->study->section[0]->name;
         $alg->level = $scholarship->level->name;
         $alg->criteria = $scholarship->criteria->name;
-        $alg->school = $scholarship->school->name;
+        $alg->school = $scholarship->school->name();
+        $alg->city = $scholarship->school->city;
+        $alg->address = $scholarship->school->address;
+        $alg->type = $scholarship->school->type->name;
+        $alg->financial_plan = $scholarship->financial->plan;
+        $alg->financial_amount = $scholarship->financial_amount;
+        $alg->financial_metric = $scholarship->financial->metric;
+        $alg->financial_icon = $scholarship->financial->icon;
+        $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
+        $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
+        $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
+        $alg->save();
     }
-
+    return 'OK';
 });
 
 Route::get('aaa', function () {
@@ -201,4 +204,3 @@ Route::get('/public/scholarships/d', function () {
 Route::get('/public/algolia/', function () {
     return view('public.results.algolia');
 });
-

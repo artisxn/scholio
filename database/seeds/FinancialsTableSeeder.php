@@ -12,11 +12,17 @@ class FinancialsTableSeeder extends Seeder
      */
     public function run()
     {
-        $types = ['Μείωση Διδάκτρων', 'Ποσό Επιδότησης', 'Χρόνος Δωρεάν Φοίτησης'];
+        $types = [
+            ['plan' => 'Μείωση Διδάκτρων', 'icon' => 'Μείωση Διδάκτρων.png', 'metric' => '%'],
+            ['plan' => 'Ποσό Επιδότησης', 'icon' => 'Ποσό Επιδότησης.png', 'metric' => '€'],
+            ['plan' => 'Χρόνος Δωρεάν Φοίτησης', 'icon' => 'Χρόνος Δωρεάν Φοίτησης.png', 'metric' => 'Μηνες'],
+        ];
 
         foreach ($types as $type) {
             $financial = new Financial;
-            $financial->plan = $type;
+            $financial->plan = $type['plan'];
+            $financial->icon = $type['icon'];
+            $financial->metric = $type['metric'];
             $financial->save();
         }
     }

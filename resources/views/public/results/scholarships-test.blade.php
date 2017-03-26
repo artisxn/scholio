@@ -390,7 +390,7 @@ angular.module("scholarshipsResultsApp",[])
     var search = instantsearch({
         appId: 'FM3GHJGA1T',
         apiKey: 'de6f693844a49775415380088208bc66',
-        indexName: 'scholarships'
+        indexName: 'dummyScholarships'
     });
 
     search.addWidget(
@@ -415,7 +415,110 @@ angular.module("scholarshipsResultsApp",[])
         });
     });
 
-    var hitTemplate =
+    var hitTemplate = `
+    <div class=" col-xs-12 pad-0-mar-0 inner-container">
+        <div  class="ribbon top5"><span style="font-size: 95%">top 10</span></div>
+
+    <div class="col-xs-12 scholar-header">
+        <div class="circle margin-top-8 pull-left">
+            <div class=" trophy-container centered-abs">
+                <img class="trophy-img centered" src="/new/img/trophy4.png" alt="">
+            </div>
+        </div>
+        <div class="header-text margin-top-20 pull-left margin-left-10"> <span class="title-from">Υποτροφία από:</span>
+            <br class="break"> <span class="title-name">@{{{_highlightResult.school.value}}}</span></div>
+        <div class="xxs-title-name"> @{{{_highlightResult.school.value}}} </div>
+        <div class="header-line"></div>
+    </div>
+
+    <div class="col-xs-12 pad-0-mar-0 section-container">
+        <div class="col-lg-4 col-md-6 col-sm-4 section1 ">
+            <div class="hex-container centered">
+                <div class="hexagon3 hex">
+                    <span></span>
+                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{section}}.png" alt="">
+                </div>
+            </div>
+            <div class="centered-text">
+                <div class="text-title">Αντικείμενο Σπουδών</div>
+                <div class="text-content">@{{{_highlightResult.study.value}}}</div>
+                <div class="text-title">Επίπεδο Σπουδών</div>
+                <div class="text-content">@{{{_highlightResult.section.value}}}</div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-4 section2">
+            <div class="hex-container centered">
+                <div class="hexagon3 hex">
+                    <span></span>
+                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{criteria}}.png" alt="">
+                </div>
+            </div>
+            <div class="centered-text">
+                <div class="text-title">@{{{_highlightResult.criteria.value}}}</div>
+                <div class="text-content">Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-4 col-md-12 section3 ">
+            <div class="hex-container centered">
+                <div class="hexagon3 hex" style="">
+                    <span></span>
+                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{financial_icon}}" alt="">
+                </div>
+            </div>
+            <div class="centered-text">
+                <div class="text-title">@{{financial_plan}} @{{financial_amount}} @{{financial_metric}}</div>
+                <div class="text-content">Ιn faucibus interdum et malesuada fames ac ante ipsum primis.
+                    Torquent per conubia nostra.
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 scholar-footer ">
+        <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
+            <div class=" xxs-9 col-xs-6 col-sm-5 col-md-6 pad-0-mar-0 xxs-footer" >
+                <span class=" xxs-8 col-xs-8 col-sm-7 pad-0-mar-0">
+                    <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
+                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
+                </span>
+                <span class="xxs-2 col-xs-2 col-sm-3 text-right">
+                    <div class="">34</div>
+                    <div class="margin-top-5">123</div>
+                </span>
+            </div>
+            <div class="col-xs-6 col-sm-5 pad-0-mar-0 xs-hidden">
+                <span class="col-xs-7 col-sm-7 pad-0-mar-0">
+                    <div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
+                    <div class="">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
+                </span>
+                <span class="col-xs-5 col-sm-5 pad-0-mar-0 text-right">
+                    <div class="margin-top-5" > @{{exams}}</div>
+                    <div class="">@{{end_at}}</div>
+                </span>
+            </div>
+        </div>
+
+
+        <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0">
+
+
+            <a href="/scholarship/1" >
+                <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
+                    <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή
+                </button>
+            </a>
+        </div>
+    </div>
+
+    `;
+
+    var hitTemplate2 =
 
             '  <div>'+
             '<div class=" col-xs-12 pad-0-mar-0 inner-container">'+
@@ -428,7 +531,7 @@ angular.module("scholarshipsResultsApp",[])
             '<img class="trophy-img centered" src="/new/img/trophy4.png" alt="">'+
             '</div>'+
             '</div>'+
-            '<div class="header-text margin-top-20 pull-left margin-left-10"> Υποτροφία από: @{{{_highlightResult.school.admin.name.value}}}</div>'+
+            '<div class="header-text margin-top-20 pull-left margin-left-10"> Υποτροφία από: @{{{_highlightResult.school.value}}}</div>'+
             '<div class="header-line"></div>'+
             '</div>'+
 
@@ -438,15 +541,15 @@ angular.module("scholarshipsResultsApp",[])
             '<div class="hex-container centered">'+
             '<div class="hexagon3 hex">'+
             '<span></span>'+
-            '<img class="centered-abs hex-img" src="/panel/assets/images/steps/Οικονομία & Διοίκηση.png" alt="">'+
+            '<img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{ section }}.png" alt="">'+
             '</div>'+
             '</div>'+
             '<div class="centered-text">'+
             '<div class="text-title">Αντικείμενο Σπουδών</div>'+
-            '<div class="text-content">@{{{_highlightResult.study.name.value}}}</div>'+
+            '<div class="text-content">@{{{_highlightResult.study.value}}}</div>'+
             '<div class="text-title">Επίπεδο Σπουδών</div>'+
             '<div class="text-content">Προπτυχιακές Σπουδές-Bachelor</div>'+
-{{--            '<div class="text-content">@{{{_highlightResult.study.section.name.value}}}</div>'+--}}
+{{--            '<div class="text-content">@{{{_highlightResult.study.section.value}}}</div>'+--}}
             '</div>'+
             '</div>'+
 
@@ -455,11 +558,11 @@ angular.module("scholarshipsResultsApp",[])
             '<div class="hex-container centered">'+
             '<div class="hexagon3 hex">'+
             '<span></span>'+
-            '<img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{criteria.name}}.png" alt="">'+
+            '<img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{criteria}}.png" alt="">'+
             '</div>'+
             '</div>'+
             '<div class="centered-text">'+
-            '<div class="text-title">@{{criteria.name}}</div>'+
+            '<div class="text-title">@{{criteria}}</div>'+
             '<div class="text-content">Interdum et malesuada fames ac ante ipsum primis in faucibus.'+
                     'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'+
 
@@ -476,7 +579,7 @@ angular.module("scholarshipsResultsApp",[])
                     '</div>'+
                     '</div>'+
                     '<div class="centered-text">'+
-                    '<div class="text-title">Ποσό Επιδότησης 800 €</div>'+
+                    '<div class="text-title">@{{  }}</div>'+
             '<div class="text-content">Ιn faucibus interdum et malesuada fames ac ante ipsum primis.Torquent per conubia nostra.'+
 
             '</div>'+
@@ -517,7 +620,7 @@ angular.module("scholarshipsResultsApp",[])
 
 
 
-            '<a href="/scholarship/@{{id }}">'+
+            '<a href="/scholarship/@{{ scholarship_id }}">'+
             '<button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">'+
             '<i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή'+
             '</button>'+
@@ -578,8 +681,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesType',
-                attributes: ['school.type.name'],
-//                 attributes: ['school.type.name','school.city'],
+                attributes: ['type'],
                 sortBy: ['name:asc'],
                 templates: {
                     item: menuTemplate
@@ -591,7 +693,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCity',
-                attributes: ['school.city'],
+                attributes: ['city'],
                 sortBy: ['name:asc'],
                 templates: {
                     item: menuTemplate
@@ -602,7 +704,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesSection',
-                attributes: ['study.section.name'],
+                attributes: ['section'],
                 sortBy: ['name:asc'],
                 templates: {
                     item: menuTemplate
@@ -613,7 +715,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesLevel',
-                attributes: ['study.section.level.name'],
+                attributes: ['level'],
                 sortBy: ['name:asc'],
                 templates: {
                     item: menuTemplate

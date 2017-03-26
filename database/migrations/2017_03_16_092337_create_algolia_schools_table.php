@@ -15,13 +15,14 @@ class CreateAlgoliaSchoolsTable extends Migration
     {
         Schema::create('algolia_schools', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('school_id');
             $table->string('name')->nullabale();
             $table->string('type')->nullabale();
             $table->text('study')->nullabale();
             // $table->text('scholarship')->nullabale();
             $table->string('address')->nullabale();
             $table->string('city')->nullabale();
-            $table->text('_geoloc')->nullabale();
+            // $table->text('_geoloc')->nullabale();
             $table->string('username')->nullabale();
             $table->timestamps();
         });

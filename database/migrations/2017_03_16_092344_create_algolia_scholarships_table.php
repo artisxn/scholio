@@ -15,13 +15,21 @@ class CreateAlgoliaScholarshipsTable extends Migration
     {
         Schema::create('algolia_scholarships', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('scholarship_id');
             $table->string('study')->nullable();
+            $table->string('type')->nullable();
             $table->string('section')->nullable();
             $table->string('level')->nullable();
             $table->string('criteria')->nullable();
             $table->string('school')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
+            $table->string('financial_plan')->nullable();
+            $table->string('financial_amount')->nullable();
+            $table->string('financial_metric')->nullable();
+            $table->string('financial_icon')->nullable();
+            $table->string('exams')->nullable();
+            $table->string('end_at')->nullable();
             $table->timestamps();
         });
     }
