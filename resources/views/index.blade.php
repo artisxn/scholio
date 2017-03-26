@@ -272,7 +272,11 @@
         </div>
         <!-- Searchbar -->
 
-           <div class="container search-container">
+           <div class="container search-container" style="position: relative">
+
+               <button class=" sc-button sc-t-white navbar-btn btn-scholarships" ><i class="fa fa-trophy margin-right-10"></i>Υποτροφίες</button>
+               <button class=" sc-button sc-t-white navbar-btn btn-schools" ><i class="fa fa-university margin-right-10"></i>Εκπαιδευτικά Ιδρύματα</button>
+
                <div class=" sc-landing-search-bar-content">
                    <form action="/search/school/type" method="post">
                        {{ csrf_field() }}
@@ -299,10 +303,12 @@
                                             {{--<input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου" name="search" autocomplete="on" />--}}
                                 {{--</div>--}}
 
-
                        <div class="col-md-5 col-sm-6" id="">
-                           <input type="text" class="font-weight-300" id="search-input" name="type" autocomplete aa-datasets="getDatasets()"
-                                  placeholder="Αναζήτησε πχ Νομική Κολλέγιο, ή Αγγλικά, ή Ιδιωτικό Λύκειο"/>
+                           <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets()"
+                                  ng-model="selection"
+                                  placeholder="Αναζήτησε πχ Νομική Κολλέγιο, ή Αγγλικά, ή Ιδιωτικό Λύκειο"
+                           />
+
                            <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
                        </div>
@@ -595,10 +601,10 @@
                               data-width="215"
                        >
                        <div class="counter-icon text-incr-200 ">
-                           <div>1790</div>
-                           <div><i class="fa fa-search text-incr-200 sc-t-green "></i></div>
+                           <div>480</div>
+                           <div><i class="fa fa-book text-incr-200 sc-t-green "></i></div>
                        </div>
-                       <div class="counter-text text-incr-125 font-weight-300">Αναζητήσεις κάθε ημέρα</div>
+                       <div class="counter-text text-incr-125 font-weight-300">Αντικείμενα Σπουδών</div>
 
                    </div>
                </div>

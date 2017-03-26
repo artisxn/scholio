@@ -1,4 +1,4 @@
-.hexagon {
+.hexagon,.hexagon2,.hexagon3  {
     position: relative;
     width: 60px;
     height: 34.64px;
@@ -8,8 +8,17 @@
     border-right: solid 2px #00bcd4;
 }
 
-.hexagon:before,
-.hexagon:after {
+.hexagon3,.hexagon3:before, .hexagon3:after {box-shadow: 0 0 20px rgba(175, 175, 175, 0.6);}
+
+.hexagon2  {
+    border-left: solid 2px #FD6A33;
+    border-right: solid 2px #FD6A33;
+}
+
+.hexagon:before, .hexagon:after,
+.hexagon2:before, .hexagon2:after,
+.hexagon3:before, .hexagon3:after
+{
     content: "";
     position: absolute;
     z-index: 1;
@@ -19,18 +28,39 @@
     -ms-transform: scaleY(0.5774) rotate(-45deg);
     transform: scaleY(0.5774) rotate(-45deg);
     background-color: inherit;
-
     left: 6.7868px;
 }
 
-.hexagon:before {
+.hexagon:before,.hexagon3:before {
     top: -21.2132px;
     border-top: solid 2.8284px #00bcd4;
     border-right: solid 2.8284px #00bcd4;
 }
-
-.hexagon:after {
+.hexagon:after,.hexagon3:after  {
     bottom: -21.2132px;
     border-bottom: solid 2.8284px #00bcd4;
     border-left: solid 2.8284px #00bcd4;
+}
+.hexagon2:before  {
+    top: -21.2132px;
+    border-top: solid 2.8284px #FD6A33;
+    border-right: solid 2.8284px #FD6A33;
+}
+.hexagon2:after  {
+    bottom: -21.2132px;
+    border-bottom: solid 2.8284px #FD6A33;
+    border-left: solid 2.8284px #FD6A33;
+}
+
+
+/*cover up extra shadows*/
+.hexagon3 span {
+    display: block;
+    position: absolute;
+    top:1.1547005383792515px;
+    left: 0;
+    width:56px;
+    height:32.3316px;
+    z-index: 2;
+    background: inherit;
 }

@@ -2,11 +2,11 @@
     position: relative;
 }
 
-.ribbon {  margin: 0 3px;}
+.ribbon {  margin: 0 }
 
 .ribbon {
     position: absolute;
-    right: -5px; top: -5px;
+    right: -5px; top: -6px;
     z-index: 1;
     overflow: hidden;
     width: 75px; height: 75px;
@@ -16,7 +16,7 @@
     font-size: 10px;
     font-weight: bold;
     color: #FFF;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     text-align: center;
     line-height: 20px;
     transform: rotate(45deg);
