@@ -303,7 +303,7 @@
                                             {{--<input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου" name="search" autocomplete="on" />--}}
                                 {{--</div>--}}
 
-                       <div class="col-md-5 col-sm-6" id="">
+                       <div class="col-md-10 col-sm-10" id="">
                            <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets()"
                                   ng-model="selection"
                                   placeholder="Αναζήτησε πχ Νομική Κολλέγιο, ή Αγγλικά, ή Ιδιωτικό Λύκειο"
@@ -318,16 +318,16 @@
 
                        {{-- <input class="hidden" style="color: black!important;" name="type" value="@{{ selected }}" /> --}}
 
-                       <div class="col-md-5 col-sm-6" >
+                       {{-- <div class="col-md-5 col-sm-6" > --}}
 
 
                              {{--<input type="text" id="Autocomplete" class="form-control " ng-autocomplete="result2"--}}
                                    {{--details="details2" options="options2" placeholder=" Στην Περιοχή:"/>--}}
 
                            <!-- Επιλογή Περιοχής ==== angular typeahead  -->
-                           <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" name="location"
+                          {{--  <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" name="location"
                                   uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                  typeahead-no-results="noResults"  typeahead-show-hint="true" autocomplete="off" class="form-control">
+                                  typeahead-no-results="noResults"  typeahead-show-hint="true" autocomplete="off" class="form-control"> --}}
                            {{--<div style="color: white;">--}}
                                {{--<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>--}}
                                {{--<div ng-show="noResults">--}}
@@ -337,7 +337,7 @@
 
 
 
-                       </div>
+                       {{-- </div> --}}
 
                        <div class="col-md-2 col-sm-12">
                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">

@@ -47,6 +47,7 @@
 
 
 
+
     <!-- Input Range CSS -->
 {{--    <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">--}}
 
@@ -104,6 +105,8 @@
 
     <!-- Algolia InstantSearch.JS -->
     <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+    <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js"></script>
 
 
 {{--    <script src="{{asset('/new/js/algolia-search.js')}}"></script>--}}
@@ -340,6 +343,10 @@
                     <main id="scholarships"></main>
                     <section id="pagination"></section>
 
+                    <div id="map" style="height: 500px; width: 100%">
+
+                    </div>
+
 
                 </div><!-- //col-lg-9-->
 
@@ -515,7 +522,6 @@ angular.module("scholarshipsResultsApp",[])
             </a>
         </div>
     </div>
-
     `;
 
     var hitTemplate2 =
@@ -645,6 +651,14 @@ angular.module("scholarshipsResultsApp",[])
 
     {{--var facetTemplateColors =--}}
             {{--'<a href="javascript:void(0);" data-facet-value="@{{name}}" class="facet-color @{{#isRefined}}checked@{{/isRefined}}"></a>';--}}
+
+
+
+search.addWidget(
+  instantsearch.widgets.googleMaps({
+    container: document.querySelector('#map')
+  })
+);
 
     search.addWidget(
             instantsearch.widgets.hits({

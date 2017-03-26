@@ -13,6 +13,19 @@ use Carbon\Carbon;
 Route::get('/algolia/upload', function () {
     $schools = AlgoliaSchool::all();
     $scholarships = AlgoliaScholarship::all();
+    $scholarshipss = Scholarship::all();
+
+    $geo = [];
+
+    foreach ($scholarshipss as $val => $ss) {
+        $geo[$val] = ['lat' => (double) $ss->school->lat, 'lng' => (double) $ss->school->lng];
+    }
+
+    foreach ($scholarships as $value => $s) {
+        $s->_geoloc = collect($geo[$value]);
+    }
+
+    // return $scholarships;
 
     $schools->searchable();
     $scholarships->searchable();
@@ -67,6 +80,9 @@ Route::get('dummy/algolia', function () {
         $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
         $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
         $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
+        // json_encode(array('lat' => $school->lat, 'lng' => $school->lng), JSON_FORCE_OBJECT);
+        // $alg->_geoloc = collect(['lat' => (double) $scholarship->school->lat, 'lng' => (double) $scholarship->school->lng]);
+        // dd($alg);
         $alg->save();
     }
     return 'OK';
