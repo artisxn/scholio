@@ -1,7 +1,5 @@
 <template>
     <div id="content">
-
-
         <div style="margin-left: 20px;" v-if="col_iek_eng_dan_mus">
             <h3  class="title ml20" style="margin-left: -10px">Επιλογή Ειδικοτήτων Σπουδών</h3>
             <div class="row margin-top-30">
@@ -113,6 +111,8 @@
             </div>
 
 
+
+        </div>
 
         </div>
 

@@ -21,6 +21,6 @@
                             <li class="has_sub">
                                 <a href="#" class=""><i class="ion-ios7-star-half"></i><span> Αξιολογήσεις </span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="">Προβολή</a></li>
+                                    <li><a href="{{ url('/panel/users/review/show') }}">Προβολή</a></li>
                                 </ul>
                             </li>

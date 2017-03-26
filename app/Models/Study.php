@@ -5,12 +5,11 @@ namespace App\Models;
 use App\Models\Level;
 use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Study extends Model
 {
 
-    use Searchable;
+    // use Searchable;
     /**
      *  Gets the school type that offeres this study
      *

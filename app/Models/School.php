@@ -4,13 +4,12 @@ namespace App\Models;
 
 use App\Models\Dummy;
 use App\Models\Image;
+use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\SchoolTypes;
 use App\Models\Study;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
-
-// use Lamrefravel\Scout\Searchable;
 
 class School extends Model
 {
@@ -198,5 +197,62 @@ class School extends Model
     public function settings()
     {
         return $this->hasOne(SchoolSetting::class, 'school_id');
+    }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function countReviews()
+    {
+        return count($this->reviews);
+    }
+
+    public function averageStars()
+    {
+        $total = 0;
+        $count = 0;
+        foreach ($this->reviews as $review) {
+            foreach ($review->allCategories() as $cat) {
+                $total += $cat->stars;
+                $count++;
+            }
+        }
+
+        return ($count != 0) ? ($total / $count) : 0;
+    }
+
+    public function averageReviews()
+    {
+        $count = [];
+        $reviews = [];
+
+        foreach ($this->reviews as $v => $review) {
+            foreach ($review->category as $value => $category) {
+                if ($this->reviews->first() == $review) {
+                    $count[$value] = $category->stars;
+                } else {
+                    $count[$value] += $category->stars;
+                }
+
+                if ($this->reviews->last() == $review) {
+                    $count[$value] /= count($this->reviews);
+                }
+            }
+        }
+
+        foreach ($this->categories() as $value => $cat) {
+            $reviews[$value] = ['name' => $cat->name, 'stars' => $count[$value]];
+            // $reviews['stars'] = $count[$value];
+            // $reviews-> = $cat->name;
+            // $reviews[$cat->name] = $count[$value];
+        }
+
+        return collect($reviews);
+    }
+
+    public function categories()
+    {
+        return $this->type->review_categories;
     }
 }

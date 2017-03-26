@@ -297,8 +297,8 @@
 
                         <span ng-show="contactInfo.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating>
                                                 </span>
-                                                <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.ratingStar}} </span>
-                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.ratingCounter}}  Αξιολογήσεις)</span>
+                                                <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.stars}} </span>
+                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.stars}}  Αξιολογήσεις)</span>
                          </span>
 
                     </div>
@@ -607,6 +607,14 @@
                     </div>
 @endif
 
+
+
+
+
+
+
+
+
 @if($school->settings->reviews)
                     <!-- Αξιολογησεις -->
                     <div class="slideReviews slideup margin-bot-25 " id="reviews" style="overflow-x: hidden">
@@ -620,18 +628,30 @@
                         <div id="total-reviews" class="row col-sm-12">
 
                             <div class="font-weight-400 sc-t-green col-xs-12 col-lg-4 col-lg-push-8 text-center total-score">
-                                <span class="lead">@{{getAVG("total")}}</span>
+                                <span class="lead">@{{contactInfo.stars}}</span>
                                 <br />
                                 <span class="sc-t-grey">Συνολική Βαθμολογία</span>
 
                                 <br />
                                 <div class="raty" id="totalRating"></div>
-                                <span class="sc-t-grey">(@{{reviews.length}} Αξιολογήσεις)</span>
+                                <span class="sc-t-grey">(@{{contactInfo.reviews.length}} Αξιολογήσεις)</span>
                             </div>
 
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
 
+
+                            <div ng-repeat="reviews in contactInfo.avgReviews">
+                                <div class="col-xs-12 col-sm-6" >
+                                    <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
+                                    <span>@{{ reviews.name }}</span>
+                                </div>
                                 <div class="col-xs-12 col-sm-6">
+                                    <span value="@{{reviews.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
+                                    <span> @{{reviews.stars}}</span>
+                                </div>
+                            </div>
+
+{{--                                 <div class="col-xs-12 col-sm-6">
                                     <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
                                     <span>Πρόγραμμα Σπουδών</span>
                                 </div>
@@ -674,26 +694,25 @@
                                 <div class="col-xs-12 col-sm-6">
                                     <span  value="@{{getAVG('jobLink')}}" class=" margin-left-20 raty" id="jobLink"></span>
                                     <span> @{{getAVG("jobLink")}}</span>
-                                </div>
+                                </div> --}}
 
 
                             </div>
 
                         </div>
 
-
                         <!--  Personal Reviews-->
-                        <div id="reviews-container" ng-repeat="review in reviews">
+                        <div id="reviews-container" ng-repeat="review in contactInfo.reviews">
                             <hr class="sc-t-grey" />
-
+                            {{-- @{{ contactInfo.reviews }} --}}
                             <div class="col-lg-12">
                                 <div class="margin-left-10  person-review">
-                                    <span>@{{review.author}}</span>
+                                    <span>@{{review.user.name}}</span> - @{{ review.user.role }}
                                     <br />
                                     <span value="@{{review.stars.total}}" class="raty margin-right-10 sc-t-grey" style="margin-left: -3px"></span>
-                                    <span class="sc-t-grey"> @{{review.stars.total}}</span>
+                                    <span class="sc-t-grey"> <div class="raty" id="totalRating-@{{review.id}}" ng-init="rate(review.id, review.average)">@{{ review.average }}</div> </span>
                                     <br />
-                                    <span class="sc-t-grey">@{{review.date}}</span>
+                                    <span class="sc-t-grey">@{{review.created_at}}</span>
                                     <br />
                                 </div>
                                 <span class="col-lg-12 font-weight-400 sc-t-grey review-text fulltext">@{{review.text}}</span>
@@ -972,6 +991,19 @@
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http, $sce) {
 
+                $scope.rate = function(id, stars){
+                    setTimeout(function() {
+                        $('#totalRating-' +id).raty({
+                            score    : stars,
+                            halfShow : true,
+                            half     : true,
+                            readOnly: true,
+                            starHalf : 'fa fa-fw fa-star-half'
+                        });
+                    }, 20);
+
+                }
+
 
 
                 $scope.test = function(scholarship){
@@ -1004,6 +1036,7 @@
                                 .success(function(data)   {
                                    console.time('contactInfo API');
                         $scope.contactInfo=data;
+                        window.totalStars = data.stars
                         console.log(data);
                         $scope.studies = data.levels;
                         $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);
@@ -1386,6 +1419,7 @@
         $("#main").hide().fadeIn(1800);
         $(".raty").each(function(index,element){
 
+
             console.log($(this));
 
             if(this.id!="totalRating")
@@ -1393,11 +1427,17 @@
             else
                 window.stars = parseFloat($(this).parent().find(".lead").text());
 
+            var parent = this
+            setTimeout(function() {
+                $(parent).raty({
+                    score: window.totalStars,
+                    readOnly: true
+                });
+            }, 50);
 
-            $(this).raty({
-                score: window.stars,
-                readOnly: true
-            });
+
+
+
         });
     });
 </script>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDummiesTable extends Migration
+class CreateAlgoliaSearchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDummiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dummies', function (Blueprint $table) {
+        Schema::create('algolia_searches', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('type_id')->nullable();
-            $table->integer('school_id')->nullable();
+            $table->integer('school_id')->unique();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
@@ -32,8 +32,6 @@ class CreateDummiesTable extends Migration
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
             $table->string('background')->nullable();
-            $table->float('stars', 2, 1)->nullable();
-            $table->integer('reviews')->nullable();
             $table->timestamps();
         });
     }
@@ -45,6 +43,6 @@ class CreateDummiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dummies');
+        Schema::dropIfExists('algolia_searches');
     }
 }

@@ -108,9 +108,24 @@
     window.SelectedLocation = "{{ session()->pull('location') }}"
     </script>
 
+    <style>
+    .active-school a{
+        color: #000;
+    }
+
+    .active-item{
+        background-color: red;
+    }
+    .active-pagination{
+        border: 1px solid #888;
+        background-color: #ddd;
+    }
+    .count-school{
+        color: yellow;
+    }
+    </style>
+
 </head>
-
-
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="scholarshipsResultsApp"  ng-controller="scholarshipsResultsCtrl" data-ng-init="init()"  ng-cloak>
     <!-- Scholio Header -->
@@ -402,7 +417,6 @@
                                     <div class="">10 Μαϊ 2017</div>
                                 </span>
                             </div>
-
                         </div>
 
 
@@ -422,7 +436,6 @@
                                 </button>
                             </a>
                         </div>
-
                     </div>
 
                 </div> <!-- //col-lg-9-->
@@ -555,11 +568,6 @@
 
                 </div>
 
-
-
-
-
-
             </div> <!-- //row-->
         </div> <!-- //container-->
     </main>
@@ -568,8 +576,6 @@
     @include('public.footer')
 
 </body>
-
-
 
 <script>
 

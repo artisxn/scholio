@@ -58,7 +58,7 @@ class Scholio
 
             return ['lat' => $lati, 'lng' => $longi];
         } else {
-            return( 'Geocode Error');
+            return ('Geocode Error');
         }
     }
 
@@ -86,6 +86,8 @@ class Scholio
             $dummy->lengthScholarships = $s->lengthScholarships();
             $dummy->lat = $s->lat;
             $dummy->lng = $s->lng;
+            $dummy->stars = $s->averageStars();
+            $dummy->reviews = $s->countReviews();
             $dummy->save();
         }
         return 'OK';
@@ -108,6 +110,8 @@ class Scholio
         $dummy->lengthScholarships = $school->lengthScholarships();
         $dummy->lat = $school->lat;
         $dummy->lng = $school->lng;
+        $dummy->stars = $school->averageStars();
+        $dummy->reviews = $school->countReviews();
         $img = Image::find($school->background);
         if ($img) {
             $dummy->background = $img->path;

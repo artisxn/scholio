@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequestsTable extends Migration
+class CreateCategoryReviewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('category_reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
-            $table->integer('user_id');
-            $table->integer('school_id');
-            $table->boolean('status')->default(1);
+            $table->integer('review_id')->index();
+            $table->integer('category_id')->index();
+            $table->integer('stars');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('category_reviews');
     }
 }

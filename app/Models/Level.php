@@ -5,11 +5,10 @@ namespace App\Models;
 use App\Models\SchoolTypes;
 use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Level extends Model
 {
-    use Searchable;
+    // use Searchable;
     /**
      *  Gets the school type which is assosiated with this level
      *

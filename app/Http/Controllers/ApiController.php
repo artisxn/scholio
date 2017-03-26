@@ -169,6 +169,7 @@ class ApiController extends Controller
             $s->lengthTeachers = $s->lengthTeachers();
             $s->lengthStudies = $s->lengthStudies();
             $s->lengthScholarships = $s->lengthScholarships();
+            $s->rating = $s->averageStars();
         }
         return $schools;
     }
@@ -182,6 +183,9 @@ class ApiController extends Controller
         $school->name = $school->name();
         $school->email = $school->email();
         $school->teachers = $school->teachers;
+        $school->stars = $school->averageStars();
+        $school->avgReviews = $school->averageReviews();
+        $school->reviews = $school->reviews->load('user');
 
         foreach ($school->teachers as $teacher) {
             $teacher->info;
@@ -227,6 +231,9 @@ class ApiController extends Controller
         $school->name = $school->name();
         $school->email = $school->email();
         $school->teachers = $school->teachers;
+        $school->stars = $school->averageStars();
+        $school->avgReviews = $school->averageReviews();
+        $school->reviews = $school->reviews->load('user');
 
         foreach ($school->teachers as $teacher) {
             $teacher->info;
