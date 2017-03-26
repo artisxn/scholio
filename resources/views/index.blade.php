@@ -272,7 +272,11 @@
         </div>
         <!-- Searchbar -->
 
-           <div class="container search-container">
+           <div class="container search-container" style="position: relative">
+
+               <button class=" sc-button sc-t-white navbar-btn btn-scholarships" ><i class="fa fa-trophy margin-right-10"></i>Υποτροφίες</button>
+               <button class=" sc-button sc-t-white navbar-btn btn-schools" ><i class="fa fa-university margin-right-10"></i>Εκπαιδευτικά Ιδρύματα</button>
+
                <div class=" sc-landing-search-bar-content">
                    <form action="/search/school/type" method="post">
                        {{ csrf_field() }}
@@ -298,7 +302,6 @@
                                   {{--<div class="aa-input-container col-md-5 col-sm-6" id="options">--}}
                                             {{--<input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου" name="search" autocomplete="on" />--}}
                                 {{--</div>--}}
-
 
                        <div class="col-md-5 col-sm-6" id="">
                            <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets()"

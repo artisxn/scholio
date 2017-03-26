@@ -281,14 +281,27 @@ p {padding: 15px; color: #5d5d5d;  }
 }
 
 
-@media (max-width: 440px) {
+@media (max-width: 510px) {
+    .header-text{margin-top: 20px;}
+    .title-from{ font-size: 95%; }
+    .title-name{display: none}
+    .break{display: none}
+    .xxs-title-name{ display: block; clear: both;  font-size: 132%; font-weight: 200; color: #fff; margin-left: -5px; margin-bottom: 10px }
+    .circle{margin-left: -10px; width: 50px; height: 50px}
+    .trophy-container{ width: 32px;}
+    .trophy-img{width: 32px; margin-top: 12px}
+}
+
+
+
+
+@media (max-width: 380px) {
  .header-text{margin-top: 20px;}
- .title-from{ font-size: 88%; }
- .title-name{display: none}
- .xxs-title-name{ display: block; clear: both; padding-top: 5px; margin-bottom: 15px; font-size: 130%; font-weight: 200; color: #fff; margin-left: -5px}
- .circle{margin-left: -10px; width: 50px; height: 50px}
- .trophy-container{ width: 32px;}
- .trophy-img{width: 32px; margin-top: 12px}
+ .title-from{ font-size: 84%; }
+ .xxs-title-name{ font-size: 125%; font-weight: 200; color: #fff; margin-left: -6px; }
+ .circle{margin-left: -10px; width: 43px; height: 43px}
+ .trophy-container{ width: 27px;}
+ .trophy-img{width: 27px; margin-top: 10px}
 
 }
 

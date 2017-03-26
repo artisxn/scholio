@@ -427,17 +427,26 @@
 
                 </div> <!-- //col-lg-9-->
 
+
                     <!-- ===== SCHOLARSHIP2 ===== -->
                     <div class=" col-xs-12 pad-0-mar-0 inner-container">
-                        <div  class="ribbon top20"><span style="font-size: 95%; ">Πλήρης</span></div>
-                        <!-- ========== Scholarship Header ============= -->
+
+
+
+                        <div  class="ribbon top20"><span style="font-size: 95%">Πλήρης</span></div>
+                    {{--<div  class="ribbon top20"><span style="font-size: smaller">top 20</span></div>--}}
+
+
+                    <!-- ========== Scholarship Header ============= -->
                         <div class="col-xs-12 scholar-header">
                             <div class="circle margin-top-8 pull-left">
                                 <div class=" trophy-container centered-abs">
                                     <img class="trophy-img centered" src="/new/img/trophy4.png" alt="">
                                 </div>
                             </div>
-                            <div class="header-text margin-top-20 pull-left margin-left-10"> Υποτροφία από: Μητροπολιτικό Κολλέγιο Θεσσαλονίκης</div>
+                            <div class="header-text margin-top-20 pull-left margin-left-10"> <span class="title-from">Υποτροφία από:</span>
+                                <br class="break"> <span class="title-name">Μητροπολιτικό Κολλέγιο Θεσσαλονίκης</span></div>
+                            <div class="xxs-title-name">Μητροπολιτικό Κολλέγιο Θεσσαλονίκης</div>
                             <div class="header-line"></div>
                         </div>
 
@@ -469,13 +478,13 @@
                                 <div class="centered-text">
                                     <div class="text-title">Υποτροφία Ταλέντου-Δεξιοτήτων</div>
                                     <div class="text-content">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                                        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                                        Interdum et malesuada fames ac ante ipsum primis in faucibus
                                     </div>
                                 </div>
                             </div>
 
                             <!-- ========== Scholarship Section3 Financial Plan ============= -->
-                            <div class="col-lg-4 col-sm-4 hidden-md section3 ">
+                            <div class="col-lg-4 col-sm-4 col-md-12 section3 ">
                                 <div class="hex-container centered">
                                     <div class="hexagon3 hex" style="">
                                         <span></span>
@@ -483,160 +492,45 @@
                                     </div>
                                 </div>
                                 <div class="centered-text">
-                                    <div class="text-title">Μείωση Διδάκτρων 100 %</div>
-                                    <div class="text-content">Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                                        Torquent per conubia nostra, per inceptos himenaeos.
+                                    <div class="text-title">Μείωση Διδάκτρων 100%</div>
+                                    <div class="text-content">Ιn faucibus interdum et malesuada fames ac ante ipsum primis.
+                                        Torquent per conubia nostra.
 
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-12 hidden-xs hidden-lg hidden-sm visible-md section4" ></div>
+                            {{--<div class="col-md-12 hidden-xs hidden-lg hidden-sm visible-md section4" ></div>--}}
                         </div>
 
                         <!-- ========== Scholarship Footer============= -->
                         <div class="col-xs-12 scholar-footer ">
-                            <div class="col-xs-9 sc-t-grey font-weight-300">
-                                <div class="col-xs-5 pad-0-mar-0" >
-                                <span class="col-xs-7 pad-0-mar-0">
+                            <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
+                                <div class=" xxs-9 col-xs-6 col-sm-5 col-md-6 pad-0-mar-0 xxs-footer" >
+                                <span class=" xxs-8 col-xs-8 col-sm-7 pad-0-mar-0">
                                     <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
                                     <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
                                 </span>
-                                <span class="col-xs-3 text-right">
-                                    <div class="">4</div>
-                                    <div class="margin-top-5">12</div>
+                                    <span class="xxs-2 col-xs-2 col-sm-3 text-right">
+                                    <div class="">9</div>
+                                    <div class="margin-top-5">21</div>
                                 </span>
                                 </div>
-                                <div class="col-xs-6">
-                                <span class="col-xs-7">
-                                    <div class="">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
-                                   <div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
-                                </span>
-                                <span class="col-xs-5 text-right">
-                                    <div class="">19 Ιουν 2017</div>
-                                    <div class="margin-top-5" > OXI</div>
-
-                                </span>
-                                </div>
-
-                            </div>
-
-
-                            <div class="col-xs-3">
-                                {{--@if(auth()->check())--}}
-                                {{--<a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white btn-like" >--}}
-                                {{--<i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>--}}
-                                {{--<span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>--}}
-                                {{--</button>--}}
-                                {{--</a>--}}
-                                {{--@endif--}}
-
-
-                                <a href="/scholarship/5">
-                                    <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
-                                        <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή
-                                    </button>
-                                </a>
-                            </div>
-
-                        </div>
-
-                    </div> <!-- //col-lg-9-->
-
-                    <!-- ===== SCHOLARSHIP3 ===== -->
-                    <div class=" col-xs-12 pad-0-mar-0 inner-container">
-
-                        <!-- ========== Scholarship Header ============= -->
-                        <div class="col-xs-12 scholar-header">
-                            <div class="circle margin-top-8 pull-left">
-                                <div class=" trophy-container centered-abs">
-                                    <img class="trophy-img centered" src="/new/img/trophy4.png" alt="">
-                                </div>
-                            </div>
-                            <div class="header-text margin-top-20 pull-left margin-left-10"> Υποτροφία από: AKMH</div>
-                            <div class="header-line"></div>
-                        </div>
-
-                        <div class="col-xs-12 pad-0-mar-0 section-container">
-                            <!-- ========== Scholarship Section1 Αντικειμενο Σπουδών ============= -->
-                            <div class="col-lg-4 col-md-6 col-sm-4 section1 ">
-                                <div class="hex-container centered">
-                                    <div class="hexagon3 hex">
-                                        <span></span>
-                                        <img class="centered-abs hex-img" src="/panel/assets/images/steps/Επαγγέλματα Υγείας.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="centered-text">
-                                    <div class="text-title">Αντικείμενο Σπουδών</div>
-                                    <div class="text-content">Φυσικοθεραπεία</div>
-                                    <div class="text-title">Επίπεδο Σπουδών</div>
-                                    <div class="text-content">Επαγγελματικες Σπουδές</div>
-                                </div>
-                            </div>
-
-                            <!-- ========== Scholarship Section2 Κριτήρια ============= -->
-                            <div class="col-lg-4 col-md-6 col-sm-4 section2">
-                                <div class="hex-container centered">
-                                    <div class="hexagon3 hex">
-                                        <span></span>
-                                        <img class="centered-abs hex-img" src="/panel/assets/images/steps/step3-friends.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="centered-text">
-                                    <div class="text-title">Υποτροφία 1+1 Φίλοι-Αδέλφια</div>
-                                    <div class="text-content"> Interdum et malesuada fames ac ante ipsum primis in faucibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- ========== Scholarship Section3 Financial Plan ============= -->
-                            <div class="col-lg-4 col-sm-4 hidden-md section3 ">
-                                <div class="hex-container centered">
-                                    <div class="hexagon3 hex" style="">
-                                        <span></span>
-                                        <img class="centered-abs hex-img" src="/panel/assets/images/steps/step1-reduce2.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="centered-text">
-                                    <div class="text-title">Μείωση Διδάκτρων 20 %</div>
-                                    <div class="text-content">Per inceptos himenaeos, torquent per conubia nostra.
-                                        Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 hidden-xs hidden-lg hidden-sm visible-md section4" ></div>
-                        </div>
-
-                        <!-- ========== Scholarship Footer============= -->
-                        <div class="col-xs-12 scholar-footer ">
-                            <div class="col-xs-9 sc-t-grey font-weight-300">
-                                <div class="col-xs-5 pad-0-mar-0" >
-                                <span class="col-xs-7 pad-0-mar-0">
-                                    <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
-                                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
-                                </span>
-                                <span class="col-xs-3 text-right">
-                                    <div class="">11</div>
-                                    <div class="margin-top-5">40</div>
-                                </span>
-                                </div>
-                                <div class="col-xs-6">
-                                <span class="col-xs-7">
+                                <div class="col-xs-6 col-sm-5 pad-0-mar-0 xs-hidden">
+                                <span class="col-xs-7 col-sm-7 pad-0-mar-0">
                                     <div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
                                     <div class="">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
                                 </span>
-                                <span class="col-xs-5 text-right">
-                                    <div class="margin-top-5" > OXI</div>
-                                    <div class="">5 Σεπ 2017</div>
+                                    <span class="col-xs-5 col-sm-5 pad-0-mar-0 text-right">
+                                    <div class="margin-top-5" >ΟΧΙ</div>
+                                    <div class="">20 Ιουν 2017</div>
                                 </span>
                                 </div>
 
                             </div>
 
 
-                            <div class="col-xs-3">
+                            <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0">
                                 {{--@if(auth()->check())--}}
                                 {{--<a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white btn-like" >--}}
                                 {{--<i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>--}}
@@ -646,7 +540,7 @@
                                 {{--@endif--}}
 
 
-                                <a href="/scholarship/8">
+                                <a href="/scholarship/1" >
                                     <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
                                         <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή
                                     </button>
@@ -656,6 +550,8 @@
                         </div>
 
                     </div> <!-- //col-lg-9-->
+
+
 
                 </div>
 
