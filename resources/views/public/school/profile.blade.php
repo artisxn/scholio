@@ -632,7 +632,7 @@
 
                                 <br />
                                 <div class="raty" id="totalRating"></div>
-                                <span class="sc-t-grey">(@{{reviews.length}} Αξιολογήσεις)</span>
+                                <span class="sc-t-grey">(@{{contactInfo.reviews.length}} Αξιολογήσεις)</span>
                             </div>
 
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
@@ -702,10 +702,10 @@
                         <!--  Personal Reviews-->
                         <div id="reviews-container" ng-repeat="review in contactInfo.reviews">
                             <hr class="sc-t-grey" />
-
+                            {{-- @{{ contactInfo.reviews }} --}}
                             <div class="col-lg-12">
                                 <div class="margin-left-10  person-review">
-                                    <span>@{{review.user.name}}</span> - @{{ review.user.role }}
+                                    <span>@{{review.user}}</span> - @{{ review.user.role }}
                                     <br />
                                     <span value="@{{review.stars.total}}" class="raty margin-right-10 sc-t-grey" style="margin-left: -3px"></span>
                                     <span class="sc-t-grey"> STARS GOES HERE </span>

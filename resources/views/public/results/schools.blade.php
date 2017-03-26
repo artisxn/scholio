@@ -431,7 +431,7 @@
                                             </a>
                                             <span class="pull-left">
                                                 <h5 class="pad-top-10"> <a href="/public/profile/@{{school.school_id}}"> @{{school.name}}</a></h5>
-                                                <span  ng-show="school.stars!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
+                                                <span  ng-show="school.stars!=0"> <rating ng-init="rate(school.id, school.stars)" data-stars="@{{ school.stars }}" class="text-incr-85 sc-t-orange" id="Rating-@{{school.id}}"></rating></span>
                                                 <span ng-show="school.stars!=0" class="sc-t-orange"> @{{school.stars}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{school.reviews}}  Αξιολογήσεις)</span>
                                             </span>
                                         </div>
@@ -579,12 +579,12 @@
 <script>
 
 ///// Rating Js //////
-$('rating').raty({
-    score    : 4.2,
-    halfShow : true,
-    half     : true,
-    starHalf : 'fa fa-fw fa-star-half'
-});
+// $('rating').raty({
+//     score    : $('#Rating-1').data('stars'),
+//     halfShow : true,
+//     half     : true,
+//     starHalf : 'fa fa-fw fa-star-half'
+// });
 
 
 $('.btn-toggle').click(function() {

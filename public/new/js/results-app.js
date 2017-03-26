@@ -12,6 +12,16 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
             $rootScope.plong=23.7033199;
         }
 
+        $scope.rate = function(id, stars){
+            setTimeout(function() {
+                $('#Rating-' + id).raty({
+                    score    : stars,
+                    halfShow : true,
+                    half     : true,
+                    starHalf : 'fa fa-fw fa-star-half'
+                });
+            }, 20);
+        }
 
         $scope.locationSelected = window.SelectedLocation;
         //if(window.SelectedLocation){

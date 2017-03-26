@@ -15,9 +15,10 @@ class CreateRequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('from')->index();
-            $table->integer('to')->index();
-            $table->boolean('status')->default(0);
+            $table->string('type');
+            $table->integer('user_id');
+            $table->integer('school_id');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
