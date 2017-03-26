@@ -22,6 +22,7 @@
     {{--<link rel="stylesheet" href="/new/css/algolia.css"></link>--}}
     <link rel="stylesheet" href="/new/css/algolia-search.css"></link>
 
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 
     <!-- Bootstrap Select -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
@@ -339,13 +340,12 @@
                 <!-- ========== SCHOLARSHIPS  CONTAINER ============= -->
                 <div class="col-lg-9 col-md-9 col-sm-12 scholarship-container " id="">
 
+                    <div id="map" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
 
                     <main id="scholarships"></main>
                     <section id="pagination"></section>
 
-                    <div id="map" style="height: 500px; width: 100%">
 
-                    </div>
 
 
                 </div><!-- //col-lg-9-->
@@ -450,7 +450,7 @@ angular.module("scholarshipsResultsApp",[])
                 <div class="text-title">Αντικείμενο Σπουδών</div>
                 <div class="text-content">@{{{_highlightResult.study.value}}}</div>
                 <div class="text-title">Επίπεδο Σπουδών</div>
-                <div class="text-content">@{{{_highlightResult.section.value}}}</div>
+                <div class="text-content">@{{{_highlightResult.level.value}}}</div>
             </div>
         </div>
 
@@ -515,7 +515,7 @@ angular.module("scholarshipsResultsApp",[])
         <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0">
 
 
-            <a href="/scholarship/1" >
+            <a href="/scholarship/@{{scholarship_id}}" >
                 <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
                     <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή
                 </button>
@@ -524,118 +524,7 @@ angular.module("scholarshipsResultsApp",[])
     </div>
     `;
 
-    var hitTemplate2 =
 
-            '  <div>'+
-            '<div class=" col-xs-12 pad-0-mar-0 inner-container">'+
-//            '<div class="ribbon top20"><span style="font-size: 95%; ">Πλήρης</span></div>'+
-
-                <!-- ========== Scholarship Header ============= -->
-            '<div class="col-xs-12 scholar-header">'+
-            '<div class="circle margin-top-8 pull-left">'+
-            '<div class=" trophy-container centered-abs">'+
-            '<img class="trophy-img centered" src="/new/img/trophy4.png" alt="">'+
-            '</div>'+
-            '</div>'+
-            '<div class="header-text margin-top-20 pull-left margin-left-10"> Υποτροφία από: @{{{_highlightResult.school.value}}}</div>'+
-            '<div class="header-line"></div>'+
-            '</div>'+
-
-                <!-- ========== Scholarship Section1 Αντικειμενο Σπουδών ============= -->
-            '<div class="col-xs-12 pad-0-mar-0 section-container">'+
-            '<div class="col-lg-4 col-md-6 col-sm-4 section1 ">'+
-            '<div class="hex-container centered">'+
-            '<div class="hexagon3 hex">'+
-            '<span></span>'+
-            '<img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{ section }}.png" alt="">'+
-            '</div>'+
-            '</div>'+
-            '<div class="centered-text">'+
-            '<div class="text-title">Αντικείμενο Σπουδών</div>'+
-            '<div class="text-content">@{{{_highlightResult.study.value}}}</div>'+
-            '<div class="text-title">Επίπεδο Σπουδών</div>'+
-            '<div class="text-content">Προπτυχιακές Σπουδές-Bachelor</div>'+
-{{--            '<div class="text-content">@{{{_highlightResult.study.section.value}}}</div>'+--}}
-            '</div>'+
-            '</div>'+
-
-                <!-- ========== Scholarship Section2 Κριτήρια ============= -->
-            '<div class="col-lg-4 col-md-6 col-sm-4 section2">'+
-            '<div class="hex-container centered">'+
-            '<div class="hexagon3 hex">'+
-            '<span></span>'+
-            '<img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{criteria}}.png" alt="">'+
-            '</div>'+
-            '</div>'+
-            '<div class="centered-text">'+
-            '<div class="text-title">@{{criteria}}</div>'+
-            '<div class="text-content">Interdum et malesuada fames ac ante ipsum primis in faucibus.'+
-                    'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'+
-
-            '</div>'+
-            '</div>'+
-            '</div>'+
-
-                <!-- ========== Scholarship Section3 Financial Plan ============= -->
-            '<div class="col-lg-4 col-sm-4 hidden-md section3 ">'+
-                    '<div class="hex-container centered">'+
-                    '<div class="hexagon3 hex" style="">'+
-                    '<span></span>'+
-                    '<img class="centered-abs hex-img" src="/panel/assets/images/steps/step1-hand2.png" alt="">'+
-                    '</div>'+
-                    '</div>'+
-                    '<div class="centered-text">'+
-                    '<div class="text-title">@{{  }}</div>'+
-            '<div class="text-content">Ιn faucibus interdum et malesuada fames ac ante ipsum primis.Torquent per conubia nostra.'+
-
-            '</div>'+
-            '</div>'+
-            '</div>'+
-
-            '<div class="col-md-12 hidden-xs hidden-lg hidden-sm visible-md section4" ></div>'+
-            '</div>'+
-
-
-            '<div class="col-xs-12 scholar-footer ">'+
-            '<div class="col-xs-9 sc-t-grey font-weight-300">'+
-            '<div class="col-xs-5 pad-0-mar-0" >'+
-            '<span class="col-xs-7 pad-0-mar-0">'+
-            '<div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>'+
-    '<div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>'+
-    '</span>'+
-    '<span class="col-xs-3 text-right">'+
-            '<div class="">34</div>'+
-            '<div class="margin-top-5">123</div>'+
-            '</span>'+
-            '</div>'+
-            '<div class="col-xs-6">'+
-            '<span class="col-xs-7">'+
-            '<div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>'+
-    '<div class="">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>'+
-    '</span>'+
-    '<span class="col-xs-5 text-right">'+
-            '<div class="margin-top-5" > NAI</div>'+
-            '<div class="">10 Μαϊ 2017</div>'+
-    '</span>'+
-    '</div>'+
-
-    '</div>'+
-
-
-    '<div class="col-xs-3">'+
-
-
-
-            '<a href="/scholarship/@{{ scholarship_id }}">'+
-            '<button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">'+
-            '<i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή'+
-            '</button>'+
-            '</a>'+
-            '</div>'+
-
-            '</div>'+
-            '</div>'+
-            '</div> ';
 
     var noResultsTemplate =
             '<div class="text-center">Δεν βρέθηκαν αποτελέσματα για <strong>@{{query}}</strong>.</div>';
@@ -654,11 +543,6 @@ angular.module("scholarshipsResultsApp",[])
 
 
 
-search.addWidget(
-  instantsearch.widgets.googleMaps({
-    container: document.querySelector('#map')
-  })
-);
 
     search.addWidget(
             instantsearch.widgets.hits({
@@ -813,7 +697,64 @@ search.addWidget(
             })
     );
 
+    search.addWidget(
+            instantsearch.widgets.googleMaps({
+                container: document.querySelector('#map'),
+                scrollwheel: false
+            })
+    );
+
     search.start();
+
+
+//    var myOptions = {
+//        scrollwheel: false,
+//        scaleControl:true,
+//        mapTypeId: google.maps.MapTypeId.ROADMAP
+//    };
+//    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+//
+//
+//    var styledMapType = new google.maps.StyledMapType(
+//            [
+//                {
+//                    "featureType": "poi.park",
+//                    "elementType": "geometry.fill",
+//                    "stylers": [
+//                        {
+//                            //"color": "#9ec4ae"
+//                            //"color": "#A3BFA8"
+//                            //"color": "#B5C5B8"
+//                            //"color": "#D9F0D1"
+//                            "color": "#E2F0DA"
+//
+//                            //"color": "#CBE6A3"
+//                        }
+//                    ]
+//                },
+//                {
+//                    "featureType": "water",
+//                    "elementType": "geometry.fill",
+//                    "stylers": [
+//                        {
+//                            //"color": "#00bcd4"
+//                            //"color": "#53D0D9"
+//                            //"color": "#00C9E1"
+//                            //"color": "#00D1E9"
+//                            //"color": "#00E2FF"
+//
+//                            //"color": "#A4E2E7"
+//                            "color": "#A4DBE7"
+//
+//                            //"color": "#A3CCFF"
+//                        }
+//                    ]
+//                }
+//            ]
+//    )
+//
+//    map.mapTypes.set('styled_map', styledMapType);
+//    map.setMapTypeId('styled_map');
 
 </script>
 

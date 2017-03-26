@@ -272,79 +272,56 @@
         </div>
         <!-- Searchbar -->
 
-           <div class="container search-container" style="position: relative">
+        <div class="">
+            <div class=" container search-container" style="position: relative">
 
-               <button class=" sc-button sc-t-white navbar-btn btn-scholarships" ><i class="fa fa-trophy margin-right-10"></i>Υποτροφίες</button>
-               <button class=" sc-button sc-t-white navbar-btn btn-schools" ><i class="fa fa-university margin-right-10"></i>Εκπαιδευτικά Ιδρύματα</button>
+                <button class=" sc-button sc-t-white navbar-btn btn-scholarships btn-non-active" ng-click="selectedButton=1" ng-class="{'btn-active': selectedButton==1}"><i class="fa fa-trophy margin-right-10"></i>Υποτροφίες</button>
+                <button class=" sc-button sc-t-white navbar-btn btn-schools btn-non-active" ng-click="selectedButton=2" ng-class="{'btn-active': selectedButton==2}"><i class="fa fa-university margin-right-10"></i>Εκπαιδευτικά Ιδρύματα</button>
 
-               <div class=" sc-landing-search-bar-content">
-                   <form action="/search/school/type" method="post">
-                       {{ csrf_field() }}
-                       <!-- SELECT Drop Down -->
-                       {{--<div class="col-md-5 col-sm-6" id="options">--}}
-                           {{--<select class="sc-no-border" name="type">--}}
-                               {{--<option value="all" selected="selected">Επέλεξε κατηγορία υποτροφίας:</option>--}}
-                               {{--<option value="@{{ type.id }}" ng-repeat="type in schoolTypes">@{{ type.name }}</option>--}}
-                           {{--</select>--}}
-                       {{--</div>--}}
+                <div class=" sc-landing-search-bar-content">
 
-                        <!-- Επιλογή Εκπαιδευτικών Ιδρυματων ==== angular typeahead  -->
-                     {{--   <div class="col-md-5 col-sm-6" id="options">
-                           <input type="text" ng-model="selected" value="selected" placeholder="Εκπαιδευτικό Ίδρυμα" autocomplete="off"
-                                  uib-typeahead="state.id as state.type for state in schoolTypess | filter:$viewValue | limitTo: 8"
-                                  typeahead-template-url="customTemplate.html" class="form-control test" typeahead-show-hint="true"
-                                  typeahead-min-length="0" typeahead-input-formatter="formatLabel($model)">
-                        </div> --}}
+                    <form action="/search/school/type" method="post" ng-if="selectedButton==1">
+                        {{ csrf_field() }}
+                        <div class="col-md-10 col-sm-10" id="">
+                            <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets('dummyScholarships')"
+                                   ng-model="selection"
+                                   placeholder="Αναζήτησε Υποτροφία πχ Νομική Bachelor, ή Αγγλικά, ή Ιδιωτικό Λύκειο"
+                            />
 
+                            <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
+                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
+                        </div>
 
-
-
-                                  {{--<div class="aa-input-container col-md-5 col-sm-6" id="options">--}}
-                                            {{--<input type="search" id="aa-search-input" class="aa-input-search form-control test" placeholder="Αναζήτηση πχ: Νομική Κολλέγιο ή Αγγλικά Β Λυκείου" name="search" autocomplete="on" />--}}
-                                {{--</div>--}}
-
-                       <div class="col-md-10 col-sm-10" id="">
-                           <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets()"
-                                  ng-model="selection"
-                                  placeholder="Αναζήτησε πχ Νομική Κολλέγιο, ή Αγγλικά, ή Ιδιωτικό Λύκειο"
-                           />
-
-                           <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
-                               <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
-                       </div>
+                        <div class="col-md-2 col-sm-12">
+                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
+                        </div>
+                    </form>
 
 
+                    <form action="/search/school/type" method="post" ng-if="selectedButton==2">
+                        {{ csrf_field() }}
+                        <div class="col-md-10 col-sm-10" id="">
+                            <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets('dummySchools')"
+                                   ng-model="selection"
+                                   placeholder="Αναζήτησε Εκπαιδευτικά Ιδρύματα πχ Κολλέγιο, ή Γαλικά, ή Δημοτικό"
+                            />
 
+                            <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
+                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
+                        </div>
 
-                       {{-- <input class="hidden" style="color: black!important;" name="type" value="@{{ selected }}" /> --}}
-
-                       {{-- <div class="col-md-5 col-sm-6" > --}}
-
-
-                             {{--<input type="text" id="Autocomplete" class="form-control " ng-autocomplete="result2"--}}
-                                   {{--details="details2" options="options2" placeholder=" Στην Περιοχή:"/>--}}
-
-                           <!-- Επιλογή Περιοχής ==== angular typeahead  -->
-                          {{--  <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" name="location"
-                                  uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                  typeahead-no-results="noResults"  typeahead-show-hint="true" autocomplete="off" class="form-control"> --}}
-                           {{--<div style="color: white;">--}}
-                               {{--<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>--}}
-                               {{--<div ng-show="noResults">--}}
-                                   {{--<i class="glyphicon glyphicon-remove"></i> Δε βρέθηκε περιοχή--}}
-                               {{--</div>--}}
-                           {{--</div>--}}
+                        <div class="col-md-2 col-sm-12">
+                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
+                        </div>
+                    </form>
 
 
 
-                       {{-- </div> --}}
 
-                       <div class="col-md-2 col-sm-12">
-                           <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
-                       </div>
-                   </form>
-               </div>
-           </div>
+                </div>
+            </div>
+        </div>
+
 
     </section>
 

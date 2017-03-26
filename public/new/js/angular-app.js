@@ -12,7 +12,7 @@
 
         fetchTypes();
 
-
+    $scope.selectedButton=1;
 
         //========Angular TypeAhead=================
 
@@ -123,7 +123,9 @@
           var schools = client.initIndex('schools');
           var studies = client.initIndex('studies')
 
-          $scope.getDatasets = function() {
+          $scope.getDatasets = function(selection) {
+              console.log(selection)
+              var selected = client.initIndex(selection);
               return [
               {
                   source: algolia.sources.hits(schools, { hitsPerPage: 6 }),

@@ -89,18 +89,22 @@ video {
 
 .search-container{margin-top: 100px; padding-bottom: 5px;
     background-color: rgba(31,52,63,0.96); border-radius: 5px;
-    border: 1px solid #555555;
+    border: 1px solid #999;
     border-top-left-radius: 0;
 }
 
 .btn-scholarships, .btn-schools{ font-weight:200; top: -48px;  margin-left: -16px; position: absolute;  background:rgba(31,52,63,0.96);
-    border: 1px solid #555555; border-bottom: none; width: 150px;
+    border: 1px solid #999;  width: 150px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 
     }
 
-.btn-schools{margin-left: 138px; width: 195px; border-bottom: 1px solid #555555; color: #878787; opacity: 0.7;}
+.btn-schools{margin-left: 138px; width: 195px; }
+
+
+.btn-non-active{border: 1px solid #555555; border-bottom: 1px solid #999; color: #7d7d7d; opacity: 0.7; }
+.btn-active{border: 1px solid #999;  border-bottom: 1px solid #1F343F; color: #c3c3c3; opacity: 1; }
 
 /*-----Second Section------*/
 .sc-landing-sec2{min-height:400px!important;width:100%; background-color: #fff}
