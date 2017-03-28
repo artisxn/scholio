@@ -8,12 +8,6 @@ use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
-// Route::post('/search/scholarships', function () {
-//     $text = request()->text;
-//     session()->put('search', $text);
-//     return redirect('/public/scholarships');
-// });
-//
 Route::get('/public/schools/', function () {
     return view('public.results.schools-test');
 });

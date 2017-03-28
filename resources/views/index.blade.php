@@ -280,7 +280,7 @@
 
                 <div class=" sc-landing-search-bar-content">
 
-                    <form onsubmit="event.preventDefault(); validateMyForm(this);" action="/search/scholarships" id="scholarship" method="post" ng-if="selectedButton==1">
+                    <form onsubmit="event.preventDefault(); validateMyForm(this,1);" action="/search/scholarships" id="scholarship" method="post" ng-if="selectedButton==1">
                         {{ csrf_field() }}
                         <div class="col-md-10 col-sm-10" id="">
                             <input name="text" type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets1()"
@@ -298,7 +298,7 @@
                     </form>
 
 
-                    <form action="/search/scholarships" method="post" ng-if="selectedButton==2">
+                    <form onsubmit="event.preventDefault(); validateMyForm(this,2)" action="/search/scholarships" method="post" ng-if="selectedButton==2">
                         {{ csrf_field() }}
                         <div class="col-md-10 col-sm-10" id="">
                             <input name="text" type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets2()"
@@ -671,9 +671,9 @@
 
 </body>
 <script>
-function validateMyForm(el){
-
-    window.location = 'http://scholio.dev/public/scholarships?q=' + el.text.value +'&hPP=5&idx=dummyScholarships&p=0&is_v=1'
+function validateMyForm(el, id){
+    if(id == 1) window.location = 'http://scholio.dev/public/scholarships?q=' + el.text.value;
+    if(id == 2)window.location = 'http://scholio.dev/public/schools?q=' + el.text.value;
 }
 
 
