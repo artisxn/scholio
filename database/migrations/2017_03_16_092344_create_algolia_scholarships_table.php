@@ -22,12 +22,16 @@ class CreateAlgoliaScholarshipsTable extends Migration
             $table->string('level')->nullable();
             $table->string('criteria')->nullable();
             $table->string('school')->nullable();
+            $table->integer('school_id')->nullable();
+            $table->string('school_logo')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
             $table->string('financial_plan')->nullable();
-            $table->string('financial_amount')->nullable();
+            $table->integer('financial_amount')->nullable();
             $table->string('financial_metric')->nullable();
             $table->string('financial_icon')->nullable();
+            $table->integer('requested')->nullable();
+            $table->integer('interested')->nullable();
             $table->string('exams')->nullable();
             $table->string('end_at')->nullable();
             // $table->json('_geoloc')->nullable();

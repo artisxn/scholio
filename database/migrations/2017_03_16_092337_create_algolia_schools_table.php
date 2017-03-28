@@ -24,6 +24,7 @@ class CreateAlgoliaSchoolsTable extends Migration
             $table->string('city')->nullabale();
             // $table->text('_geoloc')->nullabale();
             $table->string('username')->nullabale();
+            $table->string('logo')->nullabale();
             $table->timestamps();
         });
     }

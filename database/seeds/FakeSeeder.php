@@ -272,6 +272,8 @@ class FakeSeeder extends Seeder
         $this->createScholarship($school1->id, 2, 800, 310, 3, 2, 2, 2);
         $this->createScholarship($school1->id, 1, 50, 210, 1, 3, 2, 1);
         $this->createScholarship($school1->id, 2, 500, 209, 1, 4, 2, 1);
+        $this->createScholarship($school1->id, 2, 800, 310, 1, 2, 2, 2);
+        $this->createScholarship($school1->id, 2, 800, 310, 3, 2, 2, 2);
 
         /*===============  2 AMC ================*/
         $this->createImages($school2, 'fake/amc-', 1, 7);
@@ -294,7 +296,7 @@ class FakeSeeder extends Seeder
             146, 147, 149, 151, 155, 157, 159, 161, 163, 165, 167, 169, 174, 175, 177, 178, 179, 180]);
         $this->createScholarship($school3->id, 2, 600, 4, 2, 1, 1, 1);
         $this->createScholarship($school3->id, 1, 40, 8, 2, 2, 1, 2);
-        $this->createScholarship($school3->id, 2, 1000, 33, 3, 1, 1, 3);
+        $this->createScholarship($school3->id, 2, 1000, 33, 2, 1, 1, 3);
         $this->createScholarship($school3->id, 1, 90, 34, 2, 4, 1, 4);
         $this->createScholarship($school3->id, 2, 400, 86, 2, 5, 1, 0);
         $this->createScholarship($school3->id, 1, 50, 108, 2, 1, 1, 5);

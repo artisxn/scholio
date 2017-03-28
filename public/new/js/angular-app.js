@@ -120,23 +120,57 @@
 
           $scope.input=''
           var client = algolia.Client('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
-          var schools = client.initIndex('schools');
-          var studies = client.initIndex('studies')
+          var schools = client.initIndex('dummySchools');
+          var scholarships = client.initIndex('dummyScholarships');
+          var studies = client.initIndex('studies');
 
-          $scope.getDatasets = function(selection) {
-              console.log(selection)
-              var selected = client.initIndex(selection);
+          $scope.getDatasets1 = function() {
               return [
               {
-                  source: algolia.sources.hits(schools, { hitsPerPage: 6 }),
-                  displayKey: 'admin.name',
+                  source: algolia.sources.hits(scholarships, { hitsPerPage: 6 }),
+                  displayKey: function(suggestion){
+                   return suggestion.school + ' - ' + suggestion.study;
+                 },
 
                   templates: {
                       header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
                       suggestion: function(suggestion) {
-                        console.log(suggestion);
+                        // if(true){
+                        //   return '<span> Αποτελεσματα από: ' + $('#search-input').val() + '</span>';
+                        // }else{
+                          return '<a target="_blank" style="color: #888;" href="/scholarship/' + suggestion.scholarship_id +'"><span><img src="/images/schools/'+ suggestion.school_logo +'" height="30px" style="margin-right: 10px;">' +
+                              suggestion._highlightResult.school.value + ' - ' + suggestion._highlightResult.study.value + ' - ' + suggestion._highlightResult.criteria.value + '</span></a>';
+                        // }
+
+                          
+                      },
+                  }
+              },
+              {
+                  source: algolia.sources.hits(scholarships, { hitsPerPage: 7 }),
+                  displayKey: 'study',
+                  templates: {
+                    header: '<div class="aa-suggestions-category2">Σπουδές</div>',
+                      suggestion: function(suggestion) {
+                          return '<span>' +
+                              suggestion._highlightResult.study.value + ' - ' + suggestion.level + '</span>';
+                      }
+                  }
+              }
+              ];
+          };
+
+          $scope.getDatasets2 = function() {
+              return [
+              {
+                  source: algolia.sources.hits(schools, { hitsPerPage: 6 }),
+                  displayKey: 'name',
+
+                  templates: {
+                      header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
+                      suggestion: function(suggestion) {
                           return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
-                              suggestion._highlightResult.admin.name.value + '</span></a>';
+                              suggestion._highlightResult.name.value + '</span></a>';
                       },
                   }
               },
@@ -155,8 +189,8 @@
           };
 
           $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {
-              //console.log(suggestion, dataset);
-              $scope.selection=suggestion.name
+
+              // $scope.selection=suggestion.name
 
               //if(suggestion.name!=undefined){
               //    $scope.selection=suggestion.name

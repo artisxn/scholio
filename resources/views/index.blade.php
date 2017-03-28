@@ -280,11 +280,11 @@
 
                 <div class=" sc-landing-search-bar-content">
 
-                    <form action="/search/school/type" method="post" ng-if="selectedButton==1">
+                    <form onsubmit="event.preventDefault(); validateMyForm(this);" action="/search/scholarships" id="scholarship" method="post" ng-if="selectedButton==1">
                         {{ csrf_field() }}
                         <div class="col-md-10 col-sm-10" id="">
-                            <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets('dummyScholarships')"
-                                   ng-model="selection"
+                            <input name="text" type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets1()"
+                                   ng-model="selection1"
                                    placeholder="Αναζήτησε Υποτροφία πχ Νομική Bachelor, ή Αγγλικά, ή Ιδιωτικό Λύκειο"
                             />
 
@@ -298,11 +298,11 @@
                     </form>
 
 
-                    <form action="/search/school/type" method="post" ng-if="selectedButton==2">
+                    <form action="/search/scholarships" method="post" ng-if="selectedButton==2">
                         {{ csrf_field() }}
                         <div class="col-md-10 col-sm-10" id="">
-                            <input type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets('dummySchools')"
-                                   ng-model="selection"
+                            <input name="text" type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets2()"
+                                   ng-model="selection2"
                                    placeholder="Αναζήτησε Εκπαιδευτικά Ιδρύματα πχ Κολλέγιο, ή Γαλικά, ή Δημοτικό"
                             />
 
@@ -670,7 +670,14 @@
 @include('public.footer')
 
 </body>
+<script>
+function validateMyForm(el){
 
+    window.location = 'http://scholio.dev/public/scholarships?q=' + el.text.value +'&hPP=5&idx=dummyScholarships&p=0&is_v=1'
+}
+
+
+</script>
 
     <!-- TypeAhead custom dropdown view --->
 <script type="text/ng-template" id="customTemplate.html">

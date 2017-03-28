@@ -5,10 +5,14 @@ use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
-use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
-use Carbon\Carbon;
+
+// Route::post('/search/scholarships', function () {
+//     $text = request()->text;
+//     session()->put('search', $text);
+//     return redirect('/public/scholarships');
+// });
 
 Route::get('/algolia/upload', function () {
     $schools = AlgoliaSchool::all();
@@ -32,61 +36,10 @@ Route::get('/algolia/upload', function () {
     return 'OK';
 });
 
-Route::get('dummy/algolia', function () {
-    AlgoliaSchool::truncate();
-    AlgoliaScholarship::truncate();
-    foreach (School::all() as $school) {
-        $studyDummy = '';
-        $al = new AlgoliaSchool;
-        $al->school_id = $school->id;
-        $al->name = $school->name();
-        $al->username = $school->admin->username ?? 'nousername';
-        $al->address = $school->address;
-        $al->city = $school->city;
-        $al->type = $school->type->name;
-        // $al->_geoloc = json_encode(array('lat' => $school->lat, 'lng' => $school->lng), JSON_FORCE_OBJECT);
+// Route::get('dummy/algolia', function () {
 
-        foreach ($school->study as $s) {
-            $studyDummy .= $s->name . ',';
-            $section = $s->section[0]->name;
-            if (strpos($studyDummy, $section) == false) {
-                $studyDummy .= $s->section[0]->name . ',';
-            }
-            $level = $s->section[0]->level->name;
-            if (strpos($studyDummy, $level) == false) {
-                $studyDummy .= $s->section[0]->level->name . ',';
-            }
-
-        }
-        $al->study = $studyDummy;
-        $al->save();
-    }
-
-    foreach (Scholarship::all() as $scholarship) {
-        $alg = new AlgoliaScholarship;
-        $alg->scholarship_id = $scholarship->id;
-        $alg->study = $scholarship->study->name;
-        $alg->section = $scholarship->study->section[0]->name;
-        $alg->level = $scholarship->level->name;
-        $alg->criteria = $scholarship->criteria->name;
-        $alg->school = $scholarship->school->name();
-        $alg->city = $scholarship->school->city;
-        $alg->address = $scholarship->school->address;
-        $alg->type = $scholarship->school->type->name;
-        $alg->financial_plan = $scholarship->financial->plan;
-        $alg->financial_amount = $scholarship->financial_amount;
-        $alg->financial_metric = $scholarship->financial->metric;
-        $alg->financial_icon = $scholarship->financial->icon;
-        $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
-        $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
-        $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
-        // json_encode(array('lat' => $school->lat, 'lng' => $school->lng), JSON_FORCE_OBJECT);
-        // $alg->_geoloc = collect(['lat' => (double) $scholarship->school->lat, 'lng' => (double) $scholarship->school->lng]);
-        // dd($alg);
-        $alg->save();
-    }
-    return 'OK';
-});
+//     return 'OK';
+// });
 
 Route::get('aaa', function () {
     $review = new App\Models\Review;

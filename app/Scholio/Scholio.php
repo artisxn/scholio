@@ -2,9 +2,13 @@
 
 namespace App\Scholio;
 
+use App\Models\AlgoliaScholarship;
+use App\Models\AlgoliaSchool;
 use App\Models\Dummy;
 use App\Models\Image;
+use App\Models\Scholarship;
 use App\Models\School;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 class Scholio
@@ -67,6 +71,8 @@ class Scholio
         $schools = School::all();
 
         Dummy::query()->truncate();
+        AlgoliaSchool::truncate();
+        AlgoliaScholarship::truncate();
 
         foreach ($schools as $s) {
             $dummy = new Dummy;
@@ -89,6 +95,56 @@ class Scholio
             $dummy->stars = $s->averageStars();
             $dummy->reviews = $s->countReviews();
             $dummy->save();
+
+            $studyDummy = '';
+            $al = new AlgoliaSchool;
+            $al->school_id = $s->id;
+            $al->name = $s->name();
+            $al->username = $s->admin->username ?? 'nousername';
+            $al->address = $s->address;
+            $al->city = $s->city;
+            $al->type = $s->type->name;
+            $al->logo = $s->logo;
+
+            foreach ($s->study as $study) {
+                $studyDummy .= $study->name . ',';
+                $section = $study->section[0]->name;
+                if (strpos($studyDummy, $section) == false) {
+                    $studyDummy .= $study->section[0]->name . ',';
+                }
+                $level = $study->section[0]->level->name;
+                if (strpos($studyDummy, $level) == false) {
+                    $studyDummy .= $study->section[0]->level->name . ',';
+                }
+
+            }
+            $al->study = $studyDummy;
+            $al->save();
+        }
+
+        foreach (Scholarship::all() as $scholarship) {
+            $alg = new AlgoliaScholarship;
+            $alg->scholarship_id = $scholarship->id;
+            $alg->study = $scholarship->study->name;
+            $alg->section = $scholarship->study->section[0]->name;
+            $alg->level = $scholarship->level->name;
+            $alg->criteria = $scholarship->criteria->name;
+            $alg->school = $scholarship->school->name();
+            $alg->school_id = $scholarship->school->id;
+            $alg->school_logo = $scholarship->school->logo;
+            $alg->city = $scholarship->school->city;
+            $alg->address = $scholarship->school->address;
+            $alg->type = $scholarship->school->type->name;
+            $alg->financial_plan = $scholarship->financial->plan;
+            $alg->financial_amount = (integer) $scholarship->financial_amount;
+            $alg->financial_metric = $scholarship->financial->metric;
+            $alg->financial_icon = $scholarship->financial->icon;
+            $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
+            $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
+            $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
+            $alg->interested = $scholarship->interestsLength();
+            $alg->requested = $scholarship->usersLength();
+            $alg->save();
         }
         return 'OK';
     }

@@ -113,7 +113,8 @@
 {{--    <script src="{{asset('/new/js/algolia-search.js')}}"></script>--}}
 
     <script>
-    window.SelectedLocation = "{{ session()->pull('location') }}"
+    // window.SelectedLocation = "{{ session()->pull('location') }}"
+    window.Search = "{{ session('search') }}"
     </script>
 
 </head>
@@ -306,11 +307,13 @@
 
                     <div class="col-sm-12">
                         <div class="input-group margin-bot-15" style="width:290px; padding: 0; margin-left: -16px; ">
-                            <input type="text" class="form-control font-weight-300" id="query" style="border-radius: 5px; font-size: 95%"/>
+                            <input type="text" class="form-control font-weight-300" id="query" style="border-radius: 5px; font-size: 95%" />
                         </div>
                     </div>
 
+                    <div id="sort-by-container">
 
+                    </div>
 
                     <div class="content-wrapper col-sm-12">
                         <aside>
@@ -369,13 +372,10 @@
 <script>
 
 
+
+
 angular.module("scholarshipsResultsApp",[])
         .controller("scholarshipsResultsCtrl",function ($scope,$http) {
-
-//            $scope.results = $http.get("api/...." + id)
-//                    .success(function (data) {
-//                        $scope.results = data
-//                    })
 
             console.log('start');
 
@@ -397,13 +397,15 @@ angular.module("scholarshipsResultsApp",[])
     var search = instantsearch({
         appId: 'FM3GHJGA1T',
         apiKey: 'de6f693844a49775415380088208bc66',
-        indexName: 'dummyScholarships'
+        indexName: 'dummyScholarships',
+        urlSync: true
     });
 
     search.addWidget(
             instantsearch.widgets.searchBox({
                 container: '#query',
-                placeholder: 'Αναζήτησε υποτροφία: π.χ. marketing ή Λύκειο'
+                 poweredBy: true,
+                 placeholder: "Αναζήτηση υποτροφίας"
             })
     );
 
@@ -433,7 +435,7 @@ angular.module("scholarshipsResultsApp",[])
             </div>
         </div>
         <div class="header-text margin-top-20 pull-left margin-left-10"> <span class="title-from">Υποτροφία από:</span>
-            <br class="break"> <span class="title-name">@{{{_highlightResult.school.value}}}</span></div>
+            <br class="break"> <span class="title-name"> @{{{_highlightResult.school.value}}}</span></div>
         <div class="xxs-title-name"> @{{{_highlightResult.school.value}}} </div>
         <div class="header-line"></div>
     </div>
@@ -495,8 +497,8 @@ angular.module("scholarshipsResultsApp",[])
                     <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
                 </span>
                 <span class="xxs-2 col-xs-2 col-sm-3 text-right">
-                    <div class="">34</div>
-                    <div class="margin-top-5">123</div>
+                    <div class="">@{{ requested }}</div>
+                    <div class="margin-top-5">@{{ interested }}</div>
                 </span>
             </div>
             <div class="col-xs-6 col-sm-5 pad-0-mar-0 xs-hidden">
@@ -619,6 +621,17 @@ angular.module("scholarshipsResultsApp",[])
                     item: menuTemplate
                 }
             })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.sortBySelector({
+        container: '#sort-by-container',
+        indices: [
+          {name: 'dummyScholarships', label: 'Σχετικές'},
+          {name: 'dummyScholarships_school_asc', label: 'Δημοφιλείς'},
+          {name: 'dummyScholarships_created_asc', label: 'Νέες'}
+        ]
+      })
     );
 
     // search.addWidget(
