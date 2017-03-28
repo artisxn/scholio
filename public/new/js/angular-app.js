@@ -189,6 +189,9 @@
           };
 
           $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {
+            if(suggestion.school_id){
+              window.location = 'http://scholio.dev/public/profile/' + suggestion.school_id;
+            }
 
               // $scope.selection=suggestion.name
 
