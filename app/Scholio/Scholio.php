@@ -75,8 +75,10 @@ class Scholio
         AlgoliaScholarship::truncate();
 
         foreach ($schools as $s) {
-            $dummy = new Dummy;
+            $studyDummy = '';
+            $dummy = new AlgoliaSchool;
             $dummy->type_id = $s->type_id;
+            $dummy->type = $s->type->name;
             $dummy->school_id = $s->id;
             $dummy->name = $s->name();
             $dummy->email = $s->email();
@@ -90,21 +92,9 @@ class Scholio
             $dummy->lengthTeachers = $s->lengthTeachers();
             $dummy->lengthStudies = $s->lengthStudies();
             $dummy->lengthScholarships = $s->lengthScholarships();
-            $dummy->lat = $s->lat;
-            $dummy->lng = $s->lng;
             $dummy->stars = $s->averageStars();
             $dummy->reviews = $s->countReviews();
-            $dummy->save();
-
-            $studyDummy = '';
-            $al = new AlgoliaSchool;
-            $al->school_id = $s->id;
-            $al->name = $s->name();
-            $al->username = $s->admin->username ?? 'nousername';
-            $al->address = $s->address;
-            $al->city = $s->city;
-            $al->type = $s->type->name;
-            $al->logo = $s->logo;
+            $dummy->username = $s->admin->username ?? 'nousername';
 
             foreach ($s->study as $study) {
                 $studyDummy .= $study->name . ',';
@@ -118,8 +108,44 @@ class Scholio
                 }
 
             }
-            $al->study = $studyDummy;
-            $al->save();
+            $dummy->study = $studyDummy;
+            $dummy->save();
+
+            $studyDummy = '';
+            $dummy = new Dummy;
+            $dummy->type_id = $s->type_id;
+            $dummy->type = $s->type->name;
+            $dummy->school_id = $s->id;
+            $dummy->name = $s->name();
+            $dummy->email = $s->email();
+            $dummy->phone = $s->phone;
+            $dummy->city = $s->city;
+            $dummy->address = $s->address;
+            $dummy->logo = $s->logo;
+            $dummy->image = $s->profileImage();
+            $dummy->website = $s->website;
+            $dummy->lengthStudents = $s->lengthStudents();
+            $dummy->lengthTeachers = $s->lengthTeachers();
+            $dummy->lengthStudies = $s->lengthStudies();
+            $dummy->lengthScholarships = $s->lengthScholarships();
+            $dummy->stars = $s->averageStars();
+            $dummy->reviews = $s->countReviews();
+            $dummy->username = $s->admin->username ?? 'nousername';
+
+            foreach ($s->study as $study) {
+                $studyDummy .= $study->name . ',';
+                $section = $study->section[0]->name;
+                if (strpos($studyDummy, $section) == false) {
+                    $studyDummy .= $study->section[0]->name . ',';
+                }
+                $level = $study->section[0]->level->name;
+                if (strpos($studyDummy, $level) == false) {
+                    $studyDummy .= $study->section[0]->level->name . ',';
+                }
+
+            }
+            $dummy->study = $studyDummy;
+            $dummy->save();
         }
 
         foreach (Scholarship::all() as $scholarship) {

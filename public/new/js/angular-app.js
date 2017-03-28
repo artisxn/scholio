@@ -138,7 +138,7 @@
                         // if(true){
                         //   return '<span> Αποτελεσματα από: ' + $('#search-input').val() + '</span>';
                         // }else{
-                          return '<a target="_blank" style="color: #888;" href="/scholarship/' + suggestion.scholarship_id +'"><span><img src="/images/schools/'+ suggestion.school_logo +'" height="30px" style="margin-right: 10px;">' +
+                          return '<a target="_blank" style="color: #888;" href="/scholarship/' + suggestion.scholarship_id +'"><span ng-show="false"><img src="/images/schools/'+ suggestion.school_logo +'" height="30px" style="margin-right: 10px;">' +
                               suggestion._highlightResult.school.value + ' - ' + suggestion._highlightResult.study.value + ' - ' + suggestion._highlightResult.criteria.value + '</span></a>';
                         // }
 

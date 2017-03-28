@@ -15,23 +15,23 @@ class CreateDummiesTable extends Migration
     {
         Schema::create('dummies', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('type_id')->nullable();
-            $table->integer('school_id')->nullable();
-            $table->string('name')->nullable();
+            $table->integer('school_id');
+            $table->string('name')->nullabale();
+            $table->string('type')->nullabale();
+            $table->integer('type_id')->nullabale();
+            $table->text('study')->nullabale();
+            $table->string('address')->nullabale();
+            $table->string('city')->nullabale();
+            $table->string('username')->nullabale();
+            $table->string('logo')->nullabale();
+            $table->string('image')->nullabale();
             $table->string('email')->nullable();
-            $table->string('address')->nullable();
-            $table->string('city')->nullable();
             $table->string('website')->nullable();
-            $table->string('logo')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->integer('lengthStudents')->nullable();
             $table->integer('lengthTeachers')->nullable();
             $table->integer('lengthStudies')->nullable();
             $table->integer('lengthScholarships')->nullable();
-            $table->string('image')->nullable();
-            $table->string('lat')->nullable();
-            $table->string('lng')->nullable();
-            $table->string('background')->nullable();
             $table->float('stars', 2, 1)->nullable();
             $table->integer('reviews')->nullable();
             $table->timestamps();

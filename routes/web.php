@@ -13,13 +13,19 @@ use App\User;
 //     session()->put('search', $text);
 //     return redirect('/public/scholarships');
 // });
+//
+Route::get('/public/schools/', function () {
+    return view('public.results.schools-test');
+});
 
 Route::get('/algolia/upload', function () {
     $schools = AlgoliaSchool::all();
     $scholarships = AlgoliaScholarship::all();
     $scholarshipss = Scholarship::all();
+    $schoolss = School::all();
 
     $geo = [];
+    $geo1 = [];
 
     foreach ($scholarshipss as $val => $ss) {
         $geo[$val] = ['lat' => (double) $ss->school->lat, 'lng' => (double) $ss->school->lng];
@@ -29,7 +35,13 @@ Route::get('/algolia/upload', function () {
         $s->_geoloc = collect($geo[$value]);
     }
 
-    // return $scholarships;
+    foreach ($schoolss as $val => $ss) {
+        $geo1[$val] = ['lat' => (double) $ss->lat, 'lng' => (double) $ss->lng];
+    }
+
+    foreach ($schools as $value => $s) {
+        $s->_geoloc = collect($geo1[$value]);
+    }
 
     $schools->searchable();
     $scholarships->searchable();

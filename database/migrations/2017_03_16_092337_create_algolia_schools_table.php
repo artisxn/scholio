@@ -18,13 +18,22 @@ class CreateAlgoliaSchoolsTable extends Migration
             $table->integer('school_id');
             $table->string('name')->nullabale();
             $table->string('type')->nullabale();
+            $table->integer('type_id')->nullabale();
             $table->text('study')->nullabale();
-            // $table->text('scholarship')->nullabale();
             $table->string('address')->nullabale();
             $table->string('city')->nullabale();
-            // $table->text('_geoloc')->nullabale();
             $table->string('username')->nullabale();
             $table->string('logo')->nullabale();
+            $table->string('image')->nullabale();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->bigInteger('phone')->nullable();
+            $table->integer('lengthStudents')->nullable();
+            $table->integer('lengthTeachers')->nullable();
+            $table->integer('lengthStudies')->nullable();
+            $table->integer('lengthScholarships')->nullable();
+            $table->float('stars', 2, 1)->nullable();
+            $table->integer('reviews')->nullable();
             $table->timestamps();
         });
     }
