@@ -122,7 +122,7 @@
           var client = algolia.Client('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
           var schools = client.initIndex('dummySchools');
           var scholarships = client.initIndex('dummyScholarships');
-          var studies = client.initIndex('studies');
+          var studies = client.initIndex('dummyStudies');
 
           $scope.getDatasets1 = function() {
               return [
@@ -135,14 +135,8 @@
                   templates: {
                       header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
                       suggestion: function(suggestion) {
-                        // if(true){
-                        //   return '<span> Αποτελεσματα από: ' + $('#search-input').val() + '</span>';
-                        // }else{
                           return '<a target="_blank" style="color: #888;" href="/scholarship/' + suggestion.scholarship_id +'"><span ng-show="false"><img src="/images/schools/'+ suggestion.school_logo +'" height="30px" style="margin-right: 10px;">' +
                               suggestion._highlightResult.school.value + ' - ' + suggestion._highlightResult.study.value + ' - ' + suggestion._highlightResult.criteria.value + '</span></a>';
-                        // }
-
-                          
                       },
                   }
               },
@@ -152,8 +146,8 @@
                   templates: {
                     header: '<div class="aa-suggestions-category2">Σπουδές</div>',
                       suggestion: function(suggestion) {
-                          return '<span>' +
-                              suggestion._highlightResult.study.value + ' - ' + suggestion.level + '</span>';
+                          return '<a style="color:black" target="_blank" href="public/scholarships?q='+ suggestion.study +'">' +
+                              '<span>' + suggestion._highlightResult.study.value + ' - ' + suggestion.level + '</span></a>';
                       }
                   }
               }
@@ -165,7 +159,6 @@
               {
                   source: algolia.sources.hits(schools, { hitsPerPage: 6 }),
                   displayKey: 'name',
-
                   templates: {
                       header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
                       suggestion: function(suggestion) {
@@ -175,13 +168,13 @@
                   }
               },
               {
-                  source: algolia.sources.hits(studies, { hitsPerPage: 7 }),
+                  source: algolia.sources.hits(studies, { hitsPerPage: 6 }),
                   displayKey: 'name',
                   templates: {
                     header: '<div class="aa-suggestions-category2">Σπουδές</div>',
                       suggestion: function(suggestion) {
                           return '<span>' +
-                              suggestion._highlightResult.name.value;
+                              suggestion._highlightResult.name.value + '</span>';
                       }
                   }
               }
@@ -189,19 +182,10 @@
           };
 
           $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {
-            if(suggestion.school_id){
+            // console.log(suggestion);
+            if(suggestion.email){
               window.location = 'http://scholio.dev/public/profile/' + suggestion.school_id;
             }
-
-              // $scope.selection=suggestion.name
-
-              //if(suggestion.name!=undefined){
-              //    $scope.selection=suggestion.name
-              //}
-              //else {
-              //    $scope.selection=suggestion.admin.name
-              //}
-
           });
 
 

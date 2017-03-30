@@ -9,6 +9,8 @@ class AlgoliaSchool extends Model
 {
     use Searchable;
 
+    public $timestamps = false;
+
     public function searchableAs()
     {
         return 'dummySchools';

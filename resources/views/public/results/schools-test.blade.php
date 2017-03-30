@@ -14,6 +14,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon-72.ico">
     <link rel="apple-touch-icon-precomposed" href="img/favicon-57.ico">
 
+    <style>
+    .testRed{
+        color: red;
+    }
+    </style>
+
 
     <!--====== CSS  Styles =======-->
     @include('public.styles')
@@ -240,15 +246,15 @@
                         <aside>
 
                             <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">Βρέθηκαν υποτροφίες από:</div>
-                            <div class="filter-title">Επαιδευτικά Ιδρύματα</div>
+                            <div class="facet-category-title facet font-weight-300">Βρέθηκαν Εκπαιδευτικά Ιδρύματα:</div>
+                            <div class="filter-title">Κατηγορίες</div>
                             <div id="categoriesType"></div>
                             <div class="filter-title">Πόλεις</div>
                             <div id="categoriesCity"></div>
-                            <div class="filter-title">Αντικείμενο Σπουδών</div>
-                            <div id="categoriesSection"></div>
-                            <div class="filter-title">Επίπεδο Σπουδών</div>
-                            <div id="categoriesLevel"></div>
+                            {{-- <div class="filter-title">Αντικείμενο Σπουδών</div>
+                            <div id="categoriesSection"></div> --}}
+                            {{-- <div class="filter-title">Επίπεδο Σπουδών</div>
+                            <div id="categoriesLevel"></div> --}}
                             <div id="rating" class="facet"></div>
                             {{--<div id="financial" class="facet"></div>--}}
 
@@ -383,7 +389,7 @@ angular.module("schoolsResultsApp",[])
                 <div class="pad-top-5"></div>
                 <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
                 <span class="pull-left pad-left-10" ng-show="type_id!='1' && type_id!='2'">Συνδ. Μαθητές</span>
-                <span class="pull-right">@{{lengthStudents}}</span>
+                <span id="s-@{{school_id}}" data-length="@{{lengthStudents}}" class="pull-right">@{{lengthStudents}}</span>
                 <br>
             </div>
 
@@ -523,27 +529,27 @@ angular.module("schoolsResultsApp",[])
             })
     );
 
-    search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesSection',
-                attributes: ['section'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+    // search.addWidget(
+    //         instantsearch.widgets.hierarchicalMenu({
+    //             container: '#categoriesSection',
+    //             attributes: ['section'],
+    //             sortBy: ['name:asc'],
+    //             templates: {
+    //                 item: menuTemplate
+    //             }
+    //         })
+    // );
 
-    search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesLevel',
-                attributes: ['level'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+    // search.addWidget(
+    //         instantsearch.widgets.hierarchicalMenu({
+    //             container: '#categoriesLevel',
+    //             attributes: ['level'],
+    //             sortBy: ['name:asc'],
+    //             templates: {
+    //                 item: menuTemplate
+    //             }
+    //         })
+    // );
 
     search.addWidget(
       instantsearch.widgets.starRating({
@@ -653,6 +659,17 @@ angular.module("schoolsResultsApp",[])
     search.start();
 
     })
+
+setTimeout(function() {
+    for(var i=1; i<=11; i++){
+        var data = $('#s-'+i).attr('data-length');
+        if(data >=8){
+        console.log('OK');
+        $('#s-'+i).addClass('testRed');
+    }
+    }
+
+}, 1500);
 
 
 </script>

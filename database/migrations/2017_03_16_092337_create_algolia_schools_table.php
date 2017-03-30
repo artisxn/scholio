@@ -34,7 +34,6 @@ class CreateAlgoliaSchoolsTable extends Migration
             $table->integer('lengthScholarships')->nullable();
             $table->float('stars', 2, 1)->nullable();
             $table->integer('reviews')->nullable();
-            $table->timestamps();
         });
     }
 

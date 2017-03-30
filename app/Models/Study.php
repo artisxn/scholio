@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Study extends Model
 {
 
-    // use Searchable;
+    use \Laravel\Scout\Searchable;
     /**
      *  Gets the school type that offeres this study
      *

@@ -4,10 +4,12 @@ namespace App\Scholio;
 
 use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
+use App\Models\AlgoliaStudy;
 use App\Models\Dummy;
 use App\Models\Image;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Study;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
@@ -73,6 +75,7 @@ class Scholio
         Dummy::query()->truncate();
         AlgoliaSchool::truncate();
         AlgoliaScholarship::truncate();
+        AlgoliaStudy::truncate();
 
         foreach ($schools as $s) {
             $studyDummy = '';
@@ -171,6 +174,21 @@ class Scholio
             $alg->interested = $scholarship->interestsLength();
             $alg->requested = $scholarship->usersLength();
             $alg->save();
+        }
+
+        foreach (Study::all() as $study) {
+            $s = new AlgoliaStudy;
+            $s->name = $study->name;
+
+            $schools = '';
+            foreach ($study->school as $school) {
+                $schools .= $school->name() . ',';
+            }
+            $s->school = $schools;
+            $s->level = $study->level()->name;
+
+            $s->section = $study->section[0]->name;
+            $s->save();
         }
         return 'OK';
     }

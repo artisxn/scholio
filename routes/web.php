@@ -3,6 +3,7 @@
 use App\CategoryReview;
 use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
+use App\Models\AlgoliaStudy;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Scholio\Scholio;
@@ -17,6 +18,7 @@ Route::get('/algolia/upload', function () {
     $scholarships = AlgoliaScholarship::all();
     $scholarshipss = Scholarship::all();
     $schoolss = School::all();
+    $studies = AlgoliaStudy::all();
 
     $geo = [];
     $geo1 = [];
@@ -39,13 +41,9 @@ Route::get('/algolia/upload', function () {
 
     $schools->searchable();
     $scholarships->searchable();
+    $studies->searchable();
     return 'OK';
 });
-
-// Route::get('dummy/algolia', function () {
-
-//     return 'OK';
-// });
 
 Route::get('aaa', function () {
     $review = new App\Models\Review;
