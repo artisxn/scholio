@@ -319,7 +319,7 @@
                         <aside>
 
                             <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">Βρέθηκαν υποτροφίες από:</div>
+                            <div class="facet-category-title facet font-weight-300">Υποτροφίες από:</div>
                             <div class="filter-title">Επαιδευτικά Ιδρύματα</div>
                             <div id="categoriesType"></div>
                             <div class="filter-title">Πόλεις</div>

@@ -246,7 +246,7 @@
                         <aside>
 
                             <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">Βρέθηκαν Εκπαιδευτικά Ιδρύματα:</div>
+                            <div class="facet-category-title facet font-weight-300">Εκπαιδευτικά Ιδρύματα από:</div>
                             <div class="filter-title">Κατηγορίες</div>
                             <div id="categoriesType"></div>
                             <div class="filter-title">Πόλεις</div>
@@ -388,7 +388,7 @@ angular.module("schoolsResultsApp",[])
                 <br>
                 <div class="pad-top-5"></div>
                 <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
-                <span class="pull-left pad-left-10" ng-show="type_id!='1' && type_id!='2'">Συνδ. Μαθητές</span>
+                <span class="pull-left pad-left-10" ng-show="type_id!='1' && type_id!='2'">Συνδ. Σπουδαστές</span>
                 <span id="s-@{{school_id}}" data-length="@{{lengthStudents}}" class="pull-right">@{{lengthStudents}}</span>
                 <br>
             </div>
@@ -557,7 +557,7 @@ angular.module("schoolsResultsApp",[])
         attributeName: 'stars',
         decimals: 1,
         templates: {
-          header: '<div class="facet-title">Ratings</div class="facet-title">'
+          header: '<div class="filter-title">Αξιολογήσεις</div class="filter-title">'
         }
       })
     );

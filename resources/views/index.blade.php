@@ -459,7 +459,7 @@
                                         <h2>Κολλέγια</h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="{{url('/public/results/1')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=κολλέγια')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -475,7 +475,7 @@
                                         <h2>Φροντιστήρια<span></span></h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="{{url('/public/results/3')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=Φροντιστήρια')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -492,7 +492,7 @@
                                         <h2>Ξένες<span>Γλώσσες</span></h2>
                                         <p>Αναζήτηση</p>
                                     </div>
-                                    <a href="{{url('/public/results/4')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=Ξένες Γλώσσες')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -507,7 +507,7 @@
                                         <h2>Ιδιωτικά<span>Σχολεία</span></h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="{{url('/public/results/6')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -524,7 +524,7 @@
                                         <h2>Παιδικοί Σταθμοί<span></span></h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <ax href="#">Αναζήτηση</ax>
+                                    <a href="{{url('public/schools?q=Παιδικοί Σταθμοί')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -541,7 +541,7 @@
                                         <h2>IEK  & Επαγγελματικές <span> Σχολές</span> </h2>
                                         <p>Αναζητηση</p>
                                     </div>
-                                    <a href="{{url('/public/results/2')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=ΙΕΚ, Επαγγελματική Σχολή')}}">Αναζήτηση</a>
                                 </figcaption>
                             </figure>
                         </div>

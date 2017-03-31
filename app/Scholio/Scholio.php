@@ -179,14 +179,18 @@ class Scholio
         foreach (Study::all() as $study) {
             $s = new AlgoliaStudy;
             $s->name = $study->name;
+//            $s->type = $study->type;
 
             $schools = '';
+//            $types = '';
             foreach ($study->school as $school) {
                 $schools .= $school->name() . ',';
+//                $types .= $school->type. ',';
             }
             $s->school = $schools;
-            $s->level = $study->level()->name;
+//            $s->type = $types;
 
+            $s->level = $study->level()->name;
             $s->section = $study->section[0]->name;
             $s->save();
         }

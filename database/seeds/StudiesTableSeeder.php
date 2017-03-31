@@ -961,6 +961,12 @@ class StudiesTableSeeder extends Seeder
             ['name' => 'Ε Δημοτικού', 'id' => 75],
             ['name' => 'ΣΤ Δημοτικού', 'id' => 76],
 
+            ['name' => 'BA in Graphic Design', 'id' => 10],
+            ['name' => 'BA in Interior Design', 'id' => 10],
+            ['name' => 'BA in Digital Design', 'id' => 10],
+            ['name' => 'MA in Visual Communication', 'id' => 19],
+            ['name' => 'MA in Architectural Design Communication', 'id' => 17],
+
 //            ['name' => 'Κλασσική Μουσική', 'id' => 71],
             //            ['name' => 'Σύγχρονη-Μοντέρνα Μουσική', 'id' => 71],
             //            ['name' => 'Παραδοσιακή-Βυζαντινή Μουσική', 'id' => 71],

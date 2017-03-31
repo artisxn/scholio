@@ -472,11 +472,11 @@
 
 
                     </div>
-@endif
+                        @endif
 
-@if($school->settings->scholarships)
+                        @if($school->settings->scholarships)
                     <!-- Υποτροφίες -->
-                    <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.lengthScholarships" style="overflow-x: hidden">
+                    <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.lengthScholarships" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
                         <div class="section-header3">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
                                 <i class="fa fa-trophy fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Υποτροφίες </span>
