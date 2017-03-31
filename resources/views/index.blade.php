@@ -672,8 +672,8 @@
 </body>
 <script>
 function validateMyForm(el, id){
-    if(id == 1) window.location = 'http://scholio.dev/public/scholarships?q=' + el.text.value;
-    if(id == 2)window.location = 'http://scholio.dev/public/schools?q=' + el.text.value;
+    if(id == 1) window.location = '/public/scholarships?q=' + el.text.value;
+    if(id == 2)window.location = '/public/schools?q=' + el.text.value;
 }
 
 
