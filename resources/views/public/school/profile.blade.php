@@ -887,7 +887,7 @@
 
 
         <!-- ====== Modal Συνδεσης =======-->
-        <div id="connect-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
+        <div id="connect-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -905,7 +905,7 @@
                     <div class="panel-body">
                         <img class="pull-left margin-right-10" style="height: 45px;"
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
-                        <span>@{{contactInfo.type }} @{{ contactInfo.name }}:   Με τη σύνδεσή σας θα έχετε τη δυνατότητα να γράψετε την αξιολόγησή σας.</span>
+                        <span> @{{ contactInfo.name }}:   Με τη σύνδεσή σας θα έχετε τη δυνατότητα να γράψετε την αξιολόγησή σας.</span>
                     </div>
 
                     <div class="modal-footer">
