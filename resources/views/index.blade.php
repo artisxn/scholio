@@ -31,6 +31,8 @@
     <!-- font-awesome -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
 
+    @include('components.modals.styles')
+
     <link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
 
     <!--photo hover animation -->
@@ -43,6 +45,8 @@
     <link href="{{asset('new/css/landing.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('new/css/algolia.css') }}">
+
+
 
 
     <!--====== Javascript Files =======-->
@@ -174,7 +178,11 @@
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                     @else
                     <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
-                    <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                    <li>
+                    <a href="">
+                    <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button>
+                    </a>
+                    </li>
                     @endif
                     </ul>
                 </div>
@@ -663,6 +671,21 @@
            </div>
        </div>
     </section>
+
+
+
+        <!-- ======   Συνδεσης =======-->
+        <div id="signIn-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        @include('components.modals.login')
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+
+
+
 
 </main>
 

@@ -1,43 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-        <meta name="author" content="Coderthemes">
 
-        <link rel="shortcut icon" href="{{asset('new/img/favicon.ico')}}">
 
-        <title>Schol.io</title>
-
-        <link href="/panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/panel/assets/css/core.css" rel="stylesheet" type="text/css" />
-        <link href="/panel/assets/css/components.css" rel="stylesheet" type="text/css" />
-        {{-- <link href="/panel/assets/css/icons.css" rel="stylesheet" type="text/css" /> --}}
-        <link href="/panel/assets/css/pages.css" rel="stylesheet" type="text/css" />
-        {{-- <link href="/panel/assets/css/responsive.css" rel="stylesheet" type="text/css" /> --}}
-
-         <link href="/new/css/main.css" rel="stylesheet" type="text/css" />
-
-        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
-        {{-- <script src="/panel/assets/js/modernizr.min.js"></script> --}}
-
-    </head>
-    <body>
-
-        <div class="account-pages"></div>
-        <div class="clearfix"></div>
         <div class="wrapper-page">
             <div class=" card-box">
                 <div class="panel-heading text-center">
                  <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 60px;">
-                    <span class=" font-weight-300 text-incr-175"> Εγγραφή στο <strong class="font-weight-300">Schol.io</strong> </span>
+                    <span class=" font-weight-300 text-incr-175"> Σύνδεση στο <strong class="font-weight-300">Schol.io</strong> </span>
                 </div>
 
                 <div class="panel-body">
@@ -117,18 +84,3 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-        <script>
-            var resizefunc = [];
-        </script>
-
-        <!-- jQuery  -->
-        <script src="/panel/assets/js/jquery.min.js"></script>
-        <script src="/panel/assets/js/bootstrap.min.js"></script>
-
-    </body>
-</html>
