@@ -179,47 +179,95 @@ class Scholio
         foreach (Study::all() as $study) {
             $s = new AlgoliaStudy;
             $s->name = $study->name;
-//            $s->type = $study->type;
+            $s->type = $study->type()->name;
 
             $schools = '';
-//            $types = '';
+            $cities = '';
             foreach ($study->school as $school) {
                 $schools .= $school->name() . ',';
-//                $types .= $school->type. ',';
+                $cities .= $school->city . ',';
             }
             $s->school = $schools;
-//            $s->type = $types;
+            $s->city = $cities;
 
             $s->level = $study->level()->name;
             $s->section = $study->section[0]->name;
             $s->save();
         }
+
+        // static::algoliaGEO();
         return 'OK';
     }
 
-    public static function updateDummy(School $school)
+    public static function updateDummy(School $s)
     {
-        $dummy = $school->dummy;
-        $dummy->name = $school->name();
-        $dummy->email = $school->email();
-        $dummy->phone = $school->phone;
-        $dummy->city = $school->city;
-        $dummy->address = $school->address;
-        $dummy->logo = $school->logo;
-        $dummy->image = $school->profileImage();
-        $dummy->website = $school->website;
-        $dummy->lengthStudents = $school->lengthStudents();
-        $dummy->lengthTeachers = $school->lengthTeachers();
-        $dummy->lengthStudies = $school->lengthStudies();
-        $dummy->lengthScholarships = $school->lengthScholarships();
-        $dummy->lat = $school->lat;
-        $dummy->lng = $school->lng;
-        $dummy->stars = $school->averageStars();
-        $dummy->reviews = $school->countReviews();
-        $img = Image::find($school->background);
-        if ($img) {
-            $dummy->background = $img->path;
+        $studyDummy = '';
+        $dummy = AlgoliaSchool::find($s->id);
+        $dummy->type_id = $s->type_id;
+        $dummy->type = $s->type->name;
+        $dummy->school_id = $s->id;
+        $dummy->name = $s->name();
+        $dummy->email = $s->email();
+        $dummy->phone = $s->phone;
+        $dummy->city = $s->city;
+        $dummy->address = $s->address;
+        $dummy->logo = $s->logo;
+        $dummy->image = $s->profileImage();
+        $dummy->website = $s->website;
+        $dummy->lengthStudents = $s->lengthStudents();
+        $dummy->lengthTeachers = $s->lengthTeachers();
+        $dummy->lengthStudies = $s->lengthStudies();
+        $dummy->lengthScholarships = $s->lengthScholarships();
+        $dummy->stars = $s->averageStars();
+        $dummy->reviews = $s->countReviews();
+        $dummy->username = $s->admin->username ?? 'nousername';
+
+        foreach ($s->study as $study) {
+            $studyDummy .= $study->name . ',';
+            $section = $study->section[0]->name;
+            if (strpos($studyDummy, $section) == false) {
+                $studyDummy .= $study->section[0]->name . ',';
+            }
+            $level = $study->section[0]->level->name;
+            if (strpos($studyDummy, $level) == false) {
+                $studyDummy .= $study->section[0]->level->name . ',';
+            }
+
         }
+        $dummy->study = $studyDummy;
         $dummy->save();
+    }
+
+    public static function algoliaGEO()
+    {
+        $schools = AlgoliaSchool::all();
+        $scholarships = AlgoliaScholarship::all();
+        $scholarshipss = Scholarship::all();
+        $schoolss = School::all();
+        $studies = AlgoliaStudy::all();
+
+        $geo = [];
+        $geo1 = [];
+
+        foreach ($scholarshipss as $val => $ss) {
+            $geo[$val] = ['lat' => (double) $ss->school->lat, 'lng' => (double) $ss->school->lng];
+        }
+
+        foreach ($scholarships as $value => $s) {
+            $s->_geoloc = collect($geo[$value]);
+        }
+
+        foreach ($schoolss as $val => $ss) {
+            $geo1[$val] = ['lat' => (double) $ss->lat, 'lng' => (double) $ss->lng];
+        }
+
+        foreach ($schools as $value => $s) {
+            $s->_geoloc = collect($geo1[$value]);
+        }
+
+        $schools->searchable();
+        $scholarships->searchable();
+        $studies->searchable();
+        return 'Algolia _geo ready';
     }
 }

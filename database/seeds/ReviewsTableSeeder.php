@@ -15,20 +15,21 @@ class ReviewsTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['name' => 'Πρόγραμμα Σπουδών', 'type' => 1],
-            ['name' => 'Οργάνωση', 'type' => 1],
-            ['name' => 'Ανθρώπινο Δυναμικό', 'type' => 1],
-            ['name' => 'Εγκαταστάσεις', 'type' => 1],
-            ['name' => 'Διασύνδεση με αγορά εργασίας', 'type' => 1],
-            ['name' => 'Όμιλοι Ενδιαφέροντος (Clubs)', 'type' => 2],
-            ['name' => 'Ευέλικτα Τμήματα', 'type' => 2],
-            ['name' => 'Ενημέρωση', 'type' => 2],
+            ['name' => 'Πρόγραμμα Σπουδών', 'type' => 1, 'icon' => 'fa fa-book'],
+            ['name' => 'Οργάνωση', 'type' => 1, 'icon' => 'fa fa-cogs'],
+            ['name' => 'Ανθρώπινο Δυναμικό', 'type' => 1, 'icon' => 'fa fa-user'],
+            ['name' => 'Εγκαταστάσεις', 'type' => 1, 'icon' => 'fa fa-building-o'],
+            ['name' => 'Διασύνδεση με αγορά εργασίας', 'type' => 1, 'icon' => 'fa fa-link'],
+            ['name' => 'Όμιλοι Ενδιαφέροντος (Clubs)', 'type' => 2, 'icon' => 'fa fa-futbol-o'],
+            ['name' => 'Ευέλικτα Τμήματα', 'type' => 2, 'icon' => 'fa fa-calendar'],
+            ['name' => 'Ενημέρωση', 'type' => 2, 'icon' => 'fa fa-newspaper-o'],
         ];
 
         foreach ($categories as $category) {
             $cat = new Category;
             $cat->name = $category['name'];
             $cat->type_id = $category['type'];
+            $cat->icon = $category['icon'];
             $cat->save();
         }
 

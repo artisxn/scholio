@@ -17,8 +17,8 @@ class CreateAlgoliaStudiesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->text('school')->nullable();
-//            $table->text('type')->nullable();
-//            $table->text('city')->nullable();
+            $table->text('type')->nullable();
+            $table->text('city')->nullable();
             $table->string('section')->nullable();
             $table->string('level')->nullable();
         });

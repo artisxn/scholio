@@ -155,7 +155,7 @@
     {{--<img class="grad" src="/new/img/Graduation.png" alt="">--}}
 
     <div class="Hero1"> Υποτροφία που προσφέρεται από: </div>
-    <div class="Hero2"> {{ $scholarship->school->name() }}</div>
+    <div class="Hero2"> <a href="/public/profile/{{ $scholarship->school->id}}" target="_blank">{{ $scholarship->school->name() }}</a></div>
 </div>
 <div class="line"></div>
 

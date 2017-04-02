@@ -1,67 +1,18 @@
 <?php
 
-use App\CategoryReview;
-use App\Models\AlgoliaScholarship;
-use App\Models\AlgoliaSchool;
-use App\Models\AlgoliaStudy;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
+Route::get('www', function () {
+    $s = App\Models\School::find(1);
+    return $s->averageReviews();
+
+});
+
 Route::get('/public/schools/', function () {
     return view('public.results.schools-test');
-});
-
-Route::get('/algolia/upload', function () {
-    $schools = AlgoliaSchool::all();
-    $scholarships = AlgoliaScholarship::all();
-    $scholarshipss = Scholarship::all();
-    $schoolss = School::all();
-    $studies = AlgoliaStudy::all();
-
-    $geo = [];
-    $geo1 = [];
-
-    foreach ($scholarshipss as $val => $ss) {
-        $geo[$val] = ['lat' => (double) $ss->school->lat, 'lng' => (double) $ss->school->lng];
-    }
-
-    foreach ($scholarships as $value => $s) {
-        $s->_geoloc = collect($geo[$value]);
-    }
-
-    foreach ($schoolss as $val => $ss) {
-        $geo1[$val] = ['lat' => (double) $ss->lat, 'lng' => (double) $ss->lng];
-    }
-
-    foreach ($schools as $value => $s) {
-        $s->_geoloc = collect($geo1[$value]);
-    }
-
-    $schools->searchable();
-    $scholarships->searchable();
-    $studies->searchable();
-    return 'OK';
-});
-
-Route::get('aaa', function () {
-    $review = new App\Models\Review;
-    $review->user_id = 13;
-    $review->school_id = 1;
-    $review->text = 'RRR123';
-    $review->save();
-
-    $c = new CategoryReview;
-    $c->review_id = 2;
-    $c->category_id = 3;
-    $c->stars = 5;
-    $c->save();
-});
-
-Route::get('search/school/{q}', function ($q) {
-    $schools = School::search($q)->get();
-    return view('public.results.algolia-schools', compact('schools'));
 });
 
 Route::get('/settings', function () {

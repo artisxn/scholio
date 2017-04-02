@@ -295,10 +295,10 @@
 
                                                  <span class="pad-top-5 xs-pad-top xs-review">
 
-                        <span ng-show="contactInfo.ratingCounter!=0"> <rating  class="text-incr-85 sc-t-orange" id="Rating"></rating>
+                        <span ng-show="contactInfo.ratingCounter!=0"> <rating class="text-incr-85 sc-t-orange" id="Rating"></rating>
                                                 </span>
                                                 <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.stars}} </span>
-                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.stars}}  Αξιολογήσεις)</span>
+                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.reviews.length}}  Αξιολογήσεις)</span>
                          </span>
 
                     </div>
@@ -640,14 +640,14 @@
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
 
 
-                            <div ng-repeat="reviews in contactInfo.avgReviews">
+                            <div ng-repeat="review in contactInfo.avgReviews">
                                 <div class="col-xs-12 col-sm-6" >
-                                    <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
-                                    <span>@{{ reviews.name }}</span>
+                                    <i class="@{{review.icon}} margin-right-10" aria-hidden="true"></i>
+                                    <span>@{{ review.name }}</span>
                                 </div>
                                 <div class="col-xs-12 col-sm-6">
-                                    <span value="@{{reviews.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
-                                    <span> @{{reviews.stars}}</span>
+                                    <span id="catReview-@{{$index}}" ng-init="categoryReview($index, review.stars)" value="@{{review.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
+                                    <span> @{{review.stars}}</span>
                                 </div>
                             </div>
 
@@ -981,15 +981,47 @@
         });
     });
     ///// Rating Js //////
-    $('rating').raty({
-        score    : 4.2,
-        halfShow : true,
-        half     : true,
-        starHalf : 'fa fa-fw fa-star-half'
-    });
+    setTimeout(function() {
+        $('rating').raty({
+            score    : window.totalStars,
+            halfShow : true,
+            half     : true,
+            readOnly: true,
+            starHalf : 'fa fa-fw fa-star-half'
+        });
+
+        $('#totalRating').raty({
+            score    : window.totalStars,
+            halfShow : true,
+            half     : true,
+            readOnly: true,
+            starHalf : 'fa fa-fw fa-star-half'
+        });
+
+        // $('#categoryRating').each(function(){
+        //     $(this).raty({
+        //         score: 5
+        //     })
+        // })
+
+    }, 500);
+
     var lengthStudents = 0;
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http, $sce) {
+
+                $scope.categoryReview = function(index, stars){
+                    setTimeout(function() {
+                        $('#catReview-' + index).raty({
+                                score: stars,
+                                halfShow : true,
+                                half     : true,
+                                readOnly: true,
+                                starHalf : 'fa fa-fw fa-star-half'
+                        });
+                    }, 500);
+
+                }
 
                 $scope.rate = function(id, stars){
                     setTimeout(function() {
@@ -1417,29 +1449,17 @@
             }]);
     $(document).ready(function(){
         $("#main").hide().fadeIn(1800);
-        $(".raty").each(function(index,element){
 
-
-            console.log($(this));
-
-            if(this.id!="totalRating")
-                window.stars = parseFloat($(this).next(".ng-binding").text());
-            else
-                window.stars = parseFloat($(this).parent().find(".lead").text());
-
-            var parent = this
-            setTimeout(function() {
-                $(parent).raty({
-                    score: window.totalStars,
-                    readOnly: true
-                });
-            }, 50);
-
-
-
-
-        });
     });
+
+    setTimeout(function() {
+        // $(".raty").raty({
+        //     score: window.totalStars,
+        //     readOnly: true
+        // })
+    }, 500);
+
+
 </script>
 
 

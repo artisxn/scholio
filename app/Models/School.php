@@ -219,7 +219,7 @@ class School extends Model
             }
         }
 
-        return ($count != 0) ? ($total / $count) : 0;
+        return ($count != 0) ? number_format((float) ($total / $count), 1, '.', '') : 0;
     }
 
     public function averageReviews()
@@ -241,12 +241,9 @@ class School extends Model
             }
         }
 
-        if ($reviews) {
+        if ($count) {
             foreach ($this->categories() as $value => $cat) {
-                $reviews[$value] = ['name' => $cat->name, 'stars' => $count[$value]];
-                // $reviews['stars'] = $count[$value];
-                // $reviews-> = $cat->name;
-                // $reviews[$cat->name] = $count[$value];
+                $reviews[$value] = ['name' => $cat->name, 'stars' => number_format((float) $count[$value], 1, '.', ''), 'icon' => $cat->icon];
             }
         }
 

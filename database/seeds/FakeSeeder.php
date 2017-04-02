@@ -5,6 +5,7 @@ use App\Models\Study;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+
 class FakeSeeder extends Seeder
 {
     /**
@@ -245,7 +246,6 @@ class FakeSeeder extends Seeder
             'background' => 68,
         ]);
 
-
         /*===============   12 HAEC   ================*/
         $school12 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Hellenic American College', 'email' => 'info@haec.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'haec'])->id,
@@ -357,7 +357,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'background' => 104,
         ]);
 
-                /*===============   19 ΒΑΚΑΛΟ   ================*/
+        /*===============   19 ΒΑΚΑΛΟ   ================*/
         $school19 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Βακαλο Art & Design College', 'email' => 'info@vakalo.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'vakalo'])->id,
             'address' => 'Λ. Κατσώνη 26',
@@ -371,7 +371,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'background' => 109,
         ]);
 
-                /*===============  20 AKMH ΛΑΡΙΣΑ ================*/
+        /*===============  20 AKMH ΛΑΡΙΣΑ ================*/
         $school20 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ Λάρισα', 'email' => 'infoLar@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiLAr'])->id,
             'address' => 'Φαρσάλων 293',
@@ -393,12 +393,15 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'background' => 122,
         ]);
 
-                /*===============  21 ΙΕΚ ΔΕΛΤΑ ΙΩΑΝΝΙΝΑ ================*/
+        factory(App\Models\Student::class, 30)->create();
+        factory(App\Models\Teacher::class, 20)->create();
+
+        /*===============  21 ΙΕΚ ΔΕΛΤΑ ΙΩΑΝΝΙΝΑ ================*/
         $school21 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΔΕΛΤΑ Ιωάννινα', 'email' => 'ioannina@delta.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltaioa'])->id,
             'address' => 'Ζωής Καπλάνη 5',
             'city' => 'Ιωάννινα',
-            'phone' =>   2651077472,
+            'phone' => 2651077472,
             'type_id' => 2,
             'website' => 'delta-iek-Ioan.gr',
             'about' => 'Στην πλούσια και μακρόχρονη πορεία μας μάθαμε τούτο:
@@ -408,7 +411,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'background' => 124,
         ]);
 
-                /*===============  22 AKMH ΗΡΑΚΛΕΙΟ================*/
+        /*===============  22 AKMH ΗΡΑΚΛΕΙΟ================*/
         $school22 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ Ηράκλειο', 'email' => 'infoHer@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiHer'])->id,
             'address' => 'Θεοτοκοπούλου & Κορωναίου',
@@ -443,13 +446,12 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'background' => 144,
         ]);
 
-
-                /*===============   24 iCBS THESSALONIKI ================*/
+        /*===============   24 iCBS THESSALONIKI ================*/
         $school24 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Thessaloniki Business College ', 'email' => 'icbs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbsthess'])->id,
             'address' => 'Θεσσαλονίκης 108, Γαλήνη Ωραιοκάστρου',
             'city' => 'θεσσαλονίκη',
-            'phone' => 2310698598   ,
+            'phone' => 2310698598,
             'type_id' => 1,
             'website' => 'icbsThess.gr',
             'approved' => 1,
@@ -473,15 +475,12 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'background' => 149,
         ]);
 
-
-
-
         /*===============   25 iCBS ATHENS ================*/
         $school25 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Athens International College ', 'email' => 'icbs-abs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbsath'])->id,
             'address' => 'Λ. Ιωνίας 200 & Ιακωβατων, Κ. Πατήσια,',
             'city' => 'Αθήνα',
-            'phone' => 2102114671   ,
+            'phone' => 2102114671,
             'type_id' => 1,
             'website' => 'icbs.gr',
             'approved' => 1,
@@ -505,13 +504,12 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'background' => 150,
         ]);
 
-
         /*===============   26 iCBS LARISSA ================*/
         $school26 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Larissa Business College ', 'email' => 'icbs-lbs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbslar'])->id,
             'address' => 'Ηπείρου 96-98',
             'city' => 'Λάρισα',
-            'phone' => 2410671177   ,
+            'phone' => 2410671177,
             'type_id' => 1,
             'website' => 'icbsLA.gr',
             'approved' => 1,
@@ -536,12 +534,10 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         ]);
 //
 
-
 //        for ($i = 0; $i < 9; $i++) {
         //            factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
         //        }
-        factory(App\Models\Student::class, 30)->create();
-        factory(App\Models\Teacher::class, 20)->create();
+
         /*===============   1 ACT   ================*/
         $this->createImages($school1, 'fake/act-', 1, 6);
         $this->createStudy($school1, [206, 207, 208, 209, 210, 253, 252, 279, 306, 308, 309, 312, 324]);
@@ -652,9 +648,9 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 
         /*===============   12 HAEC  ================*/
         $this->createImages($school12, 'fake/haec-', 1, 5);
-        $this->createStudy($school12, [216, 217, 208, 220, 211,270,274, 277, 281, 282, 283, 295,296,297, 309,327,339,343]);
-        $this->createUsers($school12, 'students', [21, 22, 23, 24, 25, 26, 27, 28, 29,30,31,32,33,35]);
-        $this->createUsers($school12, 'teachers', [51, 52, 53, 54,55,56]);
+        $this->createStudy($school12, [216, 217, 208, 220, 211, 270, 274, 277, 281, 282, 283, 295, 296, 297, 309, 327, 339, 343]);
+        $this->createUsers($school12, 'students', [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35]);
+        $this->createUsers($school12, 'teachers', [51, 52, 53, 54, 55, 56]);
         $this->createScholarship($school12->id, 1, 20, 217, 1, 1, 1, 1);
         $this->createScholarship($school12->id, 2, 650, 309, 3, 2, 2, 2);
         $this->createScholarship($school12->id, 1, 45, 270, 1, 3, 2, 1);
@@ -664,8 +660,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         /*===============   13 ACG  ================*/
         $this->createImages($school13, 'fake/acg-', 1, 5);
         $this->createStudy($school13, [210, 211, 212, 216, 217, 208, 230, 209, 254, 256, 260, 306, 308, 309, 312, 324]);
-        $this->createUsers($school13, 'students', [22, 24, 26, 27, 28, 29,31, 36, 37,40,41,43,44]);
-        $this->createUsers($school13, 'teachers', [51, 52, 53, 54,55,57,58]);
+        $this->createUsers($school13, 'students', [22, 24, 26, 27, 28, 29, 31, 36, 37, 40, 41, 43, 44]);
+        $this->createUsers($school13, 'teachers', [51, 52, 53, 54, 55, 57, 58]);
         $this->createScholarship($school13->id, 1, 30, 217, 1, 1, 1, 1);
         $this->createScholarship($school13->id, 2, 800, 308, 3, 2, 2, 2);
         $this->createScholarship($school13->id, 1, 40, 211, 1, 3, 2, 1);
@@ -676,9 +672,9 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school13->id, 2, 200, 256, 1, 4, 2, 1);
         /*===============   14 Aegean ================*/
         $this->createImages($school14, 'fake/aegean-', 1, 5);
-        $this->createStudy($school14, [210, 220, 249,250, 263,266,265,267, 256, 257, 306, 308, 309, 312, 322,327]);
-        $this->createUsers($school14, 'students', [21, 22, 23, 24, 25, 26, 27, 28, 29,38,39]);
-        $this->createUsers($school14, 'teachers', [51, 52, 53, 54,58,59]);
+        $this->createStudy($school14, [210, 220, 249, 250, 263, 266, 265, 267, 256, 257, 306, 308, 309, 312, 322, 327]);
+        $this->createUsers($school14, 'students', [21, 22, 23, 24, 25, 26, 27, 28, 29, 38, 39]);
+        $this->createUsers($school14, 'teachers', [51, 52, 53, 54, 58, 59]);
         $this->createScholarship($school14->id, 1, 20, 220, 1, 1, 1, 1);
         $this->createScholarship($school14->id, 2, 800, 310, 3, 2, 2, 2);
         $this->createScholarship($school14->id, 1, 60, 249, 1, 3, 2, 1);
@@ -702,7 +698,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         /*===============   16 ATT   ================*/
         $this->createImages($school16, 'fake/att-', 1, 5);
         $this->createStudy($school16, [265, 268, 269, 216, 217, 208, 209, 211, 254, 256, 279, 306, 308, 309, 312, 324]);
-        $this->createUsers($school16, 'students', [21, 22, 23, 24, 25, 26, 27,30]);
+        $this->createUsers($school16, 'students', [21, 22, 23, 24, 25, 26, 27, 30]);
         $this->createUsers($school16, 'teachers', [51, 52, 53, 54]);
         $this->createScholarship($school16->id, 1, 40, 265, 1, 1, 1, 1);
         $this->createScholarship($school16->id, 2, 800, 312, 3, 2, 2, 2);
@@ -714,7 +710,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         /*===============   17 IST   ================*/
         $this->createImages($school17, 'fake/ist-', 1, 5);
         $this->createStudy($school17, [265, 266, 268, 269, 216, 217, 208, 209, 211, 254, 256, 279, 306, 308, 309, 312, 324]);
-        $this->createUsers($school17, 'students', [21, 22, 23, 24, 25, 26, 27,29]);
+        $this->createUsers($school17, 'students', [21, 22, 23, 24, 25, 26, 27, 29]);
         $this->createUsers($school17, 'teachers', [51, 52, 53, 54]);
         $this->createScholarship($school17->id, 1, 30, 265, 1, 1, 1, 1);
         $this->createScholarship($school17->id, 2, 550, 312, 3, 2, 2, 2);
@@ -727,8 +723,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         /*===============   18 CITY COLLEGE   ================*/
         $this->createImages($school18, 'fake/citycol-', 1, 5);
         $this->createStudy($school18, [265, 268, 269, 216, 217, 208, 209, 211, 254, 256, 279, 306, 308, 309, 312, 324]);
-        $this->createUsers($school18, 'students', [21, 22, 23, 24, 25, 26, 27,28]);
-        $this->createUsers($school18, 'teachers', [51, 52, 53, 54,55]);
+        $this->createUsers($school18, 'students', [21, 22, 23, 24, 25, 26, 27, 28]);
+        $this->createUsers($school18, 'teachers', [51, 52, 53, 54, 55]);
         $this->createScholarship($school18->id, 1, 40, 265, 1, 1, 1, 1);
         $this->createScholarship($school18->id, 2, 800, 312, 3, 2, 2, 2);
         $this->createScholarship($school18->id, 1, 30, 226, 1, 3, 2, 1);
@@ -738,9 +734,9 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 
         /*===============   19 Vakalo   ================*/
         $this->createImages($school19, 'fake/vakalo-', 1, 5);
-        $this->createStudy($school19, [439,440,441,442,443]);
+        $this->createStudy($school19, [439, 440, 441, 442, 443]);
         $this->createUsers($school19, 'students', [21, 22, 23, 24, 25, 26, 27]);
-        $this->createUsers($school19, 'teachers', [51, 52, 53, 54,55,56]);
+        $this->createUsers($school19, 'teachers', [51, 52, 53, 54, 55, 56]);
         $this->createScholarship($school19->id, 1, 40, 439, 1, 1, 1, 1);
         $this->createScholarship($school19->id, 2, 800, 443, 3, 2, 2, 2);
         $this->createScholarship($school19->id, 1, 30, 440, 1, 3, 2, 1);
@@ -749,8 +745,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 
         /*=============== 20 AKMH Λαρισα ================*/
         $this->createImages($school20, 'fake/akmi-', 2, 11);
-        $this->createUsers($school20, 'students', [31, 32, 33, 34, 35, 36, 37, 38,39,40]);
-        $this->createUsers($school20, 'teachers', [55, 56, 57, 58,59]);
+        $this->createUsers($school20, 'students', [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]);
+        $this->createUsers($school20, 'teachers', [55, 56, 57, 58, 59]);
         $this->createStudy($school20, [1, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
             33, 34, 41, 44, 46, 47, 38, 50, 51, 52, 54, 55, 56, 57, 58, 59,
             65, 67, 69, 71, 73, 77, 78, 79,
@@ -768,9 +764,9 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 
         /*=============== 21 IEK ΔΕΛΤΑ ΙΩΑΝΝΙΝΑ ================*/
         $this->createImages($school21, 'fake/deltaioa-', 1, 5);
-        $this->createUsers($school21, 'students', [30,31, 32, 33, 34, 35, 36, 37, 38,39,40]);
-        $this->createUsers($school21, 'teachers', [51,55, 56, 57, 58,59]);
-        $this->createStudy($school21, [1,2,4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
+        $this->createUsers($school21, 'students', [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]);
+        $this->createUsers($school21, 'teachers', [51, 55, 56, 57, 58, 59]);
+        $this->createStudy($school21, [1, 2, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
             33, 34, 41, 44, 46, 47, 38, 50, 51, 52, 54, 55, 56, 57, 58, 59,
             65, 67, 69, 71, 73, 77, 78, 79,
             81, 86, 89, 90, 91, 94, 96, 97, 98,
@@ -786,8 +782,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school21->id, 1, 20, 180, 2, 1, 1, 5);
         /*=============== 22 AKMH Ηρακλειο ================*/
         $this->createImages($school22, 'fake/akmicrete-', 1, 11);
-        $this->createUsers($school22, 'students', [31, 32, 33, 34, 35, 36, 37, 38,39,40]);
-        $this->createUsers($school22, 'teachers', [55, 56, 57, 58,59]);
+        $this->createUsers($school22, 'students', [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]);
+        $this->createUsers($school22, 'teachers', [55, 56, 57, 58, 59]);
         $this->createStudy($school22, [1, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
             33, 34, 41, 44, 46, 47, 38, 50, 51, 52, 54, 55, 56, 57, 58, 59,
             65, 67, 69, 71, 73, 77, 78, 79,
@@ -805,8 +801,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createImages($school23, 'fake/med-', 1, 5);
         $this->createStudy($school23, [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 227, 234, 235, 237, 242, 243, 247, 248, 250, 252, 258, 262, 265, 270, 271, 272, 273, 274, 295, 296, 297,
             313, 317, 318, 319, 320, 321, 325, 329, 322, 332, 333, 334, 346, 347, 352]);
-        $this->createUsers($school23, 'students', [21, 22, 23, 24, 25,26,27]);
-        $this->createUsers($school23, 'teachers', [51, 52, 53,60,61, 70]);
+        $this->createUsers($school23, 'students', [21, 22, 23, 24, 25, 26, 27]);
+        $this->createUsers($school23, 'teachers', [51, 52, 53, 60, 61, 70]);
         $this->createScholarship($school23->id, 1, 30, 214, 1, 1, 1, 1);
         $this->createScholarship($school23->id, 2, 800, 216, 1, 2, 2, 2);
         $this->createScholarship($school23->id, 1, 50, 297, 1, 4, 2, 0);
@@ -830,8 +826,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createImages($school25, 'fake/icbs-', 1, 5);
         $this->createStudy($school25, [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 227, 234, 235, 237, 242, 243, 247, 248, 250, 252, 258, 262, 265, 270, 271, 272, 273, 274, 295, 296, 297,
             313, 317, 318, 319, 320, 321, 325, 329, 322, 332, 333, 334, 346, 347, 352]);
-        $this->createUsers($school25, 'students', [21, 22, 23, 24, 25,29,40]);
-        $this->createUsers($school25, 'teachers', [51, 52, 53, 70,65]);
+        $this->createUsers($school25, 'students', [21, 22, 23, 24, 25, 29, 40]);
+        $this->createUsers($school25, 'teachers', [51, 52, 53, 70, 65]);
         $this->createScholarship($school25->id, 1, 30, 212, 1, 1, 1, 1);
         $this->createScholarship($school25->id, 2, 900, 272, 1, 2, 2, 2);
         $this->createScholarship($school25->id, 1, 40, 296, 1, 4, 2, 0);
@@ -847,8 +843,6 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school26->id, 2, 900, 262, 1, 2, 2, 2);
         $this->createScholarship($school26->id, 1, 40, 297, 1, 4, 2, 0);
         $this->createScholarship($school26->id, 2, 400, 319, 3, 3, 2, 1);
-
-
 
         $this->createTerms($school1->id, '<ul>
 <li>Οι υποψήφιοι που επιθυμούν να συμμετάσχουν στις εξετάσεις για προπτυχιακές σπουδές θα πρέπει να είναι <strong> έως 24 ετών </strong>.</li>

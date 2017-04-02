@@ -288,8 +288,8 @@
                                    placeholder="Αναζήτησε Υποτροφία πχ Νομική Bachelor, ή Αγγλικά, ή Ιδιωτικό Λύκειο"
                             />
 
-                            <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
-                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
+{{--                             <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
+                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div> --}}
                         </div>
 
                         <div class="col-md-2 col-sm-12">
