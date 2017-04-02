@@ -10,7 +10,19 @@
                 <li class="notifi-title"><span class="label label-default pull-right"></span>Ειδοποιήσεις</li>
                 <li class="list-group nicescroll notification-list">
                 <a href="/panel/school/requests" class="list-group-item" v-if="unreadNotifications.length">
-                   <div class="media">
+                   <div class="media" v-if="unreadNotifications[0].type == 'App\\Notifications\\StudentAppliedOnScholarship'">
+                      <div class="pull-left p-r-10">
+                         <em class="fa fa-trophy fa-2x text-info"></em>
+                      </div>
+                      <div class="media-body">
+                         <h5 class="media-heading">Αίτημα για υποτροφία</h5>
+                         <p class="m-0">
+                             <small>{{ unreadNotifications.length }} αιτήματα</small>
+                         </p>
+                      </div>
+                   </div>
+
+                   <div class="media" v-if="unreadNotifications[0].type == 'other'">
                       <div class="pull-left p-r-10">
                          <em class="fa fa-user-plus fa-2x text-info"></em>
                       </div>
@@ -21,6 +33,8 @@
                          </p>
                       </div>
                    </div>
+
+
                 </a>
                 </li>
                 <li>
@@ -49,6 +63,7 @@
                 axios.get('/api/notifications')
                     .then(response => {
                         this.unreadNotifications = response.data['unread']
+                        console.log(this.unreadNotifications)
                     });
                 }
             },

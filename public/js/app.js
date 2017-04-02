@@ -12561,6 +12561,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
 
@@ -12576,6 +12590,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/api/notifications').then(function (response) {
                 _this.unreadNotifications = response.data['unread'];
+                console.log(_this.unreadNotifications);
             });
         }
     },
@@ -20202,15 +20217,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "/panel/school/requests"
     }
-  }, [_c('div', {
+  }, [(_vm.unreadNotifications[0].type == 'App\\Notifications\\StudentAppliedOnScholarship') ? _c('div', {
     staticClass: "media"
   }, [_vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "media-body"
   }, [_c('h5', {
     staticClass: "media-heading"
+  }, [_vm._v("Αίτημα για υποτροφία")]), _vm._v(" "), _c('p', {
+    staticClass: "m-0"
+  }, [_c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματα")])])])]) : _vm._e(), _vm._v(" "), (_vm.unreadNotifications[0].type == 'other') ? _c('div', {
+    staticClass: "media"
+  }, [_vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "media-body"
+  }, [_c('h5', {
+    staticClass: "media-heading"
   }, [_vm._v("Ειδοποίηση για σύνδεση")]), _vm._v(" "), _c('p', {
     staticClass: "m-0"
-  }, [_c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματα")])])])])]) : _vm._e()]), _vm._v(" "), _c('li', [_c('div', {
+  }, [_c('small', [_vm._v(_vm._s(_vm.unreadNotifications.length) + " αιτήματα")])])])]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c('li', [_c('div', {
     staticClass: "list-group-item text-right"
   }, [(!_vm.unreadNotifications.length) ? _c('small', {
     staticClass: "font-600"
@@ -20228,6 +20251,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', {
     staticClass: "label label-default pull-right"
   }), _vm._v("Ειδοποιήσεις")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "pull-left p-r-10"
+  }, [_c('em', {
+    staticClass: "fa fa-trophy fa-2x text-info"
+  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "pull-left p-r-10"

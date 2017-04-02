@@ -6,6 +6,12 @@ use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
+Route::get('qqq', function () {
+    $s = App\Models\School::find(1);
+
+    return $s->averageReviews();
+});
+
 Route::get('a/{scholarship}', function (Scholarship $scholarship) {
     event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
     // return Request::createAndNotify($scholarship->school, auth()->user());

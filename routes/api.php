@@ -167,3 +167,7 @@ Route::post('/review/{school}/save', function (School $school) {
     Scholio::updateDummy($school);
     return 'OK';
 })->middleware('auth:api');
+
+Route::get('/review/{school}', function (School $school) {
+    return $school->averageReviews();
+})->middleware('auth:api');
