@@ -183,7 +183,7 @@
 
           $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {
             if(suggestion.email){
-              window.location = 'http://scholio.dev/public/profile/' + suggestion.school_id;
+              window.location = '/public/profile/' + suggestion.school_id;
             }
           });
 

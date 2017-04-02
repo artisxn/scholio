@@ -177,7 +177,8 @@
                     <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                     @else
-                    <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
+                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                    data-toggle="modal" data-target="#signUp-modal">Εγγραφή</button></a></li>
                     <li>
                     <a href="">
                     <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button>
@@ -674,7 +675,7 @@
 
 
 
-        <!-- ======   Συνδεσης =======-->
+        <!-- ======   Modal Συνδεσης =======-->
         <div id="signIn-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -685,6 +686,14 @@
 
 
 
+        <!-- ======   Modal Εγγραφής  =======-->
+        <div id="signUp-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        @include('components.modals.register')
+                </div>
+            </div>
+        </div><!-- /.modal -->
 
 
 </main>

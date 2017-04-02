@@ -3,8 +3,10 @@
         <div class="wrapper-page">
             <div class=" card-box">
                 <div class="panel-heading text-center">
-                 <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 60px;">
-                    <span class=" font-weight-300 text-incr-175"> Σύνδεση στο <strong class="font-weight-300">Schol.io</strong> </span>
+                <div class="text-center">
+                                     <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 80px;">
+                </div>
+                    <div class=" font-weight-300 text-incr-175 text-center"> Σύνδεση στο <strong class="font-weight-300">Schol.io</strong> </div>
                 </div>
 
                 <div class="panel-body">
@@ -12,9 +14,9 @@
                     {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">e-mail</label>
+                            <label for="email" class="col-sm-3 pad-top-10">e-mail</label>
 
-                            <div class="col-md-8">
+                            <div class="col-sm-9">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -26,9 +28,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Κωδικός</label>
+                            <label for="password" class="col-sm-3 pad-top-10">Κωδικός</label>
 
-                            <div class="col-md-8">
+                            <div class="col-sm-9">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -79,8 +81,26 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <p>
-                       Δεν έχεις λογαριασμό;<a href="/register" class="text-primary m-l-5y" style="color: black!important"><b> Δημιούργησε έναν Δωρεάν!</b></a>
+                       Δεν έχεις λογαριασμό;<a href="" data-toggle="modal" data-target="#signUp-modal" class="text-primary m-l-5y" style="color: black!important"><b> Δημιούργησε έναν Δωρεάν!</b></a>
                     </p>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+          <!-- ======   Modal Εγγραφής  =======-->
+        <div id="signUp-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        @include('components.modals.register')
+                </div>
+            </div>
+        </div><!-- /.modal -->
