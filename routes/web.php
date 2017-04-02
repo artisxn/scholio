@@ -1,14 +1,14 @@
 <?php
 
+use App\Events\StudentAppliedOnScholarship;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
-Route::get('www', function () {
-    $s = App\Models\School::find(1);
-    return $s->averageReviews();
-
+Route::get('a/{scholarship}', function (Scholarship $scholarship) {
+    event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
+    // return Request::createAndNotify($scholarship->school, auth()->user());
 });
 
 Route::get('/public/schools/', function () {

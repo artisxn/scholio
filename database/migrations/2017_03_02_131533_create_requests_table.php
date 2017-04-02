@@ -18,6 +18,7 @@ class CreateRequestsTable extends Migration
             $table->string('type');
             $table->integer('user_id');
             $table->integer('school_id');
+            $table->integer('scholarship_id')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

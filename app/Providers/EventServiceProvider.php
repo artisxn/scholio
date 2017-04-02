@@ -32,6 +32,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\ConnectStudentWithTeacher',
             'App\Listeners\NotifyStudent',
         ],
+        'App\Events\StudentAppliedOnScholarship' => [
+            'App\Listeners\CreateRequestAndNotifySchool',
+        ],
 
     ];
 

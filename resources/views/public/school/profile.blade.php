@@ -980,31 +980,6 @@
             }
         });
     });
-    ///// Rating Js //////
-    setTimeout(function() {
-        $('rating').raty({
-            score    : window.totalStars,
-            halfShow : true,
-            half     : true,
-            readOnly: true,
-            starHalf : 'fa fa-fw fa-star-half'
-        });
-
-        $('#totalRating').raty({
-            score    : window.totalStars,
-            halfShow : true,
-            half     : true,
-            readOnly: true,
-            starHalf : 'fa fa-fw fa-star-half'
-        });
-
-        // $('#categoryRating').each(function(){
-        //     $(this).raty({
-        //         score: 5
-        //     })
-        // })
-
-    }, 500);
 
     var lengthStudents = 0;
     angular.module("profileApp",[])
@@ -1033,10 +1008,7 @@
                             starHalf : 'fa fa-fw fa-star-half'
                         });
                     }, 20);
-
                 }
-
-
 
                 $scope.test = function(scholarship){
                     setTimeout(function() {
@@ -1047,6 +1019,25 @@
                         }
                      }, 30);
                 }
+
+                $scope.ratings = function(){
+                        $('rating').raty({
+                            score    : window.totalStars,
+                            halfShow : true,
+                            half     : true,
+                            readOnly: true,
+                            starHalf : 'fa fa-fw fa-star-half'
+                        });
+
+                        $('#totalRating').raty({
+                            score    : window.totalStars,
+                            halfShow : true,
+                            half     : true,
+                            readOnly: true,
+                            starHalf : 'fa fa-fw fa-star-half'
+                        });
+                }
+
                 $scope.init = function () {
 
                     $scope.trustAsHtml = $sce.trustAsHtml;
@@ -1069,6 +1060,7 @@
                                    console.time('contactInfo API');
                         $scope.contactInfo=data;
                         window.totalStars = data.stars
+                        $scope.ratings();
                         console.log(data);
                         $scope.studies = data.levels;
                         $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);

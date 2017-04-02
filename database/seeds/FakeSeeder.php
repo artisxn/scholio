@@ -1,5 +1,7 @@
 
 <?php
+use App\Models\CategoryReview;
+use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\Study;
 use App\User;
@@ -997,7 +999,48 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         factory(App\Models\Certificate::class, 4)->create(['user_id' => 59]);
         factory(App\Models\Certificate::class, 3)->create(['user_id' => 60]);
         factory(App\Models\Certificate::class, 2)->create(['user_id' => 61]);
+
+        // ----------     ΑΞΙΟΛΟΓΗΣΕΙΣ ---------------------//
+        $reviews = [
+            ['review' => [1, 24, 'OK'], 'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
+            ['review' => [1, 25, 'OK'], 'category' => [['id' => 1, 'stars' => 1], ['id' => 2, 'stars' => 1], ['id' => 3, 'stars' => 1], ['id' => 4, 'stars' => 1], ['id' => 5, 'stars' => 1]]],
+            ['review' => [1, 26, 'OK'], 'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 2], ['id' => 3, 'stars' => 3], ['id' => 4, 'stars' => 1], ['id' => 5, 'stars' => 4]]],
+
+            ['review' => [2, 27, 'ΚΕΙΜΕΝΟ ΑΞΙΟΛΟΓΗΣΗ...'], 'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 2], ['id' => 3, 'stars' => 3], ['id' => 4, 'stars' => 1], ['id' => 5, 'stars' => 4]]],
+        ];
+
+        foreach ($reviews as $review) {
+            $school = $review['review'][0];
+            $user = $review['review'][1];
+            $text = $review['review'][2];
+            $r = new Review;
+            $r->user_id = $user;
+            $r->school_id = $school;
+            $r->text = $text;
+            $r->save();
+
+            $countStars = 0;
+            $countCategories = 0;
+
+            foreach ($review['category'] as $category) {
+                $id = $category['id'];
+                $stars = $category['stars'];
+
+                $catReview = new CategoryReview;
+                $catReview->review_id = $r->id;
+                $catReview->category_id = $id;
+                $catReview->stars = $stars;
+                $catReview->save();
+
+                $countStars += $stars;
+                $countCategories++;
+            }
+
+            $r->average = $countStars / $countCategories;
+            $r->save();
+        }
     }
+
     public function interested($studentID, $scholarshipID)
     {
         $student = App\User::find($studentID);
