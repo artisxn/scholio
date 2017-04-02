@@ -222,92 +222,14 @@
                 <div id="mobFilt" class="  hidden-md hidden-lg col-xs-8 mob-filter left--300"
                      style="padding: 0 ; width: 254px; box-shadow: 2px 0px 40px 6px #4e4e4e;  margin-top: -79px;">
 
-                    <div class="" style="">
-                        <div class="box left-box1" style="z-index: 195;">
-                            <p class="text-incr-115 centered-text box1-title"> Πεδία Αναζήτησης
-                                <a class="" role="button" id="close-btn"
-                                   aria-expanded="false" aria-controls="">
-                                    <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
-                                </a>
-                            </p>
-
-                            <div class="centered-text" style="max-width: 338px;" ng-cloak>
-                                <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="91%" ng-model="categoryFilter" ng-change="">
-                                    <option id="drop1" data-icon="glyphicon glyphicon-education" data-subtext="" value="null"
-                                            data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>
-
-                                    <option data-icon="fa fa-university" data-subtext="" class="kf-option" value="1">&nbsp; Κολλέγια</option>
-                                    <option data-icon="fa fa-cogs" data-subtext="" class="kf-option" value="2">&nbsp; IEK </option>
-                                    <option data-icon="fa fa-pencil" data-subtext="" class="kf-option" value="3">&nbsp;  Φροντιστήρια </option>
-                                    <option data-icon="fa fa-flag" data-subtext="" class="kf-option" value="4">&nbsp;  Ξένες Γλώσσες </option>
-                                    <option data-icon="fa fa-book" data-subtext="" class="kf-option" value="6">&nbsp;  Ιδιωτικά Σχολεία</option>
-                                </select>
-                            </div>
-
-                            <div class="input-group centered-text pad-top-20" ng-cloak>
-                                <span class="input-group-addon text-incr-115 kf-gray" id="basic-addon1"><i class="fa fa-map-marker margin-right-5"></i></span>
-                                <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
-                                        uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                        typeahead-no-results="noResults" autocomplete="off">
-                            </div>
-
-                            <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%; margin-top: 15px;" ng-if="!showAll">
-                                <input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="">
-                                <span>Απόσταση μέχρι: &nbsp;&nbs@{{ maxDistance }} km </span>
-                            </div>
-
-
-
-
-                        </div>
-
-
-                    </div>
 
                 </div><!-- collapseMenu -->
 
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs" >
-                    {{--<div class="left-box1">--}}
-
-                        {{--<div class="centered-text margin-top-30" style="max-width: 338px;" ng-cloak>--}}
-                            {{--<select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="91%">--}}
-                                {{--<option id="" data-icon="glyphicon glyphicon-education" data-subtext="" value="null"--}}
-                                        {{--data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>--}}
-
-                                {{--<option data-icon="fa fa-university" data-subtext="" class="kf-option" value="1">&nbsp; Κολλέγια</option>--}}
-                                {{--<option data-icon="fa fa-cogs" data-subtext="" class="kf-option" value="2">&nbsp; IEK </option>--}}
-                                {{--<option data-icon="fa fa-pencil" data-subtext="" class="kf-option" value="3">&nbsp;  Φροντιστήρια </option>--}}
-                                {{--<option data-icon="fa fa-flag" data-subtext="" class="kf-option" value="4">&nbsp;  Ξένες Γλώσσες </option>--}}
-                                {{--<option data-icon="fa fa-book" data-subtext="" class="kf-option" value="6">&nbsp;  Ιδιωτικά Σχολεία</option>--}}
-                            {{--</select>--}}
-
-                            {{--<div class="input-container">--}}
-                                {{--<input class="input-box" type="text"  id="" placeholder="Αναζήτησε πχ Αγγλικά, ή Λύκειο"/>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="location-container font-weight-300">--}}
-                            {{--<div class="input-group centered-text pad-top-20" ng-cloak>--}}
-                                {{--<span class="input-group-addon text-incr-115 kf-gray " id="basic-addon1"><i class="fa fa-map-marker margin-right-5"></i></span>--}}
-                                {{--<input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"--}}
-                                       {{--uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"--}}
-                                       {{--typeahead-no-results="noResults" autocomplete="off">--}}
-                            {{--</div>--}}
-
-                            {{--<div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%; margin-top: 15px;" ng-if="!showAll">--}}
-                                {{--<input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="showMap()">--}}
-                                {{--<span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>--}}
-                            {{--</div>--}}
-
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="left-box4 font-weight-300 sc-t-grey centered-text margin-top-30">--}}
-                    {{--Βρέθηκαν 3 αποτελέσματα--}}
-                    {{--</div>--}}
 
                     <div class="col-sm-12">
-                        <div class="input-group margin-bot-15" style="width:290px; padding: 0; margin-left: -16px; ">
-                            <input type="text" class="form-control font-weight-300" id="query" style="border-radius: 5px; font-size: 95%" />
+                        <div class="input-group margin-bot-15 algolia-search-container">
+                            <input type="text" class="form-control algolia-search-input" id="query"/>
                         </div>
                     </div>
 
@@ -318,16 +240,26 @@
                     <div class="content-wrapper col-sm-12">
                         <aside>
 
-                            <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">Υποτροφίες από:</div>
-                            <div class="filter-title">Επαιδευτικά Ιδρύματα</div>
-                            <div id="categoriesType"></div>
-                            <div class="filter-title">Πόλεις</div>
-                            <div id="categoriesCity"></div>
-                            <div class="filter-title">Αντικείμενο Σπουδών</div>
-                            <div id="categoriesSection"></div>
-                            <div class="filter-title">Επίπεδο Σπουδών</div>
-                            <div id="categoriesLevel"></div>
+                            <div id="stats" class=""></div>
+                            <div class="facet-category-title">Φίλτρα Υποτροφιών:</div>
+
+                            <div class="filter-container">
+                                <div class="filter-title" >Επαιδευτικά Ιδρύματα</div>
+                                <div id="categoriesType"></div>
+                            </div>
+
+                            <div class="filter-container">
+                                <div class="filter-title">Πόλεις</div>
+                                <div id="categoriesCity"></div>
+                            </div>
+                            <div class="filter-container">
+                                <div class="filter-title">Αντικείμενο Σπουδών</div>
+                                <div id="categoriesSection"></div>
+                            </div>
+                            <div class="filter-container">
+                                <div class="filter-title">Επίπεδο Σπουδών</div>
+                                <div id="categoriesLevel"></div>
+                            </div>
                             {{--<div id="financial" class="facet"></div>--}}
 
 

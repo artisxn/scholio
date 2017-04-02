@@ -233,8 +233,8 @@
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs" >
 
                     <div class="col-sm-12">
-                        <div class="input-group margin-bot-15" style="width:290px; padding: 0; margin-left: -16px; ">
-                            <input type="text" class="form-control font-weight-300" id="query" style="border-radius: 5px; font-size: 95%" />
+                        <div class="input-group margin-bot-15 algolia-search-container">
+                            <input type="text" class="form-control algolia-search-input" id="query"/>
                         </div>
                     </div>
 
@@ -246,16 +246,22 @@
                         <aside>
 
                             <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">Εκπαιδευτικά Ιδρύματα από:</div>
-                            <div class="filter-title">Κατηγορίες</div>
-                            <div id="categoriesType"></div>
-                            <div class="filter-title">Πόλεις</div>
-                            <div id="categoriesCity"></div>
+                            <div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>
+                            <div class="filter-container">
+                                <div class="filter-title">Κατηγορίες</div>
+                                <div id="categoriesType"></div>
+                            </div>
+                            <div class="filter-container">
+                                <div class="filter-title">Πόλεις</div>
+                                <div id="categoriesCity"></div>
+                            </div>
                             {{-- <div class="filter-title">Αντικείμενο Σπουδών</div>
                             <div id="categoriesSection"></div> --}}
                             {{-- <div class="filter-title">Επίπεδο Σπουδών</div>
                             <div id="categoriesLevel"></div> --}}
+                            <div class="filter-container">
                             <div id="rating" class="facet"></div>
+                            </div>
                             {{--<div id="financial" class="facet"></div>--}}
 
 

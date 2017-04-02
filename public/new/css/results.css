@@ -204,7 +204,16 @@ p {padding: 15px; color: #5d5d5d;  }
 
 /* //////////////////////////////////////////////////////////////////// */
 /*======= Algolia Left =========*/
-.filter-title{ font-weight: 300; font-size: 120%; margin-top: 20px}
+.facet-category-title{ font-weight: 300; padding-top: 20px; margin-bottom: 0; padding-bottom: 0}
+.filter-title{ font-weight: 300; font-size: 120%;; margin-top: 0; padding-top: 0}
+.algolia-search-container{width:297px; padding: 0; margin-left: -16px; margin-right: 0}
+.algolia-search-input{ font-size: 95%; font-weight: 300}
+
+.filter-container{
+    padding-top: 10px; padding-bottom: 10px;
+    /*background-color: #fafafa; border: 1px solid #bbb; border-radius: 4px; margin: 10px 0; padding-left: 15px; padding-right: 15px;*/
+
+}
 
 /* ////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////// */
@@ -262,6 +271,10 @@ p {padding: 15px; color: #5d5d5d;  }
 }
 
 
+@media (max-width: 1440px)  {
+    .algolia-search-container{width:282px; }
+}
+
 @media (min-width: 1200px) and (max-width: 1449px) {
     /*  */
     #input1,#Autocomplete {  width: 208px!important; }
@@ -270,11 +283,18 @@ p {padding: 15px; color: #5d5d5d;  }
 }
 
 
+@media (max-width: 1238px)  {
+    .algolia-search-container{width:264px; }
+}
+
+
+
 
 @media (min-width: 1200px)  {
     /*  */
     .kf-margin-top { margin-top: 25px;}
     .margin-pad {margin-top: 110px; padding: 3px 0;}
+    /*.algolia-search-container{width:282px; }*/
 }
 
 
@@ -289,7 +309,7 @@ p {padding: 15px; color: #5d5d5d;  }
     .card-photo {width: 280px; height: 197px; margin-bottom: 19px;}
     .but-pad { padding-left: 310px;}
     .margin-pad {margin-top: 140px; padding: 3px 0;}
-
+    .algolia-search-container{width:215px; }
     }
 
 
