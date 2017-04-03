@@ -20,9 +20,9 @@
 
         <div class=" centered-text margin-bot-50">
             <p class="sc-t-white margin-top-50">© 2017 schol.io  Με την επιφύλαξη κάθε δικαιώματος.</p>
-            <img height="27px" class="margin-top-20" src="/new/img/laravel-small2.png">
-            <img height="31px" class="margin-top-20 margin-left-20 margin-right-20" src="/new/img/angularjs-logo.png">
-            <img height="30px" class="margin-top-20" src="/new/img/algolia_small.png">
+            {{--<img height="27px" class="margin-top-20" src="/new/img/laravel-small2.png">--}}
+            {{--<img height="31px" class="margin-top-20 margin-left-20 margin-right-20" src="/new/img/angularjs-logo.png">--}}
+            {{--<img height="30px" class="margin-top-20" src="/new/img/algolia_small.png">--}}
 
 
         </div>
