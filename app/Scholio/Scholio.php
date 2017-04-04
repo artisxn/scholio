@@ -201,7 +201,7 @@ class Scholio
 
     public static function updateDummy(School $s)
     {
-        $studyDummy = '';
+        $studyDummy = '.';
         $dummy = AlgoliaSchool::find($s->id);
         $dummy->type_id = $s->type_id;
         $dummy->type = $s->type->name;
@@ -235,6 +235,18 @@ class Scholio
 
         }
         $dummy->study = $studyDummy;
+        $dummy->save();
+    }
+
+    public static function createSchoolDummy(School $school)
+    {
+        $dummy = new AlgoliaSchool;
+        $dummy->type_id = $school->type_id;
+        $dummy->type = $school->type->name;
+        $dummy->school_id = $school->id;
+        $dummy->name = $school->name();
+        $dummy->email = $school->email();
+
         $dummy->save();
     }
 

@@ -77,25 +77,12 @@ class RegisterController extends Controller
         $user->password = bcrypt($data['password']);
         $user->save();
 
-        event(new UserRegistered($user));
+        // event(new UserRegistered($user));
 
         if ($user->role == 'school') {
-            $this->createSchool(request(), $user);
+            School::createSchoolAndDummy($user->id, request()->type);
         }
 
         return $user;
-    }
-
-    protected function createSchool($request, User $user)
-    {
-        $school = new School;
-        $school->user_id = $user->id;
-        $school->name = $request->name;
-        $school->email = $request->email;
-        $school->type_id = $request->type;
-        $school->lat = '123';
-        $school->lng = '123';
-
-        $school->save();
     }
 }

@@ -7,9 +7,23 @@ use App\Scholio\Scholio;
 use App\User;
 
 Route::get('qqq', function () {
-    $s = App\Models\School::find(1);
+    // $s = App\Models\School::find(10);
 
-    return $s->averageReviews();
+    // return $s->categories();
+    //
+    $schools = School::all();
+
+    foreach ($schools as $indexSchool => $s) {
+        return $s->students;
+        foreach ($s->students as $indexStudent => $sc) {
+            if ($indexStudent % 2 == 0) {
+                foreach ($s->categories() as $indexCategory => $cat) {
+                }
+                echo '<br>';
+            }
+        }
+    }
+    return 'OK';
 });
 
 Route::get('a/{scholarship}', function (Scholarship $scholarship) {

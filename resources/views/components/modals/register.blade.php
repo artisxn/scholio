@@ -126,7 +126,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <p>
-                        Έχεις ήδη λογαριασμό;<a href="/login" class="text-primary m-l-5" style="color: black"><b> Συνδέσου</b></a>
+                        Έχεις ήδη λογαριασμό;<a href="" onClick="modal_toggle()" class="text-primary m-l-5" style="color: black"><b> Συνδέσου</b></a>
                     </p>
                 </div>
             </div>
@@ -138,6 +138,12 @@
 
 
     <script>
+
+    function modal_toggle(){
+        $('#signUp-modal').modal('toggle');
+        $('#signIn-modal').modal('toggle');
+    }
+
         function social(){
             axios.post('/api/registration/social', {
                         role: document.getElementById('type').value,

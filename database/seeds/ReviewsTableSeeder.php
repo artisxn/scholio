@@ -15,17 +15,17 @@ class ReviewsTableSeeder extends Seeder
         $categories = [
             // Κολλεγιο
             ['name' => 'Πρόγραμμα Σπουδών', 'type' => [1, 2], 'icon' => 'fa fa-book'],
-            ['name' => 'Οργάνωση', 'type' => [1,2,3,4,5,6,7,8,9,10,11,12], 'icon' => 'fa fa-cogs'],
-            ['name' => 'Ανθρώπινο Δυναμικό', 'type' => [1,2,3,4,5,6,7,8,9,10,11,12], 'icon' => 'fa fa-user'],
-            ['name' => 'Εγκαταστάσεις', 'type' => [1,2,3,4,5,6,7,8,9,10,11,12], 'icon' => 'fa fa-building-o'],
-            ['name' => 'Διασύνδεση με αγορά εργασίας', 'type' => [1,2], 'icon' => 'fa fa-link'],
+            ['name' => 'Οργάνωση', 'type' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 'icon' => 'fa fa-cogs'],
+            ['name' => 'Ανθρώπινο Δυναμικό', 'type' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 'icon' => 'fa fa-user'],
+            ['name' => 'Εγκαταστάσεις', 'type' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 'icon' => 'fa fa-building-o'],
+            ['name' => 'Διασύνδεση με αγορά εργασίας', 'type' => [1, 2], 'icon' => 'fa fa-link'],
 
             // Φροντ - Σχολές
-            ['name' => 'Ευέλικτα Τμήματα', 'type' => [3,4,10,11], 'icon' => 'fa fa-calendar'],
+            ['name' => 'Ευέλικτα Τμήματα', 'type' => [3, 4, 10, 11], 'icon' => 'fa fa-calendar'],
 
             // Φροντ - Λυκειο
-            ['name' => 'Όμιλοι Ενδιαφέροντος (Clubs)', 'type' => [6,7,8,], 'icon' => 'fa fa-futbol-o'],
-            ['name' => 'Ενημέρωση', 'type' => [3,4,6,7,8], 'icon' => 'fa fa-newspaper-o'],
+            ['name' => 'Όμιλοι Ενδιαφέροντος (Clubs)', 'type' => [6, 7, 8], 'icon' => 'fa fa-futbol-o'],
+            ['name' => 'Ενημέρωση', 'type' => [3, 4, 6, 7, 8], 'icon' => 'fa fa-newspaper-o'],
 
         ];
 
@@ -38,7 +38,6 @@ class ReviewsTableSeeder extends Seeder
 
                 $cat->save();
             }
-
         }
     }
 }
