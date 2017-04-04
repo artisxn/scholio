@@ -1,4 +1,4 @@
-<div class="wrapper-page" style="padding: 0">
+<div class="wrapper-page" style="padding: 70px">
     <div class="card-box">
         <div class="panel-heading text-center">
             <a href="/">
@@ -17,7 +17,7 @@
 
                     <div class="col-sm-8">
                         <select id="type" name="type" class="form-control" >
-                            @foreach($schoolTypes as $type)
+                            @foreach(\App\Models\SchoolTypes::all() as $type)
                                 <option value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach
                         </select>
@@ -88,8 +88,15 @@
     <div class="row">
         <div class="col-sm-12 text-center">
             <p>
-                Έχετε ήδη λογαριασμό;<a href="" class="text-primary m-l-5 a-text"><b>Συνδεθείτε</b></a>
+                Έχετε ήδη λογαριασμό;<a href="" onClick="modal_toggle1()" class="text-primary m-l-5 a-text"><b>Συνδεθείτε</b></a>
             </p>
         </div>
     </div>
 </div>
+
+<script>
+function modal_toggle1(){
+    $('#signUp-school-modal').modal('toggle');
+    $('#signIn-modal').modal('toggle');
+}
+</script>

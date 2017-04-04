@@ -195,7 +195,7 @@ class Scholio
             $s->save();
         }
 
-        // static::algoliaGEO();
+        static::algoliaGEO();
         return 'OK';
     }
 
@@ -218,7 +218,7 @@ class Scholio
         $dummy->lengthTeachers = $s->lengthTeachers();
         $dummy->lengthStudies = $s->lengthStudies();
         $dummy->lengthScholarships = $s->lengthScholarships();
-        $dummy->stars = $s->averageStars();
+        $dummy->stars = (int) $s->averageStars();
         $dummy->reviews = $s->countReviews();
         $dummy->username = $s->admin->username ?? 'nousername';
 
@@ -236,6 +236,15 @@ class Scholio
         }
         $dummy->study = $studyDummy;
         $dummy->save();
+
+        $geo1 = [];
+        $geo1[$val] = ['lat' => (double) School::find($s->school_id)->lat, 'lng' => (double) School::find($s->school_id)->lng];
+
+        $dummy->_geoloc = collect($geo1[$value]);
+        $dummy->starsInt = (int) School::find($s->school_id)->averageStars();
+        $schools = AlgoliaSchool::all();
+        $schools->searchable();
+        return 'OK';
     }
 
     public static function createSchoolDummy(School $school)
@@ -275,6 +284,7 @@ class Scholio
 
         foreach ($schools as $value => $s) {
             $s->_geoloc = collect($geo1[$value]);
+            $s->starsInt = (int) School::find($s->school_id)->averageStars();
         }
 
         $schools->searchable();

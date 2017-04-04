@@ -409,9 +409,9 @@
                                     <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
                                 </div>
 
-                                <a href="/register/school">
+                                <a href="">
                                     <button type="button" id="school-register-button" class="btn sc-orange sc-t-white centered-text btn-school-reg"
-                                            {{--data-toggle="modal" data-target="#signUp-school-modal"--}}
+                                            data-toggle="modal" data-target="#signUp-school-modal"
                                     > Εγγραφή Εκπαιδευτικού Φορέα</button>
                                 </a>
 

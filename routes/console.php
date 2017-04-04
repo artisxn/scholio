@@ -59,9 +59,15 @@ Artisan::command('scholio:dummy', function () {
 
 })->describe('Flood the Dummy Data Table');
 
-Artisan::command('scholio:refresh {--s|show} {schools?}', function () {
+Artisan::command('scholio:refresh {--s|show} {--a|algolia} {schools?}', function () {
 
     $show = $this->option('show');
+
+    $algolia = $this->option('algolia');
+
+    if ($algolia) {
+        config(['app.algolia' => true]);
+    }
 
     $schools = $this->argument('schools');
 

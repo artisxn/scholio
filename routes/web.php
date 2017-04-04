@@ -5,12 +5,16 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
+use Illuminate\Database\Schema\Blueprint;
 
 Route::get('qqq', function () {
     // $s = App\Models\School::find(10);
 
     // return $s->categories();
     //
+    Schema::table('schools', function (Blueprint $table) {
+        $table->string('test')->nullable();
+    });
     $schools = School::all();
 
     foreach ($schools as $indexSchool => $s) {
