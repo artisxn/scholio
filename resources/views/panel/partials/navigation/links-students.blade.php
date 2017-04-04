@@ -4,7 +4,7 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('students-profile') }}">Στοιχεία Επικοινωνίας</a></li>
                                     <li><a href="{{ route('students-my-schools') }}">Τα Εκπαιδευτήριά μου</a></li>
-                                    <li><a href="">Το Βιογραφικό μου</a></li>
+                                    <li><a href="{{ route('students-cv') }}">Το Βιογραφικό μου</a></li>
                                 </ul>
                             </li>
 

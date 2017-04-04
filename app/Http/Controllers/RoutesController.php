@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SocialLink;
+use App\Models\Student;
 use App\Models\Study;
 
 class RoutesController extends Controller
@@ -148,6 +149,49 @@ class RoutesController extends Controller
     public function mySchools()
     {
         return view('panel.pages.student.schools.mySchools');
+    }
+
+    public function studentCv()
+    {
+        return view('panel.pages.student.cv.studentCv');
+    }
+
+    public function studentCvStore()
+    {
+        //
+//        $studentCv = $request->all();
+
+//        dd($request->all());
+
+//        Student::where('user_id', Auth::user()->id)->update($studentCv);
+
+        $studentCv = Student::where('user_id', auth()->user()->id)->first();
+
+        if(request()->avatar != null){
+            $studentCv->avatar = request()->avatar;
+        }
+        $studentCv->fname = request()->fname;
+        $studentCv->lname = request()->lname;
+        $studentCv->gender = request()->gender;
+        $studentCv->dob = request()->dob;
+        $studentCv->address = request()->address;
+        $studentCv->phone = request()->phone;
+        $studentCv->father_name = request()->father_name;
+        $studentCv->mother_name = request()->mother_name;
+        $studentCv->father_job = request()->father_job;
+        $studentCv->mother_job = request()->mother_job;
+        $studentCv->father_phone = request()->father_phone;
+        $studentCv->mother_phone = request()->mother_phone;
+        $studentCv->languages = request()->languages;
+        $studentCv->studies = request()->studies;
+        $studentCv->achievements = request()->achievements;
+        $studentCv->skills = request()->skills;
+        $studentCv->about = request()->about;
+
+        $studentCv->save();
+
+        return view('panel.pages.student.cv.studentCv');
+
     }
 
     public function devOut()

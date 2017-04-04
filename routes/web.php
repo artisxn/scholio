@@ -1,24 +1,110 @@
 <?php
 
-use App\Events\StudentAppliedOnScholarship;
+use App\CategoryReview;
+use App\Models\AlgoliaScholarship;
+use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
+use Carbon\Carbon;
 
-Route::get('qqq', function () {
-    $s = App\Models\School::find(1);
+Route::get('/algolia/upload', function () {
+    $schools = AlgoliaSchool::all();
+    $scholarships = AlgoliaScholarship::all();
+    $scholarshipss = Scholarship::all();
 
-    return $s->averageReviews();
+    $geo = [];
+
+    foreach ($scholarshipss as $val => $ss) {
+        $geo[$val] = ['lat' => (double) $ss->school->lat, 'lng' => (double) $ss->school->lng];
+    }
+
+    foreach ($scholarships as $value => $s) {
+        $s->_geoloc = collect($geo[$value]);
+    }
+
+    // return $scholarships;
+
+    $schools->searchable();
+    $scholarships->searchable();
+    return 'OK';
 });
 
-Route::get('a/{scholarship}', function (Scholarship $scholarship) {
-    event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
-    // return Request::createAndNotify($scholarship->school, auth()->user());
+Route::get('dummy/algolia', function () {
+    AlgoliaSchool::truncate();
+    AlgoliaScholarship::truncate();
+    foreach (School::all() as $school) {
+        $studyDummy = '';
+        $al = new AlgoliaSchool;
+        $al->school_id = $school->id;
+        $al->name = $school->name();
+        $al->username = $school->admin->username . 'nousername';
+        $al->address = $school->address;
+        $al->city = $school->city;
+        $al->type = $school->type->name;
+        // $al->_geoloc = json_encode(array('lat' => $school->lat, 'lng' => $school->lng), JSON_FORCE_OBJECT);
+
+        foreach ($school->study as $s) {
+            $studyDummy .= $s->name . ',';
+            $section = $s->section[0]->name;
+            if (strpos($studyDummy, $section) == false) {
+                $studyDummy .= $s->section[0]->name . ',';
+            }
+            $level = $s->section[0]->level->name;
+            if (strpos($studyDummy, $level) == false) {
+                $studyDummy .= $s->section[0]->level->name . ',';
+            }
+
+        }
+        $al->study = $studyDummy;
+        $al->save();
+    }
+
+    foreach (Scholarship::all() as $scholarship) {
+        $alg = new AlgoliaScholarship;
+        $alg->scholarship_id = $scholarship->id;
+        $alg->study = $scholarship->study->name;
+        $alg->section = $scholarship->study->section[0]->name;
+        $alg->level = $scholarship->level->name;
+        $alg->criteria = $scholarship->criteria->name;
+        $alg->school = $scholarship->school->name();
+        $alg->city = $scholarship->school->city;
+        $alg->address = $scholarship->school->address;
+        $alg->type = $scholarship->school->type->name;
+        $alg->financial_plan = $scholarship->financial->plan;
+        $alg->financial_amount = $scholarship->financial_amount;
+        $alg->financial_metric = $scholarship->financial->metric;
+        $alg->financial_icon = $scholarship->financial->icon;
+        $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
+        $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
+        $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
+        // json_encode(array('lat' => $school->lat, 'lng' => $school->lng), JSON_FORCE_OBJECT);
+        // $alg->_geoloc = collect(['lat' => (double) $scholarship->school->lat, 'lng' => (double) $scholarship->school->lng]);
+        // dd($alg);
+        $alg->save();
+    }
+    return 'OK';
 });
 
-Route::get('/public/schools/', function () {
-    return view('public.results.schools-test');
+Route::get('aaa', function () {
+    $review = new App\Models\Review;
+    $review->user_id = 13;
+    $review->school_id = 1;
+    $review->text = 'RRR123';
+    $review->save();
+
+    $c = new CategoryReview;
+    $c->review_id = 2;
+    $c->category_id = 3;
+    $c->stars = 5;
+    $c->save();
+});
+
+Route::get('search/school/{q}', function ($q) {
+    $schools = School::search($q)->get();
+    return view('public.results.algolia-schools', compact('schools'));
 });
 
 Route::get('/settings', function () {
@@ -134,3 +220,10 @@ Route::get('/public/scholarships/d', function () {
 Route::get('/public/algolia/', function () {
     return view('public.results.algolia');
 });
+
+
+
+Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
+
+
+
