@@ -89,14 +89,6 @@
             </div>
         </div>
 
-        <script>
-        function modal_toggle(){
-            $('#signUp-modal').modal('toggle');
-            $('#signIn-modal').modal('toggle');
-        }
-        </script>
-
-
 
 
 

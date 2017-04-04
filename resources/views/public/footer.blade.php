@@ -20,13 +20,13 @@
 </div><!-- /.modal -->
 
 {{--<!-- ======   Modal Εγγραφής  Εκπ. Ιδρύματος=======-->--}}
-{{--<div id="signUp-school-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">--}}
-    {{--<div class="modal-dialog">--}}
-        {{--<div class="modal-content">--}}
-            {{--@include('components.modals.registerschool')--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div><!-- /.modal -->--}}
+<div id="signUp-school-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @include('components.modals.registerschool')
+        </div>
+    </div>
+</div><!-- /.modal -->
 
 
 

@@ -555,8 +555,7 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
       instantsearch.widgets.starRating({
         container: '#rating',
-        attributeName: 'stars',
-        decimals: 1,
+        attributeName: 'starsInt',
         templates: {
           header: '<div class="filter-title">Αξιολογήσεις</div class="filter-title">'
         }
