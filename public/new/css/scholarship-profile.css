@@ -121,6 +121,9 @@ body {
 
 .Hero1{ font-size: 200%; font-weight: 300; color: #888; margin-top: 170px}
 .Hero2{ font-size: 250%; font-weight: 400; color: #777; margin-top: 20px}
+.school-title{ color: #777!important;}
+.school-title:hover { color: #FD6A33!important;}
+
 .trophy{ height: 270px; position: absolute; top: 115px; right: 20px}
 .grad {height: 260px; position: absolute; top: 30px; right: 1% }
 .line{ height: 15px; background-color: #008da5}
@@ -174,6 +177,9 @@ body {
 
 .school-name{position: absolute; top: 270px; left: 150px; font-size: 300%; font-weight: 300; color: #fff}
 .logo{position: absolute; top: 285px; left: 30px; width: 100px;}
+
+
+
 
 /*.box1{min-height: 200px; background-color: #fafafa; border: 1px solid #ccc}*/
 .scholar-box{min-height: 140px; background-color: #fff; border: 1px solid #00bcd4;

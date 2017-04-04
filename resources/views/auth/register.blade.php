@@ -8,7 +8,14 @@
 
         <link rel="shortcut icon" href="/panel/assets/images/favicon_1.ico">
 
-        <title>Schol.io</title>
+        <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/new/img/favicon-144.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/new/img/favicon-72.ico">
+        <link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">
 
         <link href="/panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
          <link href="/panel/assets/css/core.css" rel="stylesheet" type="text/css" />
@@ -18,17 +25,14 @@
         {{-- <link href="/panel/assets/css/responsive.css" rel="stylesheet" type="text/css" /> --}}
 
         <link href="/new/css/main.css" rel="stylesheet" type="text/css" />
-        <link href="/new/css/landing.css" rel="stylesheet" type="text/css" />
-
-
 
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+        {{--<!--[if lt IE 9]>--}}
+        {{--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--}}
+        {{--<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>--}}
+        {{--<![endif]-->--}}
 
         {{-- <script src="/panel/assets/js/modernizr.min.js"></script> --}}
 
@@ -39,11 +43,13 @@
         <div class="clearfix"></div>
 
 
-        <div class="wrapper-page">
+        <div class="wrapper-page" style="padding: 0!important;">
             <div class="card-box">
             <div class="panel-heading">
                 <div class="text-center">
+                    <a href="/">
                     <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 90px;">
+                    </a>
                 </div>
                 <div class="text-center login-signUp-title">Εγγραφή στο Schol.io</div>
             </div>
@@ -193,8 +199,8 @@
         <script src="/panel/assets/js/jquery.scrollTo.min.js"></script> --}}
 
 
-        <script src="/panel/assets/js/jquery.core.js"></script>
-        <script src="/panel/assets/js/jquery.app.js"></script>
+        {{--<script src="/panel/assets/js/jquery.core.js"></script>--}}
+        {{--<script src="/panel/assets/js/jquery.app.js"></script>--}}
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
         <script>

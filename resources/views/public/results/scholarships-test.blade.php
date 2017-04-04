@@ -5,18 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
+    <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon-144.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon-72.ico">
-    <link rel="apple-touch-icon-precomposed" href="img/favicon-57.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/new/img/favicon-144.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/new/img/favicon-72.ico">
+    <link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">
 
 
     <!--====== CSS  Styles =======-->
     @include('public.styles')
+    {{--@include('components.modals.styles')--}}
 
     <!-- Algolia CSS -->
     {{--<link rel="stylesheet" href="/new/css/algolia.css"></link>--}}
@@ -156,8 +157,16 @@
                                 <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                                 <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                             @else
-                                <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
-                                <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                                <li>
+                                    <a href="">
+                                        <button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#signUp-modal">Εγγραφή</button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button>
+                                    </a>
+                                </li>
                             @endif
                         </ul>
                     </div>
@@ -275,7 +284,7 @@
                 <!-- ========== SCHOLARSHIPS  CONTAINER ============= -->
                 <div class="col-lg-9 col-md-9 col-sm-12 scholarship-container " id="">
 
-                    <div id="map" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
+                    {{--<div id="map" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>--}}
 
                     <main id="scholarships"></main>
                     <section id="pagination"></section>
@@ -642,12 +651,12 @@ angular.module("scholarshipsResultsApp",[])
             })
     );
 
-    search.addWidget(
-            instantsearch.widgets.googleMaps({
-                container: document.querySelector('#map'),
-                scrollwheel: false
-            })
-    );
+//    search.addWidget(
+//            instantsearch.widgets.googleMaps({
+//                container: document.querySelector('#map'),
+//                scrollwheel: false
+//            })
+//    );
 
     search.start();
 

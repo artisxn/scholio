@@ -132,6 +132,9 @@ video {
 
 .xxs-small-banner-content{visibility: hidden;  margin-top: -75px;}
 
+#school-register-button:hover{color: #f3f3f3
+}
+
 
 /*Third Section*/
 .sc-landing-sec3 {min-height:670px!important; background-color: #fff}
@@ -188,17 +191,6 @@ video {
 
 
 
-/* ////////////////////  Login -SignUp Modals  //////////////////////// */
-/* //////////////////////////////////////////////////////////////////// */
-.login-signUp-title{margin: 0 0 20px 0; font-size: 190%; font-weight: 300}
-.login-signUp-text{margin-top: 30px; margin-bottom: 0; padding-bottom: 0;   font-size: 150%; font-weight: 300}
-.btn-block, .form-group .btn { height: 40px;color: #f5f5f5; font-weight: 300}
-/*.form-group .btn:hover{color: black; background-color: #00bcd4}*/
-.form-group .btn:hover{background-color: #00839b; color: #fff; font-weight: 400;
-}
-.btn-facebook:hover{background-color: #384682 !important;
-}
-.btn-googleplus:hover{background-color: #cd4937 !important;}
 
 
 

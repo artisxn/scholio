@@ -31,7 +31,7 @@
     <!-- font-awesome -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
 
-    @include('components.modals.styles')
+{{--    @include('components.modals.styles')--}}
 
     <link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
 
@@ -177,8 +177,7 @@
                     <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                     @else
-                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
-                    data-toggle="modal" data-target="#signUp-modal">Εγγραφή</button></a></li>
+                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#signUp-modal">Εγγραφή</button></a></li>
                     <li>
                     <a href="">
                     <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button>
@@ -234,9 +233,17 @@
                                 <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
                             @else
                                 <div class=""><br></div>
-                                <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
+                                <a href="{{ url('/register') }}">
+                                    <button type="button" class="sc-button sc-orange sc-t-white pull-right"
+                                            {{--data-toggle="modal" data-target="#signUp-modal"--}}
+                                    >Εγγραφή</button>
+                                </a>
                                 <div class=""><br><br><br></div>
-                                <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
+                                <a href="{{ url('/login') }}">
+                                    <button type="button" class="sc-button  sc-green sc-t-white pull-right"
+                                            {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                                    >Σύνδεση</button>
+                                </a>
                             @endif
                         </div>
 
@@ -402,7 +409,11 @@
                                     <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
                                 </div>
 
-                                <a href="/register/school"><button type="button" class="btn sc-orange sc-t-white centered-text btn-school-reg"> Εγγραφή Εκπαιδευτικού Φορέα</button></a>
+                                <a href="/register/school">
+                                    <button type="button" id="school-register-button" class="btn sc-orange sc-t-white centered-text btn-school-reg"
+                                            {{--data-toggle="modal" data-target="#signUp-school-modal"--}}
+                                    > Εγγραφή Εκπαιδευτικού Φορέα</button>
+                                </a>
 
                         </div>
 
@@ -672,27 +683,6 @@
        </div>
     </section>
 
-
-
-        <!-- ======   Modal Συνδεσης =======-->
-        <div id="signIn-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                        @include('components.modals.login')
-                </div>
-            </div>
-        </div><!-- /.modal -->
-
-
-
-        <!-- ======   Modal Εγγραφής  =======-->
-        <div id="signUp-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                        @include('components.modals.register')
-                </div>
-            </div>
-        </div><!-- /.modal -->
 
 
 </main>

@@ -1,3 +1,35 @@
+
+<!-- ======   Modal Συνδεσης =======-->
+<div id="signIn-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @include('components.modals.login')
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+
+
+<!-- ======   Modal Εγγραφής  =======-->
+<div id="signUp-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @include('components.modals.register')
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+{{--<!-- ======   Modal Εγγραφής  Εκπ. Ιδρύματος=======-->--}}
+{{--<div id="signUp-school-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">--}}
+    {{--<div class="modal-dialog">--}}
+        {{--<div class="modal-content">--}}
+            {{--@include('components.modals.registerschool')--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div><!-- /.modal -->--}}
+
+
+
 <footer id="" class="sc-landing-footer sc-dark-blue">
     <div class="container">
         <div class="row  ">

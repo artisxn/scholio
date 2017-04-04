@@ -5,20 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
+    <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon-144.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon-72.ico">
-    <link rel="apple-touch-icon-precomposed" href="img/favicon-57.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/new/img/favicon-144.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/new/img/favicon-72.ico">
+    <link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">
 
-    <style>
-    .testRed{
-        color: red;
-    }
-    </style>
 
 
     <!--====== CSS  Styles =======-->
