@@ -1,4 +1,9 @@
+<style>
 
+    .role-image{margin-left: 10px; height: 40px; margin-top: -5px; opacity: 0.7}
+    .role-text{font-weight: 300; font-size: 130%; margin: 2px 0 0 10px;}
+
+</style>
 
     <div class="wrapper-page">
 
@@ -14,15 +19,28 @@
                     {{ csrf_field() }}
 
                         <div id="form-type" class="form-group">
-                            <label for="type" class="col-sm-3 font-weight-400">Ιδιότητα</label>
+                            {{--<label for="type" class="col-sm-3 font-weight-400">Ιδιότητα</label>--}}
 
-                            <div class="col-sm-9 font-weight-300">
-                                <select id="type" type="password" class="form-control" name="type" onchange="social()">
-                                <option value="no" selected>Επέλεξε Ιδιότητα</option>
-                                  <option value="student">Μαθητής</option>
-                                  <option value="parent">Γονέας</option>
-                                  <option value="teacher">Καθηγητής</option>
-                                </select>
+                            <div class="col-sm-12 font-weight-300 centered-text">
+                                {{--<select id="type" type="password" class="form-control" name="type" onchange="social()">--}}
+                                {{--<option value="no" selected>Επέλεξε Ιδιότητα</option>--}}
+                                  {{--<option value="student">Μαθητής</option>--}}
+                                  {{--<option value="parent">Γονέας</option>--}}
+                                  {{--<option value="teacher">Καθηγητής</option>--}}
+                                {{--</select>--}}
+                                <div ng-if="role==1">
+                                    <div><img src="/new/img/student2.png" class="role-image" alt=""></div>
+                                    <div class="role-text">μαθητής </div>
+                                </div>
+                                <div ng-if="role==2">
+                                    <div><img src="/new/img/parent.png" class="role-image" alt=""></div>
+                                    <div class="role-text">γονέας </div>
+                                </div>
+                                <div ng-if="role==3">
+                                    <div><img src="/new/img/teacher.png" class="role-image" alt=""></div>
+                                    <div class="role-text">καθηγητής </div>
+                                </div>
+
                             </div>
 
                             <span id="span-type" class="help-block hidden">

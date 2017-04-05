@@ -83,12 +83,18 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <p>
-                       Δεν έχεις λογαριασμό;<a href="" onClick="modal_toggle()" class="text-primary m-l-5y" style="color: black!important"><b> Δημιούργησε έναν Δωρεάν!</b></a>
+                       Δεν έχεις λογαριασμό;<a href="" onClick="modal3_toggle()" class="text-primary m-l-5y" style="color: black!important"><b> Δημιούργησε έναν Δωρεάν!</b></a>
                     </p>
                 </div>
             </div>
         </div>
 
 
+        <script>
+            function modal3_toggle(){
+                $('#select-modal').modal('toggle');
+                $('#signIn-modal').modal('toggle');
+            }
 
+        </script>
 
