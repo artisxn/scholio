@@ -1,5 +1,14 @@
 angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
     .controller("resultsCtrl",function ($timeout,$scope,$http,$rootScope) {
+
+        $scope.over=false;
+        $scope.over2=false;
+        $scope.over3=false;
+        $scope.role=null;
+        $scope.active=function(role){
+            $scope.role=role;
+        }
+
         $scope.showAll = true
         $scope.onEnter = false
         $scope.HERE = false

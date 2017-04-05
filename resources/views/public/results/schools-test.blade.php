@@ -115,8 +115,8 @@
                                 <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                                 <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                             @else
-                                <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
-                                <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                                <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">Εγγραφή</button></a></li>
+                                <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white " data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button></a></li>
                             @endif
                         </ul>
                     </div>
@@ -309,6 +309,16 @@
 <script>
 angular.module("schoolsResultsApp",[])
         .controller("schoolsResultsCtrl",function ($scope,$http) {
+
+
+            $scope.over=false;
+            $scope.over2=false;
+            $scope.over3=false;
+            $scope.role=null;
+            $scope.active=function(role){
+                $scope.role=role;
+            }
+
 
             console.log('start');
 

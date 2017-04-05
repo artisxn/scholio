@@ -10,7 +10,6 @@
         $scope.role=null;
         $scope.active=function(role){
               $scope.role=role;
-              console.log(role)
           }
 
         var fetchTypes = function(){
