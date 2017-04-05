@@ -4,6 +4,10 @@
 
       .controller("landCtrl",function ($scope, $http,algolia) {
 
+        $scope.over=false;
+        $scope.over2=false;
+        $scope.over3=false;
+
         var fetchTypes = function(){
           $http.get('api/school/types/all').success(function(data){
             $scope.schoolTypes = data;

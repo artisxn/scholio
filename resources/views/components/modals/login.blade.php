@@ -92,16 +92,3 @@
 
 
 
-
-
-
-
-
-          {{--<!-- ======   Modal Εγγραφής  =======-->--}}
-        {{--<div id="signUp-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="">--}}
-            {{--<div class="modal-dialog">--}}
-                {{--<div class="modal-content">--}}
-                        {{--@include('components.modals.register')--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div><!-- /.modal -->--}}

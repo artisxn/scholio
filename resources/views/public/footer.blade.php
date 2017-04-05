@@ -8,7 +8,14 @@
     </div>
 </div><!-- /.modal -->
 
-
+<!-- ======   Modal Επιλογής  =======-->
+<div id="select-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @include('components.modals.registerselect')
+        </div>
+    </div>
+</div><!-- /.modal -->
 
 <!-- ======   Modal Εγγραφής  =======-->
 <div id="signUp-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
