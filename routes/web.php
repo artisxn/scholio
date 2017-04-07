@@ -148,7 +148,13 @@ Route::get('/public/scholarships/d', function () {
     return view('public.results.scholarships');
 });
 
-/* ===== TESTING ROUTE FOR SCHOLARSIPS RESULTS ====== */
+/* ===== TESTING ROUTE FOR SCHOLARSHIPS RESULTS ====== */
 Route::get('/public/algolia/', function () {
     return view('public.results.algolia');
+});
+
+
+/* ===== TESTING ROUTE FOR SCHOLARSHIP ADMISSION ====== */
+Route::get('/public/scholarship/admission/', function () {
+    return view('public.school.admission');
 });
