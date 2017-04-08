@@ -83,28 +83,18 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <p>
-                       Δεν έχεις λογαριασμό;<a href="/register" class="text-primary m-l-5y" style="color: black!important"
-                                               {{--data-toggle="modal" data-target="#signUp-modal"--}}
-                        ><b> Δημιούργησε έναν Δωρεάν!</b></a>
+                       Δεν έχεις λογαριασμό;<a href="" onClick="modal3_toggle()" class="text-primary m-l-5y" style="color: black!important"><b> Δημιούργησε έναν Δωρεάν!</b></a>
                     </p>
                 </div>
             </div>
         </div>
 
 
+        <script>
+            function modal3_toggle(){
+                $('#select-modal').modal('toggle');
+                $('#signIn-modal').modal('toggle');
+            }
 
+        </script>
 
-
-
-
-
-
-
-          {{--<!-- ======   Modal Εγγραφής  =======-->--}}
-        {{--<div id="signUp-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="">--}}
-            {{--<div class="modal-dialog">--}}
-                {{--<div class="modal-content">--}}
-                        {{--@include('components.modals.register')--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div><!-- /.modal -->--}}

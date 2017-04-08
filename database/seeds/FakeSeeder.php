@@ -3,6 +3,7 @@
 use App\Models\CategoryReview;
 use App\Models\Review;
 use App\Models\Scholarship;
+use App\Models\School;
 use App\Models\Study;
 use App\User;
 use Carbon\Carbon;
@@ -1001,185 +1002,35 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         factory(App\Models\Certificate::class, 2)->create(['user_id' => 61]);
 
         // ----------     ΑΞΙΟΛΟΓΗΣΕΙΣ ---------------------//
-        $reviews = [
-            ['review' => [1, 24, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [1, 25, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [1, 26, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [1, 27, 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [1, 28, 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 5], ['id' => 5, 'stars' => 5]]],
+        $faker = Faker\Factory::create();
 
+        foreach (School::all() as $indexSchool => $school) {
 
-            ['review' => [2, 29, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [2, 22, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [2, 23, 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [2, 24, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [2, 25, 'Qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 3], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
+            foreach ($school->students as $indexStudent => $student) {
+                if ($indexStudent % 2 == 0) {
+                    $r = new Review;
+                    $r->user_id = $student->id;
+                    $r->school_id = $school->id;
+                    $r->text = $faker->sentences($nb = 5, $asText = true);
+                    $r->save();
 
-            ['review' => [3, 31, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [3, 32, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [3, 33, 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [3, 34, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
+                    $countStars = 0;
+                    $countCategories = 0;
 
+                    foreach ($school->categories() as $indexCategory => $category) {
+                        $catReview = new CategoryReview;
+                        $catReview->review_id = $r->id;
+                        $catReview->category_id = $category->id;
+                        $catReview->stars = rand((int) 2, (int) 5);
+                        $catReview->save();
 
-            ['review' => [3, 23, 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [3, 24, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [3, 25, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-
-            ['review' => [4, 34, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [4, 35, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [4, 36, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [4, 37, 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-
-            ['review' => [5, 44, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [5, 45, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [5, 46, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-
-            ['review' => [6, 34, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [6, 35, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [6, 26, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [6, 27, 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [6, 28, 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 5], ['id' => 5, 'stars' => 5]]],
-
-
-            ['review' => [7, 44, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [7, 45, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [7, 46, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 3], ['id' => 4, 'stars' => 3], ['id' => 5, 'stars' => 4]]],
-
-
-            ['review' => [8, 44, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [8, 45, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 3], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [8, 46, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-
-            ['review' => [9, 44, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [9, 45, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [9, 46, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-
-            ['review' => [10, 34, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [10, 35, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [10, 26, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [10, 27, 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 2], ['id' => 5, 'stars' => 4]]],
-
-
-            ['review' => [11, 34, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [11, 35, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [11, 26, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [11, 27, 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [11, 28, 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 5], ['id' => 5, 'stars' => 5]]],
-
-            ['review' => [12, 44, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [12, 45, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 3], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-
-            ['review' => [13, 44, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 4], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [13, 45, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 3], ['id' => 2, 'stars' => 3], ['id' => 3, 'stars' => 3], ['id' => 4, 'stars' => 3], ['id' => 5, 'stars' => 4]]],
-
-
-            ['review' => [14, 35, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 5], ['id' => 5, 'stars' => 3]]],
-            ['review' => [14, 26, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-
-            ['review' => [15, 35, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-            ['review' => [15, 26, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 2], ['id' => 4, 'stars' => 3], ['id' => 5, 'stars' => 3]]],
-
-            ['review' => [16, 34, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 5]]],
-            ['review' => [16, 35, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 4], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [16, 26, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 5], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-
-
-            ['review' => [17, 34, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [17, 35, 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'],
-                'category' => [['id' => 1, 'stars' => 4], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 4]]],
-            ['review' => [17, 26, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt'],
-                'category' => [['id' => 1, 'stars' => 2], ['id' => 2, 'stars' => 5], ['id' => 3, 'stars' => 5], ['id' => 4, 'stars' => 4], ['id' => 5, 'stars' => 3]]],
-
-        ];
-
-        foreach ($reviews as $review) {
-            $school = $review['review'][0];
-            $user = $review['review'][1];
-            $text = $review['review'][2];
-            $r = new Review;
-            $r->user_id = $user;
-            $r->school_id = $school;
-            $r->text = $text;
-            $r->save();
-
-            $countStars = 0;
-            $countCategories = 0;
-
-            foreach ($review['category'] as $category) {
-                $id = $category['id'];
-                $stars = $category['stars'];
-
-                $catReview = new CategoryReview;
-                $catReview->review_id = $r->id;
-                $catReview->category_id = $id;
-                $catReview->stars = $stars;
-                $catReview->save();
-
-                $countStars += $stars;
-                $countCategories++;
+                        $countStars += $catReview->stars;
+                        $countCategories++;
+                    }
+                    $r->average = $countCategories ? ($countStars / $countCategories) : 0;
+                    $r->save();
+                }
             }
-
-            $r->average = $countStars / $countCategories;
-            $r->save();
         }
     }
 

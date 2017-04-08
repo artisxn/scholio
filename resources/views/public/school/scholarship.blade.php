@@ -58,7 +58,7 @@
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="scholarshipApp"  ng-controller="scholarshipCtrl" data-ng-init="init()" ng-cloak  >
 <!-- Scholio Header -->
 
-<header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
+<header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 2">
 
     <div class="container" style="">
         <div class="row">
@@ -91,8 +91,8 @@
                         <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                         <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                     @else
-                        <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
-                        <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                        <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">Εγγραφή</button></a></li>
+                        <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white " data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button></a></li>
                     @endif
                 </ul>
             </div>
@@ -260,7 +260,7 @@
         {{--@endif--}}
 
         <span class="">
-        <a href=""><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
+        <a href=""><button type="button" class="sch-button sc-button sc-orange sc-t-white" data-toggle="modal" data-target="#admission-modal"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
         </span>
 
     </div>
@@ -353,6 +353,18 @@
 </div>
 
 {{--<div style="margin-top: 140px"></div>--}}
+
+{{--<!-- ======   Modal Αίτησης =======-->--}}
+<div id="admission-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @include('components.modals.admission')
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+
+
 <!-- Footer -->
 @include('public.footer')
 

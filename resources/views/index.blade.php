@@ -177,7 +177,7 @@
                     <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
                     @else
-                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#signUp-modal">Εγγραφή</button></a></li>
+                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">Εγγραφή</button></a></li>
                     <li>
                     <a href="">
                     <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button>
@@ -409,9 +409,9 @@
                                     <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
                                 </div>
 
-                                <a href="/register/school">
+                                <a href="">
                                     <button type="button" id="school-register-button" class="btn sc-orange sc-t-white centered-text btn-school-reg"
-                                            {{--data-toggle="modal" data-target="#signUp-school-modal"--}}
+                                            data-toggle="modal" data-target="#signUp-school-modal"
                                     > Εγγραφή Εκπαιδευτικού Φορέα</button>
                                 </a>
 

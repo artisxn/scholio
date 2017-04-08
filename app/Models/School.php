@@ -8,6 +8,7 @@ use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\SchoolTypes;
 use App\Models\Study;
+use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -253,5 +254,15 @@ class School extends Model
     public function categories()
     {
         return $this->type->review_categories;
+    }
+
+    public static function createSchoolAndDummy($user_id, $type_id)
+    {
+        $school = new self();
+        $school->user_id = $user_id;
+        $school->type_id = $type_id;
+        $school->save();
+
+        Scholio::createSchoolDummy($school);
     }
 }

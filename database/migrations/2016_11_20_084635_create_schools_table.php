@@ -29,6 +29,7 @@ class CreateSchoolsTable extends Migration
             $table->string('lng')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**

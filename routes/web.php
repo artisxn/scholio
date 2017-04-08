@@ -8,27 +8,29 @@ use App\Models\School;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
-use Carbon\Carbon;
+use Illuminate\Database\Schema\Blueprint;
 
-Route::get('/algolia/upload', function () {
-    $schools = AlgoliaSchool::all();
-    $scholarships = AlgoliaScholarship::all();
-    $scholarshipss = Scholarship::all();
+Route::get('qqq', function () {
+    // $s = App\Models\School::find(10);
 
-    $geo = [];
+    // return $s->categories();
+    //
+    Schema::table('schools', function (Blueprint $table) {
+        $table->string('test')->nullable();
+    });
+    $schools = School::all();
 
-    foreach ($scholarshipss as $val => $ss) {
-        $geo[$val] = ['lat' => (double) $ss->school->lat, 'lng' => (double) $ss->school->lng];
+    foreach ($schools as $indexSchool => $s) {
+        return $s->students;
+        foreach ($s->students as $indexStudent => $sc) {
+            if ($indexStudent % 2 == 0) {
+                foreach ($s->categories() as $indexCategory => $cat) {
+                }
+                echo '<br>';
+            }
+        }
     }
 
-    foreach ($scholarships as $value => $s) {
-        $s->_geoloc = collect($geo[$value]);
-    }
-
-    // return $scholarships;
-
-    $schools->searchable();
-    $scholarships->searchable();
     return 'OK';
 });
 
@@ -216,14 +218,15 @@ Route::get('/public/scholarships/d', function () {
     return view('public.results.scholarships');
 });
 
-/* ===== TESTING ROUTE FOR SCHOLARSIPS RESULTS ====== */
+/* ===== TESTING ROUTE FOR SCHOLARSHIPS RESULTS ====== */
 Route::get('/public/algolia/', function () {
     return view('public.results.algolia');
 });
 
-
-
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
 
-
+/* ===== TESTING ROUTE FOR SCHOLARSHIP ADMISSION ====== */
+Route::get('/public/scholarship/admission/', function () {
+    return view('public.school.admission');
+});

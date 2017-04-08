@@ -1,4 +1,9 @@
-<div class="wrapper-page" style="padding: 0">
+
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+
+<div class="wrapper-page" style="padding: 70px">
     <div class="card-box">
         <div class="panel-heading text-center">
             <a href="/">
@@ -16,8 +21,8 @@
                     <label for="type" class="col-sm-4 font-weight-400">Τύπος Εκπαιδευτικού Ιδρύματος</label>
 
                     <div class="col-sm-8">
-                        <select id="type" name="type" class="form-control" >
-                            @foreach($schoolTypes as $type)
+                        <select id="type" name="type" class="form-control selectpicker" data-width="100%" data-style="btn-primary">
+                            @foreach(\App\Models\SchoolTypes::all() as $type)
                                 <option value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach
                         </select>
@@ -28,12 +33,12 @@
                     <label for="name" class="col-sm-4 font-weight-400">Όνομα Ιδρύματος</label>
 
                     <div class="col-sm-8">
-                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+                        <input  id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
 
                         @if ($errors->has('name'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                             </span>
                         @endif
                     </div>
                 </div>
@@ -88,8 +93,17 @@
     <div class="row">
         <div class="col-sm-12 text-center">
             <p>
-                Έχετε ήδη λογαριασμό;<a href="" class="text-primary m-l-5 a-text"><b>Συνδεθείτε</b></a>
+                Έχετε ήδη λογαριασμό;<a href="" onClick="modal_toggle1()" class="text-primary m-l-5 a-text"><b>Συνδεθείτε</b></a>
             </p>
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<script>
+function modal_toggle1(){
+    $('#signUp-school-modal').modal('toggle');
+    $('#signIn-modal').modal('toggle');
+}
+</script>

@@ -159,7 +159,7 @@
                             @else
                                 <li>
                                     <a href="">
-                                        <button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#signUp-modal">Εγγραφή</button>
+                                        <button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">Εγγραφή</button>
                                     </a>
                                 </li>
                                 <li>
