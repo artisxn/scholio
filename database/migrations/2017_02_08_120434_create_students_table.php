@@ -25,7 +25,17 @@ class CreateStudentsTable extends Migration
             $table->string('address')->nullable();
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
+            $table->text('languages')->nullable();
+            $table->text('studies')->nullable();
+            $table->text('achievements')->nullable();
+            $table->text('skills')->nullable();
             $table->text('about')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('father_job')->nullable();
+            $table->string('mother_job')->nullable();
+            $table->bigInteger('father_phone')->nullable();
+            $table->bigInteger('mother_phone')->nullable();
             $table->timestamps();
         });
     }
