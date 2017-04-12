@@ -24,6 +24,12 @@
     <!-- Polymer Float Form CSS -->
     <link href="/new/css/jquery.polymer-form.min.css" rel="stylesheet">
 
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Scholio Datepicker  CSS -->
+    <link href="/new/css/scholio-datepicker.css" rel="stylesheet">
+
     <!-- Horizontal Ribbons  CSS -->
     {{--<link href="/new/css/ribbonHorizontal.css" rel="stylesheet">--}}
 
@@ -40,10 +46,11 @@
     <!-- Angular js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 
-    <!-- Polymer Float Form js -->
+    <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
 
-
+    <!-- jQuery UI for datePicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src=""></script>
 
@@ -57,7 +64,8 @@
 
     <style>
         .upper-box{background-color: #008DA5; height: 320px; border-radius: 4px; border-bottom-left-radius: 0; border-bottom-right-radius: 0}
-        .outer{
+        .upper-title{ margin-top: -20px; margin-left: 60px;}
+        .outer{min-height:1800px;
             /*margin-top: -40px;*/
             /*padding: 25px; */
             /*margin-top:15px;*/
@@ -68,7 +76,7 @@
         /*border-bottom-left-radius:17px; border-bottom-right-radius:17px;*/
         /*}*/
 
-       .inner-box{min-height: 900px; background-color: #fff; padding: 0 70px; }
+       .inner-box{min-height: 1600px; background-color: #fff; padding: 0 70px; }
 
        .inner-section{ margin: 80px 0 0 0; padding: 5px; border: 1px solid #aaa; border-radius: 8px; background-color: #F1F4F5; min-height: 270px;}
 
@@ -76,16 +84,57 @@
        .polymer-form label {color: #008DA5!important; font-size:110%!important; font-weight: 300!important; display: block!important; padding-bottom: -40px!important; margin-left: 11px; }
        .ad-input{font-size: 100%!important; padding-left: 20px!important;}
        .icon-inp{position: absolute; top: 30px; color: #008DA5}
+       .icon-title{margin-right: 10px;}
        .section-text{color: #888; font-size: 110%; font-weight: 300; margin-left: 10px; margin-top: -25px;
            border: 1px solid #aaa; border-radius: 6px; padding: 7px; min-width: 190px; max-width: 250px; background-color: #fafafa;
            box-shadow: 0 0 9px #aaa}
 
+       .col-left{padding-left: 0}
+       .col-right{padding-right: 0}
+
+
+        /*  ========= TextArea Input Css    ========= */
+        .notes {
+            background-image:
+            -webkit-linear-gradient(left, #F1F4F5 10px, transparent 10px),
+            -webkit-linear-gradient(right, #F1F4F5 10px, transparent 10px),
+            -webkit-linear-gradient(#F1F4F5 30px, #bbb 30px, #bbb 31px, #F1F4F5 31px);
+            /*background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);*/
+            background-size: 100% 100%, 100% 100%, 100% 31px;
+            /*border: 1px solid #ccc;*/
+            /*border-radius: 8px;*/
+            border: none;
+            /*box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);*/
+            line-height: 31px;
+            padding: 8px;
+            width: 100%;
+            /*max-width: 100%;*/
+            min-height: 240px;
+            max-height: 100%;
+            /*max-height: 210px;*/
+            margin-top: 30px;
+
+        }
+
+        .notes:focus {
+            outline: none;
+        }
+        /*  ======================================= */
+
+        .info-text{ margin: 20px 0 0 15px;  color: #888; font-weight: 400; }
+
+
+        /*  ======================================= */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .col-left, .col-right{padding: 0}
+        }
 
        @media  (max-width: 767px) {
            .icon-inp{top: 5px;}
            .input-container{margin-bottom: 40px; margin-top: 10px;}
            .outer{ padding: 15px;}
-           ..inner-box{ padding: 0 15px;}
+           .inner-box{ padding: 0 15px;}
+           .col-left, .col-right{padding: 0}
        }
        @media  (max-width: 600px) {
            .icon-inp{top: 5px;}
@@ -178,11 +227,11 @@
 
 <div class="container">
 
-    <div style="min-height: 1300px">
+    <div style="">
         <div class="upper-box" >
             <div class="title-to">
                 <img src="/new/img/trophy-fff.png" style="height: 45px; margin-top: 5px" alt="">
-                Αίτηση υποτροφίας προς <span> </span>
+                <div class="upper-title">Αίτηση υποτροφίας προς  </div>
             </div>
         </div>
 
@@ -190,13 +239,13 @@
                 <div class="inner-box row">
                     <div class="inner-section">
 
-                        <div class="section-text centered-text"> Στοιχεία Σπουδαστή</div>
+                        <div class="section-text centered-text"> Στοιχεία Επικοινωνίας</div>
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="Όνομα" name="firstName" class="demo-form ad-input">
+                            <input  type="text" label="Όνομα Σπουδαστή" name="firstName" class="demo-form ad-input">
                             <i class="icon-inp fa fa-user-o"></i>
                         </div>
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="Επώνυμο" name="lastName" class="demo-form ad-input">
+                            <input type="text" label="Επώνυμο Σπουδαστή" name="lastName" class="demo-form ad-input">
                             <i class="icon-inp fa fa-user"></i>
                         </div>
                         <div class="col-sm-6 input-container">
@@ -212,7 +261,9 @@
                             <i class="icon-inp fa fa-phone"></i>
                         </div>
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="Ημερομηνία Γέννησης" name="birthOfDate" class="demo-form ad-input">
+                            <input type="text" label="Ημερομηνία Γέννησης" name="birthOfDate" class="demo-form ad-input ll-skin-cangas"
+                                   id="datepicker"   size="30"  value="" onchange=""
+                            >
                             <i class="icon-inp fa fa-calendar"></i>
                         </div>
 
@@ -249,6 +300,36 @@
 
 
                     </div>
+
+                    <div class="col-md-6 col-left">
+                        <div class="inner-section " >
+                            <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i> Ικανότητες - Δεξιότητες</div>
+                            <div class="input-container">
+                                <textarea class="notes"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-right">
+                        <div class="inner-section">
+                            <div class="section-text centered-text">   <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
+                            <div class=" input-container">
+                                <textarea class="notes"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class=" col-sm-12 inner-section" >
+                            <div class="section-text centered-text">   <i class="icon-title fa fa-flag"></i> Σημεία Υπεροχής</div>
+                            <div class=" input-container">
+                                <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
+                                <textarea class="notes"></textarea>
+                            </div>
+                    </div>
+
+
+
                 </div>
         </div>
     </div>
@@ -275,6 +356,10 @@
             margin_bottom: '20px'
 
         });
+
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
     });
 </script>
 </html>

@@ -1,0 +1,44 @@
+/* jQuery Datepicker scholio Styling */
+.ui-widget-header {
+    background: #00bcd4;
+    color: #fff}
+
+.ui-icon, .ui-icon:hover  {
+    width: 16px;
+    height: 16px;
+    /*background-color: #00bcd4;*/
+}
+
+.ui-widget-header .ui-icon {
+    background-image: url("/images/ui-icons_ffffff_256x240.png");
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+    border: none;
+    background: #f4f4f4;
+    /*font-weight: bold;*/
+    color: #004276;
+}
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+    border: none;
+    background: #008da5 ;
+    color: #fff;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+.ui-button:active,
+.ui-button.ui-state-active:hover{
+    background: #00bcd4;
+    /*font-weight: bold;*/
+    color: #fff;
+}
+.error {color: red}
