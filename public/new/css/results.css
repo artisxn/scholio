@@ -110,7 +110,10 @@ p {padding: 15px; color: #5d5d5d;  }
 
 .mob-filter { z-index: 195; opacity: 0.98;
     position: fixed;
-    top: 139px;}
+    top: 139px;
+    margin-top: -79px;
+
+}
 
 .mobFilt { z-index: 195; opacity: 0.96;
     position: fixed;
@@ -213,6 +216,7 @@ p {padding: 15px; color: #5d5d5d;  }
     padding-top: 10px; padding-bottom: 10px;
     background-color: #fafafa; border: 1px solid #bbb; border-radius: 4px; margin: 10px 0; padding-left: 15px; padding-right: 15px;
 
+
 }
 
 /* ////////////////////////////////////////////////////////////////////////// */
@@ -268,6 +272,7 @@ p {padding: 15px; color: #5d5d5d;  }
     /*  */
     #input1 ,#Autocomplete{  width: 225px!important; }
     .kf-check{ width: 216px!important; }
+    .algolia-search-container, .filter-container, #sort-by-container{width:300px;}
 }
 
 
@@ -309,7 +314,7 @@ p {padding: 15px; color: #5d5d5d;  }
     .card-photo {width: 280px; height: 197px; margin-bottom: 19px;}
     .but-pad { padding-left: 310px;}
     .margin-pad {margin-top: 140px; padding: 3px 0;}
-    .algolia-search-container{width:215px; }
+    .algolia-search-container, .filter-container, #sort-by-container{width:220px;}
     }
 
 
@@ -320,6 +325,7 @@ p {padding: 15px; color: #5d5d5d;  }
     .card-photo {width: 265px; height: 190px; margin-bottom: 32px;}
     .margin-pad {margin: 60px 0; padding: 35px 0;}
     .left-box2{ height: 900px!important;}
+
 }
 
 
@@ -339,8 +345,9 @@ p {padding: 15px; color: #5d5d5d;  }
     .kf-col-xs-offset-1 { margin-left: 11%}
     #img3 {  top: 293px; }
     /*.mob-filter {width: 82%; margin-left: 11%;}*/
-    /*.mob-filter {top: 140px;}*/
+    .mob-filter {top: 140px;}
     .left--300 { left: -343px; }
+    .left--390 { left: -393px; }
     .left-box2{ height: 900px!important;}
     .btn-close { margin-left: 72%;}
 
@@ -397,7 +404,7 @@ p {padding: 15px; color: #5d5d5d;  }
     .box {  height: 200px;  }
     .left-box2{  background-color: #ebebeb; height: 900px!important; }
     .shortDrop{ width: 138px!important;}
-    .mob-filter {  top: 133px;}
+    .mob-filter {  top: 133px; margin-top: -73px;}
     .btn-close { margin-left: 83%;}
 
 

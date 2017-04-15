@@ -95,6 +95,10 @@
     {{--<script src="{{asset('/new/js/')}}"></script>--}}
     <!--  -->
 
+    <!-- javascript Results -->
+    <script src="{{asset('/new/js/results.js')}}"></script>
+
+
     <!--  Angular Results App -->
     {{--<script src="{{asset('/new/js/')}}"></script>--}}
 
@@ -228,8 +232,50 @@
 
             <div class="row">
                 <!--============ collapseMenu =============-->
-                <div id="mobFilt" class="  hidden-md hidden-lg col-xs-8 mob-filter left--300"
-                     style="padding: 0 ; width: 254px; box-shadow: 2px 0px 40px 6px #4e4e4e;  margin-top: -79px;">
+                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300"
+                     style=" padding: 0 0 15px 0;  width: 250px; box-shadow: 2px 0px 40px 6px #4e4e4e; height: 100%; overflow-y: auto">
+
+                    <div class="" style="z-index: 95; background-color: #eee; padding: 10px 7px 40px 7px; min-height: 100%; overflow-x: hidden" >
+
+                        <div >
+                            <div class="input-group margin-bot-15 " style="width: 100%; ">
+                                <input type="text" class="form-control algolia-search-input" id="query" style="border-radius: 5px;" />
+                            </div>
+                        </div>
+
+                        <div class="content-wrapper col-sm-12">
+                            <aside style="width: 230px;">
+
+                                <div id="stats" class=""></div>
+                                <div class="facet-category-title">Φίλτρα Υποτροφιών:
+
+                                    <a class="" role="button" id="close-btn"
+                                       aria-expanded="false" aria-controls="">
+                                        <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+
+                                <div class="filter-container">
+                                    <div class="filter-title" >Επαιδευτικά Ιδρύματα</div>
+                                    <div id="categoriesType" ></div>
+                                </div>
+
+                                <div class="filter-container">
+                                    <div class="filter-title">Πόλεις</div>
+                                    <div id="categoriesCity"></div>
+                                </div>
+                                {{--<div class="filter-container">--}}
+                                    {{--<div class="filter-title">Επίπεδο Σπουδών</div>--}}
+                                    {{--<div id="categoriesLevel"></div>--}}
+                                {{--</div>--}}
+
+                            </aside>
+
+                        </div>
+
+                        <div id="clear-all" style="width: 180px; margin-left: auto; margin-right: auto;"></div>
+
+                    </div>
 
 
                 </div><!-- collapseMenu -->
@@ -242,9 +288,7 @@
                         </div>
                     </div>
 
-                    <div id="sort-by-container">
-
-                    </div>
+                    <div id="sort-by-container"></div>
 
                     <div class="content-wrapper col-sm-12">
                         <aside>
@@ -254,7 +298,7 @@
 
                             <div class="filter-container">
                                 <div class="filter-title" >Επαιδευτικά Ιδρύματα</div>
-                                <div id="categoriesType"></div>
+                                <div id="categoriesType" ></div>
                             </div>
 
                             <div class="filter-container">
@@ -286,7 +330,8 @@
 
                     {{--<div id="map" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>--}}
 
-                    <main id="scholarships"></main>
+                    <main id="scholarships">
+                    </main>
                     <section id="pagination"></section>
 
 
@@ -397,7 +442,7 @@ angular.module("scholarshipsResultsApp",[])
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 col-sm-4 section2">
+        <div class="col-lg-4 col-md-6 col-sm-4 section2 hidden-xxxs ">
             <div class="hex-container centered">
                 <div class="hexagon3 hex">
                     <span></span>
@@ -413,7 +458,7 @@ angular.module("scholarshipsResultsApp",[])
             </div>
         </div>
 
-        <div class="col-lg-4 col-sm-4 col-md-12 section3 ">
+        <div class="col-lg-4 col-sm-4 col-md-12 section3 hidden-xxxs hidden-xxs">
             <div class="hex-container centered">
                 <div class="hexagon3 hex" style="">
                     <span></span>

@@ -63,7 +63,8 @@
     <!-- No error Filter:noArray angular 1.3.20 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 
-
+    <!-- javascript Results -->
+    <script src="{{asset('/new/js/results.js')}}"></script>
 
 
     <!-- Algolia InstantSearch.JS -->
@@ -178,50 +179,39 @@
 
             <div class="row">
                 <!--============ collapseMenu =============-->
-                <div id="mobFilt" class="  hidden-md hidden-lg col-xs-8 mob-filter left--300"
-                     style="padding: 0 ; width: 254px; box-shadow: 2px 0px 40px 6px #4e4e4e;  margin-top: -79px;">
+                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300"
+                     style=" padding: 0 0 15px 0;  width: 250px; box-shadow: 2px 0px 40px 6px #4e4e4e; height: 100%; overflow-y: auto">
 
-                    <div class="" style="">
-                        <div class="box left-box1" style="z-index: 195;">
-                            <p class="text-incr-115 centered-text box1-title"> Πεδία Αναζήτησης
-                                <a class="" role="button" id="close-btn"
-                                   aria-expanded="false" aria-controls="">
-                                    <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
-                                </a>
-                            </p>
+                    <div class="" style="z-index: 95; background-color: #eee; padding: 10px 7px 40px 7px; min-height: 100%; overflow-x: hidden" >
 
-                            <div class="centered-text" style="max-width: 338px;" ng-cloak>
-                                <select title="Εκπαιδευτικός Φορέας" class="selectpicker" data-width="91%" ng-model="categoryFilter" ng-change="">
-                                    <option id="drop1" data-icon="glyphicon glyphicon-education" data-subtext="" value="null"
-                                            data-content=" <i class='glyphicon glyphicon-education margin-right-5 kf-gray'></i> <span class='kf-gray text-incr-85'> &nbsp;  Εκπαιδευτικός Φορέας</span>">....</option>
-
-                                    <option data-icon="fa fa-university" data-subtext="" class="kf-option" value="1">&nbsp; Κολλέγια</option>
-                                    <option data-icon="fa fa-cogs" data-subtext="" class="kf-option" value="2">&nbsp; IEK </option>
-                                    <option data-icon="fa fa-pencil" data-subtext="" class="kf-option" value="3">&nbsp;  Φροντιστήρια </option>
-                                    <option data-icon="fa fa-flag" data-subtext="" class="kf-option" value="4">&nbsp;  Ξένες Γλώσσες </option>
-                                    <option data-icon="fa fa-book" data-subtext="" class="kf-option" value="6">&nbsp;  Ιδιωτικά Σχολεία</option>
-                                </select>
+                        <div >
+                            <div class="input-group margin-bot-15 " style="width: 100%; ">
+                                <input type="text" class="form-control algolia-search-input" id="query" style="border-radius: 5px;" />
                             </div>
+                        </div>
 
-                            <div class="input-group centered-text pad-top-20" ng-cloak>
-                                <span class="input-group-addon text-incr-115 kf-gray" id="basic-addon1"><i class="fa fa-map-marker margin-right-5"></i></span>
-                                <input type="text" ng-model="locationSelected" placeholder="Στην Περιοχή:" id="input1" class="kf-option"
-                                        uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations"
-                                        typeahead-no-results="noResults" autocomplete="off">
-                            </div>
+                        <div class="content-wrapper col-sm-12">
+                            <aside style="width: 230px;">
 
-                            <div class="input-group centered-text pad-top-20 kf-gray" style="width: 89%; margin-top: 15px;" ng-if="!showAll">
-                                <input type="range" ng-model="maxDistance" min=0 max=30 step=2 class="margin-bot-10" ng-change="">
-                                <span>Απόσταση μέχρι: &nbsp;&nbs@{{ maxDistance }} km </span>
-                            </div>
+                                <div id="stats" class="text-muted "></div>
+                                <div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>
+                                <div class="filter-container">
+                                    <div class="filter-title">Κατηγορίες</div>
+                                    <div id="categoriesType"></div>
+                                </div>
+                                <div class="filter-container">
+                                    <div class="filter-title">Πόλεις</div>
+                                    <div id="categoriesCity"></div>
+                                </div>
 
-
-
+                            </aside>
 
                         </div>
 
+                        <div id="clear-all" style="width: 180px; margin-left: auto; margin-right: auto;"></div>
 
                     </div>
+
 
                 </div><!-- collapseMenu -->
 
@@ -272,7 +262,7 @@
                 <!-- ========== SCHOLARSHIPS  CONTAINER ============= -->
                 <div class="col-lg-9 col-md-9 col-sm-12 scholarship-container " id="">
 
-                    <div id="map" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
+                    <div id="map" class="hidden-xs" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
 
                     <main id="schools"></main>
 

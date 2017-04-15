@@ -330,6 +330,8 @@ video {
     .banner-title{margin-bottom: 40px; margin-left: 3%; width: 95%;}
     .btn-school-reg{ margin-top: 60px;  margin-left: 6%; width: 225px; }
     .banner-content{ margin-top: -370px!important; }
+    .btn-scholarships{width: 135px;}
+    .btn-schools{width: 190px; margin-left: 122px; }
 
 }
 
@@ -352,5 +354,7 @@ video {
     .btn-school-reg{ margin-top: 60px; width: 225px; margin-left: 12%;}
     .banner-title{margin-bottom: 30px; margin-left: 2%; width: 95%;  margin-top: -30px!important;}
     .mobile-hero {max-width: 150%; max-height: 590px;}
+    .btn-scholarships{width: 125px;}
+    .btn-schools{width: 190px; margin-left: 112px; }
 
 }

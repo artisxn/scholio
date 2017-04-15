@@ -36,5 +36,14 @@ $(document).ready(function($) {
         $("#mobFilt").toggleClass("left--300 left");
     });
 
+    $("#query").keypress(function (e) {
+        if (e.which == 13) {
+            $(".main-results").toggleClass("left left-240");
+            $("#mobFilt").toggleClass("left--300 left");
+
+        }
+
+    });
+
 });
 

@@ -214,9 +214,6 @@
                                 <span>Απόσταση μέχρι: &nbsp;&nbsp;@{{ maxDistance }} km </span>
                             </div>
 
-
-
-
                         </div>
 
                         <div class=" box left-box2 ">
