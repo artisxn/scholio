@@ -157,7 +157,7 @@
 
 
         @media (max-width: 769px) {
-            #xs-submButton{ z-index: 2000; bottom: -1px; margin-left: 5%;  width: 90%;  height: 37px; position: fixed; }
+            #xs-submButton{ z-index: 2000; bottom: -8px; margin-left: 5%;  width: 90%;  height: 37px; position: fixed; }
         }
 
 
@@ -640,61 +640,16 @@
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
 
 
-                            <div ng-repeat="review in contactInfo.avgReviews">
-                                <div class="col-xs-12 col-sm-6" >
+                            <div ng-repeat="review in contactInfo.avgReviews" >
+                                <div class="col-xs-12 col-sm-6 pad-0" >
                                     <i class="@{{review.icon}} margin-right-10" aria-hidden="true"></i>
                                     <span>@{{ review.name }}</span>
                                 </div>
-                                <div class="col-xs-12 col-sm-6">
+                                <div class="col-xs-12 col-sm-6" style="margin-left: -12px; margin-bottom: 9px;">
                                     <span id="catReview-@{{$index}}" ng-init="categoryReview($index, review.stars)" value="@{{review.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
                                     <span> @{{review.stars}}</span>
                                 </div>
                             </div>
-
-{{--                                 <div class="col-xs-12 col-sm-6">
-                                    <i class="fa fa-book  fa-linear margin-right-10 " aria-hidden="true"></i>
-                                    <span>Πρόγραμμα Σπουδών</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-6">
-                                    <span value="@{{getAVG('studyProgram')}}" class="margin-left-20 raty" id="studyProgram"></span>
-                                    <span> @{{getAVG("studyProgram")}}</span>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-6">
-                                    <i class="fa fa-cog  fa-linear margin-right-10" aria-hidden="true"></i>
-                                    <span>Οργάνωση</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-6">
-                                    <span  value="@{{getAVG('organization')}}" class="margin-left-20 raty" id="organization"></span>
-                                    <span> @{{getAVG("organization")}}</span>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-6">
-                                    <i class="fa fa-user fa-linear  margin-right-10" aria-hidden="true"></i>
-                                    <span>Ανθρώπινο Δυναμικό</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-6">
-                                    <span  value="@{{getAVG('personnel')}}" class="margin-left-20 raty" id="personnel"></span>
-                                    <span> @{{getAVG("personnel")}}</span>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-6">
-                                    <i class="fa fa-home fa-linear margin-right-10" aria-hidden="true"></i>
-                                    <span>Εγκαταστάσεις</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-6">
-                                    <span  value="@{{getAVG('facilities')}}" class="margin-left-20 raty" id="facilities"></span>
-                                    <span> @{{getAVG("facilities")}}</span>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-6">
-                                    <i class="fa fa-share-alt fa-linear margin-right-10" aria-hidden="true"></i>
-                                    <span>Διασύνδεση με αγορά εργασίας </span>
-                                </div>
-                                <div class="col-xs-12 col-sm-6">
-                                    <span  value="@{{getAVG('jobLink')}}" class=" margin-left-20 raty" id="jobLink"></span>
-                                    <span> @{{getAVG("jobLink")}}</span>
-                                </div> --}}
 
 
                             </div>
