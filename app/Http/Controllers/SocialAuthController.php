@@ -7,7 +7,6 @@ use App\Models\Link;
 use App\Models\Parent as Parents;
 use App\Models\Student;
 use App\Models\Teacher;
-use App\Models\Temp;
 use App\Models\Work;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +30,8 @@ class SocialAuthController extends Controller
         if (!config('services.' . $provider)) {
             abort(404);
         }
-
+        $this->roleType = request()->type;
+        session()->put('typeRole', request()->type);
         return Socialite::driver($provider)->redirect();
     }
 
@@ -43,7 +43,6 @@ class SocialAuthController extends Controller
     public function handleProviderCallback($provider = null)
     {
         $user_provider = Socialite::driver($provider)->user();
-//        dd($user_provider);
         $token = $user_provider->token;
 
         $user = User::where('email', $user_provider->getEmail())->first();
@@ -53,8 +52,18 @@ class SocialAuthController extends Controller
             return redirect('/dashboard');
         }
 
-        $role = Temp::named('social-role')->first()->value;
-        Temp::named('social-role')->first()->delete();
+        $role = '-';
+        $roleType = session()->get('typeRole');
+
+        if ($roleType == 1) {
+            $role = 'student';
+        }
+        if ($roleType == 2) {
+            $role = 'parent';
+        }
+        if ($roleType == 3) {
+            $role = 'teacher';
+        }
 
         $user = new User;
         $user->name = $user_provider->name;

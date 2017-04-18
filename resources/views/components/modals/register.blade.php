@@ -123,20 +123,33 @@
 
                         <div class="form-group m-b-0 text-center">
                             <div class="col-xs-12">
-                                <button type="button" onclick="login('facebook')" class="btn btn-facebook col-xs-5 m-t-20">
-                                   {{--<i class="fa fa-facebook m-r-5"></i> --}}
+                                {{-- <button type="button" onclick="login('facebook')" class="btn btn-facebook col-xs-5 m-t-20">
                                     Facebook
-                                </button>
+                                </button> --}}
                                     <div class="col-xs-2"></div>
-                                <button type="button" onclick="login('google')" class="btn btn-googleplus col-xs-5  m-t-20">
-                                   {{--<i class="fa fa-google-plus m-r-5"></i>--}}
 
-                                    Google+
-                                </button>
+                                    {{-- <button type="button" onclick="login('google')" class="btn btn-googleplus col-xs-5  m-t-20">Google+</button> --}}
+
+
                             </div>
                         </div>
 
 
+                    </form>
+
+                    <form action="/auth/google" method="get">
+                    <input name="type" id="roleType" hidden="true" ng-value="role">
+                        <button type="submit" class="btn btn-googleplus col-xs-5  m-t-20">
+                           {{--<i class="fa fa-google-plus m-r-5"></i>--}}
+                            Google+
+                        </button>
+                    </form>
+
+                    <form action="/auth/facebook" method="get">
+                    <input name="type" id="roleType" hidden="true" ng-value="role">
+                        <button type="submit" class="btn btn-facebook col-xs-5 m-t-20">
+                            Facebook
+                        </button>
                     </form>
                 </div>
 
@@ -162,28 +175,39 @@
         $('#signIn-modal').modal('toggle');
     }
 
-        function social(){
-            axios.post('/api/registration/social', {
-                        role: document.getElementById('type').value,
-                    })
-                    .then(function (response) {
-                        console.log(response.data);
-                        removeErrors();
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-        }
+        // function social(){
+        //     axios.post('/api/registration/social', {
+        //                 role: document.getElementById('type').value,
+        //             })
+        //             .then(function (response) {
+        //                 console.log(response.data);
+        //                 removeErrors();
+        //             })
+        //             .catch(function (error) {
+        //                 console.log(error);
+        //             });
+        // }
 
         function login(media){
+            var type = document.getElementById('roleType').value;
+            axios.post('/api/setRoleType', {
+                role: type
+            })
+            .then(function(resp){
+                console.log(resp);
+            })
+
             var url = '';
-            var type = document.getElementById('type').value;
+
             if(type!= 'no'){
                 if(media == 'google'){
                     url = '/auth/google/';
                 }else{
                     url = '/auth/facebook/';
                 }
+
+                    // {{ session()->put('roleType', 'student') }}
+
                 window.location = url;
             }else{
                 showErrors();

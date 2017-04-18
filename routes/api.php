@@ -171,3 +171,20 @@ Route::post('/review/{school}/save', function (School $school) {
 Route::get('/review/{school}', function (School $school) {
     return $school->averageReviews();
 })->middleware('auth:api');
+
+Route::post('/setRoleType', function () {
+    $id = request()->role;
+    if ($id == 1) {
+        session()->put('tttt', 'student');
+    }
+
+    if ($id == 2) {
+        session()->put('tttt', 'parent');
+    }
+
+    if ($id == 3) {
+        session()->put('tttt', 'teacher');
+    }
+
+    return session()->get('tttt');
+});

@@ -49,7 +49,10 @@
 
 
 
+
     <!--====== Javascript Files =======-->
+
+
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -79,6 +82,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 
     <script src="/new/js/angular-app.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
     <!-- Local javascript files -->
