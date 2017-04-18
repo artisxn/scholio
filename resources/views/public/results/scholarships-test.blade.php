@@ -239,14 +239,14 @@
 
                         <div >
                             <div class="input-group margin-bot-15 " style="width: 100%; ">
-                                <input type="text" class="form-control algolia-search-input" id="query" style="border-radius: 5px;" />
+                                <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
                             </div>
                         </div>
 
                         <div class="content-wrapper col-sm-12">
                             <aside style="width: 230px;">
 
-                                <div id="stats" class=""></div>
+                                <div id="statsMobile" class=""></div>
                                 <div class="facet-category-title">Φίλτρα Υποτροφιών:
 
                                     <a class="" role="button" id="close-btn"
@@ -256,13 +256,13 @@
                                 </div>
 
                                 <div class="filter-container">
-                                    <div class="filter-title" >Επαιδευτικά Ιδρύματα</div>
-                                    <div id="categoriesType" ></div>
+                                    <div class="filter-title" >Εκπαιδευτικά Ιδρύματα</div>
+                                    <div id="categoriesTypeMobile" ></div>
                                 </div>
 
                                 <div class="filter-container">
                                     <div class="filter-title">Πόλεις</div>
-                                    <div id="categoriesCity"></div>
+                                    <div id="categoriesCityMobile"></div>
                                 </div>
                                 {{--<div class="filter-container">--}}
                                     {{--<div class="filter-title">Επίπεδο Σπουδών</div>--}}
@@ -297,7 +297,7 @@
                             <div class="facet-category-title">Φίλτρα Υποτροφιών:</div>
 
                             <div class="filter-container">
-                                <div class="filter-title" >Επαιδευτικά Ιδρύματα</div>
+                                <div class="filter-title" >Εκπαιδευτικά Ιδρύματα</div>
                                 <div id="categoriesType" ></div>
                             </div>
 
@@ -392,6 +392,20 @@ angular.module("scholarshipsResultsApp",[])
                 container: '#query',
                  poweredBy: true,
                  placeholder: "Αναζήτηση υποτροφίας"
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.searchBox({
+                container: '#queryMobile',
+                 poweredBy: true,
+                 placeholder: "Αναζήτηση υποτροφίας"
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.stats({
+                container: '#statsMobile'
             })
     );
 
@@ -579,6 +593,29 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCity',
+                attributes: ['city'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesTypeMobile',
+                attributes: ['type'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCityMobile',
                 attributes: ['city'],
                 sortBy: ['name:asc'],
                 templates: {

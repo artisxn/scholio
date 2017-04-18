@@ -186,22 +186,22 @@
 
                         <div >
                             <div class="input-group margin-bot-15 " style="width: 100%; ">
-                                <input type="text" class="form-control algolia-search-input" id="query" style="border-radius: 5px;" />
+                                <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
                             </div>
                         </div>
 
                         <div class="content-wrapper col-sm-12">
                             <aside style="width: 230px;">
 
-                                <div id="stats" class="text-muted "></div>
+                                <div id="statsMobile" class="text-muted "></div>
                                 <div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>
                                 <div class="filter-container">
                                     <div class="filter-title">Κατηγορίες</div>
-                                    <div id="categoriesType"></div>
+                                    <div id="categoriesTypeMobile"></div>
                                 </div>
                                 <div class="filter-container">
                                     <div class="filter-title">Πόλεις</div>
-                                    <div id="categoriesCity"></div>
+                                    <div id="categoriesCityMobile"></div>
                                 </div>
 
                             </aside>
@@ -342,6 +342,20 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.stats({
                 container: '#stats'
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.searchBox({
+                container: '#queryMobile',
+                 poweredBy: true,
+                 placeholder: "Αναζήτηση Εκπαιδευτικού Ιδρύματος"
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.stats({
+                container: '#statsMobile'
             })
     );
 
@@ -522,6 +536,29 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCity',
+                attributes: ['city'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesTypeMobile',
+                attributes: ['type'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCityMobile',
                 attributes: ['city'],
                 sortBy: ['name:asc'],
                 templates: {
