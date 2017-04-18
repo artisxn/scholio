@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
+use App\Models\Guardian;
 use App\Models\Link;
-use App\Models\Parent as Parents;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Work;
@@ -120,7 +120,11 @@ class SocialAuthController extends Controller
                 $info->save();
             }
             if ($role == 'parent') {
-                $info = new Parents;
+                $info = new Guardian;
+                $info->user_id = $user->id;
+                $info->gender = $profileBuilder['gender'];
+                $info->avatar = $avatar;
+                $info->save();
             }
 
             $links = $this->addSocialLinks($user, $provider, $profileBuilder['url']);

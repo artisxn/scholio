@@ -111,6 +111,7 @@ class Scholio
                 }
 
             }
+
             $dummy->study = $studyDummy;
             $dummy->save();
 

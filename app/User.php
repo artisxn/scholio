@@ -2,8 +2,8 @@
 
 namespace App;
 
+use App\Models\Guardian as ParentUser;
 use App\Models\Link;
-use App\Models\Parent as ParentUser;
 use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\School;

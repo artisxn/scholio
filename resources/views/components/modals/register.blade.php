@@ -145,7 +145,7 @@
                         </button>
                     </form>
 
-                    <form action="/auth/facebook" method="get">
+                    <form action="/auth/facebook/" method="GET">
                     <input name="type" id="roleType" hidden="true" ng-value="role">
                         <button type="submit" class="btn btn-facebook col-xs-5 m-t-20">
                             Facebook

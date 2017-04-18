@@ -208,7 +208,7 @@
 
                         </div>
 
-                        <div id="clear-all" style="width: 180px; margin-left: auto; margin-right: auto;"></div>
+                        <div id="clear-allMobile" style="width: 180px; margin-left: auto; margin-right: auto;"></div>
 
                     </div>
 
@@ -676,6 +676,19 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.clearAll({
                 container: '#clear-all',
+                templates: {
+                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
+                },
+                cssClasses: {
+                    root: 'btn btn-block btn-default'
+                },
+                autoHideContainer: true
+            })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.clearAll({
+                container: '#clear-allMobile',
                 templates: {
                     link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
                 },
