@@ -143,6 +143,22 @@
            .inner-box{ padding: 0 5px;}
            .title-to{  padding: 200px 0 0 15px;}
        }
+
+       ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+           color: #aaa;
+           font-weight: 300;
+       }
+       :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          color:    #909;
+          opacity:  1;
+       }
+       ::-moz-placeholder { /* Mozilla Firefox 19+ */
+          color:    #909;
+          opacity:  1;
+       }
+       :-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color:    #909;
+       }
    </style>
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home">
@@ -240,9 +256,15 @@
                 <div class="inner-box row">
                     <div class="inner-section">
 
+
+                    <img src="{{ $user->info->avatar }}" width="50px">
+
+
+
                         <div class="section-text centered-text"> Στοιχεία Επικοινωνίας</div>
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="Όνομα Σπουδαστή" name="firstName" class="demo-form ad-input">
+
+                            <input  type="text" label="Όνομα Σπουδαστή" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">
                             <i class="icon-inp fa fa-user-o"></i>
                         </div>
                         <div class="col-sm-6 input-container">
@@ -250,7 +272,7 @@
                             <i class="icon-inp fa fa-user"></i>
                         </div>
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="Διεύθυνση" name="address" class="demo-form ad-input">
+                            <input type="text" label="Διεύθυνση" name="address" class="demo-form ad-input" value="{{ $user->info->address }}">
                             <i class="icon-inp fa fa-street-view"></i>
                         </div>
                         <div class="col-sm-6 input-container">
@@ -258,12 +280,15 @@
                             <i class="icon-inp fa fa-map-marker"></i>
                         </div>
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="Τηλέφωνο" name="phone" class="demo-form ad-input">
+                        <a href="tel:{{ $user->info->phone }}">
+                            <input type="text" label="Τηλέφωνο" name="phone" class="demo-form ad-input" value="{{ $user->info->phone }}">
+                            </a>
                             <i class="icon-inp fa fa-phone"></i>
                         </div>
                         <div class="col-sm-6 input-container">
+                        {{-- value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" --}}
                             <input type="text" label="Ημερομηνία Γέννησης" name="birthOfDate" class="demo-form ad-input ll-skin-cangas"
-                                   id="datepicker"   size="30"  value="" onchange=""
+                                   id="datepicker"   size="30"  value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" onchange=""
                             >
                             <i class="icon-inp fa fa-calendar"></i>
                         </div>
@@ -272,29 +297,29 @@
                     <div class="inner-section">
                         <div class="section-text centered-text"> Στοιχεία Γονέων-Κηδεμόνων</div>
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="Όνοματεπώνυμο Μητέρας" name="mothersName" class="demo-form ad-input">
+                            <input  type="text" label="Όνοματεπώνυμο Μητέρας" name="mothersName" class="demo-form ad-input" value="{{ $user->cv->mother_name }}">
                             <i class="icon-inp fa fa-user-o"></i>
                         </div>
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="Τηλέφωνο Μητέρας" name="mothersPhone" class="demo-form ad-input">
+                            <input type="text" label="Τηλέφωνο Μητέρας" name="mothersPhone" class="demo-form ad-input" value="{{ $user->cv->mother_phone }}">
                             <i class="icon-inp fa fa-phone"></i>
                         </div>
 
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="Όνοματεπώνυμο Πατέρα" name="fathersName" class="demo-form ad-input">
+                            <input  type="text" label="Όνοματεπώνυμο Πατέρα" name="fathersName" class="demo-form ad-input" value="{{ $user->cv->father_name }}">
                             <i class="icon-inp fa fa-user-o"></i>
                         </div>
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="Τηλέφωνο Πατέρα" name="fathersPhone" class="demo-form ad-input">
+                            <input type="text" label="Τηλέφωνο Πατέρα" name="fathersPhone" class="demo-form ad-input" value="{{ $user->cv->father_phone }}">
                             <i class="icon-inp fa fa-phone"></i>
                         </div>
 
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="Διεύθυνση" name="nothersAddress" class="demo-form ad-input">
+                            <input type="text" label="Διεύθυνση Μητέρας" name="mothersAddress" class="demo-form ad-input" value="{{ $user->cv->mother_address }}">
                             <i class="icon-inp fa fa-street-view"></i>
                         </div>
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="Πόλη/Περιοχή" name="mothersCity" class="demo-form ad-input">
+                            <input type="text" label="Πόλη/Περιοχή" name="mothersCity" class="demo-form ad-input" value="{{ $user->cv->mother_city }}">
                             <i class="icon-inp fa fa-map-marker"></i>
                         </div>
 
@@ -306,16 +331,16 @@
                         <div class="inner-section " >
                             <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i> Ικανότητες - Δεξιότητες</div>
                             <div class="input-container">
-                                <textarea class="notes"></textarea>
+                                <textarea class="notes">{{ $user->cv->skils }}</textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-right">
                         <div class="inner-section">
-                            <div class="section-text centered-text">   <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
+                            <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
                             <div class=" input-container">
-                                <textarea class="notes"></textarea>
+                                <textarea class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ $user->cv->languages }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -359,7 +384,9 @@
         });
 
         $( function() {
-            $( "#datepicker" ).datepicker();
+            $("#datepicker").datepicker();
+            $("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
+            $("#datepicker").datepicker("setDate", "{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" );
         } );
     });
 </script>

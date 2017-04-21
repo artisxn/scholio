@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Cv;
 use App\Models\Guardian as ParentUser;
 use App\Models\Link;
 use App\Models\Review;
@@ -146,5 +147,10 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function cv()
+    {
+        return $this->hasOne(Cv::class);
     }
 }

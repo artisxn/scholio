@@ -260,7 +260,8 @@
         {{--@endif--}}
 
         <span class="">
-        <a href=""><button type="button" class="sch-button sc-button sc-orange sc-t-white" data-toggle="modal" data-target="#admission-modal"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
+        {{-- data-toggle="modal" data-target="#admission-modal" --}}
+        <a href="/public/scholarship/admission/{{ auth()->user()->id }}/@{{scholarship.id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
         </span>
 
     </div>

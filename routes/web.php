@@ -156,6 +156,7 @@ Route::get('/public/algolia/', function () {
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
 /* ===== TESTING ROUTE FOR SCHOLARSHIP ADMISSION ====== */
-Route::get('/public/scholarship/admission/', function () {
-    return view('public.school.admission');
+Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
+    // dd($user);
+    return view('public.school.admission', compact('user', 'scholarship'));
 });

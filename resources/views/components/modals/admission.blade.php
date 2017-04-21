@@ -62,7 +62,7 @@
 
                     <div class="section-text centered-text"> Στοιχεία Σπουδαστή</div>
                     <div class="col-sm-6 input-container">
-                        <input  type="text" label="Όνομα" name="firstName" class="demo-form ad-input">
+                        <input type="text" label="Όνομα" name="firstName" class="demo-form ad-input" value="{{ $user->name() }}">
                         <i class="icon-inp fa fa-user-o"></i>
                     </div>
                     <div class="col-sm-6 input-container">
