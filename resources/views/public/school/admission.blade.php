@@ -248,7 +248,7 @@
         <div class="upper-box" >
             <div class="title-to">
                 <img src="/new/img/trophy-fff.png" style="height: 45px; margin-top: 5px" alt="">
-                <div class="upper-title">Αίτηση υποτροφίας προς  </div>
+                <div class="upper-title">Αίτηση υποτροφίας προς {{ $scholarship->school->name() }} </div>
             </div>
         </div>
 

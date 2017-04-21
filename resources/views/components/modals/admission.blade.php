@@ -1,4 +1,4 @@
-<link href="/new/css/jquery.polymer-form.min.css" rel="stylesheet">
+{{-- <link href="/new/css/jquery.polymer-form.min.css" rel="stylesheet">
 <script src="/new/js/jquery.polymer-form.min.js"></script>
 
 
@@ -62,7 +62,7 @@
 
                     <div class="section-text centered-text"> Στοιχεία Σπουδαστή</div>
                     <div class="col-sm-6 input-container">
-                        <input type="text" label="Όνομα" name="firstName" class="demo-form ad-input" value="{{ $user->name() }}">
+                        <input type="text" label="Όνομα" name="firstName" class="demo-form ad-input">
                         <i class="icon-inp fa fa-user-o"></i>
                     </div>
                     <div class="col-sm-6 input-container">
@@ -146,3 +146,4 @@
         });
     });
 </script>
+ --}}
