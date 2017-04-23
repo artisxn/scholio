@@ -261,7 +261,9 @@
 
         <span class="">
         {{-- data-toggle="modal" data-target="#admission-modal" --}}
+        @if(auth()->check())
         <a href="/public/scholarship/admission/{{ auth()->user()->id }}/@{{scholarship.id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
+        @endif
         </span>
 
     </div>
