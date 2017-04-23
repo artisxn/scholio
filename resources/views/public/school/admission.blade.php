@@ -28,10 +28,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- Bootstrap Select CSS -->
-    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js">
+    {{--<link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js">--}}
 
     <!-- Scholio Datepicker  CSS -->
     <link rel="stylesheet" href="/new/css/scholio-datepicker.css" >
+
 
     <!-- Horizontal Ribbons  CSS -->
     {{--<link href="/new/css/ribbonHorizontal.css" rel="stylesheet">--}}
@@ -47,20 +48,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap Select js-->
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-
+    {{--<script src=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>--}}
 
 
     <!-- Angular js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>--}}
 
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
 
     <!-- jQuery UI for datePicker -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <script src=""></script>
 
 
 
@@ -148,6 +146,9 @@
 
         .euro{position: absolute; margin-left: 150px; top: 30px; font-weight: 300; color: #bbb}
 
+
+        .send-button{ width: 210px; }
+        .send-button .sc-button { margin-top: 20px; width: 100%;}
         select {
             /*text-shadow: 0 0 0 #000;*/
             /*color: #008DA5!important;*/
@@ -227,7 +228,6 @@
 <!-- Scholio Header -->
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 2">
-
     <div class="container" style="">
         <div class="row">
 
@@ -315,7 +315,7 @@
             </div>
         </div>
 
-                <div class="col-xs-12 inner-box row" style="margin-left: 0">
+        <div class="col-xs-12 inner-box row" style="margin-left: 0">
                     <div class="inner-section row">
                         <div class="section-text centered-text"> Στοιχεία Υποψηφίου</div>
 
@@ -522,7 +522,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6 col-right">
                         <div class="inner-section">
                             <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
@@ -531,7 +530,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="col-md-6 col-left">
                     <div class="inner-section" >
@@ -543,8 +541,6 @@
                             </div>
                     </div>
                     </div>
-
-
                     <div class="col-md-6 col-right">
                     <div class="inner-section" >
                         <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
@@ -566,7 +562,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6 col-right">
                         <div class="inner-section" >
                             <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i> Ενδιαφέροντα - Ασχολίες</div>
@@ -578,8 +573,7 @@
                         </div>
                     </div>
 
-
-                        <div class=" col-md-12 inner-section" >
+                    <div class=" col-md-12 inner-section" >
                             <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i> Πιστοποιήσεις - Σεμινάρια</div>
                             <div class=" input-container">
                                 <div class="info-text"> Γράψε μας τις μέχρι τωρα πιστοποιήσεις σου και τα σεμινάρια που έχεις παρακολουθήσει</div>
@@ -588,18 +582,46 @@
                             </div>
                         </div>
 
-
-
-
-
-
-
-
-
+                    <div class="send-button centered">
+                        <a href=""><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white " data-toggle="modal" data-target="#send-modal">
+                                <i class="icon-title fa fa-paper-plane-o pad-right-10"></i>Αποστολή Αίτησης</button></a>
+                    </div>
                 </div>
 
     </div>
 </div>
+
+
+
+<!-- ====== Modal Αποστολής =======-->
+<div id="send-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="panel " style="background-color: #324c5a;">
+                <div class="panel-heading" style="height: 55px; color: #fff">
+                    <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
+                        x
+
+                    </button>
+                    <img src="/new/img/logo-light-m.png" alt="scholio logo" class="pull-left">
+                    <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Αίτηση Υποτροφίας</h3>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <img class="pull-left margin-right-10" style="height: 45px;">
+                <span> Αποστολή αίτησης υποτροφίας</span>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
+                <button type="button" data-dismiss="modal" class="btn btn-info">Αποστολή</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
 
 
 
