@@ -8,21 +8,21 @@
 
     <div class="wrapper-page">
 
-                <div class="panel-heading">
-                <div class="text-center">
-                    <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 90px;">
-                </div>
-                    <div class="text-center login-signUp-title">Εγγραφή στο Schol.io</div>
+                <div class="panel-heading pad-0-mar-0" style="margin-top: 10px">
+                    <div class="text-center pad-0-mar-0" style="margin: 0">
+                        <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 90px;">
+                    </div>
+                    <div class="text-center login-signUp-title pad-0-mar-0" style="margin-top: -15px">Εγγραφή στο Schol.io</div>
                 </div>
 
-                <div class="panel-body">
+                <div class="panel-body pad-0-mar-0" style="margin-top: 0">
                     <form class="form-horizontal m-t-20 " method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
                         <div id="form-type" class="form-group">
                             {{--<label for="type" class="col-sm-3 font-weight-400">Ιδιότητα</label>--}}
 
-                            <div class="col-sm-12 font-weight-300 centered-text">
+                            <div class="col-sm-12 font-weight-300 centered-text" ">
                                 {{--<select id="type" type="password" class="form-control" name="type" onchange="social()">--}}
                                 {{--<option value="no" selected>Επέλεξε Ιδιότητα</option>--}}
                                   {{--<option value="student">Μαθητής</option>--}}
@@ -117,7 +117,7 @@
                         </div>
 
                         <div class="form-group m-t-20 m-b-0">
-                            <div class="col-sm-12 text-center login-signUp-text">
+                            <div class="col-sm-12 text-center login-signUp-text" style="margin-top: 0">
                                 <div>Εγγραφή μέσω</div>
                             </div>
                         </div>
