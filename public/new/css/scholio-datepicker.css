@@ -42,3 +42,8 @@ html .ui-button.ui-state-disabled:active {
     color: #fff;
 }
 .error {color: red}
+
+.ui-datepicker-year {
+    height: 23px !important;
+    width: 60px!important;
+}
