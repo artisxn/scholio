@@ -2,6 +2,7 @@
 
     .role-image{margin-left: 10px; height: 40px; margin-top: -5px; opacity: 0.7}
     .role-text{font-weight: 300; font-size: 130%; margin: 2px 0 0 10px;}
+    .btn-facebook:hover, .btn-googleplus:hover { color: #fafafa!important; font-weight: 300}
 
 </style>
 
@@ -121,36 +122,31 @@
                             </div>
                         </div>
 
-                        <div class="form-group m-b-0 text-center">
-                            <div class="col-xs-12">
-                                {{-- <button type="button" onclick="login('facebook')" class="btn btn-facebook col-xs-5 m-t-20">
+                    </form>
+
+
+                    <div class="col-xs-12 row centered" style="margin-left: -22px;">
+                        <div class="col-xs-5">
+                            <form action="/auth/google" method="GET" >
+                                <input name="type" id="roleType" hidden="true" ng-value="role">
+                                <button type="submit" class="btn btn-googleplus sc-t-white" style="width: 180px">
+                                    {{--<i class="fa fa-google-plus m-r-5"></i>--}}
+                                    Google+
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-5">
+                            <form action="/auth/facebook/" method="GET" >
+                                <input name="type" id="roleType" hidden="true" ng-value="role">
+                                <button type="submit" class="btn btn-facebook sc-t-white" style="width: 180px">
                                     Facebook
-                                </button> --}}
-                                    <div class="col-xs-2"></div>
-
-                                    {{-- <button type="button" onclick="login('google')" class="btn btn-googleplus col-xs-5  m-t-20">Google+</button> --}}
-
-
-                            </div>
+                                </button>
+                            </form>
                         </div>
 
+                    </div>
 
-                    </form>
-
-                    <form action="/auth/google" method="get">
-                    <input name="type" id="roleType" hidden="true" ng-value="role">
-                        <button type="submit" class="btn btn-googleplus col-xs-5  m-t-20">
-                           {{--<i class="fa fa-google-plus m-r-5"></i>--}}
-                            Google+
-                        </button>
-                    </form>
-
-                    <form action="/auth/facebook/" method="GET">
-                    <input name="type" id="roleType" hidden="true" ng-value="role">
-                        <button type="submit" class="btn btn-facebook col-xs-5 m-t-20">
-                            Facebook
-                        </button>
-                    </form>
                 </div>
 
 

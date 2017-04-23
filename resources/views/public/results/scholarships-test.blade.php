@@ -365,7 +365,13 @@ angular.module("scholarshipsResultsApp",[])
 
             console.log('start');
 
-            $scope.test=true;
+            $scope.over=false;
+            $scope.over2=false;
+            $scope.over3=false;
+            $scope.role=null;
+            $scope.active=function(role){
+                $scope.role=role;
+            }
 
 
 
