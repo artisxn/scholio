@@ -158,7 +158,7 @@ $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
         'polyteknos' => 'YES',
         'studies' => $faker->paragraph,
         'about' => $faker->paragraphs($nb = 3, $asText = true),
-        'skils' => $faker->paragraph,
+        'skills' => $faker->paragraph,
         'languages' => $faker->sentence,
         'certifications' => $faker->sentence,
         'awards' => $faker->sentence,

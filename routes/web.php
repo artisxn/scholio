@@ -5,35 +5,12 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
-use Illuminate\Database\Schema\Blueprint;
-
-Route::get('qqq', function () {
-    // $s = App\Models\School::find(10);
-
-    // return $s->categories();
-    //
-    Schema::table('schools', function (Blueprint $table) {
-        $table->string('test')->nullable();
-    });
-    $schools = School::all();
-
-    foreach ($schools as $indexSchool => $s) {
-        return $s->students;
-        foreach ($s->students as $indexStudent => $sc) {
-            if ($indexStudent % 2 == 0) {
-                foreach ($s->categories() as $indexCategory => $cat) {
-                }
-                echo '<br>';
-            }
-        }
-    }
-    return 'OK';
-});
 
 Route::get('a/{scholarship}', function (Scholarship $scholarship) {
     event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
-    // return Request::createAndNotify($scholarship->school, auth()->user());
 });
+
+Route::post('/admission/{scholarship}/save', 'RoutesController@admissionSave');
 
 Route::get('/public/schools/', function () {
     return view('public.results.schools-test');

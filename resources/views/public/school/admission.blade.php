@@ -310,6 +310,8 @@
 <div class="container">
 
     <div>
+    <form id="admissionForm" action="/admission/{{ $scholarship->id }}/save" method="POST">
+    {{ csrf_field() }}
         <div class="upper-box " >
             <div class="title-to">
                 <div class="trophy-container"> <img src="/new/img/trophy-fff.png" class="trophy-img" alt="">
@@ -521,7 +523,7 @@
                 <div class="inner-section " >
                     <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i> Ικανότητες - Δεξιότητες</div>
                     <div class="input-container">
-                        <textarea class="notes">{{ $user->cv->skils }}</textarea>
+                        <textarea class="notes">{{ $user->cv->skills }}</textarea>
                     </div>
                 </div>
             </div>
@@ -529,7 +531,7 @@
                 <div class="inner-section">
                     <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
                     <div class=" input-container">
-                        <textarea class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2"></textarea>
+                        <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ $user->cv->languages }}</textarea>
                     </div>
                 </div>
             </div>
@@ -539,7 +541,7 @@
                     <div class="section-text centered-text">   <i class="icon-title fa fa-id-badge"></i> Σημεία Υπεροχής</div>
                     <div class=" input-container">
                         <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
-                                 <textarea class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
+                                 <textarea name="aboutMe" class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
                             "></textarea>
                     </div>
                 </div>
@@ -549,8 +551,8 @@
                     <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
                     <div class=" input-container">
                         <div class="info-text"> Γράψε μας τις μέχρι τώρα σπουδές σου, τα εκπαιδευτικά ιδρύματα και το έτος αποφοίτησης, όπως φαίνονται στο επόμενο παράδειγμα.</div>
-                            <textarea class="notes" placeholder="1. ΜΒΑ in Business Administration / Πανεπιστημιο Μακεδονίας / 2016&#13;&#10;2. Οικονομικά / Αριστοτέλειο Πανεπιστημιο θεσσαλονίκης / 2014&#13;&#10;3. 7ο Λύκειο Θεσσαλονικης / 2009
-                            "></textarea>
+                            <textarea name="studies" class="notes" placeholder="1. ΜΒΑ in Business Administration / Πανεπιστημιο Μακεδονίας / 2016&#13;&#10;2. Οικονομικά / Αριστοτέλειο Πανεπιστημιο θεσσαλονίκης / 2014&#13;&#10;3. 7ο Λύκειο Θεσσαλονικης / 2009
+                            ">{{ $user->cv->studies }}</textarea>
                     </div>
                 </div>
             </div>
@@ -560,8 +562,8 @@
                     <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i> Έπαινοι - Διακρίσεις</div>
                     <div class=" input-container">
                         <div class="info-text"> Γράψε μας τις μέχρι τώρα διακρίσεις σου στις ξένες γλώσσες, στον αθλητισμό, στη μουσική ή σε προηγούμενες σπουδές σου.</div>
-                            <textarea class="notes" placeholder="1. &#13;&#10;2.&#13;&#10;3.
-                            "></textarea>
+                            <textarea name="awards" class="notes" placeholder="1. &#13;&#10;2.&#13;&#10;3.
+                            ">{{ $user->cv->awards }}</textarea>
                     </div>
                 </div>
             </div>
@@ -570,8 +572,8 @@
                     <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i> Ενδιαφέροντα - Ασχολίες</div>
                     <div class=" input-container">
                         <div class="info-text"> Γράψε μας τα γενικότερα ενδιαφέροντα και τις ασχολίες σου.<br> <span style="color: transparent">.</span></div>
-                            <textarea class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                            "></textarea>
+                            <textarea name="other_interests" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
+                            ">{{ $user->cv->other_interests }}</textarea>
                     </div>
                 </div>
             </div>
@@ -580,8 +582,8 @@
                 <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i> Πιστοποιήσεις - Σεμινάρια</div>
                 <div class=" input-container">
                     <div class="info-text"> Γράψε μας τις μέχρι τωρα πιστοποιήσεις σου και τα σεμινάρια που έχεις παρακολουθήσει</div>
-                            <textarea class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                            "></textarea>
+                            <textarea name="certifications" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
+                            ">{{ $user->cv->certifications }}</textarea>
                 </div>
             </div>
 
@@ -590,7 +592,7 @@
                         <i class="icon-title fa fa-paper-plane-o pad-right-10"></i>Αποστολή Αίτησης</button></a>
             </div>
         </div>
-
+    </form>
     </div>
 </div>
 
@@ -617,7 +619,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
-                <button type="button" data-dismiss="modal" class="btn btn-info">Αποστολή</button>
+                <button type="button" data-dismiss="modal" class="btn btn-info" onclick="saveAdmission()">Αποστολή</button>
             </div>
         </div>
     </div>
@@ -636,6 +638,11 @@
 
 
 <script>
+
+    function saveAdmission(){
+        var form = document.getElementById('admissionForm');
+        form.submit();
+    }
 
     angular.module("admissionApp",[])
             .controller("admissionCtrl",function ($scope,$http) {

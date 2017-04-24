@@ -63,7 +63,7 @@ class CreateCvsTable extends Migration
 
             $table->text('studies')->nullable();
             $table->text('about')->nullable();
-            $table->text('skils')->nullable();
+            $table->text('skills')->nullable();
             $table->text('languages')->nullable();
             $table->text('certifications')->nullable();
             $table->text('awards')->nullable();

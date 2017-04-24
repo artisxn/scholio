@@ -62,11 +62,12 @@ class CreateAdmissionsTable extends Migration
             $table->text('previous_school')->nullable();
             $table->text('polyteknos')->nullable();
 
-            $table->text('skils')->nullable();
+            $table->text('skills')->nullable();
             $table->text('languages')->nullable();
             $table->text('certifications')->nullable();
             $table->text('awards')->nullable();
             $table->text('other_interests')->nullable();
+            $table->text('aboutMe')->nullable();
 
             $table->text('notes')->nullable();
             $table->timestamps();
