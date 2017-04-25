@@ -309,7 +309,10 @@ class ApiController extends Controller
         // $scholarship->test = Carbon::now()->diffForHumans();
         $scholarship->created = Carbon::parse($scholarship->created_at)->format('d/m/Y');
         $scholarship->end = Carbon::parse($scholarship->end_at)->format('d/m/Y');
-        $scholarship->exams = Carbon::parse($scholarship->exams_date)->format('d/m/Y');
+        $scholarship->exams = Carbon::parse($scholarship->exam_date)->format('d/m/Y');
+        if (!$scholarship->exam) {
+            $scholarship->exams = '-';
+        }
         $scholarship->interested = $scholarship->interestsLength();
         return $scholarship->load('financial', 'criteria');
     }

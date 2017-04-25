@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\StudentAppliedOnScholarship;
 use App\Models\Admission;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -280,6 +281,8 @@ class RoutesController extends Controller
 
         $user->cv->updateIfNotExist($admission);
 
-        return 'Admission Saved';
+        event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
+
+        return redirect('/scholarship' . '/' . $scholarship->id);
     }
 }

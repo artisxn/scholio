@@ -378,9 +378,20 @@
                 </div>
 
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="Μέλος Πολύτεκνης Οικογένειας" name="polyteknos" class="demo-form ad-input"
-                           value="{{ $user->cv->polyteknos }}"
+                    {{-- value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" --}}
+                    <input type="text" label="Ημερομηνία Γέννησης" name="dateOfBirth" class="demo-form ad-input ll-skin-cangas"
+                           id="datepicker"   size="30"  value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" onchange=""
                     >
+                    <i class="icon-inp fa fa-calendar"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Τόπος Γέννησης" name="place_of_birth" class="demo-form ad-input" value="{{ $user->cv->place_of_birth }}">
+                    <i class="icon-inp fa fa-map-marker"></i>
+                </div>
+
+                <div class="col-sm-6 input-container">
+                <div>Μέλος Πολύτεκνης Οικογένειας</div>
+
                     <div class="select-polyteknos">
                         <select>
                             <option>Ναι</option>
@@ -390,10 +401,9 @@
 
                     <i class="icon-inp fa fa-users"></i>
                 </div>
+
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα" name="student_relatives" class="demo-form ad-input"
-                           value="{{ $user->cv->polyteknos }}"
-                    >
+                <div>Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
                     <div class="select-polyteknos">
                         <select>
                             <option>0</option>
@@ -406,18 +416,6 @@
                     </div>
 
                     <i class="icon-inp fa fa-users"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    {{-- value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" --}}
-                    <input type="text" label="Ημερομηνία Γέννησης" name="dateOfBirth" class="demo-form ad-input ll-skin-cangas"
-                           id="datepicker"   size="30"  value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" onchange=""
-                    >
-                    <i class="icon-inp fa fa-calendar"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Τόπος Γέννησης" name="place_of_birth" class="demo-form ad-input" value="{{ $user->cv->place_of_birth }}">
-                    <i class="icon-inp fa fa-map-marker"></i>
                 </div>
 
 

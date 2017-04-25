@@ -14,9 +14,9 @@ class CreateAdmissionsTable extends Migration
     public function up()
     {
         Schema::create('admissions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('scholarship_id');
+            $table->primary(['scholarship_id', 'user_id']);
+            $table->integer('user_id')->index();
+            $table->integer('scholarship_id')->index();
 
             $table->string('father_name')->nullable();
             $table->string('father_email')->nullable();

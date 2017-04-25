@@ -862,6 +862,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createTerms($school11->id, 'Κείμενο όρων συμμετοχής στην υποτροφία', true);
         $this->createTerms($school11->id, '<strong>KEIMENO</strong>', false, 38);
         $this->createTerms($school11->id, '<strong>TEST</strong>', false, $s->id);
+
         // Interested
         $this->interested(21, 1);
         $this->interested(22, 1);

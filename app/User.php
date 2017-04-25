@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Admission;
 use App\Models\Cv;
 use App\Models\Guardian as ParentUser;
 use App\Models\Link;
@@ -152,5 +153,23 @@ class User extends Authenticatable
     public function cv()
     {
         return $this->hasOne(Cv::class);
+    }
+
+    public function admissions()
+    {
+        return $this->hasMany(Admission::class);
+    }
+
+    public function checkAdmission(Scholarship $scholarship)
+    {
+        $check = false;
+        foreach ($this->admissions as $admission) {
+            if ($admission->scholarship_id == $scholarship->id) {
+                $check = true;
+                break;
+            }
+        }
+
+        return $check;
     }
 }

@@ -195,7 +195,7 @@
                 <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
             </span>
             <span class=" col-xxxs-5 col-xs-4 col-sm-5 col-md-5col-lg-4 align-right" >
-                <div class="" >{{ $scholarship->exams }} NAI</div>
+                <div class="" >{{ $scholarship->exam ? 'NAI' : 'OXI' }}</div>
                 <div class="margin-top-10">@{{scholarship.exams}}</div>
             </span>
 
@@ -208,22 +208,20 @@
 <div class="container stats sc-xs-hidden hidden-md hidden-lg">
     <div class="box-in sc-t-grey  ">
         <div class="col-sm-4  col-xs-5 colmn ">
-            {{--col-md-offset-2 col-lg-offset-2--}}
             <span class="col-sm-10  col-xs-10 first-col">
                 <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
                 <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
                 <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
             </span>
             <span class="col-sm-1 col-xs-1 align-right">
-                <div class="">34</div>
-                <div class="margin-top-10">123</div>
+                <div class="">@{{scholarship.length}}</div>
+                <div class="margin-top-10">@{{scholarship.interested}}</div>
                   <div class="margin-top-10" >{{ $scholarship->exams }} NAI</div>
             </span>
 
         </div>
 
         <div class="col-sm-5  col-xs-7">
-            {{--col-lg-offset-1--}}
             <span class=" col-sm-7   col-xs-6">
                 <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
                 <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
@@ -260,9 +258,12 @@
         {{--@endif--}}
 
         <span class="">
-        {{-- data-toggle="modal" data-target="#admission-modal" --}}
         @if(auth()->check())
-        <a href="/public/scholarship/admission/{{ auth()->user()->id }}/@{{scholarship.id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
+        @if(!auth()->user()->checkAdmission($scholarship))
+        <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
+        @else
+        <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αιτήθηκα </button></a>
+        @endif
         @endif
         </span>
 
@@ -325,7 +326,6 @@
                 Όροι & Δικαίωμα Συμμετοχής
             </div>
             <div class="text">
-                {{--htmlentities()--}}
                 {{ $scholarship->terms }}
 
             </div>
@@ -343,30 +343,17 @@
         </div>
         <div style="" class="box-right">
             <div class="title right">
-                {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} %
+                {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}
             </div>
             <div class="text-right">
                 Ο τελικός νικητής από όλους τους συμμετέχοντες για τη συγκεκριμένη
-                υποτροφία, θα αποκτήσει για τις σπουδές του  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} %.
+                υποτροφία, θα αποκτήσει για τις σπουδές του  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}.
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
 </div>
 </div>
-
-{{--<div style="margin-top: 140px"></div>--}}
-
-{{--<!-- ======   Modal Αίτησης =======-->--}}
-<div id="admission-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            @include('components.modals.admission')
-        </div>
-    </div>
-</div><!-- /.modal -->
-
-
 
 <!-- Footer -->
 @include('public.footer')
@@ -379,7 +366,7 @@
             .controller("scholarshipCtrl",function ($scope,$http) {
 
                  $scope.init = function(){
-                    $scope.scholarship = $http.get("/api/scholarship/get/1", {
+                    $scope.scholarship = $http.get("/api/scholarship/get/{{$scholarship->id}}", {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
                             'X-CSRF-TOKEN': window.Scholio.csrfToken
