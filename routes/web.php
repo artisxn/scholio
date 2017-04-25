@@ -137,3 +137,10 @@ Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User 
     // dd($user);
     return view('public.school.admission', compact('user', 'scholarship'));
 });
+
+
+/* ===== TESTING ROUTE FOR  ADMISSION  Student Profile ====== */
+Route::get('/student/{user}/', function (User $user) {
+    // dd($user);
+    return view('public.school.student-profile', compact('user'));
+});
