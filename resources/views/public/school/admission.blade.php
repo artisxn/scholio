@@ -89,6 +89,8 @@
         .col-left{padding-left: 0}
         .col-right{padding-right: 0}
 
+        .drop-title{color: #008DA5; font-weight: 300}
+
 
         /*  ========= TextArea Input Css    ========= */
         .notes {
@@ -149,7 +151,7 @@
             width: 60px; height: 27px;
             background-color: #F1F4F5;
         }
-        .select-polyteknos{position: absolute; top: 27px;  left: 40px;}
+        .select-polyteknos{ margin: 5px 0 10px 15px;}
         /*  ======================================= */
 
         @media (min-width:992px) and (max-width: 1200px) {
@@ -390,7 +392,7 @@
                 </div>
 
                 <div class="col-sm-6 input-container">
-                <div>Μέλος Πολύτεκνης Οικογένειας</div>
+                <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
 
                     <div class="select-polyteknos">
                         <select>
@@ -402,8 +404,8 @@
                     <i class="icon-inp fa fa-users"></i>
                 </div>
 
-                <div class="col-sm-6 input-container">
-                <div>Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
+                <div class="col-sm-6 ">
+                <div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
                     <div class="select-polyteknos">
                         <select>
                             <option>0</option>

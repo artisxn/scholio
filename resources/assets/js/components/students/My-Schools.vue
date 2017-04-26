@@ -1,9 +1,9 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 com-md-4" v-for="mySchool in mySchools">
+    <div class="row ">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"  v-for="mySchool in mySchools">
             <div class="card-box">
                 <div class="row">
-                    <div class="contact-card">
+                    <div class="contact-card" style="min-height: 140px;">
                         <a class="pull-left col-xs-3" href="#">
                             <img width="80" :src="'/images/schools/' + mySchool.logo" alt=""/>
                         </a>
@@ -33,15 +33,19 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="hasNOTReviewed(mySchool.id)">
-                    <a :href="'/panel/users/review/create/' + mySchool.id" class="btn btn-primary">
-                        ΑΞΙΟΛΟΓΗΣΕ ΤΟ ΣΧΟΛΕΙΟ
-                    </a>
+                <div>
+                    <div v-if="hasNOTReviewed(mySchool.id)" style="margin-top: -15px">
+                        <a :href="'/panel/users/review/create/' + mySchool.id" class="btn btn-primary">
+                            ΑΞΙΟΛΟΓΗΣΕ ΤΟ ΣΧΟΛΕΙΟ
+                        </a>
+                    </div>
+                    <div v-else>
+                        ΕΧΕΤΕ ΗΔΗ ΑΞΙΟΛΟΓΗΣΕΙ ΑΥΤΟ ΤΟ ΣΧΟΛΕΙΟ
+                    </div>
                 </div>
-                <div v-else>
-                    ΕΧΕΤΕ ΗΔΗ ΑΞΙΟΛΟΓΗΣΕΙ ΑΥΤΟ ΤΟ ΣΧΟΛΕΙΟ
-                </div>
+
             </div>
+
         </div>
     </div>
 </template>
