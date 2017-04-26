@@ -123,4 +123,9 @@ class Scholarship extends Model
 
         return $array;
     }
+
+    public function admissions()
+    {
+        return $this->hasMany(Admission::class);
+    }
 }

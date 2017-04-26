@@ -265,4 +265,43 @@ class School extends Model
 
         Scholio::createSchoolDummy($school);
     }
+
+    public function admissions()
+    {
+        $result = [];
+        foreach ($this->scholarship as $scholarship) {
+            foreach ($scholarship->admissions as $admission) {
+                array_push($result, $admission);
+            }
+        }
+
+        return collect($result);
+    }
+
+    public function admissionsUsers()
+    {
+        $result = [];
+        foreach ($this->scholarship as $scholarship) {
+            foreach ($scholarship->admissions as $admission) {
+                array_push($result, $admission->user);
+            }
+        }
+
+        return collect($result);
+    }
+
+    public function fullAdmission()
+    {
+        $result = [];
+        foreach ($this->scholarship as $scholarship) {
+            foreach ($scholarship->admissions as $index => $admission) {
+                $p = ['user' => $admission->user->info, 'scholarship' => $admission->scholarship->load('study')];
+
+                // $arrayName['user' =>$admission->user->info, '']
+                array_push($result, $p);
+            }
+        }
+
+        return collect($result);
+    }
 }

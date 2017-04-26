@@ -3,6 +3,7 @@
 use App\Events\StudentAppliedOnScholarship;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Student;
 use App\Scholio\Scholio;
 use App\User;
 
@@ -138,9 +139,14 @@ Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User 
     return view('public.school.admission', compact('user', 'scholarship'));
 });
 
-
 /* ===== TESTING ROUTE FOR  ADMISSION  Student Profile ====== */
-Route::get('/student/{user}/', function (User $user) {
+Route::get('/student/{student}/', function (Student $student) {
     // dd($user);
+    $user = $student->user;
     return view('public.school.student-profile', compact('user'));
+});
+
+Route::get('qqqq', function () {
+    $s = App\Models\School::find(1);
+    return $s->fullAdmission();
 });

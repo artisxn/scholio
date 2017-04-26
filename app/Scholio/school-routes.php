@@ -2,6 +2,7 @@
 Route::get('scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate')->name('scholarship-create');
 Route::get('scholarships/view', 'AdminPanelController@scholarshipView')->name('scholarship-view');
+Route::get('scholarships/request', 'AdminPanelController@scholarshipRequest')->name('scholarship-request');
 Route::get('dashboard', 'AdminPanelController@dashboard')->name('dashboard');
 Route::get('studies', 'AdminPanelController@studies')->name('studies-select');
 Route::get('/teachers', 'AdminPanelController@teachers')->name('teachers');

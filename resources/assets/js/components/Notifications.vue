@@ -9,8 +9,9 @@
             <ul class="dropdown-menu dropdown-menu-lg">
                 <li class="notifi-title"><span class="label label-default pull-right"></span>Ειδοποιήσεις</li>
                 <li class="list-group nicescroll notification-list">
-                <a href="/panel/school/requests" class="list-group-item" v-if="unreadNotifications.length">
-                   <div class="media" v-if="unreadNotifications[0].type == 'App\\Notifications\\StudentAppliedOnScholarship'">
+                
+                   <div class="media" v-if="unreadNotifications.length && unreadNotifications[0].type == 'App\\Notifications\\StudentAppliedOnScholarship'">
+                   <a href="/panel/school/scholarships/request" class="list-group-item" v-if="unreadNotifications.length">
                       <div class="pull-left p-r-10">
                          <em class="fa fa-trophy fa-2x text-info"></em>
                       </div>
@@ -20,9 +21,13 @@
                              <small>{{ unreadNotifications.length }} αιτήματα</small>
                          </p>
                       </div>
+                    </a> 
                    </div>
+               
 
-                   <div class="media" v-if="unreadNotifications[0].type == 'other'">
+              
+                   <div class="media" v-if="unreadNotifications.length && unreadNotifications[0].type == 'other'">
+                    <a v-bind:href="url" class="list-group-item">
                       <div class="pull-left p-r-10">
                          <em class="fa fa-user-plus fa-2x text-info"></em>
                       </div>
@@ -32,10 +37,10 @@
                              <small>{{ unreadNotifications.length }} αιτήματα</small>
                          </p>
                       </div>
+                      </a>
                    </div>
-
-
-                </a>
+               
+                
                 </li>
                 <li>
                     <div class="list-group-item text-right">

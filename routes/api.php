@@ -12,6 +12,11 @@ use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Http\Request;
 
+Route::get('/scholarship/getFullAdmissions', function () {
+    $school = auth()->user()->info;
+    return $school->fullAdmission();
+})->middleware('auth:api');
+
 Route::post('/request/school', function () {
     if (auth()->user()->role != 'school') {
         event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school)));
@@ -44,6 +49,7 @@ Route::get('/school/id/{id}', 'ApiController@schoolId')->middleware('auth:api');
 Route::get('/financial/id/{id}', 'ApiController@financialId')->middleware('auth:api');
 Route::get('/scholarships/all', 'ApiController@scholarshipsAll')->middleware('auth:api');
 Route::get('/scholarship/{school}', 'ApiController@scholarship')->middleware('auth:api');
+Route::get('/scholarship/requests', 'ApiController@scholarshipRequests')->middleware('auth:api');
 Route::get('/school/studies', 'ApiController@studiesGET')->middleware('auth:api');
 Route::post('/school/studies', 'ApiController@studiesPOST')->middleware('auth:api');
 Route::get('/school/getSchoolStudies', 'ApiController@getStudies')->middleware('auth:api');

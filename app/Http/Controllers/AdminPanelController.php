@@ -234,4 +234,9 @@ class AdminPanelController extends Controller
         return back();
     }
 
+    public function scholarshipRequest()
+    {
+        return view('panel.pages.school.scholarships.request');
+    }
+
 }

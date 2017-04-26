@@ -408,4 +408,9 @@ class ApiController extends Controller
         }
         return $links;
     }
+
+    public function scholarshipRequests()
+    {
+        return auth()->user()->info->admissions();
+    }
 }
