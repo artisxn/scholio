@@ -242,6 +242,57 @@
                 </div>
             </div>
 
+            {{-- ΕΔΩ ΤΑ ΥΠΟΛΟΙΠΑ (ΤΑ ΕΜΦΑΝΙΖΩ ΜΟΝΟ ΑΝ ΔΕΝ ΕΙΝΑΙ NULL)--}}
+
+
+
+            {{$admission->father_name!=null ? 'father_name:' . $admission->father_name : ''}}<br>
+            {{$admission->father_email!=null ? 'father_email:' . $admission->father_email : ''}}<br>
+            {{$admission->father_phone!=null ? 'father_phone:' . $admission->father_phone : ''}}<br>
+            {{$admission->father_city!=null ? 'father_city:' . $admission->father_city : ''}}<br>
+            {{$admission->father_post_code!=null ? 'father_post_code:' . $admission->father_post_code : ''}}<br>
+            {{$admission->father_job!=null ? 'father_job:' . $admission->father_job : ''}}<br>
+            {{$admission->father_company!=null ? 'father_company:' . $admission->father_company : ''}}<br>
+            {{$admission->father_vat!=null ? 'father_vat:' . $admission->father_vat : ''}}<br>
+            {{$admission->father_income!=null ? 'father_income:' . $admission->father_income : ''}}<br>
+            {{$admission->father_id_number!=null ? 'father_id_number:' . $admission->father_id_number : ''}}<br>
+            {{$admission->mother_name!=null ? 'mother_name:' . $admission->mother_name : ''}}<br>
+            {{$admission->mother_email!=null ? 'mother_email:' . $admission->mother_email : ''}}<br>
+            {{$admission->mother_phone!=null ? 'mother_phone:' . $admission->mother_phone : ''}}<br>
+            {{$admission->mother_city!=null ? 'mother_city:' . $admission->mother_city : ''}}<br>
+            {{$admission->mother_post_code!=null ? 'mother_post_code:' . $admission->mother_post_code : ''}}<br>
+            {{$admission->mother_job!=null ? 'mother_job:' . $admission->mother_job : ''}}<br>
+            {{$admission->mother_company!=null ? 'mother_company:' . $admission->mother_company : ''}}<br>
+            {{$admission->mother_vat!=null ? 'mother_vat:' . $admission->mother_vat : ''}}<br>
+            {{$admission->mother_income!=null ? 'mother_income:' . $admission->mother_income : ''}}<br>
+            {{$admission->mother_id_number!=null ? 'mother_id_number:' . $admission->mother_id_number : ''}}<br>
+            {{$admission->guardian_name!=null ? 'guardian_name:' . $admission->guardian_name : ''}}<br>
+            {{$admission->guardian_email!=null ? 'guardian_email:' . $admission->guardian_email : ''}}<br>
+            {{$admission->guardian_phone!=null ? 'guardian_phone:' . $admission->guardian_phone : ''}}<br>
+            {{$admission->guardian_city!=null ? 'guardian_city:' . $admission->guardian_city : ''}}<br>
+            {{$admission->guardian_post_code!=null ? 'guardian_post_code:' . $admission->guardian_post_code : ''}}<br>
+            {{$admission->guardian_job!=null ? 'guardian_job:' . $admission->guardian_job : ''}}<br>
+            {{$admission->guardian_company!=null ? 'guardian_company:' . $admission->guardian_company : ''}}<br>
+            {{$admission->guardian_vat!=null ? 'guardian_vat:' . $admission->guardian_vat : ''}}<br>
+            {{$admission->guardian_income!=null ? 'guardian_income:' . $admission->guardian_income : ''}}<br>
+            {{$admission->guardian_id_number!=null ? 'guardian_id_number:' . $admission->guardian_id_number : ''}}<br>
+            {{$admission->id_number!=null ? 'id_number:' . $admission->id_number : ''}}<br>
+            {{$admission->post_code!=null ? 'post_code:' . $admission->post_code : ''}}<br>
+            {{$admission->religion!=null ? 'religion:' . $admission->religion : ''}}<br>
+            {{$admission->nationality!=null ? 'nationality:' . $admission->nationality : ''}}<br>
+            {{$admission->place_of_birth!=null ? 'place_of_birth:' . $admission->place_of_birth : ''}}<br>
+            {{$admission->student_relatives!=null ? 'student_relatives:' . $admission->student_relatives : ''}}<br>
+            {{$admission->school_grades!=null ? 'school_grades:' . $admission->school_grades : ''}}<br>
+            {{$admission->previous_school!=null ? 'previous_school:' . $admission->previous_school : ''}}<br>
+            {{$admission->polyteknos!=null ? 'polyteknos:' . $admission->polyteknos : ''}}<br>
+            {{$admission->skills!=null ? 'skills:' . $admission->skills : ''}}<br>
+            {{$admission->languages!=null ? 'languages:' . $admission->languages : ''}}<br>
+            {{$admission->certifications!=null ? 'certifications:' . $admission->certifications : ''}}<br>
+            {{$admission->awards!=null ? 'awards:' . $admission->awards : ''}}<br>
+            {{$admission->other_interests!=null ? 'other_interests:' . $admission->other_interests : ''}}<br>
+            {{$admission->aboutMe!=null ? 'aboutMe:' . $admission->aboutMe : ''}}<br>
+            {{$admission->notes!=null ? 'notes:' . $admission->notes : ''}}<br>
+
         </div>
 
     </div>

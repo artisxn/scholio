@@ -1,9 +1,9 @@
 <?php
 
 use App\Events\StudentAppliedOnScholarship;
+use App\Models\Admission;
 use App\Models\Scholarship;
 use App\Models\School;
-use App\Models\Student;
 use App\Scholio\Scholio;
 use App\User;
 
@@ -145,13 +145,7 @@ Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User 
 });
 
 /* ===== TESTING ROUTE FOR  ADMISSION  Student Profile ====== */
-Route::get('/student/{student}/', function (Student $student) {
-    // dd($user);
-    $user = $student->user;
-    // if(stu)
-    return view('public.school.student-profile', compact('user'));
-});
-
-Route::get('*', function () {
-    abort(404, 'NOOO');
+Route::get('/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
+    $admission = Admission::where('user_id', $user->id)->where('scholarship_id', $scholarship->id)->first();
+    return view('public.school.student-profile', compact('admission', 'user', 'scholarship'));
 });
