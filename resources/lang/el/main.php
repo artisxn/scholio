@@ -17,12 +17,12 @@ return [
         'searchbar' => [
             'scholarships' => [
                 'title' => 'Υποτροφίες',
-                'placeholder' => '',
+                'placeholder' => 'Αναζήτησε Υποτροφία πχ Νομική Bachelor, ή Αγγλικά, ή Ιδιωτικό Λύκειο',
                 'button' => 'Αναζήτηση',
             ],
             'institutions' => [
                 'title' => 'Εκπαιδευτικά Ιδρύματα',
-                'placeholder' => '',
+                'placeholder' => 'Αναζήτησε Εκπαιδευτικά Ιδρύματα πχ Κολλέγιο, ή Γαλλικά, ή Δημοτικό',
                 'button' => 'Αναζήτηση',
             ],
         ],

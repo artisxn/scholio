@@ -190,6 +190,7 @@
                     </li>
                     @endif
                     </ul>
+                    <a href="lang/en">EN</a> | <a href="lang/el">GR</a>
                 </div>
             </div>
 
