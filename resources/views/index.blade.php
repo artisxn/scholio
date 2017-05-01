@@ -173,8 +173,13 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg">
                 <div class="">
+                <form action="/lang" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="lang" value="el">
+                    <button type="submit">Submit</button>
+                </form>
                     <ul class="nav navbar-nav navbar-right sc-landing-menu">
-                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec2">ΣΧΕΤΙΚΑ</a></li>
+                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec2">@lang('main.navigation.about')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">ΣΗΜΕΙΑ ΥΠΕΡΟΧΗΣ</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">ΕΚΠΑΙΔΕΥΤΗΡΙΑ</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>

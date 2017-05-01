@@ -7,6 +7,11 @@ use App\Models\Student;
 use App\Scholio\Scholio;
 use App\User;
 
+Route::post('/lang', function () {
+    // Cookie::queue('lang', $locale, 100);
+    return back();
+});
+
 Route::get('a/{scholarship}', function (Scholarship $scholarship) {
     event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
 });
@@ -143,10 +148,10 @@ Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User 
 Route::get('/student/{student}/', function (Student $student) {
     // dd($user);
     $user = $student->user;
+    // if(stu)
     return view('public.school.student-profile', compact('user'));
 });
 
-Route::get('qqqq', function () {
-    $s = App\Models\School::find(1);
-    return $s->fullAdmission();
+Route::get('*', function () {
+    abort(404, 'NOOO');
 });
