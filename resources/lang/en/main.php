@@ -7,28 +7,28 @@ return [
         'institutions' => 'INSTITUTIONS',
         'contact' => 'CONTACT',
         'login' => 'Login',
-        'Register' => 'Register',
+        'register' => 'Register',
         'logout' => 'Logout',
         'admin' => 'Admin',
     ],
-    'main' => [
+    'first' => [
         'title' => '',
-        'subtitle' => 'Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.',
+        'subtitle' => 'Find the Scholarship that firts you!',
         'searchbar' => [
             'scholarships' => [
-                'title' => 'Υποτροφίες',
-                'placeholder' => '',
-                'button' => 'Αναζήτηση',
+                'title' => 'Scholarships',
+                'placeholder' => 'Search for a Scholarship ex. Bachelor of Science, Marketing, Private School',
+                'button' => 'Search',
             ],
             'institutions' => [
-                'title' => 'Εκπαιδευτικά Ιδρύματα',
-                'placeholder' => '',
-                'button' => 'Αναζήτηση',
+                'title' => 'Institutions',
+                'placeholder' => 'Search for an Institution ex. Private School, German',
+                'button' => 'Search',
             ],
         ],
     ],
     'about' => [
-        'title' => 'Βρες τη δική σου υποτροφία με 3 βήματα',
+        'title' => 'Βρες τη δική σου υποτροφία με 3 βήματα ENG',
         'section1' => [
             'title' => 'Αναζήτησε Υποτροφίες',
             'subtitle' => 'Επέλεξε την κατηγορία όπως Κολλέγιο, ΙΕΚ , Ιδιωτικό Λύκειο ή Φροντιστήριο και την πόλη που σε ενδιαφέρει.',

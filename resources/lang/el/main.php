@@ -5,13 +5,13 @@ return [
         'about' => 'ΣΧΕΤΙΚΑ',
         'features' => 'ΣΗΜΕΙΑ ΥΠΕΡΟΧΗΣ',
         'institutions' => 'ΕΚΠΑΙΔΕΥΤΗΡΙΑ',
-        'contact' => 'Contact',
+        'contact' => 'ΕΠΙΚΟΙΝΩΝΙΑ',
         'login' => 'Σύνδεση',
-        'Register' => 'Εγγραφή',
+        'register' => 'Εγγραφή',
         'logout' => 'Αποσύνδεση',
         'admin' => 'Διαχείριση',
     ],
-    'main' => [
+    'first' => [
         'title' => '',
         'subtitle' => 'Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.',
         'searchbar' => [

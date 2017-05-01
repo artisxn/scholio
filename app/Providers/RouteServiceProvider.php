@@ -34,6 +34,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
+        // Route::group(['prefix' => 'gr'], function () {
+
+        // });
         $this->mapWebRoutes();
         $this->mapApiRoutes();
         //

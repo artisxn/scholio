@@ -173,32 +173,25 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg">
                 <div class="">
-                <form action="/lang" method="POST">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="lang" value="el">
-                    <button type="submit">Submit</button>
-                </form>
                     <ul class="nav navbar-nav navbar-right sc-landing-menu">
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec2">@lang('main.navigation.about')</a></li>
-                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">ΣΗΜΕΙΑ ΥΠΕΡΟΧΗΣ</a></li>
-                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">ΕΚΠΑΙΔΕΥΤΗΡΙΑ</a></li>
-                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">@lang('main.navigation.features')</a></li>
+                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">@lang('main.navigation.institutions')</a></li>
+                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">@lang('main.navigation.contact')</a></li>
                         @if(auth()->check())
-                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
-                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
+                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                     @else
-                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">Εγγραφή</button></a></li>
+                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">@lang('main.navigation.register')</button></a></li>
                     <li>
                     <a href="">
-                    <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button>
+                    <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">@lang('main.navigation.login')</button>
                     </a>
                     </li>
                     @endif
                     </ul>
                 </div>
             </div>
-
-
 
             <!-- Mobile Menu -->
             <div class="col-xs-6 visible-sm visible-xs ">
@@ -275,7 +268,7 @@
         <div class="container">
             <div class="sc-landing-sec1-content">
                 <h1 class="text-center sc-t-white"><span class="typed-js"></span> </h1>
-                <h3  class="text-center sc-t-white">Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</h3>
+                <h3  class="text-center sc-t-white">@lang('main.first.subtitle')</h3>
 
             </div>
         </div>
@@ -301,8 +294,8 @@
         <div class="">
             <div class=" container search-container" style="position: relative">
 
-                <button class=" sc-button sc-t-white navbar-btn btn-scholarships btn-non-active" ng-click="selectedButton=1" ng-class="{'btn-active': selectedButton==1}"><i class="fa fa-trophy margin-right-10"></i>Υποτροφίες</button>
-                <button class=" sc-button sc-t-white navbar-btn btn-schools btn-non-active" ng-click="selectedButton=2" ng-class="{'btn-active': selectedButton==2}"><i class="fa fa-university margin-right-10"></i>Εκπαιδευτικά Ιδρύματα</button>
+                <button class=" sc-button sc-t-white navbar-btn btn-scholarships btn-non-active" ng-click="selectedButton=1" ng-class="{'btn-active': selectedButton==1}"><i class="fa fa-trophy margin-right-10"></i>@lang('main.first.searchbar.scholarships.title')</button>
+                <button class=" sc-button sc-t-white navbar-btn btn-schools btn-non-active" ng-click="selectedButton=2" ng-class="{'btn-active': selectedButton==2}"><i class="fa fa-university margin-right-10"></i>@lang('main.first.searchbar.institutions.title')</button>
 
                 <div class=" sc-landing-search-bar-content">
 
@@ -311,7 +304,7 @@
                         <div class="col-md-10 col-sm-10" id="">
                             <input name="text" type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets1()"
                                    ng-model="selection1"
-                                   placeholder="Αναζήτησε Υποτροφία πχ Νομική Bachelor, ή Αγγλικά, ή Ιδιωτικό Λύκειο"
+                                   placeholder="@lang('main.first.searchbar.scholarships.placeholder')"
                             />
 
                              <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
@@ -319,7 +312,7 @@
                         </div>
 
                         <div class="col-md-2 col-sm-12">
-                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
+                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="@lang('main.first.searchbar.scholarships.button')">
                         </div>
                     </form>
 
@@ -329,14 +322,14 @@
                         <div class="col-md-10 col-sm-10" id="">
                             <input name="text" type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets2()"
                                    ng-model="selection2"
-                                   placeholder="Αναζήτησε Εκπαιδευτικά Ιδρύματα πχ Κολλέγιο, ή Γαλλικά, ή Δημοτικό"
+                                   placeholder="@lang('main.first.searchbar.scholarships.placeholder')"
                             />
                             <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
                                 <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
                         </div>
 
                         <div class="col-md-2 col-sm-12">
-                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="Αναζήτηση">
+                            <input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="@lang('main.first.searchbar.institutions.button')">
                         </div>
                     </form>
 
@@ -354,7 +347,7 @@
     <section id="sc-landing-sec2" class="sc-landing-sec2">
         <div class="container ">
             <div class="sc-landing-sec2-content">
-                <h2 class="text-center sc-t-white sc-t-dark-grey">Βρες τη δική σου υποτροφία με 3 βήματα</h2>
+                <h2 class="text-center sc-t-white sc-t-dark-grey">@lang('main.about.title')</h2>
                 <br><br>
                 <div class="row">
                     <div class="col-md-4 text-center">

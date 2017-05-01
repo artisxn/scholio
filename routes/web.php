@@ -7,9 +7,8 @@ use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
-Route::post('/lang', function () {
-    // Cookie::queue('lang', $locale, 100);
-    return back();
+Route::get('/lang/{locale}', function ($locale) {
+    return back()->withCookie(cookie()->forever('lang', $locale));
 });
 
 Route::get('a/{scholarship}', function (Scholarship $scholarship) {
