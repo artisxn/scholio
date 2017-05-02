@@ -1,0 +1,42 @@
+::-moz-selection{
+	background-color: #00bcd4;
+	color: #00bcd4;
+	}
+::selection{
+	background-color: #00bcd4;
+	color: #00bcd4;
+}
+
+.divider > i,
+.about-list > li > .icon,
+.service > .icon,
+.contact-info > .icon,
+.attribution > a {
+	color:#00bcd4;
+}
+
+.about-list > li > .icon:after,
+.subscribe-input > .notify,
+.send-message {
+	background:#FD6A33;
+}
+
+#nav > li > a.active,
+#nav > li > a:hover {
+	background:#fafafa;
+}
+
+.about-list > li > .icon,
+#nav > li > a {
+	border:solid 2px #fafafa;
+}
+
+.about-list > li > .content > h4:after {
+	border-bottom:dotted 2px #fafafa;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+	border-top-color: #00bcd4;
+}

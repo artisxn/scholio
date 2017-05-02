@@ -1,0 +1,39 @@
+::-moz-selection{
+	background-color: #FF5722;
+	color: #FF5722;
+	}
+::selection{
+	background-color: #FF5722;
+	color: #FF5722;
+}
+
+.divider > i,
+.about-list > li > .icon,
+.service > .icon,
+.contact-info > .icon,
+.attribution > a {
+	color:#FF5722;
+}
+
+.about-list > li > .icon:after,
+.subscribe-input > .notify,
+.send-message,
+#nav > li > a.active,
+#nav > li > a:hover {
+	background:#FF5722;
+}
+
+.about-list > li > .icon,
+#nav > li > a {
+	border:solid 2px #FF5722;
+}
+
+.about-list > li > .content > h4:after {
+	border-bottom:dotted 2px #FF5722;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+	border-top-color:#00bcd4;
+}

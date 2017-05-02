@@ -7,6 +7,10 @@ use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
+Route::get('comming', function () {
+    return view('soon.index');
+});
+
 Route::get('/lang/{locale}', function ($locale) {
     return back()->withCookie(cookie()->forever('lang', $locale));
 });

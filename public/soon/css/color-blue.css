@@ -1,0 +1,39 @@
+::-moz-selection{
+	background-color: #2196F3;
+	color: #fff;
+	}
+::selection{
+	background-color: #2196F3;
+	color: #fff;
+}
+
+.divider > i,
+.about-list > li > .icon,
+.service > .icon,
+.contact-info > .icon,
+.attribution > a {
+	color:#2196F3;
+}
+
+.about-list > li > .icon:after,
+.subscribe-input > .notify,
+.send-message,
+#nav > li > a.active,
+#nav > li > a:hover {
+	background:#2196F3;
+}
+
+.about-list > li > .icon,
+#nav > li > a {
+	border:solid 2px #2196F3;
+}
+
+.about-list > li > .content > h4:after {
+	border-bottom:dotted 2px #2196F3;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+	border-top-color: #2196F3;
+}
