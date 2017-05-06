@@ -14,7 +14,6 @@ class CreateScholarshipsTable extends Migration
     public function up()
     {
         Schema::create('scholarships', function (Blueprint $table) {
-            // $table->primary(['school_id', 'study_id']);
             $table->increments('id');
             $table->integer('school_id')->index();
             $table->integer('financial_id')->index();
@@ -27,9 +26,8 @@ class CreateScholarshipsTable extends Migration
             $table->text('terms')->nullable();
             $table->boolean('exam')->default(0);
             $table->date('exam_date')->nullable();
+            $table->boolean('active')->default('1');
             $table->timestamps();
-
-            // $table->primary(['school_id', 'study_id']);
         });
     }
 

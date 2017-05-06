@@ -204,12 +204,12 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΣΧΕΤΙΚΑ</a></li>
+                    @if($school->settings->about)<li class="sc-landing-menu-item"><a href="#sxetika" >ΣΧΕΤΙΚΑ</a></li>@endif
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
-                    <li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#reviews">ΑΞΙΟΛΟΓΗΣΕΙΣ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#faculty">ΔΙΔΑΣΚΟΝΤΕΣ</a></li>
+                    @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>@endif
+                    @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>@endif
+                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews">ΑΞΙΟΛΟΓΗΣΕΙΣ</a></li>@endif
+                    @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty">ΔΙΔΑΣΚΟΝΤΕΣ</a></li>@endif
                     @if(auth()->check())
                     <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
@@ -236,21 +236,31 @@
                         </div>
                         <br><br>
                         <div class="pull-right">
+                            @if($school->settings->about)
                             <a href="#sxetika">
                                 <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΧΕΤΙΚΑ</div>
                             </a>
+                            @endif
+                            @if($school->settings->studies)
                             <a href="#spoudes">
                                 <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΠΟΥΔΕΣ</div>
                             </a>
+                            @endif
+                            @if($school->settings->scholarships)
                             <a href="#ypotrofies">
                                 <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΥΠΟΤΡΟΦΙΕΣ</div>
                             </a>
+                            @endif
+                            @if($school->settings->reviews)
                             <a href="#reviews">
                                 <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΑΞΙΟΛΟΓΗΣΕΙΣ</div>
                             </a>
+                            @endif
+                            @if($school->settings->teachers)
                             <a href="#faculty">
                                 <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΔΙΔΑΣΚΟΝΤΕΣ</div>
                             </a>
+                            @endif
 
 
                             <div class=""><br></div>
@@ -294,14 +304,25 @@
 
                     <div class=" xs-centered-text">
                                                 <h4 class="xs-h4">@{{contactInfo.name}}</h4>
-
+                        @if($school->settings->reviews)
                                                  <span class="pad-top-5 xs-pad-top xs-review">
 
-                        <span ng-show="contactInfo.ratingCounter!=0"> <rating class="text-incr-85 sc-t-orange" id="Rating"></rating>
+                                        <span ng-show="contactInfo.ratingCounter!=0"> <rating class="text-incr-85 sc-t-orange" id="Rating"></rating>
                                                 </span>
                                                 <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.stars}} </span>
                                                 <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.reviews.length}}  Αξιολογήσεις)</span>
+
                          </span>
+
+                         @else
+
+                         <style>
+                         .socials{
+                            margin-top: -65px;
+                         }
+                            </style>
+
+                         @endif
 
                     </div>
 
@@ -817,10 +838,8 @@
                         </div>
                         @endif
 
-
-
 {{--                        @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))--}}
-                        <nav data-spy="affix" data-offset-top="1160">
+                        <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
                             <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                     data-toggle="modal" data-target="#connect-modal">
                                 <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
@@ -923,9 +942,11 @@
 //     $('#xs-submButton').css('bottom',documentHeight);
 // });
 
-
-
     $(function() {
+        var bt = $('#connectionButton');
+        var offset = bt.offset();
+        bt.attr("data-offset-top", offset.top + 120);
+
         //caches a jQuery object containing the header element
         var sb = $("#submButton1");
         $(window).scroll(function() {
@@ -1122,8 +1143,9 @@
                             }
                         }
                         console.timeEnd('initial');
-
-                        $scope.mapInitial()
+                        @if($school->settings->map)
+                            $scope.mapInitial()
+                        @endif
                     }
                 };
                 $scope.interested = function(id, index){

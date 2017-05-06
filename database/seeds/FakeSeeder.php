@@ -1022,7 +1022,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
                         $catReview = new CategoryReview;
                         $catReview->review_id = $r->id;
                         $catReview->category_id = $category->id;
-                        $catReview->stars = rand((int) 2, (int) 5);
+                        $catReview->stars = rand((int) 4, (int) 5);
                         $catReview->save();
 
                         $countStars += $catReview->stars;

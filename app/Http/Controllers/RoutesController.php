@@ -81,8 +81,7 @@ class RoutesController extends Controller
 
     public function publicProfile($id)
     {
-        $school = School::find(1);
-        // dd($school->settings);
+        $school = School::find($id);
         return view('public.school.profile')->withId($id)->withSchool($school);
     }
 

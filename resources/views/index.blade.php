@@ -190,7 +190,7 @@
                     </li>
                     @endif
                     </ul>
-                    <a href="lang/en">EN</a> | <a href="lang/el">GR</a>
+                    {{-- <a href="lang/en">EN</a> | <a href="lang/el">GR</a> --}}
                 </div>
             </div>
 
@@ -696,6 +696,7 @@
 
 </body>
 <script>
+
 function validateMyForm(el, id){
     if(id == 1) window.location = '/public/scholarships?q=' + el.text.value;
     if(id == 2)window.location = '/public/schools?q=' + el.text.value;

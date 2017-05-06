@@ -102,11 +102,11 @@ input:checked + .slider:before {
                     <div class="slider round"></div>
                 </label>
                 <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="statistics" {{auth()->user()->info->settings->statistics ? 'checked' : ''}}>
+                    <input type="checkbox" onchange="change(this)" name="info" {{auth()->user()->info->settings->info ? 'checked' : ''}}>
                     <div class="slider round"></div>
                 </label>
                 <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="info" {{auth()->user()->info->settings->info ? 'checked' : ''}}>
+                    <input type="checkbox" onchange="change(this)" name="statistics" {{auth()->user()->info->settings->statistics ? 'checked' : ''}}>
                     <div class="slider round"></div>
                 </label>
                 <label class="switch">

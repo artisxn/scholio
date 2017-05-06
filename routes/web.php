@@ -7,6 +7,10 @@ use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
+Route::get('test', function () {
+    return view('test');
+});
+
 Route::get('comming', function () {
     return view('soon.index');
 });

@@ -13,7 +13,7 @@ return [
     ],
     'first' => [
         'title' => '',
-        'subtitle' => 'Find the Scholarship that firts you!',
+        'subtitle' => 'Find the Scholarship that fits you!',
         'searchbar' => [
             'scholarships' => [
                 'title' => 'Scholarships',

@@ -75,8 +75,8 @@
     <!-- Rating js-->
     <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
 
-
-
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 </head>
 
 
@@ -706,7 +706,13 @@ angular.module("schoolsResultsApp",[])
             })
     );
 
+
+
     search.start();
+        var algolia = algoliasearch('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
+        var algoliaHelper = algoliasearchHelper(search, 'dummySchools', { hitsPerPage: 60 });
+
+        algoliaHelper.setQueryParameter('aroundLatLng', '40.80, 22.41').search()
 
     })
 
