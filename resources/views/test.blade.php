@@ -10,7 +10,8 @@
 <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
-<body style="height: 100%">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+<body style="height: 100%" ng-app="app" ng-controller="resultsCtrl">
 
 
 <div class="row">
@@ -37,12 +38,13 @@
             <script type="text/template" id="hits-template">
             @{{#hits}}
                 <div class="hit">
-
                   <h2 class="hit-name">@{{{ _highlightResult.name.value }}}</h2>
-                  <span class="hit-distance"> @{{ distance }}</span>
+                  <span class="hit-distance" ng-if="false"> @{{ distance }}</span>
                 </div>
             @{{/hits}}
             </script>
+
+
 </div>
 <div class="col-lg-9" style="height: 100%;">
     <div id="map" style="min-height: 800px; height: 100%; "></div>
@@ -64,6 +66,7 @@ var PARAMS = { hitsPerPage: 50 };
 var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
 var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
 algoliaHelper.setQueryParameter('getRankingInfo', true);
+// algoliaHelper.setQueryParameter('urlSync', true);
 var map = new google.maps.Map(document.getElementById('map'), { scrollwheel: false, streetViewControl: false, mapTypeControl: false, zoom: 4, minZoom: 3, maxZoom: 12,
   styles: [{stylers: [{hue: '#3596D2'}]}] });
 
@@ -74,6 +77,11 @@ var map = new google.maps.Map(document.getElementById('map'), { scrollwheel: fal
 
   var hitsTemplate = Hogan.compile($('#hits-template').text());
   var noResultsTemplate = Hogan.compile($('#no-results-template').text());
+
+// setTimeout(function() {
+
+// }, 20);
+
 
   var styledMapType = new google.maps.StyledMapType(
       [
@@ -433,6 +441,13 @@ var x = document.getElementById("demo");
 algoliaHelper.setQueryParameter('aroundRadius', MAX_D).search();
             }
 
+</script>
+
+<script>
+  angular.module("app",[])
+    .controller("resultsCtrl",function () {
+
+    });
 </script>
 </body>
 </html>
