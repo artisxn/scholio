@@ -67,8 +67,7 @@ var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
 var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
 algoliaHelper.setQueryParameter('getRankingInfo', true);
 // algoliaHelper.setQueryParameter('urlSync', true);
-var map = new google.maps.Map(document.getElementById('map'), { scrollwheel: false, streetViewControl: false, mapTypeControl: false, zoom: 4, minZoom: 3, maxZoom: 12,
-  styles: [{stylers: [{hue: '#3596D2'}]}] });
+var map = new google.maps.Map(document.getElementById('map'), { scrollwheel: false, streetViewControl: false, mapTypeControl: false, zoom: 4, minZoom: 3, maxZoom: 12});
 
 // DOM and Templates binding
   var $map = $('#map');
