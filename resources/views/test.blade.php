@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>gfdg</title>
+    <title>SC</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="{{asset('new/css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 </head>
 <script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
@@ -11,43 +13,100 @@
 <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-<body style="height: 100%" ng-app="app" ng-controller="resultsCtrl">
+
+<style>
+ .img-logo{ height: 45px;}
+ .hit-name{}
+ body {background-color: #F1F4F5}
+</style>
+
+<body ng-app="app" ng-controller="resultsCtrl">
 
 
-<div class="row">
-  <div class="col-lg-3">
+<div class="row pad-0-mar-0">
+  <div class="col-sm-6 col-md-5 hidden-xs" style="padding: 40px 0 0 20px; margin-right: 0">
             <header>
-                <h1>Airports - Geo Search Demo</h1>
-                <a href="" class="change_page_state page_mode mode_button active" data-mode="bounding" data-state="rectangle">Bounding box</a>
-                <a href="" class="change_page_state page_mode mode_button" data-mode="around"   data-state="ip">Around a location</a>
-                <p class="page_mode active" data-mode="bounding">
-                  A bounding box filters the scope of the results to a specified zone.<br>
-                  This zone can be
-                  <a href="" class="change_page_state state_link active" data-mode="bounding" data-state="rectangle">a rectangle</a>
+                My Cordinates
+                <div id="demo" style="margin: 0 0 20px 0 "></div>
+                <a href="" class="change_page_state page_mode mode_button" data-mode="around"   data-state="ip" ng-click="status='around'" style="color: #888">Κοντά μου</a>
+                <div class="clearfix"></div>
+                  <a href="" class="change_page_state state_link active" data-mode="bounding" data-state="rectangle" ng-click="status='rectangle'" style="color: #888">Σάρωση Χάρτη</a>
                 </p>
               </header>
 
-            <input id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Search by name, city, airport code..."/>
-            <input type="range" id="qqq" min="1000" max="80000" value="1000" onchange="rerender()">
+            <input id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Αναζήτηση Εκπαιδευτικών Ιδρυμάτων" style="width: 80%; margin: 5px 0 30px 0;"/>
+            <input type="range" id="qqq" min="1" max="700" value="10" onchange="rerender()" ng-if="status=='around'" style="width: 80%;margin: 0 0 20px 0">
 
 
-            <div id="hits"></div>
-            DEMO:
-            <div id="demo"></div>
+            <div id="hits" ></div>
+
 
             <script type="text/template" id="hits-template">
             @{{#hits}}
-                <div class="hit">
-                  <h2 class="hit-name">@{{{ _highlightResult.name.value }}}</h2>
-                  <span class="hit-distance" ng-if="false"> @{{ distance }}</span>
+                {{--<span class="hit clearfix">--}}
+                  {{--<img id="" class="img-logo" src="/images/schools/@{{logo}}">--}}
+                  {{--<span class="hit-name">@{{{ _highlightResult.name.value }}}</span>--}}
+                  {{--<span class="hit-distance" ng-if="false"> @{{ distance }}</span>--}}
+                {{--</div>--}}
+
+
+
+
+            <div class=" card clear-fix margin-bot-25" style="background-color: #fff; border-radius: 5px; height: 180px;">
+                <con>
+                    <photo class="col-sm-4 pad-0-mar-0" >
+                        <a href="/public/profile/@{{school_id}}">
+                            <img id="img0" class="card-photo pull-left" style="  max-height: 180px;  width: 100%; background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{image}})">
+                        </a>
+                        <a href="/public/profile/@{{school_id}}" target="_blank">
+                            <img id="img1"  style="position: absolute; top: 6px; left: 6px;" class=" img-mini  " src="/images/schools/@{{logo}}">
+                        </a>
+                    </photo>
+
+                </con>
+
+                <div class="col-sm-8 " style="padding-left: 20px;">
+                    <div class=" margin-bot-15 ">
+
+                    <span class="pull-left">
+                        <h5 class="pad-top-10 font-weight-300"> <a href="/public/profile/@{{school_id}}"> @{{name}}</a></h5>
+                    </span>
+                    </div>
+
+                    <div class="">
+                        <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12 sc-t-grey">
+                            <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
+                            <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95">@{{address}}</span>
+                            <br>
+                            <div class="hidden-xs">
+                                <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
+                                <span class="pull-left pad-left-3">@{{city}} </span>
+
+                                <br>
+                            </div>
+                            <div class="pad-top-3"></div>
+                            <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
+                            <span class="pull-left pad-left-5">@{{phone}}</span>
+
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+
+
+
+
+
+
+
             @{{/hits}}
             </script>
 
 
 </div>
-<div class="col-lg-9" style="height: 100%;">
-    <div id="map" style="min-height: 800px; height: 100%; "></div>
+<div class="col-sm-6 col-md-7" style="position: fixed; top: 0; right: 0">
+    <div id="map" style=" height: 100vh; "></div>
 </div>
 </div>
 
@@ -56,7 +115,7 @@
 <script>
 var LAT = '40.60';
 var LNG = '23.00';
-var MAX_D=1000000;
+var MAX_D=10;
 var c = null;
 var APPLICATION_ID = 'FM3GHJGA1T';
 var SEARCH_ONLY_API_KEY = 'de6f693844a49775415380088208bc66';
@@ -137,6 +196,7 @@ var x = document.getElementById("demo");
   if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
           var ar = LAT + ',' + LNG;
+          MAX_D=MAX_D*1000
           algoliaHelper.setQueryParameter('aroundLatLng', ar);
           algoliaHelper.setQueryParameter('aroundRadius', MAX_D);
       }
@@ -184,7 +244,7 @@ var x = document.getElementById("demo");
         switch (state) {
           case PAGE_STATES.BOUNDING_BOX_RECTANGLE:
             boundingBox = new google.maps.Rectangle({
-              bounds: {north: 35, south: 41, east: 25, west: 19},
+              bounds: {north: 35, south: 41.3, west: 20.4, east: 26.5 },
               strokeColor: '#EF5362',
               strokeOpacity: 0.8,
               strokeWeight: 2,
@@ -323,14 +383,14 @@ var x = document.getElementById("demo");
           if (fitMapToMarkersAutomatically) fitMapToMarkers();
         }
 
-        function updateMenu(stateClass, modeClass) {
+      function updateMenu(stateClass, modeClass) {
             $('.change_page_state').removeClass('active');
             $('.change_page_state[data-state="' + stateClass + '"]').addClass('active');
             $('.page_mode').removeClass('active');
             $('.page_mode[data-mode="' + modeClass + '"]').addClass('active');
           }
 
-          function fitMapToMarkers() {
+      function fitMapToMarkers() {
             var mapBounds = new google.maps.LatLngBounds();
             for (var i = 0; i < markers.length; i++) {
               mapBounds.extend(markers[i].getPosition());
@@ -377,15 +437,12 @@ var x = document.getElementById("demo");
 
               message = hit.name;
 
-
-
-
-            var content= '<span class="col-sm-2" >' +
-                '<img style="width: 42px; height: auto; margin-left: -20px;" src="' +'/images/schools/'+ hit.logo + '"/></span> ' +
+            var content= '<div class="row"><span class="col-sm-2" >' +
+                '<img style="width: 98%; height: auto; " src="' +'/images/schools/'+ hit.logo + '"/></span> ' +
                 '<a target="_blank" style="color: #000 !important" href="/public/profile/' +hit.school_id+ '"><span class="col-sm-10 info-window-text" > ' +hit.name+
                 '<div style="padding-top: 3px;"> ' +
                 ' <span class="info-window-text2"><i class="fa fa-trophy margin-right-5"></i>Υποτροφίες: '+hit.lengthScholarships+'</span> </div>' +
-                '</span> </a>'
+                '</span> </a></div>'
                 var infowindow = new google.maps.InfoWindow({content: content});
             // infoWindow.setContent(content);
 
@@ -437,15 +494,17 @@ var x = document.getElementById("demo");
             }
 
             function rerender(){
-              MAX_D = document.getElementById('qqq').value;
-algoliaHelper.setQueryParameter('aroundRadius', MAX_D).search();
+                MAX_D = document.getElementById('qqq').value*1000;
+                algoliaHelper.setQueryParameter('aroundRadius', MAX_D).search();
             }
 
 </script>
 
 <script>
   angular.module("app",[])
-    .controller("resultsCtrl",function () {
+    .controller("resultsCtrl",function ($scope) {
+
+        $scope.status='around';
 
     });
 </script>
