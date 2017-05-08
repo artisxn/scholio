@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<h1>ΟΙ ΤΑΞΕΙΣ: </h1>
+<h1>ΟΙ ΤΑΞΕΙΣ ΜΟΥ: </h1>
     @foreach($lectures as $lecture)
-    <a href="{{ url('/panel/users/teacher/class/' . $lecture->id) }}">{{ $lecture->title }}</a>
+        <a href="{{ url('/panel/users/student/class/' . $lecture->id) }}">{{ $lecture->title }}</a>
     @endforeach
 @endsection

@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Badge;
 use App\Models\Lecture;
 use App\Models\School;
+use App\Models\Student;
 use App\Models\Study;
 use App\User;
 
@@ -28,10 +30,6 @@ Route::get('/teacher/class/show', function () {
     $teacher = auth()->user()->info;
     $lectures = $teacher->lecture;
     return view('panel.pages.classes.show', compact('teacher', 'lectures'));
-});
-
-Route::get('/teacher/class/{lecture}', function (Lecture $lecture) {
-    return view('panel.pages.classes.index', compact('lecture'));
 });
 
 Route::get('/teacher/class/create', function () {
@@ -66,4 +64,25 @@ Route::post('/teacher/class/create', function () {
     $lecture->studies = $studies;
     $lecture->save();
     return 'ok';
+});
+
+Route::get('/student/class/show', function () {
+    $student = auth()->user()->info;
+    $lectures = $student->lecture;
+    return view('panel.pages.classes.student.show', compact('lectures'));
+});
+
+Route::get('/student/class/{lecture}', function (Lecture $lecture) {
+    return view('panel.pages.classes.student.index', compact('lecture'));
+});
+
+Route::get('/teacher/class/{lecture}', function (Lecture $lecture) {
+    $badges = Badge::all();
+    return view('panel.pages.classes.index', compact('lecture', 'badges'));
+});
+
+Route::post('/teacher/class/badge/{student}', function (Student $student) {
+    $badge = request()->badge;
+    $student->badge()->toggle($badge);
+    return back();
 });

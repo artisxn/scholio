@@ -33,4 +33,14 @@ class Student extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function lecture()
+    {
+        return $this->belongsToMany(Lecture::class, 'class_students');
+    }
+
+    public function badge()
+    {
+        return $this->belongsToMany(Badge::class, 'badge_student');
+    }
+
 }
