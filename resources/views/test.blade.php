@@ -18,9 +18,106 @@
  .img-logo{ height: 45px;}
  .hit-name{}
  body {background-color: #F1F4F5}
+
+ .right-map{position: fixed; top: 0; right: 0}
+
+
+ @media  (max-width: 768px) {
+     .right-map{ top: 90px; left: 0}
+ }
 </style>
 
 <body ng-app="app" ng-controller="resultsCtrl">
+
+
+<!-- Scholio Header -->
+<header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
+    <div class="" style="padding: 0 20px;">
+
+        <div class="row">
+            <div class="col-md-1 visible-lg visible-md nav-web">
+                <!-- Scholio Branding -->
+                <a class="sc-landing-brand" href="{{ url('/') }}">
+                    <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
+                        <img src="{{asset('new/img/logo.png')}}" alt="scholio logo">
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xs-6  visible-sm visible-xs">
+                <div class="nav-mobile">
+                    <a class="" href="{{ url('/') }}">
+                        <div class="navbar-brand  sc-landing-logo-sticky">
+                            <img src="{{asset('new/img/logo-m.png')}}"alt="scholio logo">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Scholio sMenu -->
+
+            <!-- Large Menu -->
+            <div class="col-md-11 visible-md visible-lg">
+                <div class="">
+                    <ul class="nav navbar-nav navbar-right sc-landing-menu">
+                        {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
+                        @if(auth()->check())
+                            <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
+                            <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
+                        @else
+                            <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">Εγγραφή</button></a></li>
+                            <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white " data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button></a></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="col-xs-6 visible-sm visible-xs ">
+                <div class="">
+                    <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
+                        <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
+                            <img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">
+                        </div>
+                    </div>
+                </div>
+
+                {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
+                <div class="">
+                    <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
+                        <a class="" role="button"
+                           href="" aria-expanded="false">
+                            <i class="fa fa-filter margin-right-30 margin-top-30 text-incr-175 sc-t-dark-grey" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="visible-xs visible-sm">
+                    <div class="sc-landing-menu-mobile-holder sc-dark-blue">
+                        <div class="pull-right">
+                            <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
+                        </div>
+                        <br><br>
+                        <div class="sign-links">
+                            @if(auth()->check())
+                                <div class=""><br></div>
+                                <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
+                                <div><br><br><br></div>
+                                <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
+                            @else
+                                <div class=""><br></div>
+                                <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
+                                <div class=""><br><br><br></div>
+                                <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>  <!-- row -->
+    </div> <!-- container-->
+</header>
+
 
 
 <div class="row pad-0-mar-0">
@@ -34,8 +131,31 @@
                 </p>
               </header>
 
-            <input id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Αναζήτηση Εκπαιδευτικών Ιδρυμάτων" style="width: 80%; margin: 5px 0 30px 0;"/>
-            <input type="range" id="qqq" min="1" max="700" value="10" onchange="rerender()" ng-if="status=='around'" style="width: 80%;margin: 0 0 20px 0">
+
+          <div class="col-sm-12 ">
+              <div class="col-sm-6">
+              <input id="search-input" class="form-control" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Αναζήτηση Εκπαιδευτικών Ιδρυμάτων" style=" margin: 5px 0 20px -20px;"/>
+              <div ng-if="status=='around'">
+                  <div style="color: #888; font-size: 87%; position: absolute; top: 47px; margin-left: -5px; left: @{{ range/8.2 }}%">@{{range }} km</div>
+                  <input type="range" id="qqq" min="1" max="700" value="10" onchange="rerender()"  style="margin: 0 0 5px -20px" ng-model="range">
+                  <div class="pull-left" style="margin:0 0 20px -20px; color: #888"> 1 km</div>
+                  <div class="pull-right" style="margin:0 20px 20px 0; color: #888"> 700 km</div>
+              </div>
+
+            </div>
+
+              <div class="btn-group col-sm-6 " style="width: 50%; margin: 5px 0; padding-right: 0;">
+                  <a href="{{ url('public/schools') }}">
+                      <button class="btn btn-primary" style=" width: 100%; height: 40px" ng-click="">
+                          <i class="fa fa-list pad-right-15" aria-hidden="true"></i>Προβολή Λίστας
+                      </button>
+                  </a>
+              </div>
+
+          </div>
+
+
+
 
 
             <div id="hits" ></div>
@@ -52,11 +172,11 @@
 
 
 
-            <div class=" card clear-fix margin-bot-25" style="background-color: #fff; border-radius: 5px; height: 180px;">
+            <div class=" card clear-fix margin-bot-15" style="background-color: #fff; height: 180px;">
                 <con>
                     <photo class="col-sm-4 pad-0-mar-0" >
                         <a href="/public/profile/@{{school_id}}">
-                            <img id="img0" class="card-photo pull-left" style="  max-height: 180px;  width: 100%; background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{image}})">
+                            <img id="img0" class="card-photo pull-left" style=" max-height: 180px;  width: 100%; background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{image}})">
                         </a>
                         <a href="/public/profile/@{{school_id}}" target="_blank">
                             <img id="img1"  style="position: absolute; top: 6px; left: 6px;" class=" img-mini  " src="/images/schools/@{{logo}}">
@@ -68,13 +188,15 @@
                 <div class="col-sm-8 " style="padding-left: 20px;">
                     <div class=" margin-bot-15 ">
 
-                    <span class="pull-left">
+                        <div style="position: absolute; top: 20px; right: 20px; color: #888">@{{distance}} </div>
+
+                    <span class="pull-left" style="padding-right: 15px;">
                         <h5 class="pad-top-10 font-weight-300"> <a href="/public/profile/@{{school_id}}"> @{{name}}</a></h5>
                     </span>
                     </div>
 
                     <div class="">
-                        <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12 sc-t-grey">
+                        <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12 sc-t-grey" style="padding-left: 0">
                             <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                             <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95">@{{address}}</span>
                             <br>
@@ -105,12 +227,13 @@
 
 
 </div>
-<div class="col-sm-6 col-md-7" style="position: fixed; top: 0; right: 0">
+<div class="col-sm-6 col-md-7 right-map" style="">
     <div id="map" style=" height: 100vh; "></div>
 </div>
 </div>
 
-
+{{--<!-- Footer -->--}}
+{{--@include('public.footer')--}}
 
 <script>
 var LAT = '40.60';
@@ -120,7 +243,7 @@ var c = null;
 var APPLICATION_ID = 'FM3GHJGA1T';
 var SEARCH_ONLY_API_KEY = 'de6f693844a49775415380088208bc66';
 var INDEX_NAME = 'dummySchools';
-var PARAMS = { hitsPerPage: 50 };
+var PARAMS = { hitsPerPage: 80 };
 // Client + Helper initialization
 var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
 var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
@@ -505,6 +628,15 @@ var x = document.getElementById("demo");
     .controller("resultsCtrl",function ($scope) {
 
         $scope.status='around';
+        $scope.range=10;
+
+        $scope.view='card';
+        $scope.changeView= function(view){
+            $scope.view=view;
+            //console.log(view)
+            if( $scope.view=='map'){  setTimeout(function() { $scope.showMap(); }, 10) }
+        }
+
 
     });
 </script>
