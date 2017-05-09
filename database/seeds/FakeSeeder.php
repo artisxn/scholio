@@ -548,7 +548,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createUsers($school1, 'teachers', [51, 52, 53, 54]);
         $this->createScholarship($school1->id, 1, 20, 207, 1, 1, 1, 1);
         $this->createScholarship($school1->id, 2, 800, 310, 3, 2, 2, 2);
-        $this->createScholarship($school1->id, 1, 50, 210, 1, 3, 2, 1);
+        $this->createScholarship($school1->id, 1, 50,  210, 1, 3, 2, 1);
         $this->createScholarship($school1->id, 2, 500, 209, 1, 4, 2, 1);
         $this->createScholarship($school1->id, 2, 800, 310, 1, 2, 2, 2);
         $this->createScholarship($school1->id, 2, 900, 279, 1, 2, 2, 2);
@@ -557,12 +557,16 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school1->id, 2, 800, 309, 3, 2, 2, 2);
         /*===============  2 AMC ================*/
         $this->createImages($school2, 'fake/amc-', 1, 7);
-        $this->createStudy($school2, [202, 204, 205, 240, 241, 244, 245, 246, 249, 250, 255, 256, 257, 258, 259, 260, 261,
+        $this->createStudy($school2, [202, 203, 204, 205, 240, 241, 244, 245, 246, 249, 250, 255, 256, 257, 258, 259, 260, 261,
             266, 267, 268, 269, 270, 281, 282, 283, 284, 285, 286, 287, 327, 328, 329, 330, 331, 332, 345, 346, 349, 350, 351, 352]);
         $this->createUsers($school2, 'students', [21, 40, 41, 42, 43, 44, 45, 46]);
         $this->createUsers($school2, 'teachers', [61, 62, 64, 65, 66]);
-        $this->createScholarship($school2->id, 2, 500, 240, 1, 1, 1, 5);
-        $this->createScholarship($school2->id, 1, 30, 350, 3, 2, 1, 5);
+        $this->createScholarship($school2->id, 2, 500,  240, 1, 1, 1, 5);
+        $this->createScholarship($school2->id, 1, 30,   350, 3, 2, 1, 4);
+        $this->createScholarship($school2->id, 2, 600,  202, 1, 3, 1, 8);
+        $this->createScholarship($school2->id, 1, 40,   328, 3, 2, 1, 5);
+        $this->createScholarship($school2->id, 2, 1000, 257, 1, 1, 1, 5);
+        $this->createScholarship($school2->id, 1, 50,   331, 3, 5, 1, 5);
         /*===============  3 AKMH ================*/
         $this->createImages($school3, 'fake/akmi-', 1, 9);
         $this->createUsers($school3, 'students', [31, 32, 33, 34, 35, 36, 37, 38]);
@@ -882,7 +886,17 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->interested(21, 6);
         $this->interested(31, 10);
         $this->interested(40, 10);
+        $this->interested(36, 10);
+        $this->interested(42, 10);
+        $this->interested(30, 10);
+        $this->interested(49, 10);
+        $this->interested(32, 10);
+        $this->interested(43, 10);
         $this->interested(37, 11);
+        $this->interested(38, 11);
+        $this->interested(39, 11);
+        $this->interested(40, 11);
+        $this->interested(41, 11);
         $this->interested(21, 21);
         $this->interested(22, 21);
         $this->interested(23, 21);
@@ -928,8 +942,36 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->userAppliedOnScholarship(31, 4);
         $this->userAppliedOnScholarship(34, 4);
         $this->userAppliedOnScholarship(21, 5);
+        $this->userAppliedOnScholarship(22, 10);
+        $this->userAppliedOnScholarship(23, 10);
+        $this->userAppliedOnScholarship(24, 10);
+        $this->userAppliedOnScholarship(25, 10);
+        $this->userAppliedOnScholarship(26, 10);
+        $this->userAppliedOnScholarship(27, 10);
+        $this->userAppliedOnScholarship(28, 10);
+        $this->userAppliedOnScholarship(29, 10);
+        $this->userAppliedOnScholarship(30, 10);
+        $this->userAppliedOnScholarship(32, 11);
+        $this->userAppliedOnScholarship(33, 11);
+        $this->userAppliedOnScholarship(34, 11);
+        $this->userAppliedOnScholarship(35, 11);
+        $this->userAppliedOnScholarship(36, 11);
+        $this->userAppliedOnScholarship(23, 12);
+        $this->userAppliedOnScholarship(24, 12);
+        $this->userAppliedOnScholarship(25, 12);
+        $this->userAppliedOnScholarship(26, 12);
+        $this->userAppliedOnScholarship(27, 12);
+        $this->userAppliedOnScholarship(24, 13);
+        $this->userAppliedOnScholarship(25, 13);
+        $this->userAppliedOnScholarship(26, 13);
+        $this->userAppliedOnScholarship(27, 13);
+        $this->userAppliedOnScholarship(24, 14);
+        $this->userAppliedOnScholarship(25, 14);
+        $this->userAppliedOnScholarship(26, 14);
         $this->userAppliedOnScholarship(22, 15);
         $this->userAppliedOnScholarship(23, 15);
+        $this->userAppliedOnScholarship(22, 17);
+        $this->userAppliedOnScholarship(23, 17);
         $this->userAppliedOnScholarship(24, 21);
         $this->userAppliedOnScholarship(25, 21);
         $this->userAppliedOnScholarship(26, 21);
@@ -937,12 +979,6 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->userAppliedOnScholarship(30, 41);
         $this->userAppliedOnScholarship(31, 41);
         $this->userAppliedOnScholarship(34, 41);
-        $this->userAppliedOnScholarship(21, 11);
-        $this->userAppliedOnScholarship(22, 12);
-        $this->userAppliedOnScholarship(23, 12);
-        $this->userAppliedOnScholarship(24, 12);
-        $this->userAppliedOnScholarship(25, 12);
-        $this->userAppliedOnScholarship(26, 12);
         $this->userAppliedOnScholarship(29, 30);
         $this->userAppliedOnScholarship(30, 40);
         $this->userAppliedOnScholarship(31, 40);
@@ -957,6 +993,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->userAppliedOnScholarship(30, 44);
         $this->userAppliedOnScholarship(31, 44);
         $this->userAppliedOnScholarship(34, 44);
+        $this->userAppliedOnScholarship(31, 49);
+        $this->userAppliedOnScholarship(34, 49);
         // ---------------------------------------------------------------- //
         // ----- ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ -------------------------------//
         factory(App\Models\Work::class, 2)->create(['user_id' => 42]);
