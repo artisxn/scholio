@@ -137,7 +137,7 @@
                     <div class="">
                         <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
                             <a class="" role="button"
-                               href="" aria-expanded="false">
+                               href="#" aria-expanded="false">
                                 <i class="fa fa-filter margin-right-30 margin-top-30 text-incr-175 sc-t-dark-grey" aria-hidden="true"></i>
                             </a>
                         </div>
