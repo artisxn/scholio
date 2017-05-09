@@ -24,3 +24,7 @@
                                     <li><a href="{{ url('/panel/users/review/show') }}">Προβολή</a></li>
                                 </ul>
                             </li>
+
+                            <li>
+                                <a href="{{ url('/panel/users/student/class/show') }}" class=""><i class="fa fa-graduation-cap"></i><span> ΟΙ ΤΑΞΕΙΣ ΜΟΥ </span></a>
+                            </li>

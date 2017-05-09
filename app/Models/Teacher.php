@@ -36,4 +36,24 @@ class Teacher extends Model
     {
         return $this->user->links();
     }
+
+    public function school()
+    {
+        return $this->user->connectedSchool[0];
+    }
+
+    public function lecture()
+    {
+        return $this->hasMany(Lecture::class);
+    }
+
+    public function school_students()
+    {
+        return $this->school()->students;
+    }
+
+    public function school_studies()
+    {
+        return $this->school()->study;
+    }
 }
