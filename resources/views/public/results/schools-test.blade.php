@@ -137,7 +137,7 @@
                     <div class="">
                         <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
                             <a class="" role="button"
-                               href="" aria-expanded="false">
+                               href="#" aria-expanded="false">
                                 <i class="fa fa-filter margin-right-30 margin-top-30 text-incr-175 sc-t-dark-grey" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -190,6 +190,7 @@
                             </div>
                         </div>
 
+
                         <div class="content-wrapper col-sm-12">
                             <aside style="width: 230px;">
 
@@ -222,6 +223,18 @@
                             <input type="text" class="form-control algolia-search-input" id="query"/>
                         </div>
                     </div>
+
+
+                    <div class="btn-group " style="width: 100%; margin: 15px 0;">
+                        <a href="{{ url('/test') }}">
+                        <button class="btn btn-primary" style=" width: 100%; height: 40px" ng-click="">
+                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>Προβολή Χάρτη
+                        </button>
+                        </a>
+                    </div>
+
+
+
 
                     <div id="sort-by-container">
 
@@ -262,7 +275,7 @@
                 <!-- ========== SCHOLARSHIPS  CONTAINER ============= -->
                 <div class="col-lg-9 col-md-9 col-sm-12 scholarship-container " id="">
 
-                    <div id="map" class="hidden-xs" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
+                    {{--<div id="map" class="hidden-xs" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>--}}
 
                     <main id="schools"></main>
 
@@ -291,6 +304,7 @@
     angular.module("sc",[])
             .controller("sctrl",function ($scope,$http) {
                 console.log('t12343124123')
+
             })
 </script>
 
