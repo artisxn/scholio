@@ -40,7 +40,7 @@ class Student extends Model
 
     public function badge()
     {
-        return $this->belongsToMany(Badge::class, 'badge_student');
+        return $this->belongsToMany(Badge::class, 'badge_student')->withPivot('lecture_id');
     }
 
 }

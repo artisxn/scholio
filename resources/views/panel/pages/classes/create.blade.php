@@ -5,10 +5,19 @@
 @endsection
 
 @section('content')
-<form action="/panel/users/teacher/class/create" method="POST">
+<form action="/panel/school/class/create" method="POST">
 {{ csrf_field() }}
     <div>
         Τίτλος: <input type="text" name="title">
+    </div>
+
+    <div>
+        Καθηγητής:
+        <select name="teacher">
+          @foreach($teachers as $teacher)
+            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+          @endforeach
+        </select>
     </div>
 
     <div>

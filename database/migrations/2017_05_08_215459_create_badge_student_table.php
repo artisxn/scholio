@@ -14,9 +14,10 @@ class CreateBadgeStudentTable extends Migration
     public function up()
     {
         Schema::create('badge_student', function (Blueprint $table) {
-            $table->primary(['badge_id', 'student_id']);
+            $table->primary(['badge_id', 'student_id', 'lecture_id']);
             $table->integer('badge_id');
             $table->integer('student_id');
+            $table->integer('lecture_id');
             $table->timestamps();
         });
     }

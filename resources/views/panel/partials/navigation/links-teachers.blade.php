@@ -18,7 +18,6 @@
     <li class="has_sub">
         <a href="#" class=""><i class="fa fa-graduation-cap"></i><span> Τάξεις </span></a>
         <ul class="list-unstyled">
-            <li><a href="{{url('/panel/users/teacher/class/create')}}">Δημιουργία Τάξης</a></li>
             <li><a href="{{url('/panel/users/teacher/class/show')}}">Προβολή Τάξεων</a></li>
         </ul>
     </li>

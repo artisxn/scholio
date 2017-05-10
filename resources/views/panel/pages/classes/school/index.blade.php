@@ -10,27 +10,26 @@
     <h3>Η ΤΑΞΗ:</h3>
      <div style="color: green;">{{ $lecture->title }}</div>
 </div>
-<br>
+<div>
+    <h3>Ο ΚΑΘΗΓΗΤΗΣ:</h3>
+     <div style="color: brown;">{{ $lecture->teacher->name }}</div>
+</div>
 <div>
     <h3>ΟΙ ΜΑΘΗΤΕΣ:</h3>
     @foreach($lecture->student as $student)
     <div class="row">
         <div class="col-sm-3" style="color: red;">
             {{ $student->user->name }}
-            @foreach($student->badge()->where('lecture_id', $lecture->id)->get() as $badge)
-                <img src="/{{ $badge->icon }}" width="15%" title="{{ $lecture->title }}">
-            @endforeach
-
-            @foreach($student->badge()->where('lecture_id', '<>', $lecture->id)->get() as $badge)
-                <img src="/{{ $badge->icon }}" width="5%" title="ok">
+            @foreach($student->badge as $badge)
+                <img src="/{{ $badge->icon }}" width="15%">
             @endforeach
         </div>
-        <div class="col-sm-9">
-        <form action="/panel/users/teacher/class/{{ $lecture->id }}/badge/{{ $student->id }}" method="POST">
+{{--         <div class="col-sm-9">
+        <form action="/panel/users/teacher/class/badge/{{ $student->id }}" method="POST">
         {{ csrf_field() }}
             <select name="badge">
                 @foreach($badges as $badge)
-                    @if($student->badge()->where('lecture_id', $lecture->id)->get()->contains($badge))
+                    @if($student->badge->contains($badge))
                         <option disabled>{{ $badge->name }}</option>
                     @else
                         <option value="{{$badge->id}}">{{ $badge->name }}</option>
@@ -40,7 +39,7 @@
             <button type="submit" class="btn btn-primary">Αποθηκευση Εμβλήματος</button>
         </form>
         </div>
-    </div>
+    </div> --}}
 
     @endforeach
 </div>

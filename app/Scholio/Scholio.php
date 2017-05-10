@@ -38,7 +38,7 @@ class Scholio
             include 'user-routes.php';
         });
 
-        Route::group(['middleware' => 'auth', 'prefix' => 'panel/school'], function () {
+        Route::group(['middleware' => ['auth', 'is.school'], 'prefix' => 'panel/school'], function () {
             include 'school-routes.php';
         });
 
