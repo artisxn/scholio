@@ -16,6 +16,7 @@ use App\Traits\EndorseSystem;
 use App\Traits\InterestedSystem;
 use App\Traits\TeacherProfiler;
 use App\Traits\UserScopes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -24,6 +25,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, UserScopes, Notifiable;
     use EndorseSystem, InterestedSystem, TeacherProfiler;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -42,6 +44,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'created_at', 'updated_at',
     ];
+
+    protected $dates = ['deleted_at'];
 
     /**
      *  Gets the school object which is assosiated with this user

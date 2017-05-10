@@ -36,6 +36,7 @@ class CreateStudentsTable extends Migration
             $table->string('mother_job')->nullable();
             $table->bigInteger('father_phone')->nullable();
             $table->bigInteger('mother_phone')->nullable();
+            $table->string('status')->default('guest');
             $table->timestamps();
         });
     }

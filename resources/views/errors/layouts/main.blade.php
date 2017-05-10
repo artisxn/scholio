@@ -6,9 +6,14 @@
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
         <meta name="author" content="Coderthemes">
 
-        <link rel="shortcut icon" href="/panel/assets/images/favicon_1.ico">
+        <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('new/img/favicon.ico')}}" type="image/x-icon" />
 
-        <title>Ubold - Responsive Admin Dashboard Template</title>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('new/img/favicon-144.ico')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('new/img/favicon-72.ico')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset('new/img/favicon-57.ico')}}">
+
+        <title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
 
         <link href="/panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/panel/assets/css/core.css" rel="stylesheet" type="text/css" />

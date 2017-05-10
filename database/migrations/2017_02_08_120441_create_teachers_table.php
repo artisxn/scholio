@@ -26,6 +26,7 @@ class CreateTeachersTable extends Migration
             $table->string('title')->nullable();
             $table->text('about')->nullable();
             $table->string('cover')->nullable();
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

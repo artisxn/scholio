@@ -9,10 +9,12 @@ use App\Models\School;
 use App\Models\Study;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Scholarship extends Model
 {
     // use Searchable;
+    use SoftDeletes;
     /**
      * Get the index name for the model.
      *

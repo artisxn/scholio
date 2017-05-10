@@ -21,6 +21,7 @@ class CreateGuardiansTable extends Migration
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();
             $table->string('address')->nullable();
+            $table->string('status')->default('guest');
             $table->timestamps();
         });
     }

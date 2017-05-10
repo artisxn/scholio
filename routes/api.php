@@ -194,3 +194,20 @@ Route::post('/setRoleType', function () {
 
     return session()->get('tttt');
 });
+
+Route::get('status/{user}/{id}', function ($user, $id) {
+    if ($user == 'teacher') {
+        $teacher = Teacher::find($id);
+        return $teacher->status;
+    }
+
+    if ($user == 'parent') {
+        $parent = Guardian::find($id);
+        return $parent->status;
+    }
+
+    if ($user == 'student') {
+        $student = Student::find($id);
+        return $student->status;
+    }
+});
