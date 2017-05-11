@@ -186,16 +186,19 @@
                         <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-twitter"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-facebook"></i></span> </a> --}}
-                        @foreach($links as $link)
-                        <a href="{{$link->link}}" style="color: white;">
-                            <span class="pull-right margin-right-25"><i class="fa fa-{{$link->name}}"></i></span>
-                        </a>
-                        @endforeach
+                        @if($links)
+                            @foreach($links as $link)
+                            <a href="{{$link->link}}" style="color: white;">
+                                <span class="pull-right margin-right-25"><i class="fa fa-{{$link->name}}"></i></span>
+                            </a>
+                            @endforeach
+                        @endif
                 </span>
             </div>
-
+            @if(!$works->isEmpty())
                 <span class="pull-left work xs-hidden">{{$works->first()->name}} </span>
                 <div class="work xs-centered xs-display">{{$works->first()->name}} </div>
+            @endif
                 <span class="pull-right work hidden-xs mail"> <i class="fa fa-envelope"></i> {{ $teacher->email() }} </span>
 
 
@@ -232,17 +235,19 @@
 
                             <img class="up png-title" src="/new/img/teacher/desk.png" alt="">
                             <div id="experience" class="title">Επαγγελματική Εμπειρία</div>
-                            @foreach($works as $work)
-                                <div class="t1">
-                                    {{ $work->name }}
-                                </div>
-                                <div class="t2">
-                                      {{ $work->company }}
-                                </div>
-                                <div class="t3">
-                                    {{ \Carbon\Carbon::parse($work->from)->year }} - {{ \Carbon\Carbon::parse($work->until)->year }}
-                                </div>
-                            @endforeach
+                            @if(!$works->isEmpty())
+                                @foreach($works as $work)
+                                    <div class="t1">
+                                        {{ $work->name }}
+                                    </div>
+                                    <div class="t2">
+                                          {{ $work->company }}
+                                    </div>
+                                    <div class="t3">
+                                        {{ \Carbon\Carbon::parse($work->from)->year }} - {{ \Carbon\Carbon::parse($work->until)->year }}
+                                    </div>
+                                @endforeach
+                            @endif
                             <hr>
 
 
