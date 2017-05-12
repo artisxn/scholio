@@ -26,7 +26,7 @@
         <link rel='stylesheet' type='text/css' href='/soon/css/jquery.fullpage.min.css' >
         <link rel='stylesheet' type='text/css' href='/soon/css/animate.min.css' >
         <link rel='stylesheet' type='text/css' href='/soon/css/style.css' >
-    <link rel='stylesheet' type='text/css' href='/soon/css/color-buttercup.css' >
+        <link rel='stylesheet' type='text/css' href='/soon/css/color-buttercup.css' >
 
         <link rel="stylesheet" type="text/css" href="/soon/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="/soon/css/demo.css" />

@@ -1,10 +1,32 @@
+s
 @extends('errors.layouts.main')
 
 @section('content')
-    <div class="text-error">
-    <span class="text-primary">4</span><i class="ti-face-sad text-pink"></i><span class="text-info">1</span>
-    </div>
-    <h2>ΓΙΑ ΝΑ ΕΙΣΕΛΘΕΤΕ ΣΤΗΝ ΣΕΛΙΔΑ ΑΠΑΙΤΕΙΤΑΙ ΝΑΙ ΕΙΣΑΓΕΤΕ ΤΟΥΣ ΚΩΔΙΚΟΥΣ ΠΡΟΣΒΑΣΗΣ</h2><br>
-    <br>
-    <a class="btn btn-default waves-effect waves-light" href="{{ url()->previous() }}"> Επιστροφή </a>
+    >
+            <!-- Your text -->
+            <h1 class="hand">Oops! Error 401 Authorization Required</h1>
+            <div class="big-content" style="margin-top: 30px;">
+                <!-- Main squares for the content logo in the background -->
+                <div class="list-square">
+                    <span class="square"></span>
+                    <span class="square"></span>
+                    <span class="square"></span>
+                </div>
+
+                <!-- Main lines for the content logo in the background -->
+                <div class="list-line">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+                <!-- The animated searching tool -->
+                <i class="fa fa-key"  aria-hidden="true"></i>
+            </div>
+            <p>Δεν έχετε πρόσβαση σε αυτή την σελίδα! Απαιτείται είσοδος με κωδικό.</p>
+
 @endsection
+
+
