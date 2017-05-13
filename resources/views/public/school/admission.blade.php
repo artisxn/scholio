@@ -232,7 +232,7 @@
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                        <img src="{{asset('new/img/logo.png')}}" alt="scholio logo">
+                        <img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">
                     </div>
                 </a>
             </div>
@@ -241,7 +241,7 @@
                 <div class="nav-mobile">
                     <a class="" href="{{ url('/') }}">
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            <img src="{{asset('new/img/logo-m.png')}}"alt="scholio logo">
+                            <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">
                         </div>
                     </a>
                 </div>
