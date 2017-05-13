@@ -15,7 +15,9 @@ class TeachersController extends Controller
     public function index(Teacher $teacher)
     {
         $works = $teacher->works();
-        if (!$works->isEmpty()) {dd('ok');}
+        // if (!$works->isEmpty()) {
+        //     dd('ok');
+        // }
         $certificates = $teacher->certificates();
         $links = $teacher->links;
         return view('teacher', compact('teacher', 'works', 'certificates', 'links'));
