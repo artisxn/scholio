@@ -1,6 +1,7 @@
 <?php
 
 Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () {
+    Route::post('/delete', 'RoutesController@studentDelete')->name('students-delete');
     Route::get('/profile', 'RoutesController@studentProfile')->name('students-profile');
     Route::get('/mySchools', 'RoutesController@mySchools')->name('students-my-schools');
     Route::get('/studentCv', 'RoutesController@studentCv')->name('students-cv');
@@ -8,7 +9,6 @@ Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () 
     Route::get('/review/create/{school}', 'RoutesController@reviewCreate')->name('student-review-create');
     // Route::get('/class/show', 'RoutesController@classShow')->name('student-class-show');
     // Route::get('/class/{lecture}', 'RoutesController@classLecture')->name('student-class-lecture');
-
 });
 
 Route::group(['middleware' => 'is.teacher', 'prefix' => 'teacher'], function () {

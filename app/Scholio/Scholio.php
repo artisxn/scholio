@@ -10,11 +10,46 @@ use App\Models\Image;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 class Scholio
 {
+    public static function deleteUser(User $user)
+    {
+        if ($user->role == 'student') {
+            // Delete all Reviews
+            $user->reviews->each->deleteReview();
+            // Delete CV
+            // $user->cv->delete();
+            // Admissions & Interests ???
+            $user->admissions->each->delete();
+            $user->interested->each->delete();
+            // Delete Links
+            // Scholarship - user connection (update algolia dummy)
+            // School - user connection (update algolia dummy)
+            //  info()
+            // USER ITSELF
+        }
+
+        if ($user->role == 'teacher') {
+            // Certificates
+            // Works
+            // Skill-User pivot
+            // School - user connection (update algolia dummy)
+            // info()
+            // USER ITSELF
+        }
+
+        if ($user->role == 'school') {
+            // Reviews
+            // Images (with image-school pivot)
+            // Scholarships (with likes and admissions)
+            // Settings
+        }
+    }
+
     public static function soonRoutes()
     {
         Route::get('coming', function () {

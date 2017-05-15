@@ -101,6 +101,11 @@
                             </div>
                         </div>
                     </form>
+
+                    <form action="{{ route('students-delete') }}" method="POST">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-danger">ΔΙΑΓΡΑΦΗ ΛΟΓΑΡΙΑΣΜΟΥ</button>
+                    </form>
                 </div>
             </div>
         </div>

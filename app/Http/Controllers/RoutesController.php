@@ -9,6 +9,7 @@ use App\Models\School;
 use App\Models\SocialLink;
 use App\Models\Student;
 use App\Models\Study;
+use App\Scholio\Scholio;
 
 class RoutesController extends Controller
 {
@@ -329,5 +330,11 @@ class RoutesController extends Controller
             return view('panel.pages.student.reviews.create', compact('school'));
         }
         return redirect('/panel/users/review/show');
+    }
+
+    public function studentDelete()
+    {
+        Scholio::deleteUser(auth()->user());
+        return 'DELETED';
     }
 }

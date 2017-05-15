@@ -37,4 +37,10 @@ class Review extends Model
         return $date->day . '/' . $date->month . '/' . $date->year;
     }
 
+    public function deleteReview()
+    {
+        $this->category()->delete();
+        $this->delete();
+    }
+
 }
