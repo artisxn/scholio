@@ -15,6 +15,10 @@ class IsParent
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (auth()->user->role == 'parent') {
+            return $next($request);
+        }
+
+        abort('403');
     }
 }

@@ -15,7 +15,7 @@ return [
     'name' => 'Schol.io',
 
     // Display Coming Soon Page
-    'soon' => true,
+    'soon' => false,
 
     /*
     |--------------------------------------------------------------------------

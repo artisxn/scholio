@@ -15,6 +15,10 @@ class IsStudent
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (auth()->user()->role == 'student') {
+            return $next($request);
+        }
+
+        abort('403');
     }
 }

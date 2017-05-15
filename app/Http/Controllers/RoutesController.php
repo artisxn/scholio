@@ -284,4 +284,50 @@ class RoutesController extends Controller
 
         return redirect('/scholarship' . '/' . $scholarship->id);
     }
+
+    public function classShow()
+    {
+        $student = auth()->user()->info;
+        $lectures = $student->lecture;
+        return view('panel.pages.classes.student.show', compact('lectures'));
+    }
+
+    public function classLecture(Lecture $lecture)
+    {
+        return view('panel.pages.classes.student.index', compact('lecture'));
+    }
+
+    public function teacherClassShow()
+    {
+        $teacher = auth()->user()->info;
+        $lectures = $teacher->lecture;
+        return view('panel.pages.classes.show', compact('teacher', 'lectures'));
+    }
+
+    public function teacherClassLecture(Lecture $lecture)
+    {
+        $badges = Badge::all();
+        return view('panel.pages.classes.index', compact('lecture', 'badges'));
+    }
+
+    public function teacherClassBadge(Lecture $lecture, Student $student)
+    {
+        $badge = request()->badge;
+        $student->badge()->attach($badge, ['lecture_id' => $lecture->id]);
+        return back();
+    }
+
+    public function reviewShow()
+    {
+        $reviews = auth()->user()->reviews;
+        return view('panel.pages.student.reviews.show', compact('reviews'));
+    }
+
+    public function reviewCreate(School $school)
+    {
+        if (auth()->user()->isConnectedWithSchool($school) && !auth()->user()->reviewedSchool($school)) {
+            return view('panel.pages.student.reviews.create', compact('school'));
+        }
+        return redirect('/panel/users/review/show');
+    }
 }

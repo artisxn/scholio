@@ -15,6 +15,10 @@ class IsTeacher
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (auth()->user()->role == 'teacher') {
+            return $next($request);
+        }
+
+        abort('403');
     }
 }
