@@ -13,6 +13,21 @@ use App\Scholio\Scholio;
 |
  */
 
+Artisan::command('scholio:soon {prop}', function ($prop) {
+    if ($prop) {
+        if ($prop == 'on') {
+            config(['app.soon' => true]);
+            $this->comment('Comming Sonn page is ON!');
+        } else if ($prop == 'off') {
+            config(['app.soon' => false]);
+            $this->comment('Comming Sonn page is OFF!');
+        } else {
+            $this->comment('Error!');
+        }
+
+    }
+});
+
 Artisan::command('scholio:init {--s|show}', function () {
     $show = $this->option('show');
 

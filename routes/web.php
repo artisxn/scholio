@@ -7,12 +7,10 @@ use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
+Scholio::soonRoutes();
+
 Route::get('test', function () {
     return view('test');
-});
-
-Route::get('comming', function () {
-    return view('soon.index');
 });
 
 Route::get('/lang/{locale}', function ($locale) {

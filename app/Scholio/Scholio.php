@@ -15,6 +15,54 @@ use Illuminate\Support\Facades\Route;
 
 class Scholio
 {
+    public static function soonRoutes()
+    {
+        Route::get('coming', function () {
+            if (request()->cookie('lang') == 'el') {
+                return view('soon.indexGR');
+            }
+
+            return view('soon.index');
+
+        });
+
+        Route::post('coming', function () {
+            if (request()->sub == 'sub') {
+                $subscription = new Subscription;
+                $subscription->email = request()->email;
+                $subscription->save();
+            } else {
+                $subscription = new Subscription;
+                $subscription->name = request()->name;
+                $subscription->email = request()->email;
+                $subscription->message = request()->message;
+                $subscription->save();
+            }
+
+            return redirect('/');
+        });
+
+        Route::get('full', function () {
+            $response = redirect('/');
+            return $response->withCookie(cookie('pass', 'iloveschool', 10));
+            // return redirect('/');
+        });
+
+        Route::post('full', function () {
+            $response = redirect('/');
+            if (request()->password == 'iloveschool') {
+                return $response->withCookie(cookie('pass', request()->password, 10));
+            }
+
+            return redirect('/comming');
+        });
+
+        Route::get('/messages', function () {
+            $subscriptions = Subscription::all();
+            $emails = $subscriptions->pluck('email');
+            return view('soon.messages', compact('subscriptions', 'emails'));
+        });
+    }
     public static function panelRoutes()
     {
         include 'development-routes.php';

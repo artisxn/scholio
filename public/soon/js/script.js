@@ -13,7 +13,7 @@ $(function(){
 	// Initialize Countdown Plugin
 	$('#countdown').countdown('2017/10/01 00:00:00', function(event) {
 
-		$(this).html(event.strftime('<div>%w<span>Εβομαδες</span></div> <div>%d<span>Ημερες</span></div> <div>%H<span>Ωρες</span></div> <div>%M<span>Λεπτα</span></div> <div>%S<span>Δευτερολεπτα</span></div>'));
+		$(this).html(event.strftime('<div>%m<span>months</span></div> <div>%d<span>days</span></div> <div>%H<span>Hours</span></div> <div>%M<span>minutes</span></div> <div>%S<span>seconds</span></div>'));
 
 	});
 
@@ -82,38 +82,6 @@ $(function(){
 					success: "Message Sent! We'll be in touch as soon as possible",
 					error: "Oops! Sorry, an error occurred. Try again."
 				};
-
-			$.ajax({
-
-				url: 'mail/mail.php',
-				type: 'post',
-				data: $this.serialize(),
-				success: function(data){
-
-					if( isJSON(data) ){
-
-						data = $.parseJSON(data);
-
-						if(data['error'] == false){
-
-							alert(alerts.success);
-
-							$('#contact-form').trigger('reset');
-
-						}else{
-							alert(data['error']);
-						}
-
-
-					}else{
-						alert(alerts.error);
-					}
-
-				},
-				error: function(){
-					alert(alerts.error);
-				}
-			});
 		}
 	});
 
