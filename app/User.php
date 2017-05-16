@@ -48,16 +48,6 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     /**
-     *  Gets the school object which is assosiated with this user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function school()
-    {
-        return $this->hasOne(School::class);
-    }
-
-    /**
      *  Gets the url to post the slack notifications
      *
      * @return String

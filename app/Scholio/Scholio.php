@@ -20,26 +20,27 @@ class Scholio
     {
         if ($user->role == 'student') {
             // Delete all Reviews
-            $user->reviews->each->deleteReview();
+            // $user->reviews->each->deleteReview();
             // Delete CV
             // $user->cv->delete();
             // Admissions & Interests ???
             $user->admissions->each->delete();
-            $user->interested->each->delete();
+            $user->interested->each->detatch($user);
             // Delete Links
             // Scholarship - user connection (update algolia dummy)
+            $user->scholarship->each->delete();
             // School - user connection (update algolia dummy)
+            $user->connectedSchool->each->students()->toggle($user);
             //  info()
-            // USER ITSELF
+            // $user->info->delete();
+            // USER
+            // $user->delete();
         }
 
         if ($user->role == 'teacher') {
-            // Certificates
-            // Works
-            // Skill-User pivot
-            // School - user connection (update algolia dummy)
+            // Scholarships
             // info()
-            // USER ITSELF
+            // USER
         }
 
         if ($user->role == 'school') {
