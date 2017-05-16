@@ -183,7 +183,8 @@
                       suggestion: function(suggestion) {
                           return '<span>' +
                               suggestion._highlightResult.name.value + '</span>';
-                      }
+                      },
+                      empty: '<div class="aa-empty">Δεν βρεθηκαν αποτελεσματα!</div>'
                   }
               }
               ];

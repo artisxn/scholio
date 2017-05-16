@@ -2,7 +2,6 @@
 <html lang='en'>
     <head>
 
-
         <title>Schol.io | Scholarships </title>
         <meta name="description" content="Scholarships,Υποτροφίες | College, Κολλεγια, ΙΕΚ, Φροντιστήρια, Ιδιωτικά Σχολεία">
         <meta name="keywords" content="Υποτροφίες,Καινοτόμες,Scholarships,Κολλέγια,ΙΕΚ,Φροντιστήρια,Ξένες Γλώσσες,Σπουδές,Ιδιωτικά Σχολεία,Λύκεια,Γυμνάσια,Δημοτικά,Αριστεία,Κοινωνικά Κριτήρια,Ταλέντο" >
@@ -12,10 +11,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="utf-8">
 
-
-
-
-
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -24,7 +19,6 @@
 
             ga('create', 'UA-98363460-1', 'auto');
             ga('send', 'pageview');
-
         </script>
 
         <!-- Favicon -->
