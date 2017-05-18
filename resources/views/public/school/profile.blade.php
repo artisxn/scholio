@@ -867,13 +867,13 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <div class="panel " style="background-color: #324c5a;">
+                    <div class="panel " style="background-color: #324c5a; height: 62px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
                         <div class="panel-heading" style="height: 55px; color: #fff">
                             <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
                                 x
 
                             </button>
-                            <img src="/new/img/logo-light-m.png" alt="scholio logo" class="pull-left sc-logo">
+                            <img src="/new/img/logo-light-m.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: -4px;">
                             <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Αίτημα Σύνδεσης</h3>
                         </div>
 
