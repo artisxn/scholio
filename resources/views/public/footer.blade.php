@@ -43,9 +43,9 @@
     <div class="container">
         <div class="row  ">
             <div class="pull-left pad-top-50 text-incr-125 col-lg-7 col-md-7 col-sm-11 col-xs-5" >
-                <a href="#" class="sc-t-white margin-right-20 ">Επικοινωνία</a>
-                <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="#" class="sc-t-white margin-right-20">Blog</a></span>
-                <span class="">  <a href="#" class="sc-t-white">Όροι Χρήσης</a></span>
+                <a href="#" class="sc-t-white margin-right-20 ">@lang('main.footer.contact')</a>
+                <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="#" class="sc-t-white margin-right-20">@lang('main.footer.blog')</a></span>
+                <span class="">  <a href="#" class="sc-t-white">@lang('main.footer.terms')</a></span>
             </div>
 
             <div class="pull-right pad-top-40 text-incr-175  pad-right-20">
@@ -60,7 +60,7 @@
         </div>
 
         <div class=" centered-text margin-bot-50">
-            <p class="sc-t-white margin-top-50">© 2017 schol.io  Με την επιφύλαξη κάθε δικαιώματος.</p>
+            <p class="sc-t-white margin-top-50">@lang('main.footer.message')</p>
             {{--<img height="27px" class="margin-top-20" src="/new/img/laravel-small2.png">--}}
             {{--<img height="31px" class="margin-top-20 margin-left-20 margin-right-20" src="/new/img/angularjs-logo.png">--}}
             {{--<img height="30px" class="margin-top-20" src="/new/img/algolia_small.png">--}}

@@ -307,7 +307,7 @@ video {
     .banner{ left: 12%; width: 76%;}
     .banner-text{ margin-left: 10%;}
     .btn-school-reg{ margin-top: 60px; margin-left: 11%}
-    .banner-title{margin-bottom: 40px; margin-left: 7%; width: 70% }
+    .banner-title{margin-bottom: 40px; margin-left: 7%; width: 98% }
 }
 
 
@@ -320,15 +320,15 @@ video {
     .banner{ left: 11%; width: 78%;}
     .banner-text{ margin-left: 3%}
     .btn-school-reg{ margin-top: 80px; margin-left: 4%}
-    .banner-title{margin-bottom: 40px; margin-left: -2%; width: 95%;}
+    .banner-title{margin-bottom: 40px; margin-left: -2%; width: 98%;}
     .mobile-hero {max-width: 150%; max-height: 620px;}
 
 
 }
 @media (max-width: 391px) {
     /*New Section*/
-    .banner-title{margin-bottom: 40px; margin-left: 3%; width: 95%;}
-    .btn-school-reg{ margin-top: 60px;  margin-left: 6%; width: 225px; }
+    .banner-title{margin-bottom: 40px; margin-left: 3%; width: 98%;}
+    .btn-school-reg{ margin-top: 60px;  margin-left: 5%; width: 235px;}
     .banner-content{ margin-top: -370px!important; }
     .btn-scholarships{width: 135px;}
     .btn-schools{width: 190px; margin-left: 122px; }
