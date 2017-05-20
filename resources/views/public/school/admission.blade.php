@@ -84,6 +84,7 @@
             border: 1px solid #aaa; border-radius: 6px; padding: 7px; min-width: 190px; max-width: 250px; background-color: #fafafa;
             box-shadow: 0 0 9px #aaa}
 
+        .section2-container{}
         .avatar-container{margin-top: 15px; margin-right: 0; padding-right: 0; }
         .avatar{height: 43px; width: auto;  margin-top: -2px}
         .col-left{padding-left: 0}
@@ -158,9 +159,15 @@
             .cont1{padding-left: 20px;}
         }
 
+        @media (min-width:992px) and (max-width: 1199px) {
+            .select-icon2{margin-top: 18px;}
+        }
+
+
         @media (min-width: 768px) and (max-width: 991px) {
             .col-left, .col-right{padding: 0}
             .cont1{padding-left: 28px;}
+            .select-icon2{margin-top: 18px;}
         }
 
         @media  (max-width: 767px) {
@@ -176,6 +183,7 @@
             .cont1{width: 88%; float: left; margin-bottom: 20px;}
             .clear-fix-sm{clear: both; }
             .select-polyteknos{ top: 0;  left: 36px;}
+            .select-icon,.select-icon2{margin-top: 26px;}
 
         }
         @media  (max-width: 600px) {
@@ -191,6 +199,11 @@
 
         @media  (max-width:480px) {
             .sch-name{display: block}
+        }
+
+
+        @media  (max-width:496px) {
+            .select-icon2{margin-top: 48px;}
         }
 
         @media  (max-width: 390px) {
@@ -390,6 +403,15 @@
                     <input type="text" label="Τόπος Γέννησης" name="place_of_birth" class="demo-form ad-input" value="{{ $user->cv->place_of_birth }}">
                     <i class="icon-inp fa fa-map-marker"></i>
                 </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Προηγούμενο Σχολείο" name="previous_school" class="demo-form ad-input" value="{{ $user->cv->previous_school }}">
+                    <i class="icon-inp fa fa-building"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Βαθμός Αποφοίτησης απο το προηγούμενο σχολείο" name="school_grades" class="demo-form ad-input" value="{{ $user->cv->school_grades }}">
+                    <i class="icon-inp fa fa-graduation-cap"></i>
+                </div>
+
 
                 <div class="col-sm-6 input-container">
                 <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
@@ -401,7 +423,7 @@
                         </select>
                     </div>
 
-                    <i class="icon-inp fa fa-users"></i>
+                    <i class="icon-inp fa fa-users select-icon"></i>
                 </div>
 
                 <div class="col-sm-6 ">
@@ -417,9 +439,8 @@
                         </select>
                     </div>
 
-                    <i class="icon-inp fa fa-users"></i>
+                    <i class="icon-inp fa fa-users select-icon2"></i>
                 </div>
-
 
             </div>
 
@@ -517,73 +538,138 @@
                     <i class="icon-inp fa fa-id-card-o"></i>
                 </div>
 
+
+                <!-- =======  -->
+                <br>
+
+                <div class="col-sm-6 input-container">
+                    <input  type="text" label="Όνοματεπώνυμο Κηδεμόνα" name="mother_name" class="demo-form ad-input" value="{{ $user->cv->guardian_name }}">
+                    <i class="icon-inp fa fa-user-o"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Τηλέφωνο Κηδεμόνα" name="mother_phone" class="demo-form ad-input" value="{{ $user->cv->guardian_phone }}">
+                    <i class="icon-inp fa fa-phone"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="e-mail Κηδεμόνα" name="mother_email" class="demo-form ad-input" value="{{ $user->cv->guardian_email }}">
+                    <i class="icon-inp fa fa-envelope"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Διεύθυνση, Πόλη Κηδεμόνα" name="mother_city" class="demo-form ad-input" value="{{ $user->cv->guardian_city}}">
+                    <i class="icon-inp fa fa-street-view"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Ταχυδρομικός Κώδικας Κηδεμόνα" name="mother_post_code" class="demo-form ad-input" value="{{ $user->cv->guardian_post_code}}">
+                    <i class="icon-inp fa fa-envelope-o"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Επάγγελμα/Θέση Εγασίας Κηδεμόνα" name="mother_job" class="demo-form ad-input" value="{{ $user->cv->guardian_job}}">
+                    <i class="icon-inp fa fa-briefcase"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Εργοδότης/Εταιρεία Κηδεμόνα" name="mother_company" class="demo-form ad-input" value="{{ $user->cv->guardian_company}}">
+                    <i class="icon-inp fa fa-building"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Αριθμ. Φορολ. Μητρώου Κηδεμόνα" name="mother_vat" class="demo-form ad-input" value="{{ $user->cv->guardian_vat}}">
+                    <i class="icon-inp fa fa-file-text-o"></i>
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Εισόδημα Κηδεμόνα προηγούμενου Έτους" name="mother_income" class="demo-form ad-input" value="{{ $user->cv->guardian_income}}">
+                    <i class="icon-inp fa fa-money"></i>
+                    {{--<div class="euro">€</div>--}}
+                </div>
+                <div class="col-sm-6 input-container">
+                    <input type="text" label="Αριθμός Δελτίου Ταυτότητας Κηδεμόνα" name="mother_id_number" class="demo-form ad-input" value="{{ $user->cv->guardian_id_number }}">
+                    <i class="icon-inp fa fa-id-card-o"></i>
+                </div>
+
+
+
+
+
+
             </div>
 
-            <div class="col-md-6 col-left">
-                <div class="inner-section " >
-                    <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i> Ικανότητες - Δεξιότητες</div>
-                    <div class="input-container">
-                        <textarea class="notes">{{ $user->cv->skills }}</textarea>
+            <div class="row flex-row ">
+                <div class="col-md-6 section2-container ">
+                    <div class="inner-section " >
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i> Ικανότητες - Δεξιότητες</div>
+                        <div class="input-container">
+                            <textarea class="notes">{{ $user->cv->skills }}</textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-right">
-                <div class="inner-section">
-                    <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
-                    <div class=" input-container">
-                        <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ $user->cv->languages }}</textarea>
+                <div class="col-md-6 section2-container ">
+                    <div class="inner-section">
+                        <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
+                        <div class=" input-container">
+                            <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ $user->cv->languages }}</textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-left">
-                <div class="inner-section" >
-                    <div class="section-text centered-text">   <i class="icon-title fa fa-id-badge"></i> Σημεία Υπεροχής</div>
-                    <div class=" input-container">
-                        <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
-                                 <textarea name="aboutMe" class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
-                            "></textarea>
+                <div class="col-md-6 section2-container ">
+                    <div class="inner-section" >
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-id-badge"></i> Σημεία Υπεροχής</div>
+                        <div class=" input-container">
+                            <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
+                                     <textarea name="aboutMe" class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
+                                ">{{ $user->cv->aboutMe}}</textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-right">
-                <div class="inner-section" >
-                    <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
-                    <div class=" input-container">
-                        <div class="info-text"> Γράψε μας τις μέχρι τώρα σπουδές σου, τα εκπαιδευτικά ιδρύματα και το έτος αποφοίτησης, όπως φαίνονται στο επόμενο παράδειγμα.</div>
-                            <textarea name="studies" class="notes" placeholder="1. ΜΒΑ in Business Administration / Πανεπιστημιο Μακεδονίας / 2016&#13;&#10;2. Οικονομικά / Αριστοτέλειο Πανεπιστημιο θεσσαλονίκης / 2014&#13;&#10;3. 7ο Λύκειο Θεσσαλονικης / 2009
-                            ">{{ $user->cv->studies }}</textarea>
+                <div class="col-md-6 section2-container ">
+                    <div class="inner-section" >
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
+                        <div class=" input-container">
+                            <div class="info-text"> Γράψε μας τις μέχρι τώρα σπουδές σου, τα εκπαιδευτικά ιδρύματα και το έτος αποφοίτησης, όπως φαίνονται στο επόμενο παράδειγμα.</div>
+                                <textarea name="studies" class="notes" placeholder="1. ΜΒΑ in Business Administration / Πανεπιστημιο Μακεδονίας / 2016&#13;&#10;2. Οικονομικά / Αριστοτέλειο Πανεπιστημιο θεσσαλονίκης / 2014&#13;&#10;3. 7ο Λύκειο Θεσσαλονικης / 2009
+                                ">{{ $user->cv->studies }}</textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-left">
-                <div class="inner-section" >
-                    <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i> Έπαινοι - Διακρίσεις</div>
-                    <div class=" input-container">
-                        <div class="info-text"> Γράψε μας τις μέχρι τώρα διακρίσεις σου στις ξένες γλώσσες, στον αθλητισμό, στη μουσική ή σε προηγούμενες σπουδές σου.</div>
-                            <textarea name="awards" class="notes" placeholder="1. &#13;&#10;2.&#13;&#10;3.
-                            ">{{ $user->cv->awards }}</textarea>
+                <div class="col-md-6 section2-container ">
+                    <div class="inner-section" >
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i>Έπαινοι - Διακρίσεις</div>
+                        <div class=" input-container">
+                            <div class="info-text"> Γράψε μας τις μέχρι τώρα διακρίσεις σου στις ξένες γλώσσες, στον αθλητισμό, στη μουσική ή σε προηγούμενες σπουδές σου.</div>
+                                <textarea name="awards" class="notes" placeholder="1. &#13;&#10;2.&#13;&#10;3.
+                                ">{{ $user->cv->awards }}</textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-right">
-                <div class="inner-section" >
-                    <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i> Ενδιαφέροντα - Ασχολίες</div>
-                    <div class=" input-container">
-                        <div class="info-text"> Γράψε μας τα γενικότερα ενδιαφέροντα και τις ασχολίες σου.<br> <span style="color: transparent">.</span></div>
-                            <textarea name="other_interests" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                            ">{{ $user->cv->other_interests }}</textarea>
+                <div class="col-md-6 section2-container ">
+                    <div class="inner-section" >
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>Ενδιαφέροντα - Ασχολίες</div>
+                        <div class=" input-container">
+                            <div class="info-text"> Γράψε μας τα γενικότερα ενδιαφέροντα και τις ασχολίες σου.<br> <span style="color: transparent">.</span></div>
+                                <textarea name="other_interests" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
+                                ">{{ $user->cv->other_interests }}</textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class=" col-md-12 inner-section" >
-                <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i> Πιστοποιήσεις - Σεμινάρια</div>
-                <div class=" input-container">
-                    <div class="info-text"> Γράψε μας τις μέχρι τωρα πιστοποιήσεις σου και τα σεμινάρια που έχεις παρακολουθήσει</div>
-                            <textarea name="certifications" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                            ">{{ $user->cv->certifications }}</textarea>
+                <div class="col-md-6 section2-container ">
+                    <div class="inner-section" >
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>Πιστοποιήσεις - Σεμινάρια</div>
+                        <div class=" input-container">
+                            <div class="info-text"> Γράψε μας τις μέχρι τωρα πιστοποιήσεις σου και τα σεμινάρια που έχεις παρακολουθήσει</div>
+                                <textarea name="certifications" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
+                                ">{{ $user->cv->certifications }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 section2-container ">
+                    <div class="inner-section" >
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-pencil"></i>Σημειώσεις</div>
+                        <div class=" input-container">
+                            <div class="info-text"> Γράψε μας οτιδήποτε θεωρείς σημαντικό ή απαραίτητο σε σχέση με εσένα και την υποτροφία.</div>
+                                    <textarea name="notes" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
+                                    ">{{ $user->cv->notes }}</textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -601,13 +687,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="panel " style="background-color: #324c5a;">
+            <div class="panel " style="background-color: #324c5a; border-bottom-left-radius: 0; border-bottom-right-radius: 0; height: 62px;" >
                 <div class="panel-heading" style="height: 55px; color: #fff">
                     <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
                         x
 
                     </button>
-                    <img src="/new/img/logo-light-m.png" alt="scholio logo" class="pull-left">
+                    <img src="/new/img/logo-light-m.png" alt="scholio logo" class=" sc-logo pull-left" style="margin-top: -5px;">
                     <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Αίτηση Υποτροφίας</h3>
                 </div>
 

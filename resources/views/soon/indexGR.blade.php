@@ -33,12 +33,14 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/soon/img/favicon-72.ico">
         <link rel="apple-touch-icon-precomposed" href="/soon/img/favicon-57.ico">
 
+        <link href="https://fonts.googleapis.com/css?family=Signika:300,400,600,700" rel="stylesheet">
+        {{--<link href="https://fonts.googleapis.com/css?family=Leckerli+One" rel="stylesheet">--}}
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900,900i" rel="stylesheet">
         {{--<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=greek" rel="stylesheet">--}}
         <link href="https://fonts.googleapis.com/css?family=Roboto:,300,,400,400i,500,700,700i&amp;subset=greek" rel="stylesheet">
         {{--<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">--}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-            <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css"> -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css"> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
       <!-- <link rel='stylesheet' type='text/css' href='/soon/css/bootstrap.min.css' > -->
@@ -85,20 +87,22 @@
             background-position:center;
         }
         /*.logo { margin-top: 200px;}*/
-        .title{font-size: 340%; letter-spacing: 2px; color: #fafafa; font-weight: 700; font-family:  'Alegreya Sans','Roboto','Patrick Hand'; font-style: italic}
+        .title,.hand{font-size: 340%; letter-spacing: 2px; color: #fafafa; font-weight: 700; font-family:  'Alegreya Sans','Roboto',;}
+        .hand{ font-weight: 600; font-family: 'Signika','Leckerli One','Patrick Hand';}
         .text1{font-size: 240%; color: #eee; font-weight: 300; margin-top: 35px;}
         .text2{font-size: 240%; color: #333; font-weight: 300; margin-top: 15px;}
-        .section1{min-height: 500px; color: #888}
+        .section1{ color: #888}
 
         #home{  z-index: -2}
         #particles{ z-index: 3; position: absolute; width: 100%; top: 5px;}
 
-        #particles,#home{height: 100vh; min-height: 600px; max-height: 840px;}
+        #particles,#home{ min-height: 740px; max-height: 890px;}
         .slides{min-height: 650px;}
 
         .description{color: #1d4567; font-weight: 300}
 
-        .form-control{border-color: #777;color: #777}
+        .form-control{border-color: #777;color: #777; border-radius: 10px;}
+        textarea {  resize: none;  }
         #contact-form>p{color: #777!important; }
 
         ::-webkit-input-placeholder {
@@ -129,6 +133,8 @@
         a:visited,a:hover,a:focus{color: #fff;  text-decoration: none;  outline:none}
         .lang-cont{width: 700px; z-index: 20}
 
+        .send-message{width: 340px; height: 50px; padding: 0; border-radius: 10px;}
+
         @media (min-width: 576px) and (max-width: 768px) {
             .text1,.text2{font-size: 220%;}
             #countdown{margin: 35px 0;}
@@ -145,17 +151,20 @@
             .logo-container{top: 50px;}
             .lang-cont{width: 100%; margin-top: 60px;}
 
+
         }
 
         @media (max-width: 395px) {
             #particles,#home{min-height: 760px;}
             .text1,.text2{font-size: 190%; margin-top: 25px;}
+            .send-message{width: 320px;}
         }
 
         @media (max-width: 330px) {
             .text1,.text2{font-size: 145%; margin-top: 15px;}
             #particles,#home{min-height: 700px;}
             .description{ margin-top: 140px;}
+            .send-message{width: 295px;}
 
         }
 
@@ -252,7 +261,7 @@
                                 <i class='icon-diamond' ></i>
                             </div> -->
                             <img src="/soon/img/logo-light-m.png"  height="200px" class="logo" alt="scholio-logo" style="opacity: 0.55;">
-                            <div class="title" style="opacity: 0.55;">schol.io</div>
+                            <div class="hand" style="opacity: 0.55;">schol.io</div>
                         <div class="text1">Η υποτροφία σου, <br class="hidden-sm-up">ένα κλικ μακριά. </div>
                         <div class="text2">Σύντομα κοντά σας, <br class="hidden-sm-up">με μια σπουδαία ιδέα !</div>
 
@@ -506,7 +515,7 @@
                         <div class='col-md-8' >
 
                             <div class='section-header' id="about-divider">
-                                <h2 style='color: #777!important; font-weight: 300; font-family: Roboto' >Επικοινωνία</h2>
+                                <h2 style='color: #777!important; font-weight: 300; font-family: Roboto' >Επικοινωνια</h2>
                                 <div class='divider' >
                                     <i class='icon-envelope-open' ></i>
                                 </div>
@@ -537,26 +546,19 @@
                                                                             <div class="g-recaptcha" data-sitekey="6Lc7ox8UAAAAAIraotACJjqOt3oix7QSh0NWncmO"></div>
 
                                     </div> --}}
-
-
                             </div>
 
                             <div class='col-md-6'  >
-
                                 <div class='form-group' >
                                     <textarea style="height: 140px" class='form-control' placeholder='Μήνυμα' name='message' required></textarea>
                                 </div>
-
-
-
-
-                                <div class='form-group' >
-                                    <button type='submit' class='send-message' >Αποστολη Μηνυματος</button>
-                                </div>
-
                             </div>
+                        </div>
 
-
+                        <div class="row justify-content-center" >
+                            <div class='form-group text-center' >
+                                <button type='submit' class='send-message' >Αποστολη Μηνυματος</button>
+                            </div>
                         </div>
 
                     </form>

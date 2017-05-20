@@ -94,7 +94,7 @@
         #home{  z-index: -2}
         #particles{ z-index: 3; position: absolute; width: 100%; top: 5px;}
 
-        #particles,#home{height: 100vh; min-height: 600px; max-height: 890px;}
+        #particles,#home{ min-height: 740px; max-height: 890px;}
         .slides{min-height: 650px;}
 
         .description{color: #1d4567; font-weight: 300}
@@ -396,7 +396,7 @@
                                     <h4 style="font-family: Roboto">Parents & Students</h4>
 
                                     <p>
-                                        They search and get informed about the most successful educational institutions and their scholarships
+                                        Search and get informed about the most successful educational institutions and their scholarships
                                     </p>
 
                                 </div>
@@ -415,7 +415,7 @@
                                     <h4 style="font-family: Roboto">Teachers</h4>
 
                                     <p>
-                                        They easily log in to the educational institution they belong to and enhance their profile
+                                        Simply log in to the educational institution you belong to and enhance your profile
                                     </p>
 
                                 </div>
@@ -434,7 +434,7 @@
                                     <h4 style="font-family: Roboto">Educational Institutions</h4>
 
                                     <p>
-                                        They create a modern profile, and highlight their strong points
+                                        Create a modern profile, and highlight your strong points
                                     </p>
 
                                 </div>
@@ -471,7 +471,7 @@
                                 </div>
                             </div>
                             <p class='' >
-                                Leave your email to keep you up to date
+                                Leave your email. We will keep you up to date.
                             </p>
                         </div>
                     </div>
@@ -519,7 +519,7 @@
                                 <i class='icon-envelope-open' ></i>
                             </div>
                             <p class='' style='color: #777!important;'>
-                                If you are a parent, a student or a teacher and you are interested in the idea of Schol.io or an educational institution that is active in the field of scholarships and is interested in participating in the Schol.io trial period, please leave us your comment or express your interest.
+                                If you are a parent, a student or a teacher and you are interested in the idea of Schol.io or an educational institution that is active in the field of scholarships and is interested in participating in the Schol.io trial period, please leave your comment or express your interest.
                             </p>
                         </div>
 

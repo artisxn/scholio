@@ -353,20 +353,20 @@
                 <div class="row">
                     <div class="col-md-4 text-center">
                         <img src="{{asset('new/img/landing-icon-1search.png')}}">
-                        <h5 class="">Αναζήτησε Υποτροφίες</h5>
-                        <p class="centered-text">Επέλεξε την κατηγορία όπως Κολλέγιο, ΙΕΚ , Ιδιωτικό Λύκειο ή Φροντιστήριο και την πόλη που σε ενδιαφέρει</p>
+                        <h5 class="">@lang('main.about.section1.title')</h5>
+                        <p class="centered-text">@lang('main.about.section1.subtitle')</p>
                     </div>
                     <div class="visible-sm visible-xs"><br><br><br></div>
                     <div class="col-md-4 text-center">
                         <img src="{{asset('new/img/landing-icon-2pencil.png')}}">
-                        <h5>Διεκδίκησε</h5>
-                        <p class="centered-text">Περιέγραψε το προφίλ και τις δεξιότητες σου με μια απλή φόρμα και διεκδίκησε όσες υποτροφίες σε ενδιαφέρουν.</p>
+                        <h5>@lang('main.about.section2.title')</h5>
+                        <p class="centered-text">@lang('main.about.section2.subtitle')</p>
                     </div>
                     <div class="visible-sm visible-xs"><br><br><br></div>
                     <div class="col-md-4 text-center">
                         <img src="{{asset('new/img/landing-icon-3startup.png')}}">
-                        <h5>Ξεκίνα τις σπουδές σου</h5>
-                        <p class="centered-text">Ο εκπαιδευτικός φορέας εξετάζει το αίτημα σου και σε ενημερώνει αναλυτικά για τις περαιτέρω λεπτομέρειες.</p>
+                        <h5>@lang('main.about.section3.title')</h5>
+                        <p class="centered-text">@lang('main.about.section3.subtitle')</p>
                     </div>
                 </div>
 
@@ -374,7 +374,7 @@
                     <div class="col-md-4 col-md-offset-4">
                         <br>
                         <a href="register">
-                            <button class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-1  col-lg-10 col-md-10 col-sm-6 col-xs-6 sc-button sc-green sc-t-white navbar-btn" >Ξεκίνησε Τώρα </button>
+                            <button class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-1  col-lg-10 col-md-10 col-sm-6 col-xs-6 sc-button sc-green sc-t-white navbar-btn" >@lang('main.about.button') </button>
                         </a>
                     </div>
                 </div>
@@ -388,7 +388,7 @@
             <div class="sc-landing-secNew-content">
                 <div class="row">
 
-                    <div class="sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm">Η ολοκληρωμένη λύση προβολής για κάθε εκπαιδευτικό ίδρυμα</div>
+                    <div class="sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm" style="">@lang('main.about.institutions.title')</div>
 
                     <div style="position: relative" class="hidden-xs"><img src="/new/img/ipad6.png" class="ipad"></div>
 
@@ -401,22 +401,22 @@
 
 
                                 <div class="visible-xs hidden-sm hidden-md hidden-lg xxs-small-banner-content banner-text center-block">
-                                        <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title">Η λύση για κάθε εκπαιδευτικό ίδρυμα</div>
-                                        <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε εύκολα καινότομες υποτροφίες</div>
-                                        <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
-                                        <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια εκπαιδευτική κοινότητα</div>
+                                        <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title" style="width: 280px; margin-left: -28px">@lang('main.about.institutions.title-xs')</div>
+                                        <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> @lang('main.about.institutions.section1')</div>
+                                        <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section2')</div>
+                                        <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
                                 </div>
                                 <div class="banner-text banner-content center-block">
-                                    <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title hidden-sm hidden-md hidden-lg">Η λύση για κάθε εκπαιδευτικό ίδρυμα</div>
-                                    <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> Δημιουργήστε και διαθέστε εύκολα καινότομες υποτροφίες</div>
-                                    <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>Διαχειριστείτε το δυναμικό σας</div>
-                                    <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>Προβληθείτε σε μια αμιγώς εκπαιδευτική κοινότητα</div>
+                                    <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title hidden-sm hidden-md hidden-lg" style="width: 310px; margin-left: -30px">@lang('main.about.institutions.title-xs')</div>
+                                    <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> @lang('main.about.institutions.section1')</div>
+                                    <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
+                                    <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
                                 </div>
 
                                 <a href="">
                                     <button type="button" id="school-register-button" class="btn sc-orange sc-t-white centered-text btn-school-reg"
                                             data-toggle="modal" data-target="#signUp-school-modal"
-                                    > Εγγραφή Εκπαιδευτικού Φορέα</button>
+                                    >@lang('main.about.institutions.button')</button>
                                 </a>
 
                         </div>
@@ -442,19 +442,19 @@
 
                     <div class="col-sm-4 col-xs-12 margin-top-70 margin-left-30">
                         <div class="col-xs-12">
-                            <h2 class="text-left">Τα σημεία υπεροχής μας</h2>
+                            <h2 class="text-left">@lang('main.features.title')</h2>
                         </div>
 
                         <div class="col-xs-12">
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;Τα δημοφιλέστερα εκπαιδευτικά ιδρύματα.</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section1')</h5>
                         </div>
 
                         <div class="col-xs-12">
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;Καινοτόμες μορφές υποτροφιών.</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section2')</h5>
                         </div>
 
                         <div class="col-xs-12">
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;Ευκαιρίες Σπουδών.</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section3')</h5>
                         </div>
                     </div>
                 </div>
@@ -468,7 +468,7 @@
         <div class="container">
             <div class="sc-landing-sec4-content">
 
-                <h2 class="text-center sc-t-white sc-t-dark-grey margin-bot-50">Αναζήτησε ανάμεσα στα πιο πετυχημένα εκπαιδευτικά ιδρύματα.</h2>
+                <h2 class="text-center sc-t-white sc-t-dark-grey margin-bot-50">@lang('main.institutions.title')</h2>
 
 
                 <div class="row">
@@ -479,10 +479,10 @@
 
                                 <figcaption>
                                     <div class="centered-text">
-                                        <h2>Κολλέγια</h2>
-                                        <p>Αναζητηση</p>
+                                        <h2>@lang('main.institutions.colleges')</h2>
+                                        <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=κολλέγια')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=κολλέγια')}}">@lang('main.institutions.button')</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -495,10 +495,10 @@
 
                                 <figcaption>
                                     <div class="centered-text">
-                                        <h2>Φροντιστήρια<span></span></h2>
-                                        <p>Αναζητηση</p>
+                                        <h2>@lang('main.institutions.frontistirio')<span></span></h2>
+                                        <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=Φροντιστήρια')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=Φροντιστήρια')}}">@lang('main.institutions.button')</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -512,10 +512,10 @@
 
                                 <figcaption>
                                     <div class="centered-text">
-                                        <h2>Ξένες<span>Γλώσσες</span></h2>
-                                        <p>Αναζήτηση</p>
+                                        <h2>@lang('main.institutions.languages1')<span>@lang('main.institutions.languages2')</span></h2>
+                                        <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=Ξένες Γλώσσες')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=Ξένες Γλώσσες')}}">@lang('main.institutions.button')</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -527,10 +527,10 @@
 
                                 <figcaption>
                                     <div class="centered-text">
-                                        <h2>Ιδιωτικά<span>Σχολεία</span></h2>
-                                        <p>Αναζητηση</p>
+                                        <h2>@lang('main.institutions.private_schools1')<span>@lang('main.institutions.private_schools2')</span></h2>
+                                        <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">@lang('main.institutions.button')</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -544,10 +544,10 @@
 
                                 <figcaption>
                                     <div class="centered-text">
-                                        <h2>Παιδικοί Σταθμοί<span></span></h2>
-                                        <p>Αναζητηση</p>
+                                        <h2>@lang('main.institutions.playground')<span></span></h2>
+                                        <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=Παιδικοί Σταθμοί')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=Παιδικοί Σταθμοί')}}">@lang('main.institutions.button')</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -561,10 +561,10 @@
 
                                 <figcaption>
                                     <div class="centered-text">
-                                        <h2>IEK  & Επαγγελματικές <span> Σχολές</span> </h2>
-                                        <p>Αναζητηση</p>
+                                        <h2>@lang('main.institutions.iek1')<span> @lang('main.institutions.iek2')</span> </h2>
+                                        <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=ΙΕΚ, Επαγγελματική Σχολή')}}">Αναζήτηση</a>
+                                    <a href="{{url('public/schools?q=ΙΕΚ, Επαγγελματική Σχολή')}}">@lang('main.institutions.button')</a>
                                 </figcaption>
                             </figure>
                         </div>
@@ -581,7 +581,7 @@
            <div class="row">
 
                <div class="text-center text-incr-175 sc-t-dark-grey font-weight-300 margin-bot-50" >
-                   Στο  Schol.io θα βρείς τη μεγαλύτερη εκπαιδευτική κοινότητα
+                   @lang('main.statistics.title')
                </div>
 
 
@@ -604,7 +604,7 @@
                            <div>480</div>
                            <div><i class="fa fa-book text-incr-200 sc-t-green "></i></div>
                        </div>
-                       <div class="counter-text text-incr-125 font-weight-300">Αντικείμενα Σπουδών</div>
+                       <div class="counter-text text-incr-125 font-weight-300">@lang('main.statistics.studies')</div>
 
                    </div>
                </div>
@@ -628,7 +628,7 @@
                            <div>128</div>
                            <div><i class="fa fa-trophy text-incr-200 sc-t-green"></i></div>
                        </div>
-                       <div class="counter-text text-incr-125 font-weight-300">Υποτροφίες</div>
+                       <div class="counter-text text-incr-125 font-weight-300">@lang('main.statistics.scholarships')</div>
 
                    </div>
                </div>
@@ -652,7 +652,7 @@
                            <div>268</div>
                            <div><i class="fa fa-user text-incr-200 sc-t-green"></i></div>
                        </div>
-                       <div class="counter-text text-incr-125 font-weight-300">Γονείς & Μαθητές</div>
+                       <div class="counter-text text-incr-125 font-weight-300">@lang('main.statistics.students')</div>
 
                    </div>
                </div>
@@ -676,7 +676,7 @@
                            <div>130</div>
                            <div><i class="fa fa-graduation-cap text-incr-200 sc-t-green"></i></div>
                        </div>
-                       <div class="counter-text text-incr-125 font-weight-300">Καθηγητές & Εκπαιδευτικά Ιδρύματα</div>
+                       <div class="counter-text text-incr-125 font-weight-300">@lang('main.statistics.institutions')</div>
 
                    </div>
                </div>
