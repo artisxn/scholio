@@ -28,10 +28,9 @@ Route::get('/public/schools/', function () {
 });
 
 Route::get('/settings', function () {
-    if (auth()->user()->role == 'teacher') {
-
-    }
-    return view('panel.pages.school.settings.index');
+    $categories = App\Models\AdmissionCategory::all();
+    $fields = App\Models\AdmissionField::all();
+    return view('panel.pages.school.settings.index', compact('fields', 'categories'));
 })->middleware('auth');
 
 Route::get('dashboard/profile', function () {

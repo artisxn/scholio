@@ -82,7 +82,7 @@ input:checked + .slider:before {
         </div>
 
         <div class="row">
-            <div class="" style="width: 200px; float: left">
+            <div class="" style="width: 500px; float: left">
                 <div class="texts"> <i class="fa fa-twitter fa-linear4"></i>Social-Links:</div>
                 <div class="texts"> <i class="fa fa-phone fa-linear4"></i>Επικοινωνία</div>
                 <div class="texts"> <i class="fa fa-bar-chart fa-linear4"></i>Στατιστικά</div>
@@ -93,7 +93,14 @@ input:checked + .slider:before {
                 <div class="texts"> <i class="fa fa-trophy fa-linear4"></i>Υποτροφίες</div>
                 <div class="texts"> <i class="fa fa-star fa-linear4"></i>Αξιολογήσεις</div>
                 <div class="texts"> <i class="fa fa-graduation-cap fa-linear4"></i>Διδάσκοντες</div>
-
+                <hr>
+                {{-- @foreach($fields as $field) --}}
+                @foreach($categories as $category)
+                  <h4>{{ $category->name }}</h4>
+                  @foreach($category->fields as $field)
+                   <div class="texts"> <i class="{{ $field->icon }} fa-linear4"></i>{{ $field->name }}</div>
+                  @endforeach
+                @endforeach
             </div>
 
             <div class="switches " style="max-width: 100px ; float: left">
@@ -134,6 +141,18 @@ input:checked + .slider:before {
                     <input type="checkbox" onchange="change(this)" name="teachers" {{auth()->user()->info->settings->teachers ? 'checked' : ''}}>
                     <div class="slider round"></div>
                 </label>
+                <hr style="margin: 15px 0 7px -3px; width: 65px;">
+
+                @foreach($categories as $category)
+                  <h4>&nbsp;</h4>
+                  @foreach($category->fields as $field)
+                   <label class="switch">
+                       <input type="checkbox" onchange="change(this)" name="{{ $field->slug }}" {{ auth()->user()->info->settings->{$field->slug} ? 'checked' : '' }}>
+                       <div class="slider round"></div>
+                   </label>
+                  @endforeach
+                @endforeach
+
             </div>
         </div>
 

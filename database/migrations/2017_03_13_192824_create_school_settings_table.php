@@ -29,25 +29,60 @@ class CreateSchoolSettingsTable extends Migration
             $table->boolean('info')->default(1);
 
             // For Scholarship Admissions
-            $table->boolean('parents_basic')->default(1); // Father-Mother: name, city, email, phone, post_code
-            $table->boolean('guardian_basic')->default(1); // Guardian: name, city, email, phone, post_code
-            $table->boolean('parents_job')->default(1); // Father-Mother: job, company, vat, income, id (taftotita)
-            $table->boolean('guardians_job')->default(1); // Guardian: job, company, vat, income, id (taftotita)
-            $table->boolean('id_number')->default(1);
-            $table->boolean('post_code')->default(1);
-            $table->boolean('religion')->default(1);
-            $table->boolean('nationality')->default(1);
-            $table->boolean('place_of_birth')->default(1);
-            $table->boolean('student_relatives')->default(1);
-            $table->boolean('school_grades')->default(1);
-            $table->boolean('previous_school')->default(1);
-            $table->boolean('polyteknos')->default(1);
+            $table->boolean('student_address')->default(1);
+            $table->boolean('student_phone')->default(0);
+            $table->boolean('student_id_number')->default(0);
+            $table->boolean('student_tk')->default(0);
+            $table->boolean('student_nationality')->default(0);
+            $table->boolean('student_religion')->default(0);
+            $table->boolean('student_dob')->default(0);
+            $table->boolean('student_pob')->default(0);
+            $table->boolean('student_polyteknos')->default(0);
+            $table->boolean('student_relatives')->default(0);
+            $table->boolean('student_previous')->default(0);
+            $table->boolean('student_grades')->default(0);
+
+            $table->boolean('mother_fullname')->default(1);
+            $table->boolean('mother_phone')->default(1);
+            $table->boolean('mother_email')->default(1);
+            $table->boolean('mother_address')->default(1);
+            $table->boolean('mother_tk')->default(0);
+            $table->boolean('mother_job')->default(0);
+            $table->boolean('mother_company')->default(0);
+            $table->boolean('mother_afm')->default(0);
+            $table->boolean('mother_income')->default(0);
+            $table->boolean('mother_id_number')->default(0);
+
+            $table->boolean('father_fullname')->default(1);
+            $table->boolean('father_phone')->default(1);
+            $table->boolean('father_email')->default(1);
+            $table->boolean('father_address')->default(1);
+            $table->boolean('father_tk')->default(0);
+            $table->boolean('father_job')->default(0);
+            $table->boolean('father_company')->default(0);
+            $table->boolean('father_afm')->default(0);
+            $table->boolean('father_income')->default(0);
+            $table->boolean('father_id_number')->default(0);
+
+            $table->boolean('guardian_fullname')->default(1);
+            $table->boolean('guardian_phone')->default(1);
+            $table->boolean('guardian_email')->default(1);
+            $table->boolean('guardian_address')->default(1);
+            $table->boolean('guardian_tk')->default(0);
+            $table->boolean('guardian_job')->default(0);
+            $table->boolean('guardian_company')->default(0);
+            $table->boolean('guardian_afm')->default(0);
+            $table->boolean('guardian_income')->default(0);
+            $table->boolean('guardian_id_number')->default(0);
+
             $table->boolean('skills')->default(1);
             $table->boolean('languages')->default(1);
+            $table->boolean('previous_school')->default(1);
             $table->boolean('certifications')->default(1);
             $table->boolean('awards')->default(1);
             $table->boolean('other_interests')->default(1);
-            $table->boolean('aboutMe')->default(1);
+            $table->boolean('notes')->default(1);
+            $table->boolean('strongpoints')->default(1);
             $table->timestamps();
         });
     }

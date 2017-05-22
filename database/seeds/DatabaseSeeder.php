@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillsTableSeeder::class);
         $this->call(SocialLinksTableSeeder::class);
         $this->call(AddmissionSeeder::class);
+        $this->call(AdmissionCategoryTableSeeder::class);
 
         foreach (School::all() as $school) {
             $settings = new SchoolSetting;
@@ -36,11 +37,14 @@ class DatabaseSeeder extends Seeder
             if ($address == 'GEOCODE ERROR') {
                 dd($address);
             } else {
-                $lat = $address['lat'];
-                $lng = $address['lng'];
-                $school->lat = $lat;
-                $school->lng = $lng;
-                $school->save();
+                try {
+                    $lat = $address['lat'];
+                    $lng = $address['lng'];
+                    $school->lat = $lat;
+                    $school->lng = $lng;
+                    $school->save();
+                } catch (Exception $e) {
+                }
             }
         }
     }
