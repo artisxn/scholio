@@ -8,6 +8,10 @@ require('./bootstrap');
 
 window.Event = new Vue();
 
+Vue.prototype.lang = (key) => {
+    return _.get(window.lang, key, key);
+};
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

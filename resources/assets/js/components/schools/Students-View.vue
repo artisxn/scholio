@@ -6,7 +6,6 @@
                    v-model="searchStr">
         </div>
         <button class="btn btn-info pull-right" v-on:click="changeView" style="margin: 11px 10px 10px 0; height: 38px;">Αλλαγή Προβολής</button>
-
         <div class="clearfix"></div>
         <div v-if="selection==true">
             <div class="col-xs-12 col-sm-6 col-xl-4 col-xxl-3" v-for="student in filteredStudies" v-if="(student.role=='student'|| student.role=='teacher')">

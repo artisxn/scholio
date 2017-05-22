@@ -35,6 +35,18 @@
             </script>
         @endif
 
+        <script>
+            window.lang = <?php
+$lang_files = File::files(resource_path() . '/lang/' . App::getLocale());
+$trans = [];
+foreach ($lang_files as $f) {
+    $filename = pathinfo($f)['filename'];
+    $trans[$filename] = trans($filename);
+}
+echo json_encode($trans);
+?>;
+        </script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         @yield('scriptsBefore')
     </head>

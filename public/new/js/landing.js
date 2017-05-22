@@ -1,16 +1,14 @@
 
 jQuery(document).ready(function($) {
-
-
     //Call typed-js
-    $(function(){
-        $(".typed-js").typed({
-            strings: ["Έχεις Ταλέντο;","Είσαι Μαθητής;","Είσαι Φοιτητής;",],
-            typeSpeed: 100,
-            backSpeed:100,
-            loop: true
-        });
-    });
+    // $(function(){
+    //     $(".typed-js").typed({
+    //         strings: ["Έχεις Ταλέντο;","Είσαι Μαθητής;","Είσαι Φοιτητής;",],
+    //         typeSpeed: 100,
+    //         backSpeed:100,
+    //         loop: true
+    //     });
+    // });
 
 
 

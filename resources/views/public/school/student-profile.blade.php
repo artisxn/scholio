@@ -40,7 +40,6 @@
 
 
     <script>
-        // window.SelectedLocation = "{{ session()->pull('location') }}"
         window.Search = "{{ session('search') }}"
     </script>
 
@@ -606,12 +605,6 @@
 
     </div>
 </div>
-
-
-
-
-
-
 
 <!-- Footer -->
 @include('public.footer')

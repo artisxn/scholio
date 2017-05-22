@@ -12,7 +12,11 @@ return [
         'admin' => 'Admin',
     ],
     'first' => [
-        'title' => '',
+        'title' => [
+            'talent' => 'Do you have any talents?',
+            'student' => 'Are you school student?',
+            'student1' => 'Are you university student?',
+        ],
         'subtitle' => 'Find the Scholarship that fits you!',
         'searchbar' => [
             'scholarships' => [

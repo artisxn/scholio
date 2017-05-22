@@ -695,7 +695,18 @@
 @include('public.footer')
 
 </body>
+<!--  -->
 <script>
+jQuery(document).ready(function($) {
+    $(function(){
+        $(".typed-js").typed({
+            strings: ["@lang('main.first.title.talent')","@lang('main.first.title.student')","@lang('main.first.title.student1')"],
+            typeSpeed: 100,
+            backSpeed:100,
+            loop: true
+        });
+    });
+});
 
 function validateMyForm(el, id){
     if(id == 1) window.location = '/public/scholarships?q=' + el.text.value;
