@@ -1,3 +1,19 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+<style>
+    .center-td{vertical-align:middle; text-align:center;}
+    .search-input{width: 210px; margin: 10px 0; border: 1px solid #d1d1d1; border-radius: 5px;}
+
+    .btn-info{background-color: #324c5a!important;}
+    .btn-info:hover{background-color: #466473 !important;}
+    .btn-success{background-color: #00bcd4!important;}
+    .btn-success:hover{background-color: #00abc3 !important;}
+    .btn-primary{background-color: #008da5!important;}
+    .btn-primary:hover{background-color: #007991 !important;}
+    .btn-success,.btn-info,.btn-primary{border: none!important; height: 30px; padding: 0 20px}
+</style>
+
+
 <template>
     <div class="row">
         <div class="col-sm-12">
@@ -5,49 +21,113 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="m-t-0 header-title"><b>Πίνακας Υποτροφιών</b></h4>
-                        <p class="text-muted font-13">
-                           Μπλά μπλά μπλά
-                        </p>
+
+                        <div class="input-group pull-left search-input">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Αναζήτηση" v-model="searchStr">
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
                         <div class="table-rep-plugin">
                             <div class="table-responsive" data-pattern="priority-columns">
                                 <table id="tech-companies-1" class="table  table-striped">
                                     <thead>
                                         <tr>
                                             <!-- <th>ID</th> -->
-                                            <th>Πλάνο Υποτροφίας</th>
-                                            <th>Ποσό</th>
-                                            <th v-if="showLevel">Τύπος Σπουδών</th> <!-- condition MUST CHANGE-->
-                                            <th>Επίπεδο Σπουδών</th>
-                                            <th>Κριτήρια</th>
-                                            <th>Ημερομηνία Λήξης</th>
-                                            <th>Αιτήθηκαν</th>
+                                            <th></th>
+                                            <th>
+                                                <a href="#" v-on:click="planChangeSort">
+                                                    Οικονομική Προσφορά
+                                                    <span v-if="sortType == 'plan' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'plan' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th>
+                                                <a href="#" v-on:click="amountChangeSort">
+                                                Ποσό
+                                                 <span v-if="sortType == 'amount' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                 <span v-if="sortType == 'amount' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th v-if="showLevel"> <!-- condition MUST CHANGE-->
+                                                <a href="#" v-on:click="studyChangeSort">
+                                                    Σπουδές
+                                                    <span v-if="sortType == 'study' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'study' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th v-if="showLevel"> <!-- condition MUST CHANGE-->
+                                                <a href="#" v-on:click="levelChangeSort">
+                                                    Επίπεδο Σπουδών
+                                                    <span v-if="sortType == 'level' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'level' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th v-if="showLevel"> <!-- condition MUST CHANGE-->
+                                                <a href="#" v-on:click="criteriaChangeSort">
+                                                    Κριτήρια
+                                                    <span v-if="sortType == 'criteria_id' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'criteria_id' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th v-if="showLevel"> <!-- condition MUST CHANGE-->
+                                                <a href="#" v-on:click="endChangeSort">
+                                                    Ημερομηνία Λήξης
+                                                    <span v-if="sortType == 'end_at' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'end_at' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th>
+                                                <a href="#" v-on:click="admissionChangeSort">
+                                                Αιτήθηκαν
+                                                <span v-if="sortType == 'admissions' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                <span v-if="sortType == 'admissions' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
                                             <th>Νικητής</th>
-                                            <th>Αλλαγή</th>
-                                            <th>Διαγραφή</th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="scholarship in scholarships">
+                                        <tr v-for="scholarship in filteredStudies">
                                             <!-- <td>{{ scholarship.id }}</td> -->
-                                            <td>{{ scholarship.financial.plan }}</td>
-                                            <td>{{ scholarship.financial_amount }}
+
+                                            <td class="center-td">
+                                                    <img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" >
+                                            </td>
+                                            <td>{{ scholarship.plan }}</td>
+
+                                            <td>{{ scholarship.amount }}
                                                 <span v-if="scholarship.financial.id==1">%</span>
                                                 <span v-if="scholarship.financial.id==2">€</span>
-                                                <span v-if="scholarship.financial.id==3">μήνες</span></td>
+                                                <span v-if="scholarship.financial.id==3">μήνες</span>
                                             </td>
-                                            <td v-if="showLevel">{{ scholarship.study.name}}</td>
-                                            <td>{{ scholarship.level.name}}</td>
+                                            <td v-if="showLevel">{{ scholarship.study}}</td>
+                                            <td>{{ scholarship.level}}</td>
                                             <td>{{ scholarship.criteria_id }}</td>
                                             <td>{{ scholarship.end_at }}</td>
-                                            <td>{{ scholarship.user.length }}</td>
+                                            <td>{{ scholarship.admissions}}</td>
                                             <td>{{ scholarship.winner_id }}</td>
-                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-warning">EDIT</button></td>
-                                            <td><button v-on:click="onDelete(scholarship.id)" class="btn btn-danger">DELETE</button></td>
+                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">Αλλαγή</button></td>
+                                            <td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+
+
+                        <div style="width: 80%; margin: 15px auto;">
+                            <h2>Chart.js — Bar Chart Demo</h2>
+                            <div>
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -56,22 +136,77 @@
 </template>
 
 <script>
+
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["M", "T", "W", "T", "F", "S", "S"],
+            datasets: [{
+                label: 'apples',
+                data: [12, 19, 3, 17, 28, 24, 7],
+                backgroundColor: "rgba(153,255,51,1)"
+            }, {
+                label: 'oranges',
+                data: [30, 29, 5, 5, 20, 3, 10],
+                backgroundColor: "rgba(255,153,0,1)"
+            }]
+        }
+    });
+</script>
+<script>
     export default {
 
         data: function() {
             return{
                 scholarships: {},
-                showLevel:false
+                showLevel:false,
+                sortReverse:true,
+                sortType:'admissions',
+                scholars:[],
+                searchStr:""
+
             }
         },
+        computed: {
+            filteredStudies: function () {
+                var filtered_array = this.scholars;
+                var searchString = this.searchStr;
 
+                if(!searchString){
+                    return filtered_array;
+                }
+                searchString = searchString.trim().toLowerCase();
+                filtered_array = filtered_array.filter(function(item){
+                    if( (item.level.toLowerCase().indexOf(searchString) !== -1) ||
+                        (item.study.toLowerCase().indexOf(searchString) !== -1) ||
+                        (item.plan.toLowerCase().indexOf(searchString) !== -1)
+
+                    ){return item;}
+                })
+                return filtered_array;
+            }
+        },
         methods: {
             getScholarships: function(){
                 axios.get('/api/scholarship/' + window.Connection)
                     .then(response => {
-//                        console.logo(response.data)
+                        console.log(response.data)
                         this.scholarships = response.data
                         if(this.scholarships[0].level.id<4 || this.scholarships[0].level.id>21 ) {this.showLevel=true}
+//                        console.log(this.scholarships[0])
+
+                        var st1=this.scholarships;
+                        for (var i in st1){
+                            st1[i].admissions=this.scholarships[i].user.length;
+                            st1[i].plan=this.scholarships[i].financial.plan;
+                            st1[i].study=this.scholarships[i].study.name;
+                            st1[i].level=this.scholarships[i].level.name;
+                            st1[i].amount=parseInt(this.scholarships[i].financial_amount) ;
+                        }
+                        st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
+                        this.scholars=st1;
+
                     });
 
             },
@@ -80,6 +215,58 @@
             },
             onDelete: function(id){
                 window.location = '/scholarship/' + id + '/delete'
+            },
+
+            admissionChangeSort: function(){
+                this.sortType = 'admissions';
+                this.changeSortType(this.sortType)
+            },
+            amountChangeSort: function(){
+                this.sortType = 'amount';
+                this.changeSortType(this.sortType)
+            },
+            planChangeSort: function(){
+                this.sortType = 'plan';
+                this.changeSortType(this.sortType)
+            },
+            studyChangeSort: function(){
+                this.sortType = 'study';
+                this.changeSortType(this.sortType)
+            },
+            endChangeSort: function(){
+                this.sortType = 'end_at';
+                this.changeSortType(this.sortType)
+            },
+            levelChangeSort: function(){
+                this.sortType = 'level';
+                this.changeSortType(this.sortType)
+            },
+            criteriaChangeSort: function(){
+                this.sortType = 'criteria_id';
+                this.changeSortType(this.sortType)
+            },
+
+
+            changeSortType: function(){
+                this.sortReverse=!this.sortReverse;
+                var st1= this.scholars ;
+                st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
+                this.scholars =st1;
+                return this.scholars;
+            },
+            dynamicSort: function (property,order) {
+
+                var sortOrder = 1;
+                if (order) {sortOrder = -1}
+
+                if(property[0] === "-") {
+                    sortOrder = -1;
+                    property = property.substr(1);
+                }
+                return function (a,b) {
+                    var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+                    return result * sortOrder;
+                }
             }
         },
 
@@ -88,4 +275,5 @@
             this.getScholarships()
         }
     }
+
 </script>
