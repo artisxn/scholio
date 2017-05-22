@@ -1,5 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-
 <style>
     .center-td{vertical-align:middle; text-align:center;}
     .search-input{width: 210px; margin: 10px 0; border: 1px solid #d1d1d1; border-radius: 5px;}
@@ -123,10 +121,9 @@
                         <div style="width: 80%; margin: 15px auto;">
                             <h2>Chart.js — Bar Chart Demo</h2>
                             <div>
-                                <canvas id="myChart"></canvas>
+                                <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
@@ -136,27 +133,9 @@
 </template>
 
 <script>
-
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["M", "T", "W", "T", "F", "S", "S"],
-            datasets: [{
-                label: 'apples',
-                data: [12, 19, 3, 17, 28, 24, 7],
-                backgroundColor: "rgba(153,255,51,1)"
-            }, {
-                label: 'oranges',
-                data: [30, 29, 5, 5, 20, 3, 10],
-                backgroundColor: "rgba(255,153,0,1)"
-            }]
-        }
-    });
-</script>
-<script>
-    export default {
-
+import Chart from '../../VueChart.vue'
+    export default{
+        components: {'chart-vue': Chart},
         data: function() {
             return{
                 scholarships: {},
@@ -164,8 +143,20 @@
                 sortReverse:true,
                 sortType:'admissions',
                 scholars:[],
-                searchStr:""
-
+                searchStr:"",
+                sc_amounts: [],
+                sc_names:[],
+                datacollection: {
+                  labels: ['asd'],
+                  datasets: [
+                    {
+                      label: 's',
+                      backgroundColor: '#008da5',
+                      data: [123]
+                    }
+                  ]
+                },
+                dataoptions: {responsive: true, maintainAspectRatio: false}
             }
         },
         computed: {
@@ -194,7 +185,6 @@
                         console.log(response.data)
                         this.scholarships = response.data
                         if(this.scholarships[0].level.id<4 || this.scholarships[0].level.id>21 ) {this.showLevel=true}
-//                        console.log(this.scholarships[0])
 
                         var st1=this.scholarships;
                         for (var i in st1){
@@ -202,13 +192,31 @@
                             st1[i].plan=this.scholarships[i].financial.plan;
                             st1[i].study=this.scholarships[i].study.name;
                             st1[i].level=this.scholarships[i].level.name;
-                            st1[i].amount=parseInt(this.scholarships[i].financial_amount) ;
+                            st1[i].amount=parseInt(this.scholarships[i].financial_amount);
+                            this.sc_amounts.push(st1[i].amount)
+                            this.sc_names.push(st1[i].study)
                         }
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
                         this.scholars=st1;
 
+                        this.updateChart()
+
                     });
 
+            },
+            updateChart: function(){
+                console.log('ayto')
+                console.log(this.amounts)
+                this.datacollection = {
+                  labels: this.sc_names,
+                  datasets: [
+                    {
+                      label: 'Αριθμός Αιτούντων ανά υποτροφία',
+                      backgroundColor: '#008da5',
+                      data: this.sc_amounts
+                    }
+                  ]
+                }
             },
             onEdit: function(id){
                 window.location = '/scholarship/' + id + '/edit'
@@ -249,7 +257,7 @@
 
             changeSortType: function(){
                 this.sortReverse=!this.sortReverse;
-                var st1= this.scholars ;
+                var st1= this.scholars;
                 st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
                 this.scholars =st1;
                 return this.scholars;
