@@ -15,7 +15,7 @@
                 </div>
 
                 <!-- Search -->
-                @include('panel.partials.topbar.search')
+                {{--@include('panel.partials.topbar.search')--}}
 
                 <!-- Items -->
                 <ul class="nav navbar-nav navbar-right pull-right">
