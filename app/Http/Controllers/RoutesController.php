@@ -227,59 +227,13 @@ class RoutesController extends Controller
     public function admissionSave(Scholarship $scholarship)
     {
         $user = auth()->user();
-
         $admission = new Admission;
         $admission->user_id = $user->id;
         $admission->scholarship_id = $scholarship->id;
-        $admission->father_name = request()->father_name;
-        $admission->father_email = request()->father_email;
-        $admission->father_phone = request()->father_phone;
-        $admission->father_city = request()->father_city;
-        $admission->father_post_code = request()->father_post_code;
-        $admission->father_job = request()->father_job;
-        $admission->father_company = request()->father_company;
-        $admission->father_vat = request()->father_vat;
-        $admission->father_income = request()->father_income;
-        $admission->father_id_number = request()->father_id_number;
-        $admission->mother_name = request()->mother_name;
-        $admission->mother_email = request()->mother_email;
-        $admission->mother_phone = request()->mother_phone;
-        $admission->mother_city = request()->mother_city;
-        $admission->mother_post_code = request()->mother_post_code;
-        $admission->mother_job = request()->mother_job;
-        $admission->mother_company = request()->mother_company;
-        $admission->mother_vat = request()->mother_vat;
-        $admission->mother_income = request()->mother_income;
-        $admission->mother_id_number = request()->mother_id_number;
-        $admission->guardian_name = request()->guardian_name;
-        $admission->guardian_email = request()->guardian_email;
-        $admission->guardian_phone = request()->guardian_phone;
-        $admission->guardian_city = request()->guardian_city;
-        $admission->guardian_post_code = request()->guardian_post_code;
-        $admission->guardian_job = request()->guardian_job;
-        $admission->guardian_company = request()->guardian_company;
-        $admission->guardian_vat = request()->guardian_vat;
-        $admission->guardian_income = request()->guardian_income;
-        $admission->guardian_id_number = request()->guardian_id_number;
-        $admission->id_number = request()->id_number;
-        $admission->post_code = request()->post_code;
-        $admission->religion = request()->religion;
-        $admission->nationality = request()->nationality;
-        $admission->place_of_birth = request()->place_of_birth;
-        $admission->student_relatives = request()->student_relatives;
-        $admission->school_grades = request()->school_grades;
-        $admission->previous_school = request()->previous_school;
-        $admission->polyteknos = request()->polyteknos;
-        $admission->skills = request()->skills;
-        $admission->languages = request()->languages;
-        $admission->certifications = request()->certifications;
-        $admission->awards = request()->awards;
-        $admission->other_interests = request()->other_interests;
-        $admission->notes = request()->notes;
-
         $admission->save();
 
-        $user->cv->updateIfNotExist($admission);
+        $admission->createWithFields(request()->except('_token', 'firstName', 'lastName', 'email'));
+        // $user->cv->updateIfNotExist($admission);
 
         event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
 

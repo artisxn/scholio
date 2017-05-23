@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\AdmissionField;
 use App\Models\Scholarship;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
@@ -21,5 +22,13 @@ class Admission extends Model
     public function fields()
     {
         return $this->belongsToMany(AdmissionField::class, 'admission_field');
+    }
+
+    public function createWithFields($data)
+    {
+        foreach (collect($data) as $index => $data) {
+            $field = AdmissionField::findWithSlug($index)->first();
+            $this->fields()->save($field, ['data' => $data]);
+        }
     }
 }

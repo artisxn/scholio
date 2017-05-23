@@ -10,4 +10,9 @@ class AdmissionField extends Model
     {
         return $this->belongsTo(AdmissionCategory::class, 'category_id');
     }
+
+    public function scopeFindWithSlug($query, $slug)
+    {
+        return $query->where('slug', $slug)->get();
+    }
 }

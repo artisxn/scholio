@@ -355,11 +355,11 @@
                 </div>
 
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="Διεύθυνση" name="address" class="demo-form ad-input" value="{{ $user->info->address }}">
+                    <input type="text" label="Διεύθυνση" name="student_address" class="demo-form ad-input" value="{{ $user->info->address }}">
                     <i class="icon-inp fa fa-street-view"></i>
                 </div>
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="Πόλη/Περιοχή" name="city" class="demo-form ad-input" value="{{ $user->info->city }}">
+                    <input type="text" label="Πόλη/Περιοχή" name="student_city" class="demo-form ad-input" value="{{ $user->info->city }}">
                     <i class="icon-inp fa fa-map-marker"></i>
                 </div>
 
@@ -369,7 +369,7 @@
                 </div>
                 <div class="col-sm-6 input-container">
                     {{--<a href="tel:{{ $user->info->phone }}">--}}
-                    <input type="text" label="Τηλέφωνο" name="phone" class="demo-form ad-input" value="{{ $user->info->phone }}">
+                    <input type="text" label="Τηλέφωνο" name="student_phone" class="demo-form ad-input" value="{{ $user->info->phone }}">
                     {{--</a>--}}
                     <i class="icon-inp fa fa-phone"></i>
                 </div>
@@ -527,7 +527,7 @@
                         <div class="section-text centered-text">   <i class="icon-title fa fa-id-badge"></i> Σημεία Υπεροχής</div>
                         <div class=" input-container">
                             <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
-                                     <textarea name="aboutMe" class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
+                                     <textarea name="strongpoints" class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
                                 ">{{ $user->cv->aboutMe}}</textarea>
                         </div>
                     </div>
