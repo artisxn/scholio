@@ -15,4 +15,9 @@ class AdmissionField extends Model
     {
         return $query->where('slug', $slug)->get();
     }
+
+    public function field()
+    {
+        return $this->belongsToMany(Admission::class, 'admission_field');
+    }
 }

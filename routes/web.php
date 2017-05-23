@@ -1,7 +1,6 @@
 <?php
 
 use App\Events\StudentAppliedOnScholarship;
-use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -146,7 +145,7 @@ Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User 
 });
 
 /* ===== TESTING ROUTE FOR  ADMISSION  Student Profile ====== */
-Route::get('/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
-    $admission = Admission::where('user_id', $user->id)->where('scholarship_id', $scholarship->id)->first();
-    return view('public.school.student-profile', compact('admission', 'user', 'scholarship'));
+Route::get('/student/cv/{user}', function (User $user) {
+    // $admission = Admission::where('user_id', $user->id)->where('scholarship_id', $scholarship->id)->first();
+    return view('public.school.student-profile', compact('user'));
 });

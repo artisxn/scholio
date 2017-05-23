@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admission;
 use App\Models\Badge;
 use App\Models\Lecture;
 use App\Models\Study;
@@ -18,6 +19,11 @@ Route::post('profile/{id}', 'AdminPanelController@updateProfile');
 Route::get('requests', 'AdminPanelController@requests')->name('requests');
 Route::post('profile/images/upload', 'AdminPanelController@imagesUpload');
 Route::delete('profile/images/upload', 'AdminPanelController@imageDelete');
+
+Route::get('/admission/{admission}', function (Admission $admission) {
+    dd($admission->fields);
+    return view('panel.pages.school.scholarships.admission', compact('admission'));
+});
 
 Route::get('/settings/public', function () {
     $categories = App\Models\AdmissionCategory::all();
