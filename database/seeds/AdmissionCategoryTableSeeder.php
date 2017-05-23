@@ -43,6 +43,7 @@ class AdmissionCategoryTableSeeder extends Seeder
         $fields = [
             // Στοιχεία Υποψηφίου
             ['id' => '1', 'name' => 'Διεύθυνση', 'icon' => 'fa fa-street-view', 'type' => '', 'slug' => 'student_address'],
+            ['id' => '1', 'name' => 'Πόλη', 'icon' => 'fa fa-map-marker', 'type' => '', 'slug' => 'student_city'],
             ['id' => '1', 'name' => 'Τηλέφωνο', 'icon' => 'fa fa-phone', 'type' => '', 'slug' => 'student_phone'],
             ['id' => '1', 'name' => 'Αριθμός Δελτίου Ταυτότητας', 'icon' => 'fa fa-id-card-o', 'type' => '', 'slug' => 'student_id_number'],
             ['id' => '1', 'name' => 'Ταχυδρομικός Κώδικας', 'icon' => 'fa fa-envelope-o', 'type' => '', 'slug' => 'student_tk'],

@@ -30,6 +30,7 @@ class CreateSchoolSettingsTable extends Migration
 
             // For Scholarship Admissions
             $table->boolean('student_address')->default(1);
+            $table->boolean('student_city')->default(1);
             $table->boolean('student_phone')->default(0);
             $table->boolean('student_id_number')->default(0);
             $table->boolean('student_tk')->default(0);

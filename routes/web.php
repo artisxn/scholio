@@ -2,6 +2,7 @@
 
 use App\Events\StudentAppliedOnScholarship;
 use App\Models\Admission;
+use App\Models\AdmissionField;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Scholio\Scholio;
@@ -26,12 +27,6 @@ Route::post('/admission/{scholarship}/save', 'RoutesController@admissionSave');
 Route::get('/public/schools/', function () {
     return view('public.results.schools-test');
 });
-
-Route::get('/settings', function () {
-    $categories = App\Models\AdmissionCategory::all();
-    $fields = App\Models\AdmissionField::all();
-    return view('panel.pages.school.settings.index', compact('fields', 'categories'));
-})->middleware('auth');
 
 Route::get('dashboard/profile', function () {
     if (auth()->user()->role == 'student') {
@@ -144,8 +139,10 @@ Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
 /* ===== TESTING ROUTE FOR SCHOLARSHIP ADMISSION ====== */
 Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
-    // dd($user);
-    return view('public.school.admission', compact('user', 'scholarship'));
+    $settings = $scholarship->school->settings;
+    // dd($scholarship->school);
+    $fields = AdmissionField::all();
+    return view('public.school.admission', compact('user', 'scholarship', 'settings', 'fields'));
 });
 
 /* ===== TESTING ROUTE FOR  ADMISSION  Student Profile ====== */

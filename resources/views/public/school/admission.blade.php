@@ -359,7 +359,7 @@
                     <i class="icon-inp fa fa-street-view"></i>
                 </div>
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="Πόλη/Περιοχή" name="city" class="demo-form ad-input">
+                    <input type="text" label="Πόλη/Περιοχή" name="city" class="demo-form ad-input" value="{{ $user->info->city }}">
                     <i class="icon-inp fa fa-map-marker"></i>
                 </div>
 
@@ -374,7 +374,25 @@
                     <i class="icon-inp fa fa-phone"></i>
                 </div>
 
-                <div class="col-sm-6 input-container">
+                @foreach($fields as $field)
+                    @if($field->category->id == 1 && $settings->{$field->slug})
+                        @if($field->slug != 'student_relatives' && $field->slug != 'student_polyteknos' && $field->slug != 'student_phone' && $field->slug != 'student_address' && $field->slug != 'student_city')
+                            @if($field->slug == 'student_dob')
+                                <div class="col-sm-6 input-container">
+                                    <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y') }}" label="{{ $field->name }}" name="{{ $field->slug }}">
+                                    <i class="icon-inp {{ $field->icon }}"></i>
+                                </div>
+                            @else
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                                    <i class="icon-inp {{ $field->icon }}"></i>
+                                </div>
+                            @endif
+                        @endif
+                    @endif
+                @endforeach
+
+ {{--                <div class="col-sm-6 input-container">
                     <input type="text" label="Αριθμός Δελτίου Ταυτότητας" name="id_number" class="demo-form ad-input" value="{{ $user->cv->id_number }}">
                     <i class="icon-inp fa fa-id-card-o"></i>
                 </div>
@@ -393,7 +411,6 @@
                 </div>
 
                 <div class="col-sm-6 input-container">
-                    {{-- value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" --}}
                     <input type="text" label="Ημερομηνία Γέννησης" name="dateOfBirth" class="demo-form ad-input ll-skin-cangas"
                            id="datepicker"   size="30"  value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" onchange=""
                     >
@@ -410,22 +427,25 @@
                 <div class="col-sm-6 input-container">
                     <input type="text" label="Βαθμός Αποφοίτησης απο το προηγούμενο σχολείο" name="school_grades" class="demo-form ad-input" value="{{ $user->cv->school_grades }}">
                     <i class="icon-inp fa fa-graduation-cap"></i>
-                </div>
+                </div> --}}
 
+                <div class="clearfix"></div>
+                @if($settings->student_polyteknos)
+                    <div class="col-sm-6 input-container">
+                    <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
 
-                <div class="col-sm-6 input-container">
-                <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
+                        <div class="select-polyteknos">
+                            <select>
+                                <option>Ναι</option>
+                                <option>Όχι</option>
+                            </select>
+                        </div>
 
-                    <div class="select-polyteknos">
-                        <select>
-                            <option>Ναι</option>
-                            <option>Όχι</option>
-                        </select>
+                        <i class="icon-inp fa fa-users select-icon"></i>
                     </div>
+                    @endif
 
-                    <i class="icon-inp fa fa-users select-icon"></i>
-                </div>
-
+                @if($settings->student_relatives)
                 <div class="col-sm-6 ">
                 <div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
                     <div class="select-polyteknos">
@@ -441,174 +461,67 @@
 
                     <i class="icon-inp fa fa-users select-icon2"></i>
                 </div>
-
+                @endif
             </div>
 
             <div class="inner-section row">
                 <div class="section-text centered-text"> Στοιχεία Γονέων-Κηδεμόνων</div>
-                <div class="col-sm-6 input-container">
-                    <input  type="text" label="Όνοματεπώνυμο Μητέρας" name="mother_name" class="demo-form ad-input" value="{{ $user->cv->mother_name }}">
-                    <i class="icon-inp fa fa-user-o"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input  type="text" label="Όνοματεπώνυμο Πατέρα" name="father_name" class="demo-form ad-input" value="{{ $user->cv->father_name }}">
-                    <i class="icon-inp fa fa-user-o"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Τηλέφωνο Μητέρας" name="mother_phone" class="demo-form ad-input" value="{{ $user->cv->mother_phone }}">
-                    <i class="icon-inp fa fa-phone"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Τηλέφωνο Πατέρα" name="father_phone" class="demo-form ad-input" value="{{ $user->cv->father_phone }}">
-                    <i class="icon-inp fa fa-phone"></i>
-                </div>
-
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="e-mail Μητέρας" name="mother_email" class="demo-form ad-input" value="{{ $user->cv->mother_email }}">
-                    <i class="icon-inp fa fa-envelope"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="e-mail Πατέρα" name="father_email" class="demo-form ad-input" value="{{ $user->cv->father_email }}">
-                    <i class="icon-inp fa fa-envelope"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Διεύθυνση, Πόλη Μητέρας" name="mother_city" class="demo-form ad-input" value="{{ $user->cv->mother_city}}">
-                    <i class="icon-inp fa fa-street-view"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Διεύθυνση, Πόλη Πατέρα" name="father_city" class="demo-form ad-input" value="{{ $user->cv->father_city }}">
-                    <i class="icon-inp fa fa-street-view"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Ταχυδρομικός Κώδικας Μητέρας" name="mother_post_code" class="demo-form ad-input" value="{{ $user->cv->mother_post_code}}">
-                    <i class="icon-inp fa fa-envelope-o"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Ταχυδρομικός Κώδικας Πατέρα" name="father_post_code" class="demo-form ad-input" value="{{ $user->cv->father_post_code}}">
-                    <i class="icon-inp fa fa-envelope-o"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Επάγγελμα/Θέση Εγασίας Μητέρας" name="mother_job" class="demo-form ad-input" value="{{ $user->cv->mother_job}}">
-                    <i class="icon-inp fa fa-briefcase"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Επάγγελμα/Θέση Εγασίας Πατέρα" name="father_job" class="demo-form ad-input" value="{{ $user->cv->father_job}}">
-                    <i class="icon-inp fa fa-briefcase"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Εργοδότης/Εταιρεία Μητέρας" name="mother_company" class="demo-form ad-input" value="{{ $user->cv->mother_company}}">
-                    <i class="icon-inp fa fa-building"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Εργοδότης/Εταιρεία Πατέρα" name="father_company" class="demo-form ad-input" value="{{ $user->cv->father_company}}">
-                    <i class="icon-inp fa fa-building"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Αριθμ. Φορολ. Μητρώου Μητέρας" name="mother_vat" class="demo-form ad-input" value="{{ $user->cv->mother_vat}}">
-                    <i class="icon-inp fa fa-file-text-o"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Αριθμ. Φορολ. Μητρώου Πατέρα" name="father_vat" class="demo-form ad-input" value="{{ $user->cv->father_vat}}">
-                    <i class="icon-inp fa fa-file-text-o"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Εισόδημα Μητέρας προηγούμενου Έτους" name="mother_income" class="demo-form ad-input" value="{{ $user->cv->mother_income}}">
-                    <i class="icon-inp fa fa-money"></i>
-                    {{--<div class="euro">€</div>--}}
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Εισόδημα Πατέρα προηγούμενου Έτους" name="father_income" class="demo-form ad-input" value="{{ $user->cv->father_income}}">
-                    <i class="icon-inp fa fa-money"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Αριθμός Δελτίου Ταυτότητας Μητέρας" name="mother_id_number" class="demo-form ad-input" value="{{ $user->cv->mother_id_number }}">
-                    <i class="icon-inp fa fa-id-card-o"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Αριθμός Δελτίου Ταυτότητας Πατέρα" name="mother_id_number" class="demo-form ad-input" value="{{ $user->cv->father_id_number }}">
-                    <i class="icon-inp fa fa-id-card-o"></i>
-                </div>
-
-
-                <!-- =======  -->
+                @foreach($fields as $field)
+                    @if(($field->category->id == 2 || $field->category->id == 5) && $settings->{$field->slug})
+                        <div class="col-sm-6 input-container">
+                            <input  type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <i class="icon-inp {{ $field->icon }}"></i>
+                        </div>
+                    @endif
+                @endforeach
+                <div class="clearfix"></div>
                 <br>
+                @foreach($fields as $field)
+                    @if(($field->category->id == 3 || $field->category->id == 6) && $settings->{$field->slug})
+                        <div class="col-sm-6 input-container">
+                            <input  type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <i class="icon-inp {{ $field->icon }}"></i>
+                        </div>
+                    @endif
+                @endforeach
 
-                <div class="col-sm-6 input-container">
-                    <input  type="text" label="Όνοματεπώνυμο Κηδεμόνα" name="mother_name" class="demo-form ad-input" value="{{ $user->cv->guardian_name }}">
-                    <i class="icon-inp fa fa-user-o"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Τηλέφωνο Κηδεμόνα" name="mother_phone" class="demo-form ad-input" value="{{ $user->cv->guardian_phone }}">
-                    <i class="icon-inp fa fa-phone"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="e-mail Κηδεμόνα" name="mother_email" class="demo-form ad-input" value="{{ $user->cv->guardian_email }}">
-                    <i class="icon-inp fa fa-envelope"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Διεύθυνση, Πόλη Κηδεμόνα" name="mother_city" class="demo-form ad-input" value="{{ $user->cv->guardian_city}}">
-                    <i class="icon-inp fa fa-street-view"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Ταχυδρομικός Κώδικας Κηδεμόνα" name="mother_post_code" class="demo-form ad-input" value="{{ $user->cv->guardian_post_code}}">
-                    <i class="icon-inp fa fa-envelope-o"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Επάγγελμα/Θέση Εγασίας Κηδεμόνα" name="mother_job" class="demo-form ad-input" value="{{ $user->cv->guardian_job}}">
-                    <i class="icon-inp fa fa-briefcase"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Εργοδότης/Εταιρεία Κηδεμόνα" name="mother_company" class="demo-form ad-input" value="{{ $user->cv->guardian_company}}">
-                    <i class="icon-inp fa fa-building"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Αριθμ. Φορολ. Μητρώου Κηδεμόνα" name="mother_vat" class="demo-form ad-input" value="{{ $user->cv->guardian_vat}}">
-                    <i class="icon-inp fa fa-file-text-o"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Εισόδημα Κηδεμόνα προηγούμενου Έτους" name="mother_income" class="demo-form ad-input" value="{{ $user->cv->guardian_income}}">
-                    <i class="icon-inp fa fa-money"></i>
-                    {{--<div class="euro">€</div>--}}
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Αριθμός Δελτίου Ταυτότητας Κηδεμόνα" name="mother_id_number" class="demo-form ad-input" value="{{ $user->cv->guardian_id_number }}">
-                    <i class="icon-inp fa fa-id-card-o"></i>
-                </div>
-
-
-
-
-
-
+                <div class="clearfix"></div>
+                <br>
+                @foreach($fields as $field)
+                    @if(($field->category->id == 4 || $field->category->id == 7) && $settings->{$field->slug})
+                        <div class="col-sm-6 input-container">
+                            <input  type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <i class="icon-inp {{ $field->icon }}"></i>
+                        </div>
+                    @endif
+                @endforeach
             </div>
 
-            <div class="row flex-row ">
+
+            <div class="row flex-row">
+            @if($settings->skills)
                 <div class="col-md-6 section2-container ">
-                    <div class="inner-section " >
+                    <div class="inner-section">
                         <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i> Ικανότητες - Δεξιότητες</div>
                         <div class="input-container">
+                        <div class="info-text"> Γράψε μας τις ικανοτητες και τις δεξιότητες που διαθέτεις.</div>
                             <textarea class="notes">{{ $user->cv->skills }}</textarea>
                         </div>
                     </div>
                 </div>
+            @endif
+            @if($settings->languages)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section">
                         <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
                         <div class=" input-container">
+                        <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
                             <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ $user->cv->languages }}</textarea>
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @if($settings->strongpoints)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
                         <div class="section-text centered-text">   <i class="icon-title fa fa-id-badge"></i> Σημεία Υπεροχής</div>
@@ -619,6 +532,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if($settings->previous_school)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
                         <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
@@ -629,7 +544,8 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @if($settings->awards)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
                         <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i>Έπαινοι - Διακρίσεις</div>
@@ -640,6 +556,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if($settings->other_interests)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
                         <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>Ενδιαφέροντα - Ασχολίες</div>
@@ -650,7 +568,8 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @if($settings->certifications)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
                         <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>Πιστοποιήσεις - Σεμινάρια</div>
@@ -661,6 +580,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if($settings->notes)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
                         <div class="section-text centered-text">   <i class="icon-title fa fa-pencil"></i>Σημειώσεις</div>
@@ -671,6 +592,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
 
             <div class="send-button centered">
@@ -680,6 +602,7 @@
         </div>
     </form>
     </div>
+
 </div>
 
 <!-- ====== Modal Αποστολής =======-->

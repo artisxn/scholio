@@ -38,7 +38,13 @@
         </ul>
     </li>
 
-    <li class="link"><a href="{{ url('settings') }}" class="{{ request()->path() == 'school/settings' ? 'active' : ''}}"><i class="fa fa-cogs"></i> <span> Ρυθμίσεις </span> </a></li>
+    <li class="has_sub">
+        <a href="#"><i class="fa fa-cogs"></i><span> Ρυθμίσεις </span></a>
+        <ul class="list-unstyled">
+            <li><a href="{{ url('panel/school/settings/public') }}" class="{{ request()->path() == 'panel/school/settings/public' ? 'active' : ''}}">Δημόσιο Προφίλ</a></li>
+            <li><a href="{{ url('panel/school/settings/scholarships') }}" class="{{ request()->path() == 'panel/school/settings/scholarships' ? 'active' : ''}}">Αίτηση Υποτροφίας</a></li>
+        </ul>
+    </li>
 
     <li class="has_sub">
         <a href="#" class=""><i class="ion-ios7-star-half"></i><span> Αξιολογήσεις </span></a>

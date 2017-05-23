@@ -17,6 +17,7 @@ class CreateAdmissionFieldTable extends Migration
             $table->primary(['admission_id', 'admission_field_id']);
             $table->integer('admission_id');
             $table->integer('admission_field_id');
+            $table->string('data');
             $table->timestamps();
         });
     }

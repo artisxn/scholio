@@ -19,6 +19,7 @@
         <link href="/panel/assets/css/icons.css" rel="stylesheet">
 
         @yield('styles')
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script>
             window.Scholio = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>
         </script>

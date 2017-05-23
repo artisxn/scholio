@@ -19,6 +19,18 @@ Route::get('requests', 'AdminPanelController@requests')->name('requests');
 Route::post('profile/images/upload', 'AdminPanelController@imagesUpload');
 Route::delete('profile/images/upload', 'AdminPanelController@imageDelete');
 
+Route::get('/settings/public', function () {
+    $categories = App\Models\AdmissionCategory::all();
+    $fields = App\Models\AdmissionField::all();
+    return view('panel.pages.school.settings.public', compact('fields', 'categories'));
+});
+
+Route::get('/settings/scholarships', function () {
+    $categories = App\Models\AdmissionCategory::all();
+    $fields = App\Models\AdmissionField::all();
+    return view('panel.pages.school.settings.scholarship', compact('fields', 'categories'));
+});
+
 Route::group(['middleware' => 'is.school', 'prefix' => 'class'], function () {
     Route::get('/create', function () {
         $school = auth()->user()->info;

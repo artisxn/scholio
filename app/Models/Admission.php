@@ -10,11 +10,16 @@ class Admission extends Model
 {
     public function scholarship()
     {
-        return $this->belongsTo(Scholarship::class);
+        return $this->belongsTo(Scholarship::class, 'scholarship_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function fields()
+    {
+        return $this->belongsToMany(AdmissionField::class, 'admission_field');
     }
 }
