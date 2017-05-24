@@ -8,6 +8,10 @@ use App\User;
 
 Scholio::soonRoutes();
 
+Route::get('public/schools/map', function () {
+    return view('public.results.map');
+});
+
 Route::get('/lang/{locale}', function ($locale) {
     return back()->withCookie(cookie()->forever('lang', $locale));
 });

@@ -226,7 +226,7 @@
 
 
                     <div class="btn-group " style="width: 100%; margin: 15px 0;">
-                        <a href="{{ url('/test') }}">
+                        <a href="{{ url('/public/schools/map') }}">
                         <button class="btn btn-primary" style=" width: 100%; height: 40px" ng-click="">
                             <i class="fa fa-map pad-right-15" aria-hidden="true"></i>Προβολή Χάρτη
                         </button>
