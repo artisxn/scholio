@@ -21,7 +21,7 @@ Route::post('profile/images/upload', 'AdminPanelController@imagesUpload');
 Route::delete('profile/images/upload', 'AdminPanelController@imageDelete');
 
 Route::get('/admission/{admission}', function (Admission $admission) {
-    dd($admission->fields);
+    // dd($admission->fields->pluck('name'));
     return view('panel.pages.school.scholarships.admission', compact('admission'));
 });
 

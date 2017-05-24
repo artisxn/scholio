@@ -9,9 +9,8 @@
 @section('content')
 <div>
     @foreach($admission->fields as $field)
-        @foreach($field->pivot as $data)
-            {{ $data-> }}
-        @endforeach
+        <h5>{{ $field->name }}</h5>
+        <div>{{ $field->pivot->data }}</div>
     @endforeach
 </div>
 @endsection

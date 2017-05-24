@@ -21,14 +21,16 @@ class Admission extends Model
 
     public function fields()
     {
-        return $this->belongsToMany(AdmissionField::class, 'admission_field');
+        return $this->belongsToMany(AdmissionField::class, 'admission_field')->withPivot('data');
     }
 
     public function createWithFields($data)
     {
         foreach (collect($data) as $index => $data) {
             $field = AdmissionField::findWithSlug($index)->first();
-            $this->fields()->save($field, ['data' => $data]);
+            if ($field != null) {
+                $this->fields()->save($field, ['data' => $data]);
+            }
         }
     }
 }
