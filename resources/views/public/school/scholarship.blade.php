@@ -246,24 +246,37 @@
 <div class="container back ">
 
     <div class=" buttons centered-text">
-        {{--@if(auth()->check())--}}
-        <span class="margin-right-20">
-            <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
-                               class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
-                    <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                    <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>
-                </button>
-            </a>
-        </span>
-        {{--@endif--}}
+        @if(auth()->check())
+            @if(auth()->user()->role != 'school')
+                <span class="margin-right-20">
+                    <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
+                                       class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
+                            <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>
+                        </button>
+                    </a>
+                </span>
+            @endif
+        @else
+            <span class="margin-right-20">
+                    <a href="{{ url('login') }}"><button type="button"
+                                       class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
+                            <i class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                            <span>Ενδιαφέρομαι</span>
+                        </button>
+                    </a>
+                </span>
+        @endif
 
         <span class="">
         @if(auth()->check())
-        @if(!auth()->user()->checkAdmission($scholarship))
-        <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
-        @else
-        <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αιτήθηκα </button></a>
-        @endif
+            @if(auth()->user()->role != 'school')
+                @if(!auth()->user()->checkAdmission($scholarship))
+                    <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
+                @else
+                    <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αιτήθηκα </button></a>
+                @endif
+            @endif
         @endif
         </span>
 
