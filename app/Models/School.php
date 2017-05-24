@@ -270,7 +270,7 @@ class School extends Model
     {
         $result = [];
         foreach ($this->scholarship as $scholarship) {
-            foreach ($scholarship->admissions as $admission) {
+            foreach ($scholarship->admission as $admission) {
                 array_push($result, $admission);
             }
         }
@@ -282,7 +282,7 @@ class School extends Model
     {
         $result = [];
         foreach ($this->scholarship as $scholarship) {
-            foreach ($scholarship->admissions as $admission) {
+            foreach ($scholarship->admission as $admission) {
                 array_push($result, $admission->user);
             }
         }
@@ -290,18 +290,18 @@ class School extends Model
         return collect($result);
     }
 
-    public function fullAdmission()
-    {
-        $result = [];
-        foreach ($this->scholarship as $scholarship) {
-            foreach ($scholarship->admissions as $index => $admission) {
-                $p = ['user' => $admission->user->info, 'scholarship' => $admission->scholarship->load('study')];
+    // public function fullAdmission()
+    // {
+    //     $result = [];
+    //     foreach ($this->scholarship as $scholarship) {
+    //         foreach ($scholarship->admissions as $index => $admission) {
+    //             $p = ['user' => $admission->user->info, 'scholarship' => $admission->scholarship->load('study')];
 
-                // $arrayName['user' =>$admission->user->info, '']
-                array_push($result, $p);
-            }
-        }
+    //             // $arrayName['user' =>$admission->user->info, '']
+    //             array_push($result, $p);
+    //         }
+    //     }
 
-        return collect($result);
-    }
+    //     return collect($result);
+    // }
 }

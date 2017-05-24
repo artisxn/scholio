@@ -130,4 +130,9 @@ class Scholarship extends Model
     {
         return $this->hasMany(Admission::class);
     }
+
+    public function scopeActiveScholarships($query)
+    {
+        return $query->where('active', 1)->get();
+    }
 }

@@ -33,4 +33,15 @@ class Admission extends Model
             }
         }
     }
+
+    public function scopeActive($query)
+    {
+        $all = [];
+        foreach ($query->get() as $q) {
+            if ($q->scholarship->active) {
+                array_push($all, $q);
+            }
+        }
+        return (collect($all));
+    }
 }

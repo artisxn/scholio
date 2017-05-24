@@ -9,10 +9,6 @@ use App\User;
 
 Scholio::soonRoutes();
 
-Route::get('test', function () {
-    return view('test');
-});
-
 Route::get('/lang/{locale}', function ($locale) {
     return back()->withCookie(cookie()->forever('lang', $locale));
 });

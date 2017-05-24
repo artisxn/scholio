@@ -21,9 +21,9 @@
                                     <tbody>
                                     
                                         <tr v-for="admission in admissions">
-                                                <td><a v-bind:href="'/student/' + admission.user.id"><img v-bind:src="admission.user.avatar"></a></td>
-                                                <td><a v-bind:href="'/student/' + admission.user.id">{{ admission.user.fname }} {{ admission.user.lname }}</a></td>
-                                                <td>{{admission.scholarship.study.name}}</td>
+                                                <td><a v-bind:href="'/student/' + admission.student.id"><img v-bind:src="admission.student.avatar"></a></td>
+                                                <td><a v-bind:href="'/student/' + admission.student.id">{{ admission.user.name }}</a></td>
+                                                <td>{{admission.scholarship}}</td>
                                         </tr>
                                     
                                     </tbody>

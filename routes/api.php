@@ -13,8 +13,16 @@ use App\User;
 use Illuminate\Http\Request;
 
 Route::get('/scholarship/getFullAdmissions', function () {
+    $arr = [];
     $school = auth()->user()->info;
-    return $school->fullAdmission();
+    foreach ($school->admissions() as $admission) {
+        array_push($arr, [
+            'user' => $admission->user,
+            'student' => $admission->user->info,
+            'scholarship' => $admission->scholarship->study->name,
+        ]);
+    }
+    return $arr;
 })->middleware('auth:api');
 
 Route::post('/request/school', function () {
