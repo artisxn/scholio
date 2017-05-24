@@ -63,5 +63,6 @@ class Kernel extends HttpKernel
         'is.student' => \App\Http\Middleware\Users\Student\IsStudent::class,
         'is.parent' => \App\Http\Middleware\Users\Parent\IsParent::class,
         'is.teacher' => \App\Http\Middleware\Users\Teacher\IsTeacher::class,
+        'see.student' => \App\Http\Middleware\School\SeeStudentProfile::class,
     ];
 }

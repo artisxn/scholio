@@ -1,6 +1,5 @@
 <?php
 
-use App\Events\StudentAppliedOnScholarship;
 use App\Models\AdmissionField;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -11,10 +10,6 @@ Scholio::soonRoutes();
 
 Route::get('/lang/{locale}', function ($locale) {
     return back()->withCookie(cookie()->forever('lang', $locale));
-});
-
-Route::get('a/{scholarship}', function (Scholarship $scholarship) {
-    event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
 });
 
 Route::post('/admission/{scholarship}/save', 'RoutesController@admissionSave');
@@ -93,16 +88,9 @@ Scholio::panelRoutes();
 
 Route::get('/token/register', 'RoutesController@token');
 
-/*
-|--------------------------------------------------------------------------
-| Social Login Routes
-|--------------------------------------------------------------------------
- */
-
 Route::get('auth/{provider}/', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
-//===== New Testing PUBLIC pages ======
 Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
 Route::get('/public/results/', function () {
     return redirect('public/results/all');
@@ -132,7 +120,6 @@ Route::get('/public/algolia/', function () {
 
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
-/* ===== TESTING ROUTE FOR SCHOLARSHIP ADMISSION ====== */
 Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
     $settings = $scholarship->school->settings;
     // dd($scholarship->school);
@@ -140,8 +127,7 @@ Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User 
     return view('public.school.admission', compact('user', 'scholarship', 'settings', 'fields'));
 });
 
-/* ===== TESTING ROUTE FOR  ADMISSION  Student Profile ====== */
-Route::get('/student/cv/{user}', function (User $user) {
+Route::get('/student/{user}', function (User $user) {
     // $admission = Admission::where('user_id', $user->id)->where('scholarship_id', $scholarship->id)->first();
     return view('public.school.student-profile', compact('user'));
-});
+})->middleware('is.school:see.student');
