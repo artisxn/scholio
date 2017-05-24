@@ -79,14 +79,15 @@
 	// add the navigation to the DOM
 	TiltSlider.prototype._addNavigation = function() {
 		// add nav "dots"
-		this.nav = document.createElement( 'nav' )
+		this.nav = document.createElement( 'nav' );
 		var inner = '';
 		for( var i = 0; i < this.itemsCount; ++i ) {
-			inner += i === 0 ? '<span class="current"></span>' : '<span></span>';
+			inner += i === 0 ? '<span class="current"></span>' : '<span> <div class="arrow-right"></div></span>';
 		}
 		this.nav.innerHTML = inner;
 		this.el.appendChild( this.nav );
 		this.navDots = [].slice.call( this.nav.children );
+
 	}
 
 	TiltSlider.prototype._initEvents = function() {
