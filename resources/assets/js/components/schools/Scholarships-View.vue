@@ -118,18 +118,23 @@
                         </div>
 
 
-                        <div style="width: 80%; margin: 15px auto;">
-                            <h2>Chart.js — Bar Chart Demo</h2>
-                            <div>
-                                <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
-                            </div>
-                        </div>
+
 
                     </div>
                 </div>
             </div>
         </div>
+
+        <div style="">
+            <h2>Chart.js</h2>
+            <div>
+                <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
+            </div>
+        </div>
+
     </div>
+
+
 </template>
 
 <script>
@@ -145,7 +150,8 @@ import Chart from '../../VueChart.vue'
                 scholars:[],
                 searchStr:"",
                 sc_amounts: [],
-                sc_names:[],
+//                sc_names:[],
+              sc_names:[['one','two'],'three',['four five','six'],'seven','eight','noine'],
                 datacollection: {
                   labels: ['asd'],
                   datasets: [
@@ -156,7 +162,20 @@ import Chart from '../../VueChart.vue'
                     }
                   ]
                 },
-                dataoptions: {responsive: true, maintainAspectRatio: false}
+                dataoptions: {responsive: false, maintainAspectRatio: false,
+                        scales: {
+                            xAxes: [{
+                                afterFit: function(scaleInstance) {
+                                    scaleInstance.width = 100; // sets the width to 100px
+                                },
+                                ticks: {
+//                                    display: false,
+//                                    // set the fontSize to 0 so that extra labels are not forced on the right side
+//                                    fontSize: 0
+                                }
+                            }]
+                        }
+                }
             }
         },
         computed: {
@@ -193,8 +212,9 @@ import Chart from '../../VueChart.vue'
                             st1[i].study=this.scholarships[i].study.name;
                             st1[i].level=this.scholarships[i].level.name;
                             st1[i].amount=parseInt(this.scholarships[i].financial_amount);
-                            this.sc_amounts.push(st1[i].amount)
-                            this.sc_names.push(st1[i].study)
+                            this.sc_amounts.push(st1[i].admissions)
+//                            this.sc_names.push(st1[i].study)
+//                            console.log(i,st1[i].study)
                         }
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
                         this.scholars=st1;
@@ -253,8 +273,6 @@ import Chart from '../../VueChart.vue'
                 this.sortType = 'criteria_id';
                 this.changeSortType(this.sortType)
             },
-
-
             changeSortType: function(){
                 this.sortReverse=!this.sortReverse;
                 var st1= this.scholars;

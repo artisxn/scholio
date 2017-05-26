@@ -117,11 +117,11 @@
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-open.png" alt="" v-if="criteria_id==5">
                                 </div>
 
-                                <select class="selectpicker" data-live-search="true" data-mobile="false" data-size='3' data-width="100%"  v-model="criteria_id" >
+                                <select class="selectpicker" data-live-search="false" data-mobile="false" data-size='4' data-width="100%"  v-model="criteria_id" >
                                     <option data-icon="fa " value="1">&nbsp; Υποτροφία Ταλέντου/Δεξιοτήτων</option>
                                     <option data-icon="fa " value="2">&nbsp; Υποτροφία Αριστείας</option>
                                     <option data-icon="fa " value="3">&nbsp; Υποτροφια με Κοινωνικά Κριτήρια</option>
-                                    <option data-icon="fa " value="4">&nbsp; 1+1 Φίλοι / Αδέλφια</option>
+                                    <option data-icon="fa " value="4">&nbsp; Υποτροφία για Φίλους/Αδέλφια</option>
                                     <option data-icon="fa " value="5">&nbsp; Υποτροφία Ανοιχτού Τύπου</option>
                                 </select>
                             </div>
@@ -135,23 +135,32 @@
                             <div class="step-box" style="" :class="{'step4MinHeight': !withTerms}">
                                 <h3>Όροι και Λεπτομέρειες Συμμετοχής</h3>
 
-                                    <div class="col-lg-4">
+
+
+                                <div class="col-lg-4 col-md-6 col-sm-6" >
+                                    <div style="" class="pull-left"> Πλήθος Νικητών Υποτροφίας</div>
+                                    <div style="width: 240px; margin: 25px 0 0 0;">
+                                        <select class="selectpicker" data-live-search="false" data-mobile="false" data-size='4' data-width="100%"   >
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">Πολλαπλοί Νικητές</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div style="" class="pull-left"> Υποτροφία ενεργή μέχρι: </div>
-                                        <div class="clearfix"></div>
+                                        <div class="clearfix" ></div>
                                         <!--v-on:click="errorDate" :class="{'error': error}"-->
                                         <input type="text" id="datepicker" size="30" class="ll-skin-cangas pull-left"
-                                               style="margin-top: 10px; height: 35px; border: 1px solid #d2d2d2; border-radius: 3px;"
+                                               style="margin-top: 5px; height: 35px; border: 1px solid #d2d2d2; border-radius: 3px;"
                                                v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)"
                                                 :class="{'error':error}">
+                                </div>
 
-                                        <div class="clearfix"></div>
-                                    </div>
-
-
-
-
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="funkyradio" style="width: 240px; margin: 15px 0 0 0;">
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="funkyradio" style="width: 240px; margin: 8px 0 0 0;">
                                         <div class="funkyradio-success">
                                             <input type="checkbox" id="exams" v-model="exams">
                                             <label for="exams"> Υποτροφία με εξετάσεις</label>
@@ -160,20 +169,17 @@
                                 </div>
 
 
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="funkyradio" style="width: 240px; margin: 15px 0 0 0;">
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="funkyradio" style="width: 240px; margin: 8px 0 0 0;">
                                         <div class="funkyradio-success">
                                             <input type="checkbox" id="withTerms" v-model="withTerms">
                                             <label for="withTerms"> Όροι και Προϋποθέσεις</label>
                                         </div>
                                     </div>
-
-                                    <div class="clearfix"></div>
                                 </div>
 
 
-
-                                <div id="" v-if="withTerms">
+                                <div id="" v-if="withTerms" style="margin-top: 130px;">
                                     <span style="color: transparent">.</span>
                                     <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
                                      <div><span>Υπολοιπο Χαρακτήρων:</span> <span id="chars_left"></span></div>
@@ -247,6 +253,13 @@ html .ui-button.ui-state-disabled:active {
     #step-4 .step .step-box { width: 900px;  margin-left: -190px; margin-right: auto }
 }
 
+@media (min-width: 921px) and (max-width: 1219px) {
+    #step-4 .step .step-box { width: 770px;   margin-left: -120px; margin-right: auto }
+}
+
+@media (min-width: 680px) and (max-width: 920px) {
+    #step-4 .step .step-box { width: 650px;   margin-left: -70px; margin-right: auto }
+}
 </style>
 
 <script>

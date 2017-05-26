@@ -21,7 +21,7 @@ class AdmissionCategoryTableSeeder extends Seeder
             ['name' => 'Οικονομικά Στοιχεία Μητέρας', 'icon' => ''],
             ['name' => 'Οικονομικά Στοιχεία Πατέρα', 'icon' => ''],
             ['name' => 'Οικονομικά Στοιχεία Κηδεμόνος', 'icon' => ''],
-            ['name' => 'Έξτρα Στοιχεια Μαθητή', 'icon' => ''],
+            ['name' => 'Έπιπλέον Στοιχεία Μαθητή', 'icon' => ''],
             // ['name' => 'Ικανότητες - Δεξιότητες', 'icon' => ''],
             // ['name' => 'Ξένες Γλώσσες', 'icon' => ''],
             // ['name' => 'Σημεία Υπεροχής', 'icon' => ''],
@@ -52,7 +52,7 @@ class AdmissionCategoryTableSeeder extends Seeder
             ['id' => '1', 'name' => 'Ημερομηνία Γέννησης', 'icon' => 'fa fa-calendar', 'type' => '', 'slug' => 'student_dob'],
             ['id' => '1', 'name' => 'Τόπος Γέννησης', 'icon' => 'fa fa-map-marker', 'type' => '', 'slug' => 'student_pob'],
             ['id' => '1', 'name' => 'Μέλος Πολύτεκνης Οικογένειας', 'icon' => 'fa fa-users', 'type' => '', 'slug' => 'student_polyteknos'],
-            ['id' => '1', 'name' => 'Μέλη της οικογένειας που φοιτούν στο εκπαιδευτικό ίδρυμα', 'icon' => 'fa fa-users', 'type' => '', 'slug' => 'student_relatives'],
+            ['id' => '1', 'name' => 'Μέλη της οικογένειας που φοιτούν στο εκπ. ίδρυμα', 'icon' => 'fa fa-users', 'type' => '', 'slug' => 'student_relatives'],
             ['id' => '1', 'name' => 'Προηγούμενο Σχολείο', 'icon' => 'fa fa-building', 'type' => '', 'slug' => 'student_previous'],
             ['id' => '1', 'name' => 'Βαθμός Αποφοίτησης απο το προηγούμενο σχολείο', 'icon' => 'fa fa-building', 'type' => '', 'slug' => 'student_grades'],
 

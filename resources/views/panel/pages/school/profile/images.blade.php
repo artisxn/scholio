@@ -8,12 +8,13 @@
 
     <style>
         #myform { margin-top: 20px;}
-        .span-cont{padding: 10px; position: relative} /* border: solid orange 1px; */
-        .btn-del{ background-color: #37515f; color: white; opacity: 0.7; bottom: 28px; right: 19px; position: absolute}
+        .span-cont{ padding: 10px ; position: relative} /* border: solid orange 1px; */
+        .btn-del,.btn-del-sel{ background-color: #37515f; color: white; opacity: 0.7; bottom: 35px; right: 28px; position: absolute}
+        .btn-del-sel{bottom: 35px; right: 28px;}
         .btn-del:hover{color: #ee980e; background-color: #1b2b37;}
         .btn-vis {visibility: visible}
         .info {font-size: 150%;  padding: 3px  10px 0 0;}   /* -webkit-text-stroke: 1px white;  color: transparent; */
-        .selectedImg{border-style: solid; border-width: 5px; border-color: yellow;}
+        .selectedImg{border: 5px solid #00bcd4;}
 
        /*.pic:before {*/
              /*content: '';*/
@@ -26,6 +27,7 @@
              /*opacity: 0.85;*/
          /*}*/
 
+        .out-div{height: 258px;}
         .pic {
             border: 6px solid #fff;
             float: left;
@@ -49,33 +51,46 @@
             width: 130%;
             height: 130%;
         }
+        .btn-green{background-color: #00bcd4; padding-top: 4px; color: #fff; outline: none;}
+        .btn-green:hover{background-color: #00a5bd; color: #fff; outline: none;}
+        .text{ max-width: 620px; font-size: 110%; text-align: justify; margin-top: 15px;}
+        .upper-texts{margin-left: 20px;}
+        .photo-container {margin-left: -15px; }
+        h3 {font-weight: 300;}
 
         @media (min-width: 1881px) {
             .span-cont {pading: 0 0.3%; width: 19.8%;}
             .pic, .grow img {height: 250px;}
+            .out-div{height: 270px;}
         }
 
         @media (min-width: 1550px) and (max-width: 1880px){
             .span-cont {pading: 0 0.2%; width: 24.5%;}
             .pic, .grow img{height: 240px;}
+
         }
 
         @media (min-width: 768px) and (max-width: 920px) {
             .pic, .grow img {height: 225px;}
+            .btn-del{bottom: 40px; right: 28px;}
+            .out-div{height: 243px;}
         }
 
         @media (min-width: 640px) and (max-width: 767px) {
             .pic, .grow img {height: 215px;}
+            .out-div{height: 233px;}
         }
 
         @media (min-width: 481px) and (max-width: 639px) {
             .span-cont {margin-left: 0.5%; width: 49%;}
             .pic, .grow img{height: 205px;}
+            .out-div{height: 222px;}
         }
 
         @media  (max-width: 480px) {
             .span-cont {margin-left: 4%; width: 92%;}
             .pic, .grow img {height: 195px;}
+            .out-div{height: 212px;}
         }
     </style>
 @endsection
@@ -205,38 +220,56 @@
     </div>
     <!-- Content  ΟΚ  simple upload-->
     <div class="row  old">
-                <form id='myform' method="POST" action="/panel/school/profile/images/upload" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <input type="file"  class="hidden" id="files" name="images[]" onchange="document.getElementById('myform').submit()" multiple/>
-                    <label for="files" class="btn btn-info"> <i class="fa fa-upload info info"  aria-hidden="true"></i> Ανέβασμα Φωτογραφίας</label>   <!--fa-cloud-upload  -->
-                </form>
-                <h3 class="">Φωτογραφίες Δημόσιου Προφίλ</h3>
-                <div class="row">
+
+        <div class="upper-texts">
+            <h3 class="">Φωτογραφίες Δημόσιου Προφίλ</h3>
+            <form id='myform' method="POST" action="/panel/school/profile/images/upload" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <input type="file"  class="hidden" id="files" name="images[]" onchange="document.getElementById('myform').submit()" multiple/>
+                <label for="files" class="btn btn-green"> <i class="fa fa-upload info info"  aria-hidden="true"></i> Ανέβασμα Φωτογραφίας</label>   <!--fa-cloud-upload  -->
+            </form>
+
+            <p class="text"> Για να ενεργοποιήστε το slideshow φωτογραφιών στο δημόσιο προφίλ σας θα πρέπει να ανεβάσετε τουλάχιστον 4  φωτογραφίες.
+                Στη συνέχεια με ένα κλικ επιλέγετε τη βασική φωτογραφία που θα εμφανίζεται το προφίλ σας στις αναζητήσεις.</p>
+            <div class="row">
+        </div>
+
                     @foreach($images as $image)
-                        <span class="  col-lg-4 col-sm-6 col-xs-6 span-cont">
+                        <div class="photo-container">
+                            <span class="  col-lg-4 col-sm-6 col-xs-6 span-cont">
                             <div class="">
-                                <div class="grow pic">
                                 @if(auth()->user()->info->background == $image->id)
-                                    <img id="img{{$image->id}}" class="selectedImg" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
-                                         {{--onmouseover="hov({{$image->id}})"--}}
-                                    />
-                                    @else
-                                    <img id="img{{$image->id}}" class="" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
-                                         {{--onmouseover="hov({{$image->id}})"--}}
-                                    />
-                                    @endif
-                                    <form method="POST" action="/panel/school/profile/images/upload">
-                                        {{ csrf_field() }}
-                                        {{ method_field('delete') }}
+                                    <div class="selectedImg out-div" style="padding-right: 8px;">
+                                        <div class="grow pic">
+                                            <img id="img{{$image->id}}" class="" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
+                                                    {{--onmouseover="hov({{$image->id}})"--}}
+                                            />
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="out-div">
+                                        <div class="grow pic" style="opacity: 0.;">
+                                            <img id="img{{$image->id}}" class="" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
+                                                    {{--onmouseover="hov({{$image->id}})"--}}
+                                            />
+                                        </div>
+                                    </div>
 
-                                            <input type="hidden" value="{{ $image->id }}" name="image"/>
+                                @endif
 
-                                        <button id="bt-{{ $image->id }}" type="submit" class="btn-del btn"> <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
-                                    </form>
-                                </div>
+
+                                <form method="POST" action="/panel/school/profile/images/upload">
+                                    {{ csrf_field() }}
+                                    {{ method_field('delete') }}
+
+                                    <input type="hidden" value="{{ $image->id }}" name="image"/>
+
+                                    <button id="bt-{{ $image->id }}" type="submit" class="btn-del btn"> <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
+                                </form>
                             </div>
-                        </span>
 
+                        </span>
+                        </div>
                     @endforeach
                 </div>
     </div>

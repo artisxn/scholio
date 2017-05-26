@@ -37,6 +37,7 @@
             -webkit-transition: .2s;
             transition: .2s;
         }
+        h3{ font-weight: 300;}
 
         input:checked + .slider {
             background-color: #00bcd4;
@@ -60,10 +61,11 @@
         .slider.round:before {
             border-radius: 50%;
         }
-        .title{font-size: 140%; font-weight: 300;}
+        .title{font-size: 140%;}
         .texts{ margin: 20px 0 0 0;}
         .switches{ margin: 9px 0 0 0;}
         .switch{ margin: 11px 0 0 0;}
+        .text{ font-weight: 300; font-size: 80%;}
 
         .fa-linear4{-webkit-text-stroke: 0.5px black;
             color: transparent; margin-right: 10px;}
@@ -72,15 +74,15 @@
 @endsection
 
 @section('content')
-    <div class="" style="max-width: 560px; margin-left: 20px;">
+    <div class="" style="max-width: 350px; margin-left: 20px;">
         <div class="row  title">
-            <i class="fa fa-cog" style="margin-right: 20px"></i>
-            <span>Επιλογές Δημόσιου Προφίλ</span>
 
+            <h3 style="color: #008da5"> <i class="fa fa-cog" style="margin-right: 10px"></i>Επιλογές Δημόσιου Προφίλ</h3>
+            <p class="text">Επιλέξτε από τα παρακάτω, ποια τμήματα επιθυμείτε να προβάλλονται στο δημόσιο προφίλ σας.</p>
         </div>
 
         <div class="row">
-            <div class="" style="width: 220px; float: left">
+            <div class="" style="width: 250px; float: left">
                 <div class="texts"> <i class="fa fa-twitter fa-linear4"></i>Social-Links:</div>
                 <div class="texts"> <i class="fa fa-phone fa-linear4"></i>Επικοινωνία</div>
                 <div class="texts"> <i class="fa fa-bar-chart fa-linear4"></i>Στατιστικά</div>
