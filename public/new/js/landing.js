@@ -20,8 +20,9 @@ jQuery(document).ready(function($) {
     var sandwitch_sticky = $('.sc-landing-menu-sandwitch-button-sticky');
 
     var text =  $('.sc-landing-menu a');
-
     var header = $('.sc-landing-header');
+    var select =  $('.lang-drop');
+
 
     $(window).scroll(function(){
 
@@ -35,8 +36,16 @@ jQuery(document).ready(function($) {
             sandwitch.css({"display":"none"});
             sandwitch_sticky.css({"display":"block"});
             text.css({"color":"#324c5a"});
+            select.css({"color":"#324c5a!important"});
+            select.addClass("hide");
+            text.hover( function (e) {
+                $(this).toggleClass('hover1', e.type === 'mouseenter');
+                text.removeClass('hover2');
+            });
+            //text.removeClass('hover2');
+
         }else{
-            header.css({"background":"transparent","border-bottom":"none", });
+            header.css({"background":"transparent","border-bottom":"none"});
             header.removeClass("navbar-fixed-top");
             header.addClass("navbar-top");
             logo.css({"display":"block"});
@@ -44,6 +53,13 @@ jQuery(document).ready(function($) {
             sandwitch.css({"display":"block"});
             sandwitch_sticky.css({"display":"none"});
             text.css({"color":"white"});
+            select.removeClass("hide");
+            //text.removeClass('hover1');
+            text.hover( function (e) {
+                $(this).toggleClass('hover2', e.type === 'mouseenter');
+                text.removeClass('hover1');
+            });
+
         }
 
     });

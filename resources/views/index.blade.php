@@ -111,7 +111,21 @@
         .right-in { bottom: -240px;}
 
         .sch-reg-title{left: 37%; : 400px; position: absolute; max-width: 400px}
+        .lang-sel{color: #fff; margin-top: 2px; margin-left: -23px}
+        .lang-drop{margin-top: 14px; }
+        /*.selectpicker{outline: none !important;}*/
+        /*.selectpicker:focus{outline: none !important;}*/
 
+        .dropdown-menu{background-color: transparent; }
+        .dropdown-menu>li>a{ color: #fff;}
+        div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;}
+        .btn-transparent{background-color: transparent; color: #fff}
+        .btn-transparent:focus{color: #fff; outline: 0;}
+        /*ul>li>a:hover,.btn-transparent:hover{color: #7ef8ff;}*/
+        /*ul>li>a:hover,.btn-transparent:hover{color: #FD6A33!important;}*/
+        .btn-transparent:hover{color: #00bcd4!important;}
+        /*.hover{color: #FD6A33!important;}*/
+        .hide{display: none}
 
         @media  (max-width: 2500px) {
             .sch-reg-title {left: 42%; width: 380px;}
@@ -178,7 +192,15 @@
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">@lang('main.navigation.features')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">@lang('main.navigation.institutions')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">@lang('main.navigation.contact')</a></li>
-                        @if(auth()->check())
+                        {{--<li class="lang-sel"><a href="">ENG &nbsp;|</a> </li>--}}
+                        {{--<li class="lang-sel sel2"><a href=""> GR</a></li>--}}
+                        <li class="lang-drop">
+                            <select class="selectpicker"  data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent"  v-model="">
+                                <option data-icon="fa " value="1">&nbsp; ENG</option>
+                                <option data-icon="fa " value="2">&nbsp; GR</option>
+                            </select>
+                        </li>
+                    @if(auth()->check())
                     <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('main.navigation.admin')</button></a></li>
                     <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                     @else
@@ -189,6 +211,7 @@
                     </a>
                     </li>
                     @endif
+
                     </ul>
                     {{-- <a href="lang/en">EN</a> | <a href="lang/el">GR</a> --}}
                 </div>
@@ -214,42 +237,52 @@
                     </div>
                     <br><br>
                     <div class="pull-right">
+                        <span class="lang-sel" style="float: right"><a href="">ENG &nbsp;</a> | <a href=""> &nbsp;GR</a></span>
+
+                        <div class="clearfix"></div>
                         <a href="#sc-landing-sec2">
 
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΧΕΤΙΚΑ</div>
+                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.about')</div>
                         </a>
                         <a href="#sc-landing-sec3">
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΗΜΕΙΑ ΥΠΕΡΟΧΗΣ</div>
+                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.features')</div>
                         </a>
                         <a href="#sc-landing-sec4">
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΚΠΑΙΔΕΥΤΗΡΙΑ</div>
+                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.institutions')</div>
                         </a>
                         <a href="#sc-landing-sec5">
-                        <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΠΙΚΟΙΝΩΝΙΑ</div>
+                        <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.contact')</div>
                         </a>
+
 
                         <div class=""><br></div>
                         <div class="sign-links">
                             @if(auth()->check())
                                 <div class=""><br></div>
-                                <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
+                                <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('main.navigation.admin')</button></a>
                                 <div><br><br><br></div>
-                                <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
+                                <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('main.navigation.logout')</button></a>
                             @else
                                 <div class=""><br></div>
                                 <a href="{{ url('/register') }}">
                                     <button type="button" class="sc-button sc-orange sc-t-white pull-right"
                                             {{--data-toggle="modal" data-target="#signUp-modal"--}}
-                                    >Εγγραφή</button>
+                                    >@lang('main.navigation.register')</button>
                                 </a>
                                 <div class=""><br><br><br></div>
                                 <a href="{{ url('/login') }}">
                                     <button type="button" class="sc-button  sc-green sc-t-white pull-right"
                                             {{--data-toggle="modal" data-target="#signIn-modal"--}}
-                                    >Σύνδεση</button>
+                                    >@lang('main.navigation.login')</button>
                                 </a>
                             @endif
                         </div>
+                        {{--<div class="lang-drop" style="padding-top: 40px;">--}}
+                            {{--<select class="selectpicker"  data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent"  v-model="">--}}
+                                {{--<option data-icon="fa " value="1">&nbsp; ENG</option>--}}
+                                {{--<option data-icon="fa " value="2">&nbsp; GR</option>--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
 
                     </div>
                 </div>

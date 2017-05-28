@@ -25,6 +25,10 @@
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 
+
+    {{--<!-- FontAwesome -->--}}
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+
     <!-- Bootstrap Select -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
@@ -112,6 +116,12 @@
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
+                            <li class="sc-landing-menu-item"  ">
+                            <a href="{{url('public/scholarships')}}" class="btn-schools">
+                                <i class="fa fa-trophy margin-right-5"></i>
+                                Αναζήτηση Υποτροφιών
+                            </a>
+                            </li>
                             @if(auth()->check())
                                 <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                                 <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
@@ -246,11 +256,15 @@
                             <div id="stats" class="text-muted "></div>
                             <div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>
                             <div class="filter-container">
-                                <div class="filter-title">Κατηγορίες</div>
+                                <div class="filter-title">
+                                    <i class="fa fa-university fa-linear5 margin-right-5"></i>
+                                    Κατηγορίες</div>
                                 <div id="categoriesType"></div>
                             </div>
                             <div class="filter-container">
-                                <div class="filter-title">Πόλεις</div>
+                                <div class="filter-title">
+                                    <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                    Πόλεις</div>
                                 <div id="categoriesCity"></div>
                             </div>
                             {{-- <div class="filter-title">Αντικείμενο Σπουδών</div>

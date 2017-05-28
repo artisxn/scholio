@@ -64,6 +64,7 @@ input:checked + .slider:before {
 
     .container-out{max-width: 550px; margin-left: 15px;}
     .container-left{width: 440px;}
+    .diss:hover{cursor: not-allowed!important;}
 
       @media  (max-width: 480px) {
         .container-out{margin-left: 5px;}
@@ -97,13 +98,13 @@ input:checked + .slider:before {
                 <div class="texts" style="margin-top: 8px;"> <i class="fa fa-user fa-linear4"></i>Ονοματεπώνυμο Μαθητή</div>
                 <label class="switch" style="opacity: 0.4">
                     <input type="checkbox" checked disabled>
-                    <div class="slider round"></div>
+                    <div class="slider round diss"></div>
                 </label>
                 <div style="margin-top: -10px; ">
                     <div class="texts"> <i class="fa fa-envelope fa-linear4"></i>Email Μαθητή</div>
                     <label class="switch" style="opacity: 0.4">
                         <input type="checkbox" checked disabled>
-                        <div class="slider round"></div>
+                        <div class="slider round diss"></div>
                     </label>
                 </div>
 
