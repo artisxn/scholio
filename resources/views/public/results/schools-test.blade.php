@@ -117,7 +117,7 @@
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
                             <li class="sc-landing-menu-item"  ">
-                            <a href="{{url('public/scholarships')}}" class="btn-schools">
+                            <a href="{{url('public/scholarships')}}" class="btn-change-search">
                                 <i class="fa fa-trophy margin-right-5"></i>
                                 Αναζήτηση Υποτροφιών
                             </a>

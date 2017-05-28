@@ -418,8 +418,8 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 /*  /////////////////////////////////////////  */
 /*=============================================*/
 .filter-title{color: #008da5;}
-.btn-schools{border: 1px solid #777; border-radius: 5px; padding: 9px 13px!important; margin-top: 4px; margin-right: 15px;}
-.btn-schools:hover{border-color:  #008da5;}
+.btn-change-search{border: 1px solid #777; border-radius: 5px; padding: 9px 13px!important; margin-top: 4px; margin-right: 15px;}
+.btn-change-search:hover{border-color:  #008da5;}
 
 /*=============================================*/
 

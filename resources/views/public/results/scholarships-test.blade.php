@@ -160,7 +160,7 @@
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             <li class="sc-landing-menu-item"  ">
-                                <a href="{{url('public/schools')}}" class="btn-schools">
+                                <a href="{{url('public/schools')}}" class="btn-change-search">
                                     <i class="fa fa-university margin-right-5"></i>
                                     Αναζήτηση Εκπαιδευτικών Ιδρυμάτων
                                 </a>
