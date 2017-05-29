@@ -206,6 +206,7 @@ p {padding: 15px; color: #5d5d5d;  }
 @media (min-width: 992px) and (max-width: 1199px) {
     .section1, .section2{ min-height: 220px}
     .section3{ min-height: 150px}
+
     }
 
 

@@ -421,6 +421,10 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 .btn-change-search{border: 1px solid #777; border-radius: 5px; padding: 9px 13px!important; margin-top: 4px; margin-right: 15px;}
 .btn-change-search:hover{border-color:  #008da5;}
 
+
+.clear-filter{width: 280px; margin-left: 0;}
+.clear-filter-mobile{width: 230px; margin-left: 0;}
+
 /*=============================================*/
 
 
@@ -429,23 +433,31 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 .sc-landing-logo-sticky, .sc-landing-menu-sandwitch-button-sticky  {margin-top: -10px}
 
 @media (min-width: 1450px)  {
-    /*  */
     .container {width: 1300px;}
+    .clear-filter{width: 300px;}
 }
-
 
 
 @media (min-width: 1240px) and (max-width: 1449px) {
-    /*  */
     .container {width: 1240px;}
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .clear-filter{width: 220px;}
+}
+
 @media  (max-width: 991px) {
-    /*  */
     .sc-logo{height: 45px;}
     .sc-landing-logo-sticky  {margin-top: -16px}
     /*.sc-landing-menu-sandwitch-button-sticky {margin-top: -10px;}*/
 }
+
+
 
 
 

@@ -256,12 +256,12 @@
 
                                 <div id="statsMobile" class=""></div>
                                 <div class="facet-category-title">Φίλτρα Υποτροφιών:
-
                                     <a class="" role="button" id="close-btn"
                                        aria-expanded="false" aria-controls="">
                                         <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
                                     </a>
                                 </div>
+                                <div id="clear-allMobile"  class="clear-filter-mobile"></div>
 
                                 <div class="filter-container">
                                     <div class="filter-title" >
@@ -282,7 +282,7 @@
 
                         </div>
 
-                        <div id="clear-allMobile" style="width: 180px; margin-left: auto; margin-right: auto;"></div>
+
 
                     </div>
 
@@ -304,6 +304,11 @@
 
                             <div id="stats" class=""></div>
                             <div class="facet-category-title">Φίλτρα Υποτροφιών:</div>
+
+
+                            <div id="clear-all" class="clear-filter"> </div>
+
+
 
                             <div class="filter-container">
                                 <div class="filter-title" >
@@ -330,11 +335,18 @@
                                     Επίπεδο Σπουδών</div>
                                 <div id="categoriesLevel"></div>
                             </div>
+
+                            <div class="filter-container">
+                                <div class="filter-title">
+                                    <i class="fa fa-check-square fa-linear5 margin-right-5"></i>
+                                Κριτήρια Συμμετοχής</div>
+                                <div id="categoriesCriteria"></div>
+                            </div>
                             {{--<div id="financial" class="facet"></div>--}}
 
 
                         </aside>
-                        <div id="clear-all" style="width: 190px; margin-left: auto; margin-right: auto"></div>
+
                     </div>
 
 
@@ -626,6 +638,18 @@ angular.module("scholarshipsResultsApp",[])
 
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCriteria',
+                attributes: ['criteria'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesTypeMobile',
                 attributes: ['type'],
                 sortBy: ['name:asc'],
@@ -747,7 +771,7 @@ angular.module("scholarshipsResultsApp",[])
             instantsearch.widgets.clearAll({
                 container: '#clear-all',
                 templates: {
-                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
+                    link: '<div style="padding: 4px;"><i class="fa fa-ban margin-right-5"></i>Διαγραφή Φίλτρων</div>'
                 },
                 cssClasses: {
                     root: 'btn btn-block btn-default'
@@ -760,7 +784,7 @@ angular.module("scholarshipsResultsApp",[])
             instantsearch.widgets.clearAll({
                 container: '#clear-allMobile',
                 templates: {
-                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
+                    link: '<div style="padding: 4px;"><i class="fa fa-ban margin-right-5"></i>Διαγραφή Φίλτρων</div>'
                 },
                 cssClasses: {
                     root: 'btn btn-block btn-default'

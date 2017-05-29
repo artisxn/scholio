@@ -205,7 +205,15 @@
                             <aside style="width: 230px;">
 
                                 <div id="statsMobile" class="text-muted "></div>
-                                <div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>
+                                {{--<div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>--}}
+                                <div class="facet-category-title">Φίλτρα Αναζήτησης:
+                                    <a class="" role="button" id="close-btn"
+                                       aria-expanded="false" aria-controls="">
+                                        <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div id="clear-allMobile" class="clear-filter-mobile"> </div>
+
                                 <div class="filter-container">
                                     <div class="filter-title">Κατηγορίες</div>
                                     <div id="categoriesTypeMobile"></div>
@@ -219,7 +227,7 @@
 
                         </div>
 
-                        <div id="clear-allMobile" style="width: 180px; margin-left: auto; margin-right: auto;"></div>
+
 
                     </div>
 
@@ -255,6 +263,9 @@
 
                             <div id="stats" class="text-muted "></div>
                             <div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>
+
+                            <div id="clear-all"class="clear-filter"></div>
+
                             <div class="filter-container">
                                 <div class="filter-title">
                                     <i class="fa fa-university fa-linear5 margin-right-5"></i>
@@ -278,7 +289,7 @@
 
 
                         </aside>
-                        <div id="clear-all" style="width: 190px; margin-left: auto; margin-right: auto"></div>
+
                     </div>
 
 
@@ -705,7 +716,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.clearAll({
                 container: '#clear-all',
                 templates: {
-                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
+                    link: '<i class="fa fa-ban margin-right-5"></i>Διαγραφή Φίλτρων'
                 },
                 cssClasses: {
                     root: 'btn btn-block btn-default'
@@ -718,7 +729,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.clearAll({
                 container: '#clear-allMobile',
                 templates: {
-                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
+                    link: '<i class="fa fa-ban margin-right-5"></i>Διαγραφή Φίλτρων'
                 },
                 cssClasses: {
                     root: 'btn btn-block btn-default'
