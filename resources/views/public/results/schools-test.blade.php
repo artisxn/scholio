@@ -25,6 +25,10 @@
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 
+
+    {{--<!-- FontAwesome -->--}}
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+
     <!-- Bootstrap Select -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
@@ -112,6 +116,12 @@
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
+                            <li class="sc-landing-menu-item"  ">
+                            <a href="{{url('public/scholarships')}}" class="btn-change-search">
+                                <i class="fa fa-trophy margin-right-5"></i>
+                                Αναζήτηση Υποτροφιών
+                            </a>
+                            </li>
                             @if(auth()->check())
                                 <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
                                 <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
@@ -195,7 +205,15 @@
                             <aside style="width: 230px;">
 
                                 <div id="statsMobile" class="text-muted "></div>
-                                <div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>
+                                {{--<div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>--}}
+                                <div class="facet-category-title">Φίλτρα Αναζήτησης:
+                                    <a class="" role="button" id="close-btn"
+                                       aria-expanded="false" aria-controls="">
+                                        <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div id="clear-allMobile" class="clear-filter-mobile"> </div>
+
                                 <div class="filter-container">
                                     <div class="filter-title">Κατηγορίες</div>
                                     <div id="categoriesTypeMobile"></div>
@@ -209,7 +227,7 @@
 
                         </div>
 
-                        <div id="clear-allMobile" style="width: 180px; margin-left: auto; margin-right: auto;"></div>
+
 
                     </div>
 
@@ -245,12 +263,19 @@
 
                             <div id="stats" class="text-muted "></div>
                             <div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>
+
+                            <div id="clear-all"class="clear-filter"></div>
+
                             <div class="filter-container">
-                                <div class="filter-title">Κατηγορίες</div>
+                                <div class="filter-title">
+                                    <i class="fa fa-university fa-linear5 margin-right-5"></i>
+                                    Κατηγορίες</div>
                                 <div id="categoriesType"></div>
                             </div>
                             <div class="filter-container">
-                                <div class="filter-title">Πόλεις</div>
+                                <div class="filter-title">
+                                    <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                    Πόλεις</div>
                                 <div id="categoriesCity"></div>
                             </div>
                             {{-- <div class="filter-title">Αντικείμενο Σπουδών</div>
@@ -264,7 +289,7 @@
 
 
                         </aside>
-                        <div id="clear-all" style="width: 190px; margin-left: auto; margin-right: auto"></div>
+
                     </div>
 
 
@@ -691,7 +716,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.clearAll({
                 container: '#clear-all',
                 templates: {
-                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
+                    link: '<i class="fa fa-ban margin-right-5"></i>Διαγραφή Φίλτρων'
                 },
                 cssClasses: {
                     root: 'btn btn-block btn-default'
@@ -704,7 +729,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.clearAll({
                 container: '#clear-allMobile',
                 templates: {
-                    link: '<i class="fa fa-eraser"></i>Καθαρισμός Φίλτρων'
+                    link: '<i class="fa fa-ban margin-right-5"></i>Διαγραφή Φίλτρων'
                 },
                 cssClasses: {
                     root: 'btn btn-block btn-default'

@@ -61,10 +61,10 @@
 
     <style>
         .trophy-img{height: 45px; margin-top: 5px}
-        .upper-box{background-color: #008DA5; height: 320px; border-radius: 4px; border-bottom-left-radius: 0; border-bottom-right-radius: 0}
+        .upper-box{background-color: #008DA5; height: 320px; border-radius: 4px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; position: relative}
         .upper-title{ margin-top: -20px; margin-left: 60px;}
 
-        .title-to{ font-size: 140%; color: #fafafa; font-weight: 300; padding: 200px 0 0 70px;}
+        .title-to{ font-size: 140%; color: #fafafa; font-weight: 300; padding: 190px 0 0 70px;}
         /*.inner-box{ background-color: #F1F4F5; border: 1px solid #ddd; border-radius: 26px; height: 500px; margin-top: 15px;*/
         /*box-shadow: -5px 0  4px #fff, 0 -5px  4px #fff, 5px 0 4px #fff;*/
         /*border-bottom-left-radius:17px; border-bottom-right-radius:17px;*/
@@ -87,6 +87,9 @@
         .section2-container{}
         .avatar-container{margin-top: 15px; margin-right: 0; padding-right: 0; }
         .avatar{height: 43px; width: auto;  margin-top: -2px}
+        .avatarUp{height:70px; width: auto; position: absolute; top: 280px; left: 70px; z-index: 4; box-shadow: 0 0 15px #222;
+        }
+
         .col-left{padding-left: 0}
         .col-right{padding-right: 0}
 
@@ -191,8 +194,9 @@
             .icon-inp1 {top: 33px }
             /*.outer{ padding: 5px;}*/
             .inner-box{ padding: 0 5px 8px 5px; }
-            .title-to{  padding: 200px 0 0 15px;}
+            .title-to{  padding: 150px 0 0 15px;}
             .avatar-container{width: 10%; }
+            .avatarUp{left: 20px}
             .cont1{margin-left: 6%; width: 84%; }
         }
 
@@ -208,11 +212,10 @@
 
         @media  (max-width: 390px) {
             .upper-box{height: 240px; }
-            .title-to{margin-left: -20px}
+            .title-to{margin-left: -20px; }
             .trophy-container{text-align:center;
-                margin-left: auto;
-                margin-right: auto;
-                float: none;}
+                margin-left: auto;  margin-right: auto;
+                float: none; }
             .trophy-img{width: 90px; height: auto;  margin-top: -160px;  }
             .upper-title{font-size: 80%; clear: both; display: block; margin-left: auto; margin-right: auto}
             .avatar{height: 50px; margin-top: 1px;}
@@ -328,9 +331,11 @@
     <form id="admissionForm" action="/admission/{{ $scholarship->id }}/save" method="POST">
     {{ csrf_field() }}
         <div class="upper-box " >
+            <img src="{{ $user->info->avatar }}" class="avatarUp">
             <div class="title-to">
                 <div class="trophy-container"> <img src="/new/img/trophy-fff.png" class="trophy-img" alt="">
                     <div class="upper-title">Αίτηση υποτροφίας <span class="hidden-xxxs">προς</span> <span class="sch-name">{{ $scholarship->school->name() }}</span> </div>
+
                 </div>
             </div>
         </div>
@@ -340,11 +345,16 @@
                 <div class="section-text centered-text"> Στοιχεία Υποψηφίου</div>
 
                 <div class="col-sm-6">
-                    <div class="col-sm-1 avatar-container pad-0 ">
-                        <img src="{{ $user->info->avatar }}" class="avatar">
-                    </div>
+                    {{--<div class="col-sm-1 avatar-container pad-0 ">--}}
+                        {{--<img src="{{ $user->info->avatar }}" class="avatar">--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-11 input-container  pad-0 pad-left-10 cont1">
+                    {{--<div class="col-sm-11 input-container  pad-0 pad-left-10 cont1">--}}
+                        {{--<input  type="text" label="Όνομα Σπουδαστή" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">--}}
+                        {{--<i class="icon-inp icon-inp1 fa fa-user-o"></i>--}}
+                    {{--</div>--}}
+
+                    <div class="input-container  input-container">
                         <input  type="text" label="Όνομα Σπουδαστή" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">
                         <i class="icon-inp icon-inp1 fa fa-user-o"></i>
                     </div>
@@ -392,42 +402,6 @@
                     @endif
                 @endforeach
 
- {{--                <div class="col-sm-6 input-container">
-                    <input type="text" label="Αριθμός Δελτίου Ταυτότητας" name="id_number" class="demo-form ad-input" value="{{ $user->cv->id_number }}">
-                    <i class="icon-inp fa fa-id-card-o"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Ταχυδρομικός Κώδικας" name="post_code" class="demo-form ad-input" value="{{ $user->cv->post_code}}">
-                    <i class="icon-inp fa fa-envelope-o"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Εθνικότητα" name="nationality" class="demo-form ad-input" value="{{ $user->cv->nationality }}">
-                    <i class="icon-inp fa fa-flag"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Θρήσκευμα" name="religion" class="demo-form ad-input" value="{{ $user->cv->religion }}">
-                    <i class="icon-inp fa fa-globe"></i>
-                </div>
-
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Ημερομηνία Γέννησης" name="dateOfBirth" class="demo-form ad-input ll-skin-cangas"
-                           id="datepicker"   size="30"  value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y')  }}" onchange=""
-                    >
-                    <i class="icon-inp fa fa-calendar"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Τόπος Γέννησης" name="place_of_birth" class="demo-form ad-input" value="{{ $user->cv->place_of_birth }}">
-                    <i class="icon-inp fa fa-map-marker"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Προηγούμενο Σχολείο" name="previous_school" class="demo-form ad-input" value="{{ $user->cv->previous_school }}">
-                    <i class="icon-inp fa fa-building"></i>
-                </div>
-                <div class="col-sm-6 input-container">
-                    <input type="text" label="Βαθμός Αποφοίτησης απο το προηγούμενο σχολείο" name="school_grades" class="demo-form ad-input" value="{{ $user->cv->school_grades }}">
-                    <i class="icon-inp fa fa-graduation-cap"></i>
-                </div> --}}
 
                 <div class="clearfix"></div>
                 @if($settings->student_polyteknos)

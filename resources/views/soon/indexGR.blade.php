@@ -312,8 +312,8 @@
                                         <p>Περιηγήσου στα προφίλ των εκπαιδευτικών ιδρυμάτων, και ενημερώσου για τις σπουδές τους, τις υποτροφίες τους, τις αξιολογήσεις που έχουν λάβει όπως και για τους διδάσκοντές τους.</p>
                                     </div>
                                     <div class="tiltview col1">
-                                        <a href="slideshow"><img src="/soon/img/5_screen.jpg"/></a>
-                                        <a href="slideshow"><img src="/soon/img/6_screen.jpg"/></a>
+                                        <a href="#slideshow"><img src="/soon/img/5_screen.jpg"/></a>
+                                        <a href="#slideshow"><img src="/soon/img/6_screen.jpg"/></a>
                                     </div>
                                 </li>
                                 <li>
@@ -322,8 +322,8 @@
                                         <p>Το Schol.io σου προσφέρει την υποτροφία που ταιριάζει περισσότερο στο προφίλ σου. Δημιούργησε το βιογραφικό σου και κάνε αίτημα στην υποτροφία που σκοπεύει να σου αλλάξει τη ζωή !</p>
                                     </div>
                                     <div class="tiltview col1">
-                                        <a href="slideshow"><img src="/soon/img/1_mobile.jpg"/></a>
-                                        <a href="slideshow"><img src="/soon/img/2_mobile.jpg"/></a>
+                                        <a href="#slideshow"><img src="/soon/img/1_mobile.jpg"/></a>
+                                        <a href="#slideshow"><img src="/soon/img/2_mobile.jpg"/></a>
                                     </div>
                                 </li>
                                 <li>
@@ -332,8 +332,8 @@
                                         <p>Ταξινόμησε και σύγκρινε τις δημοφιλέστερες, τις πιο πρόσφατες, τις πιο hot & trend υποτροφίες που δημιουργήθηκαν στο Schol.io μόνο για σένα !</p>
                                     </div>
                                     <div class="tiltview col1">
-                                        <a href="slideshow"><img src="/soon/img/3_screen.jpg"/></a>
-                                        <a href="slideshow"><img src="/soon/img/4_screen.jpg"/></a>
+                                        <a href="#slideshow"><img src="/soon/img/3_screen.jpg"/></a>
+                                        <a href="#slideshow"><img src="/soon/img/4_screen.jpg"/></a>
                                     </div>
                                 </li>
                                 <li>
@@ -342,8 +342,8 @@
                                         <p>Το Schol.io φέρνει κοντά γονείς, μαθητές, καθηγητές και εκπαιδευτικά ιδρύματα δημιουργώντας τη μεγαλύτερη εκπαιδευτική οικογένεια.</p>
                                     </div>
                                     <div class="tiltview col1">
-                                        <a href="slideshow"><img src="/soon/img/5_mobile.jpg"/></a>
-                                        <a href="slideshow"><img src="/soon/img/6_mobile.jpg"/></a>
+                                        <a href="#slideshow"><img src="/soon/img/5_mobile.jpg"/></a>
+                                        <a href="#slideshow"><img src="/soon/img/6_mobile.jpg"/></a>
                                     </div>
                                 </li>
                             </ol>

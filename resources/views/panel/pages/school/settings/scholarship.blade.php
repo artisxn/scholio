@@ -38,13 +38,9 @@
   transition: .2s;
 }
 
-input:checked + .slider {
-  background-color: #00bcd4;
-}
+input:checked + .slider {background-color: #00bcd4;  }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #00bcd4;
-}
+input:focus + .slider {box-shadow: 0 0 1px #00bcd4;  }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
@@ -53,67 +49,83 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+.slider.round { border-radius: 34px;  }
+.slider.round:before { border-radius: 50%;  }
 
-.slider.round:before {
-  border-radius: 50%;
-}
-    .title{font-size: 140%; font-weight: 300;}
-    .texts{ margin: 20px 0 0 0;}
-    .switches{ margin: 9px 0 0 0;}
-    .switch{ margin: 10px 0 0 0;}
+    .texts{ margin: 25px 0 0 0;}
+    .switch{ margin-top: -22px; float: right}
+    .text{ color: #999; max-width: 440px; font-size: 120%; font-weight: 300; line-height: 115%;}
 
-    .fa-linear4{-webkit-text-stroke: 0.5px black;
-        color: transparent; margin-right: 10px;}
-    hr{border-color: #888}
+    .fa-linear4{-webkit-text-stroke: 0.5px black; color: transparent; margin-right: 10px;}
+    hr{border-color: #888; margin-bottom: -20px}
+    .title {font-size: 150%; font-weight: 300; color: #00bcd4}
+
+    .top-pad{ margin-top: 50px; margin-bottom: -20px;}
+
+    .container-out{max-width: 550px; margin-left: 15px;}
+    .container-left{width: 440px;}
+    .diss:hover{cursor: not-allowed!important;}
+
+      @media  (max-width: 480px) {
+        .container-out{margin-left: 5px;}
+        .container-left {width: 340px;}
+    }
+    @media  (max-width: 380px) {
+        .container-out{margin-left: 5px;}
+        .container-left {width: 99%;}
+        .texts {width: 290px;}
+    }
+
+
+
+
 </style>
 @endsection
 
 @section('content')
 
 
-    <div class="" style="max-width: 600px; margin-left: 20px;">
-        <div class="row  title">
-            <i class="fa fa-cog hidden-xs" style="margin-right: 20px"></i>
-            <span>Επιλογές Αίτησης Υποτροφίας</span>
-
+    <div class="container-out">
+        <div class="row ">
+            <h3 style="font-weight: 300;"><i class="fa fa-trophy " style="margin-right: 15px"></i>Επιλογές Αίτησης Υποτροφίας</h3>
+            <p class="text">Επιλέξτε από τα παρακάτω, ποιές πληροφορίες θα πρέπει να συμπληρώνει ο υποψήφιος στην αίτηση του,
+                για τις υποτροφίες που ανακοινώνετε. </p>
         </div>
 
         <div class="row">
-            <div class="" style="width: 500px; float: left">
+            <div class="container-left">
                 {{-- @foreach($fields as $field) --}}
-                <div class="texts"> <i class="fa-linear4"></i>Ονοματεπώνυμο Μαθητή</div>
-                <div class="texts"> <i class="fa-linear4"></i>Email Μαθητή</div>
-                @foreach($categories as $category)
-                  <h4>{{ $category->name }}</h4>
-                  @foreach($category->fields as $field)
-                   <div class="texts"> <i class="{{ $field->icon }} fa-linear4"></i>{{ $field->name }}</div>
-                  @endforeach
-                @endforeach
+                <div class="texts" style="margin-top: 8px;"> <i class="fa fa-user fa-linear4"></i>Ονοματεπώνυμο Μαθητή</div>
+                <label class="switch" style="opacity: 0.4">
+                    <input type="checkbox" checked disabled>
+                    <div class="slider round diss"></div>
+                </label>
+                <div style="margin-top: -10px; ">
+                    <div class="texts"> <i class="fa fa-envelope fa-linear4"></i>Email Μαθητή</div>
+                    <label class="switch" style="opacity: 0.4">
+                        <input type="checkbox" checked disabled>
+                        <div class="slider round diss"></div>
+                    </label>
+                </div>
+
+                <div class="">
+                    @foreach($categories as $category)
+                        {{--@if($category->id<5)--}}
+                            <div class="top-pad title">{{ $category->name }}</div>
+                            <hr>
+                            @foreach($category->fields as $field)
+                                <div class="texts"> <i class="{{ $field->icon }} fa-linear4"></i>{{ $field->name }}</div>
+                                <label class="switch">
+                                    <input type="checkbox" onchange="change(this)" name="{{ $field->slug }}" {{ auth()->user()->info->settings->{$field->slug} ? 'checked' : '' }}>
+                                    <span class="slider round"></span>
+                                </label>
+                            @endforeach
+                        {{--@endif--}}
+                    @endforeach
+                </div>
             </div>
 
-            <div class="switches " style="max-width: 100px ; float: left">
-            <label class="switch">
-                <input type="checkbox" checked disabled>
-                <div class="slider round"></div>
-            </label>
-            <label class="switch">
-                <input type="checkbox" checked disabled>
-                <div class="slider round"></div>
-            </label>
-                @foreach($categories as $category)
-                  <h4>&nbsp;</h4>
-                  @foreach($category->fields as $field)
-                   <label class="switch">
-                       <input type="checkbox" onchange="change(this)" name="{{ $field->slug }}" {{ auth()->user()->info->settings->{$field->slug} ? 'checked' : '' }}>
-                       <div class="slider round"></div>
-                   </label>
-                  @endforeach
-                @endforeach
 
-            </div>
         </div>
 
     </div>

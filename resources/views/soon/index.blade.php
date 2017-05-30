@@ -305,8 +305,8 @@
                         <p>Browse the profiles of educational institutions, and get informed about the degrees they offer, their scholarships, the ratings they have received as well as their teachers.</p>
                     </div>
                     <div class="tiltview col1">
-                        <a href="slideshow"><img src="/soon/img/5_screen.jpg"/></a>
-                        <a href="slideshow"><img src="/soon/img/6_screen.jpg"/></a>
+                        <a href="#slideshow"><img src="/soon/img/5_screen.jpg"/></a>
+                        <a href="#slideshow"><img src="/soon/img/6_screen.jpg"/></a>
                     </div>
                 </li>
                 <li>
@@ -315,8 +315,8 @@
                         <p>Schol.io offers you the scholarship that best suits your profile. Create your resume and apply for the scholarship that will change your life !</p>
                     </div>
                     <div class="tiltview col1">
-                        <a href="slideshow"><img src="/soon/img/1_mobile.jpg"/></a>
-                        <a href="slideshow"><img src="/soon/img/2_mobile.jpg"/></a>
+                        <a href="#slideshow"><img src="/soon/img/1_mobile.jpg"/></a>
+                        <a href="#slideshow"><img src="/soon/img/2_mobile.jpg"/></a>
                     </div>
                 </li>
                 <li>
@@ -325,8 +325,8 @@
                         <p>Rank and compare the most popular, the most recent, the hottest & trendy scholarships created at Schol.io only for you!</p>
                     </div>
                     <div class="tiltview col1">
-                        <a href="slideshow"><img src="/soon/img/3_screen.jpg"/></a>
-                        <a href="slideshow"><img src="/soon/img/4_screen.jpg"/></a>
+                        <a href="#slideshow"><img src="/soon/img/3_screen.jpg"/></a>
+                        <a href="#slideshow"><img src="/soon/img/4_screen.jpg"/></a>
                     </div>
                 </li>
                 <li>
@@ -335,8 +335,8 @@
                         <p>Schol.io brings together parents, students, teachers and educational institutions to create the largest educational family.</p>
                     </div>
                     <div class="tiltview col1">
-                        <a href="slideshow"><img src="/soon/img/5_mobile.jpg"/></a>
-                        <a href="slideshow"><img src="/soon/img/6_mobile.jpg"/></a>
+                        <a href="#slideshow"><img src="/soon/img/5_mobile.jpg"/></a>
+                        <a href="#slideshow"><img src="/soon/img/6_mobile.jpg"/></a>
                     </div>
                 </li>
             </ol>

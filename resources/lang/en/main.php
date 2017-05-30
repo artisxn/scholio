@@ -14,8 +14,8 @@ return [
     'first' => [
         'title' => [
             'talent' => 'Do you have any talents?',
-            'student' => 'Are you school student?',
-            'student1' => 'Are you university student?',
+            'student' => 'Are you a school student?',
+            'student1' => 'Are you a university student?',
         ],
         'subtitle' => 'Find the Scholarship that fits you!',
         'searchbar' => [
