@@ -32,11 +32,9 @@ Route::get('dashboard/profile', function () {
     if (auth()->user()->role == 'student') {
         return redirect(route('students-profile'));
     }
-
     if (auth()->user()->role == 'teacher') {
         return redirect(route('teachers-profile'));
     }
-
     if (auth()->user()->role == 'parent') {
         return redirect(route('parent-profile'));
     }
