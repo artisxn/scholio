@@ -100,9 +100,7 @@
                                             <td>{{ scholarship.plan }}</td>
 
                                             <td>{{ scholarship.amount }}
-                                                <span v-if="scholarship.financial.id==1">%</span>
-                                                <span v-if="scholarship.financial.id==2">€</span>
-                                                <span v-if="scholarship.financial.id==3">μήνες</span>
+                                                <span v-bind="scholarship.financial.metric"></span>
                                             </td>
                                             <td><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
                                             <td v-if="showLevel">{{ study(scholarship.study, 10) }} </td>

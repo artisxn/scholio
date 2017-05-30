@@ -195,10 +195,12 @@
                         {{--<li class="lang-sel"><a href="">ENG &nbsp;|</a> </li>--}}
                         {{--<li class="lang-sel sel2"><a href=""> GR</a></li>--}}
                         <li class="lang-drop">
-                            <select class="selectpicker"  data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent"  v-model="">
-                                <option data-icon="fa " value="1">&nbsp; ENG</option>
-                                <option data-icon="fa " value="2">&nbsp; GR</option>
+                        <form method="GET" id="langForm">
+                            <select onchange="changeLang(this)" class="selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent">
+                                <option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</a></option>
+                                <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</a></option>
                             </select>
+                            </form>
                         </li>
                     @if(auth()->check())
                     <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('main.navigation.admin')</button></a></li>
@@ -237,7 +239,7 @@
                     </div>
                     <br><br>
                     <div class="pull-right">
-                        <span class="lang-sel" style="float: right"><a href="">ENG &nbsp;</a> | <a href=""> &nbsp;GR</a></span>
+                        <span class="lang-sel" style="float: right"><a href="/lang/en">ENG &nbsp;</a> | <a href="/lang/el"> &nbsp;GR</a></span>
 
                         <div class="clearfix"></div>
                         <a href="#sc-landing-sec2">
@@ -730,6 +732,11 @@
 </body>
 <!--  -->
 <script>
+function changeLang(el){
+    var form = document.getElementById('langForm');
+    form.action = '/lang/'+el.value;
+    form.submit();
+}
 jQuery(document).ready(function($) {
     $(function(){
         $(".typed-js").typed({

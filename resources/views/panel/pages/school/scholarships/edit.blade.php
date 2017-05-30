@@ -17,6 +17,16 @@
                     <div class="row">
                         {{ csrf_field() }}
 
+                        <div>{{ $scholarship->study->section[0]->name }}</div>
+                        <div>{{ $scholarship->study->section[0]->level->name }}</div>
+                        <div>{{ $scholarship->interestsLength() }}</div>
+                        <div>
+                        @foreach($scholarship->user as $user)
+                            <img src="{{ $user->info->avatar }}" width="20px">
+                            <input type="radio" name="winner" value="{{ $user->id }}"> {{$user->name}}<br>
+                        @endforeach
+                        </div>
+
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Πλάνο</label>
                                 <div class="col-md-5">
