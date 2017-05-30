@@ -101,8 +101,11 @@ class ApiController extends Controller
     public function scholarship(School $school)
     {
         $scholarships = $school->scholarship;
+        foreach ($scholarships as $scholar) {
+            $scholar->section = $scholar->study->section[0];
+        }
 
-        return $scholarships->load('financial', 'level', 'study', 'user');
+        return $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
     }
 
     public function studiesGET()

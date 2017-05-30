@@ -97,6 +97,7 @@ Route::get('/student/mySchools', function () {
 })->middleware('auth:api');
 
 Route::get('/scholarship/{id}', function (Scholarship $id) {
+    $scholarship->criteriaName = $scholarship->criteria->name;
     return $scholarship->load('school', 'level', 'financial', 'criteria');
 })->middleware('api');
 

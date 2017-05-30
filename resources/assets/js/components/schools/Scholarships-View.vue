@@ -49,6 +49,7 @@
                                                  <span v-if="sortType == 'amount' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
+                                            <th></th>
                                             <th v-if="showLevel"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="studyChangeSort">
                                                     Σπουδές
@@ -84,7 +85,7 @@
                                                 <span v-if="sortType == 'admissions' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
-                                            <th>Νικητής</th>
+                                            <!-- <th>Νικητής</th> -->
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -103,12 +104,13 @@
                                                 <span v-if="scholarship.financial.id==2">€</span>
                                                 <span v-if="scholarship.financial.id==3">μήνες</span>
                                             </td>
-                                            <td v-if="showLevel">{{ scholarship.study}}</td>
+                                            <td><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
+                                            <td v-if="showLevel">{{ study(scholarship.study, 10) }} </td>
                                             <td>{{ scholarship.level}}</td>
-                                            <td>{{ scholarship.criteria_id }}</td>
+                                            <td>{{ scholarship.criteria.name }}</td>
                                             <td>{{ scholarship.end_at }}</td>
                                             <td>{{ scholarship.admissions}}</td>
-                                            <td>{{ scholarship.winner_id }}</td>
+                                            <!-- <td>{{ scholarship.winner_id }}</td> -->
                                             <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">Αλλαγή</button></td>
                                             <td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>
                                         </tr>
@@ -150,8 +152,8 @@ import Chart from '../../VueChart.vue'
                 scholars:[],
                 searchStr:"",
                 sc_amounts: [],
-//                sc_names:[],
-              sc_names:[['one','two'],'three',['four five','six'],'seven','eight','noine'],
+               sc_names:[],
+              // sc_names:[['one','two'],'three',['four five','six'],'seven','eight','noine'],
                 datacollection: {
                   labels: ['asd'],
                   datasets: [
@@ -162,7 +164,7 @@ import Chart from '../../VueChart.vue'
                     }
                   ]
                 },
-                dataoptions: {responsive: false, maintainAspectRatio: false,
+                dataoptions: {responsive: true, maintainAspectRatio: false,
                         scales: {
                             xAxes: [{
                                 afterFit: function(scaleInstance) {
@@ -179,6 +181,7 @@ import Chart from '../../VueChart.vue'
             }
         },
         computed: {
+
             filteredStudies: function () {
                 var filtered_array = this.scholars;
                 var searchString = this.searchStr;
@@ -190,7 +193,8 @@ import Chart from '../../VueChart.vue'
                 filtered_array = filtered_array.filter(function(item){
                     if( (item.level.toLowerCase().indexOf(searchString) !== -1) ||
                         (item.study.toLowerCase().indexOf(searchString) !== -1) ||
-                        (item.plan.toLowerCase().indexOf(searchString) !== -1)
+                        (item.plan.toLowerCase().indexOf(searchString) !== -1) ||
+                        (item.section.name.toLowerCase().indexOf(searchString) !== -1)
 
                     ){return item;}
                 })
@@ -198,6 +202,14 @@ import Chart from '../../VueChart.vue'
             }
         },
         methods: {
+            study: function(st, i){
+                var letters = i;
+                if(st.length > letters){
+                    return st.substring(0,letters);
+                }
+
+                return st;
+            },
             getScholarships: function(){
                 axios.get('/api/scholarship/' + window.Connection)
                     .then(response => {
@@ -213,8 +225,8 @@ import Chart from '../../VueChart.vue'
                             st1[i].level=this.scholarships[i].level.name;
                             st1[i].amount=parseInt(this.scholarships[i].financial_amount);
                             this.sc_amounts.push(st1[i].admissions)
-//                            this.sc_names.push(st1[i].study)
-//                            console.log(i,st1[i].study)
+                           this.sc_names.push(this.study(st1[i].study, 3))
+
                         }
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
                         this.scholars=st1;
@@ -225,15 +237,13 @@ import Chart from '../../VueChart.vue'
 
             },
             updateChart: function(){
-                console.log('ayto')
-                console.log(this.amounts)
                 this.datacollection = {
                   labels: this.sc_names,
                   datasets: [
                     {
                       label: 'Αριθμός Αιτούντων ανά υποτροφία',
                       backgroundColor: '#008da5',
-                      data: this.sc_amounts
+                      data: this.sc_amounts.sort()
                     }
                   ]
                 }
