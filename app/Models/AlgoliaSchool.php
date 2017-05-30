@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AlgoliaSchool extends Model
 {
-    // use \Laravel\Scout\Searchable;
+    use \Laravel\Scout\Searchable;
 
     public $timestamps = false;
 

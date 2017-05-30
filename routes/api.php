@@ -12,6 +12,8 @@ use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Http\Request;
 
+Scholio::bot();
+
 Route::get('/scholarship/getFullAdmissions', function () {
     $arr = [];
     $school = auth()->user()->info;

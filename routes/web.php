@@ -1,12 +1,18 @@
 <?php
 
 use App\Models\AdmissionField;
+use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Scholio\Scholio;
 use App\User;
 
 Scholio::soonRoutes();
+
+Route::get('algotest/{query}', function ($query) {
+    $result = AlgoliaSchool::search($query)->get();
+    return $result;
+});
 
 Route::get('public/schools/map', function () {
     return view('public.results.map');
@@ -38,6 +44,9 @@ Route::get('dashboard/profile', function () {
 
 Route::get('@{username}', function ($username) {
     $user = User::where('username', $username)->first();
+    if (!$user) {
+        abort(452);
+    }
     $url = '';
     if ($user->role == 'teacher') {
         $url = '/public/profile/teacher';

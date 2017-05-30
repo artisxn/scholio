@@ -374,4 +374,11 @@ class Scholio
         $studies->searchable();
         return 'Algolia _geo ready';
     }
+
+    public static function bot()
+    {
+        Route::group(['prefix' => 'bot'], function () {
+            include 'bot-routes.php';
+        });
+    }
 }
