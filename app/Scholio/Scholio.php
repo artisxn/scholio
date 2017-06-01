@@ -81,7 +81,6 @@ class Scholio
         Route::get('full', function () {
             $response = redirect('/');
             return $response->withCookie(cookie('pass', 'iloveschool', 10));
-            // return redirect('/');
         });
 
         Route::post('full', function () {
