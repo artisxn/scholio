@@ -481,7 +481,7 @@
                 <div class='row justify-content-center' >
                     <div class='col-md-8' >
                         <form method='POST' action='/coming' >
-                            <input type="hidden" name="_token" value="ugOGpPmudh53hZ5ardesBKPlorin0TUpZctYBu6T">
+                            {{ csrf_field() }}
                             <div class='subscribe-input'>
                                 <input type="hidden" name="sub" value="sub">
                                 <input id='mc-email' type='email' placeholder='email:' class='txt' name="email">

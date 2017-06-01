@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Study;
+use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
