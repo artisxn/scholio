@@ -530,7 +530,7 @@
 
 
                 <form method='POST' action='/coming' data-toggle='validator'>
-                    <input type="hidden" name="_token" value="ugOGpPmudh53hZ5ardesBKPlorin0TUpZctYBu6T">
+                    {{ csrf_field() }}
                     <div class='row' >
 
                         <div class='col-md-6' >
