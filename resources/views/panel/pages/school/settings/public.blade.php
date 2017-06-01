@@ -8,6 +8,7 @@
             display: inline-block;
             width: 60px;
             height: 24px;
+            float: right;
         }
 
         /* Hide default HTML checkbox */
@@ -63,8 +64,7 @@
         }
         .title{font-size: 140%;}
         .texts{ margin: 20px 0 0 0;}
-        .switches{ margin: 9px 0 0 0;}
-        .switch{ margin: 11px 0 0 0;}
+        .switch{ margin: -3px 0 0 0;}
         .text{ font-weight: 300; font-size: 80%;}
 
         .fa-linear4{-webkit-text-stroke: 0.5px black;
@@ -76,67 +76,70 @@
 @section('content')
     <div class="" style="max-width: 350px; margin-left: 20px;">
         <div class="row  title">
-
             <h3 style="color: #008da5"> <i class="fa fa-cog" style="margin-right: 10px"></i>Επιλογές Δημόσιου Προφίλ</h3>
             <p class="text">Επιλέξτε από τα παρακάτω, ποια τμήματα επιθυμείτε να προβάλλονται στο δημόσιο προφίλ σας.</p>
         </div>
 
         <div class="row">
-            <div class="" style="width: 250px; float: left">
-                <div class="texts"> <i class="fa fa-twitter fa-linear4"></i>Social-Links:</div>
-                <div class="texts"> <i class="fa fa-phone fa-linear4"></i>Επικοινωνία</div>
-                <div class="texts"> <i class="fa fa-bar-chart fa-linear4"></i>Στατιστικά</div>
-                <div class="texts"> <i class="fa fa-map fa-linear4"></i>Χάρτης</div>
+            <div class="" style="width: 260px;">
+                <div class="texts"> <i class="fa fa-twitter fa-linear4"></i>Social-Links:
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="social" {{auth()->user()->info->settings->social ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="texts"> <i class="fa fa-phone fa-linear4"></i>Επικοινωνία
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="info" {{auth()->user()->info->settings->info ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="texts"> <i class="fa fa-bar-chart fa-linear4"></i>Στατιστικά
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="statistics" {{auth()->user()->info->settings->statistics ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="texts"> <i class="fa fa-map fa-linear4"></i>Χάρτης
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="map" {{auth()->user()->info->settings->map ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+
                 <hr>
-                <div class="texts"> <i class="fa fa-info-circle fa-linear4"></i>Σχετικά</div>
-                <div class="texts"> <i class="fa fa-book fa-linear4"></i>Σπουδές</div>
-                <div class="texts"> <i class="fa fa-trophy fa-linear4"></i>Υποτροφίες</div>
-                <div class="texts"> <i class="fa fa-star fa-linear4"></i>Αξιολογήσεις</div>
-                <div class="texts"> <i class="fa fa-graduation-cap fa-linear4"></i>Διδάσκοντες</div>
+
+                <div class="texts"> <i class="fa fa-info-circle fa-linear4"></i>Σχετικά
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="about" {{auth()->user()->info->settings->about ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="texts"> <i class="fa fa-book fa-linear4"></i>Σπουδές
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="studies" {{auth()->user()->info->settings->studies ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="texts"> <i class="fa fa-trophy fa-linear4"></i>Υποτροφίες
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="scholarships" {{auth()->user()->info->settings->scholarships ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="texts"> <i class="fa fa-star fa-linear4"></i>Αξιολογήσεις
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="reviews" {{auth()->user()->info->settings->reviews ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="texts"> <i class="fa fa-graduation-cap fa-linear4"></i>Διδάσκοντες
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="teachers" {{auth()->user()->info->settings->teachers ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label></div>
             </div>
 
-            <div class="switches " style="max-width: 100px ; float: left">
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="social" {{auth()->user()->info->settings->social ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="info" {{auth()->user()->info->settings->info ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="statistics" {{auth()->user()->info->settings->statistics ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="map" {{auth()->user()->info->settings->map ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-
-                <hr style="margin: 11px 0 7px -3px; width: 65px;">
-
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="about" {{auth()->user()->info->settings->about ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="studies" {{auth()->user()->info->settings->studies ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="scholarships" {{auth()->user()->info->settings->scholarships ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="reviews" {{auth()->user()->info->settings->reviews ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-                <label class="switch">
-                    <input type="checkbox" onchange="change(this)" name="teachers" {{auth()->user()->info->settings->teachers ? 'checked' : ''}}>
-                    <div class="slider round"></div>
-                </label>
-
-            </div>
         </div>
 
     </div>
