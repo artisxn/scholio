@@ -100,10 +100,10 @@
                                             <td>{{ scholarship.plan }}</td>
 
                                             <td>{{ scholarship.amount }}
-                                                <span v-bind="scholarship.financial.metric"></span>
+                                                <span>{{scholarship.financial.metric}}</span>
                                             </td>
                                             <td><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
-                                            <td v-if="showLevel">{{ study(scholarship.study, 10) }} </td>
+                                            <td v-if="showLevel">{{ study(scholarship.study, 22) }} </td>
                                             <td>{{ scholarship.level}}</td>
                                             <td>{{ scholarship.criteria.name }}</td>
                                             <td>{{ scholarship.end_at }}</td>
@@ -125,7 +125,7 @@
             </div>
         </div>
 
-        <div style="">
+        <div style="max-width: 800px">
             <h2>Chart.js</h2>
             <div>
                 <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
@@ -223,7 +223,7 @@ import Chart from '../../VueChart.vue'
                             st1[i].level=this.scholarships[i].level.name;
                             st1[i].amount=parseInt(this.scholarships[i].financial_amount);
                             this.sc_amounts.push(st1[i].admissions)
-                           this.sc_names.push(this.study(st1[i].study, 3))
+                           this.sc_names.push(this.study(st1[i].study, 12))
 
                         }
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
@@ -239,9 +239,9 @@ import Chart from '../../VueChart.vue'
                   labels: this.sc_names,
                   datasets: [
                     {
-                      label: 'Αριθμός Αιτούντων ανά υποτροφία',
+                      label: 'Πλήθος Αιτούντων',
                       backgroundColor: '#008da5',
-                      data: this.sc_amounts.sort()
+                      data: this.sc_amounts.sort(function(a, b){return b-a})
                     }
                   ]
                 }
