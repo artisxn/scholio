@@ -15,16 +15,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 
 <style>
- .img-logo{ height: 45px;}
- .hit-name{}
- body {background-color: #F1F4F5}
+    .img-logo{ height: 45px;}
+    .hit-name{}
+    body {background-color: #F1F4F5}
 
- .right-map{position: fixed; top: 0; right: 0}
+    .right-map{position: fixed; top: 0; right: 0}
+
+    .title{margin-left: -20px;}
+
+    .change_page_state{margin: 0 40px 20px -10px;}
+    .btn-info{color: #00bcd4!important; border-color: #00bcd4!important;}
+    .btn-info:hover{background-color:#00bcd4!important; color: #fff!important;}
+    .btn-info:focus,.active{background-color: #00b1c9 !important; color: #fff!important;}
 
 
- @media  (max-width: 768px) {
-     .right-map{ top: 90px; left: 0}
- }
+    @media  (max-width: 768px) {
+        .right-map{ top: 90px; left: 0}
+    }
 </style>
 
 <body ng-app="app" ng-controller="resultsCtrl">
@@ -121,15 +128,18 @@
 
 
 <div class="row pad-0-mar-0">
-  <div class="col-sm-6 col-md-5 hidden-xs" style="padding: 40px 0 0 20px; margin-right: 0">
-            <header>
-                My Cordinates
-                <div id="demo" style="margin: 0 0 20px 0 "></div>
-                <a href="" class="change_page_state page_mode mode_button" data-mode="around"   data-state="ip" ng-click="status='around'" style="color: #888">Κοντά μου</a>
-                <div class="clearfix"></div>
-                  <a href="" class="change_page_state state_link active" data-mode="bounding" data-state="rectangle" ng-click="status='rectangle'" style="color: #888">Σάρωση Χάρτη</a>
-                </p>
-              </header>
+    <div class="col-sm-6 col-md-5 hidden-xs" style="padding: 40px 0 0 20px; margin-right: 0">
+        <header  class="" style="margin: 50px 0 0 20px">
+            {{--My Cordinates--}}
+            {{--<div id="demo" style=" margin: 0 0 20px 0 "></div>--}}
+            <p class="title">Επιλέξτε προβολή τη προβολή του χάρτη κοντά σας, ή σαρώστε την περιοχή που θέλέτε</p>
+            <a href="" class="change_page_state btn btn-info active" data-mode="around"   data-state="ip" ng-click="status='around'">
+                <i class="fa fa-map-marker margin-right-10"></i>
+                Κοντά μου</a>
+            <a href="" class="change_page_state btn btn-info" data-mode="bounding" data-state="rectangle" ng-click="status='rectangle'">
+                <i class="fa fa-search-plus margin-right-10"></i>
+                Σάρωση Χάρτη</a>
+        </header>
 
 
           <div class="col-sm-12 ">
