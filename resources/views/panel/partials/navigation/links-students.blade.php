@@ -1,10 +1,12 @@
 <li class="text-muted menu-title">Διαχειριση</li>
 <li class="has_sub">
     <a href="#" class=""><i class="ion-android-user-menu"></i><span> Προφίλ </span> </a>
-    <ul class="list-unstyled">
-        <li><a href="{{ route('students-profile') }}" class="{{ request()->path() == 'panel/users/student/profile' ? 'active' : ''}}">Στοιχεία Επικοινωνίας</a></li>
-        <li><a href="{{ route('students-my-schools') }}" class="{{ request()->path() == 'panel/users/student/mySchools' ? 'active' : ''}}">Τα Εκπαιδευτήριά μου</a></li>
+    <ul class="list-unstyled"> 
         <li><a href="{{ route('students-cv') }}" class="{{ request()->path() == 'panel/users/student/studentCv' ? 'active' : ''}}">Το Βιογραφικό μου</a></li>
+     {{--    <li><a href="{{ route('students-profile') }}" class="{{ request()->path() == 'panel/users/student/profile' ? 'active' : ''}}">Επεξεργασία Προφίλ</a></li> --}}
+       <li><a href="{{ route('students-kinship') }}" class="{{ request()->path() == 'panel/users/student/kinship' ? 'active' : ''}}">Στοιχεία Γονέων και Κηδεμόνων</a></li>
+        <li><a href="{{ route('students-my-schools') }}" class="{{ request()->path() == 'panel/users/student/mySchools' ? 'active' : ''}}">Τα Εκπαιδευτήριά μου</a></li>
+       
     </ul>
 </li>
 
