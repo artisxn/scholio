@@ -26,6 +26,7 @@ Artisan::command('noalgolia', function () {
         $dummy->type_id = $s->type_id;
         $dummy->type = 'dfdsfsd';
         $dummy->study = 'dfdsfsd';
+        $dummy->username = 'dfdsfsd';
         $dummy->school_id = $s->id;
         $dummy->name = $s->name();
         $dummy->email = $s->email();
@@ -39,6 +40,8 @@ Artisan::command('noalgolia', function () {
         $dummy->lengthTeachers = $s->lengthTeachers();
         $dummy->lengthStudies = $s->lengthStudies();
         $dummy->lengthScholarships = $s->lengthScholarships();
+        $dummy->stars = 1.2;
+        $dummy->reviews = 55;
         // $dummy->lat = $s->lat;
         // $dummy->lng = $s->lng;
         $dummy->save();
