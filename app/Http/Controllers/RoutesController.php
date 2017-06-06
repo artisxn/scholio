@@ -188,7 +188,7 @@ class RoutesController extends Controller
         $studentCv->address = request()->student_address;
         $studentCv->city = request()->student_city;
         $studentCv->phone = request()->student_phone;
-        $studentCv->updated_at = NOW();
+        // $studentCv->updated_at = NOW();
 
         //TODO CHECK THESE FIELDS AND OTHERS WHICH ARE MISSED
 
