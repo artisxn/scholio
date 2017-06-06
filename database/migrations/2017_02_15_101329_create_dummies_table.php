@@ -16,15 +16,15 @@ class CreateDummiesTable extends Migration
         Schema::create('dummies', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id');
-            $table->string('name')->nullabale();
-            $table->string('type')->nullabale();
-            $table->integer('type_id')->nullabale();
-            $table->text('study')->nullabale();
-            $table->string('address')->nullabale();
-            $table->string('city')->nullabale();
-            $table->string('username')->nullabale();
-            $table->string('logo')->nullabale();
-            $table->string('image')->nullabale();
+            $table->string('name')->nullable();
+            $table->string('type')->nullable();
+            $table->integer('type_id')->nullable();
+            $table->text('study')->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('username')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('image')->nullable();
             $table->string('email')->nullable();
             $table->string('website')->nullable();
             $table->bigInteger('phone')->nullable();
