@@ -116,8 +116,8 @@
         /*.selectpicker{outline: none !important;}*/
         /*.selectpicker:focus{outline: none !important;}*/
 
-        .dropdown-menu{background-color: transparent; }
-        .dropdown-menu>li>a{ color: #fff;}
+        .trans .dropdown-menu{background-color: transparent; }
+        .trans .dropdown-menu>li>a{ color: #fff;}
         div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;}
         .btn-transparent{background-color: transparent; color: #fff}
         .btn-transparent:focus{color: #fff; outline: 0;}
@@ -126,6 +126,8 @@
         .btn-transparent:hover{color: #00bcd4!important;}
         /*.hover{color: #FD6A33!important;}*/
         .hide{display: none}
+
+        #school-register-button:focus{color: #fff; outline: none!important;}
 
         @media  (max-width: 2500px) {
             .sch-reg-title {left: 42%; width: 380px;}
@@ -196,7 +198,7 @@
                         {{--<li class="lang-sel sel2"><a href=""> GR</a></li>--}}
                         <li class="lang-drop">
                         <form method="GET" id="langForm">
-                            <select onchange="changeLang(this)" class="selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent">
+                            <select onchange="changeLang(this)" class="trans selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent">
                                 <option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</a></option>
                                 <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</a></option>
                             </select>

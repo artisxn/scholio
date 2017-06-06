@@ -2,7 +2,6 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 
-
 <div class="wrapper-page" style="padding: 70px">
     <div class="card-box">
         <div class="panel-heading text-center">

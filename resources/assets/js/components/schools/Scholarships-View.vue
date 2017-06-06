@@ -9,6 +9,45 @@
     .btn-primary{background-color: #008da5!important;}
     .btn-primary:hover{background-color: #007991 !important;}
     .btn-success,.btn-info,.btn-primary{border: none!important; height: 30px; padding: 0 20px}
+
+
+    /* =========TOOLTIP=========*/
+    .tool {
+        position: relative;
+    }
+
+    .tooltiptext {
+        font-weight: 300;
+        visibility: hidden;
+        width: 300px;
+        background-color: #007991;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px 2px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -110px;
+        opacity: 0;
+        transition: opacity 0.1s;
+    }
+
+    .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #007991 transparent transparent transparent;
+    }
+    .tool:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
 </style>
 
 
@@ -93,7 +132,6 @@
                                     <tbody>
                                         <tr v-for="scholarship in filteredStudies">
                                             <!-- <td>{{ scholarship.id }}</td> -->
-
                                             <td class="center-td">
                                                     <img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" >
                                             </td>
@@ -103,7 +141,12 @@
                                                 <span>{{scholarship.financial.metric}}</span>
                                             </td>
                                             <td><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
-                                            <td v-if="showLevel">{{ study(scholarship.study, 22) }} </td>
+                                            <td v-if="showLevel">
+                                                <span class="tool">
+                                                    {{ study(scholarship.study, 20) }}
+                                                    <span class="tooltiptext">{{scholarship.study}}</span>
+                                                </span>
+                                            </td>
                                             <td>{{ scholarship.level}}</td>
                                             <td>{{ scholarship.criteria.name }}</td>
                                             <td>{{ scholarship.end_at }}</td>
