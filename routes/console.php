@@ -37,8 +37,8 @@ Artisan::command('noalgolia', function () {
         $dummy->lengthTeachers = $s->lengthTeachers();
         $dummy->lengthStudies = $s->lengthStudies();
         $dummy->lengthScholarships = $s->lengthScholarships();
-        $dummy->lat = $s->lat;
-        $dummy->lng = $s->lng;
+        // $dummy->lat = $s->lat;
+        // $dummy->lng = $s->lng;
         $dummy->save();
     }
     return 'OK';
