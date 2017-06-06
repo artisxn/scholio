@@ -6,6 +6,7 @@ public/storage
 Homestead.json
 Homestead.yaml
 .env
+.env.example
 
 _public/storage
 _vendor
@@ -25,3 +26,4 @@ public/css/core.css
 public/css/core.css
 
 public/css/icons.css
+.gitattributes

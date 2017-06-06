@@ -96,6 +96,11 @@ class RoutesController extends Controller
         return view('panel.pages.student.profile.view');
     }
 
+    public function studentKinship() 
+    {
+        return view('panel.pages.student.kinship.view');
+    }
+
     public function teacherProfile()
     {
         $links = SocialLink::all();
@@ -169,21 +174,30 @@ class RoutesController extends Controller
 
         $studentCv = Student::where('user_id', auth()->user()->id)->first();
 
-        if (request()->avatar != null) {
-            $studentCv->avatar = request()->avatar;
+
+        if (request()->logo != null) {
+            $studentCv->avatar = request()->logo;
         }
-        $studentCv->fname = request()->fname;
-        $studentCv->lname = request()->lname;
+
+
+        //TODO add email, gender in student table
+        $studentCv->fname = request()->firstName;
+        $studentCv->lname = request()->lastName;
         $studentCv->gender = request()->gender;
         $studentCv->dob = request()->dob;
-        $studentCv->address = request()->address;
-        $studentCv->phone = request()->phone;
-        $studentCv->father_name = request()->father_name;
-        $studentCv->mother_name = request()->mother_name;
-        $studentCv->father_job = request()->father_job;
-        $studentCv->mother_job = request()->mother_job;
-        $studentCv->father_phone = request()->father_phone;
-        $studentCv->mother_phone = request()->mother_phone;
+        $studentCv->address = request()->student_address;
+        $studentCv->city = request()->student_city;
+        $studentCv->phone = request()->student_phone;
+        // $studentCv->updated_at = NOW();
+
+        //TODO CHECK THESE FIELDS AND OTHERS WHICH ARE MISSED
+
+        // $studentCv->father_name = request()->father_name;
+        // $studentCv->mother_name = request()->mother_name;
+        // $studentCv->father_job = request()->father_job;
+        // $studentCv->mother_job = request()->mother_job;
+        // $studentCv->father_phone = request()->father_phone;
+        // $studentCv->mother_phone = request()->mother_phone;
         $studentCv->languages = request()->languages;
         $studentCv->studies = request()->studies;
         $studentCv->achievements = request()->achievements;

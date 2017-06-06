@@ -23,9 +23,7 @@ class Student extends Model
         'father_phone',
         'mother_phone',
         'languages',
-        'studies',
-        'father_name',
-        'mother_name',
+        'studies'
     ];
 
     public function user()

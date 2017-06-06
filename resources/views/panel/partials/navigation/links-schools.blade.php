@@ -34,7 +34,7 @@
         <ul class="list-unstyled submenu">
             <li ><a href="/panel/school/scholarships/create" class="{{ request()->path() == 'panel/school/scholarships/create' ? 'active' : ''}}">Δημιουργία Νέας</a></li>
             <li ><a href="/panel/school/scholarships/view" class="{{ request()->path() == 'panel/school/scholarships/view' ? 'active' : ''}}">Προβολή</a></li>
-            <li ><a href="" class="{{ request()->path() == 'panel/school/scholarships/requests' ? 'active' : ''}}">Αιτήματα</a></li>
+            <li><a href="{{ url('panel/school/scholarships/request') }}" class="{{ request()->path() == 'panel/school/scholarships/request' ? 'active' : ''}}">Αιτήματα</a></li>
         </ul>
     </li>
 

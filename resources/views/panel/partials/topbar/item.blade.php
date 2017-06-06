@@ -13,7 +13,8 @@
         @endif
     </a>
     <ul class="dropdown-menu">
-        <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i> Profile</a></li>
+      
+        <li><a href="/panel/users/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i> Profile</a></li>
         <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
 
         <li>
