@@ -24,6 +24,7 @@ Artisan::command('noalgolia', function () {
     foreach ($schools as $s) {
         $dummy = new Dummy;
         $dummy->type_id = $s->type_id;
+        $dummy->type = 'dfdsfsd';
         $dummy->school_id = $s->id;
         $dummy->name = $s->name();
         $dummy->email = $s->email();
@@ -37,8 +38,8 @@ Artisan::command('noalgolia', function () {
         $dummy->lengthTeachers = $s->lengthTeachers();
         $dummy->lengthStudies = $s->lengthStudies();
         $dummy->lengthScholarships = $s->lengthScholarships();
-        // $dummy->lat = $s->lat;
-        // $dummy->lng = $s->lng;
+        $dummy->lat = $s->lat;
+        $dummy->lng = $s->lng;
         $dummy->save();
     }
     return 'OK';
