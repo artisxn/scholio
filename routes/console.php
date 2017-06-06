@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Dummy;
+use App\Models\School;
 use App\Scholio\Scholio;
 
 /*
