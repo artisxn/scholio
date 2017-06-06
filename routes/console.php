@@ -13,6 +13,35 @@ use App\Scholio\Scholio;
 |
  */
 
+Artisan::command('noalgolia', function () {
+
+    $schools = School::all();
+
+    Dummy::query()->truncate();
+
+    foreach ($schools as $s) {
+        $dummy = new Dummy;
+        $dummy->type_id = $s->type_id;
+        $dummy->school_id = $s->id;
+        $dummy->name = $s->name();
+        $dummy->email = $s->email();
+        $dummy->phone = $s->phone;
+        $dummy->city = $s->city;
+        $dummy->address = $s->address;
+        $dummy->logo = $s->logo;
+        $dummy->image = $s->profileImage();
+        $dummy->website = $s->website;
+        $dummy->lengthStudents = $s->lengthStudents();
+        $dummy->lengthTeachers = $s->lengthTeachers();
+        $dummy->lengthStudies = $s->lengthStudies();
+        $dummy->lengthScholarships = $s->lengthScholarships();
+        $dummy->lat = $s->lat;
+        $dummy->lng = $s->lng;
+        $dummy->save();
+    }
+    return 'OK';
+});
+
 Artisan::command('scholio:soon {prop}', function ($prop) {
     if ($prop) {
         if ($prop == 'on') {
