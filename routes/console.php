@@ -25,6 +25,7 @@ Artisan::command('noalgolia', function () {
         $dummy = new Dummy;
         $dummy->type_id = $s->type_id;
         $dummy->type = 'dfdsfsd';
+        $dummy->study = 'dfdsfsd';
         $dummy->school_id = $s->id;
         $dummy->name = $s->name();
         $dummy->email = $s->email();
