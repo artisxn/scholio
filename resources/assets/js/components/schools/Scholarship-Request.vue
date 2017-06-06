@@ -21,8 +21,8 @@
                                     <tbody>
                                     
                                         <tr v-for="admission in admissions">
-                                                <td><a v-bind:href="'/student/' + admission.user.id"><img v-bind:src="admission.student.avatar"></a></td>
-                                                <td><a v-bind:href="'/student/' + admission.user.id">{{ admission.user.name }}</a></td>
+                                                <td><a v-bind:href="'/panel/school/admission/' + admission.id"><img v-bind:src="admission.student.avatar"></a></td>
+                                                <td><a v-bind:href="'/panel/school/admission/' + admission.id">{{ admission.user.name }}</a></td>
                                                 <td>{{admission.scholarship}}</td>
                                         </tr>
                                     
@@ -51,6 +51,7 @@
                 axios.get('/api/scholarship/getFullAdmissions')
                     .then(response => {
                         this.admissions = response.data
+                        console.log('admiss')
                         console.log(response.data)
                     });
             },

@@ -22,6 +22,7 @@ Route::get('/scholarship/getFullAdmissions', function () {
             'user' => $admission->user,
             'student' => $admission->user->info,
             'scholarship' => $admission->scholarship->study->name,
+            'id' => $admission->id,
         ]);
     }
     return $arr;
