@@ -23,7 +23,8 @@
 
         .section-text2{margin-bottom: -5px;}
 
-        .info{ color: #008DA5; font-weight: 400; margin: 8px 15px}
+        .info, .info2 { color: #008DA5; font-weight: 400; margin: 8px 0}
+        .info2 {  margin: 8px 15px;}
         .value{color: #667;  font-weight: 300;
         }
         .value:before{
@@ -77,11 +78,7 @@
         @media  (max-width: 390px) {
 
         }
-
-
-
-
-
+        
 
     </style>
 
@@ -208,7 +205,7 @@
                 <div class="section2-container col-sm-6">
                     <div class="inner-section2 ">
                         <div class="section-text2 centered-text"> <i class="icon-title  {{ $field->icon}}" style="margin-right: 10px;"></i>{{ $field->name }}</div>
-                        <div class="info">
+                        <div class="info2">
                             <span class="value"> {{ $field->pivot->data }}</span>
                         </div>
                     </div>
