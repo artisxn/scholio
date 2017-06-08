@@ -409,9 +409,9 @@
                     <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
 
                         <div class="select-polyteknos">
-                            <select>
-                                <option>Ναι</option>
-                                <option>Όχι</option>
+                            <select name="student_polyteknos">
+                                <option value="0" default>Όχι</option>
+                                <option value="1">Ναι</option>
                             </select>
                         </div>
 
@@ -423,13 +423,13 @@
                 <div class="col-sm-6 ">
                 <div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
                     <div class="select-polyteknos">
-                        <select>
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select name="student_relatives">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
 
@@ -443,7 +443,7 @@
                 @foreach($fields as $field)
                     @if(($field->category->id == 2 || $field->category->id == 5) && $settings->{$field->slug})
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <input type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
                             <i class="icon-inp {{ $field->icon }}"></i>
                         </div>
                     @endif
@@ -502,7 +502,7 @@
                         <div class=" input-container">
                             <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
                                      <textarea name="strongpoints" class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
-                                ">{{ $user->cv->aboutMe}}</textarea>
+                                ">{{ $user->cv->strongpoints}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -514,7 +514,7 @@
                         <div class=" input-container">
                             <div class="info-text"> Γράψε μας τις μέχρι τώρα σπουδές σου, τα εκπαιδευτικά ιδρύματα και το έτος αποφοίτησης, όπως φαίνονται στο επόμενο παράδειγμα.</div>
                                 <textarea name="studies" class="notes" placeholder="1. ΜΒΑ in Business Administration / Πανεπιστημιο Μακεδονίας / 2016&#13;&#10;2. Οικονομικά / Αριστοτέλειο Πανεπιστημιο θεσσαλονίκης / 2014&#13;&#10;3. 7ο Λύκειο Θεσσαλονικης / 2009
-                                ">{{ $user->cv->studies }}</textarea>
+                                ">{{ $user->cv->student_previous }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -562,7 +562,7 @@
                         <div class=" input-container">
                             <div class="info-text"> Γράψε μας οτιδήποτε θεωρείς σημαντικό ή απαραίτητο σε σχέση με εσένα και την υποτροφία.</div>
                                     <textarea name="notes" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                                    ">{{ $user->cv->notes }}</textarea>
+                                    "></textarea>
                         </div>
                     </div>
                 </div>

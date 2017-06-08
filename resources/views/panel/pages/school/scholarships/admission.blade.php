@@ -78,7 +78,7 @@
         @media  (max-width: 390px) {
 
         }
-        
+
 
     </style>
 
@@ -91,118 +91,49 @@
 @section('content')
 <div style="">
 
-    <div class="section-container" >
-        <div class="row inner-section">
-            <div class="section-text centered-text"> Στοιχεία Υποψηφίου</div>
-            @foreach($admission->fields as $field)
-                @if ($field->category_id==1)
-                    <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                        <i class="icon-inp {{ $field->icon}}"></i>
-                        {{ $field->name }}
-                        <span class="value"> {{ $field->pivot->data }}</span>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
+<div>
+    <img src="{{ $admission->user->info->avatar }}" width="50px">
+</div>
 
+@foreach($categories as $category)
+    @if($category->id < 8)
+        <div class="section-container" >
+            <div class="row inner-section">
+                <div class="section-text centered-text"> {{ $category->name }}</div>
+                @if($category->id==1)
+                <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
+                                <i class="icon-inp fa fa-user"></i>
+                                Name
+                                <span class="value"> {{$admission->user->name}}</span>
+                            </div>
 
-    <div class="section-container" >
-        <div class="row inner-section">
-            <div class="section-text centered-text"> Στοιχεία Επικοινωνίας Μητέρας</div>
-            @foreach($admission->fields as $field)
-                @if ($field->category_id==2)
-                    <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                        <i class="icon-inp {{ $field->icon}}"></i>
-                        {{ $field->name }}
-                        <span class="value"> {{ $field->pivot->data }}</span>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
+                            <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
+                                <i class="icon-inp fa fa-envelope"></i>
+                                Email
+                                <span class="value"> {{$admission->user->email}}</span>
+                            </div>
 
-    <div class="section-container" >
-        <div class="row inner-section">
-            <div class="section-text centered-text"> Στοιχεία Επικοινωνίας Πατέρα</div>
-            @foreach($admission->fields as $field)
-                @if ($field->category_id==3)
-                    <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                        <i class="icon-inp {{ $field->icon}}"></i>
-                        {{ $field->name }}
-                        <span class="value"> {{ $field->pivot->data }}</span>
-                    </div>
-                @endif
-            @endforeach
+                            @endif
+                @foreach($admission->fields as $field)
+                    @if ($field->category_id==$category->id)
+                            <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
+                                <i class="icon-inp {{ $field->icon}}"></i>
+                                {{ $field->name }}
+                                <span class="value"> {{ $field->pivot->data }}</span>
+                            </div>
+                    @endif
+                @endforeach
+            </div>
         </div>
-    </div>
-
-    <div class="section-container" >
-        <div class="row inner-section">
-            <div class="section-text centered-text"> Στοιχεία Επικοινωνίας Κηδεμόνα</div>
-            @foreach($admission->fields as $field)
-                @if ($field->category_id==4)
-                    <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                        <i class="icon-inp {{ $field->icon}}"></i>
-                        {{ $field->name }}
-                        <span class="value"> {{ $field->pivot->data }}</span>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
-
-    <div class="section-container" >
-        <div class="row inner-section">
-            <div class="section-text centered-text">Οικονομικά Στοιχεία Μητέρας</div>
-            @foreach($admission->fields as $field)
-                @if ($field->category_id==5 )
-                    <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                        <i class="icon-inp {{ $field->icon}}"></i>
-                        {{ $field->name }}
-                        <span class="value"> {{ $field->pivot->data }}</span>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
-
-    <div class="section-container" >
-        <div class="row inner-section">
-            <div class="section-text centered-text">Οικονομικά Στοιχεία Πατέρα</div>
-            @foreach($admission->fields as $field)
-                @if ($field->category_id==6)
-                    <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                        <i class="icon-inp {{ $field->icon}}"></i>
-                        {{ $field->name }}
-                        <span class="value"> {{ $field->pivot->data }}</span>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
-
-    <div class="section-container" >
-        <div class="row inner-section">
-            <div class="section-text centered-text">Οικονομικά Στοιχεία Κηδεμόνα</div>
-            @foreach($admission->fields as $field)
-                @if ($field->category_id==7)
-                    <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                        <i class="icon-inp {{ $field->icon}}"></i>
-                        {{ $field->name }}
-                        <span class="value"> {{ $field->pivot->data }}</span>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
+    @endif
+@endforeach
 
     <!-- ============= -->
 
     <div class="row flex-row" style="margin-top: 40px;">
             @foreach($admission->fields as $field)
                 @if ($field->category_id==8)
-                <div class="section2-container col-sm-6">
+                <div class="section2-container col-sm-6" style="padding: 20px 10px;">
                     <div class="inner-section2 ">
                         <div class="section-text2 centered-text"> <i class="icon-title  {{ $field->icon}}" style="margin-right: 10px;"></i>{{ $field->name }}</div>
                         <div class="info2">
@@ -215,7 +146,13 @@
             @endforeach
     </div>
 
+    <hr>
 
+    <form action="/admission/{{ $admission->id }}/notes/save" method="POST">
+        {{ csrf_field() }}
+        <textarea name="notes">{{ $admission->notes }}</textarea>
+        <button type="submit" class="btn btn-primary">SAVE NOTE</button>
+    </form>
 
 </div>
 
@@ -236,5 +173,3 @@
     {{--</script>--}}
 
 @endsection
-
-

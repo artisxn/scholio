@@ -44,4 +44,20 @@ class Admission extends Model
         }
         return (collect($all));
     }
+
+    public function categories()
+    {
+        $allFields = $this->fields;
+        $categories = [];
+        $tmp = 0;
+
+        foreach ($allFields as $field) {
+            if ($tmp != $field->category->id) {
+                array_push($categories, $field->category);
+            }
+            $tmp = $field->category->id;
+        }
+
+        return collect($categories);
+    }
 }

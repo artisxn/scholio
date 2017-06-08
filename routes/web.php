@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
@@ -8,6 +9,19 @@ use App\Scholio\Scholio;
 use App\User;
 
 Scholio::soonRoutes();
+
+Route::get('ppp', function () {
+    $user = App\User::find(25);
+    $scholarship = App\Models\Scholarship::find(9);
+
+    return $user->getAdmissionId($scholarship);
+});
+
+Route::post('/admission/{admission}/notes/save', function (Admission $admission) {
+    $admission->notes = request()->notes;
+    $admission->save();
+    return back();
+});
 
 Route::get('algotest/{query}', function ($query) {
     $result = AlgoliaSchool::search($query)->get();

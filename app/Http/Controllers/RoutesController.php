@@ -226,6 +226,9 @@ class RoutesController extends Controller
     public function admissionSave(Scholarship $scholarship)
     {
         $user = auth()->user();
+        $user->info->fname = request()->fname;
+        $user->info->lname = request()->lname;
+        $user->info->save();
         $admission = new Admission;
         $admission->user_id = $user->id;
         $admission->scholarship_id = $scholarship->id;

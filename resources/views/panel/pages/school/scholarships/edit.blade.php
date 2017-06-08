@@ -21,9 +21,9 @@
                         <div>{{ $scholarship->study->section[0]->level->name }}</div>
                         <div>{{ $scholarship->interestsLength() }}</div>
                         <div>
-                        @foreach($scholarship->user as $user)
-                            <img src="{{ $user->info->avatar }}" width="20px">
-                            <input type="radio" name="winner" value="{{ $user->id }}"> {{$user->name}}<br>
+                        @foreach($scholarship->admission as $admission)
+                            <img src="{{ $admission->user->info->avatar }}" width="20px">
+                            <input type="radio" name="winner" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}">{{$admission->user->name}}</a><br>
                         @endforeach
                         </div>
 

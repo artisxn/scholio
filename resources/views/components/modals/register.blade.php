@@ -22,7 +22,7 @@
                         <div id="form-type" class="form-group">
                             {{--<label for="type" class="col-sm-3 font-weight-400">Ιδιότητα</label>--}}
 
-                            <div class="col-sm-12 font-weight-300 centered-text" ">
+                            <div class="col-sm-12 font-weight-300 centered-text">
                                 {{--<select id="type" type="password" class="form-control" name="type" onchange="social()">--}}
                                 {{--<option value="no" selected>Επέλεξε Ιδιότητα</option>--}}
                                   {{--<option value="student">Μαθητής</option>--}}
@@ -201,8 +201,6 @@
                 }else{
                     url = '/auth/facebook/';
                 }
-
-                    // {{ session()->put('roleType', 'student') }}
 
                 window.location = url;
             }else{

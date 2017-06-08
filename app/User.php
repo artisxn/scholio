@@ -166,4 +166,18 @@ class User extends Authenticatable
 
         return $check;
     }
+
+    public function getAdmissionId(Scholarship $scholarship)
+    {
+        $id = 0;
+        foreach ($this->admissions as $admission) {
+            // dd($scholarship->id);
+            if ($admission->scholarship_id == $scholarship->id) {
+                $id = $admission->id;
+                break;
+            }
+        }
+
+        return $id;
+    }
 }
