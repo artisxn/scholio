@@ -144,6 +144,18 @@ Route::get('/public/algolia/', function () {
     return view('public.results.algolia');
 });
 
+
+Route::get('/public/algolia/', function () {
+    return view('public.results.algolia');
+});
+
+/* ===== TESTING ROUTE FOR REGISTER SELECT ROLE ====== */
+Route::get('/register/role/', function () {
+    return view('auth.register-role');
+});
+
+
+
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
 Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {

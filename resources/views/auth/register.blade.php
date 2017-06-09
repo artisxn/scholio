@@ -24,8 +24,10 @@
         <link href="/panel/assets/css/pages.css" rel="stylesheet" type="text/css" />
         {{-- <link href="/panel/assets/css/responsive.css" rel="stylesheet" type="text/css" /> --}}
 
-        <link href="/new/css/main.css" rel="stylesheet" type="text/css" />
+        {{--<link href="/new/css/Bootstrap-xxs-xxxs.css" rel="stylesheet" type="text/css" />--}}
 
+        <link href="/new/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="/new/css/register-login.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,44 +38,72 @@
 
         {{-- <script src="/panel/assets/js/modernizr.min.js"></script> --}}
 
+
+        <!-- Angular js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+
+        <script src="/new/js/register-app.js"></script>
     </head>
-    <body>
 
-        <div class="account-pages"></div>
-        <div class="clearfix"></div>
+    <style>
+        .role-image{margin-left: 10px; height: 40px; margin-top: -5px; opacity: 0.7}
+        .role-text{font-weight: 300; font-size: 130%; margin: 2px 0 0 10px;}
+        .btn-facebook:hover, .btn-googleplus:hover { color: #fafafa!important; font-weight: 300}
 
+    </style>
 
-        <div class="wrapper-page" style="padding: 0!important;">
+    <body ng-app="registerApp" ng-controller="registerCtrl">
+
+        <div class="outer col-xxs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6  col-lg-4 col-lg-offset-4" >
             <div class="card-box">
             <div class="panel-heading">
                 <div class="text-center">
                     <a href="/">
-                    <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 90px;">
+                    <img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">
                     </a>
                 </div>
-                <div class="text-center login-signUp-title">Εγγραφή στο Schol.io</div>
+                <div class="text-center login-signUp-title">Εγγραφή στο schol.io</div>
             </div>
 
-            <div class="panel-body">
+            <div class="">
                 <form class="form-horizontal m-t-20 " method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
-                    <div id="form-type" class="form-group">
-                        <label for="type" class="col-sm-3 font-weight-400">Ιδιότητα</label>
+                    {{--<div id="form-type" class="form-group">--}}
+                        {{--<label for="type" class="col-sm-3 font-weight-400">Ιδιότητα</label>--}}
 
-                        <div class="col-sm-9 font-weight-300">
-                            <select id="type" type="password" class="form-control" name="type" onchange="social()">
-                                <option value="no" selected>Επέλεξε Ιδιότητα</option>
-                                <option value="student">Μαθητής</option>
-                                <option value="parent">Γονέας</option>
-                                <option value="teacher">Καθηγητής</option>
-                            </select>
-                        </div>
+                        {{--<div class="col-sm-9 font-weight-300">--}}
+                            {{--<select id="type" type="password" class="form-control" name="type" onchange="social()">--}}
+                                {{--<option value="no" selected>Επέλεξε Ιδιότητα</option>--}}
+                                {{--<option value="student">Μαθητής</option>--}}
+                                {{--<option value="parent">Γονέας</option>--}}
+                                {{--<option value="teacher">Καθηγητής</option>--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
 
-                            <span id="span-type" class="help-block hidden">
-                                <strong>Πρέπει να επιλέξετε ιδιότητα</strong>
-                            </span>
-                    </div>
+                            {{--<span id="span-type" class="help-block hidden">--}}
+                                {{--<strong>Πρέπει να επιλέξετε ιδιότητα</strong>--}}
+                            {{--</span>--}}
+                    {{--</div>--}}
+
+
+                    {{--<div class="col-sm-12 font-weight-300 centered-text">--}}
+                    {{--<div ng-if="role==1">--}}
+                        {{--<div><img src="/new/img/student2.png" class="role-image" alt=""></div>--}}
+                        {{--<div class="role-text">μαθητής </div>--}}
+                    {{--</div>--}}
+                    {{--<div ng-if="role==2">--}}
+                        {{--<div><img src="/new/img/parent.png" class="role-image" alt=""></div>--}}
+                        {{--<div class="role-text">γονέας </div>--}}
+                    {{--</div>--}}
+                    {{--<div ng-if="role==3">--}}
+                        {{--<div><img src="/new/img/teacher.png" class="role-image" alt=""></div>--}}
+                        {{--<div class="role-text">καθηγητής </div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+
+
+
 
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="col-sm-3 font-weight-400">Όνομα, Επώνυμο</label>

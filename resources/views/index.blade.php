@@ -410,7 +410,7 @@
                 <div class="row" id="" >
                     <div class="col-md-4 col-md-offset-4">
                         <br>
-                        <a href="register">
+                        <a href="register/role/">
                             <button class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-1  col-lg-10 col-md-10 col-sm-6 col-xs-6 sc-button sc-green sc-t-white navbar-btn" >@lang('main.about.button') </button>
                         </a>
                     </div>

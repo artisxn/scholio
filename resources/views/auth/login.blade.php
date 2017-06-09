@@ -24,7 +24,10 @@
         <link href="/panel/assets/css/pages.css" rel="stylesheet" type="text/css" />
         {{-- <link href="/panel/assets/css/responsive.css" rel="stylesheet" type="text/css" /> --}}
 
+        {{--<link href="/new/css/Bootstrap-xxs-xxxs.css" rel="stylesheet" type="text/css" />--}}
+
         <link href="/new/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="/new/css/register-login.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,20 +41,15 @@
     </head>
     <body>
 
-        <div class="account-pages"></div>
-        <div class="clearfix"></div>
-
-
-
-        <div class="wrapper-page" style="padding: 0!important;">
+        <div class="outer col-xxs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6  col-lg-4 col-lg-offset-4">
             <div class="card-box">
                 <div class="panel-heading text-center">
                     <div class="text-center">
                         <a href="/">
-                        <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 90px;">
+                        <img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">
                         </a>
                     </div>
-                    <div class=" font-weight-300 text-incr-175 text-center"> Σύνδεση στο Schol.io</div>
+                    <div class="text-center login-signUp-title"> Σύνδεση στο schol.io</div>
                 </div>
 
                 <div class="panel-body">
