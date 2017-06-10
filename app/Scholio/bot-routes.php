@@ -57,33 +57,39 @@ Route::get('/test', function () {
 
 Route::get('/school/search', function () {
     $results = AlgoliaSchool::search(request()->search)->get();
+
     $elements = [];
+
     foreach ($results as $result) {
         $el = [
-            'title' => $result->name,
-            'image_url' => $result->image,
-            'subtitle' => 'Εκ. Ίδρυμα',
-            'buttons' => [
-                [
-                    'type' => 'web_url',
-                    'url' => 'http://scholio.dev/public/profile/' . $result->id,
-                    'title' => 'Προβολή Εκ. Ιδρύματος',
+            [
+                "title" => $result->name,
+                "image_url" => $result->image,
+                "subtitle" => "Soft white cotton t-shirt is back in style",
+                "buttons" => [
+                    [
+                        "type" => "web_url",
+                        "url" => "https://petersapparel.parseapp.com/view_item?item_id=100",
+                        "title" => "Προβολή Εκ. Ιδρύματος",
+                    ],
                 ],
             ],
         ];
         array_push($elements, $el);
     }
 
-    $bot = [
-        'messages' => [
-            'attachment' => [
-                'type' => 'template',
-                'payload' => [
-                    'template_type' => 'generic',
-                    'elements' => $elements,
+    $json = [
+        "messages" => [
+            [
+                "attachment" => [
+                    "type" => "template",
+                    "payload" => [
+                        "template_type" => "generic",
+                        "elements" => $elements,
+                    ],
                 ],
             ],
         ],
     ];
-    return $bot;
+    return $json;
 });
