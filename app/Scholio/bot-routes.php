@@ -39,7 +39,9 @@ Route::get('/test', function () {
 });
 
 Route::get('/school/search', function () {
-    $results = AlgoliaSchool::search(request()->search)->get();
+    $stype = request()->school_type ?: '';
+    $search = request()->search . ' ' . $stype;
+    $results = AlgoliaSchool::search($search)->get();
 
     $elements = [];
 
