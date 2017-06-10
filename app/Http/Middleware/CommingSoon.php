@@ -22,6 +22,10 @@ class CommingSoon
             return $next($request);
         }
 
+        if ($url == url('/api/bot/school')) {
+            return $next($request);
+        }
+
         if ($url == url('/lang/en') || $url == url('/lang/el')) {
             return $next($request);
         }
