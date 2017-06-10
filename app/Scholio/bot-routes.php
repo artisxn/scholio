@@ -51,13 +51,8 @@ Route::get('/school/search', function () {
             "buttons" => array(
                 [
                     "type" => "web_url",
-                    "url" => "https://petersapparel.parseapp.com/view_item?item_id=100",
-                    "title" => "asd",
-                ],
-                [
-                    "type" => "web_url",
-                    "url" => "https://petersapparel.parseapp.com/view_item?item_id=100",
-                    "title" => "asd",
+                    "url" => "https://schol.io/public/profile/" . $result->id,
+                    "title" => "Προβολή Εκ. Ιδρύματος",
                 ],
             ),
         );
