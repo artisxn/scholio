@@ -61,11 +61,11 @@ Route::get('/school/search', function () {
     $elements = [];
 
     foreach ($results as $result) {
-        $el = [
+        $array = array(
             "title" => $result->name,
             "image_url" => $result->image,
             "subtitle" => "Soft white cotton t-shirt is back in style",
-            "buttons" => [
+            "buttons" => array(
                 [
                     "type" => "web_url",
                     "url" => "https://petersapparel.parseapp.com/view_item?item_id=100",
@@ -73,12 +73,12 @@ Route::get('/school/search', function () {
                 ],
                 [
                     "type" => "web_url",
-                    "url" => "https://petersapparel.parseapp.com/buy_item?item_id=101",
-                    "title" => "Buy Item",
+                    "url" => "https://petersapparel.parseapp.com/view_item?item_id=100",
+                    "title" => "Προβολή Εκ. Ιδρύματος",
                 ],
-            ],
-        ];
-        array_push($elements, $el);
+            ),
+        );
+        array_push($elements, $array);
     }
 
     $json = [
