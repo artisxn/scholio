@@ -43,7 +43,7 @@ Route::get('/school/search', function () {
 
     $elements = [];
 
-    foreach ($results as $result) {
+    foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
             "image_url" => 'https://schol.io/images/schools/' . $result->image,
@@ -56,7 +56,9 @@ Route::get('/school/search', function () {
                 ],
             ),
         );
-        array_push($elements, $array);
+        if ($index <= 5) {
+            array_push($elements, $array);
+        }
     }
 
     $json = [
