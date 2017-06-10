@@ -45,7 +45,7 @@ Route::get('/school/search', function () {
 
     foreach ($results as $result) {
         $array = array(
-            "title" => 'sad',
+            "title" => $result->name,
             "image_url" => 'http://petersapparel.parseapp.com/img/item100-thumb.png',
             "subtitle" => "Soft white cotton t-shirt is back in style",
             "buttons" => array(
