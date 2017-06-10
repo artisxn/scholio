@@ -16,12 +16,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('panel.layouts.main', function ($view) {
-            if (auth()->user()->role == 'school') {
-                $school = School::where('user_id', auth()->user()->id)->first();
-                $view->with('connection', $school);
-            } else {
-                $user = auth()->user();
-                $view->with('connection', $user);
+            if (auth()->check()) {
+                if (auth()->user()->role == 'school') {
+                    $school = School::where('user_id', auth()->user()->id)->first();
+                    $view->with('connection', $school);
+                } else {
+                    $user = auth()->user();
+                    $view->with('connection', $user);
+                }
             }
         });
 

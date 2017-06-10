@@ -56,17 +56,6 @@
         <!-- jQuery  -->
         <script src="/panel/assets/js/jquery.min.js"></script>
         <script src="/panel/assets/js/bootstrap.min.js"></script>
-        {{--<script src="/panel/assets/js/detect.js"></script>--}}
-        {{--<script src="/panel/assets/js/fastclick.js"></script>--}}
-        {{--<script src="/panel/assets/js/jquery.slimscroll.js"></script>--}}
-        {{--<script src="/panel/assets/js/jquery.blockUI.js"></script>--}}
-        {{--<script src="/panel/assets/js/waves.js"></script>--}}
-        {{--<script src="/panel/assets/js/wow.min.js"></script>--}}
-        {{--<script src="/panel/assets/js/jquery.nicescroll.js"></script>--}}
-        {{--<script src="/panel/assets/js/jquery.scrollTo.min.js"></script>--}}
-
-        {{--<script src="assets/js/jquery.core.js"></script>--}}
-        {{--<script src="assets/js/jquery.app.js"></script>--}}
 
     </body>
 </html>
