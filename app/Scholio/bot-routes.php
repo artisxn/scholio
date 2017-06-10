@@ -62,19 +62,19 @@ Route::get('/school/search', function () {
 
     foreach ($results as $result) {
         $array = array(
-            "title" => $result->name,
-            "image_url" => $result->image,
+            "title" => 'sad',
+            "image_url" => url('/images/schools/') . $result->image,
             "subtitle" => "Soft white cotton t-shirt is back in style",
             "buttons" => array(
                 [
                     "type" => "web_url",
                     "url" => "https://petersapparel.parseapp.com/view_item?item_id=100",
-                    "title" => "Προβολή Εκ. Ιδρύματος",
+                    "title" => "asd",
                 ],
                 [
                     "type" => "web_url",
                     "url" => "https://petersapparel.parseapp.com/view_item?item_id=100",
-                    "title" => "Προβολή Εκ. Ιδρύματος",
+                    "title" => "asd",
                 ],
             ),
         );
