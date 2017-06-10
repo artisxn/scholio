@@ -2,6 +2,15 @@
 use App\Models\AlgoliaSchool;
 use App\Models\Request;
 
+Route::get('/test', function () {
+    return [
+        "messages" => [
+            ["text" => "Welcome to our store!"],
+            ["text" => "How can I help you?"],
+        ],
+    ];
+});
+
 Route::get('/school/search', function () {
     $results = AlgoliaSchool::search(request()->search)->get();
     $elements = [];
