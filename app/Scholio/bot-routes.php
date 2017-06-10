@@ -71,6 +71,11 @@ Route::get('/school/search', function () {
                     "url" => "https://petersapparel.parseapp.com/view_item?item_id=100",
                     "title" => "Προβολή Εκ. Ιδρύματος",
                 ],
+                [
+                    "type" => "web_url",
+                    "url" => "https://petersapparel.parseapp.com/buy_item?item_id=101",
+                    "title" => "Buy Item",
+                ],
             ],
         ];
         array_push($elements, $el);

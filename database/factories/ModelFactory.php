@@ -128,7 +128,7 @@ $factory->define(App\Models\Certificate::class, function (Faker\Generator $faker
 
 $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
     return [
-        'epwnymo' => '',
+        // 'epwnymo' => '',
         'father_fullname' => $faker->name,
         'father_phone' => $faker->phoneNumber,
         'father_email' => $faker->email,
