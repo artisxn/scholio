@@ -144,7 +144,6 @@ Route::get('/public/algolia/', function () {
     return view('public.results.algolia');
 });
 
-
 Route::get('/public/algolia/', function () {
     return view('public.results.algolia');
 });
@@ -153,8 +152,6 @@ Route::get('/public/algolia/', function () {
 Route::get('/register/role/', function () {
     return view('auth.register-role');
 });
-
-
 
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
