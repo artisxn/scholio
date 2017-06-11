@@ -1,3 +1,8 @@
+<style>
+    .avatar{height: 50px; border-radius: 6px; box-shadow: 0 0 10px #999;}
+    .text{margin-top: 15px}
+</style>
+
 <template>
     <div class="row">
         <div class="col-sm-12">
@@ -6,26 +11,25 @@
                     <div class="col-lg-12">
                         <h4 class="m-t-0 header-title"><b>Ειδποιήσεις για Αιτήματα Υποτροφιών</b></h4>
                         <p class="text-muted font-13">
-                           Όλα τα αιτήματα
+                            Όλα τα αιτήματα
                         </p>
                         <div class="p-20">
                             <div class="table-responsive">
                                 <table class="table m-0">
                                     <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Όνομα Μαθητη</th>
-                                            <th>Υποτροφία</th>
-                                        </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>Όνομα Μαθητη</th>
+                                        <th>Υποτροφία</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                    
-                                        <tr v-for="admission in admissions">
-                                                <td><a v-bind:href="'/panel/school/admission/' + admission.id"><img v-bind:src="admission.student.avatar"></a></td>
-                                                <td><a v-bind:href="'/panel/school/admission/' + admission.id">{{ admission.user.name }}</a></td>
-                                                <td>{{admission.scholarship}}</td>
-                                        </tr>
-                                    
+
+                                    <tr v-for="admission in admissions">
+                                        <td><a v-bind:href="'/panel/school/admission/' + admission.id"><img v-bind:src="admission.student.avatar" class="avatar"></a></td>
+                                        <td><a v-bind:href="'/panel/school/admission/' + admission.id"><div class="text">{{ admission.user.name }}</div></a></td>
+                                        <td><div class="text">{{admission.scholarship}}</div></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

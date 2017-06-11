@@ -47,6 +47,7 @@ jQuery(document).ready(function($) {
         }else{
             header.css({"background":"transparent","border-bottom":"none"});
             header.removeClass("navbar-fixed-top");
+            header.removeClass("navbar-scroll");
             header.addClass("navbar-top");
             logo.css({"display":"block"});
             logo_sticky.css({"display":"none"});
