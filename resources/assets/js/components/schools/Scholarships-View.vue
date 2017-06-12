@@ -126,7 +126,6 @@
                                             </th>
                                             <!-- <th>Νικητής</th> -->
                                             <th></th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -143,7 +142,7 @@
                                             <td><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
                                             <td v-if="showLevel">
                                                 <span class="tool">
-                                                    {{ study(scholarship.study, 20) }}
+                                                    {{ study(scholarship.study, 30) }}
                                                     <span class="tooltiptext">{{scholarship.study}}</span>
                                                 </span>
                                             </td>
@@ -152,8 +151,8 @@
                                             <td>{{ scholarship.end_at }}</td>
                                             <td>{{ scholarship.admissions}}</td>
                                             <!-- <td>{{ scholarship.winner_id }}</td> -->
-                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">Αλλαγή</button></td>
-                                            <td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>
+                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">Προβολή</button></td>
+                                            <!--<td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>-->
                                         </tr>
                                     </tbody>
                                 </table>

@@ -6,19 +6,28 @@
 
 }
 
-.navbar-scroll li {
-    top: -11px;
+.navbar-scroll li a{
+    /*top: -11px;*/
+    /*margin-top: -10px;*/
 }
 
-.nav-web .sc-landing-logo, .nav-web .sc-landing-logo-sticky {
-    padding-top: 15px;
+.navbar-scroll li{
+    /*top: -11px;*/
+    /*padding-top: 10px;*/
 }
 
-.nav-mobile {
+
+.nav-web .sc-landing-logo{
+    padding-top: 10px;
+}
+
+.nav-web .sc-landing-logo-sticky{ padding-top: 17px!important;}
+
+  .nav-mobile {
     padding-top: 11px;
 }
 
-
+.navbar-fixed-top, .navbar-scroll{ margin-top: -3px; }
 
 section{padding-top:100px!important; padding-bottom:100px!important;}
 /*Landing Header */
@@ -33,9 +42,12 @@ section{padding-top:100px!important; padding-bottom:100px!important;}
 .sc-landing-menu a{color:#ffffff;}
 .sc-landing-menu li>a:hover{background-color:transparent!important;color:#ffffff;}
 .sc-landing-menu li>a:focus{background-color:transparent!important;color:#ffffff;}
-.sc-landing-menu-item{padding-top:8px;}
 
-.sc-button-landing{margin-top:-4px;}
+.sc-landing-menu-item{padding:10px 0!important;}
+
+.nav>li>a{ padding: 1px 9px!important;}
+
+.sc-button-landing{margin-top: 1px;}
 
 .sc-landing-logo-sticky{display:none;}
 .sc-landing-logo{}
@@ -75,8 +87,8 @@ video {
     z-index: -100;
     transform:scale(1);
 }
-.sc-landing-video-container{  width: 100%;  height:690px!important;  overflow: hidden;  position: fixed;  top: 0;  right: 0;  z-index: -100;  }
-.sc-landing-video-filter{  width:100%;  height:690px!important; z-index:1;  position:fixed;
+.sc-landing-video-container{  width: 100%;  height:690px!important;  overflow: hidden;  position: absolute;  top: 0;  right: 0;  z-index: -100;  }
+.sc-landing-video-filter{  width:100%;  height:690px!important; z-index:1;  position: absolute;
     background-image: -webkit-linear-gradient(rgba(5,5,40,0.2), rgba(5,5,20,0.85)),url(""); }
 
 /* ====Search Bar===== */
@@ -322,7 +334,7 @@ video {
     .banner-content{ margin-top: -330px!important; margin-left: -90px}
     .banner{ left: 11%; width: 78%;}
     .banner-text{ margin-left: 3%}
-    .btn-school-reg{ margin-top: 80px; margin-left: 4%}
+    .btn-school-reg{ margin-top: 60px; margin-left: 4%}
     .banner-title{margin-bottom: 40px; margin-left: -2%; width: 98%;}
     .mobile-hero {max-width: 150%; max-height: 620px;}
 
@@ -330,7 +342,7 @@ video {
 }
 @media (max-width: 391px) {
     /*New Section*/
-    .banner-title{margin-bottom: 40px; margin-left: 3%; width: 98%;}
+    .banner-title{margin-bottom: 45px; margin-left: 3%; width: 98%;}
     .btn-school-reg{ margin-top: 60px;  margin-left: 5%; width: 235px;}
     .banner-content{ margin-top: -370px!important; }
     .btn-scholarships{width: 135px;}
@@ -338,7 +350,27 @@ video {
 
 }
 
-@media (max-width: 331px) {
+@media  (min-width: 361px) and  (max-width: 367px) {
+    /*New Section*/
+    .banner{height: 650px; width: 315px; margin-left: -20px;}
+    .banner-title{margin-bottom: 30px; margin-left: 0; width: 97%; margin-top: 10px;}
+    .btn-school-reg{ margin-top: 40px;  margin-left: 4%; }
+
+}
+
+
+@media (min-width: 351px) and (max-width: 360px) {
+    /*New Section*/
+    .banner-content{ margin-top: -390px!important;}
+    .banner-title{font-size: 90%; margin-left: -40px!important; margin-top: 35px;}
+    .banner{height: 680px;}
+    .btn-school-reg{  margin-left: 3%; }
+}
+
+
+
+
+@media (max-width: 350px) {
     /* First Section */
 
     .sc-landing-sec1-content{margin-top:20px;}
@@ -354,7 +386,7 @@ video {
     .xxs-small-banner-content{visibility: visible;  margin-top: -100px!important;}
     .banner{ left: 5%; width: 90%;}
     .banner-text{ margin-left: 13%; }
-    .btn-school-reg{ margin-top: 60px; width: 225px; margin-left: 12%;}
+    .btn-school-reg{ margin-top: 65px; position: relative;  width: 240px; margin-left: 12%;}
     .banner-title{margin-bottom: 30px; margin-left: 2%; width: 95%;  margin-top: -30px!important;}
     .mobile-hero {max-width: 150%; max-height: 590px;}
     .btn-scholarships{width: 125px;}

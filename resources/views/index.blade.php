@@ -112,7 +112,7 @@
 
         .sch-reg-title{left: 37%; : 400px; position: absolute; max-width: 400px}
         .lang-sel{color: #fff; margin-top: 2px; margin-left: -23px}
-        .lang-drop{margin-top: 14px; }
+        .lang-drop{margin: 4px -13px;}
         /*.selectpicker{outline: none !important;}*/
         /*.selectpicker:focus{outline: none !important;}*/
 
@@ -147,7 +147,7 @@
         }
 
         @media  (max-width: 1200px) {
-            .sch-reg-title {left: 30%; width: 330px;}
+            .sch-reg-title {left:28%; width: 330px;}
         }
     </style>
 
@@ -444,9 +444,9 @@
                                         <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
                                 </div>
                                 <div class="banner-text banner-content center-block">
-                                    <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title hidden-sm hidden-md hidden-lg" style="width: 310px; margin-left: -30px">@lang('main.about.institutions.title-xs')</div>
+                                    <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title hidden-sm hidden-md hidden-lg" style="width: 309px; margin-left: -30px">@lang('main.about.institutions.title-xs')</div>
                                     <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> @lang('main.about.institutions.section1')</div>
-                                    <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
+                                    <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section2')</div>
                                     <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
                                 </div>
 

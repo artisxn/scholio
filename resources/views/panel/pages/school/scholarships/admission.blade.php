@@ -3,8 +3,15 @@
 @section('styles')
     <style>
 
+        .hero{height: 140px; background-color: #008da5; margin: 0 0 90px 0; border-radius: 8px; position: relative; width: 100%}
+        .img-avatar{width: 70px; position: absolute; bottom: -30px; border-radius: 5px;
+            left: 20px;  box-shadow: 0 0 10px #fff; }
 
-        .section-container{ margin-top: 40px;}
+        .text-name,.text-mail{ color: #fff; font-size: 180%; font-weight: 300; position: absolute;  left: 110px; }
+        .text-name{ bottom: 6px;}
+        .text-mail{ bottom: -37px; color: #008da5;}
+
+        .section-container{ margin-top: 40px; }
 
         .inner-section,.inner-section2{  padding: 5px 5px 25px 5px ; border: 1px solid #aaa; border-radius: 8px; background-color: #F1F4F5;
         }
@@ -43,6 +50,11 @@
         /*display: flex;*/
         /*flex-direction: column;*/
         /*}*/
+
+        .btn-save{background: #008da5; color: #fff; margin-bottom: 40px}
+
+        .notes{ margin-top: 2px; width: 100%; height: 90px; color: #c9c9c9; font-weight: 300; padding: 10px;
+            background-color: #f6f9fa; border-radius: 8px; border: 1px solid #aaa; resize: none;}
 
         /*  ======================================= */
 
@@ -89,31 +101,36 @@
 @endsection
 
 @section('content')
-<div style="">
 
-<div>
-    <img src="{{ $admission->user->info->avatar }}" width="50px">
+<div class="hero">
+    <div>
+        <img src="{{ $admission->user->info->avatar }}" class="img-avatar">
+    </div>
+    <div class="text-name">{{$admission->user->name}}</div>
+    <div class="text-mail">{{$admission->user->email}}</div>
 </div>
+
+<div style="clear: both"></div>
 
 @foreach($categories as $category)
     @if($category->id < 8)
-        <div class="section-container" >
+        <div class="section-container" style="padding: 10px" >
             <div class="row inner-section">
                 <div class="section-text centered-text"> {{ $category->name }}</div>
-                @if($category->id==1)
-                <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                                <i class="icon-inp fa fa-user"></i>
-                                Name
-                                <span class="value"> {{$admission->user->name}}</span>
-                            </div>
+                        {{--@if($category->id==1)--}}
+                            {{--<div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">--}}
+                                {{--<i class="icon-inp fa fa-user"></i>--}}
+                                {{--Ονοματεπώνυμο--}}
+                                {{--<span class="value"> {{$admission->user->name}}</span>--}}
+                            {{--</div>--}}
 
-                            <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
-                                <i class="icon-inp fa fa-envelope"></i>
-                                Email
-                                <span class="value"> {{$admission->user->email}}</span>
-                            </div>
+                            {{--<div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">--}}
+                                {{--<i class="icon-inp fa fa-envelope"></i>--}}
+                                {{--Email--}}
+                                {{--<span class="value"> {{$admission->user->email}}</span>--}}
+                            {{--</div>--}}
 
-                            @endif
+                        {{--@endif--}}
                 @foreach($admission->fields as $field)
                     @if ($field->category_id==$category->id)
                             <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
@@ -123,6 +140,7 @@
                             </div>
                     @endif
                 @endforeach
+
             </div>
         </div>
     @endif
@@ -146,19 +164,20 @@
             @endforeach
     </div>
 
-    <hr>
 
-    <form action="/admission/{{ $admission->id }}/notes/save" method="POST">
+    <form action="/admission/{{ $admission->id }}/notes/save" method="POST" class="col-sm-12 row" style="z-index: 09!important;">
         {{ csrf_field() }}
-        <textarea name="notes">{{ $admission->notes }}</textarea>
-        <button type="submit" class="btn btn-primary">SAVE NOTE</button>
+        <div class="section-text2 centered-text" style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-pencil" style="margin-right: 10px;"></i>Σημειώσεις</div>
+
+        <textarea name="notes" class="notes" placeholder="Εδώ κρατήστε τις σημειώσεις σας για τη συγκεκριμένη αίτηση">{{ $admission->notes }}</textarea>
+        <div>
+            <button type="submit" class="btn btn-save" > <i class="fa fa-save" style="margin-right: 10px"></i>Αποθήκευση</button>
+        </div>
     </form>
 
-</div>
 
-<div>
 
-</div>
+
 @endsection
 
 
