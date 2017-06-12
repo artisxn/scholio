@@ -89,6 +89,50 @@ Route::get('/school/search', function () {
     return $json;
 });
 
+Route::get('/school/custom', function () {
+    $results = AlgoliaSchool::search(request()->search)->get();
+
+    $elements = [];
+
+    foreach ($results as $index => $result) {
+        $array = array(
+            "title" => $result->name,
+            "image_url" => 'https://schol.io/images/schools/' . $result->image,
+            "subtitle" => $result->lengthScholarships . " Υποτροφίες",
+            "buttons" => array(
+                [
+                    "type" => "web_url",
+                    "url" => "https://schol.io/public/profile/" . $result->id,
+                    "title" => "Προβολή",
+                ],
+                [
+                    "type" => "web_url",
+                    "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
+                    "title" => "Υποτροφίες",
+                ],
+            ),
+        );
+        if ($index <= 9) {
+            array_push($elements, $array);
+        }
+    }
+
+    $json = [
+        "messages" => [
+            [
+                "attachment" => [
+                    "type" => "template",
+                    "payload" => [
+                        "template_type" => "generic",
+                        "elements" => $elements,
+                    ],
+                ],
+            ],
+        ],
+    ];
+    return $json;
+});
+
 Route::get('/chat', function () {
     $n = [
         "type" => "show_block",
