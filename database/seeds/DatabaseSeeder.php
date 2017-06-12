@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             $settings->school_id = $school->id;
             $settings->save();
 
-            $address = Scholio::geocode($school->address . "," . $school->city);
+            $address = Scholio::geocode($school->address . ", " . $school->city);
             if ($address == 'GEOCODE ERROR') {
                 dd($address);
             } else {

@@ -55,8 +55,8 @@ $factory->define(App\Models\School::class, function (Faker\Generator $faker) {
         'city' => $faker->prefecture,
         'phone' => $faker->numberBetween($min = 1, $max = 100),
         'website' => $faker->domainName . '.' . $faker->unique()->randomFloat($nbMaxDecimals = 10, $min = 1, $max = 10000000),
-        'lat' => $faker->latitude($min = 34, $max = 41),
-        'lng' => $faker->longitude($min = 20, $max = 26),
+        // 'lat' => $faker->latitude($min = 34, $max = 41),
+        // 'lng' => $faker->longitude($min = 20, $max = 26),
     ];
 });
 
