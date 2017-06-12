@@ -740,6 +740,11 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school18->id, 1, 100, 269, 1, 4, 2, 1);
         $this->createScholarship($school18->id, 2, 300, 308, 1, 2, 2, 2);
         $this->createScholarship($school18->id, 2, 800, 324, 3, 2, 2, 2);
+        $this->createScholarship($school18->id, 2, 800, 310, 3, 2, 2, 2);
+        $this->createScholarship($school18->id, 1, 30, 224, 1, 3, 2, 1);
+        $this->createScholarship($school18->id, 1, 100, 276, 1, 4, 2, 1);
+        $this->createScholarship($school18->id, 2, 300, 300, 1, 2, 2, 2);
+        $this->createScholarship($school18->id, 2, 800, 305, 3, 2, 2, 2);
 
         /*===============   19 Vakalo   ================*/
         $this->createImages($school19, 'fake/vakalo-', 1, 5);
