@@ -87,8 +87,8 @@ Route::get('/school/search', function () {
 Route::get('/chat', function () {
     $n = [
         "type" => "show_block",
-        "block_name" => "test",
-        "title" => "Finish Shopping",
+        "block_name" => "AuthChat",
+        "title" => "AuthChat",
     ];
 
     if (request()->name == 'Kostis') {
