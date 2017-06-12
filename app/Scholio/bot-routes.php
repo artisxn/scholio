@@ -54,7 +54,7 @@ Route::get('/school/search', function () {
         $array = array(
             "title" => $result->name,
             "image_url" => 'https://schol.io/images/schools/' . $result->image,
-            "subtitle" => $result->legthScholarships . " Υποτροφίες",
+            "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
                     "type" => "web_url",
