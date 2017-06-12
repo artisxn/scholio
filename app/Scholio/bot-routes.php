@@ -93,9 +93,7 @@ Route::get('/chat', function () {
 
     if (request()->name == 'Kostis') {
         return [
-            "messages" => [
-                ["text" => "OK!"],
-            ],
+            "redirect_to_blocks" => ["AuthChat"],
         ];
     }
 
