@@ -54,12 +54,17 @@ Route::get('/school/search', function () {
         $array = array(
             "title" => $result->name,
             "image_url" => 'https://schol.io/images/schools/' . $result->image,
-            "subtitle" => "Υπότιτλος",
+            "subtitle" => $result->legthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
                     "type" => "web_url",
                     "url" => "https://schol.io/public/profile/" . $result->id,
                     "title" => "Προβολή Εκ. Ιδρύματος",
+                ],
+                [
+                    "type" => "web_url",
+                    "url" => 'https://scholio.dev/public/scholarships?q=' . $result->name,
+                    "title" => $result->name . " : Προβολή Υποτροφιών",
                 ],
             ),
         );
