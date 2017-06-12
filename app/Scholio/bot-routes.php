@@ -59,12 +59,12 @@ Route::get('/school/search', function () {
                 [
                     "type" => "web_url",
                     "url" => "https://schol.io/public/profile/" . $result->id,
-                    "title" => "Προβολή Εκ. Ιδρύματος",
+                    "title" => "Προβολή",
                 ],
                 [
                     "type" => "web_url",
-                    "url" => 'https://scholio.dev/public/scholarships?q=' . $result->name,
-                    "title" => $result->name . " : Προβολή Υποτροφιών",
+                    "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
+                    "title" => "Υποτροφίες",
                 ],
             ),
         );
