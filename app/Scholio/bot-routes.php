@@ -92,7 +92,11 @@ Route::get('/chat', function () {
     ];
 
     if (request()->name == 'Kostis') {
-        return $n;
+        return [
+            "messages" => [
+                ["text" => "OK!"],
+            ],
+        ];
     }
 
     $l = [
