@@ -97,18 +97,18 @@ Route::get('/scholarship/search', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->study,
-            "image_url" => 'https://schol.io/images/schools/',
-            "subtitle" => $result->school,
+            "image_url" => 'https://schol.io/images/schools/' . $result->school_logo,
+            "subtitle" => $result->criteria,
             "buttons" => array(
                 [
                     "type" => "web_url",
-                    "url" => "https://schol.io/public/profile/",
+                    "url" => "https://schol.io/scholarship/" . $result->scholarship_id,
                     "title" => "Προβολή",
                 ],
                 [
                     "type" => "web_url",
-                    "url" => 'https://schol.io/public/scholarships?q=',
-                    "title" => "Υποτροφίες",
+                    "url" => 'https://schol.io/public/profile/' . $result->school_id,
+                    "title" => $result->school,
                 ],
             ),
         );
