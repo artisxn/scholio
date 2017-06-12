@@ -68,7 +68,7 @@ Route::get('/school/search', function () {
                 ],
             ),
         );
-        if ($index <= 10) {
+        if ($index <= 9) {
             array_push($elements, $array);
         }
     }
