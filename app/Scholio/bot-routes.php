@@ -1,4 +1,5 @@
 <?php
+use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
 use App\Models\Request;
 
@@ -38,6 +39,12 @@ Route::get('/test', function () {
     return $test;
 });
 
+Route::get('/scholarship/search', function () {
+    $results = AlgoliaScholarship::search(request()->search)->get();
+
+    return $results;
+});
+
 Route::get('/school/search', function () {
     $results = AlgoliaSchool::search(request()->search)->get();
 
@@ -56,7 +63,7 @@ Route::get('/school/search', function () {
                 ],
             ),
         );
-        if ($index <= 5) {
+        if ($index <= 10) {
             array_push($elements, $array);
         }
     }
@@ -75,4 +82,17 @@ Route::get('/school/search', function () {
         ],
     ];
     return $json;
+});
+
+Route::get('/chat', function () {
+    $n = [
+        "type" => "show_block",
+        "block_name" => "test",
+        "title" => "Finish Shopping",
+    ];
+
+    if (request()->name == 'Kostis Freiderikos') {
+        return $n;
+    }
+    return null;
 });
