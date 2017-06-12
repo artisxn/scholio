@@ -96,18 +96,18 @@ Route::get('/scholarship/search', function () {
 
     foreach ($results as $index => $result) {
         $array = array(
-            "title" => $result->name,
-            "image_url" => 'https://schol.io/images/schools/' . $result->image,
-            "subtitle" => $result->lengthScholarships . " Υποτροφίες",
+            "title" => $result->study,
+            "image_url" => 'https://schol.io/images/schools/',
+            "subtitle" => $result->school,
             "buttons" => array(
                 [
                     "type" => "web_url",
-                    "url" => "https://schol.io/public/profile/" . $result->id,
+                    "url" => "https://schol.io/public/profile/",
                     "title" => "Προβολή",
                 ],
                 [
                     "type" => "web_url",
-                    "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
+                    "url" => 'https://schol.io/public/scholarships?q=',
                     "title" => "Υποτροφίες",
                 ],
             ),
