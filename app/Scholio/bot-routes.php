@@ -91,8 +91,14 @@ Route::get('/chat', function () {
         "title" => "Finish Shopping",
     ];
 
-    if (request()->name == 'Kostis Freiderikos') {
+    if (request()->name == 'Kostis') {
         return $n;
     }
-    return null;
+
+    $l = [
+        "messages" => [
+            ["text" => "OXI!"],
+        ],
+    ];
+    return $l;
 });
