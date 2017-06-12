@@ -97,7 +97,8 @@ Route::get('/scholarship/search', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->study,
-            "image_url" => 'https://schol.io/images/schools/' . $result->school_logo,
+            // "image_url" => 'https://schol.io/images/schools/' . $result->school_logo,
+            "image_url" => 'https://schol.io/panel/assets/images/steps' . $result->section . '.png',
             "subtitle" => $result->criteria,
             "buttons" => array(
                 [
