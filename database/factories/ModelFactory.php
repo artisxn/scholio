@@ -84,14 +84,16 @@ $factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
     $faker = Faker\Factory::create('el_GR');
 
     return [
+        'fname' => $faker->firstName,
+        'lname' => $faker->lastName,
         'user_id' => factory(App\User::class)->create(['role' => 'student'])->id,
-        'phone' => '6980000000',
-        'dob' => Carbon::now()->subYears(20),
+        // 'phone' => '6980000000',
+        // 'dob' => Carbon::now()->subYears(20),
         'gender' => 'male',
         // 'avatar' => 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png',
         'avatar' => $faker->imageUrl(128, 128, 'people'),
-        'address' => $faker->streetAddress,
-        'city' => $faker->prefecture,
+        // 'address' => $faker->streetAddress,
+        // 'city' => $faker->prefecture,
     ];
 });
 
@@ -128,7 +130,11 @@ $factory->define(App\Models\Certificate::class, function (Faker\Generator $faker
 
 $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
     return [
-        // 'epwnymo' => '',
+        'student_address' => $faker->city,
+        'student_phone' => $faker->phoneNumber,
+        'student_dob' => Carbon::now()->subYears(20),
+        'student_relatives' => $faker->numberBetween($min = 0, $max = 2),
+        'previous_school' => 15,
         'father_fullname' => $faker->name,
         'father_phone' => $faker->phoneNumber,
         'father_email' => $faker->email,
@@ -173,5 +179,6 @@ $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
         'awards' => $faker->sentence,
         'other_interests' => $faker->sentence,
         'strongpoints' => '1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες',
+        'notes' => $faker->sentence,
     ];
 });

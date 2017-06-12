@@ -133,10 +133,10 @@
             {{--My Cordinates--}}
             {{--<div id="demo" style=" margin: 0 0 20px 0 "></div>--}}
             <p class="title">Επιλέξτε προβολή τη προβολή του χάρτη κοντά σας, ή σαρώστε την περιοχή που θέλέτε</p>
-            <a href="" class="change_page_state btn btn-info active" data-mode="around"   data-state="ip" ng-click="status='around'">
+            <a href="" class="change_page_state btn btn-info" data-mode="around" data-state="ip" ng-click="status='around'">
                 <i class="fa fa-map-marker margin-right-10"></i>
                 Κοντά μου</a>
-            <a href="" class="change_page_state btn btn-info" data-mode="bounding" data-state="rectangle" ng-click="status='rectangle'">
+            <a href="" class="change_page_state btn btn-info active" data-mode="bounding" data-state="rectangle" ng-click="status='rectangle'">
                 <i class="fa fa-search-plus margin-right-10"></i>
                 Σάρωση Χάρτη</a>
         </header>
@@ -352,15 +352,11 @@ var x = document.getElementById("demo");
       // Page states
       var PAGE_STATES = {
         LOAD: 0,
-        BOUNDING_BOX_RECTANGLE: 1,
-        BOUNDING_BOX_POLYGON: 2,
-        AROUND_IP: 4,
-        AROUND_NYC: 5,
-        AROUND_LONDON: 6,
-        AROUND_SYDNEY: 7
+        RECTANGLE_MAP: 1,
+        AROUND_ME: 5,
       };
       var pageState = PAGE_STATES.LOAD;
-      setPageState(PAGE_STATES.AROUND_NYC);
+      setPageState(PAGE_STATES.RECTANGLE_MAP);
 
       // PAGE STATES
       // ===========
@@ -374,7 +370,7 @@ var x = document.getElementById("demo");
         pageState = state;
 
         switch (state) {
-          case PAGE_STATES.BOUNDING_BOX_RECTANGLE:
+          case PAGE_STATES.RECTANGLE_MAP:
             boundingBox = new google.maps.Rectangle({
               bounds: {north: 35, south: 41.3, west: 20.4, east: 26.5 },
               strokeColor: '#EF5362',
@@ -399,7 +395,7 @@ var x = document.getElementById("demo");
             algoliaHelper.setQueryParameter('aroundLatLngViaIP', true);
             break;
 
-          case PAGE_STATES.AROUND_NYC:
+          case PAGE_STATES.AROUND_ME:
             var ar = LAT + ',' + LNG;
             algoliaHelper.setQueryParameter('aroundLatLng', '40.60, 23.00');
             algoliaHelper.setQueryParameter('aroundRadius', MAX_D);
@@ -420,22 +416,10 @@ var x = document.getElementById("demo");
           updateMenu($(this).data('state'), $(this).data('mode'));
           switch ($(this).data('state')) {
             case 'rectangle':
-              setPageState(PAGE_STATES.BOUNDING_BOX_RECTANGLE);
-              break;
-            case 'polygon':
-              setPageState(PAGE_STATES.BOUNDING_BOX_POLYGON);
+              setPageState(PAGE_STATES.RECTANGLE_MAP);
               break;
             case 'ip':
-              setPageState(PAGE_STATES.AROUND_IP);
-              break;
-            case 'nyc':
-              setPageState(PAGE_STATES.AROUND_NYC);
-              break;
-            case 'london':
-              setPageState(PAGE_STATES.AROUND_LONDON);
-              break;
-            case 'sydney':
-              setPageState(PAGE_STATES.AROUND_SYDNEY);
+              setPageState(PAGE_STATES.AROUND_ME);
               break;
             default:
               // No op
@@ -450,7 +434,7 @@ var x = document.getElementById("demo");
         }
         boundingBoxListeners = [];
         $searchInput.val('');
-        algoliaHelper.setQuery('');
+        algoliaHelper.setQuery("{{ session('inputSearch') }}");
         algoliaHelper.setQueryParameter('insideBoundingBox', undefined);
         algoliaHelper.setQueryParameter('insidePolygon', undefined);
         algoliaHelper.setQueryParameter('aroundLatLng', undefined);
@@ -461,7 +445,7 @@ var x = document.getElementById("demo");
 
     $searchInput.on('input propertychange', function (e) {
         var query = e.currentTarget.value;
-        if (pageState === PAGE_STATES.BOUNDING_BOX_RECTANGLE || pageState === PAGE_STATES.BOUNDING_BOX_POLYGON) {
+        if (pageState === PAGE_STATES.RECTANGLE_MAP) {
       fitMapToMarkersAutomatically = false;
     }
         algoliaHelper.setQuery(query).search();
@@ -636,7 +620,7 @@ var x = document.getElementById("demo");
   angular.module("app",[])
     .controller("resultsCtrl",function ($scope) {
 
-        $scope.status='around';
+        $scope.status='rectangle';
         $scope.range=10;
 
         $scope.view='card';

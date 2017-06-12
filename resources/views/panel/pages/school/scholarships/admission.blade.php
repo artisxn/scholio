@@ -117,23 +117,9 @@
         <div class="section-container" style="padding: 10px" >
             <div class="row inner-section">
                 <div class="section-text centered-text"> {{ $category->name }}</div>
-                        {{--@if($category->id==1)--}}
-                            {{--<div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">--}}
-                                {{--<i class="icon-inp fa fa-user"></i>--}}
-                                {{--Ονοματεπώνυμο--}}
-                                {{--<span class="value"> {{$admission->user->name}}</span>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">--}}
-                                {{--<i class="icon-inp fa fa-envelope"></i>--}}
-                                {{--Email--}}
-                                {{--<span class="value"> {{$admission->user->email}}</span>--}}
-                            {{--</div>--}}
-
-                        {{--@endif--}}
                 @foreach($admission->fields as $field)
                     @if ($field->category_id==$category->id)
-                            <div class="col-xxxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 info">
+                            <div class="col-xxxs-12 col-xs-6 col-sm-6 info">
                                 <i class="icon-inp {{ $field->icon}}"></i>
                                 {{ $field->name }}
                                 <span class="value"> {{ $field->pivot->data }}</span>

@@ -29,6 +29,8 @@ Route::get('algotest/{query}', function ($query) {
 });
 
 Route::get('public/schools/map', function () {
+    $search = request()->search;
+    session(['inputSearch' => $search]);
     return view('public.results.map');
 });
 

@@ -28,6 +28,7 @@ class Admission extends Model
     {
         foreach (collect($data) as $index => $data) {
             $field = AdmissionField::findWithSlug($index)->first();
+
             if ($field != null) {
                 $this->fields()->save($field, ['data' => $data]);
             }

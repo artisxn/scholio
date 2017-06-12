@@ -244,8 +244,8 @@
 
 
                     <div class="btn-group " style="width: 100%; margin: 15px 0;">
-                        <a href="{{ url('/public/schools/map') }}">
-                        <button class="btn btn-primary" style=" width: 100%; height: 40px" ng-click="">
+                        {{-- <a href="{{ url('/public/schools/map') }}"> --}}
+                        <button class="btn btn-primary" style=" width: 100%; height: 40px" onClick="showMap()">
                             <i class="fa fa-map pad-right-15" aria-hidden="true"></i>Προβολή Χάρτη
                         </button>
                         </a>
@@ -305,17 +305,7 @@
                     <main id="schools"></main>
 
                     <section id="pagination"></section>
-
-
-
-
                 </div><!-- //col-lg-9-->
-
-
-
-
-
-
             </div> <!-- //row-->
         </div> <!-- //container-->
     </main>
@@ -326,11 +316,11 @@
 </body>
 
 <script>
-    angular.module("sc",[])
-            .controller("sctrl",function ($scope,$http) {
-                console.log('t12343124123')
-
-            })
+    function showMap(){
+        var s = document.getElementById('query').value;
+                console.log('asdasd');
+                window.location = '/public/schools/map/?search='+ s;
+    }
 </script>
 
 
@@ -347,7 +337,6 @@ angular.module("schoolsResultsApp",[])
             $scope.active=function(role){
                 $scope.role=role;
             }
-
 
             console.log('start');
 

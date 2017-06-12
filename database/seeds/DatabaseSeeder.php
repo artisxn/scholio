@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
         $this->call(StudiesTableSeeder::class);
         $this->call(CriteriasTableSeeder::class);
         $this->call(ReviewsTableSeeder::class);
+        // $this->call(AddmissionSeeder::class);
+        $this->call(AdmissionCategoryTableSeeder::class);
         $this->call(FakeSeeder::class);
         $this->call(TeacherDetailsTableSeeder::class);
         $this->call(SkillsTableSeeder::class);
         $this->call(SocialLinksTableSeeder::class);
-        $this->call(AddmissionSeeder::class);
-        $this->call(AdmissionCategoryTableSeeder::class);
 
         foreach (School::all() as $school) {
             $settings = new SchoolSetting;
