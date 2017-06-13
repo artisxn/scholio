@@ -39,12 +39,6 @@ Route::get('/test', function () {
     return $test;
 });
 
-Route::get('/scholarship/search', function () {
-    $results = AlgoliaScholarship::search(request()->search)->get();
-
-    return $results;
-});
-
 Route::get('/school/search', function () {
     $results = AlgoliaSchool::search(request()->search)->get();
 
@@ -134,8 +128,53 @@ Route::get('/scholarship/search', function () {
     return $json;
 });
 
+Route::get('/scholarship/custom', function () {
+    $results = AlgoliaScholarship::search(request()->search)->get();
+
+    $elements = [];
+
+    foreach ($results as $index => $result) {
+        $array = array(
+            "title" => $result->study,
+            "image_url" => 'https://schol.io/images/schools/' . $result->school_logo,
+            // "image_url" => 'https://schol.io/panel/assets/images/steps' . $result->section . '.png',
+            "subtitle" => $result->criteria,
+            "buttons" => array(
+                [
+                    "type" => "web_url",
+                    "url" => "https://schol.io/scholarship/" . $result->scholarship_id,
+                    "title" => "Προβολή",
+                ],
+                [
+                    "type" => "web_url",
+                    "url" => 'https://schol.io/public/profile/' . $result->school_id,
+                    "title" => $result->school,
+                ],
+            ),
+        );
+        if ($index <= 9) {
+            array_push($elements, $array);
+        }
+    }
+
+    $json = [
+        "messages" => [
+            [
+                "attachment" => [
+                    "type" => "template",
+                    "payload" => [
+                        "template_type" => "generic",
+                        "elements" => $elements,
+                    ],
+                ],
+            ],
+        ],
+    ];
+    return $json;
+});
+
 Route::get('/school/custom', function () {
-    $results = AlgoliaSchool::search(request()->search)->get();
+    $results = AlgoliaScholarship::search(request()->search)->get();
 
     $elements = [];
 
