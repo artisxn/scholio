@@ -22,7 +22,11 @@ class CommingSoon
             return $next($request);
         }
 
-        if ($url == url('/api/bot/school')) {
+        // if ($url == url('/api/bot/*')) {
+        //     return $next($request);
+        // }
+
+        if ($request->path() == 'api/bot/*') {
             return $next($request);
         }
 
