@@ -15,6 +15,7 @@ class CommingSoon
      */
     public function handle($request, Closure $next)
     {
+        dd($request);
         $url = request()->url();
         $soon = env('COMING_SOON', false);
 
