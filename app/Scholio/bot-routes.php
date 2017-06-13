@@ -174,7 +174,7 @@ Route::get('/scholarship/custom', function () {
 });
 
 Route::get('/school/custom', function () {
-    $results = AlgoliaScholarship::search(request()->search)->get();
+    $results = AlgoliaSchool::search(request()->search)->get();
 
     $elements = [];
 
