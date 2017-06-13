@@ -26,6 +26,10 @@ class CommingSoon
             return $next($request);
         }
 
+        if ($url == url('/api/bot/scholarship/custom') || $url == url('/api/bot/school/custom')) {
+            return $next($request);
+        }
+
         if ($url == url('/lang/en') || $url == url('/lang/el')) {
             return $next($request);
         }
