@@ -15,11 +15,18 @@ class CommingSoon
      */
     public function handle($request, Closure $next)
     {
-        dd($request);
         $url = request()->url();
         $soon = env('COMING_SOON', false);
 
         if (!$soon) {
+            return $next($request);
+        }
+
+        $server = $request->server->all();
+        $agent = $server['HTTP_USER_AGENT'];
+        $up = strtoupper($agent);
+
+        if (strpos($up, 'MESSENGER') !== false) {
             return $next($request);
         }
 
