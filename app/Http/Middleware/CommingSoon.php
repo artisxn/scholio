@@ -16,7 +16,7 @@ class CommingSoon
     public function handle($request, Closure $next)
     {
         $url = request()->url();
-        $soon = config('app.soon');
+        $soon = env('COMING_SOON', false);
 
         if (!$soon) {
             return $next($request);
