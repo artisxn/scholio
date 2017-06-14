@@ -2,6 +2,7 @@
 
 use App\Models\Admission;
 use App\Models\AdmissionField;
+use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -11,10 +12,19 @@ use App\User;
 Scholio::soonRoutes();
 
 Route::get('ppp', function () {
-    $user = App\User::find(25);
-    $scholarship = App\Models\Scholarship::find(9);
+    $schols = Scholarship::all();
+    foreach ($schols as $sch) {
+        $o = '';
+        foreach ($sch->tag as $r) {
+            $o .= $r->name . ',';
+        }
 
-    return $user->getAdmissionId($scholarship);
+        $a = AlgoliaScholarship::where('scholarship_id', $sch->id)->get();
+        $kkk = $a->first();
+        $kkk->tags = $o;
+        $kkk->save();
+    }
+    return '$a';
 });
 
 Route::post('/admission/{admission}/notes/save', function (Admission $admission) {
