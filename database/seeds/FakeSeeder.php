@@ -7,6 +7,7 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Student;
 use App\Models\Study;
+use App\Models\Tag;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -1049,6 +1050,20 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->userAppliedOnScholarship(27, 92);
         $this->userAppliedOnScholarship(29, 92);
 
+        // Tags (school, tag)
+        $this->attachTagToSchool(1, 1);
+        $this->attachTagToSchool(1, 2);
+        $this->attachTagToSchool(1, 5);
+        $this->attachTagToSchool(2, 2);
+        $this->attachTagToSchool(2, 4);
+        $this->attachTagToSchool(3, 6);
+        $this->attachTagToScholarship(1, 1);
+        $this->attachTagToScholarship(1, 3);
+        $this->attachTagToScholarship(1, 4);
+        $this->attachTagToScholarship(2, 2);
+        $this->attachTagToScholarship(2, 5);
+        $this->attachTagToScholarship(3, 6);
+
         // ---------------------------------------------------------------- //
         // ----- ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ -------------------------------//
         factory(App\Models\Work::class, 2)->create(['user_id' => 42]);
@@ -1217,5 +1232,19 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $user = User::find($userID);
         $scholarship = Scholarship::find($scholarshipID);
         $user->scholarship()->toggle($scholarship);
+    }
+
+    public function attachTagToSchool($s, $t)
+    {
+        $school = School::find($s);
+        $tag = Tag::find($t);
+        $school->tag()->attach($tag);
+    }
+
+    public function attachTagToScholarship($s, $t)
+    {
+        $scholarship = Scholarship::find($s);
+        $tag = Tag::find($t);
+        $scholarship->tag()->attach($tag);
     }
 }

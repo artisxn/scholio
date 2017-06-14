@@ -290,6 +290,11 @@ class School extends Model
         return collect($result);
     }
 
+    public function tag()
+    {
+        return $this->belongsToMany(Tag::class, 'school_tag');
+    }
+
     // public function fullAdmission()
     // {
     //     $result = [];

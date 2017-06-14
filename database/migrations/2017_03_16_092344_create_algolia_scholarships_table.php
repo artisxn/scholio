@@ -34,6 +34,7 @@ class CreateAlgoliaScholarshipsTable extends Migration
             $table->integer('interested')->nullable();
             $table->string('exams')->nullable();
             $table->string('end_at')->nullable();
+            $table->text('tags')->nullable();
         });
     }
 

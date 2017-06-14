@@ -3,8 +3,9 @@
 @section('styles')
 <link href="/css/studies.css" rel="stylesheet" type="text/css" />
 @endsection
-
     @section('content')
+
+
 
 
     <studies-select></studies-select>
@@ -28,6 +29,3 @@
 
     </script>
     @endsection
-
-
-

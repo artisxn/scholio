@@ -7,6 +7,7 @@ use App\Models\Financial;
 use App\Models\Level;
 use App\Models\School;
 use App\Models\Study;
+use App\Models\Tag;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -134,5 +135,10 @@ class Scholarship extends Model
     public function scopeActiveScholarships($query)
     {
         return $query->where('active', 1)->get();
+    }
+
+    public function tag()
+    {
+        return $this->belongsToMany(Tag::class, 'scholarship_tag');
     }
 }

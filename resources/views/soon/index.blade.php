@@ -41,25 +41,25 @@
         <!-- <link rel='stylesheet' type='text/css' href='/soon/css/font-awesome.min.css' > -->
         <link rel='stylesheet' type='text/css' href='/soon/css/simple-line-icons.css' >
         <link rel='stylesheet' type='text/css' href='/soon/css/et-line-icons.css' >
-        <link rel='stylesheet' type='text/css' href='/soon/css/jquery.fullpage.min.css' >
-        <link rel='stylesheet' type='text/css' href='/soon/css/animate.min.css' >
-        <link rel='stylesheet' type='text/css' href='/soon/css/style.css' >
+        {{-- <link rel='stylesheet' type='text/css' href='/soon/css/jquery.fullpage.min.css' > --}}
+{{--         <link rel='stylesheet' type='text/css' href='/soon/css/animate.min.css' >
+ --}}        <link rel='stylesheet' type='text/css' href='/soon/css/style.css' >
         <link rel='stylesheet' type='text/css' href='/soon/css/color-buttercup.css' >
 
-        <link rel="stylesheet" type="text/css" href="/soon/css/normalize.css" />
+        {{-- <link rel="stylesheet" type="text/css" href="/soon/css/normalize.css" /> --}}
         <link rel="stylesheet" type="text/css" href="/soon/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/soon/css/component.css" />
 
         <!-- <link rel="stylesheet" href="/soon/css/main.css"> -->
 
 
-        <script src="/soon/js/modernizr.custom.js"></script>
+        {{-- <script src="/soon/js/modernizr.custom.js"></script> --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
         {{-- // <script src='https://www.google.com/recaptcha/api.js'></script> --}}
 
   <script src="/soon/js/modernizr.custom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script> --}}
     {{-- // <script src='https://www.google.com/recaptcha/api.js'></script> --}}
     </head>
 

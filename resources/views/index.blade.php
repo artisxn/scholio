@@ -155,6 +155,9 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
 
+@include('components.preloader')
+
+
 <!-- Scholio Header -->
 <header class="navbar navbar-top sc-landing-header" id="header" >
     <div class="container">

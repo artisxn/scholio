@@ -160,6 +160,7 @@ class Scholio
 
         foreach ($schools as $s) {
             $studyDummy = '';
+            $tagsDummy = '';
             $dummy = new AlgoliaSchool;
             $dummy->type_id = $s->type_id;
             $dummy->type = $s->type->name;
@@ -193,7 +194,12 @@ class Scholio
 
             }
 
+            foreach ($s->tag as $tag) {
+                $tagsDummy .= $tag->name . ',';
+            }
+
             $dummy->study = $studyDummy;
+            $dummy->tags = $tagsDummy;
             $dummy->save();
 
             $studyDummy = '';
@@ -234,6 +240,7 @@ class Scholio
         }
 
         foreach (Scholarship::all() as $scholarship) {
+            $scholarTagsDummy = '';
             $alg = new AlgoliaScholarship;
             $alg->scholarship_id = $scholarship->id;
             $alg->study = $scholarship->study->name;
@@ -255,6 +262,10 @@ class Scholio
             $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
             $alg->interested = $scholarship->interestsLength();
             $alg->requested = $scholarship->usersLength();
+            foreach ($alg->tag as $tag) {
+                $scholarTagsDummy .= $tag->name . ',';
+            }
+            $alg->tags = $scholarTagsDummy;
             $alg->save();
         }
 

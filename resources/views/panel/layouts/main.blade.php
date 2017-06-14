@@ -54,7 +54,6 @@ echo json_encode($trans);
 
 
     <body class="fixed-left">
-
         <div id="app">
             <!-- Begin page -->
             <div id="wrapper">

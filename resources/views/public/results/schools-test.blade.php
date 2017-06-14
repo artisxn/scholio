@@ -86,6 +86,9 @@
 
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="schoolsResultsApp"  ng-controller="schoolsResultsCtrl" data-ng-init="init()"  ng-cloak>
+
+  @include('components.preloader')
+
     <!-- Scholio Header -->
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
         <div class="container">
@@ -314,7 +317,6 @@
     @include('public.footer')
 
 </body>
-
 <script>
     function showMap(){
         var s = document.getElementById('query').value;
