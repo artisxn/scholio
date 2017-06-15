@@ -44,13 +44,8 @@ Route::get('/school/search', function () {
 
     if ($results->isEmpty()) {
         return [
-            "messages" => [
-                ["text" => "ΔΕΝ ΥΠΑΡΧΟΥΝ"],
-            ],
-        ];
-    }
-
-    $elements = [];
+            "redirect_to_blocks" => ["NoResults"],
+        ];   $elements = [];
 
     foreach ($results as $index => $result) {
         $array = array(
@@ -96,9 +91,7 @@ Route::get('/scholarship/search', function () {
 
     if ($results->isEmpty()) {
         return [
-            "messages" => [
-                ["text" => "ΔΕΝ ΥΠΑΡΧΟΥΝ"],
-            ],
+            "redirect_to_blocks" => ["NoResults"],
         ];
     }
 
@@ -149,9 +142,7 @@ Route::get('/scholarship/custom', function () {
 
     if ($results->isEmpty()) {
         return [
-            "messages" => [
-                ["text" => "ΔΕΝ ΥΠΑΡΧΟΥΝ"],
-            ],
+            "redirect_to_blocks" => ["NoResults"],
         ];
     }
 
@@ -202,9 +193,7 @@ Route::get('/school/custom', function () {
 
     if ($results->isEmpty()) {
         return [
-            "messages" => [
-                ["text" => "ΔΕΝ ΥΠΑΡΧΟΥΝ"],
-            ],
+            "redirect_to_blocks" => ["NoResults"],
         ];
     }
 
