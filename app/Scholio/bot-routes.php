@@ -44,8 +44,11 @@ Route::get('/school/search', function () {
 
     if ($results->isEmpty()) {
         return [
-            "redirect_to_blocks" => ["NoResults"],
-        ];   $elements = [];
+            "redirect_to_blocks" => ["NotFound"],
+        ];
+    }
+
+    $elements = [];
 
     foreach ($results as $index => $result) {
         $array = array(
@@ -91,7 +94,7 @@ Route::get('/scholarship/search', function () {
 
     if ($results->isEmpty()) {
         return [
-            "redirect_to_blocks" => ["NoResults"],
+            "redirect_to_blocks" => ["NotFound"],
         ];
     }
 
@@ -142,7 +145,7 @@ Route::get('/scholarship/custom', function () {
 
     if ($results->isEmpty()) {
         return [
-            "redirect_to_blocks" => ["NoResults"],
+            "redirect_to_blocks" => ["NotFound"],
         ];
     }
 
@@ -193,7 +196,7 @@ Route::get('/school/custom', function () {
 
     if ($results->isEmpty()) {
         return [
-            "redirect_to_blocks" => ["NoResults"],
+            "redirect_to_blocks" => ["NotFound"],
         ];
     }
 
