@@ -42,6 +42,14 @@ Route::get('/test', function () {
 Route::get('/school/search', function () {
     $results = AlgoliaSchool::search(request()->search)->get();
 
+    if ($results->isEmpty()) {
+        return [
+            "messages" => [
+                ["text" => "ΔΕΝ ΥΠΑΡΧΟΥΝ"],
+            ],
+        ];
+    }
+
     $elements = [];
 
     foreach ($results as $index => $result) {
