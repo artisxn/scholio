@@ -496,6 +496,12 @@
                         <div class="col-xs-12">
                             <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section3')</h5>
                         </div>
+
+                        <div class="col-xs-12">
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;
+                                <a href="https://m.me/scholioapp?ref=Welcome%20message">Έχουμε γαμάτο bot</a>
+                            </h5>
+                        </div>
                     </div>
                 </div>
 
