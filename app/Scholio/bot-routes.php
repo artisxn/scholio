@@ -94,6 +94,14 @@ Route::get('/school/search', function () {
 Route::get('/scholarship/search', function () {
     $results = AlgoliaScholarship::search(request()->search)->get();
 
+    if ($results->isEmpty()) {
+        return [
+            "messages" => [
+                ["text" => "ΔΕΝ ΥΠΑΡΧΟΥΝ"],
+            ],
+        ];
+    }
+
     $elements = [];
 
     foreach ($results as $index => $result) {
@@ -139,6 +147,14 @@ Route::get('/scholarship/search', function () {
 Route::get('/scholarship/custom', function () {
     $results = AlgoliaScholarship::search(request()->search)->get();
 
+    if ($results->isEmpty()) {
+        return [
+            "messages" => [
+                ["text" => "ΔΕΝ ΥΠΑΡΧΟΥΝ"],
+            ],
+        ];
+    }
+
     $elements = [];
 
     foreach ($results as $index => $result) {
@@ -183,6 +199,14 @@ Route::get('/scholarship/custom', function () {
 
 Route::get('/school/custom', function () {
     $results = AlgoliaSchool::search(request()->search)->get();
+
+    if ($results->isEmpty()) {
+        return [
+            "messages" => [
+                ["text" => "ΔΕΝ ΥΠΑΡΧΟΥΝ"],
+            ],
+        ];
+    }
 
     $elements = [];
 
