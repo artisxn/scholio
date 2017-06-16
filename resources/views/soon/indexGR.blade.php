@@ -4,7 +4,7 @@
 
 
         <title>Schol.io | Υποτροφίες </title>
-        <meta name="description" content="Υποτροφίες | Κολλέγια, ΙΕΚ, Φροντιστήρια, Ιδιωτικά Σχολεία">
+        <meta name="description" content="Η υποτροφία με ένα click!">
         <meta name="keywords" content="Υποτροφίες,Καινοτόμες,Scholarships,Κολλέγια,ΙΕΚ,Φροντιστήρια,Ξένες Γλώσσες,Σπουδές,Ιδιωτικά Σχολεία,Λύκεια,Γυμνάσια,Δημοτικά,Αριστεία,Κοινωνικά Κριτήρια,Ταλέντο" >
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Υποτροφίες">

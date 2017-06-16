@@ -3,8 +3,8 @@
     <head>
 
         <title>Schol.io | Scholarships </title>
-        <meta name="description" content="Scholarships,Υποτροφίες | College, Κολλεγια, ΙΕΚ, Φροντιστήρια, Ιδιωτικά Σχολεία">
-        <meta name="keywords" content="Υποτροφίες,Καινοτόμες,Scholarships,Κολλέγια,ΙΕΚ,Φροντιστήρια,Ξένες Γλώσσες,Σπουδές,Ιδιωτικά Σχολεία,Λύκεια,Γυμνάσια,Δημοτικά,Αριστεία,Κοινωνικά Κριτήρια,Ταλέντο" >
+        <meta name="description" content="Your scholarship is a click away !">
+        <meta name="keywords" content="Υποτροφίες,Καινοτόμες,Scholarships,College,ΙΕΚ,Φροντιστήρια,Ξένες Γλώσσες,Σπουδές,Ιδιωτικά Σχολεία,Λύκεια,Γυμνάσια,Δημοτικά,Αριστεία,Κοινωνικά Κριτήρια,Ταλέντο" >
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Υποτροφίες">
         <meta name="robots" content="noindex,nofollow">
