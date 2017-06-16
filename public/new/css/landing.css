@@ -151,7 +151,8 @@ video {
 
 
 /*Third Section*/
-.sc-landing-sec3 {min-height:670px!important; background-color: #fff}
+.sc-landing-sec3 {min-height:670px!important; background-color: #fff;
+                  padding-left: 0; margin-left: -20px;}
 
 .sc-landing-sec3 img{margin-top: 5px; margin-bottom: 25px;}
 .sc-landing-sec3 h2{font-weight: 300; margin-top:0!important;}
@@ -263,6 +264,7 @@ video {
     .banner-content{ margin-top: -320px!important;}
     .banner-title{margin-bottom: 40px; margin-left: 8%; width: 70% }
     .btn-school-reg{ margin-top: 90px; margin-left: 1%}
+    .sc-landing-sec3 { padding-left: 0; margin-left: 0; margin-top: -10px;}
 
 }
 /* Portrait phones and smaller */
@@ -291,6 +293,9 @@ video {
         width: 120px;
         height: auto
     }
+
+    .sc-landing-sec3 { margin-top: -60px;}
+
 
     .grid figure {
         /*background: none;*/

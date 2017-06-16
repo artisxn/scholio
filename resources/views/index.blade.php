@@ -454,7 +454,7 @@
                     <div class=" col-lg-3 col-md-5 col-sm-4 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
                             <figure class="effect-lily sc-landing-card " >
-                                <img src="{{asset('new/img/sect-photo/student2.png')}}" alt="student" style="" class="img-responsive "/>
+                                <img src="{{asset('new/img/sect-photo/student2.jpg')}}" alt="student" style="" class="img-responsive "/>
 
                                 <figcaption>
                                     <div class="centered-text">
@@ -541,9 +541,9 @@
     <!-- Third Section -->
     <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey" style="overflow-x: hidden!important;">
         <div class="container" style="padding-left: 0">
-            <div class="sc-landing-sec3-content" style="padding-left: 0; margin-left: -20px;">
+            <div class="sc-landing-sec3-content">
                 <div class="row ">
-                    <div class=" col-sm-7 col-xs-12 margin-top-70">
+                    <div class=" col-sm-7 col-xs-12 margin-top-50">
                         <img class="img-responsive" src="{{asset('new/img/screen2.png')}}">
                     </div>
 
