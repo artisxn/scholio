@@ -305,6 +305,9 @@
 
 <!-- Scholio Main Section -->
 <main id="main"  class="">
+
+
+
     <!-- Scholio Landing Page First Section -->
     <section id="sc-landing-sec1" class="sc-landing-sec1">
         <div class="container">
@@ -569,7 +572,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- New Section -->
     <section id="sc-landing-secNew" class="sc-landing-secNew sc-light-grey">
