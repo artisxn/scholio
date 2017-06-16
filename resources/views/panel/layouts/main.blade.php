@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Schol.io College Panel">
         <meta name="author" content="Coderthemes">
+        <meta property="fb:pages" content="934370089973049" />
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
