@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color: #ced1d2">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +54,7 @@ echo json_encode($trans);
     </head>
 
 
-    <body class="fixed-left">
+    <body class="fixed-left" style="background: linear-gradient( #F1F4F5 ,#ced1d2 ); min-height: 550px">
         <div id="app">
             <!-- Begin page -->
             <div id="wrapper">
@@ -69,7 +69,7 @@ echo json_encode($trans);
                 <!-- ============================================================== -->
                 <!-- Start right Content here -->
                 <!-- ============================================================== -->
-                <div class="content-page">
+                <div class="content-page" >
                     <!-- Start content -->
                     <div class="content">
                         <div class="container">

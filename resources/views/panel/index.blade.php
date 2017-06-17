@@ -11,7 +11,7 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="page-title">Πίνακας Ελέγχου</h4>
+                    <h4 class="page-title">Πίνακας Διαχείρισης</h4>
                     <p class="text-muted page-title-alt">Schol.io Admin Panel</p>
                 </div>
             </div>

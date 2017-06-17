@@ -323,8 +323,8 @@
             <!-- Video Shadow -->
             <div class="sc-landing-video-filter"></div>
             <video autoplay loop muted id="video-bg">
-                <source src="{{asset('new/video/VideoMix4.ogg')}}" type="video/ogg">
-                <source src="{{asset('new/video/VideoMix4.mp4')}}" type="video/mp4">
+                <source src="{{asset('new/video/VideoMix6.ogg')}}" type="video/ogg">
+                <source src="{{asset('new/video/VideoMix6.mp4')}}" type="video/mp4">
 
                 {{--<source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm">--}}
             </video>
@@ -553,18 +553,18 @@
                             <h2 class="text-left">@lang('main.features.title')</h2>
                         {{--</div>--}}
                         {{--<div class="col-xs-12">--}}
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section1')</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;@lang('main.features.section1')</h5>
                         {{--</div>--}}
 
                         {{--<div class="col-xs-12">--}}
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section2')</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;@lang('main.features.section2')</h5>
                         {{--</div>--}}
                         {{--<div class="col-xs-12">--}}
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section3')</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;@lang('main.features.section3')</h5>
                         {{--</div>--}}
                         {{--<div class="col-xs-12">--}}
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;
-                                <a href="https://m.me/scholioapp?ref=Welcome%20message" class="bot-text">Το πρώτο bot στην εκπαίδευση</a>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;
+                                <a href="https://m.me/scholioapp?ref=Welcome%20message" class="bot-text">@lang('main.features.section4')</a>
                             </h5>
                         {{--</div>--}}
                     </div>

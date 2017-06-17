@@ -60,6 +60,7 @@ return [
         'section1' => 'Most Popular Educational Institutions',
         'section2' => 'Innovative forms of scholarships.',
         'section3' => 'Study opportunities.',
+        'section4' => 'Amazing messenger chat bot.',
     ],
     'institutions' => [
         'title' => ' Search among the most successful educational institutions.',
