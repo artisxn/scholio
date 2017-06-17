@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eef541c2b91f138a7fac1794da34a27e",
-    "content-hash": "1c039b4fdef7793702453c064a4c220a",
+    "hash": "8906d8a56a4254a28947a20765c3b72a",
+    "content-hash": "4e265a96cae6ca50d99d241b74a899f7",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -600,6 +600,93 @@
                 }
             ],
             "time": "2015-04-20 18:58:01"
+        },
+        {
+            "name": "jaybizzle/crawler-detect",
+            "version": "v1.2.45",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JayBizzle/Crawler-Detect.git",
+                "reference": "fa55dc49376dbc4b4786e49113faa8bdea8250a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/fa55dc49376dbc4b4786e49113faa8bdea8250a1",
+                "reference": "fa55dc49376dbc4b4786e49113faa8bdea8250a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jaybizzle\\CrawlerDetect\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Beech",
+                    "email": "m@rkbee.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CrawlerDetect is a PHP class for detecting bots/crawlers/spiders via the user agent",
+            "homepage": "https://github.com/JayBizzle/Crawler-Detect/",
+            "keywords": [
+                "crawler",
+                "crawler detect",
+                "crawler detector",
+                "crawlerdetect",
+                "php crawler detect"
+            ],
+            "time": "2017-06-07 20:58:57"
+        },
+        {
+            "name": "kryptonit3/counter",
+            "version": "5.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kryptonit3/Counter.git",
+                "reference": "a2521b13570fa673bf1810b6bb3020daf1276573"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kryptonit3/Counter/zipball/a2521b13570fa673bf1810b6bb3020daf1276573",
+                "reference": "a2521b13570fa673bf1810b6bb3020daf1276573",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "jaybizzle/crawler-detect": "1.*",
+                "php": ">=5.3.3",
+                "ramsey/uuid": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kryptonit3\\Counter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jesse Szypulski",
+                    "email": "jesse.szypulski@gmail.com"
+                }
+            ],
+            "description": "Hit counter for your pages.",
+            "time": "2017-04-26 22:17:53"
         },
         {
             "name": "laravel/framework",

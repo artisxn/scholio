@@ -175,6 +175,8 @@
     </style>
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp" ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
+
+    {{\Counter::showAndCount('school-profile', $school->id)}}
 <!-- Scholio Header -->
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">

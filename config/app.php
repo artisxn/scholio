@@ -14,9 +14,6 @@ return [
 
     'name' => 'Schol.io',
 
-    // Display Coming Soon Page
-    'soon' => false,
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -173,6 +170,7 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
+        Kryptonit3\Counter\CounterServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,6 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
     ],
 
 ];

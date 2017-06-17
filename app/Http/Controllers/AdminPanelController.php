@@ -27,8 +27,12 @@ class AdminPanelController extends Controller
             $teachers = $school->teachers();
             $parents = $school->parents;
             $scholarships = $school->scholarship;
+            $admissions = $school->admissions();
+            $studies = $school->study;
+            $images = $school->image;
 
-            $pageviews = 1234;
+            $pageviews = \Counter::show('school-profile', $school->id);
+            //
 
             $data = array(
                 'students' => $students,
@@ -36,6 +40,9 @@ class AdminPanelController extends Controller
                 'parents' => $parents,
                 'scholarships' => $scholarships,
                 'pageviews' => $pageviews,
+                'admissions' => $admissions,
+                'studies' => $studies,
+                'images' => $images,
             );
             return view('panel.pages.school.dashboard.main')->withData($data);
         }
