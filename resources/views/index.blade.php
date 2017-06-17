@@ -130,6 +130,9 @@
 
         #school-register-button:focus{color: #fff; outline: none!important;}
 
+        .bot-text:visited{color: black}
+        .bot-text:hover{color: #FD6A33}
+
         @media  (max-width: 2500px) {
             .sch-reg-title {left: 42%; width: 380px;}
         }
@@ -195,8 +198,8 @@
                 <div class="">
                     <ul class="nav navbar-nav navbar-right sc-landing-menu">
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec2">@lang('main.navigation.about')</a></li>
-                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">@lang('main.navigation.features')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">@lang('main.navigation.institutions')</a></li>
+                        <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">@lang('main.navigation.features')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">@lang('main.navigation.contact')</a></li>
                         {{--<li class="lang-sel"><a href="">ENG &nbsp;|</a> </li>--}}
                         {{--<li class="lang-sel sel2"><a href=""> GR</a></li>--}}
@@ -252,17 +255,15 @@
 
                             <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.about')</div>
                         </a>
-                        <a href="#sc-landing-sec3">
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.features')</div>
-                        </a>
                         <a href="#sc-landing-sec4">
                             <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.institutions')</div>
+                        </a>
+                        <a href="#sc-landing-sec3">
+                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.features')</div>
                         </a>
                         <a href="#sc-landing-sec5">
                         <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.contact')</div>
                         </a>
-
-
                         <div class=""><br></div>
                         <div class="sign-links">
                             @if(auth()->check())
@@ -305,6 +306,9 @@
 
 <!-- Scholio Main Section -->
 <main id="main"  class="">
+
+
+
     <!-- Scholio Landing Page First Section -->
     <section id="sc-landing-sec1" class="sc-landing-sec1">
         <div class="container">
@@ -423,93 +427,6 @@
         </div>
     </section>
 
-    <!-- New Section -->
-    <section id="sc-landing-secNew" class="sc-landing-secNew sc-light-grey">
-        <div class="container">
-            <div class="sc-landing-secNew-content">
-                <div class="row">
-
-                    <div class="sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm" style="">@lang('main.about.institutions.title')</div>
-
-                    <div style="position: relative" class="hidden-xs"><img src="/new/img/ipad6.png" class="ipad"></div>
-
-                    <div style="position: relative" class="text-incr-125 sc-t-white">
-                        <img src="/new/img/BannerVertical3.png"  class="banner"  style="z-index: 0">
-
-                        <div class="text-container center-block">
-                            <img height="290px" width="auto" src="/new/img/iphone.png" class="iphone">
-                            {{--<div style="height: 400px; width: 300px; background-color: #00b9d2; margin: 20px 0; position: absolute; z-index: 0"></div>--}}
-
-
-                                <div class="visible-xs hidden-sm hidden-md hidden-lg xxs-small-banner-content banner-text center-block">
-                                        <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title" style="width: 280px; margin-left: -28px">@lang('main.about.institutions.title-xs')</div>
-                                        <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> @lang('main.about.institutions.section1')</div>
-                                        <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section2')</div>
-                                        <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
-                                </div>
-                                <div class="banner-text banner-content center-block">
-                                    <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title hidden-sm hidden-md hidden-lg" style="width: 309px; margin-left: -30px">@lang('main.about.institutions.title-xs')</div>
-                                    <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> @lang('main.about.institutions.section1')</div>
-                                    <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section2')</div>
-                                    <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
-                                </div>
-
-                                <a href="">
-                                    <button type="button" id="school-register-button" class="btn sc-orange sc-t-white centered-text btn-school-reg"
-                                            data-toggle="modal" data-target="#signUp-school-modal"
-                                    >@lang('main.about.institutions.button')</button>
-                                </a>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-    </section>
-
-    <!-- Third Section -->
-    <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey" style="overflow-x: hidden!important;">
-        <div class="container">
-            <div class="sc-landing-sec3-content">
-                <div class="row">
-                    <div class=" col-sm-7 col-xs-12 margin-top-70" >
-                        <img class="img-responsive" src="{{asset('new/img/screen2.png')}}">
-
-                    </div>
-
-                    <div class="col-sm-4 col-xs-12 margin-top-70 margin-left-30">
-                        <div class="col-xs-12">
-                            <h2 class="text-left">@lang('main.features.title')</h2>
-                        </div>
-
-                        <div class="col-xs-12">
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section1')</h5>
-                        </div>
-
-                        <div class="col-xs-12">
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section2')</h5>
-                        </div>
-
-                        <div class="col-xs-12">
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section3')</h5>
-                        </div>
-
-                        <div class="col-xs-12">
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;
-                                <a href="https://m.me/scholioapp?ref=Welcome%20message">Έχουμε γαμάτο bot</a>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
     <!-- Fourth Section -->
     <section id="sc-landing-sec4" class="sc-landing-sec4">
         <div class="container">
@@ -538,7 +455,7 @@
                     <div class=" col-lg-3 col-md-5 col-sm-4 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
                             <figure class="effect-lily sc-landing-card " >
-                                <img src="{{asset('new/img/sect-photo/student2.png')}}" alt="student" style="" class="img-responsive "/>
+                                <img src="{{asset('new/img/sect-photo/student2.jpg')}}" alt="student" style="" class="img-responsive "/>
 
                                 <figcaption>
                                     <div class="centered-text">
@@ -620,6 +537,89 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Third Section -->
+    <section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey" style="overflow-x: hidden!important;">
+        <div class="container" style="padding-left: 0">
+            <div class="sc-landing-sec3-content">
+                <div class="row ">
+                    <div class=" col-sm-7 col-xs-12 margin-top-50">
+                        <img class="img-responsive" src="{{asset('new/img/screen2.png')}}">
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12 margin-top-70 margin-left-30">
+                        <div class="col-xs-12">
+                            <h2 class="text-left">@lang('main.features.title')</h2>
+                        </div>
+                        <div class="col-xs-12">
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section1')</h5>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section2')</h5>
+                        </div>
+                        <div class="col-xs-12">
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section3')</h5>
+                        </div>
+                        <div class="col-xs-12">
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;
+                                <a href="https://m.me/scholioapp?ref=Welcome%20message" class="bot-text">Το πρώτο bot στην εκπαίδευση</a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section -->
+    <section id="sc-landing-secNew" class="sc-landing-secNew sc-light-grey">
+        <div class="container">
+            <div class="sc-landing-secNew-content">
+                <div class="row">
+
+                    <div class="sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm" style="">@lang('main.about.institutions.title')</div>
+
+                    <div style="position: relative" class="hidden-xs"><img src="/new/img/ipad6.png" class="ipad"></div>
+
+                    <div style="position: relative" class="text-incr-125 sc-t-white">
+                        <img src="/new/img/BannerVertical3.png"  class="banner"  style="z-index: 0">
+
+                        <div class="text-container center-block">
+                            <img height="290px" width="auto" src="/new/img/iphone.png" class="iphone">
+                            {{--<div style="height: 400px; width: 300px; background-color: #00b9d2; margin: 20px 0; position: absolute; z-index: 0"></div>--}}
+
+
+                            <div class="visible-xs hidden-sm hidden-md hidden-lg xxs-small-banner-content banner-text center-block">
+                                <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title" style="width: 280px; margin-left: -28px">@lang('main.about.institutions.title-xs')</div>
+                                <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> @lang('main.about.institutions.section1')</div>
+                                <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section2')</div>
+                                <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
+                            </div>
+                            <div class="banner-text banner-content center-block">
+                                <div class="text-incr-125 font-weight-300 centered-text sc-t-dark-blue banner-title hidden-sm hidden-md hidden-lg" style="width: 309px; margin-left: -30px">@lang('main.about.institutions.title-xs')</div>
+                                <div> <i class="fa fa-trophy text-incr-125 margin-right-10" aria-hidden="true"></i> @lang('main.about.institutions.section1')</div>
+                                <div class="margin-top-50"> <i class="fa fa-user text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section2')</div>
+                                <div class="margin-top-50"> <i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
+                            </div>
+
+                            <a href="">
+                                <button type="button" id="school-register-button" class="btn sc-orange sc-t-white centered-text btn-school-reg"
+                                        data-toggle="modal" data-target="#signUp-school-modal"
+                                >@lang('main.about.institutions.button')</button>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
     </section>
 
     <!-- Fifth Section -->

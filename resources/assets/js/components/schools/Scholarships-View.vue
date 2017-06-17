@@ -168,7 +168,7 @@
         </div>
 
         <div style="max-width: 800px">
-            <h2>Chart.js</h2>
+            <div style="font-size: 160%; font-weight: 300; margin-left: 25px">Αιτήσεις σε κάθε υποτρoφία</div>
             <div>
                 <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
             </div>

@@ -10,6 +10,7 @@
 }
 
 
+
 .sc-logo {height: 50px;}
 .main { background-color: #F1F4F5; }
 
@@ -132,7 +133,7 @@ a:link, a:visited, a:hover, a:active  {
     background-color: transparent;
     text-decoration: none;
 }
-a:visited { color: #fff;  }
+/*a:visited { color: #fff;  }*/
 a:hover  {  color: #FD6A33;  }
 
 .card a:link,  .card a:active, .card a:visited {  color: #888;}
@@ -428,7 +429,8 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 /*=============================================*/
 
 
-
+/*li, a { cursor: pointer!important; cursor: hand!important;}*/
+/*a { cursor: pointer!important; cursor: hand!important;}*/
 
 .sc-landing-logo-sticky, .sc-landing-menu-sandwitch-button-sticky  {margin-top: -10px}
 

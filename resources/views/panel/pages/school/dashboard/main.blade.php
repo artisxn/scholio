@@ -11,8 +11,8 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="page-title">Dashboard</h4>
-                    <p class="text-muted page-title-alt">Schol.io Admin Panel</p>
+                    <div class="" style="font-size: 160%; font-weight: 300; margin: 15px 0; color: #008da5"> <i class="fa fa-tachometer" style="margin-right: 10px"></i> Πίνακας Πληροφοριών</div>
+                    {{--<p class="text-muted page-title-alt">Πληροφορίες</p>--}}
                 </div>
             </div>
                 {{-- @include('panel.partials.body.dashboard.tiles') --}}
