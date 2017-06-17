@@ -4,7 +4,7 @@
     </style>
 @endsection
 
-<li class="link"><a href="{{ url('dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}"><i class="fa fa-tachometer"></i> <span>  Πίνακας Πληροφοριών </span> </a></li>
+<li class="link"><a href="{{ url('dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}"><i class="fa fa-tachometer"></i> <span>Πίνακας Ελέγχου</span> </a></li>
 
     <li class="text-muted menu-title">Διαχειριση</li>
 

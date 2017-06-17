@@ -323,8 +323,8 @@
             <!-- Video Shadow -->
             <div class="sc-landing-video-filter"></div>
             <video autoplay loop muted id="video-bg">
-                <source src="{{asset('new/video/VideoMix2.ogg')}}" type="video/ogg">
-                <source src="{{asset('new/video/VideoMix2.mp4')}}" type="video/mp4">
+                <source src="{{asset('new/video/VideoMix4.ogg')}}" type="video/ogg">
+                <source src="{{asset('new/video/VideoMix4.mp4')}}" type="video/mp4">
 
                 {{--<source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm">--}}
             </video>
@@ -544,29 +544,29 @@
         <div class="container" style="padding-left: 0">
             <div class="sc-landing-sec3-content">
                 <div class="row ">
-                    <div class=" col-sm-7 col-xs-12 margin-top-50">
-                        <img class="img-responsive" src="{{asset('new/img/screen2.png')}}">
+                    <div class=" col-sm-7 col-lg-8 col-xs-12 margin-top-50">
+                        <img class="img-responsive" src="{{asset('new/img/screen22.png')}}">
                     </div>
 
-                    <div class="col-sm-4 col-xs-12 margin-top-70 margin-left-30">
-                        <div class="col-xs-12">
+                    <div class="col-sm-5 col-lg-4 col-xs-12 margin-top-60 sc-landing-sec3-text">
+                        {{--<div class="col-xs-12">--}}
                             <h2 class="text-left">@lang('main.features.title')</h2>
-                        </div>
-                        <div class="col-xs-12">
+                        {{--</div>--}}
+                        {{--<div class="col-xs-12">--}}
                             <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section1')</h5>
-                        </div>
+                        {{--</div>--}}
 
-                        <div class="col-xs-12">
+                        {{--<div class="col-xs-12">--}}
                             <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section2')</h5>
-                        </div>
-                        <div class="col-xs-12">
+                        {{--</div>--}}
+                        {{--<div class="col-xs-12">--}}
                             <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;@lang('main.features.section3')</h5>
-                        </div>
-                        <div class="col-xs-12">
+                        {{--</div>--}}
+                        {{--<div class="col-xs-12">--}}
                             <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;&nbsp;
                                 <a href="https://m.me/scholioapp?ref=Welcome%20message" class="bot-text">Το πρώτο bot στην εκπαίδευση</a>
                             </h5>
-                        </div>
+                        {{--</div>--}}
                     </div>
                 </div>
 
@@ -627,12 +627,12 @@
        <div class="container">
            <div class="row">
 
-               <div class="text-center text-incr-175 sc-t-dark-grey font-weight-300 margin-bot-50" >
+               <div class="text-center text-incr-175 sc-t-dark-grey font-weight-300 margin-bot-50 title-extra-top" >
                    @lang('main.statistics.title')
                </div>
 
 
-               <div class="col-sm-6 col-md-3 margin-top-50 sc-t-grey">
+               <div class="col-sm-6 col-md-3 margin-top-50 sc-t-grey hidden-xxxs">
                    <div class="text-center">
                        <input type="text" class="knob1"
                               data-min="0"
@@ -656,7 +656,7 @@
                    </div>
                </div>
 
-               <div class="col-sm-6 col-md-3 margin-top-50 sc-t-grey">
+               <div class="col-sm-6 col-md-3 margin-top-50 sc-t-grey ">
                    <div class="text-center  ">
                        <input type="text" class="knob2"
                               data-min="0"

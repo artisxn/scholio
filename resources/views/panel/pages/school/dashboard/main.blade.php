@@ -11,7 +11,7 @@
 
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="" style="font-size: 160%; font-weight: 300; margin: 15px 0; color: #008da5"> <i class="fa fa-tachometer" style="margin-right: 10px"></i> Πίνακας Πληροφοριών</div>
+                    <div class="" style="font-size: 160%; font-weight: 300; margin: 15px 0; color: #008da5"> <i class="fa fa-tachometer" style="margin-right: 10px"></i> Πίνακας Ελέγχου</div>
                     {{--<p class="text-muted page-title-alt">Πληροφορίες</p>--}}
                 </div>
             </div>

@@ -461,6 +461,19 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 
 
 
+/*====================Hiden xxxs =========================*/
+
+@media (max-width: 480px) {
+    .hidden-xxxs {
+        display: none !important;
+    }
+}
+
+@media (max-width: 340px) {
+    .hidden-xxxxs {
+        display: none !important;
+    }
+}
 
 
 
