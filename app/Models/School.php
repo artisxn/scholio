@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\SchoolTypes;
+use App\Models\SchoolTypesEn;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
@@ -58,6 +59,11 @@ class School extends Model
     public function type()
     {
         return $this->belongsTo(SchoolTypes::class, 'type_id');
+    }
+
+    public function typeEN()
+    {
+        return $this->belongsTo(SchoolTypesEn::class, 'type_id');
     }
 
     /**

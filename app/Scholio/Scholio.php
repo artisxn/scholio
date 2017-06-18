@@ -158,7 +158,7 @@ class Scholio
         AlgoliaScholarship::truncate();
         AlgoliaStudy::truncate();
 
-        foreach ($schools as $s) {
+        foreach ($schools as $in => $s) {
             $studyDummy = '';
             $tagsDummy = '';
             $dummy = new AlgoliaSchool;
@@ -245,7 +245,7 @@ class Scholio
             $alg->scholarship_id = $scholarship->id;
             $alg->study = $scholarship->study->name;
             $alg->section = $scholarship->study->section[0]->name;
-            // $alg->section_en = ;
+            // $alg->section_en = $scholarship;
             $alg->level = $scholarship->level->name;
             // $alg->level_en = ;
             $alg->criteria = $scholarship->criteria->name;
@@ -256,20 +256,26 @@ class Scholio
             $alg->city = $scholarship->school->city;
             $alg->address = $scholarship->school->address;
             $alg->type = $scholarship->school->type->name;
-            // $alg->type_en = ;
+            $alg->type_en = $scholarship->school->typeEN->name;
             $alg->financial_plan = $scholarship->financial->plan;
-            // $alg->financial_en= ;
+            $alg->financial_plan_en = $scholarship->financialEN->plan;
+
             $alg->financial_amount = (integer) $scholarship->financial_amount;
             $alg->financial_metric = $scholarship->financial->metric;
             $alg->financial_icon = $scholarship->financial->icon;
+
             $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
+
             $alg->exams_en = $scholarship->exam ? 'YES' : 'NO';
+
             $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
             $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
             $alg->interested = $scholarship->interestsLength();
             $alg->requested = $scholarship->usersLength();
-            foreach ($alg->tag as $tag) {
-                $scholarTagsDummy .= $tag->name . ',';
+            if (count($scholarship->tag)) {
+                foreach ($scholarship->tag as $tag) {
+                    $scholarTagsDummy .= $tag->name . ',';
+                }
             }
             $alg->tags = $scholarTagsDummy;
             $alg->save();

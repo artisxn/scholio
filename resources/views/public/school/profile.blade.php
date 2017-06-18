@@ -520,7 +520,7 @@
                                                         <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
                                                     </span>
 
-                                                    <span class="sc-t-dark-green font-weight-400 text-incr-120 margin-left-10 scholar-title"> @{{scholarship.criteria.name}}</span>
+                                                    <span class="sc-t-dark-green font-weight-400 text-incr-120 margin-left-10 scholar-title">@{{scholarship.criteria.name}}</span>
                                                 </div>
                                                 <div class="ribbon-edge-topright"></div>
                                                 <div class="ribbon-edge-bottomright"></div>

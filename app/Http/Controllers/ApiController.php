@@ -203,12 +203,17 @@ class ApiController extends Controller
         $ints = [];
 
         foreach ($school->scholarship as $scholarship) {
+
             $scholarship->level = $scholarship->level;
             $scholarship->section = $scholarship->study->section;
             $scholarship->criteria = $scholarship->criteria->name;
             $scholarship->financial = $scholarship->financial->plan;
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
+            if (request()->cookie('lang') == 'en') {
+                $scholarship->criteria = $scholarship->criteriaEN->name;
+                $scholarship->financial = $scholarship->financialEN->plan;
+            }
 
             if (auth()->check()) {
                 $ints = ['sd'];
@@ -218,6 +223,7 @@ class ApiController extends Controller
                 }
             }
             $scholarship->studentInterests = $ints;
+
         }
 
         $school->levels = $data;

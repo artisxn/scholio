@@ -501,7 +501,13 @@ angular.module("scholarshipsResultsApp",[])
                 </div>
             </div>
             <div class="centered-text">
-                <div class="text-title">@{{{_highlightResult.criteria.value}}}</div>
+                <div class="text-title">
+                @if(request()->cookie('lang') == 'en')
+                    @{{{_highlightResult.criteria_en.value}}}
+                @else
+                    @{{{_highlightResult.criteria.value}}}
+                @endif
+                </div>
                 <div class="text-content">Interdum et malesuada fames ac ante ipsum primis in faucibus.
                     Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
 
@@ -517,7 +523,13 @@ angular.module("scholarshipsResultsApp",[])
                 </div>
             </div>
             <div class="centered-text">
-                <div class="text-title">@{{financial_plan}} @{{financial_amount}} @{{financial_metric}}</div>
+                <div class="text-title">
+                @if(request()->cookie('lang') == 'en')
+                @{{financial_plan_en}}
+                @else
+                @{{financial_plan}}
+                @endif
+                @{{financial_amount}} @{{financial_metric}}</div>
                 <div class="text-content">Ιn faucibus interdum et malesuada fames ac ante ipsum primis.
                     Torquent per conubia nostra.
 
@@ -544,7 +556,13 @@ angular.module("scholarshipsResultsApp",[])
                     <div class="">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarships.cards.end'):</div>
                 </span>
                 <span class="col-xs-5 col-sm-5 pad-0-mar-0 text-right">
-                    <div class="margin-top-5" > @{{exams}}</div>
+                    <div class="margin-top-5" >
+                    @if(request()->cookie('lang') == 'en')
+                        @{{exams_en}}
+                    @else
+                        @{{exams}}
+                    @endif
+                    </div>
                     <div class="">@{{end_at}}</div>
                 </span>
             </div>
@@ -638,7 +656,20 @@ angular.module("scholarshipsResultsApp",[])
             })
     );
 
+@if(request()->cookie('lang') == 'en')
     search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCriteria',
+                attributes: ['criteria_en'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
+    @else
+search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteria',
                 attributes: ['criteria'],
@@ -648,6 +679,7 @@ angular.module("scholarshipsResultsApp",[])
                 }
             })
     );
+    @endif
 
 
     search.addWidget(
@@ -683,8 +715,19 @@ angular.module("scholarshipsResultsApp",[])
                 }
             })
     );
-
+@if(request()->cookie('lang') == 'en')
     search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesLevel',
+                attributes: ['level_en'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+    @else
+search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesLevel',
                 attributes: ['level'],
@@ -694,6 +737,7 @@ angular.module("scholarshipsResultsApp",[])
                 }
             })
     );
+    @endif
 
     search.addWidget(
       instantsearch.widgets.sortBySelector({

@@ -44,9 +44,14 @@ class Scholarship extends Model
     public function financial()
     {
         if (request()->cookie('lang') == 'en') {
-            return $this->belongsTo(FinancialEn::class);
+            return $this->belongsTo(FinancialEn::class, 'financial_id');
         }
-        return $this->belongsTo(Financial::class);
+        return $this->belongsTo(Financial::class, 'financial_id');
+    }
+
+    public function financialEN()
+    {
+        return $this->belongsTo(FinancialEn::class, 'financial_id');
     }
 
     /**
@@ -57,14 +62,14 @@ class Scholarship extends Model
     public function criteria()
     {
         if (request()->cookie('lang') == 'en') {
-            return $this->belongsTo(CriteriaEn::class);
+            return $this->belongsTo(CriteriaEn::class, 'criteria_id');
         }
-        return $this->belongsTo(Criteria::class);
+        return $this->belongsTo(Criteria::class, 'criteria_id');
     }
 
     public function criteriaEN()
     {
-        return $this->belongsTo(CriteriaEn::class);
+        return $this->belongsTo(CriteriaEn::class, 'criteria_id');
     }
 
     /**
@@ -75,14 +80,14 @@ class Scholarship extends Model
     public function level()
     {
         if (request()->cookie('lang') == 'en') {
-            return $this->belongsTo(LevelEn::class);
+            return $this->belongsTo(LevelEn::class, 'criteria_id');
         }
-        return $this->belongsTo(Level::class);
+        return $this->belongsTo(Level::class, 'criteria_id');
     }
 
     public function levelEN()
     {
-        return $this->belongsTo(LevelEn::class);
+        return $this->belongsTo(LevelEn::class, 'criteria_id');
     }
 
     /**
