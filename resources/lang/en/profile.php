@@ -1,3 +1,46 @@
 <?php
 return [
+    'navigation' => [
+        'about' => 'ABOUT',
+        'studies' => 'AVAILABLE STUDIES',
+        'scholarships' => 'SCHOLARSHIPS',
+        'reviews' => 'REVIEWS',
+        'teachers' => 'TEACHERS',
+        'login' => 'Login',
+        'register' => 'Register',
+        'logout' => 'Logout',
+        'admin' => 'Admin',
+    ],
+    'cards' => [
+        'about' => 'About',
+        'studies' => 'Available Studies',
+        'scholarships' => 'Scholarships',
+        'reviews' => 'Reviews',
+        'teachers' => 'Teachers',
+    ],
+    'statistics' => [
+        'scholarships' => 'Scholarships',
+        'teachers' => 'Teachers',
+        'studies' => 'Available Studies',
+        'students' => 'Students',
+        'students_s' => 'Μαθητές',
+    ],
+    'request' => 'Connection Request',
+    'reviews' => 'Reviews',
+    'total' => 'Total Rating',
+    'more' => 'Show more',
+    'less' => 'Show less',
+    'months' => 'μήνες',
+    'scholarship' => [
+        'interested' => 'Interested',
+        'requested' => 'Admissions',
+        'like' => 'I am Interested',
+        'show' => 'Show',
+    ],
+    'modal' => [
+        'message' => 'By connecting with the institution, you will be able to write a review.',
+        'send' => 'Αποστολή',
+        'abort' => 'Ακύρωση',
+        'request' => 'Αίτηση',
+    ],
 ];

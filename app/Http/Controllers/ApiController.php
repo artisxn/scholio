@@ -307,9 +307,6 @@ class ApiController extends Controller
     public function getScholarship(Scholarship $scholarship)
     {
         $scholarship->length = $scholarship->usersLength();
-        // Carbon::setLocale('el');
-        // setlocale(LC_TIME, 'el');
-        // $scholarship->test = Carbon::now()->diffForHumans();
         $scholarship->created = Carbon::parse($scholarship->created_at)->format('d/m/Y');
         $scholarship->end = Carbon::parse($scholarship->end_at)->format('d/m/Y');
         $scholarship->exams = Carbon::parse($scholarship->exam_date)->format('d/m/Y');

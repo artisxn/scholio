@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Criteria;
+use App\Models\CriteriaEn;
 use App\Models\Financial;
 use App\Models\Level;
 use App\Models\School;
@@ -42,6 +43,9 @@ class Scholarship extends Model
      */
     public function financial()
     {
+        if (request()->cookie('lang') == 'en') {
+            return $this->belongsTo(FinancialEn::class);
+        }
         return $this->belongsTo(Financial::class);
     }
 
@@ -52,7 +56,15 @@ class Scholarship extends Model
      */
     public function criteria()
     {
+        if (request()->cookie('lang') == 'en') {
+            return $this->belongsTo(CriteriaEn::class);
+        }
         return $this->belongsTo(Criteria::class);
+    }
+
+    public function criteriaEN()
+    {
+        return $this->belongsTo(CriteriaEn::class);
     }
 
     /**
@@ -62,7 +74,15 @@ class Scholarship extends Model
      */
     public function level()
     {
+        if (request()->cookie('lang') == 'en') {
+            return $this->belongsTo(LevelEn::class);
+        }
         return $this->belongsTo(Level::class);
+    }
+
+    public function levelEN()
+    {
+        return $this->belongsTo(LevelEn::class);
     }
 
     /**

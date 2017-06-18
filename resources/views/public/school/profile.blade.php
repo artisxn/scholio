@@ -197,7 +197,7 @@
                 <div class="nav-mobile">
                     <a class="" href="{{ url('/') }}">
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            <img src="/new/img/logo-m.png" class="sc-logo"  alt="scholio logo">
+                            <img src="/new/img/logo-m.png" class="sc-logo" alt="scholio logo">
                         </div>
                     </a>
                 </div>
@@ -207,18 +207,18 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    @if($school->settings->about)<li class="sc-landing-menu-item"><a href="#sxetika" >ΣΧΕΤΙΚΑ</a></li>@endif
+                    @if($school->settings->about)<li class="sc-landing-menu-item"><a href="#sxetika" >@lang('profile.navigation.about')</a></li>@endif
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
                     @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>@endif
-                    @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies">ΥΠΟΤΡΟΦΙΕΣ</a></li>@endif
-                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews">ΑΞΙΟΛΟΓΗΣΕΙΣ</a></li>@endif
-                    @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty">ΔΙΔΑΣΚΟΝΤΕΣ</a></li>@endif
+                    @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies">@lang('profile.navigation.scholarships')</a></li>@endif
+                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews">@lang('profile.navigation.reviews')</a></li>@endif
+                    @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty">@lang('profile.navigation.teachers')</a></li>@endif
                     @if(auth()->check())
-                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
-                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
+                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('profile.navigation.admin')</button></a></li>
+                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('profile.navigation.logout')</button></a></li>
                     @else
-                    <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Εγγραφή</button></a></li>
-                    <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Σύνδεση</button></a></li>
+                    <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('profile.navigation.register')</button></a></li>
+                    <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('profile.navigation.login')</button></a></li>
                     @endif
                 </ul>
             </div>
@@ -241,27 +241,27 @@
                         <div class="pull-right">
                             @if($school->settings->about)
                             <a href="#sxetika">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΧΕΤΙΚΑ</div>
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.about')</div>
                             </a>
                             @endif
                             @if($school->settings->studies)
                             <a href="#spoudes">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΠΟΥΔΕΣ</div>
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.studies')</div>
                             </a>
                             @endif
                             @if($school->settings->scholarships)
                             <a href="#ypotrofies">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΥΠΟΤΡΟΦΙΕΣ</div>
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.scholarships')</div>
                             </a>
                             @endif
                             @if($school->settings->reviews)
                             <a href="#reviews">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΑΞΙΟΛΟΓΗΣΕΙΣ</div>
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.reviews')</div>
                             </a>
                             @endif
                             @if($school->settings->teachers)
                             <a href="#faculty">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΔΙΔΑΣΚΟΝΤΕΣ</div>
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.teachers')</div>
                             </a>
                             @endif
 
@@ -270,14 +270,14 @@
                             <div class="sign-links">
                                 @if(auth()->check())
                                     <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
+                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('profile.navigation.admin')</button></a>
                                     <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
+                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('profile.navigation.logout')</button></a>
                                 @else
                                     <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
+                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('profile.navigation.register')</button></a>
                                     <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
+                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('profile.navigation.login')</button></a>
                                 @endif
                             </div>
                         </div>
@@ -313,7 +313,7 @@
                                         <span ng-show="contactInfo.ratingCounter!=0"> <rating class="text-incr-85 sc-t-orange" id="Rating"></rating>
                                                 </span>
                                                 <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.stars}} </span>
-                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.reviews.length}}  Αξιολογήσεις)</span>
+                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.reviews.length}}  @lang('profile.reviews'))</span>
 
                          </span>
 
@@ -400,15 +400,9 @@
            {{-- @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id)) --}}
                         <button id="xs-submButton" type="button" class="hidden-lg hidden-md-hidden-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 data-toggle="modal" data-target="#connect-modal">
-                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
+                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
                         </button>
                         {{-- @endif --}}
-
-
-
-
-
-
 
                 <!-- MAIN Section-->
                 <div class="col-lg-9 col-md-9 margin-top-30 margin-bot-25" >
@@ -422,7 +416,7 @@
                     <div class="margin-bot-25 slideup slideAbout" id="sxetika">
                         <div  class="section-header">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300" style="">
-                                <i class="fa fa-info-circle fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Σχετικά </span>
+                                <i class="fa fa-info-circle fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.about') </span>
                             </p>
                         </div>
                         <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
@@ -448,7 +442,7 @@
                         <div id="sliderStudies" class=" main-box-2 slideup slideStudies">
                             <div class="section-header2">
                                 <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
-                                    <i class="fa fa-book fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Σπουδές-Ειδικότητες </span>
+                                    <i class="fa fa-book fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.studies') </span>
                                 </p>
                             </div>
                             <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
@@ -505,7 +499,7 @@
                     <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.lengthScholarships" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
                         <div class="section-header3">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
-                                <i class="fa fa-trophy fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Υποτροφίες </span>
+                                <i class="fa fa-trophy fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.scholarships') </span>
                             </p>
                         </div>
 
@@ -553,7 +547,7 @@
                                                 <p class="scholar-left xxs-up">@{{scholarship.financial.plan}} @{{scholarship.financial_amount}}
                                                     <span ng-if="scholarship.financial.id==1"> %</span>
                                                     <span ng-if="scholarship.financial.id==2"> €  </span>
-                                                    <span ng-if="scholarship.financial.id==3"> μήνες</span>
+                                                    <span ng-if="scholarship.financial.id==3"> @lang('profile.months')</span>
                                                 </p>
 
                                                 <div class="scholar-left xxs-text" style="padding-top: 40px;"ng-if="contactInfo.type_id==1 || contactInfo.type_id==3" >@{{scholarship.level.name}}</div>
@@ -578,13 +572,13 @@
                                             <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}">
                                                 <div style="position: absolute; top: 282px;" class="font-weight-400 sc-t-grey">
                                                     <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
-                                                        Ενδιαφέρθηκαν: <span class="pad-left-10" ng-bind="scholarship.interests"></span>
+                                                        @lang('profile.scholarship.interested'): <span class="pad-left-10" ng-bind="scholarship.interests"></span>
                                                     </span>
                                                 </div>
 
                                                 <div style="position: absolute; top: 301px;" class="font-weight-400 sc-t-grey">
                                                     <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
-                                                        Αιτήθηκαν: <span class="pad-left-42"> @{{ scholarship.length}}</span>
+                                                        @lang('profile.scholarship.requested'): <span class="pad-left-42"> @{{ scholarship.length}}</span>
                                                     </span>
                                                 </div>
 
@@ -594,7 +588,7 @@
                                                 <ul class="like-btn">
                                                     <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
                                                             <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                                                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>
+                                                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('profile.scholarship.like')</span>
                                                         </button>
                                                     </a>
                                                 </ul>
@@ -602,7 +596,7 @@
 
                                             <ul class="show-btn">
                                                 <a href="/scholarship/@{{scholarship.id}}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white provoli">
-                                                        <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Προβολή</button></a>
+                                                        <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('profile.scholarship.show')</button></a>
                                                 {{--<span class="sc-t-grey font-weight-400" style="left: -210px; top: 10px; position: absolute">--}}
                                                 {{--<i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i>Αιτήθηκαν: @{{ scholarship.length}} </span>--}}
                                                 {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
@@ -646,7 +640,7 @@
                     <div class="slideReviews slideup margin-bot-25 " id="reviews" style="overflow-x: hidden">
                         <div class="section-header2">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
-                                <i class="fa fa-star fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Αξιολογήσεις </span>
+                                <i class="fa fa-star fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.reviews') </span>
                             </p>
                         </div>
 
@@ -656,11 +650,11 @@
                             <div class="font-weight-400 sc-t-green col-xs-12 col-lg-4 col-lg-push-8 text-center total-score">
                                 <span class="lead">@{{contactInfo.stars}}</span>
                                 <br />
-                                <span class="sc-t-grey">Συνολική Βαθμολογία</span>
+                                <span class="sc-t-grey">@lang('profile.total')</span>
 
                                 <br />
                                 <div class="raty" id="totalRating"></div>
-                                <span class="sc-t-grey">(@{{contactInfo.reviews.length}} Αξιολογήσεις)</span>
+                                <span class="sc-t-grey">(@{{contactInfo.reviews.length}} @lang('profile.reviews'))</span>
                             </div>
 
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
@@ -715,7 +709,7 @@
                     <div class="slideTeachers slideup margin-bot-25" id="faculty" style="overflow-x: hidden">
                         <div class="section-header3">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
-                                <i class="fa fa-graduation-cap fa-linear4 text-incr-115 margin-right-10" aria-hidden="true"></i> <span>Διδακτικό Προσωπικό<span class="hidden-xs"> - Συνεργάτες </span></span>
+                                <i class="fa fa-graduation-cap fa-linear4 text-incr-115 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.teachers') </span></span>
                             </p>
                         </div>
 
@@ -808,25 +802,25 @@
                         <div class=" box left-box2 sc-t-grey">
                             <div class="col-lg-12 margin-top-30" id="box-2nd" style="">
                                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-5">Υποτροφίες</span>
+                                <span class="pull-left pad-left-5">@lang('profile.statistics.scholarships')</span>
                                 <span class="pull-right badge" style="margin-right: -4px"> @{{contactInfo.lengthScholarships}}</span>
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">Φοιτητές</span>
-                                <span class="pull-left pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">Μαθητές</span>
+                                <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">@lang('profile.statistics.students')</span>
+                                <span class="pull-left pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">@lang('profile.statistics.students_s')</span>
                                 <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
                                 <br>
                                 <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
                                     <div class="pad-top-20"></div>
                                     <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                    <span class="pull-left pad-left-5">Ειδικότητες Σπουδών</span>
+                                    <span class="pull-left pad-left-5">@lang('profile.statistics.studies')</span>
                                     <span class="pull-right">@{{contactInfo.lengthStudies}}</span>
                                     <br>
                                 </div>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-2 pad-bot-10">Καθηγητές</span>
+                                <span class="pull-left pad-left-2 pad-bot-10">@lang('profile.statistics.teachers')</span>
                                 <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
 
                             </div>
@@ -845,7 +839,7 @@
                         <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
                             <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                     data-toggle="modal" data-target="#connect-modal">
-                                <i class="fa fa-link pad-right-15" aria-hidden="true"></i>Αίτημα &nbsp; Σύνδεσης
+                                <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
                             </button>
                         </nav>
 
@@ -877,19 +871,19 @@
 
                             </button>
                             <img src="/new/img/logo-light-m.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: -4px;">
-                            <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Αίτημα Σύνδεσης</h3>
+                            <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">@lang('profile.request')</h3>
                         </div>
 
                     </div>
                     <div class="panel-body">
                         <img class="pull-left margin-right-10" style="height: 45px;"
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
-                        <span> @{{ contactInfo.name }}:   Με τη σύνδεσή σας θα έχετε τη δυνατότητα να γράψετε την αξιολόγησή σας.</span>
+                        <span> @{{ contactInfo.name }}:  @lang('profile.modal.message') </span>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
-                        <button type="button" ng-click="sendRequest()" data-dismiss="modal" class="btn btn-info">Αποστολή</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
+                        <button type="button" ng-click="sendRequest()" data-dismiss="modal" class="btn btn-info">@lang('profile.modal.send')</button>
                     </div>
                 </div>
             </div>
@@ -919,8 +913,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
-                        <button type="button" class="btn btn-info">Αίτηση</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
+                        <button type="button" class="btn btn-info">@lang('profile.modal.request')</button>
                     </div>
                 </div>
             </div>
@@ -995,7 +989,7 @@
                     setTimeout(function() {
                         if(scholarship.userInterested){
                         $('#i'+ scholarship.id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
-                        $('#t'+ scholarship.id).text('Ενδιαφέρθηκα')
+                        $('#t'+ scholarship.id).text('@lang('profile.scholarship.like')')
                         $('#b'+ scholarship.id).css("background-color", "#ccc");
                         }
                      }, 30);
@@ -1068,10 +1062,10 @@
                                 .success(function(data)   {
                                     console.log(data);
                                     if(data == 'YES'){
-                                        $('#t'+ id).text('Ενδιαφέρoμαι')
+                                        $('#t'+ id).text("@lang('profile.scholarship.interested')")
                                         $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
                                     }else{
-                                        $('#t'+ id).text('Ενδιαφέθηκα')
+                                        $('#t'+ id).text("@lang('profile.scholarship.like')")
                                         $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
                                         $('#b'+ id).style.backgroundColor='#ccc'
                                     }
@@ -1163,12 +1157,12 @@
                                 if(data == 'YES'){
                                     $scope.contactInfo.scholarship[index].interests++;
                                     $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
-                                    $('#t'+ id).text('Ενδιαφέρθηκα')
+                                    $('#t'+ id).text("@lang('profile.scholarship.like')")
                                     $('#b'+ id).css("background-color", "#ccc");
                                 }else{
                                     $scope.contactInfo.scholarship[index].interests--;
                                     $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
-                                    $('#t'+ id).text('Ενδιαφέρομαι')
+                                    $('#t'+ id).text("@lang('profile.scholarship.interested')")
                                     $('#b'+ id).css("background-color", "#008da5");
                                 }
                             });
@@ -1237,19 +1231,7 @@
 
                     map.mapTypes.set('styled_map', styledMapType);
                     map.setMapTypeId('styled_map');
-
-
-
-
-
                 }
-
-
-
-
-
-
-
 
                 $scope.sendRequest = function(){
                      $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id}, {
@@ -1263,30 +1245,30 @@
                     });
                 }
 
-                $scope.textAbout='Περισσότερα';
+                $scope.textAbout="@lang('profile.more')";
                 $scope.iconAbout='fa fa-angle-down'
                 $scope.showMoreAbout= function (hash){
-                    if($scope.textAbout === "Περισσότερα"){
-                        $scope.textAbout= "Λιγότερα";
+                    if($scope.textAbout === "@lang('profile.more')"){
+                        $scope.textAbout= "@lang('profile.less')";
                         $scope.iconAbout='fa fa-angle-up'
                         $("#sxetika").removeClass('slideAbout').toggleClass("slidedown slideup");
                     } else {
-                        $scope.textAbout = "Περισσότερα";
+                        $scope.textAbout = "@lang('profile.more')";
                         $scope.iconAbout='fa fa-angle-down'
                         $("#sxetika").toggleClass("slidedown slideup").addClass('slideAbout');
 //                        location.hash = '#';
 //                        location.hash = "#" + hash;
                     };
                 }
-                $scope.textStudies='Περισσότερα';
+                $scope.textStudies='@lang('profile.more')';
                 $scope.iconStudies='fa fa-angle-down'
                 $scope.showMoreStudies= function (hash){
-                    if($scope.textStudies === "Περισσότερα"){
-                        $scope.textStudies= "Λιγότερα";
+                    if($scope.textStudies === "@lang('profile.more')"){
+                        $scope.textStudies= "@lang('profile.less')";
                         $scope.iconStudies='fa fa-angle-up'
                         $("#sliderStudies").removeClass('slideStudies').toggleClass("slidedown slideup");
                     } else {
-                        $scope.textStudies = "Περισσότερα";
+                        $scope.textStudies = "@lang('profile.more')";
                         $scope.iconStudies='fa fa-angle-down'
                         $("#sliderStudies").toggleClass("slidedown slideup").addClass('slideStudies');
                         location.hash = '#';
@@ -1294,93 +1276,51 @@
 //
                     };
                 }
-                $scope.textScholarships='Περισσότερα';
+                $scope.textScholarships='@lang('profile.more')';
                 $scope.iconScholarships='fa fa-angle-down'
                 $scope.showMoreScholarships= function (hash){
-                    if($scope.textScholarships === "Περισσότερα"){
-                        $scope.textScholarships= "Λιγότερα";
+                    if($scope.textScholarships === "@lang('profile.more')"){
+                        $scope.textScholarships= "@lang('profile.less')";
                         $scope.iconScholarships='fa fa-angle-up'
                         $("#ypotrofies").removeClass('slideScholarships').toggleClass("slidedown slideup");
                     } else {
-                        $scope.textScholarships = "Περισσότερα";
+                        $scope.textScholarships = "@lang('profile.more')";
                         $scope.iconScholarships='fa fa-angle-down'
                         $("#ypotrofies").toggleClass("slidedown slideup").addClass('slideScholarships');
                         location.hash = '#';
                         location.hash = "#" + hash;
                     };
                 }
-                $scope.textReviews='Περισσότερα';
+                $scope.textReviews='@lang('profile.more')';
                 $scope.iconReviews='fa fa-angle-down'
                 $scope.showMoreReviews= function (hash){
-                    if($scope.textReviews === "Περισσότερα"){
-                        $scope.textReviews= "Λιγότερα";
+                    if($scope.textReviews === "@lang('profile.more')"){
+                        $scope.textReviews= "@lang('profile.less')";
                         $scope.iconReviewst='fa fa-angle-up'
                         $("#reviews").removeClass('slideReviews').toggleClass("slidedown slideup");
                     } else {
-                        $scope.textReviews = "Περισσότερα";
+                        $scope.textReviews = "@lang('profile.more')";
                         $scope.iconReviews='fa fa-angle-down'
                         $("#reviews").toggleClass("slidedown slideup").addClass('slideReviews');
                         location.hash = '#';
                         location.hash = "#" + hash;
                     };
                 }
-                $scope.textTeachers='Περισσότερα';
+                $scope.textTeachers='@lang('profile.more')';
                 $scope.iconTeachers='fa fa-angle-down'
                 $scope.showMoreTeachers= function (){
-                    if($scope.textTeachers === "Περισσότερα"){
-                        $scope.textTeachers= "Λιγότερα";
+                    if($scope.textTeachers === "@lang('profile.more')"){
+                        $scope.textTeachers= "@lang('profile.less')";
                         $scope.iconTeachers='fa fa-angle-up'
                         $("#faculty").removeClass('slideTeachers').toggleClass("slidedown slideup");
                     } else {
-                        $scope.textTeachers = "Περισσότερα";
+                        $scope.textTeachers = "@lang('profile.more')";
                         $scope.iconTeachers='fa fa-angle-down'
                         $("#faculty").toggleClass("slidedown slideup").addClass('slideTeachers');
                         location.hash = '#';
                         location.hash = "#" + hash;
                     };
                 }
-
-
-
-                $scope.reviews = [{
-                    author: "Ιωαννίδης Β.",
-                    date: "20/11/2016",
-                    text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. ",
-                    stars: {
-                        total: 4.4,
-                        studyProgram: 5,
-                        organization: 4,
-                        personnel: 4.5,
-                        facilities: 5,
-                        jobLink: 4
-                    }
-                },
-                    {
-                        author: "Jay L.",
-                        date: "5/12/2016",
-                        text: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-                        stars: {
-                            total: 4.8,
-                            studyProgram: 4,
-                            organization: 5,
-                            personnel: 5,
-                            facilities: 5,
-                            jobLink: 5
-                        }
-                    },{
-                        author: "Giannis D.",
-                        date: "27/02/2017",
-                        text: "lorem ipsum dolor sit amet",
-                        stars: {
-                            total: 3,
-                            studyProgram: 1,
-                            organization: 2,
-                            personnel: 3,
-                            facilities: 4,
-                            jobLink: 5
-                        }
-                    }
-                ];
 
                 $scope.getAVG = function(category) {
 

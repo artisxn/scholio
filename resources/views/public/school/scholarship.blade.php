@@ -87,13 +87,13 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    <li class="sc-landing-menu-item"><a href="#sxetika" >info</a></li>
+                    <li class="sc-landing-menu-item"><a href="#sxetika" >@lang('scholarship_view.navigation.info')</a></li>
                     @if(auth()->check())
-                        <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
-                        <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
+                        <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('scholarship_view.navigation.admin')</button></a></li>
+                        <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('scholarship_view.navigation.logout')</button></a></li>
                     @else
-                        <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">Εγγραφή</button></a></li>
-                        <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white " data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button></a></li>
+                        <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">@lang('scholarship_view.navigation.register')</button></a></li>
+                        <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white " data-toggle="modal" data-target="#signIn-modal">@lang('scholarship_view.navigation.login')</button></a></li>
                     @endif
                 </ul>
             </div>
@@ -115,20 +115,20 @@
                         <br><br>
                         <div class="pull-right">
                             <a href="#sxetika">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">info</div>
+                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('scholarship_view.navigation.info')</div>
                             </a>
                             <div class=""><br></div>
                             <div class="sign-links">
                                 @if(auth()->check())
                                     <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
+                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('scholarship_view.navigation.admin')</button></a>
                                     <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
+                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('scholarship_view.navigation.logout')</button></a>
                                 @else
                                     <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
+                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('scholarship_view.navigation.register')</button></a>
                                     <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
+                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('scholarship_view.navigation.login')</button></a>
                                 @endif
                             </div>>
                         </div>
@@ -155,7 +155,7 @@
     <img class="trophy" src="/new/img/trophy3.png" alt="">
     {{--<img class="grad" src="/new/img/Graduation.png" alt="">--}}
 
-    <div class="Hero1"> Υποτροφία που προσφέρεται από: </div>
+    <div class="Hero1"> @lang('scholarship_view.top.title'): </div>
     <div class="Hero2"> <a class="school-title" href="/public/profile/{{ $scholarship->school->id}}" target="_blank">{{ $scholarship->school->name() }}</a></div>
 </div>
 <div class="line"></div>
@@ -166,8 +166,8 @@
         <div class="col-md-4 col-sm-6  col-xs-12 col-lg-3 colmn ">
             {{--col-md-offset-2 col-lg-offset-2--}}
             <span class="col-xs-10  col-sm-10  col-md-10 col-lg-9  first-col">
-                <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
-                <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
+                <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
+                <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
             </span>
             <span class="col-xs-2 col-sm-2 col-md-1 col-lg-3 align-right">
                 <div class="">@{{scholarship.length}}</div>
@@ -179,8 +179,8 @@
         <div class="col-md-4  col-xxxs-12 col-sm-6 col-xs-12 col-lg-4 colmn ">
             {{--col-lg-offset-1--}}
             <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6  ">
-                <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
-                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
+                <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
+                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
             </span>
             <span class="col-xxxs-5 col-xs-4 col-sm-5 col-md-5 col-lg-5 align-right">
                 <div class="">@{{scholarship.created}}</div>
@@ -192,11 +192,17 @@
         <div class="col-md-4 col-sm-6 col-xs-12 col-lg-5 ">
             {{--col-lg-offset-1--}}
             <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6">
-                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
-                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
+                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
+                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
             </span>
             <span class=" col-xxxs-5 col-xs-4 col-sm-5 col-md-5col-lg-4 align-right" >
-                <div class="" >{{ $scholarship->exam ? 'NAI' : 'OXI' }}</div>
+                <div class="" >
+                    @if($scholarship->exam)
+                        @lang('scholarship_view.yes')
+                    @else
+                        @lang('scholarship_view.no')
+                    @endif
+                </div>
                 <div class="margin-top-10">@{{scholarship.exams}}</div>
             </span>
 
@@ -210,9 +216,9 @@
     <div class="box-in sc-t-grey  ">
         <div class="col-sm-4  col-xs-5 colmn ">
             <span class="col-sm-10  col-xs-10 first-col">
-                <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
-                <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
-                <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
+                <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
+                <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
+                <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
             </span>
             <span class="col-sm-1 col-xs-1 align-right">
                 <div class="">@{{scholarship.length}}</div>
@@ -224,9 +230,9 @@
 
         <div class="col-sm-5  col-xs-7">
             <span class=" col-sm-7   col-xs-6">
-                <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
-                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
-                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξετ.:</div>
+                <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
+                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
+                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
             </span>
             <span class="col-sm-5  col-xs-6 align-right">
                 <div class="">10 Μαϊ 2017</div>
@@ -253,7 +259,7 @@
                     <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
                                        class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
                             <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">Ενδιαφέρομαι</span>
+                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('scholarship_view.top.admission_button')</span>
                         </button>
                     </a>
                 </span>
@@ -263,7 +269,7 @@
                     <a href="{{ url('login') }}"><button type="button"
                                        class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
                             <i class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                            <span>Ενδιαφέρομαι</span>
+                            <span>@lang('scholarship_view.top.interested_button')</span>
                         </button>
                     </a>
                 </span>
@@ -273,9 +279,9 @@
         @if(auth()->check())
             @if(auth()->user()->role != 'school')
                 @if(!auth()->user()->checkAdmission($scholarship))
-                    <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αίτηση </button></a>
+                    <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
                 @else
-                    <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> Αιτήθηκα </button></a>
+                    <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_past') </button></a>
                 @endif
             @endif
         @endif
@@ -295,10 +301,10 @@
         </div>
         <div class="box-left">
             <div class="title">
-                Σπούδασε {{ $scholarship->study->name}}
+                @lang('scholarship_view.cards.study') {{ $scholarship->study->name}}
             </div>
             <div class="text">
-                Το αντικείμενο σπουδών αφορά τους υποψηφίους που στοχεύουν σε {{ $scholarship->level->name }}  με ειδικότητα
+                @lang('scholarship_view.cards.study_message1') {{ $scholarship->level->name }}  @lang('scholarship_view.cards.study_message2')
                   {{ $scholarship->study->name}} .
             </div>
         </div>
@@ -318,8 +324,7 @@
                 {{ $scholarship->criteria->name }}
             </div>
             <div class="text-right" style="" >
-                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                @lang('scholarship_view.cards.scholarship_message')
             </div>
             <div class="clearfix"></div>
         </div>
@@ -337,7 +342,7 @@
         </div>
         <div style="" class="box-left">
             <div class="title">
-                Όροι & Δικαίωμα Συμμετοχής
+                @lang('scholarship_view.cards.terms')
             </div>
             <div class="text">
                 {{ $scholarship->terms }}
@@ -360,8 +365,7 @@
                 {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}
             </div>
             <div class="text-right">
-                Ο τελικός νικητής από όλους τους συμμετέχοντες για τη συγκεκριμένη
-                υποτροφία, θα αποκτήσει για τις σπουδές του  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}.
+                @lang('scholarship_view.cards.terms')  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}.
             </div>
             <div class="clearfix"></div>
         </div>

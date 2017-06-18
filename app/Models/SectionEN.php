@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Criteria extends Model
+class SectionEN extends Model
 {
-
+    //
 }

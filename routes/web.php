@@ -51,7 +51,7 @@ Route::get('/lang/{locale}', function ($locale) {
 Route::post('/admission/{scholarship}/save', 'RoutesController@admissionSave');
 
 Route::get('/public/schools/', function () {
-    return view('public.results.schools-test');
+    return view('public.results.schools');
 });
 
 Route::get('dashboard/profile', function () {
@@ -144,7 +144,7 @@ Route::get('/test/{school}', 'RoutesController@testSchools');
 
 /* ===== TESTING ROUTE FOR SCHOLARSIPS RESULTS ====== */
 Route::get('/public/scholarships/', function () {
-    return view('public.results.scholarships-test');
+    return view('public.results.scholarships');
 });
 
 Route::get('/public/scholarships/d', function () {

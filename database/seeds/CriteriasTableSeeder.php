@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Criteria;
+use App\Models\CriteriaEn;
 use Illuminate\Database\Seeder;
 
 class CriteriasTableSeeder extends Seeder
@@ -20,9 +21,23 @@ class CriteriasTableSeeder extends Seeder
             'Υποτροφία Ανοιχτού Τύπου',
         ];
 
+        $namesENG = [
+            'Scholarship for talents',
+            'Scholarship for excellent students',
+            'Scholarship for Social Criterias',
+            'Scholarship for Friends-Brothers and Sisters',
+            'Open Scholarships',
+        ];
+
         foreach ($names as $name) {
             $criteria = new Criteria;
             $criteria->name = $name;
+            $criteria->save();
+        }
+
+        foreach ($namesENG as $n) {
+            $criteria = new CriteriaEn;
+            $criteria->name = $n;
             $criteria->save();
         }
     }

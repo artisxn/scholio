@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSchoolTypesTable extends Migration
+class CreateSectionENsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateSchoolTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('school_types', function (Blueprint $table) {
+        Schema::create('section_e_ns', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('level_id')->index();
             $table->string('name');
             $table->timestamps();
         });
@@ -27,6 +28,6 @@ class CreateSchoolTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('school_types');
+        Schema::dropIfExists('section_e_ns');
     }
 }
