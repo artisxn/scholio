@@ -1,3 +1,5 @@
+{{--<link rel="stylesheet" href="/new/css/Bootstrap-xxs-xxxs.css">--}}
+
 <style>
     .sc-card:hover{}
     .panel:hover{}
@@ -8,7 +10,7 @@
 </style>
 
 <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 sc-card" style="">
+    <div class="col-lg-3 col-md-4 col-sm-6">
         <a href="{{ url('/panel/school/students') }}">
         <div class="panel" style="padding: 20px 10px; height: 100px; border: 1px solid #008da5; border-radius: 10px; text-align: center; box-shadow: 0 0 11px #bbb">
             {{--<i class="md md-person text-primary"></i>--}}
@@ -18,6 +20,8 @@
         </div>
         </a>
     </div>
+
+
     <div class="col-lg-3 col-md-4 col-sm-6">
         <a href="{{ url('/panel/school/teachers') }}">
             <div class="panel" style="padding: 20px 10px; height: 100px; border: 1px solid #008da5; border-radius: 10px; text-align: center; box-shadow: 0 0 11px #bbb">
@@ -92,7 +96,7 @@
         </a>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6">
-        <a href="{{ url('/panel/school/students') }}">
+        <a href="{{ url('/panel/dasboard') }}">
             <div class="panel" style="padding:20px 10px; height: 100px; border: 1px solid #008da5; border-radius: 10px; text-align: center; box-shadow: 0 0 11px #bbb">
                 {{--<i class="md md-person text-primary"></i>--}}
                 <img src="/panel/assets/images/steps/step2-marketing.png" alt="page image" class="image" height="45px">
@@ -101,7 +105,7 @@
             </div>
         </a>
     </div>
-    
+
 
 </div>
 

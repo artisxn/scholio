@@ -136,6 +136,15 @@
 
         .send-message{width: 340px; height: 50px; padding: 0; border-radius: 10px;}
 
+        .hor-vert-center{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%)
+        }
+
+
+
         @media (min-width: 576px) and (max-width: 768px) {
             .text1,.text2{font-size: 220%;}
             #countdown{margin: 35px 0;}
@@ -184,6 +193,7 @@
         <!-- Preloader -->
         <div id='preloader' >
             <div class='loader' ></div>
+            <div class="hor-vert-center"><img src="/new/img/logo-NEWGreen.png"  height="60px" alt=""></div>
         </div>
 
 
