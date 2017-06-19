@@ -356,5 +356,5 @@
         }
     }
 
-   // $(document).ready(function(){$("#content").hide().fadeIn(2300);});
+    $(document).ready(function(){$("#content").hide().fadeIn(2000);});
 </script>

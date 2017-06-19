@@ -14,6 +14,6 @@
 @endsection
 
 @section('content')
-    @include('components.preloader')
+    {{--@include('components.preloader')--}}
     <studies-select></studies-select>
 @endsection

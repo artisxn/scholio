@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="step-2" class="step-anchor" >
+                    <div id="step-2" class="step-anchor">
                         <div class="step centered-text">
                             <!--<h2>Βήμα 2 </h2>-->
                             <div class="step-box"  :class="{'step3check': (levelsName.length>2)}" :style="[!col_iek_eng_dan_mus, {minHeight: 380+'px'}]">
@@ -102,6 +102,7 @@
 
 
                             </div>
+
                         </div>
                     </div>
 

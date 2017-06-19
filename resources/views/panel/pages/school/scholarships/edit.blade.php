@@ -55,6 +55,56 @@
 
         .pad-0{margin: 0}
 
+
+        /*  ==========  Button  ===========  */
+
+        .sc-btn {
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 7px 15px;
+            background: #4a5a62;
+            font-weight: 300;
+        }
+        .sc-green{background:#00bcd4;}
+        .sc-orange {background: #FD6A33;}
+        .sc-dark-green{background: #008da5;}
+
+        .sc-btn:focus,.sc-btn:active{outline:none;}
+
+        button.sc-dark-green:hover{background-color: #006880  }
+
+        /*  ===============================  */
+
+
+        nput[type='radio']:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        input[type='radio']:checked:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #008da5;
+            content: '';
+            display: block;
+            visibility: visible;
+            /*border: 1px solid white;*/
+        }
+
         @media (min-width: 579px )and (max-width: 590px) {
             .pad-0{padding: 9px}
             .scholar-name{max-width: 70%; font-size: 125%; bottom: 3px;}
@@ -211,10 +261,33 @@
                         <div class=" col-xxxs-12 col-xs-6 col-lg-4">
                             <img class="avatar-img" src="{{ $admission->user->info->avatar }}" width="20px">
                             <input type="radio" name="winner" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
+
                         </div>
 
                     @endforeach
                 </div>
+                <div class="margin-top-30"></div>
+                <button class="sc-btn sc-dark-green" style="float: right"> <i class="fa fa-paper-plane-o margin-right-10"></i>Ενημέρωση Νικητών</button>
+                <div class="clearfix"></div>
+                <div class="col-sm-12 line"></div>
+                <!-- ================================ -->
+                <div class="margin-top-50"></div>
+
+                <div class="adm-sel-title"> <i class="fa fa-pencil margin-right-10"></i>Όροι και δικαίωμα συμμετοχής</div>
+
+
+
+
+
+                <div class="margin-top-50"></div>
+                <div class="clearfix"></div>
+                <div class="col-sm-12 line"></div>
+                <!-- ================================ -->
+                <div class="margin-top-50"></div>
+
+
+                <div class="margin-top-30"></div>
+                <button class="sc-btn sc-dark-green" style="float: right"> <i class="fa fa-flag-checkered margin-right-10"></i>Λήξη Υποτροφίας</button>
 
                     <form class="form-horizontal m-t-20" method="POST" action="/scholarship/{{$scholarship->id}}/update" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{--<div class="row">--}}
