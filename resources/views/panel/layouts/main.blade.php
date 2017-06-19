@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color: #ced1d2">
+<html style="background-color: #d9dcdd">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,10 @@
 
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <title>Schol.io College Admin Panel</title>
+        <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{asset('new/img/favicon.ico')}}" type="image/x-icon" />
 
         <link href="/panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
@@ -54,7 +57,7 @@ echo json_encode($trans);
     </head>
 
 
-    <body class="fixed-left" style="background: linear-gradient( #F1F4F5 ,#ced1d2 ); min-height: 550px">
+    <body class="fixed-left" style="background: linear-gradient( #F1F4F5 ,#d9dcdd ); min-height: 550px">
         <div id="app">
             <!-- Begin page -->
             <div id="wrapper">
