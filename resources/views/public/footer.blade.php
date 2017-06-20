@@ -69,3 +69,12 @@
         </div>
     </div>
 </footer>
+
+
+<script>
+function changeLang(el){
+        var form = document.getElementById('langForm');
+        form.action = '/lang/'+el.value;
+        form.submit();
+    }    
+</script>

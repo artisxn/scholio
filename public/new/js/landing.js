@@ -22,11 +22,14 @@ jQuery(document).ready(function($) {
     var text =  $('.sc-landing-menu a');
     var header = $('.sc-landing-header');
     var select =  $('.lang-drop');
+    var langDropWhite =$('.langDropWhite');
+
 
 
     $(window).scroll(function(){
 
-        if($(window).scrollTop()>600){
+
+        if($(window).scrollTop()>615){
             header.css({"background":"rgba(240,240,240,0.92)","border-bottom":"1px solid #c1c1c1","height": "61px",});
             header.removeClass("navbar-top");
             header.addClass("navbar-fixed-top");
@@ -38,10 +41,12 @@ jQuery(document).ready(function($) {
             text.css({"color":"#324c5a"});
             select.css({"color":"#324c5a!important"});
             select.addClass("hide");
+            langDropWhite.removeClass("hide");
             text.hover( function (e) {
                 $(this).toggleClass('hover1', e.type === 'mouseenter');
                 text.removeClass('hover2');
             });
+           
             //text.removeClass('hover2');
 
         }else{
@@ -55,7 +60,7 @@ jQuery(document).ready(function($) {
             sandwitch_sticky.css({"display":"none"});
             text.css({"color":"white"});
             select.removeClass("hide");
-            //text.removeClass('hover1');
+            langDropWhite.addClass("hide");
             text.hover( function (e) {
                 $(this).toggleClass('hover2', e.type === 'mouseenter');
                 text.removeClass('hover1');

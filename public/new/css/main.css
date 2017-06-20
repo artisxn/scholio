@@ -288,6 +288,21 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 }
 
 
+
+/* ////////////////////Language Drop Down White /////////////////////////////////// */
+
+div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;}
+        .langDropWhite{margin: 4px -3px; width: 80px;}
+        .langDropWhite .dropdown-menu{background-color: #eee; padding-top: 10px}
+        .btn-white{background-color: transparent; box-shadow: none}
+        .btn-white:focus{box-shadow: none; outline: 0}
+        .btn-white:hover{color: #FD6A33!important;}
+        .hide{display: none}
+        div>ul>.selected{color: black!important}
+        
+/* //////////////////////////////////////////////////////////////////////////////// */
+
+
 .checkbox > label > a:visited { color: black }
 .checkbox > label > a:hover { color: black }
 

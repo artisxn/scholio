@@ -112,25 +112,33 @@
         .right-in { bottom: -240px;}
 
         .sch-reg-title{left: 37%; : 400px; position: absolute; max-width: 400px}
+
+
         .lang-sel{color: #fff; margin-top: 2px; margin-left: -23px}
         .lang-drop{margin: 4px -13px;}
+        .select-white .dropdown-menu>li>a{ color: black;}
+        .lang-drop .dropdown-menu{background-color: transparent; }
+        .trans .dropdown-menu>li>a{ color: #fff}
+         div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;}
+        .btn-transparent{background-color: transparent; box-shadow: none}
+        .btn-transparent{ color: #fff}
+        .btn-transparent:focus{ box-shadow: none; outline: 0}
+        .btn-transparent:hover{color: #00bcd4!important;}
+        /*.btn-white{color: #777;}*/
         /*.selectpicker{outline: none !important;}*/
         /*.selectpicker:focus{outline: none !important;}*/
-
-        .trans .dropdown-menu{background-color: transparent; }
-        .trans .dropdown-menu>li>a{ color: #fff;}
-        div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;}
-        .btn-transparent{background-color: transparent; color: #fff}
-        .btn-transparent:focus{color: #fff; outline: 0;}
+        /*.select-white:selected{ color: #777;}*/
+        /*.btn-transparent:focus{color: #fff; outline: 0;}*/
         /*ul>li>a:hover,.btn-transparent:hover{color: #7ef8ff;}*/
         /*ul>li>a:hover,.btn-transparent:hover{color: #FD6A33!important;}*/
-        .btn-transparent:hover{color: #00bcd4!important;}
         /*.hover{color: #FD6A33!important;}*/
-        .hide{display: none}
+    
+
+
 
         #school-register-button:focus{color: #fff; outline: none!important;}
 
-        .bot-text:visited{color: black}
+        .bot-text,.bot-text:visited{color: black}
         .bot-text:hover{color: #FD6A33}
 
         @media  (max-width: 2500px) {
@@ -206,6 +214,15 @@
                         <li class="lang-drop">
                         <form method="GET" id="langForm">
                             <select onchange="changeLang(this)" class="trans selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent">
+                                <option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</a></option>
+                                <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</a></option>
+                            </select>
+                            </form>
+                        </li>
+
+                        <li class="langDropWhite hide">
+                        <form method="GET" id="langForm">
+                            <select onchange="changeLang(this)" class="selectpicker select-white" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
                                 <option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</a></option>
                                 <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</a></option>
                             </select>
@@ -744,11 +761,6 @@
 </body>
 <!--  -->
 <script>
-function changeLang(el){
-    var form = document.getElementById('langForm');
-    form.action = '/lang/'+el.value;
-    form.submit();
-}
 jQuery(document).ready(function($) {
     $(function(){
         $(".typed-js").typed({

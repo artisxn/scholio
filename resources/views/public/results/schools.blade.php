@@ -84,7 +84,9 @@
 <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 </head>
 
-
+<style>
+    .btn-white:hover{color: #00bcd4!important;}
+</style>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="schoolsResultsApp"  ng-controller="schoolsResultsCtrl" data-ng-init="init()"  ng-cloak>
 
@@ -120,6 +122,18 @@
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
+                        
+
+                        <li class="langDropWhite">
+                        <form method="GET" id="langForm">
+                            <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                <option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</a></option>
+                                <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</a></option>
+                            </select>
+                            </form>
+                        </li>
+
+
                             <li class="sc-landing-menu-item"  ">
                             <a href="{{url('public/scholarships')}}" class="btn-change-search">
                                 <i class="fa fa-trophy margin-right-5"></i>
@@ -319,6 +333,8 @@
 
 </body>
 <script>
+
+
     function showMap(){
         var s = document.getElementById('query').value;
                 console.log('asdasd');
