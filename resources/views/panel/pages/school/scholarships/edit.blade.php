@@ -6,7 +6,6 @@
     <link href="/new/css/Bootstrap-xxs-xxxs.css" rel="stylesheet" type="text/css" />
     <style>
 
-
         .margin-right-10 { margin-right: 10px; }
         .margin-top-10 { margin-top: 10px; }
         .margin-top-30 { margin-top: 30px; }
@@ -157,7 +156,7 @@
                         <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
                     </span>
                     <span class="col-lg-2 text-right">
-                        <div class="">{{$scholarship->length}}?</div>
+                        <div class="">{{$scholarship->usersLength()}}</div>
                         <div class="margin-top-10">{{$scholarship->interestsLength()}}</div>
                     </span>
                 </div>
@@ -168,8 +167,11 @@
                         <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
                     </span>
                     <span class=" col-lg-5 text-right">
-                        <div class=""><!-- {{$scholarship->created_at}}-->????-??-??</div>
-                        <div class="margin-top-10">{{$scholarship->end_at}}</div>
+                        <div class="">
+                            {{Carbon\Carbon::parse($scholarship->created_at)->format('d-m-Y')}}
+
+                            </div>
+                        <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->end_at)->format('d-m-Y')}}</div>
                     </span>
                 </div>
 
@@ -179,8 +181,14 @@
                         <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
                     </span>
                     <span class="col-lg-5 text-right">
-                        <div class=""><!-- {{$scholarship->exams}}-->???</div>
-                        <div class="margin-top-10">{{$scholarship->exam_date}}</div>
+                        <div class="">
+                            @if($scholarship->exams)
+                            NAI
+                            @else
+                            OXI
+                            @endif
+                        </div>
+                        <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
                     </span>
                 </div>
 
@@ -195,9 +203,15 @@
 
                     </span>
                     <span class="col-xxxs-5 col-xxs-2 col-xs-2 col-sm-2 col-md-2 text-right">
-                        <div class="">{{$scholarship->length}}?</div>
-                        <div class="margin-top-10">{{$scholarship->interestsLength()}}</div>
-                        <div class="margin-top-10"><!-- {{$scholarship->exams}}-->???</div>
+                        <div class="text-right">{{$scholarship->usersLength()}}</div>
+                        <div class="margin-top-10 text-right">{{$scholarship->interestsLength()}}</div>
+                        <div class="margin-top-10 text-right">
+                            @if($scholarship->exams)
+                            NAI
+                            @else
+                            OXI
+                            @endif
+                        </div>
                     </span>
                     </div>
 
@@ -210,9 +224,9 @@
                          <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
                     </span>
                     <span class="col-xxxs-5 col-xxs-5 col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right pad-0">
-                        <div class=""><!-- {{$scholarship->created_at}}-->????-??-??</div>
-                        <div class="margin-top-10">{{$scholarship->end_at}}</div>
-                        <div class="margin-top-10">{{$scholarship->exam_date}}</div>
+                        <div class="">{{Carbon\Carbon::parse($scholarship->created_at)->format('d-m-Y')}}</div>
+                        <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->end_at)->format('d-m-Y')}}</div>
+                        <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
                     </span>
                     </div>
 
@@ -275,8 +289,9 @@
 
                 <div class="adm-sel-title"> <i class="fa fa-pencil margin-right-10"></i>Όροι και δικαίωμα συμμετοχής</div>
 
-
-
+                <div>
+                    {{ $scholarship->terms }}
+                </div>
 
 
                 <div class="margin-top-50"></div>

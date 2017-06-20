@@ -28,9 +28,9 @@
     </li>
 
     <li class="has_sub link">
-        <a href="#" >
+        <a href="#" class="{{ 0 === strpos(request()->path(), 'panel/school/admission/') ? 'active' : ''}}">
             <i class="ion-trophy"></i>
-            <span> Υποτροφίες </span></a>
+            <span> Υποτροφίες</span></a>
         <ul class="list-unstyled submenu">
             <li ><a href="/panel/school/scholarships/create" class="{{ request()->path() == 'panel/school/scholarships/create' ? 'active' : ''}}">Δημιουργία Νέας</a></li>
             <li ><a href="/panel/school/scholarships/view" class="{{ request()->path() == 'panel/school/scholarships/view' ? 'active' : ''}}">Προβολή</a></li>
