@@ -82,6 +82,10 @@
 
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+
+<script>
+    {{-- window.DATA = {{$settings[0]}}; --}}
+</script>
 </head>
 
 <style>
@@ -123,7 +127,7 @@
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
-                        
+
 
                         <li class="langDropWhite">
                         <form method="GET" id="langForm">
@@ -346,10 +350,10 @@
 
 
 <script>
+    window.STATS = {{$settings}}
 angular.module("schoolsResultsApp",[])
         .controller("schoolsResultsCtrl",function ($scope,$http) {
-
-
+            console.log(window.STATS);
             $scope.over=false;
             $scope.over2=false;
             $scope.over3=false;
@@ -430,6 +434,7 @@ angular.module("schoolsResultsApp",[])
             </div>
         </con>
 
+
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
                 <a href="/public/profile/@{{school_id}}" target="_blank">
@@ -443,11 +448,21 @@ angular.module("schoolsResultsApp",[])
                     <span class="sc-t-orange"> @{{stars}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{reviews}}  @lang('schools.cards.reviews'))</span>
                 </span>
             </div>
-
+@{{#stats}}
             <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                 <span class="pull-left pad-left-5">@lang('schools.cards.scholarships')</span>
-                <span class="pull-right badge"> @{{lengthScholarships}}</span>
+                <span class="pull-right badge">
+
+                    @{{#ppp}}
+                        <span style="color: orange;">@{{lengthScholarships}}</span>
+                    @{{/ppp}}
+
+                    @{{^ppp}}
+                    <span style="color: #fff;">@{{lengthScholarships}}</span>
+                    @{{/ppp}}
+
+                    </span>
                 <br>
                 <div class="pad-top-5"></div>
                 <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
@@ -469,12 +484,15 @@ angular.module("schoolsResultsApp",[])
                 <span class="pull-left pad-left-2 pad-bot-10">@lang('schools.cards.con_teachers')</span>
                 <span class="pull-right">@{{lengthTeachers}}</span>
             </div>
+                    @{{/stats}}
 
             <div ng-show="type_id!=1 && type_id!=2">
                 <div class="margin-pad" style=""></div>
             </div>
             <hr >
         </div>
+
+
 
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
 
@@ -522,7 +540,6 @@ angular.module("schoolsResultsApp",[])
             </div>
         </div>
     </div>
-
     `;
 
 
@@ -547,6 +564,17 @@ angular.module("schoolsResultsApp",[])
                 },
                 transformData: function(hit) {
                     hit.rating = [];
+                    hit.ppp = [];
+                    hit.stats = [];
+                    if(hit.lengthScholarships > 8){
+                        hit.ppp.push(true);
+                    }
+                    // console.log(window.STATS[0]);
+                    if(window.STATS[hit.id-1] == 1){
+                        console.log('oooo');
+                        hit.stats.push(true);
+                    }
+                    console.log(hit);
                     for (var i = 1; i <= 5; ++i) {
                         hit.rating.push(i <= hit.stars);
                     }

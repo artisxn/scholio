@@ -6,6 +6,7 @@ use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\SchoolSetting;
 use App\Scholio\Scholio;
 use App\User;
 
@@ -51,7 +52,9 @@ Route::get('/lang/{locale}', function ($locale) {
 Route::post('/admission/{scholarship}/save', 'RoutesController@admissionSave');
 
 Route::get('/public/schools/', function () {
-    return view('public.results.schools');
+    $settings = SchoolSetting::all()->pluck('statistics');
+    // dd($settings);
+    return view('public.results.schools')->withSettings($settings);
 });
 
 Route::get('dashboard/profile', function () {
