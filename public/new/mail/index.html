@@ -61,15 +61,17 @@ color: #ffffff;
 background-color: #2da4a8;
 padding: 11px 15px;
 text-decoration: none;
-border-radius:5px;
--moz-border-radius:5px;
--webkit-border-radius:5px;
+border-radius:8px;
+-moz-border-radius:8px;
+-webkit-border-radius:8px;
 text-align: center;
 display:inline-block;
 }
 
 .contentEditable a{
-  color: #FD6A33;
+  /*color: #FD6A33;*/
+  color: #008DA5;
+  font-weight: 600;
 }
 
 h1{
@@ -102,6 +104,7 @@ background: #ffffff;
 .bgBody{
 background: #F1F4F5;
 }
+.fa-3x{font-size: 160%!important; color: #008DA5}
 </style>
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -133,7 +136,7 @@ background: #F1F4F5;
             <td width='400' align="left">
               <div class="contentEditableContainer contentImageEditable">
                 <div class="contentEditable">
-                  <img src="https://github.com/schol-io/scholio/raw/master/public/new/mail/logo.png" alt="Logo" width='75' height='75' data-default="placeholder" data-max-width="300" data-max-height="100">
+                  <img src="https://github.com/schol-io/scholio/raw/master/public/new/mail/logo.png" alt="Logo" width='80' height='80' data-default="placeholder" data-max-width="300" data-max-height="100">
                 </div>
               </div>
             </td>
@@ -141,7 +144,7 @@ background: #F1F4F5;
             <td width='180' align="right" valign="bottom" style='vertical-align: bottom;'>
               <div class="contentEditableContainer contentTextEditable">
                 <div class="contentEditable">
-                  <a target='_blank' href="https://schol.io" class='link1'>Άνοιγμα ιστοσελίδας</a>
+                  <!--<a target='_blank' href="https://schol.io" class='link1'>Άνοιγμα ιστοσελίδας</a>-->
                 </div>
               </div>
             </td>
@@ -187,17 +190,17 @@ background: #F1F4F5;
                   <td width='305'>
                     <div class="contentEditableContainer contentTextEditable">
                       <div class="contentEditable">
-                        <h2 style='font-size: 24px;'>Schol.io - Ψηφιακή πλατφόρμα προβολής εκπαιδευτικών υπηρεσιών</h2>
+                        <h2 style='font-size: 24px;'>schol.io - Ψηφιακή πλατφόρμα προβολής εκπαιδευτικών υπηρεσιών</h2>
                         <br/>
                         <p>
-                          Καλημέρα <br><br>
-                          Αγαπητέ κύριε ΜΠΛΑ ΜΠΛΑ,
-                          ονομάζομαι ΜΠΛΑ ΜΠΛΑ, και ΜΠΛΑ ΜΠΛΑ ΜΠΛΑ ΜΠΛΑ.
+                          Αγαπητέ κύριε Μέλη,<br>
+                          ονομάζομαι Σιώκας Απόστολος και σε συνέχεια της πρώτης μας επαφής στο GameFest που οργάνωσε το IEK ΑΛΦΑ,
                         </p>
                         <br>
                         <p>
-                          Επικοινωνώ μαζί σας προκειμένου να κανονίσουμε μία συντομη συνάντηση εφόσον και εσείς το επιθυμείτε, για να σας παρουσιάσουμε μια νέα ψηφιακή πλατφόρμα προβολής και αναζήτησης εκπαιδευτικών υπηρεσιών με αιχμή τη διεκδίκηση κλασσικών αλλά και καινοτόμων μορφών υποτροφιών. Η ψηφιακή μας πλατφόρμα <a href="https://schol.io">schol.io</a> θα είναι σε alpha version δοκιμαστικής λειτουργίας σε σχετικά σύντομο χρονικό διάστημα και στην παρούσα φάση αναζήτουμε ένα μικρό αριθμό εκπαιδευτικών ιδρυμάτων με σημαντική παρουσία στο χώρο των υποτροφιών, που θα δήλωναν τη πρόθεση τους για τη συμμετοχή τους στη δοκιμαστική μας έκδοση.
-
+                          επικοινωνώ μαζί σας προκειμένου να κανονίσουμε μία σύντομη συνάντηση εφόσον και εσείς το επιθυμείτε, για να σας παρουσιάσουμε μια νέα ψηφιακή πλατφόρμα προβολής και αναζήτησης εκπαιδευτικών υπηρεσιών με αιχμή τη διεκδίκηση κλασικών αλλά και καινοτόμων μορφών υποτροφιών.
+                          Η ψηφιακή μας πλατφόρμα <a href="https://schol.io">schol.io</a> θα είναι σε alpha version δοκιμαστικής λειτουργίας σε σχετικά σύντομο χρονικό διάστημα και στην παρούσα φάση αναζητούμε ένα μικρό αριθμό εκπαιδευτικών ιδρυμάτων με σημαντική παρουσία στο χώρο των υποτροφιών,
+                          που θα δήλωναν τη πρόθεσή τους για τη συμμετοχή τους στη δοκιμαστική μας έκδοση.
                         </p>
                         <br/><br/>
                         <!-- <p style='text-align: right;'><a target='_blank' href="#"  class='link2' >See more</a></p> -->
@@ -636,6 +639,7 @@ background: #F1F4F5;
        <div class='movableContent'>
         <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td height='20'></td></tr></table>
         <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class='bgItem'>
+
           <tr><td height='10' bgcolor="008da5"></td></tr>
           <tr>
             <td>
@@ -645,7 +649,16 @@ background: #F1F4F5;
                   <td align='center'>
                     <table width="204" border="0" cellspacing="0" cellpadding="0" align="center">
                       <tr>
-                        <td width='68' align="center">
+                        <td width='55' align="center">
+                          <div class="contentEditableContainer contentTwitterEditable">
+                            <div class="contentEditable">
+                              <a href="https://schol.io">
+                                <i class="fa fa-globe fa-3x"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                        <td width='55' align="center">
                           <div class="contentEditableContainer contentFacebookEditable">
                             <div class="contentEditable">
                               <a href="https://www.facebook.com/scholioapp/">
@@ -654,22 +667,16 @@ background: #F1F4F5;
                             </div>
                           </div>
                         </td>
-                        <td width='68' align="center">
-                          <div class="contentEditableContainer contentTwitterEditable">
-                            <div class="contentEditable"> 
-                              <a href="https://schol.io">
-                                <i class="fa fa-link fa-3x"></i>
-                              </a>
+                      <td width='55' align="center">
+                          <div class="contentEditableContainer contentImageEditable">
+                            <div class="contentEditable">
+                              <a href="https://m.me/scholioapp?ref=Welcome%20message">
+                              <i class="fa fa-comments-o fa-3x"></i>
+                                </a>
                             </div>
                           </div>
                         </td>
-<!--                         <td width='68' align="center">
-                          <div class="contentEditableContainer contentImageEditable">
-                            <div class="contentEditable">
-                              <img src="images/pinterest.png" alt="Pinterest" width='50' height='50'  data-max-width="50">
-                            </div>
-                          </div>
-                        </td> -->
+
                       </tr>
                     </table>
                   </td>
@@ -690,11 +697,13 @@ background: #F1F4F5;
                   <td align='center'>
                     <div class="contentEditableContainer contentTextEditable">
                       <div class="contentEditable" >
-                        <p style='color:#a5a5a5;text-align:center;font-size:11px;line-height:19px;'>
-                          Apostolos Siokas<br>
-                          Co-Founder & CTO @ 
-                          <a href="https://schol.io">Schol.io</a> <br>
-                          6980331073 <br>
+                        <p style='color:#a5a5a5;text-align:center;font-size:13px;line-height:19px;'>
+                          <span style="font-size:20px">Apostolos Siokas</span><br>
+                          Co-Founder & CTO,
+                           schol.io <a href="https://schol.io">      </a> <br>
+                          <i class="fa fa-phone" style="margin-right: 4px"></i>+30 6980.331073 <br>
+                          <i class="fa fa-envelope" style="margin-right: 4px"></i>apostolossiokas@gmail.com<br>
+
                           <!-- <a target='_blank' href="[FORWARD]" style="color:#a5a5a5;">Forward to a friend</a> <br> -->
                           <!-- <a target='_blank' href="[UNSUBSCRIBE]" style='color:#a5a5a5;'>Unsubscribe</a> -->
                         </p>
