@@ -24,7 +24,7 @@
                 <!-- The animated searching tool -->
                 <i class="fa fa-search"  aria-hidden="true"></i>
             </div>
-            <p>Η σελιδα που αναζητάτε δεν βρέθηκε.</p>
+            <p>Η σελίδα που αναζητάτε δεν βρέθηκε.</p>
 
 @endsection
 

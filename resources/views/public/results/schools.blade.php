@@ -91,6 +91,49 @@
 <style>
     .btn-white:hover{color: #00bcd4!important;}
     /*li{color: red}*/
+
+
+    .pos-xs{right: 11px;}
+
+    .pos-right{right: -6px}
+
+
+
+    @media (max-width:767px){
+        .pos-right{top: -349px; right: -2px!important;}
+    }
+    @media (max-width:600px){
+        .pos-right{top: -329px;}
+    }
+
+    @media (max-width:540px){
+        .pos-right{top: -304px;}
+    }
+
+    @media (max-width:480px){
+        .pos-right{top: -274px;}
+    }
+
+    @media (max-width:400px){
+        .pos-right{top: -246px;}
+    }
+
+
+
+
+
+    @media (max-width:991px){
+        .pos-right{right: -32px}
+    }
+    @media (min-width: 1240px){
+    .pos-right{right: -25px}
+    }
+    @media (min-width: 1450px){
+        .pos-right{right: -45px}
+    }
+
+
+
 </style>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="schoolsResultsApp"  ng-controller="schoolsResultsCtrl" data-ng-init="init()"  ng-cloak>
@@ -421,8 +464,11 @@ angular.module("schoolsResultsApp",[])
     });
 
     var hitTemplate = `
+
     <div class="card clear-fix margin-bot-25">
+
         <con>
+
             <photo class="">
                 <a href="/public/profile/@{{school_id}}">
                     <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{image}})">
@@ -436,6 +482,12 @@ angular.module("schoolsResultsApp",[])
 
 
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+           @{{#hot}}
+            <div  class="ribbon top20 pos-right"><span style="font-size: 95%">Popular</span></div>
+            @{{/hot}}
+          {{--@{{#hot}}--}}
+          {{--<div  class="ribbon top20 pos-right"><span style="font-size: 95%"> Popular</span></div>--}}
+          {{--@{{/hot }}--}}
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
                 <a href="/public/profile/@{{school_id}}" target="_blank">
                 <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="/images/schools/@{{logo}}">
@@ -448,21 +500,26 @@ angular.module("schoolsResultsApp",[])
                     <span class="sc-t-orange"> @{{stars}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{reviews}}  @lang('schools.cards.reviews'))</span>
                 </span>
             </div>
-@{{#stats}}
+            @{{#stats}}
             <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                 <span class="pull-left pad-left-5">@lang('schools.cards.scholarships')</span>
-                <span class="pull-right badge">
 
-                    @{{#ppp}}
-                        <span style="color: orange;">@{{lengthScholarships}}</span>
-                    @{{/ppp}}
 
-                    @{{^ppp}}
-                    <span style="color: #fff;">@{{lengthScholarships}}</span>
-                    @{{/ppp}}
+                    @{{#scolarsLength}}
+                        <span class="pull-right badge" style="background-color: #FD6A33">
+                         <span style="color:#fff ;">@{{lengthScholarships}}</span>
+                         </span>
+                    @{{/scolarsLength}}
 
-                    </span>
+
+                    @{{^scolarsLength}}
+                    <span class="pull-right badge" style="background-color: #aaa">
+                     <span style="color: #fff;">@{{lengthScholarships}}</span>
+                     </span>
+                    @{{/scolarsLength}}
+
+
                 <br>
                 <div class="pad-top-5"></div>
                 <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
@@ -484,7 +541,33 @@ angular.module("schoolsResultsApp",[])
                 <span class="pull-left pad-left-2 pad-bot-10">@lang('schools.cards.con_teachers')</span>
                 <span class="pull-right">@{{lengthTeachers}}</span>
             </div>
-                    @{{/stats}}
+            @{{/stats}}
+
+
+
+            @{{^stats}}
+            <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top" style="color: #ddd">
+                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
+                 <span class="pull-left pad-left-5">@lang('schools.cards.scholarships')</span>
+                <br>
+                <div class="pad-top-5"></div>
+                <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
+                <span class="pull-left pad-left-10" ng-show="type_id!='1' && type_id!='2'">@lang('schools.cards.con_students')</span>
+                 <br>
+            </div>
+
+            <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3" style="color: #ddd">
+                <div ng-show="type_id==1 || type_id==2 ">
+                    <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
+                    <span class="pull-left pad-left-5">@lang('schools.cards.studies')</span>
+                    <br>
+                    <div class="pad-top-5"></div>
+                </div>
+
+                <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
+                <span class="pull-left pad-left-2 pad-bot-10">@lang('schools.cards.con_teachers')</span>
+            </div>
+            @{{/stats}}
 
             <div ng-show="type_id!=1 && type_id!=2">
                 <div class="margin-pad" style=""></div>
@@ -564,14 +647,20 @@ angular.module("schoolsResultsApp",[])
                 },
                 transformData: function(hit) {
                     hit.rating = [];
-                    hit.ppp = [];
+                    hit.scolarsLength = [];
                     hit.stats = [];
+                    hit.hot=[];
+
+
+                    if(hit.lengthStudents > 8   && (window.STATS[hit.id-1] == 1) ){
+                        hit.hot.push(true);
+                    }
+
                     if(hit.lengthScholarships > 8){
-                        hit.ppp.push(true);
+                        hit.scolarsLength.push(true);
                     }
                     // console.log(window.STATS[0]);
                     if(window.STATS[hit.id-1] == 1){
-                        console.log('oooo');
                         hit.stats.push(true);
                     }
                     console.log(hit);
@@ -792,16 +881,16 @@ angular.module("schoolsResultsApp",[])
 
     })
 
-setTimeout(function() {
-    for(var i=1; i<=11; i++){
-        var data = $('#s-'+i).attr('data-length');
-        if(data >=8){
-        console.log('OK');
-        $('#s-'+i).addClass('testRed');
-    }
-    }
-
-}, 1500);
+//setTimeout(function() {
+//    for(var i=1; i<=11; i++){
+//        var data = $('#s-'+i).attr('data-length');
+//        if(data >=8){
+//        console.log('OK');
+//        $('#s-'+i).addClass('testRed');
+//    }
+//    }
+//
+//}, 1500);
 
 
 </script>

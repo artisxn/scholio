@@ -84,7 +84,8 @@
 }
 .content .content-box .big-content .fa-key,
 .content .content-box .big-content .fa-search,
-.content .content-box .big-content .fa-ban{
+.content .content-box .big-content .fa-ban,
+.content .content-box .big-content .fa-wrench{
     position: absolute;
     top: 8rem;
     left: 15rem;

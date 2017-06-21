@@ -474,8 +474,10 @@ angular.module("scholarshipsResultsApp",[])
 
     var hitTemplate = `
     <div class=" col-xs-12 pad-0-mar-0 inner-container">
-        <div  class="ribbon top5"><span style="font-size: 95%">top 10</span></div>
 
+    @{{#adminter}}
+        <div  class="ribbon top5"><span style="font-size: 95%"><i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span></div>
+    @{{/adminter}}
     <div class="col-xs-12 scholar-header">
         <div class="circle margin-top-8 pull-left">
             <div class=" trophy-container centered-abs">
@@ -622,9 +624,16 @@ angular.module("scholarshipsResultsApp",[])
                 },
                 transformData: function(hit) {
                     hit.stars = [];
+                    hit.adminter=[];
+
                     for (var i = 1; i <= 5; ++i) {
                         hit.stars.push(i <= hit.rating);
                     }
+
+                    if((hit.interested +hit.requested)> 11){
+                        hit.adminter.push(true);
+                    }
+
                     return hit;
                 }
             })
