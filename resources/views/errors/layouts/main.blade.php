@@ -36,15 +36,57 @@
         {{--<script src="/panel/assets/js/modernizr.min.js"></script>--}}
 
     </head>
+
+    <style>
+        .sc-btn{margin: 20px 5px 0 5px; width: 150px;}
+        .margin-right-10{ margin-right: 10px; }
+
+        .inline>a {color:#008da5; font-size: 120%; margin: 20px 15px 0 15px; font-weight: 400;}
+        .inline>a:hover{color: #FD6A33; text-decoration: none}
+        .thin-line{height: 1px; background-color: #008da5; margin: 30px 0 10px 0; }
+
+        .main-fa{color: #008da5; font-size: 1300%}
+
+    </style>
     <body style="background-color: #F1F4F5">
 
             <div class=" text-center" >
                 <div class="content" >
                     <div class="content-box">
-                        <img src="/new/img/ScholioLogoNewSm.png" height="90px" alt="">
+                        <img src="/new/img/ScholioLogoNewSm.png" height="100px" alt="">
                         <h1 class="logo-title">schol.io</h1>
                              @yield('content')
-                        <a class="btn btn-primary" style="margin-top: 20px; width: 200px;" href="{{ url()->previous() }}"> Επιστροφή </a>
+
+                        {{--<div class="buttons">--}}
+                            {{--<a class="btn btn-primary sc-btn" href="/">--}}
+                                {{--<i class="fa fa-home margin-right-10"></i> Αρχική--}}
+                            {{--</a>--}}
+
+                            {{--<a class="btn btn-primary sc-btn" href="/public/scholarships">--}}
+                                {{--<i class="fa fa-trophy margin-right-10"></i> Υποτροφίες--}}
+                            {{--</a>--}}
+
+                            {{--<a class="btn btn-primary sc-btn" href="/public/schools">--}}
+                                {{--<i class="fa fa-university margin-right-10"></i> Εκπ.Ιδρύματα--}}
+                            {{--</a>--}}
+{{--                            <a class="btn btn-primary sc-btn"  href="{{ url()->previous() }}">--}}
+                            {{--<a class="btn btn-primary sc-btn"  href="javascript:history.back()">--}}
+                                {{--<i class="fa fa-undo margin-right-10"></i> Επιστροφή--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+
+
+                        <div class="inline">
+                            <div class="thin-line"></div>
+                            <a class="sc-btn" href="/">Αρχική</a>
+
+                            <a class="sc-btn" href="/public/scholarships">Υποτροφίες</a>
+
+                            <a class="sc-btn" href="/public/schools">Εκπ.Ιδρύματα</a>
+
+                            <a class="sc-btn"  href="javascript:history.back()">Επιστροφή</a>
+                        </div>
+
                     </div>
                 </div>
             </div>
