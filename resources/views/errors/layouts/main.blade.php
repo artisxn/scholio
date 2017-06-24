@@ -57,23 +57,22 @@
                         <h1 class="logo-title">schol.io</h1>
                              @yield('content')
 
-                        {{--<div class="buttons">--}}
-                            {{--<a class="btn btn-primary sc-btn" href="/">--}}
-                                {{--<i class="fa fa-home margin-right-10"></i> Αρχική--}}
-                            {{--</a>--}}
+                       {{--  <div class="buttons">
+                            <a class="btn btn-primary sc-btn" href="/">
+                                <i class="fa fa-home margin-right-10"></i> Αρχική
+                            </a>
 
-                            {{--<a class="btn btn-primary sc-btn" href="/public/scholarships">--}}
-                                {{--<i class="fa fa-trophy margin-right-10"></i> Υποτροφίες--}}
-                            {{--</a>--}}
+                            <a class="btn btn-primary sc-btn" href="/public/scholarships">
+                                <i class="fa fa-trophy margin-right-10"></i> Υποτροφίες
+                            </a>
 
-                            {{--<a class="btn btn-primary sc-btn" href="/public/schools">--}}
-                                {{--<i class="fa fa-university margin-right-10"></i> Εκπ.Ιδρύματα--}}
-                            {{--</a>--}}
-{{--                            <a class="btn btn-primary sc-btn"  href="{{ url()->previous() }}">--}}
-                            {{--<a class="btn btn-primary sc-btn"  href="javascript:history.back()">--}}
-                                {{--<i class="fa fa-undo margin-right-10"></i> Επιστροφή--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
+                            <a class="btn btn-primary sc-btn" href="/public/schools">
+                                <i class="fa fa-university margin-right-10"></i> Εκπ.Ιδρύματα
+                            </a>
+                            <a class="btn btn-primary sc-btn"  href="javascript:history.back()">
+                                <i class="fa fa-undo margin-right-10"></i> Επιστροφή
+                            </a>
+                        </div> --}}
 
 
                         <div class="inline">

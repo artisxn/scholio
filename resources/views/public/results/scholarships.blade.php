@@ -439,7 +439,7 @@ angular.module("scholarshipsResultsApp",[])
             instantsearch.widgets.searchBox({
                 container: '#query',
                  poweredBy: true,
-                 placeholder: "@lang('scholarships.navigation.search_institution')"
+                 placeholder: "@lang('scholarships.navigation.search_scholarships')"
             })
     );
 
