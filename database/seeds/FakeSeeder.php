@@ -558,6 +558,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school1->id, 2, 500, 209, 1, 4, 2, 1);
         $this->createScholarship($school1->id, 1, 100, 324, 3, 2, 2, 2);
         $this->createScholarship($school1->id, 2, 800, 309, 3, 2, 2, 2);
+        // MultiScholarship
+        $this->createScholarship($school1->id, 2, 800, [209, 207, 210], 3, 2, 2, 2, true);
         /*===============  2 AMC ================*/
         $this->createImages($school2, 'fake/amc-', 1, 7);
         $this->createStudy($school2, [202, 203, 204, 205, 240, 241, 244, 245, 246, 249, 250, 255, 256, 257, 258, 259, 260, 261,
@@ -586,6 +588,8 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school3->id, 1, 90, 34, 2, 4, 1, 4);
         $this->createScholarship($school3->id, 2, 400, 86, 2, 5, 1, 0);
         $this->createScholarship($school3->id, 1, 50, 108, 2, 1, 1, 5);
+        // MultiScholarship
+        $this->createScholarship($school3->id, 2, 800, [108, 86, 34, 33], 3, 2, 2, 2, true);
         /*===============  4 Εκπαιδευτήρια Βασιλειάδη ================*/
         $this->createStudy($school4, [423, 424, 425]);
         $this->createImages($school4, 'fake/vasileiadi-', 1, 6);
@@ -1177,13 +1181,18 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             }
         }
     }
-    public function createScholarship($id, $financial_id, $financial_amount, $study_id, $level_id, $criteria_id, $winner_id)
+    public function createScholarship($id, $financial_id, $financial_amount, $study_id, $level_id, $criteria_id, $winner_id, $rand = false, $multiple = false)
     {
         $scholarship = new Scholarship;
         $scholarship->school_id = $id;
         $scholarship->financial_id = $financial_id;
         $scholarship->financial_amount = $financial_amount;
-        $scholarship->study_id = $study_id;
+        if ($multiple) {
+            $scholarship->study_id = $study_id[0];
+            $scholarship->multiple = true;
+        } else {
+            $scholarship->study_id = $study_id;
+        }
         $scholarship->level_id = $level_id;
         $scholarship->criteria_id = $criteria_id;
         $scholarship->winner_id = $winner_id;
@@ -1192,6 +1201,14 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         // $scholarship->terms = $terms;
         $scholarship->end_at = Carbon::now()->addWeeks(3);
         $scholarship->save();
+
+        if ($multiple) {
+            foreach ($study_id as $id) {
+                $study = Study::find($id);
+                $scholarship->multipleStudies()->toggle($study);
+            }
+        }
+
         return $scholarship;
     }
     public function createTerms($schoolID, $terms, $all, $scholarshipID = null)

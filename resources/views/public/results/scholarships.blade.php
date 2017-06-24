@@ -491,7 +491,7 @@ angular.module("scholarshipsResultsApp",[])
     </div>
 
     <div class="col-xs-12 pad-0-mar-0 section-container">
-        <div class="col-lg-4 col-md-6 col-sm-4 section1 ">
+        <div class="col-lg-4 col-md-6 col-sm-4 section1">
             <div class="hex-container centered">
                 <div class="hexagon3 hex">
                     <span></span>
@@ -499,8 +499,16 @@ angular.module("scholarshipsResultsApp",[])
                 </div>
             </div>
             <div class="centered-text">
+                
+                @{{#multiple}}
+                <div class="text-title" style="color:red;">@lang('scholarships.cards.study')</div>
+                Σε πολλαπλα αντικειμενα σπουδών
+                @{{/multiple}}
+                @{{^multiple}}
                 <div class="text-title">@lang('scholarships.cards.study')</div>
                 <div class="text-content">@{{{_highlightResult.study.value}}}</div>
+                @{{/multiple}}
+                
                 <div class="text-title">@lang('scholarships.cards.level')</div>
                 <div class="text-content">@{{{_highlightResult.level.value}}}</div>
             </div>
@@ -625,6 +633,8 @@ angular.module("scholarshipsResultsApp",[])
                 transformData: function(hit) {
                     hit.stars = [];
                     hit.adminter=[];
+                    // hit.multipleStudies=[];
+                    // console.log(hit);
 
                     for (var i = 1; i <= 5; ++i) {
                         hit.stars.push(i <= hit.rating);
@@ -633,6 +643,10 @@ angular.module("scholarshipsResultsApp",[])
                     if((hit.interested +hit.requested)> 11){
                         hit.adminter.push(true);
                     }
+
+                    // if(hit.multiple){
+                    //     hit.multipleStudies.push(true);
+                    // }
 
                     return hit;
                 }

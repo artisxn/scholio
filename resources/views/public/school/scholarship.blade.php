@@ -301,7 +301,18 @@
         </div>
         <div class="box-left">
             <div class="title">
-                @lang('scholarship_view.cards.study') {{ $scholarship->study->name}}
+
+                @lang('scholarship_view.cards.study') 
+                <br>
+                @if($scholarship->multiple)
+                <ul>
+                    @foreach($scholarship->multipleStudies as $study)
+                        <li>{{$study->name}}</li>
+                    @endforeach
+                </ul>
+                @else
+                    {{ $scholarship->study->name}}
+                @endif
             </div>
             <div class="text">
                 @lang('scholarship_view.cards.study_message1') {{ $scholarship->level->name }}  @lang('scholarship_view.cards.study_message2')

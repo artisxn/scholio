@@ -26,7 +26,8 @@ class CreateScholarshipsTable extends Migration
             $table->text('terms')->nullable();
             $table->boolean('exam')->default(0);
             $table->date('exam_date')->nullable();
-            $table->boolean('active')->default('1');
+            $table->boolean('active')->default(0);
+            $table->boolean('multiple')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

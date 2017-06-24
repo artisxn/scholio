@@ -241,9 +241,20 @@ class Scholio
 
         foreach (Scholarship::all() as $scholarship) {
             $scholarTagsDummy = '';
+            $studyDummy = '';
             $alg = new AlgoliaScholarship;
             $alg->scholarship_id = $scholarship->id;
-            $alg->study = $scholarship->study->name;
+
+            if ($scholarship->multiple) {
+                foreach ($scholarship->multipleStudies as $study) {
+                    $studyDummy .= $study->name;
+                }
+                $alg->study = $studyDummy;
+                $alg->multiple = true;
+            } else {
+                $alg->study = $scholarship->study->name;
+                $alg->multiple = false;
+            }
             $alg->section = $scholarship->study->section[0]->name;
             // $alg->section_en = $scholarship;
             $alg->level = $scholarship->level->name;

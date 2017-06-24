@@ -166,4 +166,9 @@ class Scholarship extends Model
     {
         return $this->belongsToMany(Tag::class, 'scholarship_tag');
     }
+
+    public function multipleStudies()
+    {
+         return $this->belongsToMany(Study::class, 'scholarship_study');   
+    }
 }

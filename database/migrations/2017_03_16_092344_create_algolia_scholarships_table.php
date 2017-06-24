@@ -16,7 +16,7 @@ class CreateAlgoliaScholarshipsTable extends Migration
         Schema::create('algolia_scholarships', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('scholarship_id');
-            $table->string('study')->nullable();
+            $table->text('study')->nullable();
             $table->string('type')->nullable();
             $table->string('type_en')->nullable();
             $table->string('section')->nullable();
@@ -40,6 +40,7 @@ class CreateAlgoliaScholarshipsTable extends Migration
             $table->string('exams')->nullable();
             $table->string('exams_en')->nullable();
             $table->string('end_at')->nullable();
+            $table->boolean('multiple')->nullable();
             $table->text('tags')->nullable();
         });
     }
