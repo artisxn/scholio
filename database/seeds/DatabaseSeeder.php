@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdmissionCategoryTableSeeder::class);
         $this->call(TagTableSeeder::class);
         $this->call(FakeSeeder::class);
+        $this->call(DonorSeeder::class);
         $this->call(TeacherDetailsTableSeeder::class);
         $this->call(SkillsTableSeeder::class);
         $this->call(SocialLinksTableSeeder::class);

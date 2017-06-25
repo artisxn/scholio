@@ -2,9 +2,11 @@
 
 namespace App\Scholio;
 
+use App\Models\AlgoliaDonorScholarship;
 use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
 use App\Models\AlgoliaStudy;
+use App\Models\DonatedScholarship;
 use App\Models\Dummy;
 use App\Models\Image;
 use App\Models\Scholarship;
@@ -309,6 +311,17 @@ class Scholio
             $s->level = $study->level()->name;
             $s->section = $study->section[0]->name;
             $s->save();
+        }
+
+        foreach(DonatedScholarship::all() as $scholarship){
+            $algD = new AlgoliaDonorScholarship;
+            $algD->name = $scholarship->donor->user->name;
+            $algD->avatar = $scholarship->donor->avatar;
+            $algD->study = $scholarship->study;
+            $algD->institution = $scholarship->institution;
+            $algD->financial_amount = $scholarship->financial_amount;
+            $algD->terms = $scholarship->terms;
+            $algD->save();
         }
 
         static::algoliaGEO();
