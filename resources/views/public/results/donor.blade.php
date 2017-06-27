@@ -475,8 +475,8 @@ angular.module("scholarshipsResultsApp",[])
     var hitTemplate = `
     <div class=" col-xs-12 pad-0-mar-0 inner-container">
 
-        <div  class="ribbon top5"><span style="font-size: 95%"><i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span></div>
-    <div class="col-xs-12 scholar-header">
+        <div class="ribbon top5"><span style="font-size: 95%"><i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span></div>
+    <div class="col-xs-12 scholar-header" style="background-color:red;">
         <div class="circle margin-top-8 pull-left">
             <div class=" trophy-container centered-abs">
                 <img class="trophy-img centered" src="/new/img/trophy4.png" alt="">
@@ -493,18 +493,19 @@ angular.module("scholarshipsResultsApp",[])
             <div class="hex-container centered">
                 <div class="hexagon3 hex">
                     <span></span>
-                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{section}}.png" alt="">
                 </div>
             </div>
             <div class="centered-text">
-                
-                <div class="text-title" style="color:red;">@lang('scholarships.cards.study')</div>
+    
                 <div class="text-title">@lang('scholarships.cards.study')</div>
+                @{{#st}}
+                ΣΕ ΠΟΛΛΑΠΛΑ ΑΝΤΙΚΕΙΜΕΝΑ ΣΠΟΥΔΩΝ
+                @{{/st}}
                 <div class="text-content">@{{{_highlightResult.study.value}}}</div>
-                
+    
                 <div class="text-title">@lang('scholarships.cards.level')</div>
                 <div class="text-content">
-                NOT YET IMPLEMENTED
+                @{{{_highlightResult.level.value}}}
                 </div>
             </div>
         </div>
@@ -525,40 +526,22 @@ angular.module("scholarshipsResultsApp",[])
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-xs-12 scholar-footer ">
-        <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
-            <div class=" xxs-9 col-xs-6 col-sm-5 col-md-6 pad-0-mar-0 xxs-footer" >
-                <span class=" xxs-8 col-xs-8 col-sm-7 pad-0-mar-0">
-                    <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarships.cards.admissions'):</div>
-                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarships.cards.interested'):</div>
-                </span>
-                <span class="xxs-2 col-xs-2 col-sm-3 text-right">
-                    <div class="">@{{ requested }}</div>
-                    <div class="margin-top-5">@{{ interested }}</div>
-                </span>
+        <div class="col-lg-4 col-sm-4 col-md-12 section3 hidden-xxxs hidden-xxs">
+            <div class="hex-container centered">
+                <div class="hexagon3 hex" style="">
+                    <span></span>
+                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{financial_icon}}" alt="">
+                </div>
             </div>
-            <div class="col-xs-6 col-sm-5 pad-0-mar-0 xs-hidden">
-                <span class="col-xs-7 col-sm-7 pad-0-mar-0">
-                    <div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarships.cards.exams'):</div>
-                    <div class="">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarships.cards.end'):</div>
-                </span>
-                <span class="col-xs-5 col-sm-5 pad-0-mar-0 text-right">
-                    <div class="">@{{end_at}}</div>
-                </span>
+            <div class="centered-text">
+                <div class="text-title">
+                ΕΚ. ΙΔΡΥΜΑ
+                </div>
+                <div class="text-content">
+                @{{institution}}
+                </div>
             </div>
-        </div>
-
-
-        <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0">
-
-
-            <a href="/scholarship/@{{scholarship_id}}" >
-                <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
-                    <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarships.cards.show')
-                </button>
-            </a>
         </div>
     </div>
     `;
@@ -592,22 +575,11 @@ angular.module("scholarshipsResultsApp",[])
                     item: hitTemplate
                 },
                 transformData: function(hit) {
-                    hit.stars = [];
-                    hit.adminter=[];
-                    // hit.multipleStudies=[];
-                    // console.log(hit);
+                    hit.st = [];
 
-                    for (var i = 1; i <= 5; ++i) {
-                        hit.stars.push(i <= hit.rating);
+                    if(hit.study == ''){
+                        hit.st.push(true);
                     }
-
-                    if((hit.interested +hit.requested)> 11){
-                        hit.adminter.push(true);
-                    }
-
-                    // if(hit.multiple){
-                    //     hit.multipleStudies.push(true);
-                    // }
 
                     return hit;
                 }
@@ -628,28 +600,28 @@ angular.module("scholarshipsResultsApp",[])
             })
     );
 
-    search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesType',
-                attributes: ['type'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+    // search.addWidget(
+    //         instantsearch.widgets.hierarchicalMenu({
+    //             container: '#categoriesType',
+    //             attributes: ['type'],
+    //             sortBy: ['name:asc'],
+    //             templates: {
+    //                 item: menuTemplate
+    //             }
+    //         })
+    // );
 
 
-    search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesCity',
-                attributes: ['city'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+    // search.addWidget(
+    //         instantsearch.widgets.hierarchicalMenu({
+    //             container: '#categoriesCity',
+    //             attributes: ['city'],
+    //             sortBy: ['name:asc'],
+    //             templates: {
+    //                 item: menuTemplate
+    //             }
+    //         })
+    // );
 
 @if(request()->cookie('lang') == 'en')
     search.addWidget(
@@ -663,87 +635,87 @@ angular.module("scholarshipsResultsApp",[])
             })
     );
 
-    @else
-search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesCriteria',
-                attributes: ['criteria'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
-    @endif
+//     @else
+// search.addWidget(
+//             instantsearch.widgets.hierarchicalMenu({
+//                 container: '#categoriesCriteria',
+//                 attributes: ['criteria'],
+//                 sortBy: ['name:asc'],
+//                 templates: {
+//                     item: menuTemplate
+//                 }
+//             })
+//     );
+//     @endif
 
 
-    search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesTypeMobile',
-                attributes: ['type'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+//     search.addWidget(
+//             instantsearch.widgets.hierarchicalMenu({
+//                 container: '#categoriesTypeMobile',
+//                 attributes: ['type'],
+//                 sortBy: ['name:asc'],
+//                 templates: {
+//                     item: menuTemplate
+//                 }
+//             })
+//     );
 
 
-    search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesCityMobile',
-                attributes: ['city'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+    // search.addWidget(
+    //         instantsearch.widgets.hierarchicalMenu({
+    //             container: '#categoriesCityMobile',
+    //             attributes: ['city'],
+    //             sortBy: ['name:asc'],
+    //             templates: {
+    //                 item: menuTemplate
+    //             }
+    //         })
+    // );
 
-    search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesSection',
-                attributes: ['section'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+    // search.addWidget(
+    //         instantsearch.widgets.hierarchicalMenu({
+    //             container: '#categoriesSection',
+    //             attributes: ['section'],
+    //             sortBy: ['name:asc'],
+    //             templates: {
+    //                 item: menuTemplate
+    //             }
+    //         })
+    // );
 @if(request()->cookie('lang') == 'en')
-    search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesLevel',
-                attributes: ['level_en'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+    // search.addWidget(
+    //         instantsearch.widgets.hierarchicalMenu({
+    //             container: '#categoriesLevel',
+    //             attributes: ['level_en'],
+    //             sortBy: ['name:asc'],
+    //             templates: {
+    //                 item: menuTemplate
+    //             }
+    //         })
+    // );
     @else
-search.addWidget(
-            instantsearch.widgets.hierarchicalMenu({
-                container: '#categoriesLevel',
-                attributes: ['level'],
-                sortBy: ['name:asc'],
-                templates: {
-                    item: menuTemplate
-                }
-            })
-    );
+// search.addWidget(
+//             instantsearch.widgets.hierarchicalMenu({
+//                 container: '#categoriesLevel',
+//                 attributes: ['level'],
+//                 sortBy: ['name:asc'],
+//                 templates: {
+//                     item: menuTemplate
+//                 }
+//             })
+//     );
     @endif
 
-    search.addWidget(
-      instantsearch.widgets.sortBySelector({
-        container: '#sort-by-container',
-        indices: [
-          {name: 'dummyScholarships', label: '@lang('scholarships.filters.about')'},
-          {name: 'dummyScholarships_school_asc', label: '@lang('scholarships.filters.popular')'},
-          {name: 'dummyScholarships_created_asc', label: '@lang('scholarships.filters.new')'}
-        ]
-      })
-    );
+    // search.addWidget(
+    //   instantsearch.widgets.sortBySelector({
+    //     container: '#sort-by-container',
+    //     indices: [
+    //       {name: 'dummyScholarships', label: '@lang('scholarships.filters.about')'},
+    //       {name: 'dummyScholarships_school_asc', label: '@lang('scholarships.filters.popular')'},
+    //       {name: 'dummyScholarships_created_asc', label: '@lang('scholarships.filters.new')'}
+    //     ]
+    //   })
+    // );
 
     // search.addWidget(
     //   instantsearch.widgets.refinementList({

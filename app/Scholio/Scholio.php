@@ -318,6 +318,7 @@ class Scholio
             $algD->name = $scholarship->donor->user->name;
             $algD->avatar = $scholarship->donor->avatar;
             $algD->study = $scholarship->study;
+            $algD->level = $scholarship->level;
             $algD->institution = $scholarship->institution;
             $algD->financial_amount = $scholarship->financial_amount;
             $algD->terms = $scholarship->terms;

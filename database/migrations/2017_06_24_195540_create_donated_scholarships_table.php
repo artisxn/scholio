@@ -19,7 +19,7 @@ class CreateDonatedScholarshipsTable extends Migration
             $table->text('study')->nullable();
             $table->text('institution')->nullable();
             $table->string('financial_amount');
-            // $table->string('level');
+            $table->string('level');
             $table->text('terms');
             $table->timestamps();
         });

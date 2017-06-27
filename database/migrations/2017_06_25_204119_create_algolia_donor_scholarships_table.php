@@ -20,6 +20,7 @@ class CreateAlgoliaDonorScholarshipsTable extends Migration
             $table->text('study')->nullable();
             $table->text('institution')->nullable();
             $table->string('financial_amount')->nullable();
+            $table->string('level')->nullable();
             $table->text('terms')->nullable();
             $table->integer('requested')->nullable();
             $table->integer('interested')->nullable();

@@ -12,6 +12,10 @@ use App\User;
 
 Scholio::soonRoutes();
 
+Route::get('public/donor', function(){
+    return view('public.results.donor');
+});
+
 Route::get('ppp', function () {
     $schols = Scholarship::all();
     foreach ($schols as $sch) {
