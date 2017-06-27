@@ -171,4 +171,12 @@ class Scholarship extends Model
     {
          return $this->belongsToMany(Study::class, 'scholarship_study');   
     }
+
+    public function end()
+    {
+        // END_NOW = NOW
+        // ACTIVE = 0
+        // WINNERS (create a pivot table 'scholarship_winner' to show multiple winners in one scholarship) 
+        dd('DIAGRAFH'); 
+    }
 }

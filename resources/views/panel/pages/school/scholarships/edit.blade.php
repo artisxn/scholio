@@ -267,14 +267,14 @@
                 <!-- ================================ -->
                 <div class="margin-top-50"></div>
 
-
+<form method="POST" action="/scholarship/{{$scholarship->id}}/end">
                 <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Επιλογή Νικητών Υποτροφίας</div>
 
                 <div>
                     @foreach($scholarship->admission as $admission)
                         <div class=" col-xxxs-12 col-xs-6 col-lg-4">
                             <img class="avatar-img" src="{{ $admission->user->info->avatar }}" width="20px">
-                            <input type="radio" name="winner" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
+                            <input type="checkbox" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
 
                         </div>
 
@@ -302,63 +302,10 @@
 
 
                 <div class="margin-top-30"></div>
-                <button class="sc-btn sc-dark-green" style="float: right"> <i class="fa fa-flag-checkered margin-right-10"></i>Λήξη Υποτροφίας</button>
-
-                    <form class="form-horizontal m-t-20" method="POST" action="/scholarship/{{$scholarship->id}}/update" accept-charset="UTF-8" enctype="multipart/form-data">
-                        {{--<div class="row">--}}
-                        {{--{{ csrf_field() }}--}}
-
-                            {{--<div class="form-group">--}}
-                                {{--<label class="col-md-2 control-label">Πλάνο</label>--}}
-                                {{--<div class="col-md-5">--}}
-                                    {{--<input type="text" class="form-control" value="{{ $scholarship->financial->plan }}" placeholder="Fullname" name="plan">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group">--}}
-                                {{--<label class="col-md-2 control-label">Ποσό</label>--}}
-                                {{--<div class="col-md-5">--}}
-                                    {{--<input type="text" class="form-control" value="{{ $scholarship->financial_amount }}" placeholder="Fullname" name="amount">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group">--}}
-                                {{--<label class="col-md-2 control-label">Σπουδες</label>--}}
-                                {{--<div class="col-md-5">--}}
-                                    {{--<input type="text" class="form-control" value="{{ $scholarship->study->name }}" placeholder="Fullname" name="study">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group">--}}
-                                {{--<label class="col-md-2 control-label">Κριτηρια</label>--}}
-                                {{--<div class="col-md-5">--}}
-                                    {{--<input type="text" class="form-control" value="{{ $scholarship->criteria->name }}" placeholder="Fullname" name="criteria">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group">--}}
-                                {{--<label class="col-md-2 control-label">Ημ. Λήξης</label>--}}
-                                {{--<div class="col-md-5">--}}
-                                    {{--<input type="text" class="form-control" value="{{ $scholarship->end_at }}" placeholder="Fullname" name="end_at">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group">--}}
-                                {{--<label class="col-md-2 control-label">Εξετάσεις</label>--}}
-                                {{--<div class="col-md-5">--}}
-                                    {{--<input type="text" class="form-control" value="{{ $scholarship->exam_date }}" placeholder="Fullname" name="exam_date">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                        {{--</div>--}}
-                        {{--<div class="form-group text-center m-t-40">--}}
-                            {{--<div class="col-xs-3 col-sm-2 centered-text">--}}
-                                {{--<button class="btn btn-pink btn-block" type="submit">--}}
-                                    {{--Update--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    </form>
+                
+                    {{ csrf_field() }}
+                    <button class="sc-btn sc-dark-green" style="float: right"> <i class="fa fa-flag-checkered margin-right-10"></i>Λήξη Υποτροφίας</button>
+                </form>
                 </div>
             </div>
         </div>

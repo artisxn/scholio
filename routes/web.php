@@ -12,6 +12,12 @@ use App\User;
 
 Scholio::soonRoutes();
 
+Route::post('scholarship/{scholarship}/end', function(Scholarship $scholarship){
+    $winners = request()->winner;
+    $scholarship->end($winners);
+    return redirect('/dashboard');
+});
+
 Route::get('public/donor', function(){
     return view('public.results.donor');
 });
