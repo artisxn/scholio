@@ -176,7 +176,8 @@ class Scholarship extends Model
     public function end()
     {
         $this->end_at = Carbon::now();
-        $this->active = false;
+        $this->active = 0;
+        $this->save();
         $alg = AlgoliaScholarship::where('scholarship_id', $this->id)->get()->first();
         $alg->delete();
         // WINNERS (create a pivot table 'scholarship_winner' to show multiple winners in one scholarship) 

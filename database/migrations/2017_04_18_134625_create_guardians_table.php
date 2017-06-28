@@ -17,6 +17,8 @@ class CreateGuardiansTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index();
             $table->bigInteger('phone')->nullable();
+            $table->string('fname')->nullable();
+            $table->string('lname')->nullable();
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();
