@@ -10,6 +10,7 @@ use App\Models\School;
 use App\Models\Study;
 use App\Models\Tag;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -174,9 +175,11 @@ class Scholarship extends Model
 
     public function end()
     {
-        // END_NOW = NOW
-        // ACTIVE = 0
+        $this->end_at = Carbon::now();
+        $this->active = false;
+        $alg = AlgoliaScholarship::where('scholarship_id', $this->id)->get()->first();
+        $alg->delete();
         // WINNERS (create a pivot table 'scholarship_winner' to show multiple winners in one scholarship) 
-        dd('DIAGRAFH'); 
+        return 'Done';
     }
 }
