@@ -5,7 +5,8 @@
                     <li><a href="#step-1">Βήμα 1<br /><small class="mar-le-10">Οικονομική <p style="margin-top: -18px;">Προσφορά</p> </small></a></li>
                     <li><a href="#step-2">Βήμα 2<br /><small class="mar-le-10">Σπουδές/Ειδικότητα</small></a></li>
                     <li><a href="#step-3">Βήμα 3<br /><small class="mar-le-10">Κριτήρια/Όροι</small></a></li>
-                    <li><a href="#step-4">Βήμα 4<br /><small class="mar-le-10">Όροι Συμμετοχής</small></a></li>
+                    <li><a href="#step-5">Βήμα 4<br /><small class="mar-le-10">Λέξεις Κλειδιά</small></a></li>
+                    <li><a href="#step-4">Βήμα 5<br /><small class="mar-le-10">Όροι Συμμετοχής</small></a></li>
 
                 </ul>
 
@@ -44,6 +45,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div id="step-2" class="step-anchor">
                         <div class="step centered-text">
                             <!--<h2>Βήμα 2 </h2>-->
@@ -118,13 +121,33 @@
                                     <img  class="step-image" src="/panel/assets/images/steps/step3-open.png" alt="" v-if="criteria_id==5">
                                 </div>
 
-                                <select class="selectpicker" data-live-search="true" data-mobile="false" data-size='4' data-width="100%"  v-model="criteria_id" multiple data-actions-box="true">
+                                <select class="selectpicker"  data-mobile="false" data-size=3 data-width="100%"  v-model="criteria_id"  data-live-search="false" data-actions-box="false">
                                     <option data-icon="fa " value="1">&nbsp; Υποτροφία Ταλέντου/Δεξιοτήτων</option>
                                     <option data-icon="fa " value="2">&nbsp; Υποτροφία Αριστείας</option>
                                     <option data-icon="fa " value="3">&nbsp; Υποτροφια με Κοινωνικά Κριτήρια</option>
                                     <option data-icon="fa " value="4">&nbsp; Υποτροφία για Φίλους/Αδέλφια</option>
                                     <option data-icon="fa " value="5">&nbsp; Υποτροφία Ανοιχτού Τύπου</option>
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div id="step-5" class="step-anchor">
+                        <div class="step centered-text" >
+
+                            <!--<h2>Βήμα 4 </h2>-->
+                            <div class="step-box" style="">
+                                <h3>Λέξεις Κλειδιά</h3>
+
+
+                                <div class="col-lg-4 col-md-6 col-sm-6" >
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -244,6 +267,9 @@ html .ui-button.ui-state-disabled:active {
     .error {color: red}
 
     .step4MinHeight {min-height: 300px!important;}
+
+
+
 
 @media (min-width: 1420px) {
     #step-4 .step .step-box { width: 1100px;  margin-left: -290px; margin-right: auto }

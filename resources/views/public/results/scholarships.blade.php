@@ -128,6 +128,28 @@
 
 </head>
 
+<style>
+    .ribbonSm{height: 73px; width: auto; position: absolute; right: -3.5px; top: -3px; z-index: 1;}
+    .ribbonMed{height: 120px; width: auto; position: absolute; right: -4.5px; top: -4.5px; z-index: 1;}
+    .ribbonL{height: 170px; width: auto; position: absolute; right: -4.5px; top: -5px; z-index: 1;}
+
+    .text-corner{position: absolute; z-index: 2; color: #fff; font-size: 110%; font-weight: 400;
+        /* Safari,Chrome */
+        -webkit-transform: rotate(45deg);
+        /* Firefox */
+        -moz-transform: rotate(45deg);
+        /* IE */
+        -ms-transform: rotate(45deg);
+        /* Opera */
+        -o-transform: rotate(45deg);
+    }
+    .text-Sm{right: -2px; top: 13px;}
+    .text-Med{right: 8px; top: 34px; }
+    .text-L{right: 17px; top: 60px; color: #008DA5; font-weight: 600}
+
+
+</style>
+
 
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="scholarshipsResultsApp"  ng-controller="scholarshipsResultsCtrl" data-ng-init="init()"  ng-cloak>
@@ -476,15 +498,27 @@ angular.module("scholarshipsResultsApp",[])
     <div class=" col-xs-12 pad-0-mar-0 inner-container">
 
     @{{#adminter}}
-        <div  class="ribbon top5"><span style="font-size: 95%"><i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span></div>
+        <!-- <div  class="ribbon top5"><span style="font-size: 95%"><i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span></div> -->
+         <img class="ribbonSm" style="" src="/new/img/RibbonSM.png" alt="">
+         <span class="text-corner text-Sm"> <i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span>
     @{{/adminter}}
-    <div class="col-xs-12 scholar-header">
-        <div class="circle margin-top-8 pull-left">
-            <div class=" trophy-container centered-abs">
-                <img class="trophy-img centered" src="/new/img/trophy4.png" alt="">
-            </div>
-        </div>
-        <div class="header-text margin-top-20 pull-left margin-left-10"> <span class="title-from">@lang('scholarships.cards.scholarship_from'):</span>
+    @{{#adm}}
+            <img class="ribbonMed" style="" src="/new/img/RibbonMed.png" alt="">
+            <span class="text-corner text-Med"> <i class=" fa fa-fire" style="margin-right: 7px"></i>Popular</span>
+    @{{/adm}}
+    @{{#highAmount}}
+            <img class="ribbonL" style="" src="/new/img/RibbonL.png" alt="">
+            <span class="text-corner text-L"> <i class=" fa fa-money" style="margin-right: 7px"></i>High Value</span>
+    @{{/highAmount}}
+
+
+   <div class="col-xs-12 scholar-header">
+       <div class="circle margin-top-8 pull-left">
+           <div class=" trophy-container centered-abs">
+               <img class="trophy-img centered" src="/new/img/trophy4.png" alt="">
+           </div>
+       </div>
+       <div class="header-text margin-top-20 pull-left margin-left-10"> <span class="title-from">@lang('scholarships.cards.scholarship_from'):</span>
             <br class="break"> <span class="title-name"> @{{{_highlightResult.school.value}}}</span></div>
         <div class="xxs-title-name"> @{{{_highlightResult.school.value}}} </div>
         <div class="header-line"></div>
@@ -633,6 +667,8 @@ angular.module("scholarshipsResultsApp",[])
                 transformData: function(hit) {
                     hit.stars = [];
                     hit.adminter=[];
+                    hit.adm=[];
+                    hit.highAmount=[];
                     // hit.multipleStudies=[];
                     // console.log(hit);
 
@@ -640,8 +676,16 @@ angular.module("scholarshipsResultsApp",[])
                         hit.stars.push(i <= hit.rating);
                     }
 
-                    if((hit.interested +hit.requested)> 11){
+                    if((hit.interested+hit.requested)> 10){
                         hit.adminter.push(true);
+                    }
+
+                    if(hit.requested> 8){
+                        hit.adm.push(true);
+                    }
+
+                    if(hit.financial_amount> 750 || (hit.financial_amount>50 && hit.financial_metric=='%')){
+                        hit.highAmount.push(true);
                     }
 
                     // if(hit.multiple){
