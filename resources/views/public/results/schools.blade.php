@@ -89,48 +89,86 @@
 </head>
 
 <style>
+
+    /*=============================================*/
+    /*  /////////////////////////////////////////  */
+    /* ------------- Ribbons ------------- */
+    /*  /////////////////////////////////////////  */
+    /*=============================================*/
+
+    .ribbonSm{right: -45px; top: -3px;}
+    .ribbonMed{ right: -45px; top: -4.5px;}
+    .ribbonL{right: -45px; top: -5px;}
+
+    .text-Sm{right: -36px; top: 13px;}
+    .text-Med{right: -32px; top: 34px; }
+    .text-L{right: -26px; top: 60px;}
+
+    /*  /////////////////////////////////////////  */
+    /*=============================================*/
+
+
     .btn-white:hover{color: #00bcd4!important;}
     /*li{color: red}*/
 
-
     .pos-xs{right: 11px;}
-
     .pos-right{right: -6px}
 
+
+    @media (max-width:1449px){
+        .pos-right{right: -45px}
+        .ribbonMed{ right: -26px}
+        .text-Med{right: -12px}
+    }
+
+    @media (max-width:1239px){
+        .pos-right{right: -25px}
+        .ribbonMed{ right: -7px}
+        .text-Med{right: 8px}
+    }
+
+    @media (max-width:991px){
+        .pos-right{right: -32px}
+        .ribbonMed{ right: -31px}
+        .text-Med{right: -17px}
+    }
 
 
     @media (max-width:767px){
         .pos-right{top: -349px; right: -2px!important;}
+        .ribbonMed{ right: -2.5px; top: -348px;}
+        .text-Med{right: 8px ;top: -306px;}
+
     }
     @media (max-width:600px){
         .pos-right{top: -329px;}
+        .ribbonMed{top: -327px;}
+        .text-Med{top: -284px;}
     }
 
     @media (max-width:540px){
         .pos-right{top: -304px;}
+        .ribbonMed{top: -303px;}
+        .text-Med{top: -260px;}
+
     }
 
     @media (max-width:480px){
         .pos-right{top: -274px;}
+        .ribbonMed{top: -273px;}
+        .text-Med{top: -230px;}
     }
 
     @media (max-width:400px){
         .pos-right{top: -246px;}
+        .ribbonMed{top: -245px;}
+        .text-Med{top: -202px;}
     }
 
 
 
 
 
-    @media (max-width:991px){
-        .pos-right{right: -32px}
-    }
-    @media (min-width: 1240px){
-    .pos-right{right: -25px}
-    }
-    @media (min-width: 1450px){
-        .pos-right{right: -45px}
-    }
 
 
 
@@ -483,7 +521,9 @@ angular.module("schoolsResultsApp",[])
 
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
            @{{#hot}}
-            <div  class="ribbon top20 pos-right"><span style="font-size: 95%">Popular</span></div>
+            <!-- <div  class="ribbon top20 pos-right"><span style="font-size: 95%">Popular</span></div> -->
+            <img class="ribbonMed" style="" src="/new/img/RibbonMed.png" alt="">
+            <span class="text-corner text-Med"> <i class=" fa fa-fire" style="margin-right: 7px"></i>Popular</span>
             @{{/hot}}
           {{--@{{#hot}}--}}
           {{--<div  class="ribbon top20 pos-right"><span style="font-size: 95%"> Popular</span></div>--}}
@@ -652,7 +692,7 @@ angular.module("schoolsResultsApp",[])
                     hit.hot=[];
 
 
-                    if(hit.lengthStudents > 8   && (window.STATS[hit.id-1] == 1) ){
+                    if(hit.lengthStudents > 10   && (window.STATS[hit.id-1] == 1) ){
                         hit.hot.push(true);
                     }
 

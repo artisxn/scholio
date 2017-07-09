@@ -289,6 +289,34 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 
 
 
+/*=============================================*/
+/*  /////////////////////////////////////////  */
+/* ------------- Ribbons ------------- */
+/*  /////////////////////////////////////////  */
+/*=============================================*/
+
+
+.ribbonSm{height: 73px; width: auto; position: absolute; right: -3.5px; top: -3px; z-index: 1;}
+.ribbonMed{height: 120px; width: auto; position: absolute; right: -4.5px; top: -4.5px; z-index: 1;}
+.ribbonL{height: 170px; width: auto; position: absolute; right: -4.5px; top: -5px; z-index: 1;}
+
+.text-corner{position: absolute; z-index: 2; color: #fff; font-size: 110%; font-weight: 400;
+    /* Safari,Chrome */
+    -webkit-transform: rotate(45deg);
+    /* Firefox */
+    -moz-transform: rotate(45deg);
+    /* IE */
+    -ms-transform: rotate(45deg);
+    /* Opera */
+    -o-transform: rotate(45deg);
+}
+.text-Sm{right: -2px; top: 13px;}
+.text-Med{right: 8px; top: 34px; }
+.text-L{right: 17px; top: 60px; color: #008DA5; font-weight: 600}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////Language Drop Down White /////////////////////////////////// */
 
 div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;}

@@ -68,6 +68,12 @@
     .mar-left{margin-left: 10px}
     .mar-right{margin-right: 10px}
 
+    @media screen and (min-width:768px) {
+        .btn-role {
+            max-width: 190px;
+        }
+    }
+
     @media screen and (max-width:340px){
         .btn-next{width: 60px; font-size: 130%}
         .mar-left{margin-left: 0}
@@ -81,7 +87,7 @@
 <body ng-app="registerApp" ng-controller="registerCtrl">
 
 
-<div class="outer col-xxs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6" >
+<div class="outer col-xxs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6" >
     <div class="">
         <div class="panel-heading">
             <div class="text-center">

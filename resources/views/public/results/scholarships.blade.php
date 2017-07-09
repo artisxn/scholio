@@ -33,13 +33,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
     <!-- Ribbon CSS -->
-     <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">
+     {{--<link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">--}}
 
     <!-- Hexagon CSS -->
     <link href="/new/css/Hexagon.css" rel="stylesheet">
 
     <!-- Input Range CSS -->
-    <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">--}}
 
     <!-- Results CSS -->
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
@@ -129,23 +129,9 @@
 </head>
 
 <style>
-    .ribbonSm{height: 73px; width: auto; position: absolute; right: -3.5px; top: -3px; z-index: 1;}
-    .ribbonMed{height: 120px; width: auto; position: absolute; right: -4.5px; top: -4.5px; z-index: 1;}
-    .ribbonL{height: 170px; width: auto; position: absolute; right: -4.5px; top: -5px; z-index: 1;}
 
-    .text-corner{position: absolute; z-index: 2; color: #fff; font-size: 110%; font-weight: 400;
-        /* Safari,Chrome */
-        -webkit-transform: rotate(45deg);
-        /* Firefox */
-        -moz-transform: rotate(45deg);
-        /* IE */
-        -ms-transform: rotate(45deg);
-        /* Opera */
-        -o-transform: rotate(45deg);
-    }
-    .text-Sm{right: -2px; top: 13px;}
-    .text-Med{right: 8px; top: 34px; }
-    .text-L{right: 17px; top: 60px; color: #008DA5; font-weight: 600}
+
+    .logo-img{max-height: 46px; max-width: 46px; margin-top: 6px; margin-left: -3px;}
 
 
 </style>
@@ -515,7 +501,8 @@ angular.module("scholarshipsResultsApp",[])
    <div class="col-xs-12 scholar-header">
        <div class="circle margin-top-8 pull-left">
            <div class=" trophy-container centered-abs">
-               <img class="trophy-img centered" src="/new/img/trophy4.png" alt="">
+                    <img class="logo-img centered img-circle" src="/images/schools/@{{school_logo}}" alt="">
+               <!-- <img class="trophy-img centered" src="/new/img/trophy4.png" alt=""> --!>
            </div>
        </div>
        <div class="header-text margin-top-20 pull-left margin-left-10"> <span class="title-from">@lang('scholarships.cards.scholarship_from'):</span>
