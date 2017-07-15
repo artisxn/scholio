@@ -35,7 +35,7 @@
                 </div>
                 <div>
                     <div v-if="hasNOTReviewed(mySchool.id)" style="margin-top: -15px">
-                        <a :href="'/panel/users/review/create/' + mySchool.id" class="btn btn-primary">
+                        <a :href="'/panel/users/student/review/create/' + mySchool.id" class="btn btn-primary">
                             ΑΞΙΟΛΟΓΗΣΕ ΤΟ ΣΧΟΛΕΙΟ
                         </a>
                     </div>

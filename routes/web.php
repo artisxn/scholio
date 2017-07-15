@@ -12,6 +12,14 @@ use App\User;
 
 Scholio::soonRoutes();
 
+// Route::get('ttt', function() {
+//     $school = auth()->user()->info;
+//     foreach($school->students as $st){
+//         echo $st->pivot->status;
+//     }
+//     // return ->pivot->load('info', 'cv');
+// });
+
 Route::post('scholarship/{scholarship}/end', function(Scholarship $scholarship){
     $winners = request()->winner;
     $scholarship->end($winners);

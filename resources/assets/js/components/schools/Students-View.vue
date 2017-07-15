@@ -16,11 +16,11 @@
                                 <img class="img-circle" width="80" height="80" v-bind:src=student.info.avatar alt=""/>
                             </a>
                             <div class="member-info">
-                                <h4 class="m-t-0 m-b-5 header-title"><b style="text-transform: capitalize"> {{ student.name }}</b></h4>
+                                <h4 class="m-t-0 m-b-5 header-title"><b style="text-transform: capitalize"> {{ student.name }} -- {{ student.pivot.status }}</b></h4>
                                 <p class="text-muted">Φοιτητής</p>
                                 <p class="text-dark">
                                     <i class="md md-email"></i>
-                                    <small>{{ student.email }}</small>
+                                    <small>{{ student.email }} - - {{ student.cv.student_phone }}</small>
                                 </p>
                             </div>
                             <ul class="social-links list-inline m-0">
@@ -79,8 +79,8 @@
                     <td>
                         <i class="fa fa-user" style="font-size: 140%" aria-hidden="true"></i>
                     </td>
-                    <td style="text-transform: capitalize">{{student.name}}</td>
-                    <td>{{student.email}}</td>
+                    <td style="text-transform: capitalize">{{student.name}} -- {{ student.pivot.status }}</td>
+                    <td>{{student.email}} - - {{ student.cv.student_phone }}</td>
                 </tr>
                 </tbody>
             </table>

@@ -148,7 +148,8 @@
                                             </td>
                                             <td>{{ scholarship.level}}</td>
                                             <td>{{ scholarship.criteria.name }}</td>
-                                            <td>{{ scholarship.end_at }}</td>
+                                            <td v-if="scholarship.active">{{ scholarship.end_at }}</td>
+                                            <td v-if="!scholarship.active">ELHKSE</td>
                                             <td>{{ scholarship.admissions}}</td>
                                             <!-- <td>{{ scholarship.winner_id }}</td> -->
                                             <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">Προβολή</button></td>

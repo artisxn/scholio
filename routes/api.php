@@ -104,7 +104,7 @@ Route::get('/scholarship/{id}', function (Scholarship $id) {
 
 Route::get('/connected/students', function () {
     $school = auth()->user()->info;
-    return $school->students->load('info');
+    return $school->students->load('info', 'cv');
 })->middleware('auth:api');
 
 Route::post('/registration/social', function () {

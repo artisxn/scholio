@@ -52,12 +52,22 @@
 
     <style>
 
+    .customStyle{
+        background: green;
+    }
 
 
     </style>
 </head>
-<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="scholarshipApp"  ng-controller="scholarshipCtrl" data-ng-init="init()" ng-cloak style="{{ $scholarship->active ? '' : 'background: rgba(54, 25, 25, .5)'}}">
+<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="scholarshipApp"  ng-controller="scholarshipCtrl" data-ng-init="init()" ng-cloak class="{{ $scholarship->active ? '' : 'customStyle'}}">
+<!-- Για ληγμενες -->
+    @if(!$scholarship->active)
+        <div>---</div>
+    @endif
+
 <!-- Scholio Header -->
+
+
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 2">
 

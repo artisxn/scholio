@@ -143,7 +143,7 @@ class School extends Model
      */
     public function students()
     {
-        return $this->users()->where('role', 'student');
+        return $this->users()->where('role', 'student')->withPivot('status');
     }
 
     /**
