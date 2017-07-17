@@ -87,21 +87,20 @@ input:checked + .slider:before {
 
     <div class="container-out">
         <div class="row ">
-            <h3 style="font-weight: 300;"><i class="fa fa-trophy " style="margin-right: 15px"></i>Επιλογές Αίτησης Υποτροφίας</h3>
-            <p class="text">Επιλέξτε από τα παρακάτω, ποιές πληροφορίες θα πρέπει να συμπληρώνει ο υποψήφιος στην αίτηση του,
-                για τις υποτροφίες που ανακοινώνετε. </p>
+            <h3 style="font-weight: 300;"><i class="fa fa-trophy " style="margin-right: 15px"></i>@lang('settings.admissions.title')</h3>
+            <p class="text">@lang('settings.admissions.subtitle')</p>
         </div>
 
         <div class="row">
             <div class="container-left">
                 {{-- @foreach($fields as $field) --}}
-                <div class="texts" style="margin-top: 8px;"> <i class="fa fa-user fa-linear4"></i>Ονοματεπώνυμο Μαθητή</div>
+                <div class="texts" style="margin-top: 8px;"> <i class="fa fa-user fa-linear4"></i>@lang('settings.admissions.name')</div>
                 <label class="switch" style="opacity: 0.4">
                     <input type="checkbox" checked disabled>
                     <div class="slider round diss"></div>
                 </label>
                 <div style="margin-top: -10px; ">
-                    <div class="texts"> <i class="fa fa-envelope fa-linear4"></i>Email Μαθητή</div>
+                    <div class="texts"> <i class="fa fa-envelope fa-linear4"></i>@lang('settings.admissions.email')</div>
                     <label class="switch" style="opacity: 0.4">
                         <input type="checkbox" checked disabled>
                         <div class="slider round diss"></div>
@@ -114,7 +113,9 @@ input:checked + .slider:before {
                             <div class="top-pad title">{{ $category->name }}</div>
                             <hr>
                             @foreach($category->fields as $field)
-                                <div class="texts"> <i class="{{ $field->icon }} fa-linear4"></i>{{ $field->name }}</div>
+                                <div class="texts"> <i class="{{ $field->icon }} fa-linear4"></i>
+                                  @lang('settings.admissions.' . $field->slug )
+                                </div>
                                 <label class="switch">
                                     <input type="checkbox" onchange="change(this)" name="{{ $field->slug }}" {{ auth()->user()->info->settings->{$field->slug} ? 'checked' : '' }}>
                                     <span class="slider round"></span>

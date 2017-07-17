@@ -2,10 +2,10 @@
     <div class="row">
         <div class="input-group pull-left " style="width: 210px; margin: 10px 0 10px 10px;; border: 1px solid #d1d1d1; border-radius: 5px;" >
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control" placeholder="Αναζήτηση"
+            <input type="text" class="form-control" v-bind:placeholder="lang('resource.students.search')"
                    v-model="searchStr">
         </div>
-        <button class="btn btn-info pull-right" v-on:click="changeView" style="margin: 11px 10px 10px 0; height: 38px;">Αλλαγή Προβολής</button>
+        <button class="btn btn-info pull-right" v-on:click="changeView" style="margin: 11px 10px 10px 0; height: 38px;">{{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
         <div v-if="selection==true">
             <div class="col-xs-12 col-sm-6 col-xl-4 col-xxl-3" v-for="student in filteredStudies" v-if="(student.role=='student'|| student.role=='teacher')">
@@ -17,7 +17,7 @@
                             </a>
                             <div class="member-info">
                                 <h4 class="m-t-0 m-b-5 header-title"><b style="text-transform: capitalize"> {{ student.name }} -- {{ student.pivot.status }}</b></h4>
-                                <p class="text-muted">Φοιτητής</p>
+                                <p class="text-muted">{{ lang('resource.students.student') }}</p>
                                 <p class="text-dark">
                                     <i class="md md-email"></i>
                                     <small>{{ student.email }} - - {{ student.cv.student_phone }}</small>

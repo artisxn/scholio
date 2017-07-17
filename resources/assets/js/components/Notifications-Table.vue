@@ -4,28 +4,28 @@
             <div class="card-box">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="m-t-0 header-title"><b>Ειδποιήσεις για Σύνδεση</b></h4>
+                        <h4 class="m-t-0 header-title"><b>{{ lang('resource.requests.notifications') }}</b></h4>
                         <p class="text-muted font-13">
-                           Όλα τα αιτήματα
+                          {{ lang('resource.requests.requests') }}
                         </p>
                         <div class="p-20">
                             <div class="table-responsive">
                                 <table class="table m-0">
                                     <thead>
                                         <tr>
-                                            <th>Ρόλος</th>
-                                            <th>Όνομα</th>
-                                            <th>Επιλογή</th>
+                                            <th>{{ lang('resource.requests.table.role') }}</th>
+                                            <th>{{ lang('resource.requests.table.name') }}</th>
+                                            <th>{{ lang('resource.requests.table.action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr v-for="notification in notifications" v-show="!notification.read_at">
-                                              <td v-if="notification.data.role === 'student'">Μαθητής</td>
-                                              <td v-if="notification.data.role === 'teacher'">Καθηγητής</td>
+                                              <td v-if="notification.data.role === 'student'">{{ lang('resource.requests.table.teacher') }}</td>
+                                              <td v-if="notification.data.role === 'teacher'">{{ lang('resource.requests.table.student') }}</td>
                                             <td>{{ notification.data.name }}</td>
                                             <td>
-                                                <button v-on:click="accept(notification.data.id)" class="btn btn-success">Αποδοχή</button>
-                                                <button v-on:click="deny(notification.data.id)" class="btn btn-danger">Απόρριψη</button>
+                                                <button v-on:click="accept(notification.data.id)" class="btn btn-success">{{ lang('resource.requests.table.confirm') }}</button>
+                                                <button v-on:click="deny(notification.data.id)" class="btn btn-danger">{{ lang('resource.requests.table.abort') }}</button>
                                             </td>
                                         </tr>
                                     </tbody>

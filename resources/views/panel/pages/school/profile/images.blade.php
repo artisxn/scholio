@@ -222,15 +222,14 @@
     <div class="row  old">
 
         <div class="upper-texts">
-            <h3 class="">Φωτογραφίες Δημόσιου Προφίλ</h3>
+            <h3 class="">@lang('school_photos.title')</h3>
             <form id='myform' method="POST" action="/panel/school/profile/images/upload" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input type="file"  class="hidden" id="files" name="images[]" onchange="document.getElementById('myform').submit()" multiple/>
-                <label for="files" class="btn btn-green"> <i class="fa fa-upload info info"  aria-hidden="true"></i> Ανέβασμα Φωτογραφίας</label>   <!--fa-cloud-upload  -->
+                <label for="files" class="btn btn-green"> <i class="fa fa-upload info info"  aria-hidden="true"></i> @lang('school_photos.button')</label>   <!--fa-cloud-upload  -->
             </form>
 
-            <p class="text"> Για να ενεργοποιήστε το slideshow φωτογραφιών στο δημόσιο προφίλ σας θα πρέπει να ανεβάσετε τουλάχιστον 4  φωτογραφίες.
-                Στη συνέχεια με ένα κλικ επιλέγετε τη βασική φωτογραφία που θα εμφανίζεται το προφίλ σας στις αναζητήσεις.</p>
+            <p class="text"> @lang('school_photos.subtitle')</p>
             <div class="row">
         </div>
 

@@ -76,31 +76,31 @@
 @section('content')
     <div class="" style="max-width: 350px; margin-left: 20px;">
         <div class="row  title">
-            <h3 style="color: #008da5"> <i class="fa fa-cog" style="margin-right: 10px"></i>Επιλογές Δημόσιου Προφίλ</h3>
-            <p class="text">Επιλέξτε από τα παρακάτω, ποια τμήματα επιθυμείτε να προβάλλονται στο δημόσιο προφίλ σας.</p>
+            <h3 style="color: #008da5"> <i class="fa fa-cog" style="margin-right: 10px"></i>@lang('settings.profile.title')</h3>
+            <p class="text">@lang('settings.profile.subtitle')</p>
         </div>
 
         <div class="row">
             <div class="" style="width: 260px;">
-                <div class="texts"> <i class="fa fa-twitter fa-linear4"></i>Social-Links:
+                <div class="texts"> <i class="fa fa-twitter fa-linear4"></i>@lang('settings.profile.links'):
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="social" {{auth()->user()->info->settings->social ? 'checked' : ''}}>
                         <div class="slider round"></div>
                     </label>
                 </div>
-                <div class="texts"> <i class="fa fa-phone fa-linear4"></i>Επικοινωνία
+                <div class="texts"> <i class="fa fa-phone fa-linear4"></i>@lang('settings.profile.contact')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="info" {{auth()->user()->info->settings->info ? 'checked' : ''}}>
                         <div class="slider round"></div>
                     </label>
                 </div>
-                <div class="texts"> <i class="fa fa-bar-chart fa-linear4"></i>Στατιστικά
+                <div class="texts"> <i class="fa fa-bar-chart fa-linear4"></i>@lang('settings.profile.statistics')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="statistics" {{auth()->user()->info->settings->statistics ? 'checked' : ''}}>
                         <div class="slider round"></div>
                     </label>
                 </div>
-                <div class="texts"> <i class="fa fa-map fa-linear4"></i>Χάρτης
+                <div class="texts"> <i class="fa fa-map fa-linear4"></i>@lang('settings.profile.map')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="map" {{auth()->user()->info->settings->map ? 'checked' : ''}}>
                         <div class="slider round"></div>
@@ -109,31 +109,31 @@
 
                 <hr>
 
-                <div class="texts"> <i class="fa fa-info-circle fa-linear4"></i>Σχετικά
+                <div class="texts"> <i class="fa fa-info-circle fa-linear4"></i>@lang('settings.profile.about')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="about" {{auth()->user()->info->settings->about ? 'checked' : ''}}>
                         <div class="slider round"></div>
                     </label>
                 </div>
-                <div class="texts"> <i class="fa fa-book fa-linear4"></i>Σπουδές
+                <div class="texts"> <i class="fa fa-book fa-linear4"></i>@lang('settings.profile.studies')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="studies" {{auth()->user()->info->settings->studies ? 'checked' : ''}}>
                         <div class="slider round"></div>
                     </label>
                 </div>
-                <div class="texts"> <i class="fa fa-trophy fa-linear4"></i>Υποτροφίες
+                <div class="texts"> <i class="fa fa-trophy fa-linear4"></i>@lang('settings.profile.scholarships')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="scholarships" {{auth()->user()->info->settings->scholarships ? 'checked' : ''}}>
                         <div class="slider round"></div>
                     </label>
                 </div>
-                <div class="texts"> <i class="fa fa-star fa-linear4"></i>Αξιολογήσεις
+                <div class="texts"> <i class="fa fa-star fa-linear4"></i>@lang('settings.profile.reviews')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="reviews" {{auth()->user()->info->settings->reviews ? 'checked' : ''}}>
                         <div class="slider round"></div>
                     </label>
                 </div>
-                <div class="texts"> <i class="fa fa-graduation-cap fa-linear4"></i>Διδάσκοντες
+                <div class="texts"> <i class="fa fa-graduation-cap fa-linear4"></i>@lang('settings.profile.teachers')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="teachers" {{auth()->user()->info->settings->teachers ? 'checked' : ''}}>
                         <div class="slider round"></div>
