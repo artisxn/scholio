@@ -1,0 +1,24 @@
+/* CUSTOM RADIO AND CHECKBOX STYLES */
+
+input[type=radio]{
+    visibility: hidden!important;
+}
+input[type=radio] + label{
+    cursor:pointer;
+}
+input[type=radio] + label:before{
+    width:15px;
+    height:15px;
+    margin-right: 4px;
+    content: " ";
+    display:inline-block;
+    transition: 0.1s;
+    border:1px solid #888;
+    border-radius:50%;
+}
+
+/* CHECKED */
+input[type=radio]:checked + label:before{
+    box-shadow: inset 0 0 0 3px #fff;
+    background: #008da5;
+}
