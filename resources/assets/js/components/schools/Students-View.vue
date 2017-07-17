@@ -21,7 +21,7 @@
 
 
         <div v-if="selection==true">
-            <div class="col-xs-12 col-sm-6 col-xl-4 col-xxl-3" v-for="student in filteredStudents" v-if="(student.role=='student')">
+            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2" v-for="student in filteredStudents" v-if="(student.role=='student')">
 
                 <div class="sc-box">
                     <div class="sc-up"></div>
@@ -105,34 +105,61 @@
     .form-control{z-index: 0!important;}
     .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
 
-    .sc-box{background: #fafafa; border: 1px solid #cfcfcf; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px; min-height: 160px; border-bottom: none;}
+    .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #cfcfcf; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none;}
     .sc-up{height: 70px; background: #008da5; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; }
-    .img-cont{margin: -45px 0 0 0 ; }
-    .sc-img{box-shadow: 0 0 10px 2px #d1d1d1
-    }
+    .sc-img{box-shadow: 0 0 10px 2px #d1d1d1}
 
+
+    .name{text-transform: capitalize; font-size: 140%; font-weight: 400;}
+    .email{font-size: 90%; color: #888; font-weight: 300;}
     /*.name{text-transform: capitalize; font-size: 140%; color: #fff; font-weight: 400; margin: -50px 0 0 90px;}*/
-    .name{text-transform: capitalize; font-size: 140%; color: #fff; font-weight: 400; margin: 0; position: absolute; top: 45px; left: 115px;}
     /*.email{font-size: 90%; color: #888; font-weight: 300; margin: 5px 0 0 90px;}*/
-    .email{font-size: 90%; color: #888; font-weight: 300; margin: 0; position: absolute; top: 77px; left: 115px;}
     /*.phone{margin: 20px 0 0 90px;}*/
-    .phone{margin: 0;}
+
+
     /*.sc-bottom{height: 40px; background: #cad8d3; margin: 0 -25px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}*/
     .sc-bottom{height: 50px; background: #cad8d3; margin: 0 0 20px 0; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #cfcfcf; border-top: none; padding: 15px;}
     .sc-radio2{margin:-44px 0; opacity: 0.8}
+    .phone{margin: 0;}
 
 
     @media (min-width: 1360px) {
-        .col-xl-4 {  width: 33.33%;  }
+        .img-cont{margin: -45px 0 0 0 ; }
+        .name{color: #fff; margin: 0; position: absolute; top: 45px; left: 115px;}
+        .email{margin: 0; position: absolute; top: 77px; left: 115px;}
+
     }
 
-    @media (min-width: 1840px) {
-        .col-xxl-3 {  width: 25%;  }
+    @media (max-width: 1359px) {
+        .img-cont, .name, .email{text-align: center;}
+        .img-cont{margin: -50px auto; }
+        .name{margin: 55px auto 0 auto;  color: #008da5; }
+        .email{margin: 5px auto;}
+        .sc-box{min-height: 200px;}
+
+    }
+
+
+
+    @media (min-width: 1680px) {
+        .col-xl-3 {width: 25%;}
+        .col-xl-4 {width: 33.33%;}
+    }
+
+    @media (min-width: 1980px) {
+        .col-xxl-2 {width: 20%;}
+        .col-xxl-3 {width: 25%;}
+        .col-xxl-4 {width: 33.33%;}
 
     }
     @media (min-width: 2280px) {
         .pull-right{ margin-right: 50px!important;}
     }
+
+    @media  (max-width: 595px) {
+    .col-xxs-12{width: 100%}
+    }
+
 
 </style>
 
