@@ -34,13 +34,13 @@
                                 </div>
                                 <div class="name"> {{student.name}} </div>
                             </a>
-                            <div class="email">{{student.email}}</div>
+                            <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
                         </div>
                     </div>
                 </div>
                 <div class="sc-bottom">
                     <div class="phone">
-                        <p><i class="fa fa-phone"></i> {{student.phone}}</p>
+                        <a :href="'tel:'+student.phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{student.phone}}</span></a>
                     </div>
                     <form class="sc-radio2 pull-right">
                         <input id="r3" type="radio" name="studentStatus" value="connected" v-model="stStatus" checked> <label for="r3"><div class="r-lab">Ενεργός</div></label><br>
@@ -111,16 +111,23 @@
 
 
     .name{text-transform: capitalize; font-size: 140%; font-weight: 400;}
-    .email{font-size: 90%; color: #888; font-weight: 300;}
+    .email{font-size: 90%; font-weight: 300;}
+    .email>a,.email>a:visited{color: #888}
     /*.name{text-transform: capitalize; font-size: 140%; color: #fff; font-weight: 400; margin: -50px 0 0 90px;}*/
     /*.email{font-size: 90%; color: #888; font-weight: 300; margin: 5px 0 0 90px;}*/
     /*.phone{margin: 20px 0 0 90px;}*/
 
+    .circle{height: 19px; width: 19px; border-radius: 50%; background-color:#008da5; position: absolute; left: 22px; bottom: 37px; }
 
     /*.sc-bottom{height: 40px; background: #cad8d3; margin: 0 -25px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}*/
     .sc-bottom{height: 50px; background: #cad8d3; margin: 0 0 20px 0; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #cfcfcf; border-top: none; padding: 15px;}
-    .sc-radio2{margin:-44px 0; opacity: 0.8}
+    .sc-radio2{margin:-14px 0; opacity: 0.8}
     .phone{margin: 0;}
+    .phone>a,.phone>a:visited{color: #008da5;}
+    .phone>a:hover, .email>a:hover{color: #FD6A33}
+
+    .phone-text>i{color: #cad8d3; margin-right: 7px}
+    .phone-text{position: absolute; bottom: 36px;}
 
 
     @media (min-width: 1360px) {
