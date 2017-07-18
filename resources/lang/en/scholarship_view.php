@@ -19,6 +19,7 @@ return [
         'interested_button' => 'Interested',
         'admission_button' => 'Admit Now',
         'admission_past' => 'Admited',
+        'ended'=>'no longer available since',
     ],
     'cards' => [
         'study' => 'Study',
