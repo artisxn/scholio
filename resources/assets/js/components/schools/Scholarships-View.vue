@@ -57,11 +57,11 @@
             <div class="card-box">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="m-t-0 header-title"><b>Πίνακας Υποτροφιών</b></h4>
+                        <h4 class="m-t-0 header-title"><b>{{ lang('panel_scholarships.view.title') }}</b></h4>
 
                         <div class="input-group pull-left search-input">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Αναζήτηση" v-model="searchStr">
+                            <input type="text" class="form-control" :placeholder="lang('panel_scholarships.view.search')" v-model="searchStr">
                         </div>
 
                         <div class="clearfix"></div>
@@ -76,14 +76,14 @@
                                             <th></th>
                                             <th>
                                                 <a href="#" v-on:click="planChangeSort">
-                                                    Οικονομική Προσφορά
+                                                    {{ lang('panel_scholarships.view.financial') }}
                                                     <span v-if="sortType == 'plan' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                     <span v-if="sortType == 'plan' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <th>
                                                 <a href="#" v-on:click="amountChangeSort">
-                                                Ποσό
+                                                {{ lang('panel_scholarships.view.price') }}
                                                  <span v-if="sortType == 'amount' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                  <span v-if="sortType == 'amount' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
@@ -91,35 +91,35 @@
                                             <th></th>
                                             <th v-if="showLevel"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="studyChangeSort">
-                                                    Σπουδές
+                                                    {{ lang('panel_scholarships.view.studies') }}
                                                     <span v-if="sortType == 'study' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                     <span v-if="sortType == 'study' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <th v-if="showLevel"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="levelChangeSort">
-                                                    Επίπεδο Σπουδών
+                                                    {{ lang('panel_scholarships.view.level') }}
                                                     <span v-if="sortType == 'level' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                     <span v-if="sortType == 'level' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <th v-if="showLevel"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="criteriaChangeSort">
-                                                    Κριτήρια
+                                                    {{ lang('panel_scholarships.view.criteria') }}
                                                     <span v-if="sortType == 'criteria_id' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                     <span v-if="sortType == 'criteria_id' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <th v-if="showLevel"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="endChangeSort">
-                                                    Ημερομηνία Λήξης
+                                                    {{ lang('panel_scholarships.view.end_date') }}
                                                     <span v-if="sortType == 'end_at' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                     <span v-if="sortType == 'end_at' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <th>
                                                 <a href="#" v-on:click="admissionChangeSort">
-                                                Αιτήθηκαν
+                                                {{ lang('panel_scholarships.view.admitted') }}
                                                 <span v-if="sortType == 'admissions' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                 <span v-if="sortType == 'admissions' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
@@ -152,7 +152,7 @@
                                             <td v-if="!scholarship.active">ELHKSE</td>
                                             <td>{{ scholarship.admissions}}</td>
                                             <!-- <td>{{ scholarship.winner_id }}</td> -->
-                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">Προβολή</button></td>
+                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
                                             <!--<td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>-->
                                         </tr>
                                     </tbody>
@@ -169,7 +169,7 @@
         </div>
 
         <div style="max-width: 800px">
-            <div style="font-size: 160%; font-weight: 300; margin-left: 25px">Αιτήσεις σε κάθε υποτρoφία</div>
+            <div style="font-size: 160%; font-weight: 300; margin-left: 25px">{{ lang('panel_scholarships.view.chart') }}</div>
             <div>
                 <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
             </div>

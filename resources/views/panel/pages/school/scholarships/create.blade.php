@@ -29,8 +29,8 @@
                 transitionEffect:'fade',
                 toolbarSettings: {toolbarPosition: 'bottom',
                     toolbarExtraButtons: [
-                        {label: 'Επαναφορά', css: 'btn sc-dark-grey sc-t-white', onClick: function(){ $('#smartwizard').smartWizard("reset"); }},
-                        {label: 'Οριστικοποίηση', css: 'btn sc-dark-green sc-t-white', onClick: function(){ Event.$emit('saveScholarship', 'OK'); }}
+                        {label: "@lang('panel_scholarships.create.reset')", css: 'btn sc-dark-grey sc-t-white', onClick: function(){ $('#smartwizard').smartWizard("reset"); }},
+                        {label: "@lang('panel_scholarships.create.save')", css: 'btn sc-dark-green sc-t-white', onClick: function(){ Event.$emit('saveScholarship', 'OK'); }}
                     ]
                 }
             });
@@ -55,9 +55,9 @@
         }( function( datepicker ) {
 
             datepicker.regional.el = {
-                closeText: "Κλείσιμο",
-                prevText: "Προηγούμενος",
-                nextText: "Επόμενος",
+                closeText: "@lang('panel_scholarships.create.close')",
+                prevText: "@lang('panel_scholarships.create.previous')",
+                nextText: "@lang('panel_scholarships.create.next')",
                 currentText: "Σήμερα",
                 monthNames: [ "Ιανουάριος","Φεβρουάριος","Μάρτιος","Απρίλιος","Μάιος","Ιούνιος",
                     "Ιούλιος","Αύγουστος","Σεπτέμβριος","Οκτώβριος","Νοέμβριος","Δεκέμβριος" ],

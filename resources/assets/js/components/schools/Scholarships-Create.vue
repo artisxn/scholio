@@ -2,11 +2,11 @@
         <div class="row" >
             <div id="smartwizard" class="" >
                 <ul class="clearfix">
-                    <li><a href="#step-1">Βήμα 1<br /><small class="mar-le-10">Οικονομική <p style="margin-top: -18px;">Προσφορά</p> </small></a></li>
-                    <li><a href="#step-2">Βήμα 2<br /><small class="mar-le-10">Σπουδές/Ειδικότητα</small></a></li>
-                    <li><a href="#step-3">Βήμα 3<br /><small class="mar-le-10">Κριτήρια/Όροι</small></a></li>
-                    <li><a href="#step-5">Βήμα 4<br /><small class="mar-le-10">Λέξεις Κλειδιά</small></a></li>
-                    <li><a href="#step-4">Βήμα 5<br /><small class="mar-le-10">Όροι Συμμετοχής</small></a></li>
+                    <li><a href="#step-1">{{ lang('panel_scholarships.create.step') }} 1<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.financial') }}</p> </small></a></li>
+                    <li><a href="#step-2">{{ lang('panel_scholarships.create.step') }} 2<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.study') }}</small></a></li>
+                    <li><a href="#step-3">{{ lang('panel_scholarships.create.step') }} 3<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.criteria') }}</small></a></li>
+                    <li><a href="#step-5">{{ lang('panel_scholarships.create.step') }} 4<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.tags') }}</small></a></li>
+                    <li><a href="#step-4">{{ lang('panel_scholarships.create.step') }} 5<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.terms') }}</small></a></li>
 
                 </ul>
 
@@ -21,9 +21,9 @@
                                     <img  class="step-image" src="/panel/assets/images/steps/step1-clock2.png" alt="scholio logo" v-if="financial_id==3">
                                 </div>
                                 <select class="selectpicker" data-width="100%" v-model="financial_id">
-                                    <option data-icon="fa fa-scissors" :value="1">&nbsp; Μείωση Διδάκτρων</option>
-                                    <option data-icon="fa fa-money" :value="2">&nbsp; Ποσό Επιδότησης</option>
-                                    <option data-icon="fa fa-clock-o" :value="3">&nbsp; Χρόνος Δωρεάν Φοίτησης</option>
+                                    <option data-icon="fa fa-scissors" :value="1">&nbsp; {{ lang('panel_scholarships.create.financial1') }}</option>
+                                    <option data-icon="fa fa-money" :value="2">&nbsp; {{ lang('panel_scholarships.create.financial2') }}</option>
+                                    <option data-icon="fa fa-clock-o" :value="3">&nbsp; {{ lang('panel_scholarships.create.financial3') }}</option>
                                 </select>
 
                                 <div class="" style="width: 50%; margin-left: 25%;">
@@ -39,7 +39,7 @@
 
                                     <div class="input-group" style=" padding: 15px 0; z-index: 1" v-if="financial_id==3">
                                         <input type="text" class="form-control" placeholder="2" aria-describedby="basic-addon3" v-model="financial_amount">
-                                        <span class="input-group-addon" id="basic-addon3">Μήνες</span>
+                                        <span class="input-group-addon" id="basic-addon3">{{ lang('panel_scholarships.create.months') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -122,11 +122,11 @@
                                 </div>
 
                                 <select class="selectpicker"  data-mobile="false" data-size=3 data-width="100%"  v-model="criteria_id"  data-live-search="false" data-actions-box="false">
-                                    <option data-icon="fa " value="1">&nbsp; Υποτροφία Ταλέντου/Δεξιοτήτων</option>
-                                    <option data-icon="fa " value="2">&nbsp; Υποτροφία Αριστείας</option>
-                                    <option data-icon="fa " value="3">&nbsp; Υποτροφια με Κοινωνικά Κριτήρια</option>
-                                    <option data-icon="fa " value="4">&nbsp; Υποτροφία για Φίλους/Αδέλφια</option>
-                                    <option data-icon="fa " value="5">&nbsp; Υποτροφία Ανοιχτού Τύπου</option>
+                                    <option data-icon="fa " value="1">&nbsp; {{ lang('panel_scholarships.create.criteria1') }}</option>
+                                    <option data-icon="fa " value="2">&nbsp; {{ lang('panel_scholarships.create.criteria2') }}</option>
+                                    <option data-icon="fa " value="3">&nbsp; {{ lang('panel_scholarships.create.criteria3') }}</option>
+                                    <option data-icon="fa " value="4">&nbsp; {{ lang('panel_scholarships.create.criteria4') }}</option>
+                                    <option data-icon="fa " value="5">&nbsp; {{ lang('panel_scholarships.create.criteria5') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
 
                             <!--<h2>Βήμα 4 </h2>-->
                             <div class="step-box" style="">
-                                <h3>Λέξεις Κλειδιά</h3>
+                                <h3>{{ lang('panel_scholarships.create.tags') }}</h3>
 
 
                                 <div class="col-lg-4 col-md-6 col-sm-6" >
@@ -157,24 +157,24 @@
 
                             <!--<h2>Βήμα 4 </h2>-->
                             <div class="step-box" style="" :class="{'step4MinHeight': !withTerms}">
-                                <h3>Όροι και Λεπτομέρειες Συμμετοχής</h3>
+                                <h3>{{ lang('panel_scholarships.create.terms') }}</h3>
 
 
 
                                 <div class="col-lg-4 col-md-6 col-sm-6" >
-                                    <div style="" class="pull-left"> Πλήθος Νικητών Υποτροφίας</div>
+                                    <div style="" class="pull-left"> {{ lang('panel_scholarships.create.winners') }}</div>
                                     <div style="width: 240px; margin: 25px 0 0 0;">
                                         <select class="selectpicker" data-live-search="false" data-mobile="false" data-size='4' data-width="100%"   >
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
-                                            <option value="4">Πολλαπλοί Νικητές</option>
+                                            <option value="4">{{ lang('panel_scholarships.create.multiple_winners') }}</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div style="" class="pull-left"> Υποτροφία ενεργή μέχρι: </div>
+                                        <div style="" class="pull-left"> {{ lang('panel_scholarships.create.active') }}: </div>
                                         <div class="clearfix" ></div>
                                         <!--v-on:click="errorDate" :class="{'error': error}"-->
                                         <input type="text" id="datepicker" size="30" class="ll-skin-cangas pull-left"
@@ -187,7 +187,7 @@
                                     <div class="funkyradio" style="width: 240px; margin: 8px 0 0 0;">
                                         <div class="funkyradio-success">
                                             <input type="checkbox" id="exams" v-model="exams">
-                                            <label for="exams"> Υποτροφία με εξετάσεις</label>
+                                            <label for="exams"> {{ lang('panel_scholarships.create.exams') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@
                                     <div class="funkyradio" style="width: 240px; margin: 8px 0 0 0;">
                                         <div class="funkyradio-success">
                                             <input type="checkbox" id="withTerms" v-model="withTerms">
-                                            <label for="withTerms"> Όροι και Προϋποθέσεις</label>
+                                            <label for="withTerms"> {{ lang('panel_scholarships.create.terms') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +206,7 @@
                                 <div id="" v-if="withTerms" style="margin-top: 130px;">
                                     <span style="color: transparent">.</span>
                                     <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
-                                     <div><span>Υπολοιπο Χαρακτήρων:</span> <span id="chars_left"></span></div>
+                                     <div><span>{{ lang('panel_scholarships.create.remaining') }}:</span> <span id="chars_left"></span></div>
                                 </div>
 
 

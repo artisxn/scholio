@@ -1,7 +1,7 @@
 <template>
     <div id="content">
         <div style="margin-left: 20px;" v-if="col_iek_eng_dan_mus">
-            <h3  class="title ml20" style="margin-left: -10px">Επιλογή Ειδικοτήτων Σπουδών</h3>
+            <h3  class="title ml20" style="margin-left: -10px">{{ lang('school_profile.studies.title') }}</h3>
             <div class="row margin-top-30">
                 <div v-if="studies.length">
                     <!-- ====== Select DropDown LEVEL ====== -->
@@ -56,7 +56,7 @@
 
                     <button class="btn btn-info" v-on:click="clearAllStudies" style="margin-top: 20px; margin-left: 10px;" v-if="checkedStudies.length">
                         <i class="fa fa-trash-o"  aria-hidden="true" style="margin-right: 10px;"></i>
-                        Διαγραφή Επιλογών
+                        {{ lang('school_profile.studies.delete') }}
                     </button>
 
                     <!-- ======== Preview SELECTED Studies ========== -->
@@ -90,7 +90,7 @@
         </div>
 
         <div v-if="!col_iek_eng_dan_mus">
-            <h3  class="title ml20" style="margin-left: -10px">Επιλογή Επιπέδων Σπουδών</h3>
+            <h3  class="title ml20" style="margin-left: -10px">{{ lang('school_profile.studies.level') }}</h3>
             <div>
                 <div v-for="(level,indexLevel) in all_studies">
                     <div v-for="(section,indexSection) in all_studies[indexLevel].section">

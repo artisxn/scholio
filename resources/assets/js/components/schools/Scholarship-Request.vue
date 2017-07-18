@@ -9,9 +9,9 @@
             <div class="card-box">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="m-t-0 header-title"><b>Ειδποιήσεις για Αιτήματα Υποτροφιών</b></h4>
+                        <h4 class="m-t-0 header-title"><b>{{ lang('panel_scholarships.admissions.title') }}</b></h4>
                         <p class="text-muted font-13">
-                            Όλα τα αιτήματα
+                            {{ lang('panel_scholarships.admissions.subtitle') }}
                         </p>
                         <div class="p-20">
                             <div class="table-responsive">
@@ -19,8 +19,8 @@
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th>Όνομα Μαθητη</th>
-                                        <th>Υποτροφία</th>
+                                        <th>{{ lang('panel_scholarships.admissions.name') }}</th>
+                                        <th>{{ lang('panel_scholarships.admissions.scholarship') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>

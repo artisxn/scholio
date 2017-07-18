@@ -15,4 +15,10 @@ return [
     'manager' => 'Contact Manager Name',
     'about' => 'Write a short description here',
     'button' => 'Update',
+
+    'studies' => [
+        'title' => 'Choose all Available Studies',
+        'delete' => 'Delete all',
+        'level' => 'Choose Level of Studies',
+    ],
 ];
