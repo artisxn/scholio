@@ -5,6 +5,10 @@ return [
         'search' => 'Search',
         'changeView' => 'Change View',
         'student' => 'Student',
+        'active' => 'Active',
+        'alumni' => 'Graduated',
+        'name' => 'Name',
+        'phone' => 'Phone',
     ],
 
     'teachers' => [

@@ -1,52 +1,51 @@
+
+
 <template>
     <div class="row">
-        <div class="input-group pull-left " style="width: 210px; margin: 10px 0 10px 10px;; border: 1px solid #d1d1d1; border-radius: 5px;" >
+
+        <form class="sc-radio pull-left">
+            <input id="r1" type="radio" name="status" value="connected" v-model="status" checked> <label for="r1"><div class="r-lab">{{ lang('resource.students.active') }}</div></label> <br>
+            <input id="r2" type="radio" name="status" value="allumni" v-model="status" > <label for="r2"><div class="r-lab">{{ lang('resource.students.alumni') }}</div></label><br>
+        </form>
+
+
+        <div class="input-group pull-left input-search">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control" v-bind:placeholder="lang('resource.students.search')"
+            <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
                    v-model="searchStr">
         </div>
-        <button class="btn btn-info pull-right" v-on:click="changeView" style="margin: 11px 10px 10px 0; height: 38px;">{{ lang('resource.students.changeView') }}</button>
+        <button class="btn btn-info pull-right btn-view" v-on:click="changeView"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
+
+
         <div v-if="selection==true">
-            <div class="col-xs-12 col-sm-6 col-xl-4 col-xxl-3" v-for="student in filteredStudies" v-if="(student.role=='student'|| student.role=='teacher')">
-                <div class="card-box">
+            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2" v-for="student in filteredStudents" v-if="(student.role=='student')">
+
+                <div class="sc-box">
+                    <div class="sc-up"></div>
+
                     <div class="row">
-                        <div class="contact-card">
-                            <a class="pull-left" href="#">
-                                <img class="img-circle" width="80" height="80" v-bind:src=student.info.avatar alt=""/>
+                        <div class="sc-card">
+                            <a class="" href="#">
+                                <div class="img-cont">
+                                    <img class="img-circle sc-img" width="70" :src=student.info.avatar alt=""/>
+                                </div>
+                                <div class="name"> {{student.name}} </div>
                             </a>
-                            <div class="member-info">
-                                <h4 class="m-t-0 m-b-5 header-title"><b style="text-transform: capitalize"> {{ student.name }} -- {{ student.pivot.status }}</b></h4>
-                                <p class="text-muted">{{ lang('resource.students.student') }}</p>
-                                <p class="text-dark">
-                                    <i class="md md-email"></i>
-                                    <small>{{ student.email }} - - {{ student.cv.student_phone }}</small>
-                                </p>
-                            </div>
-                            <ul class="social-links list-inline m-0">
-                                <li>
-                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                       data-original-title="Facebook">
-                                        <i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                       data-original-title="Twitter">
-                                    <i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                       data-original-title="LinkedIn">
-                                    <i class="fa fa-linkedin"></i></a>
-                                </li>
-                                <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                       data-original-title="Skype">
-                                    <i class="fa fa-skype"></i></a>
-                                </li>
-                                <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
-                                       data-original-title="Message"><i class="fa fa-envelope-o"></i></a></li>
-                            </ul>
+                            <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
                         </div>
                     </div>
                 </div>
+                <div class="sc-bottom">
+                    <div class="phone">
+                        <a :href="'tel:'+student.phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{student.phone}}</span></a>
+                    </div>
+                    <form class="sc-radio2 pull-right">
+                        <input id="r3" type="radio" name="studentStatus" value="connected" v-model="stStatus" checked> <label for="r3"><div class="r-lab">{{ lang('resource.students.active') }}</div></label><br>
+                        <input id="r4" type="radio" name="studentStatus" value="allumni" v-model="stStatus" > <label for="r4"><div class="r-lab">{{ lang('resource.students.alumni') }}</div></label><br>
+                    </form>
+                </div>
+
             </div>
         </div>
 
@@ -61,9 +60,14 @@
 
                     </th>
                     <th> <a href="#" v-on:click="nameChangeSort">
-                        Ονοματεπώνυμο
+                        {{ lang('resource.students.name') }}
                         <span v-if="sortType == 'name' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                         <span v-if="sortType == 'name' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
+                    </th>
+                    <th> <a href="#" v-on:click="phoneChangeSort">
+                        {{ lang('resource.students.phone') }}
+                        <span v-if="sortType == 'phone' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                        <span v-if="sortType == 'phone' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
                     </th>
                     <th> <a href="#" v-on:click="emailChangeSort">
                         e-mail
@@ -73,14 +77,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="student in filteredStudies"
-                    v-if="student.role=='student' || student.role=='teacher' "
-                    >
+                <tr v-for="student in filteredStudents">
                     <td>
-                        <i class="fa fa-user" style="font-size: 140%" aria-hidden="true"></i>
+                        <a class="" href="#">
+                            <img class="img-circle" width="35" v-bind:src=student.info.avatar alt=""/>
+                        </a>
                     </td>
-                    <td style="text-transform: capitalize">{{student.name}} -- {{ student.pivot.status }}</td>
-                    <td>{{student.email}} - - {{ student.cv.student_phone }}</td>
+                    <td style="text-transform: capitalize">{{student.name}}</td>
+                    <td>{{student.phone}}</td>
+                    <td>{{student.email}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -88,20 +93,114 @@
     </div>
 </template>
 
+
 <style>
+    label{font-weight: 400;}
+    .r-lab{margin: -23px 0 0 20px;}
+    .margin-right-10 { margin-right: 10px; }
+    .sc-radio{margin: 10px 15px; }
+    .btn-view{margin: 11px 10px 10px 0; height: 38px;}
+    .form-control{z-index: 0!important;}
+    .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
+
+    .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #cfcfcf; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none;}
+    .sc-up{height: 70px; background: #008da5; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; }
+    .sc-img{box-shadow: 0 0 10px 2px #d1d1d1}
+
+
+    .name{text-transform: capitalize; font-size: 140%; font-weight: 400;}
+    .email{font-size: 90%; font-weight: 300;}
+    .email>a,.email>a:visited{color: #888}
+    /*.name{text-transform: capitalize; font-size: 140%; color: #fff; font-weight: 400; margin: -50px 0 0 90px;}*/
+    /*.email{font-size: 90%; color: #888; font-weight: 300; margin: 5px 0 0 90px;}*/
+    /*.phone{margin: 20px 0 0 90px;}*/
+
+    .circle{height: 19px; width: 19px; border-radius: 50%; background-color:#008da5; position: absolute; left: 22px; bottom: 37px; }
+
+    /*.sc-bottom{height: 40px; background: #cad8d3; margin: 0 -25px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}*/
+    .sc-bottom{height: 50px; background: #cad8d3; margin: 0 0 20px 0; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #cfcfcf; border-top: none; padding: 15px;}
+    .sc-radio2{margin:-14px 0; opacity: 0.8}
+    .phone{margin: 0;}
+    .phone>a,.phone>a:visited{color: #008da5;}
+    .phone>a:hover, .email>a:hover{color: #FD6A33}
+
+    .phone-text>i{color: #cad8d3; margin-right: 7px}
+    .phone-text{position: absolute; bottom: 36px;}
+
+
     @media (min-width: 1360px) {
-        .col-xl-4 {  width: 33.33%;  }
+        .img-cont{margin: -45px 0 0 0 ; }
+        .name{color: #fff; margin: 0; position: absolute; top: 45px; left: 115px;}
+        .email{margin: 0; position: absolute; top: 77px; left: 115px;}
+
     }
 
-    @media (min-width: 1840px) {
-        .col-xxl-3 {  width: 25%;  }
+    @media (max-width: 1359px) {
+        .img-cont, .name, .email{text-align: center;}
+        .img-cont{margin: -50px auto; }
+        .name{margin: 55px auto 0 auto;  color: #008da5; }
+        .email{margin: 5px auto;}
+        .sc-box{min-height: 200px;}
+
+    }
+
+
+
+    @media (min-width: 1680px) {
+        .col-xl-3 {width: 25%;}
+        .col-xl-4 {width: 33.33%;}
+    }
+
+    @media (min-width: 1980px) {
+        .col-xxl-2 {width: 20%;}
+        .col-xxl-3 {width: 25%;}
+        .col-xxl-4 {width: 33.33%;}
 
     }
     @media (min-width: 2280px) {
         .pull-right{ margin-right: 50px!important;}
     }
+
+    @media  (max-width: 595px) {
+    .col-xxs-12{width: 100%}
+    }
+
+
 </style>
 
+
+<!--  RADIO INPUT STYLE -->
+<style>
+    input[type=radio]{
+        visibility: hidden;
+        position: absolute;
+    }
+    input[type=radio] + label{
+        cursor:pointer;
+    }
+    input[type=radio] + label:before{
+        width:15px;
+        height:15px;
+        margin-right: 4px;
+        content: " ";
+        display:inline-block;
+        transition: 0.1s;
+        border:1px solid #888;
+        border-radius:50%;
+    }
+
+    /* CHECKED */
+    input[type=radio]:checked + label:before{
+        background: #008da5;
+    }
+    .sc-radio>input[type=radio]:checked + label:before{
+        box-shadow: inset 0 0 0 3px #EEF1F2;
+    }
+    .sc-radio2>input[type=radio]:checked + label:before{
+        box-shadow: inset 0 0 0 3px #CAD8D3;
+    }
+</style>
+<!--<link rel="stylesheet" type="text/css" href="/new/css/input-radio.css" />-->
 <script>
     export default{
         data: function() {
@@ -110,27 +209,39 @@
                 searchStr:"",
                 selection:true,
                 sortReverse:false,
-                sortType:'name'
+                sortType:'name',
+                status:'connected',
+                stStatus:''
             }
         },
         computed: {
-            filteredStudies: function () {
-                var filtered_array1 = this.students,
-                        searchString = this.searchStr;
+            filteredStudents: function () {
+                var filtered_array = [];
+                var st=this.students
+                for(var i in st){
+                    st[i].phone=st[i].cv.student_phone;
+                    if(st[i].pivot.status==this.status){
+                        filtered_array.push(st[i])
+                    }
+                }
+
+                var searchString = this.searchStr;
 
                 if(!searchString){
-                    return filtered_array1;
+                    return filtered_array;
                 }
 
                 searchString = searchString.trim().toLowerCase();
-                filtered_array1 = filtered_array1.filter(function(item){
-                        if( (item.name.toLowerCase().indexOf(searchString) !== -1) ||
+                filtered_array = filtered_array.filter(function(item){
+                        if( (item.name.indexOf(searchString) !== -1) ||
                                 (item.nameL.toLowerCase().indexOf(searchString) !== -1) ||
-                                (item.nameENG.toLowerCase().indexOf(searchString) !== -1)
+                                (item.nameENG.toLowerCase().indexOf(searchString) !== -1) ||
+                                (item.phone.indexOf(searchString) !== -1) ||
+                                (item.email.toLowerCase().indexOf(searchString) !== -1)
 
-                        ){return item;}
+                        ){ return item;   }
                 })
-                return filtered_array1;
+                return filtered_array;
             },
         },
 
@@ -139,13 +250,17 @@
                 this.sortType = 'name';
                 this.changeSortType(this.sortType)
             },
+            phoneChangeSort: function(){
+                this.sortType = 'phone';
+                this.changeSortType(this.sortType)
+            },
             emailChangeSort: function(){
                 this.sortType = 'email';
                 this.changeSortType(this.sortType)
             },
 
             changeSortType: function(){
-                this.sortReverse=!this.sortReverse
+                this.sortReverse=!this.sortReverse;
                 var st1= this.students;
                 st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
                 this.students=st1;
@@ -232,7 +347,7 @@
         },
 
         mounted() {
-            console.log('Students-Table component mounted!')
+//            console.log('Students-Table component mounted!')
             this.getAllStudents()
         }
     }
