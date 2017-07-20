@@ -298,7 +298,7 @@
 
                     <div class="" style="z-index: 95; background-color: #eee; padding: 10px 7px 40px 7px; min-height: 100%; overflow-x: hidden" >
 
-                        <div >
+                        <div>
                             <div class="input-group margin-bot-15 " style="width: 100%; ">
                                 <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
                             </div>
@@ -347,6 +347,10 @@
                     </div>
 
 
+
+                    <span>@lang('schools.sortby.title')</span>
+                    <div id="sort-by-container"></div>
+
                     <div class="btn-group " style="width: 100%; margin: 15px 0;">
                         {{-- <a href="{{ url('/public/schools/map') }}"> --}}
                         <button class="btn btn-primary" style=" width: 100%; height: 40px" onClick="showMap()">
@@ -358,9 +362,7 @@
 
 
 
-                    <div id="sort-by-container">
 
-                    </div>
 
                     <div class="content-wrapper col-sm-12">
                         <aside>
@@ -491,6 +493,22 @@ angular.module("schoolsResultsApp",[])
                 container: '#statsMobile'
             })
     );
+
+
+
+            search.addWidget(
+                    instantsearch.widgets.sortBySelector({
+                        container: '#sort-by-container',
+                        indices: [
+                            {name: 'dummySchools', label: '@lang('schools.sortby.stars')'},
+                            {name: 'dummySchools_scholarships_desc', label: '@lang('schools.sortby.scholarships')'},
+                            {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
+                        ]
+                    })
+            );
+
+
+
 
     search.on('render', function() {
         $('.product-picture img').addClass('transparent');

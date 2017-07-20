@@ -22,6 +22,12 @@ return [
         'reviews' => 'Reviews',
         'delete' => 'Delete all filters',
     ],
+    'sortby'=>[
+        'title'=>'Sort by :',
+        'stars'=>'High Rating',
+        'scholarships'=>'Most Scholarships',
+        'students'=>'Most Students'
+    ],
     'show_map' => 'Show Map',
     'search_institution' => 'Search for an Institution',
     'error' => 'Results not found',
