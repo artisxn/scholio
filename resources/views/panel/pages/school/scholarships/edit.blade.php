@@ -55,6 +55,8 @@
         .pad-0{margin: 0}
 
 
+
+
         /*  ==========  Button  ===========  */
 
         .sc-btn {
@@ -73,36 +75,42 @@
 
         button.sc-dark-green:hover{background-color: #006880  }
 
+
+
+        /*  ===========================================  */
+        /*  ==========  Ended Fixed Banner  ===========  */
+        /*  ===========================================  */
+
+        .non-active{opacity: 0.45}
+        .margin-right-30{margin-right: 30px}
+        .box{ border: solid 5px #FD6A33; border-radius:10px; background: #fff; height: 65px; width: 320px; z-index: 1; bottom:70px;  right:25px;
+             position: fixed; box-shadow: 0 0 15px 1px #fff}
+        .ended{ opacity: 0.9; font-size: 170%; font-weight: 300; color: #008da5; position: relative;
+            top: 50%;  transform: translateY(-50%); text-align: center;}
+        .fa-flag, .fa-flag-checkered{ position: fixed; top: -90px; left: 20px; font-size: 420%!important; color: #FD6A33; }
+
+
+        /*@media (min-width:1800px){*/
+            /*.box{width: 60%}*/
+        /*}*/
+        /*@media (max-width:1449px){*/
+            /*.ended{font-size: 5vw;}*/
+        /*}*/
+        /*@media (max-width:830px){*/
+            /*.ended{font-size: 5.4vw;}*/
+            /*.box{height: 100px;}*/
+            /*.margin-right-30{margin-right: 15px}*/
+        /*}*/
+
+        /*@media (max-width:420px){*/
+            /*.ended{font-size: 5.8vw;}*/
+            /*.margin-right-30{margin-right: 5px}*/
+        /*}*/
+
+
+
+
         /*  ===============================  */
-
-
-        nput[type='radio']:after {
-            width: 15px;
-            height: 15px;
-            border-radius: 15px;
-            top: -2px;
-            left: -1px;
-            position: relative;
-            background-color: #d1d3d1;
-            content: '';
-            display: block;
-            visibility: visible;
-            border: 2px solid white;
-        }
-
-        input[type='radio']:checked:after {
-            width: 15px;
-            height: 15px;
-            border-radius: 15px;
-            top: -2px;
-            left: -1px;
-            position: relative;
-            background-color: #008da5;
-            content: '';
-            display: block;
-            visibility: visible;
-            /*border: 1px solid white;*/
-        }
 
         @media (min-width: 579px )and (max-width: 590px) {
             .pad-0{padding: 9px}
@@ -132,12 +140,24 @@
 
 @section('content')
 
-    <div class="row">
+    @if(!$scholarship->active)
+        <div class="box">
+            <div class="ended">
+                <i class="fa fa-flag margin-right-10"></i>
+                @lang('scholarship_view.top.ended') {{Carbon\Carbon::parse($scholarship->end_at)->format('d-m-Y')}}
+            </div>
+        </div>
+    @endif
+
+
+
+
+    <div class="row {{ $scholarship->active ? '' : 'non-active'}}">
         <div class="col-sm-12">
             <div class="">   <!-- class="card-box" -->
 
 
-                <div class="col-xs-12 scholar-header" style="{{ $scholarship->active ? '' : 'background-color: red'}}">
+                <div class="col-xs-12 scholar-header">
                     {{--<div class="scholar-name">{{ $scholarship->study->section[0]->name }}</div>--}}
                     <div class="scholar-name">  {{ $scholarship->study->name }}</div>
                     <div class="level-name">{{ $scholarship->study->section[0]->level->name }}</div>
@@ -267,21 +287,30 @@
                 <!-- ================================ -->
                 <div class="margin-top-50"></div>
 
-<form method="POST" action="/scholarship/{{$scholarship->id}}/end">
+              <form method="POST" action="/scholarship/{{$scholarship->id}}/end">
+                  @if($scholarship->active)
                 <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Επιλογή Νικητών Υποτροφίας</div>
+                  @else
+                      <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Νικητές Υποτροφίας</div>
+                  @endif
 
                 <div>
                     @foreach($scholarship->admission as $admission)
                         <div class=" col-xxxs-12 col-xs-6 col-lg-4">
                             <img class="avatar-img" src="{{ $admission->user->info->avatar }}" width="20px">
-                            <input type="checkbox" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
-
+                            @if($scholarship->active)
+                                <input type="checkbox" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
+                            @else
+                                <input type="checkbox" onclick="return false;" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
+                            @endif
                         </div>
 
                     @endforeach
                 </div>
                 <div class="margin-top-30"></div>
-                <button class="sc-btn sc-dark-green" style="float: right"> <i class="fa fa-paper-plane-o margin-right-10"></i>Ενημέρωση Νικητών</button>
+                @if($scholarship->active)
+                    <button class="sc-btn sc-dark-green pull-right"> <i class="fa fa-paper-plane-o margin-right-10"></i>Ενημέρωση Νικητών</button>
+                @endif
                 <div class="clearfix"></div>
                 <div class="col-sm-12 line"></div>
                 <!-- ================================ -->
@@ -304,7 +333,9 @@
                 <div class="margin-top-30"></div>
                 
                     {{ csrf_field() }}
+                  @if($scholarship->active)
                     <button class="sc-btn sc-dark-green" style="float: right"> <i class="fa fa-flag-checkered margin-right-10"></i>Λήξη Υποτροφίας</button>
+                  @endif
                 </form>
                 </div>
             </div>

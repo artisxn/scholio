@@ -192,9 +192,7 @@
             {{--<img src="/new/img/sad.png" class="img-sad margin-right-30" alt="">--}}
             @lang('scholarship_view.top.ended') @{{scholarship.end}}
         </div>
-
     </div>
-
 @endif
 
 
