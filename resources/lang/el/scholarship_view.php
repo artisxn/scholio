@@ -19,6 +19,7 @@ return [
         'interested_button' => 'Ενδιαφέρομαι',
         'admission_button' => 'Αίτηση',
         'admission_past' => 'Αιτήθηκα',
+        'ended'=>'έληξε',
     ],
     'cards' => [
         'study' => 'Σπούδασε',

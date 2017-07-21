@@ -1,6 +1,6 @@
 <style>
     .center-td{vertical-align:middle; text-align:center;}
-    .search-input{width: 210px; margin: 10px 0; border: 1px solid #d1d1d1; border-radius: 5px;}
+    .search-input{width: 310px; margin: 10px 0; border: 1px solid #d1d1d1; border-radius: 5px;}
 
     .btn-info{background-color: #324c5a!important;}
     .btn-info:hover{background-color: #466473 !important;}
@@ -9,6 +9,17 @@
     .btn-primary{background-color: #008da5!important;}
     .btn-primary:hover{background-color: #007991 !important;}
     .btn-success,.btn-info,.btn-primary{border: none!important; height: 30px; padding: 0 20px}
+    .sch-counter{color: #888; margin:0 30px 0 15px; float: right}
+    .sc-radio{}
+
+
+    @media (max-width: 570px) {
+        .search-input{width: 235px;}
+    }
+
+    @media (max-width: 492px) {
+        .search-input{width: 95%;  float: none!important; text-align: center; margin: 5px auto 20px auto;}
+    }
 
 
     /* =========TOOLTIP=========*/
@@ -51,6 +62,36 @@
 </style>
 
 
+<!--  RADIO INPUT STYLE -->
+<style>
+    input[type=radio]{
+        visibility: hidden;
+        position: absolute;
+    }
+    input[type=radio] + label{
+        cursor:pointer;
+    }
+    input[type=radio] + label:before{
+        width:15px;
+        height:15px;
+        margin-right: 4px;
+        content: " ";
+        display:inline-block;
+        transition: 0.1s;
+        border:1px solid #888;
+        border-radius:50%;
+    }
+
+    /* CHECKED */
+    input[type=radio]:checked + label:before{
+        background: #008da5;
+    }
+    .sc-radio>input[type=radio]:checked + label:before{
+        box-shadow: inset 0 0 0 3px #EEF1F2;
+    }
+
+</style>
+
 <template>
     <div class="row">
         <div class="col-sm-12">
@@ -58,6 +99,16 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="m-t-0 header-title"><b>{{ lang('panel_scholarships.view.title') }}</b></h4>
+
+                        <div style="margin-left: -10px">
+                            <form class="sc-radio pull-left">
+                                <input id="r1" type="radio" name="status" value="1" v-model="active" checked> <label for="r1"><div class="r-lab">{{ lang('panel_scholarships.view.status.active') }}</div></label>
+                                <span class="sch-counter">{{activeLength}}</span>
+                                <br>
+                                <input id="r2" type="radio" name="status" value="0" v-model="active" > <label for="r2"><div class="r-lab">{{ lang('panel_scholarships.view.status.ended') }}</div></label>
+                                <span class="sch-counter">{{endedLength}}</span>
+                            </form>
+                        </div>
 
                         <div class="input-group pull-left search-input">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
@@ -112,7 +163,8 @@
                                             </th>
                                             <th v-if="showLevel"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="endChangeSort">
-                                                    {{ lang('panel_scholarships.view.end_date') }}
+                                                    <span v-if="active==1">{{ lang('panel_scholarships.view.end_date') }}</span>
+                                                    <span v-if="active==0">{{ lang('panel_scholarships.view.ended') }}</span>
                                                     <span v-if="sortType == 'end_at' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                     <span v-if="sortType == 'end_at' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
@@ -148,8 +200,7 @@
                                             </td>
                                             <td>{{ scholarship.level}}</td>
                                             <td>{{ scholarship.criteria.name }}</td>
-                                            <td v-if="scholarship.active">{{ scholarship.end_at }}</td>
-                                            <td v-if="!scholarship.active">ELHKSE</td>
+                                            <td>{{ scholarship.end_at }}</td>
                                             <td>{{ scholarship.admissions}}</td>
                                             <!-- <td>{{ scholarship.winner_id }}</td> -->
                                             <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
@@ -186,6 +237,9 @@ import Chart from '../../VueChart.vue'
         components: {'chart-vue': Chart},
         data: function() {
             return{
+                activeLength:0,
+                endedLength:0,
+                active:'1',
                 scholarships: {},
                 showLevel:false,
                 sortReverse:true,
@@ -224,8 +278,15 @@ import Chart from '../../VueChart.vue'
         computed: {
 
             filteredStudies: function () {
-                var filtered_array = this.scholars;
+                var filtered_array = []
+                var sch=this.scholars
+                for(var i in sch){
+                    if(sch[i].active==this.active){
+                        filtered_array.push(sch[i])
+                    }
+                }
                 var searchString = this.searchStr;
+                console.log(this.active)
 
                 if(!searchString){
                     return filtered_array;
@@ -236,13 +297,26 @@ import Chart from '../../VueChart.vue'
                         (item.study.toLowerCase().indexOf(searchString) !== -1) ||
                         (item.plan.toLowerCase().indexOf(searchString) !== -1) ||
                         (item.section.name.toLowerCase().indexOf(searchString) !== -1)
-
                     ){return item;}
                 })
                 return filtered_array;
             }
         },
         methods: {
+            counters:function(){
+                var d=this.scholarships
+                var actL=0,enL=0
+                for(var i in d){
+                    if(d[i].active==1){
+                        actL++
+                    }
+                    else{
+                        enL++
+                    }
+                }
+                this.activeLength=actL
+                this.endedLength=enL
+            },
             study: function(st, i){
                 var letters = i;
                 if(st.length > letters){
@@ -254,8 +328,9 @@ import Chart from '../../VueChart.vue'
             getScholarships: function(){
                 axios.get('/api/scholarship/' + window.Connection)
                     .then(response => {
-                        console.log(response.data)
+//                        console.log(response.data)
                         this.scholarships = response.data
+
                         if(this.scholarships[0].level.id<4 || this.scholarships[0].level.id>21 ) {this.showLevel=true}
 
                         var st1=this.scholarships;
@@ -273,6 +348,7 @@ import Chart from '../../VueChart.vue'
                         this.scholars=st1;
 
                         this.updateChart()
+                        this.counters()
 
                     });
 

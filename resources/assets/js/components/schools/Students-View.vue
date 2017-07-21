@@ -35,7 +35,11 @@
                             <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
                         </div>
                     </div>
+
+                    <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
                 </div>
+
+                <!--<div class='wave'></div>-->
                 <div class="sc-bottom">
                     <div class="phone">
                         <a :href="'tel:'+student.phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{student.phone}}</span></a>
@@ -103,9 +107,13 @@
     .form-control{z-index: 0!important;}
     .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
 
-    .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #cfcfcf; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none;}
+    .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #cfcfcf; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
+
+
     .sc-up{height: 70px; background: #008da5; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; }
-    .sc-img{box-shadow: 0 0 10px 2px #d1d1d1}
+    .sc-img{box-shadow: 0 0 10px 2px #d1d1d1;  }
+    .gray{-webkit-filter: grayscale(100%);}
+    /*.opacity{opacity: 0.2}*/
 
 
     .name{text-transform: capitalize; font-size: 140%; font-weight: 400;}
@@ -127,6 +135,7 @@
     .phone-text>i{color: #cad8d3; margin-right: 7px}
     .phone-text{position: absolute; bottom: 36px;}
 
+    .img-students{height: 55px; width: auto; position: absolute; right: 20px; top: 85px; opacity: 0.07}
 
     @media (min-width: 1360px) {
         .img-cont{margin: -45px 0 0 0 ; }
@@ -164,7 +173,9 @@
     @media  (max-width: 595px) {
     .col-xxs-12{width: 100%}
     }
-
+    @media  (max-width: 534px) {
+        .btn-view{width: 95%; margin: 0 auto 15px auto; float: none!important; display: block; text-align: center!important;}
+    }
 
 </style>
 
@@ -201,7 +212,59 @@
     }
 </style>
 <!--<link rel="stylesheet" type="text/css" href="/new/css/input-radio.css" />-->
+
+
+
+<!--  WAVE STYLE -->
+<style>
+    .wave{
+        background:#fafafa;
+        height: 10px;
+        position: relative;
+        border-left: 1px solid #cfcfcf;
+        border-right: 1px solid #cfcfcf;
+    }
+    .wave::before,.wave::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-repeat: repeat;
+        /*background-size: 20px 20px;*/
+        background-size: 10px 10px;
+    }
+    .wave::before{
+        /*height: 10px;*/
+        /*background-image: radial-gradient(circle at 10px -5px, transparent 12px, #cad8d3 13px);*/
+        height: 5px;
+        background-image: radial-gradient(circle at 5px -2.5px, transparent 6px, #cad8d3 6.5px);
+    }
+    .wave::after{
+        /*height: 15px;*/
+        /*background-size: 40px 20px;*/
+        /*background-image: radial-gradient(circle at 10px 15px, #cad8d3 12px, transparent 13px);*/
+        height: 7.5px;
+        background-size: 20px 10px;
+        background-image: radial-gradient(circle at 5px 7.5px, #cad8d3 6px, transparent 6.5px);
+    }
+</style>
+
+
+
+
 <script>
+
+    $( document ).ready(function() {
+//        $(".sc-box").hover(
+//                function () {
+//                    $(".sc-img").removeClass("gray");
+//                }
+//        );
+    });
+
+
+
     export default{
         data: function() {
             return{
@@ -353,3 +416,5 @@
     }
 
 </script>
+
+

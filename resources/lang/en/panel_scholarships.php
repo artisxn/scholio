@@ -39,9 +39,14 @@ return [
         'level' => 'Level',
         'criteria' => 'Criteria',
         'end_date' => 'Ending Date',
+        'ended' => 'No Available',
         'admitted' => 'Admitted',
         'show' => 'Show',
         'chart' => 'Scholarship Admissions',
+        'status' => [
+            'active' =>'Active',
+            'ended'  =>'No Available',
+        ],
     ],
 
     'admissions' => [

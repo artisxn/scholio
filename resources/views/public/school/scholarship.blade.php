@@ -51,25 +51,47 @@
     </script>
 
     <style>
+    .margin-right-30{margin-right: 30px}
+    .opacity04{opacity: 0.4;}
+    .opacity05{opacity: 0.5;}
+    .opacity06{opacity: 0.6;}
+    .opacity09{opacity: 0.9;}
+    .opacity10{opacity: 1;}
+    .box{ border: solid 5px #FD6A33; border-radius:10px; background: #fff; height: 200px; width: 70%; z-index: 1; top: 250px;   left: 50%;
+        transform: translate(-50%, 0);  position: fixed; max-width: 1300px}
+    .ended{ opacity: 0.8; font-size: 4vw; font-weight: 300; color: #008da5; position: relative;
+        top: 50%;  transform: translateY(-50%); text-align: center;}
+    .img-sad{height:100px; width: auto; margin-top: -10px;}
 
-    .customStyle{
-        background: green;
+
+    @media (min-width:1800px){
+        .box{width: 60%}
+    }
+    @media (max-width:1449px){
+        .ended{font-size: 5vw;}
+    }
+    @media (max-width:830px){
+        .ended{font-size: 5.4vw;}
+        .box{height: 100px;}
+        .margin-right-30{margin-right: 15px}
     }
 
-
+    @media (max-width:420px){
+        .ended{font-size: 5.8vw;}
+        .margin-right-30{margin-right: 5px}
+    }
     </style>
 </head>
-<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="scholarshipApp"  ng-controller="scholarshipCtrl" data-ng-init="init()" ng-cloak class="{{ $scholarship->active ? '' : 'customStyle'}}">
+<body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="scholarshipApp"  ng-controller="scholarshipCtrl" data-ng-init="init()" ng-cloak
+      class="">
 <!-- Για ληγμενες -->
-    @if(!$scholarship->active)
-        <div>---</div>
-    @endif
+
 
 <!-- Scholio Header -->
 
 
 
-<header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 2">
+<header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header {{ $scholarship->active ? '' : 'opacity10'}}" id="header" style="z-index: 2">
 
     <div class="container" style="">
         <div class="row">
@@ -97,7 +119,7 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    <li class="sc-landing-menu-item"><a href="#sxetika" >@lang('scholarship_view.navigation.info')</a></li>
+                    {{--<li class="sc-landing-menu-item"><a href="#sxetika" >@lang('scholarship_view.navigation.info')</a></li>--}}
                     @if(auth()->check())
                         <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('scholarship_view.navigation.admin')</button></a></li>
                         <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('scholarship_view.navigation.logout')</button></a></li>
@@ -124,9 +146,9 @@
                         </div>
                         <br><br>
                         <div class="pull-right">
-                            <a href="#sxetika">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('scholarship_view.navigation.info')</div>
-                            </a>
+                            {{--<a href="#sxetika">--}}
+                                {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('scholarship_view.navigation.info')</div>--}}
+                            {{--</a>--}}
                             <div class=""><br></div>
                             <div class="sign-links">
                                 @if(auth()->check())
@@ -161,17 +183,29 @@
     {{--</div>--}}
 {{--</div>--}}
 
-<div class="container cover">
+
+
+@if(!$scholarship->active)
+    <div class="box">
+        <div class="ended">
+            <i class="fa fa-flag margin-right-30"></i>
+            {{--<img src="/new/img/sad.png" class="img-sad margin-right-30" alt="">--}}
+            @lang('scholarship_view.top.ended') @{{scholarship.end}}
+        </div>
+    </div>
+@endif
+
+
+<div class="container cover {{ $scholarship->active ? '' : 'opacity04'}}">
     <img class="trophy" src="/new/img/trophy3.png" alt="">
     {{--<img class="grad" src="/new/img/Graduation.png" alt="">--}}
-
     <div class="Hero1"> @lang('scholarship_view.top.title'): </div>
     <div class="Hero2"> <a class="school-title" href="/public/profile/{{ $scholarship->school->id}}" target="_blank">{{ $scholarship->school->name() }}</a></div>
 </div>
-<div class="line"></div>
+<div class="line {{ $scholarship->active ? '' : 'opacity04'}}"></div>
 
 
-<div class="container stats hidden-sm sc-xs-visible">
+<div class="container stats hidden-sm sc-xs-visible {{ $scholarship->active ? '' : 'opacity04'}}">
     <div class="col-lg-11 box-in sc-t-grey row ">
         <div class="col-md-4 col-sm-6  col-xs-12 col-lg-3 colmn ">
             {{--col-md-offset-2 col-lg-offset-2--}}
@@ -202,8 +236,8 @@
         <div class="col-md-4 col-sm-6 col-xs-12 col-lg-5 ">
             {{--col-lg-offset-1--}}
             <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6">
-                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
-                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
+                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
+                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
             </span>
             <span class=" col-xxxs-5 col-xs-4 col-sm-5 col-md-5col-lg-4 align-right" >
                 <div class="" >
@@ -212,8 +246,11 @@
                     @else
                         @lang('scholarship_view.no')
                     @endif
+
                 </div>
-                <div class="margin-top-10">@{{scholarship.exams}}</div>
+                <div class="margin-top-10">
+                    @{{scholarship.exams}}
+                </div>
             </span>
 
         </div>
@@ -222,7 +259,7 @@
 
 
 
-<div class="container stats sc-xs-hidden hidden-md hidden-lg">
+<div class="container stats sc-xs-hidden hidden-md hidden-lg {{ $scholarship->active ? '' : 'opacity04'}}">
     <div class="box-in sc-t-grey  ">
         <div class="col-sm-4  col-xs-5 colmn ">
             <span class="col-sm-10  col-xs-10 first-col">
@@ -233,7 +270,12 @@
             <span class="col-sm-1 col-xs-1 align-right">
                 <div class="">@{{scholarship.length}}</div>
                 <div class="margin-top-10">@{{scholarship.interested}}</div>
-                  <div class="margin-top-10" >{{ $scholarship->exams }} NAI</div>
+                  <div class="margin-top-10" >
+                      @if($scholarship->exam)
+                          @lang('scholarship_view.yes')
+                      @else
+                          @lang('scholarship_view.no')
+                      @endif</div>
             </span>
 
         </div>
@@ -245,9 +287,9 @@
                 <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
             </span>
             <span class="col-sm-5  col-xs-6 align-right">
-                <div class="">10 Μαϊ 2017</div>
-                <div class="margin-top-10">30 Σεπ 2017</div>
-                <div class="margin-top-10">{{ $scholarship->exams_date }} 25 Σεπ 2017</div>
+                <div class="">@{{scholarship.created}}</div>
+                <div class="margin-top-10">@{{scholarship.end}}</div>
+                <div class="margin-top-10">@{{scholarship.exams}}</div>
             </span>
 
         </div>
@@ -258,46 +300,47 @@
 
 
 
-<div class="degra">
+<div class="degra {{ $scholarship->active ? '' : 'opacity04'}}">
 
-<div class="container back ">
+<div class="container back {{ $scholarship->active ? '' : 'opacity04'}}">
 
-    <div class=" buttons centered-text">
-        @if(auth()->check())
-            @if(auth()->user()->role != 'school')
-                <span class="margin-right-20">
-                    <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
-                                       class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
-                            <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('scholarship_view.top.admission_button')</span>
-                        </button>
-                    </a>
-                </span>
-            @endif
-        @else
-            <span class="margin-right-20">
-                    <a href="{{ url('login') }}"><button type="button"
-                                       class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
-                            <i class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                            <span>@lang('scholarship_view.top.interested_button')</span>
-                        </button>
-                    </a>
-                </span>
-        @endif
-
-        <span class="">
-        @if(auth()->check())
-            @if(auth()->user()->role != 'school')
-                @if(!auth()->user()->checkAdmission($scholarship))
-                    <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
-                @else
-                    <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_past') </button></a>
+    @if($scholarship->active)
+        <div class=" buttons centered-text">
+            @if(auth()->check())
+                @if(auth()->user()->role != 'school')
+                    <span class="margin-right-20">
+                        <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
+                                           class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
+                                <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('scholarship_view.top.admission_button')</span>
+                            </button>
+                        </a>
+                    </span>
                 @endif
+            @else
+                <span class="margin-right-20">
+                        <a href="{{ url('login') }}"><button type="button"
+                                           class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
+                                <i class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                <span>@lang('scholarship_view.top.interested_button')</span>
+                            </button>
+                        </a>
+                    </span>
             @endif
-        @endif
-        </span>
 
-    </div>
+            <span class="">
+                @if(auth()->check())
+                    @if(auth()->user()->role != 'school')
+                        @if(!auth()->user()->checkAdmission($scholarship))
+                            <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
+                        @else
+                            <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_past') </button></a>
+                        @endif
+                    @endif
+                @endif
+            </span>
+        </div>
+    @endif
 
 
     <!-- ========== 1 ============= -->
@@ -395,7 +438,10 @@
 </div>
 
 <!-- Footer -->
-@include('public.footer')
+<div class="{{ $scholarship->active ? '' : 'opacity10'}}">
+    @include('public.footer')
+</div>
+
 
 </body>
 
