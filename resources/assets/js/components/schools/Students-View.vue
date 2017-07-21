@@ -180,16 +180,16 @@
 </style>
 
 
-<!--  RADIO INPUT STYLE -->
+<!--  RADIO INPUT STYLE [same @ Scholarships-vue]-->
 <style>
-    input[type=radio]{
+    .sc-radio>input[type=radio],.sc-radio2>input[type=radio]{
         visibility: hidden;
         position: absolute;
     }
-    input[type=radio] + label{
+    .sc-radio>input[type=radio]+ label,.sc-radio2>input[type=radio] + label{
         cursor:pointer;
     }
-    input[type=radio] + label:before{
+    .sc-radio>input[type=radio]+ label:before,.sc-radio2>input[type=radio] + label:before{
         width:15px;
         height:15px;
         margin-right: 4px;
@@ -201,10 +201,10 @@
     }
 
     /* CHECKED */
-    input[type=radio]:checked + label:before{
+    .sc-radio>input[type=radio]:checked + label:before,.sc-radio2>input[type=radio]:checked + label:before{
         background: #008da5;
     }
-    .sc-radio>input[type=radio]:checked + label:before{
+    .sc-radio>input[type=radio]:checked + label:before,.sc-radio2>input[type=radio]:checked + label:before{
         box-shadow: inset 0 0 0 3px #EEF1F2;
     }
     .sc-radio2>input[type=radio]:checked + label:before{

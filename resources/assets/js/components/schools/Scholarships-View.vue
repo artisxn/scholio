@@ -62,16 +62,16 @@
 </style>
 
 
-<!--  RADIO INPUT STYLE -->
+<!--  RADIO INPUT STYLE [same @ Students-vue]-->
 <style>
-    input[type=radio]{
+    .sc-radio>input[type=radio]{
         visibility: hidden;
         position: absolute;
     }
-    input[type=radio] + label{
+    .sc-radio>input[type=radio] + label{
         cursor:pointer;
     }
-    input[type=radio] + label:before{
+    .sc-radio>input[type=radio] + label:before{
         width:15px;
         height:15px;
         margin-right: 4px;
@@ -83,7 +83,7 @@
     }
 
     /* CHECKED */
-    input[type=radio]:checked + label:before{
+    .sc-radio>input[type=radio]:checked + label:before{
         background: #008da5;
     }
     .sc-radio>input[type=radio]:checked + label:before{
