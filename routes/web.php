@@ -7,26 +7,25 @@ use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolSetting;
+use App\Models\Tag;
 use App\Scholio\Scholio;
 use App\User;
 
 Scholio::soonRoutes();
 
-// Route::get('ttt', function() {
-//     $school = auth()->user()->info;
-//     foreach($school->students as $st){
-//         echo $st->pivot->status;
-//     }
-//     // return ->pivot->load('info', 'cv');
+// Route::get('ttt', function () {
+//     $s = request('tags');
+//     $res = Tag::where('name', 'LIKE', "$s%")->take(3)->pluck('slag');
+//     dd($res);
 // });
 
-Route::post('scholarship/{scholarship}/end', function(Scholarship $scholarship){
+Route::post('scholarship/{scholarship}/end', function (Scholarship $scholarship) {
     $winners = request()->winner;
     $scholarship->end($winners);
     return redirect('/dashboard');
 });
 
-Route::get('public/donor', function(){
+Route::get('public/donor', function () {
     return view('public.results.donor');
 });
 

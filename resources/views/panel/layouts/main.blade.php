@@ -95,12 +95,12 @@ echo json_encode($trans);
         </div>
         <script src="/panel/assets/js/modernizr.min.js"></script>
         <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+        <script src="/js/bold.js"></script>
+        <script src="/panel/assets/js/bootstrap-select.js"></script>
         <script src="/js/app.js"></script>
 
 
-        <!-- jQuery  -->
-        <script src="/js/bold.js"></script>
-        <script src="/panel/assets/js/bootstrap-select.js"></script>
+
 
         <script>var resizefunc = [];</script>
 

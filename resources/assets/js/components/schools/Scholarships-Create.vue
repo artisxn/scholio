@@ -143,6 +143,9 @@
 
 
                                 <div class="col-lg-4 col-md-6 col-sm-6" >
+                                    <form>
+                                        <input type="text" id="tags" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                    </form>
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -296,13 +299,15 @@ html .ui-button.ui-state-disabled:active {
     var max_chars = 100; //max characters
     var chars_without_html = 0;
     
+    
     export default {
+
         computed: {
             studies: function(){
                 return this.all_studies
             }
         },
-        mounted: function () {
+        mounted() {
             var vm=this
 
             this.getCheckedStudies()
@@ -317,6 +322,18 @@ html .ui-button.ui-state-disabled:active {
                     vm.errorDate()
                 }
             )
+
+            $('#tags').atwho({
+                at: '#',
+                delay: 500,
+                callbacks:{
+                    remoteFilter: function(query, callback){
+                        $.getJSON('/api/searchTag', {tags: query}, function(tags){
+                            callback(tags);
+                        });
+                    }
+                }
+            });
         },
         data: function() {
             return {

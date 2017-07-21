@@ -6,6 +6,7 @@ use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Skill;
+use App\Models\Tag;
 use App\Models\Temp;
 use App\Notifications\SchoolAcceptedUser;
 use App\Scholio\Scholio;
@@ -222,4 +223,9 @@ Route::get('status/{user}/{id}', function ($user, $id) {
         $student = Student::find($id);
         return $student->status;
     }
+});
+
+Route::get('/searchTag', function () {
+    $search = request('tags');
+    return Tag::where('name', 'LIKE', "$search%")->take(3)->pluck('slag');
 });
