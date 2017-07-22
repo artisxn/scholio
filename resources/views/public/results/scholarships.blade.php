@@ -318,7 +318,7 @@
                         </div>
                     </div>
 
-                    <span>@lang('schools.sortby.title')</span>
+                    <span>@lang('scholarships.filters.sortby')</span>
                     <div id="sort-by-container"></div>
 
                     <div class="content-wrapper col-sm-12">

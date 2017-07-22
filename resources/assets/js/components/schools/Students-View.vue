@@ -27,9 +27,12 @@
                     <div class="row">
                         <div class="sc-card">
                             <a class="" href="#">
-                                <div class="img-cont">
-                                    <img class="img-circle sc-img" width="70" :src=student.info.avatar alt=""/>
+                                <div class="frame-cont">
+                                    <img src="/new/img/photoFrame.png" class="frame" alt="">
+                                    <img :src=student.info.avatar class="avatar2" alt="">
+                                    <img src="/new/img/clip2.png" class="clip" alt="">
                                 </div>
+                                <div class="img-cont"><img class="img-circle sc-img" width="70" :src=student.info.avatar alt=""/></div>
                                 <div class="name"> {{student.name}} </div>
                             </a>
                             <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
@@ -137,6 +140,27 @@
 
     .img-students{height: 55px; width: auto; position: absolute; right: 20px; top: 85px; opacity: 0.07}
 
+   /* =========== photo frame ==========*/
+   /* ==================================*/
+    .img-cont{display: none}
+    .frame-cont{position: absolute; top:-3px; left: -10px;}
+    .frame{height: 70px; width: 70px; display: none;}
+    .clip{width: 17px; position: absolute; top:-3px; left: 66px; z-index: 1}
+    .avatar2{
+        width: 75px; height: auto; border-radius: 5px;;
+        box-shadow: 0 0 15px 2px #555;
+        position: absolute; top: 4px; left: 12px;
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+
+
+
+    /* ==================================*/
+
     @media (min-width: 1360px) {
         .img-cont{margin: -45px 0 0 0 ; }
         .name{color: #fff; margin: 0; position: absolute; top: 45px; left: 115px;}
@@ -171,10 +195,14 @@
     }
 
     @media  (max-width: 595px) {
-    .col-xxs-12{width: 100%}
+        .col-xxs-12{width: 100%}
+        .img-cont{display: block}
+        .frame-cont{display: none;}
     }
     @media  (max-width: 534px) {
+
         .btn-view{width: 95%; margin: 0 auto 15px auto; float: none!important; display: block; text-align: center!important;}
+
     }
 
 </style>
@@ -182,14 +210,14 @@
 
 <!--  RADIO INPUT STYLE -->
 <style>
-    input[type=radio]{
+    .sc-radio> input[type=radio],.sc-radio2> input[type=radio]{
         visibility: hidden;
         position: absolute;
     }
-    input[type=radio] + label{
+    .sc-radio>input[type=radio] + label,.sc-radio2>input[type=radio] + label{
         cursor:pointer;
     }
-    input[type=radio] + label:before{
+    .sc-radio>input[type=radio] + label:before,.sc-radio2>input[type=radio] + label:before{
         width:15px;
         height:15px;
         margin-right: 4px;
@@ -201,7 +229,7 @@
     }
 
     /* CHECKED */
-    input[type=radio]:checked + label:before{
+    .sc-radio>input[type=radio]:checked + label:before,.sc-radio2>input[type=radio]:checked + label:before{
         background: #008da5;
     }
     .sc-radio>input[type=radio]:checked + label:before{

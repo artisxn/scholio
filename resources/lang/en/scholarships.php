@@ -24,6 +24,7 @@ return [
         'studies' => 'Availiable Studies',
         'level' => 'Level of Study',
         'criteria' => 'Criteria',
+        'sortby'=>'Sorting:',
         'delete' => 'Delete all filters',
         'about' => 'About',
         'popular' => 'Popular',

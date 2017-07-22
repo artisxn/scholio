@@ -2,7 +2,7 @@
         <div class="row" >
             <div id="smartwizard" class="" >
                 <ul class="clearfix">
-                    <li><a href="#step-1">{{ lang('panel_scholarships.create.step') }} 1<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.financial') }}</p> </small></a></li>
+                    <li><a href="#step-1">{{ lang('panel_scholarships.create.step') }} 1<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.financial') }} </small></a></li>
                     <li><a href="#step-2">{{ lang('panel_scholarships.create.step') }} 2<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.study') }}</small></a></li>
                     <li><a href="#step-3">{{ lang('panel_scholarships.create.step') }} 3<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.criteria') }}</small></a></li>
                     <li><a href="#step-5">{{ lang('panel_scholarships.create.step') }} 4<br /><small class="mar-le-10">{{ lang('panel_scholarships.create.tags') }}</small></a></li>

@@ -22,7 +22,7 @@
 
     <!-- Algolia CSS -->
     {{--<link rel="stylesheet" href="/new/css/algolia.css"></link>--}}
-    <link rel="stylesheet" href="/new/css/algolia-search.css"></link>
+    <link rel="stylesheet" href="/new/css/algolia-search.css"/>
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 
@@ -46,7 +46,7 @@
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
     <!-- Algolia InstantSearch CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+    {{--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">--}}
 
     <!-- Angular Material  CSS -->
     {{-- <link href="{{asset('new/css/angular-material.css')}}" rel="stylesheet">--}}
@@ -425,7 +425,6 @@
 
     function showMap(){
         var s = document.getElementById('query').value;
-                console.log('asdasd');
                 window.location = '/public/schools/map/?search='+ s;
     }
 </script>
