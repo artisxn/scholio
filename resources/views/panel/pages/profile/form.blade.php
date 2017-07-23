@@ -2,6 +2,13 @@
 
 @section('styles')
     <link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <style>
+        input[type=text],input[type=text]:focus{border-radius:0; border: none; border-bottom: 1px solid #ccc; }
+        .school-logo{height: 100px; border-radius: 10px; box-shadow: 0 0 10px 2px #bbb;}
+        .btn-submit{color: #fff; background: #008da5}
+        .btn-submit:hover{color: #fff; background: #007287  }
+    </style>
+
 @endsection
 
 
@@ -14,7 +21,7 @@
 
             entity_encoding : "raw",
             selector: 'textarea',
-            height: 200,
+            height: 430,
             menubar: false,
 
             plugins: [
@@ -50,8 +57,8 @@
 
 
 
-
 @section('content')
+
 
     <div class="row">
         <div class="col-sm-12">
@@ -66,7 +73,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group" align="center">
-                            <img src="{{substr($logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ $logo }}" height="100px">
+                            <img src="{{substr($logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ $logo }}" class="school-logo">
                         </div>
 
                         <div class="col-md-6">
@@ -88,12 +95,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">@lang('school_profile.name')</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ $school->name() }}" placeholder="Fullname" name="name">
-                                </div>
-                            </div>
+
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="email">@lang('school_profile.email')</label>
@@ -108,9 +110,14 @@
                                     <input type="password" class="form-control" disabled="" value="Password">
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">@lang('school_profile.name')</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" value="{{ $school->name() }}" placeholder="Fullname" name="name">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="col-md-2 control-label">@lang('school_profile.website')</label>
                                 <div class="col-md-10">
@@ -145,22 +152,26 @@
                                     <input type="text" class="form-control" value="{{ auth()->user()->name }}" placeholder="Contact manager name" name="user_name">
                                 </div>
                             </div>
-
                         </div>
 
+                        <div class="col-md-6">
+                            <div class="form-group">
 
-
-                        <div class="form-group">
-
-                            <div class=" col-xs-12  col-lg-8 col-lg-offset-2">
-                                <p>{{ $school->name() }}: @lang('school_profile.about')</p>
-                                <textarea value="" name="about">{{ $school->about }}</textarea>
+                                <div class=" col-xs-12">
+                                    <p>{{ $school->name() }}: @lang('school_profile.about')</p>
+                                    <textarea value="" name="about">{{ $school->about }}</textarea>
+                                </div>
                             </div>
+
                         </div>
 
-                        <div class="form-group text-center m-t-40">
+
+
+
+
+                        <div class="form-group text-center m-t-40" align="center">
                             <div class="col-xs-3 col-sm-2 centered-text">
-                                <button class="btn btn-pink btn-block" type="submit">
+                                <button class="btn btn-submit btn-block" type="submit">
                                     @lang('school_profile.button')
                                 </button>
                             </div>
