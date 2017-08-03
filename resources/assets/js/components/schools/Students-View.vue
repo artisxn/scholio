@@ -110,7 +110,7 @@
     .form-control{z-index: 0!important;}
     .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
 
-    .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #cfcfcf; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
+    .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #a5a5a5; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
 
 
     .sc-up{height: 70px; background: #008da5; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; }
@@ -129,7 +129,7 @@
     .circle{height: 19px; width: 19px; border-radius: 50%; background-color:#008da5; position: absolute; left: 22px; bottom: 37px; }
 
     /*.sc-bottom{height: 40px; background: #cad8d3; margin: 0 -25px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}*/
-    .sc-bottom{height: 50px; background: #cad8d3; margin: 0 0 20px 0; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #cfcfcf; border-top: none; padding: 15px;}
+    .sc-bottom{height: 50px; background: #cad8d3; margin: 0 0 20px 0; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #a5a5a5; border-top: none; padding: 15px;}
     .sc-radio2{margin:-14px 0; opacity: 0.8}
     .phone{margin: 0;}
     .phone>a,.phone>a:visited{color: #008da5;}

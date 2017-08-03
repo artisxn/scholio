@@ -122,7 +122,7 @@
 
 
     .sc-up2{height: 70px; background: #7f8b85; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom: 1px solid #FD6A33;}
-    .sc-img{box-shadow: 0 0 10px 2px #d1d1d1;  }
+    .sc-img2{box-shadow: 0 0 10px 2px #d1d1d1;  }
     .gray{-webkit-filter: grayscale(100%);}
     /*.opacity{opacity: 0.2}*/
 
@@ -212,6 +212,7 @@
 
     @media  (max-width: 767px) {
         .img-circle2{ border-radius: 50%}
+        .sc-img2{box-shadow: 0 0 10px 2px #595755;  }
     }
 
     @media  (max-width: 595px) {
