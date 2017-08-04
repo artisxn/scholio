@@ -7,18 +7,52 @@
     <link rel="stylesheet" href="/new/css/cv.css" type="text/css"  >
 
 
+<style>
+    #content{display: none;}
+    .text{font-size: 14px; font-weight: 400; color: #999;}
+
+    .img-avatar{height:100px; margin: 5px 110px; box-shadow: 0 0 10px 2px #555; border-radius: 6px;}
+    .btn-choose{ height: 40px!important; padding: 11px 0!important; clear: both; margin: 20px 50px; width: 250px;}
+    label{cursor: pointer; font-size: 102%!important; font-weight: 300!important; }
+    .select-gender{ margin: 5px 0 0 5px;}
+    .select-transparent{background: transparent; border: none; margin-top: -1px;}
+    .col-gender{border-bottom: 1px solid #aaa; padding: 0 14px; height: 56px;}
+    .mar-right-10{margin-right: 10px;}
+
+    .clear-fix{clear: both }
+
+    .img-container{text-align: center;}
+
+
+    @media (max-width: 543px){
+    .br1{display: none;}
+    }
+    @media (max-width: 1200px){
+        .btn-choose{text-align: center; margin: 20px auto;}
+    }
+    @media (max-width: 767px){
+        .fa-gender{margin-top: 27px}
+    }
+</style>
+
 @endsection
 
 @section('scriptsBefore')
+    <script>
+        $(document).ready(function(){$("#ppp").hide().fadeIn(90);});
+    </script>
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
-   
+
 @endsection
+
+
+
 
 @section('content')
 
-    <div class="row">
+    <div class="row" id="content">
         <div class="col-sm-12">
             <div class="card-box">
                 
@@ -27,31 +61,34 @@
                         {{ csrf_field() }}
 
                         {{-- CHANGE CV'S PHOTO  --}}
-                       <div class="col-xs-12" >                                    
+                       <div class="col-xs-12 img-container" >
                             <h4 class="header-title"><b>Επεξεργασία Βιογραφικού</b></h4>
-                            <p class="text-muted m-b-10 font-13">
-                                    Complete your profile .. ... .BLA BLA BLA
+                            <p class="text">
+                                    Συμπληρώστε τα στοιχεία επικοινωνίας σας και του βιογραφικού σας, <br class="br1"> για να διευκολυνθούν οι αιτήσεις υποτροφιών που θα πραγματοποιείσετε.
                             </p>
-                            <div class="row">
-                                <div class="col-xs-3">         {{-- TODO AVATAR IS DIFFERENT FROM PHOTO --}}
+                            <div class="row ">
+                                    {{-- TODO AVATAR IS DIFFERENT FROM PHOTO --}}
+                                    <div>
+                                        <img  class="img-avatar" src="{{substr(auth()->user()->info->avatar, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ auth()->user()->info->avatar }}" >
+                                    </div>
 
-                                     <img src="{{substr(auth()->user()->info->avatar, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ auth()->user()->info->avatar }}" height="100px">
 
-                                </div>
-                                <div class="col-xs-7" id="changePhoto">
-                                    <label for="cvPhoto"> Αλλάξτε την φωτογραφία του βιογραφικού σας</label>
-                                    <input type="file" id="cvPhoto" class="form-control" name="logo">
-                                </div>
-                            </div>                                   
-                                
-                        </div>
+                                    <div id="changePhoto" class="btn btn-primary btn-choose">
+                                        <label for="cvPhoto" class="label"> <i class="fa fa-upload mar-right-10"></i>Επιλογή φωτογραφίας προφίλ</label>
+                                        <input type="file" id="cvPhoto" class="form-control" name="logo" style="visibility:hidden;">
+                                    </div>
+
+                            </div>
+                       </div>
+
+
                         {{-- PROFILE DATA --}}
                         <div class="col-xs-12" >
                              <div class="inner-section row">
                                 <div class="section-text centered-text"> Στοιχεία Επικοινωνίας</div>
 
                                 <div class="col-sm-6">
-                                  
+
                                     <div class="input-container">
                                         <input  type="text" label="Όνομα*" name="firstName" class="demo-form ad-input" value="{{ auth()->user()->name }}">
                                         <i class="icon-inp  fa fa-user"></i>
@@ -81,31 +118,31 @@
                                     {{--</a>--}}
                                     <i class="icon-inp fa fa-phone"></i>
                                 </div>
-                                
+
                                 <div class="col-sm-6 input-container">
                                     <input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input"  value="{{ auth()->user()->info->dob}}">
                                     <i class="icon-inp fa fa-calendar"></i>
 
                                 </div>
 
-                               <div class="col-sm-6 input-container">
+                               <div class="col-sm-6 input-container col-gender">
                                     <div class="drop-title">Φύλο*</div>
                                     <div class="select-gender">
-                                        <select name="gender">
-                                            <option value="male"                                     
-                                            @if (auth()->user()->info->gender == 'male' ) 
+                                        <select name="gender" class="select-transparent">
+                                            <option value="male"
+                                            @if (auth()->user()->info->gender == 'male' )
                                                 selected
-                                            @endif 
+                                            @endif
                                             >Ανδρας</option>
-                                            <option value="female" 
-                                                @if (auth()->user()->info->gender == 'female' ) 
+                                            <option value="female"
+                                                @if (auth()->user()->info->gender == 'female' )
                                                 selected
-                                                @endif 
+                                                @endif
                                             >Γυναίκα</option>
-                                          
+
                                         </select>
                                     </div>
-                               
+                                   <i class="icon-inp fa fa-user fa-gender"></i>
                                 </div>
 
                                {{-- TODO IS THIS NECESSARY? --}}
@@ -133,8 +170,8 @@
                                 <div class="col-sm-6 input-container">
                                     <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
 
-                                    <div class="select-polyteknos">
-                                        <select>
+                                    <div class="select-polyteknos" >
+                                        <select class="select-transparent">
                                             <option>Ναι</option>
                                             <option>Όχι</option>
                                         </select>
@@ -146,7 +183,7 @@
                                 <div class="col-sm-6 ">
                                     <div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
                                     <div class="select-polyteknos">
-                                        <select>
+                                        <select class="select-transparent">
                                             <option>0</option>
                                             <option>1</option>
                                             <option>2</option>
@@ -173,7 +210,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6 section2-container ">
                                     <div class="inner-section">
                                         <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
@@ -183,8 +220,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                              
+
+                                <!-- ============================= -->
                                 <div class="col-md-6 section2-container ">
                                     <div class="inner-section" >
                                         <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
@@ -205,17 +242,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 section2-container ">
+
+                                <!-- ============================= -->
+                                <div class="col-md-6 section2-container clear-fix">
                                     <div class="inner-section" >
                                         <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>Ενδιαφέροντα - Ασχολίες</div>
                                         <div class=" input-container">
-                                            <div class="info-text"> Γράψε μας τα γενικότερα ενδιαφέροντα και τις ασχολίες σου.<br> <span style="color: transparent">.</span></div>
+                                            <div class="info-text"> Γράψε μας τα γενικότερα ενδιαφέροντα και τις ασχολίες σου.<span style="color: transparent">.</span></div>
                                                 <textarea name="other_interests" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
                                                 ">{{ auth()->user()->cv->other_interests }}</textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 section2-container ">
+                                <div class="col-md-6 section2-container clearfix">
                                     <div class="inner-section" >
                                         <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>Πιστοποιήσεις - Σεμινάρια</div>
                                         <div class=" input-container">
@@ -225,22 +264,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                   
+
                             </div>
                         </div>
                         {{-- SAVE FORM --}}
 
-                        <div class="col-xs-12 text-center m-t-40">
-                            <div class="col-xs-5 col-sm-4 centered-text">
-                                <button class="btn btn-pink btn-block" type="submit">
-                                    Ενημέρωση  Στοιχείων
+                        <div class="col-xs-12 text-center m-t-40 img-container centered-text">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-save mar-right-10"></i>Αποδοχή Στοιχείων
                                 </button>
-                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+@endsection
+
+
+@section('scripts')
 
 @endsection

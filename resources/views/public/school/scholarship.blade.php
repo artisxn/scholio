@@ -312,7 +312,7 @@
                         <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
                                            class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
                                 <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                                <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('scholarship_view.top.admission_button')</span>
+                                <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('scholarship_view.top.interested_button')</span>
                             </button>
                         </a>
                     </span>
