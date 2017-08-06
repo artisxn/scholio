@@ -18,6 +18,7 @@
     .select-transparent{background: transparent; border: none; margin-top: -1px;}
     .col-gender{border-bottom: 1px solid #aaa; padding: 0 14px; height: 56px;}
     .mar-right-10{margin-right: 10px;}
+    .section-text{color: #008DA5; font-weight: 400; font-size: 110%}
 
     .clear-fix{clear: both }
 
@@ -39,7 +40,7 @@
 
 @section('scriptsBefore')
     <script>
-        $(document).ready(function(){$("#ppp").hide().fadeIn(90);});
+//        $(document).ready(function(){$("#content").hide().fadeIn(90);});
     </script>
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
@@ -269,9 +270,9 @@
                         </div>
                         {{-- SAVE FORM --}}
 
-                        <div class="col-xs-12 text-center m-t-40 img-container centered-text">
+                        <div class="col-xs-12 text-center m-t-40 centered-text">
                                 <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-save mar-right-10"></i>Αποδοχή Στοιχείων
+                                    <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
                                 </button>
                         </div>
                     </form>
