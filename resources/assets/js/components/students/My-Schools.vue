@@ -1,5 +1,5 @@
 <style>
-    .card-box{min-height:190px; }
+    .card-box{min-height:185px; border: 1px solid #aaa; box-shadow: 4px 4px 8px 1px;}
     .member-info{margin: -2px 20px;}
     .cont-img{margin: 10px 0;}
     .cont-btn{position: absolute; bottom: 5px; right: 25px; }
@@ -11,7 +11,7 @@
         .img-logo{height: 60px;}
         .med-hide{display: none}
     }
-    @media  (min-width:1350px) {
+    @media  (min-width:1485px) {
         .col-xl-4{width: 33.33%}
     }
     @media  (min-width:1910px) {
