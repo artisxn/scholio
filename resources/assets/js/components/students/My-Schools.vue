@@ -1,11 +1,14 @@
 <style>
-    .card-box{min-height:185px; border: 1px solid #aaa; box-shadow: 4px 4px 8px 1px;}
+    .card-box{min-height:185px; border: 1px solid #aaa; box-shadow: 3px 3px 12px 1px #bbb;}
     .member-info{margin: -2px 20px;}
     .cont-img{margin: 10px 0;}
     .cont-btn{position: absolute; bottom: 5px; right: 25px; }
-    .cont-text{position: absolute; bottom: 30px; right: 25px; }
+    .cont-text{position: absolute; bottom: 35px; right: 25px; }
+    .cont-text>a{color: #008da5}
+    .cont-text>a:hover{color: #FD6A33}
     .sc-btn{padding: 6px; margin-bottom: 30px;}
     .img-logo{height: 75px;}
+
 
     @media  (min-width:660px) and (max-width:920px) {
         .img-logo{height: 60px;}
@@ -33,19 +36,18 @@
                 <div class="row">
                     <div class="contact-card" style="">
 
-                        <h4 class="m-t-0 m-b-5 header-title">
-                            <b><a target="_blank" :href='"/public/profile/" + mySchool.id'>{{mySchool.admin.name}}</a></b>
-                        </h4>
-                        <div class="pull-left  cont-img">
-                            <a class="" href="#">
-                                <img class="img-logo" :src="'/images/schools/' + mySchool.logo" alt=""/>
-                            </a>
-                        </div>
+                        <a target="_blank" :href='"/public/profile/" + mySchool.id'>
+                            <h4 class="m-t-0 m-b-5 header-title">
+                                <b>{{mySchool.admin.name}}</b>
+                            </h4>
+                            <div class="pull-left  cont-img">
+                                        <img class="img-logo" :src="'/images/schools/' + mySchool.logo" alt=""/>
+                            </div>
+                        </a>
 
-                        <div class="member-info pull-left ">
-
-                            <!--<p class="text-muted">Καθηγητής</p>-->
-                            <p class="text-dark">
+                            <div class="member-info pull-left ">
+                                <!--<p class="text-muted">Καθηγητής</p>-->
+                                <p class="text-dark">
                                 <div class="med-hide">
                                     <i class="fa fa-map-marker"></i>
                                     <small class="pad-left-5">{{mySchool.address}}</small>
@@ -62,8 +64,10 @@
                                     <i class="md md-email"></i>
                                     <small>{{mySchool.admin.email}}</small>
                                 </div>
-                            </p>
-                        </div>
+                                </p>
+                            </div>
+
+
                     </div>
                 </div>
                 <div class="pull-right">
@@ -73,7 +77,10 @@
                         </a>
                     </div>
                     <div v-else class="cont-text">
-                        Έχετε ήδη αφήσει αξιολογήση
+                        <a href="/panel/users/student/review/show">
+                            Έχετε ήδη αφήσει αξιολογήση
+                        </a>
+
                     </div>
                 </div>
 
