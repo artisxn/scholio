@@ -6,8 +6,8 @@
         .dash-card{padding: 45px 10px; height: 190px; border: 1px solid #008da5; border-radius: 10px; text-align: center; box-shadow: 0 0 11px #bbb;}
         .dash-card:hover{background: #fafafa; border: 2px solid #FD6A33; box-shadow: 0 0 13px #999;}
         .cont-dash{text-align: center}
-        .image{height:45px; }
-        .text{color: #008da5; font-weight: 300; font-size: 130%; margin: 15px 5px!important; }
+        .image{height:50px; }
+        .text{color: #008da5; font-weight: 400; font-size: 130%; margin: 10px 5px!important; }
         .counter{color: #00839b; font-weight: 300; font-size: 120%; margin: 0 3px; opacity: 0.2}
 
         @media (max-width: 520px){

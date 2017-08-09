@@ -1,24 +1,48 @@
 <template>
-    <div class="row">
-        <div class="row">
-            <div class="category" v-for="category in categories">
-                <span>{{ category.name }}</span>
-                <span :id="category.id + '-1'" v-on:click="star(category.id, 1, $event)">☆</span>
-                <span :id="category.id + '-2'" v-on:click="star(category.id, 2, $event)">☆</span>
-                <span :id="category.id + '-3'" v-on:click="star(category.id, 3, $event)">☆</span>
-                <span :id="category.id + '-4'" v-on:click="star(category.id, 4, $event)">☆</span>
-                <span :id="category.id + '-5'" v-on:click="star(category.id, 5, $event)">☆</span>
-            </div>
-        </div>
+    <div class="row content">
 
-        <div class="row">
-                <label for="text">Text:</label>
-                <textarea v-model='text'></textarea>
-                <button v-on:click="save()">Αποθήκευση</button>
-        </div>
+            <div class="category" v-for="category in categories">
+                <i :class="category.icon"></i>
+                <span class="category-name">{{ category.name }}</span>
+                <span class="stars">
+                    <span class="star" :id="category.id + '-1'" v-on:click="star(category.id, 1, $event)">☆</span>
+                    <span class="star" :id="category.id + '-2'" v-on:click="star(category.id, 2, $event)">☆</span>
+                    <span class="star" :id="category.id + '-3'" v-on:click="star(category.id, 3, $event)">☆</span>
+                    <span class="star" :id="category.id + '-4'" v-on:click="star(category.id, 4, $event)">☆</span>
+                    <span class="star" :id="category.id + '-5'" v-on:click="star(category.id, 5, $event)">☆</span>
+                </span>
+                <div class="up"></div>
+
+            </div>
+
+
+
+        <div class="text-com">Γράψτε τα σχόλια σας για το εκπαιδευτικό ίδρυμα</div>
+                <!--<label for="text">Text:</label>-->
+                <textarea v-model='text' class="review-area"></textarea>
+                <div class="clearfix"></div>
+                <button v-on:click="save()" class="btn btn-primary btn-save">Αποθήκευση</button>
+
       
     </div>
 </template>
+
+<style>
+    .content{padding-left: 10px; margin-top: 20px;}
+    i {margin-right: 10px;}
+    .category{color: #888; position: relative;}
+    .category-name{}
+    .stars{position: absolute; left: 272px;}
+    .up{margin-top: 3px;}
+    .text-com{margin: 30px 0 10px 0; letter-spacing:0.5px;}
+    .review-area{width: 355px; border-radius: 5px; height: 100px; resize: none;}
+    .btn-save{margin: 15px 0 0 120px;}
+
+    @media (max-width: 620px){
+        /*.content{text-align: center;}*/
+    }
+
+</style>
 
 <script>
     export default {
