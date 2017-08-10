@@ -1,10 +1,10 @@
 <template>
-    <div class="row content">
+    <div class="row review-content">
 
-            <div class="category" v-for="category in categories">
+            <div class="review-category" v-for="category in categories">
                 <i :class="category.icon"></i>
                 <span class="category-name">{{ category.name }}</span>
-                <span class="stars">
+                <span class="review-stars">
                     <span class="star" :id="category.id + '-1'" v-on:click="star(category.id, 1, $event)">☆</span>
                     <span class="star" :id="category.id + '-2'" v-on:click="star(category.id, 2, $event)">☆</span>
                     <span class="star" :id="category.id + '-3'" v-on:click="star(category.id, 3, $event)">☆</span>
@@ -12,34 +12,48 @@
                     <span class="star" :id="category.id + '-5'" v-on:click="star(category.id, 5, $event)">☆</span>
                 </span>
                 <div class="up"></div>
-
             </div>
 
-
-
         <div class="text-com">Γράψτε τα σχόλια σας για το εκπαιδευτικό ίδρυμα</div>
-                <!--<label for="text">Text:</label>-->
-                <textarea v-model='text' class="review-area"></textarea>
-                <div class="clearfix"></div>
-                <button v-on:click="save()" class="btn btn-primary btn-save">Αποθήκευση</button>
+        <!--<label for="text">Text:</label>-->
+        <textarea v-model='text' class="review-area"></textarea>
+        <div class="clearfix"></div>
+        <button v-on:click="save()" class="btn btn-primary btn-save">Αποθήκευση</button>
 
       
     </div>
 </template>
 
 <style>
-    .content{padding-left: 10px; margin-top: 20px;}
+    .review-content{padding-left: 10px; margin-top: 20px;}
     i {margin-right: 10px;}
-    .category{color: #888; position: relative;}
-    .category-name{}
-    .stars{position: absolute; left: 272px;}
+    .review-category{color: #888; position: relative;}
+    .review-stars{position: absolute; left: 272px;}
     .up{margin-top: 3px;}
     .text-com{margin: 30px 0 10px 0; letter-spacing:0.5px;}
-    .review-area{width: 355px; border-radius: 5px; height: 100px; resize: none;}
+    .review-area{width: 355px; border-radius: 5px; height: 100px; resize: none; border: 1px solid #008da5}
     .btn-save{margin: 15px 0 0 120px;}
 
-    @media (max-width: 620px){
-        /*.content{text-align: center;}*/
+    @media (max-width: 600px){
+        .review-content{width: 390px; margin-left: auto; margin-right: auto; padding: 0 0 0 14px;}
+    }
+
+    @media (max-width: 415px){
+        .review-content{width: 370px; padding: 0 0 0 3px;}
+    }
+
+    @media (max-width: 390px){
+        .up{margin-bottom: 40px;}
+        .review-stars{left: 27px; top: 23px; letter-spacing: 1px;}
+        .review-content{width: 320px; padding: 0;}
+        .review-area{width: 320px;}
+        .review-area,.text-com,.btn-save{margin: 15px auto; text-align: center; display: block;}
+        .text-com{margin-top: 60px;}
+    }
+    @media (max-width: 340px){
+
+        .review-content{width: 295px; padding: 0;}
+        .review-area{width: 290px; margin-left: -5px;}
     }
 
 </style>

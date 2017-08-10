@@ -5,6 +5,11 @@
         .school-logo{height: 55px; float: left;}
         .school-name{float: left; margin: 31px 0 0 10px;}
         .up{margin-top: 30px}
+
+        @media (max-width: 600px){
+            .school-logo,.school-name{text-align: center; float: none; margin: 10px auto; display: block;}
+            .up{margin-top: 50px;}
+        }
     </style>
 @endsection
 
