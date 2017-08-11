@@ -112,7 +112,7 @@ body {
 
 
 .up {margin-top: 50px;}
-.photo-box{ min-height: 530px;
+.photo-box{ height: 490px;
     background-size: cover;
     background-position: center;
     background-image: linear-gradient( rgba(187, 218, 222, 0.2), rgba(0, 67, 79, 0.8)), url("/new/img/teacher/back1.jpg");
@@ -237,18 +237,18 @@ body {
 }
 
 @media (min-width: 541px) and (max-width: 600px) {
-
+    .photo-box{ height: 410px; }
 }
 
 
 @media (min-width: 481px) and (max-width: 540px) {
-
+    .photo-box{ height: 390px; }
 }
 
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
-    .photo-box{ min-height: 390px; }
+    .photo-box{ height: 370px; }
     .avatar {width: 48%; height: auto; margin-left:26%;}
     .row1 {margin-top: 10px;}
     .name {margin:0; color: black; font-size: 185%}

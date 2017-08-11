@@ -153,10 +153,12 @@
             color: #000;
             font-weight: 300;
             border:0;
-            width: 60px; height: 27px;
+            width: 60px; height: 36px;
             background-color: #F1F4F5;
         }
         .select-polyteknos{ margin: 5px 0 10px 15px;}
+
+        .select-icon,.select-icon2{margin-top: 3px;}
         /*  ======================================= */
 
         @media (min-width:992px) and (max-width: 1200px) {

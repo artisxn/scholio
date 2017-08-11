@@ -5,10 +5,10 @@
     .cont-btn{position: absolute; bottom: 5px; right: 25px; }
     .cont-text{position: absolute; bottom: 35px; right: 25px; }
     .cont-text>a{color: #008da5}
-    .cont-text>a:hover{color: #FD6A33}
+    .admin-name{color: #008da5; font-size: 120%}
+    .cont-text>a:hover,.admin-name:hover{color: #FD6A33}
     .sc-btn{padding: 6px; margin-bottom: 30px;}
     .img-logo{height: 75px;}
-
 
     @media  (min-width:660px) and (max-width:920px) {
         .img-logo{height: 60px;}
@@ -37,9 +37,11 @@
                     <div class="contact-card" style="">
 
                         <a target="_blank" :href='"/public/profile/" + mySchool.id'>
-                            <h4 class="m-t-0 m-b-5 header-title">
-                                <b>{{mySchool.admin.name}}</b>
-                            </h4>
+                            <div class="admin-name">
+                                {{mySchool.admin.name}}
+                            </div>
+
+
                             <div class="pull-left  cont-img">
                                         <img class="img-logo" :src="'/images/schools/' + mySchool.logo" alt=""/>
                             </div>

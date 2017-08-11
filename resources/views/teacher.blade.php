@@ -61,9 +61,9 @@
     .photo-box{ min-height: 530px;
         background-size: cover;
         background-position: center;
-        background-image: linear-gradient( rgba(187, 218, 222, 0.2), rgba(0, 67, 79, 0.8)),
-        url("{{$teacher->cover}}");
+        background-image: linear-gradient( rgba(187, 218, 222, 0.2), rgba(0, 67, 79, 0.8)),url("{{$teacher->cover}}");
     }
+
     </style>
     @endif
 </head>
@@ -291,7 +291,7 @@
                                         <span id="count{{$skill->id}}" class="counter">
                                             {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
                                         </span>
-                                        <div id="bar{{$skill->id}}" class="skill-bar" style="width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 20}}px;" >
+                                        <div id="bar{{$skill->id}}" class="skill-bar" style="width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 25}}px; max-width: 95%" >
                                         </div>
 
                                     </span>
