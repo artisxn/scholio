@@ -68,6 +68,9 @@
     .mar-left{margin-left: 10px}
     .mar-right{margin-right: 10px}
 
+    .orange-hover:hover{color: #FD6A33}
+
+
     @media screen and (min-width:768px) {
         .btn-role {
             max-width: 190px;
@@ -167,8 +170,8 @@
 </div>
 
 <div class=" login">
-    <div class="col-xs-12 text-center margin-top-15 margin-bot-25">
-            Έχεις ήδη λογαριασμό;<a href="/login" class="text-primary" style="color: black"><b> Συνδέσου</b></a>
+    <div class="col-xs-12 text-center margin-top-15 margin-bot-25 ">
+            Έχεις ήδη λογαριασμό;<a href="/login" class="text-primary" style="color: black"><b class="orange-hover"> Συνδέσου</b></a>
     </div>
 </div>
 

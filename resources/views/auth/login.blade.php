@@ -39,6 +39,13 @@
         {{-- <script src="/panel/assets/js/modernizr.min.js"></script> --}}
 
     </head>
+
+
+    <style>
+        .login-signUp-title,.orange-hover{color: #444}
+        .orange-hover:hover{color: #FD6A33}
+    </style>
+
     <body>
 
         <div class="outer col-xxs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6  col-lg-4 col-lg-offset-4">
@@ -86,7 +93,7 @@
 
                         <div class="form-group m-t-20 m-b-0">
                             <div class="col-sm-12">
-                                <a href="/password/reset" class="text-muted" style="color: black!important"><i class="fa fa-lock m-r-5"></i> Ξέχασες τον κωδικό σου;</a>
+                                <a href="/password/reset" class="text-muted orange-hover"><i class="fa fa-lock m-r-5"></i> Ξέχασες τον κωδικό σου;</a>
                             </div>
                         </div>
 
@@ -126,9 +133,9 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <p>
-                        Δεν έχεις λογαριασμό;<a href="/register" class="text-primary m-l-5y" style="color: black!important"
+                        Δεν έχεις λογαριασμό;<a href="/register/role" class="text-primary m-l-5y" style="color: black!important"
                                 {{--data-toggle="modal" data-target="#signUp-modal"--}}
-                        ><b> Δημιούργησε έναν Δωρεάν!</b></a>
+                        ><b class="orange-hover"> Δημιούργησε έναν Δωρεάν!</b></a>
                     </p>
                 </div>
             </div>
