@@ -269,7 +269,7 @@
 
 
 <!-- Scholio Main Section -->
-<main id="main"  class="">
+<main id="main"  class="main-landing">
 
 
 

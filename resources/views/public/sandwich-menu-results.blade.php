@@ -4,6 +4,7 @@
     .menu-mobile-holder{ right: 5px;  top:17px; position: absolute; z-index: 500; border-radius: 10px; padding: 20px;
         /*background-color: #dde0e1;*/
         background-color: #006880;
+        overflow-x: hidden;
         /*border: 1px solid #aaa;*/
         /*box-shadow: 0 0 10px 1px #666;*/
     }
@@ -73,7 +74,7 @@
     .choose-lang>a,.choose-lang>a:visited{color: #fff;}
     .choose-lang>a:hover{color: #FD6A33}
 
-    .nav-item,.nav-item:visited,.nav-item:focus{color: #fff; font-size: 105%; display: block; margin: 10px 0;}
+    .nav-item,.nav-item:visited,.nav-item:focus{color: #fff; font-size: 100%; display: block; margin: 10px 0; font-weight: 300;}
 
     .btn-register,.btn-login{ position: absolute; bottom: 30px; color: #fff; font-weight: 400;  border: none; padding: 7px;  width: 98px; border-radius: 4px; margin-top: 40px; }
     .btn-register{background-color: #00bcd4; left:18px;}

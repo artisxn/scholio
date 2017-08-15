@@ -4,6 +4,7 @@
     .menu-mobile-holder{ right: 5px;  top:17px; position: absolute; z-index: 500; border-radius: 10px; padding: 20px;
         /*background-color: #dde0e1;*/
         background-color: #006880;
+        overflow-x: hidden;
         /*border: 1px solid #aaa;*/
         /*box-shadow: 0 0 10px 1px #666;*/
     }
@@ -42,8 +43,8 @@
         /*filter:sepia(100%);*/
     }
     .greyscale{
-        -webkit-filter: grayscale(80%) blur(2px));
-        filter: grayscale(80%) blur(2px);
+        -webkit-filter: grayscale(80%);
+        filter: grayscale(80%);
         /*filter: blur(2px) sepia(80%);*/
         -webkit-transition: all 300ms ease-in, all 300ms ease-out;
         -moz-transition: all 300ms ease-in, all 300ms ease-out;
@@ -125,7 +126,7 @@
     var mobilemenu =$('.menu-mobile-holder');
     var material=$('.material-content');
 
-    var main=$('#main');
+    var main=$('main');
     var headerFull=$('header');
 
     var open=false;
