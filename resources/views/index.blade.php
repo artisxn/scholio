@@ -24,7 +24,7 @@
     |Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=greek" rel="stylesheet">
     -->
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=greek" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&subset=greek" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
@@ -96,9 +96,6 @@
 
 
     <style>
-        /*.animate  #sec2 h5{color: red; opacity: 1;*/
-        /*-webkit-transition: all 2.5s ease;*/
-        /*transition: all 2.5s ease;}*/
         .opacityLow{opacity: 0}
         .opacityFull {opacity: 1}
         #sec2{
@@ -113,7 +110,6 @@
 
         .sch-reg-title{left: 37%; : 400px; position: absolute; max-width: 400px}
 
-
         .lang-sel{color: #fff; margin-top: 2px; margin-left: -23px}
         .lang-drop{margin: 4px -13px;}
         .select-white .dropdown-menu>li>a{ color: black;}
@@ -124,101 +120,13 @@
         .btn-transparent{ color: #fff}
         .btn-transparent:focus{ box-shadow: none; outline: 0}
         .btn-transparent:hover{color: #00bcd4!important;}
-        /*.btn-white{color: #777;}*/
-        /*.selectpicker{outline: none !important;}*/
-        /*.selectpicker:focus{outline: none !important;}*/
-        /*.select-white:selected{ color: #777;}*/
-        /*.btn-transparent:focus{color: #fff; outline: 0;}*/
-        /*ul>li>a:hover,.btn-transparent:hover{color: #7ef8ff;}*/
-        /*ul>li>a:hover,.btn-transparent:hover{color: #FD6A33!important;}*/
-        /*.hover{color: #FD6A33!important;}*/
 
 
         .algolia-image{margin-left:10px; margin-top: 2px; height: 17px;}
         .algolia-powered{margin-top: -20px;  margin-bottom: -10px;  padding: 0; color: #ebebeb}
 
 
-        /* ================================ */
-        .choose-lang{ color: #fff; margin: 1px 0 23px 0; }
-        .choose-lang>a,.choose-lang>a:visited{color: #fff;}
-        .choose-lang>a:hover{color: #FD6A33}
-
-        .nav-item,.nav-item:visited,.nav-item:focus{color: #fff; font-size: 105%; display: block; margin: 10px 0;}
-
-        .material-content{opacity: 0;
-            transition: all 100ms ease-in, all 100ms ease-out;}
-
-        .material-on{opacity: 1;
-            transition: all 100ms ease-in, all 100ms ease-out;
-        }
-
-
-
-
-
-        /* ================================ */
-
-        .sandwitch-scroll-up{top:9px!important;}
-        .menu-mobile-holder{ right: 5px;  top:17px; position: absolute; z-index: 500; border-radius: 10px; padding: 20px;
-            /*background-color: #dde0e1;*/
-            background-color: #006880;
-            /*border: 1px solid #aaa;*/
-            /*box-shadow: 0 0 10px 1px #666;*/
-        }
-
-        .menu-mobile-left{
-            opacity: 1;
-            width: 250px;
-            height:270px;
-            -webkit-transition: all 300ms ease-in, all 300ms ease-out;
-            -moz-transition: all 300ms ease-in, all 300ms ease-out;
-            -o-transition: all 300ms ease-in, all 300ms ease-out;
-            transition: all 200ms ease-in, all 200ms ease-out;
-            /*transition: width 300ms ease-in, width 300ms ease-out,height 200ms ease-in, height 200ms ease-out;*/
-
-        }
-        .menu-mobile-right{
-            /*right: -255px;  top: -800px; */
-            opacity: 0;
-            width: 10px;
-            height: 10px;
-
-            -webkit-transition: all 300ms ease-in, all 300ms ease-out;
-            -moz-transition: all 300ms ease-in, all 300ms ease-out;
-            -o-transition: all 300ms ease-in, all 300ms ease-out;
-            /*transition: width 300ms ease-in, width 300ms ease-out,height 200ms ease-in, height 200ms ease-out;*/
-            transition: all 250ms ease-in, all 250ms ease-out;
-            /*transition: opacity 1ms;*/
-
-        }
-
-        .sandwitch,.sandwitch-sticky{position: absolute; right: 10px; top:6px;}
-        .sandwitch-sticky{display: none;}
-
-        .invert{
-            filter: invert(70%);
-            /*filter:sepia(100%);*/
-        }
-
-        @media   (min-width: 768px) {
-            .sand-container{width: 106%!important; position: relative!important;}
-            .menu-mobile-holder{ top:15px; right: 53px;}
-        }
-
-
-
-        /* ================================ */
-
-        .btn-register,.btn-login{ position: absolute; bottom: 30px; color: #fff; font-weight: 300;  border: none; padding: 7px;  width: 98px; border-radius: 4px; margin-top: 40px; }
-        .btn-register{background-color: #00bcd4; left:18px;}
-        .btn-login{background-color: #FD6A33; right: 16px; }
-
-        .btn-register:hover{background-color: #00a1b9;}
-        .btn-login:hover{background-color: #c1572a
-        }
-
-
-        /* ================================ */
+        /* ===========-----------===================== */
         #school-register-button:focus{color: #fff; outline: none!important;}
 
         .bot-text,.bot-text:visited{color: black}
@@ -277,7 +185,7 @@
                 </a>
             </div>
 
-            <div class="col-xs-6  visible-sm visible-xs">
+            <div class="col-xs-6  visible-sm visible-xs" id="logo-xs">
                 <div class="nav-mobile">
                     <a class="" href="#home">
                         <div class="navbar-brand  sc-landing-logo">
@@ -299,8 +207,6 @@
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">@lang('main.navigation.institutions')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">@lang('main.navigation.features')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">@lang('main.navigation.contact')</a></li>
-                        {{--<li class="lang-sel"><a href="">ENG &nbsp;|</a> </li>--}}
-                        {{--<li class="lang-sel sel2"><a href=""> GR</a></li>--}}
                         <li class="lang-drop">
                         <form method="GET" id="langForm">
                             <select onchange="changeLang(this)" class="trans selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent">
@@ -327,7 +233,7 @@
                             >@lang('main.navigation.register')</button></a></li>
                     <li>
                     <a href="{{ url('/login') }}">
-                    <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white"
+                    <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
                             {{--data-toggle="modal" data-target="#signIn-modal"--}}
                     >@lang('main.navigation.login')</button>
                     </a>
@@ -335,11 +241,11 @@
                     @endif
 
                     </ul>
-                    {{-- <a href="lang/en">EN</a> | <a href="lang/el">GR</a> --}}
+
                 </div>
             </div>
 
-            <!-- Mobile Menu -->
+            <!-- Mobile Sandwich Icon  -->
             <div class="col-xs-6 visible-sm visible-xs" style="z-index: 6000; height: 20px;">
                     <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right" >
                         <div class="sc-landing-menu-sandwitch sc-landing-menu-sandwitch-button " >
@@ -349,42 +255,10 @@
                     </div>
             </div>
 
+            <!-- ======= Sandwich Menu =======-->
+            @include('public.sandwich-menu-landing')
 
-            <div class="sand-container hidden-md hidden-lg">
-                <div class="menu-mobile-holder menu-mobile-right">
 
-                            <div class="material-content" >
-                                <div class="choose-lang" >
-                                    <a href="/lang/en" style="z-index: 7000!important;">ENG &nbsp;</a> | <a href="/lang/el"> &nbsp;&nbsp;GR</a>
-                                </div>
-
-                                <a href="#sc-landing-sec2" class="nav-item">@lang('main.navigation.about')</a>
-                                <a href="#sc-landing-sec4" class="nav-item">@lang('main.navigation.institutions')</a>
-                                <a href="#sc-landing-sec3" class="nav-item">@lang('main.navigation.features')</a>
-                                <a href="#sc-landing-sec5" class="nav-item">@lang('main.navigation.contact')</a>
-
-                                <div class="btn-links centered-text">
-
-                                    @if(auth()->check())
-                                        <a href="{{ url('/dashboard') }}"><button type="button" class="btn-register centered-text">@lang('main.navigation.admin')</button></a>
-                                        <a href="{{ url('/out') }}"><button type="button" class="btn-login centered-text">@lang('main.navigation.logout')</button></a>
-                                    @else
-                                        <a href="{{ url('/register/role') }}">
-                                            <button type="button" class=" btn-register centered-text"
-                                                    {{--data-toggle="modal" data-target="#signUp-modal"--}}
-                                            >@lang('main.navigation.register')</button>
-                                        </a>
-                                        <a href="{{ url('/login') }}">
-                                            <button type="button" class=" btn-login centered-text"
-                                                    {{--data-toggle="modal" data-target="#signIn-modal"--}}
-                                            >@lang('main.navigation.login')</button>
-                                        </a>
-                                    @endif
-
-                                </div>
-                            </div>
-                </div>
-            </div>
 
 
         </div>
@@ -403,8 +277,8 @@
     <section id="sc-landing-sec1" class="sc-landing-sec1">
         <div class="container">
             <div class="sc-landing-sec1-content">
-                <h1 class="text-center sc-t-white"><span class="typed-js"></span> </h1>
-                <h3  class="text-center sc-t-white">@lang('main.first.subtitle')</h3>
+                <h1 class="text-center sc-t-white typed"><span class="typed-js"></span> </h1>
+                <h3 class="text-center sc-t-white main-title">@lang('main.first.subtitle')</h3>
 
             </div>
         </div>
@@ -869,7 +743,6 @@ function validateMyForm(el, id){
     $('.knob2').val(128).knob();
     $('.knob3').val(268).knob();
     $('.knob4').val(130).knob();
-
 //    var graph = $('.knob');
 //    $({value: 0}).animate({ value: 1790 }, {
 //        duration:900,
@@ -877,7 +750,7 @@ function validateMyForm(el, id){
 //        progress: function () {graph.val(Math.ceil(this.value)).trigger('change')
 //        }
 //    });
-
+//
 
 </script>
 </html>

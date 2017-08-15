@@ -180,7 +180,7 @@
                             </form>
                         </li>
 
-                            <li class="sc-landing-menu-item"  ">
+                            <li class="sc-landing-menu-item">
                                 <a href="{{url('public/schools')}}" class="btn-change-search">
                                     <i class="fa fa-university margin-right-5"></i>
                                     @lang('scholarships.search_institution')
@@ -205,8 +205,9 @@
                     </div>
                 </div>
 
+
                 <!-- Mobile Menu -->
-                <div class="col-xs-6 visible-sm visible-xs ">
+                <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
@@ -225,28 +226,17 @@
                         </div>
                     </div>
 
-                    <div class="visible-xs visible-sm">
-                        <div class="sc-landing-menu-mobile-holder sc-dark-blue">
-                            <div class="pull-right">
-                                <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                            </div>
-                            <br><br>
-                            <div class="sign-links">
-                                @if(auth()->check())
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('scholarships.navigation.admin')</button></a>
-                                    <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('scholarships.navigation.logout')</button></a>
-                                @else
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('scholarships.navigation.register')</button></a>
-                                    <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('scholarships.navigation.login')</button></a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
+                <!-- ======= Sandwich Menu =======-->
+                @include('public.sandwich-menu-results')
+
+
+
+
+
+
+
 
             </div>  <!-- row -->
         </div> <!-- container-->

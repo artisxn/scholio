@@ -146,7 +146,7 @@ video {
 
 .btn-school-reg{ margin-top: 160px; width: 260px; height: 50px;}
 
-.text-container{ position: absolute; right: 50px; width: 300px; text-shadow: 2px 2px #7b909b;}
+.text-container{ position: absolute; right: 50px; width: 300px; color: #444; font-weight: 300;}
 
 .banner-title{ text-shadow: none}
 .banner-content {margin-top: -55px;}
@@ -221,7 +221,7 @@ video {
 
 
 
-    /* //////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////// */
 
@@ -256,6 +256,10 @@ video {
 @media  (max-width: 991px) {
 .sc-landing-sec3-text h2{ font-size: 186%;}
 
+    .typed{position: absolute; top: 305px; font-size: 390%; left: 0; right: 0;}
+    .main-title{position: absolute; top: 380px; left: 0; right: 0;}
+    .search-container{position: absolute; top: 120px;}
+
 }
 
 
@@ -271,11 +275,12 @@ video {
 
 
 /* Landscape phones and portrait tablets */
+
 @media (max-width: 767px) {
-    /* First Section */
+     /*First Section*/
     .sc-landing-sec1-content{margin-top:90px;}
     /* Search Bar */
-    .sc-landing-search-bar-holder{height:200px;  top:482px;}
+    .sc-landing-search-bar-holder{height:200px;  }
     .btn-school-reg{ margin-top: 30px; margin-left: 4%}
 
     .clear-fix {
@@ -288,12 +293,20 @@ video {
     .sc-landing-sec3 { padding-left: 15px; margin-left: 0; margin-top: -10px;}
     .sc-landing-sec3-text{ padding-left: 50px}
 
+    /* video typed title & text $ search bar */
+    .typed{position: absolute; top: 270px; font-size: 340%; left: 0; right: 0;}
+    .main-title{position: absolute; top: 370px; left: 0; right: 0;}
+    .search-container{position: absolute; top: 130px;}
 }
+
+
+
+
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     /* First Section */
     .sc-landing-sec1-content {
-        margin-top: 40px;
+        margin-top: 90px;
     }
 
     .sc-landing-sec1-content h1 {
@@ -329,7 +342,6 @@ video {
     .iphone { height: 260px; right: 190px; top: 170px;}
     /*.banner {right: 22px!important;}*/
 }
-
 
 
 @media (min-width: 520px) and (max-width: 767px) {
@@ -413,7 +425,9 @@ video {
     .sc-landing-sec1-content h3 {  font-size: 21px !important;  }
 
     /* Search Bar */
-    .sc-landing-search-bar-holder {  height: 200px;  top: 380px;  }
+    .typed{position: absolute; top: 235px; font-size: 120%; left: 0; right: 0;}
+    .sc-landing-search-bar-holder {  height: 200px;  top: 390px;  }
+    .main-title{position: absolute; top: 315px; left: 0; right: 0;}
     .mobile-hero {max-width: 150%; max-height: 560px;}
 
     /*New Section*/
