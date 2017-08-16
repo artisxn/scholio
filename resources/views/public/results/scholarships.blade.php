@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
 
     <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
@@ -132,6 +132,8 @@
 
 
     .logo-img{max-height: 46px; max-width: 46px; margin-top: 6px; margin-left: -3px;}
+    /*.mobile-input input[type='text']{font-size: 16px;}*/
+    /*select{  font-size: 16px;  height: 36px; padding: 2px; margin-bottom: 7px;}*/
 
 
 </style>
@@ -211,7 +213,8 @@
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">
+                                <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
                     </div>
@@ -219,9 +222,8 @@
                     {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
                     <div class="">
                         <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
-                            <a class="" role="button"
-                               href="" aria-expanded="false">
-                                <i class="fa fa-filter margin-right-10 margin-top-30 sc-t-dark-grey" style="font-size: 180%;" aria-hidden="true"></i>
+                            <a class="" role="button" href="" aria-expanded="false">
+                                <i class="fa fa-filter margin-right-10 margin-top-30 sc-t-dark-grey" style="font-size: 180%; z-index: 5!important;" aria-hidden="true" ></i>
                             </a>
                         </div>
                     </div>
@@ -250,20 +252,23 @@
             </div>
 
             <div class="row">
-                <!--============ collapseMenu =============-->
+                <!-- ============== collapse Mobile Menu start ============= -->
                 <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300"
                      style=" padding: 0 0 15px 0;  width: 250px; box-shadow: 2px 0px 40px 6px #4e4e4e; height: 100%; overflow-y: auto">
 
                     <div class="" style="z-index: 95; background-color: #eee; padding: 10px 7px 40px 7px; min-height: 100%; overflow-x: hidden" >
 
                         <div >
-                            <div class="input-group margin-bot-15 " style="width: 100%; ">
-                                <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
+                            <div class="input-group margin-bot-15 mobile-input" style="width: 100%; ">
+                                <input type="text" class="form-control algolia-search-input " id="queryMobile" style="border-radius: 5px;" />
                             </div>
                         </div>
 
+                        <span>@lang('scholarships.filters.sortby')</span>
+                        <div id="sort-by-container-mobile"></div>
+
                         <div class="content-wrapper col-sm-12">
-                            <aside style="width: 230px;">
+                            <aside style="width: 238px;">
 
                                 <div id="statsMobile" class=""></div>
                                 <div class="facet-category-title">@lang('scholarships.filters.title'):
@@ -276,18 +281,34 @@
 
                                 <div class="filter-container">
                                     <div class="filter-title" >
+                                        <i class="fa fa-university fa-linear5 margin-right-5"></i>
                                         @lang('scholarships.filters.institutions')</div>
                                     <div id="categoriesTypeMobile" ></div>
                                 </div>
 
                                 <div class="filter-container">
-                                    <div class="filter-title">@lang('scholarships.filters.cities')</div>
+                                    <div class="filter-title">
+                                        <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                        @lang('scholarships.filters.cities')</div>
                                     <div id="categoriesCityMobile"></div>
                                 </div>
-                                {{--<div class="filter-container">--}}
-                                    {{--<div class="filter-title">Επίπεδο Σπουδών</div>--}}
-                                    {{--<div id="categoriesLevel"></div>--}}
-                                {{--</div>--}}
+                                <div class="filter-container">
+                                    <div class="filter-title">
+                                        <i class="fa fa-book fa-linear5 margin-right-5"></i>
+                                        @lang('scholarships.filters.studies')</div>
+                                    <div id="categoriesSectionMobile"></div>
+                                </div>
+                                <div class="filter-container">
+                                    <div class="filter-title"><i class="fa fa-graduation-cap fa-linear5 margin-right-5"></i>
+                                        @lang('scholarships.filters.level')</div>
+                                    <div id="categoriesLevelMobile"></div>
+                                </div>
+                                <div class="filter-container">
+                                    <div class="filter-title">
+                                        <i class="fa fa-check-square fa-linear5 margin-right-5"></i>
+                                        @lang('scholarships.filters.criteria')</div>
+                                    <div id="categoriesCriteriaMobile"></div>
+                                </div>
 
                             </aside>
 
@@ -298,8 +319,11 @@
                     </div>
 
 
-                </div><!-- collapseMenu -->
+                </div>
+                <!-- ============== collapse Mobile Menu ended ============ -->
 
+
+                <!-- ============ Left search Menu on Large Screens ============-->
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs" >
 
                     <div class="col-sm-12">
@@ -723,11 +747,32 @@ angular.module("scholarshipsResultsApp",[])
                 }
             })
     );
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCriteriaMobile',
+                attributes: ['criteria_en'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
 
     @else
 search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteria',
+                attributes: ['criteria'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCriteriaMobile',
                 attributes: ['criteria'],
                 sortBy: ['name:asc'],
                 templates: {
@@ -761,9 +806,20 @@ search.addWidget(
             })
     );
 
+
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesSection',
+                attributes: ['section'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesSectionMobile',
                 attributes: ['section'],
                 sortBy: ['name:asc'],
                 templates: {
@@ -782,6 +838,16 @@ search.addWidget(
                 }
             })
     );
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesLevelMobile',
+                attributes: ['level_en'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
     @else
 search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
@@ -793,7 +859,17 @@ search.addWidget(
                 }
             })
     );
-    @endif
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesLevelMobile',
+                attributes: ['level'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+@endif
 
     search.addWidget(
       instantsearch.widgets.sortBySelector({
@@ -804,6 +880,17 @@ search.addWidget(
           {name: 'dummyScholarships_created_asc', label: '@lang('scholarships.filters.new')'}
         ]
       })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.sortBySelector({
+                container: '#sort-by-container-mobile',
+                indices: [
+                    {name: 'dummyScholarships', label: '@lang('scholarships.filters.about')'},
+                    {name: 'dummyScholarships_school_asc', label: '@lang('scholarships.filters.popular')'},
+                    {name: 'dummyScholarships_created_asc', label: '@lang('scholarships.filters.new')'}
+                ]
+            })
     );
 
     // search.addWidget(

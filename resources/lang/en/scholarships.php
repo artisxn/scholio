@@ -6,6 +6,8 @@ return [
         'register' => 'Register',
         'logout' => 'Logout',
         'admin' => 'Admin',
+        'home'=>'Home',
+
     ],
     'cards' => [
         'scholarship_from' => 'Scholarship by',
