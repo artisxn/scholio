@@ -1,7 +1,7 @@
 <?php
 return [
     'navigation' => [
-        'search_scholarship' => 'Aναζήτηση Υποτροφιών',
+        'search_scholarship' => 'Aναζήτησε Υποτροφίες',
         'login' => 'Σύνδεση',
         'register' => 'Εγγραφή',
         'logout' => 'Αποσύνδεση',

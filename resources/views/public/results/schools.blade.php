@@ -220,65 +220,55 @@
                         </li>
 
 
-                            <li class="sc-landing-menu-item"  ">
+                            <li class="sc-landing-menu-item">
                             <a href="{{url('public/scholarships')}}" class="btn-change-search">
                                 <i class="fa fa-trophy margin-right-5"></i>
                                 @lang('schools.navigation.search_scholarship')
                             </a>
                             </li>
                             @if(auth()->check())
-                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('schools.navigation.admin')</button></a></li>
-                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('schools.navigation.logout')</button></a></li>
+                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                             @else
-                                <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">@lang('schools.navigation.register')</button></a></li>
-                                <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white " data-toggle="modal" data-target="#signIn-modal">@lang('schools.navigation.login')</button></a></li>
+                                <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#select-modal"--}}
+                                        >@lang('main.navigation.register')</button></a></li>
+                                <li>
+                                    <a href="{{ url('/login') }}">
+                                        <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                                        >@lang('main.navigation.login')</button>
+                                    </a>
+                                </li>
                             @endif
                         </ul>
                     </div>
                 </div>
 
                 <!-- Mobile Menu -->
-                <div class="col-xs-6 visible-sm visible-xs ">
+                <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark.png')}}"  alt="scholio logo">
+                                <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
                     </div>
 
                     {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
-                    <div class="">
+
                         <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
-                            <a class="" role="button"
-                               href="#" aria-expanded="false">
-                                <i class="fa fa-filter margin-right-30 margin-top-30 text-incr-175 sc-t-dark-grey" aria-hidden="true"></i>
+                            <a class="" role="button" href="#" aria-expanded="false">
+                                <i class="fa fa-filter margin-right-10 margin-top-30 text-175 sc-t-dark-grey" style="font-size: 180%; z-index: 5!important;" aria-hidden="true" ></i>
                             </a>
                         </div>
-                    </div>
 
-                    <div class="visible-xs visible-sm">
-                        <div class="sc-landing-menu-mobile-holder sc-dark-blue">
-                            <div class="pull-right">
-                                <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                            </div>
-                            <br><br>
-                            <div class="sign-links">
-                                @if(auth()->check())
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('schools.navigation.admin')</button></a>
-                                    <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('schools.navigation.logout')</button></a>
-                                @else
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('schools.navigation.register')</button></a>
-                                    <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('schools.navigation.login')</button></a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
+
+                <!-- ======= Sandwich Menu =======-->
+                @include('public.sandwich-menu-resultsSchools')
 
             </div>  <!-- row -->
         </div> <!-- container-->
@@ -305,6 +295,11 @@
                         </div>
 
 
+                        <span>@lang('schools.sortby.title')</span>
+                        <div id="sort-by-container-Mobile"></div>
+
+
+
                         <div class="content-wrapper col-sm-12">
                             <aside style="width: 230px;">
 
@@ -319,11 +314,15 @@
                                 <div id="clear-allMobile" class="clear-filter-mobile"> </div>
 
                                 <div class="filter-container">
-                                    <div class="filter-title">@lang('schools.filters.categories')</div>
+                                    <div class="filter-title">
+                                        <i class="fa fa-university fa-linear5 margin-right-5"></i>
+                                        @lang('schools.filters.categories')</div>
                                     <div id="categoriesTypeMobile"></div>
                                 </div>
                                 <div class="filter-container">
-                                    <div class="filter-title">@lang('schools.filters.cities')</div>
+                                    <div class="filter-title">
+                                        <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                        @lang('schools.filters.cities')</div>
                                     <div id="categoriesCityMobile"></div>
                                 </div>
 
@@ -368,7 +367,8 @@
                         <aside>
 
                             <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">@lang('schools.filters.title'):</div>
+                            <div class="facet-category-title facet font-weight-300">
+                                @lang('schools.filters.title'):</div>
 
                             <div id="clear-all"class="clear-filter"></div>
 
@@ -498,6 +498,17 @@ angular.module("schoolsResultsApp",[])
             search.addWidget(
                     instantsearch.widgets.sortBySelector({
                         container: '#sort-by-container',
+                        indices: [
+                            {name: 'dummySchools', label: '@lang('schools.sortby.stars')'},
+                            {name: 'dummySchools_scholarships_desc', label: '@lang('schools.sortby.scholarships')'},
+                            {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
+                        ]
+                    })
+            );
+
+            search.addWidget(
+                    instantsearch.widgets.sortBySelector({
+                        container: '#sort-by-container-Mobile',
                         indices: [
                             {name: 'dummySchools', label: '@lang('schools.sortby.stars')'},
                             {name: 'dummySchools_scholarships_desc', label: '@lang('schools.sortby.scholarships')'},

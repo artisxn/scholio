@@ -1,7 +1,7 @@
 <style>
     /* ==============  Mobile Menu Holder & Filters ================== */
 
-    .menu-mobile-holder{ right: 5px;  top:17px; position: absolute; z-index: 500; border-radius: 10px; padding: 20px;
+    .menu-mobile-holder{ right: 7px;  top:10px; position: absolute; z-index: 500; border-radius: 10px; padding: 20px;
         /*background-color: #dde0e1;*/
         background-color: #006880;
         overflow-x: hidden;
@@ -10,9 +10,9 @@
     }
 
     .menu-mobile-left{
-        opacity: 0.94;
-        width: 250px;
-        height:270px;
+        opacity: 0.98;
+        width: 258px;
+        height:300px;
         -webkit-transition: all 300ms ease-in, all 300ms ease-out;
         -moz-transition: all 300ms ease-in, all 300ms ease-out;
         -o-transition: all 300ms ease-in, all 300ms ease-out;
@@ -38,13 +38,13 @@
     .sandwitch{position: absolute; right: 10px; top:6px;}
 
     .invert{
-        -webkit-filter: invert(70%);
-        filter: invert(70%);
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
         /*filter:sepia(100%);*/
     }
     .greyscale{
-        -webkit-filter: grayscale(80%);
-        filter: grayscale(80%);
+        -webkit-filter: grayscale(80%) blur(2px));
+        filter: grayscale(80%) blur(2px);
         /*filter: blur(2px) sepia(80%);*/
         -webkit-transition: all 300ms ease-in, all 300ms ease-out;
         -moz-transition: all 300ms ease-in, all 300ms ease-out;
@@ -63,26 +63,39 @@
 
     @media   (min-width: 768px) {
         .sand-container{width: 106%!important; position: relative!important;}
-        .menu-mobile-holder{ top:15px; right: 53px;}
+        .menu-mobile-holder{ top:11px; right: 53px;}
     }
 
 
 
     /* ================== Buttons on mobile menu ======================= */
 
-    .choose-lang{ color: #fff; margin: 1px 0 23px 0; }
+    .choose-lang{ color: #fff; margin: -2px 0 23px 0; }
     .choose-lang>a,.choose-lang>a:visited{color: #fff;}
     .choose-lang>a:hover{color: #FD6A33}
 
-    .nav-item,.nav-item:visited,.nav-item:focus{color: #fff; font-size: 105%; display: block; margin: 10px 0;}
+    .nav-item,.nav-item:visited,.nav-item:focus{color: #fff; font-size: 100%; display: block; margin: 10px 0; font-weight: 300;}
 
     .btn-register,.btn-login{ position: absolute; bottom: 30px; color: #fff; font-weight: 400;  border: none; padding: 7px;  width: 98px; border-radius: 4px; margin-top: 40px; }
-    .btn-register{background-color: #FD6A33 ; left:18px;}
-    .btn-login{background-color: #00bcd4; right: 16px; }
+    .btn-register{background-color: #00bcd4; left:18px;}
+    .btn-login{background-color: #FD6A33; right: 16px; }
 
-    .btn-register:hover{background-color: #c1572a;}
-    .btn-login:hover{background-color: #00a1b9
-    }
+    .btn-register:hover,.btn-register2:hover{background-color: #c1572a}
+    .btn-login:hover,.btn-login2:hover{background-color: #00a1b9}
+
+    .btn-school-results,.btn-home{ border-radius: 5px; padding: 10px 6px; font-size: 95%; position: absolute; top:65px; left: 17px; right: 17px; text-align: center;  background-color: #eee!important; color: #555!important;width: 220px; }
+    .btn-home{top:120px; background-color: #aaa!important; color: #fff!important; }
+
+
+    .btn-register2,.btn-login2{ position: absolute; left: 17px; right: 17px;  color: #fff; font-weight: 400;  border: none; padding: 10px 7px;  width: 220px; border-radius: 5px; margin-top: 40px; }
+
+    .btn-register2{background-color: #FD6A33; bottom: 75px; }
+    .btn-login2{background-color: #00bcd4;  bottom: 18px;}
+
+
+
+
+
     /* =============================================================== */
 </style>
 
@@ -95,22 +108,31 @@
             <div class="choose-lang" >
                 <a href="/lang/en" style="z-index: 7000!important;">ENG &nbsp;</a> | <a href="/lang/el"> &nbsp;&nbsp;GR</a>
             </div>
-            <a href="#sc-landing-sec2" class="nav-item">@lang('main.navigation.about')</a>
-            <a href="#sc-landing-sec4" class="nav-item">@lang('main.navigation.institutions')</a>
-            <a href="#sc-landing-sec3" class="nav-item">@lang('main.navigation.features')</a>
-            <a href="#sc-landing-sec5" class="nav-item">@lang('main.navigation.contact')</a>
+            <a href="{{url('public/schools')}}" class="nav-item btn-school-results" >
+                <i class="fa fa-university margin-right-5">
+                </i>@lang('scholarships.search_institution')
+            </a>
+            <a href="{{url('/')}}" class="nav-item btn-home" >
+                @lang('scholarships.navigation.home')
+            </a>
+
             <div class="btn-links centered-text">
                 @if(auth()->check())
-                    <a href="{{ url('/dashboard') }}"><button type="button" class="btn-register centered-text">@lang('main.navigation.admin')</button></a>
-                    <a href="{{ url('/out') }}"><button type="button" class="btn-login centered-text">@lang('main.navigation.logout')</button></a>
+                    <a href="{{ url('/dashboard') }}"><button type="button" class="btn-register2 centered-text">@lang('main.navigation.admin')</button></a>
+                    <a href="{{ url('/out') }}"><button type="button" class="btn-login2 centered-text">@lang('main.navigation.logout')</button></a>
                 @else
+                    {{--<a href="{{ url('/register/role') }}">--}}
+                        {{--<button type="button" class=" btn-register centered-text">@lang('main.navigation.register')</button>--}}
+                    {{--</a>--}}
+                    {{--<a href="{{ url('/login') }}">--}}
+                        {{--<button type="button" class=" btn-login centered-text">@lang('main.navigation.login')</button>--}}
+                    {{--</a>--}}
+
                     <a href="{{ url('/register/role') }}">
-                        <button type="button" class=" btn-register centered-text">@lang('main.navigation.register')</button>
-                                {{--data-toggle="modal" data-target="#signUp-modal"--}}
+                        <button type="button" class=" btn-register2 centered-text">@lang('main.navigation.register')</button>
                     </a>
                     <a href="{{ url('/login') }}">
-                        <button type="button" class=" btn-login centered-text">@lang('main.navigation.login')</button>
-                                {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                        <button type="button" class=" btn-login2 centered-text">@lang('main.navigation.login')</button>
                     </a>
                 @endif
             </div>
@@ -122,11 +144,12 @@
 
 <script>
 
-    var sandwitch = $('.sc-landing-menu-sandwitch-button');    //<<===>>//
+    var sandwitch = $('.sc-landing-menu-sandwitch-button-sticky ');    //<<===>>//
     var mobilemenu =$('.menu-mobile-holder');
     var material=$('.material-content');
+    var filter=$('.filter-icon');
 
-    var main=$('main');
+    var main=$('#main');
     var headerFull=$('header');
 
     var open=false;
@@ -137,20 +160,14 @@
     sandwitch.click(function(){
         mobilemenu.toggleClass("menu-mobile-right menu-mobile-left");
         material.toggleClass("material-content material-on");
-        if($(window).scrollTop()>615 ){
-            if(  open ){
-                sandwitch.addClass("invert");
-                sandwitch.css({"margin-top":"-4px"})
-            }else {
-                sandwitch.removeClass("invert");
-            }
-        }
-
+        sandwitch.toggleClass("invert");
         if(  open ){
             main.removeClass("greyscale")
+            filter.css({"display":"block"})
         }else {
             main.addClass("greyscale")
             headerFull.css({"z-index":"6020"})
+            filter.css({"display":"none"})
         }
         open = !open;
 

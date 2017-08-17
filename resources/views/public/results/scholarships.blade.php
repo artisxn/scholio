@@ -189,17 +189,17 @@
                                 </a>
                             </li>
                             @if(auth()->check())
-                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('scholarships.navigation.admin')</button></a></li>
-                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('scholarships.navigation.logout')</button></a></li>
+                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                             @else
+                                <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#select-modal"--}}
+                                        >@lang('main.navigation.register')</button></a></li>
                                 <li>
-                                    <a href="">
-                                        <button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">@lang('scholarships.navigation.register')</button>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">@lang('scholarships.navigation.login')</button>
+                                    <a href="{{ url('/login') }}">
+                                        <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                                        >@lang('main.navigation.login')</button>
                                     </a>
                                 </li>
                             @endif
@@ -231,7 +231,7 @@
                 </div>
 
                 <!-- ======= Sandwich Menu =======-->
-                @include('public.sandwich-menu-results')
+                @include('public.sandwich-menu-resultsScholarships')
 
 
 

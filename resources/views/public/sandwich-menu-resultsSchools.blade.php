@@ -80,17 +80,17 @@
     .btn-register{background-color: #00bcd4; left:18px;}
     .btn-login{background-color: #FD6A33; right: 16px; }
 
-    .btn-register:hover,.btn-register2:hover{background-color: #00a1b9;}
-    .btn-login:hover,.btn-login2:hover{background-color: #c1572a  }
+    .btn-register:hover,.btn-register2:hover{background-color: #c1572a}
+    .btn-login:hover,.btn-login2:hover{background-color: #00a1b9}
 
-    .btn-school-results,.btn-home{ border-radius: 5px; padding: 10px 8px; font-size: 95%; position: absolute; top:65px; left: 17px; right: 17px; text-align: center;  background-color: #eee!important; color: #555!important;width: 220px; }
+    .btn-school-results,.btn-home{ border-radius: 5px; padding: 10px 6px; font-size: 95%; position: absolute; top:65px; left: 17px; right: 17px; text-align: center;  background-color: #eee!important; color: #555!important;width: 220px; }
     .btn-home{top:120px; background-color: #aaa!important; color: #fff!important; }
 
 
     .btn-register2,.btn-login2{ position: absolute; left: 17px; right: 17px;  color: #fff; font-weight: 400;  border: none; padding: 10px 7px;  width: 220px; border-radius: 5px; margin-top: 40px; }
 
-    .btn-register2{background-color: #00bcd4; bottom: 75px; }
-    .btn-login2{background-color: #FD6A33;  bottom: 18px;}
+    .btn-register2{background-color: #FD6A33; bottom: 75px; }
+    .btn-login2{background-color: #00bcd4;  bottom: 18px;}
 
 
 
@@ -101,6 +101,7 @@
 
 
 
+
 <div class="sand-container hidden-md hidden-lg">
     <div class="menu-mobile-holder menu-mobile-right">
         <div class="material-content" >
@@ -108,9 +109,9 @@
             <div class="choose-lang" >
                 <a href="/lang/en" style="z-index: 7000!important;">ENG &nbsp;</a> | <a href="/lang/el"> &nbsp;&nbsp;GR</a>
             </div>
-            <a href="{{url('public/schools')}}" class="nav-item btn-school-results" >
-                <i class="fa fa-university margin-right-5">
-                </i>@lang('scholarships.search_institution')
+            <a href="{{url('public/scholarships')}}" class="nav-item btn-school-results" >
+                <i class="fa fa-trophy margin-right-5">
+                </i>@lang('schools.navigation.search_scholarship')
             </a>
             <a href="{{url('/')}}" class="nav-item btn-home" >
                 @lang('scholarships.navigation.home')
