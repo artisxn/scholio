@@ -131,42 +131,22 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div class="col-xs-6 visible-sm visible-xs ">
+            <!-- Mobile Menu -->
+            <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                 <div class="">
                     <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                         <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                            <img src="/new/img/collapse-dark.png" alt="scholio logo">
+                            <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                            {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                         </div>
                     </div>
                 </div>
-                <div class="visible-xs visible-sm">
-                    <div class="sc-landing-menu-mobile-holder sc-dark-blue">
-                        <div class="pull-right">
-                            <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                        </div>
-                        <br><br>
-                        <div class="pull-right">
-                            {{--<a href="#sxetika">--}}
-                                {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('scholarship_view.navigation.info')</div>--}}
-                            {{--</a>--}}
-                            <div class=""><br></div>
-                            <div class="sign-links">
-                                @if(auth()->check())
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('scholarship_view.navigation.admin')</button></a>
-                                    <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('scholarship_view.navigation.logout')</button></a>
-                                @else
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('scholarship_view.navigation.register')</button></a>
-                                    <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('scholarship_view.navigation.login')</button></a>
-                                @endif
-                            </div>>
-                        </div>
-                    </div>
-                </div>
+
             </div>
+
+            <!-- ======= Sandwich Menu =======-->
+            @include('public.sandwich-menu-scholarshipProfile')
+
         </div>  <!-- row -->
     </div><!-- container-->
 </header>
