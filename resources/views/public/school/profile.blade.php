@@ -5,7 +5,7 @@
     <meta property="og:url" content="http://www.schol.io/public/profile/1" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
 
     <title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
@@ -213,77 +213,43 @@
                     @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies">@lang('profile.navigation.scholarships')</a></li>@endif
                     @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews">@lang('profile.navigation.reviews')</a></li>@endif
                     @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty">@lang('profile.navigation.teachers')</a></li>@endif
-                    @if(auth()->check())
-                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('profile.navigation.admin')</button></a></li>
-                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('profile.navigation.logout')</button></a></li>
-                    @else
-                    <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('profile.navigation.register')</button></a></li>
-                    <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('profile.navigation.login')</button></a></li>
-                    @endif
+                        @if(auth()->check())
+                            <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                            <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
+                        @else
+                            <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                                            {{--data-toggle="modal" data-target="#select-modal"--}}
+                                    >@lang('main.navigation.register')</button></a></li>
+                            <li>
+                                <a href="{{ url('/login') }}">
+                                    <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
+                                            {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                                    >@lang('main.navigation.login')</button>
+                                </a>
+                            </li>
+                        @endif
                 </ul>
             </div>
 
-            <!-- Mobile Menu -->
-            <div class="col-xs-6 visible-sm visible-xs ">
+
+             <!-- Mobile Menu -->
+            <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                 <div class="">
                     <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                         <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                            <img src="/new/img/collapse-dark.png" alt="scholio logo">
+                            <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                            {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                         </div>
                     </div>
                 </div>
-                <div class="visible-xs visible-sm">
-                    <div class="sc-landing-menu-mobile-holder sc-dark-blue" >
-                        <div class="pull-right">
-                            <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                        </div>
-                        <br><br>
-                        <div class="pull-right">
-                            @if($school->settings->about)
-                            <a href="#sxetika">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.about')</div>
-                            </a>
-                            @endif
-                            @if($school->settings->studies)
-                            <a href="#spoudes">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.studies')</div>
-                            </a>
-                            @endif
-                            @if($school->settings->scholarships)
-                            <a href="#ypotrofies">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.scholarships')</div>
-                            </a>
-                            @endif
-                            @if($school->settings->reviews)
-                            <a href="#reviews">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.reviews')</div>
-                            </a>
-                            @endif
-                            @if($school->settings->teachers)
-                            <a href="#faculty">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.teachers')</div>
-                            </a>
-                            @endif
 
-
-                            <div class=""><br></div>
-                            <div class="sign-links">
-                                @if(auth()->check())
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('profile.navigation.admin')</button></a>
-                                    <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('profile.navigation.logout')</button></a>
-                                @else
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('profile.navigation.register')</button></a>
-                                    <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('profile.navigation.login')</button></a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+
+            <!-- ======= Sandwich Menu =======-->
+            @include('public.sandwich-menu-schoolProfile')
+
+
+
         </div>  <!-- row -->
     </div><!-- container-->
 </header>
