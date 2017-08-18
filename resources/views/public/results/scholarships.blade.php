@@ -318,7 +318,6 @@
                         </div>
                     </div>
 
-                    <span>@lang('schools.sortby.title')</span>
                     <div id="sort-by-container"></div>
 
                     <div class="content-wrapper col-sm-12">
