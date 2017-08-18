@@ -220,7 +220,8 @@ class Scholio
             $dummy->lengthStudents = $s->lengthStudents();
             $dummy->lengthTeachers = $s->lengthTeachers();
             $dummy->lengthStudies = $s->lengthStudies();
-            $dummy->lengthScholarships = $s->activeScholarships();
+            // Na valw tis active
+            $dummy->lengthScholarships = $s->lengthScholarships();
             $dummy->stars = $s->averageStars();
             $dummy->reviews = $s->countReviews();
             $dummy->username = $s->admin->username ?? 'nousername';
@@ -313,7 +314,7 @@ class Scholio
             $s->save();
         }
 
-        foreach(DonatedScholarship::all() as $scholarship){
+        foreach (DonatedScholarship::all() as $scholarship) {
             $algD = new AlgoliaDonorScholarship;
             $algD->name = $scholarship->donor->user->name;
             $algD->avatar = $scholarship->donor->avatar;
