@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Level;
-use App\Models\LevelEn;
+use App\Models\LevelEN;
 use Illuminate\Database\Seeder;
 
 class LevelsTableSeeder extends Seeder

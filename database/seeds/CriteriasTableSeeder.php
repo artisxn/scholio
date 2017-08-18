@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Criteria;
-use App\Models\CriteriaEn;
+use App\Models\CriteriaEN;
 use Illuminate\Database\Seeder;
 
 class CriteriasTableSeeder extends Seeder
