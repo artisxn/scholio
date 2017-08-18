@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\SchoolTypes;
-use App\Models\SchoolTypesEn;
+use App\Models\SchoolTypesEN;
 use Illuminate\Database\Seeder;
 
 class SchoolTypesTableSeeder extends Seeder
