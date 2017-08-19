@@ -95,7 +95,7 @@
             </div>
         </a>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="col-lg-3 col-md-4 col-sm-6 ">
         <a href="{{ url('/panel/dasboard') }}">
             <div class="panel" style="padding:20px 10px; height: 100px; border: 1px solid #008da5; border-radius: 10px; text-align: center; box-shadow: 0 0 11px #bbb">
                 {{--<i class="md md-person text-primary"></i>--}}
