@@ -7,6 +7,7 @@
     */
 
 /*.icon-navigation-container{position: fixed;  display: inline-block;  margin-top: 14px;  text-align: center; left: 50%; width: 400px; margin-left:-130px;}*/
+    /*@media(max-width: 500px){.hidden-xxs{display: none;}}*/
 </style>
 
 
@@ -35,7 +36,7 @@
 
 
 
-            <span class="icon-navigation-container" style="position: fixed;  display: inline-block;  margin-top: 14px;  text-align: center; left: 50%; width: 350px; margin-left:-100px;" >
+            <span class="icon-navigation-container hidden-xs" style="position: fixed;  display: inline-block;  margin-top: 14px;  text-align: center; left: 50%; width: 350px; margin-left:-50px;" >
 
                  <a href="/panel/school/students"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
                     onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
@@ -65,7 +66,7 @@
                  <a href="/panel/school/scholarships/view"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
                     onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
                  >
-                     <img src="/new/img/trophy4.png" alt="photos image" class="" height="30px">
+                     <img src="/new/img/trophyB.png" alt="photos image" class="" height="30px">
                  </a>
 
                  <a href="/panel/school/scholarships/request"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
