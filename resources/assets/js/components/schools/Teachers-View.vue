@@ -45,7 +45,7 @@
                                     <img :src=teacher.info.avatar class="avatar1" alt="">
                                 </div>
                                 <div class="img-cont2"><img class="img-circle2 sc-img2" width="70" :src=teacher.info.avatar alt=""/></div>
-                                <div class="name"> {{teacher.name}} </div>
+                                <div class="name2"> {{teacher.name}} </div>
                             </a>
                             <div class="email2"><a :href="'mailto:'+teacher.email">{{teacher.email}}</a></div>
                         </div>
@@ -127,7 +127,7 @@
     /*.opacity{opacity: 0.2}*/
 
 
-    .name{text-transform: capitalize; font-size: 140%; font-weight: 400;}
+    .name2{text-transform: capitalize; font-size: 140%; font-weight: 400;}
     .email2{font-size: 90%; font-weight: 300;}
     .email2>a,.email2>a:visited{color: #7f8b85}
     /*.name{text-transform: capitalize; font-size: 140%; color: #fff; font-weight: 400; margin: -50px 0 0 90px;}*/
@@ -177,14 +177,14 @@
 
     @media (min-width: 1360px) {
         .img-cont{margin: -45px 0 0 0 ; }
-        .name{color: #fff; margin: 0; position: absolute; top: 45px; left: 115px;}
+        .name2{color: #fff; margin: 0; position: absolute; top: 45px; left: 115px;}
         .email2{margin: 0; position: absolute; top: 77px; left: 115px;}
     }
 
     @media (max-width: 1359px) {
-        .img-cont2, .name, .email2{text-align: center;}
+        .img-cont2, .name2, .email2{text-align: center;}
         .img-cont2{margin: -50px auto; }
-        .name{margin: 55px auto 0 auto;  color: #008da5; }
+        .name2{margin: 55px auto 0 auto;  color: #74807a; }
         .email2{margin: 5px auto;}
         .sc-box2{min-height: 200px;}
         .avatar1,.frame-cont2{display: none;}

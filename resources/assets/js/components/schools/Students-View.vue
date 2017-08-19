@@ -161,19 +161,25 @@
 
     /* ==================================*/
 
-    @media (min-width: 1360px) {
+    @media (min-width: 1291px) {
         .img-cont{margin: -45px 0 0 0 ; }
-        .name{color: #fff; margin: 0; position: absolute; top: 45px; left: 115px;}
-        .email{margin: 0; position: absolute; top: 77px; left: 115px;}
+        .name, .email{position: absolute; margin:0; left: 95px!important;}
+        .email{margin: 0; top: 77px;}
+        .name{color: #fff!important; top: 38px;}
 
     }
 
-    @media (max-width: 1359px) {
+
+
+    @media (max-width: 1290px) {
         .img-cont, .name, .email{text-align: center;}
         .img-cont{margin: -50px auto; }
         .name{margin: 55px auto 0 auto;  color: #008da5; }
         .email{margin: 5px auto;}
         .sc-box{min-height: 200px;}
+
+        .frame-cont{display: none;}
+        .img-cont{display: block}
 
     }
 
@@ -196,8 +202,8 @@
 
     @media  (max-width: 595px) {
         .col-xxs-12{width: 100%}
-        .img-cont{display: block}
-        .frame-cont{display: none;}
+
+
     }
     @media  (max-width: 534px) {
 

@@ -10,7 +10,7 @@
     .btn-primary:hover{background-color: #007991 !important;}
     .btn-success,.btn-info,.btn-primary{border: none!important; height: 30px; padding: 0 20px}
     .sch-counter{color: #888; margin:0 30px 0 15px; float: right}
-    .sc-radio{width: 180px; margin-right: 0}
+    .card-box .row .col-lg-12 div .sc-radio{width:  180px; margin-right: 20px}
     .dots-text{display:inline-block;
         width:150px;
         white-space: nowrap;
@@ -28,9 +28,12 @@
     }
 
     @media (max-width: 492px) {
-        .search-input{width: 95%;  float: none!important; text-align: center; margin: 5px auto 20px auto;}
+        .search-input{width: 100%;  float: none!important; text-align: center; margin: 5px auto 20px auto;}
     }
 
+    @media(max-width: 419px){
+        .main-content-box{margin-top: 15px;}
+    }
 
     /* =========TOOLTIP=========*/
     .tool {
@@ -107,7 +110,7 @@
 </style>
 
 <template>
-    <div class="row">
+    <div class="row main-content-box">
         <div class="col-sm-12">
             <div class="card-box">
                 <div class="row">

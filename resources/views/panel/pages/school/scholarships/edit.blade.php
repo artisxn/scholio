@@ -60,6 +60,7 @@
         /*  ==========  Button  ===========  */
 
         .sc-btn {
+            float: right;
             color: #ffffff;
             border: none;
             border-radius: 5px;
@@ -74,6 +75,10 @@
         .sc-btn:focus,.sc-btn:active{outline:none;}
 
         button.sc-dark-green:hover{background-color: #006880  }
+
+        @media (max-width: 420px) {
+            .sc-btn{display: block; text-align: center;  float: none; margin-left: auto; margin-right: auto; padding: 0}
+        }
 
 
 
@@ -133,7 +138,23 @@
             .first-col{margin-left: 0}
             .scholar-name{ font-weight: 300; font-size: 105%; bottom: -2px}
             .level-name{font-size: 100%}
+            .amount-metric{display: block; text-align: center}
+            .scholar-header{margin-top: 15px; }
         }
+
+
+
+        @media (max-width: 380px) {
+            .img-container,.scholar-name,.level-name{ left: 0; right: 0; text-align: center; margin-left: auto; margin-right: auto;}
+            .img-container {top:25px;}
+            .scholar-name{ bottom: 5px;}
+            .level-name{bottom: -25px;}
+            .scholar-header{padding: 0;}
+            .outer-row .col-sm-12 {padding: 2px!important; }
+
+
+        }
+
 
     </style>
 @endsection
@@ -152,7 +173,7 @@
 
 
 
-    <div class="row {{ $scholarship->active ? '' : 'non-active'}}">
+    <div class="row outer-row {{ $scholarship->active ? '' : 'non-active'}} ">
         <div class="col-sm-12">
             <div class="">   <!-- class="card-box" -->
 
@@ -273,7 +294,7 @@
                     <div class="cont-in col-sm-8 center-col" >
                         <div class="img2-inner">
                             <img class="finance-image" src="/panel/assets/images/steps/{{ $scholarship->financial->icon }}" alt="" style="">
-                            <div class="finance-text">{{ $scholarship->financial->plan }} {{ $scholarship->financial_amount }}  {{ $scholarship->financial->metric }}</div>
+                            <div class="finance-text">{{ $scholarship->financial->plan }} <span class="amount-metric"> {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric }} </span> </div>
                         </div>
                     </div>
                 </div>
@@ -309,7 +330,7 @@
                 </div>
                 <div class="margin-top-30"></div>
                 @if($scholarship->active)
-                    <button class="sc-btn sc-dark-green pull-right"> <i class="fa fa-paper-plane-o margin-right-10"></i>Ενημέρωση Νικητών</button>
+                    <button class="sc-btn sc-dark-green"> <i class="fa fa-paper-plane-o margin-right-10"></i>Ενημέρωση Νικητών</button>
                 @endif
                 <div class="clearfix"></div>
                 <div class="col-sm-12 line"></div>
@@ -334,7 +355,7 @@
                 
                     {{ csrf_field() }}
                   @if($scholarship->active)
-                    <button class="sc-btn sc-dark-green" style="float: right"> <i class="fa fa-flag-checkered margin-right-10"></i>Λήξη Υποτροφίας</button>
+                    <button class="sc-btn sc-dark-green"> <i class="fa fa-flag-checkered margin-right-10"></i>Λήξη Υποτροφίας</button>
                   @endif
                 </form>
                 </div>

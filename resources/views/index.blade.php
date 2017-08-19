@@ -213,7 +213,7 @@
                                 <option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
                                 <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                             </select>
-                            </form>
+                        </form>
                         </li>
 
                         <li class="langDropWhite hide">
