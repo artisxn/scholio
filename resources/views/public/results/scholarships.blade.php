@@ -136,6 +136,12 @@
     /*select{  font-size: 16px;  height: 36px; padding: 2px; margin-bottom: 7px;}*/
 
 
+
+
+
+
+
+
 </style>
 
 
@@ -253,22 +259,19 @@
 
             <div class="row">
                 <!-- ============== collapse Mobile Menu start ============= -->
-                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300"
-                     style=" padding: 0 0 15px 0;  width: 250px; box-shadow: 2px 0px 40px 6px #4e4e4e; height: 100%; overflow-y: auto">
+                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300">
 
-                    <div class="" style="z-index: 95; background-color: #eee; padding: 10px 7px 40px 7px; min-height: 100%; overflow-x: hidden" >
-
-                        <div >
-                            <div class="input-group margin-bot-15 mobile-input" style="width: 100%; ">
+                        <div>
+                            <div class="input-group margin-bot-15 mobile-input">
                                 <input type="text" class="form-control algolia-search-input " id="queryMobile" style="border-radius: 5px;" />
                             </div>
                         </div>
 
-                        <span>@lang('scholarships.filters.sortby')</span>
+                        <span class="sort-by-text">@lang('scholarships.filters.sortby')</span>
                         <div id="sort-by-container-mobile"></div>
 
-                        <div class="content-wrapper col-sm-12">
-                            <aside style="width: 238px;">
+                        <div class="content-wrapper ">
+                            <aside>
 
                                 <div id="statsMobile" class=""></div>
                                 <div class="facet-category-title">@lang('scholarships.filters.title'):
@@ -311,32 +314,26 @@
                                 </div>
 
                             </aside>
-
                         </div>
-
-
-
-                    </div>
-
 
                 </div>
                 <!-- ============== collapse Mobile Menu ended ============ -->
 
 
                 <!-- ============ Left search Menu on Large Screens ============-->
-                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs" >
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs left-side-container" >
 
-                    <div class="col-sm-12">
+
                         <div class="input-group margin-bot-15 algolia-search-container">
                             <input type="text" class="form-control algolia-search-input" id="query"/>
                         </div>
-                    </div>
 
-                    <span>@lang('scholarships.filters.sortby')</span>
-                    <div id="sort-by-container"></div>
 
-                    <div class="content-wrapper col-sm-12">
-                        <aside>
+                    <span class="sort-by-text">@lang('scholarships.filters.sortby')</span>
+                    <div id="sort-by-container" ></div>
+
+                    <div class="content-wrapper">
+                        <aside >
 
                             <div id="stats" class=""></div>
                             <div class="facet-category-title">@lang('scholarships.filters.title'):</div>
@@ -346,7 +343,7 @@
 
 
 
-                            <div class="filter-container">
+                            <div class="filter-container";">
                                 <div class="filter-title" >
                                     <i class="fa fa-university fa-linear5 margin-right-5"></i>
                                     @lang('scholarships.filters.institutions')</div>
@@ -509,7 +506,7 @@ angular.module("scholarshipsResultsApp",[])
     @{{/adm}}
     @{{#highAmount}}
             <img class="ribbonL" style="" src="/new/img/RibbonL.png" alt="">
-            <span class="text-corner text-L"> <i class=" fa fa-money" style="margin-right: 7px"></i>High Value</span>
+            <span class="text-corner text-L"> <i class=" fa fa-eur" style="margin-right: 7px"></i>High Value</span>
     @{{/highAmount}}
 
 

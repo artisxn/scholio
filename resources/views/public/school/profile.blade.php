@@ -68,6 +68,22 @@
 
     <style>
 
+        @media(max-width: 1250px) {
+            .right-side-bar{padding-left: 2px}
+        }
+
+        @media(min-width: 1020px) and (max-width: 1090px){
+            .container-profile{width: 1010px!important;}
+        }
+        @media(min-width: 1010px) and (max-width: 1019px){
+            .container-profile{width: 1010px!important;}
+        }
+        @media(min-width: 992px) and (max-width: 1009px){
+            .container-profile{width: 990px!important;}
+            .right-side-bar{padding-left: 0}
+        }
+
+
         span.fulltext {
             text-indent: 0;
         }
@@ -181,7 +197,7 @@
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
 
-    <div class="container" style="">
+    <div class="container container-profile" style="">
         <div class="row">
 
             <div class="col-md-1 visible-lg visible-md nav-web">
@@ -258,7 +274,7 @@
 <div>
     <main id="main"  class="main" style="overflow-x: hidden">
 
-        <div class="container" style="overflow-x: hidden">
+        <div class="container container-profile" style="overflow-x: hidden">
 
             <div class="row up">
             </div>
@@ -726,7 +742,7 @@
 
 
                 <!-- Right Sidebar  -->
-                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30">
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30 right-side-bar">
                 @if($school->settings->info)
                     <div >
                         <div class="box left-box1" style="height: 240px;">

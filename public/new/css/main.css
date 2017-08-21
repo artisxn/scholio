@@ -314,8 +314,13 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 .text-Sm{right: -2px; top: 13px; color: #008DA5; font-weight: 500}
 .text-Med{right: 8px; top: 34px; color: #fff;}
 /*.text-L{right: 17px; top: 60px; color: #008DA5; font-weight: 600}*/
-.text-L{right: 17px; top: 60px; color: #fff; font-weight: 400}
+.text-L{right: 17px; top: 60px; color: #fff; font-weight: 400;
+}
 
+.text-Med,.text-L{
+    /*-webkit-text-stroke-width: 0.3px;*/
+    /*-webkit-text-stroke-color: black;*/
+}
 
 
 /* ///////////////////////////////////////////////////////////////////////////////// */
@@ -331,7 +336,7 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
         .btn-white:selected{ color: red }
         select option {color: red!important; background-color: yellow}
         /*div>ul>.selected{color: black!important}*/
-        
+
 /* //////////////////////////////////////////////////////////////////////////////// */
 
 
@@ -470,7 +475,7 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
 .btn-change-search:hover{border-color:  #008da5;}
 
 
-.clear-filter{width: 280px; margin-left: 0;}
+.clear-filter{width: 100%; margin-left: 0;}
 .clear-filter-mobile{width: 230px; margin-left: 0;}
 
 /*=============================================*/
@@ -480,25 +485,41 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
 /*a { cursor: pointer!important; cursor: hand!important;}*/
 
 .sc-landing-logo-sticky, .sc-landing-menu-sandwitch-button-sticky  {margin-top: -10px}
-
-@media (min-width: 1450px)  {
-    .container {width: 1300px;}
-    .clear-filter{width: 300px;}
+@media (min-width: 1440px)  {
+    .container {width: 1390px;}
 }
 
 
-@media (min-width: 1240px) and (max-width: 1449px) {
-    .container {width: 1240px;}
+@media (min-width: 1350px)  and (max-width: 1449px) {
+    .container {width: 1320px;}
+
 }
+
+@media (min-width: 1250px) and (max-width: 1349px) {
+    .container {width: 1230px;}
+}
+
+
+@media (min-width: 1200px)  and (max-width: 1249px) {
+    .container {width: 1190px;}
+
+}
+
+@media (min-width: 1150px)  and (max-width: 1199px) {
+    .container {width: 1140px;}
+
+}
+
+@media (min-width: 1050px)  and (max-width: 1149px) {
+    .container {width: 1040px;}
+
+}
+
 
 @media (min-width: 992px) and (max-width: 1199px) {
 
 }
 
-
-@media (min-width: 992px) and (max-width: 1199px) {
-    .clear-filter{width: 220px;}
-}
 
 @media  (max-width: 991px) {
     .sc-logo{height: 45px;}

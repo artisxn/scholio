@@ -282,26 +282,22 @@
             </div>
 
             <div class="row">
-                <!--============ collapseMenu =============-->
-                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300"
-                     style=" padding: 0 0 15px 0;  width: 250px; box-shadow: 2px 0px 40px 6px #4e4e4e; height: 100%; overflow-y: auto">
+                <!--============ collapse  Menu Mobile Screen =============-->
+                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300">
 
-                    <div class="" style="z-index: 95; background-color: #eee; padding: 10px 7px 40px 7px; min-height: 100%; overflow-x: hidden" >
 
-                        <div>
-                            <div class="input-group margin-bot-15 " style="width: 100%; ">
+                            <div class="input-group margin-bot-15 mobile-input">
                                 <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
                             </div>
-                        </div>
 
 
-                        <span>@lang('schools.sortby.title')</span>
+                        <span class="sort-by-text">@lang('schools.sortby.title')</span>
                         <div id="sort-by-container-Mobile"></div>
 
 
 
-                        <div class="content-wrapper col-sm-12">
-                            <aside style="width: 230px;">
+                        <div class="content-wrapper">
+                            <aside>
 
                                 <div id="statsMobile" class="text-muted "></div>
                                 {{--<div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>--}}
@@ -332,27 +328,27 @@
 
 
 
-                    </div>
-
-
                 </div><!-- collapseMenu -->
 
-                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs" >
 
-                    <div class="col-sm-12">
+
+                <!--============ Left Side Menu large Screen =============-->
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs  left-side-container" >
+
+
                         <div class="input-group margin-bot-15 algolia-search-container">
                             <input type="text" class="form-control algolia-search-input" id="query"/>
                         </div>
-                    </div>
 
 
 
-                    <span>@lang('schools.sortby.title')</span>
+
+                    <span class="sort-by-text">@lang('schools.sortby.title')</span>
                     <div id="sort-by-container"></div>
 
-                    <div class="btn-group " style="width: 100%; margin: 15px 0;">
+                    <div class="btn-group">
                         {{-- <a href="{{ url('/public/schools/map') }}"> --}}
-                        <button class="btn btn-primary" style=" width: 100%; height: 40px" onClick="showMap()">
+                        <button class="btn btn-primary btn-map" onClick="showMap()">
                             <i class="fa fa-map pad-right-15" aria-hidden="true"></i>@lang('schools.show_map')
                         </button>
                         </a>
@@ -363,7 +359,7 @@
 
 
 
-                    <div class="content-wrapper col-sm-12">
+                    <div class="content-wrapper">
                         <aside>
 
                             <div id="stats" class="text-muted "></div>
@@ -547,7 +543,7 @@ angular.module("schoolsResultsApp",[])
         </con>
 
 
-        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-xl-custom">
            @{{#hot}}
             <!-- <div  class="ribbon top20 pos-right"><span style="font-size: 95%">Popular</span></div> -->
             <img class="ribbonMed" style="" src="/new/img/RibbonMed.png" alt="">
