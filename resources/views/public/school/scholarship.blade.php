@@ -119,18 +119,29 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
+
+                    <li class="langDropWhite" style="margin-top: 16px">
+                        <form method="GET" id="langForm">
+                            <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
+                                <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
+                            </select>
+                        </form>
+                    </li>
+
+
                     {{--<li class="sc-landing-menu-item"><a href="#sxetika" >@lang('scholarship_view.navigation.info')</a></li>--}}
                     @if(auth()->check())
-                        <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('scholarship_view.navigation.admin')</button></a></li>
-                        <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('scholarship_view.navigation.logout')</button></a></li>
+                        <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                        <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                     @else
-                        <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">@lang('scholarship_view.navigation.register')</button></a></li>
-                        <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white " data-toggle="modal" data-target="#signIn-modal">@lang('scholarship_view.navigation.login')</button></a></li>
+                        <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('main.navigation.register')</button></a></li>
+                        <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white">@lang('main.navigation.login')</button></a></li>
                     @endif
                 </ul>
             </div>
 
-            <!-- Mobile Menu -->
+
             <!-- Mobile Menu -->
             <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                 <div class="">
