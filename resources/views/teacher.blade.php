@@ -95,13 +95,29 @@
             </div>
             <!-- Scholio sMenu -->
 
+
+
+
+
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    <li class="sc-landing-menu-item"><a href="#sxetika" >ΛΙΓΑ ΛΟΓΙΑ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#experience" >ΕΜΠΕΙΡΙΑ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#spoudes">ΣΠΟΥΔΕΣ</a></li>
-                    <li class="sc-landing-menu-item"><a href="#skills">ΔΕΞΙΟΤΗΤΕΣ</a></li>
+
+
+                    <li class="langDropWhite" style="padding-top: 12px;">
+                        <form method="GET" id="langForm">
+                            <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
+                                <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
+                            </select>
+                        </form>
+                    </li>
+
+
+                    <li class="sc-landing-menu-item"><a href="#sxetika">@lang('teacher_profile.navigation.about')</a></li>
+                    <li class="sc-landing-menu-item"><a href="#experience">@lang('teacher_profile.navigation.experience')</a></li>
+                    <li class="sc-landing-menu-item"><a href="#spoudes">@lang('teacher_profile.navigation.studies')</a></li>
+                    <li class="sc-landing-menu-item"><a href="#skills">@lang('teacher_profile.navigation.skills')</a></li>
                     @if(auth()->check())
                         <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
                         <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
@@ -113,51 +129,26 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div class="col-xs-6 visible-sm visible-xs ">
+            <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                 <div class="">
                     <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                         <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                            <img src="/new/img/collapse-dark.png" alt="scholio logo">
+                            <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                            {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                         </div>
                     </div>
                 </div>
-                <div class="visible-xs visible-sm">
-                    <div class="sc-landing-menu-mobile-holder sc-dark-blue">
-                        <div class="pull-right">
-                            <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                        </div>
-                        <br><br>
-                        <div class="pull-right">
-                            <a href="#sxetika">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΛΙΓΑ ΛΟΓΙΑ</div>
-                            </a>
-                            <a href="#experience">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΕΜΠΕΙΡΙΑ</div>
-                            </a>
-                            <a href="#spoudes">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΣΠΟΥΔΕΣ</div>
-                            </a>
-                            <a href="#skills">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">ΔΕΞΙΟΤΗΤΕΣ</div>
-                            </a>
-                            <div class=""><br></div>
-                            <div class="sign-links">
-                                @if(auth()->check())
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
-                                    <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
-                                @else
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
-                                    <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
-                                @endif
-                            </div>>
-                        </div>
-                    </div>
-                </div>
+
+
+
+
             </div>
+
+            <!-- ======= Sandwich Menu =======-->
+            @include('public.sandwich-menu-teacherProfile')
+
+
+
         </div>  <!-- row -->
     </div><!-- container-->
 </header>
@@ -221,7 +212,7 @@
                         <div class="col-md-9">
 
                             <img class="up png-title" src="/new/img/teacher/info.png" alt="">
-                            <div class="title">Λίγα Λόγια</div>
+                            <div class="title">@lang('teacher_profile.section.about')</div>
                             <div class="text">
                             {{ $teacher->about }}
                                 {{-- Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
@@ -234,7 +225,7 @@
 
 
                             <img class="up png-title" src="/new/img/teacher/desk.png" alt="">
-                            <div id="experience" class="title">Επαγγελματική Εμπειρία</div>
+                            <div id="experience" class="title">@lang('teacher_profile.section.experience')</div>
                             @if(!$works->isEmpty())
                                 @foreach($works as $work)
                                     <div class="t1">
@@ -253,7 +244,7 @@
 
                             <div id="spoudes">
                                 <img class="up png-title" src="/new/img/teacher/graduate.png" alt="">
-                                <div class="title">Σπουδές</div>
+                                <div class="title">@lang('teacher_profile.section.studies')</div>
                                 @foreach($certificates as $certificate)
                                     <div class="t1">
                                         {{ $certificate->name  }}
@@ -271,7 +262,7 @@
 
                             <div class="margin-bot-50" id="skills">
                                 <img class="up png-title" src="/new/img/teacher/skillsb.png" alt="">
-                                <div   class="title ">Δεξιότητες</div>
+                                <div   class="title ">@lang('teacher_profile.section.skills')</div>
                                 @foreach($teacher->user->getUniqueSkills() as $skill)
                                     <div class="row ">
                                     <span class="t2 col-lg-4 col-md-5 col-sm-5 col-xs-6">

@@ -266,9 +266,20 @@
             <!-- Large Menu -->
             <div class="col-md-11 visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
+
+
+                    <li class="langDropWhite" style="margin-top: 17px">
+                        <form method="GET" id="langForm">
+                            <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
+                                <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
+                            </select>
+                        </form>
+                    </li>
+
                     @if($school->settings->about)<li class="sc-landing-menu-item"><a href="#sxetika" >@lang('profile.navigation.about')</a></li>@endif
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
-                    @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>@endif
+                    @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >@lang('profile.navigation.studies')</a></li>@endif
                     @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies">@lang('profile.navigation.scholarships')</a></li>@endif
                     @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews">@lang('profile.navigation.reviews')</a></li>@endif
                     @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty">@lang('profile.navigation.teachers')</a></li>@endif
