@@ -22,6 +22,9 @@
     .about-container{padding: 0 22px; margin-top: 35px;}
     .about-container>.form-group>p{color: #008DA5; font-size: 105%; margin-bottom: 10px;}
 
+    .title{font-size: 120%; font-weight:400; color: #FD6A33; margin-top: 30px; padding-left: 5px; margin-bottom: -5px}
+    .tiny-text{color: #FD6A33}
+
     @media(max-width: 419px){
         .full-content{margin-top: 15px;}
     }
@@ -125,6 +128,8 @@
                 <div class="col-xs-12">
 
 
+
+                    <div class="title">Στοιχεία Επικοινωνίας</div>
                     <!-- change foreach -->
                     <div class="input-container col-xs-12 col-sm-6 col-xl-3">
                         <?php $__currentLoopData = $schoolTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schoolType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -179,11 +184,49 @@
                         <i class="icon-inp fa fa-user"></i>
                     </div>
 
+
+                    <div class="up clearfix"></div>
+                    <div class="title">Σύνδεσμοι των μέσων κοινωνικής δικτύωσης</div>
+
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 " style="">
+                        <input type="text" label="facebook" name="" class="demo-form ad-input" value="" style="">
+                        <i class="icon-inp fa fa-facebook"></i>
+                    </div>
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="twitter" name="" class="demo-form ad-input" value="">
+                        <i class="icon-inp fa fa-twitter"></i>
+                    </div>
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="Instagram" name="" class="demo-form ad-input" value="">
+                        <i class="icon-inp fa fa-instagram"></i>
+                    </div>
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="YouTube" name="" class="demo-form ad-input" value="">
+                        <i class="icon-inp fa fa-youtube"></i>
+                    </div>
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="skype" name="" class="demo-form ad-input" value="">
+                        <i class="icon-inp fa fa-skype"></i>
+                    </div>
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="Google+" name="" class="demo-form ad-input" value="">
+                        <i class="icon-inp fa fa-google-plus"></i>
+                    </div>
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="Pinterest" name="" class="demo-form ad-input" value="">
+                        <i class="icon-inp fa fa-pinterest"></i>
+                    </div>
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="Linked in" name="" class="demo-form ad-input" value="">
+                        <i class="icon-inp fa fa-linkedin"></i>
+                    </div>
+
+
                 </div>
 
                 <div class="col-xs-12 about-container">
                     <div class="form-group">
-                        <p><?php echo e($school->name()); ?>: <?php echo app('translator')->getFromJson('school_profile.about'); ?></p>
+                        <p><?php echo e($school->name()); ?>: <span class="tiny-text"><?php echo app('translator')->getFromJson('school_profile.about'); ?></span></p>
                         <textarea value="" name="about"><?php echo e($school->about); ?></textarea>
                         <!-- Height change on scrpit @ tinymce.init-->
                     </div>

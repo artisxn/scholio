@@ -286,10 +286,41 @@ body {
 
 
 
-.affix-button {min-width:160px;height:35px;text-align:center;border-radius:5px;border:0;outline:none; margin-bottom: 10px; margin-top: 33px!important;
-    width: 294px!important;
+.affix-button {height:35px;text-align:center;border-radius:5px;border:0;outline:none; margin-bottom: 10px; margin-top: 33px!important;
+     width: 316px!important;
 }
 
+/* //////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////// /NEW CONTAINER WIDTH //////////////////////////////// */
+
+
+@media (max-width: 1449px)  {
+   .affix-button{width: 300px!important;}
+}
+
+@media (max-width: 1349px)  {
+    .affix-button{width: 277px!important;}
+}
+
+@media (max-width: 1249px)  {
+    .affix-button{width: 281px!important;}
+}
+
+@media (max-width: 1199px)  {
+    .affix-button{width: 265px!important;}
+}
+
+@media (max-width: 1149px)  {
+    .affix-button{width: 241px!important;}
+}
+
+@media (min-width: 991px) and (max-width: 1090px)  {
+    .affix-button{width: 235px!important;}
+}
+
+
+/* //////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////// */
 
 .criteria-img{height: 25px; margin: 7px 0 0 10px;}
 
@@ -340,15 +371,12 @@ border: 1px solid #ebebeb; border-radius: 10px;}
     .xl-margin-right { margin-right: -9px;}
 
 
-    .affix-button {  width: 280px!important;}
-
 }
 
 
 @media (min-width: 1200px) and (max-width: 1238px) {
     .sticky-bar-affix{  width: 854px; }
 
-    .affix-button {  width: 265px!important;}
 
 }
 
@@ -364,7 +392,6 @@ border: 1px solid #ebebeb; border-radius: 10px;}
     .sidebar { width: 220px!important; position: relative; }
     .sticky-bar-affix{  width: 704px;}
 
-    .affix-button {  width: 211px!important;}
     .scholar-frame{  left: 0; border: 1px solid #dcdcdc; width: 315px;}
     .ribbon-wrapper{ position: absolute; left:-25px; width: 387px;}
     .sm-margin-left{margin-left: 12px;}

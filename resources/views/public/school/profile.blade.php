@@ -156,6 +156,40 @@
         .xs-stars{margin: 27px 0;}
 
 
+        .pad-left-0{padding-left: 0}
+        .stats-box-xs{ background-color: #fff; margin-bottom: 30px; padding: 10px;}
+
+        .school-links, .school-links:visited, .school-links:focus{color: #888!important;}
+        .school-links:hover{color: #FD6A33!important;}
+
+
+        .xxs-custom-line{display: none; height: 1px; background-color: #bbb; left:3%; width: 94%;
+            right:auto; position: absolute; top:165px;}
+
+        @media(max-width: 540px) {
+            .xxs-custom-contact{width: 52.5%}
+            .xxs-custom-stats{width: 46.5%}
+        }
+
+
+        @media(max-width: 480px) {
+            .xxs-custom-contact{width: 99%}
+            .xxs-custom-stats{width: 60%; float: left!important; margin-top: 35px;}
+            .xxs-custom-line{display: block}
+        }
+
+        @media(max-width: 410px) {
+            .xxs-custom-stats{width: 65%; }
+        }
+
+        @media(max-width: 395px) {
+            .xxs-custom-stats{width: 75%;}
+        }
+
+        @media(max-width: 345px) {
+            .xxs-custom-stats{width: 99%;}
+        }
+
         hr {
             margin-left: auto;
             margin-right: auto;
@@ -174,11 +208,20 @@
             #xs-submButton{ z-index: 2000; top: 90%; margin-left: 1%;  width: 70%;  position: fixed; }
         }*/
 
-
-        @media (max-width: 769px) {
-            #xs-submButton{ z-index: 2000; bottom: -8px; margin-left: 5%;  width: 90%;  height: 37px; position: fixed; }
+        @media (max-width: 991px) {
+            #xs-submButton{ eight: 41px; z-index: 2000; bottom: 10px; left: 13%;   width: 74%; right: auto; position: fixed; }
         }
 
+
+        @media (max-width: 689px) {
+            #xs-submButton{ height: 39px;  bottom: 3px; left: 8%; width: 84%; }
+        }
+        @media (max-width: 489px) {
+            #xs-submButton{ height: 37px;  bottom: -1px; left: 4%; width: 92%; }
+        }
+        @media (max-width: 399px) {
+            #xs-submButton{ left: 4%; width: 92%;}
+        }
 
 
         @media  (max-width: 490px) {
@@ -380,7 +423,7 @@
             <div class="row">
 
            {{-- @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id)) --}}
-                        <button id="xs-submButton" type="button" class="hidden-lg hidden-md-hidden-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
+                        <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 data-toggle="modal" data-target="#connect-modal">
                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
                         </button>
@@ -392,6 +435,94 @@
 
 
                     <!-- Main Info profile ng-repeat -->
+
+
+
+
+
+                    <!-- SM - XS  contact & stats section -->
+                        <div class="sc-t-grey hidden-lg hidden-md visible-sm visible-xs clearfix">
+                            <div class="col-xs-12 margin-top-10 stats-box-xs">
+
+
+                                <div class="col-xs-7 col-sm-7 pad-left-0 xxs-custom-contact">
+
+                                    <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
+                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
+
+                                    <div class="pad-top-10"></div>
+                                    <div class="">
+                                        <span><i class="fa fa-street-view pad-top-3 " aria-hidden="true"></i></span>
+                                        <span class="pad-left-5">@{{contactInfo.city}}</span>
+                                    </div>
+
+                                    <div class="pad-top-10"></div>
+                                    <span><i class="fa fa-phone pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
+                                    <span class="pad-left-5">@{{contactInfo.phone}}</span>
+
+                                    <div class="pad-top-10"></div>
+                                    <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
+                                    <span class="pad-left-5"> <a href="http://@{{contactInfo.website}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
+
+                                    <div class="pad-top-10"></div>
+                                    <span><i class="fa fa-envelope  pad-top-2 " aria-hidden="true"></i></span>
+                                    <span class="pad-left-5 "> <a href="mailto:@{{contactInfo.email}}" class="school-links">@{{contactInfo.email}}</a></span>
+
+                                </div>
+
+
+
+
+
+
+                              @if($school->settings->statistics)
+                              <div class="xxs-custom-line"></div>
+                              <div class="col-xs-5 col-sm-4 pad-left-0 pull-right xxs-custom-stats">
+
+                                <span class="">
+                                    <i class="fa fa-trophy  pad-top-3 " aria-hidden="true"></i>
+                                    <span class="pad-left-5">@lang('profile.statistics.scholarships')</span>
+                                    <span class="badge pull-right" style="margin-right: -4px"> @{{contactInfo.activeScholarships}}</span>
+                                </span>
+
+
+                                  <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
+                                    <div class="clearfix pad-top-10"></div>
+                                    <span class="">
+                                        <i class="fa fa-paint-brush pad-top-3 " aria-hidden="true"></i>
+                                        <span class="pad-left-5">@lang('profile.statistics.studies')</span>
+                                        <span class="pull-right">@{{contactInfo.lengthStudies}}</span>
+                                    </span>
+                                  </div>
+
+                                  <div class="clearfix pad-top-10"></div>
+                                  <span class="">
+                                        <i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i>
+                                        <span class="pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">@lang('profile.statistics.students')</span>
+                                        <span class="pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">@lang('profile.statistics.students_s')</span>
+                                     <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
+                                  </span>
+
+                                  <div class="clearfix pad-top-10"></div>
+                                  <span class="">
+                                        <i class="fa fa-graduation-cap pad-top-3 " aria-hidden="true"></i>
+                                        <span class="pad-left-2 pad-bot-10">@lang('profile.statistics.teachers')</span>
+                                         <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
+                                  </span>
+                              </div>
+                               @endif
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
 
 @if($school->settings->about)
                     <!-- Σχετικά -->
@@ -738,7 +869,27 @@
                         </div>
                     </div>
                 @endif
+
+
+
+                        <!-- SM - XS  contact & stats section -->
+                    @if($school->settings->map)
+                    <div class="hidden-lg hidden-md visible-sm visible-xs clearfix">
+                        <div class="margin-top-10 stats-box-xs">
+                         <div class=""  id="googleMapXS" style="height: 310px; width: 100%; "></div>
+                        </div>
+                    </div>
+                    @endif
+
+
+
+
+
                 </div> <!-- //col-lg-9-->
+
+
+
+                <!-- ============================================================================= --!>
 
 
                 <!-- Right Sidebar  -->
@@ -1160,7 +1311,8 @@
                         scaleControl:true,
                     }
                     var map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
-                    console.log('map')
+                    var mapXS = new google.maps.Map(document.getElementById("googleMapXS"), myOptions);
+//                    console.log('map')
 
                     var marker = new google.maps.Marker({
                         position: myLatlng,
@@ -1168,6 +1320,15 @@
                         title:$scope.contactInfo.name,
                         icon:"/../new/img/markers/marker-teal-sm.png",
                         map: map,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+
+                    });
+                    var marker2 = new google.maps.Marker({
+                        position: myLatlng,
+                        //animation: google.maps.Animation.DROP,
+                        title:$scope.contactInfo.name,
+                        icon:"/../new/img/markers/marker-teal-sm.png",
+                        map:mapXS,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
 
                     });
@@ -1213,7 +1374,12 @@
 
                     map.mapTypes.set('styled_map', styledMapType);
                     map.setMapTypeId('styled_map');
+
+                    mapXS.mapTypes.set('styled_map', styledMapType);
+                    mapXS.setMapTypeId('styled_map');
                 }
+
+
 
                 $scope.sendRequest = function(){
                      $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id}, {

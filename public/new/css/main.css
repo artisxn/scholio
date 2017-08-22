@@ -515,6 +515,17 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
 
 }
 
+@media (min-width: 930px)  and (max-width: 1049px) {
+    .container {width: 920px;}
+
+}
+
+@media (min-width: 860px)  and (max-width: 929px) {
+    .container {width: 850px;}
+
+}
+
+
 
 @media (min-width: 992px) and (max-width: 1199px) {
 
