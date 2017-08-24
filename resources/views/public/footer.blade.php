@@ -36,7 +36,7 @@
 </div><!-- /.modal -->
 
 <style>
-    /*.left-section{padding-left: 20px;}*/
+    .left-section{padding-left: 10px;}
     @media(max-width: 992px){
         .left-section{padding-left: 20px;}
     }
