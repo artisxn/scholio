@@ -61,6 +61,8 @@ hr {
 .font-weight-400 {font-weight: 400;}
 .font-weight-500 {font-weight: 500;}
 
+
+.pad-lr-0-mar-lr-0{padding-right: 2px!important; padding-left: 2px!important;}
 .pad-0{padding: 0;}
 .mar-0{margin: 0}
 .pad-0-mar-0{ padding: 0; margin: 0}
@@ -74,6 +76,7 @@ hr {
 .pad-top-20 { padding-top: 20px; }
 .pad-top-30 { padding-top: 30px; }
 .pad-top-40 { padding-top: 40px; }
+.pad-top-45 { padding-top: 44px; }
 .pad-top-50 { padding-top: 50px; }
 .pad-top-100 { padding-top: 100px; }
 .pad-bot-5 { padding-bottom: 5px;}
@@ -144,6 +147,19 @@ a:hover  {  color: #FD6A33;  }
 
 
 .sc-landing-footer  {z-index: 200}
+
+.schools-nav-row{padding-left: 0; padding-right: 12px;}
+.scholarship-profile-nav-row{padding-left: 12px; padding-right: 12px;}
+@media (max-width: 991px) {
+    .schools-nav-row{ padding-right: 0}
+    .scholarship-profile-nav-row{ margin-left: -27px!important; padding-right: 0!important;}
+}
+
+@media (max-width: 767px) {
+    .schools-nav-row{ margin-left: -30px!important;}
+    .scholarship-profile-nav-row{ margin-left: -42px!important;}
+
+}
 
 
 /*=============================================*/
@@ -472,7 +488,7 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
 /*=============================================*/
 .filter-title{color: #008da5;}
 .btn-change-search{border: 1px solid #777; border-radius: 5px; padding: 9px 13px!important; margin-top: 4px; margin-right: 15px;}
-.btn-change-search:hover{border-color:  #008da5;}
+.sc-landing-menu-item>.btn-change-search:hover{border-color:  #008da5!important; color: #008da5!important;}
 
 
 .clear-filter{width: 100%; margin-left: 0;}
@@ -510,12 +526,23 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
 
 }
 
-@media (min-width: 1050px)  and (max-width: 1149px) {
+
+@media (min-width: 1110px)  and (max-width: 1149px) {
+    .container {width: 1100px;}
+
+}
+@media (min-width: 1050px)  and (max-width: 1109px) {
     .container {width: 1040px;}
 
 }
 
-@media (min-width: 930px)  and (max-width: 1049px) {
+@media (min-width: 992px)  and (max-width: 1049px) {
+    .container {width: 980px;}
+
+}
+
+
+@media (min-width: 930px)  and (max-width: 991px) {
     .container {width: 920px;}
 
 }

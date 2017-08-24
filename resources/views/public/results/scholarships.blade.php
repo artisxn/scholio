@@ -152,8 +152,8 @@
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
         <div class="container">
 
-            <div class="row">
-                <div class="col-md-1 visible-lg visible-md nav-web">
+            <div class="row schools-nav-row" >
+                <div class="pull-left visible-lg visible-md nav-web ">
                     <!-- Scholio Branding -->
                     <a class="sc-landing-brand" href="{{ url('/') }}">
                         <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
@@ -174,7 +174,7 @@
                 <!-- Scholio sMenu -->
 
                 <!-- Large Menu -->
-                <div class="col-md-11 visible-md visible-lg">
+                <div class="pull-right visible-md visible-lg">
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
 
@@ -594,40 +594,29 @@ angular.module("scholarshipsResultsApp",[])
 
     <div class="col-xs-12 scholar-footer ">
         <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
-            <div class=" xxs-9 col-xs-6 col-sm-5 col-md-6 pad-0-mar-0 xxs-footer" >
-                <span class=" xxs-8 col-xs-8 col-sm-7 pad-0-mar-0">
-                    <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarships.cards.admissions'):</div>
-                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarships.cards.interested'):</div>
-                </span>
-                <span class="xxs-2 col-xs-2 col-sm-3 text-right">
-                    <div class="">@{{ requested }}</div>
-                    <div class="margin-top-5">@{{ interested }}</div>
-                </span>
+            <div class="col-xs-6 col-sm-4  col-md-4 xxs-8 xxs-footer pad-0-mar-0 scholar-footer-left">
+                    <div> <i class="fa fa-pencil margin-right-10"></i>@lang('scholarships.cards.admissions'): <span class="pull-right">@{{ requested }}</span> </div>
+                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarships.cards.interested'): <span class="pull-right">@{{ interested }}</span> </div>
             </div>
-            <div class="col-xs-6 col-sm-5 pad-0-mar-0 xs-hidden">
-                <span class="col-xs-7 col-sm-7 pad-0-mar-0">
-                    <div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarships.cards.exams'):</div>
-                    <div class="">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarships.cards.end'):</div>
-                </span>
-                <span class="col-xs-5 col-sm-5 pad-0-mar-0 text-right">
-                    <div class="margin-top-5" >
-                    @if(request()->cookie('lang') == 'en')
-                        @{{exams_en}}
-                    @else
-                        @{{exams}}
-                    @endif
+            <div class="col-sm-1"></div>
+            <div class="col-xs-5 col-sm-4 pad-0-mar-0 xs-hidden scholar-footer-right">
+                    <div>  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarships.cards.exams'):
+                    <span class="pull-right">
+                         @if(request()->cookie('lang') == 'en')
+                         @{{exams_en}}
+                         @else
+                         @{{exams}}
+                         @endif
+                    </span>
                     </div>
-                    <div class="">@{{end_at}}</div>
-                </span>
+                    <div class="margin-top-5">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarships.cards.end'):  <span class="pull-right">@{{ end_at }}</span> </div>
             </div>
         </div>
 
 
-        <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0">
-
-
+        <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0" >
             <a href="/scholarship/@{{scholarship_id}}" >
-                <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
+                <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli" style="">
                     <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarships.cards.show')
                 </button>
             </a>

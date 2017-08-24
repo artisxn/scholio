@@ -73,9 +73,9 @@
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
 
     <div class="container" style="">
-        <div class="row">
+        <div class="row scholarship-profile-nav-row">
 
-            <div class="col-md-1 visible-lg visible-md nav-web">
+            <div class="pull-left visible-lg visible-md nav-web">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
@@ -100,9 +100,16 @@
 
 
             <!-- Large Menu -->
-            <div class="col-md-11 visible-md visible-lg" >
+            <div class="pull-right visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
 
+
+
+
+                    <li class="sc-landing-menu-item"><a href="#sxetika">@lang('teacher_profile.navigation.about')</a></li>
+                    <li class="sc-landing-menu-item"><a href="#experience">@lang('teacher_profile.navigation.experience')</a></li>
+                    <li class="sc-landing-menu-item"><a href="#spoudes">@lang('teacher_profile.navigation.studies')</a></li>
+                    <li class="sc-landing-menu-item"><a href="#skills">@lang('teacher_profile.navigation.skills')</a></li>
 
                     <li class="langDropWhite" style="padding-top: 12px;">
                         <form method="GET" id="langForm">
@@ -113,18 +120,15 @@
                         </form>
                     </li>
 
-
-                    <li class="sc-landing-menu-item"><a href="#sxetika">@lang('teacher_profile.navigation.about')</a></li>
-                    <li class="sc-landing-menu-item"><a href="#experience">@lang('teacher_profile.navigation.experience')</a></li>
-                    <li class="sc-landing-menu-item"><a href="#spoudes">@lang('teacher_profile.navigation.studies')</a></li>
-                    <li class="sc-landing-menu-item"><a href="#skills">@lang('teacher_profile.navigation.skills')</a></li>
-                    @if(auth()->check())
+                @if(auth()->check())
                         <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
                         <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                     @else
                         <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('main.navigation.register')</button></a></li>
                         <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white">@lang('main.navigation.login')</button></a></li>
                     @endif
+
+
                 </ul>
             </div>
 

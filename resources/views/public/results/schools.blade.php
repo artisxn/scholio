@@ -182,8 +182,8 @@
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
         <div class="container">
 
-            <div class="row">
-                <div class="col-md-1 visible-lg visible-md nav-web">
+            <div class="row schools-nav-row">
+                <div class="pull-left visible-lg visible-md nav-web ">
                     <!-- Scholio Branding -->
                     <a class="sc-landing-brand" href="{{ url('/') }}">
                         <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
@@ -204,7 +204,7 @@
                 <!-- Scholio sMenu -->
 
                 <!-- Large Menu -->
-                <div class="col-md-11 visible-md visible-lg">
+                <div class="pull-right visible-md visible-lg">
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}

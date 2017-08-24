@@ -166,6 +166,11 @@
         .xxs-custom-line{display: none; height: 1px; background-color: #bbb; left:3%; width: 94%;
             right:auto; position: absolute; top:165px;}
 
+        @media(max-width: 1109px) {
+        .school-profile-nav-link{padding-right: 8px!important; padding-left: 8px!important; font-size: 95%;}
+        }
+
+
         @media(max-width: 540px) {
             .xxs-custom-contact{width: 52.5%}
             .xxs-custom-stats{width: 46.5%}
@@ -184,10 +189,12 @@
 
         @media(max-width: 395px) {
             .xxs-custom-stats{width: 75%;}
+
         }
 
         @media(max-width: 345px) {
             .xxs-custom-stats{width: 99%;}
+            .slideup>div>.title{font-size: 155%}
         }
 
         hr {
@@ -241,9 +248,9 @@
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
 
     <div class="container container-profile" style="">
-        <div class="row">
+        <div class="row scholarship-profile-nav-row">
 
-            <div class="col-md-1 visible-lg visible-md nav-web">
+            <div class="pull-left visible-lg visible-md nav-web">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
@@ -264,24 +271,24 @@
             <!-- Scholio sMenu -->
 
             <!-- Large Menu -->
-            <div class="col-md-11 visible-md visible-lg" >
+            <div class="pull-right visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
 
 
 
 
-                    @if($school->settings->about)<li class="sc-landing-menu-item"><a href="#sxetika" >@lang('profile.navigation.about')</a></li>@endif
+                    @if($school->settings->about)<li class="sc-landing-menu-item "><a href="#sxetika" class="school-profile-nav-link ">@lang('profile.navigation.about')</a></li>@endif
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
-                    @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >@lang('profile.navigation.studies')</a></li>@endif
-                    @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies">@lang('profile.navigation.scholarships')</a></li>@endif
-                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews">@lang('profile.navigation.reviews')</a></li>@endif
-                    @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty">@lang('profile.navigation.teachers')</a></li>@endif
+                    @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
+                    @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies" class="school-profile-nav-link">@lang('profile.navigation.scholarships')</a></li>@endif
+                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews" class="school-profile-nav-link">@lang('profile.navigation.reviews')</a></li>@endif
+                    @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty" class="school-profile-nav-link">@lang('profile.navigation.teachers')</a></li>@endif
 
 
 
-                        <li class="langDropWhite" style="margin-top: 15px;">
+                        <li class="langDropWhite " style="margin-top: 15px;">
                             <form method="GET" id="langForm">
-                                <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                <select onchange="changeLang(this)" class="selectpicker select-white landDrop school-profile-lang" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
                                     <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
                                     <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                                 </select>

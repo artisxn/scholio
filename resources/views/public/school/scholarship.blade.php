@@ -94,9 +94,9 @@
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header {{ $scholarship->active ? '' : 'opacity10'}}" id="header" style="z-index: 2">
 
     <div class="container" style="">
-        <div class="row">
+        <div class="row scholarship-profile-nav-row">
 
-            <div class="col-md-1 visible-lg visible-md nav-web">
+            <div class="pull-left visible-lg visible-md nav-web">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
@@ -117,7 +117,7 @@
             <!-- Scholio sMenu -->
 
             <!-- Large Menu -->
-            <div class="col-md-11 visible-md visible-lg" >
+            <div class="pull-right visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
 
                     <li class="langDropWhite" style="margin-top: 16px">

@@ -35,25 +35,31 @@
     </div>
 </div><!-- /.modal -->
 
+<style>
+    /*.left-section{padding-left: 20px;}*/
+    @media(max-width: 992px){
+        .left-section{padding-left: 20px;}
+    }
 
+</style>
 
 
 
 <footer id="" class="sc-landing-footer sc-dark-blue">
     <div class="container">
-        <div class="row  ">
-            <div class="pull-left pad-top-50 text-incr-125 col-lg-7 col-md-7 col-sm-11 col-xs-5" >
+        <div class="row" >
+            <div class="pull-left pad-top-50 text-incr-125 left-section" >
                 <a href="#" class="sc-t-white margin-right-20 ">@lang('main.footer.contact')</a>
                 <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="#" class="sc-t-white margin-right-20">@lang('main.footer.blog')</a></span>
                 <span class="">  <a href="#" class="sc-t-white">@lang('main.footer.terms')</a></span>
             </div>
 
-            <div class="pull-right pad-top-40 text-incr-175  pad-right-20">
+            <div class="pull-right pad-top-45 text-incr-175  pad-right-20">
                 <a href="#" class="sc-t-white "> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
                 <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
                 <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
-                <br>
-                <span>  <a href="#" class="sc-t-white "><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
+                <div style="width: 20px; height: 10px;"></div>
+                <span>  <a href="#" class="sc-t-white"><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
                 <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
                 <span>  <a href="#" class="sc-t-white margin-left-20 "><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
             </div>
