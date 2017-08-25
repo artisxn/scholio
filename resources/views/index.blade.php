@@ -302,7 +302,7 @@
         <!-- Searchbar -->
 
         <div class="">
-            <div class=" container search-container" style="position: relative">
+            <div class=" container search-container" style="position: relative;">
 
                 <button class=" sc-button sc-t-white navbar-btn btn-scholarships btn-non-active" ng-click="selectedButton=1" ng-class="{'btn-active': selectedButton==1}"><i class="fa fa-trophy margin-right-10"></i>@lang('main.first.searchbar.scholarships.title')</button>
                 <button class=" sc-button sc-t-white navbar-btn btn-schools btn-non-active" ng-click="selectedButton=2" ng-class="{'btn-active': selectedButton==2}"><i class="fa fa-university margin-right-10"></i>@lang('main.first.searchbar.institutions.title')</button>

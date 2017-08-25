@@ -112,6 +112,8 @@ video {
     background-color: rgba(31,52,63,0.96); border-radius: 5px;
     border: 1px solid #999;
     border-top-left-radius: 0;
+    width: 92.5%;
+
 }
 
 .btn-scholarships, .btn-schools{ font-weight:200; top: -48px;  margin-left: -16px; position: absolute;  background:rgba(31,52,63,0.96);
@@ -252,6 +254,10 @@ video {
 /* //////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////// */
 
+@media(min-width: 1440px){
+    .search-container {  width: 1370px!important;  }
+}
+
 /* Portrait tablets and small desktops */
 @media  (max-width: 991px) {
 .sc-landing-sec3-text h2{ font-size: 186%;}
@@ -296,7 +302,7 @@ video {
     /* video typed title & text $ search bar */
     .typed{position: absolute; top: 270px; font-size: 340%; left: 0; right: 0;}
     .main-title{position: absolute; top: 370px; left: 0; right: 0;}
-    .search-container{position: absolute; top: 130px;}
+    .search-container{width: 96%}
 }
 
 
@@ -351,6 +357,7 @@ video {
 
 @media (max-width: 519px) {
     .iphone { visibility: hidden!important;}
+    .search-container{width: 98%}
 }
 
 @media (min-width: 451px) and (max-width: 520px) {

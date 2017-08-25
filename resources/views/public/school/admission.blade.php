@@ -97,7 +97,7 @@
         .drop-title{color: #008DA5; font-weight: 300}
 
         .upload{height: 30px; width: 36px; background-color: #000; opacity: 0.6; position: absolute; bottom: -40px; left: 124px; z-index: 2; border-radius: 5px;}
-        .fa-img-up{color: #FD6A33; font-size: 120%;  position: relative; top: 50%; left: 50%;  transform: translateY(-50%) translateX(-50%);  cursor: pointer;  }
+        .fa-img-up{color: #FD6A33; font-size: 130%;  position: relative; top: 50%; left: 50%;  transform: translateY(-50%) translateX(-50%);  cursor: pointer;  }
         .fa-img-up:hover{color: #fff; zoom: 1.4}
 
 
@@ -246,6 +246,32 @@
         }
 
 
+
+        /* =========TOOLTIP=========*/
+        .relative {
+            position: relative;
+        }
+
+        .tooltip {
+            position: absolute; bottom: -50px; left: 150px; z-index: 2;
+            text-align: center;
+            font-weight: 300;
+            /*visibility: hidden;*/
+
+            width: 180px; background-color: transparent;
+            color: #777;
+            border-radius: 5px;
+            padding: 7px 15px;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+
+
+        .tool:hover .tooltip  {
+            opacity: 1;
+        }
+
+
     </style>
 
 
@@ -346,11 +372,15 @@
     <div>
     <form id="admissionForm" action="/admission/{{ $scholarship->id }}/save" method="POST">
     {{ csrf_field() }}
-        <div class="upper-box " >
-            <div class="">
+        <div class="upper-box relative" >
+            <div class="" >
                 <img src="{{ $user->info->avatar }}" class="avatarUp">
-                <label for="avatarUpload"><div class="upload"> <i class="fa fa-picture-o fa-img-up"></i></div></label>
-                <input type="file" id="avatarUpload" class="" name="avatarUpload" style="visibility: hidden;">
+                <div class="tool">
+                    <label for="avatarUpload" class=""><div class="upload"> <i class="fa fa-picture-o fa-img-up tool"></i></div></label>
+                    <span class="tooltip hidden-xs hidden-sm"> Αλλαγή Φωτογραφίας Προφίλ</span>
+                    <input type="file" id="avatarUpload" class="" name="avatarUpload" style="visibility: hidden;">
+                </div>
+
             </div>
 
             <div class="title-to">
