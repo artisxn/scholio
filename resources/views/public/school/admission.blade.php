@@ -81,14 +81,14 @@
         .ad-input{font-size: 100%!important; padding-left: 25px!important;}
         .icon-inp{position: absolute; top: 33px; color: #008DA5}
         .icon-title{margin-right: 10px;}
-        .section-text{color: #888; font-size: 110%; font-weight: 300; margin-left: 10px; margin-top: -25px;
+        .section-text{color: #008DA5; font-size: 110%; font-weight: 300; margin-left: 10px; margin-top: -25px;
             border: 1px solid #aaa; border-radius: 6px; padding: 7px; min-width: 190px; max-width: 250px; background-color: #fafafa;
             box-shadow: 0 0 9px #aaa}
 
         .section2-container{}
         .avatar-container{margin-top: 15px; margin-right: 0; padding-right: 0; }
         .avatar{height: 43px; width: auto;  margin-top: -2px}
-        .avatarUp{height:70px; width: auto; position: absolute; top: 280px; left: 70px; z-index: 4; box-shadow: 0 0 15px #222;
+        .avatarUp{height:70px; width: auto; position: absolute; top: 280px; left: 70px; z-index: 1; box-shadow: 0 0 15px #222;
         }
 
         .col-left{padding-left: 0}
@@ -214,7 +214,8 @@
         }
 
         @media  (max-width: 390px) {
-            .upper-box{height: 240px; }
+            .avatarUp{left:0; right: 0; text-align: center; margin-left: auto; margin-right: auto; top: 195px}
+            .upper-box{height: 240px; margin-top: 75px;}
             .title-to{margin-left: -20px; }
             .trophy-container{text-align:center;
                 margin-left: auto;  margin-right: auto;
@@ -243,15 +244,16 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="admissionApp"  ng-controller="admissionCtrl" data-ng-init="init()"  ng-cloak>
 <!-- Scholio Header -->
-<header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
-    <div class="container">
+<header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header {{ $scholarship->active ? '' : 'opacity10'}}" id="header" style="z-index: 2">
 
-        <div class="row">
-            <div class="col-md-1 visible-lg visible-md nav-web">
+    <div class="container" style="">
+        <div class="row scholarship-profile-nav-row">
+
+            <div class="pull-left visible-lg visible-md nav-web">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                        <img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">
+                        <img src="/new/img/logo.png" class="sc-logo" alt="scholio logo">
                     </div>
                 </a>
             </div>
@@ -260,7 +262,7 @@
                 <div class="nav-mobile">
                     <a class="" href="{{ url('/') }}">
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">
+                            <img src="/new/img/logo-m.png" class="sc-logo" alt="scholio logo">
                         </div>
                     </a>
                 </div>
@@ -268,65 +270,65 @@
             <!-- Scholio sMenu -->
 
             <!-- Large Menu -->
-            <div class="col-md-11 visible-md visible-lg">
-                <div class="">
-                    <ul class="nav navbar-nav navbar-right sc-landing-menu">
-                        {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
-                        @if(auth()->check())
-                            <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">Διαχείριση</button></a></li>
-                            <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">Αποσύνδεση</button></a></li>
-                        @else
-                            <li>
-                                <a href="">
-                                    <button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">Εγγραφή</button>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">Σύνδεση</button>
-                                </a>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+            <div class="pull-right visible-md visible-lg" >
+                <ul class="nav navbar-nav navbar-right sc-landing-menu" >
+
+                    <li class="langDropWhite" style="margin-top: 16px">
+                        <form method="GET" id="langForm">
+                            <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
+                                <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
+                            </select>
+                        </form>
+                    </li>
+
+                    <li class="sc-landing-menu-item">
+                        <a href="{{url('public/scholarships')}}" class="btn-change-search">
+                            <i class="fa fa-trophy margin-right-5"></i>
+                            @lang('schools.navigation.search_scholarship')
+                        </a>
+                    </li>
+                    <li class="sc-landing-menu-item" style="margin-right: -12px">
+                        <a href="{{url('public/schools')}}" class="btn-change-search">
+                            <i class="fa fa-university margin-right-5"></i>
+                            @lang('scholarships.search_institution')
+                        </a>
+                    </li>
+
+
+
+                    {{--<li class="sc-landing-menu-item"><a href="#sxetika" >@lang('scholarship_view.navigation.info')</a></li>--}}
+                    @if(auth()->check())
+                        <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white" style="margin-right: -12px">@lang('main.navigation.admin')</button></a></li>
+                        <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
+                    @else
+                        <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" style="margin-right: -12px">@lang('main.navigation.register')</button></a></li>
+                        <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white">@lang('main.navigation.login')</button></a></li>
+                    @endif
+                </ul>
             </div>
 
+
             <!-- Mobile Menu -->
-            <div class="col-xs-6 visible-sm visible-xs ">
+            <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                 <div class="">
                     <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                         <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                            <img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">
+                            <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                            {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                         </div>
                     </div>
                 </div>
 
-                <div class="visible-xs visible-sm">
-                    <div class="sc-landing-menu-mobile-holder sc-dark-blue">
-                        <div class="pull-right">
-                            <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                        </div>
-                        <br><br>
-                        <div class="sign-links">
-                            @if(auth()->check())
-                                <div class=""><br></div>
-                                <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Διαχείριση</button></a>
-                                <div><br><br><br></div>
-                                <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">Αποσύνδεση</button></a>
-                            @else
-                                <div class=""><br></div>
-                                <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">Εγγραφή</button></a>
-                                <div class=""><br><br><br></div>
-                                <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">Σύνδεση</button></a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
             </div>
 
+            <!-- ======= Sandwich Menu =======-->
+            @include('public.sandwich-menu-scholarshipProfile')
+
         </div>  <!-- row -->
-    </div> <!-- container-->
+    </div><!-- container-->
 </header>
+
 
 <div class="container">
 
@@ -347,20 +349,9 @@
             <div class="inner-section row">
                 <div class="section-text centered-text"> Στοιχεία Υποψηφίου</div>
 
-                <div class="col-sm-6">
-                    {{--<div class="col-sm-1 avatar-container pad-0 ">--}}
-                        {{--<img src="{{ $user->info->avatar }}" class="avatar">--}}
-                    {{--</div>--}}
-
-                    {{--<div class="col-sm-11 input-container  pad-0 pad-left-10 cont1">--}}
-                        {{--<input  type="text" label="Όνομα Σπουδαστή" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">--}}
-                        {{--<i class="icon-inp icon-inp1 fa fa-user-o"></i>--}}
-                    {{--</div>--}}
-
-                    <div class="input-container  input-container">
+                <div class="col-sm-6 input-container  input-container">
                         <input  type="text" label="Όνομα Σπουδαστή" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">
-                        <i class="icon-inp icon-inp1 fa fa-user-o"></i>
-                    </div>
+                        <i class="icon-inp fa fa-user-o"></i>
                 </div>
                 <div class="col-sm-6 input-container clear-fix-sm" >
                     <input type="text" label="Επώνυμο Σπουδαστή" name="lastName" class="demo-form ad-input" >

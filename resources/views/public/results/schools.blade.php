@@ -96,13 +96,13 @@
     /*  /////////////////////////////////////////  */
     /*=============================================*/
 
-    .ribbonSm{right: -45px; top: -3px;}
-    .ribbonMed{ right: -45px; top: -4.5px;}
-    .ribbonL{right: -45px; top: -5px;}
+    .ribbonSm{right: -11px; top: -3px;}
+    .ribbonMed{ right: -11px; top: -4.5px;}
+    .ribbonL{right: -11px; top: -5px;}
 
-    .text-Sm{right: -36px; top: 13px;}
-    .text-Med{right: -32px; top: 34px; }
-    .text-L{right: -26px; top: 60px;}
+    .text-Sm{right: -2px; top: 13px;}
+    .text-Med{right: 2px; top: 34px; }
+    .text-L{right: 8px; top: 60px;}
 
     /*  /////////////////////////////////////////  */
     /*=============================================*/
@@ -116,22 +116,58 @@
 
 
     @media (max-width:1449px){
-        .pos-right{right: -45px}
-        .ribbonMed{ right: -26px}
-        .text-Med{right: -12px}
+        .pos-right{right: -30px}
+        .ribbonMed{ right: -11px}
+        .text-Med{right: -1px}
     }
+
+    @media (max-width:1349px){
+        .ribbonMed{ right: -8px}
+        .text-Med{right: 3px}
+    }
+
 
     @media (max-width:1239px){
         .pos-right{right: -25px}
-        .ribbonMed{ right: -7px}
+        .ribbonMed{ right: -5px}
         .text-Med{right: 8px}
+    }
+
+    @media (max-width:1199px){
+        .pos-right{right: -30px}
+        .ribbonMed{ right: -54px}
+        .text-Med{right: -42px}
+    }
+
+    @media (max-width:1149px){
+        .ribbonMed{ right: -48px}
+        .text-Med{right: -36px}
+    }
+    @media (max-width:1109px){
+        .ribbonMed{ right: -29px}
+        .text-Med{right: -16px}
+    }
+    @media (max-width:1049px){
+        .ribbonMed{ right: -10px}
+        .text-Med{right: 1px}
     }
 
     @media (max-width:991px){
         .pos-right{right: -32px}
-        .ribbonMed{ right: -31px}
-        .text-Med{right: -17px}
+        .ribbonMed{ right: -102px}
+        .text-Med{right: -90px}
     }
+
+    @media (max-width:929px){
+        .ribbonMed{ right: -73px}
+        .text-Med{right: -61px}
+    }
+
+    @media (max-width:859px){
+        .ribbonMed{ right: -31px}
+        .text-Med{right: -20px}
+    }
+
 
 
     @media (max-width:767px){

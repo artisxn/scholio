@@ -172,14 +172,14 @@
 <header class="navbar navbar-top sc-landing-header" id="header" >
     <div class="container">
 
-        <div class="row">
-            <div class="col-md-1 visible-lg visible-md nav-web">
+        <div class="row landing-nav-row">
+            <div class="pull-left visible-lg visible-md nav-web">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="#home">
                     <div class="sc-landing-logo">
                         <img src="{{asset('new/img/logo-light.png')}}" class="sc-logo" alt="scholio logo">
                     </div>
-                    <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
+                    <div class="sc-landing-logo-sticky " style=" padding-top: 15px">
                         <img src="{{asset('new/img/logo.png')}}"  class="sc-logo" alt="scholio logo">
                     </div>
                 </a>
@@ -200,7 +200,7 @@
             <!-- Scholio sMenu -->
 
             <!-- Large Menu -->
-            <div class="col-md-11 visible-md visible-lg">
+            <div class="pull-right visible-md visible-lg">
                 <div class="">
                     <ul class="nav navbar-nav navbar-right sc-landing-menu">
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec2">@lang('main.navigation.about')</a></li>

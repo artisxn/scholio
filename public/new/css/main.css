@@ -149,15 +149,16 @@ a:hover  {  color: #FD6A33;  }
 .sc-landing-footer  {z-index: 200}
 
 .schools-nav-row{padding-left: 0; padding-right: 12px;}
-.scholarship-profile-nav-row{padding-left: 12px; padding-right: 12px;}
+.scholarship-profile-nav-row{padding-left: 12px; padding-right: 13px;}
+.landing-nav-row{padding-left: 12px; padding-right: 20px;}
 @media (max-width: 991px) {
     .schools-nav-row{ padding-right: 0}
-    .scholarship-profile-nav-row{ margin-left: -27px!important; padding-right: 0!important;}
+    .landing-nav-row,.scholarship-profile-nav-row{ margin-left: -27px!important; padding-right: 0!important;}
 }
 
 @media (max-width: 767px) {
     .schools-nav-row{ margin-left: -30px!important;}
-    .scholarship-profile-nav-row{ margin-left: -42px!important;}
+    .landing-nav-row,.scholarship-profile-nav-row{ margin-left: -42px!important;}
 
 }
 

@@ -129,13 +129,27 @@
                         </form>
                     </li>
 
+                    <li class="sc-landing-menu-item">
+                        <a href="{{url('public/scholarships')}}" class="btn-change-search">
+                            <i class="fa fa-trophy margin-right-5"></i>
+                            @lang('schools.navigation.search_scholarship')
+                        </a>
+                    </li>
+                    <li class="sc-landing-menu-item" style="margin-right: -12px">
+                        <a href="{{url('public/schools')}}" class="btn-change-search">
+                            <i class="fa fa-university margin-right-5"></i>
+                            @lang('scholarships.search_institution')
+                        </a>
+                    </li>
+
+
 
                     {{--<li class="sc-landing-menu-item"><a href="#sxetika" >@lang('scholarship_view.navigation.info')</a></li>--}}
                     @if(auth()->check())
-                        <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                        <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white" style="margin-right: -12px">@lang('main.navigation.admin')</button></a></li>
                         <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                     @else
-                        <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('main.navigation.register')</button></a></li>
+                        <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" style="margin-right: -12px">@lang('main.navigation.register')</button></a></li>
                         <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white">@lang('main.navigation.login')</button></a></li>
                     @endif
                 </ul>
@@ -300,36 +314,37 @@
             @if(auth()->check())
                 @if(auth()->user()->role != 'school')
                     <span class="margin-right-20">
-                        <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
+                        <a href="">
+                            <button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
                                            class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
                                 <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
                                 <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('scholarship_view.top.interested_button')</span>
                             </button>
                         </a>
                     </span>
+                    @if(!auth()->user()->checkAdmission($scholarship))
+                        <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
+                    @else
+                        <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_past') </button></a>
+                    @endif
+
                 @endif
             @else
-                <span class="margin-right-20">
-                        <a href="{{ url('login') }}"><button type="button"
+                <span class="margin-right-20" >
+                        <a href="{{ url('login') }}">
+                            <button type="button" style=""
                                            class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
                                 <i class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
                                 <span>@lang('scholarship_view.top.interested_button')</span>
                             </button>
                         </a>
-                    </span>
-            @endif
+                </span>
 
-            <span class="">
-                @if(auth()->check())
-                    @if(auth()->user()->role != 'school')
-                        @if(!auth()->user()->checkAdmission($scholarship))
-                            <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
-                        @else
-                            <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_past') </button></a>
-                        @endif
-                    @endif
-                @endif
-            </span>
+                <a href="{{ url('login') }}"><button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
+
+
+
+            @endif
         </div>
     @endif
 

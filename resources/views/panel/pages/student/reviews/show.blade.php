@@ -8,10 +8,10 @@
             margin-right: auto;
             float: none;
         }
-        .review-cont{border: 1px solid #bbb; background: #fff; border-radius: 6px; min-height: 480px; padding: 10px 20px; margin: 10px 0;}
+        .review-cont{border: 1px solid #bbb; background: #fff; border-radius: 6px; min-height: 520px; padding: 10px 20px; margin: 10px 0; }
         .school-logo{height: 45px;}
         .title{font-size: 140%; font-weight: 400; margin: 5px auto 15px; color: #FD6A33}
-        .review-text{margin-top: 50px; border: 1px solid #008da5; border-radius: 5px; padding: 10px; background: #fafafa; min-height: 160px!important;}
+        .review-text{margin-top: 50px; border: 1px solid #008da5; border-radius: 5px; padding: 10px; background: #fafafa; min-height: 170px!important;}
         .up{margin-top: 20px;}
         .category{font-weight: 400; color: #008da5}
         .stars{float: right;}
