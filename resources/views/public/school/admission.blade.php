@@ -97,8 +97,8 @@
         .drop-title{color: #008DA5; font-weight: 300}
 
         .upload{height: 30px; width: 36px; background-color: #000; opacity: 0.6; position: absolute; bottom: -40px; left: 124px; z-index: 2; border-radius: 5px;}
-        .fa-img-up{color: #FD6A33; font-size: 130%;  position: relative; top: 50%; left: 50%;  transform: translateY(-50%) translateX(-50%);  cursor: pointer;  }
-        .fa-img-up:hover{color: #fff; zoom: 1.4}
+        .fa-img-up{color: #FD6A33; font-size: 130%;  position: relative; top: 50%; left: 50%;  transform: translateY(-50%) translateX(-50%);   }
+        .tool{cursor: pointer; }
 
 
         /*  ========= TextArea Input Css    ========= */
@@ -253,10 +253,10 @@
         }
 
         .tooltip {
-            position: absolute; bottom: -50px; left: 150px; z-index: 2;
+            position: absolute; bottom: -25px; left: 140px; z-index: 2;
             text-align: center;
             font-weight: 300;
-            /*visibility: hidden;*/
+            visibility: hidden;
 
             width: 180px; background-color: transparent;
             color: #777;
@@ -268,7 +268,13 @@
 
 
         .tool:hover .tooltip  {
+            visibility: visible;
             opacity: 1;
+        }
+
+        .tool:hover .fa-img-up  {
+            zoom: 1.4;
+            color: #fff;
         }
 
 
@@ -375,11 +381,13 @@
         <div class="upper-box relative" >
             <div class="" >
                 <img src="{{ $user->info->avatar }}" class="avatarUp">
+                <label for="avatarUpload" class="">
                 <div class="tool">
-                    <label for="avatarUpload" class=""><div class="upload"> <i class="fa fa-picture-o fa-img-up tool"></i></div></label>
-                    <span class="tooltip hidden-xs hidden-sm"> Αλλαγή Φωτογραφίας Προφίλ</span>
+                   <div class="upload"> <i class="fa fa-picture-o fa-img-up tool"></i></div>
+                    <span class="tooltip hidden-xs hidden-sm"> Αλλαγή Φωτογραφίας</span>
                     <input type="file" id="avatarUpload" class="" name="avatarUpload" style="visibility: hidden;">
                 </div>
+                </label>
 
             </div>
 
