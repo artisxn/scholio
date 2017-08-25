@@ -65,7 +65,7 @@
         .upper-box{background-color: #008DA5; height: 320px; border-radius: 4px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; position: relative}
         .upper-title{ margin-top: -20px; margin-left: 60px;}
 
-        .title-to{ font-size: 140%; color: #fafafa; font-weight: 300; padding: 190px 0 0 70px;}
+        .title-to{ font-size: 140%; color: #fafafa; font-weight: 300; padding: 120px 0 0 70px;}
         /*.inner-box{ background-color: #F1F4F5; border: 1px solid #ddd; border-radius: 26px; height: 500px; margin-top: 15px;*/
         /*box-shadow: -5px 0  4px #fff, 0 -5px  4px #fff, 5px 0 4px #fff;*/
         /*border-bottom-left-radius:17px; border-bottom-right-radius:17px;*/
@@ -88,13 +88,17 @@
         .section2-container{}
         .avatar-container{margin-top: 15px; margin-right: 0; padding-right: 0; }
         .avatar{height: 43px; width: auto;  margin-top: -2px}
-        .avatarUp{height:70px; width: auto; position: absolute; top: 280px; left: 70px; z-index: 1; box-shadow: 0 0 15px #222;
+        .avatarUp{height:90px; width: auto; position: absolute; top: 270px; left: 70px; z-index: 1; box-shadow: 0 0 15px #222; border-radius: 6px;
         }
 
         .col-left{padding-left: 0}
         .col-right{padding-right: 0}
 
         .drop-title{color: #008DA5; font-weight: 300}
+
+        .upload{height: 30px; width: 36px; background-color: #000; opacity: 0.6; position: absolute; bottom: -40px; left: 124px; z-index: 2; border-radius: 5px;}
+        .fa-img-up{color: #FD6A33; font-size: 120%;  position: relative; top: 50%; left: 50%;  transform: translateY(-50%) translateX(-50%);  cursor: pointer;  }
+        .fa-img-up:hover{color: #fff; zoom: 1.4}
 
 
         /*  ========= TextArea Input Css    ========= */
@@ -197,9 +201,10 @@
             .icon-inp1 {top: 33px }
             /*.outer{ padding: 5px;}*/
             .inner-box{ padding: 0 5px 8px 5px; }
-            .title-to{  padding: 150px 0 0 15px;}
+            .title-to{  padding: 120px 0 0 15px;}
             .avatar-container{width: 10%; }
             .avatarUp{left: 20px}
+            .upload{left: 74px}
             .cont1{margin-left: 6%; width: 84%; }
         }
 
@@ -213,10 +218,12 @@
             .select-icon2{margin-top: 48px;}
         }
 
-        @media  (max-width: 390px) {
+        @media  (max-width: 455px) {
             .avatarUp{left:0; right: 0; text-align: center; margin-left: auto; margin-right: auto; top: 195px}
+            .fa-img-up,.upload{position: absolute; text-align: center; left:0; right: 0; margin-left: 53%; margin-right: auto; }
+            .upload{bottom: -45px;}
             .upper-box{height: 240px; margin-top: 75px;}
-            .title-to{margin-left: -20px; }
+            .title-to{margin-left: -20px; padding-top: 110px; }
             .trophy-container{text-align:center;
                 margin-left: auto;  margin-right: auto;
                 float: none; }
@@ -232,6 +239,10 @@
                 height: 28px;
                 padding: 0;
             }
+        }
+
+        @media  (max-width:340px) {
+            .title-to{  padding-top: 100px;}
         }
 
 
@@ -336,17 +347,21 @@
     <form id="admissionForm" action="/admission/{{ $scholarship->id }}/save" method="POST">
     {{ csrf_field() }}
         <div class="upper-box " >
-            <img src="{{ $user->info->avatar }}" class="avatarUp">
+            <div class="">
+                <img src="{{ $user->info->avatar }}" class="avatarUp">
+                <label for="avatarUpload"><div class="upload"> <i class="fa fa-picture-o fa-img-up"></i></div></label>
+                <input type="file" id="avatarUpload" class="" name="avatarUpload" style="visibility: hidden;">
+            </div>
+
             <div class="title-to">
                 <div class="trophy-container"> <img src="/new/img/trophy-fff.png" class="trophy-img" alt="">
                     <div class="upper-title">Αίτηση υποτροφίας <span class="hidden-xxxs">προς</span> <span class="sch-name">{{ $scholarship->school->name() }}</span> </div>
-
                 </div>
             </div>
         </div>
 
-        <div class="col-xs-12 inner-box row" style="margin-left: 0">
-            <div class="inner-section row">
+        <div class="col-xs-12 inner-box row" style="margin-left: 0; ">
+            <div class="inner-section row" style="margin-top: 100px">
                 <div class="section-text centered-text"> Στοιχεία Υποψηφίου</div>
 
                 <div class="col-sm-6 input-container  input-container">
