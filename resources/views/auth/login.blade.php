@@ -53,7 +53,9 @@
                 <div class="panel-heading text-center">
                     <div class="text-center">
                         <a href="/">
-                        <img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">
+                        {{--<img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">--}}
+                            <img src="/new/img/logoNX-m.png" alt="scholio logo" class="scholio-logo">
+
                         </a>
                     </div>
                     <div class="text-center login-signUp-title"> Σύνδεση στο schol.io</div>

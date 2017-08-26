@@ -253,7 +253,7 @@
         }
 
         .tooltip {
-            position: absolute; bottom: -25px; left: 140px; z-index: 2;
+            position: absolute; bottom: -25px; left: 140px; z-index: 1;
             text-align: center;
             font-weight: 300;
             visibility: hidden;
@@ -287,7 +287,7 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="admissionApp"  ng-controller="admissionCtrl" data-ng-init="init()"  ng-cloak>
 <!-- Scholio Header -->
-<header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header {{ $scholarship->active ? '' : 'opacity10'}}" id="header" style="z-index: 2">
+<header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header {{ $scholarship->active ? '' : 'opacity10'}}" id="header" style="z-index: 5">
 
     <div class="container" style="">
         <div class="row scholarship-profile-nav-row">
@@ -386,7 +386,7 @@
                 <label for="avatarUpload" class="">
                 <div class="tool">
                    <div class="upload"> <i class="fa fa-picture-o fa-img-up tool"></i></div>
-                    <span class="tooltip hidden-xs hidden-sm"> Αλλαγή Φωτογραφίας</span>
+                    <span class="tooltip hidden-xs"> @lang('admission.photo')</span>
                     <input type="file" id="avatarUpload" class="" name="avatarUpload" style="visibility: hidden;">
                 </div>
                 </label>
@@ -395,40 +395,40 @@
 
             <div class="title-to">
                 <div class="trophy-container"> <img src="/new/img/trophy-fff.png" class="trophy-img" alt="">
-                    <div class="upper-title">Αίτηση υποτροφίας <span class="hidden-xxxs">προς</span> <span class="sch-name">{{ $scholarship->school->name() }}</span> </div>
+                    <div class="upper-title">@lang('admission.apply') <span class="hidden-xxxs">@lang('admission.to')</span> <span class="sch-name">{{ $scholarship->school->name() }}</span> </div>
                 </div>
             </div>
         </div>
 
         <div class="col-xs-12 inner-box row" style="margin-left: 0; ">
             <div class="inner-section row" style="margin-top: 100px">
-                <div class="section-text centered-text"> Στοιχεία Υποψηφίου</div>
+                <div class="section-text centered-text">@lang('admission.candidate.data')</div>
 
                 <div class="col-sm-6 input-container  input-container">
-                        <input  type="text" label="Όνομα Σπουδαστή" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">
+                        <input  type="text" label="@lang('admission.candidate.name')" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">
                         <i class="icon-inp fa fa-user-o"></i>
                 </div>
                 <div class="col-sm-6 input-container clear-fix-sm" >
-                    <input type="text" label="Επώνυμο Σπουδαστή" name="lastName" class="demo-form ad-input" >
+                    <input type="text" label="@lang('admission.candidate.last-name')" name="lastName" class="demo-form ad-input" >
                     <i class="icon-inp fa fa-user"></i>
                 </div>
 
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="Διεύθυνση" name="student_address" class="demo-form ad-input" value="{{ $user->info->address }}">
+                    <input type="text" label="@lang('admission.candidate.address')" name="student_address" class="demo-form ad-input" value="{{ $user->info->address }}">
                     <i class="icon-inp fa fa-street-view"></i>
                 </div>
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="Πόλη/Περιοχή" name="student_city" class="demo-form ad-input" value="{{ $user->info->city }}">
+                    <input type="text" label="@lang('admission.candidate.city')" name="student_city" class="demo-form ad-input" value="{{ $user->info->city }}">
                     <i class="icon-inp fa fa-map-marker"></i>
                 </div>
 
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="Ηλεκτρονικό Tαχυδρομείο/ e-mail" name="email" class="demo-form ad-input" value="{{ $user->email}}">
+                    <input type="text" label="@lang('admission.candidate.email')" name="email" class="demo-form ad-input" value="{{ $user->email}}">
                     <i class="icon-inp fa fa-envelope"></i>
                 </div>
                 <div class="col-sm-6 input-container">
                     {{--<a href="tel:{{ $user->info->phone }}">--}}
-                    <input type="text" label="Τηλέφωνο" name="student_phone" class="demo-form ad-input" value="{{ $user->info->phone }}">
+                    <input type="text" label="@lang('admission.candidate.phone')" name="student_phone" class="demo-form ad-input" value="{{ $user->info->phone }}">
                     {{--</a>--}}
                     <i class="icon-inp fa fa-phone"></i>
                 </div>
