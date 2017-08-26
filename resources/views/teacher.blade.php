@@ -75,11 +75,12 @@
     <div class="container" style="">
         <div class="row scholarship-profile-nav-row">
 
-            <div class="pull-left visible-lg visible-md nav-web">
+            <div class="pull-left visible-lg visible-md nav-web ">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                        <img src="/new/img/logo.png" class="sc-logo" alt="scholio logo">
+                        {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
+                        <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 7px;">
                     </div>
                 </a>
             </div>
@@ -88,7 +89,8 @@
                 <div class="nav-mobile">
                     <a class="" href="{{ url('/') }}">
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            <img src="/new/img/logo-m.png" class="sc-logo"  alt="scholio logo">
+                            {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>

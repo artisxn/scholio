@@ -157,7 +157,8 @@
                     <!-- Scholio Branding -->
                     <a class="sc-landing-brand" href="{{ url('/') }}">
                         <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                            <img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">
+                            {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>
@@ -166,11 +167,15 @@
                     <div class="nav-mobile">
                         <a class="" href="{{ url('/') }}">
                             <div class="navbar-brand  sc-landing-logo-sticky">
-                                <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">
+                                {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                                <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                             </div>
                         </a>
                     </div>
                 </div>
+
+
+
                 <!-- Scholio sMenu -->
 
                 <!-- Large Menu -->
@@ -501,10 +506,12 @@ angular.module("scholarshipsResultsApp",[])
          <img class="ribbonSm" style="" src="/new/img/RibbonSM.png" alt="">
          <span class="text-corner text-Sm"> <i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span>
     @{{/adminter}}
-    @{{#adm}}
+    {{--@{{#adm}}--}}
+    @{{#multiple}}
             <img class="ribbonMed" style="" src="/new/img/RibbonMed.png" alt="">
-            <span class="text-corner text-Med"> <i class=" fa fa-fire" style="margin-right: 7px"></i>Popular</span>
-    @{{/adm}}
+            <span class="text-corner text-Med"> <i class=" fa fa-fire" style="margin-right: 7px"></i>Multiple</span>
+    @{{/multiple}}
+    {{--@{{/adm}}--}}
     @{{#highAmount}}
             <img class="ribbonL" style="" src="/new/img/RibbonL.png" alt="">
             <span class="text-corner text-L"> <i class=" fa fa-eur" style="margin-right: 7px"></i>High Value</span>
@@ -524,22 +531,36 @@ angular.module("scholarshipsResultsApp",[])
         <div class="header-line"></div>
     </div>
 
-    <div class="col-xs-12 pad-0-mar-0 section-container">
-        <div class="col-lg-4 col-md-6 col-sm-4 section1">
-            <div class="hex-container centered">
-                <div class="hexagon3 hex">
-                    <span></span>
-                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{section}}.png" alt="">
+    <div class="col-xs-12 pad-0-mar-0 section-container" >
+          @{{#multiple}}
+            <div class="col-lg-4 col-md-6 col-sm-4 section1" style="border: 1px solid #FD6A33; border-top: none">
+          @{{/multiple}}
+          @{{^multiple}}
+            <div class="col-lg-4 col-md-6 col-sm-4 section1">
+          @{{/multiple}}
+               <div class="hex-container centered">
+
+                     @{{#multiple}}
+                         <div class="hexagon2 hex">
+                            <span></span> <!-- Don't delete this empty span, is for hexagons --!>
+                            <img class="centered-abs hex-img" src="/panel/assets/images/steps/studies.png" alt="">
+                         </div>
+                      @{{/multiple}}
+                      @{{^multiple}}
+                       <div class="hexagon3 hex">
+                             <span></span> <!-- Don't delete this empty span, is for hexagons --!>
+                             <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{section}}.png" alt="">
+                        </div>
+                        @{{/multiple}}
+
                 </div>
-            </div>
             <div class="centered-text">
-                
+
+                <div class="text-title">@lang('scholarships.cards.study')</div>
                 @{{#multiple}}
-                <div class="text-title" style="color:red;">@lang('scholarships.cards.study')</div>
-                Σε πολλαπλα αντικειμενα σπουδών
+              <div class="text-content" style="">@lang('scholarships.cards.multiple')</div>
                 @{{/multiple}}
                 @{{^multiple}}
-                <div class="text-title">@lang('scholarships.cards.study')</div>
                 <div class="text-content">@{{{_highlightResult.study.value}}}</div>
                 @{{/multiple}}
                 

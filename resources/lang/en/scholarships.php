@@ -18,6 +18,7 @@ return [
         'interested' => 'Interested',
         'exams' => 'With exams',
         'end' => 'End at',
+        'multiple'=>'Multiple objects of study',
     ],
     'filters' => [
         'title' => 'Filters',

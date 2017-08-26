@@ -259,7 +259,8 @@
                         <!-- <div class='divider' >
                             <i class='icon-diamond' ></i>
                         </div> -->
-                        <img src="/soon/img/logo-light-m.png"  height="200px" class="logo" alt="scholio-logo" style="opacity: 0.55;">
+                        {{--<img src="/soon/img/logo-light-m.png"  height="200px" class="logo" alt="scholio-logo" style="opacity: 0.55;">--}}
+                        <img src="/soon/img/logoNX-light-m.png"  height="200px" class="logo" alt="scholio-logo" style="opacity: 0.55;">
                         <div  style="opacity: 0.5;">
                             <span class="hand">schol.io</span>
                             {{--<span class="title">schol.io</span>--}}

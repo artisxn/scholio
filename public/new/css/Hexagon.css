@@ -8,7 +8,7 @@
     border-right: solid 2px #00bcd4;
 }
 
-.hexagon3,.hexagon3:before, .hexagon3:after {box-shadow: 0 0 20px rgba(175, 175, 175, 0.6);}
+.hexagon2,.hexagon2:before, .hexagon2:after, .hexagon3,.hexagon3:before, .hexagon3:after {box-shadow: 0 0 20px rgba(175, 175, 175, 0.6);}
 
 .hexagon2  {
     border-left: solid 2px #FD6A33;
@@ -54,7 +54,7 @@
 
 
 /*cover up extra shadows*/
-.hexagon3 span {
+.hexagon2 span, .hexagon3 span {
     display: block;
     position: absolute;
     top:1.1547005383792515px;

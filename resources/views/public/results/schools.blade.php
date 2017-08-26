@@ -218,26 +218,29 @@
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
         <div class="container">
 
-            <div class="row schools-nav-row">
-                <div class="pull-left visible-lg visible-md nav-web ">
-                    <!-- Scholio Branding -->
-                    <a class="sc-landing-brand" href="{{ url('/') }}">
-                        <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                            <img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">
+            <div class="pull-left visible-lg visible-md nav-web ">
+                <!-- Scholio Branding -->
+                <a class="sc-landing-brand" href="{{ url('/') }}">
+                    <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
+                        {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
+                        <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xs-6  visible-sm visible-xs">
+                <div class="nav-mobile">
+                    <a class="" href="{{ url('/') }}">
+                        <div class="navbar-brand  sc-landing-logo-sticky">
+                            {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>
+            </div>
 
-                <div class="col-xs-6  visible-sm visible-xs">
-                    <div class="nav-mobile">
-                        <a class="" href="{{ url('/') }}">
-                            <div class="navbar-brand  sc-landing-logo-sticky">
-                                <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Scholio sMenu -->
+
+                <!-- Scholio Menu -->
 
                 <!-- Large Menu -->
                 <div class="pull-right visible-md visible-lg">

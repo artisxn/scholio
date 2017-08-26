@@ -177,10 +177,13 @@
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="#home">
                     <div class="sc-landing-logo">
-                        <img src="{{asset('new/img/logo-light.png')}}" class="sc-logo" alt="scholio logo">
+                        {{--<img src="{{asset('new/img/logo-light.png')}}" class="sc-logo" alt="scholio logo">--}}
+                        <img src="{{asset('new/img/logoNX-light.png')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
                     </div>
                     <div class="sc-landing-logo-sticky " style=" padding-top: 15px">
-                        <img src="{{asset('new/img/logo.png')}}"  class="sc-logo" alt="scholio logo">
+                        {{--<img src="{{asset('new/img/logo.png')}}"  class="sc-logo" alt="scholio logo">--}}
+                        <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+
                     </div>
                 </a>
             </div>
@@ -189,14 +192,18 @@
                 <div class="nav-mobile">
                     <a class="" href="#home">
                         <div class="navbar-brand  sc-landing-logo">
-                            <img src="{{asset('new/img/logo-light-m.png')}}" class="sc-logo" alt="scholio logo">
+                            {{--<img src="{{asset('new/img/logo-light-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px;">
                         </div>
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">
+                            {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>
             </div>
+
+
             <!-- Scholio sMenu -->
 
             <!-- Large Menu -->

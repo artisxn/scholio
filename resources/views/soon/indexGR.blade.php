@@ -271,7 +271,8 @@
                             <!-- <div class='divider' >
                                 <i class='icon-diamond' ></i>
                             </div> -->
-                            <img src="/soon/img/logo-light-m.png"  height="200px" class="logo" alt="scholio-logo" style="opacity: 0.55;">
+                            {{--<img src="/soon/img/logo-light-m.png"  height="200px" class="logo" alt="scholio-logo" style="opacity: 0.55;">--}}
+                            <img src="/soon/img/logoNX-light-m.png"  height="200px" class="logo" alt="scholio-logo" style="opacity: 0.55;">
                             <div class="hand" style="opacity: 0.55;">schol.io</div>
                         <div class="text1">Η υποτροφία σου, <br class="hidden-sm-up">ένα κλικ μακριά. </div>
                         <div class="text2">Σύντομα κοντά σας, <br class="hidden-sm-up">με μια σπουδαία ιδέα !</div>
