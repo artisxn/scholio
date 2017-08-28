@@ -395,14 +395,14 @@
 
             <div class="title-to">
                 <div class="trophy-container"> <img src="/new/img/trophy-fff.png" class="trophy-img" alt="">
-                    <div class="upper-title">@lang('admission.apply') <span class="hidden-xxxs">@lang('admission.to')</span> <span class="sch-name">{{ $scholarship->school->name() }}</span> </div>
+                    <div class="upper-title">@lang('admission.apply')<span class="hidden-xxxs">@lang('admission.to')</span> <span class="sch-name">{{ $scholarship->school->name() }}</span> </div>
                 </div>
             </div>
         </div>
 
         <div class="col-xs-12 inner-box row" style="margin-left: 0; ">
             <div class="inner-section row" style="margin-top: 100px">
-                <div class="section-text centered-text">@lang('admission.candidate.data')</div>
+                <div class="section-text centered-text">@lang('admission.candidate.info')</div>
 
                 <div class="col-sm-6 input-container  input-container">
                         <input  type="text" label="@lang('admission.candidate.name')" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">
@@ -455,12 +455,12 @@
                 <div class="clearfix"></div>
                 @if($settings->student_polyteknos)
                     <div class="col-sm-6 input-container">
-                    <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
+                    <div class="drop-title">@lang('admission.candidate.multi-child')</div>
 
                         <div class="select-polyteknos">
                             <select name="student_polyteknos">
-                                <option value="0" default>Όχι</option>
-                                <option value="1">Ναι</option>
+                                <option value="0" default>@lang('admission.candidate.no')</option>
+                                <option value="1">@lang('admission.candidate.yes')</option>
                             </select>
                         </div>
 
@@ -470,7 +470,7 @@
 
                 @if($settings->student_relatives)
                 <div class="col-sm-6 ">
-                <div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
+                <div class="drop-title">@lang('admission.candidate.relatives')</div>
                     <div class="select-polyteknos">
                         <select name="student_relatives">
                             <option value="0">0</option>
@@ -488,7 +488,7 @@
             </div>
 
             <div class="inner-section row">
-                <div class="section-text centered-text"> Στοιχεία Γονέων-Κηδεμόνων</div>
+                <div class="section-text centered-text">@lang('admission.parent.info')</div>
                 @foreach($fields as $field)
                     @if(($field->category->id == 2 || $field->category->id == 5) && $settings->{$field->slug})
                         <div class="col-sm-6 input-container">
@@ -520,96 +520,115 @@
                 @endforeach
             </div>
 
-
+            <?php  $i=0 ?>
             <div class="row flex-row">
             @if($settings->skills)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section">
-                        <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i> Ικανότητες - Δεξιότητες</div>
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i>@lang('admission.skills')</div>
                         <div class="input-container">
-                        <div class="info-text"> Γράψε μας τις ικανοτητες και τις δεξιότητες που διαθέτεις.</div>
+                        <div class="info-text">@lang('admission.skills-text')</div>
                             <textarea class="notes">{{ $user->cv->skills }}</textarea>
                         </div>
                     </div>
                 </div>
+                <?php $i++ ?>
             @endif
             @if($settings->languages)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section">
-                        <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
+                        <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i>@lang('admission.languages')</div>
                         <div class=" input-container">
-                        <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
+                        <div class="info-text">@lang('admission.languages-text')</div>
                             <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ $user->cv->languages }}</textarea>
                         </div>
                     </div>
                 </div>
+                    <?php $i++; if ($i%2==0): ?>
+                        <div class="clearfix"></div>
+                    <?php endif; ?>
                 @endif
                 @if($settings->strongpoints)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
-                        <div class="section-text centered-text">   <i class="icon-title fa fa-id-badge"></i> Σημεία Υπεροχής</div>
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-id-badge"></i>@lang('admission.strongpoints')</div>
                         <div class=" input-container">
-                            <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
+                            <div class="info-text">@lang('admission.strongpoints-text')</div>
                                      <textarea name="strongpoints" class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
                                 ">{{ $user->cv->strongpoints}}</textarea>
                         </div>
                     </div>
                 </div>
+                    <?php $i++; if ($i%2==0): ?>
+                    <div class="clearfix"></div>
+                    <?php endif; ?>
                 @endif
                 @if($settings->previous_school)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
-                        <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i>@lang('admission.studies')</div>
                         <div class=" input-container">
-                            <div class="info-text"> Γράψε μας τις μέχρι τώρα σπουδές σου, τα εκπαιδευτικά ιδρύματα και το έτος αποφοίτησης, όπως φαίνονται στο επόμενο παράδειγμα.</div>
+                            <div class="info-text">@lang('admission.studies-text')</div>
                                 <textarea name="studies" class="notes" placeholder="1. ΜΒΑ in Business Administration / Πανεπιστημιο Μακεδονίας / 2016&#13;&#10;2. Οικονομικά / Αριστοτέλειο Πανεπιστημιο θεσσαλονίκης / 2014&#13;&#10;3. 7ο Λύκειο Θεσσαλονικης / 2009
                                 ">{{ $user->cv->student_previous }}</textarea>
                         </div>
                     </div>
                 </div>
+                    <?php $i++; if ($i%2==0): ?>
+                    <div class="clearfix"></div>
+                    <?php endif; ?>
                 @endif
                 @if($settings->awards)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
-                        <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i>Έπαινοι - Διακρίσεις</div>
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i>@lang('admission.accomplishments')</div>
                         <div class=" input-container">
-                            <div class="info-text"> Γράψε μας τις μέχρι τώρα διακρίσεις σου στις ξένες γλώσσες, στον αθλητισμό, στη μουσική ή σε προηγούμενες σπουδές σου.</div>
+                            <div class="info-text">@lang('admission.accomplishments-text')</div>
                                 <textarea name="awards" class="notes" placeholder="1. &#13;&#10;2.&#13;&#10;3.
                                 ">{{ $user->cv->awards }}</textarea>
                         </div>
                     </div>
                 </div>
+                    <?php $i++; if ($i%2==0): ?>
+                    <div class="clearfix"></div>
+                    <?php endif; ?>
                 @endif
                 @if($settings->other_interests)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
-                        <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>Ενδιαφέροντα - Ασχολίες</div>
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>@lang('admission.interests')</div>
                         <div class=" input-container">
-                            <div class="info-text"> Γράψε μας τα γενικότερα ενδιαφέροντα και τις ασχολίες σου.<br> <span style="color: transparent">.</span></div>
+                            <div class="info-text">@lang('admission.interests-text')<br> <span style="color: transparent">.</span></div>
                                 <textarea name="other_interests" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
                                 ">{{ $user->cv->other_interests }}</textarea>
                         </div>
                     </div>
                 </div>
+                    <?php $i++; if ($i%2==0): ?>
+                    <div class="clearfix"></div>
+                    <?php endif; ?>
                 @endif
                 @if($settings->certifications)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
-                        <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>Πιστοποιήσεις - Σεμινάρια</div>
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>@lang('admission.certifications')</div>
                         <div class=" input-container">
-                            <div class="info-text"> Γράψε μας τις μέχρι τωρα πιστοποιήσεις σου και τα σεμινάρια που έχεις παρακολουθήσει</div>
+                            <div class="info-text"> @lang('admission.certifications-text')</div>
                                 <textarea name="certifications" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
                                 ">{{ $user->cv->certifications }}</textarea>
                         </div>
                     </div>
                 </div>
+                    <?php $i++; if ($i%2==0): ?>
+                    <div class="clearfix"></div>
+                    <?php endif; ?>
                 @endif
                 @if($settings->notes)
                 <div class="col-md-6 section2-container ">
                     <div class="inner-section" >
-                        <div class="section-text centered-text">   <i class="icon-title fa fa-pencil"></i>Σημειώσεις</div>
+                        <div class="section-text centered-text">   <i class="icon-title fa fa-pencil"></i>@lang('admission.notes')</div>
                         <div class=" input-container">
-                            <div class="info-text"> Γράψε μας οτιδήποτε θεωρείς σημαντικό ή απαραίτητο σε σχέση με εσένα και την υποτροφία.</div>
+                            <div class="info-text">@lang('admission.notes-text') </div>
                                     <textarea name="notes" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
                                     "></textarea>
                         </div>
@@ -620,7 +639,7 @@
 
             <div class="send-button centered">
                 <a href=""><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white " data-toggle="modal" data-target="#send-modal">
-                        <i class="icon-title fa fa-paper-plane-o pad-right-10"></i>Αποστολή Αίτησης</button></a>
+                        <i class="icon-title fa fa-paper-plane-o pad-right-10"></i>@lang('admission.send')</button></a>
             </div>
         </div>
     </form>
@@ -637,21 +656,20 @@
                 <div class="panel-heading" style="height: 55px; color: #fff">
                     <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
                         x
-
                     </button>
                     <img src="/new/img/logo-light-m.png" alt="scholio logo" class=" sc-logo pull-left" style="margin-top: -5px;">
-                    <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Αίτηση Υποτροφίας</h3>
+                    <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">@lang('admission.apply')</h3>
                 </div>
 
             </div>
             <div class="panel-body">
                 <img class="pull-left margin-right-10" style="height: 45px;">
-                <span> Αποστολή αίτησης υποτροφίας</span>
+                <span>@lang('admission.send')</span>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Ακύρωση</button>
-                <button type="button" data-dismiss="modal" class="btn btn-info" onclick="saveAdmission()">Αποστολή</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('admission.cancel')</button>
+                <button type="button" data-dismiss="modal" class="btn btn-info" onclick="saveAdmission()">@lang('admission.send')</button>
             </div>
         </div>
     </div>

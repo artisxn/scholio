@@ -59,10 +59,11 @@
             <div class="panel-heading">
                 <div class="text-center">
                     <a href="/">
-                    <img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">
+                    {{--<img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">--}}
+                        <img src="/new/img/logoNX-m.png" alt="scholio logo" class="scholio-logo" width="110">
                     </a>
                 </div>
-                <div class="text-center login-signUp-title">Εγγραφή στο schol.io</div>
+                {{--<div class="text-center login-signUp-title">Εγγραφή στο schol.io</div>--}}
             </div>
 
             <div class="">
@@ -104,77 +105,9 @@
 
 
 
-
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <label for="name" class="col-sm-3 font-weight-400">Όνομα, Επώνυμο</label>
-
-                        <div class="col-sm-9">
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
-
-                            @if ($errors->has('name'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-sm-3 font-weight-400">e-mail</label>
-
-                        <div class="col-sm-9">
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                            @if ($errors->has('email'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <label for="password" class="col-sm-3 font-weight-400">Κωδικός</label>
-
-                        <div class="col-sm-9">
-                            <input id="password" type="password" class="form-control" name="password" required>
-
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password-confirm" class="col-sm-3 font-weight-400 ">Επιβεβαίωση Κωδικού</label>
-
-                        <div class="col-sm-9">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <div class="checkbox checkbox-primary">
-                                <input id="checkbox-signup" type="checkbox">
-                                <label for="checkbox-signup">Αποδέχομαι<a href="#"> τους όρους και τις προϋποθέσεις</a></label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group text-center m-t-40">
-                        <div class="col-xs-12">
-                            <button class="btn btn-block sc-dark-green">
-                                Εγγραφή
-                            </button>
-                        </div>
-                    </div>
-
                     <div class="form-group m-t-20 m-b-0">
                         <div class="col-sm-12 text-center login-signUp-text">
-                            <div>Εγγραφή μέσω</div>
+                            <div>@lang('register-step2.register')</div>
                         </div>
                     </div>
 
@@ -193,6 +126,91 @@
                         </div>
                     </div>
 
+                    <div class="or">@lang('login.or')</div>
+
+                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <label for="name" class="col-sm-3 font-weight-400">@lang('register-step2.name')</label>
+
+                        <div class="col-sm-9">
+                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
+
+                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <label for="last-name" class="col-sm-3 font-weight-400">@lang('register-step2.last-name')</label>
+
+                        <div class="col-sm-9">
+                            <input id="last-name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
+
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label for="email" class="col-sm-3 font-weight-400">@lang('register-step2.email')</label>
+
+                        <div class="col-sm-9">
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <label for="password" class="col-sm-3 font-weight-400">@lang('register-step2.password')</label>
+
+                        <div class="col-sm-9">
+                            <input id="password" type="password" class="form-control" name="password" required>
+
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password-confirm" class="col-sm-3 font-weight-400 ">@lang('register-step2.confirm')</label>
+
+                        <div class="col-sm-9">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="checkbox checkbox-primary">
+                                <input id="checkbox-signup" type="checkbox">
+                                <label for="checkbox-signup" >@lang('register-step2.accept')<a href="#" > <span class=" orange-hover">@lang('register-step2.terms')</span></a></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center m-t-40">
+                        <div class="col-xs-12">
+                            <button class="btn btn-block sc-dark-green">
+                                @lang('register-step2.signup')
+                            </button>
+                        </div>
+                    </div>
+
 
                 </form>
             </div>
@@ -201,7 +219,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <p>
-                        Έχεις ήδη λογαριασμό;<a href="/login" class="text-primary m-l-5" style="color: black"><b> Συνδέσου</b></a>
+                        @lang('register-step2.account')<a href="/login" class="text-primary m-l-5" style="color: black"><b class=" orange-hover">@lang('register-step2.login')</b></a>
                     </p>
                 </div>
             </div>

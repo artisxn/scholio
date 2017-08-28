@@ -46,6 +46,7 @@
 
 
 <footer id="" class="sc-landing-footer sc-dark-blue">
+
     <div class="container">
         <div class="row" >
             <div class="pull-left pad-top-50 text-incr-125 left-section" >

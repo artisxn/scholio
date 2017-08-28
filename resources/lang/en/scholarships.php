@@ -24,7 +24,7 @@ return [
         'title' => 'Filters',
         'institutions' => 'Institutions',
         'cities' => 'City',
-        'studies' => 'Availiable Studies',
+        'studies' => 'Available Studies',
         'level' => 'Level of Study',
         'criteria' => 'Criteria',
         'sortby'=>'Sorting:',
