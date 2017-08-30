@@ -6,6 +6,8 @@ return [
         'register' => 'Register',
         'logout' => 'Logout',
         'admin' => 'Admin',
+        'home'=>'Home',
+
     ],
     'cards' => [
         'scholarship_from' => 'Scholarship by',
@@ -16,14 +18,16 @@ return [
         'interested' => 'Interested',
         'exams' => 'With exams',
         'end' => 'End at',
+        'multiple'=>'Multiple objects of study',
     ],
     'filters' => [
         'title' => 'Filters',
         'institutions' => 'Institutions',
         'cities' => 'City',
-        'studies' => 'Availiable Studies',
+        'studies' => 'Available Studies',
         'level' => 'Level of Study',
         'criteria' => 'Criteria',
+        'sortby'=>'Sorting:',
         'delete' => 'Delete all filters',
         'about' => 'About',
         'popular' => 'Popular',

@@ -1,7 +1,7 @@
 <?php
 return [
     'navigation' => [
-        'search_scholarship' => 'Aναζήτηση Υποτροφιών',
+        'search_scholarship' => 'Aναζήτησε Υποτροφίες',
         'login' => 'Σύνδεση',
         'register' => 'Εγγραφή',
         'logout' => 'Αποσύνδεση',
@@ -23,7 +23,7 @@ return [
         'delete' => 'Διαγραφή Φίλτρων',
     ],
     'sortby'=>[
-        'title'=>'Ταξινόμηση με :',
+        'title'=>'Ταξινόμηση με:',
         'stars'=>'Υψήλοτερη Αξιολόγηση',
         'scholarships'=>'Περισσότερες Υποτροφίες',
         'students'=>'Περισσότερους Μαθητές'

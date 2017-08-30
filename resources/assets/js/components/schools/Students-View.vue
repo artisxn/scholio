@@ -27,9 +27,12 @@
                     <div class="row">
                         <div class="sc-card">
                             <a class="" href="#">
-                                <div class="img-cont">
-                                    <img class="img-circle sc-img" width="70" :src=student.info.avatar alt=""/>
+                                <div class="frame-cont">
+                                    <img src="/new/img/photoFrame.png" class="frame" alt="">
+                                    <img :src=student.info.avatar class="avatar2" alt="">
+                                    <img src="/new/img/clip2.png" class="clip" alt="">
                                 </div>
+                                <div class="img-cont"><img class="img-circle sc-img" width="70" :src=student.info.avatar alt=""/></div>
                                 <div class="name"> {{student.name}} </div>
                             </a>
                             <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
@@ -107,7 +110,7 @@
     .form-control{z-index: 0!important;}
     .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
 
-    .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #cfcfcf; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
+    .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #a5a5a5; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
 
 
     .sc-up{height: 70px; background: #008da5; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; }
@@ -126,7 +129,7 @@
     .circle{height: 19px; width: 19px; border-radius: 50%; background-color:#008da5; position: absolute; left: 22px; bottom: 37px; }
 
     /*.sc-bottom{height: 40px; background: #cad8d3; margin: 0 -25px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}*/
-    .sc-bottom{height: 50px; background: #cad8d3; margin: 0 0 20px 0; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #cfcfcf; border-top: none; padding: 15px;}
+    .sc-bottom{height: 50px; background: #cad8d3; margin: 0 0 20px 0; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #a5a5a5; border-top: none; padding: 15px;}
     .sc-radio2{margin:-14px 0; opacity: 0.8}
     .phone{margin: 0;}
     .phone>a,.phone>a:visited{color: #008da5;}
@@ -137,19 +140,46 @@
 
     .img-students{height: 55px; width: auto; position: absolute; right: 20px; top: 85px; opacity: 0.07}
 
-    @media (min-width: 1360px) {
+   /* =========== photo frame ==========*/
+   /* ==================================*/
+    .img-cont{display: none}
+    .frame-cont{position: absolute; top:-3px; left: -10px;}
+    .frame{height: 70px; width: 70px; display: none;}
+    .clip{width: 17px; position: absolute; top:-3px; left: 66px; z-index: 1}
+    .avatar2{
+        width: 75px; height: auto; border-radius: 5px;;
+        box-shadow: 0 0 15px 2px #555;
+        position: absolute; top: 4px; left: 12px;
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+
+
+
+    /* ==================================*/
+
+    @media (min-width: 1291px) {
         .img-cont{margin: -45px 0 0 0 ; }
-        .name{color: #fff; margin: 0; position: absolute; top: 45px; left: 115px;}
-        .email{margin: 0; position: absolute; top: 77px; left: 115px;}
+        .name, .email{position: absolute; margin:0; left: 95px!important;}
+        .email{margin: 0; top: 77px;}
+        .name{color: #fff!important; top: 38px;}
 
     }
 
-    @media (max-width: 1359px) {
+
+
+    @media (max-width: 1290px) {
         .img-cont, .name, .email{text-align: center;}
         .img-cont{margin: -50px auto; }
         .name{margin: 55px auto 0 auto;  color: #008da5; }
         .email{margin: 5px auto;}
         .sc-box{min-height: 200px;}
+
+        .frame-cont{display: none;}
+        .img-cont{display: block}
 
     }
 
@@ -171,10 +201,14 @@
     }
 
     @media  (max-width: 595px) {
-    .col-xxs-12{width: 100%}
+        .col-xxs-12{width: 100%}
+
+
     }
     @media  (max-width: 534px) {
+
         .btn-view{width: 95%; margin: 0 auto 15px auto; float: none!important; display: block; text-align: center!important;}
+
     }
 
 </style>
@@ -182,14 +216,14 @@
 
 <!--  RADIO INPUT STYLE [same @ Scholarships-vue]-->
 <style>
-    .sc-radio>input[type=radio],.sc-radio2>input[type=radio]{
+    .sc-radio> input[type=radio],.sc-radio2> input[type=radio]{
         visibility: hidden;
         position: absolute;
     }
-    .sc-radio>input[type=radio]+ label,.sc-radio2>input[type=radio] + label{
+    .sc-radio>input[type=radio] + label,.sc-radio2>input[type=radio] + label{
         cursor:pointer;
     }
-    .sc-radio>input[type=radio]+ label:before,.sc-radio2>input[type=radio] + label:before{
+    .sc-radio>input[type=radio] + label:before,.sc-radio2>input[type=radio] + label:before{
         width:15px;
         height:15px;
         margin-right: 4px;

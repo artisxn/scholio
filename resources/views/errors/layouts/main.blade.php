@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
         <meta name="author" content="Coderthemes">
         <title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
@@ -38,14 +38,28 @@
     </head>
 
     <style>
+
+        .centered-text {
+            text-align:center;
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
         .sc-btn{margin: 20px 5px 0 5px; width: 150px;}
         .margin-right-10{ margin-right: 10px; }
 
-        .inline>a {color:#008da5; font-size: 120%; margin: 20px 15px 0 15px; font-weight: 400;}
-        .inline>a:hover{color: #FD6A33; text-decoration: none}
+
+        .inline>div{margin-bottom: 20px;}
+        .inline>div>a {color:#008da5; font-size: 120%; margin: 20px 15px 0 15px; font-weight: 400; text-decoration: none;}
+        .inline>div>a:hover{color: #FD6A33; text-decoration: none}
         .thin-line{height: 1px; background-color: #008da5; margin: 30px 0 10px 0; }
 
         .main-fa{color: #008da5; font-size: 1300%}
+
+
+        @media(max-width: 485px){
+            .col-xxs-6{width: 50%}
+        }
 
     </style>
     <body style="background-color: #F1F4F5">
@@ -57,33 +71,40 @@
                         <h1 class="logo-title">schol.io</h1>
                              @yield('content')
 
-                       {{--  <div class="buttons">
-                            <a class="btn btn-primary sc-btn" href="/">
-                                <i class="fa fa-home margin-right-10"></i> Αρχική
-                            </a>
+                       {{--  <div class="buttons">--}}
+                            {{--<a class="btn btn-primary sc-btn" href="/">--}}
+                                {{--<i class="fa fa-home margin-right-10"></i> Αρχική--}}
+                            {{--</a>--}}
 
-                            <a class="btn btn-primary sc-btn" href="/public/scholarships">
-                                <i class="fa fa-trophy margin-right-10"></i> Υποτροφίες
-                            </a>
+                            {{--<a class="btn btn-primary sc-btn" href="/public/scholarships">--}}
+                                {{--<i class="fa fa-trophy margin-right-10"></i> Υποτροφίες--}}
+                            {{--</a>--}}
 
-                            <a class="btn btn-primary sc-btn" href="/public/schools">
-                                <i class="fa fa-university margin-right-10"></i> Εκπ.Ιδρύματα
-                            </a>
-                            <a class="btn btn-primary sc-btn"  href="javascript:history.back()">
-                                <i class="fa fa-undo margin-right-10"></i> Επιστροφή
-                            </a>
-                        </div> --}}
+                            {{--<a class="btn btn-primary sc-btn" href="/public/schools">--}}
+                                {{--<i class="fa fa-university margin-right-10"></i> Εκπ.Ιδρύματα--}}
+                            {{--</a>--}}
+                            {{--<a class="btn btn-primary sc-btn"  href="javascript:history.back()">--}}
+                                {{--<i class="fa fa-undo margin-right-10"></i> Επιστροφή--}}
+                            {{--</a>--}}
+                        {{--</div> --}}
 
 
-                        <div class="inline">
+                        <div class="inline row">
                             <div class="thin-line"></div>
-                            <a class="sc-btn" href="/">Αρχική</a>
+                            <div class="col-xs-3 col-xxs-6">
+                                <a class="sc-btn" href="/">Αρχική</a>
+                            </div>
+                            <div class="col-xs-3 col-xxs-6">
+                                <a class="sc-btn" href="/public/scholarships">Υποτροφίες</a>
+                            </div>
+                            <div class="col-xs-3 col-xxs-6">
+                                <a class="sc-btn" href="/public/schools">Εκπ.Ιδρύματα</a>
+                            </div>
+                            <div class="col-xs-3 col-xxs-6">
+                                <a class="sc-btn"  href="javascript:history.back()">Επιστροφή</a>
+                            </div>
 
-                            <a class="sc-btn" href="/public/scholarships">Υποτροφίες</a>
 
-                            <a class="sc-btn" href="/public/schools">Εκπ.Ιδρύματα</a>
-
-                            <a class="sc-btn"  href="javascript:history.back()">Επιστροφή</a>
                         </div>
 
                     </div>

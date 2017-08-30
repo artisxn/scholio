@@ -1,46 +1,88 @@
+<style>
+    .card-box{min-height:185px; border: 1px solid #aaa; box-shadow: 3px 3px 12px 1px #bbb;}
+    .member-info{margin: -2px 20px;}
+    .cont-img{margin: 10px 0;}
+    .cont-btn{position: absolute; bottom: 5px; right: 25px; }
+    .cont-text{position: absolute; bottom: 35px; right: 25px; }
+    .cont-text>a{color: #008da5}
+    .admin-name{color: #008da5; font-size: 120%}
+    .cont-text>a:hover,.admin-name:hover{color: #FD6A33}
+    .sc-btn{padding: 6px; margin-bottom: 30px;}
+    .img-logo{height: 75px;}
+
+    @media  (min-width:660px) and (max-width:920px) {
+        .img-logo{height: 60px;}
+        .med-hide{display: none}
+    }
+    @media  (min-width:1485px) {
+        .col-xl-4{width: 33.33%}
+    }
+    @media  (min-width:1910px) {
+        .col-xxl-3{width: 25%}
+    }
+    @media  (min-width:2500px) {
+        .col-xxxl-2{width: 20%}
+    }
+    @media  (min-width:660px) and (max-width:767px)  {
+        .col-xsm-6{width: 50%}
+    }
+</style>
+
+
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="row ">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"  v-for="mySchool in mySchools">
+        <div class="col-xs-12 col-xsm-6 col-sm-6 col-xl-4 col-xxl-3 col-xxxl-2"  v-for="mySchool in mySchools">
             <div class="card-box">
                 <div class="row">
-                    <div class="contact-card" style="min-height: 140px;">
-                        <a class="pull-left col-xs-3" href="#">
-                            <img width="80" :src="'/images/schools/' + mySchool.logo" alt=""/>
+                    <div class="contact-card" style="">
+
+                        <a target="_blank" :href='"/public/profile/" + mySchool.id'>
+                            <div class="admin-name">
+                                {{mySchool.admin.name}}
+                            </div>
+
+
+                            <div class="pull-left  cont-img">
+                                        <img class="img-logo" :src="'/images/schools/' + mySchool.logo" alt=""/>
+                            </div>
                         </a>
-                        <div class="member-info col-xs-9">
-                            <h4 class="m-t-0 m-b-5 header-title"><b>
-                            <a target="_blank" :href='"/public/profile/" + mySchool.id'>{{mySchool.admin.name}}</a>
-                            </b></h4>
-                            <!--<p class="text-muted">Καθηγητής</p>-->
-                            <p class="text-dark">
-                                <div class="col-xs-12">
+
+                            <div class="member-info pull-left ">
+                                <!--<p class="text-muted">Καθηγητής</p>-->
+                                <p class="text-dark">
+                                <div class="med-hide">
                                     <i class="fa fa-map-marker"></i>
                                     <small class="pad-left-5">{{mySchool.address}}</small>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="">
                                     <i class="fa fa-phone"></i>
                                     <small class="pad-left-3">{{mySchool.phone}}</small>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="">
                                     <i class="fa fa-globe"></i>
                                     <small class="pad-left-3">{{mySchool.website}}</small>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="">
                                     <i class="md md-email"></i>
                                     <small>{{mySchool.admin.email}}</small>
                                 </div>
-                            </p>
-                        </div>
+                                </p>
+                            </div>
+
+
                     </div>
                 </div>
-                <div>
-                    <div v-if="hasNOTReviewed(mySchool.id)" style="margin-top: -15px">
-                        <a :href="'/panel/users/student/review/create/' + mySchool.id" class="btn btn-primary">
-                            ΑΞΙΟΛΟΓΗΣΕ ΤΟ ΣΧΟΛΕΙΟ
+                <div class="pull-right">
+                    <div v-if="hasNOTReviewed(mySchool.id)" class="cont-btn" >
+                        <a :href="'/panel/users/student/review/create/' + mySchool.id" class="btn btn-primary sc-btn">
+                            ΑΞΙΟΛΟΓΗΣΗ
                         </a>
                     </div>
-                    <div v-else>
-                        ΕΧΕΤΕ ΗΔΗ ΑΞΙΟΛΟΓΗΣΕΙ ΑΥΤΟ ΤΟ ΣΧΟΛΕΙΟ
+                    <div v-else class="cont-text">
+                        <a href="/panel/users/student/review/show">
+                            Έχετε ήδη αφήσει αξιολογήση
+                        </a>
+
                     </div>
                 </div>
 

@@ -68,6 +68,9 @@
     .mar-left{margin-left: 10px}
     .mar-right{margin-right: 10px}
 
+
+
+
     @media screen and (min-width:768px) {
         .btn-role {
             max-width: 190px;
@@ -92,10 +95,12 @@
         <div class="panel-heading">
             <div class="text-center">
                 <a href="/">
-                <img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">
+                {{--<img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">--}}
+                    {{--<img src="/new/img/logoNX-m.png" alt="scholio logo" class="scholio-logo">--}}
+                    <img src="/new/img/logoNX-m.png" alt="scholio logo" class="scholio-logo" width="110">
                 </a>
             </div>
-            <div class="text-center login-signUp-title">Εγγραφή στο schol.io</div>
+            <div class="text-center login-signUp-title">@lang('register.register')</div>
         </div>
 
         <div class="panel-body">
@@ -104,7 +109,7 @@
             >
                 {{ csrf_field() }}
 
-                <div class="middle-text centered-text"> Επιλέξτε την Ιδιότητα σας</div>
+                <div class="middle-text centered-text">@lang('register.select')</div>
 
                 <div class="row">
                     <div class="col-sm-4">
@@ -112,7 +117,7 @@
                             <img src="/new/img/student2-line.png" class="role-img centered-abs " alt="">
                             <div class="colored" ng-class="{show: (over||role==1)}">
                                 <img src="/new/img/student2.png" class="role-img-cl centered-abs " alt="">
-                                <div class="btn-text">μαθητής</div>
+                                <div class="btn-text">@lang('register.student')</div>
                             </div>
                         </div>
                     </div>
@@ -122,7 +127,7 @@
                             <img src="/new/img/parent-line.png" class="role-img2 centered-abs " alt="">
                             <div class="colored" ng-class="{show: over2||role==2}">
                                 <img src="/new/img/parent.png" class="role-img-cl2 centered-abs " alt="">
-                                <div class="btn-text">γονέας</div>
+                                <div class="btn-text">@lang('register.parent')</div>
                             </div>
                         </div>
 
@@ -132,7 +137,7 @@
                             <img src="/new/img/teacher-line.png" class="role-img3 centered-abs " alt="">
                             <div class="colored" ng-class="{show: over3||role==3}" >
                                 <img src="/new/img/teacher.png" class="role-img-cl3 centered-abs " alt="">
-                                <div class="btn-text">καθηγητής</div>
+                                <div class="btn-text">@lang('register.teacher')</div>
                             </div>
                         </div>
                     </div>
@@ -142,17 +147,17 @@
                     <div class=" col-xs-6">
                         <button class="btn sc-dark-green sc-t-white btn-next" type="submit" onClick="history.back();">
                             <i class="fa fa-chevron-circle-left mar-right" aria-hidden="true"></i>
-                            <span class="hidden-xxxxs">Επιστροφή </span>
+                            <span class="hidden-xxxxs">@lang('register.back') </span>
                         </button>
                     </div>
                     <div class="col-xs-6">
                         <button class="btn sc-dark-green sc-t-white btn-next" type="submit" ng-click="register()">
-                            <span class="hidden-xxxxs">Συνέχεια</span>
+                            <span class="hidden-xxxxs">@lang('register.continue')</span>
                             <i class="fa fa-chevron-circle-right mar-left" aria-hidden="true" ></i>
                         </button>
                     </div>
                     <div class="fill" ng-if="noValid">
-                        <div class="fill sc-t-orange">Επιλέξτε προηγουμένως την ιδιότητα τας ! </div>
+                        <div class="fill sc-t-orange">@lang('register.error')</div>
                     </div>
                 </div>
 
@@ -167,8 +172,8 @@
 </div>
 
 <div class=" login">
-    <div class="col-xs-12 text-center margin-top-15 margin-bot-25">
-            Έχεις ήδη λογαριασμό;<a href="/login" class="text-primary" style="color: black"><b> Συνδέσου</b></a>
+    <div class="col-xs-12 text-center margin-top-15 margin-bot-25 ">
+        @lang('register.account')<a href="/login" class="text-primary" style="color: black"><b class="orange-hover">@lang('register.signin')</b></a>
     </div>
 </div>
 

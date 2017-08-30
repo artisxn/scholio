@@ -185,6 +185,12 @@ Route::get('/register/role/', function () {
     return view('auth.register-role');
 });
 
+/* ===== TESTING Panel kfrei DELETE me====== */
+Route::get('/panel/school/testing', function () {
+    return view('panel.pages.school.testing');
+});
+
+
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
 Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {

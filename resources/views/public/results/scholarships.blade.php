@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
 
     <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
@@ -132,6 +132,14 @@
 
 
     .logo-img{max-height: 46px; max-width: 46px; margin-top: 6px; margin-left: -3px;}
+    /*.mobile-input input[type='text']{font-size: 16px;}*/
+    /*select{  font-size: 16px;  height: 36px; padding: 2px; margin-bottom: 7px;}*/
+
+
+
+
+
+
 
 
 </style>
@@ -144,12 +152,13 @@
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
         <div class="container">
 
-            <div class="row">
-                <div class="col-md-1 visible-lg visible-md nav-web">
+            <div class="row schools-nav-row" >
+                <div class="pull-left visible-lg visible-md nav-web ">
                     <!-- Scholio Branding -->
                     <a class="sc-landing-brand" href="{{ url('/') }}">
                         <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                            <img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">
+                            {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>
@@ -158,20 +167,24 @@
                     <div class="nav-mobile">
                         <a class="" href="{{ url('/') }}">
                             <div class="navbar-brand  sc-landing-logo-sticky">
-                                <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">
+                                {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                                <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                             </div>
                         </a>
                     </div>
                 </div>
+
+
+
                 <!-- Scholio sMenu -->
 
                 <!-- Large Menu -->
-                <div class="col-md-11 visible-md visible-lg">
+                <div class="pull-right visible-md visible-lg">
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
 
 
-                        <li class="langDropWhite">
+                        <li class="langDropWhite" style="margin-top: -2px; ">
                         <form method="GET" id="langForm">
                             <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
                                 <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
@@ -180,24 +193,25 @@
                             </form>
                         </li>
 
-                            <li class="sc-landing-menu-item"  ">
+                            <li class="sc-landing-menu-item">
                                 <a href="{{url('public/schools')}}" class="btn-change-search">
                                     <i class="fa fa-university margin-right-5"></i>
                                     @lang('scholarships.search_institution')
                                 </a>
                             </li>
+                  
                             @if(auth()->check())
-                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('scholarships.navigation.admin')</button></a></li>
-                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('scholarships.navigation.logout')</button></a></li>
+                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                             @else
+                                <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#select-modal"--}}
+                                        >@lang('main.navigation.register')</button></a></li>
                                 <li>
-                                    <a href="">
-                                        <button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">@lang('scholarships.navigation.register')</button>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">@lang('scholarships.navigation.login')</button>
+                                    <a href="{{ url('/login') }}">
+                                        <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                                        >@lang('main.navigation.login')</button>
                                     </a>
                                 </li>
                             @endif
@@ -205,12 +219,14 @@
                     </div>
                 </div>
 
+
                 <!-- Mobile Menu -->
-                <div class="col-xs-6 visible-sm visible-xs ">
+                <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">
+                                <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
                     </div>
@@ -218,35 +234,23 @@
                     {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
                     <div class="">
                         <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
-                            <a class="" role="button"
-                               href="" aria-expanded="false">
-                                <i class="fa fa-filter margin-right-10 margin-top-30 sc-t-dark-grey" style="font-size: 180%;" aria-hidden="true"></i>
+                            <a class="" role="button" href="" aria-expanded="false">
+                                <i class="fa fa-filter margin-right-10 margin-top-30 sc-t-dark-grey" style="font-size: 180%; z-index: 5!important;" aria-hidden="true" ></i>
                             </a>
                         </div>
                     </div>
 
-                    <div class="visible-xs visible-sm">
-                        <div class="sc-landing-menu-mobile-holder sc-dark-blue">
-                            <div class="pull-right">
-                                <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                            </div>
-                            <br><br>
-                            <div class="sign-links">
-                                @if(auth()->check())
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('scholarships.navigation.admin')</button></a>
-                                    <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('scholarships.navigation.logout')</button></a>
-                                @else
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('scholarships.navigation.register')</button></a>
-                                    <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('scholarships.navigation.login')</button></a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
+                <!-- ======= Sandwich Menu =======-->
+                @include('public.sandwich-menu-resultsScholarships')
+
+
+
+
+
+
+
 
             </div>  <!-- row -->
         </div> <!-- container-->
@@ -260,20 +264,20 @@
             </div>
 
             <div class="row">
-                <!--============ collapseMenu =============-->
-                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300"
-                     style=" padding: 0 0 15px 0;  width: 250px; box-shadow: 2px 0px 40px 6px #4e4e4e; height: 100%; overflow-y: auto">
+                <!-- ============== collapse Mobile Menu start ============= -->
+                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300">
 
-                    <div class="" style="z-index: 95; background-color: #eee; padding: 10px 7px 40px 7px; min-height: 100%; overflow-x: hidden" >
-
-                        <div >
-                            <div class="input-group margin-bot-15 " style="width: 100%; ">
-                                <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
+                        <div>
+                            <div class="input-group margin-bot-15 mobile-input">
+                                <input type="text" class="form-control algolia-search-input " id="queryMobile" style="border-radius: 5px;" />
                             </div>
                         </div>
 
-                        <div class="content-wrapper col-sm-12">
-                            <aside style="width: 230px;">
+                        <span class="sort-by-text">@lang('scholarships.filters.sortby')</span>
+                        <div id="sort-by-container-mobile"></div>
+
+                        <div class="content-wrapper ">
+                            <aside>
 
                                 <div id="statsMobile" class=""></div>
                                 <div class="facet-category-title">@lang('scholarships.filters.title'):
@@ -286,43 +290,56 @@
 
                                 <div class="filter-container">
                                     <div class="filter-title" >
+                                        <i class="fa fa-university fa-linear5 margin-right-5"></i>
                                         @lang('scholarships.filters.institutions')</div>
                                     <div id="categoriesTypeMobile" ></div>
                                 </div>
 
                                 <div class="filter-container">
-                                    <div class="filter-title">@lang('scholarships.filters.cities')</div>
+                                    <div class="filter-title">
+                                        <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                        @lang('scholarships.filters.cities')</div>
                                     <div id="categoriesCityMobile"></div>
                                 </div>
-                                {{--<div class="filter-container">--}}
-                                    {{--<div class="filter-title">Επίπεδο Σπουδών</div>--}}
-                                    {{--<div id="categoriesLevel"></div>--}}
-                                {{--</div>--}}
+                                <div class="filter-container">
+                                    <div class="filter-title">
+                                        <i class="fa fa-book fa-linear5 margin-right-5"></i>
+                                        @lang('scholarships.filters.studies')</div>
+                                    <div id="categoriesSectionMobile"></div>
+                                </div>
+                                <div class="filter-container">
+                                    <div class="filter-title"><i class="fa fa-graduation-cap fa-linear5 margin-right-5"></i>
+                                        @lang('scholarships.filters.level')</div>
+                                    <div id="categoriesLevelMobile"></div>
+                                </div>
+                                <div class="filter-container">
+                                    <div class="filter-title">
+                                        <i class="fa fa-check-square fa-linear5 margin-right-5"></i>
+                                        @lang('scholarships.filters.criteria')</div>
+                                    <div id="categoriesCriteriaMobile"></div>
+                                </div>
 
                             </aside>
-
                         </div>
 
+                </div>
+                <!-- ============== collapse Mobile Menu ended ============ -->
 
 
-                    </div>
+                <!-- ============ Left search Menu on Large Screens ============-->
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs left-side-container" >
 
 
-                </div><!-- collapseMenu -->
-
-                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs" >
-
-                    <div class="col-sm-12">
                         <div class="input-group margin-bot-15 algolia-search-container">
                             <input type="text" class="form-control algolia-search-input" id="query"/>
                         </div>
-                    </div>
 
-                    <span>@lang('schools.sortby.title')</span>
-                    <div id="sort-by-container"></div>
 
-                    <div class="content-wrapper col-sm-12">
-                        <aside>
+                    <span class="sort-by-text">@lang('scholarships.filters.sortby')</span>
+                    <div id="sort-by-container" ></div>
+
+                    <div class="content-wrapper">
+                        <aside >
 
                             <div id="stats" class=""></div>
                             <div class="facet-category-title">@lang('scholarships.filters.title'):</div>
@@ -332,7 +349,7 @@
 
 
 
-                            <div class="filter-container">
+                            <div class="filter-container";">
                                 <div class="filter-title" >
                                     <i class="fa fa-university fa-linear5 margin-right-5"></i>
                                     @lang('scholarships.filters.institutions')</div>
@@ -489,13 +506,15 @@ angular.module("scholarshipsResultsApp",[])
          <img class="ribbonSm" style="" src="/new/img/RibbonSM.png" alt="">
          <span class="text-corner text-Sm"> <i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span>
     @{{/adminter}}
-    @{{#adm}}
+    {{--@{{#adm}}--}}
+    @{{#multiple}}
             <img class="ribbonMed" style="" src="/new/img/RibbonMed.png" alt="">
-            <span class="text-corner text-Med"> <i class=" fa fa-fire" style="margin-right: 7px"></i>Popular</span>
-    @{{/adm}}
+            <span class="text-corner text-Med"> <i class=" fa fa-fire" style="margin-right: 7px"></i>Multiple</span>
+    @{{/multiple}}
+    {{--@{{/adm}}--}}
     @{{#highAmount}}
             <img class="ribbonL" style="" src="/new/img/RibbonL.png" alt="">
-            <span class="text-corner text-L"> <i class=" fa fa-money" style="margin-right: 7px"></i>High Value</span>
+            <span class="text-corner text-L"> <i class=" fa fa-eur" style="margin-right: 7px"></i>High Value</span>
     @{{/highAmount}}
 
 
@@ -512,22 +531,36 @@ angular.module("scholarshipsResultsApp",[])
         <div class="header-line"></div>
     </div>
 
-    <div class="col-xs-12 pad-0-mar-0 section-container">
-        <div class="col-lg-4 col-md-6 col-sm-4 section1">
-            <div class="hex-container centered">
-                <div class="hexagon3 hex">
-                    <span></span>
-                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{section}}.png" alt="">
+    <div class="col-xs-12 pad-0-mar-0 section-container" >
+          @{{#multiple}}
+            <div class="col-lg-4 col-md-6 col-sm-4 section1" style="border: 1px solid #FD6A33; border-top: none">
+          @{{/multiple}}
+          @{{^multiple}}
+            <div class="col-lg-4 col-md-6 col-sm-4 section1">
+          @{{/multiple}}
+               <div class="hex-container centered">
+
+                     @{{#multiple}}
+                         <div class="hexagon2 hex">
+                            <span></span> <!-- Don't delete this empty span, is for hexagons --!>
+                            <img class="centered-abs hex-img" src="/panel/assets/images/steps/studies.png" alt="">
+                         </div>
+                      @{{/multiple}}
+                      @{{^multiple}}
+                       <div class="hexagon3 hex">
+                             <span></span> <!-- Don't delete this empty span, is for hexagons --!>
+                             <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{section}}.png" alt="">
+                        </div>
+                        @{{/multiple}}
+
                 </div>
-            </div>
             <div class="centered-text">
-                
+
+                <div class="text-title">@lang('scholarships.cards.study')</div>
                 @{{#multiple}}
-                <div class="text-title" style="color:red;">@lang('scholarships.cards.study')</div>
-                Σε πολλαπλα αντικειμενα σπουδών
+              <div class="text-content" style="">@lang('scholarships.cards.multiple')</div>
                 @{{/multiple}}
                 @{{^multiple}}
-                <div class="text-title">@lang('scholarships.cards.study')</div>
                 <div class="text-content">@{{{_highlightResult.study.value}}}</div>
                 @{{/multiple}}
                 
@@ -583,40 +616,29 @@ angular.module("scholarshipsResultsApp",[])
 
     <div class="col-xs-12 scholar-footer ">
         <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
-            <div class=" xxs-9 col-xs-6 col-sm-5 col-md-6 pad-0-mar-0 xxs-footer" >
-                <span class=" xxs-8 col-xs-8 col-sm-7 pad-0-mar-0">
-                    <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarships.cards.admissions'):</div>
-                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarships.cards.interested'):</div>
-                </span>
-                <span class="xxs-2 col-xs-2 col-sm-3 text-right">
-                    <div class="">@{{ requested }}</div>
-                    <div class="margin-top-5">@{{ interested }}</div>
-                </span>
+            <div class="col-xs-6 col-sm-4  col-md-4 xxs-8 xxs-footer pad-0-mar-0 scholar-footer-left">
+                    <div> <i class="fa fa-pencil margin-right-10"></i>@lang('scholarships.cards.admissions'): <span class="pull-right">@{{ requested }}</span> </div>
+                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarships.cards.interested'): <span class="pull-right">@{{ interested }}</span> </div>
             </div>
-            <div class="col-xs-6 col-sm-5 pad-0-mar-0 xs-hidden">
-                <span class="col-xs-7 col-sm-7 pad-0-mar-0">
-                    <div class="margin-top-5">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarships.cards.exams'):</div>
-                    <div class="">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarships.cards.end'):</div>
-                </span>
-                <span class="col-xs-5 col-sm-5 pad-0-mar-0 text-right">
-                    <div class="margin-top-5" >
-                    @if(request()->cookie('lang') == 'en')
-                        @{{exams_en}}
-                    @else
-                        @{{exams}}
-                    @endif
+            <div class="col-sm-1"></div>
+            <div class="col-xs-5 col-sm-4 pad-0-mar-0 xs-hidden scholar-footer-right">
+                    <div>  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarships.cards.exams'):
+                    <span class="pull-right">
+                         @if(request()->cookie('lang') == 'en')
+                         @{{exams_en}}
+                         @else
+                         @{{exams}}
+                         @endif
+                    </span>
                     </div>
-                    <div class="">@{{end_at}}</div>
-                </span>
+                    <div class="margin-top-5">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarships.cards.end'):  <span class="pull-right">@{{ end_at }}</span> </div>
             </div>
         </div>
 
 
-        <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0">
-
-
+        <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0" >
             <a href="/scholarship/@{{scholarship_id}}" >
-                <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli">
+                <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli" style="">
                     <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarships.cards.show')
                 </button>
             </a>
@@ -733,11 +755,32 @@ angular.module("scholarshipsResultsApp",[])
                 }
             })
     );
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCriteriaMobile',
+                attributes: ['criteria_en'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+
 
     @else
 search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteria',
+                attributes: ['criteria'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesCriteriaMobile',
                 attributes: ['criteria'],
                 sortBy: ['name:asc'],
                 templates: {
@@ -771,9 +814,20 @@ search.addWidget(
             })
     );
 
+
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesSection',
+                attributes: ['section'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesSectionMobile',
                 attributes: ['section'],
                 sortBy: ['name:asc'],
                 templates: {
@@ -792,6 +846,16 @@ search.addWidget(
                 }
             })
     );
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesLevelMobile',
+                attributes: ['level_en'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
     @else
 search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
@@ -803,7 +867,17 @@ search.addWidget(
                 }
             })
     );
-    @endif
+    search.addWidget(
+            instantsearch.widgets.hierarchicalMenu({
+                container: '#categoriesLevelMobile',
+                attributes: ['level'],
+                sortBy: ['name:asc'],
+                templates: {
+                    item: menuTemplate
+                }
+            })
+    );
+@endif
 
     search.addWidget(
       instantsearch.widgets.sortBySelector({
@@ -814,6 +888,17 @@ search.addWidget(
           {name: 'dummyScholarships_created_asc', label: '@lang('scholarships.filters.new')'}
         ]
       })
+    );
+
+    search.addWidget(
+            instantsearch.widgets.sortBySelector({
+                container: '#sort-by-container-mobile',
+                indices: [
+                    {name: 'dummyScholarships', label: '@lang('scholarships.filters.about')'},
+                    {name: 'dummyScholarships_school_asc', label: '@lang('scholarships.filters.popular')'},
+                    {name: 'dummyScholarships_created_asc', label: '@lang('scholarships.filters.new')'}
+                ]
+            })
     );
 
     // search.addWidget(

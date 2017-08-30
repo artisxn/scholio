@@ -2,7 +2,8 @@
 @extends('errors.layouts.main')
 
 @section('content')
-
+        <!-- Animated Image with Ken Burns Effect -->
+        <div class="imageAnimated"></div>
             <!-- Your text -->
             <h1 class="hand">Oops! Error 401 Authorization Required</h1>
             <div class="big-content" style="margin-top: 30px;">

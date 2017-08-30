@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="fb:pages" content="934370089973049" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><!-- prevent zoomIn in mobile inputs,selects,etc -->
+    <meta property="fb:pages" content="934370089973049"/>
 
     <title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
 
@@ -24,7 +24,7 @@
     |Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=greek" rel="stylesheet">
     -->
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=greek" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&subset=greek" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
@@ -96,9 +96,6 @@
 
 
     <style>
-        /*.animate  #sec2 h5{color: red; opacity: 1;*/
-        /*-webkit-transition: all 2.5s ease;*/
-        /*transition: all 2.5s ease;}*/
         .opacityLow{opacity: 0}
         .opacityFull {opacity: 1}
         #sec2{
@@ -113,7 +110,6 @@
 
         .sch-reg-title{left: 37%; : 400px; position: absolute; max-width: 400px}
 
-
         .lang-sel{color: #fff; margin-top: 2px; margin-left: -23px}
         .lang-drop{margin: 4px -13px;}
         .select-white .dropdown-menu>li>a{ color: black;}
@@ -124,18 +120,13 @@
         .btn-transparent{ color: #fff}
         .btn-transparent:focus{ box-shadow: none; outline: 0}
         .btn-transparent:hover{color: #00bcd4!important;}
-        /*.btn-white{color: #777;}*/
-        /*.selectpicker{outline: none !important;}*/
-        /*.selectpicker:focus{outline: none !important;}*/
-        /*.select-white:selected{ color: #777;}*/
-        /*.btn-transparent:focus{color: #fff; outline: 0;}*/
-        /*ul>li>a:hover,.btn-transparent:hover{color: #7ef8ff;}*/
-        /*ul>li>a:hover,.btn-transparent:hover{color: #FD6A33!important;}*/
-        /*.hover{color: #FD6A33!important;}*/
 
 
+        .algolia-image{margin-left:10px; margin-top: 2px; height: 17px;}
+        .algolia-powered{margin-top: -20px;  margin-bottom: -10px;  padding: 0; color: #ebebeb}
 
 
+        /* ===========-----------===================== */
         #school-register-button:focus{color: #fff; outline: none!important;}
 
         .bot-text,.bot-text:visited{color: black}
@@ -161,6 +152,13 @@
         @media  (max-width: 1200px) {
             .sch-reg-title {left:28%; width: 330px;}
         }
+        @media  (min-width: 768px) and (max-width: 991px) {
+            .algolia-input{width: 688px!important;}
+            .algolia-powered{position: absolute; right: -40px}
+            .algolia-image{position: absolute; right: -64px; top: 0px;}
+        }
+
+
     </style>
 
 
@@ -174,50 +172,55 @@
 <header class="navbar navbar-top sc-landing-header" id="header" >
     <div class="container">
 
-        <div class="row">
-            <div class="col-md-1 visible-lg visible-md nav-web">
+        <div class="row landing-nav-row">
+            <div class="pull-left visible-lg visible-md nav-web">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="#home">
                     <div class="sc-landing-logo">
-                        <img src="{{asset('new/img/logo-light.png')}}" class="sc-logo" alt="scholio logo">
+                        {{--<img src="{{asset('new/img/logo-light.png')}}" class="sc-logo" alt="scholio logo">--}}
+                        <img src="{{asset('new/img/logoNX-light.png')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
                     </div>
-                    <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                        <img src="{{asset('new/img/logo.png')}}"  class="sc-logo" alt="scholio logo">
+                    <div class="sc-landing-logo-sticky " style=" padding-top: 15px">
+                        {{--<img src="{{asset('new/img/logo.png')}}"  class="sc-logo" alt="scholio logo">--}}
+                        <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+
                     </div>
                 </a>
             </div>
 
-            <div class="col-xs-6  visible-sm visible-xs">
+            <div class="col-xs-6  visible-sm visible-xs" id="logo-xs">
                 <div class="nav-mobile">
                     <a class="" href="#home">
                         <div class="navbar-brand  sc-landing-logo">
-                            <img src="{{asset('new/img/logo-light-m.png')}}" class="sc-logo" alt="scholio logo">
+                            {{--<img src="{{asset('new/img/logo-light-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px;">
                         </div>
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">
+                            {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>
             </div>
+
+
             <!-- Scholio sMenu -->
 
             <!-- Large Menu -->
-            <div class="col-md-11 visible-md visible-lg">
+            <div class="pull-right visible-md visible-lg">
                 <div class="">
                     <ul class="nav navbar-nav navbar-right sc-landing-menu">
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec2">@lang('main.navigation.about')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec4">@lang('main.navigation.institutions')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec3">@lang('main.navigation.features')</a></li>
                         <li class="sc-landing-menu-item"><a href="#sc-landing-sec5">@lang('main.navigation.contact')</a></li>
-                        {{--<li class="lang-sel"><a href="">ENG &nbsp;|</a> </li>--}}
-                        {{--<li class="lang-sel sel2"><a href=""> GR</a></li>--}}
                         <li class="lang-drop">
                         <form method="GET" id="langForm">
                             <select onchange="changeLang(this)" class="trans selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent">
                                 <option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
                                 <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                             </select>
-                            </form>
+                        </form>
                         </li>
 
                         <li class="langDropWhite hide">
@@ -229,90 +232,41 @@
                             </form>
                         </li>
                     @if(auth()->check())
-                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('main.navigation.admin')</button></a></li>
-                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('main.navigation.logout')</button></a></li>
+                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                     @else
-                    <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">@lang('main.navigation.register')</button></a></li>
+                    <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                                                                      {{--data-toggle="modal" data-target="#select-modal"--}}
+                            >@lang('main.navigation.register')</button></a></li>
                     <li>
-                    <a href="">
-                    <button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white" data-toggle="modal" data-target="#signIn-modal">@lang('main.navigation.login')</button>
+                    <a href="{{ url('/login') }}">
+                    <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
+                            {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                    >@lang('main.navigation.login')</button>
                     </a>
                     </li>
                     @endif
 
                     </ul>
-                    {{-- <a href="lang/en">EN</a> | <a href="lang/el">GR</a> --}}
+
                 </div>
             </div>
 
-            <!-- Mobile Menu -->
-            <div class="col-xs-6 visible-sm visible-xs ">
-                <div class="">
-                    <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
-                        <div class="sc-landing-menu-sandwitch-button  sc-landing-menu-sandwitch">
-                            <img src=" {{asset('new/img/collapse-light.png')}}" alt="scholio logo">
-                        </div>
-                        <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                            <img src=" {{asset('new/img/collapse-dark.png')}}" alt="scholio logo">
+            <!-- Mobile Sandwich Icon  -->
+            <div class="col-xs-6 visible-sm visible-xs" style="z-index: 6000; height: 20px;">
+                    <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right" >
+                        <div class="sc-landing-menu-sandwitch sc-landing-menu-sandwitch-button " >
+                            <img src=" {{asset('new/img/collapse-light2.png')}}" alt="scholio logo" >
+                            {{--<div style="-webkit-mask-box-image: url({{asset('new/img/collapse-light2.png')}})"></div>--}}
                         </div>
                     </div>
-                </div>
             </div>
-            <div class="visible-xs visible-sm">
-                <div class="sc-landing-menu-mobile-holder sc-dark-blue">
-                    <div class="pull-right">
-                        <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                    </div>
-                    <br><br>
-                    <div class="pull-right">
-                        <span class="lang-sel" style="float: right"><a href="/lang/en">ENG &nbsp;</a> | <a href="/lang/el"> &nbsp;GR</a></span>
 
-                        <div class="clearfix"></div>
-                        <a href="#sc-landing-sec2">
+            <!-- ======= Sandwich Menu =======-->
+            @include('public.sandwich-menu-landing')
 
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.about')</div>
-                        </a>
-                        <a href="#sc-landing-sec4">
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.institutions')</div>
-                        </a>
-                        <a href="#sc-landing-sec3">
-                            <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.features')</div>
-                        </a>
-                        <a href="#sc-landing-sec5">
-                        <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('main.navigation.contact')</div>
-                        </a>
-                        <div class=""><br></div>
-                        <div class="sign-links">
-                            @if(auth()->check())
-                                <div class=""><br></div>
-                                <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('main.navigation.admin')</button></a>
-                                <div><br><br><br></div>
-                                <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('main.navigation.logout')</button></a>
-                            @else
-                                <div class=""><br></div>
-                                <a href="{{ url('/register') }}">
-                                    <button type="button" class="sc-button sc-orange sc-t-white pull-right"
-                                            {{--data-toggle="modal" data-target="#signUp-modal"--}}
-                                    >@lang('main.navigation.register')</button>
-                                </a>
-                                <div class=""><br><br><br></div>
-                                <a href="{{ url('/login') }}">
-                                    <button type="button" class="sc-button  sc-green sc-t-white pull-right"
-                                            {{--data-toggle="modal" data-target="#signIn-modal"--}}
-                                    >@lang('main.navigation.login')</button>
-                                </a>
-                            @endif
-                        </div>
-                        {{--<div class="lang-drop" style="padding-top: 40px;">--}}
-                            {{--<select class="selectpicker"  data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-transparent"  v-model="">--}}
-                                {{--<option data-icon="fa " value="1">&nbsp; ENG</option>--}}
-                                {{--<option data-icon="fa " value="2">&nbsp; GR</option>--}}
-                            {{--</select>--}}
-                        {{--</div>--}}
 
-                    </div>
-                </div>
-            </div>
+
 
         </div>
 
@@ -322,7 +276,7 @@
 
 
 <!-- Scholio Main Section -->
-<main id="main"  class="">
+<main id="main"  class="main-landing">
 
 
 
@@ -330,8 +284,8 @@
     <section id="sc-landing-sec1" class="sc-landing-sec1">
         <div class="container">
             <div class="sc-landing-sec1-content">
-                <h1 class="text-center sc-t-white"><span class="typed-js"></span> </h1>
-                <h3  class="text-center sc-t-white">@lang('main.first.subtitle')</h3>
+                <h1 class="text-center sc-t-white typed"><span class="typed-js"></span> </h1>
+                <h3 class="text-center sc-t-white main-title">@lang('main.first.subtitle')</h3>
 
             </div>
         </div>
@@ -355,7 +309,7 @@
         <!-- Searchbar -->
 
         <div class="">
-            <div class=" container search-container" style="position: relative">
+            <div class=" container search-container" style="position: relative;">
 
                 <button class=" sc-button sc-t-white navbar-btn btn-scholarships btn-non-active" ng-click="selectedButton=1" ng-class="{'btn-active': selectedButton==1}"><i class="fa fa-trophy margin-right-10"></i>@lang('main.first.searchbar.scholarships.title')</button>
                 <button class=" sc-button sc-t-white navbar-btn btn-schools btn-non-active" ng-click="selectedButton=2" ng-class="{'btn-active': selectedButton==2}"><i class="fa fa-university margin-right-10"></i>@lang('main.first.searchbar.institutions.title')</button>
@@ -365,13 +319,13 @@
                     <form onsubmit="event.preventDefault(); validateMyForm(this,1);" action="/search/scholarships" id="scholarship" method="post" ng-if="selectedButton==1">
                         {{ csrf_field() }}
                         <div class="col-md-10 col-sm-10" id="">
-                            <input name="text" type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets1()"
+                            <input name="text" type="text" class="font-weight-300 algolia-input" id="search-input" autocomplete aa-datasets="getDatasets1()"
                                    ng-model="selection1"
                                    placeholder="@lang('main.first.searchbar.scholarships.placeholder')"
                             />
 
-                             <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
-                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
+                             <div class=" font-weight-100 pull-right algolia-powered" >powered by
+                                <img  src="/new/img/algolia_logof.png" alt=""  class="pull-right algolia-image"></div>
                         </div>
 
                         <div class="col-md-2 col-sm-12">
@@ -383,12 +337,12 @@
                     <form onsubmit="event.preventDefault(); validateMyForm(this,2)" action="/search/scholarships" method="post" ng-if="selectedButton==2">
                         {{ csrf_field() }}
                         <div class="col-md-10 col-sm-10" id="">
-                            <input name="text" type="text" class="font-weight-300" id="search-input" autocomplete aa-datasets="getDatasets2()"
+                            <input name="text" type="text" class="font-weight-300 algolia-input" id="search-input" autocomplete aa-datasets="getDatasets2()"
                                    ng-model="selection2"
                                    placeholder="@lang('main.first.searchbar.institutions.placeholder')"
                             />
-                            <div class=" font-weight-100 pull-right" style="margin-top: -16px;  margin-bottom: -10px;  padding: 0; color: #ebebeb">powered by
-                                <img height="18px" src="/new/img/algolia_logof.png" alt="" style="margin-left:10px;" class="pull-right"></div>
+                            <div class=" font-weight-100 pull-right algolia-powered">powered by
+                                <img src="/new/img/algolia_logof.png" alt="" class="pull-right algolia-image"></div>
                         </div>
 
                         <div class="col-md-2 col-sm-12">
@@ -796,7 +750,6 @@ function validateMyForm(el, id){
     $('.knob2').val(128).knob();
     $('.knob3').val(268).knob();
     $('.knob4').val(130).knob();
-
 //    var graph = $('.knob');
 //    $({value: 0}).animate({ value: 1790 }, {
 //        duration:900,
@@ -804,7 +757,7 @@ function validateMyForm(el, id){
 //        progress: function () {graph.val(Math.ceil(this.value)).trigger('change')
 //        }
 //    });
-
+//
 
 </script>
 </html>

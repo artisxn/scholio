@@ -7,9 +7,10 @@ return [
         'institutions' => 'INSTITUTIONS',
         'contact' => 'CONTACT',
         'login' => 'Login',
-        'register' => 'Register',
+        'register' => 'Sign Up',
         'logout' => 'Logout',
-        'admin' => 'Admin',
+        'admin' => 'Administration
+',
     ],
     'first' => [
         'title' => [
