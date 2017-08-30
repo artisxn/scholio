@@ -55,26 +55,13 @@
     .col-sm-5, .col-md-5{padding-right: 4px; }
 
     .card-photo{max-height: 180px;  width: 100%; }
+    .card{background-color: #fff; height: 180px;}
 
     .school-filter-m{display: none}
+    .container-up{margin-top: 50px; margin-bottom: 10px; padding-right:0;}
+    .margin-bottom{height: 40px; width: 20px; margin-bottom: 110px;}
+    .photo-mini{position: absolute; top: 6px; left: 6px;}
 
-    @media  (max-width: 990px) {
-        photo{padding-right: 0!important;}
-        photo a img{padding-top:17px;!important;}
-        .info{}
-        .btn-list{margin-left: -20px; }
-    }
-
-
-    @media  (max-width: 768px) {
-        .right-map{ top: 90px; left: 0}
-        .fa-hidden{display: none}
-        .school-filter-m{display: block}
-    }
-
-    @media  (max-width: 1200px) {
-        .card-photo,.card{height: 155px!important;}
-    }
 
     .search-contain,.btn-list{ clear: both; display: block; text-align: center; margin-left: auto; margin-right: auto; }
     .btn-li{ margin-bottom: 20px; margin-left: -20px; width: 200px}
@@ -84,6 +71,55 @@
     .km-high{margin-right: -2px;}
     .col-sm-5{padding-left: 7px; }
     .col-sm-7{padding-right: 4px; }
+
+
+
+
+    @media  (max-width: 990px) {
+        photo{padding-right: 0!important;}
+        photo a img{padding-top:17px;!important;}
+        .info{}
+        /*.btn-list{margin-left: -20px; }*/
+    }
+
+
+    @media  (max-width: 767px) {
+
+        .right-map{ top: 60px; left: 0}
+        .fa-hidden{display: none}
+        .school-filter-m{display: block}
+        .school-slider{ background-color: #fafafa; width: 320px; z-index: 5; border-radius: 6px; border: 1px solid #999; box-shadow: 0 0 10px 2px #aaa; position: fixed; top: 75px; bottom: 15px; height: auto;  overflow-y: auto}
+        .left-320{left: -320px; transition: all 0.2s}
+        .left10{left: 10px; transition: all 0.2s}
+        .card{border: 1px solid #ccc; border-radius: 5px}
+        .container-up{margin-top: 0}
+        .info-title{margin-left: 40px ; margin-top: -21px}
+        .info-content{position: absolute; left: 7px; bottom: -152px}
+        .margin-bottom{margin-bottom: 0;}
+        .photo-mini{top: -2px}
+        .top-range{bottom: 20px; margin-left: -5px;}
+        /*.search-div,.range-input{background-color: greenyellow; z-index: 99!important;}*/
+        .btn-list{margin-top: 40px;}
+
+    }
+
+
+    @media  (max-width: 399px) {
+        /*.fa-xxs{display: none;}*/
+        .school-slider{width: 305px;}
+
+    }
+    @media  (max-width: 360px) {
+        /*.fa-xxs{display: none;}*/
+        .school-slider{width: 285px;}
+
+        }
+
+    @media  (max-width: 1200px) {
+        .card-photo,.card{height: 155px!important;}
+    }
+
+
 </style>
 
 <body ng-app="app" ng-controller="resultsCtrl">
@@ -194,11 +230,11 @@
 
 
 <div class="row pad-0-mar-0">
-    <div class="col-sm-5 col-md-5 hidden-xs ">
-        <header  class="container-left" style="margin-top: 50px; margin-bottom: 10px; padding-right:0;">
+    <div class="col-sm-5 col-md-5 school-slider left-320" style="" id="school-slider">
+        <header  class="container-left container-up" style="">
             {{--My Cordinates--}}
             {{--<div id="demo" style=" margin: 0 0 20px 0 "></div>--}}
-            <p class="">Επιλέξτε προβολή τη προβολή του χάρτη κοντά σας, ή σαρώστε την περιοχή που θέλέτε</p>
+            <p class="">Επιλέξτε προβολή τη προβολή του χάρτη κοντά σας, ή σαρώστε την περιοχή που θέλετε</p>
             <a href="" class="change_page_state btn btn-info" data-mode="around" data-state="ip" ng-click="status='around'">
                 <i class="fa fa-map-marker margin-right-10 fa-hidden"></i>
                 Κοντά μου
@@ -230,14 +266,14 @@
                 </a>
             </div>
 
-            <div style="height: 40px; width: 20px; margin-bottom: 110px;"></div>
+            <div class="margin-bottom"></div>
         </div>
 
 
 
 
 
-        <div id="hits" ></div>
+        <div id="hits" style=" z-index: 999"></div>
 
 
         <script type="text/template" id="hits-template">
@@ -251,43 +287,41 @@
 
 
 
-            <div class=" card clear-fix margin-bot-15" style="background-color: #fff; height: 180px;">
+            <div class=" card clear-fix margin-bot-15" style="">
                 <con>
                     <photo class="col-sm-2 col-md-4 pad-0-mar-0" >
                         <a href="/public/profile/@{{school_id}}" class="hidden-xs hidden-sm">
                             <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{image}}) ">
                         </a>
                         <a href="/public/profile/@{{school_id}}" target="_blank">
-                            <img id="img1"  style="position: absolute; top: 6px; left: 6px;" class=" img-mini  " src="/images/schools/@{{logo}}">
+                            <img id="img1"  style="" class=" img-mini  photo-mini" src="/images/schools/@{{logo}}">
                         </a>
                     </photo>
 
                 </con>
 
                 <div class="col-sm-10 col-md-8 info">
-                    <div class=" margin-bot-15 ">
-
+                    <div class=" margin-bot-15 info-title">
                         <div style="position: absolute; top: 20px; right: 10px; color: #999">@{{distance}} </div>
-
-                    <span class="pull-left" style="padding-right: 15px;">
-                        <h5 class="pad-top-10 font-weight-400"> <a href="/public/profile/@{{school_id}}"  style="color: #008da5;"> @{{name}}</a></h5>
-                    </span>
+                        <span class="pull-left" style="padding-right: 15px;">
+                             <h5 class="pad-top-10 font-weight-400"> <a href="/public/profile/@{{school_id}}"  style="color: #008da5;"> @{{name}}</a></h5>
+                         </span>
                     </div>
 
-                    <div class="">
+                    <div class="info-content">
                         <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12 sc-t-grey" style="padding-left: 0">
-                            <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                            <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95">@{{address}}</span>
+                            <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 fa-xxs" aria-hidden="true"></i></span>
+                            <span class="pull-left pad-left-3 xs-text-incr-85 text-incr-95">@{{address}}</span>
                             <br>
-                            <div class="hidden-xs">
-                                <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-3">@{{city}} </span>
+                            <div class="">
+                                <span><i class="fa fa-street-view pull-left pad-top-3 fa-xxs" aria-hidden="true"></i></span>
+                                <span class="pull-left pad-left-3 xs-text-incr-85">@{{city}} </span>
 
                                 <br>
                             </div>
                             <div class="pad-top-3"></div>
-                            <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
-                            <span class="pull-left pad-left-5">@{{phone}}</span>
+                            <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85 fa-xxs" aria-hidden="true"></i></span>
+                            <span class="pull-left pad-left-3 xs-text-incr-85">@{{phone}}</span>
 
                         </div>
                     </div>
@@ -702,5 +736,30 @@
 
             });
 </script>
+
+
+<script>
+
+
+    $(document).ready(function($) {
+
+        // Toggle - Collapse Schools Mobile Slider Filter
+        var schoolsBtn = $('#schools-btn');
+        var slider = $('#school-slider');
+
+
+        schoolsBtn.click(function(){
+            slider.toggleClass("left10 left-320");
+        });
+
+
+
+    });
+
+
+</script>
+
+
+
 </body>
 </html>
