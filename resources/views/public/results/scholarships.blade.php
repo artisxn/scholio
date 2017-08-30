@@ -334,12 +334,11 @@
                             <input type="text" class="form-control algolia-search-input" id="query"/>
                         </div>
 
-<<<<<<< HEAD
-                    <div id="sort-by-container"></div>
-=======
->>>>>>> 51ab819a84a02962a42765658b4de631c29cf963
-
                     <span class="sort-by-text">@lang('scholarships.filters.sortby')</span>
+                    <div id="sort-by-container"></div>
+
+
+
                     <div id="sort-by-container" ></div>
 
                     <div class="content-wrapper">
