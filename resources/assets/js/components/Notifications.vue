@@ -1,6 +1,11 @@
+<style>
+    .margin-left{margin-right: -18px; }
+
+</style>
+
 <template>
-        <li class="dropdown hidden-xs">
-            <a href="#" class="dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="true">
+        <li class="dropdown hidden-xs margin-left" style="">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                 <i class="icon-bell"></i> 
                 <span class="badge badge-xs badge-danger" v-if="unreadNotifications.length">
                     {{ unreadNotifications.length }}

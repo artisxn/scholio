@@ -10,7 +10,17 @@
     .btn-primary:hover{background-color: #007991 !important;}
     .btn-success,.btn-info,.btn-primary{border: none!important; height: 30px; padding: 0 20px}
     .sch-counter{color: #888; margin:0 30px 0 15px; float: right}
-    .sc-radio{}
+    .card-box .row .col-lg-12 div .sc-radio{width:  180px; margin-right: 20px}
+    .dots-text{display:inline-block;
+        width:150px;
+        white-space: nowrap;
+        overflow:hidden !important;
+        text-overflow: ellipsis;
+    }
+
+
+    /*  ================ */
+    .price-column{min-width: 55px;}
 
 
     @media (max-width: 570px) {
@@ -18,16 +28,19 @@
     }
 
     @media (max-width: 492px) {
-        .search-input{width: 95%;  float: none!important; text-align: center; margin: 5px auto 20px auto;}
+        .search-input{width: 100%;  float: none!important; text-align: center; margin: 5px auto 20px auto;}
     }
 
+    @media(max-width: 419px){
+        .main-content-box{margin-top: 15px;}
+    }
 
     /* =========TOOLTIP=========*/
     .tool {
         position: relative;
     }
 
-    .tooltiptext {
+    .tooltiptext,.tooltiptext2  {
         font-weight: 300;
         visibility: hidden;
         width: 300px;
@@ -45,6 +58,8 @@
         transition: opacity 0.1s;
     }
 
+    .tooltiptext2{width: 190px; background-color: #aaa}
+
     .tooltiptext::after {
         content: "";
         position: absolute;
@@ -55,7 +70,7 @@
         border-style: solid;
         border-color: #007991 transparent transparent transparent;
     }
-    .tool:hover .tooltiptext {
+    .tool:hover .tooltiptext,.tool:hover .tooltiptext2  {
         visibility: visible;
         opacity: 1;
     }
@@ -90,10 +105,12 @@
         box-shadow: inset 0 0 0 3px #EEF1F2;
     }
 
+
+
 </style>
 
 <template>
-    <div class="row">
+    <div class="row main-content-box">
         <div class="col-sm-12">
             <div class="card-box">
                 <div class="row">
@@ -132,7 +149,7 @@
                                                     <span v-if="sortType == 'plan' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
-                                            <th>
+                                            <th class="price-colmun">
                                                 <a href="#" v-on:click="amountChangeSort">
                                                 {{ lang('panel_scholarships.view.price') }}
                                                  <span v-if="sortType == 'amount' && !sortReverse" class="fa fa-sort-amount-asc"></span>
@@ -188,8 +205,7 @@
                                             </td>
                                             <td>{{ scholarship.plan }}</td>
 
-                                            <td>{{ scholarship.amount }}
-                                                <span>{{scholarship.financial.metric}}</span>
+                                            <td class="price-column">{{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
                                             </td>
                                             <td><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
                                             <td v-if="showLevel">
@@ -198,7 +214,9 @@
                                                     <span class="tooltiptext">{{scholarship.study}}</span>
                                                 </span>
                                             </td>
-                                            <td>{{ scholarship.level}}</td>
+                                            <td  class="tool"><div class="dots-text  tool">  {{ scholarship.level}}</div>
+                                                <span class="tooltiptext2">{{scholarship.level}}</span>
+                                            </td>
                                             <td>{{ scholarship.criteria.name }}</td>
                                             <td>{{ scholarship.end_at }}</td>
                                             <td>{{ scholarship.admissions}}</td>

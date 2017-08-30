@@ -7,9 +7,23 @@
     <link rel="stylesheet" href="/new/css/cv.css" type="text/css"  >
 
 
+<style>
+    #content{display: none;}
+    .section-text{color: #008DA5; font-weight: 400; font-size: 102%}
+    .gap{height: 60px;}
+    .mar-right-10{margin-right: 10px;}
+
+    @media (max-width: 543px){
+        .br1{display: none;}
+    }
+</style>
+
 @endsection
 
 @section('scriptsBefore')
+    <script>
+        $(document).ready(function(){$("#content").hide().fadeIn(90);});
+    </script>
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
@@ -19,7 +33,7 @@
 @section('content')
 
 
-   <div class="row">
+   <div class="row" id="content">
         <div class="col-sm-12">
             <div class="card-box">
                 
@@ -31,16 +45,8 @@
                         <div class="col-xs-12" >                                    
                             <h4 class="header-title"><b>Επεξεργασία Στοιχείων Γονέων Και Κηδεμόνων</b></h4>
                             <p class="text-muted m-b-10 font-13">
-                                    Complete your profile .. ... .BLA BLA BLA
+                                Συμπληρώστε τα στοιχεία των γονέων και κηδεμόνων σας <br class="br1"> για να πραγματοποιείσετε αιτήσεις υποτροφιών πιο εύκολα.
                             </p>
-                            <div class="row">
-                                <div class="col-xs-3">         {{-- TODO AVATAR IS DIFFERENT FROM PHOTO --}}
-
-                                     <img src="{{substr(auth()->user()->info->avatar, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ auth()->user()->info->avatar }}" height="100px">
-
-                                </div>
-                             
-                            </div>                                   
                                     
                         </div>
 
@@ -86,6 +92,7 @@
                                 </div>
 
                                 <div class="clearfix"></div>
+                                <div class="gap"></div>
 
                                 {{--  Father's Details --}}
                                 <div class="col-sm-6 input-container">
@@ -127,6 +134,7 @@
                                 </div>
 
                                 <div class="clearfix"></div>
+                                <div class="gap"></div>
                                {{--  Guardian's Details --}}
                      
                                 <div class="col-sm-6 input-container">
@@ -171,13 +179,13 @@
                         </div>
                          {{-- SAVE FORM --}}
 
-                        <div class="col-xs-12 text-center m-t-40">
-                            <div class="col-xs-5 col-sm-4 centered-text">
-                                <button class="btn btn-pink btn-block" type="submit">
-                                    Ενημέρωση  Στοιχείων
+
+                            <div class="col-xs-12 text-center m-t-40 centered-text">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
                                 </button>
                             </div>
-                        </div>
+
                     </form>
                 </div>
             </div>

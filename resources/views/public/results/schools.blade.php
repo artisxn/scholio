@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
 
     <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
@@ -22,7 +22,7 @@
 
     <!-- Algolia CSS -->
     {{--<link rel="stylesheet" href="/new/css/algolia.css"></link>--}}
-    <link rel="stylesheet" href="/new/css/algolia-search.css"></link>
+    <link rel="stylesheet" href="/new/css/algolia-search.css"/>
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 
@@ -46,7 +46,7 @@
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
     <!-- Algolia InstantSearch CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+    {{--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">--}}
 
     <!-- Angular Material  CSS -->
     {{-- <link href="{{asset('new/css/angular-material.css')}}" rel="stylesheet">--}}
@@ -96,13 +96,13 @@
     /*  /////////////////////////////////////////  */
     /*=============================================*/
 
-    .ribbonSm{right: -45px; top: -3px;}
-    .ribbonMed{ right: -45px; top: -4.5px;}
-    .ribbonL{right: -45px; top: -5px;}
+    .ribbonSm{right: -11px; top: -3px;}
+    .ribbonMed{ right: -11px; top: -4.5px;}
+    .ribbonL{right: -11px; top: -5px;}
 
-    .text-Sm{right: -36px; top: 13px;}
-    .text-Med{right: -32px; top: 34px; }
-    .text-L{right: -26px; top: 60px;}
+    .text-Sm{right: -2px; top: 13px;}
+    .text-Med{right: 2px; top: 34px; }
+    .text-L{right: 8px; top: 60px;}
 
     /*  /////////////////////////////////////////  */
     /*=============================================*/
@@ -116,22 +116,58 @@
 
 
     @media (max-width:1449px){
-        .pos-right{right: -45px}
-        .ribbonMed{ right: -26px}
-        .text-Med{right: -12px}
+        .pos-right{right: -30px}
+        .ribbonMed{ right: -11px}
+        .text-Med{right: -1px}
     }
+
+    @media (max-width:1349px){
+        .ribbonMed{ right: -8px}
+        .text-Med{right: 3px}
+    }
+
 
     @media (max-width:1239px){
         .pos-right{right: -25px}
-        .ribbonMed{ right: -7px}
+        .ribbonMed{ right: -5px}
         .text-Med{right: 8px}
+    }
+
+    @media (max-width:1199px){
+        .pos-right{right: -30px}
+        .ribbonMed{ right: -54px}
+        .text-Med{right: -42px}
+    }
+
+    @media (max-width:1149px){
+        .ribbonMed{ right: -48px}
+        .text-Med{right: -36px}
+    }
+    @media (max-width:1109px){
+        .ribbonMed{ right: -29px}
+        .text-Med{right: -16px}
+    }
+    @media (max-width:1049px){
+        .ribbonMed{ right: -10px}
+        .text-Med{right: 1px}
     }
 
     @media (max-width:991px){
         .pos-right{right: -32px}
-        .ribbonMed{ right: -31px}
-        .text-Med{right: -17px}
+        .ribbonMed{ right: -102px}
+        .text-Med{right: -90px}
     }
+
+    @media (max-width:929px){
+        .ribbonMed{ right: -73px}
+        .text-Med{right: -61px}
+    }
+
+    @media (max-width:859px){
+        .ribbonMed{ right: -31px}
+        .text-Med{right: -20px}
+    }
+
 
 
     @media (max-width:767px){
@@ -182,35 +218,38 @@
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
         <div class="container">
 
-            <div class="row">
-                <div class="col-md-1 visible-lg visible-md nav-web">
-                    <!-- Scholio Branding -->
-                    <a class="sc-landing-brand" href="{{ url('/') }}">
-                        <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                            <img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">
+            <div class="pull-left visible-lg visible-md nav-web ">
+                <!-- Scholio Branding -->
+                <a class="sc-landing-brand" href="{{ url('/') }}">
+                    <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
+                        {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
+                        <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xs-6  visible-sm visible-xs">
+                <div class="nav-mobile">
+                    <a class="" href="{{ url('/') }}">
+                        <div class="navbar-brand  sc-landing-logo-sticky">
+                            {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>
+            </div>
 
-                <div class="col-xs-6  visible-sm visible-xs">
-                    <div class="nav-mobile">
-                        <a class="" href="{{ url('/') }}">
-                            <div class="navbar-brand  sc-landing-logo-sticky">
-                                <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Scholio sMenu -->
+
+                <!-- Scholio Menu -->
 
                 <!-- Large Menu -->
-                <div class="col-md-11 visible-md visible-lg">
+                <div class="pull-right visible-md visible-lg">
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
 
 
-                        <li class="langDropWhite">
+                        <li class="langDropWhite" style="margin-top: -1px">
                         <form method="GET" id="langForm">
                             <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
                                 <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
@@ -220,65 +259,55 @@
                         </li>
 
 
-                            <li class="sc-landing-menu-item"  ">
+                            <li class="sc-landing-menu-item">
                             <a href="{{url('public/scholarships')}}" class="btn-change-search">
                                 <i class="fa fa-trophy margin-right-5"></i>
                                 @lang('schools.navigation.search_scholarship')
                             </a>
                             </li>
                             @if(auth()->check())
-                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('schools.navigation.admin')</button></a></li>
-                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('schools.navigation.logout')</button></a></li>
+                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                             @else
-                                <li><a href=""><button type="button" class="sc-button-landing sc-button sc-green sc-t-white" data-toggle="modal" data-target="#select-modal">@lang('schools.navigation.register')</button></a></li>
-                                <li><a href=""><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white " data-toggle="modal" data-target="#signIn-modal">@lang('schools.navigation.login')</button></a></li>
+                                <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#select-modal"--}}
+                                        >@lang('main.navigation.register')</button></a></li>
+                                <li>
+                                    <a href="{{ url('/login') }}">
+                                        <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                                        >@lang('main.navigation.login')</button>
+                                    </a>
+                                </li>
                             @endif
                         </ul>
                     </div>
                 </div>
 
                 <!-- Mobile Menu -->
-                <div class="col-xs-6 visible-sm visible-xs ">
+                <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark.png')}}"  alt="scholio logo">
+                                <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
                     </div>
 
                     {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
-                    <div class="">
+
                         <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
-                            <a class="" role="button"
-                               href="#" aria-expanded="false">
-                                <i class="fa fa-filter margin-right-30 margin-top-30 text-incr-175 sc-t-dark-grey" aria-hidden="true"></i>
+                            <a class="" role="button" href="#" aria-expanded="false">
+                                <i class="fa fa-filter margin-right-10 margin-top-30 text-175 sc-t-dark-grey" style="font-size: 180%; z-index: 5!important;" aria-hidden="true" ></i>
                             </a>
                         </div>
-                    </div>
 
-                    <div class="visible-xs visible-sm">
-                        <div class="sc-landing-menu-mobile-holder sc-dark-blue">
-                            <div class="pull-right">
-                                <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                            </div>
-                            <br><br>
-                            <div class="sign-links">
-                                @if(auth()->check())
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('schools.navigation.admin')</button></a>
-                                    <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('schools.navigation.logout')</button></a>
-                                @else
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('schools.navigation.register')</button></a>
-                                    <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('schools.navigation.login')</button></a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
+
+                <!-- ======= Sandwich Menu =======-->
+                @include('public.sandwich-menu-resultsSchools')
 
             </div>  <!-- row -->
         </div> <!-- container-->
@@ -292,21 +321,27 @@
             </div>
 
             <div class="row">
-                <!--============ collapseMenu =============-->
-                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300"
-                     style=" padding: 0 0 15px 0;  width: 250px; box-shadow: 2px 0px 40px 6px #4e4e4e; height: 100%; overflow-y: auto">
+                <!--============ collapse  Menu Mobile Screen =============-->
+                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300">
 
-                    <div class="" style="z-index: 95; background-color: #eee; padding: 10px 7px 40px 7px; min-height: 100%; overflow-x: hidden" >
 
+<<<<<<< HEAD
                         <div >
                             <div class="input-group margin-bot-15 " style="width: 100%; ">
+=======
+                            <div class="input-group margin-bot-15 mobile-input">
+>>>>>>> 51ab819a84a02962a42765658b4de631c29cf963
                                 <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
                             </div>
-                        </div>
 
 
-                        <div class="content-wrapper col-sm-12">
-                            <aside style="width: 230px;">
+                        <span class="sort-by-text">@lang('schools.sortby.title')</span>
+                        <div id="sort-by-container-Mobile"></div>
+
+
+
+                        <div class="content-wrapper">
+                            <aside>
 
                                 <div id="statsMobile" class="text-muted "></div>
                                 {{--<div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>--}}
@@ -319,11 +354,15 @@
                                 <div id="clear-allMobile" class="clear-filter-mobile"> </div>
 
                                 <div class="filter-container">
-                                    <div class="filter-title">@lang('schools.filters.categories')</div>
+                                    <div class="filter-title">
+                                        <i class="fa fa-university fa-linear5 margin-right-5"></i>
+                                        @lang('schools.filters.categories')</div>
                                     <div id="categoriesTypeMobile"></div>
                                 </div>
                                 <div class="filter-container">
-                                    <div class="filter-title">@lang('schools.filters.cities')</div>
+                                    <div class="filter-title">
+                                        <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                        @lang('schools.filters.cities')</div>
                                     <div id="categoriesCityMobile"></div>
                                 </div>
 
@@ -333,23 +372,31 @@
 
 
 
-                    </div>
-
-
                 </div><!-- collapseMenu -->
 
-                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs" >
 
-                    <div class="col-sm-12">
+
+                <!--============ Left Side Menu large Screen =============-->
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs  left-side-container" >
+
+
                         <div class="input-group margin-bot-15 algolia-search-container">
                             <input type="text" class="form-control algolia-search-input" id="query"/>
                         </div>
-                    </div>
 
 
+<<<<<<< HEAD
                     <div class="btn-group " style="width: 100%; margin: 15px 0;">
+=======
+
+
+                    <span class="sort-by-text">@lang('schools.sortby.title')</span>
+                    <div id="sort-by-container"></div>
+
+                    <div class="btn-group">
+>>>>>>> 51ab819a84a02962a42765658b4de631c29cf963
                         {{-- <a href="{{ url('/public/schools/map') }}"> --}}
-                        <button class="btn btn-primary" style=" width: 100%; height: 40px" onClick="showMap()">
+                        <button class="btn btn-primary btn-map" onClick="showMap()">
                             <i class="fa fa-map pad-right-15" aria-hidden="true"></i>@lang('schools.show_map')
                         </button>
                         </a>
@@ -362,11 +409,12 @@
 
                     </div>
 
-                    <div class="content-wrapper col-sm-12">
+                    <div class="content-wrapper">
                         <aside>
 
                             <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">@lang('schools.filters.title'):</div>
+                            <div class="facet-category-title facet font-weight-300">
+                                @lang('schools.filters.title'):</div>
 
                             <div id="clear-all"class="clear-filter"></div>
 
@@ -423,7 +471,6 @@
 
     function showMap(){
         var s = document.getElementById('query').value;
-                console.log('asdasd');
                 window.location = '/public/schools/map/?search='+ s;
     }
 </script>
@@ -492,6 +539,36 @@ angular.module("schoolsResultsApp",[])
             })
     );
 
+<<<<<<< HEAD
+=======
+
+
+            search.addWidget(
+                    instantsearch.widgets.sortBySelector({
+                        container: '#sort-by-container',
+                        indices: [
+                            {name: 'dummySchools', label: '@lang('schools.sortby.stars')'},
+                            {name: 'dummySchools_scholarships_desc', label: '@lang('schools.sortby.scholarships')'},
+                            {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
+                        ]
+                    })
+            );
+
+            search.addWidget(
+                    instantsearch.widgets.sortBySelector({
+                        container: '#sort-by-container-Mobile',
+                        indices: [
+                            {name: 'dummySchools', label: '@lang('schools.sortby.stars')'},
+                            {name: 'dummySchools_scholarships_desc', label: '@lang('schools.sortby.scholarships')'},
+                            {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
+                        ]
+                    })
+            );
+
+
+
+
+>>>>>>> 51ab819a84a02962a42765658b4de631c29cf963
     search.on('render', function() {
         $('.product-picture img').addClass('transparent');
         $('.product-picture img').one('load', function() {
@@ -519,7 +596,7 @@ angular.module("schoolsResultsApp",[])
         </con>
 
 
-        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-xl-custom">
            @{{#hot}}
             <!-- <div  class="ribbon top20 pos-right"><span style="font-size: 95%">Popular</span></div> -->
             <img class="ribbonMed" style="" src="/new/img/RibbonMed.png" alt="">

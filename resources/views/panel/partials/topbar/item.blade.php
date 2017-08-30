@@ -1,8 +1,8 @@
 <notifications></notifications>
 
-<li class="hidden-xs">
-    <a href="#" id="btn-fullreen" class="waves-effect"><i class="icon-size-fullscreen"></i></a>
-</li>
+{{--<li class="hidden-xs">--}}
+    {{--<a href="#" id="btn-fullreen" class="waves-effect"><i class="icon-size-fullscreen"></i></a>--}}
+{{--</li>--}}
 
 <li class="dropdown">
     <a href="" class="dropdown-toggle profile waves-effect" data-toggle="dropdown" aria-expanded="true">

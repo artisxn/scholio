@@ -52,14 +52,18 @@ section{padding-top:100px!important; padding-bottom:100px!important;}
 .sc-landing-logo-sticky{display:none;}
 .sc-landing-logo{}
 
-.sc-landing-menu-mobile-sandwitch{padding-right:20px;margin-top: 25px!important; cursor:pointer;}
-.sc-landing-menu-button-sandwitch{}
-.sc-landing-menu-sandwitch-button-sticky{display:none;}
-.sc-landing-menu-sandwitch{}
+.sc-landing-menu-mobile-sandwitch{padding-right:20px;margin-top: 25px!important;}
+.sc-landing-menu-sandwitch-button{cursor: pointer; margin-top: 8px;}
+.sc-landing-menu-sandwitch-button:hover{}
 
+
+
+/* =========  delete after change all mobile menu  ======= */
 .sc-landing-menu-mobile-holder{padding:20px;width:230px;height:100%;position:fixed;right:0; top:0;z-index: 999999;display:none;}
 .sc-landing-menu-mobile-close{font-size:25px;cursor:pointer;}
 .sc-landing-menu-mobile-item{font-size:18px;text-align:right;color:white;font-weight:300;padding-top:20px;}
+
+/* ======================================================= */
 
 .hover1{color: #FD6A33!important;}
 .hover2{color: #00bcd4!important;}
@@ -108,6 +112,8 @@ video {
     background-color: rgba(31,52,63,0.96); border-radius: 5px;
     border: 1px solid #999;
     border-top-left-radius: 0;
+    width: 92.5%;
+
 }
 
 .btn-scholarships, .btn-schools{ font-weight:200; top: -48px;  margin-left: -16px; position: absolute;  background:rgba(31,52,63,0.96);
@@ -142,7 +148,7 @@ video {
 
 .btn-school-reg{ margin-top: 160px; width: 260px; height: 50px;}
 
-.text-container{ position: absolute; right: 50px; width: 300px; text-shadow: 2px 2px #7b909b;}
+.text-container{ position: absolute; right: 50px; width: 300px; color: #444; font-weight: 300;}
 
 .banner-title{ text-shadow: none}
 .banner-content {margin-top: -55px;}
@@ -217,7 +223,7 @@ video {
 
 
 
-    /* //////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////// */
 
@@ -248,9 +254,17 @@ video {
 /* //////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////// */
 
+@media(min-width: 1440px){
+    .search-container {  width: 1370px!important;  }
+}
+
 /* Portrait tablets and small desktops */
 @media  (max-width: 991px) {
 .sc-landing-sec3-text h2{ font-size: 186%;}
+
+    .typed{position: absolute; top: 305px; font-size: 390%; left: 0; right: 0;}
+    .main-title{position: absolute; top: 380px; left: 0; right: 0;}
+    .search-container{position: absolute; top: 120px;}
 
 }
 
@@ -267,11 +281,12 @@ video {
 
 
 /* Landscape phones and portrait tablets */
+
 @media (max-width: 767px) {
-    /* First Section */
+     /*First Section*/
     .sc-landing-sec1-content{margin-top:90px;}
     /* Search Bar */
-    .sc-landing-search-bar-holder{height:200px;  top:482px;}
+    .sc-landing-search-bar-holder{height:200px;  }
     .btn-school-reg{ margin-top: 30px; margin-left: 4%}
 
     .clear-fix {
@@ -284,12 +299,20 @@ video {
     .sc-landing-sec3 { padding-left: 15px; margin-left: 0; margin-top: -10px;}
     .sc-landing-sec3-text{ padding-left: 50px}
 
+    /* video typed title & text $ search bar */
+    .typed{position: absolute; top: 270px; font-size: 340%; left: 0; right: 0;}
+    .main-title{position: absolute; top: 370px; left: 0; right: 0;}
+    .search-container{width: 96%}
 }
+
+
+
+
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     /* First Section */
     .sc-landing-sec1-content {
-        margin-top: 40px;
+        margin-top: 90px;
     }
 
     .sc-landing-sec1-content h1 {
@@ -327,7 +350,6 @@ video {
 }
 
 
-
 @media (min-width: 520px) and (max-width: 767px) {
     .iphone { height: 260px; left: -230px; top: 170px; visibility: visible!important;}
 }
@@ -335,6 +357,7 @@ video {
 
 @media (max-width: 519px) {
     .iphone { visibility: hidden!important;}
+    .search-container{width: 98%}
 }
 
 @media (min-width: 451px) and (max-width: 520px) {
@@ -409,7 +432,9 @@ video {
     .sc-landing-sec1-content h3 {  font-size: 21px !important;  }
 
     /* Search Bar */
-    .sc-landing-search-bar-holder {  height: 200px;  top: 380px;  }
+    .typed{position: absolute; top: 235px; font-size: 120%; left: 0; right: 0;}
+    .sc-landing-search-bar-holder {  height: 200px;  top: 390px;  }
+    .main-title{position: absolute; top: 315px; left: 0; right: 0;}
     .mobile-hero {max-width: 150%; max-height: 560px;}
 
     /*New Section*/

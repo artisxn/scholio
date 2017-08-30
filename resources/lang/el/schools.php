@@ -1,7 +1,7 @@
 <?php
 return [
     'navigation' => [
-        'search_scholarship' => 'Aναζήτηση Υποτροφιών',
+        'search_scholarship' => 'Aναζήτησε Υποτροφίες',
         'login' => 'Σύνδεση',
         'register' => 'Εγγραφή',
         'logout' => 'Αποσύνδεση',
@@ -21,6 +21,12 @@ return [
         'cities' => 'Πόλεις',
         'reviews' => 'Αξιολογήσεις',
         'delete' => 'Διαγραφή Φίλτρων',
+    ],
+    'sortby' => [
+        'title' => 'Ταξινόμηση με:',
+        'stars' => 'Υψήλοτερη Αξιολόγηση',
+        'scholarships' => 'Περισσότερες Υποτροφίες',
+        'students' => 'Περισσότερους Μαθητές',
     ],
     'show_map' => 'Προβολή Χάρτη',
     'search_institution' => 'Αναζήτηση Εκπαιδευτικού Ιδρύματος',

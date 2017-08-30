@@ -5,7 +5,7 @@
     <meta property="og:url" content="http://www.schol.io/public/profile/1" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
 
     <title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
@@ -67,6 +67,22 @@
     </script>
 
     <style>
+
+        @media(max-width: 1250px) {
+            .right-side-bar{padding-left: 2px}
+        }
+
+        @media(min-width: 1020px) and (max-width: 1090px){
+            .container-profile{width: 1010px!important;}
+        }
+        @media(min-width: 1010px) and (max-width: 1019px){
+            .container-profile{width: 1010px!important;}
+        }
+        @media(min-width: 992px) and (max-width: 1009px){
+            .container-profile{width: 990px!important;}
+            .right-side-bar{padding-left: 0}
+        }
+
 
         span.fulltext {
             text-indent: 0;
@@ -140,6 +156,47 @@
         .xs-stars{margin: 27px 0;}
 
 
+        .pad-left-0{padding-left: 0}
+        .stats-box-xs{ background-color: #fff; margin-bottom: 30px; padding: 10px;}
+
+        .school-links, .school-links:visited, .school-links:focus{color: #888!important;}
+        .school-links:hover{color: #FD6A33!important;}
+
+
+        .xxs-custom-line{display: none; height: 1px; background-color: #bbb; left:3%; width: 94%;
+            right:auto; position: absolute; top:165px;}
+
+        @media(max-width: 1109px) {
+        .school-profile-nav-link{padding-right: 8px!important; padding-left: 8px!important; font-size: 95%;}
+        }
+
+
+        @media(max-width: 540px) {
+            .xxs-custom-contact{width: 52.5%}
+            .xxs-custom-stats{width: 46.5%}
+        }
+
+
+        @media(max-width: 480px) {
+            .xxs-custom-contact{width: 99%}
+            .xxs-custom-stats{width: 60%; float: left!important; margin-top: 35px;}
+            .xxs-custom-line{display: block}
+        }
+
+        @media(max-width: 410px) {
+            .xxs-custom-stats{width: 65%; }
+        }
+
+        @media(max-width: 395px) {
+            .xxs-custom-stats{width: 75%;}
+
+        }
+
+        @media(max-width: 345px) {
+            .xxs-custom-stats{width: 99%;}
+            .slideup>div>.title{font-size: 155%}
+        }
+
         hr {
             margin-left: auto;
             margin-right: auto;
@@ -158,11 +215,20 @@
             #xs-submButton{ z-index: 2000; top: 90%; margin-left: 1%;  width: 70%;  position: fixed; }
         }*/
 
-
-        @media (max-width: 769px) {
-            #xs-submButton{ z-index: 2000; bottom: -8px; margin-left: 5%;  width: 90%;  height: 37px; position: fixed; }
+        @media (max-width: 991px) {
+            #xs-submButton{ eight: 41px; z-index: 2000; bottom: 10px; left: 13%;   width: 74%; right: auto; position: fixed; }
         }
 
+
+        @media (max-width: 689px) {
+            #xs-submButton{ height: 39px;  bottom: 3px; left: 8%; width: 84%; }
+        }
+        @media (max-width: 489px) {
+            #xs-submButton{ height: 37px;  bottom: -1px; left: 4%; width: 92%; }
+        }
+        @media (max-width: 399px) {
+            #xs-submButton{ left: 4%; width: 92%;}
+        }
 
 
         @media  (max-width: 490px) {
@@ -181,14 +247,15 @@
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
 
-    <div class="container" style="">
-        <div class="row">
+    <div class="container container-profile" style="">
+        <div class="row scholarship-profile-nav-row">
 
-            <div class="col-md-1 visible-lg visible-md nav-web">
+            <div class="pull-left visible-lg visible-md nav-web ">
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                        <img src="/new/img/logo.png" class="sc-logo" alt="scholio logo">
+                        {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
+                        <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
                     </div>
                 </a>
             </div>
@@ -197,7 +264,8 @@
                 <div class="nav-mobile">
                     <a class="" href="{{ url('/') }}">
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            <img src="/new/img/logo-m.png" class="sc-logo" alt="scholio logo">
+                            {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
+                            <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>
@@ -205,85 +273,74 @@
             <!-- Scholio sMenu -->
 
             <!-- Large Menu -->
-            <div class="col-md-11 visible-md visible-lg" >
+            <div class="pull-right visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
-                    @if($school->settings->about)<li class="sc-landing-menu-item"><a href="#sxetika" >@lang('profile.navigation.about')</a></li>@endif
+
+
+
+
+                    @if($school->settings->about)<li class="sc-landing-menu-item "><a href="#sxetika" class="school-profile-nav-link ">@lang('profile.navigation.about')</a></li>@endif
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
-                    @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" >ΣΠΟΥΔΕΣ</a></li>@endif
-                    @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies">@lang('profile.navigation.scholarships')</a></li>@endif
-                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews">@lang('profile.navigation.reviews')</a></li>@endif
-                    @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty">@lang('profile.navigation.teachers')</a></li>@endif
-                    @if(auth()->check())
-                    <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('profile.navigation.admin')</button></a></li>
-                    <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('profile.navigation.logout')</button></a></li>
-                    @else
-                    <li><a href="{{ url('/register') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white">@lang('profile.navigation.register')</button></a></li>
-                    <li><a href="{{ url('/login') }}"><button type="button" class="sc-button-landing sc-button sc-dark-blue sc-t-white ">@lang('profile.navigation.login')</button></a></li>
-                    @endif
+                    @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
+                    @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies" class="school-profile-nav-link">@lang('profile.navigation.scholarships')</a></li>@endif
+                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews" class="school-profile-nav-link">@lang('profile.navigation.reviews')</a></li>@endif
+                    @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty" class="school-profile-nav-link">@lang('profile.navigation.teachers')</a></li>@endif
+
+
+
+                        <li class="langDropWhite " style="margin-top: 15px;">
+                            <form method="GET" id="langForm">
+                                <select onchange="changeLang(this)" class="selectpicker select-white landDrop school-profile-lang" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                    <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
+                                    <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
+                                </select>
+                            </form>
+                        </li>
+
+
+
+
+                        @if(auth()->check())
+                            <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                            <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
+                        @else
+                            <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                                            {{--data-toggle="modal" data-target="#select-modal"--}}
+                                    >@lang('main.navigation.register')</button></a></li>
+                            <li>
+                                <a href="{{ url('/login') }}">
+                                    <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
+                                            {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                                    >@lang('main.navigation.login')</button>
+                                </a>
+                            </li>
+                        @endif
+
+
+
+
                 </ul>
             </div>
 
-            <!-- Mobile Menu -->
-            <div class="col-xs-6 visible-sm visible-xs ">
+
+             <!-- Mobile Menu -->
+            <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                 <div class="">
                     <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                         <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                            <img src="/new/img/collapse-dark.png" alt="scholio logo">
+                            <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                            {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                         </div>
                     </div>
                 </div>
-                <div class="visible-xs visible-sm">
-                    <div class="sc-landing-menu-mobile-holder sc-dark-blue" >
-                        <div class="pull-right">
-                            <div class="sc-landing-menu-mobile-close sc-t-white">x</div>
-                        </div>
-                        <br><br>
-                        <div class="pull-right">
-                            @if($school->settings->about)
-                            <a href="#sxetika">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.about')</div>
-                            </a>
-                            @endif
-                            @if($school->settings->studies)
-                            <a href="#spoudes">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.studies')</div>
-                            </a>
-                            @endif
-                            @if($school->settings->scholarships)
-                            <a href="#ypotrofies">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.scholarships')</div>
-                            </a>
-                            @endif
-                            @if($school->settings->reviews)
-                            <a href="#reviews">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.reviews')</div>
-                            </a>
-                            @endif
-                            @if($school->settings->teachers)
-                            <a href="#faculty">
-                                <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.teachers')</div>
-                            </a>
-                            @endif
 
-
-                            <div class=""><br></div>
-                            <div class="sign-links">
-                                @if(auth()->check())
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/dashboard') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('profile.navigation.admin')</button></a>
-                                    <div><br><br><br></div>
-                                    <a href="{{ url('/out') }}"><button type="button" class="sc-button sc-green sc-t-white pull-right">@lang('profile.navigation.logout')</button></a>
-                                @else
-                                    <div class=""><br></div>
-                                    <a href="{{ url('/register') }}"><button type="button" class="sc-button sc-orange sc-t-white pull-right">@lang('profile.navigation.register')</button></a>
-                                    <div class=""><br><br><br></div>
-                                    <a href="{{ url('/login') }}"><button type="button" class="sc-button  sc-green sc-t-white pull-right">@lang('profile.navigation.login')</button></a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+
+            <!-- ======= Sandwich Menu =======-->
+            @include('public.sandwich-menu-schoolProfile')
+
+
+
         </div>  <!-- row -->
     </div><!-- container-->
 </header>
@@ -292,7 +349,7 @@
 <div>
     <main id="main"  class="main" style="overflow-x: hidden">
 
-        <div class="container" style="overflow-x: hidden">
+        <div class="container container-profile" style="overflow-x: hidden">
 
             <div class="row up">
             </div>
@@ -398,7 +455,7 @@
             <div class="row">
 
            {{-- @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id)) --}}
-                        <button id="xs-submButton" type="button" class="hidden-lg hidden-md-hidden-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
+                        <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 data-toggle="modal" data-target="#connect-modal">
                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
                         </button>
@@ -410,6 +467,94 @@
 
 
                     <!-- Main Info profile ng-repeat -->
+
+
+
+
+
+                    <!-- SM - XS  contact & stats section -->
+                        <div class="sc-t-grey hidden-lg hidden-md visible-sm visible-xs clearfix">
+                            <div class="col-xs-12 margin-top-10 stats-box-xs">
+
+
+                                <div class="col-xs-7 col-sm-7 pad-left-0 xxs-custom-contact">
+
+                                    <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
+                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
+
+                                    <div class="pad-top-10"></div>
+                                    <div class="">
+                                        <span><i class="fa fa-street-view pad-top-3 " aria-hidden="true"></i></span>
+                                        <span class="pad-left-5">@{{contactInfo.city}}</span>
+                                    </div>
+
+                                    <div class="pad-top-10"></div>
+                                    <span><i class="fa fa-phone pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
+                                    <span class="pad-left-5">@{{contactInfo.phone}}</span>
+
+                                    <div class="pad-top-10"></div>
+                                    <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
+                                    <span class="pad-left-5"> <a href="http://@{{contactInfo.website}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
+
+                                    <div class="pad-top-10"></div>
+                                    <span><i class="fa fa-envelope  pad-top-2 " aria-hidden="true"></i></span>
+                                    <span class="pad-left-5 "> <a href="mailto:@{{contactInfo.email}}" class="school-links">@{{contactInfo.email}}</a></span>
+
+                                </div>
+
+
+
+
+
+
+                              @if($school->settings->statistics)
+                              <div class="xxs-custom-line"></div>
+                              <div class="col-xs-5 col-sm-4 pad-left-0 pull-right xxs-custom-stats">
+
+                                <span class="">
+                                    <i class="fa fa-trophy  pad-top-3 " aria-hidden="true"></i>
+                                    <span class="pad-left-5">@lang('profile.statistics.scholarships')</span>
+                                    <span class="badge pull-right" style="margin-right: -4px"> @{{contactInfo.activeScholarships}}</span>
+                                </span>
+
+
+                                  <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
+                                    <div class="clearfix pad-top-10"></div>
+                                    <span class="">
+                                        <i class="fa fa-paint-brush pad-top-3 " aria-hidden="true"></i>
+                                        <span class="pad-left-5">@lang('profile.statistics.studies')</span>
+                                        <span class="pull-right">@{{contactInfo.lengthStudies}}</span>
+                                    </span>
+                                  </div>
+
+                                  <div class="clearfix pad-top-10"></div>
+                                  <span class="">
+                                        <i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i>
+                                        <span class="pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">@lang('profile.statistics.students')</span>
+                                        <span class="pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">@lang('profile.statistics.students_s')</span>
+                                     <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
+                                  </span>
+
+                                  <div class="clearfix pad-top-10"></div>
+                                  <span class="">
+                                        <i class="fa fa-graduation-cap pad-top-3 " aria-hidden="true"></i>
+                                        <span class="pad-left-2 pad-bot-10">@lang('profile.statistics.teachers')</span>
+                                         <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
+                                  </span>
+                              </div>
+                               @endif
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
 
 @if($school->settings->about)
                     <!-- Σχετικά -->
@@ -756,11 +901,31 @@
                         </div>
                     </div>
                 @endif
+
+
+
+                        <!-- SM - XS  contact & stats section -->
+                    @if($school->settings->map)
+                    <div class="hidden-lg hidden-md visible-sm visible-xs clearfix">
+                        <div class="margin-top-10 stats-box-xs">
+                         <div class=""  id="googleMapXS" style="height: 310px; width: 100%; "></div>
+                        </div>
+                    </div>
+                    @endif
+
+
+
+
+
                 </div> <!-- //col-lg-9-->
 
 
+
+                <!-- ============================================================================= --!>
+
+
                 <!-- Right Sidebar  -->
-                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30">
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30 right-side-bar">
                 @if($school->settings->info)
                     <div >
                         <div class="box left-box1" style="height: 240px;">
@@ -1178,7 +1343,8 @@
                         scaleControl:true,
                     }
                     var map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
-                    console.log('map')
+                    var mapXS = new google.maps.Map(document.getElementById("googleMapXS"), myOptions);
+//                    console.log('map')
 
                     var marker = new google.maps.Marker({
                         position: myLatlng,
@@ -1186,6 +1352,15 @@
                         title:$scope.contactInfo.name,
                         icon:"/../new/img/markers/marker-teal-sm.png",
                         map: map,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+
+                    });
+                    var marker2 = new google.maps.Marker({
+                        position: myLatlng,
+                        //animation: google.maps.Animation.DROP,
+                        title:$scope.contactInfo.name,
+                        icon:"/../new/img/markers/marker-teal-sm.png",
+                        map:mapXS,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
 
                     });
@@ -1231,7 +1406,12 @@
 
                     map.mapTypes.set('styled_map', styledMapType);
                     map.setMapTypeId('styled_map');
+
+                    mapXS.mapTypes.set('styled_map', styledMapType);
+                    mapXS.setMapTypeId('styled_map');
                 }
+
+
 
                 $scope.sendRequest = function(){
                      $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id}, {

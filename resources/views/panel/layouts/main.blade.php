@@ -59,38 +59,23 @@ echo json_encode($trans);
 
     <body class="fixed-left" style="background: linear-gradient( #F1F4F5 ,#d9dcdd ); min-height: 550px">
         <div id="app">
-            <!-- Begin page -->
             <div id="wrapper">
-                <!-- Top Bar Start -->
                   @include('panel.partials.topbar.main')
-                <!-- Top Bar End -->
-
-                <!-- ========== Left Sidebar Start ========== -->
                   @include('panel.partials.navigation.main')
-                <!-- Left Sidebar End -->
 
-                <!-- ============================================================== -->
-                <!-- Start right Content here -->
-                <!-- ============================================================== -->
                 <div class="content-page" >
-                    <!-- Start content -->
                     <div class="content">
                         <div class="container">
                         @yield('content')
 
-                        </div> <!-- container -->
-                    </div> <!-- content -->
+                        </div>
+                    </div>
 
-                    <!-- Footer -->
                     @include('panel.partials.footer.main')
 
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Right content here -->
-                <!-- ============================================================== -->
 
             </div>
-            <!-- END wrapper -->
 
         </div>
         <script src="/panel/assets/js/modernizr.min.js"></script>

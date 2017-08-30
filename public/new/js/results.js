@@ -6,12 +6,17 @@ $(document).ready(function($) {
     var menuopen = $('.sc-landing-menu-sandwitch');
     var menuclose = $('.sc-landing-menu-mobile-close');
     var mobilemenu =$('.sc-landing-menu-mobile-holder');
+    var mobilemenu2 =$('.menu-mobile-holder');
 
     //Οταν θέλω να ανοιξω το μενου
 
     menuopen.click(function(){
         mobilemenu.css({"display":"block"});
+
+
+        //mobilemenu2.toggleClass("menu-mobile-right menu-mobile-left");
     });
+
 
     //Οταν θέλω να κλείσω το μενου
 
@@ -26,19 +31,20 @@ $(document).ready(function($) {
     });
 
 
+
     $("#filter-btn").click(function(){
-        $(".main-results").toggleClass("left left-240");
+        //$(".main-results").toggleClass("left left-240");
         $("#mobFilt").toggleClass("left--300 left");
     });
 
     $("#close-btn").click(function(){
-        $(".main-results").toggleClass("left left-240");
+        //$(".main-results").toggleClass("left left-240");
         $("#mobFilt").toggleClass("left--300 left");
     });
 
     $("#query").keypress(function (e) {
         if (e.which == 13) {
-            $(".main-results").toggleClass("left left-240");
+            //$(".main-results").toggleClass("left left-240");
             $("#mobFilt").toggleClass("left--300 left");
 
         }
