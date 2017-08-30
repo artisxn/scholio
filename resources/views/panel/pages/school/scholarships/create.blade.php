@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/panel/assets/css/wizard/smart_wizard_theme_circles.css"/>
     <link rel="stylesheet" href="/panel/assets/css/steps.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="{{asset('/css/atwho.css')}}"/>
 @endsection
 
 @section('content')
@@ -18,6 +19,8 @@
     <script src="/panel/assets/js/wizard/jquery.smartWizard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.2/tinymce.min.js"></script>
+    <script src="{{asset('/js/caret.js')}}"></script>
+    <script src="{{asset('/js/atwho.js')}}"></script>
 
     <script>
         $(document).ready(function(){
@@ -80,9 +83,5 @@
         $( function() {
           $( "#datepicker" ).datepicker({ minDate: 0, maxDate: "+5M +10D" });
         });
-
-
-
-
     </script>
 @endsection

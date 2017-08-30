@@ -44,7 +44,7 @@ window.axios.defaults.headers.common = {
 //     cluster: 'eu',
 //     encrypted: true
 // });
-
+// window.$ = window.jQuery = require('jquery');
 
 
 
