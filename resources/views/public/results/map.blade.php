@@ -46,10 +46,12 @@
     .container-left{padding-top: 20px; margin-right: auto; margin-left: auto; text-align: center;}
     .top-range{color: #888; font-size: 87%; position: absolute; bottom: 40px;   }
 
+    .distance{position: absolute; top: 20px; right: 10px; color: #999}
+
     .search-div{margin-top: 30px;}
 
-    .km-low{margin-left: -30px;}
-    .km-high{margin-right: 30px;}
+    .km-low{margin-left: -30px; color: #888}
+    .km-high{margin-right: 30px; color: #888}
 
     .col-sm-7, .col-md-7{padding-left: 1px}
     .col-sm-5, .col-md-5{padding-right: 4px; }
@@ -63,16 +65,14 @@
     .photo-mini{position: absolute; top: 6px; left: 6px;}
 
 
-    .search-contain,.btn-list{ clear: both; display: block; text-align: center; margin-left: auto; margin-right: auto; }
-    .btn-li{ margin-bottom: 20px; margin-left: -20px; width: 200px}
+    .search-contain,.btn-list{ clear: both; display: block;  margin-left: auto; margin-right: auto; }
+    .btn-li{ margin-bottom: 20px; margin-left: -20px; width: 200px; height: 40px}
     .col-sm-12 .col-sm-6{width: 100%}
-    .range-input,.search-div,.search-contain{ text-align: center; margin-left: auto; margin-right: auto; }
+    .range-input,.search-div{ text-align: center; margin-left: auto; margin-right: auto; }
     .km-low{margin-left: -4px;}
     .km-high{margin-right: -2px;}
     .col-sm-5{padding-left: 7px; }
     .col-sm-7{padding-right: 4px; }
-
-
 
 
     @media  (max-width: 990px) {
@@ -84,7 +84,6 @@
 
 
     @media  (max-width: 767px) {
-
         .right-map{ top: 60px; left: 0}
         .fa-hidden{display: none}
         .school-filter-m{display: block}
@@ -100,14 +99,13 @@
         .top-range{bottom: 20px; margin-left: -5px;}
         /*.search-div,.range-input{background-color: greenyellow; z-index: 99!important;}*/
         .btn-list{margin-top: 40px;}
-
     }
 
 
     @media  (max-width: 399px) {
         /*.fa-xxs{display: none;}*/
         .school-slider{width: 305px;}
-
+        .search-contain{font-size: 90%; padding-left: 0; margin-left: -10px; margin-bottom: 40px}
     }
     @media  (max-width: 360px) {
         /*.fa-xxs{display: none;}*/
@@ -228,40 +226,39 @@
 </header>
 
 
-
 <div class="row pad-0-mar-0">
     <div class="col-sm-5 col-md-5 school-slider left-320" style="" id="school-slider">
         <header  class="container-left container-up" style="">
             {{--My Cordinates--}}
             {{--<div id="demo" style=" margin: 0 0 20px 0 "></div>--}}
-            <p class="">Επιλέξτε προβολή τη προβολή του χάρτη κοντά σας, ή σαρώστε την περιοχή που θέλετε</p>
+            <p class="">@lang('map.select')</p>
             <a href="" class="change_page_state btn btn-info" data-mode="around" data-state="ip" ng-click="status='around'">
                 <i class="fa fa-map-marker margin-right-10 fa-hidden"></i>
-                Κοντά μου
+                @lang('map.near')
             </a>
             <a href="" class="change_page_state btn btn-info active" data-mode="bounding" data-state="rectangle" ng-click="status='rectangle'">
                 <i class="fa fa-search-plus margin-right-10 fa-hidden" ></i>
-                Σάρωση Χάρτη
+                @lang('map.scan')
             </a>
         </header>
 
 
-        <div class="col-sm-12 container-left" style="">
-            <div class="col-sm-6" style=" padding-right: 0;">
-                <input id="search-input" class="form-control search-contain" placeholder="Αναζήτηση Εκπαιδευτικών Ιδρυμάτων" />
+        <div class="col-sm-12 container-left">
+            <div class="col-sm-6 pad-right-0" >
+                <input id="search-input" class="form-control search-contain" placeholder="@lang('map.placeholder')" />
                 <div ng-if="status=='around'" class="search-div" style="">
                     <div  class="top-range" style="left: @{{ range*4.4 }}%">@{{range }} km</div>
                     <input type="range" id="qqq" min="1" max="20" value="10" class="range-input" onchange="rerender()"  style="" ng-model="range">
-                    <div class="pull-left km-low" style="color: #888"> 1 km</div>
-                    <div class="pull-right km-high" style="color: #888"> 20 km</div>
+                    <div class="pull-left km-low"> 1 km</div>
+                    <div class="pull-right km-high"> 20 km</div>
                 </div>
 
             </div>
 
-            <div class="btn-group col-sm-6 btn-list" style="">
+            <div class="btn-group col-sm-6 btn-list">
                 <a href="{{ url('public/schools') }}">
-                    <button class="btn btn-primary btn-li" style="height: 40px" ng-click="">
-                        <i class="fa fa-list pad-right-15" aria-hidden="true"></i>Επιστροφή στη Λίστα
+                    <button class="btn btn-primary btn-li"  ng-click="">
+                        <i class="fa fa-list pad-right-15" aria-hidden="true"></i>@lang('map.return')
                     </button>
                 </a>
             </div>
@@ -273,7 +270,7 @@
 
 
 
-        <div id="hits" style=" z-index: 999"></div>
+        <div id="hits"></div>
 
 
         <script type="text/template" id="hits-template">
@@ -284,10 +281,7 @@
             {{--<span class="hit-distance" ng-if="false"> @{{ distance }}</span>--}}
             {{--</div>--}}
 
-
-
-
-            <div class=" card clear-fix margin-bot-15" style="">
+            <div class="card clear-fix margin-bot-15">
                 <con>
                     <photo class="col-sm-2 col-md-4 pad-0-mar-0" >
                         <a href="/public/profile/@{{school_id}}" class="hidden-xs hidden-sm">
@@ -302,14 +296,14 @@
 
                 <div class="col-sm-10 col-md-8 info">
                     <div class=" margin-bot-15 info-title">
-                        <div style="position: absolute; top: 20px; right: 10px; color: #999">@{{distance}} </div>
+                        <div class="distance">@{{distance}} </div>
                         <span class="pull-left" style="padding-right: 15px;">
                              <h5 class="pad-top-10 font-weight-400"> <a href="/public/profile/@{{school_id}}"  style="color: #008da5;"> @{{name}}</a></h5>
                          </span>
                     </div>
 
                     <div class="info-content">
-                        <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12 sc-t-grey" style="padding-left: 0">
+                        <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12 sc-t-grey pad-left-0">
                             <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 fa-xxs" aria-hidden="true"></i></span>
                             <span class="pull-left pad-left-3 xs-text-incr-85 text-incr-95">@{{address}}</span>
                             <br>

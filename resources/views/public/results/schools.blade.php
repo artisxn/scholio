@@ -366,6 +366,14 @@
 
                         </div>
 
+                    <div class="btn-group">
+                        {{-- <a href="{{ url('/public/schools/map') }}"> --}}
+                        <button class="btn btn-primary btn-map-mob" onClick="showMap()">
+                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>@lang('schools.show_map')
+                        </button>
+                        </a>
+                    </div>
+
 
 
                 </div><!-- collapseMenu -->
