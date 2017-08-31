@@ -15,6 +15,8 @@ return [
         'search' => 'Search',
         'changeView' => 'Change View',
         'Teacher' => 'teacher',
+        'active' => 'Active',
+        'nonactive' => 'Ex',
     ],
 
     'requests' => [

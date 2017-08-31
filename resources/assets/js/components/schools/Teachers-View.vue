@@ -14,10 +14,14 @@
 <template>
     <div class="row">
 
-        <!--<form class="sc-radio pull-left">-->
-            <!--<input id="r1" type="radio" name="status" value="connected" v-model="status" checked> <label for="r1"><div class="r-lab">{{ lang('resource.students.active') }}</div></label> <br>-->
-            <!--<input id="r2" type="radio" name="status" value="allumni" v-model="status" > <label for="r2"><div class="r-lab">{{ lang('resource.students.alumni') }}</div></label><br>-->
-        <!--</form>-->
+        <form class="sc-radio pull-left">
+            <input id="th1" type="radio" name="status" value="connected" v-model="teacherStatus" checked> <label for="th1"><div class="r-lab">{{ lang('resource.teachers.active') }}</div></label> <br>
+            <input id="th2" type="radio" name="status" value="allumni" v-model="teacherStatus" > <label for="th2"><div class="r-lab">{{ lang('resource.teachers.nonactive') }}</div></label><br>
+        </form>
+
+
+
+
 
 
         <div class="input-group pull-left input-search">
@@ -25,6 +29,11 @@
             <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
                    v-model="searchStr">
         </div>
+
+
+
+
+
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
 

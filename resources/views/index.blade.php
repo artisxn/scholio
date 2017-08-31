@@ -407,6 +407,7 @@
 
 
                 <div class="row">
+                    <a href="{{url('public/schools?q=κολλέγια')}}">
                     <div class=" col-lg-6 col-md-7 col-sm-8 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
                             <figure class="effect-lily sc-landing-card" >
@@ -417,12 +418,14 @@
                                         <h2>@lang('main.institutions.colleges')</h2>
                                         <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=κολλέγια')}}">@lang('main.institutions.button')</a>
+                                    @lang('main.institutions.button')
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
+                    </a>
 
+                    <a href="{{url('public/schools?q=Φροντιστήρια')}}">
                     <div class=" col-lg-3 col-md-5 col-sm-4 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
                             <figure class="effect-lily sc-landing-card " >
@@ -433,13 +436,14 @@
                                         <h2>@lang('main.institutions.frontistirio')<span></span></h2>
                                         <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=Φροντιστήρια')}}">@lang('main.institutions.button')</a>
+                                    @lang('main.institutions.button')
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
+                    </a>
 
-
+                    <a href="{{url('public/schools?q=Ξένες Γλώσσες')}}">
                     <div class=" col-lg-3 col-md-5 col-sm-5 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
                             <figure class="effect-lily sc-landing-card " >
@@ -450,11 +454,14 @@
                                         <h2>@lang('main.institutions.languages1')<span>@lang('main.institutions.languages2')</span></h2>
                                         <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=Ξένες Γλώσσες')}}">@lang('main.institutions.button')</a>
+                                    @lang('main.institutions.button')
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
+                    </a>
+
+                    <a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">
                     <div class="col-lg-3 col-md-7 col-sm-7 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
                             <figure class="effect-lily sc-landing-card " >
@@ -465,13 +472,14 @@
                                         <h2>@lang('main.institutions.private_schools1')<span>@lang('main.institutions.private_schools2')</span></h2>
                                         <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">@lang('main.institutions.button')</a>
+                                    @lang('main.institutions.button')
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
+                    </a>
 
-
+                    <a href="{{url('public/schools?q=Παιδικοί Σταθμοί')}}">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
                             <figure class="effect-lily sc-landing-card " >
@@ -482,13 +490,14 @@
                                         <h2>@lang('main.institutions.playground')<span></span></h2>
                                         <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=Παιδικοί Σταθμοί')}}">@lang('main.institutions.button')</a>
+                                    @lang('main.institutions.button')
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
+                    </a>
 
-
+                    <a href="{{url('public/schools?q=ΙΕΚ, Επαγγελματική Σχολή')}}">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-xxs-12 col-xxxs-12">
                         <div class="grid">
                             <figure class="effect-lily sc-landing-card " >
@@ -499,11 +508,12 @@
                                         <h2>@lang('main.institutions.iek1')<span> @lang('main.institutions.iek2')</span> </h2>
                                         <p>@lang('main.institutions.button')</p>
                                     </div>
-                                    <a href="{{url('public/schools?q=ΙΕΚ, Επαγγελματική Σχολή')}}">@lang('main.institutions.button')</a>
+                                    @lang('main.institutions.button')
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
+                    </a>
 
                 </div>
             </div>
