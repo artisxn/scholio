@@ -245,7 +245,7 @@
 
         <div class="col-sm-12 container-left">
             <div class="col-sm-6 pad-right-0" >
-                <input id="search-input" class="form-control search-contain" placeholder="@lang('map.placeholder')" />
+                <input id="search-input" class="form-control search-contain" placeholder="@lang('map.placeholder')"/>
                 <div ng-if="status=='around'" class="search-div" style="">
                     <div  class="top-range" style="left: @{{ range*4.4 }}%">@{{range }} km</div>
                     <input type="range" id="qqq" min="1" max="20" value="10" class="range-input" onchange="rerender()"  style="" ng-model="range">
@@ -343,6 +343,7 @@
 {{--@include('public.footer')--}}
 
 <script>
+
     var LAT = '40.60';
     var LNG = '23.00';
     var MAX_D=10;
@@ -365,10 +366,6 @@
 
     var hitsTemplate = Hogan.compile($('#hits-template').text());
     var noResultsTemplate = Hogan.compile($('#no-results-template').text());
-
-    // setTimeout(function() {
-
-    // }, 20);
 
 
     var styledMapType = new google.maps.StyledMapType(
@@ -416,7 +413,6 @@
 </script>
 
 <script>
-
     navigator.geolocation.getCurrentPosition(function(location) {
         LAT = location.coords.latitude;
         LNG = location.coords.longitude;
@@ -541,11 +537,13 @@
 
 
     $searchInput.on('input propertychange', function (e) {
+        $searchInput.val(e.currentTarget.value);
         var query = e.currentTarget.value;
         if (pageState === PAGE_STATES.RECTANGLE_MAP) {
             fitMapToMarkersAutomatically = false;
         }
         algoliaHelper.setQuery(query).search();
+
     });
 
     // DISPLAY RESULTS
@@ -556,6 +554,8 @@
         // $hits.text(content);
         renderHits(content);
         c = content;
+        $searchInput.val(c.query);
+        console.log(c.query);
     });
 
     function renderHits(content) {
@@ -740,6 +740,8 @@
         // Toggle - Collapse Schools Mobile Slider Filter
         var schoolsBtn = $('#schools-btn');
         var slider = $('#school-slider');
+
+        // document.getElementById('search-input').value = window.location.href.substring();
 
 
         schoolsBtn.click(function(){
