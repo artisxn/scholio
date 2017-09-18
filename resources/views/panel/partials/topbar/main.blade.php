@@ -1,18 +1,4 @@
-<style>
-
-    /* B U G */
-
-    /*
-    S T Y L E S    D O E S N' T    W O R K
-    */
-
-/*.icon-navigation-container{position: fixed;  display: inline-block;  margin-top: 14px;  text-align: center; left: 50%; width: 400px; margin-left:-130px;}*/
-    /*@media(max-width: 500px){.hidden-xxs{display: none;}}*/
-</style>
-
-
 <div class="topbar">
-
     <!-- LOGO -->
     <?php echo $__env->make('panel.partials.topbar.logo', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
@@ -33,53 +19,15 @@
                     </select>
                 </form>
             </div>
+            <span class="icon-navigation-container hidden-xs" style="" >
 
-
-
-            <span class="icon-navigation-container hidden-xs" style="position: fixed;  display: inline-block;  margin-top: 14px;  text-align: center; left: 50%; width: 350px; margin-left:-50px;" >
-
-                 <a href="/panel/school/students"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
-                    onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
-                 >
-                     <img src="/new/img/student2.png" alt="photos image" class="" height="30px">
-                 </a>
-
-                  <a href="/panel/school/teachers"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
-                     onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
-                  >
-                      <img src="/new/img/teacher.png" alt="photos image" class="" height="30px">
-                  </a>
-
-                 <a href="/panel/school/studies"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
-                    onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
-                 >
-                     <img src="/panel/assets/images/steps/step3-skills2.png" alt="photos image" class="" height="30px">
-                 </a>
-
-                 <a href="/panel/school/profile/images"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
-                    onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
-                 >
-                     <img src="/panel/assets/images/steps/photo.png" alt="photos image" class="" height="30px">
-                 </a>
-
-
-                 <a href="/panel/school/scholarships/view"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
-                    onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
-                 >
-                     <img src="/new/img/trophyB.png" alt="photos image" class="" height="30px">
-                 </a>
-
-                 <a href="/panel/school/scholarships/request"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
-                    onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
-                 >
-                     <img src="/panel/assets/images/steps/terms.png" alt="photos image" class="" height="30px">
-                 </a>
-
-                <a href="/panel/dashboard"  style="filter: grayscale(100%); margin: 0 6px; opacity: 0.4"
-                   onmouseover="{this.style.filter='none'}{this.style.opacity='1'}" onmouseout="{this.style.filter='grayscale(100%)'}{this.style.opacity='0.4'};"
-                >
-                    <img src="/panel/assets/images/steps/stars.png" alt="photos image" class="" height="30px">
-                </a>
+                @if(auth()->user()->role == 'school')
+                    @include('panel.partials.topbar.school.main')
+                @elseif(auth()->user()->role == 'student')
+                    @include('panel.partials.topbar.student.main')
+                @elseif(auth()->user()->role == 'teacher')
+                    @include('panel.partials.topbar.teacher.main')
+                @endif
             </span>
 
 

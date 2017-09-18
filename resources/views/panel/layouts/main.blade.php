@@ -22,6 +22,12 @@
         <link href="/css/panel.css" rel="stylesheet">
         <link href="/panel/assets/css/icons.css" rel="stylesheet">
 
+        <style>
+        /*Styling για topbar*/
+        .icon-navigation-container{position: fixed;  display: inline-block;  margin-top: 14px;  text-align: center; left: 50%; width: 350px; margin-left:-50px;}
+            @media(max-width: 500px){.hidden-xxs{display: none;}}
+        </style>
+
         @yield('styles')
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script>
@@ -80,9 +86,11 @@ echo json_encode($trans);
         </div>
         <script src="/panel/assets/js/modernizr.min.js"></script>
         <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+
+        <script src="/js/app.js"></script>
         <script src="/js/bold.js"></script>
         <script src="/panel/assets/js/bootstrap-select.js"></script>
-        <script src="/js/app.js"></script>
+
 
 
 

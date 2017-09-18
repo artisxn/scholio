@@ -1,19 +1,9 @@
 {{--<link rel="stylesheet" href="/new/css/Bootstrap-xxs-xxxs.css">--}}
 
-<style>
-    .sc-card:hover{}
-    .panel{}
-    .panel:hover{background: #ccc;}
-    .image{}
-    .counter {}
-    .text{}
-    .circle {}
-</style>
-
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6">
         <a href="{{ url('/panel/school/students') }}">
-            <div class="panel" style="padding: 20px 10px; height: 220px; border: 1px solid #008da5; border-radius: 10px; text-align: center; box-shadow: 0 0 11px #bbb;">
+            <div class="panel">
                 {{--<i class="md md-person text-primary"></i>--}}
                 <img src="/new/img/student2.png" alt="student image" class="image" height="45px">
                 <span class="counter" style="color: #00839b; font-weight: 400; font-size: 130%; margin: 0 3px 0 15px;">{{ count($data['students']) }}</span>
@@ -108,4 +98,3 @@
 
 
 </div>
-

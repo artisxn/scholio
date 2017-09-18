@@ -13,12 +13,6 @@ use App\User;
 
 Scholio::soonRoutes();
 
-// Route::get('ttt', function () {
-//     $s = request('tags');
-//     $res = Tag::where('name', 'LIKE', "$s%")->take(3)->pluck('slag');
-//     dd($res);
-// });
-
 Route::post('scholarship/{scholarship}/end', function (Scholarship $scholarship) {
     $winners = request()->winner;
     $scholarship->end($winners);
@@ -189,7 +183,6 @@ Route::get('/register/role/', function () {
 Route::get('/panel/school/testing', function () {
     return view('panel.pages.school.testing');
 });
-
 
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 

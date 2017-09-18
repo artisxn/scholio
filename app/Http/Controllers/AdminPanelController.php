@@ -24,7 +24,7 @@ class AdminPanelController extends Controller
             $school = auth()->user()->info;
 
             $students = $school->students;
-            $teachers = $school->teachers();
+            $teachers = $school->teachers;
             $parents = $school->parents;
             $scholarships = $school->scholarship;
             $admissions = $school->admissions();
