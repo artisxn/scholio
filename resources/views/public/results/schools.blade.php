@@ -515,7 +515,7 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.searchBox({
                 container: '#query',
-                 poweredBy: true,
+                 poweredBy: false,
                  placeholder: "@lang('schools.search_institution')"
             })
     );

@@ -199,7 +199,7 @@
                                     @lang('scholarships.search_institution')
                                 </a>
                             </li>
-                  
+
                             @if(auth()->check())
                                 <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
                                 <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
@@ -467,7 +467,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.searchBox({
                 container: '#query',
-                 poweredBy: true,
+                 poweredBy: false,
                  placeholder: "@lang('scholarships.navigation.search_scholarships')"
             })
     );
@@ -475,7 +475,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.searchBox({
                 container: '#queryMobile',
-                 poweredBy: true,
+                 poweredBy: false,
                  placeholder: "@lang('scholarships.navigation.search_scholarships')"
             })
     );
@@ -566,7 +566,7 @@ angular.module("scholarshipsResultsApp",[])
                 @{{^multiple}}
                 <div class="text-content">@{{{_highlightResult.study.value}}}</div>
                 @{{/multiple}}
-                
+
                 <div class="text-title">@lang('scholarships.cards.level')</div>
                 <div class="text-content">@{{{_highlightResult.level.value}}}</div>
             </div>

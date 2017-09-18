@@ -288,7 +288,8 @@
                                         <span id="count{{$skill->id}}" class="counter">
                                             {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
                                         </span>
-                                        <div id="bar{{$skill->id}}" class="skill-bar" style="width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 25}}px; max-width: 95%" >
+                                        <div id="bar{{$skill->id}}" class="skill-bar"
+                                            style="width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 25}}px; max-width: 95%" >
                                         </div>
 
                                     </span>

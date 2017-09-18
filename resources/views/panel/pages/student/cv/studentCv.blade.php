@@ -56,7 +56,7 @@
     <div class="row" id="content">
         <div class="col-sm-12">
             <div class="card-box">
-                
+
                     <div class="row">
                     <form method="POST" action="/panel/student/cv" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -91,21 +91,21 @@
                                 <div class="col-sm-6">
 
                                     <div class="input-container">
-                                        <input  type="text" label="Όνομα*" name="firstName" class="demo-form ad-input" value="{{ auth()->user()->name }}">
+                                        <input  type="text" label="Όνομα*" name="firstName" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
                                         <i class="icon-inp  fa fa-user"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 input-container clear-fix-sm" >
-                                    <input type="text" label="Επώνυμο*" name="lastName" class="demo-form ad-input" >
+                                    <input type="text" label="Επώνυμο*" name="lastName" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
                                     <i class="icon-inp fa fa-user"></i>
                                 </div>
 
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Διεύθυνση" name="student_address" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
+                                    <input type="text" label="Διεύθυνση" name="student_address" class="demo-form ad-input" value="{{ auth()->user()->cv->student_address }}">
                                     <i class="icon-inp fa fa-street-view"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Πόλη/Περιοχή" name="student_city" class="demo-form ad-input" value="{{ auth()->user()->info->city }}">
+                                    <input type="text" label="Πόλη/Περιοχή" name="student_city" class="demo-form ad-input" value="{{ auth()->user()->cv->student_city }}">
                                     <i class="icon-inp fa fa-map-marker"></i>
                                 </div>
 
@@ -115,13 +115,13 @@
                                 </div>
                                 <div class="col-sm-6 input-container">
                                     {{--<a href="tel:{{ $user->info->phone }}">--}}
-                                    <input type="text" label="Τηλέφωνο" name="student_phone" class="demo-form ad-input" value="{{ auth()->user()->info->phone }}">
+                                    <input type="text" label="Τηλέφωνο" name="student_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->student_phone }}">
                                     {{--</a>--}}
                                     <i class="icon-inp fa fa-phone"></i>
                                 </div>
 
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input"  value="{{ auth()->user()->info->dob}}">
+                                    <input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input"  value="{{ auth()->user()->cv->student_dob}}">
                                     <i class="icon-inp fa fa-calendar"></i>
 
                                 </div>
@@ -171,10 +171,10 @@
                                 <div class="col-sm-6 input-container">
                                     <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
 
-                                    <div class="select-polyteknos" >
+                                    <div class="select-polyteknos">
                                         <select class="select-transparent">
-                                            <option>Ναι</option>
-                                            <option>Όχι</option>
+                                            <option value="YES" {{auth()->user()->cv->student_polyteknos == 'YES' ? 'selected' : ''}}>Ναι</option>
+                                            <option value="NO" {{auth()->user()->cv->student_polyteknos == 'NO' ? 'selected' : ''}}>Όχι</option>
                                         </select>
                                     </div>
 
@@ -185,12 +185,12 @@
                                     <div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
                                     <div class="select-polyteknos">
                                         <select class="select-transparent">
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                            <option {{auth()->user()->cv->student_relatives == '0' ? 'selected' : ''}}>0</option>
+                                            <option {{auth()->user()->cv->student_relatives == '1' ? 'selected' : ''}}>1</option>
+                                            <option {{auth()->user()->cv->student_relatives == '2' ? 'selected' : ''}}>2</option>
+                                            <option {{auth()->user()->cv->student_relatives == '3' ? 'selected' : ''}}>3</option>
+                                            <option {{auth()->user()->cv->student_relatives == '4' ? 'selected' : ''}}>4</option>
+                                            <option {{auth()->user()->cv->student_relatives == '5' ? 'selected' : ''}}>5</option>
                                         </select>
                                     </div>
 

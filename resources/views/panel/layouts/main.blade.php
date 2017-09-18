@@ -95,7 +95,15 @@ echo json_encode($trans);
 
 
 
-        <script>var resizefunc = [];</script>
+        <script>
+            var resizefunc = [];
+            function changeLang(el){
+                    var form = document.getElementById('langForm');
+                    form.action = '/lang/'+el.value;
+                    form.submit();
+                }
+    </script>
+
 
         @yield('scripts')
     </body>
