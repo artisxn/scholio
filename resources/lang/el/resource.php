@@ -15,6 +15,8 @@ return [
         'search' => 'Αναζήτηση',
         'changeView' => 'Αλλαγή Προβολής',
         'teacher' => 'Καθηγητής',
+        'active' => 'Ενεργός',
+        'nonactive' => 'Παλαιός',
     ],
 
     'requests' => [

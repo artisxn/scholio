@@ -284,6 +284,7 @@ p {padding: 15px; color: #5d5d5d;  }
 .btn-map,.btn-group{width: 105%;}
 .btn-group{margin-top: 15px; margin-bottom: 15px;}
 .btn-map{height: 40px}
+.btn-map-mob{width: 195px; margin-left: auto; margin-right: auto; text-align: center; position: absolute; left: 20px; right: 20px!important;}
 
 
 

@@ -325,12 +325,8 @@
                 <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300">
 
 
-<<<<<<< HEAD
-                        <div >
-                            <div class="input-group margin-bot-15 " style="width: 100%; ">
-=======
                             <div class="input-group margin-bot-15 mobile-input">
->>>>>>> 51ab819a84a02962a42765658b4de631c29cf963
+
                                 <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
                             </div>
 
@@ -370,6 +366,14 @@
 
                         </div>
 
+                    <div class="btn-group">
+                        {{-- <a href="{{ url('/public/schools/map') }}"> --}}
+                        <button class="btn btn-primary btn-map-mob" onClick="showMap()">
+                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>@lang('schools.show_map')
+                        </button>
+                        </a>
+                    </div>
+
 
 
                 </div><!-- collapseMenu -->
@@ -385,16 +389,13 @@
                         </div>
 
 
-<<<<<<< HEAD
-                    <div class="btn-group " style="width: 100%; margin: 15px 0;">
-=======
 
-
-                    <span class="sort-by-text">@lang('schools.sortby.title')</span>
                     <div id="sort-by-container"></div>
+                    <span class="sort-by-text">@lang('schools.sortby.title')</span>
+
 
                     <div class="btn-group">
->>>>>>> 51ab819a84a02962a42765658b4de631c29cf963
+
                         {{-- <a href="{{ url('/public/schools/map') }}"> --}}
                         <button class="btn btn-primary btn-map" onClick="showMap()">
                             <i class="fa fa-map pad-right-15" aria-hidden="true"></i>@lang('schools.show_map')
@@ -539,10 +540,6 @@ angular.module("schoolsResultsApp",[])
             })
     );
 
-<<<<<<< HEAD
-=======
-
-
             search.addWidget(
                     instantsearch.widgets.sortBySelector({
                         container: '#sort-by-container',
@@ -565,10 +562,6 @@ angular.module("schoolsResultsApp",[])
                     })
             );
 
-
-
-
->>>>>>> 51ab819a84a02962a42765658b4de631c29cf963
     search.on('render', function() {
         $('.product-picture img').addClass('transparent');
         $('.product-picture img').one('load', function() {
