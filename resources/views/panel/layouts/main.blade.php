@@ -23,7 +23,42 @@
         <link href="/panel/assets/css/icons.css" rel="stylesheet">
 
         <style>
-        /*Styling για topbar*/
+        /*Styling topbar*/
+        .top-img{filter: grayscale(100%); margin: 0 6px; opacity: 0.4}
+        .top-img:hover{filter: none; opacity: 1}
+        .top-image{height: 30px;}
+
+
+
+        /* =========TOOLTIP=========*/
+
+        .tooltiptext4  {
+            font-weight: 300;
+            visibility: hidden;
+            color: #664;
+            /*width: 300px;*/
+            /*background-color: #007991;*/
+            /*text-align: center;*/
+            /*border-radius: 5px;*/
+            /*padding: 5px 1px;*/
+            position: absolute;
+            z-index: 1;
+            margin-left: -30px;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+
+        .tooltiptext4{top: 180%; left: 55%;}
+
+        .tool:hover .tooltiptext4 {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+
+
+
         .icon-navigation-container{position: fixed;  display: inline-block;  margin-top: 14px;  text-align: center; left: 50%; width: 350px; margin-left:-50px;}
             @media(max-width: 500px){.hidden-xxs{display: none;}}
         </style>

@@ -1,10 +1,10 @@
-{{--<link rel="stylesheet" href="/new/css/Bootstrap-xxs-xxxs.css">--}}
+
+{{--Styling on panel/pages/school/dashboard/main.blade.php--}}
 
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6">
         <a href="{{ url('/panel/school/students') }}">
             <div class="panel-box box1">
-                {{--<i class="md md-person text-primary"></i>--}}
                 <img src="/new/img/student2.png" alt="student image" class="panel-image">
                 <span class="panel-counter">{{ count($data['students']) }}</span>
                 <span class="panel-text">@lang('panel/schools/dashboard.students')</span>
@@ -31,7 +31,7 @@
             <div class="panel-box box2">
                 <img src="/panel/assets/images/steps/step3-skills2.png" alt="photos image" class="panel-image">
                 <span class="panel-counter">{{ count($data['studies']) }}</span>
-                <span class="text" style="color: #008da5; font-weight: 300; font-size: 120%">@lang('panel/schools/dashboard.studies')</span>
+                <span class="panel-text">@lang('panel/schools/dashboard.studies')</span>
             </div>
         </a>
     </div>
