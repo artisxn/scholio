@@ -29,7 +29,7 @@
                                     <div class="cont-dash">
                                         <img src="/panel/assets/images/steps/skills2.png" alt="cv image" class="image">
                                         <div class="text">
-                                            Τα βιογραφικό μου
+                                            @lang('panel/students/navigation.cv')
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                                     <div class="cont-dash">
                                         <img src="/new/img/univ.png" alt="university image" class="image">
                                         <div class="text">
-                                            Τα εκπαιδευτήρια μου
+                                            @lang('panel/students/navigation.schools')
                                             {{--<span class="counter" style="">counter</span>--}}
                                         </div>
                                     </div>
@@ -51,12 +51,12 @@
 
 
                         <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="{{ url('panel/users/student/mySchools') }}">
+                            <a href="{{ url('panel/dashboard') }}">
                                 <div class="panel dash-card">
                                     <div class="cont-dash">
                                         <img src="/panel/assets/images/steps/step3-open.png" alt="scholarship image" class="image">
                                         <div class="text">
-                                            Αιτήσεις Υποτροφιών
+                                            @lang('panel/students/navigation.my-admissions')
                                             {{--<span class="counter" style="">counter</span>--}}
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@
                                     <div class="cont-dash">
                                         <img src="/panel/assets/images/steps/stars.png" alt="reviews image" class="image">
                                         <div class="text">
-                                            Οι αξιολογήσεις μου
+                                            @lang('panel/students/navigation.my-reviews')
                                             {{--<span class="counter" style="">counter</span>--}}
                                         </div>
                                     </div>

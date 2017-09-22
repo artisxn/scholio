@@ -4,13 +4,12 @@
 
             <!-- Button mobile view to collapse sidebar menu -->
     <div class="navbar navbar-default" role="navigation">
-        <div class="container">
+        <div class="container  top-bar-container">
 
-            <div class="pull-left">
+            <div class=" pull-left">
                 <button class="button-menu-mobile open-left">
                     <i class="fa fa-outdent"></i>
                 </button>
-
                 <form method="GET" id="langForm" style="display: inline-block; position: absolute; top: 18px; margin-left: 60px; color: #555">
                     <select onchange="changeLang(this)" class="" data-live-search="false" data-mobile="false" data-size='3' data-width="100%" data-style=""
                             style="border: none; background-color: transparent; margin: -15px">
@@ -19,16 +18,26 @@
                     </select>
                 </form>
             </div>
-            <span class="icon-navigation-container hidden-xs" style="" >
 
-                @if(auth()->user()->role == 'school')
-                    @include('panel.partials.topbar.school.main')
-                @elseif(auth()->user()->role == 'student')
-                    @include('panel.partials.topbar.student.main')
-                @elseif(auth()->user()->role == 'teacher')
-                    @include('panel.partials.topbar.teacher.main')
-                @endif
-            </span>
+
+
+
+
+
+            <div class="icon-box">
+                     <span class="icon-navigation-container hidden-xxs">
+                         @if(auth()->user()->role == 'school')
+                             @include('panel.partials.topbar.school.main')
+                         @elseif(auth()->user()->role == 'student')
+                             @include('panel.partials.topbar.student.main')
+                         @elseif(auth()->user()->role == 'teacher')
+                             @include('panel.partials.topbar.teacher.main')
+                         @endif
+                  </span>
+            </div>
+
+
+
 
 
 

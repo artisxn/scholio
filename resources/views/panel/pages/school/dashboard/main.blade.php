@@ -6,7 +6,7 @@
     .panel-box{padding: 20px 10px; border: 1px solid #008da5; border-radius: 10px; text-align: center; box-shadow: 0 0 11px #bbb; background: #fff; margin-bottom: 20px;}
     .box1{height: 220px; }
     .box2{height: 100px; }
-    .panel-box:hover{background: #fafafa; border-color: #FD6A33;}
+    .panel-box:hover{background: #fafafa; border-color: #FD6A33; border-width: 2px; box-shadow: 0 0 13px #888;}
     .panel-counter {color: #00839b; font-weight: 400; font-size: 130%; margin: 0 3px 0 15px;}
     .panel-text{color: #008da5; font-weight: 300; font-size: 120%}
 

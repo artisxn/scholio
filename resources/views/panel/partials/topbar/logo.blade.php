@@ -1,4 +1,4 @@
-<div class="topbar-left">
+<div class="topbar-left" style="">
     <div class="text-center">
         <a href="{{ url('/') }}" class="logo">
         <div class="icon-c-logo">
