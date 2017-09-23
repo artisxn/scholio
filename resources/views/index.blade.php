@@ -526,7 +526,40 @@
             <div class="sc-landing-sec3-content">
                 <div class="row ">
                     <div class=" col-sm-7 col-lg-8 col-xs-12 margin-top-50">
-                        <img class="img-responsive" src="{{asset('new/img/screen22.png')}}">
+                        <img class="img-responsive" src="{{asset('new/img/iMac-sm.png')}}">
+
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel"
+                             style="  ">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides 1195x660 pixels-->
+                            <div class="carousel-inner">
+                                <div class="item active" >
+                                    <img src="/new/img/ScreenSchools.png" alt="schools image" class="carousel-img">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img  src="/new/img/ScreenScholarships.jpg"  alt="scholarships image" class="carousel-img">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img  src="/new/img/ScreenTrophy.jpg"  alt="trophy image" class="carousel-img">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <img class="img-responsive iphone-ipad-sm" src="{{asset('new/img/iPad-iPhone-macBook-sm.png')}}" >
+
+
                     </div>
 
                     <div class="col-sm-5 col-lg-4 col-xs-12 margin-top-60 sc-landing-sec3-text">
@@ -534,14 +567,26 @@
                             <h2 class="text-left">@lang('main.features.title')</h2>
                         {{--</div>--}}
                         {{--<div class="col-xs-12">--}}
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;@lang('main.features.section1')</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>
+                                <span href="#myCarousel" data-slide-to="0" class="carousel-select">
+                                    &nbsp;&nbsp;@lang('main.features.section1')
+                                </span>
+                            </h5>
                         {{--</div>--}}
 
                         {{--<div class="col-xs-12">--}}
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;@lang('main.features.section2')</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>
+                                  <span href="#myCarousel" data-slide-to="1" class="carousel-select">
+                                    &nbsp;&nbsp;@lang('main.features.section2')
+                                </span>
+                            </h5>
                         {{--</div>--}}
                         {{--<div class="col-xs-12">--}}
-                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;@lang('main.features.section3')</h5>
+                            <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>
+                                  <span href="#myCarousel" data-slide-to="2" class="carousel-select">
+                                    &nbsp;&nbsp;@lang('main.features.section3')
+                                </span>
+                            </h5>
                         {{--</div>--}}
                         {{--<div class="col-xs-12">--}}
                             <h5 class="text-left"><span><img height="18" width="18" src="{{asset('new/img/check.svg')}}"></span>&nbsp;&nbsp;

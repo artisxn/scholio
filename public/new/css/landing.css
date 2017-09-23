@@ -207,6 +207,42 @@ video {
 .sc-landing-card-6 { background:url('/img/sect-photo/lab.png') 0 0 / cover; }
 
 
+/* //////////////////////  Carousel  ////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////// */
+
+.carousel-select{cursor: pointer}
+#myCarousel{width: 52.5%;  left: 17%; position: absolute; top: 14px}
+.carousel-img{width: 100%; border-radius: 6px; }
+.iphone-ipad-sm{top: 20px; position: absolute; width: 95%}
+
+@media(max-width: 1199px){
+    #myCarousel{width: 51%;  left: 17.8%; top: 12px}
+}
+
+@media(max-width: 991px){
+    #myCarousel{width: 50%;  left: 18.3%; top: 9px; border-radius: 5px;}
+    .carousel-img{border-radius: 5px; }
+}
+
+@media(max-width: 767px){
+    #myCarousel{width: 52%;  left: 17.2%;  top: 13px}
+}
+
+@media(max-width: 641px){
+    #myCarousel{width: 50%;  left: 18.3%; top: 12px}
+}
+
+@media(max-width: 468px){
+    #myCarousel{width: 49.5%;  left: 18.6%; top: 10px;}
+    .carousel-inner .item img{border-radius: 3px; }
+    .iphone-ipad-sm{top: 10px;}
+}
+
+@media(max-width: 375px){
+    #myCarousel{width: 49.5%;  left: 18.8%; top: 6px;}
+    .carousel-img{border-radius: 1px; }
+}
+
 
 /* //////////////////////////////////////////////////////////////////// */
 .counter-icon{margin-top: -150px;}
