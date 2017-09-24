@@ -528,19 +528,19 @@
                     <div class=" col-sm-7 col-lg-8 col-xs-12 margin-top-50">
                         <img class="img-responsive" src="{{asset('new/img/iMac-sm.png')}}">
 
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel"
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2600"
                              style="  ">
                             <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                            </ol>
+                            {{--<ol class="carousel-indicators">--}}
+                                {{--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>--}}
+                                {{--<li data-target="#myCarousel" data-slide-to="1"></li>--}}
+                                {{--<li data-target="#myCarousel" data-slide-to="2"></li>--}}
+                            {{--</ol>--}}
 
                             <!-- Wrapper for slides 1195x660 pixels-->
                             <div class="carousel-inner">
                                 <div class="item active" >
-                                    <img src="/new/img/ScreenSchools.png" alt="schools image" class="carousel-img">
+                                    <img src="/new/img/ScreenSchools.jpg" alt="schools image" class="carousel-img">
                                     <div class="carousel-caption">
                                     </div>
                                 </div>
@@ -759,7 +759,6 @@
            </div>
        </div>
     </section>
-
 
 
 </main>

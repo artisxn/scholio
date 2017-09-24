@@ -42,7 +42,10 @@
 
 
             <ul class="nav navbar-nav navbar-right pull-right">
+
                 <?php echo $__env->make('panel.partials.topbar.item', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
             </ul>
 
 

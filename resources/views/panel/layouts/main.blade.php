@@ -17,10 +17,18 @@
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{asset('new/img/favicon.ico')}}" type="image/x-icon" />
 
-        <link href="/panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/panel/assets/css/bootstrap.min.css" />
 
-        <link href="/css/panel.css" rel="stylesheet">
-        <link href="/panel/assets/css/icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/panel.css">
+        <link rel="stylesheet" href="/panel/assets/css/icons.css">
+        <link rel="stylesheet" href="/panel/assets/css/cs-select2.css">
+        <link rel="stylesheet" href="/panel/assets/css/cs-select-circular2.css">
+
+
+
+
+
+
 
         <style>
         /*Styling topbar*/
@@ -166,6 +174,28 @@ echo json_encode($trans);
         <script src="/js/bold.js"></script>
 
         <script src="/panel/assets/js/bootstrap-select.js"></script>
+
+
+        {{--scripts for rounded select--}}
+        <script src="assets/js/selectClassie.js"></script>
+        <script src="assets/js/selectFx.js"></script>
+        <script>
+                //  script for rounded select
+                (function() {
+                    [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+                        new SelectFx(el, {
+                            stickyPlaceholder: false,
+                            onChange: function(val){
+                                var img = document.createElement('img');
+                                img.src = 'assets/img/'+val+'.png';
+                                img.onload = function() {
+                                    document.querySelector('span.cs-placeholder').style.backgroundImage = 'url(assets/img/'+val+'.png)';
+                                };
+                            }
+                        });
+                    } );
+                })();
+        </script>
 
 
 
