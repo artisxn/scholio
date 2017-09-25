@@ -1,17 +1,15 @@
 
 <li>
     <div class="text-center cs-select-container">
-                    <select class="cs-select cs-skin-circular">
-                        <option value="" disabled selected>Select</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        {{--<option value="7">7</option>--}}
-                        {{--<option value="8">8</option>--}}
-                    </select>
+        <select class="cs-select cs-skin-circular">
+            <option value="" disabled selected>Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
     </div>
 </li>
 
@@ -34,7 +32,7 @@
         @if(auth()->user()->role == 'school')
             <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
         @else
-            <li><a href="/panel/users/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
+            <li><a href="/panel/users/student/studentCv"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
         @endif
         {{-- <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li> --}}
 

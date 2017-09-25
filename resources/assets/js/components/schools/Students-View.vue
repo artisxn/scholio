@@ -1,11 +1,14 @@
-
-
 <template>
     <div class="row">
 
         <form class="sc-radio pull-left">
-            <input id="r1" type="radio" name="status" value="connected" v-model="status" checked> <label for="r1"><div class="r-lab">{{ lang('resource.students.active') }}</div></label> <br>
-            <input id="r2" type="radio" name="status" value="allumni" v-model="status" > <label for="r2"><div class="r-lab">{{ lang('resource.students.alumni') }}</div></label><br>
+            <input id="r1" type="radio" name="status" value="connected" v-model="status"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active') }}
+                <span class="pull-right" style="">{{ activeStudentsLength }}</span>
+                </div>
+            </label> <br>
+            <input id="r2" type="radio" name="status" value="allumni" v-model="status"> <label for="r2"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni') }}
+                <span class="pull-right" style="">{{ allumniStudentsLength }}</span>
+            </div></label><br>
         </form>
 
 
@@ -14,7 +17,7 @@
             <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
                    v-model="searchStr">
         </div>
-        <button class="btn btn-info pull-right btn-view" v-on:click="changeView"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
+        <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
 
 
@@ -42,14 +45,24 @@
                     <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
                 </div>
 
-                <div class='wave'></div>
+                <!-- <div class='wave'></div> -->
                 <div class="sc-bottom">
                     <div class="phone">
                         <a :href="'tel:'+student.phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{student.phone}}</span></a>
                     </div>
-                    <form class="sc-radio2 pull-right">
-                        <input id="r3" type="radio" name="studentStatus" value="connected" v-model="stStatus" checked> <label for="r3"><div class="r-lab">{{ lang('resource.students.active') }}</div></label><br>
-                        <input id="r4" type="radio" name="studentStatus" value="allumni" v-model="stStatus" > <label for="r4"><div class="r-lab">{{ lang('resource.students.alumni') }}</div></label><br>
+                    <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
+                            <input v-model="stdStatus[student.id]" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected" checked> 
+                        
+                        <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}
+                        </div>
+                        </label>
+                        <br>
+                            <input v-model="stdStatus[student.id]" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni" checked>
+                         
+                        <label :for="'stt' + student.id">
+                            <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
+                        </label>
+                        <br>
                     </form>
                 </div>
 
@@ -244,13 +257,8 @@
     .sc-radio2>input[type=radio]:checked + label:before{
         box-shadow: inset 0 0 0 3px #CAD8D3;
     }
-</style>
-<!--<link rel="stylesheet" type="text/css" href="/new/css/input-radio.css" />-->
-
-
 
 <!--  WAVE STYLE -->
-<style>
     .wave{
         background:#fafafa;
         height: 10px;
@@ -289,16 +297,6 @@
 
 <script>
 
-    $( document ).ready(function() {
-//        $(".sc-box").hover(
-//                function () {
-//                    $(".sc-img").removeClass("gray");
-//                }
-//        );
-    });
-
-
-
     export default{
         data: function() {
             return{
@@ -308,10 +306,29 @@
                 sortReverse:false,
                 sortType:'name',
                 status:'connected',
-                stStatus:''
+                stStatus:'',
+                stdStatus: []
             }
         },
         computed: {
+            activeStudentsLength: function(){
+                var count = 0;
+                this.students.forEach(function(item){
+                    if(item.pivot.status == 'connected') count++;
+                });
+
+                return count;
+            },
+
+            allumniStudentsLength: function(){
+                var count = 0;
+                this.students.forEach(function(item){
+                    if(item.pivot.status == 'allumni') count++;
+                });
+
+                return count;
+            },
+
             filteredStudents: function () {
                 var filtered_array = [];
                 var st=this.students
@@ -323,7 +340,8 @@
                 }
 
                 var searchString = this.searchStr;
-
+                this.changeView() // -----------------------\Alert DO NOT DELETE
+                this.changeView() // -----------------------/ Καγκουρια για να δουλευει σωστα το rendering
                 if(!searchString){
                     return filtered_array;
                 }
@@ -338,11 +356,27 @@
 
                         ){ return item;   }
                 })
+
                 return filtered_array;
             },
+
+
         },
 
         methods: {
+            changeStatus: function(id, status){
+                var status = '';
+                if(document.getElementById('st'+id).checked) status = 'connected';
+                else status = 'allumni';
+                axios.post('/api/school/changeStudentStatus/' + id + '/' + status)
+                    .then(response => {
+                        console.log(response.data);
+                        if(response.data == 'ok'){
+                            // location.reload(); // ---------------------------------->>>>>>
+                            this.getAllStudents()
+                        } 
+                    })
+            },
             nameChangeSort: function(){
                 this.sortType = 'name';
                 this.changeSortType(this.sortType)
@@ -381,12 +415,14 @@
                 axios.get('/api/connected/students')
                     .then(response => {
                         console.log(response.data)
-                        this.students = response.data
+                        this.students = response.data                        
                         var st1= this.students;
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
                         for (var i in st1){
                                 st1[i].name=st1[i].name.toLowerCase()
+                                this.stdStatus[st1[i].id] = st1[i].pivot.status
                         }
+                        console.log(this.stdStatus)
                         var temp = JSON.stringify(st1)
                                 .replace(/ά/g,"α")
                                 .replace(/έ/g,"ε")

@@ -229,3 +229,11 @@ Route::get('/searchTag', function () {
     $search = request('tags');
     return Tag::where('name', 'LIKE', "$search%")->take(3)->pluck('slag');
 });
+
+Route::post('/school/changeStudentStatus/{id}/{status}', function ($id, $status) {
+    $school = auth()->user()->info;
+    $line = $school->students->where('id', $id)->first();
+    $line->pivot->status = $status;
+    $line->pivot->save();
+    return 'ok';
+})->middleware('auth:api');

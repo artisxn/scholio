@@ -303,7 +303,7 @@ class School extends Model
 
     public function activeScholarships()
     {
-        return $this->scholarship()->where('active',1)->get();
+        return $this->scholarship()->where('active', 1)->get();
     }
 
     // public function fullAdmission()

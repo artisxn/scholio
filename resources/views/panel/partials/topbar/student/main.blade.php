@@ -1,11 +1,3 @@
-
-
-
-{{--Styling on panel/layouts//main.blade.php--}}
-
-
-
-
 <a href="/panel/users/student/studentCv"  class="top-img tool {{ request()->path() == 'panel/users/student/studentCv' ? 'img-active' : ''}}">
     <img src="/panel/assets/images/steps/skills2.png" alt="student image" class="top-image">
     <span class="tooltiptext4 tool5">@lang('panel/students/navigation.cv')</span>
