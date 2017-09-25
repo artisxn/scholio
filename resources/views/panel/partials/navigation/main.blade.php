@@ -10,18 +10,9 @@
         </div>
         <div class="user-info">
             <div class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <span class="" style="font-weight: 100; font-size: 95%;">
-
+                    <span class="" style="font-weight: 100; font-size: 95%; color: #fff;">
                         {{ auth()->user()->name }}
                     </span>
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                      <li><a href=""><i class="ti-user m-r-5"></i> @lang('panel/schools/navigation.menu.profile')</a></li>
-                      <li><a href=""><i class="ti-settings m-r-5"></i>@lang('panel/schools/navigation.menu.settings')</a></li>
-                      <li><a href=""><i class="ti-power-off m-r-5"></i>@lang('panel/schools/navigation.menu.logout')</a></li>
-                </ul>
             </div>
         </div>
     </div>

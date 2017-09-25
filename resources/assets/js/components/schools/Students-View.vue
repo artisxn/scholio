@@ -42,7 +42,7 @@
                     <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
                 </div>
 
-                <!--<div class='wave'></div>-->
+                <div class='wave'></div>
                 <div class="sc-bottom">
                     <div class="phone">
                         <a :href="'tel:'+student.phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{student.phone}}</span></a>

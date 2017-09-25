@@ -24,17 +24,11 @@
         <link rel="stylesheet" href="/panel/assets/css/cs-select2.css">
         <link rel="stylesheet" href="/panel/assets/css/cs-select-circular2.css">
 
-
-
-
-
-
-
         <style>
         /*Styling topbar*/
         .top-bar-container{}
 
-        .top-img{filter: grayscale(100%); margin: 0 6px; opacity: 0.2}
+        .top-img{filter: grayscale(100%); margin: 0 6px; opacity: 0.2;position: relative; display: inline-block;}
         .top-img:hover{filter: grayscale(70%); opacity: 0.7}
         .img-active{filter: none; opacity: 1}
         .top-image{height: 30px;}
@@ -71,7 +65,7 @@
         /* =========TOOLTIP=========*/
 
         .tooltiptext4  {
-            width: 86px;
+            width: 95px;
             font-weight: 300;
             font-size: 88%;
             visibility: hidden;
@@ -88,7 +82,7 @@
             transition: opacity 0.1s;
         }
 
-        .tooltiptext4{top: 170%; left: 50%;}
+        .tooltiptext4{top: 30px; left: 40%;}
         .tool5{width: 140px; margin-left: -70px}
 
         .tool:hover .tooltiptext4 {
@@ -177,8 +171,8 @@ echo json_encode($trans);
 
 
         {{--scripts for rounded select--}}
-        <script src="assets/js/selectClassie.js"></script>
-        <script src="assets/js/selectFx.js"></script>
+        <script src="{{ asset('panel/assets/js/selectClassie.js') }}"></script>
+        <script src="{{ asset('panel/assets/js/selectFx.js') }}"></script>
         <script>
                 //  script for rounded select
                 (function() {
@@ -196,10 +190,6 @@ echo json_encode($trans);
                     } );
                 })();
         </script>
-
-
-
-
 
         <script>
             var resizefunc = [];

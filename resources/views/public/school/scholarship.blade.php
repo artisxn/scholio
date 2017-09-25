@@ -363,7 +363,7 @@
         <div class="box-left">
             <div class="title">
 
-                @lang('scholarship_view.cards.study') 
+                @lang('scholarship_view.cards.study')
                 <br>
                 @if($scholarship->multiple)
                 <ul>

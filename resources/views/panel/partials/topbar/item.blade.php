@@ -31,7 +31,11 @@
     </a>
     <ul class="dropdown-menu">
 
-        <li><a href="/panel/users/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
+        @if(auth()->user()->role == 'school')
+            <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
+        @else
+            <li><a href="/panel/users/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
+        @endif
         {{-- <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li> --}}
 
         <li>
@@ -47,7 +51,3 @@
         </li>
     </ul>
 </li>
-
-
-
-

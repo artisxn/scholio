@@ -119,11 +119,14 @@
 
                         <div style="margin-left: -10px">
                             <form class="sc-radio pull-left">
-                                <input id="r1" type="radio" name="status" value="1" v-model="active" checked> <label for="r1"><div class="r-lab">{{ lang('panel_scholarships.view.status.active') }}</div></label>
-                                <span class="sch-counter">{{activeLength}}</span>
-                                <br>
-                                <input id="r2" type="radio" name="status" value="0" v-model="active" > <label for="r2"><div class="r-lab">{{ lang('panel_scholarships.view.status.ended') }}</div></label>
-                                <span class="sch-counter">{{endedLength}}</span>
+                                <div>
+                                    <input id="r1" type="radio" name="status" value="1" v-model="active" checked> <label for="r1"><div class="r-lab">{{ lang('panel_scholarships.view.status.active') }}</div></label>
+                                    <span class="sch-counter">{{activeLength}}</span>
+                                </div>
+                                <div>
+                                    <input id="r2" type="radio" name="status" value="0" v-model="active" > <label for="r2"><div class="r-lab">{{ lang('panel_scholarships.view.status.ended') }}</div></label>
+                                    <span class="sch-counter">{{endedLength}}</span>
+                                </div>
                             </form>
                         </div>
 
