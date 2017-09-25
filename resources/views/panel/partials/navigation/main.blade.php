@@ -1,10 +1,5 @@
 <div class="left side-menu">
-    <div class="sidebar-inner slimscrollleft">
     <div class="user-details">
-{{--     <div>
-        {{ Auth::user()->school->id }}
-        {{ Auth::user()->school->type->name}}
-    </div> --}}
 
         <div class="pull-left">
         @if(auth()->user()->role == 'school')
@@ -16,20 +11,22 @@
         <div class="user-info">
             <div class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <span class="" style="font-weight: 100; font-size: 95%">
+                    <span class="" style="font-weight: 100; font-size: 95%;">
 
                         {{ auth()->user()->name }}
-                    </span> <span class="caret"></span></a>
+                    </span>
+                    <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu">
-                      <li><a href=""><i class="ti-user m-r-5"></i> Προφίλ</a></li>
-                      <li><a href=""><i class="ti-settings m-r-5"></i> Ρυθμίσεις</a></li>
-                      <li><a href=""><i class="ti-power-off m-r-5"></i> Αποσύνδεση</a></li>
+                      <li><a href=""><i class="ti-user m-r-5"></i> @lang('panel/schools/navigation.menu.profile')</a></li>
+                      <li><a href=""><i class="ti-settings m-r-5"></i>@lang('panel/schools/navigation.menu.settings')</a></li>
+                      <li><a href=""><i class="ti-power-off m-r-5"></i>@lang('panel/schools/navigation.menu.logout')</a></li>
                 </ul>
             </div>
-            <!--<p class="text-muted m-0">Κολλέγιο</p>-->
         </div>
     </div>
         <!--- Divider -->
+
         <div id="sidebar-menu">
             <ul>
                 @if(Auth::user()->role == 'school')
@@ -51,10 +48,6 @@
                 @if(Auth::user()->role == 'parent')
                     @include('panel.partials.navigation.links-parents')
                 @endif
-
             </ul>
-            <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
-    </div>
 </div>

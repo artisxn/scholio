@@ -6,7 +6,7 @@ return [
     'studies' => 'Ειδικ. Σπουδών',
     'photos' => 'Φωτογραφίες',
     'scholarships' => 'Υποτροφίες',
-    'admissions' => 'Αιτηματα Υποτρ.',
-    'reviews' => 'Αξιολογίσεις',
+    'admissions' => 'Αιτήματα Υποτρ.',
+    'reviews' => 'Αξιολογήσεις',
     'pageviews' => 'Επισκέψεις',
 ];

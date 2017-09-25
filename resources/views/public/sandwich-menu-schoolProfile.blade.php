@@ -12,7 +12,8 @@
     .menu-mobile-left{
         opacity: 0.98;
         width: 258px;
-        height:555px;
+        /*height:555px; */
+        height:315px;
         -webkit-transition: all 300ms ease-in, all 300ms ease-out;
         -moz-transition: all 300ms ease-in, all 300ms ease-out;
         -o-transition: all 300ms ease-in, all 300ms ease-out;
@@ -112,31 +113,31 @@
             </div>
 
 
-            @if($school->settings->about)
-                <a href="#sxetika">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.about')</div>
-                </a>
-            @endif
-            @if($school->settings->studies)
-                <a href="#spoudes">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.studies')</div>
-                </a>
-            @endif
-            @if($school->settings->scholarships)
-                <a href="#ypotrofies">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.scholarships')</div>
-                </a>
-            @endif
-            @if($school->settings->reviews)
-                <a href="#reviews">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.reviews')</div>
-                </a>
-            @endif
-            @if($school->settings->teachers)
-                <a href="#faculty">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.teachers')</div>
-                </a>
-            @endif
+            {{--@if($school->settings->about)--}}
+                {{--<a href="#sxetika">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.about')</div>--}}
+                {{--</a>--}}
+            {{--@endif--}}
+            {{--@if($school->settings->studies)--}}
+                {{--<a href="#spoudes">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.studies')</div>--}}
+                {{--</a>--}}
+            {{--@endif--}}
+            {{--@if($school->settings->scholarships)--}}
+                {{--<a href="#ypotrofies">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.scholarships')</div>--}}
+                {{--</a>--}}
+            {{--@endif--}}
+            {{--@if($school->settings->reviews)--}}
+                {{--<a href="#reviews">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.reviews')</div>--}}
+                {{--</a>--}}
+            {{--@endif--}}
+            {{--@if($school->settings->teachers)--}}
+                {{--<a href="#faculty">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('profile.navigation.teachers')</div>--}}
+                {{--</a>--}}
+            {{--@endif--}}
 
 
             <a href="{{url('public/schools')}}" class="nav-item btn-scholarship-results" >

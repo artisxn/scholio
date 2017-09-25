@@ -10,7 +10,7 @@
     .btn-primary:hover{background-color: #007991 !important;}
     .btn-success,.btn-info,.btn-primary{border: none!important; height: 30px; padding: 0 20px}
     .sch-counter{color: #888; margin:0 30px 0 15px; float: right}
-    .card-box .row .col-lg-12 div .sc-radio{width:  180px; margin-right: 20px}
+    .card-box .row .col-lg-12 div .sc-radio{width:  210px; margin-right: 5px; padding-right: 10px; }
     .dots-text{display:inline-block;
         width:150px;
         white-space: nowrap;
@@ -27,7 +27,7 @@
         .search-input{width: 235px;}
     }
 
-    @media (max-width: 492px) {
+    @media (max-width: 535px) {
         .search-input{width: 100%;  float: none!important; text-align: center; margin: 5px auto 20px auto;}
     }
 
@@ -40,7 +40,7 @@
         position: relative;
     }
 
-    .tooltiptext,.tooltiptext2  {
+    .tooltiptext,.tooltiptext2,.tooltiptext3  {
         font-weight: 300;
         visibility: hidden;
         width: 300px;
@@ -48,29 +48,29 @@
         color: #fff;
         text-align: center;
         border-radius: 5px;
-        padding: 5px 2px;
+        padding: 4px 1px;
         position: absolute;
         z-index: 1;
-        bottom: 125%;
-        left: 50%;
+        bottom: 120%;
         margin-left: -110px;
         opacity: 0;
         transition: opacity 0.1s;
     }
 
-    .tooltiptext2{width: 190px; background-color: #aaa}
+    .tooltiptext2{width: 180px; background-color: #007991;  bottom: 100%; left: 55%;}
+    .tooltiptext3{width: 270px; background-color: #007991;  bottom: 145%; left: 30%;}
 
-    .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #007991 transparent transparent transparent;
-    }
-    .tool:hover .tooltiptext,.tool:hover .tooltiptext2  {
+    /*.tooltiptext::after {*/
+        /*content: "";*/
+        /*position: absolute;*/
+        /*top: 100%;*/
+        /*left: 50%;*/
+        /*margin-left: -5px;*/
+        /*border-width: 5px;*/
+        /*border-style: solid;*/
+        /*border-color: #007991 transparent transparent transparent;*/
+    /*}*/
+    .tool:hover .tooltiptext,.tool:hover .tooltiptext2,.tool:hover .tooltiptext3 {
         visibility: visible;
         opacity: 1;
     }
@@ -208,10 +208,16 @@
                                             <td class="price-column">{{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
                                             </td>
                                             <td><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
+                                            <!--<td v-if="showLevel">-->
+                                                <!--<span class="tool">-->
+                                                    <!--{{ study(scholarship.study, 30) }}-->
+                                                    <!--<span class="tooltiptext">{{scholarship.study}}</span>-->
+                                                <!--</span>-->
+                                            <!--</td>-->
                                             <td v-if="showLevel">
                                                 <span class="tool">
-                                                    {{ study(scholarship.study, 30) }}
-                                                    <span class="tooltiptext">{{scholarship.study}}</span>
+                                                    <div class="dots-text">{{scholarship.study}}</div>
+                                                    <span class="tooltiptext3">{{scholarship.study}}</span>
                                                 </span>
                                             </td>
                                             <td  class="tool"><div class="dots-text  tool">  {{ scholarship.level}}</div>

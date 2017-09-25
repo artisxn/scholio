@@ -17,15 +17,99 @@
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{asset('new/img/favicon.ico')}}" type="image/x-icon" />
 
-        <link href="/panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/panel/assets/css/bootstrap.min.css" />
 
-        <link href="/css/panel.css" rel="stylesheet">
-        <link href="/panel/assets/css/icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/panel.css">
+        <link rel="stylesheet" href="/panel/assets/css/icons.css">
+        <link rel="stylesheet" href="/panel/assets/css/cs-select2.css">
+        <link rel="stylesheet" href="/panel/assets/css/cs-select-circular2.css">
+
+
+
+
+
+
 
         <style>
-        /*Styling για topbar*/
-        .icon-navigation-container{position: fixed;  display: inline-block;  margin-top: 14px;  text-align: center; left: 50%; width: 350px; margin-left:-50px;}
-            @media(max-width: 500px){.hidden-xxs{display: none;}}
+        /*Styling topbar*/
+        .top-bar-container{}
+
+        .top-img{filter: grayscale(100%); margin: 0 6px; opacity: 0.2}
+        .top-img:hover{filter: grayscale(70%); opacity: 0.7}
+        .img-active{filter: none; opacity: 1}
+        .top-image{height: 30px;}
+
+
+        .icon-box{position: absolute;}
+        .icon-navigation-container{margin-top: 14px;  position: absolute; left: 0; right: 0;  text-align: center;
+            max-width: 340px; margin-left: auto; margin-right: auto;
+        }
+
+
+
+        @media(max-width: 990px){  .icon-box{display: none;}  }
+        @media(min-width: 576px){  .icon-box{left:  70px; width: 94%}  .top-bar-container{margin-left: 70px} }
+        @media(min-width: 768px){  .icon-box{left:  70px; width: 92%}  .top-bar-container{margin-left: 70px} }
+        @media(min-width: 991px){
+            .icon-box{left: 240px; width: 76%}
+            /*.button-menu-mobile{display: none;} */
+        }
+
+
+        @media(min-width: 1020px){  .icon-box{width: 77.5%}  }
+        @media(min-width: 1180px){  .icon-box{width: 80.3%}  }
+        @media(min-width: 1280px){  .icon-box{width: 81.8%}  }
+        @media(min-width: 1360px){  .icon-box{width: 82.5%}  }
+        @media(min-width: 1450px){  .icon-box{width: 84%}    }
+        @media(min-width: 1580px){  .icon-box{width: 85%}    }
+        @media(min-width: 1780px){  .icon-box{width: 87%}    }
+        @media(min-width: 1980px){  .icon-box{width: 88%}    }
+        @media(min-width: 2280px){  .icon-box{width: 89.5%}  }
+        @media(min-width: 2400px){  .icon-box{width: 90.6%}  }
+
+
+        /* =========TOOLTIP=========*/
+
+        .tooltiptext4  {
+            width: 86px;
+            font-weight: 300;
+            font-size: 88%;
+            visibility: hidden;
+            color: #664;
+            /*width: 300px;*/
+            /*background-color: #007991;*/
+            /*border-radius: 5px;*/
+            /*padding: 5px 1px;*/
+            text-align: center;
+            position: absolute;
+            z-index: 1;
+            margin-left: -42px;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+
+        .tooltiptext4{top: 170%; left: 50%;}
+        .tool5{width: 140px; margin-left: -70px}
+
+        .tool:hover .tooltiptext4 {
+            visibility: visible;
+            opacity: 1;
+        }
+        /* ===========================*/
+
+
+
+
+
+        @media(max-width: 500px){.hidden-xxs{display: none;}}
+
+
+        @media(max-width: 991px){
+            .side-menu{}
+
+        }
+
+
         </style>
 
         @yield('styles')
@@ -63,7 +147,7 @@ echo json_encode($trans);
     </head>
 
 
-    <body class="fixed-left" style="background: linear-gradient( #F1F4F5 ,#d9dcdd ); min-height: 550px">
+    <body class="" style="background: linear-gradient( #F1F4F5 ,#d9dcdd ); min-height: 550px">
         <div id="app">
             <div id="wrapper">
                   @include('panel.partials.topbar.main')
@@ -90,6 +174,28 @@ echo json_encode($trans);
         <script src="/js/bold.js"></script>
 
         <script src="/panel/assets/js/bootstrap-select.js"></script>
+
+
+        {{--scripts for rounded select--}}
+        <script src="assets/js/selectClassie.js"></script>
+        <script src="assets/js/selectFx.js"></script>
+        <script>
+                //  script for rounded select
+                (function() {
+                    [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+                        new SelectFx(el, {
+                            stickyPlaceholder: false,
+                            onChange: function(val){
+                                var img = document.createElement('img');
+                                img.src = 'assets/img/'+val+'.png';
+                                img.onload = function() {
+                                    document.querySelector('span.cs-placeholder').style.backgroundImage = 'url(assets/img/'+val+'.png)';
+                                };
+                            }
+                        });
+                    } );
+                })();
+        </script>
 
 
 

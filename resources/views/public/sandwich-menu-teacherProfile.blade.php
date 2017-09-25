@@ -12,7 +12,8 @@
     .menu-mobile-left{
         opacity: 0.98;
         width: 258px;
-        height:555px;
+        /*height:555px;*/
+        height:315px;
         -webkit-transition: all 300ms ease-in, all 300ms ease-out;
         -moz-transition: all 300ms ease-in, all 300ms ease-out;
         -o-transition: all 300ms ease-in, all 300ms ease-out;
@@ -111,22 +112,22 @@
                 <a href="/lang/en" style="z-index: 7000!important;">ENG &nbsp;</a> | <a href="/lang/el"> &nbsp;&nbsp;GR</a>
             </div>
 
-                <a href="#sxetika">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('teacher_profile.navigation.about')</div>
-                </a>
+                {{--<a href="#sxetika">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('teacher_profile.navigation.about')</div>--}}
+                {{--</a>--}}
 
-                <a href="#experience">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('teacher_profile.navigation.experience')</div>
-                </a>
+                {{--<a href="#experience">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('teacher_profile.navigation.experience')</div>--}}
+                {{--</a>--}}
 
-                <a href="#spoudes">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('teacher_profile.navigation.studies')</div>
-                </a>
+                {{--<a href="#spoudes">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('teacher_profile.navigation.studies')</div>--}}
+                {{--</a>--}}
 
 
-                 <a href="#skills">
-                    <div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('teacher_profile.navigation.skills')</div>
-                </a>
+                 {{--<a href="#skills">--}}
+                    {{--<div class="sc-landing-menu-mobile-item sc-landing-menu-mobile-item-pressed">@lang('teacher_profile.navigation.skills')</div>--}}
+                {{--</a>--}}
 
 
             <a href="{{url('public/schools')}}" class="nav-item btn-scholarship-results" >

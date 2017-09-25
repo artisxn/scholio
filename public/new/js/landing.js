@@ -72,7 +72,7 @@ jQuery(document).ready(function($) {
 
     //Smooth Scroll from header seactions
     $(function() {
-        $('a[href*="#"]:not([href="#"])').click(function() {
+        $('a[href*="#"]:not([href="#myCarousel"])').click(function() {
             if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
