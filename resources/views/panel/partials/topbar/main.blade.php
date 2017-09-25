@@ -1,12 +1,12 @@
 <div class="topbar">
     <!-- LOGO -->
-    <?php echo $__env->make('panel.partials.topbar.logo', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    @include('panel.partials.topbar.logo')
 
             <!-- Button mobile view to collapse sidebar menu -->
     <div class="navbar navbar-default" role="navigation">
-        <div class="container  top-bar-container">
+        <div class="container">
 
-            <div class=" pull-left">
+            <div class="pull-left">
                 <button class="button-menu-mobile open-left">
                     <i class="fa fa-outdent"></i>
                 </button>
@@ -18,11 +18,6 @@
                     </select>
                 </form>
             </div>
-
-
-
-
-
 
             <div class="icon-box">
                      <span class="icon-navigation-container hidden-xxs">
@@ -36,16 +31,9 @@
                   </span>
             </div>
 
-
-
-
-
-
             <ul class="nav navbar-nav navbar-right pull-right">
 
                 <?php echo $__env->make('panel.partials.topbar.item', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-
             </ul>
 
 

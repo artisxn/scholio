@@ -83,11 +83,11 @@
   transition: transform 0.2s, opacity 0.1s; }
 
 .cs-skin-circular.cs-active .cs-options li {
-  opacity: 0.6;
+  opacity: 1;
   -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
   transition: transform 0.2s, opacity 0.2s;
-  filter: grayscale(0.7);
-  background-color: #bbb;
+  /*filter: grayscale(0.7);*/
+  /*background-color: #bbb;*/
   /*border: 1px solid #888;*/
 }
 
@@ -95,7 +95,7 @@
   opacity: 1;
   filter: grayscale(0);
   /*border: 2px solid orange;*/
-  background-color: greenyellow;
+  /*background-color: greenyellow;*/
 }
 
 .cs-skin-circular .cs-options li:nth-child(1) {
@@ -128,27 +128,27 @@
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(1) {
   -webkit-transform: translate3d(-120px, 0, 0);
-  transform: translate3d(-120px, 0, 0); }
+  transform: translate3d(-150px, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(2) {
   -webkit-transform: translate3d(-101px, 57px, 0);
-  transform: translate3d(-101px, 57px, 0); }
+  transform: translate3d(-100px, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(3) {
   -webkit-transform: translate3d(-60px, 105px, 0);
-  transform: translate3d(-60px, 105px, 0); }
+  transform: translate3d(-50px, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(4) {
   -webkit-transform: translate3d(0, 120px, 0);
-  transform: translate3d(0, 120px, 0); }
+  transform: translate3d(0, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(5) {
   -webkit-transform: translate3d(60px, 105px, 0);;
-  transform: translate3d(60px, 105px, 0); }
+  transform: translate3d(50px, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(6) {
   -webkit-transform: translate3d(101px, 57px, 0);
-  transform: translate3d(101px, 57px, 0); }
+  transform: translate3d(100px, 57px, 0); }
 
 
 

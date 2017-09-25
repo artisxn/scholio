@@ -95,14 +95,15 @@
 
 
 
-        @media(max-width: 500px){.hidden-xxs{display: none;}}
+        {{-- @media(max-width: 390px){.hidden-xxs{display: none;}} --}}
 
 
         @media(max-width: 991px){
             .side-menu{}
-
+            .paddingTop{
+                padding-top: 38px;
+            }
         }
-
 
         </style>
 
@@ -147,9 +148,9 @@ echo json_encode($trans);
                   @include('panel.partials.topbar.main')
                   @include('panel.partials.navigation.main')
 
-                <div class="content-page" >
+                <div class="content-page">
                     <div class="content">
-                        <div class="container">
+                        <div class="container paddingTop">
                         @yield('content')
 
                         </div>

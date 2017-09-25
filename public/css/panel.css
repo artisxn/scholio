@@ -2656,8 +2656,7 @@ File: Responsive
   }
 
   .logo .icon-c-logo {
-    display: inline-block !important;
-    line-height: 58px !important;
+    display: block !important;
   }
 
   .logo span {

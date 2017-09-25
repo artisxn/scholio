@@ -10,9 +10,9 @@
 	.cs-select-container{ position: absolute; right: 85px; top: 2px}
 }
 
-@media (max-width: 440px) {
+/*@media (max-width: 440px) {
 	.cs-select-container{ display: none;}
-}
+}*/
 
 
 
