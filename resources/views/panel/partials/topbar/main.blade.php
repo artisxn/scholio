@@ -32,8 +32,15 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right pull-right">
+                @if(auth()->user()->role == 'school')
+                        <?php echo $__env->make('panel.partials.topbar.school.item', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                @elseif(auth()->user()->role == 'student')
+                     <?php echo $__env->make('panel.partials.topbar.student.item', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                @elseif(auth()->user()->role == 'teacher')
+                     <?php echo $__env->make('panel.partials.topbar.teacher.item', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                @endif
 
-                <?php echo $__env->make('panel.partials.topbar.item', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
             </ul>
 
 

@@ -177,23 +177,43 @@ echo json_encode($trans);
         <script>
                 //  script for rounded select
                 (function() {
-                    [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+                    [].slice.call( document.querySelectorAll( 'select.cs-select-school' ) ).forEach( function(el) {
                         new SelectFx(el, {
                             stickyPlaceholder: false,
                             onChange: function(val){
                                 var img = document.createElement('img');
                                 img.src = 'assets/img/'+val+'.png';
-                                if(val == 1) document.location = 'https://scholio.dev/panel/school/students';
-                                if(val == 2) document.location = 'https://scholio.dev/panel/school/teachers';
-                                if(val == 3) document.location = 'https://scholio.dev/panel/school/studies';
-                                if(val == 4) document.location = 'https://scholio.dev/panel/school/profile/images';
-                                if(val == 5) document.location = 'https://scholio.dev/panel/school/scholarships/view';
-                                if(val == 6) document.location = 'https://scholio.dev/panel/school/scholarships/request';
+                                if(val == 1) document.location = '/panel/school/students';
+                                if(val == 2) document.location = '/panel/school/teachers';
+                                if(val == 3) document.location = '/panel/school/studies';
+                                if(val == 4) document.location = '/panel/school/profile/images';
+                                if(val == 5) document.location = '/panel/school/scholarships/view';
+                                if(val == 6) document.location = '/panel/school/scholarships/request';
 
                                 img.onload = function() {
                                     document.querySelector('span.cs-placeholder').style.backgroundImage = 'url(assets/img/'+val+'.png)';
 
 
+                                };
+                            }
+                        });
+                    } );
+                })();
+
+                (function() {
+                    [].slice.call( document.querySelectorAll( 'select.cs-select-student' ) ).forEach( function(el) {
+                        new SelectFx(el, {
+                            stickyPlaceholder: false,
+                            onChange: function(val){
+                                var img = document.createElement('img');
+                                img.src = 'assets/img/1'+val+'.png';
+                                if(val == 1) document.location = '/panel/users/student/studentCv';
+                                if(val == 2) document.location = '/panel/users/student/mySchools';
+                                if(val == 3) document.location = '/panel/dashboard';
+                                if(val == 4) document.location = '/panel/users/student/review/show';
+
+                                img.onload = function() {
+                                    document.querySelector('span.cs-placeholder').style.backgroundImage = 'url(assets/img/1'+val+'.png)';
                                 };
                             }
                         });

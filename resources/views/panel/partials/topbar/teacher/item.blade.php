@@ -1,17 +1,5 @@
 
-<li>
-    <div class="text-center cs-select-container">
-        <select class="cs-select cs-skin-circular">
-            <option value="" disabled selected>Select</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
-    </div>
-</li>
+
 
 <notifications></notifications>
 

@@ -123,19 +123,32 @@
   background-image: url(../img/8.png); }
 
 
+.cs-skin-circular-student .cs-options li:nth-child(1) {
+  background-image: url(../img/11.png); }
+
+.cs-skin-circular-student .cs-options li:nth-child(2) {
+  background-image: url(../img/12.png); }
+
+.cs-skin-circular-student .cs-options li:nth-child(3) {
+  background-image: url(../img/13.png); }
+
+.cs-skin-circular-student .cs-options li:nth-child(4) {
+  background-image: url(../img/14.png); }
+
+
 
 /* (x,y,z)  */
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(1) {
-  -webkit-transform: translate3d(-120px, 0, 0);
+  -webkit-transform: translate3d(-150px, 57px, 0);
   transform: translate3d(-150px, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(2) {
-  -webkit-transform: translate3d(-101px, 57px, 0);
+  -webkit-transform: translate3d(-100px, 57px, 0);
   transform: translate3d(-100px, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(3) {
-  -webkit-transform: translate3d(-60px, 105px, 0);
+  -webkit-transform: translate3d(-50px, 57px, 0);
   transform: translate3d(-50px, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(4) {
@@ -143,11 +156,11 @@
   transform: translate3d(0, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(5) {
-  -webkit-transform: translate3d(60px, 105px, 0);;
+  -webkit-transform: translate3d(50px, 57px, 0);
   transform: translate3d(50px, 57px, 0); }
 
 .cs-skin-circular.cs-active .cs-options li:nth-child(6) {
-  -webkit-transform: translate3d(101px, 57px, 0);
+  -webkit-transform: translate3d(100px, 57px, 0);
   transform: translate3d(100px, 57px, 0); }
 
 
@@ -159,6 +172,23 @@
 .cs-skin-circular.cs-active .cs-options li:nth-child(7) {
   -webkit-transform: translate3d(0, -70px, 0);
   transform: translate3d(-101px, -57px, 0); }
+
+
+.cs-skin-circular-student.cs-active .cs-options li:nth-child(1) {
+  -webkit-transform: translate3d(-50px, 57px, 0);
+  transform: translate3d(-50px, 57px, 0);  }
+
+.cs-skin-circular-student.cs-active .cs-options li:nth-child(2) {
+  -webkit-transform: translate3d(0, 57px, 0);
+  transform: translate3d(0, 57px, 0);  }
+
+.cs-skin-circular-student.cs-active .cs-options li:nth-child(3) {
+  -webkit-transform: translate3d(50px, 57px, 0);
+  transform: translate3d(50px, 57px, 0); }
+
+.cs-skin-circular-student.cs-active .cs-options li:nth-child(4) {
+  -webkit-transform: translate3d(100px, 57px, 0);
+  transform: translate3d(100px, 57px, 0); }
 
 
 
