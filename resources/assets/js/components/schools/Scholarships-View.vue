@@ -30,12 +30,18 @@
 
      @media(min-width: 1420px){
          .dots-text{width:210px}
+         .hidden-xxl{display: none;}
+         .visible-xxl{display: block}
      }
      @media(min-width: 1580px){
          .dots-text{width:220px}
          .dots-lg{width:250px;}
-         .hidden-xxl{display: none;}
-         .visible-xxl{display: block}
+         .dots-mlg3{width: 260px}
+         .hidden-xlxl{display: none;}
+     }
+     @media(min-width: 1700px){
+         .hidden-xxlx{display: none;}
+         .visible-xxlx{display: block}
      }
      @media(min-width: 1840px){
          .dots-lg{width:300px;}
@@ -51,8 +57,16 @@
      .dots-sm{width: 90px;}
      .dots-md{width: 110px;}
 
+     @media(max-width: 1699px){
+         .hidden-xxlxx{display: none;}
+         .visible-xxlxx{display: block}
+     }
 
      @media(max-width: 1579px){
+         .dots-mlg3{width: 120px}
+     }
+
+     @media(max-width: 1419px){
          .hidden-xl{display: none;}
      }
      @media(max-width: 1280px){
@@ -94,6 +108,7 @@
 
     @media (max-width: 570px) {
         .search-input{width: 235px;}
+
     }
 
     @media (max-width: 535px) {
@@ -131,6 +146,18 @@
     .tooltip3{width: 270px;  bottom: 27px; left: 140px;}
     .tooltip4{width: 180px;  bottom: 50px; left: 140px;}
     .tooltip5{width: 215px;  bottom: 45px; left: 150px;}
+
+     @media (max-width: 767px) {
+         .tooltip3{width:420px;}
+         }
+
+     @media (max-width: 430px) {
+         .tooltip3{width:370px;}
+     }
+
+     @media (max-width: 380px) {
+         .tooltip3{width:310px;}
+     }
 
     /*.tooltiptext::after {*/
         /*content: "";*/
@@ -283,10 +310,13 @@
                                             <!--</td>-->
 
                                             <td class="tool hidden-xsm">
-                                                <div class="dots-text dots-sm">
+                                                <div class="dots-text dots-sm hidden-xxlx">
                                                     <img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" class="">
                                                 </div>
-                                                <span class="tooltiptext tooltip4">
+                                                <span class="tooltiptext tooltip4 hidden-xxlx">
+                                                    {{ scholarship.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
+                                                </span>
+                                                <span class=" hidden-xxlxx">
                                                     {{ scholarship.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
                                                 </span>
 
@@ -306,15 +336,15 @@
                                             </td>
                                             <td  class="tool hidden-xxs">
                                                 <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level}}</div>
-                                                <span class="tooltiptext tooltip2 hidden-xxl">{{scholarship.level}}</span>
+                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{scholarship.level}}</span>
                                             </td>
                                             <td class="tool hidden-mdl">
                                                 <div class="dots-text dots-sm hidden-xxl">
                                                 <img :src="'/panel/assets/images/steps/'+ scholarship.criteria.name+'.png'" height="30px" alt="" class="">
                                                 </div>
-                                                <span class="tooltiptext tooltip5 hidden-xxl dots-xl-left">{{ scholarship.criteria.name }}</span>
+                                                <span class="tooltiptext tooltip5 hidden-xlxl">{{ scholarship.criteria.name }}</span>
 
-                                                <span class="hidden-xl visible-xxl dots-xl-left">{{ scholarship.criteria.name }}</span>
+                                                <span class="hidden-xl dots-text dots-mlg3 visible-xxl dots-xl-left">{{ scholarship.criteria.name }}</span>
 
                                             </td>
                                             <td class="hidden-lgm" style=""> <div class="dots-text dots-md"> {{ scholarship.end_at }}</div></td>

@@ -528,7 +528,7 @@
                     <div class=" col-sm-7 col-lg-8 col-xs-12 margin-top-50">
                         <img class="img-responsive" src="{{asset('new/img/iMac-sm.png')}}">
 
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2600"
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000"
                              style="  ">
                             <!-- Indicators -->
                             {{--<ol class="carousel-indicators">--}}

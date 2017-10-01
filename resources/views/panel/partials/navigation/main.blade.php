@@ -1,4 +1,4 @@
-<div class="left side-menu">
+<div class="left side-menu"  style="position: fixed">
     <div class="user-details">
 
         <div class="pull-left">
