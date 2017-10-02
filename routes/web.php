@@ -197,3 +197,10 @@ Route::get('/student/{user}', function (User $user) {
     // $admission = Admission::where('user_id', $user->id)->where('scholarship_id', $scholarship->id)->first();
     return view('public.school.student-profile', compact('user'));
 })->middleware('is.school:see.student');
+
+Route::get('/userRole/save', function () {
+    $role = request()->role;
+    session(['registration' => 'user']);
+    session(['userrole' => $role]);
+    return redirect('/register');
+});

@@ -137,15 +137,31 @@
                     <div id="step-5" class="step-anchor">
                         <div class="step centered-text" >
 
-                            <!--<h2>Βήμα 4 </h2>-->
+                            <!--<h2>Βήμα TAGS </h2>-->
                             <div class="step-box" style="">
                                 <h3>{{ lang('panel_scholarships.create.tags') }}</h3>
 
 
-                                <div class="col-lg-4 col-md-6 col-sm-6" >
-                                    <form>
+                                <div class="" >
+                                    <!-- <form>
                                         <input type="text" id="tags" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                                    </form>
+                                    </form> -->
+                                    <div>
+                                         <label class="typo__label">Tagging</label>
+                                         <multiselect 
+                                         v-model="value" 
+                                         tag-placeholder="Προσθήκη νέας ετικέτας" 
+                                         placeholder="Αναζήτήστε ή Προσθέστε ετικέτα" 
+                                         label="name" 
+                                         track-by="code" 
+                                         :options="options" 
+                                         :multiple="true" 
+                                         :taggable="true" 
+                                         @tag="addTag">
+                                         </multiselect>
+                                         <li v-for="tag in value">{{tag.name}}</li>
+
+                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -222,6 +238,7 @@
         </div>
 </template>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style>
 
 /* jQuery Datepicker scholio Styling */
@@ -293,7 +310,8 @@ html .ui-button.ui-state-disabled:active {
 </style>
 
 <script>
-    import VueTinymce from 'vue-tinymce'
+    import Multiselect from 'vue-multiselect';
+    import VueTinymce from 'vue-tinymce';
     Vue.use(VueTinymce)
 
     var max_chars = 100; //max characters
@@ -301,7 +319,7 @@ html .ui-button.ui-state-disabled:active {
     
     
     export default {
-
+        components: {Multiselect},
         computed: {
             studies: function(){
                 return this.all_studies
@@ -323,17 +341,19 @@ html .ui-button.ui-state-disabled:active {
                 }
             )
 
-            $('#tags').atwho({
-                at: '#',
-                delay: 500,
-                callbacks:{
-                    remoteFilter: function(query, callback){
-                        $.getJSON('/api/searchTag', {tags: query}, function(tags){
-                            callback(tags);
-                        });
-                    }
-                }
-            });
+            // $('#tags').atwho({
+            //     at: '#',
+            //     delay: 500,
+            //     callbacks:{
+            //         remoteFilter: function(query, callback){
+            //             $.getJSON('/api/searchTag', {tags: query}, function(tags){
+            //                 callback(tags);
+            //             });
+            //         }
+            //     }
+            // });
+
+           this.getTags()
         },
         data: function() {
             return {
@@ -391,11 +411,30 @@ html .ui-button.ui-state-disabled:active {
                                     });
                 },
                     toolbar: 'undo redo | insert copy paste | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor | table '
-                }
+                },
+                value: [],
+                options: []
             }
         },
 
         methods: {
+            getTags: function(){
+                axios.get('/api/hashtag/all').then(response => {
+                    this.options = response.data
+                    this.options.forEach(function(item){
+                        item.code = item.slag
+                    });
+                    console.log(this.options)
+                });
+            },
+              addTag: function(newTag) {
+                const tag = {
+                  name: newTag,
+                  code: newTag
+                }
+                this.options.push(tag)
+                this.value.push(tag)
+            },
             eww: function(){
                 console.log('as')
             },
@@ -554,7 +593,8 @@ html .ui-button.ui-state-disabled:active {
                         'end_at': this.end_at,
                         'winner_id': 0,
                         'exams':temp,
-                        'terms':this.terms
+                        'terms':this.terms,
+                        'tags': this.value
                     })
                     .then(response=>{
                         console.log('END AT >> ' + this.end_at)

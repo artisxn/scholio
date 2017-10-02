@@ -4,7 +4,7 @@ namespace App;
 
 use App\Models\Admission;
 use App\Models\Cv;
-use App\Models\Guardian as ParentUser;
+use App\Models\Guardian;
 use App\Models\Link;
 use App\Models\Review;
 use App\Models\Scholarship;
@@ -83,7 +83,7 @@ class User extends Authenticatable
         }
 
         if ($this->role == 'parent') {
-            return $this->hasOne(ParentUser::class);
+            return $this->hasOne(Guardian::class);
         }
 
         if ($this->role == 'school') {

@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slag');
+            $table->integer('school_type_id')->default(0);
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
+use App\Models\Cv;
 use App\Models\Guardian;
 use App\Models\Link;
 use App\Models\Student;
@@ -30,8 +31,7 @@ class SocialAuthController extends Controller
         if (!config('services.' . $provider)) {
             abort(404);
         }
-        $this->roleType = request()->type;
-        session()->put('typeRole', request()->type);
+
         return Socialite::driver($provider)->redirect();
     }
 
@@ -52,18 +52,7 @@ class SocialAuthController extends Controller
             return redirect('/dashboard');
         }
 
-        $role = '-';
-        $roleType = session()->get('typeRole');
-
-        if ($roleType == 1) {
-            $role = 'student';
-        }
-        if ($roleType == 2) {
-            $role = 'parent';
-        }
-        if ($roleType == 3) {
-            $role = 'teacher';
-        }
+        $role = session('userrole');
 
         $user = new User;
         $user->name = $user_provider->name;
@@ -98,7 +87,7 @@ class SocialAuthController extends Controller
         $this->createInfo($user, $role, $user_provider->avatar, $provider, $profileBuilder);
 
         Auth::login($user);
-        return redirect('/dashboard/profile');
+        return redirect('/panel/users/student/studentCv');
         // return redirect('/new/user');
     }
 
@@ -111,6 +100,10 @@ class SocialAuthController extends Controller
                 $info->avatar = $avatar;
                 $info->gender = $profileBuilder['gender'];
                 $info->save();
+
+                $cv = new Cv;
+                $cv->user_id = $user->id;
+                $cv->save();
             }
             if ($role == 'teacher') {
                 $info = new Teacher;
@@ -127,12 +120,12 @@ class SocialAuthController extends Controller
                 $info->save();
             }
 
-            $links = $this->addSocialLinks($user, $provider, $profileBuilder['url']);
+            // $links = $this->addSocialLinks($user, $provider, $profileBuilder['url']);
 
             if ($provider == 'google') {
                 $user->info->fname = $profileBuilder['fname'];
                 $user->info->lname = $profileBuilder['lname'];
-                $user->info->about = $profileBuilder['about'];
+                // $user->info->about = $profileBuilder['about'];
                 $user->info->save();
                 if ($role == 'teacher') {
                     $user->info->cover = $profileBuilder['cover'];

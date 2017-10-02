@@ -237,3 +237,11 @@ Route::post('/school/changeStudentStatus/{id}/{status}', function ($id, $status)
     $line->pivot->save();
     return 'ok';
 })->middleware('auth:api');
+
+Route::get('/hashtag/all', function () {
+    $tags = Tag::all();
+    return $tags;
+})->middleware('auth:api');
+
+Route::post('/hashtag/{tag}/add', function ($tag) {
+})->middleware('auth:api');

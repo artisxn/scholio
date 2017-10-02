@@ -45,7 +45,7 @@
     <!-- Angular js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
 
-    <script src="/new/js/register-app.js"></script>
+    {{-- <script src="/new/js/register-app.js"></script> --}}
 </head>
 
 <style>
@@ -104,18 +104,16 @@
         </div>
 
         <div class="panel-body">
-            <form class="form-horizontal m-t-20 "
-                    {{--method="POST" action="{{ url('/register') }}"--}}
-            >
+            <form class="form-horizontal m-t-20 " action="{{ url('/userRole/save') }}" id="form">
                 {{ csrf_field() }}
 
                 <div class="middle-text centered-text">@lang('register.select')</div>
 
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="btn-role centered-text" ng-mouseover="over=true"  ng-mouseleave="over=false" ng-click="active(1)" ng-class="{selected: role==1}">
+                        <div class="btn-role centered-text" ng-mouseover="over=true"  ng-mouseleave="over=false" ng-click="active('student')" ng-class="{selected: role=='student'}">
                             <img src="/new/img/student2-line.png" class="role-img centered-abs " alt="">
-                            <div class="colored" ng-class="{show: (over||role==1)}">
+                            <div class="colored" ng-class="{show: (over||role=='student')}">
                                 <img src="/new/img/student2.png" class="role-img-cl centered-abs " alt="">
                                 <div class="btn-text">@lang('register.student')</div>
                             </div>
@@ -123,9 +121,9 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <div class="btn-role centered-text" ng-mouseover="over2=true"  ng-mouseleave="over2=false" ng-click="active(2)" ng-class="{selected: role==2}">
+                        <div class="btn-role centered-text" ng-mouseover="over2=true"  ng-mouseleave="over2=false" ng-click="active('parent')" ng-class="{selected: role=='parent'}">
                             <img src="/new/img/parent-line.png" class="role-img2 centered-abs " alt="">
-                            <div class="colored" ng-class="{show: over2||role==2}">
+                            <div class="colored" ng-class="{show: over2||role=='parent'}">
                                 <img src="/new/img/parent.png" class="role-img-cl2 centered-abs " alt="">
                                 <div class="btn-text">@lang('register.parent')</div>
                             </div>
@@ -133,9 +131,9 @@
 
                     </div>
                     <div class="col-sm-4">
-                        <div class="btn-role centered-text" ng-mouseover="over3=true"  ng-mouseleave="over3=false" ng-click="active(3)" ng-class="{selected: role==3}" >
+                        <div class="btn-role centered-text" ng-mouseover="over3=true"  ng-mouseleave="over3=false" ng-click="active('teacher')" ng-class="{selected: role=='teacher'}" >
                             <img src="/new/img/teacher-line.png" class="role-img3 centered-abs " alt="">
-                            <div class="colored" ng-class="{show: over3||role==3}" >
+                            <div class="colored" ng-class="{show: over3||role=='teacher'}" >
                                 <img src="/new/img/teacher.png" class="role-img-cl3 centered-abs " alt="">
                                 <div class="btn-text">@lang('register.teacher')</div>
                             </div>
@@ -153,13 +151,15 @@
                     <div class="col-xs-6">
                         <button class="btn sc-dark-green sc-t-white btn-next" type="submit" ng-click="register()">
                             <span class="hidden-xxxxs">@lang('register.continue')</span>
-                            <i class="fa fa-chevron-circle-right mar-left" aria-hidden="true" ></i>
+                            <i class="fa fa-chevron-circle-right mar-left" aria-hidden="true"></i>
                         </button>
                     </div>
                     <div class="fill" ng-if="noValid">
                         <div class="fill sc-t-orange">@lang('register.error')</div>
                     </div>
                 </div>
+
+                <input type="text" style="display: none;" ng-model="role" name="role">
 
 
             </form>
@@ -171,13 +171,39 @@
 
 </div>
 
-<div class=" login">
+<div class="login">
     <div class="col-xs-12 text-center margin-top-15 margin-bot-25 ">
         @lang('register.account')<a href="/login" class="text-primary" style="color: black"><b class="orange-hover">@lang('register.signin')</b></a>
     </div>
 </div>
 
+<script>
+    angular.module("registerApp",[])
 
+        .controller("registerCtrl",function ($scope) {
+
+            $scope.noValid=false;
+            $scope.over = false;
+            $scope.over2 = false;
+            $scope.over3 = false;
+            $scope.role = null;
+            $scope.active = function (role) {
+                $scope.role = role;
+                console.log($scope.role)
+            }
+
+            $scope.register=function(){
+                if($scope.role!=null){
+                    document.getElementById('form').submit();
+                    // window.location.href=/register/
+                }
+                else{$scope.noValid=true;
+                setTimeout(function(){ $scope.noValid=false; location.reload(); console.log('error') }, 2000);
+
+                }
+            }
+        })
+</script>
 </body>
 
 

@@ -53,7 +53,6 @@
     </style>
 
     <body ng-app="registerApp" ng-controller="registerCtrl">
-
         <div class="outer col-xxs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6  col-lg-4 col-lg-offset-4" >
             <div class="card-box">
             <div class="panel-heading">
@@ -63,66 +62,36 @@
                         <img src="/new/img/logoNX-m.png" alt="scholio logo" class="scholio-logo" width="110">
                     </a>
                 </div>
-                {{--<div class="text-center login-signUp-title">Εγγραφή στο schol.io</div>--}}
             </div>
 
             <div class="">
                 <form class="form-horizontal m-t-20 " method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
-                    {{--<div id="form-type" class="form-group">--}}
-                        {{--<label for="type" class="col-sm-3 font-weight-400">Ιδιότητα</label>--}}
-
-                        {{--<div class="col-sm-9 font-weight-300">--}}
-                            {{--<select id="type" type="password" class="form-control" name="type" onchange="social()">--}}
-                                {{--<option value="no" selected>Επέλεξε Ιδιότητα</option>--}}
-                                {{--<option value="student">Μαθητής</option>--}}
-                                {{--<option value="parent">Γονέας</option>--}}
-                                {{--<option value="teacher">Καθηγητής</option>--}}
-                            {{--</select>--}}
-                        {{--</div>--}}
-
-                            {{--<span id="span-type" class="help-block hidden">--}}
-                                {{--<strong>Πρέπει να επιλέξετε ιδιότητα</strong>--}}
-                            {{--</span>--}}
-                    {{--</div>--}}
-
-
-                    {{--<div class="col-sm-12 font-weight-300 centered-text">--}}
-                    {{--<div ng-if="role==1">--}}
-                        {{--<div><img src="/new/img/student2.png" class="role-image" alt=""></div>--}}
-                        {{--<div class="role-text">μαθητής </div>--}}
-                    {{--</div>--}}
-                    {{--<div ng-if="role==2">--}}
-                        {{--<div><img src="/new/img/parent.png" class="role-image" alt=""></div>--}}
-                        {{--<div class="role-text">γονέας </div>--}}
-                    {{--</div>--}}
-                    {{--<div ng-if="role==3">--}}
-                        {{--<div><img src="/new/img/teacher.png" class="role-image" alt=""></div>--}}
-                        {{--<div class="role-text">καθηγητής </div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-
-
-
                     <div class="form-group m-t-20 m-b-0">
                         <div class="col-sm-12 text-center login-signUp-text">
+                            <img src="/new/img/{{ session('userrole') }}.png" style="width: 100px;">
                             <div>@lang('register-step2.register')</div>
                         </div>
                     </div>
 
                     <div class="form-group m-b-0 text-center">
                         <div class="col-xs-12">
-                            <button type="button" onclick="login('facebook')" class="btn btn-facebook col-xs-5 m-t-20">
-                                {{--<i class="fa fa-facebook m-r-5"></i> --}}
-                                Facebook
-                            </button>
-                            <div class="col-xs-2"></div>
-                            <button type="button" onclick="login('google')" class="btn btn-googleplus col-xs-5  m-t-20">
-                                {{--<i class="fa fa-google-plus m-r-5"></i>--}}
+                            <a href="/auth/facebook/" class="btn btn-googleplus sc-t-white" style="width: 180px">Facebook</a>
+                            <a href="/auth/google/" class="btn btn-facebook sc-t-white" style="width: 180px">Google</a>
 
-                                Google+
-                            </button>
+                            {{-- <form action="/auth/facebook/" method="GET">
+                                <button type="submit" class="btn btn-facebook sc-t-white" style="width: 180px">
+                                    Facebook
+                                </button>
+                            </form>
+
+                            <form action="/auth/google/" method="GET">
+                                <button type="submit" class="btn btn-googleplus sc-t-white" style="width: 180px">
+                                    Google+
+                                </button>
+                            </form> --}}
+
                         </div>
                     </div>
 
@@ -147,7 +116,7 @@
                         <label for="last-name" class="col-sm-3 font-weight-400">@lang('register-step2.last-name')</label>
 
                         <div class="col-sm-9">
-                            <input id="last-name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+                            <input id="last-name" name="lastName" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
 
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -211,7 +180,7 @@
                         </div>
                     </div>
 
-
+                    <input type="text" style="display: none;" name="role" value="{{ session('userrole') }}">
                 </form>
             </div>
             </div>
@@ -223,12 +192,7 @@
                     </p>
                 </div>
             </div>
-
         </div>
-
-
-
-
 
         <script>
             var resizefunc = [];

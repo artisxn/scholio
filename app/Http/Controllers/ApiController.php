@@ -8,6 +8,7 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolTypes;
 use App\Models\Study;
+use App\Models\Tag;
 use App\Scholio\Scholio;
 use App\User;
 use Carbon\Carbon;
@@ -303,8 +304,22 @@ class ApiController extends Controller
             //$scholarship->exams_date = request()->exams_date;
             $scholarship->end_at = Carbon::createFromFormat('d-m-Y', request()->end_at);
             $scholarship->save();
-            Scholio::updateDummy($scholarship->school);
+
+            // Add tags
+            foreach (request()->tags as $tag) {
+                if (!isset($tag['id'])) {
+                    $newTag = new Tag;
+                    $newTag->name = $tag['name'];
+                    $newTag->slag = $tag['name'];
+                    $newTag->save();
+                    $scholarship->tag()->attach($newTag);
+                } else {
+                    $scholarship->tag()->attach(Tag::find($tag['id']));
+                }
+            }
+
             $data = ['message' => 'SAVED SUCCESSFULLY', 'redirect' => route('scholarship-view')];
+            Scholio::updateDummy($scholarship->school);
         } catch (\Exception $e) {
             $data = ['message' => 'ERROR ' . $e];
         }

@@ -368,11 +368,11 @@ class Scholio
         $dummy->study = $studyDummy;
         $dummy->save();
 
-        $geo1 = [];
-        $geo1[$val] = ['lat' => (double) School::find($s->school_id)->lat, 'lng' => (double) School::find($s->school_id)->lng];
+        // $geo1 = [];
+        // $geo1[$val] = ['lat' => (double) School::find($s->id)->lat, 'lng' => (double) School::find($s->id)->lng];
 
-        $dummy->_geoloc = collect($geo1[$value]);
-        $dummy->starsInt = (int) School::find($s->school_id)->averageStars();
+        // $dummy->_geoloc = collect($geo1[$value]);
+        $dummy->starsInt = (int) School::find($s->id)->averageStars();
         $schools = AlgoliaSchool::all();
         $schools->searchable();
         return 'OK';

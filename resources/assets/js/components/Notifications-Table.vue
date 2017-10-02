@@ -23,8 +23,8 @@
                                     <tbody>
                                         <tr v-for="notification in notifications" v-show="!notification.read_at">
                                             <td><img src=""></td>
-                                              <td v-if="notification.data.role === 'student'">{{ lang('resource.requests.table.teacher') }}</td>
-                                              <td v-if="notification.data.role === 'teacher'">{{ lang('resource.requests.table.student') }}</td>
+                                              <td v-if="notification.data.role === 'student'">{{ lang('resource.requests.table.student') }}</td>
+                                              <td v-if="notification.data.role === 'teacher'">{{ lang('resource.requests.table.teacher') }}</td>
                                             <td>{{ notification.data.name }}</td>
                                             <td>
                                                 <button v-on:click="accept(notification.data.id)" class="btn btn-success">{{ lang('resource.requests.table.confirm') }}</button>
