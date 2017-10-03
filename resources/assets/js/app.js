@@ -31,6 +31,7 @@ Vue.component('studies-select', require('./components/schools/Studies-Select.vue
 Vue.component('my-schools', require('./components/students/My-Schools.vue'));
 Vue.component('reviews-create', require('./components/schools/Reviews-Create.vue'));
 Vue.component('scholarship-request', require('./components/schools/Scholarship-Request.vue'));
+Vue.component('paginator', require('./components/Paginator.vue'));
 // Vue.component('chart-vue', require('./VueChart.vue'));
 
 

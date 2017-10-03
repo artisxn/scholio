@@ -103,9 +103,21 @@ Route::get('/scholarship/{id}', function (Scholarship $id) {
     return $scholarship->load('school', 'level', 'financial', 'criteria');
 })->middleware('api');
 
-Route::get('/connected/students', function () {
-    $school = auth()->user()->info;
-    return $school->students->load('info', 'cv');
+Route::get('/connected/students/{order}/{status}', function ($order, $status) {
+    $user = auth()->user();
+    $school = $user->info;
+    $students = $school->students;
+
+    $students = $school->$status()->orderBy('name')->paginate(3);
+
+    foreach ($students as $t) {
+        $t->cv;
+        $t->info;
+        $t->allumniStudents = $school->allumni()->count();
+        $t->connectedStudents = $school->connected()->count();
+    }
+
+    return $students;
 })->middleware('auth:api');
 
 Route::post('/registration/social', function () {

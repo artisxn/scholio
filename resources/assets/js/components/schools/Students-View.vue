@@ -2,12 +2,12 @@
     <div class="row">
 
         <form class="sc-radio pull-left">
-            <input id="r1" type="radio" name="status" value="connected" v-model="status"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active') }}
-                <span class="pull-right" style="">{{ activeStudentsLength }}</span>
+            <input id="r1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active') }}
+                <span class="pull-right" style="">{{ connectedStudents }}</span>
                 </div>
             </label> <br>
-            <input id="r2" type="radio" name="status" value="allumni" v-model="status"> <label for="r2"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni') }}
-                <span class="pull-right" style="">{{ allumniStudentsLength }}</span>
+            <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch"> <label for="r2"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni') }}
+                <span class="pull-right" style="">{{ allumniStudents }}</span>
             </div></label><br>
         </form>
 
@@ -110,6 +110,8 @@
                 </tbody>
             </table>
         </div>
+
+        <paginator :dataSet="dataSet" @changed="fetch"></paginator>
     </div>
 </template>
 
@@ -300,43 +302,35 @@
     export default{
         data: function() {
             return{
-                students: [],
+                items: [],
                 searchStr:"",
                 selection:true,
                 sortReverse:false,
                 sortType:'name',
                 status:'connected',
                 stStatus:'',
-                stdStatus: []
+                stdStatus: [],
+                dataSet: false,
+                allumniStudents: 0,
+                connectedStudents: 0
             }
         },
         computed: {
             activeStudentsLength: function(){
-                var count = 0;
-                this.students.forEach(function(item){
-                    if(item.pivot.status == 'connected') count++;
-                });
-
-                return count;
+                return this.items[0].connectedStudents;
             },
 
             allumniStudentsLength: function(){
-                var count = 0;
-                this.students.forEach(function(item){
-                    if(item.pivot.status == 'allumni') count++;
-                });
-
-                return count;
+                return this.items[0].allumniStudents;
             },
 
             filteredStudents: function () {
+                return this.items;
                 var filtered_array = [];
-                var st=this.students
+                var st=this.items
                 for(var i in st){
                     st[i].phone=st[i].cv.student_phone;
-                    if(st[i].pivot.status==this.status){
                         filtered_array.push(st[i])
-                    }
                 }
 
                 var searchString = this.searchStr;
@@ -364,7 +358,7 @@
         },
 
         methods: {
-            changeStatus: function(id, status){
+            changeStatus: function(id, st){
                 var status = '';
                 if(document.getElementById('st'+id).checked) status = 'connected';
                 else status = 'allumni';
@@ -373,9 +367,11 @@
                         console.log(response.data);
                         if(response.data == 'ok'){
                             // location.reload(); // ---------------------------------->>>>>>
-                            this.getAllStudents()
+                            this.fetch()
                         } 
                     })
+
+                    this.status = status
             },
             nameChangeSort: function(){
                 this.sortType = 'name';
@@ -392,10 +388,10 @@
 
             changeSortType: function(){
                 this.sortReverse=!this.sortReverse;
-                var st1= this.students;
+                var st1= this.items;
                 st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
-                this.students=st1;
-                return this.students
+                this.items=st1;
+                return this.items
             },
             dynamicSort: function (property,order) {
                     var sortOrder = 1;
@@ -411,10 +407,32 @@
                     }
                 },
 
+                url(page) {
+                    if (! page) {
+                        let query = location.search.match(/page=(\d+)/);
+                        page = query ? query[1] : 1;
+                    }
+                    return `/api/connected/students/${this.sortType}/${this.status}?page=${page}`;
+                }, 
+
+                fetch(page) {
+                    axios.get(this.url(page)).then(this.refresh);
+                },
+
+                refresh({data}) {
+                    this.dataSet = data;
+                    this.items = data.data;
+                    this.allumniCount = this.items.allumniStudents
+                    this.connectedCount = this.items.connectedStudents
+                    console.log(this.items)
+                    window.scrollTo(0, 0);
+                },
+
             getAllStudents: function(){
                 axios.get('/api/connected/students')
                     .then(response => {
                         console.log(response.data)
+                        this.dataSet = response.data
                         this.students = response.data                        
                         var st1= this.students;
                         st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
@@ -475,13 +493,25 @@
                     });
             },
             changeView: function () {
+                this.fetch(1);
                 this.selection=!this.selection;
+            }
+        },
+
+        created() {
+            this.fetch();
+        },
+
+        watch: {
+            dataSet() {
+                this.allumniStudents = this.dataSet.data[0].allumniStudents;
+                this.connectedStudents = this.dataSet.data[0].connectedStudents;
             }
         },
 
         mounted() {
 //            console.log('Students-Table component mounted!')
-            this.getAllStudents()
+            // this.getAllStudents()
         }
     }
 
