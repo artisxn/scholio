@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\StudentAppliedOnScholarship;
+use App\Events\UserAppliedOnSchool;
 use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\AlgoliaScholarship;
@@ -12,6 +14,16 @@ use App\Scholio\Scholio;
 use App\User;
 
 Scholio::soonRoutes();
+
+Route::get('test/user/{user}/school/{school}', function (User $user, School $school) {
+    event(new UserAppliedOnSchool($user, User::find($school->id)));
+    return 'ok';
+});
+
+Route::get('test/user/{user}/scholarship/{scholarship}', function (User $user, Scholarship $scholarship) {
+    event(new StudentAppliedOnScholarship($user, $scholarship));
+    return 'ok';
+});
 
 Route::post('scholarship/{scholarship}/end', function (Scholarship $scholarship) {
     $winners = request()->winner;
@@ -109,18 +121,6 @@ Route::get('algolia', function () {
     $scholarships->load('study.section.level', 'school.admin', 'school.type', 'criteria');
     $scholarships->searchable();
     return 'OK';
-});
-
-Route::get('qqq/{q}', function ($q) {
-    // $computer = App\Models\Study::search($q)->get();
-    // $schol = App\Models\Scholarship::search($q)->get();
-    $school = App\Models\School::search($q)->get();
-
-    echo '<h1>School</h1> ';
-    foreach ($school as $s) {
-        echo $s->name() . '<br />';
-    }
-    return 'ok';
 });
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 
