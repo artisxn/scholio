@@ -121,6 +121,10 @@
     .r-lab{margin: -23px 0 0 20px;}
     .margin-right-10 { margin-right: 10px; }
     .sc-radio{margin: 10px 15px; }
+
+    .btn-info{background: #00bcd4; border-color: #00bcd4; }
+    .btn-info:hover{background: #00a6be; border-color: #00a6be; }
+
     .btn-view{margin: 11px 10px 10px 0; height: 38px;}
     .form-control{z-index: 0!important;}
     .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
@@ -220,17 +224,15 @@
 
 
     }
-    @media  (max-width: 534px) {
+    @media  (max-width: 550px) {
 
         .btn-view{width: 95%; margin: 0 auto 15px auto; float: none!important; display: block; text-align: center!important;}
 
     }
 
-</style>
 
+    /*RADIO INPUT STYLE [same @ Scholarships-vue]*/
 
-<!--  RADIO INPUT STYLE [same @ Scholarships-vue]-->
-<style>
     .sc-radio> input[type=radio],.sc-radio2> input[type=radio]{
         visibility: hidden;
         position: absolute;

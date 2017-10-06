@@ -9,4 +9,6 @@ return [
     'admissions' => 'Admissions',
     'reviews' => 'Reviews',
     'pageviews' => 'Pageviews',
+    'previous' => 'Previous',
+    'next' => 'Next',
 ];

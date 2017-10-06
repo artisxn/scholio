@@ -9,6 +9,6 @@ return [
     'continue'=>'Continue',
     'error'=>'Choose your Role to continue !',
     'account'=>'Do you have an account?',
-    'signin'=>'Sign Up',
+    'signin'=>' Log In',
 
 ];

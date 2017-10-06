@@ -108,7 +108,7 @@ Route::get('/connected/students/{order}/{status}', function ($order, $status) {
     $school = $user->info;
     $students = $school->students;
 
-    $students = $school->$status()->orderBy('name')->paginate(3);
+    $students = $school->$status()->orderBy('name')->paginate(6);
 
     foreach ($students as $t) {
         $t->cv;

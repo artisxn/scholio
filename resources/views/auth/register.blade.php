@@ -2,9 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-        <meta name="author" content="Coderthemes">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><!-- prevent zoomIn in mobile inputs,selects,etc -->
+        <meta name="description" content="Your scholarship is a click away!">
+        <meta name="author" content="Schol.io">
 
         <link rel="shortcut icon" href="/panel/assets/images/favicon_1.ico">
 
@@ -18,13 +18,6 @@
         <link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">
 
         <link href="/panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-         <link href="/panel/assets/css/core.css" rel="stylesheet" type="text/css" />
-        <link href="/panel/assets/css/components.css" rel="stylesheet" type="text/css" />
-        {{-- <link href="/panel/assets/css/icons.css" rel="stylesheet" type="text/css" /> --}}
-        <link href="/panel/assets/css/pages.css" rel="stylesheet" type="text/css" />
-        {{-- <link href="/panel/assets/css/responsive.css" rel="stylesheet" type="text/css" /> --}}
-
-        {{--<link href="/new/css/Bootstrap-xxs-xxxs.css" rel="stylesheet" type="text/css" />--}}
 
         <link href="/new/css/main.css" rel="stylesheet" type="text/css" />
         <link href="/new/css/register-login.css" rel="stylesheet" type="text/css" />
@@ -36,61 +29,35 @@
         {{--<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>--}}
         {{--<![endif]-->--}}
 
-        {{-- <script src="/panel/assets/js/modernizr.min.js"></script> --}}
-
-
-        <!-- Angular js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-
-        <script src="/new/js/register-app.js"></script>
     </head>
 
-    <style>
-        .role-image{margin-left: 10px; height: 40px; margin-top: -5px; opacity: 0.7}
-        .role-text{font-weight: 300; font-size: 130%; margin: 2px 0 0 10px;}
-        .btn-facebook:hover, .btn-googleplus:hover { color: #fafafa!important; font-weight: 300}
 
-    </style>
+    <body>
+        <div class="outer card-box col-xxs-12 col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2" >
+            <div class="col-sm-offset-2 col-sm-8 ">
+                    <div class="panel-heading">
+                        <div class="text-center">
+                            <a href="/">
+                                <img src="/new/img/logoNX-m.png" alt="scholio logo" class="register-scholio-logo">
+                            </a>
+                        </div>
+                    </div>
 
-    <body ng-app="registerApp" ng-controller="registerCtrl">
-        <div class="outer col-xxs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6  col-lg-4 col-lg-offset-4" >
-            <div class="card-box">
-            <div class="panel-heading">
-                <div class="text-center">
-                    <a href="/">
-                    {{--<img src="/new/img/logo-dark-green-144.png" alt="scholio logo" class="scholio-logo">--}}
-                        <img src="/new/img/logoNX-m.png" alt="scholio logo" class="scholio-logo" width="110">
-                    </a>
-                </div>
-            </div>
-
-            <div class="">
+                    <div class="">
                 <form class="form-horizontal m-t-20 " method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
                     <div class="form-group m-t-20 m-b-0">
-                        <div class="col-sm-12 text-center login-signUp-text">
-                            <img src="/new/img/{{ session('userrole') }}.png" style="width: 100px;">
-                            <div>@lang('register-step2.register')</div>
+                        <div class="col-sm-12 text-center">
+                            <img  class="register-scholio-logo" src="/new/img/{{ session('userrole') }}.png">
+                            <div class=" login-signUp-text">@lang('register-step2.register')</div>
                         </div>
                     </div>
 
                     <div class="form-group m-b-0 text-center">
                         <div class="col-xs-12">
-                            <a href="/auth/facebook/" class="btn btn-googleplus sc-t-white" style="width: 180px">Facebook</a>
-                            <a href="/auth/google/" class="btn btn-facebook sc-t-white" style="width: 180px">Google</a>
-
-                            {{-- <form action="/auth/facebook/" method="GET">
-                                <button type="submit" class="btn btn-facebook sc-t-white" style="width: 180px">
-                                    Facebook
-                                </button>
-                            </form>
-
-                            <form action="/auth/google/" method="GET">
-                                <button type="submit" class="btn btn-googleplus sc-t-white" style="width: 180px">
-                                    Google+
-                                </button>
-                            </form> --}}
+                            <a href="/auth/facebook/" class="btn btn-facebook sc-t-white btn-social">Facebook</a>
+                            <a href="/auth/google/" class="btn btn-googleplus sc-t-white btn-social">Google+</a>
 
                         </div>
                     </div>
@@ -173,7 +140,7 @@
                     </div>
 
                     <div class="form-group text-center m-t-40">
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2 ">
                             <button class="btn btn-block sc-dark-green">
                                 @lang('register-step2.signup')
                             </button>
@@ -186,7 +153,7 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-12 text-center">
+                <div class="col-sm-12 text-center ">
                     <p>
                         @lang('register-step2.account')<a href="/login" class="text-primary m-l-5" style="color: black"><b class=" orange-hover">@lang('register-step2.login')</b></a>
                     </p>
@@ -201,18 +168,7 @@
         <!-- jQuery  -->
         <script src="/panel/assets/js/jquery.min.js"></script>
         <script src="/panel/assets/js/bootstrap.min.js"></script>
-    {{--     <script src="/panel/assets/js/detect.js"></script>
-        <script src="/panel/assets/js/fastclick.js"></script>
-        <script src="/panel/assets/js/jquery.slimscroll.js"></script>
-        <script src="/panel/assets/js/jquery.blockUI.js"></script>
-        <script src="/panel/assets/js/waves.js"></script>
-        <script src="/panel/assets/js/wow.min.js"></script>
-        <script src="/panel/assets/js/jquery.nicescroll.js"></script>
-        <script src="/panel/assets/js/jquery.scrollTo.min.js"></script> --}}
 
-
-        {{--<script src="/panel/assets/js/jquery.core.js"></script>--}}
-        {{--<script src="/panel/assets/js/jquery.app.js"></script>--}}
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
         <script>

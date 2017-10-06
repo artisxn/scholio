@@ -389,9 +389,9 @@
                         </div>
 
 
-
-                    <div id="sort-by-container"></div>
                     <span class="sort-by-text">@lang('schools.sortby.title')</span>
+                    <div id="sort-by-container"></div>
+
 
 
                     <div class="btn-group">

@@ -25,6 +25,7 @@ return [
         'table' => [
             'role' => 'Role',
             'name' => 'Name',
+            'date' => 'date',
             'action' => 'Action',
             'teacher' => 'Teacher',
             'student' => 'Student',

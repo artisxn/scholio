@@ -12,9 +12,10 @@
     .selected{ background-color: #d9e5e8; border: 3px solid #555;box-shadow: 0 0  10px #aaa;}
 
     .btn-next{margin: 30px 0 0 0; width: 160px;}
+    .wrapper-page{padding: 5px!important;}
 </style>
 
-    <div class="wrapper-page" style="padding: 5px!important;">
+    <div class="wrapper-page">
 
                 <div class="panel-heading">
                 <div class="text-center">

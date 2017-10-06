@@ -1,81 +1,66 @@
 <style>
-    .margin-left{margin-right: -18px; }
+    .dropdown{margin-right: -6px; }
+    .dropdown-menu{padding-bottom: 0;}
+    /*.dropdown-menu{box-shadow: 0 0 12px 2px #999; top: 65px; border-radius: 8px;}*/
+    .media-body{padding-top: 8px}
+    .media-body>h5:hover{color: #00bcd4}
+    .media-heading{padding-bottom: 8px}
+
 
 </style>
 
 <template>
-        <li class="dropdown hidden-xs margin-left" style="">
+        <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                 <i class="icon-bell"></i> 
                 <span class="badge badge-xs badge-danger" v-if="unreadNotifications.length">
                     {{ unreadNotifications.length }}
                 </span>
             </a>
-            <ul class="dropdown-menu dropdown-menu-lg">
-                <li class="notifi-title"><span class="label label-default pull-right"></span>Ειδοποιήσεις</li>
-                <li class="list-group nicescroll notification-list">
+
+            <ul class="dropdown-menu dropdown-menu-lg" >
+                <li class="notifi-title">
+                    <span class="label label-default"></span>{{ lang('notifications.notifications') }}</li>
+                <li class=" nicescroll notification-list">
                 
-                   <div class="media" v-if="scholarshipNot">
+                   <div v-if="scholarshipNot">
                    <a href="/panel/school/scholarships/request" class="list-group-item" v-if="unreadNotifications.length">
                       <div class="pull-left p-r-10">
                          <em class="fa fa-trophy fa-2x text-info"></em>
                       </div>
-                      <div class="media-body">
-                         <h5 class="media-heading" v-if="scholarshipNot == 1">Αίτημα για υποτροφία</h5>
-                         <h5 class="media-heading" v-else>Αιτήματα για υποτροφία</h5>
-                         <p class="m-0">
-                             <small>{{ scholarshipNot }} αιτήματα</small>
-                         </p>
+                      <div class="media-body" id="sch">
+                         <h5 class="media-heading" v-if="scholarshipNot == 1"> {{ scholarshipNot }} {{ lang('notifications.scholarshipRequest') }}</h5>
+                         <h5 class="media-heading" v-else>{{ scholarshipNot }} {{ lang('notifications.scholarshipRequests') }}</h5>
                       </div>
                     </a> 
                    </div>
 
-                   <div class="media" v-if="connectionNot">
+                   <div v-if="connectionNot">
                    <a href="/panel/school/requests" class="list-group-item" v-if="unreadNotifications.length">
                       <div class="pull-left p-r-10">
                          <em class="fa fa-link fa-2x text-info"></em>
                       </div>
                       <div class="media-body">
-                         <h5 class="media-heading" v-if="connectionNot == 1">Αίτημα για Σύνδεση</h5>
-                         <h5 class="media-heading" v-else>Αιτήματα για Σύνδεση</h5>
-                         <p class="m-0">
-                             <small>{{ connectionNot }} αιτήματα</small>
-                         </p>
+                         <h5 class="media-heading" v-if="connectionNot == 1">{{ connectionNot }} {{ lang('notifications.connectionRequest') }}</h5>
+                         <h5 class="media-heading" v-else>{{ connectionNot }} {{ lang('notifications.connectionRequests') }}</h5>
                       </div>
                     </a> 
                    </div>
-               
 
-              
-<!--                    <div class="media" v-if="unreadNotifications.length && unreadNotifications[0].type == 'other'">
-                    <a v-bind:href="url" class="list-group-item">
-                      <div class="pull-left p-r-10">
-                         <em class="fa fa-user-plus fa-2x text-info"></em>
-                      </div>
-                      <div class="media-body"> 
-                         <h5 class="media-heading">Ειδοποίηση για σύνδεση</h5>
-                         <p class="m-0">
-                             <small>{{ unreadNotifications.length }} αιτήματα</small>
-                         </p>
-                      </div>
-                      </a>
-                   </div> -->
-               
-                
                 </li>
-                <li>
-                    <div class="list-group-item text-right">
-                        <small class="font-600" v-if="!unreadNotifications.length">Δεν υπάρχουν νεες ειδοποιησεις</small>
+                <li v-if="!unreadNotifications.length">
+                    <div class="list-group-item text-center">
+                        <small class="font-600">{{ lang('notifications.noNotifications') }}</small>
                     </div>
-                    <!-- <a href="/panel/school/requests" class="list-group-item text-right" v-if="unreadNotifications.length">
-                        <small class="font-600">Δείτε όλες τις ειδοποιησεις</small>
-                    </a> -->
                 </li>
             </ul>
         </li>
 </template>
 
 <script>
+
+
+
     export default {
 
         data: function() {
@@ -130,4 +115,6 @@
             this.getNotifications()
         }
     }
+
+
 </script>

@@ -10,12 +10,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="m-t-0 header-title"><b>{{ lang('panel_scholarships.admissions.title') }}</b></h4>
-                        <p class="text-muted font-13">
-                            {{ lang('panel_scholarships.admissions.subtitle') }}
-                        </p>
+                        <!--<p class="text-muted font-13">-->
+                            <!--{{ lang('panel_scholarships.admissions.subtitle') }}-->
+                        <!--</p>-->
                         <div class="p-20">
                             <div class="table-responsive">
-                                <table class="table m-0">
+                                <table class="table m-0 table-striped">
                                     <thead>
                                     <tr>
                                         <th></th>
