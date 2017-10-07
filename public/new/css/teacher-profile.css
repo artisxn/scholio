@@ -128,11 +128,13 @@ body {
 .work {font-weight: 400; font-size: 130%; margin: 10px 0 0 220px; color: #888}
 .xs-display, .xs-social {display: none}
 
+.mail-centered{color: #888; font-size: 80%; font-weight: 300}
+
 
 .title{font-size: 185%; font-weight: 300; margin: -45px 0 30px 90px;}
 .png-title{ height: 50px; width: auto}
 .text{text-align: justify;}
-.sidebar{ margin: 70px 0; height: 540px; background-color: #eceff0;  border: 1px solid #dde0e1;  }
+.sidebar{ margin: 70px 0; height: 640px; background-color: #eceff0;  border: 1px solid #dde0e1;  }
 
 .t1{font-size: 135%; font-weight: 400;}
 .t2,.t3{font-size: 120%; font-weight: 300;}
@@ -218,8 +220,13 @@ body {
 .row1{margin-top: -117px;}
 .name,.social{font-size: 170%; margin:0 0 0 200px;}
 .work{font-size: 110%; margin:15px 0 0 200px;}
-.mail{font-size: 110%; margin-top: -20px;}
+
 }
+
+@media (min-width: 768px) and (max-width: 860px) {
+    .mail{font-size: 110%; margin-top: -65px; color: #fff}
+}
+
 
 
 /* Landscape phones and portrait tablets */
@@ -247,7 +254,7 @@ body {
 
 
 /* Portrait phones and smaller */
-@media (max-width: 480px) {
+@media (max-width: 520px) {
     .photo-box{ height: 370px; }
     .avatar {width: 48%; height: auto; margin-left:26%;}
     .row1 {margin-top: 10px;}

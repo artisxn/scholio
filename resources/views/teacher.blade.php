@@ -23,11 +23,7 @@
     <!-- Profile  CSS -->
     <link href="/new/css/teacher-profile.css" rel="stylesheet">
 
-    <!-- Horizontal Ribbons  CSS -->
-    {{--<link href="/new/css/ribbonHorizontal.css" rel="stylesheet">--}}
 
-    <!-- Horizontal Ribbons  CSS -->
-    {{--<link href="/new/css/Hexagon.css" rel="stylesheet">--}}
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -39,12 +35,6 @@
     <!-- Angular js-->
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>--}}
 
-    <!-- Rating js-->
-    {{--<script src="/new/js/jquery.raty-fa.js"></script>--}}
-
-    <!-- BX Slider-->
-    {{--<script src="/new/js/jquery.bxslider412.js"></script>--}}
-    {{--<!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->--}}
 
 
     <script src="/new/js/profile.js"></script>
@@ -56,16 +46,23 @@
     'csrfToken' => csrf_token(),
 ]); ?>
     </script>
-@if($teacher->cover != null)
+    @if($teacher->cover != null)
     <style>
     .photo-box{ min-height: 530px;
         background-size: cover;
         background-position: center;
         background-image: linear-gradient( rgba(187, 218, 222, 0.2), rgba(0, 67, 79, 0.8)),url("{{$teacher->cover}}");
     }
-
     </style>
     @endif
+
+    <style>
+        .fa-thumbs-o-up, .fa-thumbs-up{cursor: pointer; font-size: 110%; }
+        .fa-thumbs-o-up {opacity: 0.8; color: #0094ac
+        }
+        .fa-thumbs-up{color: #00859d
+        }
+    </style>
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home">
 <!-- Scholio Header -->
@@ -201,11 +198,15 @@
 
 
 
-                <div class="xs-social xs-centered ">
+                <div class="xs-social xs-centered">
+                    <span class="hidden-sm hidden-md hidden-lg mail-centered clearfix"> {{ $teacher->email() }} </span>
+                    <div class="margin-top-20"></div>
                     <a href=""> <span class="margin-right-25 "><i class="fa fa-facebook"></i></span> </a>
                     <a href=""> <span class="margin-right-25"><i class="fa fa-twitter"></i></span> </a>
                     <a href=""> <span class="margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
                     <a href=""> <span class=""><i class="fa fa-instagram"></i></span> </a>
+
+
                 </div>
                 <hr class="xs-display">
 
@@ -215,7 +216,7 @@
                     {{-- TEACHER STARTS HERE --}}
                     <div class="row">
                         <div class="up"></div>
-                        <div class="col-md-9">
+                        <div class="col-xs-12">
 
                             <img class="up png-title" src="/new/img/teacher/info.png" alt="">
                             <div class="title">@lang('teacher_profile.section.about')</div>
@@ -277,11 +278,15 @@
 
                                     <span class="col-lg-8 col-md-7 col-sm-7 col-xs-6">
 
-                                        @if(auth()->check() && auth()->user()->role != 'school')
+                                        @if(auth()->check() && auth()->user()->role == 'student')
                                             @if($teacher->user->checkSkill($skill))
-                                                <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-o-down"></i>
+
+                                                    <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-up"></i>
+
                                             @else
-                                                <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-o-up"></i>
+
+                                                    <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-o-up"></i>
+
                                             @endif
                                         @endif
 
@@ -302,9 +307,9 @@
 
                         </div>
 
-                        <div class="col-md-3 hidden-sm hidden-xs">
-                            <div class="sidebar"></div>
-                        </div>
+                        {{--<div class="col-lg-3 hidden-md hidden-xs">--}}
+                            {{--<div class="sidebar"></div>--}}
+                        {{--</div>--}}
                     </div>
 
                 </div>
@@ -348,7 +353,7 @@ function changeButton(data, id){
 //        document.getElementById('bt_like' + id).innerHTML = 'Like';
     }
     if(data == 'OFF') {
-        document.getElementById('bt_like' + id).className = 'fa fa-thumbs-o-down';
+        document.getElementById('bt_like' + id).className = 'fa fa-thumbs-up';
 //        document.getElementById('bt_like' + id).innerHTML = 'UnLIKE';
     }
 }
