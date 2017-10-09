@@ -83,13 +83,13 @@ class Scholio
 
         Route::get('full', function () {
             $response = redirect('/');
-            return $response->withCookie(cookie('pass', 'iloveschool', 10));
+            return $response->withCookie(cookie('pass', 'iloveschool', 120));
         });
 
         Route::post('full', function () {
             $response = redirect('/');
             if (request()->password == 'iloveschool') {
-                return $response->withCookie(cookie('pass', request()->password, 10));
+                return $response->withCookie(cookie('pass', request()->password, 120));
             }
 
             return redirect('/comming');
