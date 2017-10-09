@@ -136,7 +136,7 @@
                                 </button>
                             </div>
                             <div class="col-xs-6">
-                                <button class="btn sc-dark-green sc-t-white btn-next" type="submit" ng-click="register()">
+                                <button class="btn sc-dark-green sc-t-white btn-next" type="button" ng-click="register()">
                                     <span class="hidden-xxxxs">@lang('register.continue')</span>
                                     <i class="fa fa-chevron-circle-right mar-left" aria-hidden="true"></i>
                                 </button>
@@ -174,6 +174,7 @@
             $scope.role = null;
             $scope.active = function (role) {
                 $scope.role = role;
+                $scope.noValid=false;
                 console.log($scope.role)
             }
 
@@ -183,7 +184,7 @@
 //                     window.location.href=/register/
                 }
                 else{$scope.noValid=true;
-                setTimeout(function(){ $scope.noValid=false; location.reload(); console.log('error') }, 2000);
+                // setTimeout(function(){ $scope.noValid=false; }, 2000);
 
                 }
             }
