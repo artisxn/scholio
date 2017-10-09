@@ -32,9 +32,11 @@ class SocialAuthController extends Controller
             abort(404);
         }
 
-        if (env('APP_SCHOLIO') == 'local') {
-            config(['services.' . $provider => 'https://scholio.dev/auth/' . $provider . '/callback']);
-        }
+        // if (env('APP_SCHOLIO') == 'local') {
+        //     config(['services.' . $provider . '.redirect' => 'http://scholio.dev/auth/' . $provider . '/callback']);
+        // }
+
+        // dd(config('services.facebook'));
 
         return Socialite::driver($provider)->redirect();
     }
