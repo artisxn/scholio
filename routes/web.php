@@ -15,6 +15,14 @@ use App\User;
 
 Scholio::soonRoutes();
 
+Route::get('/new/user/', function () {
+    if (auth()->user()->role == 'student') {
+        return redirect('panel/users/student/studentCv');
+    }
+
+    return redirect('/dashboard');
+});
+
 Route::get('/test/{s}', function ($s) {
     $user = auth()->user();
     $school = $user->info;

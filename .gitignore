@@ -27,3 +27,5 @@ public/css/core.css
 
 public/css/icons.css
 .gitattributes
+
+config/services.php

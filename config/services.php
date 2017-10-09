@@ -44,13 +44,13 @@ return [
     'facebook' => [
         'client_id' => '1167687200016783',
         'client_secret' => '7eea088f3c2833b8aa59024c8c45f88b',
-        'redirect' => 'http://schol.io/auth/facebook/callback',
+        'redirect' => 'http://scholio.dev/auth/facebook/callback',
     ],
 
     'google' => [
         'client_id' => '562262324188-vc8r69hl57rsb9ht9ikqoi44o1vjqh8b.apps.googleusercontent.com',
         'client_secret' => 'n06FECanaUPMgfP6nT30rinP',
-        'redirect' => 'http://schol.io/auth/google/callback',
+        'redirect' => 'http://scholio.dev/auth/google/callback',
     ],
 
 ];
