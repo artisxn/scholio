@@ -23,23 +23,6 @@ Route::get('/new/user/', function () {
     return redirect('/dashboard');
 });
 
-Route::get('/test/{s}', function ($s) {
-    $user = auth()->user();
-    $school = $user->info;
-    $students = $school->students;
-
-    $students = $school->$s()->orderBy('name')->paginate(5);
-
-    foreach ($students as $t) {
-        $t->cv;
-        $t->info;
-        $t->allumniStudents = $school->allumni()->count();
-        $t->connectedStudents = $school->connected()->count();
-    }
-
-    return $students;
-});
-
 Route::get('test/user/{user}/school/{school}', function (User $user, School $school) {
     event(new UserAppliedOnSchool($user, User::find($school->id)));
     return 'ok';
