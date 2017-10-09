@@ -38,13 +38,13 @@ return [
     'twitter' => [
         'client_id' => 'RFCIQxSIATGTUbLw8HuzKCKOm',
         'client_secret' => 'WFb8FWBacWjMjWcCLAiAspGkTgYEJZXo6T9ozpLAXO7DFXjGhl',
-        'redirect' => 'http://scholio.dev/auth/twitter/callback',
+        'redirect' => 'http://schol.io/auth/twitter/callback',
     ],
 
     'facebook' => [
         'client_id' => '1167687200016783',
         'client_secret' => '7eea088f3c2833b8aa59024c8c45f88b',
-        'redirect' => 'http://scholio.dev/auth/facebook/callback',
+        'redirect' => 'http://schol.io/auth/facebook/callback',
     ],
 
     'google' => [
