@@ -50,7 +50,7 @@ return [
     'google' => [
         'client_id' => '562262324188-vc8r69hl57rsb9ht9ikqoi44o1vjqh8b.apps.googleusercontent.com',
         'client_secret' => 'n06FECanaUPMgfP6nT30rinP',
-        'redirect' => 'http://scholio.dev/auth/google/callback',
+        'redirect' => 'http://schol.io/auth/google/callback',
     ],
 
 ];
