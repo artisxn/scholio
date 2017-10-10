@@ -15,7 +15,7 @@
         <div class="input-group pull-left input-search">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
             <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
-                   v-model="searchStr">
+                   v-model="searchStr" v-on:keyup="fetch">
         </div>
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
@@ -48,16 +48,16 @@
                 <!-- <div class='wave'></div> -->
                 <div class="sc-bottom">
                     <div class="phone">
-                        <a :href="'tel:'+student.phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{student.phone}}</span></a>
+                        <a :href="'tel:'+student.cv.student_phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.cv.student_phone }}</span></a>
                     </div>
                     <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
-                            <input v-model="stdStatus[student.id]" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected" checked> 
+                            <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected"> 
                         
                         <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}
                         </div>
                         </label>
                         <br>
-                            <input v-model="stdStatus[student.id]" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni" checked>
+                            <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
                          
                         <label :for="'stt' + student.id">
                             <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
@@ -103,9 +103,9 @@
                             <img class="img-circle" width="35" v-bind:src=student.info.avatar alt=""/>
                         </a>
                     </td>
-                    <td style="text-transform: capitalize">{{student.name}}</td>
-                    <td>{{student.phone}}</td>
-                    <td>{{student.email}}</td>
+                    <td style="text-transform: capitalize">{{ student.name }}</td>
+                    <td>{{ student.cv.student_phone }}</td>
+                    <td>{{ student.email }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -311,7 +311,6 @@
                 sortType:'name',
                 status:'connected',
                 stStatus:'',
-                stdStatus: [],
                 dataSet: false,
                 allumniStudents: 0,
                 connectedStudents: 0
@@ -327,33 +326,36 @@
             },
 
             filteredStudents: function () {
+                // let sc = this.searchStr
+                // this.fetch(1)
+
                 return this.items;
-                var filtered_array = [];
-                var st=this.items
-                for(var i in st){
-                    st[i].phone=st[i].cv.student_phone;
-                        filtered_array.push(st[i])
-                }
+                // var filtered_array = [];
+                // var st=this.items
+                // for(var i in st){
+                //     st[i].phone=st[i].cv.student_phone;
+                //         filtered_array.push(st[i])
+                // }
 
-                var searchString = this.searchStr;
-                this.changeView() // -----------------------\Alert DO NOT DELETE
-                this.changeView() // -----------------------/ Καγκουρια για να δουλευει σωστα το rendering
-                if(!searchString){
-                    return filtered_array;
-                }
+                // var searchString = this.searchStr;
+                // this.changeView() // -----------------------\Alert DO NOT DELETE
+                // this.changeView() // -----------------------/ Καγκουρια για να δουλευει σωστα το rendering
+                // if(!searchString){
+                //     return filtered_array;
+                // }
 
-                searchString = searchString.trim().toLowerCase();
-                filtered_array = filtered_array.filter(function(item){
-                        if( (item.name.indexOf(searchString) !== -1) ||
-                                (item.nameL.toLowerCase().indexOf(searchString) !== -1) ||
-                                (item.nameENG.toLowerCase().indexOf(searchString) !== -1) ||
-                                (item.phone.indexOf(searchString) !== -1) ||
-                                (item.email.toLowerCase().indexOf(searchString) !== -1)
+                // searchString = searchString.trim().toLowerCase();
+                // filtered_array = filtered_array.filter(function(item){
+                //         if( (item.name.indexOf(searchString) !== -1) ||
+                //                 (item.nameL.toLowerCase().indexOf(searchString) !== -1) ||
+                //                 (item.nameENG.toLowerCase().indexOf(searchString) !== -1) ||
+                //                 (item.phone.indexOf(searchString) !== -1) ||
+                //                 (item.email.toLowerCase().indexOf(searchString) !== -1)
 
-                        ){ return item;   }
-                })
+                //         ){ return item;   }
+                // })
 
-                return filtered_array;
+                // return filtered_array;
             },
 
 
@@ -377,15 +379,18 @@
             },
             nameChangeSort: function(){
                 this.sortType = 'name';
-                this.changeSortType(this.sortType)
+                this.sortReverse=!this.sortReverse;
+                this.fetch()
             },
             phoneChangeSort: function(){
                 this.sortType = 'phone';
-                this.changeSortType(this.sortType)
+                this.sortReverse=!this.sortReverse;
+                this.fetch()
             },
             emailChangeSort: function(){
                 this.sortType = 'email';
-                this.changeSortType(this.sortType)
+                this.sortReverse=!this.sortReverse;
+                this.fetch()
             },
 
             changeSortType: function(){
@@ -414,7 +419,14 @@
                         let query = location.search.match(/page=(\d+)/);
                         page = query ? query[1] : 1;
                     }
-                    return `/api/connected/students/${this.sortType}/${this.status}?page=${page}`;
+
+                    let search = this.searchStr
+
+                    if(search == ""){
+                        search = "%20"
+                    }
+
+                    return `/api/connected/students/search/${this.sortType}/${this.sortReverse}/${this.status}/${search}?page=${page}`;
                 }, 
 
                 fetch(page) {
@@ -430,70 +442,6 @@
                     window.scrollTo(0, 0);
                 },
 
-            getAllStudents: function(){
-                axios.get('/api/connected/students')
-                    .then(response => {
-                        console.log(response.data)
-                        this.dataSet = response.data
-                        this.students = response.data                        
-                        var st1= this.students;
-                        st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
-                        for (var i in st1){
-                                st1[i].name=st1[i].name.toLowerCase()
-                                this.stdStatus[st1[i].id] = st1[i].pivot.status
-                        }
-                        console.log(this.stdStatus)
-                        var temp = JSON.stringify(st1)
-                                .replace(/ά/g,"α")
-                                .replace(/έ/g,"ε")
-                                .replace(/ή/g,"η")
-                                .replace(/ί/g,"ι")
-                                .replace(/ό/g,"ο")
-                                .replace(/ύ/g,"υ")
-                        var st2= JSON.parse(temp);
-
-                        var temp2 = JSON.stringify(st1)
-                                .replace(/ά/g,"a")
-                                .replace(/α/g,"a")
-                                .replace(/έ/g,"e")
-                                .replace(/ε/g,"e")
-                                .replace(/ή/g,"h")
-                                .replace(/η/g,"h")
-                                .replace(/ί/g,"i")
-                                .replace(/ι/g,"i")
-                                .replace(/ό/g,"o")
-                                .replace(/ο/g,"o")
-                                .replace(/υ/g,"y")
-                                .replace(/ύ/g,"y")
-                                .replace(/ω/g,"v")
-                                .replace(/ώ/g,"v")
-                                .replace(/β/g,"b")
-                                .replace(/γ/g,"g")
-                                .replace(/δ/g,"d")
-                                .replace(/ζ/g,"z")
-                                .replace(/θ/g,"u")
-                                .replace(/κ/g,"k")
-                                .replace(/λ/g,"l")
-                                .replace(/μ/g,"m")
-                                .replace(/ν/g,"n")
-                                .replace(/ξ/g,"j")
-                                .replace(/π/g,"p")
-                                .replace(/ρ/g,"r")
-                                .replace(/σ/g,"s")
-                                .replace(/ς/g,"s")
-                                .replace(/τ/g,"t")
-                                .replace(/φ/g,"f")
-                                .replace(/χ/g,"x")
-                                .replace(/ψ/g,"c")
-                        var st3= JSON.parse(temp2);
-
-                        for (var i in st1){
-                            st1[i].nameL=st2[i].name
-                            st1[i].nameENG=st3[i].name
-                        }
-                        this.students=st1
-                    });
-            },
             changeView: function () {
                 this.fetch(1);
                 this.selection=!this.selection;
@@ -506,8 +454,8 @@
 
         watch: {
             dataSet() {
-                this.allumniStudents = this.dataSet.data[0].allumniStudents;
-                this.connectedStudents = this.dataSet.data[0].connectedStudents;
+                this.allumniStudents = this.dataSet.allumniStudents || 0;
+                this.connectedStudents = this.dataSet.connectedStudents || 0;
             }
         },
 

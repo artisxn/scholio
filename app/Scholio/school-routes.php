@@ -79,3 +79,7 @@ Route::group(['middleware' => 'is.school', 'prefix' => 'class'], function () {
         return view('panel.pages.classes.school.index', compact('lecture', 'badges'));
     });
 });
+
+Route::get('/reviews/view', function () {
+    return view('panel.pages.school.reviews.view');
+});

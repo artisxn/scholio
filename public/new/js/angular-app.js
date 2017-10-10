@@ -135,7 +135,7 @@
           $scope.getDatasets1 = function() {
               return [
               {
-                  source: algolia.sources.hits(scholarships, { hitsPerPage: 6 }),
+                  source: algolia.sources.hits(scholarships, { hitsPerPage: 3 }),
                   displayKey: function(suggestion){
                    return suggestion.school + ' - ' + suggestion.study;
                  },
@@ -149,7 +149,7 @@
                   }
               },
               {
-                  source: algolia.sources.hits(scholarships, { hitsPerPage: 7 }),
+                  source: algolia.sources.hits(scholarships, { hitsPerPage: 2 }),
                   displayKey: 'study',
                   templates: {
                     header: '<div class="aa-suggestions-category2">Σπουδές</div>',
@@ -165,7 +165,7 @@
           $scope.getDatasets2 = function() {
               return [
               {
-                  source: algolia.sources.hits(schools, { hitsPerPage: 6 }),
+                  source: algolia.sources.hits(schools, { hitsPerPage: 3 }),
                   displayKey: 'name',
                   templates: {
                       header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
@@ -176,7 +176,7 @@
                   }
               },
               {
-                  source: algolia.sources.hits(studies, { hitsPerPage: 6 }),
+                  source: algolia.sources.hits(studies, { hitsPerPage: 2 }),
                   displayKey: 'name',
                   templates: {
                     header: '<div class="aa-suggestions-category2">Σπουδές</div>',

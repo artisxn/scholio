@@ -28,7 +28,7 @@
          <span class="tooltiptext4">@lang('panel/schools/topbar.admissions')</span>
      </a>
 
-    <a href="/panel/dashboard"  class="top-img tool  {{ request()->path() == 'panel/dashboard' ? 'img-active' : ''}}">
+    <a href="/panel/school/reviews/view"  class="top-img tool  {{ request()->path() == 'panel/school/reviews/view' ? 'img-active' : ''}}">
         <img src="/panel/assets/images/steps/stars.png" alt="photos image" class="top-image">
         <span class="tooltiptext4">@lang('panel/schools/topbar.reviews')</span>
     </a>

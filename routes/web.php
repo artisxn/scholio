@@ -12,8 +12,61 @@ use App\Models\SchoolSetting;
 use App\Models\Tag;
 use App\Scholio\Scholio;
 use App\User;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
+
+Route::get('test/student', function () {
+    $school = App\Models\School::find(4);
+    $st = factory(App\Models\Student::class, 50)->create();
+
+    foreach ($st as $s) {
+        factory(App\Models\Cv::class)
+            ->create(['user_id' => $s->user->id]);
+        $school->students()->toggle($s->user);
+    }
+});
+
+Route::get('tttt/{order}/{asc}/{status}/', function ($order, $asc, $status) {
+    return redirect('/tttt/' . $order . '/' . $asc . '/' . $status . '/%20');
+});
+
+Route::get('tttt/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field = null) {
+    $user = auth()->user();
+    $school = $user->info;
+    $students = $school->$status;
+
+    $orderType = $asc == 'false' ? 'asc' : 'desc';
+
+    $students = $school->$status()->orderBy($order, $orderType)->get();
+
+    $students = $students->filter(function ($item) use ($field) {
+        $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
+        $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
+        $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
+        $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
+        $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
+        $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
+        $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+        if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
+            $item->info;
+            return $item->cv;
+        }
+    });
+
+    $items = $students;
+
+    $perPage = 6;
+
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count()]);
+    $data = $custom->merge($p);
+    return $data;
+});
 
 Route::get('/new/user/', function () {
     if (auth()->user()->role == 'student') {

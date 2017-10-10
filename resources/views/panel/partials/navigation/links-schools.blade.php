@@ -52,7 +52,7 @@
     <li class="has_sub">
         <a href="#" class=""><i class="ion-ios7-star-half"></i><span> @lang('panel/schools/navigation.reviews.title') </span></a>
         <ul class="list-unstyled">
-            <li><a href="">@lang('panel/schools/navigation.reviews.show')</a></li>
+            <li><a href="{{ url('panel/school/reviews/view') }}" class="{{ request()->path() == 'panel/school/reviews/view' ? 'active' : ''}}">@lang('panel/schools/navigation.reviews.show')</a></li>
         </ul>
     </li>
 

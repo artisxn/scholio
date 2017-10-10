@@ -261,7 +261,7 @@ class Scholio
             $alg->section = $scholarship->study->section[0]->name;
             // $alg->section_en = $scholarship;
             $alg->level = $scholarship->level->name;
-            // $alg->level_en = ;
+            $alg->level_en = $scholarship->levelEN->name;
             $alg->criteria = $scholarship->criteria->name;
             $alg->criteria_en = $scholarship->criteriaEN->name;
             $alg->school = $scholarship->school->name();
