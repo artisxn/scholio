@@ -1,14 +1,13 @@
 <template>
     <span>
-        <span class="starraty" :id="this.data+ '-' + this.id">
-            {{ this.stars }}
+        <span class="star-review" :id="this.data+ '-' + this.id">
+            <!--{{ this.stars }}-->
         </span>
     </span>
 </template>
 
 <style>
-    .starraty{
-        color: red;
+    .star-review{
     }
 </style>
 
@@ -18,10 +17,10 @@
 
         mounted(){
             $('#' + this.data + '-'+this.id).raty({
-                score    : this.stars,
-                halfShow : true,
-                half     : true,
-                readOnly: true,
+                score    :this.stars,
+                halfShow :true,
+                half     :true,
+                readOnly :true,
                 starHalf : 'fa fa-fw fa-star-half'
             });
         }

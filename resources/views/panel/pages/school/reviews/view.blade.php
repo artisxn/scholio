@@ -1,10 +1,7 @@
 @extends('panel.layouts.main')
 
 @section('styles')
-    .starraty{
-        color: red;
-        margin: 10000px;
-    }
+
 @endsection
 
 @section('content')
