@@ -116,12 +116,6 @@
                     })
                     .then(response => {
                         window.location = '/panel/users/review/show'
-                        // if(response.data == 'OK'){
-                        //     window.location = '/panel/users/review/show'
-                        // }else{
-                        //     // ERROR HERE
-                        //     console.log('ERROR' + response)
-                        // }
                     });
             }
         },

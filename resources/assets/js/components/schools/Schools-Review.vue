@@ -7,7 +7,7 @@
                 <img src="/panel/assets/images/badge-review.png" alt="" class="badge-image">
                 <div class="review-title ">
                     <div class="review-title-header">Συνολική Βαθμολογία</div>
-                    <div class="review-title-stars-header"> <stars :id="123" :stars="4.2" data="average"></stars></div>
+                    <div class="review-title-stars-header"> <stars :id="123" :stars="4.2" data="average" :read="true"></stars></div>
                     <div class="review-title-avg-header">4.2</div>
                 </div>
             </div>
@@ -44,11 +44,11 @@
 
                     </div>
 
-                    <div class="review-name">Δημήτριος Ι., Μαθητής, 12/07/2017</div>
+                    <div class="review-name">{{ review.user.name }}, {{ review.user.role }}, {{ review.created_at }}</div>
 
                     <div v-for="category in review.category" class="review-category">
                         <i :class="category.category.icon" class="category-icon"></i> {{ category.category.name }}
-                        <stars :id="category.id" :stars="category.stars" data="category" class="pull-right"></stars>
+                        <stars :id="category.id" :stars="category.stars" data="category" :read="true" class="pull-right"></stars>
                     </div>
 
                     <div class="review-full-text">
