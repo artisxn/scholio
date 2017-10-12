@@ -91,7 +91,8 @@ $factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
         // 'dob' => Carbon::now()->subYears(20),
         'gender' => 'male',
         // 'avatar' => 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png',
-        'avatar' => $faker->imageUrl(128, 128, 'people'),
+        // 'avatar' => $faker->imageUrl(128, 128, 'people'),
+        'avatar' => asset('/new/img/user.png'),
         // 'address' => $faker->streetAddress,
         // 'city' => $faker->prefecture,
     ];

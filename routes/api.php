@@ -137,21 +137,22 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
     $orderType = $asc == 'false' ? 'asc' : 'desc';
 
-    $students = $school->$status()->orderBy($order, $orderType)->get();
+    $students = $school->$status()->orderBy($order, $orderType)->with('cv', 'student')->get();
 
-    $students = $students->filter(function ($item) use ($field) {
-        $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
-        $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
-        $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
-        $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
-        $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
-        $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
-        $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
-        if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
-            $item->info;
-            return $item->cv;
-        }
-    });
+    if ($field != '%20') {
+        $students = $students->filter(function ($item) use ($field) {
+            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
+            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
+            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
+            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
+            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
+            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
+            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
+                return $item;
+            }
+        });
+    }
 
     $items = $students;
 

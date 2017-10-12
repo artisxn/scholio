@@ -19,14 +19,17 @@ use Illuminate\Pagination\Paginator;
 Scholio::soonRoutes();
 
 Route::get('test/student', function () {
-    $school = App\Models\School::find(4);
-    $st = factory(App\Models\Student::class, 50)->create();
+    for ($i = 1; $i <= 8; $i++) {
+        $school = App\Models\School::find($i);
+        $st = factory(App\Models\Student::class, ($i * 2) * 100)->create();
 
-    foreach ($st as $s) {
-        factory(App\Models\Cv::class)
-            ->create(['user_id' => $s->user->id]);
-        $school->students()->toggle($s->user);
+        foreach ($st as $s) {
+            factory(App\Models\Cv::class)
+                ->create(['user_id' => $s->user->id]);
+            $school->students()->toggle($s->user);
+        }
     }
+
 });
 
 Route::get('tttt/{order}/{asc}/{status}/', function ($order, $asc, $status) {
@@ -40,21 +43,22 @@ Route::get('tttt/{order}/{asc}/{status}/{field}', function ($order, $asc, $statu
 
     $orderType = $asc == 'false' ? 'asc' : 'desc';
 
-    $students = $school->$status()->orderBy($order, $orderType)->get();
+    $students = $school->$status()->orderBy($order, $orderType)->with('cv', 'student')->get();
 
-    $students = $students->filter(function ($item) use ($field) {
-        $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
-        $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
-        $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
-        $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
-        $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
-        $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
-        $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
-        if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
-            $item->info;
-            return $item->cv;
-        }
-    });
+    if ($field != '%20') {
+        $students = $students->filter(function ($item) use ($field) {
+            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
+            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
+            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
+            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
+            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
+            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
+            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
+                return $item;
+            }
+        });
+    }
 
     $items = $students;
 

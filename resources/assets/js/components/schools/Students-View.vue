@@ -15,7 +15,7 @@
         <div class="input-group pull-left input-search">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
             <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
-                   v-model="searchStr" v-on:keyup="fetch">
+                   v-model="searchStr" v-on:keyup="fetch(1)">
         </div>
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
@@ -32,10 +32,10 @@
                             <a class="" href="#">
                                 <div class="frame-cont">
                                     <img src="/new/img/photoFrame.png" class="frame" alt="">
-                                    <img :src=student.info.avatar class="avatar2" alt="">
+                                    <img :src=student.student.avatar class="avatar2" alt="">
                                     <img src="/new/img/clip2.png" class="clip" alt="">
                                 </div>
-                                <div class="img-cont"><img class="img-circle sc-img" width="70" :src=student.info.avatar alt=""/></div>
+                                <div class="img-cont"><img class="img-circle sc-img" width="70" :src=student.student.avatar alt=""/></div>
                                 <div class="name"> {{student.name}} </div>
                             </a>
                             <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
@@ -100,7 +100,7 @@
                 <tr v-for="student in filteredStudents">
                     <td>
                         <a class="" href="#">
-                            <img class="img-circle" width="35" v-bind:src=student.info.avatar alt=""/>
+                            <img class="img-circle" width="35" v-bind:src=student.student.avatar alt=""/>
                         </a>
                     </td>
                     <td style="text-transform: capitalize">{{ student.name }}</td>
@@ -330,32 +330,6 @@
                 // this.fetch(1)
 
                 return this.items;
-                // var filtered_array = [];
-                // var st=this.items
-                // for(var i in st){
-                //     st[i].phone=st[i].cv.student_phone;
-                //         filtered_array.push(st[i])
-                // }
-
-                // var searchString = this.searchStr;
-                // this.changeView() // -----------------------\Alert DO NOT DELETE
-                // this.changeView() // -----------------------/ Καγκουρια για να δουλευει σωστα το rendering
-                // if(!searchString){
-                //     return filtered_array;
-                // }
-
-                // searchString = searchString.trim().toLowerCase();
-                // filtered_array = filtered_array.filter(function(item){
-                //         if( (item.name.indexOf(searchString) !== -1) ||
-                //                 (item.nameL.toLowerCase().indexOf(searchString) !== -1) ||
-                //                 (item.nameENG.toLowerCase().indexOf(searchString) !== -1) ||
-                //                 (item.phone.indexOf(searchString) !== -1) ||
-                //                 (item.email.toLowerCase().indexOf(searchString) !== -1)
-
-                //         ){ return item;   }
-                // })
-
-                // return filtered_array;
             },
 
 
@@ -430,6 +404,7 @@
                 }, 
 
                 fetch(page) {
+                    console.log(this.url(page))
                     axios.get(this.url(page)).then(this.refresh);
                 },
 
@@ -460,8 +435,7 @@
         },
 
         mounted() {
-//            console.log('Students-Table component mounted!')
-            // this.getAllStudents()
+
         }
     }
 
