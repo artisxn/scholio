@@ -2,6 +2,7 @@
 
 @section('styles')
 
+
 @endsection
 
 @section('content')
@@ -10,7 +11,9 @@
 
 @section('scriptsBefore')
     <script src="{{ asset('/new/js/jquery.raty-fa.js') }}"></script>
+    <script src="{{ asset('/new/js/jquery.arctext.js') }}"></script>
 @endsection
 
 @section('scripts')
+
 @endsection

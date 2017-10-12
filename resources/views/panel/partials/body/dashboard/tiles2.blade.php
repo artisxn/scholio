@@ -72,7 +72,7 @@
     {{--<div class="clearfix"></div>--}}
 
     <div class="col-lg-3 col-md-4 col-sm-6">
-        <a href="{{ url('/panel/dashboard') }}">
+        <a href="{{ url('panel/school/reviews/view') }}">
             <div class="panel-box box2">
                 <img src="/panel/assets/images/steps/stars.png" alt="stars image" class="panel-image">
                 <span class="panel-counter">{{ count($data['pageviews']) }}</span>
