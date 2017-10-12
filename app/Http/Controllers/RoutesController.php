@@ -150,7 +150,7 @@ class RoutesController extends Controller
             return redirect('/dashboard');
         }
 
-        return back();
+        return redirect('/dashboard');
     }
 
     public function mySchools()

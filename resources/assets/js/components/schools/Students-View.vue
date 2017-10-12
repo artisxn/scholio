@@ -32,7 +32,7 @@
                             <a class="" href="#">
                                 <div class="frame-cont">
                                     <img src="/new/img/photoFrame.png" class="frame" alt="">
-                                    <img :src=student.student.avatar class="avatar2" alt="">
+                                    <img :src="student.student.avatar" class="avatar2" alt="">
                                     <img src="/new/img/clip2.png" class="clip" alt="">
                                 </div>
                                 <div class="img-cont"><img class="img-circle sc-img" width="70" :src=student.student.avatar alt=""/></div>
@@ -342,7 +342,6 @@
                 else status = 'allumni';
                 axios.post('/api/school/changeStudentStatus/' + id + '/' + status)
                     .then(response => {
-                        console.log(response.data);
                         if(response.data == 'ok'){
                             // location.reload(); // ---------------------------------->>>>>>
                             this.fetch()
@@ -404,7 +403,6 @@
                 }, 
 
                 fetch(page) {
-                    console.log(this.url(page))
                     axios.get(this.url(page)).then(this.refresh);
                 },
 
@@ -413,7 +411,6 @@
                     this.items = data.data;
                     this.allumniCount = this.items.allumniStudents
                     this.connectedCount = this.items.connectedStudents
-                    console.log(this.items)
                     window.scrollTo(0, 0);
                 },
 
