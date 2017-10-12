@@ -1,6 +1,6 @@
 <template>
     <span>
-        <span class="star-review" :id="this.data+ '-' + this.id">
+        <span class="star-review" :id="this.data + '-' + this.id">
         </span>
     </span>
 </template>
@@ -21,7 +21,7 @@
         },
 
         mounted(){
-            $('#' + this.data + '-'+this.id).raty({
+            $('#' + this.data + '-' + this.id).raty({
                 score    :this.stars,
                 halfShow :true,
                 half     :true,

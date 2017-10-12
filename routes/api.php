@@ -20,7 +20,10 @@ Scholio::bot();
 
 Route::get('/school/getReviews', function () {
     $school = auth()->user()->info;
-    return $school->reviews->load('user', 'category.category');
+    $t['reviews'] = $school->reviews()->with('user', 'category.category')->get();
+    $t['stars'] = $school->averageStars();
+    $t['avgReviews'] = $school->averageReviews();
+    return $t;
 })->middleware('auth:api');
 
 Route::get('/scholarship/getFullAdmissions', function () {

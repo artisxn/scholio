@@ -1,5 +1,5 @@
 <template>
-    <div class="row" >
+    <div class="row">
 
         <div class="review-header-container">
 
@@ -7,8 +7,8 @@
                 <img src="/panel/assets/images/badge-review.png" alt="" class="badge-image">
                 <div class="review-title ">
                     <div class="review-title-header">Συνολική Βαθμολογία</div>
-                    <div class="review-title-stars-header"> <stars :id="123" :stars="4.2" data="average" :read="true"></stars></div>
-                    <div class="review-title-avg-header">4.2</div>
+                    <div class="review-title-stars-header" v-for="x in 1"> <stars id="1234" data="total" :stars="stars" :read="true"></stars></div>
+                    <div class="review-title-avg-header">{{ parseFloat(totalStars) }}</div>
                 </div>
             </div>
 
@@ -17,11 +17,9 @@
 
                 <div class="category-container">
 
-                    <div class="category-master"><i class="fa fa-book mar-right"></i>Πρόγραμμα Σπουδών  <span class="pull-right">4.2</span></div>
-                    <div class="category-master"><i class="fa fa-cogs mar-right"></i>Οργάνωση  <span class="pull-right">4.3</span></div>
-                    <div class="category-master"><i class="fa fa-user mar-right"></i>Ανθρώπινο Δυναμικό  <span class="pull-right">3.8</span></div>
-                    <div class="category-master"><i class="fa fa-building mar-right"></i>Εγκαταστάσεις  <span class="pull-right">4.1</span></div>
-                    <div class="category-master"><i class="fa fa-link mar-right"></i>Διασ. με αγορά εργ. <span class="pull-right">3.9</span></div>
+                    <div class="category-master" v-for="category in totalReviews">
+                        <i :class='category.icon + " mar-right"'></i>{{ category.name }} <span class="pull-right">{{category.stars}}</span>
+                    </div>
                 </div>
 
 
@@ -29,9 +27,17 @@
 
         </div>
 
+            
 
 
         <div class="reviews"></div>
+
+            <div>
+                Πληθος αξιολογισεων----------------------------_>:
+                {{  reviews.length }}
+            </div>
+            <div>πληθος μαθητων ----> {{ studentsLength }}</div>
+            <div>πληθος γονεων ----> {{ parentsLength }}</div>
 
 
         <div v-for="review in reviews" class="review-container ">
@@ -132,7 +138,12 @@
 
         data: function() {
             return{
-                reviews: {}
+                reviews: {},
+                totalReviews:{},
+                totalStars: 0,
+                studentsLength: 0,
+                parentsLength: 0,
+                stars: {}
             }
         },
 
@@ -140,9 +151,29 @@
             getReviews: function(){
                 axios.get('/api/school/getReviews')
                     .then(response => {
-                        this.reviews = response.data
-                        console.log(this.reviews)
+                        console.log(response.data)
+                        this.reviews = response.data.reviews
+                        this.totalReviews = response.data.avgReviews
+                        this.totalStars = response.data.stars
                     });
+            }
+        },
+
+        watch:{
+            reviews(){
+                let students = 0
+                let parents = 0
+                this.reviews.forEach(function(item){
+                    if(item.user.role == 'student') students++
+                    if(item.user.role == 'parent') parents++  
+                })
+
+                this.studentsLength = students
+                this.parentsLength = parents
+            },
+
+            totalStars(){
+                this.stars = parseFloat(this.totalStars)
             }
         },
 

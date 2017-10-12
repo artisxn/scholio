@@ -18,6 +18,14 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
+Route::get('/sc', function () {
+    $school = auth()->user()->info;
+    $t['categories'] = $school->reviews()->with('user', 'category.category')->get();
+    $t['stars'] = $school->averageStars();
+    $t['avgReviews'] = $school->averageReviews();
+    return $t;
+});
+
 Route::get('test/student', function () {
     for ($i = 1; $i <= 8; $i++) {
         $school = App\Models\School::find($i);
