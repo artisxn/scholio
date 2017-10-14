@@ -2,11 +2,11 @@
     <div class="row">
 
         <form class="sc-radio pull-left">
-            <input id="r1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active') }}
+            <input id="r1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active-many') }}
                 <span class="pull-right" style="">{{ connectedStudents }}</span>
                 </div>
             </label> <br>
-            <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch"> <label for="r2"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni') }}
+            <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch"> <label for="r2"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni-many') }}
                 <span class="pull-right" style="">{{ allumniStudents }}</span>
             </div></label><br>
         </form>
@@ -84,10 +84,12 @@
                         <span v-if="sortType == 'name' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                         <span v-if="sortType == 'name' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
                     </th>
-                    <th> <a href="#" v-on:click="phoneChangeSort">
+                    <th>
+                        <!--<a href="#" v-on:click="phoneChangeSort">-->
                         {{ lang('resource.students.phone') }}
-                        <span v-if="sortType == 'phone' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                        <span v-if="sortType == 'phone' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
+                        <!--<span v-if="sortType == 'phone' && !sortReverse" class="fa fa-sort-amount-asc"></span>-->
+                        <!--<span v-if="sortType == 'phone' && sortReverse" class="fa fa-sort-amount-desc"></span>-->
+                        <!--</a>-->
                     </th>
                     <th> <a href="#" v-on:click="emailChangeSort">
                         e-mail
@@ -122,7 +124,7 @@
     .margin-right-10 { margin-right: 10px; }
     .sc-radio{margin: 10px 15px; }
 
-    .btn-info{background: #00bcd4; border-color: #00bcd4; }
+    .btn-info,.btn-info:focus{background: #00bcd4; border-color: #00bcd4; }
     .btn-info:hover{background: #00a6be; border-color: #00a6be; }
 
     .btn-view{margin: 11px 10px 10px 0; height: 38px;}

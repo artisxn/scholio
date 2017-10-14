@@ -159,7 +159,7 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
     $items = $students;
 
-    $perPage = 6;
+    $perPage = 12;
 
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);

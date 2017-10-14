@@ -1,11 +1,11 @@
 <template>
     <div class="pagination-container">
         <ul class="pagination" v-if="shouldPaginate">
+
             <li v-show="prevUrl">
                 <a href="#" aria-label="Previous" rel="prev" @click.prevent="page--" class="page-links">
                 <span aria-hidden="true">&laquo;
                     <!--{{ lang('panel/schools/dashboard.previous') }}-->
-                    
                 </span>
                 </a>
             </li>
@@ -41,6 +41,7 @@
                 </span>
                 </a>
             </li>
+
         </ul>
     </div>
 
@@ -50,17 +51,11 @@
     .pagination-container{margin: auto; text-align: center}
     /*.pagination>li>a{background: #f8f8f8; border-top-color: #f8f8f8; border-bottom-color: #f8f8f8}*/
     /*.pagination>li>a:hover{background: #00bcd4}*/
-    /*.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
-    .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {background: #fff; border: none; margin-top: 1px;}
-    .pagination>li>span>a:hover{
-        color: #FD6A33;
-    }*/
-    .page-links{
-        background-color: transparent !important;
-    }
-    .page-links:active{
-        background-color: #fff;
-    }
+    /*!*.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,*/
+    .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {background: #e7e7e7!important; color: #00c9e1; border-color: #008fa7; border-radius:4px; font-weight: 700 }
+    .pagination>li>span>a:hover,.pagination>li>a>span:hover{  color: #FD6A33; font-weight: 700 }
+    .page-links{  background-color: transparent !important;  }
+    /*.page-links:active{  background-color: #fff;  }*/
 </style>
 
 <script>

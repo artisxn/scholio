@@ -3,8 +3,8 @@
 
         <div class="review-header-container">
 
-            <div class=" ">
-                <img src="/panel/assets/images/badge-review.png" alt="" class="badge-image">
+            <div class="z-up ">
+                <img src="/panel/assets/images/badge-review-shadow.png" alt="" class="badge-image">
                 <div class="review-title ">
                     <div class="review-title-header">Συνολική Βαθμολογία</div>
                     <div class="review-title-stars-header" v-for="x in 1"> <stars id="1234" data="total" :stars="stars" :read="true"></stars></div>
@@ -12,14 +12,34 @@
                 </div>
             </div>
 
-            <div class="badge-left">
-                <img src="/panel/assets/images/badge-review-Vert2.png" alt="" class="badge-image-left">
+            <div class="stats-container">
+                <!--<img src="/panel/assets/images/badge-review-Vert2.png" alt="" class="badge-image-left">-->
 
-                <div class="category-container">
-
+                <div class="category-container-left">
                     <div class="category-master" v-for="category in totalReviews">
-                        <i :class='category.icon + " mar-right"'></i>{{ category.name }} <span class="pull-right">{{category.stars}}</span>
+                        <i :class='category.icon + " category-icon"'></i>{{ category.name }} <span class="pull-right">{{category.stars}}</span>
                     </div>
+                </div>
+
+                <div class="category-container-right">
+                    <div class="right-title text-center">{{reviews.length}} Αξιολογήσεις</div>
+
+                    <div class="right-subtitle"><i class="fa fa-graduation-cap category-icon"></i>Μαθητές:  <span class="pull-right">{{ studentsLength }} </span> </div>
+
+                    <div class="students-details">
+                        <div style="padding: 2px 0 5px 0 " >
+                            Ενεργοί: <span class="pull-right">3 </span>
+                        </div>
+                        <div class="">
+                            Απόφοιτοι: <span class="pull-right">2 </span>
+                        </div>
+                    </div>
+
+
+                    <hr>
+
+
+                    <div class="right-subtitle"><i class="fa fa-user category-icon mar-right"></i>Γονείς:  <span class="pull-right">{{ parentsLength }} </span></div>
                 </div>
 
 
@@ -32,28 +52,59 @@
 
         <div class="reviews"></div>
 
-            <div>
-                Πληθος αξιολογισεων----------------------------_>:
-                {{  reviews.length }}
-            </div>
-            <div>πληθος μαθητων ----> {{ studentsLength }}</div>
-            <div>πληθος γονεων ----> {{ parentsLength }}</div>
 
 
-        <div v-for="review in reviews" class="review-container ">
 
-                <div class="review-card">
+
+        <!--/* ========================================================================== */-->
+        <!--/* ========================  bootstrap  based grid   ======================== */-->
+        <!--/* ========================================================================== */-->
+        <!--<div class="">-->
+            <!--<div v-for="review in reviews" class="review-container">-->
+
+                <!--<div class="review-card">-->
+                    <!--<div class="review-title">-->
+                        <!--<div class="review-title-text">Μέση Βαθμολογία</div>-->
+                        <!--<div class="review-title-stars"><stars :id="review.id" :stars="review.average" data="average"></stars></div>-->
+                        <!--<div class="review-title-avg">{{ review.average }}</div>-->
+
+                    <!--</div>-->
+
+                    <!--<div class="review-name">{{ review.user.name }}, {{ review.user.role }}, {{ review.created_at }}</div>-->
+
+                    <!--<div v-for="category in review.category" class="review-category">-->
+                        <!--<i :class="category.category.icon" class="category-icon"></i> {{ category.category.name }}-->
+                        <!--<stars :id="category.id" :stars="category.stars" data="category" :read="true" class="pull-right"></stars>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-full-text">-->
+                        <!--{{ review.text }}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--/* ========================================================================== */-->
+        <!--/* ==================  Column based grid like masonry   ===================== */-->
+        <!--/* ========================================================================== */-->
+        <div class="masonry">
+            <div v-for="review in reviews" class="item">
+
+                <div class="">
                     <div class="review-title">
                         <div class="review-title-text">Μέση Βαθμολογία</div>
-                        <div class="review-title-stars"><stars :id="review.id" :stars="review.average" data="average"></stars></div>
+                        <div class="review-title-stars"><stars :id="review.id" :stars="review.average" data="average" read="false"></stars></div>
                         <div class="review-title-avg">{{ review.average }}</div>
-
                     </div>
 
                     <div class="review-name">{{ review.user.name }}, {{ review.user.role }}, {{ review.created_at }}</div>
 
                     <div v-for="category in review.category" class="review-category">
-                        <i :class="category.category.icon" class="category-icon"></i> {{ category.category.name }}
+                        <span class="left">
+                            <i :class="category.category.icon" class="category-icon"></i>
+                            {{ category.category.name }}
+                        </span>
                         <stars :id="category.id" :stars="category.stars" data="category" :read="true" class="pull-right"></stars>
                     </div>
 
@@ -61,29 +112,40 @@
                         {{ review.text }}
                     </div>
                 </div>
-
+            </div>
         </div>
+
+
     </div>
 </template>
 
 <style>
-    .badge-left{position: relative; width: 430px; margin-top: 80px;}
-    .badge-image-left{width: 280px; margin-top: -100px;}
-    .category-container{position: absolute; top: -30px; left: 40px; width: 200px}
-    .category-master{color: #fff; font-family:Roboto; font-weight: 300; margin-bottom: 20px;}
-    .mar-right{margin-right: 5px}
+    /*.badge-left{position: relative; width: 430px; margin-top: 80px;}*/
+    /*.badge-image-left{width: 280px; margin-top: -100px;}*/
+    .category-container-left,.category-container-right{ width: 250px}
+    .category-container-left{float: left;}
+    .category-container-right{float: right;}
+    .category-master{color: #888;font-weight: 300; margin-bottom: 15px;}
 
-    .badge-image{ display: block; margin: 5px auto ; height: 280px;}
-    .review-header-container{}
+
+    .badge-image{ display: block; margin: 0 auto ; height: 360px; }
+    .review-header-container,.reviews{font-family:Roboto;}
+    .review-title{color: #fff}
     /*.review-card-header{background-color: #fff; border-radius: 7px; border: 1px solid #FD6A33;  padding: 10px; margin-top:  20px; margin-bottom:  40px;}*/
-    .review-title-header{font-size: 160%; font-weight: 300; color: #fff; margin-top: -165px; }
-    .review-title-stars-header{font-size: 120%; color: #fff  }
-    .review-title-avg-header{font-size: 140%; color: #fff;}
+    .review-title-header{font-size: 160%; font-weight: 300; margin-top: -205px; }
+    .review-title-stars-header{font-size: 120%;}
+    .review-title-avg-header{font-size: 140%;}
+
+    .stats-container{ border: 1.3px solid #007991; border-radius: 7px; background-color: #fafafa; padding: 20px 15px 0 15px; margin-top: -40px; height: 210px; }
+    .stats-container{margin-left: auto; margin-right: auto; width: 100%; box-shadow: 0 0 15px #aaa;}
+    .z-up{position: relative; z-index: 3;}
+    .students-details{width: 120px; font-weight: 300; color: #aaa; font-size: 90%; padding: 0 0 0 35px; }
+    .right-title{color: #888; font-size: 110%; font-weight: 300; margin-bottom: 10px;}
+    .right-subtitle{color: #777; font-weight: 300;}
 
 
-
-    .reviews{margin-top: 100px; clear: both;}
-    .review-container{margin-top: 2px; margin-bottom: 2px; padding: 5px 5px; font-family:Roboto;}
+    .reviews{margin-top: 70px; clear: both;}
+    .review-container{margin-top: 2px; margin-bottom: 2px; padding: 5px 5px; }
     .review-card{background-color: #f5f5f5; border-radius: 7px; border: 1px solid #999;  padding: 10px;}
     .review-name{margin: 30px 0 15px 0;}
     .review-title{margin: 3px 0 15px 0; text-align: center}
@@ -92,36 +154,140 @@
     .review-title-avg{font-size: 130%; color: #007991;}
 
     .review-full-text{margin-top: 40px;}
-
-    .category-icon{margin-right: 5px; color: #008da5}
-
-
+    .category-icon{margin-right: 5px; color: #008da5; display: inline-block; width: 15px;}
+    /*.mar-right{margin-right: 12px}*/
     .review-category{margin: 5px auto;}
 
 
-    .review-container{float: left}
+    @media (max-width: 370px) {
+        .left{display: inline-block; width: 173px}
+    }
 
-    @media (min-width: 330px) {
+    @media (max-width: 560px) {
+        .stats-container{ width: 100%;  }
+    }
+
+    @media (max-width: 860px) {
+        .stats-container{ width: 80%;  }
+    }
+
+
+    @media (max-width: 1060px) {
+        .stats-container{ width: 70%; height: 550px; }
+        .category-container-left,.category-container-right{float: none;margin-left: auto; margin-right: auto; }
+        .category-container-left{ margin-top: 100px;}
+        .category-container-right{ margin-top: 60px;}
+    }
+
+
+
+    @media (min-width: 1061px) {
+        .stats-container{ width: 88%;}
+    }
+    @media (min-width: 1400px) {
+        .stats-container{ width: 75%;}
+    }
+
+    @media (min-width: 1580px) {
+        .stats-container{ width: 65%;}
+    }
+    @media (min-width: 1680px) {
+        .stats-container{ width: 60%;}
+    }
+
+    @media (min-width: 1800px) {
+        .stats-container{ width: 60%;}
+    }
+    @media (min-width: 2000px) {
+        .stats-container{ width: 50%;}
+
+    }
+
+
+    /* ========================================================================== */
+    /* ====================== bootstrap row based grid   ======================== */
+    /* ========================================================================== */
+
+    .review-container{float: left}
+    @media (min-width: 310px) {
         .review-container{width: 100%}
     }
-    @media (min-width: 810px) and (max-width: 1329px){
+    @media (min-width: 820px) and (max-width: 135n9px){
         .review-container{width: 50%}
-        .review-container:nth-child(2n) {clear: right;}
+        .review-container:nth-child(2n+1) {clear: left;}
     }
-    @media (min-width: 1330px) and (max-width: 1689px){
+    @media (min-width: 1360px) and (max-width: 1729px){
         .review-container{width: 33.3%}
-        .review-container:nth-child(3n) {clear: left;}
+        .review-container:nth-child(3n+1) {clear: left;}
     }
-    @media (min-width: 1690px) and (max-width: 2049px) {
+    @media (min-width: 1730px) and (max-width: 2094px) {
         .review-container{width: 25%}
-        .review-container:nth-child(7n) {clear: left;}
+        .review-container:nth-child(4n+1) {clear: left;}
     }
-    @media (min-width: 2050px) {
+    @media (min-width: 2095px) {
         .review-container{width: 20%}
-        /*.review-container:nth-child(5n) {clear: left;}*/
+        .review-container:nth-child(5n+1) {clear: left;}
     }
 
 
+    /* ========================================================================== */
+    /* ==================  Column based grid like masonry   ===================== */
+    /* ========================================================================== */
+
+
+    :root{
+        --columns:5;
+    }
+    .masonry { /* Masonry container */
+        -webkit-column-count: var(--columns);
+        -moz-column-count: var(--columns);
+        column-count: var(--columns);
+        column-gap: 1em;
+    }
+
+    .item { /* Masonry bricks or child elements */
+        background-color: #f5f5f5; border-radius: 7px; border: 1px solid #bbb;  padding: 10px;
+        box-shadow: 0 0 11px #bbb;
+        display: inline-block;
+        margin: 0 0 1em;
+        width: 100%;
+    }
+
+
+    @media(max-width: 2095px){
+        .masonry {
+            -webkit-column-count: calc( var(--columns) - 1);
+            -moz-column-count: calc( var(--columns) - 1);
+            column-count: calc( var(--columns) - 1);
+        }
+    }
+    @media(max-width:1730px){
+        .masonry {
+            -webkit-column-count: calc( var(--columns) - 2);
+            -moz-column-count: calc( var(--columns) - 2);
+            column-count: calc( var(--columns) - 2);
+        }
+    }
+     @media(max-width: 1360px){
+        .masonry {
+            -webkit-column-count: calc( var(--columns) - 3);
+            -moz-column-count: calc( var(--columns) - 3);
+            column-count: calc( var(--columns) - 3);
+        }
+    }
+
+    @media(max-width: 830px){
+        .masonry {
+            -webkit-column-count: calc( var(--columns) - 4);
+            -moz-column-count: calc( var(--columns) - 4);
+            column-count: calc( var(--columns) - 4);
+        }
+    }
+
+
+    /* ========================================================================== */
+    /* ========================================================================== */
+    /* ========================================================================== */
 
 
 </style>
