@@ -1,8 +1,7 @@
 @extends('panel.layouts.main')
 
 @section('styles')
-
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&subset=greek" rel="stylesheet">
 @endsection
 
 @section('content')

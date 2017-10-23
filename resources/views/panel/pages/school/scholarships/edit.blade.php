@@ -340,7 +340,7 @@
                 <div class="adm-sel-title"> <i class="fa fa-pencil margin-right-10"></i>Όροι και δικαίωμα συμμετοχής</div>
 
                 <div>
-                    {{ $scholarship->terms }}
+                    <?php echo $scholarship->terms; ?>
                 </div>
 
 
@@ -352,7 +352,7 @@
 
 
                 <div class="margin-top-30"></div>
-                
+
                     {{ csrf_field() }}
                   @if($scholarship->active)
                     <button class="sc-btn sc-dark-green"> <i class="fa fa-flag-checkered margin-right-10"></i>Λήξη Υποτροφίας</button>

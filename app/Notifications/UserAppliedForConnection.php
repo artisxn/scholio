@@ -57,6 +57,11 @@ class UserAppliedForConnection extends Notification
      */
     public function toArray($notifiable)
     {
+        // return [
+        //     'user' => $this->user->toArray(),
+        //     'scholarship' => $this->scholarship->id,
+        // ];
+        $this->user->avatar = $this->user->info->avatar;
         return $this->user->toArray();
     }
 }

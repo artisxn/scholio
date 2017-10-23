@@ -1,4 +1,3 @@
-
 {{--Styling on panel/layouts//main.blade.php--}}
     <a href="/panel/school/students"  class="top-img tool {{ request()->path() == 'panel/school/students' ? 'img-active' : ''}}">
         <img src="/new/img/student2.png" alt="student image" class="top-image">

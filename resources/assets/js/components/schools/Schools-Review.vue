@@ -1,14 +1,16 @@
 <template>
-    <div class="row">
+    <div class="row schoolReviews">
 
         <div class="review-header-container">
 
-            <div class="z-up ">
+            <div class="z-up">
                 <img src="/panel/assets/images/badge-review-shadow.png" alt="" class="badge-image">
                 <div class="review-title ">
                     <div class="review-title-header">Συνολική Βαθμολογία</div>
-                    <div class="review-title-stars-header" v-for="x in 1"> <stars id="1234" data="total" :stars="stars" :read="true"></stars></div>
-                    <div class="review-title-avg-header">{{ parseFloat(totalStars) }}</div>
+                    <div class="review-title-stars-header">
+                        <span class="star-review" id="total1"></span>
+                    </div>
+                    <div class="review-title-avg-header">{{ totalStars }}</div>
                 </div>
             </div>
 
@@ -59,30 +61,30 @@
         <!--/* ========================================================================== */-->
         <!--/* ========================  bootstrap  based grid   ======================== */-->
         <!--/* ========================================================================== */-->
-        <!--<div class="">-->
-            <!--<div v-for="review in reviews" class="review-container">-->
+        <!-- <div class="">
+            <div v-for="review in reviews" class="review-container">
 
-                <!--<div class="review-card">-->
-                    <!--<div class="review-title">-->
-                        <!--<div class="review-title-text">Μέση Βαθμολογία</div>-->
-                        <!--<div class="review-title-stars"><stars :id="review.id" :stars="review.average" data="average"></stars></div>-->
-                        <!--<div class="review-title-avg">{{ review.average }}</div>-->
+                <div class="review-card">
+                    <div class="review-title">
+                        <div class="review-title-text">Μέση Βαθμολογία</div>
+                        <div class="review-title-stars"><stars :id="review.id" :stars="review.average" data="average"></stars></div>
+                        <div class="review-title-avg">{{ review.average }}</div>
 
-                    <!--</div>-->
+                    </div>
 
-                    <!--<div class="review-name">{{ review.user.name }}, {{ review.user.role }}, {{ review.created_at }}</div>-->
+                    <div class="review-name">{{ review.user.name }}, {{ review.user.role }}, {{ review.created_at }}</div>
 
-                    <!--<div v-for="category in review.category" class="review-category">-->
-                        <!--<i :class="category.category.icon" class="category-icon"></i> {{ category.category.name }}-->
-                        <!--<stars :id="category.id" :stars="category.stars" data="category" :read="true" class="pull-right"></stars>-->
-                    <!--</div>-->
+                    <div v-for="category in review.category" class="review-category">
+                        <i :class="category.category.icon" class="category-icon"></i> {{ category.category.name }}
+                        <stars :id="category.id" :stars="category.stars" data="category" :read="true" class="pull-right"></stars>
+                    </div>
 
-                    <!--<div class="review-full-text">-->
-                        <!--{{ review.text }}-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+                    <div class="review-full-text">
+                        {{ review.text }}
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
 
         <!--/* ========================================================================== */-->
@@ -94,7 +96,9 @@
                 <div class="">
                     <div class="review-title">
                         <div class="review-title-text">Μέση Βαθμολογία</div>
-                        <div class="review-title-stars"><stars :id="review.id" :stars="review.average" data="average" read="false"></stars></div>
+                        <div class="review-title-stars">
+                            <stars :id="review.id" :stars="review.average" name="average" read="false"></stars>
+                        </div>
                         <div class="review-title-avg">{{ review.average }}</div>
                     </div>
 
@@ -105,7 +109,7 @@
                             <i :class="category.category.icon" class="category-icon"></i>
                             {{ category.category.name }}
                         </span>
-                        <stars :id="category.id" :stars="category.stars" data="category" :read="true" class="pull-right"></stars>
+                        <stars :id="category.id" :stars="category.stars" name="category" :read="true" class="pull-right"></stars>
                     </div>
 
                     <div class="review-full-text">
@@ -129,7 +133,7 @@
 
 
     .badge-image{ display: block; margin: 0 auto ; height: 360px; }
-    .review-header-container,.reviews{font-family:Roboto;}
+    .schoolReviews{font-family:Roboto;}
     .review-title{color: #fff}
     /*.review-card-header{background-color: #fff; border-radius: 7px; border: 1px solid #FD6A33;  padding: 10px; margin-top:  20px; margin-bottom:  40px;}*/
     .review-title-header{font-size: 160%; font-weight: 300; margin-top: -205px; }
@@ -212,7 +216,7 @@
     @media (min-width: 310px) {
         .review-container{width: 100%}
     }
-    @media (min-width: 820px) and (max-width: 135n9px){
+    @media (min-width: 820px) and (max-width: 1359px){
         .review-container{width: 50%}
         .review-container:nth-child(2n+1) {clear: left;}
     }
@@ -306,7 +310,7 @@
             return{
                 reviews: {},
                 totalReviews:{},
-                totalStars: 0,
+                totalStars: null,
                 studentsLength: 0,
                 parentsLength: 0,
                 stars: {}
@@ -321,6 +325,14 @@
                         this.reviews = response.data.reviews
                         this.totalReviews = response.data.avgReviews
                         this.totalStars = response.data.stars
+
+                        $('#total1').raty({
+                            score    :this.totalStars,
+                            halfShow :true,
+                            half     :true,
+                            readOnly :true,
+                            starHalf : 'fa fa-fw fa-star-half'
+                        });
                     });
             }
         },
@@ -336,10 +348,6 @@
 
                 this.studentsLength = students
                 this.parentsLength = parents
-            },
-
-            totalStars(){
-                this.stars = parseFloat(this.totalStars)
             }
         },
 

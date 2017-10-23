@@ -1,4 +1,3 @@
-
 <li>
     <div class="text-center cs-select-container">
         <select class="cs-select-school  cs-select cs-skin-circular">
@@ -21,21 +20,10 @@
 
 <li class="dropdown">
     <a href="" class="dropdown-toggle profile waves-effect" data-toggle="dropdown" aria-expanded="true">
-        @if(auth()->user()->role == 'school')
         <img src="{{substr(Auth::user()->info->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->info->logo }}" alt="user-img" class="img-circle">
-        @else
-        <img src="{{substr(Auth::user()->info->avatar, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->info->avatar }}" alt="user-img" class="img-circle">
-        @endif
     </a>
     <ul class="dropdown-menu">
-
-        @if(auth()->user()->role == 'school')
             <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
-        @else
-            <li><a href="/panel/users/student/studentCv"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
-        @endif
-        {{-- <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li> --}}
-
         <li>
             <a href="javascript:void(0)"
                 onclick="event.preventDefault();

@@ -276,9 +276,6 @@
             <div class="pull-right visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
 
-
-
-
                     @if($school->settings->about)<li class="sc-landing-menu-item "><a href="#sxetika" class="school-profile-nav-link ">@lang('profile.navigation.about')</a></li>@endif
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
                     @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
@@ -309,9 +306,7 @@
                                     >@lang('main.navigation.register')</button></a></li>
                             <li>
                                 <a href="{{ url('/login') }}">
-                                    <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
-                                            {{--data-toggle="modal" data-target="#signIn-modal"--}}
-                                    >@lang('main.navigation.login')</button>
+                                    <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white">@lang('main.navigation.login')</button>
                                 </a>
                             </li>
                         @endif
@@ -453,13 +448,30 @@
             </div>
 
             <div class="row">
+                    @if(auth()->check())
+                        @if(auth()->user()->role != 'school')
+                            @if(auth()->user()->apply->contains($school))
+                                <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-green sc-t-white margin-top-10 center-block" disabled>
+                                    <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
 
-           {{-- @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id)) --}}
-                        <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
+                                    Αίτημα Ενεργό
+                                </button>
+                            @else
+                                <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
+                                        data-toggle="modal" data-target="#connect-modal">
+                                    <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
+
+                                    @lang('profile.request')
+                                </button>
+                            @endif
+                        @endif
+                    @endif
+                        {{-- <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 data-toggle="modal" data-target="#connect-modal">
-                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
-                        </button>
-                        {{-- @endif --}}
+                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
+
+                            @lang('profile.request')
+                        </button> --}}
 
                 <!-- MAIN Section-->
                 <div class="col-lg-9 col-md-9 margin-top-30 margin-bot-25" >
@@ -866,7 +878,7 @@
                                         <div class="col-sm-12 user-card">
                                            <div class="user-header ">
                                                <a href="/public/profile/teacher/@{{teacher.info.id}}">
-                                               <img class="user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
+                                               <img class="user-img img-circle" ng-src="@{{teacher.info.avatar}}" alt="">
                                                 <span class="user-name">
                                                         <span style="color: #fff !important;" >@{{teacher.name}}</span>
                                                 </span>
@@ -880,7 +892,7 @@
                                     <div class="xs-user-card visible-xs hidden-sm hidden-md">
                                         <div class="xs-user-header  center-block centered-text">
                                             <a href="/public/profile/teacher/@{{teacher.info.id}}">
-                                            <img class="xs-user-img img-circle" src="@{{teacher.info.avatar}}" alt="">
+                                            <img class="xs-user-img img-circle" ng-src="@{{teacher.info.avatar}}" alt="">
                                             <div class="xs-user-name">
                                                     <span class="xs-name" style="color: #888 !important;" >@{{teacher.name}}</span>
                                             </div>
@@ -1001,12 +1013,38 @@
                         @endif
 
 {{--                        @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))--}}
-                        <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
-                            <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
-                                    data-toggle="modal" data-target="#connect-modal">
-                                <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
-                            </button>
-                        </nav>
+                    @if(auth()->check())
+                        @if(auth()->user()->role != 'school')
+                                @if(auth()->user()->apply->contains($school))
+                                <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
+                                    <button id="submButton" type="button" class="affix-button sc-green sc-t-white center-block" disabled>
+                                        <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
+                                        ΑΙΤΗΜΑ ΕΝΕΡΓΟ
+                                        {{-- @lang('profile.request') --}}
+                                    </button>
+                                </nav>
+
+                                @else
+                                    <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
+                                        <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
+                                                data-toggle="modal" data-target="#connect-modal">
+                                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
+                                        </button>
+                                    </nav>
+                                @endif
+                            @endif
+
+                        @else
+                            <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
+                                <a href="{{ url('/login') }}">
+                                    <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block">
+                                        <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
+                                    </button>
+                                </a>
+
+                            </nav>
+
+                    @endif
 
                         {{--@endif--}}
 
@@ -1106,7 +1144,7 @@
 
     $(function() {
         var bt = $('#connectionButton');
-        var offset = bt.offset();
+        var offset = bt.offset() || 0;
         bt.attr("data-offset-top", offset.top + 120);
 
         //caches a jQuery object containing the header element
@@ -1421,7 +1459,7 @@
                         }
                     })
                      .success(function(data){
-                        console.log(data);
+                        window.location.reload();
                     });
                 }
 

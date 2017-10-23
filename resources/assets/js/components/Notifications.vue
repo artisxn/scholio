@@ -99,19 +99,12 @@
             getNotifications: function(){
                 axios.get('/api/notifications')
                     .then(response => {
-                        this.unreadNotifications = response.data['unread']
-                        console.log(this.unreadNotifications)
+                        this.unreadNotifications = response.data['unread'] 
                     });
                 }
             },
 
-            getScholarshipNotifications: function(){
-              
-            },
-
         mounted() {
-            console.log('Notifications Component ready.')
-
             this.getNotifications()
         }
     }

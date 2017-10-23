@@ -1,6 +1,7 @@
 <style>
     .avatar{height: 50px; border-radius: 6px; box-shadow: 0 0 10px #999;}
     .text{margin-top: 15px}
+    .unread{color:red;}
 </style>
 
 <template>
@@ -25,9 +26,15 @@
                                     </thead>
                                     <tbody>
 
-                                    <tr v-for="admission in admissions">
+                                    <tr v-for="admission in allAdmissions">
                                         <td><a v-bind:href="'/panel/school/admission/' + admission.id"><img v-bind:src="admission.student.avatar" class="avatar"></a></td>
-                                        <td><a v-bind:href="'/panel/school/admission/' + admission.id"><div class="text">{{ admission.user.name }}</div></a></td>
+                                        <td><a v-bind:href="'/panel/school/admission/' + admission.id">
+                                            <div class="text">
+                                                <span :class="{ unread: admission.unread }">
+                                                    {{ admission.user.name }}
+                                                </span>
+                                            
+                                        </div></a></td>
                                         <td><div class="text">{{admission.scholarship}}</div></td>
                                     </tr>
                                     </tbody>
@@ -46,7 +53,10 @@
 
         data: function() {
             return{
-                admissions: {}
+                admissions: {},
+                allAdmissions: {},
+                unreadNotification: [],
+                not:[]
             }
         },
 
@@ -55,10 +65,40 @@
                 axios.get('/api/scholarship/getFullAdmissions')
                     .then(response => {
                         this.admissions = response.data
-                        console.log('admiss')
-                        console.log(response.data)
+                        this.getUnreadNotifications()
                     });
             },
+
+            getUnreadNotifications: function(){
+                axios.get('/api/notifications/requests')
+                    .then(response => {
+                        var parent = this
+                        response.data.forEach(function(e){
+                            if(e.type == "App\\Notifications\\StudentAppliedOnScholarship" && !e.read_at){
+                                parent.unreadNotification.push(e.data.user.id + '-' + e.data.scholarship)
+                                console.log(parent.unreadNotification)
+                            }
+                        })
+
+                            
+                        this.admissions.forEach(function(item){
+
+                            if(Object.values(parent.unreadNotification).indexOf(item.user.id + '-' + item.scholarship_id) > -1){
+                                // var index = Object.values(parent.unreadNotification).indexOf(item.user.id + '-' + item.scholarship_id)
+                                item.unread = true
+                            }
+                        })
+                        this.allAdmissions = this.admissions
+                        console.log(this.admissions)
+                    });
+            },
+
+            watch:{
+                admissions: function(){
+                    this.allAdmissions = this.admissions
+                }
+            }
+
         },
 
         mounted() {

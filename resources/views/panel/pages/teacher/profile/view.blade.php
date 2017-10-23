@@ -19,7 +19,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group" align="center">
-                            <img src="{{auth()->user()->info->avatar}}" height="100px">
+                            <img src="/{{ auth()->user()->info->avatar }}" height="100px">
                         </div>
 
 

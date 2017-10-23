@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Request;
+use App\Models\Scholarship;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -14,16 +15,18 @@ class StudentAppliedOnScholarship extends Notification
 
     public $user;
     public $school;
+    public $scholarship;
     public $request;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user, User $school, Request $request)
+    public function __construct(User $user, User $school, Scholarship $scholarship, Request $request)
     {
         $this->user = $user;
         $this->school = $school;
+        $this->scholarship = $scholarship;
         $this->request = $request;
     }
 
@@ -60,6 +63,9 @@ class StudentAppliedOnScholarship extends Notification
      */
     public function toArray($notifiable)
     {
-        return $this->user->toArray();
+        return [
+            'user' => $this->user->toArray(),
+            'scholarship' => $this->scholarship->id,
+        ];
     }
 }

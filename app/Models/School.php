@@ -226,7 +226,7 @@ class School extends Model
             }
         }
 
-        return ($count != 0) ? number_format((float) ($total / $count), 1, '.', '') : 0;
+        return (float) (($count != 0) ? (float) ($total / $count) : 0);
     }
 
     public function averageReviews()
@@ -330,4 +330,9 @@ class School extends Model
 
     //     return collect($result);
     // }
+
+    public function apply()
+    {
+        return $this->belongsToMany(User::class, 'school_requests');
+    }
 }

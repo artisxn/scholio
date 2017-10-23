@@ -71,22 +71,22 @@ class SocialAuthController extends Controller
 
         if ($provider == 'google') {
             $profileBuilder = [
-                'gender' => $user_provider->user['gender'],
-                'about' => $user_provider->user['aboutMe'],
-                'url' => $user_provider->user['url'],
-                'skills' => $user_provider->user['skills'],
-                'media' => $user_provider->user['urls'],
-                'occupation' => $user_provider->user['occupation'],
-                'fname' => $user_provider->user['name']['givenName'],
-                'lname' => $user_provider->user['name']['familyName'],
-                'tagline' => $user_provider->user['tagline'],
-                'organizations' => $user_provider->user['organizations'],
-                'cover' => $user_provider->user['cover']['coverPhoto']['url'],
+                'gender' => $user_provider->user['gender'] ?? '',
+                'about' => $user_provider->user['aboutMe'] ?? '',
+                'url' => $user_provider->user['url'] ?? '',
+                'skills' => $user_provider->user['skills'] ?? '',
+                'media' => $user_provider->user['urls'] ?? '',
+                'occupation' => $user_provider->user['occupation'] ?? '',
+                'fname' => $user_provider->user['name']['givenName'] ?? '',
+                'lname' => $user_provider->user['name']['familyName'] ?? '',
+                'tagline' => $user_provider->user['tagline'] ?? '',
+                'organizations' => $user_provider->user['organizations'] ?? '',
+                'cover' => $user_provider->user['cover']['coverPhoto']['url'] ?? '',
             ];
         } else if ($provider == 'facebook') {
             $profileBuilder = [
-                'gender' => $user_provider->user['gender'],
-                'url' => $user_provider->user['link'],
+                'gender' => $user_provider->user['gender'] ?? '',
+                'url' => $user_provider->user['link'] ?? '',
             ];
         }
 

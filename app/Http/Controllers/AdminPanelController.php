@@ -30,9 +30,9 @@ class AdminPanelController extends Controller
             $admissions = $school->admissions();
             $studies = $school->study;
             $images = $school->image;
+            $reviews = $school->countReviews();
 
             $pageviews = \Counter::show('school-profile', $school->id);
-            //
 
             $data = array(
                 'students' => $students,
@@ -43,6 +43,7 @@ class AdminPanelController extends Controller
                 'admissions' => $admissions,
                 'studies' => $studies,
                 'images' => $images,
+                'reviews' => $reviews,
             );
             return view('panel.pages.school.dashboard.main')->withData($data);
         }

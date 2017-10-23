@@ -417,7 +417,7 @@
                 @lang('scholarship_view.cards.terms')
             </div>
             <div class="text">
-                {{ $scholarship->terms }}
+                <?php echo $scholarship->terms; ?>
 
             </div>
         </div>

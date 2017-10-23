@@ -170,10 +170,10 @@ class Scholarship extends Model
 
     public function multipleStudies()
     {
-         return $this->belongsToMany(Study::class, 'scholarship_study');   
+        return $this->belongsToMany(Study::class, 'scholarship_study');
     }
 
-     public function scopeActive($query)
+    public function scopeActive($query)
     {
         return $query->where('active', 1)->get();
     }
@@ -186,8 +186,10 @@ class Scholarship extends Model
         $this->save();
         $alg = AlgoliaScholarship::where('scholarship_id', $this->id)->get()->first();
         $alg->delete();
-        // WINNERS (create a pivot table 'scholarship_winner' to show multiple winners in one scholarship) 
+        // WINNERS (create a pivot table 'scholarship_winner' to show multiple winners in one scholarship)
         // Update statistics (algolia dummy)
+        // Email to student
+        //
         return 'Done';
     }
 }

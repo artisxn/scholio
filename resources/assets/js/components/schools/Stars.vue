@@ -1,6 +1,6 @@
 <template>
     <span>
-        <span class="star-review" :id="this.data + '-' + this.id">
+        <span class="star-review" :id="this.name + '-' + this.id">
         </span>
     </span>
 </template>
@@ -12,7 +12,7 @@
 
 <script>
     export default{
-        props:['id', 'stars', 'data', 'read'],
+        props:['id', 'stars', 'name', 'read'],
 
         computed:{
             readOnly(){
@@ -21,7 +21,7 @@
         },
 
         mounted(){
-            $('#' + this.data + '-' + this.id).raty({
+            $('#' + this.name + '-' + this.id).raty({
                 score    :this.stars,
                 halfShow :true,
                 half     :true,

@@ -185,4 +185,9 @@ class User extends Authenticatable
 
         return $id;
     }
+
+    public function apply()
+    {
+        return $this->belongsToMany(School::class, 'school_requests');
+    }
 }

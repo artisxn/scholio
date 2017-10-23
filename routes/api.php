@@ -34,6 +34,7 @@ Route::get('/scholarship/getFullAdmissions', function () {
             'user' => $admission->user,
             'student' => $admission->user->info,
             'scholarship' => $admission->scholarship->study->name,
+            'scholarship_id' => $admission->scholarship->id,
             'id' => $admission->id,
         ]);
     }
@@ -42,6 +43,7 @@ Route::get('/scholarship/getFullAdmissions', function () {
 
 Route::post('/request/school', function () {
     if (auth()->user()->role != 'school') {
+        auth()->user()->apply()->toggle(request()->school);
         event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school)));
         return 'OK';
     }
@@ -57,7 +59,13 @@ Route::post('/connection/{id}/confirm', function ($id) {
 })->middleware('auth:api');
 
 Route::post('/connection/{id}/deny', function ($id) {
-    // Figure out what else to do here
+    foreach (auth()->user()->unreadNotifications as $notification) {
+        if ($notification->id == $id) {
+            $user = User::find(request()->user);
+            $user->apply()->toggle(School::find($notification->notifiable_id));
+            $notification->delete();
+        }
+    }
     return 'Denied';
 })->middleware('auth:api');
 
@@ -117,7 +125,7 @@ Route::get('/scholarship/{id}', function (Scholarship $id) {
 // Route::get('/connected/students/{order}/{asc}/{status}', function ($order, $asc, $status) {
 //     $user = auth()->user();
 //     $school = $user->info;
-//     $students = $school->students;
+//     $teachers = $school->students;
 
 //     $orderType = $asc == 'false' ? 'asc' : 'desc';
 
@@ -158,6 +166,42 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
     }
 
     $items = $students;
+
+    $perPage = 12;
+
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count()]);
+    $data = $custom->merge($p);
+    return $data;
+})->middleware('auth:api');
+
+Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
+    $user = auth()->user();
+    $school = $user->info;
+    $teachers = $school->teachers();
+
+    $orderType = $asc == 'false' ? 'asc' : 'desc';
+
+    $teachers = $school->$status()->orderBy($order, $orderType)->with('cv', 'teacher')->get();
+
+    if ($field != '%20') {
+        $teachers = $teachers->filter(function ($item) use ($field) {
+            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
+            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
+            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
+            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
+            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
+            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
+            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
+                return $item;
+            }
+        });
+    }
+
+    $items = $teachers;
 
     $perPage = 12;
 

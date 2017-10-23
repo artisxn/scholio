@@ -75,7 +75,7 @@
         <a href="{{ url('panel/school/reviews/view') }}">
             <div class="panel-box box2">
                 <img src="/panel/assets/images/steps/stars.png" alt="stars image" class="panel-image">
-                <span class="panel-counter">{{ count($data['pageviews']) }}</span>
+                <span class="panel-counter">{{ $data['reviews'] }}</span>
                 <span class="panel-text">@lang('panel/schools/dashboard.reviews')</span>
             </div>
         </a>

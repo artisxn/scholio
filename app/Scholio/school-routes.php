@@ -22,6 +22,14 @@ Route::delete('profile/images/upload', 'AdminPanelController@imageDelete');
 
 Route::get('/admission/{admission}', function (Admission $admission) {
     $categories = $admission->categories();
+    foreach (auth()->user()->unreadNotifications as $notification) {
+        if ($notification->type == 'App\Notifications\StudentAppliedOnScholarship') {
+            if ($notification->data['user']['id'] == $admission->user_id && $notification->data['scholarship'] == $admission->scholarship_id) {
+                $notification->markAsRead();
+            }
+        }
+
+    }
     return view('panel.pages.school.scholarships.admission', compact('admission', 'categories'));
 });
 
