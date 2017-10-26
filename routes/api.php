@@ -18,12 +18,25 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
+Route::get('/school/getAvgReviews', function () {
+    $school = auth()->user()->info;
+    $data['stars'] = $school->averageStars();
+    $data['avgReviews'] = $school->averageReviews();
+    return $data;
+})->middleware('auth:api');
+
 Route::get('/school/getReviews', function () {
     $school = auth()->user()->info;
-    $t['reviews'] = $school->reviews()->with('user', 'category.category')->get();
-    $t['stars'] = $school->averageStars();
-    $t['avgReviews'] = $school->averageReviews();
-    return $t;
+    $reviews = $school->reviews()->with('user', 'category.category')->get();
+
+    $perPage = 2;
+    $items = $reviews;
+
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $result = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+
+    return $result;
 })->middleware('auth:api');
 
 Route::get('/scholarship/getFullAdmissions', function () {
@@ -180,11 +193,11 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
     $user = auth()->user();
     $school = $user->info;
-    $teachers = $school->teachers();
+    $teachers = $school->$status();
 
     $orderType = $asc == 'false' ? 'asc' : 'desc';
 
-    $teachers = $school->$status()->orderBy($order, $orderType)->with('cv', 'teacher')->get();
+    $teachers = $school->$status()->orderBy($order, $orderType)->with('teacher')->get();
 
     if ($field != '%20') {
         $teachers = $teachers->filter(function ($item) use ($field) {
@@ -195,7 +208,7 @@ Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function
             $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
             $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
             $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
-            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
+            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email)) {
                 return $item;
             }
         });
@@ -203,12 +216,12 @@ Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function
 
     $items = $teachers;
 
-    $perPage = 12;
+    $perPage = 3;
 
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
     $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
-    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count()]);
+    $custom = collect(['allumniTeachers' => $school->allumniTeachers()->count(), 'connectedTeachers' => $school->connectedTeachers()->count()]);
     $data = $custom->merge($p);
     return $data;
 })->middleware('auth:api');
@@ -336,6 +349,14 @@ Route::get('/searchTag', function () {
 });
 
 Route::post('/school/changeStudentStatus/{id}/{status}', function ($id, $status) {
+    $school = auth()->user()->info;
+    $line = $school->students->where('id', $id)->first();
+    $line->pivot->status = $status;
+    $line->pivot->save();
+    return 'ok';
+})->middleware('auth:api');
+
+Route::post('/school/changeTeacherStatus/{id}/{status}', function ($id, $status) {
     $school = auth()->user()->info;
     $line = $school->students->where('id', $id)->first();
     $line->pivot->status = $status;

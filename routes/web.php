@@ -18,6 +18,20 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
+Route::get('/school/getReviews', function () {
+    $school = auth()->user()->info;
+    $reviews = $school->reviews()->with('user', 'category.category')->get();
+
+    $perPage = 2;
+    $items = $reviews;
+
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $result = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+
+    return $result;
+});
+
 Route::get('/sc', function () {
     $school = auth()->user()->info;
     $t['categories'] = $school->reviews()->with('user', 'category.category')->get();
@@ -250,11 +264,6 @@ Route::get('/public/algolia/', function () {
 /* ===== TESTING ROUTE FOR REGISTER SELECT ROLE ====== */
 Route::get('/register/role/', function () {
     return view('auth.register-role');
-});
-
-/* ===== TESTING Panel kfrei DELETE me====== */
-Route::get('/panel/school/testing', function () {
-    return view('panel.pages.school.testing');
 });
 
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');

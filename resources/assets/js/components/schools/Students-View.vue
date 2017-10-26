@@ -35,7 +35,7 @@
                                     <img :src="scholio + student.student.avatar" class="avatar2" alt="">
                                     <img src="/new/img/clip2.png" class="clip" alt="">
                                 </div>
-                                <div class="img-cont"><img class="img-circle sc-img" width="70" :src=student.student.avatar alt=""/></div>
+                                <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
                                 <div class="name"> {{student.name}} </div>
                             </a>
                             <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
@@ -85,11 +85,7 @@
                         <span v-if="sortType == 'name' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
                     </th>
                     <th>
-                        <!--<a href="#" v-on:click="phoneChangeSort">-->
                         {{ lang('resource.students.phone') }}
-                        <!--<span v-if="sortType == 'phone' && !sortReverse" class="fa fa-sort-amount-asc"></span>-->
-                        <!--<span v-if="sortType == 'phone' && sortReverse" class="fa fa-sort-amount-desc"></span>-->
-                        <!--</a>-->
                     </th>
                     <th> <a href="#" v-on:click="emailChangeSort">
                         e-mail
@@ -329,12 +325,8 @@
             },
 
             filteredStudents: function () {
-                // let sc = this.searchStr
-                // this.fetch(1)
-
                 return this.items;
             },
-
 
         },
 
@@ -355,11 +347,6 @@
             },
             nameChangeSort: function(){
                 this.sortType = 'name';
-                this.sortReverse=!this.sortReverse;
-                this.fetch()
-            },
-            phoneChangeSort: function(){
-                this.sortType = 'phone';
                 this.sortReverse=!this.sortReverse;
                 this.fetch()
             },
@@ -418,7 +405,6 @@
                 },
 
             changeView: function () {
-                this.fetch(1);
                 this.selection=!this.selection;
             }
         },
@@ -436,7 +422,6 @@
 
         mounted() {
             this.scholio = window.location.origin
-            console.log(window.location.origin)
         }
     }
 

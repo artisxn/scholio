@@ -2,7 +2,6 @@
     <div class="row schoolReviews">
 
         <div class="review-header-container">
-
             <div class="z-up">
                 <img src="/panel/assets/images/badge-review-shadow.png" alt="" class="badge-image">
                 <div class="review-title ">
@@ -119,7 +118,7 @@
             </div>
         </div>
 
-
+        <paginator :dataSet="dataSet" @changed="fetch"></paginator>
     </div>
 </template>
 
@@ -313,27 +312,49 @@
                 totalStars: null,
                 studentsLength: 0,
                 parentsLength: 0,
-                stars: {}
+                stars: {},
+                items: [],
+                dataSet: false
             }
         },
 
         methods: {
-            getReviews: function(){
-                axios.get('/api/school/getReviews')
-                    .then(response => {
-                        console.log(response.data)
-                        this.reviews = response.data.reviews
-                        this.totalReviews = response.data.avgReviews
-                        this.totalStars = response.data.stars
+            url(page) {
+                if (! page) {
+                    let query = location.search.match(/page=(\d+)/);
+                    page = query ? query[1] : 1;
+                }
 
-                        $('#total1').raty({
-                            score    :this.totalStars,
-                            halfShow :true,
-                            half     :true,
-                            readOnly :true,
-                            starHalf : 'fa fa-fw fa-star-half'
-                        });
-                    });
+                return `/api/school/getReviews?page=${page}`;
+            }, 
+
+            fetch(page) {
+                axios.get(this.url(page)).then(this.refresh);
+            },
+
+            refresh({data}) {
+                this.dataSet = data
+                this.items = data.data
+                this.reviews = this.items
+
+                $('#total1').raty({
+                    score    :this.totalStars,
+                    halfShow :true,
+                    half     :true,
+                    readOnly :true,
+                    starHalf : 'fa fa-fw fa-star-half'
+                });
+
+                window.scrollTo(0, 0);
+            },
+
+            getAvg(){
+                axios.get('/api/school/getAvgReviews').then(this.setAvg)
+            }, 
+
+            setAvg({data}){
+                this.totalReviews = data.avgReviews
+                this.totalStars = data.stars
             }
         },
 
@@ -351,8 +372,9 @@
             }
         },
 
-        mounted() {
-            this.getReviews()
+        created() {
+            this.getAvg()
+            this.fetch()
         }
     }
 </script>

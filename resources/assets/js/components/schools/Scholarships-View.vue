@@ -1,6 +1,172 @@
+<template>
+    <div class="row main-content-box">
+        <div class="col-sm-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="m-t-0 header-title"><b>{{ lang('panel_scholarships.view.title') }}</b></h4>
+
+                        <div style="margin-left: -10px">
+                            <form class="sc-radio pull-left">
+                                <div>
+                                    <input id="r1" type="radio" name="status" value="1" v-model="active" checked> <label for="r1"><div class="r-lab">{{ lang('panel_scholarships.view.status.active') }}</div></label>
+                                    <span class="sch-counter">{{activeLength}}</span>
+                                </div>
+                                <div>
+                                    <input id="r2" type="radio" name="status" value="0" v-model="active" > <label for="r2"><div class="r-lab">{{ lang('panel_scholarships.view.status.ended') }}</div></label>
+                                    <span class="sch-counter">{{endedLength}}</span>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="input-group pull-left search-input">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" :placeholder="lang('panel_scholarships.view.search')" v-model="searchStr">
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                        <div class="">
+                            <div class="table-responsive" data-pattern="priority-columns">
+                                <table id="" class="table  table-striped" >
+                                    <thead>
+                                        <tr>
+                                            <!-- <th>ID</th> -->
+
+                                            <!--<th>-->
+                                                <!--<a href="#" v-on:click="planChangeSort" class="center-th">-->
+                                                    <!--{{ lang('panel_scholarships.view.financial') }}-->
+                                                    <!--<span v-if="sortType == 'plan' && !sortReverse" class="fa fa-sort-amount-asc"></span>-->
+                                                    <!--<span v-if="sortType == 'plan' && sortReverse" class="fa fa-sort-amount-desc"></span>-->
+                                                <!--</a>-->
+                                            <!--</th>-->
+                                            <th class=" hidden-xsm">
+                                                <a href="#" v-on:click="amountChangeSort" class="">
+                                                <!--{{ lang('panel_scholarships.view.price') }}-->
+                                                    {{ lang('panel_scholarships.view.financial') }}
+                                                 <span v-if="sortType == 'amount' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                 <span v-if="sortType == 'amount' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th class="hidden-xlg"></th>
+                                            <th v-if="showLevel"> <!-- condition MUST CHANGE-->
+                                                <a href="#" v-on:click="studyChangeSort" class="">
+                                                    {{ lang('panel_scholarships.view.studies') }}
+                                                    <span v-if="sortType == 'study' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'study' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th v-if="showLevel" class="hidden-xxs"> <!-- condition MUST CHANGE-->
+                                                <a href="#" v-on:click="levelChangeSort" class="">
+                                                    {{ lang('panel_scholarships.view.level') }}
+                                                    <span v-if="sortType == 'level' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'level' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th v-if="showLevel" class="hidden-mdl"> <!-- condition MUST CHANGE-->
+                                                <a href="#" v-on:click="criteriaChangeSort" class="">
+                                                    {{ lang('panel_scholarships.view.criteria') }}
+                                                    <span v-if="sortType == 'criteria_id' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'criteria_id' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th v-if="showLevel" class="hidden-lgm"> <!-- condition MUST CHANGE-->
+                                                <a href="#" v-on:click="endChangeSort" class="">
+                                                    <span v-if="active==1">{{ lang('panel_scholarships.view.end_date') }}</span>
+                                                    <span v-if="active==0">{{ lang('panel_scholarships.view.ended') }}</span>
+                                                    <span v-if="sortType == 'end_at' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'end_at' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <th>
+                                                <a href="#" v-on:click="admissionChangeSort" class="hidden-xxxs">
+                                                {{ lang('panel_scholarships.view.admitted') }}
+                                                <span v-if="sortType == 'admissions' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                <span v-if="sortType == 'admissions' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                </a>
+                                            </th>
+                                            <!-- <th>Νικητής</th> -->
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="scholarship in filteredStudies">
+                                            <!-- <td>{{ scholarship.id }}</td> -->
+                                            <!--<td class="center-td tool">-->
+                                                    <!--<img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" class="">-->
+                                                    <!--<span class="tooltiptext tooltip4">{{ scholarship.plan }}</span>-->
+
+                                            <!--</td>-->
+
+                                            <td class="tool hidden-xsm">
+                                                <div class="dots-text dots-sm hidden-xxlx">
+                                                    <img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" class="">
+                                                </div>
+                                                <span class="tooltiptext tooltip4 hidden-xxlx">
+                                                    {{ scholarship.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
+                                                </span>
+                                                <span class=" hidden-xxlxx">
+                                                    {{ scholarship.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
+                                                </span>
+
+                                            </td>
+                                            <td class="hidden-xlg"><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
+                                            <!--<td v-if="showLevel">-->
+                                                <!--<span class="tool">-->
+                                                    <!--{{ study(scholarship.study, 30) }}-->
+                                                    <!--<span class="tooltiptext">{{scholarship.study}}</span>-->
+                                                <!--</span>-->
+                                            <!--</td>-->
+                                            <td v-if="showLevel">
+                                                <span class="tool">
+                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left">{{scholarship.study}}</div>
+                                                    <span class="tooltiptext tooltip3">{{scholarship.study}}</span>
+                                                </span>
+                                            </td>
+                                            <td  class="tool hidden-xxs">
+                                                <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level}}</div>
+                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{scholarship.level}}</span>
+                                            </td>
+                                            <td class="tool hidden-mdl">
+                                                <div class="dots-text dots-sm hidden-xxl">
+                                                <img :src="'/panel/assets/images/steps/'+ scholarship.criteria.name+'.png'" height="30px" alt="" class="">
+                                                </div>
+                                                <span class="tooltiptext tooltip5 hidden-xlxl">{{ scholarship.criteria.name }}</span>
+
+                                                <span class="hidden-xl dots-text dots-mlg3 visible-xxl dots-xl-left">{{ scholarship.criteria.name }}</span>
+
+                                            </td>
+                                            <td class="hidden-lgm" style=""> <div class="dots-text dots-md"> {{ scholarship.end_at }}</div></td>
+                                            <td class="hidden-xxxs"> <div class="dots-text dots-sm"> {{ scholarship.admissions}} </div></td>
+                                            <!-- <td>{{ scholarship.winner_id }}</td> -->
+                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
+                                            <!--<td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="max-width: 800px">
+            <div style="font-size: 160%; font-weight: 300; margin-left: 25px">{{ lang('panel_scholarships.view.chart') }}</div>
+            <div>
+                <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
+            </div>
+        </div>
+
+    </div>
+</template>
+
 <style>
-
-
      th, td {text-align: center; vertical-align:middle;}
 
 
@@ -203,180 +369,7 @@
     .sc-radio>input[type=radio]:checked + label:before{
         box-shadow: inset 0 0 0 3px #EEF1F2;
     }
-
-
-
 </style>
-
-<template>
-    <div class="row main-content-box">
-        <div class="col-sm-12">
-            <div class="card-box">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h4 class="m-t-0 header-title"><b>{{ lang('panel_scholarships.view.title') }}</b></h4>
-
-                        <div style="margin-left: -10px">
-                            <form class="sc-radio pull-left">
-                                <div>
-                                    <input id="r1" type="radio" name="status" value="1" v-model="active" checked> <label for="r1"><div class="r-lab">{{ lang('panel_scholarships.view.status.active') }}</div></label>
-                                    <span class="sch-counter">{{activeLength}}</span>
-                                </div>
-                                <div>
-                                    <input id="r2" type="radio" name="status" value="0" v-model="active" > <label for="r2"><div class="r-lab">{{ lang('panel_scholarships.view.status.ended') }}</div></label>
-                                    <span class="sch-counter">{{endedLength}}</span>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="input-group pull-left search-input">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control" :placeholder="lang('panel_scholarships.view.search')" v-model="searchStr">
-                        </div>
-
-                        <div class="clearfix"></div>
-
-
-                        <div class="">
-                            <div class="table-responsive" data-pattern="priority-columns">
-                                <table id="" class="table  table-striped" >
-                                    <thead>
-                                        <tr>
-                                            <!-- <th>ID</th> -->
-
-                                            <!--<th>-->
-                                                <!--<a href="#" v-on:click="planChangeSort" class="center-th">-->
-                                                    <!--{{ lang('panel_scholarships.view.financial') }}-->
-                                                    <!--<span v-if="sortType == 'plan' && !sortReverse" class="fa fa-sort-amount-asc"></span>-->
-                                                    <!--<span v-if="sortType == 'plan' && sortReverse" class="fa fa-sort-amount-desc"></span>-->
-                                                <!--</a>-->
-                                            <!--</th>-->
-                                            <th class=" hidden-xsm">
-                                                <a href="#" v-on:click="amountChangeSort" class="">
-                                                <!--{{ lang('panel_scholarships.view.price') }}-->
-                                                    {{ lang('panel_scholarships.view.financial') }}
-                                                 <span v-if="sortType == 'amount' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                 <span v-if="sortType == 'amount' && sortReverse" class="fa fa-sort-amount-desc"></span>
-                                                </a>
-                                            </th>
-                                            <th class="hidden-xlg"></th>
-                                            <th v-if="showLevel"> <!-- condition MUST CHANGE-->
-                                                <a href="#" v-on:click="studyChangeSort" class="">
-                                                    {{ lang('panel_scholarships.view.studies') }}
-                                                    <span v-if="sortType == 'study' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                    <span v-if="sortType == 'study' && sortReverse" class="fa fa-sort-amount-desc"></span>
-                                                </a>
-                                            </th>
-                                            <th v-if="showLevel" class="hidden-xxs"> <!-- condition MUST CHANGE-->
-                                                <a href="#" v-on:click="levelChangeSort" class="">
-                                                    {{ lang('panel_scholarships.view.level') }}
-                                                    <span v-if="sortType == 'level' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                    <span v-if="sortType == 'level' && sortReverse" class="fa fa-sort-amount-desc"></span>
-                                                </a>
-                                            </th>
-                                            <th v-if="showLevel" class="hidden-mdl"> <!-- condition MUST CHANGE-->
-                                                <a href="#" v-on:click="criteriaChangeSort" class="">
-                                                    {{ lang('panel_scholarships.view.criteria') }}
-                                                    <span v-if="sortType == 'criteria_id' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                    <span v-if="sortType == 'criteria_id' && sortReverse" class="fa fa-sort-amount-desc"></span>
-                                                </a>
-                                            </th>
-                                            <th v-if="showLevel" class="hidden-lgm"> <!-- condition MUST CHANGE-->
-                                                <a href="#" v-on:click="endChangeSort" class="">
-                                                    <span v-if="active==1">{{ lang('panel_scholarships.view.end_date') }}</span>
-                                                    <span v-if="active==0">{{ lang('panel_scholarships.view.ended') }}</span>
-                                                    <span v-if="sortType == 'end_at' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                    <span v-if="sortType == 'end_at' && sortReverse" class="fa fa-sort-amount-desc"></span>
-                                                </a>
-                                            </th>
-                                            <th>
-                                                <a href="#" v-on:click="admissionChangeSort" class="hidden-xxxs">
-                                                {{ lang('panel_scholarships.view.admitted') }}
-                                                <span v-if="sortType == 'admissions' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                <span v-if="sortType == 'admissions' && sortReverse" class="fa fa-sort-amount-desc"></span>
-                                                </a>
-                                            </th>
-                                            <!-- <th>Νικητής</th> -->
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="scholarship in filteredStudies">
-                                            <!-- <td>{{ scholarship.id }}</td> -->
-                                            <!--<td class="center-td tool">-->
-                                                    <!--<img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" class="">-->
-                                                    <!--<span class="tooltiptext tooltip4">{{ scholarship.plan }}</span>-->
-
-                                            <!--</td>-->
-
-                                            <td class="tool hidden-xsm">
-                                                <div class="dots-text dots-sm hidden-xxlx">
-                                                    <img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" class="">
-                                                </div>
-                                                <span class="tooltiptext tooltip4 hidden-xxlx">
-                                                    {{ scholarship.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
-                                                </span>
-                                                <span class=" hidden-xxlxx">
-                                                    {{ scholarship.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
-                                                </span>
-
-                                            </td>
-                                            <td class="hidden-xlg"><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
-                                            <!--<td v-if="showLevel">-->
-                                                <!--<span class="tool">-->
-                                                    <!--{{ study(scholarship.study, 30) }}-->
-                                                    <!--<span class="tooltiptext">{{scholarship.study}}</span>-->
-                                                <!--</span>-->
-                                            <!--</td>-->
-                                            <td v-if="showLevel">
-                                                <span class="tool">
-                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left">{{scholarship.study}}</div>
-                                                    <span class="tooltiptext tooltip3">{{scholarship.study}}</span>
-                                                </span>
-                                            </td>
-                                            <td  class="tool hidden-xxs">
-                                                <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level}}</div>
-                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{scholarship.level}}</span>
-                                            </td>
-                                            <td class="tool hidden-mdl">
-                                                <div class="dots-text dots-sm hidden-xxl">
-                                                <img :src="'/panel/assets/images/steps/'+ scholarship.criteria.name+'.png'" height="30px" alt="" class="">
-                                                </div>
-                                                <span class="tooltiptext tooltip5 hidden-xlxl">{{ scholarship.criteria.name }}</span>
-
-                                                <span class="hidden-xl dots-text dots-mlg3 visible-xxl dots-xl-left">{{ scholarship.criteria.name }}</span>
-
-                                            </td>
-                                            <td class="hidden-lgm" style=""> <div class="dots-text dots-md"> {{ scholarship.end_at }}</div></td>
-                                            <td class="hidden-xxxs"> <div class="dots-text dots-sm"> {{ scholarship.admissions}} </div></td>
-                                            <!-- <td>{{ scholarship.winner_id }}</td> -->
-                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
-                                            <!--<td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>-->
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="max-width: 800px">
-            <div style="font-size: 160%; font-weight: 300; margin-left: 25px">{{ lang('panel_scholarships.view.chart') }}</div>
-            <div>
-                <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
-            </div>
-        </div>
-
-    </div>
-
-
-</template>
 
 <script>
 import Chart from '../../VueChart.vue'

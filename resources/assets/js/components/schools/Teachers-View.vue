@@ -1,45 +1,27 @@
-<!--<template>-->
-    <!--<div class="row">-->
-        <!--<div class="col-xs-12 col-sm-6 com-md-4" v-for="teacher in teachers">-->
-                <!--<div class="row">-->
-                            <!--<img class="img-circle" width="80" height="80" v-bind:src=teacher.info.avatar alt=""/>-->
-                            <!--{{teacher.name}}<br>-->
-                            <!--{{teacher.email}}-->
-
-                <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</template>-->
-
 <template>
     <div class="row">
 
         <form class="sc-radio pull-left">
-            <input id="th1" type="radio" name="status" value="connected" v-model="teacherStatus" checked> <label for="th1"><div class="r-lab">{{ lang('resource.teachers.active') }}</div></label> <br>
-            <input id="th2" type="radio" name="status" value="allumni" v-model="teacherStatus" > <label for="th2"><div class="r-lab">{{ lang('resource.teachers.nonactive') }}</div></label><br>
+            <input id="th1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch"> <label for="th1"><div class="r-lab">{{ lang('resource.teachers.active') }} 
+                <span class="pull-right" style=""> {{ connectedTeachers }} </span>
+            </div></label> <br>
+            <input id="th2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch"> <label for="th2"><div class="r-lab">{{ lang('resource.teachers.nonactive') }}
+                <span class="pull-right" style=""> {{ allumniTeachers }} </span>
+            </div></label><br>
         </form>
-
-
-
-
-
 
         <div class="input-group pull-left input-search">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
             <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
-                   v-model="searchStr">
+                   v-model="searchStr" v-on:keyup="fetch(1)">
         </div>
-
-
-
-
 
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
 
 
         <div v-if="selection==true">
-            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2" v-for="teacher in filteredTeachers">
+            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2" v-for="teacher in filteredTeachers" v-if="(teacher.role=='teacher')">
 
                 <div class="sc-box2 ">
                     <div class="sc-up2"></div>
@@ -48,12 +30,9 @@
                         <div class="sc-card ">
                             <a class="" href="#">
                                 <div class="frame-cont2">
-                                    <!--<img src="/new/img/photoFrame.png" class="frame" alt="">-->
-                                    <!--<img :src=teacher.info.avatar class="avatar2" alt="">-->
-                                    <!--<img src="/new/img/clip2.png" class="clip" alt="">-->
-                                    <img :src=teacher.info.avatar class="avatar1" alt="">
+                                    <img :src="scholio + teacher.teacher.avatar" class="avatar1" alt="">
                                 </div>
-                                <div class="img-cont2"><img class="img-circle2 sc-img2" width="70" :src=teacher.info.avatar alt=""/></div>
+                                <div class="img-cont2"><img class="img-circle2 sc-img2" width="70" :src=teacher.teacher.avatar alt=""/></div>
                                 <div class="name2"> {{teacher.name}} </div>
                             </a>
                             <div class="email2"><a :href="'mailto:'+teacher.email">{{teacher.email}}</a></div>
@@ -66,7 +45,7 @@
                 <!--<div class='wave'></div>-->
                 <div class="sc-bottom2">
                     <div class="phone2">
-                        <a :href="'tel:'+teacher.phone"><div class="circle2"></div> <span class="phone2-text"><i class="fa fa-phone"></i> {{teacher.phone}}</span></a>
+                        <a :href="'tel:'+teacher.teacher.phone"><div class="circle2"></div> <span class="phone2-text"><i class="fa fa-phone"></i> {{teacher.teacher.phone}}</span></a>
                     </div>
                 </div>
 
@@ -88,10 +67,8 @@
                         <span v-if="sortType == 'name' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                         <span v-if="sortType == 'name' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
                     </th>
-                    <th> <a href="#" v-on:click="phoneChangeSort">
+                    <th>
                         {{ lang('resource.students.phone') }}
-                        <span v-if="sortType == 'phone' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                        <span v-if="sortType == 'phone' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
                     </th>
                     <th> <a href="#" v-on:click="emailChangeSort">
                         e-mail
@@ -104,16 +81,18 @@
                 <tr v-for="teacher in filteredTeachers">
                     <td>
                         <a class="" href="#">
-                            <img class="img-circle" width="35" v-bind:src=teacher.info.avatar alt=""/>
+                            <img class="img-circle" width="35" v-bind:src=teacher.teacher.avatar alt=""/>
                         </a>
                     </td>
                     <td style="text-transform: capitalize">{{teacher.name}}</td>
-                    <td>{{teacher.phone}}</td>
+                    <td>{{teacher.teacher.phone}}</td>
                     <td>{{teacher.email}}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
+
+        <paginator :dataSet="dataSet" @changed="fetch"></paginator>
     </div>
 </template>
 
@@ -269,11 +248,7 @@
     .sc-radio2>input[type=radio]:checked + label:before{
         box-shadow: inset 0 0 0 3px #CAD8D3;
     }
-</style>
-<!--<link rel="stylesheet" type="text/css" href="/new/css/input-radio.css" />-->
 
-<!--  WAVE STYLE -->
-<style>
     .wave{
         background:#fafafa;
         height: 10px;
@@ -308,77 +283,69 @@
 </style>
 
 
-
-
-
-
-
 <script>
-
-
-
-
     export default{
         data: function() {
             return{
+                items: [],
                 teachers: {},
                 searchStr:"",
                 selection:true,
                 sortReverse:false,
                 sortType:'name',
-                status:'connected',
-                stStatus:''
+                status:'connectedTeachers',
+                stStatus:'',
+                dataSet: false,
+                allumniTeachers: 0,
+                connectedTeachers: 0,
+                scholio: null
             }
         },
         computed: {
+            activeTeachersLength: function(){
+                return this.items[0].connectedTeachers;
+            },
+
+            allumniTeachersLength: function(){
+                return this.items[0].allumniTeachers;
+            },
+
             filteredTeachers: function () {
-                var filtered_array = this.teachers;
-
-                var searchString = this.searchStr;
-
-                if(!searchString){
-                    return filtered_array;
-                }
-
-                searchString = searchString.trim().toLowerCase();
-                filtered_array = filtered_array.filter(function(item){
-                    if( (item.name.indexOf(searchString) !== -1) ||
-                            (item.name.toLowerCase().indexOf(searchString) !== -1) ||
-                            (item.email.toLowerCase().indexOf(searchString) !== -1)
-
-                    ){ return item;   }
-                })
-                return filtered_array;
+                return this.items;
             },
         },
 
         methods: {
-            getAllTeachers: function(){
-                axios.get('/connected/teachers')
-                        .then(response => {
-                    this.teachers = response.data
-                    this.teachers.sort(this.dynamicSort(this.sortType,this.sortReverse));
-            });
+            changeStatus: function(id, st){
+                var status = '';
+                if(document.getElementById('st'+id).checked) status = 'connectedTeachers';
+                else status = 'allumniTeachers';
+                axios.post('/api/school/changeTeacherStatus/' + id + '/' + status)
+                    .then(response => {
+                        if(response.data == 'ok'){
+                            this.fetch()
+                        } 
+                    })
+
+                    this.status = status
             },
             nameChangeSort: function(){
                 this.sortType = 'name';
-                this.changeSortType(this.sortType)
-            },
-            phoneChangeSort: function(){
-                this.sortType = 'phone';
-                this.changeSortType(this.sortType)
+                this.sortReverse=!this.sortReverse;
+                this.fetch()
             },
             emailChangeSort: function(){
                 this.sortType = 'email';
-                this.changeSortType(this.sortType)
+                this.sortReverse=!this.sortReverse;
+                this.fetch()
             },
 
             changeSortType: function(){
                 this.sortReverse=!this.sortReverse;
-                var st1= this.teachers;
+                var st1= this.items;
                 st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
-                this.teachers=st1;
-                return this.teachers
+                this.items=st1;
+                return this.items
             },
             dynamicSort: function (property,order) {
                 var sortOrder = 1;
@@ -394,13 +361,52 @@
                 }
             },
 
+            url(page) {
+                if (! page) {
+                    let query = location.search.match(/page=(\d+)/);
+                    page = query ? query[1] : 1;
+                }
+
+                let search = this.searchStr
+
+                if(search == ""){
+                    search = "%20"
+                }
+
+                return `/api/connected/teachers/search/${this.sortType}/${this.sortReverse}/${this.status}/${search}?page=${page}`;
+            }, 
+
+            fetch(page) {
+                axios.get(this.url(page)).then(this.refresh);
+            },
+
+            refresh({data}) {
+                this.dataSet = data;
+                this.items = data.data;
+                console.log(this.items)
+                this.allumniCount = this.items.allumniTeachers
+                this.connectedCount = this.items.connectedTeachers
+                window.scrollTo(0, 0);
+            },
+
             changeView: function () {
                 this.selection=!this.selection;
             }
         },
 
+        created() {
+            this.fetch(1);
+        },
+
+        watch: {
+            dataSet() {
+                this.allumniTeachers = this.dataSet.allumniTeachers || 0;
+                this.connectedTeachers = this.dataSet.connectedTeachers || 0;
+            }
+        },
+
         mounted() {
-            this.getAllTeachers()
+            this.scholio = window.location.origin
         }
     }
 

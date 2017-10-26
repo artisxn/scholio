@@ -316,6 +316,16 @@ class School extends Model
         return $this->students()->wherePivot('status', '=', 'allumni');
     }
 
+    public function connectedTeachers()
+    {
+        return $this->teachers()->wherePivot('status', '=', 'connected');
+    }
+
+    public function allumniTeachers()
+    {
+        return $this->teachers()->wherePivot('status', '=', 'allumni');
+    }
+
     // public function fullAdmission()
     // {
     //     $result = [];

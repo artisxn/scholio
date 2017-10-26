@@ -96,6 +96,11 @@ class User extends Authenticatable
         return $this->hasOne(Student::class);
     }
 
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
     /**
      *  Gets the social_link row of the user
      *
