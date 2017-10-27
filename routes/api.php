@@ -18,6 +18,53 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
+Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $asc, $field) {
+    $school = auth()->user()->info;
+    $scholarships = $school->scholarship;
+
+    $active = 0;
+    foreach ($scholarships as $scholar) {
+        $scholar->section = $scholar->study->section[0];
+        if ($scholar->active == 1) {
+            $active++;
+        }
+    }
+
+    $deactive = $scholarships->count() - $active;
+
+    if ($field != '%20') {
+        $scholarships = $scholarships->filter(function ($item) use ($field) {
+            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
+            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
+            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
+            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
+            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
+            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
+            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->section->name) || preg_match("/" . $field . "/i", $item->study->name) || preg_match("/" . $field . "/i", $item->financial->plan) || preg_match("/" . $field . "/i", $item->level->name) || preg_match("/" . $field . "/i", $item->criteria->name)) {
+                return $item;
+            }
+        });
+    }
+
+    $perPage = 5;
+    $items = $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
+
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+
+    $paginatedData = [];
+    foreach ($items->forPage($page, $perPage) as $key => $value) {
+
+        $paginatedData[] = $value;
+    }
+
+    $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
+    $custom = collect(['active' => $active, 'deactive' => $deactive]);
+    $data = $custom->merge($result);
+    return $data;
+})->middleware('auth:api');
+
 Route::get('/school/getAvgReviews', function () {
     $school = auth()->user()->info;
     $data['stars'] = $school->averageStars();
@@ -134,25 +181,6 @@ Route::get('/scholarship/{id}', function (Scholarship $id) {
     $scholarship->criteriaName = $scholarship->criteria->name;
     return $scholarship->load('school', 'level', 'financial', 'criteria');
 })->middleware('api');
-
-// Route::get('/connected/students/{order}/{asc}/{status}', function ($order, $asc, $status) {
-//     $user = auth()->user();
-//     $school = $user->info;
-//     $teachers = $school->students;
-
-//     $orderType = $asc == 'false' ? 'asc' : 'desc';
-
-//     $students = $school->$status()->orderBy($order, $orderType)->paginate(6);
-
-//     foreach ($students as $t) {
-//         $t->cv;
-//         $t->info;
-//         $t->allumniStudents = $school->allumni()->count();
-//         $t->connectedStudents = $school->connected()->count();
-//     }
-
-//     return $students;
-// })->middleware('auth:api');
 
 Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
     $user = auth()->user();

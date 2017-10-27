@@ -21,7 +21,7 @@
 
                         <div class="input-group pull-left search-input">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control" :placeholder="lang('panel_scholarships.view.search')" v-model="searchStr">
+                            <input type="text" class="form-control" :placeholder="lang('panel_scholarships.view.search')" v-model="searchStr" v-on:keyup="fetch(1)">
                         </div>
 
                         <div class="clearfix"></div>
@@ -104,10 +104,10 @@
                                                     <img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" class="">
                                                 </div>
                                                 <span class="tooltiptext tooltip4 hidden-xxlx">
-                                                    {{ scholarship.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
+                                                    {{ scholarship.financial.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
                                                 </span>
                                                 <span class=" hidden-xxlxx">
-                                                    {{ scholarship.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
+                                                    {{ scholarship.financial.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
                                                 </span>
 
                                             </td>
@@ -120,13 +120,13 @@
                                             <!--</td>-->
                                             <td v-if="showLevel">
                                                 <span class="tool">
-                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left">{{scholarship.study}}</div>
-                                                    <span class="tooltiptext tooltip3">{{scholarship.study}}</span>
+                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left">{{scholarship.study.name}}</div>
+                                                    <span class="tooltiptext tooltip3">{{scholarship.study.name}}</span>
                                                 </span>
                                             </td>
                                             <td  class="tool hidden-xxs">
-                                                <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level}}</div>
-                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{scholarship.level}}</span>
+                                                <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level.name}}</div>
+                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{scholarship.level.name}}</span>
                                             </td>
                                             <td class="tool hidden-mdl">
                                                 <div class="dots-text dots-sm hidden-xxl">
@@ -138,7 +138,7 @@
 
                                             </td>
                                             <td class="hidden-lgm" style=""> <div class="dots-text dots-md"> {{ scholarship.end_at }}</div></td>
-                                            <td class="hidden-xxxs"> <div class="dots-text dots-sm"> {{ scholarship.admissions}} </div></td>
+                                            <td class="hidden-xxxs"> <div class="dots-text dots-sm"> {{ scholarship.user.length}} </div></td>
                                             <!-- <td>{{ scholarship.winner_id }}</td> -->
                                             <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
                                             <!--<td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>-->
@@ -147,13 +147,10 @@
                                 </table>
                             </div>
                         </div>
-
-
-
-
                     </div>
                 </div>
             </div>
+            <paginator :dataSet="dataSet" @changed="fetch"></paginator>
         </div>
 
         <div style="max-width: 800px">
@@ -162,7 +159,6 @@
                 <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -190,10 +186,6 @@
         text-overflow: ellipsis;
     }
 
-
-
-
-
      @media(min-width: 1420px){
          .dots-text{width:210px}
          .hidden-xxl{display: none;}
@@ -216,10 +208,6 @@
      @media(min-width: 2140px){
          .dots-lg{width:450px; }
      }
-
-
-
-
      .dots-sm{width: 90px;}
      .dots-md{width: 110px;}
 
@@ -377,6 +365,8 @@ import Chart from '../../VueChart.vue'
         components: {'chart-vue': Chart},
         data: function() {
             return{
+                items: [],
+                dataSet: false,
                 activeLength:0,
                 endedLength:0,
                 active:'1',
@@ -388,7 +378,6 @@ import Chart from '../../VueChart.vue'
                 searchStr:"",
                 sc_amounts: [],
                sc_names:[],
-              // sc_names:[['one','two'],'three',['four five','six'],'seven','eight','noine'],
                 datacollection: {
                   labels: ['asd'],
                   datasets: [
@@ -416,46 +405,14 @@ import Chart from '../../VueChart.vue'
             }
         },
         computed: {
-
             filteredStudies: function () {
-                var filtered_array = []
-                var sch=this.scholars
-                for(var i in sch){
-                    if(sch[i].active==this.active){
-                        filtered_array.push(sch[i])
-                    }
-                }
-                var searchString = this.searchStr;
-                console.log(this.active)
-
-                if(!searchString){
-                    return filtered_array;
-                }
-                searchString = searchString.trim().toLowerCase();
-                filtered_array = filtered_array.filter(function(item){
-                    if( (item.level.toLowerCase().indexOf(searchString) !== -1) ||
-                        (item.study.toLowerCase().indexOf(searchString) !== -1) ||
-                        (item.plan.toLowerCase().indexOf(searchString) !== -1) ||
-                        (item.section.name.toLowerCase().indexOf(searchString) !== -1)
-                    ){return item;}
-                })
-                return filtered_array;
+                return this.items;
             }
         },
         methods: {
             counters:function(){
-                var d=this.scholarships
-                var actL=0,enL=0
-                for(var i in d){
-                    if(d[i].active==1){
-                        actL++
-                    }
-                    else{
-                        enL++
-                    }
-                }
-                this.activeLength=actL
-                this.endedLength=enL
+                this.activeLength=this.dataSet.active
+                this.endedLength=this.dataSet.deactive
             },
             study: function(st, i){
                 var letters = i;
@@ -464,34 +421,6 @@ import Chart from '../../VueChart.vue'
                 }
 
                 return st;
-            },
-            getScholarships: function(){
-                axios.get('/api/scholarship/' + window.Connection)
-                    .then(response => {
-//                        console.log(response.data)
-                        this.scholarships = response.data
-
-                        if(this.scholarships[0].level.id<4 || this.scholarships[0].level.id>21 ) {this.showLevel=true}
-
-                        var st1=this.scholarships;
-                        for (var i in st1){
-                            st1[i].admissions=this.scholarships[i].user.length;
-                            st1[i].plan=this.scholarships[i].financial.plan;
-                            st1[i].study=this.scholarships[i].study.name;
-                            st1[i].level=this.scholarships[i].level.name;
-                            st1[i].amount=parseInt(this.scholarships[i].financial_amount);
-                            this.sc_amounts.push(st1[i].admissions)
-                           this.sc_names.push(this.study(st1[i].study, 12))
-
-                        }
-                        st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
-                        this.scholars=st1;
-
-                        this.updateChart()
-                        this.counters()
-
-                    });
-
             },
             updateChart: function(){
                 this.datacollection = {
@@ -548,7 +477,6 @@ import Chart from '../../VueChart.vue'
                 return this.scholars;
             },
             dynamicSort: function (property,order) {
-
                 var sortOrder = 1;
                 if (order) {sortOrder = -1}
 
@@ -560,12 +488,41 @@ import Chart from '../../VueChart.vue'
                     var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
                     return result * sortOrder;
                 }
-            }
+            },
+
+            url(page) {
+                if (! page) {
+                    let query = location.search.match(/page=(\d+)/);
+                    page = query ? query[1] : 1;
+                }
+
+                let search = this.searchStr
+
+                if(search == ""){
+                    search = "%20"
+                }
+
+                return `/api/school/getScholarships/${this.sortType}/${this.sortReverse}/${search}?page=${page}`;
+            }, 
+
+            fetch(page) {
+                axios.get(this.url(page)).then(this.refresh);
+            },
+
+            refresh({data}) {
+                this.dataSet = data;
+                this.items = data.data;
+                this.scholarships = this.items
+                if(this.scholarships[0].level.id < 4 || this.scholarships[0].level.id > 21 ) {this.showLevel=true}
+
+                this.updateChart()
+                this.counters()
+                window.scrollTo(0, 0);
+            },
         },
 
         mounted() {
-            console.log('Scholarship-Table component mounted!')
-            this.getScholarships()
+            this.fetch()
         }
     }
 

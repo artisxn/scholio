@@ -12,24 +12,55 @@ use App\Models\SchoolSetting;
 use App\Models\Tag;
 use App\Scholio\Scholio;
 use App\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
-Route::get('/school/getReviews', function () {
+Route::get('/sx/{order}/{asc}/{field}', function ($order, $asc, $field) {
     $school = auth()->user()->info;
-    $reviews = $school->reviews()->with('user', 'category.category')->get();
+    $orderType = $asc == 'false' ? 'asc' : 'desc';
+    $scholarships = $school->scholarship()->orderBy($order, $orderType)->get();
+
+    $active = 0;
+    foreach ($scholarships as $scholar) {
+        $scholar->section = $scholar->study->section[0];
+        if ($scholar->active == 1) {
+            $active++;
+        }
+    }
+
+    $deactive = $scholarships->count() - $active;
+
+    if ($field != '%20') {
+        $scholarships = $scholarships->filter(function ($item) use ($field) {
+            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
+            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
+            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
+            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
+            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
+            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
+            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->section->name) || preg_match("/" . $field . "/i", $item->study->name) || preg_match("/" . $field . "/i", $item->financial->plan) || preg_match("/" . $field . "/i", $item->level->name) || preg_match("/" . $field . "/i", $item->criteria->name)) {
+                return $item;
+            }
+        });
+    }
 
     $perPage = 2;
-    $items = $reviews;
+    $items = $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
 
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
-    $result = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
 
-    return $result;
+    $paginatedData = [];
+    foreach ($items->forPage($page, $perPage) as $key => $value) {
+
+        $paginatedData[] = $value;
+    }
+
+    $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
+    $custom = collect(['active' => $active, 'deactive' => $deactive]);
+    $data = $custom->merge($result);
+    return $data;
 });
 
 Route::get('/sc', function () {
@@ -52,46 +83,6 @@ Route::get('test/student', function () {
         }
     }
 
-});
-
-Route::get('tttt/{order}/{asc}/{status}/', function ($order, $asc, $status) {
-    return redirect('/tttt/' . $order . '/' . $asc . '/' . $status . '/%20');
-});
-
-Route::get('tttt/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field = null) {
-    $user = auth()->user();
-    $school = $user->info;
-    $students = $school->$status;
-
-    $orderType = $asc == 'false' ? 'asc' : 'desc';
-
-    $students = $school->$status()->orderBy($order, $orderType)->with('cv', 'student')->get();
-
-    if ($field != '%20') {
-        $students = $students->filter(function ($item) use ($field) {
-            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
-            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
-            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
-            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
-            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
-            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
-            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
-            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
-                return $item;
-            }
-        });
-    }
-
-    $items = $students;
-
-    $perPage = 6;
-
-    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
-    $items = $items instanceof Collection ? $items : Collection::make($items);
-    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
-    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count()]);
-    $data = $custom->merge($p);
-    return $data;
 });
 
 Route::get('/new/user/', function () {
