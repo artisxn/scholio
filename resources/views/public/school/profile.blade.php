@@ -59,7 +59,7 @@
     <script src="/new/js/profile.js"></script>
 
     <!-- Angular App-->
-    <script src="/new/js/profile-app.js"></script>
+    {{--<script src="/new/js/profile-app.js"></script>--}}
     <script>
         window.Scholio = <?php echo json_encode([
     'csrfToken' => csrf_token(),
@@ -364,7 +364,7 @@
 
                                         <span ng-show="contactInfo.ratingCounter!=0"> <rating class="text-incr-85 sc-t-orange" id="Rating"></rating>
                                                 </span>
-                                                <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{contactInfo.stars}} </span>
+                                                <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{  contactInfo.stars}} </span>
                                                 <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.reviews.length}}  @lang('profile.reviews'))</span>
 
                          </span>

@@ -14,9 +14,6 @@
             <li><a href="/panel/school/students" class="{{ request()->path() == 'panel/school/students' ? 'active' : ''}}">@lang('panel/schools/navigation.resource.students') </a> </li>
             <li><a href="/panel/school/teachers" class="{{ request()->path() == 'panel/school/teachers' ? 'active' : ''}}">@lang('panel/schools/navigation.resource.teachers') </a></li>
             <li><a href="/panel/school/requests" class="{{ request()->path() == 'panel/school/requests' ? 'active' : ''}}">@lang('panel/schools/navigation.resource.requests') </a></li>
-            <!-- ========= DELETE ME ============ -->
-            <li><a href="/panel/school/testing" class="{{ request()->path() == 'panel/school/testing' ? 'active' : ''}}">Testing </a></li>
-            <!-- ================================ -->
         </ul>
     </li>
 

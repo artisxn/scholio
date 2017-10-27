@@ -2,10 +2,10 @@
 
 return [
     'notifications' => 'Notifications',
-    'scholarshipRequest' => ' Scholarship Request',
-    'scholarshipRequests' => ' Scholarship Requests',
-    'connectionRequest' => ' Connection Request',
-    'connectionRequests' => ' Connection Requests',
+    'scholarshipRequest' => ' New Scholarship Request',
+    'scholarshipRequests' => ' New Scholarship Requests',
+    'connectionRequest' => ' New Connection Request',
+    'connectionRequests' => ' New sConnection Requests',
     'noNotifications' => 'There are no new notifications',
 
 

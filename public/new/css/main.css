@@ -330,6 +330,7 @@ select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40
 .ribbonSm{height: 73px; width: auto; position: absolute; right: -3.5px; top: -3px; z-index: 1;}
 .ribbonMed{height: 120px; width: auto; position: absolute; right: -4.5px; top: -4.5px; z-index: 1;}
 .ribbonL{height: 170px; width: auto; position: absolute; right: -4.5px; top: -5px; z-index: 1;}
+.ribbonLarge{height: 164px; width: auto; position: absolute; right: -3px; top: -5px; z-index: 1;}
 
 .text-corner{position: absolute; z-index: 2; color: #fff; font-size: 110%; font-weight: 400;
     /* Safari,Chrome */
@@ -603,6 +604,75 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
         display: none !important;
     }
 }
+
+
+/*=====================================================*/
+/*=================== LOGO SVG =========================*/
+/*======================================================*/
+
+.svg-box{
+    position: relative;
+    left: 50%;
+    transform: translateX(-30%);
+}
+
+
+#Logo {
+    margin-top: -160px;
+    display:block;
+    fill: #0C496B;
+    fill: url("#MyGradient");
+    stroke: #004a6b;
+    stroke-miterlimit: 5;
+}
+
+.Animate-Draw {
+    fill-opacity: 0;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration: 1;
+
+    animation-name: DrawLine, FadeStroke, FillIn;
+    animation-delay: 0.9s, 1.4s, 1.7s;
+    animation-duration: 2s, 1.6s, 1.8s;
+}
+
+#Draw-upperArc {
+    stroke-dashArray: 1300;
+    stroke-dashoffset: 1300;
+}
+
+#Draw-Hat {
+    animation-delay: 1.3s, 2.9s, 2.9s;
+    animation-duration: 3.1s, 1s, 1s;
+    stroke-dashArray: 1500;
+    stroke-dashoffset: 1500;
+}
+
+#Draw-Flags {
+    animation-delay: 2.6s, 3.3s, 3.3s;
+    animation-duration: 2s, 2s, 2s;
+    stroke-dashArray: 960;
+    stroke-dashoffset: 960;
+    /* animation-duration: 3s; */
+}
+
+@keyframes DrawLine {
+    to { stroke-dashOffset: 0; }
+}
+
+@keyframes FadeStroke {
+    to { stroke-opacity: 0; }
+}
+
+@keyframes FillIn {
+    from { fill-opacity: 0; }
+    to { fill-opacity: 1; }
+}
+
+/*======================================================*/
+/*======================================================*/
+
 
 
 

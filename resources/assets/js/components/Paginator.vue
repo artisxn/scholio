@@ -5,7 +5,7 @@
             <li v-show="prevUrl">
                 <a href="#" aria-label="Previous" rel="prev" @click.prevent="page--" class="page-links">
                 <span aria-hidden="true">&laquo;
-                    {{ lang('["panel/schools"].dashboard.previous') }}
+                    <!--{{ lang('["panel/schools"].dashboard.previous') }}-->
                 </span>
                 </a>
             </li>
@@ -36,7 +36,7 @@
             <li v-show="nextUrl">
                 <a href="#" aria-label="Next" rel="next" @click.prevent="page++" class="page-links">
                 <span aria-hidden="true">
-                    {{ lang('["panel/schools"].dashboard.next') }}
+                    <!--{{ lang('["panel/schools"].dashboard.next') }}-->
                  &raquo;
                 </span>
                 </a>

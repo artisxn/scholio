@@ -1,7 +1,15 @@
 <style>
     .avatar{height: 50px; border-radius: 6px; box-shadow: 0 0 10px #999;}
-    .text{margin-top: 15px}
-    .unread{color:red;}
+    .text,.text-name,.unreadIcon{margin-top: 5px;}
+    .text-name{color: #008da5}
+    .unreadName,.unreadIcon{color: #006e86; font-weight: 600}
+    .unreadStudy{color: #777; font-weight: 600}
+    .unreadRow{background-color: #c1e2ea
+    }
+    .new-icon{display: none}
+    .unreadIcon{display: block}
+
+    .text-name:hover{color: #FD6A33}
 </style>
 
 <template>
@@ -20,22 +28,34 @@
                                     <thead>
                                     <tr>
                                         <th></th>
+                                        <th></th>
                                         <th>{{ lang('panel_scholarships.admissions.name') }}</th>
                                         <th>{{ lang('panel_scholarships.admissions.scholarship') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <tr v-for="admission in allAdmissions">
-                                        <td><a v-bind:href="'/panel/school/admission/' + admission.id"><img v-bind:src="admission.student.avatar" class="avatar"></a></td>
-                                        <td><a v-bind:href="'/panel/school/admission/' + admission.id">
-                                            <div class="text">
-                                                <span :class="{ unread: admission.unread }">
-                                                    {{ admission.user.name }}
-                                                </span>
-                                            
-                                        </div></a></td>
-                                        <td><div class="text">{{admission.scholarship}}</div></td>
+                                    <tr v-for="admission in allAdmissions" :class="{unreadRow: admission.unread}">
+                                        <td>
+                                            <i class="fa fa-bell-o new-icon" :class="{unreadIcon: admission.unread}"></i>
+                                        </td>
+                                        <td>
+                                            <a v-bind:href="'/panel/school/admission/' + admission.id">
+                                            <img v-bind:src="admission.student.avatar" class="avatar">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a v-bind:href="'/panel/school/admission/' + admission.id">
+                                                <div class="text-name" :class="{unreadName: admission.unread}">
+                                                    <span>
+                                                        {{ admission.user.name }}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="text" :class="{unreadStudy: admission.unread}">{{admission.scholarship}}</div>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

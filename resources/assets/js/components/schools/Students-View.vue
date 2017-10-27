@@ -417,7 +417,7 @@
                 },
 
             changeView: function () {
-                this.fetch(1);
+//                this.fetch(1);
                 this.selection=!this.selection;
             }
         },

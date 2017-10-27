@@ -2,7 +2,6 @@
     <div class="row schoolReviews">
 
         <div class="review-header-container">
-
             <div class="z-up">
                 <img src="/panel/assets/images/badge-review-shadow.png" alt="" class="badge-image">
                 <div class="review-title ">
@@ -44,47 +43,12 @@
                     <div class="right-subtitle"><i class="fa fa-user category-icon mar-right"></i>Γονείς:  <span class="pull-right">{{ parentsLength }} </span></div>
                 </div>
 
-
             </div>
 
         </div>
-
-            
-
+        
 
         <div class="reviews"></div>
-
-
-
-
-
-        <!--/* ========================================================================== */-->
-        <!--/* ========================  bootstrap  based grid   ======================== */-->
-        <!--/* ========================================================================== */-->
-        <!-- <div class="">
-            <div v-for="review in reviews" class="review-container">
-
-                <div class="review-card">
-                    <div class="review-title">
-                        <div class="review-title-text">Μέση Βαθμολογία</div>
-                        <div class="review-title-stars"><stars :id="review.id" :stars="review.average" data="average"></stars></div>
-                        <div class="review-title-avg">{{ review.average }}</div>
-
-                    </div>
-
-                    <div class="review-name">{{ review.user.name }}, {{ review.user.role }}, {{ review.created_at }}</div>
-
-                    <div v-for="category in review.category" class="review-category">
-                        <i :class="category.category.icon" class="category-icon"></i> {{ category.category.name }}
-                        <stars :id="category.id" :stars="category.stars" data="category" :read="true" class="pull-right"></stars>
-                    </div>
-
-                    <div class="review-full-text">
-                        {{ review.text }}
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
 
         <!--/* ========================================================================== */-->
@@ -163,17 +127,30 @@
     .review-category{margin: 5px auto;}
 
 
-    @media (max-width: 370px) {
-        .left{display: inline-block; width: 173px}
+
+
+
+    @media (min-width: 1061px) {
+        .stats-container{ width: 98%;}
+    }
+    @media (min-width: 1400px) {
+        .stats-container{ width: 85%;}
+    }
+    @media (min-width: 1580px) {
+        .stats-container{ width: 65%;}
+    }
+    @media (min-width: 1680px) {
+        .stats-container{ width: 60%;}
+    }
+    @media (min-width: 1800px) {
+        .stats-container{ width: 60%;}
+    }
+    @media (min-width: 2000px) {
+        .stats-container{ width: 50%;}
     }
 
-    @media (max-width: 560px) {
-        .stats-container{ width: 100%;  }
-    }
 
-    @media (max-width: 860px) {
-        .stats-container{ width: 80%;  }
-    }
+
 
 
     @media (max-width: 1060px) {
@@ -182,56 +159,25 @@
         .category-container-left{ margin-top: 100px;}
         .category-container-right{ margin-top: 60px;}
     }
-
-
-
-    @media (min-width: 1061px) {
-        .stats-container{ width: 88%;}
-    }
-    @media (min-width: 1400px) {
-        .stats-container{ width: 75%;}
+    @media (max-width: 860px) {
+        .stats-container{ width: 75%;  }
     }
 
-    @media (min-width: 1580px) {
-        .stats-container{ width: 65%;}
-    }
-    @media (min-width: 1680px) {
-        .stats-container{ width: 60%;}
-    }
-
-    @media (min-width: 1800px) {
-        .stats-container{ width: 60%;}
-    }
-    @media (min-width: 2000px) {
-        .stats-container{ width: 50%;}
+    @media (max-width: 830px) {
 
     }
+    @media (max-width: 560px) {
+        .stats-container{ width: 100%;  margin-top: 20px;}
+        .badge-image{height: 300px; }
+        .review-title-header{display: none;}
+        .review-title-stars-header{margin-top: -165px;}
+    }
+    @media (max-width: 370px) {
+        .left{display: inline-block; width: 173px}
+        .badge-image{height: 250px; }
+        .review-title-stars-header{margin-top: -140px;}
+    }
 
-
-    /* ========================================================================== */
-    /* ====================== bootstrap row based grid   ======================== */
-    /* ========================================================================== */
-
-    .review-container{float: left}
-    @media (min-width: 310px) {
-        .review-container{width: 100%}
-    }
-    @media (min-width: 820px) and (max-width: 1359px){
-        .review-container{width: 50%}
-        .review-container:nth-child(2n+1) {clear: left;}
-    }
-    @media (min-width: 1360px) and (max-width: 1729px){
-        .review-container{width: 33.3%}
-        .review-container:nth-child(3n+1) {clear: left;}
-    }
-    @media (min-width: 1730px) and (max-width: 2094px) {
-        .review-container{width: 25%}
-        .review-container:nth-child(4n+1) {clear: left;}
-    }
-    @media (min-width: 2095px) {
-        .review-container{width: 20%}
-        .review-container:nth-child(5n+1) {clear: left;}
-    }
 
 
     /* ========================================================================== */
@@ -272,7 +218,7 @@
             column-count: calc( var(--columns) - 2);
         }
     }
-     @media(max-width: 1360px){
+     @media(max-width: 1350px){
         .masonry {
             -webkit-column-count: calc( var(--columns) - 3);
             -moz-column-count: calc( var(--columns) - 3);
@@ -286,6 +232,11 @@
             -moz-column-count: calc( var(--columns) - 4);
             column-count: calc( var(--columns) - 4);
         }
+        .item{display: block; width: 90%; margin:20px auto;}
+    }
+
+    @media(max-width: 430px){
+        .item{ width: 100%; margin:15px auto;}
     }
 
 
@@ -324,7 +275,7 @@
                         console.log(response.data)
                         this.reviews = response.data.reviews
                         this.totalReviews = response.data.avgReviews
-                        this.totalStars = response.data.stars
+                        this.totalStars =  Math.round( response.data.stars * 10 ) / 10
 
                         $('#total1').raty({
                             score    :this.totalStars,
