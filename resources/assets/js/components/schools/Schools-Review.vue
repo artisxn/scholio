@@ -5,6 +5,25 @@
             <div class="z-up">
                 <img src="/panel/assets/images/badge-review-shadow.png" alt="" class="badge-image">
                 <div class="review-title ">
+
+
+                    <svg  class="curved" id="myPath"  x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300"
+                         xml:space="preserve">
+
+                    <path id="curvedPath" fill="none" stroke="transparent" stroke-miterlimit="10"
+                    d="M5,189.375 c83.105-124.873,213.361-124.443,283.333,1.204"/>
+
+                     <text style="font-size: 110%" fill="white">
+                          <textPath startOffset="50%" text-anchor="middle" xlink:href="#curvedPath">
+                                Συνολική Βαθμολογία
+                          </textPath>
+                       </text>
+                   </svg>
+
+
+
+
+
                     <div class="review-title-header">Συνολική Βαθμολογία</div>
                     <div class="review-title-stars-header">
                         <span class="star-review" id="total1"></span>
@@ -43,47 +62,12 @@
                     <div class="right-subtitle"><i class="fa fa-user category-icon mar-right"></i>Γονείς:  <span class="pull-right">{{ parentsLength }} </span></div>
                 </div>
 
-
             </div>
 
         </div>
-
-            
-
+        
 
         <div class="reviews"></div>
-
-
-
-
-
-        <!--/* ========================================================================== */-->
-        <!--/* ========================  bootstrap  based grid   ======================== */-->
-        <!--/* ========================================================================== */-->
-        <!-- <div class="">
-            <div v-for="review in reviews" class="review-container">
-
-                <div class="review-card">
-                    <div class="review-title">
-                        <div class="review-title-text">Μέση Βαθμολογία</div>
-                        <div class="review-title-stars"><stars :id="review.id" :stars="review.average" data="average"></stars></div>
-                        <div class="review-title-avg">{{ review.average }}</div>
-
-                    </div>
-
-                    <div class="review-name">{{ review.user.name }}, {{ review.user.role }}, {{ review.created_at }}</div>
-
-                    <div v-for="category in review.category" class="review-category">
-                        <i :class="category.category.icon" class="category-icon"></i> {{ category.category.name }}
-                        <stars :id="category.id" :stars="category.stars" data="category" :read="true" class="pull-right"></stars>
-                    </div>
-
-                    <div class="review-full-text">
-                        {{ review.text }}
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
 
         <!--/* ========================================================================== */-->
@@ -91,8 +75,6 @@
         <!--/* ========================================================================== */-->
         <div class="masonry">
             <div v-for="review in reviews" class="item">
-
-                <div class="">
                     <div class="review-title">
                         <div class="review-title-text">Μέση Βαθμολογία</div>
                         <div class="review-title-stars">
@@ -114,7 +96,6 @@
                     <div class="review-full-text">
                         {{ review.text }}
                     </div>
-                </div>
             </div>
         </div>
 
@@ -123,6 +104,7 @@
 </template>
 
 <style>
+    .curved{position: absolute; top: -15px; margin-right: auto; margin-left: auto; left: 0; right: 0; display: none;}
     /*.badge-left{position: relative; width: 430px; margin-top: 80px;}*/
     /*.badge-image-left{width: 280px; margin-top: -100px;}*/
     .category-container-left,.category-container-right{ width: 250px}
@@ -141,6 +123,7 @@
 
     .stats-container{ border: 1.3px solid #007991; border-radius: 7px; background-color: #fafafa; padding: 20px 15px 0 15px; margin-top: -40px; height: 210px; }
     .stats-container{margin-left: auto; margin-right: auto; width: 100%; box-shadow: 0 0 15px #aaa;}
+
     .z-up{position: relative; z-index: 3;}
     .students-details{width: 120px; font-weight: 300; color: #aaa; font-size: 90%; padding: 0 0 0 35px; }
     .right-title{color: #888; font-size: 110%; font-weight: 300; margin-bottom: 10px;}
@@ -153,7 +136,7 @@
     .review-name{margin: 30px 0 15px 0;}
     .review-title{margin: 3px 0 15px 0; text-align: center}
     .review-title-text{font-size: 140%; font-weight: 300; color: #007991  }
-    .review-title-stars{font-size: 120%; color: #0097af  }
+    .review-title-stars{font-size: 120%; color: #0097af }
     .review-title-avg{font-size: 130%; color: #007991;}
 
     .review-full-text{margin-top: 40px;}
@@ -162,17 +145,30 @@
     .review-category{margin: 5px auto;}
 
 
-    @media (max-width: 370px) {
-        .left{display: inline-block; width: 173px}
+
+
+
+    @media (min-width: 1061px) {
+        .stats-container{ width: 98%;}
+    }
+    @media (min-width: 1400px) {
+        .stats-container{ width: 85%;}
+    }
+    @media (min-width: 1580px) {
+        .stats-container{ width: 65%;}
+    }
+    @media (min-width: 1680px) {
+        .stats-container{ width: 60%;}
+    }
+    @media (min-width: 1800px) {
+        .stats-container{ width: 60%;}
+    }
+    @media (min-width: 2000px) {
+        .stats-container{ width: 50%;}
     }
 
-    @media (max-width: 560px) {
-        .stats-container{ width: 100%;  }
-    }
 
-    @media (max-width: 860px) {
-        .stats-container{ width: 80%;  }
-    }
+
 
 
     @media (max-width: 1060px) {
@@ -181,56 +177,26 @@
         .category-container-left{ margin-top: 100px;}
         .category-container-right{ margin-top: 60px;}
     }
-
-
-
-    @media (min-width: 1061px) {
-        .stats-container{ width: 88%;}
-    }
-    @media (min-width: 1400px) {
-        .stats-container{ width: 75%;}
+    @media (max-width: 860px) {
+        .stats-container{ width: 75%;  }
     }
 
-    @media (min-width: 1580px) {
-        .stats-container{ width: 65%;}
-    }
-    @media (min-width: 1680px) {
-        .stats-container{ width: 60%;}
-    }
-
-    @media (min-width: 1800px) {
-        .stats-container{ width: 60%;}
-    }
-    @media (min-width: 2000px) {
-        .stats-container{ width: 50%;}
+    @media (max-width: 830px) {
 
     }
+    @media (max-width: 560px) {
+        .stats-container{ width: 100%;  margin-top: 20px;}
+        .badge-image{height: 300px; }
+        .review-title-header{display: none;}
+        .curved{display: block}
+        .review-title-stars-header{margin-top: -165px;}
+    }
+    @media (max-width: 370px) {
+        .left{display: inline-block; width: 173px}
+        .badge-image{height: 250px; }
+        .review-title-stars-header{margin-top: -140px;}
+    }
 
-
-    /* ========================================================================== */
-    /* ====================== bootstrap row based grid   ======================== */
-    /* ========================================================================== */
-
-    .review-container{float: left}
-    @media (min-width: 310px) {
-        .review-container{width: 100%}
-    }
-    @media (min-width: 820px) and (max-width: 1359px){
-        .review-container{width: 50%}
-        .review-container:nth-child(2n+1) {clear: left;}
-    }
-    @media (min-width: 1360px) and (max-width: 1729px){
-        .review-container{width: 33.3%}
-        .review-container:nth-child(3n+1) {clear: left;}
-    }
-    @media (min-width: 1730px) and (max-width: 2094px) {
-        .review-container{width: 25%}
-        .review-container:nth-child(4n+1) {clear: left;}
-    }
-    @media (min-width: 2095px) {
-        .review-container{width: 20%}
-        .review-container:nth-child(5n+1) {clear: left;}
-    }
 
 
     /* ========================================================================== */
@@ -250,7 +216,7 @@
 
     .item { /* Masonry bricks or child elements */
         background-color: #f5f5f5; border-radius: 7px; border: 1px solid #bbb;  padding: 10px;
-        box-shadow: 0 0 11px #bbb;
+        /*box-shadow: 0 0 11px #bbb;*/
         display: inline-block;
         margin: 0 0 1em;
         width: 100%;
@@ -271,7 +237,7 @@
             column-count: calc( var(--columns) - 2);
         }
     }
-     @media(max-width: 1360px){
+     @media(max-width: 1350px){
         .masonry {
             -webkit-column-count: calc( var(--columns) - 3);
             -moz-column-count: calc( var(--columns) - 3);
@@ -285,6 +251,11 @@
             -moz-column-count: calc( var(--columns) - 4);
             column-count: calc( var(--columns) - 4);
         }
+        .item{display: block; width: 90%; margin:20px auto;}
+    }
+
+    @media(max-width: 430px){
+        .item{ width: 100%; margin:15px auto;}
     }
 
 
@@ -297,8 +268,6 @@
 
 
 <script>
-
-
     import Stars from './Stars.vue';
 
     export default {
@@ -337,14 +306,6 @@
                 this.items = data.data
                 this.reviews = this.items
 
-                $('#total1').raty({
-                    score    :this.totalStars,
-                    halfShow :true,
-                    half     :true,
-                    readOnly :true,
-                    starHalf : 'fa fa-fw fa-star-half'
-                });
-
                 window.scrollTo(0, 0);
             },
 
@@ -355,8 +316,6 @@
             setAvg({data}){
                 this.totalReviews = data.avgReviews
                 this.totalStars = data.stars
-                console.log('EDW')
-                console.log(this.totalStars)
             }
         },
 
@@ -371,6 +330,15 @@
 
                 this.studentsLength = students
                 this.parentsLength = parents
+            },
+            totalStars(){
+                $('#total1').raty({
+                    score    :this.totalStars,
+                    halfShow :true,
+                    half     :true,
+                    readOnly :true,
+                    starHalf : 'fa fa-fw fa-star-half'
+                });
             }
         },
 

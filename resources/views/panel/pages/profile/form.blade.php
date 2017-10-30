@@ -4,11 +4,18 @@
 
 <link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />
 <style>
+    .margin-right-5{margin-right: 5px}
+    .btn-primary{background-color: #008da5; border: none;}
+    .btn-primary:hover{background-color: #007991
+    }
+    .btn-photo{padding: 7px 5px!important; height: 34px!important; width: 190px; }
+    .btn-label{font-size: 110%; font-weight: 300; cursor: pointer;}
+
     .full-content{display: none;}
     input[type=text],input[type=text]:focus{border-radius:0; border: none; border-bottom: 1px solid #ccc; }
     .school-logo{height: 100px; border-radius: 10px; box-shadow: 0 0 10px 2px #bbb;}
-    .btn-photo{padding: 7px 0!important; height: 34px!important; width: 190px;}
-    .btn-label{font-size: 110%; font-weight: 300;}
+
+
     .btn-submit{height: 36px!important;}
 
     /*=================*/
@@ -22,8 +29,8 @@
     .about-container{padding: 0 22px; margin-top: 35px;}
     .about-container>.form-group>p{color: #008DA5; font-size: 105%; margin-bottom: 10px;}
 
-    .title{font-size: 120%; font-weight:400; color: #FD6A33; margin-top: 30px; padding-left: 5px; margin-bottom: -5px}
-    .tiny-text{color: #FD6A33}
+    .title{font-size: 120%; font-weight:400; color: #555; margin-top: 30px; padding-left: 5px; margin-bottom: -5px}
+    .tiny-text{color: #888}
 
     @media(max-width: 419px){
         .full-content{margin-top: 15px;}
@@ -119,7 +126,7 @@
                     <img src="<?php echo e(substr($logo, 0, 4) == 'http' ? '' : '/images/schools/'); ?><?php echo e($logo); ?>" class="school-logo">
                     <div class="clearfix up30"></div>
                     <div class="btn btn-primary text-centered btn-photo">
-                        <label for="avatar" class="btn-label"> <i class="fa fa-upload mar-right-10"></i><?php echo app('translator')->getFromJson('school_profile.avatar'); ?></label>
+                        <label for="avatar" class="btn-label"> <i class="fa fa-upload margin-right-5"></i><?php echo app('translator')->getFromJson('school_profile.avatar'); ?></label>
                         <input type="file" id="avatar" class="form-control" name="logo" style="visibility: hidden;">
                     </div>
                 </div>

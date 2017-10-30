@@ -99,10 +99,12 @@
     .ribbonSm{right: -11px; top: -3px;}
     .ribbonMed{ right: -11px; top: -4.5px;}
     .ribbonL{right: -11px; top: -5px;}
+    .ribbonLarge{right: -11px; top: -5px;}
 
     .text-Sm{right: -2px; top: 13px;}
     .text-Med{right: 2px; top: 34px; }
     .text-L{right: 8px; top: 60px;}
+    .text-Large{right: -23px; top: 60px;}
 
     /*  /////////////////////////////////////////  */
     /*=============================================*/
@@ -122,83 +124,100 @@
     }
 
     @media (max-width:1349px){
-        .ribbonMed{ right: -8px}
+        .ribbonMed,.ribbonLarge{ right: -8px}
         .text-Med{right: 3px}
+        .text-Large{right: -20px;}
     }
 
 
-    @media (max-width:1239px){
+    @media (max-width:1249px){
         .pos-right{right: -25px}
-        .ribbonMed{ right: -5px}
+        .ribbonMed,.ribbonLarge{ right: -5px}
         .text-Med{right: 8px}
+        .text-Large{right: -18px;}
     }
 
     @media (max-width:1199px){
         .pos-right{right: -30px}
-        .ribbonMed{ right: -54px}
+        .ribbonMed,.ribbonLarge{ right: -54px}
         .text-Med{right: -42px}
+        .text-Large{right: -66px;}
     }
 
     @media (max-width:1149px){
         .ribbonMed{ right: -48px}
         .text-Med{right: -36px}
+        .ribbonLarge{right: -47px}
+        .text-Large{right: -61px;}
     }
+
     @media (max-width:1109px){
-        .ribbonMed{ right: -29px}
+        .ribbonMed,.ribbonLarge{ right: -29px}
         .text-Med{right: -16px}
+        .text-Large{right: -41px;}
     }
+
     @media (max-width:1049px){
-        .ribbonMed{ right: -10px}
+        .ribbonMed,.ribbonLarge{ right: -10px}
         .text-Med{right: 1px}
+        .text-Large{right: -21px;}
     }
 
     @media (max-width:991px){
         .pos-right{right: -32px}
-        .ribbonMed{ right: -102px}
+        .ribbonMed,.ribbonLarge{ right: -102px}
         .text-Med{right: -90px}
+        .text-Large{right: -115px;}
     }
 
     @media (max-width:929px){
-        .ribbonMed{ right: -73px}
+        .ribbonMed,.ribbonLarge{ right: -73px}
         .text-Med{right: -61px}
+        .text-Large{right: -85px;}
     }
 
     @media (max-width:859px){
-        .ribbonMed{ right: -31px}
-        .text-Med{right: -20px}
+        .ribbonMed,.ribbonLarge{ right: -31px}
+        .text-Med{right: -19px}
+        .text-Large{right: -44px;}
     }
 
 
 
     @media (max-width:767px){
         .pos-right{top: -349px; right: -2px!important;}
-        .ribbonMed{ right: -2.5px; top: -348px;}
+        .ribbonMed,.ribbonLarge{ right: -2.5px; top: -348px;}
         .text-Med{right: 8px ;top: -306px;}
+        .text-Large{right: -16px; top: -285px;}
 
     }
     @media (max-width:600px){
         .pos-right{top: -329px;}
-        .ribbonMed{top: -327px;}
+        .ribbonMed,.ribbonLarge{top: -327px;}
         .text-Med{top: -284px;}
+        .text-Large{right: -14px; top: -265px;}
     }
 
     @media (max-width:540px){
         .pos-right{top: -304px;}
-        .ribbonMed{top: -303px;}
+        .ribbonMed,.ribbonLarge{top: -303px;}
         .text-Med{top: -260px;}
+        .text-Large{right: -15px; top: -240px;}
 
     }
 
     @media (max-width:480px){
         .pos-right{top: -274px;}
-        .ribbonMed{top: -273px;}
+        .ribbonMed,.ribbonLarge{top: -273px;}
         .text-Med{top: -230px;}
+        .text-Large{top: -210px;}
     }
 
     @media (max-width:400px){
         .pos-right{top: -246px;}
-        .ribbonMed{top: -245px;}
-        .text-Med{top: -202px;}
+        .ribbonMed,.ribbonLarge{top: -245px;}
+        .text-Med{top: -204px;}
+        .text-Large{top: -182px;}
     }
 
 
@@ -595,9 +614,13 @@ angular.module("schoolsResultsApp",[])
             <img class="ribbonMed" style="" src="/new/img/RibbonMed.png" alt="">
             <span class="text-corner text-Med"> <i class=" fa fa-fire" style="margin-right: 7px"></i>Popular</span>
             @{{/hot}}
-          {{--@{{#hot}}--}}
-          {{--<div  class="ribbon top20 pos-right"><span style="font-size: 95%"> Popular</span></div>--}}
-          {{--@{{/hot }}--}}
+
+            @{{#scholarshipLion}}
+            <img class="ribbonLarge" style="" src="/new/img/RibbonL.png" alt="">
+            <span class="text-corner text-Large"> <i class=" fa fa-trophy" style="margin-right: 7px"></i>Grand Scholarships</span>
+           @{{/scholarshipLion}}
+
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
                 <a href="/public/profile/@{{school_id}}" target="_blank">
                 <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="/images/schools/@{{logo}}">
@@ -760,13 +783,17 @@ angular.module("schoolsResultsApp",[])
                     hit.scolarsLength = [];
                     hit.stats = [];
                     hit.hot=[];
+                    hit.scholarshipLion=[];
 
 
-                    if(hit.lengthStudents > 10   && (window.STATS[hit.id-1] == 1) ){
+                    if(hit.lengthStudents > 8   && (window.STATS[hit.id-1] == 1) ){
                         hit.hot.push(true);
                     }
+                    if(hit.lengthScholarships > 8 && (window.STATS[hit.id-1] == 1) ){
+                        hit.scholarshipLion.push(true);
+                    }
 
-                    if(hit.lengthScholarships > 8){
+                    if(hit.lengthScholarships > 7){
                         hit.scolarsLength.push(true);
                     }
                     // console.log(window.STATS[0]);

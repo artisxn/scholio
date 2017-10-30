@@ -2,10 +2,10 @@
 
 return [
     'notifications' => 'Ειδοποιήσεις',
-    'scholarshipRequest' => ' Αίτημα για υποτροφία',
-    'scholarshipRequests' => ' Αιτήματα για υποτροφία',
-    'connectionRequest' => ' Αίτημα για σύνδεση',
-    'connectionRequests' => ' Αιτήματα για σύνδεση',
+    'scholarshipRequest' => ' Νέο Αίτημα για υποτροφία',
+    'scholarshipRequests' => ' Νέα αιτήματα για υποτροφία',
+    'connectionRequest' => ' Νέο αίτημα για σύνδεση',
+    'connectionRequests' => ' Νέα αιτήματα για σύνδεση',
     'noNotifications' => 'Δεν υπάρχουν νέες ειδοποιήσεις',
 
 
