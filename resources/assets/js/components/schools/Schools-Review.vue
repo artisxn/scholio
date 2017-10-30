@@ -5,6 +5,25 @@
             <div class="z-up">
                 <img src="/panel/assets/images/badge-review-shadow.png" alt="" class="badge-image">
                 <div class="review-title ">
+
+
+                    <svg  class="curved" id="myPath"  x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300"
+                         xml:space="preserve">
+
+                    <path id="curvedPath" fill="none" stroke="transparent" stroke-miterlimit="10"
+                    d="M5,189.375 c83.105-124.873,213.361-124.443,283.333,1.204"/>
+
+                     <text style="font-size: 110%" fill="white">
+                          <textPath startOffset="50%" text-anchor="middle" xlink:href="#curvedPath">
+                                Συνολική Βαθμολογία
+                          </textPath>
+                       </text>
+                   </svg>
+
+
+
+
+
                     <div class="review-title-header">Συνολική Βαθμολογία</div>
                     <div class="review-title-stars-header">
                         <span class="star-review" id="total1"></span>
@@ -88,6 +107,7 @@
 </template>
 
 <style>
+    .curved{position: absolute; top: -15px; margin-right: auto; margin-left: auto; left: 0; right: 0; display: none;}
     /*.badge-left{position: relative; width: 430px; margin-top: 80px;}*/
     /*.badge-image-left{width: 280px; margin-top: -100px;}*/
     .category-container-left,.category-container-right{ width: 250px}
@@ -170,6 +190,7 @@
         .stats-container{ width: 100%;  margin-top: 20px;}
         .badge-image{height: 300px; }
         .review-title-header{display: none;}
+        .curved{display: block}
         .review-title-stars-header{margin-top: -165px;}
     }
     @media (max-width: 370px) {

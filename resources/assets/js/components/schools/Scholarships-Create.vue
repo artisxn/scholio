@@ -46,11 +46,10 @@
                         </div>
                     </div>
 
-
-                    <div id="step-2" class="step-anchor">
+                    <div id="step-2" class="step-anchor ">
                         <div class="step centered-text">
                             <!--<h2>Βήμα 2 </h2>-->
-                            <div class="step-box"  :class="{'step3check': (levelsName.length>2)}" :style="[!col_iek_eng_dan_mus, {minHeight: 380+'px'}]">
+                            <div class="step-box "  :class="{'step3check': (levelsName.length>2)}" :style="[!col_iek_eng_dan_mus, {minHeight: 380+'px'}]">
                                 <div class="step-img" v-if="checkedStudies.length">
                                     <div v-for="image in studies[selectedLevel].section">
                                         <img  class="step-image" :src="'/panel/assets/images/steps/'+image.name+'.png'" alt=""
@@ -109,7 +108,7 @@
                         </div>
                     </div>
 
-                    <div id="step-3" class="step-anchor">
+                    <div id="step-3" class="step-anchor step-container-height">
                         <div class="step centered-text">
                             <!--<h2>Βήμα 3 </h2>-->
                             <div class="step-box" >
@@ -133,8 +132,7 @@
                     </div>
 
 
-
-                    <div id="step-5" class="step-anchor">
+                    <div id="step-5" class="step-anchor step-container-height">
                         <div class="step centered-text" >
 
                             <!--<h2>Βήμα TAGS </h2>-->
@@ -151,7 +149,7 @@
                                          <multiselect 
                                          v-model="value" 
                                          tag-placeholder="Προσθήκη νέας ετικέτας" 
-                                         placeholder="Αναζήτήστε ή Προσθέστε ετικέτα" 
+                                         placeholder="Αναζητήστε ή Προσθέστε ετικέτα"
                                          label="name" 
                                          track-by="code" 
                                          :options="options" 
@@ -159,17 +157,20 @@
                                          :taggable="true" 
                                          @tag="addTag">
                                          </multiselect>
-                                         <li v-for="tag in value">{{tag.name}}</li>
+                                         <div v-for="tag in value" class="col-xs-6 text-left tag-name" >
+
+                                             {{tag.name}}
+
+                                         </div>
 
                                      </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 col-sm-6">
                                 </div>
 
                             </div>
                         </div>
                     </div>
+
+
 
                     <div id="step-4" class="step-anchor">
                         <div class="step centered-text" >
@@ -240,6 +241,16 @@
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style>
+
+    .step-container-height{height: 500px}
+    .tag-name{padding: 0 1px; margin: 3px 0;}
+
+    .multiselect__option{}
+    .multiselect__element{}
+    .multiselect__option--highlight{}
+    .multiselect, .multiselect__input, .multiselect__single{}
+
+
 
 /* jQuery Datepicker scholio Styling */
 .ui-widget-header {
