@@ -355,6 +355,8 @@
             setAvg({data}){
                 this.totalReviews = data.avgReviews
                 this.totalStars = data.stars
+                console.log('EDW')
+                console.log(this.totalStars)
             }
         },
 

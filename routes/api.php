@@ -76,7 +76,7 @@ Route::get('/school/getReviews', function () {
     $school = auth()->user()->info;
     $reviews = $school->reviews()->with('user', 'category.category')->get();
 
-    $perPage = 2;
+    $perPage = 5;
     $items = $reviews;
 
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);

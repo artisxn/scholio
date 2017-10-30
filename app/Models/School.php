@@ -226,7 +226,9 @@ class School extends Model
             }
         }
 
-        return (float) (($count != 0) ? (float) ($total / $count) : 0);
+        $avg = (float) (($count != 0) ? (float) ($total / $count) : 0);
+
+        return number_format((float) $avg, 1, '.', '');
     }
 
     public function averageReviews()
