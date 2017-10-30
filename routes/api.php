@@ -47,7 +47,7 @@ Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $a
         });
     }
 
-    $perPage = 5;
+    $perPage = config('scholio.perPage.scholarships');
     $items = $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
 
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
@@ -72,18 +72,50 @@ Route::get('/school/getAvgReviews', function () {
     return $data;
 })->middleware('auth:api');
 
-Route::get('/school/getReviews', function () {
+Route::get('/school/getReviews/{role}/{status}', function ($role, $status) {
     $school = auth()->user()->info;
     $reviews = $school->reviews()->with('user', 'category.category')->get();
 
-    $perPage = 5;
+    $totalAllumni = 0;
+    $totalConnected = 0;
+
+    foreach ($reviews as $review) {
+        $user = $review->user;
+        $connected = $school->connected;
+        $allumni = $school->allumni;
+
+        if ($connected->contains($user)) {
+            $totalConnected++;
+        } else if ($allumni->contains($user)) {
+            $totalAllumni++;
+        }
+    }
+
+    if ($status != 'all' || $role !== 'all') {
+        $connected = $school->$status;
+
+        $reviews = $reviews->filter(function ($item) use ($connected, $role, $status) {
+            $bool = $status == 'all' ? true : $connected->contains($item->user);
+            if ($item->user->role == $role && $bool) {
+                return $item;
+            }
+        });
+    }
+
+    $perPage = config('scholio.perPage.reviews');
     $items = $reviews;
-
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
-    $items = $items instanceof Collection ? $items : Collection::make($items);
-    $result = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
 
-    return $result;
+    $paginatedData = [];
+    foreach ($items->forPage($page, $perPage) as $key => $value) {
+        $paginatedData[] = $value;
+    }
+
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
+    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni]);
+    $data = $custom->merge($result);
+    return $data;
 })->middleware('auth:api');
 
 Route::get('/scholarship/getFullAdmissions', function () {
@@ -208,7 +240,7 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
     $items = $students;
 
-    $perPage = 12;
+    $perPage = config('scholio.perPage.students');
 
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
@@ -244,7 +276,7 @@ Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function
 
     $items = $teachers;
 
-    $perPage = 3;
+    $perPage = config('scholio.perPage.teachers');
 
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);

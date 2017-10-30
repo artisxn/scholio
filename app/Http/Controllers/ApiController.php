@@ -113,8 +113,13 @@ class ApiController extends Controller
     {
         $school = auth()->user()->info;
         $levels = [];
+        $allLevels = $school->type->level;
 
-        foreach ($school->type->level as $level) {
+        if (request()->cookie('lang') == 'en') {
+            $allLevels = $school->typeEN->level;
+        }
+
+        foreach ($allLevels as $level) {
             array_push($levels, $level);
 
             foreach ($level->section as $section) {
@@ -148,7 +153,11 @@ class ApiController extends Controller
         $data = [];
 
         foreach ($school->study as $study) {
-            array_push($data, Study::with('section.level')->where('id', $study->id)->get());
+            $st = Study::with('section.level')->where('id', $study->id)->get();
+            if (request()->cookie('lang') == 'en') {
+                $st = Study::with('sectionEN.level')->where('id', $study->id)->get();
+            }
+            array_push($data, $st);
         }
 
         return $data;

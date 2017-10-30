@@ -4,8 +4,7 @@
     .text-name{color: #008da5}
     .unreadName,.unreadIcon{color: #006e86; font-weight: 600}
     .unreadStudy{color: #777; font-weight: 600}
-    .unreadRow{background-color: #c1e2ea
-    }
+    .unreadRow{background-color: #c1e2ea!important;}
     .new-icon{display: none}
     .unreadIcon{display: block}
 

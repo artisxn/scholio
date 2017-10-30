@@ -190,12 +190,19 @@
                 sections: [],
                 testClass: true,
                 col_iek_eng_dan_mus:false,
-                checkedStudiesTemp:{}
+                checkedStudiesTemp:{},
+                testTable: false
             }
 
         },
         mounted: function () {
             this.getCheckedStudies()
+        },
+        watch:{
+            testTable(){
+                console.log('TEST')
+                console.log(this.testTable)
+            }
         },
 
         methods: {
@@ -206,6 +213,7 @@
                 var parent = this
                 this.testTable.forEach(function (studies) {
                     parent.checkedStudies.push(studies[0].id);
+                    studies[0].section = studies[0].section_e_n
                     console.log(' API 2 checkedStudies initial push OK' )
                 })
                 this.getStudies()
@@ -219,6 +227,7 @@
                         .then(response => {
                     console.log('API 1 Full Studies OK ')
                     this.all_studies = response.data['levels']
+                    console.log(this.all_studies)
                 this.createTableStatus()
                 });
             },

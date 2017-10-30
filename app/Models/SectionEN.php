@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class SectionEN extends Model
 {
-    //
+    public function level()
+    {
+        return $this->belongsTo(LevelEN::class, 'level_id');
+    }
+    public function study()
+    {
+        return $this->belongsToMany(Study::class, 'section_study', 'study_id')->withTimestamps();
+    }
 }

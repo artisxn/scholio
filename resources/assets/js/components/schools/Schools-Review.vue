@@ -20,10 +20,6 @@
                        </text>
                    </svg>
 
-
-
-
-
                     <div class="review-title-header">Συνολική Βαθμολογία</div>
                     <div class="review-title-stars-header">
                         <span class="star-review" id="total1"></span>
@@ -42,16 +38,16 @@
                 </div>
 
                 <div class="category-container-right">
-                    <div class="right-title text-center">{{reviews.length}} Αξιολογήσεις</div>
+                    <div class="right-title text-center" @click="showAllReviews">{{reviews.length}} Αξιολογήσεις</div>
 
-                    <div class="right-subtitle"><i class="fa fa-graduation-cap category-icon"></i>Μαθητές:  <span class="pull-right">{{ studentsLength }} </span> </div>
+                    <div class="right-subtitle" @click="showAllStudents"><i class="fa fa-graduation-cap category-icon"></i>Μαθητές:  <span class="pull-right">{{ studentsLength }} </span> </div>
 
                     <div class="students-details">
-                        <div style="padding: 2px 0 5px 0 " >
-                            Ενεργοί: <span class="pull-right">3 </span>
+                        <div style="padding: 2px 0 5px 0 " @click="showActiveStudents">
+                            Ενεργοί: <span class="pull-right">{{dataSet.connectedStudents}} </span>
                         </div>
-                        <div class="">
-                            Απόφοιτοι: <span class="pull-right">2 </span>
+                        <div class="" @click="showAllumniStudents">
+                            Απόφοιτοι: <span class="pull-right" >{{dataSet.allumniStudents}} </span>
                         </div>
                     </div>
 
@@ -283,7 +279,11 @@
                 parentsLength: 0,
                 stars: {},
                 items: [],
-                dataSet: false
+                dataSet: false,
+                status: 'all',
+                role: 'all',
+                allumniStudents: 0,
+                connectedStudents: 0
             }
         },
 
@@ -294,7 +294,7 @@
                     page = query ? query[1] : 1;
                 }
 
-                return `/api/school/getReviews?page=${page}`;
+                return `/api/school/getReviews/${this.role}/${this.status}/?page=${page}`;
             }, 
 
             fetch(page) {
@@ -305,7 +305,7 @@
                 this.dataSet = data
                 this.items = data.data
                 this.reviews = this.items
-
+                console.log(this.items)
                 window.scrollTo(0, 0);
             },
 
@@ -316,6 +316,32 @@
             setAvg({data}){
                 this.totalReviews = data.avgReviews
                 this.totalStars = data.stars
+            },
+
+            showActiveStudents(){
+                this.status = 'connected'
+                this.role = 'student'
+                this.getAvg()
+                this.fetch(1)
+            },
+            showAllumniStudents(){
+                this.status = 'allumni'
+                this.role = 'student'
+                this.getAvg()
+                this.fetch(1)
+            },
+            showAllStudents(){
+                this.status = 'all'
+                this.role = 'student'
+                this.getAvg()
+                this.fetch(1)
+            },
+
+            showAllReviews(){
+                this.status = 'all'
+                this.role = 'all'
+                this.getAvg()
+                this.fetch(1)
             }
         },
 

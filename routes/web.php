@@ -12,8 +12,57 @@ use App\Models\SchoolSetting;
 use App\Models\Tag;
 use App\Scholio\Scholio;
 use App\User;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
+
+Route::get('/srv/{role}/{status}', function ($role, $status) {
+    $school = auth()->user()->info;
+    $reviews = $school->reviews()->with('user', 'category.category')->get();
+
+    $totalAllumni = 0;
+    $totalConnected = 0;
+
+    foreach ($reviews as $review) {
+        $user = $review->user;
+        $connected = $school->connected;
+        $allumni = $school->allumni;
+
+        if ($connected->contains($user)) {
+            $totalConnected++;
+        } else if ($allumni->contains($user)) {
+            $totalAllumni++;
+        }
+    }
+
+    if ($status != 'all' || $role !== 'all') {
+        $connected = $school->$status;
+
+        $reviews = $reviews->filter(function ($item) use ($connected, $role, $status) {
+            $bool = $status == 'all' ? true : $connected->contains($item->user);
+            if ($item->user->role == $role && $bool) {
+                return $item;
+            }
+        });
+    }
+
+    $perPage = config('scholio.perPage.reviews');
+    $items = $reviews;
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+
+    $paginatedData = [];
+    foreach ($items->forPage($page, $perPage) as $key => $value) {
+        $paginatedData[] = $value;
+    }
+
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
+    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni]);
+    $data = $custom->merge($result);
+    return $data;
+});
 
 Route::get('/sx/{order}/{asc}/{field}', function ($order, $asc, $field) {
     $school = auth()->user()->info;
@@ -53,7 +102,6 @@ Route::get('/sx/{order}/{asc}/{field}', function ($order, $asc, $field) {
 
     $paginatedData = [];
     foreach ($items->forPage($page, $perPage) as $key => $value) {
-
         $paginatedData[] = $value;
     }
 

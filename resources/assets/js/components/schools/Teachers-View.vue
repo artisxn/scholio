@@ -332,12 +332,12 @@
             nameChangeSort: function(){
                 this.sortType = 'name';
                 this.sortReverse=!this.sortReverse;
-                this.fetch()
+                this.fetch(1)
             },
             emailChangeSort: function(){
                 this.sortType = 'email';
                 this.sortReverse=!this.sortReverse;
-                this.fetch()
+                this.fetch(1)
             },
 
             changeSortType: function(){
@@ -377,6 +377,7 @@
             }, 
 
             fetch(page) {
+                window.scrollTo(0, 0);
                 axios.get(this.url(page)).then(this.refresh);
             },
 
@@ -386,7 +387,6 @@
                 console.log(this.items)
                 this.allumniCount = this.items.allumniTeachers
                 this.connectedCount = this.items.connectedTeachers
-                window.scrollTo(0, 0);
             },
 
             changeView: function () {

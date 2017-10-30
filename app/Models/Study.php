@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Level;
 use App\Models\Section;
+use App\Models\SectionEN;
 use Illuminate\Database\Eloquent\Model;
 
 class Study extends Model
@@ -27,6 +28,10 @@ class Study extends Model
      */
     public function level()
     {
+        if (request()->cookie('lang') == 'en') {
+            return $this->sectionEN[0]->level;
+        }
+
         return $this->section[0]->level;
     }
 
@@ -38,6 +43,11 @@ class Study extends Model
     public function section()
     {
         return $this->belongsToMany(Section::class, 'section_study');
+    }
+
+    public function sectionEN()
+    {
+        return $this->belongsToMany(SectionEN::class, 'section_study', 'study_id', 'section_id');
     }
 
     /**
