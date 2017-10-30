@@ -633,8 +633,8 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
     animation-iteration: 1;
 
     animation-name: DrawLine, FadeStroke, FillIn;
-    animation-delay: 0.9s, 1.4s, 1.7s;
-    animation-duration: 2s, 1.6s, 1.8s;
+    animation-delay: 0.5s, 0.8s, 1s;
+    animation-duration: 1s, 0.8s, 0.9s;
 }
 
 #Draw-upperArc {
@@ -643,15 +643,15 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
 }
 
 #Draw-Hat {
-    animation-delay: 1.3s, 2.9s, 2.9s;
-    animation-duration: 3.1s, 1s, 1s;
+    animation-delay: 0.6s, 1.5s, 1.5s;
+    animation-duration: 1.5s, 0.5s, 0.5s;
     stroke-dashArray: 1500;
     stroke-dashoffset: 1500;
 }
 
 #Draw-Flags {
-    animation-delay: 2.6s, 3.3s, 3.3s;
-    animation-duration: 2s, 2s, 2s;
+    animation-delay: 1.3s, 1.6s, 1.6s;
+    animation-duration: 1s, 1s, 1s;
     stroke-dashArray: 960;
     stroke-dashoffset: 960;
     /* animation-duration: 3s; */

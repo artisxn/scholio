@@ -130,7 +130,7 @@
                             </defs>
                             </svg>
 
-                            <svg id="Logo" class="svg-box" width="220px" height="auto" viewBox="0 0 600 450" xml:space="preserve">
+                            <svg id="Logo" class="svg-box" width="220px" viewBox="0 0 600 450" xml:space="preserve">
                                 <use id="Draw-upperArc" class="Animate-Draw" xlink:href="#upperArc" />
                                 <use id="Draw-Hat" class="Animate-Draw" xlink:href="#Hat" />
                                 <use id="Draw-Flags" class="Animate-Draw" xlink:href="#Flags" />
