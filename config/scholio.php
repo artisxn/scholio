@@ -6,8 +6,8 @@ return [
      */
     'perPage' => [
         'students' => 12,
-        'teachers' => 6,
-        'scholarships' => 7,
-        'reviews' => 7,
+        'teachers' => 3,
+        'scholarships' => 10,
+        'reviews' => 6,
     ],
 ];

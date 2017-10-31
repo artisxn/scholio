@@ -13,8 +13,16 @@
                     <path id="curvedPath" fill="none" stroke="transparent" stroke-miterlimit="10"
                     d="M5,189.375 c83.105-124.873,213.361-124.443,283.333,1.204"/>
 
-                     <text style="font-size: 110%" fill="white">
-                          <textPath startOffset="50%" text-anchor="middle" xlink:href="#curvedPath">
+                    <filter id = "i1" width = "120%" height = "140%">
+                        <!--<feOffset result="offOut" in="SourceAlpha" dx="2" dy="2" />-->
+                          <feColorMatrix result = "matrixOut" in = "offOut" type = "matrix" values = "0.36 0 0 0  0.02  0.44 0 0 0  0.06 0.40 0 0 0  0.16  0  0 0 1  0"/>
+                          <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="10" />
+                          <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                    </filter>
+
+
+                     <text style="font-size: 170%;" fill="#008da5" filter = "url(#i1)">
+                          <textPath startOffset="52%" text-anchor="middle" xlink:href="#curvedPath">
                                 {{ lang('["panel/schools"].reviews.rating') }}
                           </textPath>
                        </text>
@@ -38,15 +46,15 @@
                 </div>
 
                 <div class="category-container-right">
-                    <div class="right-title text-center" @click="showAllReviews">{{reviews.length}}  {{ lang('["panel/schools"].reviews.reviews') }}</div>
+                    <div class="right-title text-center">{{reviews.length}}  {{ lang('["panel/schools"].reviews.reviews') }}</div>
 
-                    <div class="right-subtitle" @click="showAllStudents"><i class="fa fa-graduation-cap category-icon"></i> {{ lang('["panel/schools"].reviews.students') }}:  <span class="pull-right">{{ studentsLength }} </span> </div>
+                    <div class="right-subtitle"><i class="fa fa-graduation-cap category-icon"></i> {{ lang('["panel/schools"].reviews.students') }}:  <span class="pull-right">{{ studentsLength }} </span> </div>
 
                     <div class="students-details">
-                        <div style="padding: 2px 0 5px 0 " @click="showActiveStudents">
+                        <div style="padding: 2px 0 5px 0">
                             {{ lang('["panel/schools"].reviews.connected') }}: <span class="pull-right">{{dataSet.connectedStudents}} </span>
                         </div>
-                        <div class="" @click="showAllumniStudents">
+                        <div class="">
                             {{ lang('["panel/schools"].reviews.alumni') }}: <span class="pull-right" >{{dataSet.allumniStudents}} </span>
                         </div>
                     </div>
@@ -61,6 +69,34 @@
             </div>
 
         </div>
+
+
+        <div class="filters-container btn-group">
+            <div class="filter-text">
+                <i class="fa fa-filter margin-right-10"></i>{{ lang('["panel/schools"].reviews.filters') }}
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" :class="{btnActive: role=='all' && status=='all'}"            @click="showAllReviews">{{ lang('["panel/schools"].reviews.all') }}</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='all'}"        @click="showAllStudents">{{ lang('["panel/schools"].reviews.students') }}</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='connected'}"  @click="showActiveStudents">{{ lang('["panel/schools"].reviews.ActiveStudents') }}</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='allumni'}"    @click="showAllumniStudents">{{ lang('["panel/schools"].reviews.AlumniStudents') }}</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='all'}"         @click="showAllParents">{{ lang('["panel/schools"].reviews.parents') }}</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='connected'}"   @click="showActiveParents">{{ lang('["panel/schools"].reviews.ActiveParents') }}</button>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='allumni'}"     @click="showAllumniParents">{{ lang('["panel/schools"].reviews.AlumniParents') }}</button>
+            </div>
+        </div>
         
 
         <div class="reviews"></div>
@@ -72,7 +108,7 @@
         <div class="masonry">
             <div v-for="review in reviews" class="item">
                     <div class="review-title">
-                        <div class="review-title-text">Μέση Βαθμολογία</div>
+                        <div class="review-title-text">{{ lang('["panel/schools"].reviews.average') }}</div>
                         <div class="review-title-stars">
                             <stars :id="review.id" :stars="review.average" name="average" read="false"></stars>
                         </div>
@@ -100,7 +136,7 @@
 </template>
 
 <style>
-    .curved{position: absolute; top: -15px; margin-right: auto; margin-left: auto; left: 0; right: 0; display: none;}
+    .curved{position: absolute; top: -90px; margin-right: auto; margin-left: auto; left: 0; right: 0; display: none;}
     /*.badge-left{position: relative; width: 430px; margin-top: 80px;}*/
     /*.badge-image-left{width: 280px; margin-top: -100px;}*/
     .category-container-left,.category-container-right{ width: 250px}
@@ -141,6 +177,14 @@
     .review-category{margin: 5px auto;}
 
 
+
+    .filters-container{margin: 20px 0 40px 0;}
+    .btn-primary,.btn-primary:focus{background-color: #008da5; outline:none !important; border: none;}
+    .btn-primary:hover{background-color: #006880;  }
+    .btn-container{float: left; margin: 15px 12px 15px 0; }
+    .margin-right-10{margin-right: 10px}
+    .filter-text{font-family: Roboto; font-size: 120%; font-weight: 400; margin-top: 30px; color: #0097af}
+    .btnActive{background-color: #b95140 !important;}
 
 
 
@@ -264,6 +308,10 @@
 
 
 <script>
+
+
+
+
     import Stars from './Stars.vue';
 
     export default {
@@ -283,7 +331,8 @@
                 status: 'all',
                 role: 'all',
                 allumniStudents: 0,
-                connectedStudents: 0
+                connectedStudents: 0,
+                selected:'all',
             }
         },
 
@@ -333,6 +382,24 @@
             showAllStudents(){
                 this.status = 'all'
                 this.role = 'student'
+                this.getAvg()
+                this.fetch(1)
+            },
+            showActiveParents(){
+                this.status = 'connected'
+                this.role = 'parent'
+                this.getAvg()
+                this.fetch(1)
+            },
+            showAllumniParents(){
+                this.status = 'allumni'
+                this.role = 'parent'
+                this.getAvg()
+                this.fetch(1)
+            },
+            showAllParents(){
+                this.status = 'all'
+                this.role = 'parent'
                 this.getAvg()
                 this.fetch(1)
             },

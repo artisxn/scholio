@@ -6,9 +6,13 @@
                 <span class="pull-right" style="">{{ connectedStudents }}</span>
                 </div>
             </label> <br>
-            <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch"> <label for="r2"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni-many') }}
-                <span class="pull-right" style="">{{ allumniStudents }}</span>
-            </div></label><br>
+            <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch">
+            <label for="r2">
+                <div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni-many') }}
+                    <span class="pull-right" style="">{{ allumniStudents }}</span>
+                 </div>
+            </label>
+            <br>
         </form>
 
 

@@ -5,9 +5,13 @@
             <input id="th1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch"> <label for="th1"><div class="r-lab">{{ lang('resource.teachers.active') }} 
                 <span class="pull-right" style=""> {{ connectedTeachers }} </span>
             </div></label> <br>
-            <input id="th2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch"> <label for="th2"><div class="r-lab">{{ lang('resource.teachers.nonactive') }}
-                <span class="pull-right" style=""> {{ allumniTeachers }} </span>
-            </div></label><br>
+            <input id="th2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch">
+            <label for="th2">
+                <div class="r-lab">{{ lang('resource.teachers.nonactive') }}
+                    <span class="pull-right" style=""> {{ allumniTeachers }} </span>
+                </div>
+            </label>
+            <br>
         </form>
 
         <div class="input-group pull-left input-search">
@@ -99,7 +103,7 @@
 
 <style>
     label{font-weight: 400;}
-    .r-lab{margin: -23px 0 0 20px;}
+    .r-lab{margin: -23px 0 0 20px; width: 80px;}
     .margin-right-10 { margin-right: 10px; }
     .sc-radio{margin: 10px 15px; }
     .btn-view{margin: 11px 10px 10px 0; height: 38px;}
