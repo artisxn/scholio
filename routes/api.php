@@ -34,14 +34,48 @@ Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $a
 
     if ($field != '%20') {
         $scholarships = $scholarships->filter(function ($item) use ($field) {
-            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
+
+            $replacement = preg_replace("/ά/iu", '${1}α', $item->level->name);
             $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
             $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
             $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
             $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
             $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
             $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
-            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->section->name) || preg_match("/" . $field . "/i", $item->study->name) || preg_match("/" . $field . "/i", $item->financial->plan) || preg_match("/" . $field . "/i", $item->level->name) || preg_match("/" . $field . "/i", $item->criteria->name)) {
+
+            $replacement2 = preg_replace("/ά/iu", '${1}α', $item->study->name);
+            $replacement2 = preg_replace("/έ/iu", '${1}ε', $replacement2);
+            $replacement2 = preg_replace("/ή/iu", '${1}η', $replacement2);
+            $replacement2 = preg_replace("/ί/iu", '${1}ι', $replacement2);
+            $replacement2 = preg_replace("/ό/iu", '${1}ο', $replacement2);
+            $replacement2 = preg_replace("/ύ/iu", '${1}υ', $replacement2);
+            $replacement2 = preg_replace("/ώ/iu", '${1}ω', $replacement2);
+
+            $replacement3 = preg_replace("/ά/iu", '${1}α', $item->criteria->name);
+            $replacement3 = preg_replace("/έ/iu", '${1}ε', $replacement3);
+            $replacement3 = preg_replace("/ή/iu", '${1}η', $replacement3);
+            $replacement3 = preg_replace("/ί/iu", '${1}ι', $replacement3);
+            $replacement3 = preg_replace("/ό/iu", '${1}ο', $replacement3);
+            $replacement3 = preg_replace("/ύ/iu", '${1}υ', $replacement3);
+            $replacement3 = preg_replace("/ώ/iu", '${1}ω', $replacement3);
+
+            $replacement4 = preg_replace("/ά/iu", '${1}α', $item->section->name);
+            $replacement4 = preg_replace("/έ/iu", '${1}ε', $replacement4);
+            $replacement4 = preg_replace("/ή/iu", '${1}η', $replacement4);
+            $replacement4 = preg_replace("/ί/iu", '${1}ι', $replacement4);
+            $replacement4 = preg_replace("/ό/iu", '${1}ο', $replacement4);
+            $replacement4 = preg_replace("/ύ/iu", '${1}υ', $replacement4);
+            $replacement4 = preg_replace("/ώ/iu", '${1}ω', $replacement4);
+
+            $replacement5 = preg_replace("/ά/iu", '${1}α', $item->financial->plan);
+            $replacement5 = preg_replace("/έ/iu", '${1}ε', $replacement5);
+            $replacement5 = preg_replace("/ή/iu", '${1}η', $replacement5);
+            $replacement5 = preg_replace("/ί/iu", '${1}ι', $replacement5);
+            $replacement5 = preg_replace("/ό/iu", '${1}ο', $replacement5);
+            $replacement5 = preg_replace("/ύ/iu", '${1}υ', $replacement5);
+            $replacement5 = preg_replace("/ώ/iu", '${1}ω', $replacement5);
+
+            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $replacement2) || preg_match("/" . $field . "/iu", $replacement3) || preg_match("/" . $field . "/iu", $replacement4) || preg_match("/" . $field . "/iu", $replacement5) || preg_match("/" . $field . "/iu", $item->section->name) || preg_match("/" . $field . "/iu", $item->financial->plan) || preg_match("/" . $field . "/iu", $item->level->name) || preg_match("/" . $field . "/iu", $item->criteria->name) || preg_match("/" . $field . "/iu", $item->study->name)) {
                 return $item;
             }
         });
@@ -232,6 +266,7 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
             $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
             $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+
             if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
                 return $item;
             }

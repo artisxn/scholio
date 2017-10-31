@@ -40,14 +40,14 @@
                 <div class="category-container-right">
                     <div class="right-title text-center" @click="showAllReviews">{{reviews.length}} Αξιολογήσεις</div>
 
-                    <div class="right-subtitle" @click="showAllStudents"><i class="fa fa-graduation-cap category-icon"></i>Μαθητές:  <span class="pull-right">{{ studentsLength }} </span> </div>
+                    <div class="right-subtitle" @click="showAllStudents"><i class="fa fa-graduation-cap category-icon"></i>Μαθητές:  <span class="pull-right">{{ dataSet.connectedStudents + dataSet.allumniStudents }} </span> </div>
 
                     <div class="students-details">
                         <div style="padding: 2px 0 5px 0 " @click="showActiveStudents">
-                            Ενεργοί: <span class="pull-right">{{dataSet.connectedStudents}} </span>
+                            Ενεργοί: <span class="pull-right">{{ dataSet.connectedStudents }} </span>
                         </div>
                         <div class="" @click="showAllumniStudents">
-                            Απόφοιτοι: <span class="pull-right" >{{dataSet.allumniStudents}} </span>
+                            Απόφοιτοι: <span class="pull-right" >{{ dataSet.allumniStudents }} </span>
                         </div>
                     </div>
 

@@ -81,14 +81,14 @@ class Scholarship extends Model
     public function level()
     {
         if (request()->cookie('lang') == 'en') {
-            return $this->belongsTo(LevelEn::class, 'criteria_id');
+            return $this->belongsTo(LevelEn::class, 'level_id');
         }
-        return $this->belongsTo(Level::class, 'criteria_id');
+        return $this->belongsTo(Level::class, 'level_id');
     }
 
     public function levelEN()
     {
-        return $this->belongsTo(LevelEn::class, 'criteria_id');
+        return $this->belongsTo(LevelEn::class, 'level_id');
     }
 
     /**

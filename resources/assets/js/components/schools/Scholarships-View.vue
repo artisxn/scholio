@@ -104,10 +104,10 @@
                                                     <img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" class="">
                                                 </div>
                                                 <span class="tooltiptext tooltip4 hidden-xxlx">
-                                                    {{ scholarship.financial.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
+                                                    {{ scholarship.financial.plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial.metric}}</span>
                                                 </span>
                                                 <span class=" hidden-xxlxx">
-                                                    {{ scholarship.financial.plan }} {{ scholarship.amount }}<span>{{scholarship.financial.metric}}</span>
+                                                    {{ scholarship.financial.plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial.metric}}</span>
                                                 </span>
 
                                             </td>
@@ -125,8 +125,8 @@
                                                 </span>
                                             </td>
                                             <td  class="tool hidden-xxs">
-                                                <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level.name}}</div>
-                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{scholarship.level.name}}</span>
+                                                <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level.name }}</div>
+                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{ scholarship.level.name }}</span>
                                             </td>
                                             <td class="tool hidden-mdl">
                                                 <div class="dots-text dots-sm hidden-xxl">
@@ -513,6 +513,7 @@ import Chart from '../../VueChart.vue'
                 this.dataSet = data;
                 this.items = data.data;
                 this.scholarships = this.items
+                console.log(this.scholarships)
                 if(this.scholarships[0].level.id < 4 || this.scholarships[0].level.id > 21 ) {this.showLevel=true}
 
                 this.updateChart()
