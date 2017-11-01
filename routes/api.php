@@ -99,10 +99,10 @@ Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $a
     return $data;
 })->middleware('auth:api');
 
-Route::get('/school/getAvgReviews', function () {
+Route::get('/school/getAvgReviews/{role}', function ($role = null) {
     $school = auth()->user()->info;
     $data['stars'] = $school->averageStars();
-    $data['avgReviews'] = $school->averageReviews();
+    $data['avgReviews'] = $school->averageReviews($role);
     return $data;
 })->middleware('auth:api');
 
@@ -112,6 +112,8 @@ Route::get('/school/getReviews/{role}/{status}', function ($role, $status) {
 
     $totalAllumni = 0;
     $totalConnected = 0;
+    $connectedParents = 0;
+    $allumniParents = 0;
 
     foreach ($reviews as $review) {
         $user = $review->user;
@@ -147,7 +149,7 @@ Route::get('/school/getReviews/{role}/{status}', function ($role, $status) {
 
     $items = $items instanceof Collection ? $items : Collection::make($items);
     $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
-    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni]);
+    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni, 'connectedParents' => $connectedParents, 'allumniParents' => $allumniParents]);
     $data = $custom->merge($result);
     return $data;
 })->middleware('auth:api');

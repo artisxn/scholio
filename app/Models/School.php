@@ -231,21 +231,40 @@ class School extends Model
         return number_format((float) $avg, 1, '.', '');
     }
 
-    public function averageReviews()
+    public function averageReviews($role = null, $status = null)
     {
         $count = [];
         $reviews = [];
 
-        foreach ($this->reviews as $v => $review) {
-            foreach ($review->category as $value => $category) {
-                if ($this->reviews->first() == $review) {
-                    $count[$value] = $category->stars;
-                } else {
-                    $count[$value] += $category->stars;
-                }
+        if ($role) {
+            foreach ($this->reviews as $v => $review) {
+                if ($review->user->role == $role) {
+                    foreach ($review->category as $value => $category) {
 
-                if ($this->reviews->last() == $review) {
-                    $count[$value] /= count($this->reviews);
+                        if ($this->reviews->first() == $review) {
+                            $count[$value] = $category->stars;
+                        } else {
+                            $count[$value] += $category->stars;
+                        }
+
+                        if ($this->reviews->last() == $review) {
+                            $count[$value] /= count($this->reviews);
+                        }
+                    }
+                }
+            }
+        } else {
+            foreach ($this->reviews as $v => $review) {
+                foreach ($review->category as $value => $category) {
+                    if ($this->reviews->first() == $review) {
+                        $count[$value] = $category->stars;
+                    } else {
+                        $count[$value] += $category->stars;
+                    }
+
+                    if ($this->reviews->last() == $review) {
+                        $count[$value] /= count($this->reviews);
+                    }
                 }
             }
         }

@@ -38,16 +38,16 @@
                 </div>
 
                 <div class="category-container-right">
-                    <div class="right-title text-center" @click="showAllReviews">{{reviews.length}}  {{ lang('["panel/schools"].reviews.reviews') }}</div>
+                    <div class="right-title text-center" @click="showAllReviews">{{allLength}}  {{ lang('["panel/schools"].reviews.reviews') }}</div>
 
-                    <div class="right-subtitle" @click="showAllStudents"><i class="fa fa-graduation-cap category-icon"></i> {{ lang('["panel/schools"].reviews.students') }}:  <span class="pull-right">{{ dataSet.connectedStudents + dataSet.allumniStudents }}</span> </div>
+                    <div class="right-subtitle" @click="showAllStudents"><i class="fa fa-graduation-cap category-icon"></i> {{ lang('["panel/schools"].reviews.students') }}:  <span class="pull-right">{{ allStudentsLength }}</span> </div>
 
                     <div class="students-details">
                         <div style="padding: 2px 0 5px 0 " @click="showActiveStudents">
-                            {{ lang('["panel/schools"].reviews.connected') }}: <span class="pull-right">{{dataSet.connectedStudents}} </span>
+                            {{ lang('["panel/schools"].reviews.connected') }}: <span class="pull-right">{{connectedStudentsLength}} </span>
                         </div>
                         <div class="" @click="showAllumniStudents">
-                            {{ lang('["panel/schools"].reviews.alumni') }}: <span class="pull-right" >{{dataSet.allumniStudents}} </span>
+                            {{ lang('["panel/schools"].reviews.alumni') }}: <span class="pull-right" >{{allumniStudentsLength}} </span>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                     <hr>
 
 
-                    <div class="right-subtitle"><i class="fa fa-user category-icon mar-right"></i> {{ lang('["panel/schools"].reviews.parents') }}:  <span class="pull-right">{{ parentsLength }} </span></div>
+                    <div class="right-subtitle"><i class="fa fa-user category-icon mar-right"></i> {{ lang('["panel/schools"].reviews.parents') }}:  <span class="pull-right">{{ allParentsLength }} </span></div>
                 </div>
 
             </div>
@@ -275,15 +275,18 @@
                 reviews: {},
                 totalReviews:{},
                 totalStars: null,
-                studentsLength: 0,
-                parentsLength: 0,
                 stars: {},
                 items: [],
                 dataSet: false,
                 status: 'all',
                 role: 'all',
-                allumniStudents: 0,
-                connectedStudents: 0
+                allLength: 0,
+                connectedStudentsLength: 0,
+                allumniStudentsLength: 0,
+                connectedParentsLength: 0,
+                allumniParentsLength: 0,
+                allStudentsLength: 0,
+                allParentsLength:0
             }
         },
 
@@ -310,7 +313,9 @@
             },
 
             getAvg(){
-                axios.get('/api/school/getAvgReviews').then(this.setAvg)
+                var data = null
+                if(this.role != 'all') data = this.role
+                axios.get('/api/school/getAvgReviews/'+data).then(this.setAvg)
             }, 
 
             setAvg({data}){
@@ -346,16 +351,14 @@
         },
 
         watch:{
-            reviews(){
-                let students = 0
-                let parents = 0
-                this.reviews.forEach(function(item){
-                    if(item.user.role == 'student') students++
-                    if(item.user.role == 'parent') parents++  
-                })
-
-                this.studentsLength = students
-                this.parentsLength = parents
+            dataSet(){
+                this.connectedStudentsLength = this.dataSet.connectedStudents
+                this.allumniStudentsLength = this.dataSet.allumniStudents
+                this.connectedParentsLength = this.dataSet.connectedParents
+                this.allumniParentsLength = this.dataSet.allumniParents
+                this.allStudentsLength = this.connectedStudentsLength + this.allumniStudentsLength
+                this.allParentsLength = this.connectedParentsLength + this.allumniParentsLength
+                this.allLength = this.allStudentsLength + this.allParentsLength
             },
             totalStars(){
                 $('#total1').raty({

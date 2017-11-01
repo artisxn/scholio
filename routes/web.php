@@ -18,6 +18,11 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
+Route::get('/ppps', function () {
+    $a = auth()->user()->info;
+    return $a->averageReviews('student');
+});
+
 Route::get('/srv/{role}/{status}', function ($role, $status) {
     $school = auth()->user()->info;
     $reviews = $school->reviews()->with('user', 'category.category')->get();
