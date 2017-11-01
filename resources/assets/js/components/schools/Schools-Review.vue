@@ -15,12 +15,12 @@
 
                      <text style="font-size: 110%" fill="white">
                           <textPath startOffset="50%" text-anchor="middle" xlink:href="#curvedPath">
-                                Συνολική Βαθμολογία
+                                {{ lang('["panel/schools"].reviews.rating') }}
                           </textPath>
                        </text>
                    </svg>
 
-                    <div class="review-title-header">Συνολική Βαθμολογία</div>
+                    <div class="review-title-header">  {{ lang('["panel/schools"].reviews.rating') }}</div>
                     <div class="review-title-stars-header">
                         <span class="star-review" id="total1"></span>
                     </div>
@@ -38,16 +38,16 @@
                 </div>
 
                 <div class="category-container-right">
-                    <div class="right-title text-center" @click="showAllReviews">{{reviews.length}} Αξιολογήσεις</div>
+                    <div class="right-title text-center" @click="showAllReviews">{{reviews.length}}  {{ lang('["panel/schools"].reviews.reviews') }}</div>
 
-                    <div class="right-subtitle" @click="showAllStudents"><i class="fa fa-graduation-cap category-icon"></i>Μαθητές:  <span class="pull-right">{{ dataSet.connectedStudents + dataSet.allumniStudents }} </span> </div>
+                    <div class="right-subtitle" @click="showAllStudents"><i class="fa fa-graduation-cap category-icon"></i> {{ lang('["panel/schools"].reviews.students') }}:  <span class="pull-right">{{ dataSet.connectedStudents + dataSet.allumniStudents }}</span> </div>
 
                     <div class="students-details">
                         <div style="padding: 2px 0 5px 0 " @click="showActiveStudents">
-                            Ενεργοί: <span class="pull-right">{{ dataSet.connectedStudents }} </span>
+                            {{ lang('["panel/schools"].reviews.connected') }}: <span class="pull-right">{{dataSet.connectedStudents}} </span>
                         </div>
                         <div class="" @click="showAllumniStudents">
-                            Απόφοιτοι: <span class="pull-right" >{{ dataSet.allumniStudents }} </span>
+                            {{ lang('["panel/schools"].reviews.alumni') }}: <span class="pull-right" >{{dataSet.allumniStudents}} </span>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                     <hr>
 
 
-                    <div class="right-subtitle"><i class="fa fa-user category-icon mar-right"></i>Γονείς:  <span class="pull-right">{{ parentsLength }} </span></div>
+                    <div class="right-subtitle"><i class="fa fa-user category-icon mar-right"></i> {{ lang('["panel/schools"].reviews.parents') }}:  <span class="pull-right">{{ parentsLength }} </span></div>
                 </div>
 
             </div>
