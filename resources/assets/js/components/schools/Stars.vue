@@ -1,18 +1,19 @@
 <template>
     <span>
-        <span class="star-review" :id="this.name + '-' + this.id">
+        <span class="star-review" :id="this.id">
         </span>
     </span>
 </template>
 
 <style>
     .star-review{
+        /*color:red;*/
     }
 </style>
 
 <script>
     export default{
-        props:['id', 'stars', 'name', 'read'],
+        props:['id', 'stars', 'read'],
 
         computed:{
             readOnly(){
@@ -20,8 +21,18 @@
             }
         },
 
+        updated(){
+            $('#' + this.id).raty({
+                score    :this.stars,
+                halfShow :true,
+                half     :true,
+                readOnly :this.readOnly,
+                starHalf : 'fa fa-fw fa-star-half'
+            });
+        },
+
         mounted(){
-            $('#' + this.name + '-' + this.id).raty({
+            $('#' + this.id).raty({
                 score    :this.stars,
                 halfShow :true,
                 half     :true,

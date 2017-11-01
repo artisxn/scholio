@@ -215,11 +215,51 @@ class School extends Model
         return count($this->reviews);
     }
 
-    public function averageStars()
+    public function averageStars($role = null, $status = null)
     {
         $total = 0;
         $count = 0;
-        foreach ($this->reviews as $review) {
+        $filtered = [];
+
+        if ($role) {
+            foreach ($this->reviews as $review) {
+                $user = $review->user;
+                if ($review->user->role == $role) {
+                    if ($status) {
+                        if ($status == 'connected') {
+                            if ($role == 'student') {
+                                if ($this->connected->contains($user)) {
+                                    array_push($filtered, $review);
+                                }
+                            } else {
+                                if ($this->connectedParents->contains($user)) {
+                                    array_push($filtered, $review);
+                                }
+                            }
+                        }
+
+                        if ($status == 'allumni') {
+                            if ($role == 'student') {
+                                if ($this->allumni->contains($user)) {
+                                    array_push($filtered, $review);
+                                }
+                            } else {
+                                if ($this->allumniParents->contains($user)) {
+                                    array_push($filtered, $review);
+                                }
+                            }
+                        }
+
+                    } else {
+                        array_push($filtered, $review);
+                    }
+                }
+            }
+        } else {
+            $filtered = $this->reviews;
+        }
+
+        foreach ($filtered as $review) {
             foreach ($review->allCategories() as $cat) {
                 $total += $cat->stars;
                 $count++;
@@ -235,40 +275,60 @@ class School extends Model
     {
         $count = [];
         $reviews = [];
+        $filtered = [];
 
         if ($role) {
-            foreach ($this->reviews as $v => $review) {
+            foreach ($this->reviews as $review) {
+                $user = $review->user;
                 if ($review->user->role == $role) {
-                    foreach ($review->category as $value => $category) {
-
-                        if ($this->reviews->first() == $review) {
-                            $count[$value] = $category->stars;
-                        } else {
-                            $count[$value] += $category->stars;
+                    if ($status) {
+                        if ($status == 'connected') {
+                            if ($role == 'student') {
+                                if ($this->connected->contains($user)) {
+                                    array_push($filtered, $review);
+                                }
+                            } else {
+                                if ($this->connectedParents->contains($user)) {
+                                    array_push($filtered, $review);
+                                }
+                            }
                         }
 
-                        if ($this->reviews->last() == $review) {
-                            $count[$value] /= count($this->reviews);
+                        if ($status == 'allumni') {
+                            if ($role == 'student') {
+                                if ($this->allumni->contains($user)) {
+                                    array_push($filtered, $review);
+                                }
+                            } else {
+                                if ($this->allumniParents->contains($user)) {
+                                    array_push($filtered, $review);
+                                }
+                            }
                         }
+
+                    } else {
+                        array_push($filtered, $review);
                     }
                 }
             }
         } else {
-            foreach ($this->reviews as $v => $review) {
-                foreach ($review->category as $value => $category) {
-                    if ($this->reviews->first() == $review) {
-                        $count[$value] = $category->stars;
-                    } else {
-                        $count[$value] += $category->stars;
-                    }
-
-                    if ($this->reviews->last() == $review) {
-                        $count[$value] /= count($this->reviews);
-                    }
-                }
-            }
+            $filtered = $this->reviews;
         }
 
+        foreach ($filtered as $v => $review) {
+            foreach ($review->category as $value => $category) {
+                if ($filtered[0] == $review) {
+                    $count[$value] = $category->stars;
+                } else {
+                    $count[$value] += $category->stars;
+                }
+
+                if ($filtered[count($filtered) - 1] == $review) {
+                    $count[$value] /= count($filtered);
+                }
+            }
+
+        }
         if ($count) {
             foreach ($this->categories() as $value => $cat) {
                 $reviews[$value] = ['name' => $cat->name, 'stars' => number_format((float) $count[$value], 1, '.', ''), 'icon' => $cat->icon];
@@ -345,6 +405,16 @@ class School extends Model
     public function allumniTeachers()
     {
         return $this->teachers()->wherePivot('status', '=', 'allumni');
+    }
+
+    public function connectedParents()
+    {
+        return $this->users()->where('role', 'parent')->wherePivot('status', '=', 'connected');
+    }
+
+    public function allumniParents()
+    {
+        return $this->users()->where('role', 'parent')->wherePivot('status', '=', 'allumni');
     }
 
     // public function fullAdmission()

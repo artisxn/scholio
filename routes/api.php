@@ -99,10 +99,17 @@ Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $a
     return $data;
 })->middleware('auth:api');
 
-Route::get('/school/getAvgReviews/{role}', function ($role = null) {
+Route::get('/school/getAvgReviews/{role}/{status}', function ($role, $status) {
+    if ($role == 'all') {
+        $role = null;
+    }
+    if ($status == 'all') {
+        $status = null;
+    }
+
     $school = auth()->user()->info;
-    $data['stars'] = $school->averageStars();
-    $data['avgReviews'] = $school->averageReviews($role);
+    $data['stars'] = $school->averageStars($role, $status);
+    $data['avgReviews'] = $school->averageReviews($role, $status);
     return $data;
 })->middleware('auth:api');
 
@@ -119,12 +126,21 @@ Route::get('/school/getReviews/{role}/{status}', function ($role, $status) {
         $user = $review->user;
         $connected = $school->connected;
         $allumni = $school->allumni;
+        $coParents = $school->connectedParents;
+        $alParents = $school->allumniParents;
 
         if ($connected->contains($user)) {
             $totalConnected++;
         } else if ($allumni->contains($user)) {
             $totalAllumni++;
         }
+
+        if ($coParents->contains($user)) {
+            $connectedParents++;
+        } else if ($alParents->contains($user)) {
+            $allumniParents++;
+        }
+
     }
 
     if ($status != 'all' || $role !== 'all') {
