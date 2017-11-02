@@ -21,14 +21,27 @@
                     </filter>
 
 
-                     <text style="font-size: 170%;" fill="#008da5" filter = "url(#i1)">
-                          <textPath startOffset="52%" text-anchor="middle" xlink:href="#curvedPath">
-                                {{ lang('["panel/schools"].reviews.rating') }}
-                          </textPath>
+                     <text  fill="#008da5" filter = "url(#i1)">
+                         <textPath style="font-size: 170%;" startOffset="52%" text-anchor="middle" xlink:href="#curvedPath" v-if="role=='all' && status=='all'">{{ lang('["panel/schools"].reviews.rating') }}</textPath>
+                         <textPath style="font-size: 170%;" startOffset="52%" text-anchor="middle" xlink:href="#curvedPath" v-if="role=='student' && status=='all'">{{ lang('["panel/schools"].reviews.studentsRating') }}</textPath>
+                         <textPath style="font-size: 155%;" startOffset="52%" text-anchor="middle" xlink:href="#curvedPath" v-if="role=='student' && status=='connected'">{{ lang('["panel/schools"].reviews.connectedStudentsRating') }}</textPath>
+                         <textPath style="font-size: 140%;" startOffset="52%" text-anchor="middle" xlink:href="#curvedPath" v-if="role=='student' && status=='allumni'">{{ lang('["panel/schools"].reviews.alumniStudentsRating') }}</textPath>
+                         <textPath style="font-size: 170%;" startOffset="52%" text-anchor="middle" xlink:href="#curvedPath" v-if="role=='parent' && status=='all'">{{ lang('["panel/schools"].reviews.parentsRating') }}</textPath>
+                         <textPath style="font-size: 155%;" startOffset="52%" text-anchor="middle" xlink:href="#curvedPath" v-if="role=='parent' && status=='connected'">{{ lang('["panel/schools"].reviews.connectedParentsRating') }}</textPath>
+                         <textPath style="font-size: 155%;" startOffset="52%" text-anchor="middle" xlink:href="#curvedPath" v-if="role=='parent' && status=='allumni'">{{ lang('["panel/schools"].reviews.alumniParentsRating') }}</textPath>
                        </text>
                    </svg>
 
-                    <div class="review-title-header">  {{ lang('["panel/schools"].reviews.rating') }}</div>
+                    <div class="review-title-header"              v-if="role=='all'     && status=='all'">  {{ lang('["panel/schools"].reviews.rating') }}</div>
+                    <div class="review-title-header"              v-if="role=='student' && status=='all'">  {{ lang('["panel/schools"].reviews.studentsRating') }}</div>
+                    <div class="review-title-header smaller-font" v-if="role=='student' && status=='connected'">  {{ lang('["panel/schools"].reviews.connectedStudentsRating') }}</div>
+                    <div class="review-title-header smaller-font" v-if="role=='student' && status=='allumni'">  {{ lang('["panel/schools"].reviews.alumniStudentsRating') }}</div>
+                    <div class="review-title-header"              v-if="role=='parent'  && status=='all'">  {{ lang('["panel/schools"].reviews.parentsRating') }}</div>
+                    <div class="review-title-header smaller-font" v-if="role=='parent'  && status=='connected'">  {{ lang('["panel/schools"].reviews.connectedParentsRating') }}</div>
+                    <div class="review-title-header smaller-font" v-if="role=='parent'  && status=='allumni'">  {{ lang('["panel/schools"].reviews.alumniParentsRating') }}</div>
+
+
+
                     <div class="review-title-stars-header">
                         <span class="star-review" id="total1"></span>
                     </div>
@@ -64,6 +77,19 @@
 
 
                     <div class="right-subtitle"><i class="fa fa-user category-icon mar-right"></i> {{ lang('["panel/schools"].reviews.parents') }}:  <span class="pull-right">{{ allParentsLength }} </span></div>
+
+                    <div class="students-details">
+                        <div style="padding: 2px 0 5px 0">
+                            {{ lang('["panel/schools"].reviews.connected') }}: <span class="pull-right">{{connectedParentsLength}} </span>
+                        </div>
+                        <div class="">
+                            {{ lang('["panel/schools"].reviews.olden') }}: <span class="pull-right" >{{allumniParentsLength}} </span>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
 
             </div>
@@ -76,25 +102,39 @@
                 <i class="fa fa-filter margin-right-10"></i>{{ lang('["panel/schools"].reviews.filters') }}
             </div>
             <div class="btn-container">
-                <button class="btn btn-primary" :class="{btnActive: role=='all' && status=='all'}"            @click="showAllReviews">{{ lang('["panel/schools"].reviews.all') }}</button>
+                <button class="btn btn-primary" :class="{btnActive: role=='all' && status=='all'}"            @click="showAllReviews">{{ lang('["panel/schools"].reviews.all') }}
+                    <span v-if="role=='all' && status=='all'" class="badge badge-number"> {{ allLength }} </span>
+                </button>
             </div>
             <div class="btn-container">
-                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='all'}"        @click="showAllStudents">{{ lang('["panel/schools"].reviews.students') }}</button>
+                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='all'}"        @click="showAllStudents">{{ lang('["panel/schools"].reviews.students') }}
+                <span v-if="role=='student' && status=='all'" class="badge badge-number"> {{ allStudentsLength }} </span>
+                </button>
             </div>
             <div class="btn-container">
-                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='connected'}"  @click="showActiveStudents">{{ lang('["panel/schools"].reviews.ActiveStudents') }}</button>
+                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='connected'}"  @click="showActiveStudents"> {{ lang('["panel/schools"].reviews.ActiveStudents') }}
+                    <span v-if="role=='student' && status=='connected'" class="badge badge-number"> {{connectedStudentsLength}} </span>
+                </button>
             </div>
             <div class="btn-container">
-                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='allumni'}"    @click="showAllumniStudents">{{ lang('["panel/schools"].reviews.AlumniStudents') }}</button>
+                <button class="btn btn-primary" :class="{btnActive: role=='student' && status=='allumni'}"    @click="showAllumniStudents">{{ lang('["panel/schools"].reviews.AlumniStudents') }}
+                    <span v-if="role=='student' && status=='allumni'" class="badge badge-number">  {{allumniStudentsLength}}</span>
+                </button>
             </div>
             <div class="btn-container">
-                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='all'}"         @click="showAllParents">{{ lang('["panel/schools"].reviews.parents') }}</button>
+                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='all'}"         @click="showAllParents">{{ lang('["panel/schools"].reviews.parents') }}
+                    <span v-if="role=='parent' && status=='all'" class="badge badge-number"> {{allParentsLength}} </span>
+                </button>
             </div>
             <div class="btn-container">
-                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='connected'}"   @click="showActiveParents">{{ lang('["panel/schools"].reviews.ActiveParents') }}</button>
+                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='connected'}"   @click="showActiveParents">{{ lang('["panel/schools"].reviews.ActiveParents') }}
+                    <span v-if="role=='parent' && status=='connected'" class="badge badge-number"> {{connectedParentsLength}} </span>
+                </button>
             </div>
             <div class="btn-container">
-                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='allumni'}"     @click="showAllumniParents">{{ lang('["panel/schools"].reviews.AlumniParents') }}</button>
+                <button class="btn btn-primary" :class="{btnActive: role=='parent' && status=='allumni'}"     @click="showAllumniParents">{{ lang('["panel/schools"].reviews.AlumniParents') }}
+                    <span v-if="role=='parent' && status=='allumni'" class="badge badge-number"> {{allumniParentsLength}} </span>
+                </button>
             </div>
         </div>
         
@@ -141,9 +181,9 @@
     /*.badge-left{position: relative; width: 430px; margin-top: 80px;}*/
     /*.badge-image-left{width: 280px; margin-top: -100px;}*/
     .category-container-left,.category-container-right{ width: 250px}
-    .category-container-left{float: left;}
+    .category-container-left{float: left; margin-top: 15px;}
     .category-container-right{float: right;}
-    .category-master{color: #888;font-weight: 300; margin-bottom: 15px;}
+    .category-master{color: #888;font-weight: 300; margin-bottom: 18px;}
 
 
     .badge-image{ display: block; margin: 0 auto ; height: 360px; }
@@ -152,9 +192,10 @@
     /*.review-card-header{background-color: #fff; border-radius: 7px; border: 1px solid #FD6A33;  padding: 10px; margin-top:  20px; margin-bottom:  40px;}*/
     .review-title-header{font-size: 160%; font-weight: 300; margin-top: -205px; }
     .review-title-stars-header{font-size: 120%;}
+    .smaller-font{font-size: 112%; padding-top: 6px; margin-bottom: 4px;}
     .review-title-avg-header{font-size: 140%;}
 
-    .stats-container{ border: 1.3px solid #007991; border-radius: 7px; background-color: #fafafa; padding: 20px 15px 0 15px; margin-top: -40px; height: 210px; }
+    .stats-container{ border: 1.3px solid #007991; border-radius: 7px; background-color: #fafafa; padding: 20px 15px 0 15px; margin-top: -40px; height: 230px; }
     .stats-container{margin-left: auto; margin-right: auto; width: 100%; box-shadow: 0 0 15px #aaa;}
 
     .z-up{position: relative; z-index: 3;}
@@ -180,12 +221,14 @@
 
 
     .filters-container{margin: 20px 0 40px 0;}
-    .btn-primary,.btn-primary:focus{background-color: #008da5; outline:none !important; border: none;}
-    .btn-primary:hover{background-color: #006880;  }
-    .btn-container{float: left; margin: 15px 12px 15px 0; }
+    .btn-primary,.btn-primary:focus{background-color: #008da5; outline:none !important; border: none;  opacity: 0.5}
+    .btn-primary:hover{background-color: #006880;   opacity: 0.8}
+    .btn-container{float: left; margin: 15px 12px 15px 0;}
     .margin-right-10{margin-right: 10px}
     .filter-text{font-family: Roboto; font-size: 120%; font-weight: 400; margin-top: 30px; color: #0097af}
-    .btnActive{background-color: #b95140 !important;}
+    .btnActive{background-color: #b95140 !important;  opacity: 1!important;}
+
+    .badge-number{margin-right: -20px; margin-left: 3px; margin-top: -22px;}
 
 
 
@@ -213,7 +256,7 @@
 
 
     @media (max-width: 1060px) {
-        .stats-container{ width: 70%; height: 550px; }
+        .stats-container{ width: 70%; height: 570px; }
         .category-container-left,.category-container-right{float: none;margin-left: auto; margin-right: auto; }
         .category-container-left{ margin-top: 100px;}
         .category-container-right{ margin-top: 60px;}
@@ -223,16 +266,22 @@
     }
 
     @media (max-width: 830px) {
+        .filters-container{margin: 0 20px 0 50px;}
 
     }
     @media (max-width: 560px) {
-        .stats-container{ width: 100%;  margin-top: 20px;}
+        .filters-container{margin: 0 20px;}
+
+        .stats-container{ width: 100%;  margin-top: 20px; height: 550px;}
         .badge-image{height: 300px; }
         .review-title-header{display: none;}
         .curved{display: block}
         .review-title-stars-header{margin-top: -165px;}
+        .category-container-left{ margin-top: 50px;}
+        .reviews{margin-top:30px;}
     }
     @media (max-width: 370px) {
+        .filters-container{margin: 0 10px;}
         .left{display: inline-block; width: 173px}
         .badge-image{height: 250px; }
         .review-title-stars-header{margin-top: -140px;}
@@ -338,7 +387,7 @@
                 allParentsLength:0,
                 allumniStudents: 0,
                 connectedStudents: 0,
-                selected:'all',
+                selected:'all'
             }
         },
 

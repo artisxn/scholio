@@ -77,7 +77,7 @@
         button.sc-dark-green:hover{background-color: #006880  }
 
         @media (max-width: 420px) {
-            .sc-btn{display: block; text-align: center;  float: none; margin-left: auto; margin-right: auto; padding: 0}
+            .sc-btn{display: block; text-align: center;  float: none; margin-left: auto; margin-right: auto; padding: 8px 15px;}
         }
 
 
@@ -355,7 +355,7 @@
 
                     {{ csrf_field() }}
                   @if($scholarship->active)
-                    <button class="sc-btn sc-dark-green"> <i class="fa fa-flag-checkered margin-right-10"></i>Λήξη Υποτροφίας</button>
+                    <button class="sc-btn sc-dark-green"> <i class="fa fa-flag-o margin-right-10"></i>Λήξη Υποτροφίας</button>
                   @endif
                 </form>
                 </div>

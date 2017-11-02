@@ -77,9 +77,9 @@
 
     .nav-item,.nav-item:visited,.nav-item:focus{color: #fff; font-size: 100%; display: block; margin: 10px 0; font-weight: 300;}
 
-    .btn-register,.btn-login{ position: absolute; bottom: 30px; color: #fff; font-weight: 400;  border: none; padding: 7px;  width: 98px; border-radius: 4px; margin-top: 40px; }
-    .btn-register{background-color: #00bcd4; left:18px;}
-    .btn-login{background-color: #FD6A33; right: 16px; }
+    .btn-register,.btn-login{ position: absolute; bottom: 30px; color: #fff; font-weight: 400;  border: none; padding: 7px; border-radius: 4px; margin-top: 40px; }
+    .btn-register{background-color: #00bcd4; left:18px; width: 103px;}
+    .btn-login{background-color: #FD6A33; right: 16px; width: 95px;}
 
     .btn-register:hover,.btn-register2:hover{background-color: #c1572a}
     .btn-login:hover,.btn-login2:hover{background-color: #00a1b9}
