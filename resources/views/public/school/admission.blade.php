@@ -405,20 +405,20 @@
                 <div class="section-text centered-text">@lang('admission.candidate.info')</div>
 
                 <div class="col-sm-6 input-container  input-container">
-                        <input  type="text" label="@lang('admission.candidate.name')" name="firstName" class="demo-form ad-input" value="{{ $user->name }}">
+                        <input  type="text" label="@lang('admission.candidate.name')" name="firstName" class="demo-form ad-input" value="{{ $user->info->fname }}">
                         <i class="icon-inp fa fa-user-o"></i>
                 </div>
                 <div class="col-sm-6 input-container clear-fix-sm" >
-                    <input type="text" label="@lang('admission.candidate.last-name')" name="lastName" class="demo-form ad-input" >
+                    <input type="text" label="@lang('admission.candidate.last-name')" name="lastName" class="demo-form ad-input" value="{{ $user->info->lname }}" >
                     <i class="icon-inp fa fa-user"></i>
                 </div>
 
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="@lang('admission.candidate.address')" name="student_address" class="demo-form ad-input" value="{{ $user->info->address }}">
+                    <input type="text" label="@lang('admission.candidate.address')" name="student_address" class="demo-form ad-input" value="{{ $user->cv->student_address }}">
                     <i class="icon-inp fa fa-street-view"></i>
                 </div>
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="@lang('admission.candidate.city')" name="student_city" class="demo-form ad-input" value="{{ $user->info->city }}">
+                    <input type="text" label="@lang('admission.candidate.city')" name="student_city" class="demo-form ad-input" value="{{ $user->cv->student_city }}">
                     <i class="icon-inp fa fa-map-marker"></i>
                 </div>
 
@@ -428,7 +428,7 @@
                 </div>
                 <div class="col-sm-6 input-container">
                     {{--<a href="tel:{{ $user->info->phone }}">--}}
-                    <input type="text" label="@lang('admission.candidate.phone')" name="student_phone" class="demo-form ad-input" value="{{ $user->info->phone }}">
+                    <input type="text" label="@lang('admission.candidate.phone')" name="student_phone" class="demo-form ad-input" value="{{ $user->cv->student_phone }}">
                     {{--</a>--}}
                     <i class="icon-inp fa fa-phone"></i>
                 </div>
@@ -520,7 +520,7 @@
                 @endforeach
             </div>
 
-            <?php  $i=0 ?>
+            <?php $i = 0?>
             <div class="row flex-row">
             @if($settings->skills)
                 <div class="col-md-6 section2-container ">
@@ -532,7 +532,7 @@
                         </div>
                     </div>
                 </div>
-                <?php $i++ ?>
+                <?php $i++?>
             @endif
             @if($settings->languages)
                 <div class="col-md-6 section2-container ">
@@ -544,9 +544,9 @@
                         </div>
                     </div>
                 </div>
-                    <?php $i++; if ($i%2==0): ?>
+                    <?php $i++;if ($i % 2 == 0): ?>
                         <div class="clearfix"></div>
-                    <?php endif; ?>
+                    <?php endif;?>
                 @endif
                 @if($settings->strongpoints)
                 <div class="col-md-6 section2-container ">
@@ -559,9 +559,9 @@
                         </div>
                     </div>
                 </div>
-                    <?php $i++; if ($i%2==0): ?>
+                    <?php $i++;if ($i % 2 == 0): ?>
                     <div class="clearfix"></div>
-                    <?php endif; ?>
+                    <?php endif;?>
                 @endif
                 @if($settings->previous_school)
                 <div class="col-md-6 section2-container ">
@@ -574,9 +574,9 @@
                         </div>
                     </div>
                 </div>
-                    <?php $i++; if ($i%2==0): ?>
+                    <?php $i++;if ($i % 2 == 0): ?>
                     <div class="clearfix"></div>
-                    <?php endif; ?>
+                    <?php endif;?>
                 @endif
                 @if($settings->awards)
                 <div class="col-md-6 section2-container ">
@@ -589,9 +589,9 @@
                         </div>
                     </div>
                 </div>
-                    <?php $i++; if ($i%2==0): ?>
+                    <?php $i++;if ($i % 2 == 0): ?>
                     <div class="clearfix"></div>
-                    <?php endif; ?>
+                    <?php endif;?>
                 @endif
                 @if($settings->other_interests)
                 <div class="col-md-6 section2-container ">
@@ -604,9 +604,9 @@
                         </div>
                     </div>
                 </div>
-                    <?php $i++; if ($i%2==0): ?>
+                    <?php $i++;if ($i % 2 == 0): ?>
                     <div class="clearfix"></div>
-                    <?php endif; ?>
+                    <?php endif;?>
                 @endif
                 @if($settings->certifications)
                 <div class="col-md-6 section2-container ">
@@ -619,9 +619,9 @@
                         </div>
                     </div>
                 </div>
-                    <?php $i++; if ($i%2==0): ?>
+                    <?php $i++;if ($i % 2 == 0): ?>
                     <div class="clearfix"></div>
-                    <?php endif; ?>
+                    <?php endif;?>
                 @endif
                 @if($settings->notes)
                 <div class="col-md-6 section2-container ">
@@ -630,7 +630,7 @@
                         <div class=" input-container">
                             <div class="info-text">@lang('admission.notes-text') </div>
                                     <textarea name="notes" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                                    "></textarea>
+                                    ">{{ $user->cv->notes }}</textarea>
                         </div>
                     </div>
                 </div>

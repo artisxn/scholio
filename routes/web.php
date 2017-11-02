@@ -331,6 +331,7 @@ Route::get('/register/role/', function () {
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
 Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
+
     $settings = $scholarship->school->settings;
     // dd($scholarship->school);
     $fields = AdmissionField::all();

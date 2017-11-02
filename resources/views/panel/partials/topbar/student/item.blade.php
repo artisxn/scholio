@@ -19,7 +19,7 @@
 
 <li class="dropdown">
     <a href="" class="dropdown-toggle profile waves-effect" data-toggle="dropdown" aria-expanded="true">
-        <img src="{{substr(Auth::user()->info->avatar, 0, 4) == 'http' ? '' : '/'}}{{ Auth::user()->info->avatar }}" alt="user-img" class="img-circle">
+        <img src="{{substr(Auth::user()->info->avatar, 0, 4) == 'http' ? '' : ''}}{{ Auth::user()->info->avatar }}" alt="user-img" class="img-circle">
     </a>
     <ul class="dropdown-menu">
             <li><a href="/panel/users/student/studentCv"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>

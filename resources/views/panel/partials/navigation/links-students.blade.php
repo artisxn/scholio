@@ -1,18 +1,15 @@
-
-
-
 <li class="link"><a href="{{ url('panel/dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}"><i class="fa fa-tachometer"></i> <span>@lang('panel/students/navigation.dashboard')</span> </a></li>
 
 
 <li class="text-muted menu-title">@lang('panel/students/navigation.management')</li>
 <li class="has_sub">
     <a href="#" class=""><i class="ion-android-user-menu"></i><span> @lang('panel/students/navigation.profile') </span> </a>
-    <ul class="list-unstyled"> 
+    <ul class="list-unstyled">
         <li><a href="{{ route('students-cv') }}" class="{{ request()->path() == 'panel/users/student/studentCv' ? 'active' : ''}}">@lang('panel/students/navigation.cv')</a></li>
      {{--    <li><a href="{{ route('students-profile') }}" class="{{ request()->path() == 'panel/users/student/profile' ? 'active' : ''}}">Επεξεργασία Προφίλ</a></li> --}}
        <li><a href="{{ route('students-kinship') }}" class="{{ request()->path() == 'panel/users/student/kinship' ? 'active' : ''}}">@lang('panel/students/navigation.parents')</a></li>
         <li><a href="{{ route('students-my-schools') }}" class="{{ request()->path() == 'panel/users/student/mySchools' ? 'active' : ''}}">@lang('panel/students/navigation.schools')</a></li>
-       
+
     </ul>
 </li>
 

@@ -1,31 +1,3 @@
-
-<!-- ======   Modal Συνδεσης =======-->
-<div id="signIn-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            @include('components.modals.login')
-        </div>
-    </div>
-</div><!-- /.modal -->
-
-<!-- ======   Modal Επιλογής  =======-->
-<div id="select-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            @include('components.modals.registerselect')
-        </div>
-    </div>
-</div><!-- /.modal -->
-
-<!-- ======   Modal Εγγραφής  =======-->
-<div id="signUp-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            @include('components.modals.register')
-        </div>
-    </div>
-</div><!-- /.modal -->
-
 {{--<!-- ======   Modal Εγγραφής  Εκπ. Ιδρύματος=======-->--}}
 <div id="signUp-school-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -83,5 +55,5 @@ function changeLang(el){
         var form = document.getElementById('langForm');
         form.action = '/lang/'+el.value;
         form.submit();
-    }    
+    }
 </script>

@@ -81,31 +81,81 @@ $factory->define(App\Models\Scholarship::class, function (Faker\Generator $faker
 
 $factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
 
-    $faker = Faker\Factory::create('el_GR');
+    $rand = $faker->randomElement($array = array('el_GR', 'en_US'));
+    $g = $faker->randomElement($array = array('male', 'female'));
+    $faker = Faker\Factory::create($rand);
+    $minPhoto = 0;
+    $maxPhoto = 0;
+    if ($g == 'male') {
+        $minPhoto = 1;
+        $maxPhoto = 25;
+    } else {
+        $minPhoto = 31;
+        $maxPhoto = 55;
+    }
+
+    $photo = $faker->numberBetween($minPhoto, $maxPhoto);
+    $final = null;
+
+    if ($photo < 10) {
+        $final = '0' . $photo;
+    } else {
+        $final = $photo;
+    }
+
+    $fname = $faker->firstName($g);
+    $lname = $faker->lastName($g);
+    $fullname = $fname . ' ' . $lname;
 
     return [
-        'fname' => $faker->firstName,
-        'lname' => $faker->lastName,
-        'user_id' => factory(App\User::class)->create(['role' => 'student'])->id,
-        // 'phone' => '6980000000',
-        // 'dob' => Carbon::now()->subYears(20),
-        'gender' => 'male',
-        // 'avatar' => 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png',
-        // 'avatar' => $faker->imageUrl(128, 128, 'people'),
-        'avatar' => '/new/img/user.png',
-        // 'address' => $faker->streetAddress,
-        // 'city' => $faker->prefecture,
+        'fname' => $fname,
+        'lname' => $lname,
+        'user_id' => factory(App\User::class)->create(['name' => $fullname, 'role' => 'student'])->id,
+        'gender' => $g,
+        'avatar' => '/panel/assets/images/userphoto/' . $final . '.jpg',
     ];
 });
 
 $factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
 
+    // $rand = $faker->randomElement($array = array('el_GR', 'en_US'));
+    // $faker = Faker\Factory::create('el_GR');
+    $g = $faker->randomElement(array('male', 'female'));
+
+    $minPhoto = 0;
+    $maxPhoto = 0;
+    if ($g == 'male') {
+        $minPhoto = 1;
+        $maxPhoto = 25;
+    } else {
+        $minPhoto = 31;
+        $maxPhoto = 55;
+    }
+
+    $photo = $faker->numberBetween($minPhoto, $maxPhoto);
+    $final = null;
+
+    if ($photo < 10) {
+        $final = '0' . $photo;
+    } else {
+        $final = $photo;
+    }
+
+    $fname = $faker->firstName($g);
+    $lname = $faker->lastName($g);
+    $fullname = $fname . ' ' . $lname;
+
     return [
-        'user_id' => factory(App\User::class)->create(['role' => 'teacher'])->id,
+        'fname' => $fname,
+        'lname' => $lname,
+        'user_id' => factory(App\User::class)->create(['name' => $fullname, 'role' => 'teacher'])->id,
+        'gender' => $g,
+        'avatar' => '/panel/assets/images/userphoto/' . $final . '.jpg',
         'phone' => '6980000000',
         'dob' => Carbon::now()->subYears(40),
-        'gender' => 'male',
-        'avatar' => '/new/img/user.png',
+        'address' => $faker->streetAddress,
+        'title' => $faker->title($g),
+        'about' => $faker->realText($maxNbChars = 400, $indexSize = 2),
     ];
 });
 
@@ -130,8 +180,15 @@ $factory->define(App\Models\Certificate::class, function (Faker\Generator $faker
 });
 
 $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
+
+    $rand = $faker->randomElement($array = array('el_GR', 'en_US'));
+
+    $faker = Faker\Factory::create($rand);
+
     return [
-        'student_address' => $faker->city,
+        'student_address' => $faker->streetAddress,
+        'student_city' => $faker->city,
+        'student_country' => $faker->country,
         'student_phone' => $faker->phoneNumber,
         'student_dob' => Carbon::now()->subYears(20),
         'student_relatives' => $faker->numberBetween($min = 0, $max = 2),
@@ -139,7 +196,7 @@ $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
         'father_fullname' => $faker->name,
         'father_phone' => $faker->phoneNumber,
         'father_email' => $faker->email,
-        'father_address' => $faker->city,
+        'father_address' => $faker->streetAddress,
         'father_tk' => $faker->postcode,
         'father_job' => $faker->jobTitle,
         'father_company' => $faker->company,
@@ -149,7 +206,7 @@ $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
         'mother_fullname' => $faker->name,
         'mother_phone' => $faker->phoneNumber,
         'mother_email' => $faker->email,
-        'mother_address' => $faker->city,
+        'mother_address' => $faker->streetAddress,
         'mother_tk' => $faker->postcode,
         'mother_job' => $faker->jobTitle,
         'mother_company' => $faker->company,
@@ -159,7 +216,7 @@ $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
         'guardian_fullname' => $faker->name,
         'guardian_phone' => $faker->phoneNumber,
         'guardian_email' => $faker->email,
-        'guardian_address' => $faker->city,
+        'guardian_address' => $faker->streetAddress,
         'guardian_tk' => $faker->postcode,
         'guardian_job' => $faker->jobTitle,
         'guardian_company' => $faker->company,
