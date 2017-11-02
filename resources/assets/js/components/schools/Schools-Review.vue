@@ -102,8 +102,8 @@
                 <i class="fa fa-filter margin-right-10"></i>{{ lang('["panel/schools"].reviews.filters') }}
             </div>
             <div class="btn-container">
-                <button class="btn btn-primary" :class="{btnActive: role=='all' && status=='all'}"            @click="showAllReviews">{{ lang('["panel/schools"].reviews.all') }}
-                    <span v-if="role=='all' && status=='all'" class="badge badge-number"> {{ allLength }} </span>
+                <button class="btn btn-primary" :class="{btnActive: role=='all' && status=='all' && reviewsFilteredByRating == -1}" @click="showAllReviews">{{ lang('["panel/schools"].reviews.all') }}
+                    <span v-if="role=='all' && status=='all' && reviewsFilteredByRating == -1" class="badge badge-number"> {{ allLength }} </span>
                 </button>
             </div>
             <div class="btn-container">
@@ -137,7 +137,10 @@
                 </button>
             </div>
         </div>
-        
+
+        <div v-for="(avgRating, index) in ratingStars" @click="filteredByRating(6-index)">
+            <span :id="'avgRating'+index"></span> {{ ratingStars[6-index] }}
+        </div>        
 
         <div class="reviews"></div>
 
@@ -387,7 +390,9 @@
                 allParentsLength:0,
                 allumniStudents: 0,
                 connectedStudents: 0,
-                selected:'all'
+                selected:'all',
+                ratingStars: [],
+                reviewsFilteredByRating: -1
             }
         },
 
@@ -398,7 +403,7 @@
                     page = query ? query[1] : 1;
                 }
                 console.log('axios = ' + this.role + ' - ' + this.status)
-                return `/api/school/getReviews/${this.role}/${this.status}/?page=${page}`;
+                return `/api/school/getReviews/${this.role}/${this.status}/${this.reviewsFilteredByRating}/?page=${page}`;
             }, 
 
             fetch(page) {
@@ -425,36 +430,42 @@
             },
 
             showActiveStudents(){
+                this.reviewsFilteredByRating = -1
                 this.status = 'connected'
                 this.role = 'student'
                 this.getAvg()
                 this.fetch(1)
             },
             showAllumniStudents(){
+                this.reviewsFilteredByRating = -1
                 this.status = 'allumni'
                 this.role = 'student'
                 this.getAvg()
                 this.fetch(1)
             },
             showAllStudents(){
+                this.reviewsFilteredByRating = -1
                 this.status = 'all'
                 this.role = 'student'
                 this.getAvg()
                 this.fetch(1)
             },
             showActiveParents(){
+                this.reviewsFilteredByRating = -1
                 this.status = 'connected'
                 this.role = 'parent'
                 this.getAvg()
                 this.fetch(1)
             },
             showAllumniParents(){
+                this.reviewsFilteredByRating = -1
                 this.status = 'allumni'
                 this.role = 'parent'
                 this.getAvg()
                 this.fetch(1)
             },
             showAllParents(){
+                this.reviewsFilteredByRating = -1
                 this.status = 'all'
                 this.role = 'parent'
                 this.getAvg()
@@ -462,10 +473,19 @@
             },
 
             showAllReviews(){
+                this.reviewsFilteredByRating = -1
                 this.status = 'all'
                 this.role = 'all'
                 this.getAvg()
                 this.fetch(1)
+            },
+
+            filteredByRating(stars){
+                this.status = 'all'
+                this.role = 'all'
+                this.reviewsFilteredByRating = stars
+                this.getAvg()
+                this.fetch()
             }
         },
 
@@ -478,6 +498,7 @@
                 this.allStudentsLength = this.connectedStudentsLength + this.allumniStudentsLength
                 this.allParentsLength = this.connectedParentsLength + this.allumniParentsLength
                 this.allLength = this.allStudentsLength + this.allParentsLength
+                this.ratingStars = this.dataSet.ratingStars
             },
             totalStars(){
                 $('#total1').raty({
@@ -491,8 +512,33 @@
         },
 
         created() {
+            console.log('created')
             this.getAvg()
             this.fetch()
+        }, 
+
+        updated(){
+            for(var i = 5; i>=1; i--){
+                    $('#avgRating' + (6 - i)).raty({
+                        score    :i,
+                        halfShow :true,
+                        half     :true,
+                        readOnly :true,
+                        starHalf : 'fa fa-fw fa-star-half'
+                    });
+                }
+        },
+
+        mounted(){
+            for(var i = 5; i>=1; i--){
+                $('#avgRating' + (6 - i)).raty({
+                    score    :i,
+                    halfShow :true,
+                    half     :true,
+                    readOnly :true,
+                    starHalf : 'fa fa-fw fa-star-half'
+                });
+            }
         }
     }
 </script>

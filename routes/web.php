@@ -20,9 +20,8 @@ Scholio::soonRoutes();
 
 Route::get('/ppps', function () {
     $school = auth()->user()->info;
-    $data['stars'] = $school->averageStars();
-    $data['avgReviews'] = $school->averageReviews('student', 'allumni');
-    return $data;
+
+    return $school->reviewsFilteredByRating(4);
 });
 
 Route::get('/srv/{role}/{status}', function ($role, $status) {
@@ -31,21 +30,38 @@ Route::get('/srv/{role}/{status}', function ($role, $status) {
 
     $totalAllumni = 0;
     $totalConnected = 0;
+    $connectedParents = 0;
+    $allumniParents = 0;
 
     foreach ($reviews as $review) {
         $user = $review->user;
         $connected = $school->connected;
         $allumni = $school->allumni;
+        $conParent = $school->connectedParents;
+        $alParent = $school->allumniParents;
 
         if ($connected->contains($user)) {
             $totalConnected++;
         } else if ($allumni->contains($user)) {
             $totalAllumni++;
         }
+        if ($conParent->contains($user)) {
+            $connectedParents++;
+        } else if ($alParent->contains($user)) {
+            $allumniParents++;
+        }
     }
 
     if ($status != 'all' || $role !== 'all') {
-        $connected = $school->$status;
+        if ($role == 'student') {
+            $connected = $school->$status;
+        } else {
+            if ($status == 'connected') {
+                $connected = $school->connectedParents;
+            } else {
+                $connected = $school->allumniParents;
+            }
+        }
 
         $reviews = $reviews->filter(function ($item) use ($connected, $role, $status) {
             $bool = $status == 'all' ? true : $connected->contains($item->user);
@@ -66,7 +82,7 @@ Route::get('/srv/{role}/{status}', function ($role, $status) {
 
     $items = $items instanceof Collection ? $items : Collection::make($items);
     $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
-    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni]);
+    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni, 'connectedParents' => $connectedParents, 'allumniParents' => $allumniParents, 'ratingStars' => $ratingStars]);
     $data = $custom->merge($result);
     return $data;
 });

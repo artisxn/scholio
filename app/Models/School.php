@@ -417,6 +417,38 @@ class School extends Model
         return $this->users()->where('role', 'parent')->wherePivot('status', '=', 'allumni');
     }
 
+    public function ratingStars()
+    {
+        $all = [];
+        $all[1] = 0;
+        $all[2] = 0;
+        $all[3] = 0;
+        $all[4] = 0;
+        $all[5] = 0;
+        foreach ($this->reviews as $review) {
+            $all[floor($review->average)]++;
+        }
+        return $all;
+    }
+
+    public function reviewsFilteredByRating($stars)
+    {
+        $reviews = $this->reviews;
+        $filtered = [];
+
+        foreach ($reviews as $review) {
+            $review->user;
+            foreach ($review->category as $category) {
+                $category->category;
+            }
+            if (floor($review->average) == $stars) {
+                array_push($filtered, $review);
+            }
+        }
+
+        return $filtered;
+    }
+
     // public function fullAdmission()
     // {
     //     $result = [];

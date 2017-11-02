@@ -113,7 +113,7 @@ Route::get('/school/getAvgReviews/{role}/{status}', function ($role, $status) {
     return $data;
 })->middleware('auth:api');
 
-Route::get('/school/getReviews/{role}/{status}', function ($role, $status) {
+Route::get('/school/getReviews/{role}/{status}/{stars}', function ($role, $status, $stars) {
     $school = auth()->user()->info;
     $reviews = $school->reviews()->with('user', 'category.category')->get();
 
@@ -121,51 +121,62 @@ Route::get('/school/getReviews/{role}/{status}', function ($role, $status) {
     $totalConnected = 0;
     $connectedParents = 0;
     $allumniParents = 0;
+    $ratingStars = $school->ratingStars();
 
     foreach ($reviews as $review) {
         $user = $review->user;
         $connected = $school->connected;
         $allumni = $school->allumni;
-        $coParents = $school->connectedParents;
-        $alParents = $school->allumniParents;
+        $conParent = $school->connectedParents;
+        $alParent = $school->allumniParents;
 
         if ($connected->contains($user)) {
             $totalConnected++;
         } else if ($allumni->contains($user)) {
             $totalAllumni++;
         }
-
-        if ($coParents->contains($user)) {
+        if ($conParent->contains($user)) {
             $connectedParents++;
-        } else if ($alParents->contains($user)) {
+        } else if ($alParent->contains($user)) {
             $allumniParents++;
         }
-
     }
 
-    if ($status != 'all' || $role !== 'all') {
-        $connected = $school->$status;
-
-        $reviews = $reviews->filter(function ($item) use ($connected, $role, $status) {
-            $bool = $status == 'all' ? true : $connected->contains($item->user);
-            if ($item->user->role == $role && $bool) {
-                return $item;
+    if ($stars != -1) {
+        $reviews = $school->reviewsFilteredByRating($stars);
+    } else {
+        if ($status != 'all' || $role !== 'all') {
+            if ($role == 'student') {
+                $connected = $school->$status;
+            } else {
+                if ($status == 'connected') {
+                    $connected = $school->connectedParents;
+                } else {
+                    $connected = $school->allumniParents;
+                }
             }
-        });
+
+            $reviews = $reviews->filter(function ($item) use ($connected, $role, $status) {
+                $bool = $status == 'all' ? true : $connected->contains($item->user);
+                if ($item->user->role == $role && $bool) {
+                    return $item;
+                }
+            });
+        }
     }
 
     $perPage = config('scholio.perPage.reviews');
     $items = $reviews;
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
 
     $paginatedData = [];
     foreach ($items->forPage($page, $perPage) as $key => $value) {
         $paginatedData[] = $value;
     }
 
-    $items = $items instanceof Collection ? $items : Collection::make($items);
     $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
-    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni, 'connectedParents' => $connectedParents, 'allumniParents' => $allumniParents]);
+    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni, 'connectedParents' => $connectedParents, 'allumniParents' => $allumniParents, 'ratingStars' => $ratingStars]);
     $data = $custom->merge($result);
     return $data;
 })->middleware('auth:api');
