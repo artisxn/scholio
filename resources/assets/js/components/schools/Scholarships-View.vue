@@ -13,7 +13,7 @@
                                     <span class="sch-counter">{{activeLength}}</span>
                                 </div>
                                 <div>
-                                    <input id="r2" type="radio" name="status" value="0" v-model="active" > <label for="r2"><div class="r-lab">{{ lang('panel_scholarships.view.status.ended') }}</div></label>
+                                    <input id="r2" type="radio" name="status" value="0" v-model="active"> <label for="r2"><div class="r-lab">{{ lang('panel_scholarships.view.status.ended') }}</div></label>
                                     <span class="sch-counter">{{endedLength}}</span>
                                 </div>
                             </form>
@@ -45,23 +45,23 @@
                                                 <a href="#" v-on:click="amountChangeSort" class="">
                                                 <!--{{ lang('panel_scholarships.view.price') }}-->
                                                     {{ lang('panel_scholarships.view.financial') }}
-                                                 <span v-if="sortType == 'amount' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                 <span v-if="sortType == 'amount' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                 <span v-if="sortType == 'financial_amount' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                 <span v-if="sortType == 'financial_amount' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <th class="hidden-xlg"></th>
                                             <th v-if="showLevel"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="studyChangeSort" class="">
                                                     {{ lang('panel_scholarships.view.studies') }}
-                                                    <span v-if="sortType == 'study' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                    <span v-if="sortType == 'study' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                    <span v-if="sortType == 'study_length' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'study_length' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <th v-if="showLevel" class="hidden-xxs"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="levelChangeSort" class="">
                                                     {{ lang('panel_scholarships.view.level') }}
-                                                    <span v-if="sortType == 'level' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                    <span v-if="sortType == 'level' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                    <span v-if="sortType == 'level_length' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                    <span v-if="sortType == 'level_length' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <th v-if="showLevel" class="hidden-mdl"> <!-- condition MUST CHANGE-->
@@ -82,8 +82,8 @@
                                             <th>
                                                 <a href="#" v-on:click="admissionChangeSort" class="hidden-xxxs">
                                                 {{ lang('panel_scholarships.view.admitted') }}
-                                                <span v-if="sortType == 'admissions' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                                                <span v-if="sortType == 'admissions' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                                                <span v-if="sortType == 'admissions_length' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                                <span v-if="sortType == 'admissions_length' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
                                             <!-- <th>Νικητής</th> -->
@@ -101,17 +101,17 @@
 
                                             <td class="tool hidden-xsm">
                                                 <div class="dots-text dots-sm hidden-xxlx">
-                                                    <img :src="'/panel/assets/images/steps/'+scholarship.financial.icon" height="30px" alt="" class="">
+                                                    <img :src="'/panel/assets/images/steps/'+scholarship.financial_icon" height="30px" alt="" class="">
                                                 </div>
                                                 <span class="tooltiptext tooltip4 hidden-xxlx">
-                                                    {{ scholarship.financial.plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial.metric}}</span>
+                                                    {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
                                                 </span>
                                                 <span class=" hidden-xxlxx">
-                                                    {{ scholarship.financial.plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial.metric}}</span>
+                                                    {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
                                                 </span>
 
                                             </td>
-                                            <td class="hidden-xlg"><img :src="'/panel/assets/images/steps/' + scholarship.section.name+ '.png'" height="30px"></td>
+                                            <td class="hidden-xlg"><img src="/panel/assets/images/steps/Musical.png" height="30px"></td>
                                             <!--<td v-if="showLevel">-->
                                                 <!--<span class="tool">-->
                                                     <!--{{ study(scholarship.study, 30) }}-->
@@ -120,25 +120,25 @@
                                             <!--</td>-->
                                             <td v-if="showLevel">
                                                 <span class="tool">
-                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left">{{scholarship.study.name}}</div>
-                                                    <span class="tooltiptext tooltip3">{{scholarship.study.name}}</span>
+                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left">{{scholarship.study_name}}</div>
+                                                    <span class="tooltiptext tooltip3">{{scholarship.study_name}}</span>
                                                 </span>
                                             </td>
                                             <td  class="tool hidden-xxs">
-                                                <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level.name }}</div>
-                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{ scholarship.level.name }}</span>
+                                                <div class="dots-text dots-mlg2 dots-xl-left">{{ scholarship.level_name }}</div>
+                                                <span class="tooltiptext tooltip2 hidden-xlxl">{{ scholarship.level_name }}</span>
                                             </td>
                                             <td class="tool hidden-mdl">
                                                 <div class="dots-text dots-sm hidden-xxl">
-                                                <img :src="'/panel/assets/images/steps/'+ scholarship.criteria.name+'.png'" height="30px" alt="" class="">
+                                                <img :src="'/panel/assets/images/steps/'+ scholarship.criteria_name+'.png'" height="30px" alt="" class="">
                                                 </div>
-                                                <span class="tooltiptext tooltip5 hidden-xlxl">{{ scholarship.criteria.name }}</span>
+                                                <span class="tooltiptext tooltip5 hidden-xlxl">{{ scholarship.criteria_name }}</span>
 
-                                                <span class="hidden-xl dots-text dots-mlg3 visible-xxl dots-xl-left">{{ scholarship.criteria.name }}</span>
+                                                <span class="hidden-xl dots-text dots-mlg3 visible-xxl dots-xl-left">{{ scholarship.criteria_name }}</span>
 
                                             </td>
                                             <td class="hidden-lgm" style=""> <div class="dots-text dots-md"> {{ scholarship.end_at }}</div></td>
-                                            <td class="hidden-xxxs"> <div class="dots-text dots-sm"> {{ scholarship.user.length}} </div></td>
+                                            <td class="hidden-xxxs"> <div class="dots-text dots-sm"> {{ scholarship.admissions_length}} </div></td>
                                             <!-- <td>{{ scholarship.winner_id }}</td> -->
                                             <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
                                             <!--<td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>-->
@@ -153,7 +153,7 @@
             <paginator :dataSet="dataSet" @changed="fetch"></paginator>
         </div>
 
-        <div style="max-width: 800px">
+        <div style="max-width: 800px" v-show="sc_amounts.length > 0">
             <div style="font-size: 160%; font-weight: 300; margin-left: 25px">{{ lang('panel_scholarships.view.chart') }}</div>
             <div>
                 <chart-vue :chart-data="datacollection" :options="dataoptions"></chart-vue>
@@ -371,9 +371,9 @@ import Chart from '../../VueChart.vue'
                 endedLength:0,
                 active:'1',
                 scholarships: {},
-                showLevel:false,
+                showLevel:true,
                 sortReverse:true,
-                sortType:'admissions',
+                sortType:'admissions_length',
                 scholars:[],
                 searchStr:"",
                 sc_amounts: [],
@@ -392,12 +392,11 @@ import Chart from '../../VueChart.vue'
                         scales: {
                             xAxes: [{
                                 afterFit: function(scaleInstance) {
-                                    scaleInstance.width = 100; // sets the width to 100px
+                                    scaleInstance.width = 500; // sets the width to 100px
                                 },
                                 ticks: {
-//                                    display: false,
-//                                    // set the fontSize to 0 so that extra labels are not forced on the right side
-//                                    fontSize: 0
+                                   // set the fontSize to 0 so that extra labels are not forced on the right side
+                                   fontSize: 0
                                 }
                             }]
                         }
@@ -408,6 +407,11 @@ import Chart from '../../VueChart.vue'
             filteredStudies: function () {
                 return this.items;
             }
+        },
+        watch:{
+           active(){
+                this.fetch()
+           } 
         },
         methods: {
             counters:function(){
@@ -442,39 +446,30 @@ import Chart from '../../VueChart.vue'
             },
 
             admissionChangeSort: function(){
-                this.sortType = 'admissions';
-                this.changeSortType(this.sortType)
+                this.changeSortType('admissions_length')
             },
             amountChangeSort: function(){
-                this.sortType = 'amount';
-                this.changeSortType(this.sortType)
+                this.changeSortType('financial_amount')
             },
             planChangeSort: function(){
-                this.sortType = 'plan';
-                this.changeSortType(this.sortType)
+                this.changeSortType('financial_plan')
             },
             studyChangeSort: function(){
-                this.sortType = 'study';
-                this.changeSortType(this.sortType)
+                this.changeSortType('study_name')
             },
             endChangeSort: function(){
-                this.sortType = 'end_at';
-                this.changeSortType(this.sortType)
+                this.changeSortType('end_at')
             },
             levelChangeSort: function(){
-                this.sortType = 'level';
-                this.changeSortType(this.sortType)
+                this.changeSortType('level_name')
             },
             criteriaChangeSort: function(){
-                this.sortType = 'criteria_id';
-                this.changeSortType(this.sortType)
+                this.changeSortType('criteria_name')
             },
-            changeSortType: function(){
+            changeSortType: function(sort){
                 this.sortReverse=!this.sortReverse;
-                var st1= this.scholars;
-                st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
-                this.scholars =st1;
-                return this.scholars;
+                this.sortType = sort
+                this.fetch(1)
             },
             dynamicSort: function (property,order) {
                 var sortOrder = 1;
@@ -502,7 +497,7 @@ import Chart from '../../VueChart.vue'
                     search = "%20"
                 }
 
-                return `/api/school/getScholarships/${this.sortType}/${this.sortReverse}/${search}?page=${page}`;
+                return `/api/school/getScholarships/${this.sortType}/${this.sortReverse}/${this.active}/${search}?page=${page}`;
             }, 
 
             fetch(page) {
@@ -510,11 +505,22 @@ import Chart from '../../VueChart.vue'
             },
 
             refresh({data}) {
+                this.sc_amounts= []
+                this.sc_names= []
                 this.dataSet = data;
                 this.items = data.data;
                 this.scholarships = this.items
-                console.log(this.scholarships)
-                if(this.scholarships[0].level.id < 4 || this.scholarships[0].level.id > 21 ) {this.showLevel=true}
+                var parent = this
+                this.scholarships.forEach(function(i){
+                    if(i.admissions_length > 0){
+                        parent.sc_amounts.push(i.admissions_length)
+                        parent.sc_names.push(i.study_name)
+                    }
+                })
+
+                console.log('EDW')
+                console.log(this.sc_amounts)
+                // if(this.scholarships[0].level.id < 4 || this.scholarships[0].level.id > 21 ) {this.showLevel=true}
 
                 this.updateChart()
                 this.counters()

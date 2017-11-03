@@ -6,6 +6,7 @@ use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
+use App\Models\DummyScholarship;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolSetting;
@@ -18,10 +19,39 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
-Route::get('/ppps', function () {
+Route::get('pptest/{order}/{asc}/{active}', function ($order, $asc, $active) {
     $school = auth()->user()->info;
+    $sort = 'desc';
+    if ($asc == 'true') {
+        $sort = 'asc';
+    }
 
-    return $school->reviewsFilteredByRating(4);
+    $scholarships = DummyScholarship::where('school_id', $school->id)->where('active', $active)->orderBy($order, $sort)->get();
+    return $scholarships;
+});
+
+Route::get('/ppps', function () {
+    $school = App\Models\School::find(1);
+
+    foreach ($school->scholarship as $scholarship) {
+        $dummy = new DummyScholarship;
+        $dummy->school_id = $school->id;
+        $dummy->financial_plan = $scholarship->financial->plan;
+        $dummy->financial_icon = $scholarship->financial->icon;
+        $dummy->financial_amount = $scholarship->financial_amount;
+        $dummy->financial_metric = $scholarship->financial->metric;
+        $dummy->study_name = $scholarship->study->name;
+        $dummy->level_name = $scholarship->level->name;
+        $dummy->criteria_name = $scholarship->criteria->name;
+        $dummy->criteria_icon = $scholarship->criteria->icon;
+        $dummy->end_at = $scholarship->end_at;
+        $dummy->admissions_length = count($scholarship->admission);
+
+        $dummy->save();
+        echo 'Scholarship ' . $scholarship->id . ' done.<br>';
+    }
+
+    return 'OK';
 });
 
 Route::get('/srv/{role}/{status}', function ($role, $status) {

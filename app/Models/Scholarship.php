@@ -18,6 +18,7 @@ class Scholarship extends Model
 {
     // use Searchable;
     use SoftDeletes;
+
     /**
      * Get the index name for the model.
      *
@@ -191,5 +192,10 @@ class Scholarship extends Model
         // Email to student
         //
         return 'Done';
+    }
+
+    public function dummy()
+    {
+        return $this->hasOne(DummyScholarship::class);
     }
 }

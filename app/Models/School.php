@@ -468,4 +468,9 @@ class School extends Model
     {
         return $this->belongsToMany(User::class, 'school_requests');
     }
+
+    public function dummyScholarships()
+    {
+        return $this->hasMany(DummyScholarship::class);
+    }
 }

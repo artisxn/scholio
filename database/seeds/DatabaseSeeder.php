@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TeacherDetailsTableSeeder::class);
         $this->call(SkillsTableSeeder::class);
         $this->call(SocialLinksTableSeeder::class);
+        $this->call(DummyScholarshipsTableSeeder::class);
 
         foreach (School::all() as $school) {
             $settings = new SchoolSetting;

@@ -359,14 +359,6 @@
                 this.sortReverse=!this.sortReverse;
                 this.fetch(1)
             },
-
-            changeSortType: function(){
-                this.sortReverse=!this.sortReverse;
-                var st1= this.items;
-                st1.sort(this.dynamicSort(this.sortType,this.sortReverse));
-                this.items=st1;
-                return this.items
-            },
             dynamicSort: function (property,order) {
                     var sortOrder = 1;
                     if (order) {sortOrder = -1}

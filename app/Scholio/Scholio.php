@@ -8,6 +8,7 @@ use App\Models\AlgoliaSchool;
 use App\Models\AlgoliaStudy;
 use App\Models\DonatedScholarship;
 use App\Models\Dummy;
+use App\Models\DummyScholarship;
 use App\Models\Image;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -429,5 +430,56 @@ class Scholio
         Route::group(['prefix' => 'bot'], function () {
             include 'bot-routes.php';
         });
+    }
+
+    public static function dummyScholarshipUpdate($scholarship)
+    {
+        $school = $scholarship->school;
+
+        $dummy = $scholarship->dummy;
+        $dummy->school_id = $school->id;
+        $dummy->financial_plan = $scholarship->financial->plan;
+        $dummy->financial_icon = $scholarship->financial->icon;
+        $dummy->financial_amount = $scholarship->financial_amount;
+        $dummy->financial_metric = $scholarship->financial->metric;
+        $dummy->study_name = $scholarship->study->name;
+        $dummy->level_name = $scholarship->level->name;
+        $dummy->criteria_name = $scholarship->criteria->name;
+        $dummy->criteria_icon = $scholarship->criteria->name;
+        $dummy->end_at = $scholarship->end_at;
+        $dummy->admissions_length = count($scholarship->admission);
+        $dummy->section_icon = $scholarship->study->section[0]->name;
+        $dummy->active = $scholarship->active;
+
+        $dummy->save();
+    }
+
+    public static function dummyScholarshipCreate($scholarship)
+    {
+        $school = $scholarship->school;
+
+        $dummy = new DummyScholarship;
+        $dummy->school_id = $school->id;
+        $dummy->financial_plan = $scholarship->financial->plan;
+        $dummy->financial_icon = $scholarship->financial->icon;
+        $dummy->financial_amount = $scholarship->financial_amount;
+        $dummy->financial_metric = $scholarship->financial->metric;
+        $dummy->study_name = $scholarship->study->name;
+        $dummy->level_name = $scholarship->level->name;
+        $dummy->criteria_name = $scholarship->criteria->name;
+        $dummy->criteria_icon = $scholarship->criteria->name;
+        $dummy->end_at = $scholarship->end_at;
+        $dummy->admissions_length = count($scholarship->admission);
+        $dummy->section_icon = $scholarship->study->section[0]->name;
+        $dummy->active = $scholarship->active;
+
+        $dummy->save();
+    }
+
+    public static function dummyScholarshipDelete($scholarship)
+    {
+        $dummy = $scholarship->dummy;
+
+        $dummy->delete();
     }
 }

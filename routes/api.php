@@ -2,6 +2,7 @@
 
 use App\Events\UserAppliedOnSchool;
 use App\Models\CategoryReview as Category;
+use App\Models\DummyScholarship;
 use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -18,24 +19,28 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
-Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $asc, $field) {
+Route::get('/school/getScholarships/{order}/{asc}/{active}/{field}', function ($order, $asc, $active, $field) {
     $school = auth()->user()->info;
-    $scholarships = $school->scholarship;
+    $sort = 'asc';
+    if ($asc == 'true') {
+        $sort = 'desc';
+    }
+
+    $scholarships = DummyScholarship::where('school_id', $school->id)->where('active', $active)->orderBy($order, $sort)->get();
 
     $active = 0;
-    foreach ($scholarships as $scholar) {
-        $scholar->section = $scholar->study->section[0];
+    foreach ($school->dummyScholarships as $scholar) {
         if ($scholar->active == 1) {
             $active++;
         }
     }
 
-    $deactive = $scholarships->count() - $active;
+    $deactive = count($school->dummyScholarships) - $active;
 
     if ($field != '%20') {
         $scholarships = $scholarships->filter(function ($item) use ($field) {
 
-            $replacement = preg_replace("/ά/iu", '${1}α', $item->level->name);
+            $replacement = preg_replace("/ά/iu", '${1}α', $item->level_name);
             $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
             $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
             $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
@@ -43,7 +48,7 @@ Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $a
             $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
             $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
 
-            $replacement2 = preg_replace("/ά/iu", '${1}α', $item->study->name);
+            $replacement2 = preg_replace("/ά/iu", '${1}α', $item->study_name);
             $replacement2 = preg_replace("/έ/iu", '${1}ε', $replacement2);
             $replacement2 = preg_replace("/ή/iu", '${1}η', $replacement2);
             $replacement2 = preg_replace("/ί/iu", '${1}ι', $replacement2);
@@ -51,7 +56,7 @@ Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $a
             $replacement2 = preg_replace("/ύ/iu", '${1}υ', $replacement2);
             $replacement2 = preg_replace("/ώ/iu", '${1}ω', $replacement2);
 
-            $replacement3 = preg_replace("/ά/iu", '${1}α', $item->criteria->name);
+            $replacement3 = preg_replace("/ά/iu", '${1}α', $item->criteria_name);
             $replacement3 = preg_replace("/έ/iu", '${1}ε', $replacement3);
             $replacement3 = preg_replace("/ή/iu", '${1}η', $replacement3);
             $replacement3 = preg_replace("/ί/iu", '${1}ι', $replacement3);
@@ -59,7 +64,7 @@ Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $a
             $replacement3 = preg_replace("/ύ/iu", '${1}υ', $replacement3);
             $replacement3 = preg_replace("/ώ/iu", '${1}ω', $replacement3);
 
-            $replacement4 = preg_replace("/ά/iu", '${1}α', $item->section->name);
+            $replacement4 = preg_replace("/ά/iu", '${1}α', $item->financial_plan);
             $replacement4 = preg_replace("/έ/iu", '${1}ε', $replacement4);
             $replacement4 = preg_replace("/ή/iu", '${1}η', $replacement4);
             $replacement4 = preg_replace("/ί/iu", '${1}ι', $replacement4);
@@ -67,23 +72,15 @@ Route::get('/school/getScholarships/{order}/{asc}/{field}', function ($order, $a
             $replacement4 = preg_replace("/ύ/iu", '${1}υ', $replacement4);
             $replacement4 = preg_replace("/ώ/iu", '${1}ω', $replacement4);
 
-            $replacement5 = preg_replace("/ά/iu", '${1}α', $item->financial->plan);
-            $replacement5 = preg_replace("/έ/iu", '${1}ε', $replacement5);
-            $replacement5 = preg_replace("/ή/iu", '${1}η', $replacement5);
-            $replacement5 = preg_replace("/ί/iu", '${1}ι', $replacement5);
-            $replacement5 = preg_replace("/ό/iu", '${1}ο', $replacement5);
-            $replacement5 = preg_replace("/ύ/iu", '${1}υ', $replacement5);
-            $replacement5 = preg_replace("/ώ/iu", '${1}ω', $replacement5);
-
-            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $replacement2) || preg_match("/" . $field . "/iu", $replacement3) || preg_match("/" . $field . "/iu", $replacement4) || preg_match("/" . $field . "/iu", $replacement5) || preg_match("/" . $field . "/iu", $item->section->name) || preg_match("/" . $field . "/iu", $item->financial->plan) || preg_match("/" . $field . "/iu", $item->level->name) || preg_match("/" . $field . "/iu", $item->criteria->name) || preg_match("/" . $field . "/iu", $item->study->name)) {
+            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $replacement2) || preg_match("/" . $field . "/iu", $replacement3) || preg_match("/" . $field . "/iu", $replacement4) || preg_match("/" . $field . "/iu", $item->financial_plan) || preg_match("/" . $field . "/iu", $item->level_name) || preg_match("/" . $field . "/iu", $item->criteria_name) || preg_match("/" . $field . "/iu", $item->study_name)) {
                 return $item;
             }
         });
     }
 
     $perPage = config('scholio.perPage.scholarships');
-    $items = $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
-
+    // $items = $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
+    $items = $scholarships;
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
 

@@ -329,6 +329,7 @@ class ApiController extends Controller
 
             $data = ['message' => 'SAVED SUCCESSFULLY', 'redirect' => route('scholarship-view')];
             Scholio::updateDummy($scholarship->school);
+            Scholio::dummyScholarshipCreate($scholarship);
         } catch (\Exception $e) {
             $data = ['message' => 'ERROR ' . $e];
         }

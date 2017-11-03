@@ -236,6 +236,7 @@ class RoutesController extends Controller
 
         $admission->createWithFields(request()->except('_token', 'firstName', 'lastName', 'email'));
         // $user->cv->updateIfNotExist($admission);
+        Scholio::dummyScholarshipUpdate($scholarship);
 
         event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
 
