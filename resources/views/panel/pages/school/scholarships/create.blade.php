@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/panel/assets/css/steps.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" href="{{asset('/css/atwho.css')}}"/>
+    <link rel="stylesheet" href="{{'/panel/assets/css/vue-multiselect.css'}}" />
 @endsection
 
 @section('content')

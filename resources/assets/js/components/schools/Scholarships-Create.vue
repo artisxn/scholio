@@ -153,6 +153,9 @@
                                          label="name" 
                                          track-by="code" 
                                          :options="options" 
+                                         deselectLabel="Αφαίρεση"
+                                         :selectLabel="lang('panel_scholarships.create.select')"
+                                         :selectedLabel="lang('panel_scholarships.create.selected')"
                                          :multiple="true" 
                                          :taggable="true" 
                                          @tag="addTag">
@@ -239,8 +242,8 @@
         </div>
 </template>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<!--<style src="/panel/assets/css/vue-multiselect.css"></style>-->
+<!-- <style src="vue-multiselect/dist/vue-multiselect.min.css"></style> -->
+<!-- <style href="/panel/assets/css/vue-multiselect.css"></style> -->
 <style>
 
     .step-container-height{height: 500px}
@@ -322,7 +325,7 @@ html .ui-button.ui-state-disabled:active {
 </style>
 
 <script>
-    import Multiselect from 'vue-multiselect';
+    import Multiselect from '../../scholio-multiselect';
     import VueTinymce from 'vue-tinymce';
     Vue.use(VueTinymce)
 
