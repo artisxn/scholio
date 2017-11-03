@@ -91,7 +91,7 @@ Route::get('/school/getScholarships/{order}/{asc}/{active}/{field}', function ($
     }
 
     $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
-    $custom = collect(['active' => $active, 'deactive' => $deactive]);
+    $custom = collect(['active' => $active, 'deactive' => $deactive, 'school_type' => $school->type->id]);
     $data = $custom->merge($result);
     return $data;
 })->middleware('auth:api');

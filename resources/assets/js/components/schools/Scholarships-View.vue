@@ -50,7 +50,7 @@
                                                 </a>
                                             </th>
                                             <th class="hidden-xlg"></th>
-                                            <th v-if="showLevel"> <!-- condition MUST CHANGE-->
+                                            <th v-if=""> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="studyChangeSort" class="">
                                                     {{ lang('panel_scholarships.view.studies') }}
                                                     <span v-if="sortType == 'study_length' && !sortReverse" class="fa fa-sort-amount-asc"></span>
@@ -64,14 +64,14 @@
                                                     <span v-if="sortType == 'level_length' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
-                                            <th v-if="showLevel" class="hidden-mdl"> <!-- condition MUST CHANGE-->
+                                            <th v-if="" class="hidden-mdl"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="criteriaChangeSort" class="">
                                                     {{ lang('panel_scholarships.view.criteria') }}
                                                     <span v-if="sortType == 'criteria_id' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                                                     <span v-if="sortType == 'criteria_id' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
-                                            <th v-if="showLevel" class="hidden-lgm"> <!-- condition MUST CHANGE-->
+                                            <th v-if="" class="hidden-lgm"> <!-- condition MUST CHANGE-->
                                                 <a href="#" v-on:click="endChangeSort" class="">
                                                     <span v-if="active==1">{{ lang('panel_scholarships.view.end_date') }}</span>
                                                     <span v-if="active==0">{{ lang('panel_scholarships.view.ended') }}</span>
@@ -371,7 +371,7 @@ import Chart from '../../VueChart.vue'
                 endedLength:0,
                 active:'1',
                 scholarships: {},
-                showLevel:true,
+                showLevel:false,
                 sortReverse:true,
                 sortType:'admissions_length',
                 scholars:[],
@@ -518,9 +518,7 @@ import Chart from '../../VueChart.vue'
                     }
                 })
 
-                console.log('EDW')
-                console.log(this.sc_amounts)
-                // if(this.scholarships[0].level.id < 4 || this.scholarships[0].level.id > 21 ) {this.showLevel=true}
+                if(this.dataSet.school_type < 6 || this.dataSet.school_type > 9 ) {this.showLevel=true}
 
                 this.updateChart()
                 this.counters()

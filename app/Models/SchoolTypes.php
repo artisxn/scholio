@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\Category;
 use App\Models\Level;
-use App\Models\LevelEN;
 use App\Models\School;
 use App\Models\Study;
 use Illuminate\Database\Eloquent\Model;

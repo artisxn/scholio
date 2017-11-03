@@ -52,7 +52,7 @@
                         <!--Οριστικοποίηση Επιλογών-->
                     <!--</button>-->
 
-                    <hr style="	height: 10px;!important; border: 0; box-shadow: 0 10px 10px -10px #324c5a inset; margin-top: 30px; margin-left: 10px; margin-right: 30px;">
+                    <hr style=" height: 10px;!important; border: 0; box-shadow: 0 10px 10px -10px #324c5a inset; margin-top: 30px; margin-left: 10px; margin-right: 30px;">
 
                     <button class="btn btn-info" v-on:click="clearAllStudies" style="margin-top: 20px; margin-left: 10px;" v-if="checkedStudies.length">
                         <i class="fa fa-trash-o"  aria-hidden="true" style="margin-right: 10px;"></i>
@@ -190,19 +190,12 @@
                 sections: [],
                 testClass: true,
                 col_iek_eng_dan_mus:false,
-                checkedStudiesTemp:{},
-                testTable: false
+                checkedStudiesTemp:{}
             }
 
         },
         mounted: function () {
             this.getCheckedStudies()
-        },
-        watch:{
-            testTable(){
-                console.log('TEST')
-                console.log(this.testTable)
-            }
         },
 
         methods: {
@@ -213,7 +206,6 @@
                 var parent = this
                 this.testTable.forEach(function (studies) {
                     parent.checkedStudies.push(studies[0].id);
-                    studies[0].section = studies[0].section_e_n
                     console.log(' API 2 checkedStudies initial push OK' )
                 })
                 this.getStudies()
@@ -227,7 +219,6 @@
                         .then(response => {
                     console.log('API 1 Full Studies OK ')
                     this.all_studies = response.data['levels']
-                    console.log(this.all_studies)
                 this.createTableStatus()
                 });
             },
@@ -353,13 +344,15 @@
                 console.log(this.col_iek_eng_dan_mus)
 
                 console.log('init DONE ! checkedStudies.length='+this.checkedStudies.length);
+                console.log(this.checkedStudies)
                 for (var level = 0; level < this.checkedStudies.length; level++){
                     var i = this.testTable[level][0].section[0].level.id;
                     var j = this.testTable[level][0].section[0].id;
                     this.levels[i]++
-                    this.sections[i][j]++
+                    // this.sections[i][j]++
+
                 }
-                console.log(this.checkedStudies)
+
                 console.log(this.checkedStudies.length)
             }
         }
