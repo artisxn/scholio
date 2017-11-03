@@ -34,6 +34,8 @@
     },
     //menu item click
     Sidemenu.prototype.menuItemClick = function(e) {
+
+
        if(!$("#wrapper").hasClass("enlarged")){
         if($(this).parent().hasClass("has_sub")) {
 

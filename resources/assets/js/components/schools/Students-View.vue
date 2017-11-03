@@ -206,7 +206,7 @@
 
 
 
-    @media (min-width: 1680px) {
+    @media (min-width: 1750px) {
         .col-xl-3 {width: 25%;}
         .col-xl-4 {width: 33.33%;}
     }

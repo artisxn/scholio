@@ -88,10 +88,10 @@ $factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
     $maxPhoto = 0;
     if ($g == 'male') {
         $minPhoto = 1;
-        $maxPhoto = 25;
+        $maxPhoto = 40;
     } else {
-        $minPhoto = 31;
-        $maxPhoto = 55;
+        $minPhoto = 41;
+        $maxPhoto = 80;
     }
 
     $photo = $faker->numberBetween($minPhoto, $maxPhoto);
@@ -126,10 +126,10 @@ $factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
     $maxPhoto = 0;
     if ($g == 'male') {
         $minPhoto = 1;
-        $maxPhoto = 25;
+        $maxPhoto = 40;
     } else {
-        $minPhoto = 31;
-        $maxPhoto = 55;
+        $minPhoto = 41;
+        $maxPhoto = 80;
     }
 
     $photo = $faker->numberBetween($minPhoto, $maxPhoto);

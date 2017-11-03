@@ -240,6 +240,7 @@
 </template>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<!--<style src="/panel/assets/css/vue-multiselect.css"></style>-->
 <style>
 
     .step-container-height{height: 500px}

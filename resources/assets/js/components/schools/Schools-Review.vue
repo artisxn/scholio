@@ -136,11 +136,20 @@
                     <span v-if="role=='parent' && status=='allumni'" class="badge badge-number"> {{allumniParentsLength}} </span>
                 </button>
             </div>
+
+            <div class="clearfix" style="margin-bottom: 35px;"></div>
+
+
+            <div v-for="(avgRating, index) in ratingStars" @click="filteredByRating(6-index)" class="stars-filter" :class="{activeFilterStars: 6-index==reviewsFilteredByRating}">
+                <span :id="'avgRating'+index"></span>
+                <span class="badge badge-filter-stars"  :class="{activeFilterBadge: 6-index==reviewsFilteredByRating}">{{ ratingStars[6-index] }}</span>
+                <!--{{ lang('["panel/schools"].reviews.reviews') }}-->
+            </div>
+
+
         </div>
 
-        <div v-for="(avgRating, index) in ratingStars" @click="filteredByRating(6-index)">
-            <span :id="'avgRating'+index"></span> {{ ratingStars[6-index] }}
-        </div>        
+
 
         <div class="reviews"></div>
 
@@ -226,12 +235,23 @@
     .filters-container{margin: 20px 0 40px 0;}
     .btn-primary,.btn-primary:focus{background-color: #008da5; outline:none !important; border: none;  opacity: 0.5}
     .btn-primary:hover{background-color: #006880;   opacity: 0.8}
-    .btn-container{float: left; margin: 15px 12px 15px 0;}
+    .btn-container{float: left; margin: 15px 12px 3px 0;}
     .margin-right-10{margin-right: 10px}
     .filter-text{font-family: Roboto; font-size: 120%; font-weight: 400; margin-top: 30px; color: #0097af}
     .btnActive{background-color: #b95140 !important;  opacity: 1!important;}
 
     .badge-number{margin-right: -20px; margin-left: 3px; margin-top: -22px;}
+
+
+    .stars-filter{cursor: pointer; color: #008da5; opacity: 0.4}
+    .badge-filter-stars{ margin-left: 10px; background-color: #008da5;}
+
+    .activeFilterStars{color: #b95140!important; font-weight: 600; opacity: 1!important;}
+    .activeFilterBadge{background-color: #b95140!important; opacity: 1!important;}
+
+    .stars-filter:hover{cursor: pointer!important; color: #0097af; opacity: 1!important;}
+    .badge-filter-stars:hover{cursor: pointer!important; background-color: #0097af!important; opacity: 1!important;}
+
 
 
 
@@ -486,6 +506,7 @@
                 this.reviewsFilteredByRating = stars
                 this.getAvg()
                 this.fetch()
+                console.log(stars)
             }
         },
 
