@@ -11,7 +11,7 @@ $(function(){
 
 
 	// Initialize Countdown Plugin
-	$('#countdown').countdown('2017/12/1 00:00:00', function(event) {
+	$('#countdown').countdown('2018/02/28 00:00:00', function(event) {
 
 		$(this).html(event.strftime('<div>%m<span>months</span></div> <div>%d<span>days</span></div> <div>%H<span>Hours</span></div> <div>%M<span>minutes</span></div> <div>%S<span>seconds</span></div>'));
 

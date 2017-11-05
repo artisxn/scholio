@@ -28,10 +28,12 @@
         <div v-if="selection==true">
             <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="student in filteredStudents" v-if="(student.role=='student')" >
 
-                <div  class="" style="display: none">
-                    <div class="">
+
+                <div class="double-card"  :id="'card'+student.id">
+                    <div class="front">
                         <div class="sc-box">
                             <div class="sc-up"></div>
+
                             <div class="row">
                                 <div class="sc-card">
                                     <a class="" href="#">
@@ -45,12 +47,10 @@
                                     </a>
                                     <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
                                 </div>
-
-
                             </div>
                             <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
+
                         </div>
-                        <!-- <div class='wave'></div> -->
                         <div class="sc-bottom" >
                             <div class="phone">
                                 <a :href="'tel:'+student.cv.student_phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.cv.student_phone }}</span></a>
@@ -58,8 +58,7 @@
                             <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
                                 <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
 
-                                <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}
-                                </div>
+                                <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}</div>
                                 </label>
                                 <br>
                                 <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
@@ -70,68 +69,52 @@
                                 <br>
                             </form>
                         </div>
-                    </div>
-                </div>
-
-
-                <div class="double-card"  :id="'card'+student.id">
-                    <div class="front">
-
-
-                        <div class="sc-box">
-                            <div class="sc-up"></div>
-
-                            <div class="row">
-                                <div class="sc-card">
-                                    <a class="" href="#">
-                                        <div class="frame-cont">
-                                            <img src="/new/img/photoFrame.png" class="frame" alt="">
-                                            <img :src="scholio + student.student.avatar" class="avatar2" alt="">
-                                            <img src="/new/img/clip2.png" class="clip" alt="">
-                                        </div>
-                                        <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
-                                        <div class="name"> {{student.name}} </div>
-                                    </a>
-                                    <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
-                                </div>
-                            </div>
-                            <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
-
-                        </div>
-
-
-                        <div class="sc-bottom" >
-                            <div class="phone">
-                                <a :href="'tel:'+student.cv.student_phone"><div class=""></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.cv.student_phone }}</span></a>
-                            </div>
-                            <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
-                                <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
-
-                                <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}
-                                </div>
-                                </label>
-                                <br>
-                                <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
-
-                                <label :for="'stt' + student.id">
-                                    <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
-                                </label>
-                                <br>
-                            </form>
-                        </div>
-
 
                         <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(student.id)" ></i>
+                        <i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo"></i>
 
                     </div>
 
 
-                    <div class="back"> 2
-                        <button @click="flip(student.id)" class="btn-flip">flip</button>
+                    <div class="back">
+                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(student.id)" ></i>
+
+                        <div style="position: absolute; top: 30px">
+                            <span style="color:#eee; margin-left: 10px;">
+                                MSc Information Technology
+                                <br>
+                                <span style="color:#eee; margin-left: 10px;">
+                                Μεταπτυχιακές Σπουδές-Master
+                                </span>
+                                <br>
+                                <br>
+                               <div style="height: 1px; width: 96%; background: #aaa;margin-left: 3%; margin-bottom: 30px; clear: both"></div>
+                                <br>
+                            </span>
+
+                            <div class="fath" style="float: left;">Πατέρας
+                                <br>
+                                {{student.cv.father_fullname}}
+                                <br>
+                                {{student.cv.father_phone}}
+                            </div>
+
+                            <div class="fath" style="position: absolute; right: -200px;">Μητέρα
+                                <br>
+                                {{student.cv.mother_fullname}}
+                                <br>
+                                {{student.cv.mother_phone}}
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 
 
+                <!----- Modal ------>
+
+                <!------------------>
 
 
             </div>
@@ -178,15 +161,55 @@
         </div>
 
         <paginator :dataSet="dataSet" @changed="fetch"></paginator>
+
+
+
+        <!-- Modal -->
+        <div id="ModalStudentInfo" class="modal fade" role="dialog" >
+            <div class="modal-dialog" >
+
+                <!-- Modal content-->
+                <div class="modal-content" style="border-radius: 6px; background-color: #f4f4f4; padding: 0; border: none;">
+                    <div class="" style="padding: 20px 15px ; margin: 0; background-color: #1f485c; height: 70px; border-top-left-radius: 6px; border-top-right-radius: 6px;">
+                        <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
+                        <h4 class="modal-title" style=" color: #fff">Student info </h4>
+                    </div>
+                    <div class="" style=" height: 300px; padding: 15px;">
+                        <p> Blanditiis inventore sint aliquam nihil assumenda.
+                            Incidunt deserunt repellat dignissimos asperiores sequi modi qui.
+                            Sint facilis porro eveniet earum.
+                            Repellendus minus reiciendis aspernatur numquam tenetur exercitationem doloremque omnis.
+                            Sed error animi dolorem est temporibus. Voluptas neque laboriosam deserunt aut veniam quis aperiam.</p>
+                    </div>
+                    <div class="modal-footer" style="padding: 15px;">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
     </div>
+
+
+
+
+
+
+
 </template>
 
 
 <style>
 
+
     .cards-container{
-        margin: 10px 0;
-        height:206px;
+        margin: 12px 0;
+        height:200px;
         perspective: 900px;
     }
 
@@ -195,7 +218,7 @@
         width: 100%;
         height: 100%;
         transform-style: preserve-3d;
-        transition: transform 0.6s;
+        transition: transform 0.2s;
     }
 
     .double-card div{
@@ -209,20 +232,38 @@
 
     }
     .back {
+        height: 205px!important;
         background-color: #ddd;
+        border-radius: 5px;
+        border: 1px solid #a5a5a5;
 
         transform: rotateY( 180deg );
     }
 
+    .back{
+        /*background: -webkit-linear-gradient(top,  #5D5278,#6783B7); !* For Safari 5.1 to 6.0 *!*/
+        /*background: -o-linear-gradient(top,  #5D5278,#6783B7); !* For Opera 11.1 to 12.0 *!*/
+        /*background: -moz-linear-gradient(top,  #5D5278,#6783B7); !* For Firefox 3.6 to 15 *!*/
+        background: linear-gradient(to top,  #008da5,#324c5a); /* Standard syntax */
+        /*background: #ddd;*/
+    }
+
+
+
     .front,.back{
+
         /*border-radius: 5px; border: 1px solid #999*/
     }
 
     .flipped{transform: rotateY( 180deg );}
 
-    .btn-flip{}
-    .flip-icon{position: absolute; top:15px; right: 15px; color: #00d1e9; cursor: pointer; font-size: 120%}
-    .flip-icon:hover{color: #fafafa;}
+
+    .flip-icon,.flip-info{position: absolute; top:13px; right: 13px; color: #00d1e9; cursor: pointer; font-size: 120%}
+    .flip-info{ right: 38px;}
+    .flip-icon:hover,.flip-info:hover{color: #fafafa;}
+
+
+    .fath{color: #b8b8b8; font-size: 105%; margin-left: 10px;}
 
 
 
@@ -260,7 +301,7 @@
     /*.email{font-size: 90%; color: #888; font-weight: 300; margin: 5px 0 0 90px;}*/
     /*.phone{margin: 20px 0 0 90px;}*/
 
-    .circle{height: 19px; width: 19px; border-radius: 50%; background-color:#008da5; position: absolute; left: 22px; bottom: 37px; }
+    .circle{height: 19px!important; width: 19px!important; border-radius: 50%; background-color:#008da5; position: absolute; left: -4px; bottom: 37px; }
 
     /*.sc-bottom{height: 40px; background: #cad8d3; margin: 0 -25px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}*/
     .sc-bottom{height: 50px!important; background: #cad8d3; margin: 0 0 20px 0; bottom: -25px;
@@ -333,7 +374,7 @@
 
     }
     @media (min-width: 2280px) {
-        .pull-right{ margin-right: 50px!important;}
+        /*.pull-right{ margin-right: 50px!important;}*/
     }
 
     @media  (max-width: 595px) {
@@ -513,6 +554,7 @@
                     this.items = data.data;
                     this.allumniCount = this.items.allumniStudents
                     this.connectedCount = this.items.connectedStudents
+                    console.log( this.dataSet)
                 },
 
             changeView: function () {
