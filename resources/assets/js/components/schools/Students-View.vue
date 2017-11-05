@@ -121,7 +121,8 @@
                         </div>
 
 
-                        <button @click="flip(student.id)" class="btn-flip">flip</button>
+                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(student.id)" ></i>
+
                     </div>
 
 
@@ -219,7 +220,9 @@
 
     .flipped{transform: rotateY( 180deg );}
 
-    .btn-flip{position: absolute; top:15px; right: 15px;}
+    .btn-flip{}
+    .flip-icon{position: absolute; top:15px; right: 15px; color: #00d1e9; cursor: pointer; font-size: 120%}
+    .flip-icon:hover{color: #fafafa;}
 
 
 
@@ -264,7 +267,7 @@
         border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #a5a5a5; border-top: none; padding: 15px;}
     .sc-radio2{margin:-10px 80px 0 0 ; opacity: 0.8;}
 
-    .phone{margin: 0;}
+    .phone{margin: 10px 0;}
     .phone>a,.phone>a:visited{color: #008da5;}
     .phone>a:hover, .email>a:hover{color: #FD6A33}
 
@@ -306,9 +309,9 @@
 
     @media (max-width: 1330px) {
         .img-cont, .name, .email{text-align: center;}
-        .img-cont{margin: -50px auto; }
-        .name{margin: 55px auto 0 auto;  color: #008da5; }
-        .email{margin: 5px auto;}
+        .img-cont{margin: 15px auto; }
+        .name{margin: 85px auto 0 auto;  color: #008da5; }
+        .email{margin: 110px auto;}
         .sc-box{min-height: 200px;}
 
         .frame-cont{display: none;}
