@@ -111,7 +111,7 @@
                                                 </span>
 
                                             </td>
-                                            <td class="hidden-xlg"><img src="/panel/assets/images/steps/Musical.png" height="30px"></td>
+                                            <td class="hidden-xlg"><img :src="'/panel/assets/images/steps/'+scholarship.section_icon+'.png'" height="30px"></td>
                                             <!--<td v-if="showLevel">-->
                                                 <!--<span class="tool">-->
                                                     <!--{{ study(scholarship.study, 30) }}-->
@@ -377,18 +377,35 @@ import Chart from '../../VueChart.vue'
                 scholars:[],
                 searchStr:"",
                 sc_amounts: [],
-               sc_names:[],
+                sc_names:[],
+                sc_labels:[],
+
                 datacollection: {
-                  labels: ['asd'],
+                  labels: this.sc_labels,
                   datasets: [
                     {
-                      label: 's',
+                      label: this.sc_labels,
                       backgroundColor: '#008da5',
-                      data: [123]
+                      data: this.sc_labels
                     }
                   ]
                 },
                 dataoptions: {responsive: true, maintainAspectRatio: false,
+//                    tooltips: {
+//                        mode: 'label',
+//                        callbacks: {
+//                            title: function (i,data) {
+//                                return 'study: '+ data.labels[0] ;
+//                            },
+////                            label: function (tooltipItem,data) {
+////                                return data.datasets[tooltipItem.datasetIndex].label + ": " + tooltipItem.yLabel;
+////                            }
+//                        }
+//                    },
+
+
+
+
                         scales: {
                             xAxes: [{
                                 afterFit: function(scaleInstance) {
@@ -507,6 +524,7 @@ import Chart from '../../VueChart.vue'
             refresh({data}) {
                 this.sc_amounts= []
                 this.sc_names= []
+                this.sc_labels= []
                 this.dataSet = data;
                 this.items = data.data;
                 this.scholarships = this.items
@@ -514,7 +532,8 @@ import Chart from '../../VueChart.vue'
                 this.scholarships.forEach(function(i){
                     if(i.admissions_length > 0){
                         parent.sc_amounts.push(i.admissions_length)
-                        parent.sc_names.push(i.study_name)
+                        parent.sc_labels.push( i.study_name.substring(0,12)+'...' )
+                        parent.sc_names.push( i.study_name )
                     }
                 })
 

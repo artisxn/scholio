@@ -26,49 +26,112 @@
 
 
         <div v-if="selection==true">
-            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2" v-for="student in filteredStudents" v-if="(student.role=='student')">
+            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="student in filteredStudents" v-if="(student.role=='student')" >
 
-                <div class="sc-box">
-                    <div class="sc-up"></div>
-
-                    <div class="row">
-                        <div class="sc-card">
-                            <a class="" href="#">
-                                <div class="frame-cont">
-                                    <img src="/new/img/photoFrame.png" class="frame" alt="">
-                                    <img :src="scholio + student.student.avatar" class="avatar2" alt="">
-                                    <img src="/new/img/clip2.png" class="clip" alt="">
+                <div  class="" style="display: none">
+                    <div class="">
+                        <div class="sc-box">
+                            <div class="sc-up"></div>
+                            <div class="row">
+                                <div class="sc-card">
+                                    <a class="" href="#">
+                                        <div class="frame-cont">
+                                            <img src="/new/img/photoFrame.png" class="frame" alt="">
+                                            <img :src="scholio + student.student.avatar" class="avatar2" alt="">
+                                            <img src="/new/img/clip2.png" class="clip" alt="">
+                                        </div>
+                                        <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
+                                        <div class="name"> {{student.name}} </div>
+                                    </a>
+                                    <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
                                 </div>
-                                <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
-                                <div class="name"> {{student.name}} </div>
-                            </a>
-                            <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
+
+
+                            </div>
+                            <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
+                        </div>
+                        <!-- <div class='wave'></div> -->
+                        <div class="sc-bottom" >
+                            <div class="phone">
+                                <a :href="'tel:'+student.cv.student_phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.cv.student_phone }}</span></a>
+                            </div>
+                            <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
+                                <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
+
+                                <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}
+                                </div>
+                                </label>
+                                <br>
+                                <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
+
+                                <label :for="'stt' + student.id">
+                                    <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
+                                </label>
+                                <br>
+                            </form>
                         </div>
                     </div>
-
-                    <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
                 </div>
 
-                <!-- <div class='wave'></div> -->
-                <div class="sc-bottom">
-                    <div class="phone">
-                        <a :href="'tel:'+student.cv.student_phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.cv.student_phone }}</span></a>
-                    </div>
-                    <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
-                            <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected"> 
-                        
-                        <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}
+
+                <div class="double-card"  :id="'card'+student.id">
+                    <div class="front">
+
+
+                        <div class="sc-box">
+                            <div class="sc-up"></div>
+
+                            <div class="row">
+                                <div class="sc-card">
+                                    <a class="" href="#">
+                                        <div class="frame-cont">
+                                            <img src="/new/img/photoFrame.png" class="frame" alt="">
+                                            <img :src="scholio + student.student.avatar" class="avatar2" alt="">
+                                            <img src="/new/img/clip2.png" class="clip" alt="">
+                                        </div>
+                                        <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
+                                        <div class="name"> {{student.name}} </div>
+                                    </a>
+                                    <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
+                                </div>
+                            </div>
+                            <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
+
                         </div>
-                        </label>
-                        <br>
-                            <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
-                         
-                        <label :for="'stt' + student.id">
-                            <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
-                        </label>
-                        <br>
-                    </form>
+
+
+                        <div class="sc-bottom" >
+                            <div class="phone">
+                                <a :href="'tel:'+student.cv.student_phone"><div class=""></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.cv.student_phone }}</span></a>
+                            </div>
+                            <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
+                                <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
+
+                                <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}
+                                </div>
+                                </label>
+                                <br>
+                                <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
+
+                                <label :for="'stt' + student.id">
+                                    <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
+                                </label>
+                                <br>
+                            </form>
+                        </div>
+
+
+                        <button @click="flip(student.id)" class="btn-flip">flip</button>
+                    </div>
+
+
+                    <div class="back"> 2
+                        <button @click="flip(student.id)" class="btn-flip">flip</button>
+                    </div>
                 </div>
+
+
+
 
             </div>
         </div>
@@ -119,6 +182,53 @@
 
 
 <style>
+
+    .cards-container{
+        margin: 10px 0;
+        height:206px;
+        perspective: 900px;
+    }
+
+    .double-card{
+
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+    }
+
+    .double-card div{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+
+   .front {
+
+    }
+    .back {
+        background-color: #ddd;
+
+        transform: rotateY( 180deg );
+    }
+
+    .front,.back{
+        /*border-radius: 5px; border: 1px solid #999*/
+    }
+
+    .flipped{transform: rotateY( 180deg );}
+
+    .btn-flip{position: absolute; top:15px; right: 15px;}
+
+
+
+
+
+
+
+
+
     label{font-weight: 400;}
     .r-lab{margin: -23px 0 0 20px;}
     .margin-right-10 { margin-right: 10px; }
@@ -134,7 +244,7 @@
     .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #a5a5a5; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
 
 
-    .sc-up{height: 70px; background: #008da5; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; }
+    .sc-up{height: 70px!important; background: #008da5; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; }
     .sc-img{box-shadow: 0 0 10px 2px #d1d1d1;  }
     .gray{-webkit-filter: grayscale(100%);}
     /*.opacity{opacity: 0.2}*/
@@ -150,8 +260,10 @@
     .circle{height: 19px; width: 19px; border-radius: 50%; background-color:#008da5; position: absolute; left: 22px; bottom: 37px; }
 
     /*.sc-bottom{height: 40px; background: #cad8d3; margin: 0 -25px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}*/
-    .sc-bottom{height: 50px; background: #cad8d3; margin: 0 0 20px 0; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #a5a5a5; border-top: none; padding: 15px;}
-    .sc-radio2{margin:-14px 0; opacity: 0.8}
+    .sc-bottom{height: 50px!important; background: #cad8d3; margin: 0 0 20px 0; bottom: -25px;
+        border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #a5a5a5; border-top: none; padding: 15px;}
+    .sc-radio2{margin:-10px 80px 0 0 ; opacity: 0.8;}
+
     .phone{margin: 0;}
     .phone>a,.phone>a:visited{color: #008da5;}
     .phone>a:hover, .email>a:hover{color: #FD6A33}
@@ -159,7 +271,7 @@
     .phone-text>i{color: #cad8d3; margin-right: 7px}
     .phone-text{position: absolute; bottom: 36px;}
 
-    .img-students{height: 55px; width: auto; position: absolute; right: 20px; top: 85px; opacity: 0.07}
+    .img-students{height: 55px; width: auto; position: absolute; right: 30px; top: 85px; opacity: 0.07}
 
    /* =========== photo frame ==========*/
    /* ==================================*/
@@ -182,7 +294,7 @@
 
     /* ==================================*/
 
-    @media (min-width: 1291px) {
+    @media (min-width: 1331px) {
         .img-cont{margin: -45px 0 0 0 ; }
         .name, .email{position: absolute; margin:0; left: 95px!important;}
         .email{margin: 0; top: 77px;}
@@ -192,7 +304,7 @@
 
 
 
-    @media (max-width: 1290px) {
+    @media (max-width: 1330px) {
         .img-cont, .name, .email{text-align: center;}
         .img-cont{margin: -50px auto; }
         .name{margin: 55px auto 0 auto;  color: #008da5; }
@@ -206,12 +318,12 @@
 
 
 
-    @media (min-width: 1750px) {
+    @media (min-width: 1790px) {
         .col-xl-3 {width: 25%;}
         .col-xl-4 {width: 33.33%;}
     }
 
-    @media (min-width: 1980px) {
+    @media (min-width: 2000px) {
         .col-xxl-2 {width: 20%;}
         .col-xxl-3 {width: 25%;}
         .col-xxl-4 {width: 33.33%;}
@@ -402,6 +514,9 @@
 
             changeView: function () {
                 this.selection=!this.selection;
+            },
+            flip(id){
+                $("#card"+id).toggleClass("flipped");
             }
         },
 

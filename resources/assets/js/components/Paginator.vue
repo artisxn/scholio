@@ -52,10 +52,22 @@
     /*.pagination>li>a{background: #f8f8f8; border-top-color: #f8f8f8; border-bottom-color: #f8f8f8}*/
     /*.pagination>li>a:hover{background: #00bcd4}*/
     /*!*.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,*/
-    .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {background: #e7e7e7!important; color: #00c9e1; border-color: #008fa7; border-radius:4px; font-weight: 700 }
-    .pagination>li>span>a:hover,.pagination>li>a>span:hover{  color: #FD6A33; font-weight: 700 }
-    .page-links{  background-color: transparent !important;  }
+
+    .pagination>li>a,
+    .pagination>li>span{border-color: transparent}
+
+
+
+    /*.pagination>.active>span:hover,*/
+    /*.pagination>li>a:active*/
+    .pagination>.active>span
+    {background: #ebebeb !important; color: #00c9e1; border-color: #008fa7!important; border-radius:4px; font-weight: 700 }
+
+    .pagination>li>span>a:hover,.pagination>li>a>span:hover{  color: #FD6A33; font-weight: 700;}
+    .page-links{  background-color: transparent !important;}
     /*.page-links:active{  background-color: #fff;  }*/
+
+    /*.pagination>li>span>>a:link,.pagination>li>span>>a:focus{background: transparent; border: none;}*/
 </style>
 
 <script>
