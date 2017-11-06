@@ -447,6 +447,7 @@ html .ui-button.ui-state-disabled:active {
                   name: newTag,
                   code: newTag
                 }
+                console.log(newTag)
                 this.options.push(tag)
                 this.value.push(tag)
             },

@@ -105,12 +105,17 @@ $factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
 
     $fname = $faker->firstName($g);
     $lname = $faker->lastName($g);
-    $fullname = $fname . ' ' . $lname;
+    $fullname = $lname . ' ' . $fname;
+    $user = factory(App\User::class)->create(['name' => $fullname, 'role' => 'student']);
+    $father_fname = $faker->firstName('male');
+    $mother_fname = $faker->firstName('female');
+    $mother_lname = $faker->lastName('female');
+    $cv = factory(App\Models\Cv::class)->create(['user_id' => $user->id, 'father_fullname' => $lname . ' ' . $father_fname, 'mother_fullname' => $mother_lname . ' ' . $mother_fname]);
 
     return [
         'fname' => $fname,
         'lname' => $lname,
-        'user_id' => factory(App\User::class)->create(['name' => $fullname, 'role' => 'student'])->id,
+        'user_id' => $user->id,
         'gender' => $g,
         'avatar' => '/panel/assets/images/userphoto/' . $final . '.jpg',
     ];

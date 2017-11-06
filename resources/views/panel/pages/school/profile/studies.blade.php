@@ -11,6 +11,7 @@
       padding: 0 12px;
     }
 </style>
+<link rel="stylesheet" href="{{'/panel/assets/css/vue-multiselect.css'}}" />
 @endsection
 
 @section('content')

@@ -3,6 +3,7 @@
 use App\Events\UserAppliedOnSchool;
 use App\Models\CategoryReview as Category;
 use App\Models\DummyScholarship;
+use App\Models\Level;
 use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -18,6 +19,22 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
+
+Route::get('/school/getLevelsWithRelations', function () {
+    $school = auth()->user()->info;
+    $result = [];
+
+    foreach (Level::all() as $level) {
+        if ($level->type->schools->contains($school)) {
+            $data = [];
+            foreach ($level->section as $section) {
+                array_push($data, ['section_id' => $section->id, 'section_name' => $section->name, 'study' => $section->study]);}
+            array_push($result, ['level_id' => $level->id, 'level_name' => $level->name, 'section' => $data]);
+        }
+    }
+
+    return $result;
+})->middleware('auth:api');
 
 Route::get('/school/getScholarships/{order}/{asc}/{active}/{field}', function ($order, $asc, $active, $field) {
     $school = auth()->user()->info;

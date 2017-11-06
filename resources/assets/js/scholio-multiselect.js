@@ -730,8 +730,8 @@
                     ref: "list",
                     staticClass: "multiselect__content-wrapper",
                     style: {
-                        // maxHeight: t.optimizedHeight + "px"
-                        maxHeight: "240px"
+                        maxHeight: t.optimizedHeight + "px"
+                        // maxHeight: "auto"
                     },
                     on: {
                         focus: t.activate,

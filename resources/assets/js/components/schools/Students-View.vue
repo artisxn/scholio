@@ -71,7 +71,7 @@
                         </div>
 
                         <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(student.id)" ></i>
-                        <i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo"></i>
+                        <i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student.cv)"></i>
 
                     </div>
 
@@ -175,11 +175,7 @@
                         <h4 class="modal-title" style=" color: #fff">Student info </h4>
                     </div>
                     <div class="" style=" height: 300px; padding: 15px;">
-                        <p> Blanditiis inventore sint aliquam nihil assumenda.
-                            Incidunt deserunt repellat dignissimos asperiores sequi modi qui.
-                            Sint facilis porro eveniet earum.
-                            Repellendus minus reiciendis aspernatur numquam tenetur exercitationem doloremque omnis.
-                            Sed error animi dolorem est temporibus. Voluptas neque laboriosam deserunt aut veniam quis aperiam.</p>
+                        <p>{{ info.student_address }}</p>
                     </div>
                     <div class="modal-footer" style="padding: 15px;">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -205,8 +201,6 @@
 
 
 <style>
-
-
     .cards-container{
         margin: 12px 0;
         height:200px;
@@ -214,7 +208,6 @@
     }
 
     .double-card{
-
         width: 100%;
         height: 100%;
         transform-style: preserve-3d;
@@ -472,7 +465,8 @@
                 dataSet: false,
                 allumniStudents: 0,
                 connectedStudents: 0,
-                scholio: null
+                scholio: null,
+                info: ''
             }
         },
         computed: {
@@ -562,6 +556,9 @@
             },
             flip(id){
                 $("#card"+id).toggleClass("flipped");
+            },
+            changeInfo(data){
+                this.info = data
             }
         },
 
