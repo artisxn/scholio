@@ -473,4 +473,64 @@ class School extends Model
     {
         return $this->hasMany(DummyScholarship::class);
     }
+
+    public function levels()
+    {
+        $data = [];
+        foreach (Level::all() as $level) {
+            foreach ($level->section as $section) {
+                foreach ($section->study as $study) {
+                    if ($study->school->contains($this->id) && !in_array($level->id, $data)) {
+                        array_push($data, $level->id);
+                    }
+                }
+            }
+        }
+
+        return collect($data);
+    }
+
+    public function sections()
+    {
+        $data = [];
+        foreach (Level::all() as $level) {
+            foreach ($level->section as $section) {
+                foreach ($section->study as $study) {
+                    if ($study->school->contains($this->id) && !in_array($section->name, $data)) {
+                        array_push($data, $section->name);
+                    }
+                }
+            }
+        }
+
+        return collect($data);
+    }
+
+    public function section($l)
+    {
+        $data = [];
+        $level = Level::find($l);
+        foreach ($level->section as $section) {
+            foreach ($section->study as $study) {
+                if ($study->school->contains($this->id) && !in_array($section->id, $data)) {
+                    array_push($data, $section->id);
+                }
+            }
+        }
+
+        return collect($data);
+    }
+
+    public function studyFromSection($s)
+    {
+        $data = [];
+        $section = Section::find($s);
+        foreach ($section->study as $study) {
+            if ($study->school->contains($this->id) && !in_array($study->id, $data)) {
+                array_push($data, $study->id);
+            }
+        }
+
+        return collect($data);
+    }
 }

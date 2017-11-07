@@ -31,9 +31,10 @@
              deselectLabel="Αφαίρεση"
              :selectLabel="lang('panel_scholarships.create.select')"
              :selectedLabel="lang('panel_scholarships.create.selected')"
-             :multiple="false" 
-             :taggable="true" 
-             @tag="addSection">
+             :multiple="false"
+             :taggable="true"
+             :allow-empty="true"
+             @tag="addSection" :disabled="sectionDisabled">
              </multiselect>
          </div>
 
@@ -52,20 +53,18 @@
              :multiple="true" 
              :taggable="true" 
              :maxHeight="200"
-             @tag="addStudy">
+             @tag="addStudy" :disabled="studyDisabled">
              </multiselect>
          </div>
 
-         <div class="col-xs-6 text-left tag-name" >
+         <div class="col-xs-6 text-left tag-name" v-if="levels">
 
              {{levels.name}}
 
          </div>
 
-         <div class="col-xs-6 text-left tag-name" >
-
-             {{sections.name}}
-
+         <div class="col-xs-6 text-left tag-name" v-if="sections">
+            {{ sections.name }}
          </div>
 
          <div v-for="tag in studies" class="col-xs-6 text-left tag-name" >
@@ -76,6 +75,19 @@
 
          <div>
              <button @click="save()">Add study</button>
+         </div>
+
+         <hr>
+         <div v-for="level in currentStudies">
+             <div>{{ level.level.name }}</div>
+             <div v-for="section in level.sections">
+                <div>{{ section.section.name }}</div>
+                <hr>
+                <div v-for="study in section.studies">
+                    <div>{{study.study.name}}</div>
+                </div>
+                <hr>
+            </div>
          </div>
     </div>
 </template>
@@ -98,13 +110,28 @@
                 studyOptions: [],
                 levels: [],
                 sections: [],
-                studies: []
+                studies: [],
+                newSection: false,
+                newLevel: false,
+                allStudies: [],
+                allSections:[],
+                sectionDisabled: true,
+                studyDisabled: true,
+                currentStudies: []
             }
         },
 
         methods:{
             save(){
-                console.log(this.levels.name)
+                if(this.levels && this.sections && this.studies){
+                    axios.post('/api/school/studySave',{
+                        level: this.levels,
+                        section: this.sections,
+                        study: this.studies
+                    }).then(({data})=>{
+                        console.log(data)
+                    })
+                }
             },
 
             addStudy(newTag) {
@@ -113,12 +140,40 @@
                  this.studies.push(study)
             },
 
+            addSection(newTag){
+                this.newSection = true
+                var section = {id:0, name: newTag}
+
+                this.sections = []
+                this.sectionOptions.push(section)
+                this.sections = (section)
+            },
+
+            addLevel(newTag){
+                this.newLevel = true
+                const level = {id:0, name: newTag }
+
+                this.levels = []
+                this.levelOptions.push(level)
+                this.levels = (level)
+                this.sections = []
+                this.newSection = true
+            },
+
             getLevels(){
                 axios.get('/api/school/getLevelsWithRelations').then(this._loadData)
             },
 
-            _loadData({data}){
+            getCurrentStudies(){
+                axios.get('/api/school/getCurrentStudies').then(this._loadStudies)
+            },
 
+            _loadStudies({data}){
+                console.log(data)
+                this.currentStudies = data
+            },
+
+            _loadData({data}){
                 var parent = this
                 data.forEach(function(item){
                     const level = {
@@ -135,6 +190,7 @@
                         }
 
                         parent.sectionOptions.push(section)
+                        parent.allSections.push(section)
 
                         item.study.forEach(function(item){
                             const study = {
@@ -143,14 +199,48 @@
                             }
 
                             parent.studyOptions.push(study)
+                            parent.allStudies.push(study)
                         })
                     })
                 })
             }
         },
 
+        watch:{
+            sections(){
+                if(this.sections && !this.newSection){
+                    var parent = this
+                    axios.get('/api/school/getStudiesFromSection/ '+ this.sections.id).then(({data})=>{
+                        parent.studyOptions = data
+                    })
+                }
+
+                if(this.newSection){
+                    this.studyOptions = (this.allStudies)
+                    this.newSection = false
+                }
+
+                if(this.sections) this.studyDisabled = false
+
+            },
+
+            levels(){
+                if(this.levels && !this.newLevel){
+                    var parent = this
+                    axios.get('/api/school/getSectionsFromLevel/'+ this.levels.id).then(({data})=>{
+                        parent.sectionOptions = data
+                        parent.sections = null
+                    })
+                }
+
+                if(this.levels) this.sectionDisabled = false
+                
+            }
+        },
+
         mounted(){
             this.getLevels();
+            this.getCurrentStudies();
         }
     }
 </script>

@@ -7,7 +7,9 @@ use App\Models\Level;
 use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Section;
 use App\Models\Skill;
+use App\Models\Study;
 use App\Models\Tag;
 use App\Models\Temp;
 use App\Notifications\SchoolAcceptedUser;
@@ -19,6 +21,81 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
+
+Route::get('/school/getCurrentStudies', function () {
+    $school = auth()->user()->info;
+    $studies = [];
+    $data = [];
+    $sections = [];
+
+    $schoolLevels = $school->levels();
+
+    foreach ($schoolLevels as $level) {
+        foreach ($school->section($level) as $section) {
+            foreach ($school->studyFromSection($section) as $study) {
+                array_push($studies, ['study' => Study::find($study)]);
+            }
+            array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+        }
+        array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+    }
+
+    return $data;
+})->middleware('auth:api');
+
+Route::post('/school/studySave', function () {
+    $school = auth()->user()->info;
+    $level = request()->level;
+    $section = request()->section;
+    $studies = request()->study;
+    $level_id = $level['id'];
+    $section_id = $section['id'];
+
+    if ($level['id'] == 0 || Level::find($level['id'])->school_types_id != $school->type->id) {
+        $newLevel = new Level;
+        $newLevel->school_types_id = $school->type->id;
+        $newLevel->name = $level['name'];
+        $newLevel->save();
+        $level_id = $newLevel->id;
+    }
+
+    if ($section['id'] == 0 || Section::find($section['id'])->level_id != $level_id) {
+        $newSection = new Section;
+        $newSection->level_id = $level_id;
+        $newSection->name = $section['name'];
+        $newSection->save();
+        $section_id = $newSection->id;
+    }
+
+    foreach ($studies as $study) {
+        $study_id = $study['id'];
+        if ($study['id'] == 0) {
+            $newStudy = new Study;
+            $newStudy->name = $study['name'];
+            $newStudy->save();
+            $study_id = $newStudy->id;
+        }
+
+        if (!Study::find($study_id)->section->contains(Section::find($section_id))) {
+            Study::find($study_id)->section()->attach(Section::find($section_id));
+        }
+
+        if (!Study::find($study_id)->school->contains($school->id)) {
+            Study::find($study_id)->school()->attach($school);
+        }
+    }
+    return 'OK';
+})->middleware('auth:api');
+
+Route::get('/school/getStudiesFromSection/{section}', function (Section $section) {
+    $studies = $section->study;
+    return $studies;
+})->middleware('auth:api');
+
+Route::get('/school/getSectionsFromLevel/{level}', function (Level $level) {
+    $sections = $level->section;
+    return $sections;
+})->middleware('auth:api');
 
 Route::get('/school/getLevelsWithRelations', function () {
     $school = auth()->user()->info;

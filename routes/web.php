@@ -10,6 +10,8 @@ use App\Models\Level;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolSetting;
+use App\Models\Section;
+use App\Models\Study;
 use App\Models\Tag;
 use App\Scholio\Scholio;
 use App\User;
@@ -18,6 +20,28 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
+
+Route::get('/ttts', function () {
+    $school = auth()->user()->info;
+    $studies = [];
+    $data = [];
+    $sections = [];
+
+    $schoolLevels = $school->levels();
+
+    foreach ($schoolLevels as $level) {
+        foreach ($school->section($level) as $section) {
+            foreach ($school->studyFromSection($section) as $study) {
+                array_push($studies, ['study' => Study::find($study)]);
+            }
+            array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+        }
+        array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+    }
+
+    return collect($data);
+
+});
 
 Route::get('/ppps', function () {
     $school = auth()->user()->info;
