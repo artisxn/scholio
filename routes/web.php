@@ -28,15 +28,19 @@ Route::get('/ttts', function () {
     $sections = [];
 
     $schoolLevels = $school->levels();
+    // return $school->section(3);
 
     foreach ($schoolLevels as $level) {
         foreach ($school->section($level) as $section) {
             foreach ($school->studyFromSection($section) as $study) {
                 array_push($studies, ['study' => Study::find($study)]);
             }
+
             array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+            $studies = [];
         }
         array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+        $sections = [];
     }
 
     return collect($data);

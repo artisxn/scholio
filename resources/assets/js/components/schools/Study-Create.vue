@@ -74,17 +74,24 @@
          </div>
 
          <div>
-             <button @click="save()">Add study</button>
+             <button @click="save()" class="btn btn-primary">Add study</button>
          </div>
 
          <hr>
+         <div>
+             <button @click="deleteAllStudies" class="btn btn-danger">Delete All Studies</button>
+         </div>
          <div v-for="level in currentStudies">
-             <div>{{ level.level.name }}</div>
+             <div style="font-size: 30px">{{ level.level.name }}</div>
              <div v-for="section in level.sections">
-                <div>{{ section.section.name }}</div>
+                <div style="font-size: 20px">{{ section.section.name }}</div>
                 <hr>
                 <div v-for="study in section.studies">
-                    <div>{{study.study.name}}</div>
+                    <div>{{study.study.name}} 
+                        <span>
+                            <i class="fa fa-trash-o" aria-hidden="true" @click="deleteStudy(study.study.id)"></i>
+                        </span>
+                    </div>
                 </div>
                 <hr>
             </div>
@@ -129,7 +136,9 @@
                         section: this.sections,
                         study: this.studies
                     }).then(({data})=>{
-                        console.log(data)
+                        if(data == 'OK'){
+                            window.location.reload();
+                        }
                     })
                 }
             },
@@ -202,6 +211,18 @@
                             parent.allStudies.push(study)
                         })
                     })
+                })
+            },
+
+            deleteStudy(study){
+                axios.post('/api/school/deleteStudy', {study:study}).then(({data})=>{
+                    console.log(data)
+                })
+            },
+
+            deleteAllStudies(){
+                axios.post('/api/school/deleteAllStudies').then(({data})=>{
+                    console.log(data)
                 })
             }
         },

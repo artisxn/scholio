@@ -22,6 +22,24 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
+Route::post('/school/deleteStudy', function () {
+    $school = auth()->user()->info;
+    $study = request()->study;
+
+    if ($school->study->contains($study)) {
+        $school->study()->detach($study);
+    }
+
+    return 'OK';
+})->middleware('auth:api');
+
+Route::post('/school/deleteAllStudies', function () {
+    $school = auth()->user()->info;
+    $school->study()->detach();
+
+    return 'OK';
+})->middleware('auth:api');
+
 Route::get('/school/getCurrentStudies', function () {
     $school = auth()->user()->info;
     $studies = [];
@@ -35,9 +53,12 @@ Route::get('/school/getCurrentStudies', function () {
             foreach ($school->studyFromSection($section) as $study) {
                 array_push($studies, ['study' => Study::find($study)]);
             }
+
             array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+            $studies = [];
         }
         array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+        $sections = [];
     }
 
     return $data;
