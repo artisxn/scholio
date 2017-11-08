@@ -39,9 +39,6 @@
 @endsection
 
 @section('scriptsBefore')
-    <script>
-//        $(document).ready(function(){$("#content").hide().fadeIn(90);});
-    </script>
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
@@ -49,15 +46,11 @@
 @endsection
 
 
-
-
 @section('content')
-
-    <div class="row" id="content">
+    <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
-
-                    <div class="row">
+                <div class="row">
                     <form method="POST" action="/panel/student/cv" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -67,10 +60,9 @@
                             <p class="text">
                                     Συμπληρώστε τα στοιχεία επικοινωνίας σας και του βιογραφικού σας, <br class="br1"> για να διευκολυνθούν οι αιτήσεις υποτροφιών που θα πραγματοποιείσετε.
                             </p>
-                            <div class="row ">
-                                    {{-- TODO AVATAR IS DIFFERENT FROM PHOTO --}}
+                            <div class="row">
                                     <div>
-                                        <img  class="img-avatar" src="{{substr(auth()->user()->info->avatar, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ auth()->user()->info->avatar }}" >
+                                        <img class="img-avatar" src="{{substr(auth()->user()->info->avatar, 0, 4) == 'http' ? '' : ''}}{{ auth()->user()->info->avatar }}" >
                                     </div>
 
 
@@ -89,7 +81,6 @@
                                 <div class="section-text centered-text"> Στοιχεία Επικοινωνίας</div>
 
                                 <div class="col-sm-6">
-
                                     <div class="input-container">
                                         <input  type="text" label="Όνομα*" name="firstName" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
                                         <i class="icon-inp  fa fa-user"></i>
@@ -123,7 +114,6 @@
                                 <div class="col-sm-6 input-container">
                                     <input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input"  value="{{ auth()->user()->cv->student_dob}}">
                                     <i class="icon-inp fa fa-calendar"></i>
-
                                 </div>
 
                                <div class="col-sm-6 input-container col-gender">
@@ -280,7 +270,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 
