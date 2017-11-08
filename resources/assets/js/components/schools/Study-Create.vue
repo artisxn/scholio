@@ -74,28 +74,47 @@
          </div>
 
          <div>
-             <button @click="save()" class="btn btn-primary">Add study</button>
+             <button @click="save()" class="btn btn-primary" :disabled="saveDisabled">Add study</button>
          </div>
 
          <hr>
          <div>
              <button @click="deleteAllStudies" class="btn btn-danger">Delete All Studies</button>
          </div>
-         <div v-for="level in currentStudies">
-             <div style="font-size: 30px">{{ level.level.name }}</div>
-             <div v-for="section in level.sections">
-                <div style="font-size: 20px">{{ section.section.name }}</div>
-                <hr>
-                <div v-for="study in section.studies">
-                    <div>{{study.study.name}} 
-                        <span>
-                            <i class="fa fa-trash-o" aria-hidden="true" @click="deleteStudy(study.study.id)"></i>
-                        </span>
+         <!-- PRELOADER -->
+         <div v-if="currentStudies.length == 0">
+             <div>
+                 <div style="font-size: 30px; background-color: grey; height: 20px; width: 20%"></div>
+                 
+                 <div>
+                    <div style="font-size: 20px; background-color: grey; height: 20px; width: 10%; margin-top: 10px;"></div>
+                    <hr>
+                    <div>
+                        <div>
+                        </div>
                     </div>
+                    <hr>
                 </div>
-                <hr>
-            </div>
+             </div>
          </div>
+         <div v-else> 
+             <div v-for="level in currentStudies">
+                 <div style="font-size: 30px" >{{ level.level.name }}</div>
+                 
+                 <div v-for="section in level.sections">
+                    <div style="font-size: 20px">{{ section.section.name }}</div>
+                    <hr>
+                    <div v-for="study in section.studies">
+                        <div>{{ study.study.name }} 
+                            <span>
+                                <i class="fa fa-trash-o" aria-hidden="true" @click="deleteStudy(study.study.id)"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+             </div>
+        </div>
     </div>
 </template>
 
@@ -124,7 +143,8 @@
                 allSections:[],
                 sectionDisabled: true,
                 studyDisabled: true,
-                currentStudies: []
+                currentStudies: [],
+                saveDisabled: true
             }
         },
 
@@ -216,13 +236,17 @@
 
             deleteStudy(study){
                 axios.post('/api/school/deleteStudy', {study:study}).then(({data})=>{
-                    console.log(data)
+                    if(data == 'OK'){
+                        window.location.reload();
+                    }
                 })
             },
 
             deleteAllStudies(){
                 axios.post('/api/school/deleteAllStudies').then(({data})=>{
-                    console.log(data)
+                    if(data == 'OK'){
+                        window.location.reload();
+                    }
                 })
             }
         },
@@ -263,6 +287,12 @@
 
                 if(this.levels) this.sectionDisabled = false
                 
+            },
+
+            studies(){
+                console.log(this.studies)
+                if(this.studies && this.studies.length > 0) this.saveDisabled = false
+                else this.saveDisabled = true
             }
         },
 

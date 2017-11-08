@@ -6,6 +6,7 @@ use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
+use App\Models\DummyStudy;
 use App\Models\Level;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -21,10 +22,53 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
-Route::get('/ttts', function () {
-    $school = auth()->user()->info;
+Route::get('/qqqs', function () {
+    $school = School::find(1);
+    // $section = Section::find(3);
+    // $level = Level::find(1);
+    $allLevels = DummyStudy::where('school_id', $school->id)->get();
+// 'level' => $allLevels->pluck('level_name', 'level_id'),
+    // 'sections' => $allLevels->pluck('section_name', 'section_id'),
+    // $allLevels->pluck('study_name', 'study_id')
 
-    return $school->studyFromSection(4);
+    // $t = $allLevels->pluck('level_name', 'study_id');
+    //
+    // $data = [];
+
+    // foreach ($school->study as $study) {
+    //     array_push($data, Study::with('section.level')->where('id', $study->id)->get());
+    // }
+
+    return $school->study->load('section.level');
+});
+
+Route::get('/ttts', function () {
+    // DummyStudy::truncate();
+    $school = auth()->user()->info;
+    // foreach (School::all() as $school) {
+    foreach ($school->levels() as $l) {
+        $level = Level::find($l);
+        foreach ($school->sections() as $s) {
+            $section = Section::find($s);
+            foreach ($school->studyFromSection($section->id) as $st) {
+                $study = Study::find($st);
+                $ds = new DummyStudy;
+                $ds->school_id = $school->id;
+                $ds->level_id = $level->id;
+                $ds->section_id = $section->id;
+                $ds->study_id = $study->id;
+                $ds->level_name = $level->name;
+                $ds->section_name = $section->name;
+                $ds->study_name = $study->name;
+                $ds->section_icon = '/panel/assets/images/steps/' . $section->name . '.png';
+                $ds->save();
+                // return ['level' => $level->name, 'section' => $section->name, 'study' => $study->name];
+            }
+        }
+    }
+    // }
+
+    return 'OK';
 });
 
 Route::get('/ppps', function () {

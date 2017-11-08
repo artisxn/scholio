@@ -496,8 +496,8 @@ class School extends Model
         foreach (Level::all() as $level) {
             foreach ($level->section as $section) {
                 foreach ($section->study as $study) {
-                    if ($study->school->contains($this->id) && !in_array($section->name, $data)) {
-                        array_push($data, $section->name);
+                    if ($study->school->contains($this->id) && !in_array($section->id, $data)) {
+                        array_push($data, $section->id);
                     }
                 }
             }
