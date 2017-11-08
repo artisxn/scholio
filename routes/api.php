@@ -22,6 +22,18 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
+Route::get('/school/getCheckedStudiesFromSection/{section}', function ($section) {
+    $school = auth()->user()->info;
+    $studies = [];
+
+    foreach ($school->studyFromSection($section) as $study) {
+        $s = Study::find($study);
+        array_push($studies, ['id' => $s->id, 'name' => $s->name]);
+    }
+
+    return $studies;
+})->middleware('auth:api');
+
 Route::post('/school/deleteStudy', function () {
     $school = auth()->user()->info;
     $study = request()->study;
@@ -88,6 +100,10 @@ Route::post('/school/studySave', function () {
         $section_id = $newSection->id;
     }
 
+    foreach ($school->studyFromSection($section_id) as $sectionStudy) {
+        $school->study()->detach($sectionStudy);
+    }
+
     foreach ($studies as $study) {
         $study_id = $study['id'];
         if ($study['id'] == 0) {
@@ -101,9 +117,7 @@ Route::post('/school/studySave', function () {
             Study::find($study_id)->section()->attach(Section::find($section_id));
         }
 
-        if (!Study::find($study_id)->school->contains($school->id)) {
-            Study::find($study_id)->school()->attach($school);
-        }
+        Study::find($study_id)->school()->attach($school);
     }
     return 'OK';
 })->middleware('auth:api');

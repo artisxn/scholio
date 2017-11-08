@@ -234,6 +234,10 @@
                     axios.get('/api/school/getStudiesFromSection/ '+ this.sections.id).then(({data})=>{
                         parent.studyOptions = data
                     })
+
+                    axios.get('/api/school/getCheckedStudiesFromSection/'+ this.sections.id).then(({data})=>{
+                        parent.studies = data
+                    })
                 }
 
                 if(this.newSection){
@@ -242,7 +246,10 @@
                 }
 
                 if(this.sections) this.studyDisabled = false
-
+                else { 
+                    this.studyDisabled = true 
+                    this.studies = null
+                }
             },
 
             levels(){
