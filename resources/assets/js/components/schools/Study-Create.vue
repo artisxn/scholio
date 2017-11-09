@@ -194,6 +194,9 @@
 
     .btn-delete{cursor: pointer}
     .btn-delete:hover{color: #FD6A33}
+
+    .btn-primary{background-color: #008da5; border: none;}
+    .btn-primary:hover{background-color: #006d7d;}
 </style>
 
 <script>

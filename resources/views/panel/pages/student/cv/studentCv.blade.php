@@ -12,7 +12,9 @@
     .text{font-size: 14px; font-weight: 400; color: #999;}
 
     .img-avatar{height:100px; margin: 5px 110px; box-shadow: 0 0 10px 2px #555; border-radius: 6px;}
-    .btn-choose{ height: 40px!important; padding: 11px 0!important; clear: both; margin: 20px 50px; width: 250px;}
+    .btn-choose{ height: 40px!important; padding: 11px 0!important; clear: both; margin: 20px 50px; width: 270px;}
+    .btn-primary{background-color: #008da5; border: none;}
+    .btn-primary:hover{background-color: #006d7d;}
     label{cursor: pointer; font-size: 102%!important; font-weight: 300!important; }
     .select-gender{ margin: 5px 0 0 5px;}
     .select-transparent{background: transparent; border: none; margin-top: -1px;}
