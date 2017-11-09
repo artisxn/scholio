@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color: #d9dcdd">
+<html style="background-color: #F1F4F5">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="/panel/assets/css/icons.css">
         <link rel="stylesheet" href="/panel/assets/css/cs-select2.css">
         <link rel="stylesheet" href="/panel/assets/css/cs-select-circular2.css">
+        <link href="{{'/panel/assets/css/animated-placeholder.css'}}" rel="stylesheet"/>
 
         <style>
         /*Styling topbar*/
@@ -168,7 +169,8 @@ echo json_encode($trans);
     </head>
 
 
-    <body class="" style="background: linear-gradient( #F1F4F5 ,#d9dcdd ); min-height: 550px">
+    {{--<body class="" style="background: linear-gradient( #F1F4F5 ,#d9dcdd ); min-height: 550px">--}}
+    <body class="" style="background: #F1F4F5; min-height: 550px">
         <div id="app">
             <div id="wrapper">
                   @include('panel.partials.topbar.main')

@@ -64,7 +64,7 @@
     {background: #ebebeb !important; color: #00c9e1; border-color: #008fa7!important; border-radius:4px; font-weight: 700 }
 
     .pagination>li>span>a:hover,.pagination>li>a>span:hover{  color: #FD6A33; font-weight: 700;}
-    .page-links{  background-color: transparent !important;}
+    .page-links{  background-color: transparent !important;  border-color: #f1f4f5!important;}
     /*.page-links:active{  background-color: #fff;  }*/
 
     /*.pagination>li>span>>a:link,.pagination>li>span>>a:focus{background: transparent; border: none;}*/

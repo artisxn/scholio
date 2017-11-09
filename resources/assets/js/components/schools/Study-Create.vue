@@ -1,7 +1,11 @@
 <template>
     <div>
-        <div class="levels">
-             <label class="typo__label">Level</label>
+
+        <div >
+
+        </div>
+        <div class="levels col-xs-12 col-lg-6" style="margin-bottom: 30px;">
+             <label class="typo__label">Βήμα 1: Επιλέξτε Επίπεδο Σπουδών</label>
              <multiselect 
              v-model="levels" 
              tag-placeholder="Προσθήκη νέας ετικέτας" 
@@ -19,8 +23,8 @@
              </multiselect>
          </div>
 
-         <div class="sections">
-             <label class="typo__label">Section</label>
+         <div class="sections col-xs-12 col-lg-6" style="margin-bottom: 15px;" :style="[sectionDisabled ? {opacity: 0.6}:{}]">
+             <label class="typo__label">Βήμα 2: Επιλέξτε Τομέα Σπουδών</label>
              <multiselect 
              v-model="sections" 
              tag-placeholder="Προσθήκη νέας ετικέτας" 
@@ -38,8 +42,8 @@
              </multiselect>
          </div>
 
-         <div class="studies">
-             <label class="typo__label">Study</label>
+         <div class="studies col-xs-12" style="margin-top: 25px;" :style="[studyDisabled ? {opacity: 0.1}:{}]">
+             <label class="typo__label">Βήμα 3: Επιλέξτε Ειδικότητα Σπουδών</label>
              <multiselect 
              v-model="studies" 
              tag-placeholder="Προσθήκη νέας ετικέτας" 
@@ -57,71 +61,139 @@
              </multiselect>
          </div>
 
-         <div class="col-xs-6 text-left tag-name" v-if="levels">
+         <!--<div class="col-xs-6 text-left tag-name" v-if="levels">-->
 
-             {{levels.name}}
+             <!--{{levels.name}}-->
 
+         <!--</div>-->
+
+         <!--<div class="col-xs-6 text-left tag-name" v-if="sections">-->
+            <!--{{ sections.name }}-->
+         <!--</div>-->
+
+         <!--<div v-for="tag in studies" class="col-xs-6 text-left tag-name" >-->
+
+             <!--{{tag.name}}-->
+
+         <!--</div>-->
+
+
+
+         <div style="clear: both; margin: 0 0 90px 10px;" :style="[saveDisabled ? {opacity: 0.3}:{}]">
+             <button @click="save()" class="btn btn-primary" :disabled="saveDisabled">Αποθήκευση</button>
          </div>
 
-         <div class="col-xs-6 text-left tag-name" v-if="sections">
-            {{ sections.name }}
-         </div>
 
-         <div v-for="tag in studies" class="col-xs-6 text-left tag-name" >
-
-             {{tag.name}}
-
-         </div>
-
-         <div>
-             <button @click="save()" class="btn btn-primary" :disabled="saveDisabled">Add study</button>
-         </div>
-
-         <hr>
-         <div>
-             <button @click="deleteAllStudies" class="btn btn-danger">Delete All Studies</button>
-         </div>
-         <!-- PRELOADER -->
-         <div v-if="currentStudies.length == 0">
-             <div>
-                 <div style="font-size: 30px; background-color: grey; height: 20px; width: 20%"></div>
-                 
-                 <div>
-                    <div style="font-size: 20px; background-color: grey; height: 20px; width: 10%; margin-top: 10px;"></div>
-                    <hr>
-                    <div>
-                        <div>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-             </div>
-         </div>
-         <div v-else> 
-             <div v-for="level in currentStudies">
-                 <div style="font-size: 30px" >{{ level.level.name }}</div>
-                 
-                 <div v-for="section in level.sections">
-                    <div style="font-size: 20px">{{ section.section.name }}</div>
-                    <hr>
-                    <div v-for="study in section.studies">
-                        <div>{{ study.study.name }} 
-                            <span>
-                                <i class="fa fa-trash-o" aria-hidden="true" @click="deleteStudy(study.study.id)"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-             </div>
+        <div style="margin-top: 50px; margin-bottom: 10px; color: #008da5; background-color: #f0f0f0; font-size: 150%; border-radius: 7px;  border: 1px solid #ccc; width: 100%; padding:12px;">
+            <div>Επιλεγμένες Σπουδές</div>
         </div>
+         <!-- PRELOADER -->
+
+        <div>
+            <transition name="fade">
+                <div v-if="currentStudies.length == 0" style="margin: -20px  0 10px 0;">
+                    <div class="animated-background col-xs-12 col-sm-6"  v-for="i in 5" style="margin-top: 80px;">
+                        <div class="background-masker header-top"></div>
+                        <div class="background-masker header-left"></div>
+                        <div class="background-masker header-right"></div>
+                        <div class="background-masker header-bottom"></div>
+
+                        <div class="background-masker subheader-left"></div>
+                        <div class="background-masker subheader-right"></div>
+                        <div class="background-masker subheader-bottom"></div>
+
+                        <div class="background-masker content-top"></div>
+                        <div class="background-masker content-first-end"></div>
+                        <div class="background-masker content-second-line"></div>
+                        <div class="background-masker content-second-end"></div>
+                        <div class="background-masker content-third-line"></div>
+                        <div class="background-masker content-third-end"></div>
+                    </div>
+                </div>
+            </transition>
+
+
+            <transition name="fade2" >
+                <div  v-if="currentStudies.length > 0" >
+                    <div style="position: relative!important;">
+
+                        <div v-for="level in currentStudies" class="col-xs-12"  :class="{'col-md-6': currentStudies.length>1}" style="position: relative!important;">
+                            <div style="font-size: 140%; margin-top: 20px;" >{{ level.level.name }}</div>
+
+                            <div v-for="section in level.sections" style="position: relative!important;" :class="{'col-md-6': currentStudies.length==1}" >
+                                <div style="">
+                                    <img v-if =" imageExists('/panel/assets/images/steps/'+section.section.name+'.png') "
+                                         :src="'/panel/assets/images/steps/'+section.section.name+'.png'" alt="" style="height: 24px; filter: grayscale(90%)">
+
+                                    <img v-else
+                                         src="/panel/assets/images/steps/studies.png" alt="" style="height: 24px; filter: grayscale(90%)">
+
+
+                                  <span style="font-size: 111%; display: inline-block; margin: 0 0 10px 4px; padding-top: 30px">
+                                       {{ section.section.name }}
+                                  </span>
+
+
+                                </div>
+                                <div v-for="study in section.studies" style="position: relative!important;">
+                                    <div>{{ study.study.name }}
+                            <span>
+                                <i class="fa fa-trash-o btn-delete" aria-hidden="true" @click="deleteStudy(study.study.id)"></i>
+                            </span>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 30px;"></div>
+                            </div>
+                        </div>
+
+
+                        <div style="clear: both;">
+                            <button @click="deleteAllStudies" class="btn btn-danger">Delete All Studies</button>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </transition>
+
+        </div>
+
+
+
+
+
     </div>
+
+
+
+
 </template>
 
 <style>
-    .studies{
-        padding-bottom: 300px;
+
+    /*.fade-enter-active, .fade-leave-active {*/
+        /*transition: opacity 0.3s*/
+    /*}*/
+    /*.fade-enter, .fade-leave-to {*/
+        /*opacity: 0*/
+    /*}*/
+
+    .fade2-enter-active, .fade2-leave-active {
+        transition: opacity 0.8s
     }
+    .fade2-enter, .fade2-leave-to  {
+        opacity: 0;
+    }
+
+
+    .studies{
+        padding-bottom: 30px;
+    }
+
+    .btn-delete{cursor: pointer}
+    .btn-delete:hover{color: #FD6A33}
 </style>
 
 <script>
@@ -144,7 +216,8 @@
                 sectionDisabled: true,
                 studyDisabled: true,
                 currentStudies: [],
-                saveDisabled: true
+                saveDisabled: true,
+                appear: false,
             }
         },
 
@@ -161,6 +234,22 @@
                         }
                     })
                 }
+            },
+
+
+
+            imageExists(image_url){
+
+//                   console.log(image_url)
+
+                    var http = new XMLHttpRequest();
+
+                    http.open('HEAD', image_url, false);
+                    http.send();
+
+//                    console.log(http.status)
+                    return http.status != 404;
+
             },
 
             addStudy(newTag) {
@@ -195,6 +284,17 @@
 
             getCurrentStudies(){
                 axios.get('/api/school/getCurrentStudies').then(this._loadStudies)
+                this.delay()
+            },
+
+            delay(){
+                setTimeout(function(){ this.appear=true
+                    console.log('ok')
+//                    return this.appear
+                }, 0);
+
+
+
             },
 
             _loadStudies({data}){

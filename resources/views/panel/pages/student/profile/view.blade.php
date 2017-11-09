@@ -1,7 +1,7 @@
 @extends('panel.layouts.main')
 
 @section('styles')
-    <link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <link href="/panel/assets/css/form.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -10,11 +10,8 @@
         <div class="col-sm-12">
             <div class="card-box">
                 <h4 class="m-t-0 header-title"><b>User Profile</b></h4>
-                <p class="text-muted m-b-30 font-13">
-                    Complete your profile .. ... .BLA BLA BLA
-                </p>
-                <div class="row">
 
+                <div class="row">
                     <form class="form-horizontal m-t-20" method="POST" action="/panel/school/profile/" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
 

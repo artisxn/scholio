@@ -26,8 +26,32 @@
 
 
         <div v-if="selection==true">
-            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="student in filteredStudents" v-if="(student.role=='student')" >
 
+            <transition name="fade">
+                <!--<div v-if="filteredStudents.length == 0" style="margin-left: 10px; margin-top:  60px;">-->
+                    <!--<div class="animated-background col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2"  v-for="i in 6" style="margin-bottom: 140px; padding-right: 15px;">-->
+                        <!--<div class="background-masker header-top"></div>-->
+                        <!--<div class="background-masker header-left"></div>-->
+                        <!--<div class="background-masker header-right"></div>-->
+                        <!--<div class="background-masker header-bottom"></div>-->
+
+                        <!--<div class="background-masker subheader-left"></div>-->
+                        <!--<div class="background-masker subheader-right"></div>-->
+                        <!--<div class="background-masker subheader-bottom"></div>-->
+
+                        <!--<div class="background-masker content-top"></div>-->
+                        <!--<div class="background-masker content-first-end"></div>-->
+                        <!--<div class="background-masker content-second-line"></div>-->
+                        <!--<div class="background-masker content-second-end"></div>-->
+                        <!--<div class="background-masker content-third-line"></div>-->
+                        <!--<div class="background-masker content-third-end"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </transition>
+
+
+
+            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="student in filteredStudents" v-if="(student.role=='student')"  >
 
                 <div class="double-card"  :id="'card'+student.id">
                     <div class="front">
@@ -80,26 +104,26 @@
                         <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(student.id)" ></i>
 
                         <div style="position: absolute; top: 30px">
-                            <span style="color:#eee; margin-left: 10px;">
-                                MSc Information Technology
-                                <br>
-                                <span style="color:#eee; margin-left: 10px;">
-                                Μεταπτυχιακές Σπουδές-Master
-                                </span>
-                                <br>
-                                <br>
-                               <div style="height: 1px; width: 96%; background: #aaa;margin-left: 3%; margin-bottom: 30px; clear: both"></div>
-                                <br>
-                            </span>
+                                    <span style="color:#eee; margin-left: 10px;">
+                                        MSc Information Technology
+                                        <br>
+                                        <span style="color:#eee; margin-left: 10px;">
+                                        Μεταπτυχιακές Σπουδές-Master
+                                        </span>
+                                        <br>
+                                        <br>
+                                       <div style="height: 1px; width: 96%; background: #aaa;margin-left: 3%; margin-bottom: 30px; clear: both"></div>
+                                        <br>
+                                    </span>
 
-                            <div class="fath" style="float: left;">Πατέρας
+                            <div class="fath" style="float: left; font-size: 90%">Πατέρας
                                 <br>
                                 {{student.cv.father_fullname}}
                                 <br>
                                 {{student.cv.father_phone}}
                             </div>
 
-                            <div class="fath" style="position: absolute; right: -200px;">Μητέρα
+                            <div class="fath" style="position: absolute; right: -200px; font-size: 90%"">Μητέρα
                                 <br>
                                 {{student.cv.mother_fullname}}
                                 <br>
@@ -111,13 +135,14 @@
                     </div>
                 </div>
 
-
-                <!----- Modal ------>
-
-                <!------------------>
-
-
             </div>
+
+
+
+
+
+
+
         </div>
 
         <div class="clearfix"></div>
@@ -201,6 +226,14 @@
 
 
 <style>
+
+    .fade3-enter-active, .fade3-leave-active {
+    transition: opacity 1.3s
+    }
+    .fade3-enter, .fade3-leave-to {
+    opacity: 0
+    }
+
     .cards-container{
         margin: 12px 0;
         height:200px;
