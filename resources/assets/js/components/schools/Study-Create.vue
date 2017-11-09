@@ -122,11 +122,8 @@
 
                             <div v-for="section in level.sections" style="position: relative!important;" :class="{'col-md-6': currentStudies.length==1}" >
                                 <div style="">
-                                    <img v-if =" imageExists('/panel/assets/images/steps/'+section.section.name+'.png') "
-                                         :src="'/panel/assets/images/steps/'+section.section.name+'.png'" alt="" style="height: 24px; filter: grayscale(90%)">
+                                    <img :src="section.section.icon" alt="" style="height: 24px; filter: grayscale(90%)">
 
-                                    <img v-else
-                                         src="/panel/assets/images/steps/studies.png" alt="" style="height: 24px; filter: grayscale(90%)">
 
 
                                   <span style="font-size: 111%; display: inline-block; margin: 0 0 10px 4px; padding-top: 30px">
@@ -239,22 +236,6 @@
                 }
             },
 
-
-
-            imageExists(image_url){
-
-//                   console.log(image_url)
-
-                    var http = new XMLHttpRequest();
-
-                    http.open('HEAD', image_url, false);
-                    http.send();
-
-//                    console.log(http.status)
-                    return http.status != 404;
-
-            },
-
             addStudy(newTag) {
                  const study = {id:0, name: newTag }
                  this.studyOptions.push(study)
@@ -287,21 +268,9 @@
 
             getCurrentStudies(){
                 axios.get('/api/school/getCurrentStudies').then(this._loadStudies)
-                this.delay()
-            },
-
-            delay(){
-                setTimeout(function(){ this.appear=true
-                    console.log('ok')
-//                    return this.appear
-                }, 0);
-
-
-
             },
 
             _loadStudies({data}){
-                console.log(data)
                 this.currentStudies = data
             },
 
@@ -372,8 +341,17 @@
                     this.newSection = false
                 }
 
-                if(this.sections) this.studyDisabled = false
+                if(this.sections && this.sections != []){
+                    this.saveDisabled = false
+                    this.studyDisabled = false
+                } 
                 else { 
+                    this.saveDisabled = true
+                    this.studyDisabled = true 
+                    this.studies = null
+                }
+
+                if(this.sections && this.sections.length == 0){
                     this.studyDisabled = true 
                     this.studies = null
                 }
@@ -388,14 +366,25 @@
                     })
                 }
 
-                if(this.levels) this.sectionDisabled = false
+                if(this.levels && this.levels != []){
+                    this.sectionDisabled = false
+                } else{
+                    this.studies = null
+                    this.studyDisabled = true 
+                    this.sections = []
+                    this.sectionDisabled = true
+                } 
+
+                console.log(this.newLevel)
+
+                if(this.newLevel){
+                    this.newSection = true
+                }
                 
             },
 
             studies(){
-                console.log(this.studies)
-                if(this.studies && this.studies.length > 0) this.saveDisabled = false
-                else this.saveDisabled = true
+                
             }
         },
 

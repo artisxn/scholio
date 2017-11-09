@@ -28,25 +28,25 @@
         <div v-if="selection==true">
 
             <transition name="fade">
-                <!--<div v-if="filteredStudents.length == 0" style="margin-left: 10px; margin-top:  60px;">-->
-                    <!--<div class="animated-background col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2"  v-for="i in 6" style="margin-bottom: 140px; padding-right: 15px;">-->
-                        <!--<div class="background-masker header-top"></div>-->
-                        <!--<div class="background-masker header-left"></div>-->
-                        <!--<div class="background-masker header-right"></div>-->
-                        <!--<div class="background-masker header-bottom"></div>-->
+                <div v-if="filteredStudents.length == 0" style="margin-left: 10px; margin-top:  60px;">
+                    <div class="animated-background col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2"  v-for="i in 6" style="margin-bottom: 140px; padding-right: 15px;">
+                        <div class="background-masker header-top"></div>
+                        <div class="background-masker header-left"></div>
+                        <div class="background-masker header-right"></div>
+                        <div class="background-masker header-bottom"></div>
 
-                        <!--<div class="background-masker subheader-left"></div>-->
-                        <!--<div class="background-masker subheader-right"></div>-->
-                        <!--<div class="background-masker subheader-bottom"></div>-->
+                        <div class="background-masker subheader-left"></div>
+                        <div class="background-masker subheader-right"></div>
+                        <div class="background-masker subheader-bottom"></div>
 
-                        <!--<div class="background-masker content-top"></div>-->
-                        <!--<div class="background-masker content-first-end"></div>-->
-                        <!--<div class="background-masker content-second-line"></div>-->
-                        <!--<div class="background-masker content-second-end"></div>-->
-                        <!--<div class="background-masker content-third-line"></div>-->
-                        <!--<div class="background-masker content-third-end"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
+                        <div class="background-masker content-top"></div>
+                        <div class="background-masker content-first-end"></div>
+                        <div class="background-masker content-second-line"></div>
+                        <div class="background-masker content-second-end"></div>
+                        <div class="background-masker content-third-line"></div>
+                        <div class="background-masker content-third-end"></div>
+                    </div>
+                </div>
             </transition>
 
 
@@ -123,7 +123,7 @@
                                 {{student.cv.father_phone}}
                             </div>
 
-                            <div class="fath" style="position: absolute; right: -200px; font-size: 90%"">Μητέρα
+                            <div class="fath" style="position: absolute; right: -200px; font-size: 90%">Μητέρα
                                 <br>
                                 {{student.cv.mother_fullname}}
                                 <br>

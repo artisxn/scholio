@@ -17,6 +17,7 @@ class CreateSectionsTable extends Migration
             $table->increments('id');
             $table->integer('level_id')->index();
             $table->string('name');
+            $table->string('icon')->default('/panel/assets/images/steps/studies.png');
             $table->timestamps();
         });
     }

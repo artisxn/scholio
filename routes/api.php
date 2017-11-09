@@ -93,9 +93,16 @@ Route::post('/school/studySave', function () {
     }
 
     if ($section['id'] == 0 || Section::find($section['id'])->level_id != $level_id) {
+        $icon = null;
+        if (count($s = Section::where('name', $section['name'])->get()) > 0) {
+            $icon = $s[0]->icon;
+        }
         $newSection = new Section;
         $newSection->level_id = $level_id;
         $newSection->name = $section['name'];
+        if ($icon) {
+            $newSection->icon = $icon;
+        }
         $newSection->save();
         $section_id = $newSection->id;
     }
@@ -106,7 +113,7 @@ Route::post('/school/studySave', function () {
 
     foreach ($studies as $study) {
         $study_id = $study['id'];
-        if ($study['id'] == 0) {
+        if ($study['id'] == 0 || $section['id'] == 0) {
             $newStudy = new Study;
             $newStudy->name = $study['name'];
             $newStudy->save();

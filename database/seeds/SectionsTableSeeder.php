@@ -183,9 +183,9 @@ class SectionsTableSeeder extends Seeder
 
         foreach ($categories as $category) {
             $section = new Section;
-//            $section->id = $category['id'];
             $section->level_id = $category['id'];
             $section->name = $category['name'];
+            $section->icon = '/panel/assets/images/steps/' . $category['name'] . '.png';
             $section->save();
 
             $s = new SectionEn;

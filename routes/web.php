@@ -24,22 +24,11 @@ Scholio::soonRoutes();
 
 Route::get('/qqqs', function () {
     $school = School::find(1);
-    // $section = Section::find(3);
-    // $level = Level::find(1);
-    $allLevels = DummyStudy::where('school_id', $school->id)->get();
-// 'level' => $allLevels->pluck('level_name', 'level_id'),
-    // 'sections' => $allLevels->pluck('section_name', 'section_id'),
-    // $allLevels->pluck('study_name', 'study_id')
-
-    // $t = $allLevels->pluck('level_name', 'study_id');
-    //
-    // $data = [];
-
-    // foreach ($school->study as $study) {
-    //     array_push($data, Study::with('section.level')->where('id', $study->id)->get());
-    // }
-
-    return $school->study->load('section.level');
+    // return Section::where('name', 'NEW SECTION')->get();
+    if (count($s = Section::where('name', 'NEW SECTION')->get()) > 0) {
+        return $s[0]->icon;
+    }
+    return 0;
 });
 
 Route::get('/ttts', function () {

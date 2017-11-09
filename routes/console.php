@@ -113,16 +113,10 @@ Artisan::command('scholio:dummy', function () {
 Artisan::command('scholio:refresh {--s|show} {--a|algolia} {schools?}', function () {
 
     $show = $this->option('show');
-
     $algolia = $this->option('algolia');
-
-    if ($algolia) {
-        config(['app.algolia' => true]);
-    }
-
     $schools = $this->argument('schools');
 
-    if ($show) {
+    if (!$algolia) {
         $this->call('migrate:refresh', ['--force' => true]);
         $this->info('Migrate Refresh Done!');
         $this->call('db:seed');
@@ -132,20 +126,33 @@ Artisan::command('scholio:refresh {--s|show} {--a|algolia} {schools?}', function
             }
         }
         $this->info('Database Seeding Done!');
-        $this->call('scholio:dummy');
-        $this->info('Dummy Data Table is Flooded!');
     } else {
-        $this->callSilent('migrate:refresh', ['--force' => true]);
-        $this->info('Migrate Refresh Done!');
-        $this->callSilent('db:seed');
-        if ($schools) {
-            for ($i = 0; $i < (int) $schools; $i++) {
-                factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+        if ($show) {
+            $this->call('migrate:refresh', ['--force' => true]);
+            $this->info('Migrate Refresh Done!');
+            $this->call('db:seed');
+            if ($schools) {
+                for ($i = 0; $i < (int) $schools; $i++) {
+                    factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+                }
             }
+            $this->info('Database Seeding Done!');
+            $this->call('scholio:dummy');
+            $this->info('Dummy Data Table is Flooded!');
+        } else {
+            $this->callSilent('migrate:refresh', ['--force' => true]);
+            $this->info('Migrate Refresh Done!');
+            $this->callSilent('db:seed');
+            if ($schools) {
+                for ($i = 0; $i < (int) $schools; $i++) {
+                    factory(App\Models\School::class)->create(['user_id' => factory(App\User::class)->create(['role' => 'school'])->id]);
+                }
+            }
+            $this->info('Database Seeding Done!');
+            $this->callSilent('scholio:dummy');
+            $this->info('Dummy Data Table is Flooded!');
         }
-        $this->info('Database Seeding Done!');
-        $this->callSilent('scholio:dummy');
-        $this->info('Dummy Data Table is Flooded!');
+
     }
 
 })->describe('Refresh the Scholio App');
