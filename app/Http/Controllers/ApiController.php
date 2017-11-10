@@ -45,7 +45,6 @@ class ApiController extends Controller
 
     public function notificationsRead($id)
     {
-        // auth()->user()->unreadNotifications->markAsRead();
         foreach (auth()->user()->unreadNotifications as $notification) {
             if ($notification->data['id'] == $id) {
                 $notification->markAsRead();

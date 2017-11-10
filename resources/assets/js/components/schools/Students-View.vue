@@ -51,9 +51,9 @@
 
 
 
-            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="student in filteredStudents" v-if="(student.role=='student')"  >
+            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents" v-if="(student.role=='student')"  >
 
-                <div class="double-card"  :id="'card'+student.id">
+                <div class="double-card"  :id="'card'+index">
                     <div class="front">
                         <div class="sc-box">
                             <div class="sc-up"></div>
@@ -94,14 +94,14 @@
                             </form>
                         </div>
 
-                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(student.id)" ></i>
+                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)" ></i>
                         <i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student.cv)"></i>
 
                     </div>
 
 
                     <div class="back">
-                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(student.id)" ></i>
+                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)" ></i>
 
                         <div style="position: absolute; top: 30px">
                                     <span style="color:#eee; margin-left: 10px;">
@@ -481,8 +481,6 @@
 </style>
 
 
-
-
 <script>
 
     export default{
@@ -581,7 +579,8 @@
                     this.items = data.data;
                     this.allumniCount = this.items.allumniStudents
                     this.connectedCount = this.items.connectedStudents
-                    console.log( this.dataSet)
+
+                    console.log(this.dataSet)
                 },
 
             changeView: function () {
@@ -603,6 +602,12 @@
             dataSet() {
                 this.allumniStudents = this.dataSet.allumniStudents || 0;
                 this.connectedStudents = this.dataSet.connectedStudents || 0;
+            }
+        },
+
+        updated(){
+            for(var i=0;i<=this.dataSet.total;i++){
+                $("#card"+i).removeClass("flipped");
             }
         },
 
