@@ -94,6 +94,7 @@
             deny: function(id, user){
                 axios.post('/api/connection/' + id + '/deny', {user:user})
                     .then(response => {
+                        this.markAsRead(id)
                         window.location.reload();
                     });
             }

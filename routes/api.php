@@ -22,6 +22,11 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
+Route::get('/school/studiesCount', function () {
+    $school = auth()->user()->info;
+    return count($school->study);
+})->middleware('auth:api');
+
 Route::get('/school/getCheckedStudiesFromSection/{section}', function ($section) {
     $school = auth()->user()->info;
     $studies = [];

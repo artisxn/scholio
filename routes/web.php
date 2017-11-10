@@ -23,12 +23,9 @@ use Illuminate\Pagination\Paginator;
 Scholio::soonRoutes();
 
 Route::get('/qqqs', function () {
-    $school = School::find(1);
-    // return Section::where('name', 'NEW SECTION')->get();
-    if (count($s = Section::where('name', 'NEW SECTION')->get()) > 0) {
-        return $s[0]->icon;
-    }
-    return 0;
+    $user = User::find(38);
+    $user->apply()->detach(auth()->user()->info);
+    return 'OK';
 });
 
 Route::get('/ttts', function () {

@@ -61,24 +61,6 @@
              </multiselect>
          </div>
 
-         <!--<div class="col-xs-6 text-left tag-name" v-if="levels">-->
-
-             <!--{{levels.name}}-->
-
-         <!--</div>-->
-
-         <!--<div class="col-xs-6 text-left tag-name" v-if="sections">-->
-            <!--{{ sections.name }}-->
-         <!--</div>-->
-
-         <!--<div v-for="tag in studies" class="col-xs-6 text-left tag-name" >-->
-
-             <!--{{tag.name}}-->
-
-         <!--</div>-->
-
-
-
          <div style="clear: both; margin: 0 0 90px 10px;" :style="[saveDisabled ? {opacity: 0.3}:{}]">
              <button @click="save()" class="btn btn-primary" :disabled="saveDisabled">Αποθήκευση</button>
          </div>
@@ -89,7 +71,7 @@
         </div>
          <!-- PRELOADER -->
 
-        <div>
+        <div v-if="studiesCounter > 0">
             <transition name="fade">
                 <div v-if="currentStudies.length == 0" style="margin: -20px  0 10px 0;">
                     <div class="animated-background col-xs-12 col-sm-6"  v-for="i in 5" style="margin-top: 80px;">
@@ -117,22 +99,20 @@
                 <div  v-if="currentStudies.length > 0" >
                     <div style="position: relative!important;">
 
-                        <div v-for="level in currentStudies" class="col-xs-12"  :class="{'col-md-6': currentStudies.length>1}" style="position: relative!important;">
+                        <div v-for="(level, index) in currentStudies" class="col-xs-12"  :class="{'col-md-6': currentStudies.length>1}" style="position: relative!important; background-color: #bbb;">
                             <div style="font-size: 140%; margin-top: 20px;" >{{ level.level.name }}</div>
 
-                            <div v-for="section in level.sections" style="position: relative!important;" :class="{'col-md-6': currentStudies.length==1}" >
+                                <div v-for="section in level.sections" style="position: relative!important;" :class="{'col-md-6': currentStudies.length==1}" >
                                 <div style="">
                                     <img :src="section.section.icon" alt="" style="height: 24px; filter: grayscale(90%)">
 
-
-
-                                  <span style="font-size: 111%; display: inline-block; margin: 0 0 10px 4px; padding-top: 30px">
+                                  <span style="font-size: 111%; display: inline-block; margin: 0 0 10px 4px; padding-top: 30px; background-color: #aaa;">
                                        {{ section.section.name }}
                                   </span>
 
 
                                 </div>
-                                <div v-for="study in section.studies" style="position: relative!important;">
+                                <div v-for="study in section.studies" style="position: relative!important; background-color: #999;">
                                     <div>{{ study.study.name }}
                             <span>
                                 <i class="fa fa-trash-o btn-delete" aria-hidden="true" @click="deleteStudy(study.study.id)"></i>
@@ -141,25 +121,22 @@
                                 </div>
                                 <div style="margin-bottom: 30px;"></div>
                             </div>
+                            <div :class="{'clearfix': (index+1)%2==0}">
+                                
+                            </div>
                         </div>
-
 
                         <div style="clear: both;">
                             <button @click="deleteAllStudies" class="btn btn-danger">Delete All Studies</button>
                         </div>
-
                     </div>
-
-
-
                 </div>
             </transition>
-
         </div>
 
-
-
-
+        <div v-else>
+            {{ counterMessage }}
+        </div>
 
     </div>
 
@@ -218,6 +195,8 @@
                 currentStudies: [],
                 saveDisabled: true,
                 appear: false,
+                studiesCounter: 0,
+                counterMessage: ''
             }
         },
 
@@ -320,6 +299,15 @@
                         window.location.reload();
                     }
                 })
+            },
+
+            getStudiesCounter(){
+                axios.get('/api/school/studiesCount').then(({data})=>{
+                    this.studiesCounter = data
+                    if(data == 0){
+                        this.counterMessage = 'Δεν εχεις επιλεξει σπουδες ακομα'
+                    }
+                })
             }
         },
 
@@ -338,6 +326,7 @@
 
                 if(this.newSection){
                     this.studyOptions = (this.allStudies)
+                    this.studies = null
                     this.newSection = false
                 }
 
@@ -375,8 +364,6 @@
                     this.sectionDisabled = true
                 } 
 
-                console.log(this.newLevel)
-
                 if(this.newLevel){
                     this.newSection = true
                 }
@@ -391,6 +378,7 @@
         mounted(){
             this.getLevels();
             this.getCurrentStudies();
+            this.getStudiesCounter();
         }
     }
 </script>

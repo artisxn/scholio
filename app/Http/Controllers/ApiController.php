@@ -51,6 +51,8 @@ class ApiController extends Controller
                 $notification->markAsRead();
             }
         }
+        $user = User::find($id);
+        $user->apply()->detach(auth()->user()->info);
         return 'OK';
     }
 

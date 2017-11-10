@@ -606,13 +606,15 @@
                             <div ng-if="col_iek_eng_dan_mus" >
                                 <div ng-repeat="(levIndex, level) in levelsName" >
                                     <ul ng-class="[{'col-md-6': (levelsName.length>1)},'col-sm-12']">
-                                        <div class=" text-incr-150 font-weight-300 margin-top-10 margin-left-10" style="" ng-if="contactInfo.type_id!=2">  @{{ level}} </div>
+                                        <div class=" text-incr-150 font-weight-300 margin-top-10 margin-left-10" style="" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
                                         <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="{'col-lg-6': (contactInfo.type_id==2)}" style="list-style-type: none;">
 
                                             <li class="margin-top-20 margin-left-10">
-                                                <img ng-src="/panel/assets/images/steps/@{{section}}.png" alt=""
+                                                <img ng-src="@{{ sectionsIcon[levIndex][secIndex] }}" alt=""
                                                      style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
-                                                <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%" >@{{ section}} </span>
+                                                <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%" >
+                                                    @{{ section }}
+                                                </span>
                                             </li>
 
                                             {{--@{{levIndex}} , , @{{secIndex}}--}}
@@ -1025,12 +1027,24 @@
                                 </nav>
 
                                 @else
-                                    <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
+
+                                    @if(auth()->user()->connectedSchool->contains($school))
+                                     <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
+                                    <button id="submButton" type="button" class="affix-button sc-green sc-t-white center-block" disabled>
+                                        <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
+                                        ΣΥΝΔΕΔΕΜΕΝΟΣ
+                                        {{-- @lang('profile.request') --}}
+                                    </button>
+                                </nav>
+                                    @else
+                                        <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
                                         <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                                 data-toggle="modal" data-target="#connect-modal">
                                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
                                         </button>
                                     </nav>
+                                    @endif
+
                                 @endif
                             @endif
 
@@ -1277,6 +1291,7 @@
                     }
                     $scope.levelsName=[];
                     $scope.sectionsName=[];
+                    $scope.sectionsIcon=[];
                     $scope.studiesName=[];
                     $scope.initial=function (){
                         console.time('initial');
@@ -1302,13 +1317,16 @@
                         /* ========== BUILD sectionsName ARRAY============ */
                         for (lev in $scope.levelsName ){
                             $scope.sectionsName[lev]=[];
+                            $scope.sectionsIcon[lev]=[];
                         }
                         length=0
+
                         for (lev in $scope.levelsName ){
                             for (std in $scope.studies ){
                                 if ( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name){
                                     if(!length){
                                         $scope.sectionsName[lev][0]=$scope.studies[std][0].section[0].name
+                                         $scope.sectionsIcon[lev][0]=$scope.studies[std][0].section[0].icon
                                         length=1
                                     }
                                     found= false
@@ -1319,6 +1337,7 @@
                                     }
                                     if (!found) {
                                         $scope.sectionsName[lev][length]=$scope.studies[std][0].section[0].name
+                                        $scope.sectionsIcon[lev][length]=$scope.studies[std][0].section[0].icon
                                         length++
                                     }
                                 }
@@ -1337,6 +1356,7 @@
                                             && $scope.sectionsName[lev][sec]==$scope.studies[std][0].section[0].name
                                     ){
                                         $scope.studiesName[lev][sec][study]=$scope.studies[std][0].name
+                                    // $scope.studiesIcon[lev][sec][study]=$scope.studies[std][0].icon
                                         study++
                                     }
                                 }
