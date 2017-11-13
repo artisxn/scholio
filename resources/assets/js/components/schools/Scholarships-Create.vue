@@ -356,18 +356,6 @@ html .ui-button.ui-state-disabled:active {
                 }
             )
 
-            // $('#tags').atwho({
-            //     at: '#',
-            //     delay: 500,
-            //     callbacks:{
-            //         remoteFilter: function(query, callback){
-            //             $.getJSON('/api/searchTag', {tags: query}, function(tags){
-            //                 callback(tags);
-            //             });
-            //         }
-            //     }
-            // });
-
            this.getTags()
         },
         data: function() {
@@ -506,7 +494,6 @@ html .ui-button.ui-state-disabled:active {
                         .then(response => {
                     this.studyTable = response.data
                     if(this.studyTable == 0){
-                        console.log('KKJSJSKSK')
                         window.location = '/panel/school/studies'
                     }
 //                console.log(this.studyTable )

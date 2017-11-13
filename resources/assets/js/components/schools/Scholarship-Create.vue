@@ -101,15 +101,137 @@
             <img :src="study_value[0].icon" height="30px">
         </div>
 
-        
+        <div class="step4">
+            <div>
+
+                <!--<h2>Βήμα 4 </h2>-->
+                <div>
+                    <h3>{{ lang('panel_scholarships.create.terms') }}</h3>
+
+
+
+                    <div class="col-lg-4 col-md-6 col-sm-6" >
+                        <div style="" class="pull-left"> {{ lang('panel_scholarships.create.winners') }}</div>
+                        <div style="width: 240px; margin: 25px 0 0 0;">
+                            <input type="number" name="winners" min=1 max=20 v-model="winners" :disabled="allWinners" v-if="!allWinners">
+                            <input type="checkbox" v-model="allWinners">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div style="" class="pull-left"> {{ lang('panel_scholarships.create.active') }}: </div>
+                            <div class="clearfix" ></div>
+                            <!--v-on:click="errorDate" :class="{'error': error}"-->
+                            <input type="text" id="datepicker" size="30" class="ll-skin-cangas pull-left"
+                                   style="margin-top: 5px; height: 35px; border: 1px solid #d2d2d2; border-radius: 3px;"
+                                   v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)"
+                                    :class="{'error':error}">
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="funkyradio" style="width: 240px; margin: 8px 0 0 0;">
+                            <div class="funkyradio-success">
+                                <input type="checkbox" id="exams" v-model="exams">
+                                <label for="exams"> {{ lang('panel_scholarships.create.exams') }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="funkyradio" style="width: 240px; margin: 8px 0 0 0;">
+                            <div class="funkyradio-success">
+                                <input type="checkbox" id="withTerms" v-model="withTerms">
+                                <label for="withTerms"> {{ lang('panel_scholarships.create.terms') }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="" v-if="withTerms" style="margin-top: 130px;">
+                        <span style="color: transparent">.</span>
+                        <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
+                         <div><span>{{ lang('panel_scholarships.create.remaining') }}:</span> <span id="chars_left"></span></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <multiselect 
+                 v-model="value" 
+                 tag-placeholder="Προσθήκη νέας ετικέτας" 
+                 placeholder="Αναζητήστε ή Προσθέστε ετικέτα"
+                 label="name" 
+                 track-by="code" 
+                 :options="options" 
+                 deselectLabel="Αφαίρεση"
+                 :selectLabel="lang('panel_scholarships.create.select')"
+                 :selectedLabel="lang('panel_scholarships.create.selected')"
+                 :multiple="true" 
+                 :taggable="true" 
+                 @tag="addTag">
+             </multiselect>
+        </div>
         
     </div>
 </template>
 
 <style>
+.step-container-height{height: 500px}
+    .tag-name{padding: 0 1px; margin: 3px 0;}
     .step1{
         height: 300px;
     }
+    .step4MinHeight {min-height: 300px!important;}
+
+    /* jQuery Datepicker scholio Styling */
+.ui-widget-header {
+    background: #00bcd4; 
+    color: #fff}
+
+.ui-icon, .ui-icon:hover  {
+    width: 16px;
+    height: 16px;
+    /*background-color: #00bcd4;*/
+}
+
+.ui-widget-header .ui-icon {
+    background-image: url("/images/ui-icons_ffffff_256x240.png");
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+    border: none;
+    background: #f4f4f4;
+    /*font-weight: bold;*/
+    color: #004276;
+}
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+    border: none;
+    background: #008da5 ;
+    color: #fff;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+.ui-button:active,
+.ui-button.ui-state-active:hover{
+    background: #00bcd4;
+    /*font-weight: bold;*/
+    color: #fff;
+}
+    .error {color: red}
 </style>
 
 <script>
@@ -124,6 +246,8 @@
         components: {Multiselect},
         data(){
             return{
+                allWinners: false,
+                winners: 1,
                 multipleFeature: true,
                 criteria_disabled: true,
                 studies_disabled: true,
@@ -152,7 +276,45 @@
                 level_options: [],
                 allStudies: false,
                 testStudy: [],
-                multipleSectionsSelected: false
+                multipleSectionsSelected: false,
+                withTerms:false,
+                error: false,
+                end_at: null,
+                today: null,
+                exams: false,
+                content: '<p> Αναφέρετε εδώ τους <strong> Όρους και Προϋποθεσεις </strong> της Υποτροφίας</p>',
+                terms: null,
+                tinyOptions: {
+                    language_url : '/el.js',
+                    entity_encoding : "raw",
+                    height: 300,
+                    menubar: false,
+                    plugins: [
+                        'textcolor table autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code',
+                        'insertdatetime media table contextmenu paste code'
+                    ],
+                    setup: function (ed) {
+                    ed.on("KeyDown", function (ed, evt) {
+                                        chars_without_html = $.trim(tinyMCE.activeEditor.getContent().replace(/(<([^>]+)>)/ig, "")).length;
+                                        var key = ed.keyCode;
+                                        console.log(ed.keyCode)
+
+                                        var remaining = max_chars - chars_without_html;
+
+                                        $('#chars_left').html(remaining);
+
+                                        if (remaining <= 0  && (key != 8 && key != 46)) {
+                                            ed.stopPropagation();
+                                            ed.preventDefault();
+                                            $('#chars_left').html('ΟΧΙ ΑΛΛΟ!')
+                                        }
+                                    });
+                },
+                    toolbar: 'undo redo | insert copy paste | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor | table '
+                },
+                value: [],
+                options: []
             }
         },
 
@@ -172,7 +334,50 @@
 
             uniqueArray(arr){
                 return !!arr.reduce(function(a, b){ return (a === b) ? a : NaN; });
-            }
+            },
+
+            tinyMCE: function() {
+
+            },
+            getTags: function(){
+                axios.get('/api/hashtag/all').then(response => {
+                    this.options = response.data
+                    this.options.forEach(function(item){
+                        item.code = item.slag
+                    });
+                    console.log(this.options)
+                });
+            },
+            addTag: function(newTag) {
+                const tag = {
+                  name: newTag,
+                  code: newTag
+                }
+                console.log(newTag)
+                this.options.push(tag)
+                this.value.push(tag)
+            },
+
+            todayDate: function() {
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+
+                if(dd<10) {
+                    dd='0'+dd
+                }
+
+                if(mm<10) {
+                    mm='0'+mm
+                }
+
+                today = dd+'-'+mm+'-'+yyyy;
+                // today = mm + '-' + dd + '-' + yyyy
+                this.end_at=today
+                this.today=today
+            },
+
         },
 
         watch:{
@@ -231,7 +436,19 @@
         },
 
         mounted(){
+            var vm = this
             this.fetchLevels()
+            this.getTags()
+
+            // Event.$on('saveScholarship', () =>
+            //   this.saveScholarship()
+            // )
+
+            Event.$on('datePick',function  (val) {
+                    vm.end_at = val
+                    // vm.errorDate()
+                }
+            )
         }
     }
 </script>
