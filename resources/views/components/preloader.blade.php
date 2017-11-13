@@ -13,6 +13,6 @@
 
 <div id='preloader'>
     <div class='loader'></div>
-    <div class="hor-vert-center"><img src="/new/img/logo-NEWGreen.png"  height="60px" alt=""></div>
+    <div class="hor-vert-center"><img src="/new/img/logoNX-m-Green.png"  height="70px" alt=""></div>
 </div>
 <script src="{{asset('js/preloader.js')}}"></script>

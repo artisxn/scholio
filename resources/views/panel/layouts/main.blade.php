@@ -23,7 +23,8 @@
         <link rel="stylesheet" href="/panel/assets/css/icons.css">
         <link rel="stylesheet" href="/panel/assets/css/cs-select2.css">
         <link rel="stylesheet" href="/panel/assets/css/cs-select-circular2.css">
-        <link href="{{'/panel/assets/css/animated-placeholder.css'}}" rel="stylesheet"/>
+        <link rel="stylesheet" href="{{'/panel/assets/css/animated-placeholder.css'}}" />
+        <link rel="stylesheet" href="{{'/panel/assets/css/masonry.css'}}"/>
 
         <style>
         /*Styling topbar*/

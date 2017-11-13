@@ -605,11 +605,13 @@
                             <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
                             <div ng-if="col_iek_eng_dan_mus" >
                                 <div ng-repeat="(levIndex, level) in levelsName" >
-                                    <ul ng-class="[{'col-md-6': (levelsName.length>1)},'col-sm-12']">
-                                        <div class=" text-incr-150 font-weight-300 margin-top-10 margin-left-10" style="" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
-                                        <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="{'col-lg-6': (contactInfo.type_id==2)}" style="list-style-type: none;">
+                                    <ul ng-class="[{'col-md-6': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==1 },  'col-sm-12']">
+                                        <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
 
-                                            <li class="margin-top-20 margin-left-10">
+
+                                        <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="[{'col-lg-6': (contactInfo.type_id==2)},{'clearFloat': (( secIndex+1)%2 ==1)}]" style="list-style-type: none;">
+
+                                            <li class="margin-top-10 margin-left-10">
                                                 <img ng-src="@{{ sectionsIcon[levIndex][secIndex] }}" alt=""
                                                      style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
                                                 <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%" >
@@ -728,16 +730,16 @@
                                                 <img class="hex2-img" ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
                                             </div>
 
-                                            <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}">
-                                                <div style="position: absolute; top: 282px;" class="font-weight-400 sc-t-grey">
+                                            <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
+                                                <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey">
                                                     <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
-                                                        @lang('profile.scholarship.interested'): <span class="pad-left-10" ng-bind="scholarship.interests"></span>
+                                                        @lang('profile.scholarship.interested'): <span class="pull-right" ng-bind="scholarship.interests"></span>
                                                     </span>
                                                 </div>
 
-                                                <div style="position: absolute; top: 301px;" class="font-weight-400 sc-t-grey">
+                                                <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey">
                                                     <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
-                                                        @lang('profile.scholarship.requested'): <span class="pad-left-42"> @{{ scholarship.length}}</span>
+                                                        @lang('profile.scholarship.requested'): <span class="pull-right"> @{{ scholarship.length}}</span>
                                                     </span>
                                                 </div>
 
@@ -1019,10 +1021,9 @@
                         @if(auth()->user()->role != 'school')
                                 @if(auth()->user()->apply->contains($school))
                                 <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
-                                    <button id="submButton" type="button" class="affix-button sc-green sc-t-white center-block" disabled>
+                                    <button id="submButton" type="button" class="affix-button  sc-t-white center-block" style="background-color: #7fafbb" disabled>
                                         <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
-                                        ΑΙΤΗΜΑ ΕΝΕΡΓΟ
-                                        {{-- @lang('profile.request') --}}
+                                         @lang('profile.pending')
                                     </button>
                                 </nav>
 
@@ -1030,10 +1031,9 @@
 
                                     @if(auth()->user()->connectedSchool->contains($school))
                                      <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
-                                    <button id="submButton" type="button" class="affix-button sc-green sc-t-white center-block" disabled>
+                                    <button id="submButton" type="button" class="affix-button sc-t-white center-block" style="background-color: #bbb" disabled >
                                         <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
-                                        ΣΥΝΔΕΔΕΜΕΝΟΣ
-                                        {{-- @lang('profile.request') --}}
+                                        @lang('profile.connected')
                                     </button>
                                 </nav>
                                     @else
@@ -1087,7 +1087,7 @@
                                 x
 
                             </button>
-                            <img src="/new/img/logo-light-m.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: -4px;">
+                            <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: -4px;">
                             <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">@lang('profile.request')</h3>
                         </div>
 
@@ -1118,7 +1118,7 @@
                                 x
 
                             </button>
-                            <img src="/new/img/logo-light-m.png" alt="scholio logo" class="pull-left">
+                            <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left">
                             <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Υποτροφία @{{'>>  send id here <<<'}}</h3>
                         </div>
 

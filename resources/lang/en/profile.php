@@ -26,6 +26,8 @@ return [
         'students_s' => 'Μαθητές',
     ],
     'request' => 'Connection Request',
+    'pending' => 'Pending Request',
+    'connected' => 'Connected',
     'reviews' => 'Reviews',
     'total' => 'Total Rating',
     'more' => 'Show more',
@@ -39,8 +41,8 @@ return [
     ],
     'modal' => [
         'message' => 'By connecting with the institution, you will be able to write a review.',
-        'send' => 'Αποστολή',
-        'abort' => 'Ακύρωση',
-        'request' => 'Αίτηση',
+        'send' => 'Send',
+        'abort' => 'Abort',
+        'request' => 'Admit',
     ],
 ];

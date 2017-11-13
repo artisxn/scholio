@@ -37,7 +37,9 @@
             <div class="col-sm-offset-2 col-sm-8 ">
                     <div class="panel-heading">
                         <div class="text-center">
-                            {{--<a href="/"><img src="/new/img/logoNX-m.png" alt="scholio logo" class="register-scholio-logo"></a>--}}
+                            <a href="/">
+                            {{--<img src="/new/img/logoNX-m.png" alt="scholio logo" class="register-scholio-logo">--}}
+
 
                             <svg id="Logo-Defs" class="" baseProfile="tiny">
                                 <defs>
@@ -85,6 +87,8 @@
                                 <use id="Draw-Hat" class="Animate-Draw" xlink:href="#Hat" />
                                 <use id="Draw-Flags" class="Animate-Draw" xlink:href="#Flags" />
                             </svg>
+
+                            </a>
 
                         </div>
                     </div>

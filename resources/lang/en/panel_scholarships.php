@@ -27,6 +27,8 @@ return [
         'reset' => 'Reset',
         'save' => 'Save',
         'close' => 'Close',
+        'select' => 'Select',
+        'selected' => 'Selected',
 
     ],
 

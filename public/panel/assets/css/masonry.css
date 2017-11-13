@@ -1,0 +1,87 @@
+/* ========================================================================== */
+/* ==================  Column based grid like masonry   ===================== */
+/* ========================================================================== */
+
+
+:root{
+    --columns:5;
+}
+
+
+.masonry,.masonry2{ /* Masonry container */
+    -webkit-column-count: var(--columns);
+    -moz-column-count: var(--columns);
+    column-count: var(--columns);
+    column-gap: 1em;
+}
+.masonry2{ /* Masonry container */
+    -webkit-column-count: calc( var(--columns) - 1);
+    -moz-column-count: calc( var(--columns) - 1);
+    column-count: calc( var(--columns) - 1);
+    column-gap: 1em;
+}
+
+
+.item,.item2 { /* Masonry bricks or child elements */
+    background-color: #f5f5f5; border-radius: 7px; border: 1px solid #bbb;  padding: 12px;
+    /*box-shadow: 0 0 11px #bbb;*/
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+ }
+
+.item3{
+    background-color: #f5f5f5; border-radius: 7px; border: 1px solid #bbb;  padding:12px;
+}
+
+
+@media(max-width: 2095px){
+    .masonry{
+        -webkit-column-count: calc( var(--columns) - 1);
+        -moz-column-count: calc( var(--columns) - 1);
+        column-count: calc( var(--columns) - 1);
+    }
+}
+
+@media(max-width:1820px){
+    .masonry2  {
+        -webkit-column-count: calc( var(--columns) - 2);
+        -moz-column-count: calc( var(--columns) - 2);
+        column-count: calc( var(--columns) - 2);
+    }
+
+}
+@media(max-width:1760px){
+    .masonry {
+        -webkit-column-count: calc( var(--columns) - 2);
+        -moz-column-count: calc( var(--columns) - 2);
+        column-count: calc( var(--columns) - 2);
+    }
+
+}
+@media(max-width: 1330px){
+    .masonry,.masonry2  {
+        -webkit-column-count: calc( var(--columns) - 3);
+        -moz-column-count: calc( var(--columns) - 3);
+        column-count: calc( var(--columns) - 3);
+    }
+}
+
+@media(max-width: 830px){
+    .masonry,.masonry2 {
+        -webkit-column-count: calc( var(--columns) - 4);
+        -moz-column-count: calc( var(--columns) - 4);
+        column-count: calc( var(--columns) - 4);
+    }
+    .item{display: block; width: 90%; margin:20px auto;}
+}
+
+@media(max-width: 430px){
+    .item{ width: 100%; margin:15px auto;}
+}
+
+
+/* ========================================================================== */
+/* ========================================================================== */
+/* ========================================================================== */
+

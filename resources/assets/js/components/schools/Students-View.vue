@@ -28,34 +28,34 @@
         <div v-if="selection==true">
 
             <transition name="fade">
-                <div v-if="filteredStudents.length == 0" style="margin-left: 10px; margin-top:  60px;">
-                    <div class="animated-background col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2"  v-for="i in 6" style="margin-bottom: 140px; padding-right: 15px;">
-                        <div class="background-masker header-top"></div>
-                        <div class="background-masker header-left"></div>
-                        <div class="background-masker header-right"></div>
-                        <div class="background-masker header-bottom"></div>
+                <!--<div v-if="filteredStudents.length == 0" style="margin-left: 10px; margin-top:  60px;">-->
+                    <!--<div class="animated-background col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2"  v-for="i in 6" style="margin-bottom: 140px; padding-right: 15px;">-->
+                        <!--<div class="background-masker header-top"></div>-->
+                        <!--<div class="background-masker header-left"></div>-->
+                        <!--<div class="background-masker header-right"></div>-->
+                        <!--<div class="background-masker header-bottom"></div>-->
 
-                        <div class="background-masker subheader-left"></div>
-                        <div class="background-masker subheader-right"></div>
-                        <div class="background-masker subheader-bottom"></div>
+                        <!--<div class="background-masker subheader-left"></div>-->
+                        <!--<div class="background-masker subheader-right"></div>-->
+                        <!--<div class="background-masker subheader-bottom"></div>-->
 
-                        <div class="background-masker content-top"></div>
-                        <div class="background-masker content-first-end"></div>
-                        <div class="background-masker content-second-line"></div>
-                        <div class="background-masker content-second-end"></div>
-                        <div class="background-masker content-third-line"></div>
-                        <div class="background-masker content-third-end"></div>
-                    </div>
-                </div>
+                        <!--<div class="background-masker content-top"></div>-->
+                        <!--<div class="background-masker content-first-end"></div>-->
+                        <!--<div class="background-masker content-second-line"></div>-->
+                        <!--<div class="background-masker content-second-end"></div>-->
+                        <!--<div class="background-masker content-third-line"></div>-->
+                        <!--<div class="background-masker content-third-end"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </transition>
 
 
 
             <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents" v-if="(student.role=='student')"  >
 
-                <div class="double-card"  :id="'card'+index">
+                <div class="double-card"  :id="'card'+index"  >
                     <div class="front">
-                        <div class="sc-box">
+                        <div class="sc-box" :class="[{'alumniFilter': status=='allumni' }]">
                             <div class="sc-up"></div>
 
                             <div class="row">
@@ -190,20 +190,22 @@
 
 
         <!-- Modal -->
-        <div id="ModalStudentInfo" class="modal fade" role="dialog" >
-            <div class="modal-dialog" >
-
+        <div id="ModalStudentInfo" class="modal" role="dialog" >
+            <div class="modal-dialog zoomIn animated" id="modalzoom" >
                 <!-- Modal content-->
-                <div class="modal-content" style="border-radius: 6px; background-color: #f4f4f4; padding: 0; border: none;">
-                    <div class="" style="padding: 20px 15px ; margin: 0; background-color: #1f485c; height: 70px; border-top-left-radius: 6px; border-top-right-radius: 6px;">
+                <div class="modal-content" >
+                    <div class="modal-up">
                         <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
-                        <h4 class="modal-title" style=" color: #fff">Student info </h4>
+                        <!--<h4 class="modal-title" style=" color: #fff"> </h4>-->
+                        <img src="/new/img/user.png" alt="" class="img-avatar">
+                        <div class="lastName">LastName</div>
+                        <div class="firstName">FirstName</div>
                     </div>
-                    <div class="" style=" height: 300px; padding: 15px;">
-                        <p>{{ info.student_address }}</p>
+                    <div class="modal-infos">
+                        <!--<p>{{ info.student_address }}</p>-->
                     </div>
-                    <div class="modal-footer" style="padding: 15px;">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
                     </div>
                 </div>
 
@@ -226,6 +228,8 @@
 
 
 <style>
+    .alumniFilter{-webkit-filter: grayscale(75%); opacity: 0.9}
+
 
     .fade3-enter-active, .fade3-leave-active {
     transition: opacity 1.3s
@@ -343,7 +347,66 @@
 
     .img-students{height: 55px; width: auto; position: absolute; right: 30px; top: 85px; opacity: 0.07}
 
-   /* =========== photo frame ==========*/
+    /* ============ MODAL CARD ==========*/
+    /* ==================================*/
+    .modal-content{border-radius: 7px!important; background-color: #f4f4f4; padding: 0!important; border: none!important;}
+    .modal-up{padding: 20px 15px ; margin: 0; background-color: #007087; height: 110px; border-top-left-radius: 6px; border-top-right-radius: 7px;}
+    .modal-footer{padding: 15px; background-color: #a1afaa; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; height: 80px;
+    }
+    .img-avatar{position: absolute; top: 35px; left: 20px; height: 110px; border-radius: 50%; border: 3px solid #fff;}
+    .lastName{margin-top: 45px; margin-left: 130px; font-size: 200%; color: #fafafa}
+    .firstName{margin-top: 8px; margin-left: 130px; font-size: 150%; color: #888}
+
+    .modal-infos{ height: 500px; margin-top: 40px; padding: 15px;}
+
+    .btn-close{margin:0 30px 0 0;}
+
+
+    /* ============ Animate.CSS ==========*/
+    /* ==================================*/
+
+    .animated {
+        animation-duration: 0.7s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes zoomIn {
+        from {
+            opacity: 0;
+            transform: scale3d(.3, .3, .3);
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+
+    .zoomIn {
+        animation-name: zoomIn;
+    }
+
+    @keyframes zoomOut {
+        from {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+            transform: scale3d(.3, .3, .3);
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    .zoomOut {
+        animation-name: zoomOut;
+    }
+
+
+
+    /* =========== photo frame ==========*/
    /* ==================================*/
     .img-cont{display: none}
     .frame-cont{position: absolute; top:-3px; left: -10px;}
@@ -446,7 +509,7 @@
         box-shadow: inset 0 0 0 3px #CAD8D3;
     }
 
-<!--  WAVE STYLE -->
+    /*  WAVE STYLE */
     .wave{
         background:#fafafa;
         height: 10px;
@@ -591,6 +654,28 @@
             },
             changeInfo(data){
                 this.info = data
+                setTimeout(function(){
+//                    document.getElementById('modalzoom').classList.remove('zoomIn');
+
+                }, 800);
+
+                $('.modal').on('hide.bs.modal', function () {
+                    console.log('hide')
+//                    $('.modal-dialog').addClass('animated zoomOut');
+                })
+
+
+
+            },
+            modalClose(){
+                console.log('click')
+//                document.getElementById('modalzoom').classList.add('zoomOut')
+                setTimeout(function(){
+//                    document.getElementById('modalzoom').classList.remove('zoomOut');
+                    document.getElementById('modalzoom').classList.add('zoomIn');
+                }, 900);
+
+
             }
         },
 

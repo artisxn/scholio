@@ -164,6 +164,9 @@ a:hover  {  color: #FD6A33;  }
 .schools-nav-row{padding-left: 0; padding-right: 12px;}
 .scholarship-profile-nav-row{padding-left: 12px; padding-right: 13px;}
 .landing-nav-row{padding-left: 12px; padding-right: 20px;}
+
+.clearFloat{  clear: both;  }
+
 @media (max-width: 991px) {
     .schools-nav-row{ padding-right: 0}
     .landing-nav-row,.scholarship-profile-nav-row{ margin-left: -27px!important; padding-right: 0!important;}
@@ -194,6 +197,7 @@ a:hover  {  color: #FD6A33;  }
 .sc-dark-blue{background:#324c5a;}
 .sc-blue{background:#025888;}
 .sc-green{background:#00bcd4;}
+.sc-teal{background: #7fafbb}
 .sc-dark-green{background: #008da5;}
 .sc-light-grey{background:#f5f5f5;}
 .sc-medium-grey{background: #dde5e8;}
@@ -620,9 +624,9 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
 #Logo {
     margin-top: -160px;
     display:block;
-    fill: #0C496B;
-    fill: url("#MyGradient");
-    stroke: #004a6b;
+    fill: #005c73;
+    /*fill: url("#MyGradient");*/
+    stroke: #004a5f;
     stroke-miterlimit: 5;
 }
 

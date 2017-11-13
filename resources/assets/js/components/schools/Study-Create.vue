@@ -5,16 +5,16 @@
 
         </div>
         <div class="levels col-xs-12 col-lg-6" style="margin-bottom: 30px;">
-             <label class="typo__label">Βήμα 1: Επιλέξτε Επίπεδο Σπουδών</label>
+             <label class="typo__label">{{ lang('panel_studies.step1') }}</label>
              <multiselect 
              v-model="levels" 
-             tag-placeholder="Προσθήκη νέας ετικέτας" 
-             placeholder="Αναζητήστε ή Προσθέστε ετικέτα"
+             tag-placeholder="Προσθήκη νέου"
+             :placeholder="lang('panel_studies.placeholder1')"
              label="name" 
              track-by="id"
              :optionsLimit="999"
              :options="levelOptions" 
-             deselectLabel="Αφαίρεση"
+             :deselectLabel="lang('panel_studies.input-delete')"
              :selectLabel="lang('panel_scholarships.create.select')"
              :selectedLabel="lang('panel_scholarships.create.selected')"
              :multiple="false" 
@@ -24,15 +24,15 @@
          </div>
 
          <div class="sections col-xs-12 col-lg-6" style="margin-bottom: 15px;" :style="[sectionDisabled ? {opacity: 0.6}:{}]">
-             <label class="typo__label">Βήμα 2: Επιλέξτε Τομέα Σπουδών</label>
+             <label class="typo__label">{{ lang('panel_studies.step2') }}</label>
              <multiselect 
              v-model="sections" 
-             tag-placeholder="Προσθήκη νέας ετικέτας" 
-             placeholder="Αναζητήστε ή Προσθέστε ετικέτα"
+             tag-placeholder="Προσθήκη νέου"
+             :placeholder="lang('panel_studies.placeholder2')"
              label="name" 
              track-by="id" 
              :options="sectionOptions" 
-             deselectLabel="Αφαίρεση"
+             :deselectLabel="lang('panel_studies.input-delete')"
              :selectLabel="lang('panel_scholarships.create.select')"
              :selectedLabel="lang('panel_scholarships.create.selected')"
              :multiple="false"
@@ -43,15 +43,15 @@
          </div>
 
          <div class="studies col-xs-12" style="margin-top: 25px;" :style="[studyDisabled ? {opacity: 0.1}:{}]">
-             <label class="typo__label">Βήμα 3: Επιλέξτε Ειδικότητα Σπουδών</label>
+             <label class="typo__label">{{ lang('panel_studies.step3') }}</label>
              <multiselect 
              v-model="studies" 
              tag-placeholder="Προσθήκη νέας ετικέτας" 
-             placeholder="Αναζητήστε ή Προσθέστε ετικέτα"
+             :placeholder="lang('panel_studies.placeholder3')"
              label="name" 
              track-by="id" 
              :options="studyOptions" 
-             deselectLabel="Αφαίρεση"
+             :deselectLabel="lang('panel_studies.input-delete')"
              :selectLabel="lang('panel_scholarships.create.select')"
              :selectedLabel="lang('panel_scholarships.create.selected')"
              :multiple="true" 
@@ -62,19 +62,19 @@
          </div>
 
          <div style="clear: both; margin: 0 0 90px 10px;" :style="[saveDisabled ? {opacity: 0.3}:{}]">
-             <button @click="save()" class="btn btn-primary" :disabled="saveDisabled">Αποθήκευση</button>
+             <button @click="save()" class="btn btn-primary" :disabled="saveDisabled">{{ lang('panel_studies.save') }}</button>
          </div>
 
 
-        <div style="margin-top: 50px; margin-bottom: 10px; color: #008da5; background-color: #f0f0f0; font-size: 150%; border-radius: 7px;  border: 1px solid #ccc; width: 100%; padding:12px;">
-            <div>Επιλεγμένες Σπουδές</div>
+        <div class="mar-right" :class="[{'selected-title-container': currentStudies.length==1 }]">
+            <div class="selected-title">{{ lang('panel_studies.selected') }}</div>
         </div>
          <!-- PRELOADER -->
 
         <div v-if="studiesCounter > 0">
             <transition name="fade">
-                <div v-if="currentStudies.length == 0" style="margin: -20px  0 10px 0;">
-                    <div class="animated-background col-xs-12 col-sm-6"  v-for="i in 5" style="margin-top: 80px;">
+                <div v-if="currentStudies.length == 0" style="margin: -20px  0 10px 15px;">
+                    <div class="animated-background col-xs-12 col-md-6 col-xl-4"  v-for="i in 5" style="margin-top: 80px;">
                         <div class="background-masker header-top"></div>
                         <div class="background-masker header-left"></div>
                         <div class="background-masker header-right"></div>
@@ -95,40 +95,52 @@
             </transition>
 
 
-            <transition name="fade2" >
-                <div  v-if="currentStudies.length > 0" >
-                    <div style="position: relative!important;">
-
-                        <div v-for="(level, index) in currentStudies" class="col-xs-12"  :class="{'col-md-6': currentStudies.length>1}" style="position: relative!important; background-color: #bbb;">
-                            <div style="font-size: 140%; margin-top: 20px;" >{{ level.level.name }}</div>
-
-                                <div v-for="section in level.sections" style="position: relative!important;" :class="{'col-md-6': currentStudies.length==1}" >
-                                <div style="">
-                                    <img :src="section.section.icon" alt="" style="height: 24px; filter: grayscale(90%)">
-
-                                  <span style="font-size: 111%; display: inline-block; margin: 0 0 10px 4px; padding-top: 30px; background-color: #aaa;">
-                                       {{ section.section.name }}
-                                  </span>
 
 
-                                </div>
-                                <div v-for="study in section.studies" style="position: relative!important; background-color: #999;">
-                                    <div>{{ study.study.name }}
-                            <span>
-                                <i class="fa fa-trash-o btn-delete" aria-hidden="true" @click="deleteStudy(study.study.id)"></i>
-                            </span>
+            <transition name="fade2">
+                <div  v-if="currentStudies.length > 0"  >
+                    <div class="" :class="[{'masonry2': currentStudies.length==1 }]" >
+
+                        <div v-for="(level, index) in currentStudies" class="" style="position: relative!important;"
+                             :class="[ {'col-md-6': currentStudies.length==2 },{'col-md-6 col-xl-4': currentStudies.length>2 },{'clearFloat':  currentStudies.length>2 && (index)%2==0 }]">
+
+
+                            <div v-if="currentStudies.length > 1" style="font-size: 140%; margin-top: 5px; padding-bottom: 10px" >{{ level.level.name }}</div>
+
+                                <div v-for="(section,sc) in level.sections" style="position: relative!important; margin-bottom: 10px;"
+                                     :class="[{'item2':  currentStudies.length>0 }]" class="">
+
+
+                                    <div style="">
+                                            <img :src="section.section.icon" alt="" style="height: 24px; filter: grayscale(40%)">
+
+                                              <span class="tool">
+                                                <span class="dots-section" style="">  {{ section.section.name }}</span>
+                                                <!--<span class="tooltiptext tooltip">{{section.section.name }}</span>-->
+                                              </span>
                                     </div>
-                                </div>
-                                <div style="margin-bottom: 30px;"></div>
-                            </div>
-                            <div :class="{'clearfix': (index+1)%2==0}">
-                                
+
+                                    <div v-for="(study,st) in section.studies" style="position: relative!important;" class="">
+                                        <div>
+
+                                            <span class="tool">
+                                                <span :id="index+'study'+sc+' '+st" class="dots-study" :class="[ {'dots-study-xl': currentStudies.length==2 }]">{{ study.study.name }}</span>
+                                                <span class="tooltiptext tooltip">{{study.study.name }}</span>
+                                            </span>
+
+                                            <span><i class="fa fa-trash-o btn-delete" style="" aria-hidden="true" @click="deleteStudy(study.study.id)"
+                                                     @mouseover="hoverStudy(index+'study'+sc+' '+st)" @mouseleave="leaveStudy()">
+                                            </i></span>
+
+                                        </div>
+                                    </div>
                             </div>
                         </div>
 
-                        <div style="clear: both;">
-                            <button @click="deleteAllStudies" class="btn btn-danger">Delete All Studies</button>
-                        </div>
+                    </div>
+
+                    <div class="btn-deleteAll-container">
+                        <button  class="btn btn-primary"  data-toggle="modal" data-target="#delete-modal">{{ lang('panel_studies.delete-all') }}</button>
                     </div>
                 </div>
             </transition>
@@ -138,6 +150,46 @@
             {{ counterMessage }}
         </div>
 
+
+
+
+        <!-- ====== Modal Delete All Studies =======-->
+        <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="panel " style="background-color: #324c5a; height: 62px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+                        <div class="panel-heading" style="height: 55px; color: #fff">
+                            <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
+                                x
+
+                            </button>
+                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: 2px;">
+                            <!--<img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: -4px;">-->
+                            <!--<h3 class="pull-left panel-title" style="margin: 2px 0 0 15px; font-size: 170%">schol.io</h3>-->
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+
+                        <span>{{ lang('panel_studies.modal-message') }}</span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div  class="btn btn-default btn-modal1" data-dismiss="modal">{{ lang('panel_studies.modal-reject') }}</div>
+                        <div  class="btn btn-primary btn-modal2" data-dismiss="modal" @click="deleteAllStudies()">{{ lang('panel_studies.modal-submit') }}</div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+
+
+
+
+
+
+
     </div>
 
 
@@ -146,13 +198,61 @@
 </template>
 
 <style>
+    .sc-logo{height: 45px;}
+    .modal .modal-dialog .modal-content{padding: 0 0 20px 0; border: none; border-radius: 6px;}
+    .panel-body{height: 120px; padding-top: 30px}
+    .btn-modal1{margin: 0 15px 0 0 }
+    .btn-modal2{margin: 0 25px 0 0 }
 
-    /*.fade-enter-active, .fade-leave-active {*/
-        /*transition: opacity 0.3s*/
-    /*}*/
-    /*.fade-enter, .fade-leave-to {*/
-        /*opacity: 0*/
-    /*}*/
+
+    .mar-right{margin-right: 20px;}
+    .selected-title-container{margin-right: 10px;}
+    .selected-title{
+        margin-top: 50px; margin-bottom: 10px; color: #008da5; background-color: #f0f0f0; font-size: 150%; border-radius: 7px;  border: 1px solid #ccc; width: 100%; margin-left: 10px; padding: 10px 15px;
+    }
+
+    .masonry2{padding-left: 10px;}
+    .item,.item2{border-color: #c3c3c3}
+
+    .dots-section{display:inline-block;
+        width: 85%;
+        white-space: nowrap;
+        overflow:hidden !important;
+        text-overflow: ellipsis;
+        font-size: 115%;
+        color: #008da5;
+        margin-bottom: -6px;
+    }
+
+    .dots-study,.dots-study-xl{
+        display:inline-block;
+        width: 93%;
+        white-space: nowrap;
+        overflow:hidden !important;
+        text-overflow: ellipsis;
+        padding-top: 2px;
+    }
+
+
+    @media (max-width: 1879px) {
+        .clearFloat{  clear: both;  }
+    }
+    @media (min-width: 1880px) {
+        .col-xl-6{width: 50%}
+        .col-xl-4{width: 33.33%}
+        .dots-study-xl{max-width: 85%}
+    }
+
+    @media (max-width: 414px) {
+        .dots-section{ width: 88%;}
+        .dots-study{width: 94%; font-size: 97%}
+        .container{padding-left: 0; padding-right: 0}
+    }
+
+    @media (min-width: 415px) {
+        .dots-section{ width: 90%;}
+        .dots-study{width: 95%}
+    }
 
     .fade2-enter-active, .fade2-leave-active {
         transition: opacity 0.8s
@@ -169,8 +269,40 @@
     .btn-delete{cursor: pointer}
     .btn-delete:hover{color: #FD6A33}
 
-    .btn-primary{background-color: #008da5; border: none;}
+    .hover-study{color: #FD6A33!important;}
+
+    .btn-primary,.btn-primary:visited,.btn-primary:focus{background-color: #008da5; border: none;}
     .btn-primary:hover{background-color: #006d7d;}
+    .btn-deleteAll-container{clear: both; padding-top: 40px; margin-left: auto; margin-right: auto; text-align: center;}
+
+
+
+    /* =========TOOLTIP=========*/
+
+    @media (max-width: 480px) {
+            .tool {  position: relative;  }
+            .tooltiptext  {
+                font-weight: 300;
+                visibility: hidden;
+                width: 300px;
+                background-color: #007991;
+                color: #fff;
+                text-align: center;
+                border-radius: 5px;
+                padding: 4px 1px;
+                position: absolute;
+                z-index: 1;
+                bottom: 120%;
+                margin-left: -110px;
+                opacity: 0;
+                transition: opacity 0.1s;
+                background-color: #007991;
+            }
+            .tooltip{width: 230px;  bottom: 25px; left: 150px;}
+            .tool:hover .tooltiptext{  visibility: visible; opacity: 1; }
+    }
+
+
 </style>
 
 <script>
@@ -284,6 +416,16 @@
                     })
                 })
             },
+
+            hoverStudy(id){
+//                console.log(id)
+//                 $(id).addClass('hover-study')
+                document.getElementById(id).classList.add('hover-study');
+            },
+            leaveStudy(){
+                $('.dots-study').removeClass('hover-study');
+            },
+
 
             deleteStudy(study){
                 axios.post('/api/school/deleteStudy', {study:study}).then(({data})=>{
