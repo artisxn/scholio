@@ -188,7 +188,7 @@
 
                         <div class="form-group text-center">
                             <div class=" col-xs-6">
-                                <button class="btn sc-dark-green sc-t-white btn-next" type="submit" onClick="window.history.back();">
+                                <button class="btn sc-dark-green sc-t-white btn-next" onclick="window.history.back(); return false;">
                                     <i class="fa fa-chevron-circle-left mar-right" aria-hidden="true"></i>
                                     <span class="hidden-xxxxs">@lang('register.back') </span>
                                 </button>

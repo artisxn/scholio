@@ -124,12 +124,12 @@
                                         <div>
 
                                             <span class="tool">
-                                                <span :id="index+'study'+sc+' '+st" class="dots-study" :class="[ {'dots-study-xl': currentStudies.length==2 }]">{{ study.study.name }}</span>
+                                                <span :id="index+'study'+sc+'_'+st" class="dots-study" :class="[ {'dots-study-xl': currentStudies.length==2 }]">{{ study.study.name }}</span>
                                                 <span class="tooltiptext tooltip">{{study.study.name }}</span>
                                             </span>
 
                                             <span><i class="fa fa-trash-o btn-delete" style="" aria-hidden="true" @click="deleteStudy(study.study.id)"
-                                                     @mouseover="hoverStudy(index+'study'+sc+' '+st)" @mouseleave="leaveStudy()">
+                                                     @mouseover="hoverStudy(index+'study'+sc+'_'+st)" @mouseleave="leaveStudy()">
                                             </i></span>
 
                                         </div>
@@ -418,9 +418,10 @@
             },
 
             hoverStudy(id){
-//                console.log(id)
-//                 $(id).addClass('hover-study')
-                document.getElementById(id).classList.add('hover-study');
+               console.log(id)
+               console.log($('#'+id))
+                $('#'+id).addClass('hover-study')
+                // document.getElementById(id).classList.add('hover-study');
             },
             leaveStudy(){
                 $('.dots-study').removeClass('hover-study');

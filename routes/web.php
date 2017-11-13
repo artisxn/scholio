@@ -22,10 +22,21 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
-Route::get('/qqqs', function () {
-    $user = User::find(38);
-    $user->apply()->detach(auth()->user()->info);
-    return 'OK';
+Route::get('/qqqs/{level}', function ($level) {
+    $school = auth()->user()->info;
+    $data = [];
+    $studies = [];
+
+    foreach ($school->section($level) as $section) {
+        $s = Section::find($section);
+        foreach ($school->studyFromSection($section) as $study) {
+            array_push($studies, ['name' => Study::find($study)->name, 'id' => Study::find($study)->id, 'section_id' => $s->id, 'icon' => $s->icon]);
+        }
+
+        array_push($data, ['section' => $s->name, 'study' => $studies]);
+        $studies = [];
+    }
+    return $data;
 });
 
 Route::get('/ttts', function () {

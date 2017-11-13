@@ -21,7 +21,7 @@ Vue.prototype.lang = (key) => {
 
 Vue.component('notifications', require('./components/Notifications.vue'));
 Vue.component('notifications-table', require('./components/Notifications-Table.vue'));
-Vue.component('scholarships-create', require('./components/schools/Scholarships-Create.vue'));
+Vue.component('scholarships-create', require('./components/schools/Scholarship-Create.vue'));
 Vue.component('users-table', require('./components/Users-Table.vue'));
 Vue.component('schools-table', require('./components/schools/Schools-Table.vue'));
 Vue.component('scholarships-view', require('./components/schools/Scholarships-View.vue'));

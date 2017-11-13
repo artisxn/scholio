@@ -22,6 +22,34 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
+Route::get('/school/getLevels', function () {
+    $school = auth()->user()->info;
+    $levels = [];
+
+    foreach ($school->levels() as $l) {
+        $level = Level::find($l);
+        array_push($levels, ['id' => $level->id, 'name' => $level->name]);
+    }
+    return $levels;
+})->middleware('auth:api');
+
+Route::get('/school/getStudiesGroupedFromLevel/{level}', function ($level) {
+    $school = auth()->user()->info;
+    $data = [];
+    $studies = [];
+
+    foreach ($school->section($level) as $section) {
+        $s = Section::find($section);
+        foreach ($school->studyFromSection($section) as $study) {
+            array_push($studies, ['name' => Study::find($study)->name, 'id' => Study::find($study)->id, 'section_id' => $s->id, 'icon' => $s->icon]);
+        }
+
+        array_push($data, ['section' => $s->name, 'study' => $studies]);
+        $studies = [];
+    }
+    return $data;
+})->middleware('auth:api');
+
 Route::get('/school/studiesCount', function () {
     $school = auth()->user()->info;
     return count($school->study);
