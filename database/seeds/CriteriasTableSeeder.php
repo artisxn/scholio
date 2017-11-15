@@ -14,11 +14,11 @@ class CriteriasTableSeeder extends Seeder
     public function run()
     {
         $names = [
-            'Υποτροφία Ταλέντου-Δεξιοτήτων',
-            'Υποτροφία Αριστείας',
-            'Υποτροφία με Κοινωνικά Κριτήρια',
-            'Υποτροφία για Φίλους-Αδέλφια',
-            'Υποτροφία Ανοιχτού Τύπου',
+            ['name' => 'Υποτροφία Ταλέντου-Δεξιοτήτων', 'icon' => '/panel/assets/images/steps/talents.png'],
+            ['name' => 'Υποτροφία Αριστείας', 'icon' => '/panel/assets/images/steps/medal.png'],
+            ['name' => 'Υποτροφία με Κοινωνικά Κριτήρια', 'icon' => '/panel/assets/images/steps/social.png'],
+            ['name' => 'Υποτροφία για Φίλους-Αδέλφια', 'icon' => '/panel/assets/images/steps/friends.png'],
+            ['name' => 'Υποτροφία Ανοιχτού Τύπου', 'icon' => '/panel/assets/images/steps/open.png'],
         ];
 
         $namesENG = [
@@ -31,7 +31,8 @@ class CriteriasTableSeeder extends Seeder
 
         foreach ($names as $name) {
             $criteria = new Criteria;
-            $criteria->name = $name;
+            $criteria->name = $name['name'];
+            $criteria->icon = $name['icon'];
             $criteria->save();
         }
 

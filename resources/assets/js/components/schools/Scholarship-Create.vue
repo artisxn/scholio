@@ -12,37 +12,46 @@
 
 
         <div class="scholar-frame " style="position: fixed; left:-webkit-calc(100% - 390px); top: 190px;">
-            <div class="ribbon-wrapper">
+            <div class="ribbon-wrapper" v-if="criteria_value && criteria_value.name">
                 <div class="ribbon-front sc-medium-grey">
                     <span class="">
-                        <img  class="criteria-img" src="/panel/assets/images/steps/step3-skills1.png" alt="" v-if="">
+                       
+                        <img class="criteria-img" :src="criteria_value.icon" alt="" v-if="">
                     </span>
-                    <span class="sc-t-dark-green font-weight-400 scholar-title margin-left-10">Κριτήρια</span>
+                    <span class="sc-t-dark-green font-weight-400 scholar-title margin-left-10">{{ criteria_value.name}}</span>
                 </div>
                 <div class="ribbon-edge-topright"></div>
                 <div class="ribbon-edge-bottomright"></div>
                 <div class="ribbon-back-right sc-medium-grey"></div>
             </div>
-            <div class="hexagon hex1">
+            <div class="hexagon hex1" v-if="financial_value && financial_amount">
+                <img v-if="" style="height: 34px; top: -6px; left: 5px;" class="hex1-img"
+                      :src="financial_value.icon">
             </div>
-            <div class="hexagon hex2">
+            <div class="hexagon hex2" v-if="study_value && study_value.length > 0">
             </div>
 
-            <div class="scholar-content  font-weight-400">
-                <p class="scholar-left">Οικονομικο πλάνο και πόσο
-                    <span v-if=""> € </span>
+
+
+            <div class="scholar-content  font-weight-400" v-if="financial_value && financial_amount">
+                <p class="scholar-left">{{ financial_value.name }} {{ financial_amount}} 
+                    <span v-if=""> {{ financial_value.metric }} </span>
                 </p>
-                <div class="scholar-left xxs-text" style="padding-top: 40px;" v-if="" >level</div>
-                <div class="margin-top-50 scholar-left xxs-text"  v-if="">section</div>
-                <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;" :class="[{}]">study</div>
-                <div>
-                    <img  v-if="" style="height: 34px; top: -6px; left: 5px;" class="hex1-img"
-                          src="/panel/assets/images/steps/step1-reduce2.png">
+                <div v-if="study_value && study_value.length > 0">
+                    <div class="scholar-left xxs-text" style="padding-top: 40px;" v-if="" >{{ level_value.name }}</div>
+                    <div class="margin-top-50 scholar-left xxs-text"  v-if="!multipleSectionsSelected">{{ study_value[0].section_name }}</div>
+                    <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;" :class="[{}]" v-if="study_value.length < 4">
+                        <div v-for="st in study_value">
+                            <li>{{ st.name }}</li>
+                        </div>
+                    </div>
+                    <div v-else>ΠΟΛΛΑΠΛΕΣ ΣΠΟΥΔΕΣ {{ study_value.length }}</div>
+                        <img class="hex2-img" :src="study_value[0].icon" v-if="!multipleSectionsSelected">
+                        <img class="hex2-img" src="/panel/assets/images/steps/studies.png" v-else>
                 </div>
-                <img class="hex2-img" src="/panel/assets/images/steps/SECTION.png">
             </div>
 
-            <div class="" :class="" >
+            <div class="" :class="" v-if="false">
                 <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey">
                     <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
                         {{lang('profile.scholarship.interested')}}: <span class="pull-right"   >2</span>
@@ -77,8 +86,8 @@
                             placeholder="Επιλέξτε Κριτήρια"
                             :deselectLabel="lang('panel_studies.input-delete')"
                             :selectLabel="lang('panel_scholarships.create.select')"
-                            :selectedLabel="lang('panel_scholarships.create.selected')">
-                        <!--:disabled="criteria_disabled"-->
+                            :selectedLabel="lang('panel_scholarships.create.selected')"
+                            :disabled="criteria_disabled">
                     </multiselect>
                 </div>
             </div>
@@ -94,14 +103,15 @@
                                 :options="financial_options"
                                 track-by="name" label="name"
                                 :searchable="false"
-                                :close-on-select="false"
+                                :close-on-select="true"
                                 :show-labels="false"
                                 placeholder="Επιλέξτε Οικονομικό πακέτο"
                                 :deselectLabel="lang('panel_studies.input-delete')"
                                 :selectLabel="lang('panel_scholarships.create.select')"
                                 :selectedLabel="lang('panel_scholarships.create.selected')"
+                                :disabled="financial_disabled">
 
-                        ></multiselect>
+                                </multiselect>
                     </div>
 
                     <div class="financial-amount" v-if="financial_value">
@@ -132,7 +142,7 @@
                             :options="level_options"
                             track-by="name" label="name"
                             :searchable="false"
-                            :close-on-select="false"
+                            :close-on-select="true"
                             :show-labels="false"
                             placeholder="Επιλέξτε Επίπεδο"
                             :deselectLabel="lang('panel_studies.input-delete')"
@@ -159,11 +169,7 @@
 
                 <div>
                     ALL STUDIES<input id="checkBox" type="checkbox" v-model="allStudies">
-                    <button @click="study_value = []" v-if="study_value && study_value.length > 2">DELETE ALL</button>
-                </div>
-
-                <div v-if="study_value && study_value.length > 0 && !multipleSectionsSelected">
-                    <img :src="study_value[0].icon" height="30px">
+                    <button @click="study_value = []; allStudies=false" v-if="study_value && study_value.length > 2">DELETE ALL</button>
                 </div>
 
             </div>
@@ -173,8 +179,6 @@
                     <div>Step4:</div>
                     <div>
                         <h3>{{ lang('panel_scholarships.create.terms') }}</h3>
-
-
 
                         <div class="col-lg-4 col-md-6 col-sm-6" >
                             <div style="" class="pull-left"> {{ lang('panel_scholarships.create.winners') }}</div>
@@ -219,13 +223,10 @@
                             <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
                             <div><span>{{ lang('panel_scholarships.create.remaining') }}:</span> <span id="chars_left"></span></div>
                         </div>
-
-
-
                     </div>
                 </div>
 
-                <div>
+                <div style="margin: 200px 0">
                     <multiselect
                             v-model="value"
                             tag-placeholder="Προσθήκη νέας ετικέτας"
@@ -241,16 +242,12 @@
                             @tag="addTag">
                     </multiselect>
                 </div>
-
             </div>
 
-
+            <div>
+                <button @click="saveScholarship()">SUBMIT</button>
+            </div>
         </div>
-
-
-
-
-        
     </div>
 </template>
 
@@ -382,7 +379,8 @@
                 allWinners: false,
                 winners: 1,
                 multipleFeature: true,
-                criteria_disabled: true,
+                criteria_disabled: false,
+                financial_disabled: true,
                 studies_disabled: true,
                 keywords_disabled: true,
                 terms_disabled: true,
@@ -390,18 +388,18 @@
                 financial_amount: 0,
                 financial_value: [],
                 financial_options: [ 
-                    { id:1, name:window.lang.panel_scholarships.create.financial1 }, 
-                    { id:2, name:window.lang.panel_scholarships.create.financial2 }, 
-                    { id:3, name:window.lang.panel_scholarships.create.financial3 }
+                    { id:1, name:window.lang.panel_scholarships.create.financial1, metric: '%', icon: '/panel/assets/images/steps/step1-reduce2.png' }, 
+                    { id:2, name:window.lang.panel_scholarships.create.financial2, metric: '€', icon: '/panel/assets/images/steps/step1-hand2.png' }, 
+                    { id:3, name:window.lang.panel_scholarships.create.financial3, metric: 'Μήνες', icon: '/panel/assets/images/steps/step1-clock2.png' }
                 ],
                 criteria_amount: 0,
                 criteria_value: [],
                 criteria_options: [ 
-                     { id: 1, name: window.lang.panel_scholarships.create.criteria1 },
-                     { id: 2, name: window.lang.panel_scholarships.create.criteria2 },
-                     { id: 3, name: window.lang.panel_scholarships.create.criteria3 },
-                     { id: 4, name: window.lang.panel_scholarships.create.criteria4 },
-                     { id: 5, name: window.lang.panel_scholarships.create.criteria5 }
+                     { id: 1, name: window.lang.panel_scholarships.create.criteria1, icon: '/panel/assets/images/steps/talent.png' },
+                     { id: 2, name: window.lang.panel_scholarships.create.criteria2, icon: '/panel/assets/images/steps/medal.png' },
+                     { id: 3, name: window.lang.panel_scholarships.create.criteria3, icon: '/panel/assets/images/steps/social.png' },
+                     { id: 4, name: window.lang.panel_scholarships.create.criteria4, icon: '/panel/assets/images/steps/friends.png' },
+                     { id: 5, name: window.lang.panel_scholarships.create.criteria5, icon: '/panel/assets/images/steps/open.png' }
                 ],
                 study_value: [],
                 study_options: [],
@@ -511,20 +509,37 @@
                 this.today=today
             },
 
+            saveScholarship(){
+                axios.post('/api/school/scholarshipSave', {
+                                'financial': this.financial_value.id,
+                                'financial_amount': this.financial_amount,
+                                'studies': this.study_value,
+                                'criteria': this.criteria_value.id,
+                                'end_at': this.end_at,
+                                'exams':this.exams,
+                                'terms':this.terms,
+                                'tags': this.value,
+                                'allWinners': this.allWinners,
+                                'winners': this.winners
+                            }).then(({data})=>{
+                                console.log(data)
+                                if(data.message == 'OK') window.location = data.url
+                            })
+            }
         },
 
         watch:{
-            financial_value(){
-                if(this.financial_value){
-                    this.criteria_disabled = false
+            criteria_value(){
+                if(this.criteria_value){
+                    this.financial_disabled = false
                 }else{
-                    this.criteria_value = null
-                    this.criteria_disabled = true
+                    this.financial_value = null
+                    this.financial_disabled = true
                 }
             },
 
-            criteria_value(){
-                if(this.criteria_value){
+            financial_value(){
+                if(this.financial_value){
                     this.levels_disabled = false
                 }else{
                     this.level_value = null
@@ -556,6 +571,7 @@
             },
 
             study_value(){
+                console.log(this.study_value)
                 var parent = this
                 if(this.study_value){
                     parent.testStudy = []
