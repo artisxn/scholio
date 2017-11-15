@@ -1,9 +1,5 @@
 <template>
     <div>
-
-        <div >
-
-        </div>
         <div class="levels col-xs-12 col-lg-6" style="margin-bottom: 30px;">
              <label class="typo__label">{{ lang('panel_studies.step1') }}</label>
              <multiselect 

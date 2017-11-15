@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <link rel="stylesheet" href="{{asset('/css/atwho.css')}}"/>
     <link rel="stylesheet" href="{{'/panel/assets/css/vue-multiselect.css'}}" />
+
+
+{{--<!-- Profile  CSS -->--}}
+{{--<link href="/new/css/profile.css" rel="stylesheet">--}}
+
+<!-- Horizontal Ribbons  CSS -->
+<link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
+
+<!-- Hexagon CSS -->
+<link href="/new/css/Hexagon.css" rel="stylesheet">
+
+
 @endsection
 
 @section('content')
@@ -38,12 +50,55 @@
                     ]
                 }
             });
+
         });
     </script>
 @endsection
 
 
 @section('scripts')
+
+    <script>
+
+        //Smooth Scroll from scholarship creation STEPS
+        $('a[href*="#"]')
+                // Remove links that don't actually link to anything
+                .not('[href="#"]')
+                .not('[href="#0"]')
+                .click(function(event) {
+                    // On-page links
+                    if (
+                            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                            &&
+                            location.hostname == this.hostname
+                    ) {
+                        // Figure out element to scroll to
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                        // Does a scroll target exist?
+                        if (target.length) {
+                            // Only prevent default if animation is actually gonna happen
+                            event.preventDefault();
+                            $('html, body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000, function() {
+                                // Callback after animation
+                                // Must change focus!
+                                var $target = $(target);
+                                $target.focus();
+                                if ($target.is(":focus")) { // Checking if the target was focused
+                                    return false;
+                                } else {
+                                    $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                                    $target.focus(); // Set focus again
+                                };
+                            });
+                        }
+                    }
+                });
+    </script>
+
+
     <script>
 
         ( function( factory ) {

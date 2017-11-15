@@ -250,6 +250,15 @@ echo json_encode($trans);
                 })();
         </script>
 
+
+        <script>
+            //Smooth Scroll from header seactions
+
+            // Select all links with hashes
+
+
+        </script>
+
         <script>
             var resizefunc = [];
             function changeLang(el){
