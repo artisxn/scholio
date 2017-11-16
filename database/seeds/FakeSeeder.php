@@ -1195,21 +1195,21 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             }
         }
     }
-    public function createScholarship($id, $financial_id, $financial_amount, $study_id, $level_id, $criteria_id, $winner_id, $rand = false, $multiple = false)
+    public function createScholarship($id, $financial_id, $financial_amount, $study_id, $level_id, $criteria_id, $winners, $rand = false, $multiple = false)
     {
         $scholarship = new Scholarship;
         $scholarship->school_id = $id;
         $scholarship->financial_id = $financial_id;
         $scholarship->financial_amount = $financial_amount;
         if ($multiple) {
-            $scholarship->study_id = $study_id[0];
+            $scholarship->study_id = 0;
             $scholarship->multiple = true;
         } else {
             $scholarship->study_id = $study_id;
         }
         $scholarship->level_id = $level_id;
         $scholarship->criteria_id = $criteria_id;
-        $scholarship->winner_id = $winner_id;
+        // $scholarship->winners = $winners;
         $scholarship->exam = true;
         $scholarship->exam_date = Carbon::now();
         // $scholarship->terms = $terms;
@@ -1238,14 +1238,10 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             $scholarship->save();
         }
     }
+
     public function userAppliedOnScholarship($userID, $scholarshipID)
     {
         $students = Student::all();
-
-        // foreach ($students as $student) {
-        //     factory(App\Models\Cv::class)
-        //         ->create(['user_id' => $student->user->id]);
-        // }
 
         $admission = new Admission;
         $admission->user_id = $userID;
@@ -1253,10 +1249,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $admission->save();
 
         $cv = User::find($userID)->cv;
-        // dd($cv);
-
         $admission->createWithFields($cv);
-        // $user->cv->updateIfNotExist($admission);
 
         // event(new StudentAppliedOnScholarship(auth()->user(), $scholarship));
         $user = User::find($userID);

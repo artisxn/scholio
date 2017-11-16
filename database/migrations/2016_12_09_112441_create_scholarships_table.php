@@ -22,12 +22,13 @@ class CreateScholarshipsTable extends Migration
             $table->string('level_id');
             $table->integer('criteria_id')->index();
             $table->date('end_at');
-            $table->integer('winner_id')->index()->nullable();
+            $table->integer('winners')->default(1);
             $table->text('terms')->nullable();
             $table->boolean('exam')->default(0);
             $table->date('exam_date')->nullable();
             $table->boolean('active')->default(1);
             $table->boolean('multiple')->default(0);
+            $table->integer('admissions_limit')->default(30);
             $table->timestamps();
             $table->softDeletes();
         });

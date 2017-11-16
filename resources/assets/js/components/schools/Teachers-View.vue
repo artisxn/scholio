@@ -2,10 +2,10 @@
     <div class="row">
 
         <form class="sc-radio pull-left">
-            <input id="th1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch"> <label for="th1"><div class="r-lab">{{ lang('resource.teachers.active') }} 
+            <input id="th1" type="radio" name="status" value="connectedTeachers" v-model="status" @click.prevent="fetch"> <label for="th1"><div class="r-lab">{{ lang('resource.teachers.active') }} 
                 <span class="pull-right" style=""> {{ connectedTeachers }} </span>
             </div></label> <br>
-            <input id="th2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch">
+            <input id="th2" type="radio" name="status" value="allumniTeachers" v-model="status" @click.prevent="fetch">
             <label for="th2">
                 <div class="r-lab">{{ lang('resource.teachers.nonactive') }}
                     <span class="pull-right" style=""> {{ allumniTeachers }} </span>
@@ -48,6 +48,19 @@
 
                 <!--<div class='wave'></div>-->
                 <div class="sc-bottom2">
+                    <form class="sc-radio2 pull-right" v-on:change="changeStatus(teacher.id)">
+                        <input v-model="status" :id="'st' + teacher.id" type="radio" :name="'studentStatus' + teacher.id" value="connected">
+
+                        <label :for="'st' + teacher.id"><div class="r-lab">{{ lang('resource.teachers.active') }}</div>
+                        </label>
+                        <br>
+                        <input v-model="status" :id="'stt' + teacher.id" type="radio" :name="'teacherStatus' + teacher.id" value="allumni">
+
+                        <label :for="'stt' + teacher.id">
+                            <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
+                        </label>
+                        <br>
+                    </form>
                     <div class="phone2">
                         <a :href="'tel:'+teacher.teacher.phone"><div class="circle2"></div> <span class="phone2-text"><i class="fa fa-phone"></i> {{teacher.teacher.phone}}</span></a>
                     </div>
@@ -351,6 +364,7 @@
                 this.items=st1;
                 return this.items
             },
+
             dynamicSort: function (property,order) {
                 var sortOrder = 1;
                 if (order) {sortOrder = -1}
@@ -388,7 +402,6 @@
             refresh({data}) {
                 this.dataSet = data;
                 this.items = data.data;
-                console.log(this.items)
                 this.allumniCount = this.items.allumniTeachers
                 this.connectedCount = this.items.connectedTeachers
             },

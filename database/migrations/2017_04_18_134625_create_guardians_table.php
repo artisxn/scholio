@@ -24,6 +24,7 @@ class CreateGuardiansTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('address')->nullable();
             $table->string('status')->default('guest');
+            $table->integer('admissions_limit')->default(10);
             $table->timestamps();
         });
     }

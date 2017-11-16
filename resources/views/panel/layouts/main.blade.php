@@ -269,6 +269,7 @@ echo json_encode($trans);
     </script>
 
 
+
         @yield('scripts')
     </body>
 </html>

@@ -86,6 +86,9 @@
                                                 <span v-if="sortType == 'admissions_length' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
+                                            <th>
+                                                Admission Limit
+                                            </th>
                                             <!-- <th>Νικητής</th> -->
                                             <th></th>
                                         </tr>
@@ -139,9 +142,13 @@
                                             </td>
                                             <td class="hidden-lgm" style=""> <div class="dots-text dots-md"> {{ scholarship.end_at }}</div></td>
                                             <td class="hidden-xxxs"> <div class="dots-text dots-sm"> {{ scholarship.admissions_length}} </div></td>
+                                            <td>
+                                                {{ scholarship.admissions_limit }}
+                                            </td>
                                             <!-- <td>{{ scholarship.winner_id }}</td> -->
                                             <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
                                             <!--<td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>-->
+                                            
                                         </tr>
                                     </tbody>
                                 </table>
@@ -528,6 +535,7 @@ import Chart from '../../VueChart.vue'
                 this.dataSet = data;
                 this.items = data.data;
                 this.scholarships = this.items
+                console.log(this.scholarships)
                 var parent = this
                 this.scholarships.forEach(function(i){
                     if(i.admissions_length > 0){

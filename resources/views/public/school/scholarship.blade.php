@@ -270,7 +270,8 @@
 
 
 
-    <div class="Hero1"> @lang('scholarship_view.top.title'): </div>
+    <div class="Hero1"> @lang('scholarship_view.top.title'): <span>ΟΡΙΟ - {{auth()->user()->info->admissions_limit}}</span></div>
+
     <div class="Hero2"> <a class="school-title" href="/public/profile/{{ $scholarship->school->id}}" target="_blank">{{ $scholarship->school->name() }}</a></div>
 </div>
 <div class="line {{ $scholarship->active ? '' : 'opacity04'}}"></div>
@@ -307,21 +308,18 @@
         <div class="col-md-4 col-sm-6 col-xs-12 col-lg-5 ">
             {{--col-lg-offset-1--}}
             <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6">
-                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
+                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>Υπολ Αιτήσεων:</div>
                 <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
             </span>
             <span class=" col-xxxs-5 col-xs-4 col-sm-5 col-md-5col-lg-4 align-right" >
-                <div class="" >
-                    @if($scholarship->exam)
-                        @lang('scholarship_view.yes')
-                    @else
-                        @lang('scholarship_view.no')
-                    @endif
-
-                </div>
-                <div class="margin-top-10">
-                    @{{scholarship.exams}}
-                </div>
+                <div class="">
+                            {{ $scholarship->admissions_limit }}
+                        </div>
+                        @if($scholarship->exam)
+                            <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
+                        @else
+                            _
+                        @endif
             </span>
 
         </div>
@@ -389,7 +387,12 @@
                         </a>
                     </span>
                     @if(!auth()->user()->checkAdmission($scholarship))
-                        <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
+                        @if($scholarship->admissions_limit > 0 && auth()->user()->info->admissions_limit > 0)
+                            <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
+                        @else
+                            <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> ΤΕΛΟΣ </button></a>
+                        @endif
+
                     @else
                         <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_past') </button></a>
                     @endif

@@ -9,6 +9,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admission extends Model
 {
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        Admission::saving(function ($admission) {
+            $scholarship = Scholarship::find($admission->scholarship_id);
+            $user = User::find($admission->user_id);
+            if ($scholarship->admissions_limit > 0 && $user->info->admissions_limit > 0) {
+                parent::boot();
+                $scholarship->admissions_limit--;
+                $scholarship->save();
+
+                $user->info->admissions_limit--;
+                $user->info->save();
+            } else {
+                return "ERROR";
+            }
+        });
+    }
+
     public function scholarship()
     {
         return $this->belongsTo(Scholarship::class, 'scholarship_id');

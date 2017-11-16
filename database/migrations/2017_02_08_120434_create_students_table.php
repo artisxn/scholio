@@ -18,14 +18,9 @@ class CreateStudentsTable extends Migration
             $table->integer('user_id')->index();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
-            // $table->bigInteger('phone')->nullable();
-            // $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();
-            // $table->string('address')->nullable();
-            // $table->string('city')->nullable();
-            // $table->string('lat')->nullable();
-            // $table->string('lng')->nullable();
+            $table->integer('admissions_limit')->default(10);
             $table->string('status')->default('guest');
             $table->timestamps();
         });

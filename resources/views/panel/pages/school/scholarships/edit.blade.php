@@ -180,10 +180,18 @@
 
                 <div class="col-xs-12 scholar-header">
                     {{--<div class="scholar-name">{{ $scholarship->study->section[0]->name }}</div>--}}
-                    <div class="scholar-name">  {{ $scholarship->study->name }}</div>
-                    <div class="level-name">{{ $scholarship->study->section[0]->level->name }}</div>
+                    <div class="scholar-name">
+                        @if($scholarship->multiple)
+                            @foreach($scholarship->multipleStudies as $study)
+                                <li>{{ $study->name }}</li>
+                            @endforeach
+                        @else
+                            {{ $scholarship->study->name }}
+                        @endif
+                    </div>
+                    <div class="level-name">{{ $scholarship->study->section[0]->level->name ?? $scholarship->multipleStudies[0]->section[0]->level->name }}</div>
                     <div class="img-container">
-                        <img class="section-image hor-vert-center" src="/panel/assets/images/steps/{{ $scholarship->study->section[0]->name }}.png" alt="">
+                        <img class="section-image hor-vert-center" src="/panel/assets/images/steps/{{ $scholarship->study->section[0]->name ?? 'studies' }}.png" alt="">
                     </div>
                     <img class="trophy-image hidden-xxxs" src="/new/img/trophy5white.png" alt="">
                 </div>
@@ -218,18 +226,18 @@
 
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-4">
                     <span class="col-lg-7">
-                        <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
+                        <div class="">  <i class="fa fa-user-o margin-right-10"></i>Υπολ αιτήσεων:</div>
                         <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
                     </span>
                     <span class="col-lg-5 text-right">
                         <div class="">
-                            @if($scholarship->exams)
-                            NAI
-                            @else
-                            OXI
-                            @endif
+                            {{ $scholarship->admissions_limit }}
                         </div>
-                        <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
+                        @if($scholarship->exam)
+                            <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
+                        @else
+                            _
+                        @endif
                     </span>
                 </div>
 
@@ -310,7 +318,7 @@
 
               <form method="POST" action="/scholarship/{{$scholarship->id}}/end">
                   @if($scholarship->active)
-                <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Επιλογή Νικητών Υποτροφίας</div>
+                <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Επιλογή Νικητών Υποτροφίας - {{ $scholarship->winners }}</div>
                   @else
                       <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Νικητές Υποτροφίας</div>
                   @endif
@@ -320,7 +328,7 @@
                         <div class=" col-xxxs-12 col-xs-6 col-lg-4">
                             <img class="avatar-img" src="{{ $admission->user->info->avatar }}" width="20px">
                             @if($scholarship->active)
-                                <input type="checkbox" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
+                                <input class="winners-checkbox" type="checkbox" name="winner" value="User"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
                             @else
                                 <input type="checkbox" onclick="return false;" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
                             @endif
@@ -373,4 +381,16 @@
         </div>
     @endif
 
+@endsection
+
+@section('scripts')
+<script>
+    var limit = {{ $scholarship->winners }};
+
+    $('input.winners-checkbox').on('change', function(evt) {
+       if( $('.winners-checkbox:checked').length >= limit+1) {
+           this.checked = false;
+       }
+    });
+</script>
 @endsection
