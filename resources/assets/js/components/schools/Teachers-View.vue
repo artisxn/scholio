@@ -49,12 +49,12 @@
                 <!--<div class='wave'></div>-->
                 <div class="sc-bottom2">
                     <form class="sc-radio2 pull-right" v-on:change="changeStatus(teacher.id)">
-                        <input v-model="status" :id="'st' + teacher.id" type="radio" :name="'studentStatus' + teacher.id" value="connected">
+                        <input v-model="status" :id="'st' + teacher.id" type="radio" :name="'studentStatus' + teacher.id" value="connectedTeachers">
 
                         <label :for="'st' + teacher.id"><div class="r-lab">{{ lang('resource.teachers.active') }}</div>
                         </label>
                         <br>
-                        <input v-model="status" :id="'stt' + teacher.id" type="radio" :name="'teacherStatus' + teacher.id" value="allumni">
+                        <input v-model="status" :id="'stt' + teacher.id" type="radio" :name="'teacherStatus' + teacher.id" value="allumniTeachers">
 
                         <label :for="'stt' + teacher.id">
                             <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
@@ -335,16 +335,16 @@
         methods: {
             changeStatus: function(id, st){
                 var status = '';
-                if(document.getElementById('st'+id).checked) status = 'connectedTeachers';
-                else status = 'allumniTeachers';
+                if(document.getElementById('st'+id).checked) status = 'connected';
+                else status = 'allumni';
                 axios.post('/api/school/changeTeacherStatus/' + id + '/' + status)
                     .then(response => {
                         if(response.data == 'ok'){
                             this.fetch()
                         } 
                     })
-
-                    this.status = status
+                    if(status=='connected') this.status = 'connectedTeachers'
+                    else this.status = 'allumniTeachers'
             },
             nameChangeSort: function(){
                 this.sortType = 'name';

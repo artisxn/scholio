@@ -23,7 +23,7 @@ return [
         'teachers' => 'Teachers',
         'studies' => 'Available Studies',
         'students' => 'Students',
-        'students_s' => 'Μαθητές',
+        'students_s' => 'Students',
     ],
     'request' => 'Connection Request',
     'pending' => 'Pending Request',
@@ -38,6 +38,10 @@ return [
         'requested' => 'Admissions',
         'like' => 'I am Interested',
         'show' => 'Show',
+        'button' => [
+            'like' => 'I am Interested',
+            'interested' => 'Interested',
+        ],
     ],
     'modal' => [
         'message' => 'By connecting with the institution, you will be able to write a review.',

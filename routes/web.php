@@ -22,11 +22,10 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
-Route::get('/qqqs/', function () {
-    $admission = new Admission;
-    $admission->user_id = 30;
-    $admission->scholarship_id = 1;
-    $admission->save();
+Route::get('/qqqs', function () {
+    $scholarship = Scholarship::find(1);
+
+    return $scholarship->multipleStudies()->toggle(2);
 });
 
 Route::get('/ttts', function () {

@@ -6,7 +6,7 @@ return [
      */
     'perPage' => [
         'students' => 12,
-        'teachers' => 3,
+        'teachers' => 6,
         'scholarships' => 8,
         'reviews' => 6,
     ],

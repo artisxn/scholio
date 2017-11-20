@@ -714,9 +714,19 @@
                                                 <div class="scholar-left xxs-text" style="padding-top: 40px;"ng-if="contactInfo.type_id==1 || contactInfo.type_id==3" >@{{scholarship.level.name}}</div>
                                                 <div class="margin-top-50 scholar-left xxs-text"  ng-if="contactInfo.type_id==2">@{{scholarship.section[0].name}}</div>
                                                 <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
-                                                     ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),
-                                                                                          'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }">
-                                                    @{{scholarship.study.name}}</div>
+                                                     ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }" ng-if="scholarship.multiple == 0">
+                                                    @{{scholarship.study.name}}
+                                                </div>
+                                                <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
+                                                     ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }" ng-if="scholarship.multiple == 1">
+                                                   <div ng-repeat="st in scholarship.multipleStudies" ng-if="scholarship.multipleStudies.length < 3">
+                                                       @{{ st.name }}
+                                                   </div>
+
+                                                   <div ng-if="scholarship.multipleStudies.length > 2">
+                                                       Πολλαπλα αντικείμενα σπουδών: @{{ scholarship.multipleStudies.length }}
+                                                   </div>
+                                                </div>
 
                                                 <div>
                                                     <img  ng-if="scholarship.financial_id==1" style="height: 34px; top: -6px; left: 5px;" class="hex1-img"
@@ -727,7 +737,13 @@
                                                           ng-src="/panel/assets/images/steps/step1-clock2.png">
                                                 </div>
 
-                                                <img class="hex2-img" ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
+                                                <img ng-if="scholarship.multiple == 0" class="hex2-img" ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
+
+                                                <img ng-if="scholarship.multiple == 1 && multipleSectionsSelected[scholarship.id]" class="hex2-img" ng-src="/panel/assets/images/steps/studies.png">
+
+                                                <img ng-if="scholarship.multiple == 1 && !multipleSectionsSelected[scholarship.id]" class="hex2-img" ng-src="@{{scholarship.section[0]}}">
+
+
                                             </div>
 
                                             <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
@@ -1190,6 +1206,11 @@
 
                 }
 
+                $scope.uniqueArray = function(arr){
+                    console.log(arr)
+                    return !!arr.reduce(function(a, b){ return (a === b) ? a : NaN; });
+                }
+
                 $scope.rate = function(id, stars){
                     setTimeout(function() {
                         $('#totalRating-' +id).raty({
@@ -1206,7 +1227,7 @@
                     setTimeout(function() {
                         if(scholarship.userInterested){
                         $('#i'+ scholarship.id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
-                        $('#t'+ scholarship.id).text('@lang('profile.scholarship.like')')
+                        $('#t'+ scholarship.id).text('@lang('profile.scholarship.button.like')')
                         $('#b'+ scholarship.id).css("background-color", "#ccc");
                         }
                      }, 30);
@@ -1231,7 +1252,6 @@
                 }
 
                 $scope.init = function () {
-
                     $scope.trustAsHtml = $sce.trustAsHtml;
                     $scope.message = null;
                     $scope.scholarship = ['sd'];
@@ -1253,22 +1273,36 @@
                         $scope.contactInfo=data;
                         window.totalStars = data.stars
                         $scope.ratings();
-                        console.log(data);
                         $scope.studies = data.levels;
                         $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);
-                        console.timeEnd('contactInfo API');
-                        if( $scope.studies.length){
-                            $scope.initial();
-                        }
+
+                        if( $scope.studies.length) $scope.initial();
+
                         var type=data.type_id
-                        if (type==1 || type==2 || type==4 || type==10 || type==11)
-                        {$scope.col_iek_eng_dan_mus  = true}
-                        console.log('SchoolTypeId= '+data.type_id)
-//                        console.timeEnd('contactInfo API');
+                        if (type==1 || type==2 || type==4 || type==10 || type==11) $scope.col_iek_eng_dan_mus  = true
+
+                        $scope.multipleSectionsSelected = {};
+                        $scope.mStudies = { };
+                       var multipleStudies = []
+
+                        data.scholarship.forEach(function(item){
+                                item.multipleStudies.forEach(function(st){
+                                    multipleStudies.push(st.section[0].id)
+                                    $scope.mStudies[item.id] = multipleStudies
+                                    $scope.multipleSectionsSelected[item.id] = !$scope.uniqueArray(multipleStudies)
+                                })
+                                multipleStudies = []
+                        })
 
 
 
-                                });
+                        console.log('ms')
+                        console.log($scope.mStudies)
+
+
+                            });
+
+
                     $scope.interestedCheck = function(id){
                         $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
                                     headers: {
@@ -1279,10 +1313,10 @@
                                 .success(function(data)   {
                                     console.log(data);
                                     if(data == 'YES'){
-                                        $('#t'+ id).text("@lang('profile.scholarship.interested')")
+                                        $('#t'+ id).text("@lang('profile.scholarship.button.interested')")
                                         $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
                                     }else{
-                                        $('#t'+ id).text("@lang('profile.scholarship.like')")
+                                        $('#t'+ id).text("@lang('profile.scholarship.button.like')")
                                         $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
                                         $('#b'+ id).style.backgroundColor='#ccc'
                                     }
@@ -1380,12 +1414,12 @@
                                 if(data == 'YES'){
                                     $scope.contactInfo.scholarship[index].interests++;
                                     $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
-                                    $('#t'+ id).text("@lang('profile.scholarship.like')")
+                                    $('#t'+ id).text("@lang('profile.scholarship.button.like')")
                                     $('#b'+ id).css("background-color", "#ccc");
                                 }else{
                                     $scope.contactInfo.scholarship[index].interests--;
                                     $('#i'+ id).toggleClass('fa-thumbs-o-up fa-thumbs-up');
-                                    $('#t'+ id).text("@lang('profile.scholarship.interested')")
+                                    $('#t'+ id).text("@lang('profile.scholarship.button.interested')")
                                     $('#b'+ id).css("background-color", "#008da5");
                                 }
                             });

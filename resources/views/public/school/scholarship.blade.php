@@ -270,7 +270,7 @@
 
 
 
-    <div class="Hero1"> @lang('scholarship_view.top.title'): <span>ΟΡΙΟ - {{auth()->user()->info->admissions_limit}}</span></div>
+    <div class="Hero1"> @lang('scholarship_view.top.title'):</div>
 
     <div class="Hero2"> <a class="school-title" href="/public/profile/{{ $scholarship->school->id}}" target="_blank">{{ $scholarship->school->name() }}</a></div>
 </div>
@@ -422,7 +422,11 @@
     <div class="scholar-box">
         <div class="centered-text hex-box-left">
                 <img class="hex" src="/new/img/hex01.png" alt="">
-                <img class="hex-in" style="margin-top: -110px;"  src="/panel/assets/images/steps/{{$scholarship->study->section[0]->name}}.png" alt="">
+                @if(!$scholarship->multiple)
+                    <img class="hex-in" style="margin-top: -110px;" src="/panel/assets/images/steps/{{$scholarship->study->section[0]->name}}.png" alt="">
+                @else
+                    <img class="hex-in" style="margin-top: -110px;" src="{{ $scholarship->sectionIcon }}" alt="">
+                @endif
         </div>
         <div class="xs-hex-box-left">
             <img class="hex-in-xs" src="/new/img/hex01upb.png" alt="">
@@ -433,18 +437,31 @@
                 @lang('scholarship_view.cards.study')
                 <br>
                 @if($scholarship->multiple)
+                 @if(count($scholarship->multipleStudies) < 3)
                 <ul>
                     @foreach($scholarship->multipleStudies as $study)
                         <li>{{$study->name}}</li>
                     @endforeach
                 </ul>
+                    @else
+                        ΠΟΛΛΑΠΛΕΣ ΣΠΟΥΔΕΣ: {{count($scholarship->multipleStudies)}}
+                        @endif
                 @else
                     {{ $scholarship->study->name}}
                 @endif
             </div>
             <div class="text">
-                @lang('scholarship_view.cards.study_message1') {{ $scholarship->level->name }}  @lang('scholarship_view.cards.study_message2')
-                  {{ $scholarship->study->name}} .
+                @lang('scholarship_view.cards.study_message1') {{ $scholarship->level->name }}
+                @if(!$scholarship->multiple)
+                    @lang('scholarship_view.cards.study_message2')
+                  {{ $scholarship->study->name}}.
+                @else
+                 με ειδικοτητες
+                {{-- @lang('scholarship_view.cards.study_message2') --}}
+                    @foreach($scholarship->multipleStudies as $key => $study)
+                        {{$key + 1}}) {{$study->name}},
+                    @endforeach
+              @endif
             </div>
         </div>
     </div>

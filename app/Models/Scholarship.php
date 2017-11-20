@@ -14,10 +14,28 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Scholio\PivotTrait;
+
+
 class Scholarship extends Model
 {
     // use Searchable;
     use SoftDeletes;
+    use PivotTrait;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::pivotAttaching(function ($model, $relationName, $pivotIds) {
+            dd($model->id);
+        });
+        
+        static::pivotDetaching(function ($model, $relationName, $pivotIds) {
+            dd('pivotDetaching');
+        });
+    }
 
     /**
      * Get the index name for the model.

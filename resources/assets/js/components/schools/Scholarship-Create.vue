@@ -5,8 +5,8 @@
             <ul class="nav-list">
                 <a class="step-anchor" href="#step1"><li class="step-li"> 1.Κριτήρια</li></a>
                 <a class="step-anchor" href="#step2"><li class="step-li" :class="[{'low-opacity': financial_disabled}]"> 2.Οικονομικά</li></a>
-                <a class="step-anchor" href="#step3"><li class="step-li"  :class="[{'low-opacity': levels_disabled}]"> 3.Σπουδές</li></a>
-                <a class="step-anchor" href="#step4"><li class="step-li"  :class="[{'low-opacity': terms_disabled}]"> 4.Όροι</li></a>
+                <a class="step-anchor" href="#step3" v-show="!financial_disabled"><li class="step-li"  :class="[{'low-opacity': levels_disabled}]"> 3.Σπουδές</li></a>
+                <a class="step-anchor" href="#step4" v-show="!levels_disabled"><li class="step-li"  :class="[{'low-opacity': terms_disabled}]"> 4.Όροι</li></a>
             </ul>
         </div>
 
@@ -27,7 +27,7 @@
                     <div class="ribbon-edge-bottomright"></div>
                     <div class="ribbon-back-right sc-medium-grey"></div>
                 </div>
-                <div class="hexagon hex1" v-if="financial_value && financial_amount">
+                <div class="hexagon hex1" v-if="financial_value && financial_amount > 0">
                     <img v-if="" style="" class="hex1-img" :src="financial_value.icon">
                 </div>
                 <div class="hexagon hex2" v-if="study_value && study_value.length > 0">
@@ -35,7 +35,7 @@
                     <img class="hex2-img" src="/panel/assets/images/steps/studies.png"  v-else>
                 </div>
 
-                <div class="scholar-content  font-weight-400" v-if="financial_value && financial_amount">
+                <div class="scholar-content  font-weight-400" v-if="financial_value && financial_amount > 0">
                     <p class="">{{ financial_value.name }} {{ financial_amount}} {{ financial_value.metric }}</p>
 
                     <div style="margin-top: 45px; " v-if="study_value && study_value.length > 0">
@@ -215,12 +215,6 @@
 
                 </div>
 
-
-
-
-
-
-
             </div>
 
 
@@ -228,7 +222,7 @@
 
 
 
-        <div id="step4" class="step4" :class="[{'low-opacity': levels_disabled}]" v-if="">
+        <div id="step4" class="step4" :class="[{'low-opacity': terms_disabled}]" v-if="">
             <div>
                 <div class="step-title">Βημά 4ο: Περιγράψτε τους Όρους Συμμετοχής</div>
                 <div class="row">
@@ -314,9 +308,6 @@
 </template>
 
 <style>
-
-
-
     .fixed-nav-container{ z-index: 20;
         height: 70px; background-color: #fafafa;
         border-radius:6px;  border: 1px solid #bbb; box-shadow: 0 0 12px 1px #bbb;
@@ -350,7 +341,7 @@
     .financial-amount{width: 130px; }
     .financial-text{max-width: 520px;  padding-top: 1px; padding-bottom: 90px;}
 
-    .financial_value_input{ position: absolute; left: 370px; z-index: 0; width: 150px;}
+    .financial_value_input{ position: absolute; left: 370px; z-index: 2; width: 150px;}
 
 
     #step1,#step2,#step3,#step4,.scholarship-info{ width: -webkit-calc(100% - 430px);}
@@ -778,21 +769,21 @@
             tinyMCE: function() {
 
             },
+
             getTags: function(){
                 axios.get('/api/hashtag/all').then(response => {
                     this.options = response.data
                     this.options.forEach(function(item){
                         item.code = item.slag
                     });
-                    console.log(this.options)
                 });
             },
+
             addTag: function(newTag) {
                 const tag = {
                   name: newTag,
                   code: newTag
                 }
-                console.log(newTag)
                 this.options.push(tag)
                 this.value.push(tag)
             },
@@ -821,6 +812,7 @@
                 axios.post('/api/school/scholarshipSave', {
                                 'financial': this.financial_value.id,
                                 'financial_amount': this.financial_amount,
+                                'level': this.level_value,
                                 'studies': this.study_value,
                                 'criteria': this.criteria_value.id,
                                 'end_at': this.end_at,
@@ -831,7 +823,7 @@
                                 'winners': this.winners
                             }).then(({data})=>{
                                 console.log(data)
-                                if(data.message == 'OK') window.location = data.url
+                                if(data.message == 'SAVED SUCCESSFULLY') window.location = data.url
                             })
             }
         },
@@ -847,7 +839,16 @@
             },
 
             financial_value(){
-                if(this.financial_value){
+                if(this.financial_value && this.financial_amount > 0){
+                    this.levels_disabled = false
+                }else{
+                    this.level_value = null
+                    this.levels_disabled = true
+                }
+            },
+
+            financial_amount(){
+                if(this.financial_value && this.financial_amount > 0){
                     this.levels_disabled = false
                 }else{
                     this.level_value = null
@@ -879,7 +880,6 @@
             },
 
             study_value(){
-                console.log(this.study_value)
                 var parent = this
                 if(this.study_value){
                     parent.testStudy = []
@@ -889,6 +889,9 @@
                 }
                 if(this.testStudy && this.testStudy.length > 1) this.multipleSectionsSelected = !this.uniqueArray(parent.testStudy)
                 else this.multipleSectionsSelected = false
+
+                if(this.study_value && this.study_value.length > 0) this.terms_disabled = false 
+                else this.terms_disabled = true
             }
         },
 

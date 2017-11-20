@@ -201,13 +201,13 @@ class ApiController extends Controller
         $ints = [];
 
         foreach ($school->scholarship as $scholarship) {
-
             $scholarship->level = $scholarship->level;
-            $scholarship->section = $scholarship->study->section;
+            // $scholarship->section = $scholarship->study->section;
             $scholarship->criteria = $scholarship->criteria->name;
             $scholarship->financial = $scholarship->financial->plan;
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
+            $scholarship->multipleStudies = $scholarship->multipleStudies;
             if (request()->cookie('lang') == 'en') {
                 $scholarship->criteria = $scholarship->criteriaEN->name;
                 $scholarship->financial = $scholarship->financialEN->plan;
@@ -219,6 +219,16 @@ class ApiController extends Controller
                 if ($student->interested->contains($scholarship)) {
                     array_push($ints, $scholarship->id);
                 }
+            }
+
+            if ($scholarship->multiple) {
+                $arr = [];
+                foreach ($scholarship->multipleStudies as $st) {
+                    array_push($arr, $st->section[0]->icon);
+                }
+                $scholarship->section = $arr;
+            } else {
+                $scholarship->section = $scholarship->study->section;
             }
             $scholarship->studentInterests = $ints;
 
@@ -257,12 +267,21 @@ class ApiController extends Controller
 
         foreach ($school->scholarship as $scholarship) {
             $scholarship->level = $scholarship->level;
-            $scholarship->section = $scholarship->study->section;
             $scholarship->criteria = $scholarship->criteria->name;
             $scholarship->financial = $scholarship->financial->plan;
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
             $scholarship->userInterested = auth()->user()->interestedIn($scholarship->id);
+            $scholarship->multipleStudies = $scholarship->multipleStudies;
+            if ($scholarship->multiple) {
+                $arr = [];
+                foreach ($scholarship->multipleStudies as $st) {
+                    array_push($arr, $st->section[0]->icon);
+                }
+                $scholarship->section = $arr;
+            } else {
+                $scholarship->section = $scholarship->study->section;
+            }
 
             if (auth()->check()) {
                 $ints = ['sd'];
@@ -339,7 +358,7 @@ class ApiController extends Controller
 
     public function interestedSave()
     {
-        $student = User::find(auth()->user()->id);
+        $student = auth()->user();
         $scholarship = Scholarship::find(request()->scholarship);
         $student->interested()->toggle($scholarship);
 
@@ -347,7 +366,7 @@ class ApiController extends Controller
             return 'YES';
         }
 
-        Scholio::updateDummy($scholarship->school);
+        // Scholio::updateDummy($scholarship->school);
 
         return 'NO';
     }
