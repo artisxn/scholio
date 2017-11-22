@@ -9,14 +9,12 @@ use App\Models\Level;
 use App\Models\School;
 use App\Models\Study;
 use App\Models\Tag;
+use App\ScholarshipLimit;
+use App\Scholio\PivotTrait;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-use Illuminate\Database\Eloquent\Relations\Pivot;
-use App\Scholio\PivotTrait;
-
 
 class Scholarship extends Model
 {
@@ -26,12 +24,19 @@ class Scholarship extends Model
 
     public static function boot()
     {
+        static::saving(function ($model) {
+            $scholarshipLimit = ScholarshipLimit::where('school_id', $model->school_id)->first();
+            $property = 'cr' . $model->criteria_id;
+            $scholarshipLimit->{$property}--;
+            $scholarshipLimit->save();
+        });
+
         parent::boot();
 
         static::pivotAttaching(function ($model, $relationName, $pivotIds) {
             // dd($model->id);
         });
-        
+
         static::pivotDetaching(function ($model, $relationName, $pivotIds) {
             // dd('pivotDetaching');
         });

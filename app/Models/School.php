@@ -9,6 +9,7 @@ use App\Models\Scholarship;
 use App\Models\SchoolTypes;
 use App\Models\SchoolTypesEn;
 use App\Models\Study;
+use App\ScholarshipLimit;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
@@ -532,5 +533,15 @@ class School extends Model
         }
 
         return collect($data);
+    }
+
+    public function scholarshipLimits()
+    {
+        return $this->hasOne(ScholarshipLimit::class, 'school_id');
+    }
+
+    public function allScholarshipLimits()
+    {
+        return $this->scholarshipLimits->cr1 + $this->scholarshipLimits->cr2 + $this->scholarshipLimits->cr3 + $this->scholarshipLimits->cr4 + $this->scholarshipLimits->cr5;
     }
 }

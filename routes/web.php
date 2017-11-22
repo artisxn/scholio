@@ -22,6 +22,12 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
+Route::get('/aaas', function () {
+    $s = Scholarship::find(1);
+    $s->level = 3;
+    $s->save();
+});
+
 Route::get('/fake/login', function () {
     $oldUser = null;
     if (auth()->check()) {

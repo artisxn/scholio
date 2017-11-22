@@ -21,7 +21,7 @@
 
                         <img class="criteria-img" :src="criteria_value.icon" alt="" v-if="">
                     </span>
-                        <span class="sc-t-dark-green font-weight-400 scholar-title margin-left-10">{{ criteria_value.name}}</span>
+                        <span class="sc-t-dark-green font-weight-400 scholar-title margin-left-10">{{criteria_value.name}}</span>
                     </div>
                     <div class="ribbon-edge-topright"></div>
                     <div class="ribbon-edge-bottomright"></div>
@@ -79,7 +79,8 @@
                         <multiselect
                                 v-model="criteria_value"
                                 :options="criteria_options"
-                                track-by="name" label="name"
+                                track-by="name" 
+                                label="name"
                                 :searchable="false"
                                 :close-on-select="true"
                                 :show-labels="false"
@@ -87,7 +88,16 @@
                                 :deselectLabel="lang('panel_studies.input-delete')"
                                 :selectLabel="lang('panel_scholarships.create.select')"
                                 :selectedLabel="lang('panel_scholarships.create.selected')"
-                                :disabled="criteria_disabled">
+                                :disabled="criteria_disabled"
+                                :custom-label="customLabel">
+
+                                <template slot="option" scope="props">
+                                    <div class="option__desc">
+                                        <img :src="props.option.icon" height="15px">
+                                        <span class="option__title">{{ props.option.name }}</span>
+                                        <span class="option__small" style="float: right; color: #999;">{{ props.option.limit }} διαθέσιμες</span>
+                                    </div>
+                                </template>
                         </multiselect>
                     </div>
 
@@ -808,6 +818,25 @@
                 this.today=today
             },
 
+            getLimits(){
+                var parent = this
+                var i=1
+                axios.get('/api/getScholarshipLimits').then(({data})=>{
+                    parent.criteria_options.forEach((item)=>{
+                        console.log(data['cr'+i])
+                        item.limit = data['cr'+i]
+                        if(item.limit < 50){
+                            item.$isDisabled = true
+                        }
+                        i++
+                    })
+                })
+            },
+
+            customLabel ({ name, limit }) {
+              return `${name}`
+            },
+
             saveScholarship(){
                 axios.post('/api/school/scholarshipSave', {
                                 'financial': this.financial_value.id,
@@ -899,6 +928,9 @@
             var vm = this
             this.fetchLevels()
             this.getTags()
+            this.getLimits()
+
+            setTimeout(function() {console.log(vm.criteria_options)}, 100);
 
             // Event.$on('saveScholarship', () =>
             //   this.saveScholarship()

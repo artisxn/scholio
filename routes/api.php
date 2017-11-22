@@ -13,6 +13,7 @@ use App\Models\Study;
 use App\Models\Tag;
 use App\Models\Temp;
 use App\Notifications\SchoolAcceptedUser;
+use App\ScholarshipLimit;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -25,9 +26,9 @@ Scholio::bot();
 Route::post('/school/scholarshipSave', function () {
     // return request()->studies[0];
     try {
-        $scholarship                   = new Scholarship;
-        $scholarship->school_id        = auth()->user()->info->id;
-        $scholarship->financial_id     = request()->financial;
+        $scholarship = new Scholarship;
+        $scholarship->school_id = auth()->user()->info->id;
+        $scholarship->financial_id = request()->financial;
         $scholarship->financial_amount = request()->financial_amount;
         if (count(request()->studies) == 1) {
             $scholarship->study_id = request()->studies[0]['id'];
@@ -38,21 +39,21 @@ Route::post('/school/scholarshipSave', function () {
         }
         $scholarship->level_id = request()->level['id'];
         $scholarship->criteria_id = request()->criteria;
-        $scholarship->terms       = request()->terms;
+        $scholarship->terms = request()->terms;
         if (request()->exams == 1) {
             $scholarship->exam = true;
         }
-        $scholarship->end_at =  Carbon\Carbon::createFromFormat('d-m-Y', request()->end_at);
-        
-        if(request()->allWinners){
+        $scholarship->end_at = Carbon\Carbon::createFromFormat('d-m-Y', request()->end_at);
+
+        if (request()->allWinners) {
             $scholarship->winners = 0;
-        }else{
+        } else {
             $scholarship->winners = request()->winners;
         }
         $scholarship->save();
 
-        if($scholarship->multiple){
-            foreach(request()->studies as $study){
+        if ($scholarship->multiple) {
+            foreach (request()->studies as $study) {
                 $scholarship->multipleStudies()->attach($study['id']);
             }
         }
@@ -60,7 +61,7 @@ Route::post('/school/scholarshipSave', function () {
         // Add tags
         foreach (request()->tags as $tag) {
             if (!isset($tag['id'])) {
-                $newTag       = new Tag;
+                $newTag = new Tag;
                 $newTag->name = $tag['name'];
                 $newTag->slag = $tag['name'];
                 $newTag->save();
@@ -70,7 +71,7 @@ Route::post('/school/scholarshipSave', function () {
             }
         }
 
-    $data = ['message' => 'SAVED SUCCESSFULLY', 'url' => '/panel/school/scholarship/'.$scholarship->id];
+        $data = ['message' => 'SAVED SUCCESSFULLY', 'url' => '/panel/school/scholarship/' . $scholarship->id];
         // Scholio::updateDummy($scholarship->school);
         // Scholio::dummyScholarshipCreate($scholarship);
     } catch (\Exception $e) {
@@ -91,8 +92,8 @@ Route::get('/school/getLevels', function () {
 })->middleware('auth:api');
 
 Route::get('/school/getStudiesGroupedFromLevel/{level}', function ($level) {
-    $school  = auth()->user()->info;
-    $data    = [];
+    $school = auth()->user()->info;
+    $data = [];
     $studies = [];
 
     foreach ($school->section($level) as $section) {
@@ -112,8 +113,14 @@ Route::get('/school/studiesCount', function () {
     return count($school->study);
 })->middleware('auth:api');
 
+Route::get('/getScholarshipLimits', function () {
+    $school = auth()->user()->info;
+    $scholarshipLimits = ScholarshipLimit::where('school_id', $school->id)->first();
+    return $scholarshipLimits;
+})->middleware('auth:api');
+
 Route::get('/school/getCheckedStudiesFromSection/{section}', function ($section) {
-    $school  = auth()->user()->info;
+    $school = auth()->user()->info;
     $studies = [];
 
     foreach ($school->studyFromSection($section) as $study) {
@@ -126,7 +133,7 @@ Route::get('/school/getCheckedStudiesFromSection/{section}', function ($section)
 
 Route::post('/school/deleteStudy', function () {
     $school = auth()->user()->info;
-    $study  = request()->study;
+    $study = request()->study;
 
     if ($school->study->contains($study)) {
         $school->study()->detach($study);
@@ -143,9 +150,9 @@ Route::post('/school/deleteAllStudies', function () {
 })->middleware('auth:api');
 
 Route::get('/school/getCurrentStudies', function () {
-    $school   = auth()->user()->info;
-    $studies  = [];
-    $data     = [];
+    $school = auth()->user()->info;
+    $studies = [];
+    $data = [];
     $sections = [];
 
     $schoolLevels = $school->levels();
@@ -167,17 +174,17 @@ Route::get('/school/getCurrentStudies', function () {
 })->middleware('auth:api');
 
 Route::post('/school/studySave', function () {
-    $school     = auth()->user()->info;
-    $level      = request()->level;
-    $section    = request()->section;
-    $studies    = request()->study;
-    $level_id   = $level['id'];
+    $school = auth()->user()->info;
+    $level = request()->level;
+    $section = request()->section;
+    $studies = request()->study;
+    $level_id = $level['id'];
     $section_id = $section['id'];
 
     if ($level['id'] == 0 || Level::find($level['id'])->school_types_id != $school->type->id) {
-        $newLevel                  = new Level;
+        $newLevel = new Level;
         $newLevel->school_types_id = $school->type->id;
-        $newLevel->name            = $level['name'];
+        $newLevel->name = $level['name'];
         $newLevel->save();
         $level_id = $newLevel->id;
     }
@@ -187,9 +194,9 @@ Route::post('/school/studySave', function () {
         if (count($s = Section::where('name', $section['name'])->get()) > 0) {
             $icon = $s[0]->icon;
         }
-        $newSection           = new Section;
+        $newSection = new Section;
         $newSection->level_id = $level_id;
-        $newSection->name     = $section['name'];
+        $newSection->name = $section['name'];
         if ($icon) {
             $newSection->icon = $icon;
         }
@@ -204,7 +211,7 @@ Route::post('/school/studySave', function () {
     foreach ($studies as $study) {
         $study_id = $study['id'];
         if ($study['id'] == 0 || $section['id'] == 0) {
-            $newStudy       = new Study;
+            $newStudy = new Study;
             $newStudy->name = $study['name'];
             $newStudy->save();
             $study_id = $newStudy->id;
@@ -247,7 +254,7 @@ Route::get('/school/getLevelsWithRelations', function () {
 
 Route::get('/school/getScholarships/{order}/{asc}/{active}/{field}', function ($order, $asc, $active, $field) {
     $school = auth()->user()->info;
-    $sort   = 'asc';
+    $sort = 'asc';
     if ($asc == 'true') {
         $sort = 'desc';
     }
@@ -307,7 +314,7 @@ Route::get('/school/getScholarships/{order}/{asc}/{active}/{field}', function ($
     $perPage = config('scholio.perPage.scholarships');
     // $items = $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
     $items = $scholarships;
-    $page  = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
 
     $paginatedData = [];
@@ -318,7 +325,7 @@ Route::get('/school/getScholarships/{order}/{asc}/{active}/{field}', function ($
 
     $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
     $custom = collect(['active' => $active, 'deactive' => $deactive, 'school_type' => $school->type->id]);
-    $data   = $custom->merge($result);
+    $data = $custom->merge($result);
     return $data;
 })->middleware('auth:api');
 
@@ -330,28 +337,28 @@ Route::get('/school/getAvgReviews/{role}/{status}', function ($role, $status) {
         $status = null;
     }
 
-    $school             = auth()->user()->info;
-    $data['stars']      = $school->averageStars($role, $status);
+    $school = auth()->user()->info;
+    $data['stars'] = $school->averageStars($role, $status);
     $data['avgReviews'] = $school->averageReviews($role, $status);
     return $data;
 })->middleware('auth:api');
 
 Route::get('/school/getReviews/{role}/{status}/{stars}', function ($role, $status, $stars) {
-    $school  = auth()->user()->info;
+    $school = auth()->user()->info;
     $reviews = $school->reviews()->with('user', 'category.category')->get();
 
-    $totalAllumni     = 0;
-    $totalConnected   = 0;
+    $totalAllumni = 0;
+    $totalConnected = 0;
     $connectedParents = 0;
-    $allumniParents   = 0;
-    $ratingStars      = $school->ratingStars();
+    $allumniParents = 0;
+    $ratingStars = $school->ratingStars();
 
     foreach ($reviews as $review) {
-        $user      = $review->user;
+        $user = $review->user;
         $connected = $school->connected;
-        $allumni   = $school->allumni;
+        $allumni = $school->allumni;
         $conParent = $school->connectedParents;
-        $alParent  = $school->allumniParents;
+        $alParent = $school->allumniParents;
 
         if ($connected->contains($user)) {
             $totalConnected++;
@@ -389,9 +396,9 @@ Route::get('/school/getReviews/{role}/{status}/{stars}', function ($role, $statu
     }
 
     $perPage = config('scholio.perPage.reviews');
-    $items   = $reviews;
-    $page    = $page ?? (Paginator::resolveCurrentPage() ?? 1);
-    $items   = $items instanceof Collection ? $items : Collection::make($items);
+    $items = $reviews;
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
 
     $paginatedData = [];
     foreach ($items->forPage($page, $perPage) as $key => $value) {
@@ -400,22 +407,22 @@ Route::get('/school/getReviews/{role}/{status}/{stars}', function ($role, $statu
 
     $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
     $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni, 'connectedParents' => $connectedParents, 'allumniParents' => $allumniParents, 'ratingStars' => $ratingStars]);
-    $data   = $custom->merge($result);
+    $data = $custom->merge($result);
     return $data;
 })->middleware('auth:api');
 
 Route::get('/scholarship/getFullAdmissions', function () {
-    $arr    = [];
+    $arr = [];
     $school = auth()->user()->info;
     foreach ($school->admissions() as $admission) {
         array_push($arr, [
-            'user'           => $admission->user,
-            'student'        => $admission->user->info,
-            'scholarship'    => $admission->scholarship->study->name ?? 'Multiple',
-            'tooltip'        => $admission->scholarship->multipleStudies,
+            'user' => $admission->user,
+            'student' => $admission->user->info,
+            'scholarship' => $admission->scholarship->study->name ?? 'Multiple',
+            'tooltip' => $admission->scholarship->multipleStudies,
             'scholarship_id' => $admission->scholarship->id,
-            'criteria'       => $admission->scholarship->criteria->icon,
-            'id'             => $admission->id,
+            'criteria' => $admission->scholarship->criteria->icon,
+            'id' => $admission->id,
         ]);
     }
     return $arr;
@@ -476,7 +483,7 @@ Route::get('/interested/check', 'ApiController@interestedCheck')->middleware('au
 Route::get('/school/types/all', 'ApiController@schoolTypes')->middleware('api');
 Route::get('/socialLinks/get/{user}', 'ApiController@getSocialLinks')->middleware('api');
 Route::post('/skills/set', function () {
-    $user  = User::find(request()->user);
+    $user = User::find(request()->user);
     $skill = Skill::find(request()->skill);
 
     $end = $user->toggleEndorsement($skill);
@@ -484,7 +491,7 @@ Route::post('/skills/set', function () {
 })->middleware('auth:api');
 
 Route::get('/skill/check', function () {
-    $user  = User::find(request()->user);
+    $user = User::find(request()->user);
     $skill = Skill::find(request()->skill);
 
     $end = $user->checkSkill($skill);
@@ -503,8 +510,8 @@ Route::get('/scholarship/{id}', function (Scholarship $id) {
 })->middleware('api');
 
 Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
-    $user     = auth()->user();
-    $school   = $user->info;
+    $user = auth()->user();
+    $school = $user->info;
     $students = $school->$status;
 
     $orderType = $asc == 'false' ? 'asc' : 'desc';
@@ -531,17 +538,17 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
     $perPage = config('scholio.perPage.students');
 
-    $page   = $page ?? (Paginator::resolveCurrentPage() ?? 1);
-    $items  = $items instanceof Collection ? $items : Collection::make($items);
-    $p      = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
     $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count()]);
-    $data   = $custom->merge($p);
+    $data = $custom->merge($p);
     return $data;
 })->middleware('auth:api');
 
 Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
-    $user     = auth()->user();
-    $school   = $user->info;
+    $user = auth()->user();
+    $school = $user->info;
     $teachers = $school->$status();
 
     $orderType = $asc == 'false' ? 'asc' : 'desc';
@@ -567,17 +574,17 @@ Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function
 
     $perPage = config('scholio.perPage.teachers');
 
-    $page   = $page ?? (Paginator::resolveCurrentPage() ?? 1);
-    $items  = $items instanceof Collection ? $items : Collection::make($items);
-    $p      = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
     $custom = collect(['allumniTeachers' => $school->allumniTeachers()->count(), 'connectedTeachers' => $school->connectedTeachers()->count()]);
-    $data   = $custom->merge($p);
+    $data = $custom->merge($p);
     return $data;
 })->middleware('auth:api');
 
 Route::post('/registration/social', function () {
 
-    $temp        = Temp::firstOrNew(array('name' => 'social-role'));
+    $temp = Temp::firstOrNew(array('name' => 'social-role'));
     $temp->value = request()->role;
     $temp->save();
 
@@ -589,7 +596,7 @@ Route::post('/registration/social', function () {
 })->middleware('api');
 
 Route::get('/terms/last', function () {
-    $school      = auth()->user();
+    $school = auth()->user();
     $scholarship = Scholarship::where('school_id', $school->id)->get();
     if ($scholarship->last()->terms != null) {
         return $scholarship->last()->terms;
@@ -598,7 +605,7 @@ Route::get('/terms/last', function () {
 })->middleware('auth:api');
 
 Route::post('/image/background/save', function () {
-    $school             = auth()->user()->info;
+    $school = auth()->user()->info;
     $school->background = request()->image;
     $school->save();
     Scholio::updateDummy($school);
@@ -606,8 +613,8 @@ Route::post('/image/background/save', function () {
 })->middleware('auth:api');
 
 Route::post('/school/settings', function () {
-    $school                      = auth()->user()->info;
-    $settings                    = $school->settings;
+    $school = auth()->user()->info;
+    $settings = $school->settings;
     $settings->{request()->name} = request()->section;
     $settings->save();
     return 'OK';
@@ -629,16 +636,16 @@ Route::post('/review/{school}/save', function (School $school) {
     $total = 0;
     $count = 0;
     try {
-        $newReview            = new Review;
-        $newReview->user_id   = auth()->user()->id;
+        $newReview = new Review;
+        $newReview->user_id = auth()->user()->id;
         $newReview->school_id = $school->id;
-        $newReview->text      = request()->text;
+        $newReview->text = request()->text;
         $newReview->save();
         foreach (request()->review as $review) {
-            $r              = new Category;
-            $r->review_id   = $newReview->id;
+            $r = new Category;
+            $r->review_id = $newReview->id;
             $r->category_id = $review['category'];
-            $r->stars       = $review['stars'];
+            $r->stars = $review['stars'];
             $total += $review['stars'];
             $r->save();
             $count++;
@@ -698,16 +705,16 @@ Route::get('/searchTag', function () {
 });
 
 Route::post('/school/changeStudentStatus/{id}/{status}', function ($id, $status) {
-    $school              = auth()->user()->info;
-    $line                = $school->students->where('id', $id)->first();
+    $school = auth()->user()->info;
+    $line = $school->students->where('id', $id)->first();
     $line->pivot->status = $status;
     $line->pivot->save();
     return 'ok';
 })->middleware('auth:api');
 
 Route::post('/school/changeTeacherStatus/{id}/{status}', function ($id, $status) {
-    $school              = auth()->user()->info;
-    $line                = $school->teachers->where('id', $id)->first();
+    $school = auth()->user()->info;
+    $line = $school->teachers->where('id', $id)->first();
     $line->pivot->status = $status;
     $line->pivot->save();
     return 'ok';

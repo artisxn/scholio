@@ -24,7 +24,16 @@
 @endsection
 
 @section('content')
-    <scholarships-create></scholarships-create>
+    @if(auth()->user()->info->allScholarshipLimits() != 0)
+        <scholarships-create></scholarships-create>
+    @else
+    <div>
+        ΔΕΝ ΕΧΕΙΣ ΑΛΛΕΣ
+    </div>
+        <div>
+            <button>Μεταφορα σε αγορα υποτροφίας</button>
+        </div>
+    @endif
 @endsection
 
 @section('scriptsBefore')
