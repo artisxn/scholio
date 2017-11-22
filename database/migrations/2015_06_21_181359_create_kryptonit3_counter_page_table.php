@@ -12,10 +12,10 @@ class CreateKryptonit3CounterPageTable extends Migration
      */
     public function up()
     {
-        Schema::create('kryptonit3_counter_page', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('page')->unique();
-        });
+        // Schema::create('kryptonit3_counter_page', function (Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->string('page')->unique();
+        // });
     }
 
     /**
@@ -25,6 +25,6 @@ class CreateKryptonit3CounterPageTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kryptonit3_counter_page');
+        // Schema::drop('kryptonit3_counter_page');
     }
 }

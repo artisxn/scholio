@@ -1,13 +1,14 @@
 <?php
-
-return [
-    /**
-     * Αριθμος αποτελεσματων ανα σελιδα (στο panel)
-     */
-    'perPage' => [
-        'students' => 12,
-        'teachers' => 6,
-        'scholarships' => 8,
-        'reviews' => 6,
-    ],
-];
+ return array (
+  'perPage' => 
+  array (
+    'students' => 12,
+    'teachers' => 6,
+    'scholarships' => 8,
+    'reviews' => 6,
+  ),
+  'show' => 
+  array (
+    'fakeLogin' => true,
+  ),
+) ;

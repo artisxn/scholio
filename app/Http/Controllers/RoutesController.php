@@ -20,8 +20,8 @@ class RoutesController extends Controller
 
     public function searchSchoolType()
     {
-        $schools  = School::search(request()->type)->get();
-        $studies  = Study::search(request()->type)->get();
+        $schools = School::search(request()->type)->get();
+        $studies = Study::search(request()->type)->get();
         $location = request()->location;
         return view('public.results.algolia-schools', compact('schools'));
     }
@@ -33,9 +33,9 @@ class RoutesController extends Controller
 
     public function testSchools()
     {
-        $school->lengthStudents     = $school->lengthStudents();
-        $school->lengthTeachers     = $school->lengthTeachers();
-        $school->lengthStudies      = $school->lengthStudies();
+        $school->lengthStudents = $school->lengthStudents();
+        $school->lengthTeachers = $school->lengthTeachers();
+        $school->lengthStudies = $school->lengthStudies();
         $school->lengthScholarships = $school->lengthScholarships();
 
         $data = [];
@@ -145,13 +145,13 @@ class RoutesController extends Controller
             $studentCv->avatar = request()->logo;
         }
 
-        $studentCv->fname   = request()->firstName;
-        $studentCv->lname   = request()->lastName;
-        $studentCv->gender  = request()->gender;
-        $studentCv->dob     = request()->dob;
+        $studentCv->fname = request()->firstName;
+        $studentCv->lname = request()->lastName;
+        $studentCv->gender = request()->gender;
+        $studentCv->dob = request()->dob;
         $studentCv->address = request()->student_address;
-        $studentCv->city    = request()->student_city;
-        $studentCv->phone   = request()->student_phone;
+        $studentCv->city = request()->student_city;
+        $studentCv->phone = request()->student_phone;
         $studentCv->save();
 
         return view('panel.pages.student.cv.studentCv');
@@ -166,7 +166,7 @@ class RoutesController extends Controller
 
     public function scholarship(Scholarship $scholarship)
     {
-        if($scholarship->multiple){
+        if ($scholarship->multiple) {
             $multipleSections = [];
             foreach ($scholarship->multipleStudies as $st) {
                 array_push($multipleSections, $st->section[0]->id);
@@ -207,12 +207,12 @@ class RoutesController extends Controller
 
     public function admissionSave(Scholarship $scholarship)
     {
-        $user              = auth()->user();
+        $user = auth()->user();
         $user->info->fname = request()->fname;
         $user->info->lname = request()->lname;
         $user->info->save();
-        $admission                 = new Admission;
-        $admission->user_id        = $user->id;
+        $admission = new Admission;
+        $admission->user_id = $user->id;
         $admission->scholarship_id = $scholarship->id;
         $admission->save();
 
@@ -227,7 +227,7 @@ class RoutesController extends Controller
 
     public function classShow()
     {
-        $student  = auth()->user()->info;
+        $student = auth()->user()->info;
         $lectures = $student->lecture;
         return view('panel.pages.classes.student.show', compact('lectures'));
     }
@@ -239,7 +239,7 @@ class RoutesController extends Controller
 
     public function teacherClassShow()
     {
-        $teacher  = auth()->user()->info;
+        $teacher = auth()->user()->info;
         $lectures = $teacher->lecture;
         return view('panel.pages.classes.show', compact('teacher', 'lectures'));
     }

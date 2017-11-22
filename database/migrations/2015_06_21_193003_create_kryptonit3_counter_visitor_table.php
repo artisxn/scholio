@@ -12,10 +12,10 @@ class CreateKryptonit3CounterVisitorTable extends Migration
      */
     public function up()
     {
-        Schema::create('kryptonit3_counter_visitor', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('visitor')->unique();
-        });
+        // Schema::create('kryptonit3_counter_visitor', function (Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->string('visitor')->unique();
+        // });
     }
 
     /**
@@ -25,6 +25,6 @@ class CreateKryptonit3CounterVisitorTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kryptonit3_counter_visitor');
+        // Schema::drop('kryptonit3_counter_visitor');
     }
 }

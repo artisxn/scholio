@@ -221,6 +221,23 @@
                                 <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                             </select>
                         </form>
+                        @if(config('scholio.show.fakeLogin'))
+                         <form method="GET" action="/fake/login" id="langForm" style="display: inline-block; position: absolute; top: 50px; margin-left: 110px; color: #555">
+                    <select onchange="this.form.submit()" style="border: none; background-color: transparent; margin: -15px; width: 250px;" name="userID">
+                            @foreach(App\User::all() as $key=>$user)
+                                @if(auth()->check() && auth()->user()->id == $user->id)
+                                    <option data-icon="fa" value="{{ $user->id }}" selected="selected">{{ $user->role }}-{{$user->name}} | {{ $user->id }} </option>
+                                @else
+                                @if($key == 0)
+                                <option disabled selected value> -- user -- </option>
+                                @endif
+                                    <option data-icon="fa" value="{{ $user->id }}">{{ $user->role }}-{{$user->name}} | {{ $user->id }} </option>
+                                @endif
+                            @endforeach
+                    </select>
+                </form>
+                @endif
+                    
                         </li>
 
                         <li class="langDropWhite hide">

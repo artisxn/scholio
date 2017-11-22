@@ -22,10 +22,30 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
-Route::get('/qqqs', function () {
-    $scholarship = Scholarship::find(1);
+Route::get('/fake/login', function () {
+    $oldUser = null;
+    if (auth()->check()) {
+        $oldUser = auth()->user();
+    }
 
-    return $scholarship->multipleStudies()->toggle(2);
+    $newUser = User::find(request()->userID);
+
+    auth()->loginUsingId($newUser->id);
+
+    if ($oldUser && $oldUser->role == $newUser->role) {
+        return back();
+    }
+
+    return redirect('/dashboard');
+});
+
+Route::get('/scholio/ready', function () {
+    $array = config('scholio');
+    $array['show']['fakeLogin'] = !config('scholio.show.fakeLogin');
+    $data = var_export($array, 1);
+    if (File::put(base_path() . '/config/scholio.php', "<?php\n return $data ;")) {
+        return 'ok';
+    }
 });
 
 Route::get('/ttts', function () {

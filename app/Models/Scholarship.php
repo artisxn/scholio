@@ -29,11 +29,11 @@ class Scholarship extends Model
         parent::boot();
 
         static::pivotAttaching(function ($model, $relationName, $pivotIds) {
-            dd($model->id);
+            // dd($model->id);
         });
         
         static::pivotDetaching(function ($model, $relationName, $pivotIds) {
-            dd('pivotDetaching');
+            // dd('pivotDetaching');
         });
     }
 
