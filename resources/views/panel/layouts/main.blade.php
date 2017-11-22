@@ -252,12 +252,17 @@ echo json_encode($trans);
 
 
         <script>
-            //Smooth Scroll from header seactions
+            $('#btn-students').mouseover( function(){ $('#img-student-color').removeClass('hidden');   $('#img-student-black').addClass('hidden');    $('#students-text').addClass('sc-t-teal');   });
+            $('#btn-students').mouseout(  function(){ $('#img-student-color').addClass('hidden');      $('#img-student-black').removeClass('hidden'); $('#students-text').removeClass('sc-t-teal');    });
 
-            // Select all links with hashes
+            $('#btn-teachers').mouseover( function(){ $('#img-teacher-color').removeClass('hidden');   $('#img-teacher-black').addClass('hidden');    $('#teachers-text').addClass('sc-t-teal');   });
+            $('#btn-teachers').mouseout(  function(){ $('#img-teacher-color').addClass('hidden');      $('#img-teacher-black').removeClass('hidden'); $('#teachers-text').removeClass('sc-t-teal');    });
 
-
+            $('#btn-trophy').mouseover( function(){ $('#img-trophy-color').removeClass('hidden');   $('#img-trophy-black').addClass('hidden');    $('#trophy-text').addClass('sc-t-teal');   });
+            $('#btn-trophy').mouseout(  function(){ $('#img-trophy-color').addClass('hidden');      $('#img-trophy-black').removeClass('hidden'); $('#trophy-text').removeClass('sc-t-teal');    });
         </script>
+        </script>
+
 
         <script>
             var resizefunc = [];
@@ -266,7 +271,7 @@ echo json_encode($trans);
                     form.action = '/lang/'+el.value;
                     form.submit();
                 }
-    </script>
+        </script>
 
 
 
