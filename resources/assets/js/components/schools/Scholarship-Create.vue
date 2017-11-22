@@ -825,7 +825,7 @@
                     parent.criteria_options.forEach((item)=>{
                         console.log(data['cr'+i])
                         item.limit = data['cr'+i]
-                        if(item.limit < 50){
+                        if(item.limit == 0 ){
                             item.$isDisabled = true
                         }
                         i++
