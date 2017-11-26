@@ -19,6 +19,7 @@ return [
 
     'profile' => [
         'title' => 'Profile',
+        'settings' => 'Profile Settings',
         'contact' => 'Contact Info',
         'studies' => 'Available Studies',
         'photo' => 'Photos',
@@ -26,6 +27,7 @@ return [
 
     'scholarships' => [
         'title' => 'Scholarships',
+        'settings' => 'Admissions Settings',
         'add' => 'Add New',
         'show' => 'Show all',
         'admissions' => 'Admissions',

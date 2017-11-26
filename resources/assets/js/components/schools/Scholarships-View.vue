@@ -86,9 +86,9 @@
                                                 <span v-if="sortType == 'admissions_length' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
-                                            <th>
-                                                Admission Limit
-                                            </th>
+                                            <!--<th>-->
+                                                <!--Admission Limit-->
+                                            <!--</th>-->
                                             <!-- <th>Νικητής</th> -->
                                             <th></th>
                                         </tr>
@@ -334,6 +334,8 @@
         visibility: visible;
         opacity: 1;
     }
+
+     /* =================================*/
 
 
 

@@ -440,11 +440,13 @@
                  @if(count($scholarship->multipleStudies) < 3)
                 <ul>
                     @foreach($scholarship->multipleStudies as $study)
-                        <li>{{$study->name}}</li>
+                        <div>
+                            {{$study->name}},
+                        </div>
                     @endforeach
                 </ul>
                     @else
-                        ΠΟΛΛΑΠΛΕΣ ΣΠΟΥΔΕΣ: {{count($scholarship->multipleStudies)}}
+                        @lang('scholarship_view.top.multiple'):  {{count($scholarship->multipleStudies)}}
                         @endif
                 @else
                     {{ $scholarship->study->name}}
@@ -456,10 +458,12 @@
                     @lang('scholarship_view.cards.study_message2')
                   {{ $scholarship->study->name}}.
                 @else
-                 με ειδικοτητες
-                {{-- @lang('scholarship_view.cards.study_message2') --}}
+
+                    @lang('scholarship_view.cards.study_message3')
                     @foreach($scholarship->multipleStudies as $key => $study)
-                        {{$key + 1}}) {{$study->name}},
+                        <div>
+                            {{$key + 1}}) {{$study->name}},
+                        </div>
                     @endforeach
               @endif
             </div>

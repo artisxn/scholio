@@ -95,7 +95,7 @@
                         </div>
 
                         <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)" ></i>
-                        <i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student.cv)"></i>
+                        <!--<i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student.cv)"></i>-->
 
                     </div>
 

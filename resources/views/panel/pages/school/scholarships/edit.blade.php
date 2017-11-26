@@ -155,6 +155,65 @@
 
         }
 
+        /* =========TOOLTIP=========*/
+        .tool {
+            position: relative;
+            cursor: auto;
+        }
+
+        .tooltiptext  {
+            font-weight: 300;
+            visibility: hidden;
+            /*width: 300px;*/
+            color: #fff;
+            text-align: left;
+
+            padding: 15px;
+            position: absolute;
+            z-index: 1;
+            bottom: 120%;
+            margin-left: -140px;
+            opacity: 0;
+            transition: opacity 0.1s;
+            background-color: #007991;
+            border-radius: 5px;
+            border: 1px solid #009fb9;
+        }
+
+
+        .tooltip3{width: 570px;  bottom: 27px; left: 140px;}
+
+
+        @media (max-width: 767px) {
+            .tooltip3{width:510px; margin-left: -250px;  bottom: 150%;}
+
+        }
+
+        @media (max-width: 430px) {
+            .tooltip3{width:390px;}
+        }
+
+        @media (max-width: 380px) {
+            .tooltip3{width:310px;}
+        }
+
+        /*.tooltiptext::after {*/
+        /*content: "";*/
+        /*position: absolute;*/
+        /*top: 100%;*/
+        /*left: 50%;*/
+        /*margin-left: -5px;*/
+        /*border-width: 5px;*/
+        /*border-style: solid;*/
+        /*border-color: #007991 transparent transparent transparent;*/
+        /*}*/
+        .tool:hover .tooltiptext{
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* =================================*/
+
 
     </style>
 @endsection
@@ -181,10 +240,29 @@
                 <div class="col-xs-12 scholar-header">
                     {{--<div class="scholar-name">{{ $scholarship->study->section[0]->name }}</div>--}}
                     <div class="scholar-name">
+
                         @if($scholarship->multiple)
-                            @foreach($scholarship->multipleStudies as $study)
-                                <li>{{ $study->name }}</li>
-                            @endforeach
+                            @if(count($scholarship->multipleStudies )<3)
+                                    @foreach($scholarship->multipleStudies as $study)
+                                        <div style="font-size: 80%; font-weight: 300">
+                                            {{ $study->name }}
+                                        </div>
+                                    @endforeach
+                            @else
+                                <div class="tool">
+                                    Πολλαπλές Σπουδές
+                                    @if(count($scholarship->multipleStudies )<6)
+                                    <div class="tooltiptext tooltip3">
+                                        @foreach($scholarship->multipleStudies as $study)
+                                            <div style="font-size: 80%; font-weight: 300">
+                                                {{ $study->name }}
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    @endif
+                                </div>
+
+                            @endif
                         @else
                             {{ $scholarship->study->name }}
                         @endif

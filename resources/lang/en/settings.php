@@ -3,6 +3,7 @@
 return [
     'profile' => [
         'title' => 'Public Profile Settings',
+        'title-sm' => 'Profile Settings',
         'subtitle' => 'Choose which of the following sections you want to appear in your public profile.',
         'links' => 'Social Links',
         'contact' => 'Contact Info',

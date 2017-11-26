@@ -94,19 +94,29 @@
         /* ===========================*/
 
 
-
-
-
         {{-- @media(max-width: 390px){.hidden-xxs{display: none;}} --}}
+
+
+
+
+        /* ============   Styling School navigation links   ===============*/
+
+        .badge-nav{background-color: #456676; color: #97A7C3; font-weight: 300; font-size: 90%}
+        li>a.active>span{color: #00bcd4;}
+        /*li>a>span:hover{color: #dbdbdb;}*/
+        /*li>a:hover{color: #dbdbdb;}*/
+
+
+
+
+        /* ===============================================================*/
 
 
         @media(max-width: 991px){
             .side-menu{}
-            .paddingTop{
-                padding-top: 38px;
-            }
+            .paddingTop{  padding-top: 38px;  }
+            .badge-nav{display: none!important;}
         }
-
         </style>
 
         @yield('styles')
@@ -253,13 +263,32 @@ echo json_encode($trans);
 
         <script>
             $('#btn-students').mouseover( function(){ $('#img-student-color').removeClass('hidden');   $('#img-student-black').addClass('hidden');    $('#students-text').addClass('sc-t-teal');   });
-            $('#btn-students').mouseout(  function(){ $('#img-student-color').addClass('hidden');      $('#img-student-black').removeClass('hidden'); $('#students-text').removeClass('sc-t-teal');    });
+            $('#btn-students').mouseout(  function(){ $('#img-student-color').addClass('hidden');      $('#img-student-black').removeClass('hidden'); $('#students-text').removeClass('sc-t-teal');});
 
             $('#btn-teachers').mouseover( function(){ $('#img-teacher-color').removeClass('hidden');   $('#img-teacher-black').addClass('hidden');    $('#teachers-text').addClass('sc-t-teal');   });
-            $('#btn-teachers').mouseout(  function(){ $('#img-teacher-color').addClass('hidden');      $('#img-teacher-black').removeClass('hidden'); $('#teachers-text').removeClass('sc-t-teal');    });
+            $('#btn-teachers').mouseout(  function(){ $('#img-teacher-color').addClass('hidden');      $('#img-teacher-black').removeClass('hidden'); $('#teachers-text').removeClass('sc-t-teal');});
 
-            $('#btn-trophy').mouseover( function(){ $('#img-trophy-color').removeClass('hidden');   $('#img-trophy-black').addClass('hidden');    $('#trophy-text').addClass('sc-t-teal');   });
-            $('#btn-trophy').mouseout(  function(){ $('#img-trophy-color').addClass('hidden');      $('#img-trophy-black').removeClass('hidden'); $('#trophy-text').removeClass('sc-t-teal');    });
+            $('#btn-studies').mouseover( function(){ $('#img-studies-color').removeClass('hidden');    $('#img-studies-black').addClass('hidden');    $('#studies-text').addClass('sc-t-teal');    });
+            $('#btn-studies').mouseout(  function(){ $('#img-studies-color').addClass('hidden');       $('#img-studies-black').removeClass('hidden'); $('#studies-text').removeClass('sc-t-teal'); });
+
+            $('#btn-trophy').mouseover( function(){ $('#img-trophy-color').removeClass('hidden');      $('#img-trophy-black').addClass('hidden');    $('#trophy-text').addClass('sc-t-teal');      });
+            $('#btn-trophy').mouseout(  function(){ $('#img-trophy-color').addClass('hidden');         $('#img-trophy-black').removeClass('hidden'); $('#trophy-text').removeClass('sc-t-teal');   });
+
+            $('#btn-photos').mouseover( function(){ $('#img-photos-color').removeClass('hidden');      $('#img-photos-black').addClass('hidden');    $('#photos-text').addClass('sc-t-teal');      });
+            $('#btn-photos').mouseout(  function(){ $('#img-photos-color').addClass('hidden');         $('#img-photos-black').removeClass('hidden'); $('#photos-text').removeClass('sc-t-teal');   });
+
+            $('#btn-admissions').mouseover( function(){ $('#img-admissions-color').removeClass('hidden');      $('#img-admissions-black').addClass('hidden');    $('#admissions-text').addClass('sc-t-teal');      });
+            $('#btn-admissions').mouseout(  function(){ $('#img-admissions-color').addClass('hidden');         $('#img-admissions-black').removeClass('hidden'); $('#admissions-text').removeClass('sc-t-teal');   });
+
+            $('#btn-reviews').mouseover( function(){ $('#img-reviews-color').removeClass('hidden');     $('#img-reviews-black').addClass('hidden');    $('#reviews-text').addClass('sc-t-teal');      });
+            $('#btn-reviews').mouseout(  function(){ $('#img-reviews-color').addClass('hidden');        $('#img-reviews-black').removeClass('hidden'); $('#reviews-text').removeClass('sc-t-teal');   });
+
+            $('#btn-views').mouseover( function(){ $('#img-views-color').removeClass('hidden');       $('#img-views-black').addClass('hidden');    $('#views-text').addClass('sc-t-teal');      });
+            $('#btn-views').mouseout(  function(){ $('#img-views-color').addClass('hidden');          $('#img-views-black').removeClass('hidden'); $('#views-text').removeClass('sc-t-teal');   });
+
+            $('#btnsvg').mouseover( function(){ $('#img-svg-color').removeClass('hidden');       $('#img-svg-black').addClass('hidden');     });
+            $('#btnsvg').mouseout(  function(){ $('#img-svg-color').addClass('hidden');          $('#img-svg-black').removeClass('hidden');  });
+        </script>
         </script>
         </script>
 
