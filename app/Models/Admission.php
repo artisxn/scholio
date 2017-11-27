@@ -23,7 +23,6 @@ class Admission extends Model
                 parent::boot();
                 $scholarship->admissions_limit--;
                 $scholarship->save();
-
                 $user->info->admissions_limit--;
                 $user->info->save();
             } else {

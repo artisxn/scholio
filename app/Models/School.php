@@ -2,13 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Dummy;
-use App\Models\Image;
-use App\Models\Review;
-use App\Models\Scholarship;
-use App\Models\SchoolTypes;
-use App\Models\SchoolTypesEn;
-use App\Models\Study;
 use App\ScholarshipLimit;
 use App\Scholio\Scholio;
 use App\User;
@@ -206,6 +199,7 @@ class School extends Model
     {
         return $this->hasOne(SchoolSetting::class, 'school_id');
     }
+
     public function reviews()
     {
         return $this->hasMany(Review::class);
@@ -250,7 +244,6 @@ class School extends Model
                                 }
                             }
                         }
-
                     } else {
                         array_push($filtered, $review);
                     }
@@ -306,7 +299,6 @@ class School extends Model
                                 }
                             }
                         }
-
                     } else {
                         array_push($filtered, $review);
                     }
@@ -328,7 +320,6 @@ class School extends Model
                     $count[$value] /= count($filtered);
                 }
             }
-
         }
         if ($count) {
             foreach ($this->categories() as $value => $cat) {
