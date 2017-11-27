@@ -37,7 +37,7 @@
 
                     <div class="row">
                         <div class="sc-card ">
-                            <a class="" href="#">
+                            <a class="" :href="'/public/profile/teacher/' + teacher.teacher.id" target="_blank">
                                 <div class="frame-cont2">
                                     <img :src="scholio + teacher.teacher.avatar" class="avatar1" alt="">
                                 </div>

@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\School;
 
 class SocialLink extends Model
 {
-    public function user()
+    public function school()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(School::class);
     }
 }

@@ -208,39 +208,34 @@
                     <div class="title">Σύνδεσμοι των μέσων κοινωνικής δικτύωσης</div>
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 " style="">
-                        <input type="text" label="facebook" name="" class="demo-form ad-input" value="" style="">
+                        <input type="text" label="facebook" name="facebook" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('facebook') ? $links->where('name', 'facebook')->first()->link : '' }}" style="">
                         <i class="icon-inp fa fa-facebook"></i>
                     </div>
-                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
-                        <input type="text" label="twitter" name="" class="demo-form ad-input" value="">
+                    <div class="input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="twitter" name="twitter" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('twitter') ? $links->where('name', 'twitter')->first()->link : '' }}">
                         <i class="icon-inp fa fa-twitter"></i>
                     </div>
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
-                        <input type="text" label="Instagram" name="" class="demo-form ad-input" value="">
+                        <input type="text" label="Instagram" name="instagram" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('instagram') ? $links->where('name', 'instagram')->first()->link : '' }}">
                         <i class="icon-inp fa fa-instagram"></i>
                     </div>
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
-                        <input type="text" label="YouTube" name="" class="demo-form ad-input" value="">
+                        <input type="text" label="YouTube" name="youtube" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('youtube') ? $links->where('name', 'youtube')->first()->link : '' }}">
                         <i class="icon-inp fa fa-youtube"></i>
                     </div>
-                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
-                        <input type="text" label="skype" name="" class="demo-form ad-input" value="">
+                    {{--  <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                        <input type="text" label="skype" name="skype" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('skype') ? $links->where('name', 'skype')->first()->link : '' }}">
                         <i class="icon-inp fa fa-skype"></i>
-                    </div>
+                    </div>  --}}
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
-                        <input type="text" label="Google+" name="" class="demo-form ad-input" value="">
+                        <input type="text" label="Google+" name="google" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('google') ? $links->where('name', 'google')->first()->link : '' }}">
                         <i class="icon-inp fa fa-google-plus"></i>
                     </div>
+                    {{--  p  --}}
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
-                        <input type="text" label="Pinterest" name="" class="demo-form ad-input" value="">
-                        <i class="icon-inp fa fa-pinterest"></i>
-                    </div>
-                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
-                        <input type="text" label="Linked in" name="" class="demo-form ad-input" value="">
+                        <input type="text" label="Linked in" name="linkedin" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('linkedin') ? $links->where('name', 'linkedin')->first()->link : '' }}">
                         <i class="icon-inp fa fa-linkedin"></i>
                     </div>
-
-
                 </div>
 
                 <div class="col-xs-12 about-container">
@@ -287,11 +282,7 @@
 
 <?php $__env->stopSection(); ?>
 
-
 <?php $__env->startSection('script'); ?>
-
-
-
 
 <?php $__env->stopSection(); ?>
 

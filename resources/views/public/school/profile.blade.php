@@ -386,27 +386,13 @@
 
                         @if($school->settings->social)
                             <ul class="nav nav-ul socials" id="" style="">
-                            <li><a class="lg-pull-left"  href="">
-                                    <i style="" class="social fa fa-facebook" aria-hidden="true"></i>
-                                </a></li>
-                            <li><a class="lg-pull-left"  href="/">
-                                    <i style="" class="social fa fa-twitter" aria-hidden="true"></i>
-                                </a></li>
-                            <li><a class="lg-pull-left"  href="">
-                                    <i style="" class="social fa fa-linkedin" aria-hidden="true"></i>
-                                </a></li>
-
-                            <li><a class="lg-pull-left"  href="">
-                                    <i style="" class="social fa fa-instagram" aria-hidden="true"></i>
-                                </a></li>
-
-                            <li><a class="lg-pull-left"  href="">
-                                    <i style="" class=" social fa fa-youtube" aria-hidden="true"></i>
-                                </a></li>
-
-                            <li><a class="lg-pull-left"  href="">
-                                    <i style="" class="social fa fa-google-plus" aria-hidden="true"></i>
-                                </a></li>
+                            @foreach($school->socialLinks as $link)
+                                <li>
+                                    <a class="lg-pull-left" href="{{ $link->link }}" target="_blank">
+                                        <i style="" class="social fa fa-{{ $link->name }}" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            @endforeach                                
                         </ul>
                         @endif
 

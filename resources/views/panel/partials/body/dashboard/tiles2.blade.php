@@ -51,8 +51,8 @@
     <div class="col-lg-3 col-md-4 col-sm-6">
         <a href="{{ url('/panel/school/profile/images') }}"  id="btn-photos">
             <div class="panel-box box2">
-                <img src="/panel/assets/images/dashBoard/photos2.png"        alt="photos image" class="panel-image hidden"   id="img-photos-color">
-                <img src="/panel/assets/images/dashBoard/photos2Outline.png" alt="photos image" class="panel-image visible"  id="img-photos-black">
+                <img src="/panel/assets/images/dashBoard/photos3.png"        alt="photos image" class="panel-image hidden"   id="img-photos-color">
+                <img src="/panel/assets/images/dashBoard/photos3Outline.png" alt="photos image" class="panel-image visible"  id="img-photos-black">
                 <span class="sc-t-gray" id="photos-text">
                     <span class="panel-counter">{{ count($data['images']) }}</span>
                     <span class="panel-text">@lang('panel/schools/dashboard.photos')</span>

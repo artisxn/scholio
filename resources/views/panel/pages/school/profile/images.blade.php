@@ -293,9 +293,7 @@
           .then(function (response) {
             console.log(response.data);
             if(response.data == 'OK'){
-                uncheckAll();
-                vm.className = 'selectedImg';
-                console.log('LEME');
+                window.location.reload();
             }
           })
           .catch(function (error) {

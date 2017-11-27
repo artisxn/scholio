@@ -6,7 +6,8 @@ use App\Models\Image;
 use App\Models\School;
 use App\Models\SchoolTypes;
 use App\Scholio\Scholio;
-use App\User;
+use GuzzleHttp\Psr7\Request;
+use App\Models\SocialLink;
 
 class AdminPanelController extends Controller
 {
@@ -34,7 +35,7 @@ class AdminPanelController extends Controller
 
             $pageviews = \Counter::show('school-profile', $school->id);
 
-            $data = array(
+            $data = [
                 'students' => $students,
                 'teachers' => $teachers,
                 'parents' => $parents,
@@ -44,7 +45,7 @@ class AdminPanelController extends Controller
                 'studies' => $studies,
                 'images' => $images,
                 'reviews' => $reviews,
-            );
+            ];
             return view('panel.pages.school.dashboard.main')->withData($data);
         }
         return view('panel.index');
@@ -155,8 +156,11 @@ class AdminPanelController extends Controller
 
         $schoolTypes = SchoolTypes::all();
 
-        return view('panel.pages.profile.form', compact('schoolTypes', 'logo', 'school'));
+        $links = SocialLink::where('school_id', $school->id)->get();
 
+        // dd($links->where('name', 'facebook')->first()->link);
+
+        return view('panel.pages.profile.form', compact('schoolTypes', 'logo', 'school', 'links'));
     }
 
     /**
@@ -186,11 +190,96 @@ class AdminPanelController extends Controller
 
         $school->save();
 
+        // dd(request());
+
+        if (request()->facebook) {
+            $this->saveSocialLinks(request()->facebook, 'facebook');
+        }else{
+            $this->deleteIfExists('facebook');
+        }
+
+        if (request()->twitter) {
+            $this->saveSocialLinks(request()->twitter, 'twitter');
+        }else{
+            $this->deleteIfExists('twitter');
+        }
+
+        if (request()->youtube) {
+            $this->saveSocialLinks(request()->youtube, 'youtube');
+        }else{
+            $this->deleteIfExists('youtube');
+        }
+
+        if (request()->instagram) {
+            $this->saveSocialLinks(request()->instagram, 'instagram');
+        }else{
+            $this->deleteIfExists('instagram');
+        }
+
+        if (request()->skype) {
+            $this->saveSocialLinks(request()->skype, 'skype');
+        }else{
+            $this->deleteIfExists('skype');
+        }
+
+        if (request()->google) {
+            $this->saveSocialLinks(request()->google, 'google');
+        }else{
+            $this->deleteIfExists('google');
+        }
+
+        if (request()->pinterest) {
+            $this->saveSocialLinks(request()->pinterest, 'pinterest');
+        }else{
+            $this->deleteIfExists('pinterest');
+        }
+
+        if (request()->linkedin) {
+            $this->saveSocialLinks(request()->linkedin, 'linkedin');
+        }else{
+            $this->deleteIfExists('linkedin');
+        }
+
         session()->flash('updated_profile', 'Your profile has been updated');
 
-        Scholio::updateDummy($school);
+        // Scholio::updateDummy($school);
 
         return back();
+    }
+
+    /**
+    * @return
+    */
+    public function saveSocialLinks($link, $name)
+    {
+        $school = auth()->user()->info;
+
+        if(!$school->socialLinks->pluck('name')->contains($name)){
+            $social = new SocialLink;
+            $social->school_id = $school->id;
+            $social->name = $name;
+            $social->link = $link;
+            return $social->save();
+        }
+
+        $social = $school->socialLinks;
+        $s = $social->where('name', $name)->first();
+        $s->link = $link;
+        return $s->save();
+    }
+
+    /**
+    * @return 
+    */
+    public function deleteIfExists($name)
+    {
+        $school = auth()->user()->info;
+        $social = $school->socialLinks;
+
+        if($social->pluck('name')->contains($name)){
+            $s = $social->where('name', $name)->first();
+            $s->delete();
+        }
     }
 
     /**
@@ -237,7 +326,7 @@ class AdminPanelController extends Controller
 
         unlink(public_path() . '/images/schools/' . $image->name);
 
-        Scholio::updateDummy($school);
+        // Scholio::updateDummy($school);
 
         return back();
     }
@@ -246,5 +335,4 @@ class AdminPanelController extends Controller
     {
         return view('panel.pages.school.scholarships.request');
     }
-
 }

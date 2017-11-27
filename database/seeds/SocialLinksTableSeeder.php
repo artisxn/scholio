@@ -39,11 +39,10 @@ class SocialLinksTableSeeder extends Seeder
             'meetup',
         ];
 
-        foreach ($socials as $media) {
-            $social = new SocialLink;
-            $social->name = $media;
-            $social->save();
-        }
-
+        // foreach ($socials as $media) {
+        //     $social = new SocialLink;
+        //     $social->name = $media;
+        //     $social->save();
+        // }
     }
 }

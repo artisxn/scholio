@@ -13,7 +13,7 @@
     </a>
      <a href="/panel/school/studies"  class="top-img tool {{ request()->path() == 'panel/school/studies' ? 'img-active' : ''}}">
          {{--<img src="/panel/assets/images/steps/step3-skills2.png" alt="skills image" class="top-image">--}}
-         <img src="/panel/assets/images/dashBoard/studies.png" alt="studies image" class="top-image">
+         <img src="/panel/assets/images/dashBoard/studies2.png" alt="studies image" class="top-image">
          <span class="tooltiptext4">@lang('panel/schools/topbar.studies')</span>
      </a>
 
