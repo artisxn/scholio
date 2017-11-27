@@ -22,7 +22,7 @@ class DummyScholarshipsTableSeeder extends Seeder
                 $dummy->financial_icon = $scholarship->financial->icon;
                 $dummy->financial_amount = $scholarship->financial_amount;
                 $dummy->financial_metric = $scholarship->financial->metric;
-                $dummy->study_name = $scholarship->study->name ?? 'studies';
+                $dummy->study_name = $scholarship->study->name ?? null;
                 $dummy->level_name = $scholarship->level->name;
                 $dummy->criteria_name = $scholarship->criteria->name;
                 $dummy->criteria_icon = $scholarship->criteria->name;

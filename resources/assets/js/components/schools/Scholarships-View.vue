@@ -86,9 +86,9 @@
                                                 <span v-if="sortType == 'admissions_length' && sortReverse" class="fa fa-sort-amount-desc"></span>
                                                 </a>
                                             </th>
-                                            <th>
-                                                Admission Limit
-                                            </th>
+                                            <!--<th>-->
+                                                <!--Admission Limit-->
+                                            <!--</th>-->
                                             <!-- <th>Νικητής</th> -->
                                             <th></th>
                                         </tr>
@@ -123,8 +123,10 @@
                                             <!--</td>-->
                                             <td v-if="showLevel">
                                                 <span class="tool">
-                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left">{{scholarship.study_name}}</div>
-                                                    <span class="tooltiptext tooltip3">{{scholarship.study_name}}</span>
+                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left" v-if="scholarship.study_name">{{scholarship.study_name}}</div>
+                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left" v-else>ΠΟΛΛΑΠΛΕΣ</div>
+                                                    <span class="tooltiptext tooltip3" v-if="scholarship.study_name">{{scholarship.study_name}}</span>
+                                                    <span class="tooltiptext tooltip3" v-else>ΠΟΛΛΑΠΛΕΣ</span>
                                                 </span>
                                             </td>
                                             <td  class="tool hidden-xxs">
@@ -335,6 +337,8 @@
         opacity: 1;
     }
 
+     /* =================================*/
+
 
 
      /*RADIO INPUT STYLE [same @ Students-vue]*/
@@ -535,10 +539,9 @@ import Chart from '../../VueChart.vue'
                 this.dataSet = data;
                 this.items = data.data;
                 this.scholarships = this.items
-                console.log(this.scholarships)
                 var parent = this
                 this.scholarships.forEach(function(i){
-                    if(i.admissions_length > 0){
+                    if(i.admissions_length > 0 && i.study_name){
                         parent.sc_amounts.push(i.admissions_length)
                         parent.sc_labels.push( i.study_name.substring(0,12)+'...' )
                         parent.sc_names.push( i.study_name )

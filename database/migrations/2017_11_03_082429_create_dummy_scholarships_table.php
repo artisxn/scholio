@@ -21,7 +21,7 @@ class CreateDummyScholarshipsTable extends Migration
             $table->string('financial_icon');
             $table->string('financial_metric');
             $table->integer('financial_amount');
-            $table->string('study_name');
+            $table->string('study_name')->nullable();
             $table->string('level_name');
             $table->string('criteria_name');
             $table->string('criteria_icon')->nullable();

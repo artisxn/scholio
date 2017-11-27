@@ -4,6 +4,18 @@
 
 <link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />
 <style>
+
+    /* ======  avoid filled autocomplete input yellow background on chrome ============ */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{
+        -webkit-box-shadow: 0 0 0 30px #FFFFFF inset;
+        -webkit-text-fill-color: #555;
+    }
+    /* =========================================================== */
+
+
     .margin-right-5{margin-right: 5px}
     .btn-primary{background-color: #008da5; border: none;}
     .btn-primary:hover{background-color: #007991

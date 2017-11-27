@@ -10,12 +10,12 @@
 
 	<title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="{{asset('new/img/favicon.ico')}}" type="image/x-icon" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
 
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('new/img/favicon-144.ico')}}">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('new/img/favicon-72.ico')}}">
-	<link rel="apple-touch-icon-precomposed" href="{{asset('new/img/favicon-57.ico')}}">
+    {{--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('new/img/favicon-144.ico')}}">--}}
+    {{--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('new/img/favicon-72.ico')}}">--}}
+    {{--<link rel="apple-touch-icon-precomposed" href="{{asset('new/img/favicon-57.ico')}}">--}}
 
 
 	<!-- Google Fonts -->

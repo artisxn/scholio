@@ -1,10 +1,15 @@
 <template>
     <div class="row">
 
-        <form class="sc-radio pull-left">
-            <input id="th1" type="radio" name="status" value="connectedTeachers" v-model="status" @click.prevent="fetch"> <label for="th1"><div class="r-lab">{{ lang('resource.teachers.active') }} 
-                <span class="pull-right" style=""> {{ connectedTeachers }} </span>
-            </div></label> <br>
+        <form class="sc-radio pull-left" >
+            <input id="th1" type="radio" name="status" value="connectedTeachers" v-model="status" @click.prevent="fetch">
+            <label for="th1" >
+                <div class="r-lab">{{ lang('resource.teachers.active') }}
+                    <span class="pull-right" style=""> {{ connectedTeachers }} </span>
+                </div>
+            </label>
+            <br>
+
             <input id="th2" type="radio" name="status" value="allumniTeachers" v-model="status" @click.prevent="fetch">
             <label for="th2">
                 <div class="r-lab">{{ lang('resource.teachers.nonactive') }}
@@ -113,10 +118,10 @@
     </div>
 </template>
 
-
+4
 <style>
     label{font-weight: 400;}
-    .r-lab{margin: -23px 0 0 20px; width: 80px;}
+    .r-lab{margin: -23px 0 0 20px; width: 93px;}
     .margin-right-10 { margin-right: 10px; }
     .sc-radio{margin: 10px 15px; }
     .btn-view{margin: 11px 10px 10px 0; height: 38px;}

@@ -244,7 +244,8 @@ Route::get('/school/getLevelsWithRelations', function () {
         if ($level->type->schools->contains($school)) {
             $data = [];
             foreach ($level->section as $section) {
-                array_push($data, ['section_id' => $section->id, 'section_name' => $section->name, 'study' => $section->study]);}
+                array_push($data, ['section_id' => $section->id, 'section_name' => $section->name, 'study' => $section->study]);
+            }
             array_push($result, ['level_id' => $level->id, 'level_name' => $level->name, 'section' => $data]);
         }
     }
@@ -272,54 +273,51 @@ Route::get('/school/getScholarships/{order}/{asc}/{active}/{field}', function ($
 
     if ($field != '%20') {
         $scholarships = $scholarships->filter(function ($item) use ($field) {
+            $replacement = preg_replace('/ά/iu', '${1}α', $item->level_name);
+            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
+            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
+            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
+            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
+            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
+            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
 
-            $replacement = preg_replace("/ά/iu", '${1}α', $item->level_name);
-            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
-            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
-            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
-            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
-            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
-            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $item->study_name);
+            $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
+            $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
+            $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
+            $replacement2 = preg_replace('/ό/iu', '${1}ο', $replacement2);
+            $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
+            $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
 
-            $replacement2 = preg_replace("/ά/iu", '${1}α', $item->study_name);
-            $replacement2 = preg_replace("/έ/iu", '${1}ε', $replacement2);
-            $replacement2 = preg_replace("/ή/iu", '${1}η', $replacement2);
-            $replacement2 = preg_replace("/ί/iu", '${1}ι', $replacement2);
-            $replacement2 = preg_replace("/ό/iu", '${1}ο', $replacement2);
-            $replacement2 = preg_replace("/ύ/iu", '${1}υ', $replacement2);
-            $replacement2 = preg_replace("/ώ/iu", '${1}ω', $replacement2);
+            $replacement3 = preg_replace('/ά/iu', '${1}α', $item->criteria_name);
+            $replacement3 = preg_replace('/έ/iu', '${1}ε', $replacement3);
+            $replacement3 = preg_replace('/ή/iu', '${1}η', $replacement3);
+            $replacement3 = preg_replace('/ί/iu', '${1}ι', $replacement3);
+            $replacement3 = preg_replace('/ό/iu', '${1}ο', $replacement3);
+            $replacement3 = preg_replace('/ύ/iu', '${1}υ', $replacement3);
+            $replacement3 = preg_replace('/ώ/iu', '${1}ω', $replacement3);
 
-            $replacement3 = preg_replace("/ά/iu", '${1}α', $item->criteria_name);
-            $replacement3 = preg_replace("/έ/iu", '${1}ε', $replacement3);
-            $replacement3 = preg_replace("/ή/iu", '${1}η', $replacement3);
-            $replacement3 = preg_replace("/ί/iu", '${1}ι', $replacement3);
-            $replacement3 = preg_replace("/ό/iu", '${1}ο', $replacement3);
-            $replacement3 = preg_replace("/ύ/iu", '${1}υ', $replacement3);
-            $replacement3 = preg_replace("/ώ/iu", '${1}ω', $replacement3);
+            $replacement4 = preg_replace('/ά/iu', '${1}α', $item->financial_plan);
+            $replacement4 = preg_replace('/έ/iu', '${1}ε', $replacement4);
+            $replacement4 = preg_replace('/ή/iu', '${1}η', $replacement4);
+            $replacement4 = preg_replace('/ί/iu', '${1}ι', $replacement4);
+            $replacement4 = preg_replace('/ό/iu', '${1}ο', $replacement4);
+            $replacement4 = preg_replace('/ύ/iu', '${1}υ', $replacement4);
+            $replacement4 = preg_replace('/ώ/iu', '${1}ω', $replacement4);
 
-            $replacement4 = preg_replace("/ά/iu", '${1}α', $item->financial_plan);
-            $replacement4 = preg_replace("/έ/iu", '${1}ε', $replacement4);
-            $replacement4 = preg_replace("/ή/iu", '${1}η', $replacement4);
-            $replacement4 = preg_replace("/ί/iu", '${1}ι', $replacement4);
-            $replacement4 = preg_replace("/ό/iu", '${1}ο', $replacement4);
-            $replacement4 = preg_replace("/ύ/iu", '${1}υ', $replacement4);
-            $replacement4 = preg_replace("/ώ/iu", '${1}ω', $replacement4);
-
-            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $replacement2) || preg_match("/" . $field . "/iu", $replacement3) || preg_match("/" . $field . "/iu", $replacement4) || preg_match("/" . $field . "/iu", $item->financial_plan) || preg_match("/" . $field . "/iu", $item->level_name) || preg_match("/" . $field . "/iu", $item->criteria_name) || preg_match("/" . $field . "/iu", $item->study_name)) {
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $replacement3) || preg_match('/' . $field . '/iu', $replacement4) || preg_match('/' . $field . '/iu', $item->financial_plan) || preg_match('/' . $field . '/iu', $item->level_name) || preg_match('/' . $field . '/iu', $item->criteria_name) || preg_match('/' . $field . '/iu', $item->study_name)) {
                 return $item;
             }
         });
     }
 
     $perPage = config('scholio.perPage.scholarships');
-    // $items = $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
     $items = $scholarships;
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
 
     $paginatedData = [];
     foreach ($items->forPage($page, $perPage) as $key => $value) {
-
         $paginatedData[] = $value;
     }
 
@@ -362,12 +360,12 @@ Route::get('/school/getReviews/{role}/{status}/{stars}', function ($role, $statu
 
         if ($connected->contains($user)) {
             $totalConnected++;
-        } else if ($allumni->contains($user)) {
+        } elseif ($allumni->contains($user)) {
             $totalAllumni++;
         }
         if ($conParent->contains($user)) {
             $connectedParents++;
-        } else if ($alParent->contains($user)) {
+        } elseif ($alParent->contains($user)) {
             $allumniParents++;
         }
     }
@@ -501,7 +499,6 @@ Route::get('/skill/check', function () {
 Route::get('/student/mySchools', function () {
     $schools = auth()->user()->connectedSchool;
     return $schools->load('admin');
-
 })->middleware('auth:api');
 
 Route::get('/scholarship/{id}', function (Scholarship $id) {
@@ -520,15 +517,15 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
     if ($field != '%20') {
         $students = $students->filter(function ($item) use ($field) {
-            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
-            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
-            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
-            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
-            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
-            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
-            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
+            $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
+            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
+            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
+            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
+            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
+            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
+            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
 
-            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email) || preg_match("/" . $field . "/i", $item->cv->student_phone)) {
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) || preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone)) {
                 return $item;
             }
         });
@@ -557,14 +554,14 @@ Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function
 
     if ($field != '%20') {
         $teachers = $teachers->filter(function ($item) use ($field) {
-            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
-            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
-            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
-            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
-            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
-            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
-            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
-            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->name) || preg_match("/" . $field . "/i", $item->email)) {
+            $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
+            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
+            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
+            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
+            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
+            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
+            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) || preg_match('/' . $field . '/i', $item->email)) {
                 return $item;
             }
         });
@@ -583,8 +580,7 @@ Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function
 })->middleware('auth:api');
 
 Route::post('/registration/social', function () {
-
-    $temp = Temp::firstOrNew(array('name' => 'social-role'));
+    $temp = Temp::firstOrNew(['name' => 'social-role']);
     $temp->value = request()->role;
     $temp->save();
 
@@ -652,7 +648,6 @@ Route::post('/review/{school}/save', function (School $school) {
         }
         $newReview->average = $total / $count;
         $newReview->save();
-
     } catch (\Exception $e) {
         return $total / $count;
     }

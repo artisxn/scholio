@@ -8,6 +8,17 @@
 
 
 <style>
+
+    /* ======  avoid filled autocomplete input yellow background on chrome ============ */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{
+        -webkit-box-shadow: 0 0 0 30px #F1F4F5 inset;
+        -webkit-text-fill-color: #555;
+    }
+    /* =========================================================== */
+
     #content{display: none;}
     .text{font-size: 14px; font-weight: 400; color: #999;}
 

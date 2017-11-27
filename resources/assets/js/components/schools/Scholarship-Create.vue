@@ -1,6 +1,7 @@
 <template>
     <div style="position: relative;" class="scholarship-creation">
 
+
         <div class="fixed-nav-container">
             <ul class="nav-list">
                 <a class="step-anchor" href="#step1"><li class="step-li"> 1.Κριτήρια</li></a>
@@ -9,7 +10,6 @@
                 <a class="step-anchor" href="#step4" v-show="!levels_disabled"><li class="step-li"  :class="[{'low-opacity': terms_disabled}]"> 4.Όροι</li></a>
             </ul>
         </div>
-
 
         <div class="creation-container">
 
@@ -55,7 +55,7 @@
                 <div class="" :class="" v-if="level_value && study_value  && study_value.length>0">
                     <div style="position: absolute; top: 345px; width: 145px" class="font-weight-400 sc-t-grey">
                     <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
-                        {{lang('profile.scholarship.interested')}}: <span class="pull-right"   >0</span>
+                        {{lang('profile.scholarship.interested')}}: <span class="pull-right">0</span>
                     </span>
                     </div>
                     <div style="position: absolute; top: 370px; width: 145px" class="font-weight-400 sc-t-grey">
@@ -68,40 +68,37 @@
             </div>
 
 
+            <div class="steps" >
 
+                <div id="step1" class="step1" style="">
+                    <div class="step-box" style=" ">
+                        <div class="step-title">Βήμα 1ο: Επιλέξτε Κριτήρια</div>
+                        <div class="criteria">
+                            <multiselect
+                                    v-model="criteria_value"
+                                    :options="criteria_options"
+                                    track-by="name"
+                                    label="name"
+                                    :searchable="false"
+                                    :close-on-select="true"
+                                    :show-labels="false"
+                                    placeholder="Επιλέξτε Κριτήρια"
+                                    :deselectLabel="lang('panel_studies.input-delete')"
+                                    :selectLabel="lang('panel_scholarships.create.select')"
+                                    :selectedLabel="lang('panel_scholarships.create.selected')"
+                                    :disabled="criteria_disabled"
+                                    :custom-label="customLabel">
 
-            <div class="steps">
-
-
-                <div id="step1" class="step1 ">
-                    <div class="step-title">Βημά 1ο: Επιλέξτε Κριτήρια</div>
-                    <div class="criteria">
-                        <multiselect
-                                v-model="criteria_value"
-                                :options="criteria_options"
-                                track-by="name" 
-                                label="name"
-                                :searchable="false"
-                                :close-on-select="true"
-                                :show-labels="false"
-                                placeholder="Επιλέξτε Κριτήρια"
-                                :deselectLabel="lang('panel_studies.input-delete')"
-                                :selectLabel="lang('panel_scholarships.create.select')"
-                                :selectedLabel="lang('panel_scholarships.create.selected')"
-                                :disabled="criteria_disabled"
-                                :custom-label="customLabel">
-
-                                <template slot="option" scope="props">
+                                <template slot="option" slot-scope="props">
                                     <div class="option__desc">
                                         <img :src="props.option.icon" height="15px">
                                         <span class="option__title">{{ props.option.name }}</span>
                                         <span class="option__small" style="float: right; color: #999;">{{ props.option.limit }} διαθέσιμες</span>
                                     </div>
                                 </template>
-                        </multiselect>
-                    </div>
-
-                    <div class="scholarship-info row" v-if="criteria_value && criteria_value.name">
+                            </multiselect>
+                        </div>
+                        <div class="scholarship-info row" v-if="criteria_value && criteria_value.name">
                         <span class="col-xs-2" style="margin-top: 11px;">
                              <img class="criteria-img-sm img-responsive" :src="criteria_value.icon" alt="">
                         </span>
@@ -113,75 +110,75 @@
 
 
 
+                        </div>
                     </div>
-
                 </div>
 
 
+                <div id="step2" class="step2 " :class="[{'low-opacity': financial_disabled}]">
+                    <div class="step-box">
+                        <div class="step-title">Βήμα 2ο: Επιλέξτε Οικονομική Προσφορά</div>
+                        <div>
+                            <div class="financial-plan">
+                                <multiselect
+                                        v-model="financial_value"
+                                        :options="financial_options"
+                                        track-by="name" label="name"
+                                        :searchable="false"
+                                        :close-on-select="true"
+                                        :show-labels="false"
+                                        placeholder="Επιλέξτε Οικονομικό πακέτο"
+                                        :deselectLabel="lang('panel_studies.input-delete')"
+                                        :selectLabel="lang('panel_scholarships.create.select')"
+                                        :selectedLabel="lang('panel_scholarships.create.selected')"
+                                        :disabled="financial_disabled">
 
-                <div id="step2" class="step2" :class="[{'low-opacity': financial_disabled}]">
-                    <div class="step-title">Βημά 2ο: Επιλέξτε Οικονομική Προσφορά</div>
-                    <div>
-                        <div class="financial-plan">
-                            <multiselect
-                                    v-model="financial_value"
-                                    :options="financial_options"
-                                    track-by="name" label="name"
-                                    :searchable="false"
-                                    :close-on-select="true"
-                                    :show-labels="false"
-                                    placeholder="Επιλέξτε Οικονομικό πακέτο"
-                                    :deselectLabel="lang('panel_studies.input-delete')"
-                                    :selectLabel="lang('panel_scholarships.create.select')"
-                                    :selectedLabel="lang('panel_scholarships.create.selected')"
-                                    :disabled="financial_disabled">
-
-                            </multiselect>
-                        </div>
-
-                        <div class="financial-amount" v-if="financial_value">
-                            <div class="input-group financial_value_input" v-if="financial_value.id==1">
-                                <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" v-model="financial_amount">
-                                <span class="input-group-addon" id="basic-addon1">%</span>
+                                </multiselect>
                             </div>
 
-                            <div class="input-group financial_value_input" v-if="financial_value.id==2">
-                                <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2" v-model="financial_amount">
-                                <span class="input-group-addon" id="basic-addon2">€</span>
+                            <div class="financial-amount" v-if="financial_value">
+                                <div class="input-group financial_value_input" v-if="financial_value.id==1">
+                                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" v-model="financial_amount">
+                                    <span class="input-group-addon" id="basic-addon1">%</span>
+                                </div>
+
+                                <div class="input-group financial_value_input" v-if="financial_value.id==2">
+                                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2" v-model="financial_amount">
+                                    <span class="input-group-addon" id="basic-addon2">€</span>
+                                </div>
+
+                                <div class="input-group financial_value_input"  v-if="financial_value.id==3">
+                                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon3" v-model="financial_amount">
+                                    <span class="input-group-addon" id="basic-addon3">{{ lang('panel_scholarships.create.months') }}</span>
+                                </div>
+
+
+
                             </div>
 
-                            <div class="input-group financial_value_input"  v-if="financial_value.id==3">
-                                <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon3" v-model="financial_amount">
-                                <span class="input-group-addon" id="basic-addon3">{{ lang('panel_scholarships.create.months') }}</span>
-                            </div>
 
-
-
-                        </div>
-
-
-                        <div class="row"   v-if="financial_value && financial_value.id>0">
+                            <div class="row"   v-if="financial_value && financial_value.id>0">
                             <span class="col-xs-1" style="margin-top: 55px;">
                                 <img class=" criteria-img-sm img-responsive" style="width: 70px;"  :src="financial_value.icon" alt="">
                             </span>
 
-                            <div class="col-xs-11 col-sm-12 financial-text">
-                                <span class="scholarship-name">{{financial_value.name}}</span> αφορά
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Aperiam, aut fugiat magni nam placeat praesentium sint!
+                                <div class="col-xs-11 col-sm-12 financial-text">
+                                    <span class="scholarship-name">{{financial_value.name}}</span> αφορά
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Aperiam, aut fugiat magni nam placeat praesentium sint!
+                                </div>
                             </div>
+
+
+
+
                         </div>
-
-
-
-
                     </div>
+
                 </div>
 
-
-
                 <div id="step3" class="step3" :class="[{'low-opacity': levels_disabled}]" v-if="">
-                    <div class="step-title">Βημά 3ο: Επιλέξτε Σπουδές</div>
+                    <div class="step-title">Βήμα 3ο: Επιλέξτε Σπουδές</div>
                     <div>
                         <div class="" style="margin: 15px 0 6px 0 ">Επίπεδο Σπουδών</div>
                         <div class="level">
@@ -234,7 +231,7 @@
 
         <div id="step4" class="step4" :class="[{'low-opacity': terms_disabled}]" v-if="">
             <div>
-                <div class="step-title">Βημά 4ο: Περιγράψτε τους Όρους Συμμετοχής</div>
+                <div class="step-title">Βήμα 4ο: Περιγράψτε τους Όρους Συμμετοχής</div>
                 <div class="row">
                     <!--<h3>{{ lang('panel_scholarships.create.terms') }}</h3>-->
 
@@ -303,8 +300,6 @@
             </div>
 
 
-
-
             <div>
                 <button @click="saveScholarship()">Δημιουργία Υποτροφίας</button>
             </div>
@@ -318,6 +313,17 @@
 </template>
 
 <style>
+    /* ///////////////////////////////////////////////////////////////////// */
+
+
+    .step-box{border: 1px solid #ddd; border-radius: 6px; background-color: #fafafa; min-height: 510px; width:78vw; padding: 20px}
+    /* ///////////////////////////////////////////////////////////////////// */
+
+
+
+
+
+
     .fixed-nav-container{ z-index: 20;
         height: 70px; background-color: #fafafa;
         border-radius:6px;  border: 1px solid #bbb; box-shadow: 0 0 12px 1px #bbb;
@@ -333,25 +339,25 @@
 
     .creation-container{
         position: relative;  margin-top: 10px;
-        width: 86%; margin-left: 7%;
+        width: 90%; margin-left: 5%;
     }
 
 
-    .steps{padding-top: 100px;}
+    .steps{padding-top: 80px;}
     #step1,#step2,#step3,#step4{
         min-height: 300px; margin-bottom:150px;
         padding-top: 220px; margin-top:-220px;
     }
-    .step-title{font-size: 130%; margin-bottom: 15px;}
+    .step-title{font-size: 130%; margin-bottom: 10px;}
     .criteria{ max-width: 400px;}
 
     .criteria-img-sm{display: none}
 
     .financial-plan{width: 300px; z-index: 1; position: absolute;}
-    .financial-amount{width: 130px; }
+    .financial-amount{width: 130px;  }
     .financial-text{max-width: 520px;  padding-top: 1px; padding-bottom: 90px;}
 
-    .financial_value_input{ position: absolute; left: 370px; z-index: 2; width: 150px;}
+    .financial_value_input{ position: absolute; left: 380px; z-index: 3; width: 150px;}
 
 
     #step1,#step2,#step3,#step4,.scholarship-info{ width: -webkit-calc(100% - 430px);}
@@ -370,8 +376,9 @@
     .scholar-frame{
         /*background-image: linear-gradient(#f3f3f3, #fbfbfb);*/
         background-color: #fff;
-        min-height: 420px; margin-bottom: 25px; width: 340px; padding-left: 22px;
+        min-height: 420px; margin-bottom: 25px; width: 338px; padding-left: 22px;
         border: 1px solid #ebebeb; border-radius: 10px;
+        box-shadow: 0 0 12px 1px #bbb;
 
     }
 
@@ -428,14 +435,16 @@
     .study .multiselect__input{width: 800px}
     .study .multiselect__single{width: 780px}
 
+    .step1 .multiselect,.step2 .multiselect,.step3 .multiselect {z-index: 3}
+
 
     /* //////////////////////////////////////////////////////////////////// */
 
     @media (max-width: 1330px) {
 
-        .financial-plan{width: 270px;}
-        .financial-text{max-width:480px}
-        .financial_value_input{left: 300px; width: 127px;}
+        .financial-plan{width: 290px;}
+        .financial-text{max-width:490px; margin-top: 50px; margin-left: -80px}
+        .financial_value_input{left: 380px; width: 130px;}
 
         /*.step1 .multiselect,         .step3 .multiselect{width: 500px;}*/
         /*.step1 .multiselect__input,  .step3 .multiselect__input{width: 460px;}*/
@@ -447,7 +456,11 @@
 
     }
 
+
     @media (max-width: 1250px) {
+        .financial-plan{width: 280px;}
+        .financial-text{max-width:460px; margin-left: -65px}
+        .financial_value_input{left: 310px;}
 
         .step1 .multiselect,         .level .multiselect{width: 400px;}
         .step1 .multiselect__input,  .level .multiselect__input{width: 360px;}
@@ -456,7 +469,17 @@
         .study .multiselect{width: 635px}
         .study .multiselect__input{width: 600px}
         .study .multiselect__single{width: 580px}
+        .scholar-text{ width: 410px; margin-left: -95px}
 
+
+    }
+
+
+    @media (max-width: 1040px) {
+        .scholar-frame{  right: 5%; }
+        .step1 .multiselect,         .step3 .multiselect{width:10px;}
+        .step1 .multiselect__input,  .step3 .multiselect__input{width: 470px;}
+        .step1 .multiselect__single, .step3 .multiselect__single{width: 450px;}
     }
 
 
@@ -466,14 +489,37 @@
         /*.fixed-nav-container{  left:80px;  width: -webkit-calc(100% - 90px);  }*/
         #step1,#step2,#step3,#step4{ width: -webkit-calc(100% - 350px);}
         .creation-container{  width: 98%; margin-left: -5px;}
-        .scholar-frame{  right: 4%; top: 165px }
+        .scholar-frame{  right: 5.5%; top: 165px }
 
         .steps,.creation-container,.scholarship-info{ padding-right: 0!important; margin-right: 0!important;}
-        .step1 .multiselect,         .step3 .multiselect{width: 480px;}
-        .step1 .multiselect__input,  .step3 .multiselect__input{width: 450px;}
-        .step1 .multiselect__single, .step3 .multiselect__single{width: 430px;}
+        .step1 .multiselect,         .step3 .multiselect{width: 330px}
+        .step1 .multiselect__input,  .step3 .multiselect__input{width: 300px;}
+        .step1 .multiselect__single, .step3 .multiselect__single{width: 280px;}
+        .scholar-text{width: 340px}
+        .step-box{width: 89vw}
 
     }
+
+    @media (max-width: 835px) {
+        .steps,.creation-container,.scholarship-info{ padding-right: 0!important; margin-right: 0!important;}
+        .step1 .multiselect,         .step3 .multiselect{width: 275px}
+        .step1 .multiselect__input,  .step3 .multiselect__input{width: 270px;}
+        .step1 .multiselect__single, .step3 .multiselect__single{width: 241px;}
+        .scholar-text{width: 285px;}
+        .step-box{width: 88.2vw;}
+        .scholar-frame{  right: 4.3%;  }
+
+
+    }
+
+    @media (min-width: 768px) and (max-width: 1040px ) {
+        .option__small{display: none!important;}
+    }
+
+
+
+
+
     @media (max-width: 767px) {
         /*.fixed-nav-container{  left:10px;  width: -webkit-calc(98%);  }*/
         /*#step1,#step2,#step3,#step4{ width: -webkit-calc(100% - 355px);}*/
@@ -491,44 +537,66 @@
         .financial_value_input{left: 75%}
         .financial-text{width: 80%; max-width: 640px;}
 
+        .step1 .multiselect,         .step3 .multiselect{width: 80vw}
+        .step1 .multiselect__input,  .step3 .multiselect__input{width: 75vw;}
+        .step1 .multiselect__single, .step3 .multiselect__single{width: 65vw;}
+        .scholar-text{margin-left: 2px; width: -webkit-calc(82%)}
+
     }
 
     @media (max-width: 560px) {
-        .multiselect{width: 425px;}
-        .multiselect__input{width: 365px;}
-        .multiselect__single{width: 355px;}
+        .step1 .multiselect,         .step3 .multiselect        {width: 85vw;}
+        .step1 .multiselect__input,  .step3 .multiselect__input {width: 380px;}
+        .step1 .multiselect__single, .step3 .multiselect__single{width: 360px;}
+        .step-box{border: none; background-color: transparent;}
+
+        .col-xs-2, .col-xs-10{width: 100%}
+        .col-xs-2{margin-left: 36%; margin-bottom: 10px;}
+        .scholar-text{ width: 390px;}
+        .step-box{padding-left: 5px;}
+        .scholar-text{width: 87vw; margin-left: -18px}
+        .step1{ margin-left: auto; margin-right: auto; text-align: center;}
+
+
 
     }
     @media (max-width: 430px) {
         .scholarship-info{width: 385px;}
-        .multiselect{width: 400px;}
-        .multiselect__input{width: 350px;}
-        .multiselect__single{width: 340px;}
+        .step1 .multiselect,         .step3 .multiselect        {width: 350px;}
+        .step1 .multiselect__input,  .step3 .multiselect__input {width: 320px;}
+        .step1 .multiselect__single, .step3 .multiselect__single{width: 300px;}
+        .option__small{display: none;}
+        .col-xs-2{margin-left: 30%;}
+
+
     }
 
     @media (max-width: 380px) {
         .scholarship-info{width: 360px;}
-        .multiselect{width: 370px;}
-        .multiselect__input{width: 320px;}
-        .multiselect__single{width: 310px;}
+        .step1 .multiselect,         .step2 .multiselect,         .step3 .multiselect        {width: 310px;}
+        .step1 .multiselect__input,  .step2 .multiselect__input,  .step3 .multiselect__input {width: 280px;}
+        .step1 .multiselect__single, .step2 .multiselect__single, .step3 .multiselect__single{width: 260px;}
+        .col-xs-2{margin-left: 24%;}
+        .scholar-text{width: 320px; margin-left: -20px}
     }
 
     @media (max-width: 370px) {
         .step-title{margin-left: 15px;}
         .criteria-img-sm{display: none;}
         .scholarship-info{width: 355px;  padding-right: 10px; padding-left: 0;}
-        .multiselect{width: 345px; margin: 0 9px 0 11px;}
-        .multiselect__input{width: 300px;}
-        .multiselect__single{width: 290px;}
-        .scholar-text{width: 100%;}
+        .step1 .multiselect,         .step2 .multiselect,         .step3 .multiselect        {width: 310px; }
+        .step1 .multiselect__input,  .step2 .multiselect__input,  .step3 .multiselect__input {width: 260px;}
+        .step1 .multiselect__single, .step2 .multiselect__single, .step3 .multiselect__single{width: 240px;}
+        .step1{margin-left: 1px;}
+        .scholar-text{width: 96%; margin-left: -35px}
 
     }
 
     @media (max-width: 359px) {
         .scholarship-info{width: 317px;  padding-right: 18px; padding-left: 0;}
-        .multiselect{width: 300px; margin: 0 11px;}
-        .multiselect__input{width: 250px;}
-        .multiselect__single{width: 240px;}
+        .step1 .multiselect,         .step2 .multiselect,         .step3 .multiselect        {width: 300px; margin-left: -23px;}
+        .step1 .multiselect__input,  .step2 .multiselect__input,  .step3 .multiselect__input {width: 260px;}
+        .step1 .multiselect__single, .step2 .multiselect__single, .step3 .multiselect__single{width: 240px;}
 
     }
 
@@ -536,31 +604,59 @@
         .fixed-nav-container{  left:10px;  width: -webkit-calc(98%);  }
         .scholarship-info{margin-left: 10px;}
         /*#step1,#step2,#step3,#step4{ width: 98%}*/
-        /*.scholar-frame{  display: none  }*/
-    }
+        /*.scholar-frame{  display: none  }*/    }
+
+
     @media (min-width: 991px) {
-        .creation-container{  width: 98%; margin-left: 1%;}
-        .scholar-frame{  right: 2%;  }
+        .creation-container{  width: 99%; margin-left: .5%;}
         /*#step1,#step2,#step3,#step4{ width: -webkit-calc(100% - 400px);}*/
+        .step-box{width: 72vw; padding: 10px;}
+        .scholar-frame{  right: 4%;  }
+
+        .criteria .multiselect,         .step3 .multiselect{width: 310px;}
+        .criteria .multiselect__input,  .step3 .multiselect__input{width: 270px;}
+        .criteria .multiselect__single, .step3 .multiselect__single{width: 250px;}
+        .scholar-text{width: 310px;}
+        .step-box{width: 72.8vw;}
     }
 
+    @media (min-width: 1041px) {
+        .criteria .multiselect,         .step3 .multiselect{width: 365px;}
+        .criteria .multiselect__input,  .step3 .multiselect__input{width: 340px;}
+        .criteria .multiselect__single, .step3 .multiselect__single{width: 320px;}
+        .scholar-text{width: 380px;}
+        .step-box{width: 74vw;}
+    }
+    @media (min-width: 1130px) {
+        .criteria .multiselect,         .step3 .multiselect{width: 420px;}
+        .criteria .multiselect__input,  .step3 .multiselect__input{width: 340px;}
+        .criteria .multiselect__single, .step3 .multiselect__single{width: 320px;}
+        .scholar-text{width: 410px;}
+        .step-box{width: 75vw;}
+        .scholar-frame{  right: 5.3%;  }
+    }
 
     @media (min-width: 1200px) {
-        .creation-container{  width: 88%; margin-left: 6%;}
+        .creation-container{  width: 98%; margin-left: 1%;}
         .scholar-frame{  right: 6%;  }
         #step1,#step2,#step3,#step4{ width: -webkit-calc(100% - 430px);}
+        .step-box{width: 75vw; padding: 30px;}
+
+        .criteria .multiselect,         .step3 .multiselect{width: 470px;}
+        .criteria .multiselect__input,  .step3 .multiselect__input{width: 440px;}
+        .criteria .multiselect__single, .step3 .multiselect__single{width: 420px;}
+        .scholar-text{width: 480px;}
+
     }
     @media (min-width: 1279px) {
-        .scholar-frame-relative{
-            left: -webkit-calc(100% - 337px);
-            top: 790px;
-        }
+        .scholar-frame-relative{  left: -webkit-calc(100% - 337px);  top: 790px;  }
+        .step-box{width: 76vw}
     }
     @media (min-width: 1302px) {
-        .scholar-frame-relative{
-            left: -webkit-calc(100% - 336px);
-            top: 770px;
-        }
+        .scholar-frame-relative{  left: -webkit-calc(100% - 336px);  top: 770px;  }
+        .step-box{width: 78vw}
+        .financial-text{padding-top: 50px; margin-left: -80px}
+
     }
     @media (min-width: 1391px) {
         /*.financial-text{padding-top: 50px; margin-left: -40px;}*/
@@ -570,26 +666,33 @@
         }
     }
     @media (min-width: 1400px) {
-        .creation-container{  width: 80%; margin-left: 10%;}
-        .scholar-frame{  right: 10%;  }
-    }
-    @media (min-width: 1600px) {
-        .creation-container{  width: 72%; margin-left: 14%;}
-        .scholar-frame{  right: 14%;  }
+        .creation-container{  width: 90%; margin-left: 5%;}
+        .scholar-frame{  right: 8.2%;  }
+        .step-box{width: 73vw}
     }
 
     @media (min-width: 1502px) {
-        .financial-text{ padding-top: 60px; margin-left: -40px}
+        .financial-text{ }
+        .step-box{width: 74vw}
     }
 
+    @media (min-width: 1600px) {
+        .creation-container{  width: 84%; margin-left: 8%;}
+        .scholar-frame{  right: 14%;  }
+        .step-box{width: 68vw}
+    }
+
+
     @media (min-width: 1800px) {
-        .creation-container{  width: 60%; margin-left: 20%;}
+        .creation-container{  width: 80%; margin-left: 10%;}
         .scholar-frame{  right: 20%;  }
+        .step-box{width: 64vw; padding: 50px;}
     }
     @media (min-width: 2100px) {
-        .creation-container{  width: 44%; margin-left: 23%;}
+        .creation-container{  width: 60%; margin-left: 15%;}
         .scholar-frame{  right: 24%;  }
-        .financial-text{ padding-top: 1px; margin-left: 0}
+        .financial-text{ margin-left: -110px}
+        .step-box{width: 60vw;}
     }
 
     /* //////////////////////////////////////////////////////////////////// */

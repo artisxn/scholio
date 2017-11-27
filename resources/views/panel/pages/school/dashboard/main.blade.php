@@ -9,13 +9,17 @@
     .panel-box:hover{background: #fafafa; border-color: #FD6A33; border-width: 2px; box-shadow: 0 0 13px #888;}
     .panel-counter {  margin: 0 3px 0 15px;}
     .panel-text{ }
-    .sc-t-gray{color: #7f7f7f;     font-size: 125%}
-    .sc-t-teal{color: #008da5;  font-size: 125%;}
+    .sc-t-gray{color: #555;     font-size: 105%}
+    .sc-t-teal{color: #007e94;  font-size: 105%;}
 
     .panel-image{height:45px}
     .visible{display: inline-block}
     .hidden{display: none;}
     .circle {}
+
+    .empty{position: absolute; left: 42px;  top: 12px; height:62%; opacity: 0.8;}
+
+
 </style>
 @endsection
 
