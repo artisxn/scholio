@@ -8,6 +8,10 @@ Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () 
     Route::get('/kinship', 'RoutesController@studentKinship')->name('students-kinship');
     Route::get('/review/show', 'RoutesController@reviewShow')->name('student-review-show');
     Route::get('/review/create/{school}', 'RoutesController@reviewCreate')->name('student-review-create');
+    Route::get('/scholarship/request', function(){
+        $admissions = auth()->user()->admissions->load('scholarship');
+        return view('panel.pages.student.scholarships.requests', compact('admissions'));
+    });
     // Route::get('/class/show', 'RoutesController@classShow')->name('student-class-show');
     // Route::get('/class/{lecture}', 'RoutesController@classLecture')->name('student-class-lecture');
 });
