@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () {
     Route::post('/delete', 'RoutesController@studentDelete')->name('students-delete');
     Route::get('/profile', 'RoutesController@studentProfile')->name('students-profile');
@@ -11,7 +13,7 @@ Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () 
     Route::get('/scholarship/request', function(){
         $admissions = auth()->user()->admissions->load('scholarship');
         return view('panel.pages.student.scholarships.requests', compact('admissions'));
-    });
+    })->name('student-scholarship-request');
     // Route::get('/class/show', 'RoutesController@classShow')->name('student-class-show');
     // Route::get('/class/{lecture}', 'RoutesController@classLecture')->name('student-class-lecture');
 });

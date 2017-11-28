@@ -221,4 +221,12 @@ class Scholarship extends Model
     {
         return $this->hasOne(DummyScholarship::class);
     }
+
+    /**
+    * @return 
+    */
+    public function winner()
+    {
+        return $this->belongsToMany(User::class, 'scholarship_winner');
+    }
 }

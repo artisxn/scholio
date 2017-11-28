@@ -22,11 +22,11 @@ class CriteriasTableSeeder extends Seeder
         ];
 
         $namesENG = [
-            'Scholarship for talents',
-            'Scholarship for excellent students',
-            'Scholarship for Social Criterias',
-            'Scholarship for Friends-Brothers and Sisters',
-            'Open Scholarships',
+            ['name' => 'Scholarship for talents', 'icon' => '/panel/assets/images/steps/talents.png'],
+            ['name' => 'Scholarship for excellent students', 'icon' => '/panel/assets/images/steps/medal.png'],
+            ['name' => 'Scholarship for Social Criterias', 'icon' => '/panel/assets/images/steps/social.png'],
+            ['name' => 'Scholarship for Friends-Brothers and Sisters', 'icon' => '/panel/assets/images/steps/friends.png'],
+            ['name' => 'Open Scholarships', 'icon' => '/panel/assets/images/steps/open.png'],
         ];
 
         foreach ($names as $name) {
@@ -38,7 +38,8 @@ class CriteriasTableSeeder extends Seeder
 
         foreach ($namesENG as $n) {
             $criteria = new CriteriaEn;
-            $criteria->name = $n;
+            $criteria->name = $n['name'];
+            $criteria->icon = $n['icon'];
             $criteria->save();
         }
     }

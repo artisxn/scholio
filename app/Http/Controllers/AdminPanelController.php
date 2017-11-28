@@ -48,6 +48,10 @@ class AdminPanelController extends Controller
             ];
             return view('panel.pages.school.dashboard.main')->withData($data);
         }
+
+        if(auth()->user()->role == 'student'){
+            return view('panel.pages.student.dashboard');
+        }
         return view('panel.index');
     }
 

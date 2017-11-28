@@ -16,6 +16,7 @@ class CreateCriteriaENsTable extends Migration
         Schema::create('criteria_e_ns', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('icon');
             $table->timestamps();
         });
     }
