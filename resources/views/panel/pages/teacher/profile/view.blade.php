@@ -1,152 +1,174 @@
 @extends('panel.layouts.main')
 
 @section('styles')
-    <link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />
+    {{-- <link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" /> --}}
+    <!-- Polymer Float Form CSS -->
+    <link rel="stylesheet" href="/new/css/jquery.polymer-form.min.css" >
+    <link rel="stylesheet" href="/new/css/cv.css" type="text/css"  >
+
+
+<style>
+
+    /* ======  avoid filled autocomplete input yellow background on chrome ============ */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{
+        -webkit-box-shadow: 0 0 0 30px #F1F4F5 inset;
+        -webkit-text-fill-color: #555;
+    }
+    /* =========================================================== */
+
+    #content{display: none;}
+    .text{font-size: 14px; font-weight: 400; color: #999;}
+
+    .img-avatar{height:100px; margin: 5px 110px; box-shadow: 0 0 10px 2px #555; border-radius: 6px;}
+    .btn-choose{ height: 40px!important; padding: 11px 0!important; clear: both; margin: 20px 50px; width: 270px;}
+    .btn-primary{background-color: #008da5; border: none;}
+    .btn-primary:hover{background-color: #006d7d;}
+    label{cursor: pointer; font-size: 102%!important; font-weight: 300!important; }
+    .select-gender{ margin: 5px 0 0 5px;}
+    .select-transparent{background: transparent; border: none; margin-top: -1px;}
+    .col-gender{border-bottom: 1px solid #aaa; padding: 0 14px; height: 56px;}
+    .mar-right-10{margin-right: 10px;}
+    .section-text{color: #008DA5; font-weight: 400; font-size: 110%}
+
+    .clear-fix{clear: both }
+
+    .img-container{text-align: center;}
+
+
+    @media (max-width: 543px){
+    .br1{display: none;}
+    }
+    @media (max-width: 1200px){
+        .btn-choose{text-align: center; margin: 20px auto;}
+    }
+    @media (max-width: 767px){
+        .fa-gender{margin-top: 27px}
+    }
+</style>
+
 @endsection
+
+@section('scriptsBefore')
+    <!-- Polymer Float Input Form js -->
+    <script src="/new/js/jquery.polymer-form.min.js"></script>
+    <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
+
+@endsection
+
 
 @section('content')
 
-    <div class="row">
+ <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
-                <h4 class="m-t-0 header-title"><b>User Profile</b></h4>
-                <p class="text-muted m-b-30 font-13">
-                    Complete your profile .. ... .BLA BLA BLA
-                </p>
                 <div class="row">
-
-                    <form class="form-horizontal m-t-20" method="POST" action="/panel/school/profile/" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('teachers-profile') }}" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
-                        <div class="form-group" align="center">
-                            <img src="/{{ auth()->user()->info->avatar }}" height="100px">
+                        {{-- CHANGE CV'S PHOTO  --}}
+                       <div class="col-xs-12 img-container" >
+                            <h4 class="header-title"><b>Επεξεργασία Βιογραφικού</b></h4>
+                            <p class="text">
+                                    Συμπληρώστε τα στοιχεία επικοινωνίας σας και του βιογραφικού σας, <br class="br1"> για να διευκολυνθούν οι αιτήσεις υποτροφιών που θα πραγματοποιείσετε.
+                            </p>
+                            <div class="row">
+                                    <div>
+                                        <img class="img-avatar" src="{{substr(auth()->user()->info->avatar, 0, 4) == 'http' ? '' : ''}}{{ auth()->user()->info->avatar }}" >
+                                    </div>
+
+
+                                    <div id="changePhoto" class="btn btn-primary btn-choose">
+                                        <label for="cvPhoto" class="label"> <i class="fa fa-upload mar-right-10"></i>Επιλογή φωτογραφίας προφίλ</label>
+                                        <input type="file" id="cvPhoto" class="form-control" name="logo" style="visibility:hidden;">
+                                    </div>
+
+                            </div>
+                       </div>
+
+
+                        {{-- PROFILE DATA --}}
+                        <div class="col-xs-12" >
+                             <div class="inner-section row">
+                                <div class="section-text centered-text"> Στοιχεία Επικοινωνίας</div>
+
+                                <div class="col-sm-6">
+                                    <div class="input-container">
+                                        <input  type="text" label="Όνομα*" name="firstName" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
+                                        <i class="icon-inp  fa fa-user"></i>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 input-container clear-fix-sm" >
+                                    <input type="text" label="Επώνυμο*" name="lastName" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
+                                    <i class="icon-inp fa fa-user"></i>
+                                </div>
+
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="Διεύθυνση" name="student_address" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
+                                    <i class="icon-inp fa fa-street-view"></i>
+                                </div>
+                                {{--  ΝΑ ΒΑΛΛΟΥΜΕ CITY  --}}
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="Πόλη/Περιοχή" name="student_city" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
+                                    <i class="icon-inp fa fa-map-marker"></i>
+                                </div>
+
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="Ηλεκτρονικό Tαχυδρομείο/ e-mail" name="email" class="demo-form ad-input" value="{{ auth()->user()->email}}">
+                                    <i class="icon-inp fa fa-envelope"></i>
+                                </div>
+                                <div class="col-sm-6 input-container">
+                                    {{--<a href="tel:{{ $user->info->phone }}">--}}
+                                    <input type="text" label="Τηλέφωνο" name="student_phone" class="demo-form ad-input" value="{{ auth()->user()->info->phone }}">
+                                    {{--</a>--}}
+                                    <i class="icon-inp fa fa-phone"></i>
+                                </div>
+
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input" value="{{ auth()->user()->info->dob }}">
+                                    <i class="icon-inp fa fa-calendar"></i>
+                                </div>
+
+                               <div class="col-sm-6 input-container col-gender">
+                                    <div class="drop-title">Φύλο*</div>
+                                    <div class="select-gender">
+                                        <select name="gender" class="select-transparent">
+                                            <option value="male"
+                                            @if (auth()->user()->info->gender == 'male' )
+                                                selected
+                                            @endif
+                                            >Ανδρας</option>
+                                            <option value="female"
+                                                @if (auth()->user()->info->gender == 'female' )
+                                                selected
+                                                @endif
+                                            >Γυναίκα</option>
+
+                                        </select>
+                                    </div>
+                                   <i class="icon-inp fa fa-user fa-gender"></i>
+                                </div>
+
+                               {{-- TODO IS THIS NECESSARY? --}}
+
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
 
 
-                        <div class="col-md-6">
+                        {{-- SAVE FORM --}}
 
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label" for="avatar">Avatar</label>
-                                <div class="col-md-10">
-                                    <input type="file" class="form-control" name="logo">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Name</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ auth()->user()->name }}" placeholder="Fullname" name="name">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label" for="email">Email</label>
-                                <div class="col-md-10">
-                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ auth()->user()->email }}" readonly="">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Password</label>
-                                <div class="col-md-10">
-                                    <input type="password" class="form-control" disabled="" value="Password">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Gender</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ auth()->user()->info->gender }}" placeholder="Gender" name="gender">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">About</label>
-                                <div class="col-md-10">
-                                    <textarea class="form-control" name="about">
-                                        {{ auth()->user()->info->about }}
-                                    </textarea>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Date of birth</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ auth()->user()->dob }}" placeholder="Date of birth" name="dob">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">City</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ auth()->user()->city }}" placeholder="City" name="city">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Address</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ auth()->user()->address }}" placeholder="Address" name="address">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Phone number</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" value="{{ auth()->user()->mobile_phone }}" placeholder="Phone number" name="mobile_phone">
-                                </div>
-                            </div>
-
-                             <div class="form-group">
-                                <label class="col-md-2 control-label">Add Link</label>
-                                <div class="col-md-10">
-                                <select name="link-name" class="form-control">
-                                <option value="no">Επιλέξτε social media</option>
-                                    @foreach($links as $link)
-                                        <option value="{{$link->name}}">{{$link->name}}</option>
-                                    @endforeach
-                                </select>
-                                <input type="text" class="form-control" name="link-url" />
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="form-group text-center m-t-40">
-                            <div class="col-xs-3 col-sm-2 centered-text">
-                                <button class="btn btn-pink btn-block" type="submit">
-                                    Update
+                        <div class="col-xs-12 text-center m-t-40 centered-text">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
                                 </button>
-                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    @if(count($errors) > 0 )
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-
-    @endif
-
-    @if(Session::has('updated_profile'))
-        <div class="row">
-            <p class="alert alert-success col-lg-6"  style="margin: 0 10px">{{session('updated_profile')}}</p>
-        </div>
-    @endif
 
 @endsection

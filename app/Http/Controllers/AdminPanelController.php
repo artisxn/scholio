@@ -49,10 +49,12 @@ class AdminPanelController extends Controller
             return view('panel.pages.school.dashboard.main')->withData($data);
         }
 
-        if(auth()->user()->role == 'student'){
+        if (auth()->user()->role == 'student') {
             return view('panel.pages.student.dashboard');
         }
-        return view('panel.index');
+        if (auth()->user()->role == 'teacher') {
+            return view('panel.pages.teacher.dashboard');
+        }
     }
 
     /**
@@ -198,49 +200,49 @@ class AdminPanelController extends Controller
 
         if (request()->facebook) {
             $this->saveSocialLinks(request()->facebook, 'facebook');
-        }else{
+        } else {
             $this->deleteIfExists('facebook');
         }
 
         if (request()->twitter) {
             $this->saveSocialLinks(request()->twitter, 'twitter');
-        }else{
+        } else {
             $this->deleteIfExists('twitter');
         }
 
         if (request()->youtube) {
             $this->saveSocialLinks(request()->youtube, 'youtube');
-        }else{
+        } else {
             $this->deleteIfExists('youtube');
         }
 
         if (request()->instagram) {
             $this->saveSocialLinks(request()->instagram, 'instagram');
-        }else{
+        } else {
             $this->deleteIfExists('instagram');
         }
 
         if (request()->skype) {
             $this->saveSocialLinks(request()->skype, 'skype');
-        }else{
+        } else {
             $this->deleteIfExists('skype');
         }
 
         if (request()->google) {
             $this->saveSocialLinks(request()->google, 'google');
-        }else{
+        } else {
             $this->deleteIfExists('google');
         }
 
         if (request()->pinterest) {
             $this->saveSocialLinks(request()->pinterest, 'pinterest');
-        }else{
+        } else {
             $this->deleteIfExists('pinterest');
         }
 
         if (request()->linkedin) {
             $this->saveSocialLinks(request()->linkedin, 'linkedin');
-        }else{
+        } else {
             $this->deleteIfExists('linkedin');
         }
 
@@ -258,7 +260,7 @@ class AdminPanelController extends Controller
     {
         $school = auth()->user()->info;
 
-        if(!$school->socialLinks->pluck('name')->contains($name)){
+        if (!$school->socialLinks->pluck('name')->contains($name)) {
             $social = new SocialLink;
             $social->school_id = $school->id;
             $social->name = $name;
@@ -273,14 +275,14 @@ class AdminPanelController extends Controller
     }
 
     /**
-    * @return 
+    * @return
     */
     public function deleteIfExists($name)
     {
         $school = auth()->user()->info;
         $social = $school->socialLinks;
 
-        if($social->pluck('name')->contains($name)){
+        if ($social->pluck('name')->contains($name)) {
             $s = $social->where('name', $name)->first();
             $s->delete();
         }

@@ -42,36 +42,7 @@
                                         <img src="/new/img/univ.png" alt="university image" class="image">
                                         <div class="text">
                                             @lang('panel/students/navigation.schools')
-                                            {{--<span class="counter" style="">counter</span>--}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="{{ route('student-scholarship-request') }}">
-                                <div class="panel dash-card">
-                                    <div class="cont-dash">
-                                        <img src="/panel/assets/images/steps/step3-open.png" alt="scholarship image" class="image">
-                                        <div class="text">
-                                            @lang('panel/students/navigation.my-admissions')
-                                            {{--<span class="counter" style="">counter</span>--}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="{{ url('panel/users/student/review/show') }}">
-                                <div class="panel dash-card">
-                                    <div class="cont-dash">
-                                        <img src="/panel/assets/images/steps/stars.png" alt="reviews image" class="image">
-                                        <div class="text">
-                                            @lang('panel/students/navigation.my-reviews')
-                                            {{--<span class="counter" style="">counter</span>--}}
+                                            <span class="counter" style="">{{ count(auth()->user()->connectedSchool) }}</span>
                                         </div>
                                     </div>
                                 </div>

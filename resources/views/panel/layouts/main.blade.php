@@ -248,7 +248,7 @@ echo json_encode($trans);
                                 img.src = 'assets/img/1'+val+'.png';
                                 if(val == 1) document.location = '/panel/users/student/studentCv';
                                 if(val == 2) document.location = '/panel/users/student/mySchools';
-                                if(val == 3) document.location = '/panel/dashboard';
+                                if(val == 3) document.location = '/panel/users/student/scholarship/request';
                                 if(val == 4) document.location = '/panel/users/student/review/show';
 
                                 img.onload = function() {

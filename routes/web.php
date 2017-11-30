@@ -13,19 +13,21 @@ use App\Models\School;
 use App\Models\SchoolSetting;
 use App\Models\Section;
 use App\Models\Study;
-use App\Models\Tag;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use App\Models\Skill;
+use App\Models\Certificate;
 
 Scholio::soonRoutes();
 
-Route::get('/aaas', function () {
-    $s = Scholarship::find(1);
-    $s->level = 3;
-    $s->save();
+Route::get('bbbs', function(){
+    $u = User::all();
+    $s = Scholarship::all();
+    $c = Certificate::all();
+    return $c->pluck('name', 'id');
 });
 
 Route::get('/fake/login', function () {
@@ -91,7 +93,8 @@ Route::get('/ppps', function () {
         if ($level->type->schools->contains($school)) {
             $data = [];
             foreach ($level->section as $section) {
-                array_push($data, ['section_id' => $section->id, 'section_name' => $section->name, 'study' => $section->study]);}
+                array_push($data, ['section_id' => $section->id, 'section_name' => $section->name, 'study' => $section->study]);
+            }
             array_push($result, ['level_id' => $level->id, 'level_name' => $level->name, 'section' => $data]);
         }
     }
@@ -117,12 +120,12 @@ Route::get('/srv/{role}/{status}', function ($role, $status) {
 
         if ($connected->contains($user)) {
             $totalConnected++;
-        } else if ($allumni->contains($user)) {
+        } elseif ($allumni->contains($user)) {
             $totalAllumni++;
         }
         if ($conParent->contains($user)) {
             $connectedParents++;
-        } else if ($alParent->contains($user)) {
+        } elseif ($alParent->contains($user)) {
             $allumniParents++;
         }
     }
@@ -179,14 +182,14 @@ Route::get('/sx/{order}/{asc}/{field}', function ($order, $asc, $field) {
 
     if ($field != '%20') {
         $scholarships = $scholarships->filter(function ($item) use ($field) {
-            $replacement = preg_replace("/ά/iu", '${1}α', $item->name);
-            $replacement = preg_replace("/έ/iu", '${1}ε', $replacement);
-            $replacement = preg_replace("/ή/iu", '${1}η', $replacement);
-            $replacement = preg_replace("/ί/iu", '${1}ι', $replacement);
-            $replacement = preg_replace("/ό/iu", '${1}ο', $replacement);
-            $replacement = preg_replace("/ύ/iu", '${1}υ', $replacement);
-            $replacement = preg_replace("/ώ/iu", '${1}ω', $replacement);
-            if (preg_match("/" . $field . "/iu", $replacement) || preg_match("/" . $field . "/iu", $item->section->name) || preg_match("/" . $field . "/i", $item->study->name) || preg_match("/" . $field . "/i", $item->financial->plan) || preg_match("/" . $field . "/i", $item->level->name) || preg_match("/" . $field . "/i", $item->criteria->name)) {
+            $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
+            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
+            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
+            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
+            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
+            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
+            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->section->name) || preg_match('/' . $field . '/i', $item->study->name) || preg_match('/' . $field . '/i', $item->financial->plan) || preg_match('/' . $field . '/i', $item->level->name) || preg_match('/' . $field . '/i', $item->criteria->name)) {
                 return $item;
             }
         });
@@ -228,7 +231,6 @@ Route::get('test/student', function () {
             $school->students()->toggle($s->user);
         }
     }
-
 });
 
 Route::get('/new/user/', function () {
@@ -406,7 +408,6 @@ Route::get('/register/role/', function () {
 Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
 Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
-
     $settings = $scholarship->school->settings;
     // dd($scholarship->school);
     $fields = AdmissionField::all();

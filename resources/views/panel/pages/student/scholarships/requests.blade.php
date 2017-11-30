@@ -33,7 +33,7 @@
     @media(min-width: 1430px){
         .col-xl-4{width: 33.33%}
     }
-    @media(min-width: 1870px){
+    @media(min-width: 1925px){
         .col-xl-4{width: 25%}
     }
     @media(min-width: 2420px){
@@ -124,6 +124,7 @@
 
 @section('scripts')
     <script>
+    @foreach($admissions as $admission)
         $( "#{{ $admission->scholarship_id }}" ).ready(
                 function test(event) {
                     var heightOfDiv = $( "#{{ $admission->scholarship_id }}" ).height();
@@ -136,6 +137,6 @@
                         });}
                 }
         )
-
+        @endforeach
     </script>
 @endsection

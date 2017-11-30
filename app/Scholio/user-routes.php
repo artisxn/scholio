@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\Carbon;
 
 Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () {
     Route::post('/delete', 'RoutesController@studentDelete')->name('students-delete');
@@ -10,7 +9,7 @@ Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () 
     Route::get('/kinship', 'RoutesController@studentKinship')->name('students-kinship');
     Route::get('/review/show', 'RoutesController@reviewShow')->name('student-review-show');
     Route::get('/review/create/{school}', 'RoutesController@reviewCreate')->name('student-review-create');
-    Route::get('/scholarship/request', function(){
+    Route::get('/scholarship/request', function () {
         $admissions = auth()->user()->admissions->load('scholarship');
         return view('panel.pages.student.scholarships.requests', compact('admissions'));
     })->name('student-scholarship-request');
@@ -23,6 +22,16 @@ Route::group(['middleware' => 'is.teacher', 'prefix' => 'teacher'], function () 
     Route::get('/class/show', 'RoutesController@teacherClassShow');
     Route::get('/class/{lecture}', 'RoutesController@teacherClassLecture');
     Route::post('/class/{lecture}/badge/{student}', 'RoutesController@teacherClassBadge');
+    Route::get('/cv', function () {
+        return view('panel.pages.teacher.profile.cv');
+    })->name('teacher-cv');
+    Route::post('/profile', function () {
+    })->name('teachers-profile');
+
+    Route::get('/schools', function(){
+        // dd(auth()->user()->connectedSchool()->first()->pivot->status);
+        return view('panel.pages.teacher.profile.schools');
+    })->name('teachers-schools');
 });
 
 Route::get('/parent/profile', 'RoutesController@parentProfile')->name('parents-profile');
