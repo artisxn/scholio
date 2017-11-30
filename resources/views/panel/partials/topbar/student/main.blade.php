@@ -8,7 +8,7 @@
     <span class="tooltiptext4 tool5" style="">@lang('panel/students/navigation.schools')</span>
 </a>
 
-<a href="/panel/dashboard"  class="top-img tool {{ request()->path() == 'panel/dashboard' ? 'img-active' : ''}}">
+<a href="/panel/users/student/scholarship/request"  class="top-img tool {{ request()->path() == 'panel/users/student/scholarship/request' ? 'img-active' : ''}}">
     <img src="/panel/assets/images/steps/step3-open.png" alt="student image" class="top-image">
     <span class="tooltiptext4 tool5" style="">@lang('panel/students/navigation.my-admissions')</span>
 </a>
