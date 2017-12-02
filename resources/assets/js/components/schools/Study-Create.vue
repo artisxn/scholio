@@ -118,8 +118,8 @@
 
                                     <div v-for="(study,st) in section.studies" style="position: relative!important;" class="">
                                         <div>
-
                                             <span class="tool">
+                                                <span style="color: red;" v-if="study.study.user.length && study.study.user.length > 0">{{ study.study.user.length }}</span>
                                                 <span :id="index+'study'+sc+'_'+st" class="dots-study" :class="[ {'dots-study-xl': currentStudies.length==2 }]">{{ study.study.name }}</span>
                                                 <span class="tooltiptext tooltip">{{study.study.name }}</span>
                                             </span>
@@ -379,6 +379,7 @@
 
             _loadStudies({data}){
                 this.currentStudies = data
+                console.log(data)
             },
 
             _loadData({data}){

@@ -23,13 +23,6 @@ use App\Models\Certificate;
 
 Scholio::soonRoutes();
 
-Route::get('bbbs', function(){
-    $u = User::all();
-    $s = Scholarship::all();
-    $c = Certificate::all();
-    return $c->pluck('name', 'id');
-});
-
 Route::get('/fake/login', function () {
     $oldUser = null;
     if (auth()->check()) {
@@ -56,170 +49,6 @@ Route::get('/scholio/ready', function () {
     }
 });
 
-Route::get('/ttts', function () {
-    // DummyStudy::truncate();
-    $school = auth()->user()->info;
-    // foreach (School::all() as $school) {
-    foreach ($school->levels() as $l) {
-        $level = Level::find($l);
-        foreach ($school->sections() as $s) {
-            $section = Section::find($s);
-            foreach ($school->studyFromSection($section->id) as $st) {
-                $study = Study::find($st);
-                $ds = new DummyStudy;
-                $ds->school_id = $school->id;
-                $ds->level_id = $level->id;
-                $ds->section_id = $section->id;
-                $ds->study_id = $study->id;
-                $ds->level_name = $level->name;
-                $ds->section_name = $section->name;
-                $ds->study_name = $study->name;
-                $ds->section_icon = '/panel/assets/images/steps/' . $section->name . '.png';
-                $ds->save();
-                // return ['level' => $level->name, 'section' => $section->name, 'study' => $study->name];
-            }
-        }
-    }
-    // }
-
-    return 'OK';
-});
-
-Route::get('/ppps', function () {
-    $school = auth()->user()->info;
-    $result = [];
-
-    foreach (Level::all() as $level) {
-        if ($level->type->schools->contains($school)) {
-            $data = [];
-            foreach ($level->section as $section) {
-                array_push($data, ['section_id' => $section->id, 'section_name' => $section->name, 'study' => $section->study]);
-            }
-            array_push($result, ['level_id' => $level->id, 'level_name' => $level->name, 'section' => $data]);
-        }
-    }
-
-    return $result;
-});
-
-Route::get('/srv/{role}/{status}', function ($role, $status) {
-    $school = auth()->user()->info;
-    $reviews = $school->reviews()->with('user', 'category.category')->get();
-
-    $totalAllumni = 0;
-    $totalConnected = 0;
-    $connectedParents = 0;
-    $allumniParents = 0;
-
-    foreach ($reviews as $review) {
-        $user = $review->user;
-        $connected = $school->connected;
-        $allumni = $school->allumni;
-        $conParent = $school->connectedParents;
-        $alParent = $school->allumniParents;
-
-        if ($connected->contains($user)) {
-            $totalConnected++;
-        } elseif ($allumni->contains($user)) {
-            $totalAllumni++;
-        }
-        if ($conParent->contains($user)) {
-            $connectedParents++;
-        } elseif ($alParent->contains($user)) {
-            $allumniParents++;
-        }
-    }
-
-    if ($status != 'all' || $role !== 'all') {
-        if ($role == 'student') {
-            $connected = $school->$status;
-        } else {
-            if ($status == 'connected') {
-                $connected = $school->connectedParents;
-            } else {
-                $connected = $school->allumniParents;
-            }
-        }
-
-        $reviews = $reviews->filter(function ($item) use ($connected, $role, $status) {
-            $bool = $status == 'all' ? true : $connected->contains($item->user);
-            if ($item->user->role == $role && $bool) {
-                return $item;
-            }
-        });
-    }
-
-    $perPage = config('scholio.perPage.reviews');
-    $items = $reviews;
-    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
-
-    $paginatedData = [];
-    foreach ($items->forPage($page, $perPage) as $key => $value) {
-        $paginatedData[] = $value;
-    }
-
-    $items = $items instanceof Collection ? $items : Collection::make($items);
-    $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
-    $custom = collect(['connectedStudents' => $totalConnected, 'allumniStudents' => $totalAllumni, 'connectedParents' => $connectedParents, 'allumniParents' => $allumniParents, 'ratingStars' => $ratingStars]);
-    $data = $custom->merge($result);
-    return $data;
-});
-
-Route::get('/sx/{order}/{asc}/{field}', function ($order, $asc, $field) {
-    $school = auth()->user()->info;
-    $orderType = $asc == 'false' ? 'asc' : 'desc';
-    $scholarships = $school->scholarship()->orderBy($order, $orderType)->get();
-
-    $active = 0;
-    foreach ($scholarships as $scholar) {
-        $scholar->section = $scholar->study->section[0];
-        if ($scholar->active == 1) {
-            $active++;
-        }
-    }
-
-    $deactive = $scholarships->count() - $active;
-
-    if ($field != '%20') {
-        $scholarships = $scholarships->filter(function ($item) use ($field) {
-            $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
-            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
-            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
-            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
-            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
-            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
-            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
-            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->section->name) || preg_match('/' . $field . '/i', $item->study->name) || preg_match('/' . $field . '/i', $item->financial->plan) || preg_match('/' . $field . '/i', $item->level->name) || preg_match('/' . $field . '/i', $item->criteria->name)) {
-                return $item;
-            }
-        });
-    }
-
-    $perPage = 2;
-    $items = $scholarships->load('financial', 'level', 'study', 'user', 'criteria');
-
-    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
-    $items = $items instanceof Collection ? $items : Collection::make($items);
-
-    $paginatedData = [];
-    foreach ($items->forPage($page, $perPage) as $key => $value) {
-        $paginatedData[] = $value;
-    }
-
-    $result = new LengthAwarePaginator($paginatedData, $items->count(), $perPage, $page, []);
-    $custom = collect(['active' => $active, 'deactive' => $deactive]);
-    $data = $custom->merge($result);
-    return $data;
-});
-
-Route::get('/sc', function () {
-    $school = auth()->user()->info;
-    $t['categories'] = $school->reviews()->with('user', 'category.category')->get();
-    $t['stars'] = $school->averageStars();
-    $t['avgReviews'] = $school->averageReviews();
-    return $t;
-});
-
 Route::get('test/student', function () {
     for ($i = 1; $i <= 8; $i++) {
         $school = App\Models\School::find($i);
@@ -233,24 +62,6 @@ Route::get('test/student', function () {
     }
 });
 
-Route::get('/new/user/', function () {
-    if (auth()->user()->role == 'student') {
-        return redirect('panel/users/student/studentCv');
-    }
-
-    return redirect('/dashboard');
-});
-
-Route::get('test/user/{user}/school/{school}', function (User $user, School $school) {
-    event(new UserAppliedOnSchool($user, User::find($school->id)));
-    return 'ok';
-});
-
-Route::get('test/user/{user}/scholarship/{scholarship}', function (User $user, Scholarship $scholarship) {
-    event(new StudentAppliedOnScholarship($user, $scholarship));
-    return 'ok';
-});
-
 Route::post('scholarship/{scholarship}/end', function (Scholarship $scholarship) {
     $winners = request()->winner;
     $scholarship->end($winners);
@@ -259,22 +70,6 @@ Route::post('scholarship/{scholarship}/end', function (Scholarship $scholarship)
 
 Route::get('public/donor', function () {
     return view('public.results.donor');
-});
-
-Route::get('ppp', function () {
-    $schols = Scholarship::all();
-    foreach ($schols as $sch) {
-        $o = '';
-        foreach ($sch->tag as $r) {
-            $o .= $r->name . ',';
-        }
-
-        $a = AlgoliaScholarship::where('scholarship_id', $sch->id)->get();
-        $kkk = $a->first();
-        $kkk->tags = $o;
-        $kkk->save();
-    }
-    return '$a';
 });
 
 Route::post('/admission/{admission}/notes/save', function (Admission $admission) {
@@ -338,16 +133,6 @@ Route::get('/scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('/scholarship/{scholarship}/edit', 'RoutesController@scholarshipEdit');
 Route::post('/scholarship/{scholarship}/update', 'RoutesController@scholarshipUpdate');
 Route::get('/scholarship/{scholarship}/delete', 'RoutesController@scholarshipDelete');
-
-Route::get('algolia', function () {
-    $schools = School::all();
-    $schools->load('study.section.level', 'type', 'scholarship.study.section.level', 'scholarship.criteria', 'admin');
-    $schools->searchable();
-    $scholarships = Scholarship::all();
-    $scholarships->load('study.section.level', 'school.admin', 'school.type', 'criteria');
-    $scholarships->searchable();
-    return 'OK';
-});
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 
 Route::get('connection/{id}/confirm', function ($id) {

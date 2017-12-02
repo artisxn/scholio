@@ -29,10 +29,9 @@
                                             <td>{{ notification.data.name }}</td>
                                             <td class="text-center">{{ notification.created_at }}</td>
                                             <td class="text-center">
-                                                <button v-on:click="accept(notification.data.id)" class="btn btn-info">{{ lang('resource.requests.table.confirm') }}</button>
-                                                <button v-on:click="deny(notification.id, notification.data.id)" class="btn btn-success">{{ lang('resource.requests.table.abort') }}</button>
+                                                <button v-on:click="load(notification.data)" class="btn btn-info" :disabled="buttonsDisabled">{{ lang('resource.requests.table.confirm') }}</button>
+                                                <button v-on:click="deny(notification.id, notification.data.id)" class="btn btn-success" :disabled="buttonsDisabled">{{ lang('resource.requests.table.abort') }}</button>
                                             </td>
-
                                         </tr>
                                     </tbody>
                                 </table>
@@ -42,6 +41,54 @@
                 </div>
             </div>
         </div>
+
+        <modal name="studiesStudent" :width="800" :height="200">
+            <div>
+                Choose the study:
+                <select v-model="selectedStudy">
+                    <optgroup :label="level.level.name" v-for="level in studies">
+                            <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div>
+                Choose status of the user:
+                <select v-model="selectedStatus">
+                    <option>connected</option>
+                    <option>allumni</option>
+                </select>
+            </div>
+            
+            <div>
+                <button class="btn btn-primary" @click="accept">Save</button>
+            </div>
+        </modal>
+
+        <modal name="studiesTeacher" :width="800" :height="200">
+            <div>
+                Choose the study:
+                <select v-model="selectedStudy">
+                    <optgroup :label="level.level.name" v-for="level in sections">
+                            <option v-for="section in level.sections">{{ section.section.name }}</option>
+                    </optgroup>
+                </select>
+
+                or <input type="text" v-model="selectedStudy" size="80">
+            </div>
+
+            <div>
+                Choose status of the user:
+                <select v-model="selectedStatus">
+                    <option>connected</option>
+                    <option>allumni</option>
+                </select>
+            </div>
+            
+            <div>
+                <button class="btn btn-primary" @click="accept">Save</button>
+            </div>
+        </modal>
     </div>
 </template>
 
@@ -61,7 +108,14 @@
 
         data: function() {
             return{
-                notifications: []
+                notifications: [],
+                studies: [],
+                sections: [],
+                selectedUser: null,
+                selectedStudy: null,
+                selectedStatus: null,
+                buttonsDisabled: true,
+                studyConnection: 0
             }
         },
 
@@ -74,6 +128,21 @@
                         console.log(this.notifications)
                     });
             },
+
+            getSchoolStudies: function(){
+                // school/getCurrentStudies
+                axios.get('/api/notifications/getSchoolLevelStudies').then(({data})=>{
+                    this.studies = data
+                    console.log(this.studies)
+                })
+            },
+
+            getSchoolSections(){
+                axios.get('/api/notifications/getSchoolLevelSections').then(({data})=>{
+                    this.sections = data
+                })
+            },
+
             markAsRead: function(id){
                 axios.post('/api/notifications/read/' + id)
                     .then(response => {
@@ -82,14 +151,17 @@
                         Event.$emit('readNotifications')
                 });
             },
-            accept: function(id){
-                axios.post('/api/connection/' + id + '/confirm')
+            accept: function(){
+                // console.log(this.selectedStudy)
+                if(this.selectedUser && this.selectedStudy && this.selectedStatus){
+                    axios.post('/api/connection/' + this.selectedUser + '/' + this.selectedStudy + '/' + this.selectedStatus +'/confirm')
                     .then(response => {
                         console.log(response.data)
                         this.getNotifications()
-                        this.markAsRead(id)
+                        this.markAsRead(this.selectedUser)
                         window.location.reload();
                     });
+                }
             },
             deny: function(id, user){
                 axios.post('/api/connection/' + id + '/deny', {user:user})
@@ -97,11 +169,29 @@
                         this.markAsRead(id)
                         window.location.reload();
                     });
+            },
+
+            load(user){
+                this.selectedUser = user.id
+                if(user.role == 'student') this.$modal.show('studiesStudent')
+                else this.$modal.show('studiesTeacher')
+            }
+        },
+
+        watch: {
+            studies() {
+                if(this.studies) this.buttonsDisabled = false
+            },
+
+            sections(){
+                if(this.sections) this.buttonsDisabled = false
             }
         },
 
         mounted() {
             this.getNotifications()
+            this.getSchoolStudies()
+            this.getSchoolSections()
             // Event.$on('readNotifications', () => {
             //     this.markAsRead(id)
             // });

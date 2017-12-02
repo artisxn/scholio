@@ -101,14 +101,14 @@
 
 
                     <div class="back">
-                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)" ></i>
+                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)"></i>
 
                         <div style="position: absolute; top: 30px">
                                     <span style="color:#eee; margin-left: 10px;">
-                                        MSc Information Technology
+                                        {{ student.pivot.type }}
                                         <br>
                                         <span style="color:#eee; margin-left: 10px;">
-                                        Μεταπτυχιακές Σπουδές-Master
+                                        {{ student.pivot.level }}
                                         </span>
                                         <br>
                                         <br>

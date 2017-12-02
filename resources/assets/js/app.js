@@ -12,6 +12,10 @@ Vue.prototype.lang = (key) => {
     return _.get(window.lang, key, key);
 };
 
+import VModal from 'vue-js-modal'
+
+Vue.use(VModal)
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

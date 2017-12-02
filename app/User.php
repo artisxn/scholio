@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Models\Study;
 
 class User extends Authenticatable
 {
@@ -194,5 +195,13 @@ class User extends Authenticatable
     public function apply()
     {
         return $this->belongsToMany(School::class, 'school_requests');
+    }
+
+    /**
+    * @return 
+    */
+    public function studyConnection()
+    {
+        return $this->belongsToMany(Study::class, 'study_user');
     }
 }

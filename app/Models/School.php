@@ -6,7 +6,6 @@ use App\ScholarshipLimit;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\SocialLink;
 
 class School extends Model
 {
@@ -118,7 +117,7 @@ class School extends Model
      */
     public function teachers()
     {
-        return $this->users()->where('role', 'teacher');
+        return $this->users()->where('role', 'teacher')->withPivot('status', 'type', 'level');
     }
 
     /**
@@ -138,7 +137,7 @@ class School extends Model
      */
     public function students()
     {
-        return $this->users()->where('role', 'student')->withPivot('status');
+        return $this->users()->where('role', 'student')->withPivot('status', 'type', 'level');
     }
 
     /**
@@ -538,11 +537,10 @@ class School extends Model
     }
 
     /**
-    * @return 
+    * @return
     */
     public function socialLinks()
     {
         return $this->hasMany(SocialLink::class, 'school_id');
     }
-    
 }

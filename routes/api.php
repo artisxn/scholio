@@ -23,6 +23,46 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
+Route::get('/notifications/getSchoolLevelSections',function(){
+   $school = auth()->user()->info;
+    $studies = [];
+    $data = [];
+    $sections = [];
+
+    $schoolLevels = $school->levels();
+
+    foreach ($schoolLevels as $level) {
+        foreach ($school->section($level) as $section) {
+            array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+        }
+        array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+        $sections = [];
+    }
+
+    return $data;
+})->middleware('auth:api');
+
+Route::get('/notifications/getSchoolLevelStudies',function(){
+    $school = auth()->user()->info;
+    $studies = [];
+    $data = [];
+    $sections = [];
+
+    $schoolLevels = $school->levels();
+
+    foreach ($schoolLevels as $level) {
+        foreach ($school->section($level) as $section) {
+            foreach ($school->studyFromSection($section) as $study) {
+                array_push($studies, ['study' => Study::find($study)]);
+            }
+        }
+        array_push($data, ['level' => Level::find($level), 'studies' => $studies]);
+        $studies = [];
+    }
+
+    return $data;
+})->middleware('auth:api');
+
 Route::post('/school/scholarshipSave', function () {
     // return request()->studies[0];
     try {
@@ -160,7 +200,7 @@ Route::get('/school/getCurrentStudies', function () {
     foreach ($schoolLevels as $level) {
         foreach ($school->section($level) as $section) {
             foreach ($school->studyFromSection($section) as $study) {
-                array_push($studies, ['study' => Study::find($study)]);
+                array_push($studies, ['study' => Study::find($study)->load('user')]);
             }
 
             array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
@@ -436,9 +476,16 @@ Route::post('/request/school', function () {
     return 'Error';
 })->middleware('auth:api');
 
-Route::post('/connection/{id}/confirm', function ($id) {
+Route::post('/connection/{id}/{type}/{status}/confirm', function ($id, $type, $status) {
     $user = User::find($id);
-    auth()->user()->info->users()->toggle($user);
+    if($user->role == 'teacher'){
+        auth()->user()->info->users()->attach($user, ['type' => $type, 'status' => $status]);        
+    }else{
+        $study = Study::find($type);
+        auth()->user()->info->users()->attach($user, ['type' => $study->name, 'status' => $status, 'study_id' => $type, 'level' => $study->section[0]->level->name]);
+        $study->user()->attach($user);
+    }
+    
     $user->notify(new SchoolAcceptedUser($user, auth()->user()));
     return 'Accepted';
 })->middleware('auth:api');
@@ -525,7 +572,7 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
             $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
 
-            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) || preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone)) {
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) || preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) || preg_match('/'. $field .'(\w)/i', $item->studyConnection->pluck('name'))) {
                 return $item;
             }
         });

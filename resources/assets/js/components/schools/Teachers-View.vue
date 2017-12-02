@@ -45,6 +45,7 @@
                                 <div class="name2"> {{teacher.name}} </div>
                             </a>
                             <div class="email2"><a :href="'mailto:'+teacher.email">{{teacher.email}}</a></div>
+                            <div style="color: #00bcd4;">{{ teacher.pivot.type }}</div>
                         </div>
                     </div>
 

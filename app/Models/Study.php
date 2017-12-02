@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Level;
 use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Study extends Model
 {
@@ -57,5 +58,13 @@ class Study extends Model
     public function school()
     {
         return $this->belongsToMany(School::class, 'school_study')->withTimestamps();
+    }
+
+    /**
+    * @return 
+    */
+    public function user()
+    {
+        return $this->belongsToMany(User::class, 'study_user');
     }
 }
