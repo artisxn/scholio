@@ -9,6 +9,9 @@
     .cont-text>a:hover,.admin-name:hover{color: #FD6A33}
     .sc-btn{padding: 6px; margin-bottom: 30px;}
     .img-logo{height: 75px;}
+    .btn-primary{background-color: #008da5;}
+    .btn-primary:hover{background-color: #00758c;}
+
 
     @media  (min-width:660px) and (max-width:920px) {
         .img-logo{height: 60px;}
@@ -63,7 +66,7 @@
                                     <small class="pad-left-3">{{mySchool.website}}</small>
                                 </div>
                                 <div class="">
-                                    <i class="md md-email"></i>
+                                    <i class="fa fa-envelope"></i>
                                     <small>{{mySchool.admin.email}}</small>
                                 </div>
                                 </p>
@@ -75,7 +78,7 @@
                 <div class="pull-right">
                     <div v-if="hasNOTReviewed(mySchool.id)" class="cont-btn" >
                         <a :href="'/panel/users/student/review/create/' + mySchool.id" class="btn btn-primary sc-btn">
-                            ΑΞΙΟΛΟΓΗΣΗ
+                            Αξιολόγηση
                         </a>
                     </div>
                     <div v-else class="cont-text">
