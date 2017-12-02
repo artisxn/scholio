@@ -12,6 +12,8 @@
     .section-text{color: #008DA5; font-weight: 400; font-size: 102%}
     .gap{height: 60px;}
     .mar-right-10{margin-right: 10px;}
+    .btn-primary{background-color: #008da5;}
+    .btn-primary:hover{background-color: #00758c;}
 
     @media (max-width: 543px){
         .br1{display: none;}
@@ -21,13 +23,14 @@
 @endsection
 
 @section('scriptsBefore')
-    <script>
-        $(document).ready(function(){$("#content").hide().fadeIn(90);});
-    </script>
+
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
-   
+    <script>
+        $(document).ready(function(){$("#content").hide().fadeIn(90);});
+    </script>
+
 @endsection
 
 @section('content')

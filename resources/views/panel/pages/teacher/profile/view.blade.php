@@ -32,6 +32,8 @@
     .col-gender{border-bottom: 1px solid #aaa; padding: 0 14px; height: 56px;}
     .mar-right-10{margin-right: 10px;}
     .section-text{color: #008DA5; font-weight: 400; font-size: 110%}
+    .m-b-40{margin-bottom: 40px}
+    .m-t-50{margin-top: 60px;}
 
     .clear-fix{clear: both }
 
@@ -52,16 +54,25 @@
 @endsection
 
 @section('scriptsBefore')
+
+    <script>
+        $(document).ready(function(){
+            $('#full').fadeIn(90).removeClass('hidden');
+        });
+    </script>
+
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
-    <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
+    <script src="/panel/assets/js/cv.js"></script>
+
+
 
 @endsection
 
 
 @section('content')
 
- <div class="row">
+ <div class="row hidden" id="full">
         <div class="col-sm-12">
             <div class="card-box">
                 <div class="row">
@@ -155,12 +166,50 @@
 
                                 <div class="clearfix"></div>
                             </div>
+
+                            <div class="inner-section row m-b-40" >
+                                <div class="section-text centered-text"> Κοινωνικά Δίκτυα</div>
+
+                                <div class="col-sm-6">
+                                    <div class="input-container">
+                                        <input  type="text" label="Facebook" name="facebook" class="demo-form ad-input" value="{{ auth()->user()->info->social }}">
+                                        <i class="icon-inp  fa fa-facebook"></i>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 input-container clear-fix-sm" >
+                                    <input type="text" label="Instagram" name="instagram" class="demo-form ad-input" value="{{ auth()->user()->info->social  }}">
+                                    <i class="icon-inp fa fa-instagram"></i>
+                                </div>
+
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="YouTube" name="youtube" class="demo-form ad-input" value="{{  auth()->user()->info->social }}">
+                                    <i class="icon-inp fa fa-youtube"></i>
+                                </div>
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="LinkedIn" name="linkedin" class="demo-form ad-input" value="{{auth()->user()->info->social   }}">
+                                    <i class="icon-inp fa fa-linkedin"></i>
+                                </div>
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="twitter" name="twitter" class="demo-form ad-input" value="{{auth()->user()->info->social   }}">
+                                    <i class="icon-inp fa fa-linkedin"></i>
+                                </div>
+
+                                <div class="col-sm-6 input-container">
+                                    <input type="text" label="Google+" name="google" class="demo-form ad-input" value="{{auth()->user()->info->social   }}">
+                                    <i class="icon-inp fa fa-google"></i>
+                                </div>
+
+                            </div>
+
+                            </div>
+
+
                         </div>
 
 
                         {{-- SAVE FORM --}}
 
-                        <div class="col-xs-12 text-center m-t-40 centered-text">
+                        <div class="col-xs-12 text-center m-t-50 m-b-40 centered-text">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
                                 </button>

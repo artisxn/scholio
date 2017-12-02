@@ -19,12 +19,21 @@
 @endsection
 
 @section('content')
-
                     <div class="row up">
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="{{ url('panel/users/student/studentCv') }}">
+                        <div class="col-md-4 col-sm-6">
+                            <a href="{{ url('panel/users/teacher/profile') }}">
+                                <div class="panel dash-card">
+                                    <div class="cont-dash">
+                                        <img src="/panel/assets/images/steps/open.png" alt="cv image" class="image">
+                                        <div class="text">
+                                            Στοιχεία Επικοινωνίας
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <a href="{{ url('panel/users/teacher/cv') }}">
                                 <div class="panel dash-card">
                                     <div class="cont-dash">
                                         <img src="/panel/assets/images/steps/skills2.png" alt="cv image" class="image">
@@ -35,8 +44,8 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="{{ url('panel/users/student/mySchools') }}">
+                        <div class="col-md-4 col-sm-12">
+                            <a href="{{ url('panel/users/teacher/schools') }}">
                                 <div class="panel dash-card">
                                     <div class="cont-dash">
                                         <img src="/new/img/univ.png" alt="university image" class="image">
@@ -48,7 +57,6 @@
                                 </div>
                             </a>
                         </div>
-
                     </div>
 
 @endsection
