@@ -215,15 +215,6 @@
                             {{--CV DATA --}}
                             <div class="col-xs-12">
                                 <div class="row flex-row">
-                                    <div class="col-md-6 section2-container ">
-                                        <div class="inner-section">
-                                            <div class="section-text centered-text">   <i class="icon-title fa fa-wrench"></i> Ικανότητες - Δεξιότητες</div>
-                                            <div class="input-container">
-                                                <div class="info-text"> Γράψε μας τις ικανοτητες και τις δεξιότητες που διαθέτεις.</div>
-                                                <textarea class="notes">{{ auth()->user()->cv->skills }}</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="col-md-6 section2-container ">
                                         <div class="inner-section">

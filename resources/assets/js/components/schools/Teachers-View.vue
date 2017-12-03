@@ -45,7 +45,7 @@
                                 <div class="name2"> {{teacher.name}} </div>
                             </a>
                             <div class="email2"><a :href="'mailto:'+teacher.email">{{teacher.email}}</a></div>
-                            <div style="color: #00bcd4;">{{ teacher.pivot.type }}</div>
+                            <div class="teacher-study">{{ teacher.pivot.type }}</div>
                         </div>
                     </div>
 
@@ -131,7 +131,7 @@
     .form-control{z-index: 0!important;}
     .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
 
-    .sc-box2{min-height: 160px; background: #fafafa; border: 1px solid #FD6A33; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
+    .sc-box2{min-height: 240px; background: #fafafa; border: 1px solid #FD6A33; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
 
 
     .sc-up2{height: 70px; background: #7f8b85; margin: 0 -25px; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom: 1px solid #FD6A33;}
@@ -143,6 +143,7 @@
     .name2{text-transform: capitalize; font-size: 140%; font-weight: 400;}
     .email2{font-size: 90%; font-weight: 300;}
     .email2>a,.email2>a:visited{color: #7f8b85}
+    .teacher-study{margin: 40px 0 0 16px; color: #999; font-size: 90%}
     /*.name{text-transform: capitalize; font-size: 140%; color: #fff; font-weight: 400; margin: -50px 0 0 90px;}*/
     /*.email{font-size: 90%; color: #888; font-weight: 300; margin: 5px 0 0 90px;}*/
     /*.phone{margin: 20px 0 0 90px;}*/
@@ -196,10 +197,10 @@
 
     @media (max-width: 1359px) {
         .img-cont2, .name2, .email2{text-align: center;}
+        .teacher-study{margin-left: auto; margin-right: auto; text-align: center;}
         .img-cont2{margin: -50px auto; }
         .name2{margin: 55px auto 0 auto;  color: #74807a; }
         .email2{margin: 5px auto;}
-        .sc-box2{min-height: 200px;}
         .avatar1,.frame-cont2{display: none;}
         .img-cont2{display: block;}
 

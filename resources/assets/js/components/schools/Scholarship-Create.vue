@@ -89,8 +89,8 @@
                                     :disabled="criteria_disabled"
                                     :custom-label="customLabel">
 
-                                <template slot="option" scope="props">
-                                <!--<template slot="option" slot-scope="props">-->
+                                <!--<template slot="option" scope="props">-->
+                                <template slot="option" slot-scope="props">
                                     <div class="option__desc">
                                         <img :src="props.option.icon" height="15px">
                                         <span class="option__title">{{ props.option.name }}</span>

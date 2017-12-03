@@ -44,7 +44,7 @@
             <div class="col-xs-12 col-xsm-6 col-sm-6 col-xl-4 col-xxl-3 col-xxxl-2">
                 <div class="card-box" style="{{ $school->pivot->status == 'allumni' ? 'background-color: #aaa;' : ''}}">
                     <div class="row">
-                        <div class="contact-card" style="">
+                        <div class="contact-card" style="min-height: 165px;">
 
                             <a target="_blank" href="/public/profile/{{$school->id}}">
                                 <div class="admin-name">
