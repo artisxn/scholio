@@ -13,6 +13,9 @@
 
     <style>
 
+    .ui-datepicker-calendar {
+    display: none;
+    }
 
         .upper{width: 100%;  height: 280px; border-top-right-radius: 6px; border-top-left-radius: 6px;
             background: linear-gradient(#dddddd, #b4b4b4);
@@ -57,7 +60,7 @@
         /* ========== DatePicker jQuery ============== */
         .ui-datepicker{width: 350px}
         .ui-datepicker-calendar {
-            /*display: none;*/
+            display: none;
         }
         .ui-widget-header {
             /*background: #00bcd4;*/
@@ -83,6 +86,10 @@
         .typeahead__dropdown>li>a, .typeahead__list>li>a{color: #888; font-weight: 300;}
 
     </style>
+
+    <script>
+        window.skills = <?php echo $skills ?>
+    </script>
 @endsection
 
 @section('content')
@@ -447,6 +454,14 @@
                                 <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/skillsb.png" alt=""> </i>@lang('teacher_profile.section.skills')</div>
                                 <div class="input-container">
 
+                                <div class="typeahead__container col-sm-8 polyfill-input-sc">
+                                                <div class="typeahead__field typeahead__query">
+                                                    <input label="Ικανοτητες"
+                                                           class="js-typeahead-skills demo-form ad-input" name="studies"
+                                                           type="text" placeholder="" autocomplete="off">
+                                                    <i class="icon-inp fa fa-graduation-cap margin-top"></i>
+                                                </div>
+                                            </div>
 
                                 </div>
                             </div>
@@ -488,63 +503,161 @@
 
     $(document).ready(function(){
 
+        console.log(window.skills)
+
         $('#full').fadeIn(60).removeClass('hidden');
 
         $( function() {
 
-//          $( "#datepickerFrom" ).datepicker( $.datepicker.regional[ "el" ] );
+         //$( "#datepickerFrom" ).datepicker( $.datepicker.regional[ "el" ] );
             $( "#datepickerWorkFrom" ).datepicker(
                     {
-                changeMonth: true,
-                changeYear: true,
-                showButtonPanel: true,
-                dateFormat: 'MM yy',
-                yearRange: "1980:",
-                onClose: function(dateText, inst) {
-                    $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
-                }
-            });
-        } );
-        $( function() {
-            $( "#datepickerWorkEnd" ).datepicker(
-                    {
+                        dateFormat: "mm/yy",
                         changeMonth: true,
                         changeYear: true,
                         showButtonPanel: true,
-                        dateFormat: 'MM yy',
-                        yearRange: "1990:",
-                        onClose: function (dateText, inst) {
-                            $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                        yearRange: "1980:",
+                        onClose: function(dateText, inst) {
+
+
+                            function isDonePressed(){
+                                return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                            }
+
+                            if (isDonePressed()){
+                                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+                                
+                                 $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                            }
+                        },
+                        beforeShow : function(input, inst) {
+
+                            inst.dpDiv.addClass('month_year_datepicker')
+
+                            if ((datestr = $(this).val()).length > 0) {
+                                year = datestr.substring(datestr.length-4, datestr.length);
+                                month = datestr.substring(0, 2);
+                                $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                                $(this).datepicker('setDate', new Date(year, month-1, 1));
+                                $(".ui-datepicker-calendar").hide();
+                            }
                         }
-                    });
-        } );
+                    })
+        });
+        $( function() {
+            $( "#datepickerWorkEnd" ).datepicker(
+                    {
+                        dateFormat: "mm/yy",
+                        changeMonth: true,
+                        changeYear: true,
+                        showButtonPanel: true,
+                        yearRange: "1980:",
+                        onClose: function(dateText, inst) {
+
+
+                            function isDonePressed(){
+                                return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                            }
+
+                            if (isDonePressed()){
+                                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+                                
+                                 $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                            }
+                        },
+                        beforeShow : function(input, inst) {
+
+                            inst.dpDiv.addClass('month_year_datepicker')
+
+                            if ((datestr = $(this).val()).length > 0) {
+                                year = datestr.substring(datestr.length-4, datestr.length);
+                                month = datestr.substring(0, 2);
+                                $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                                $(this).datepicker('setDate', new Date(year, month-1, 1));
+                                $(".ui-datepicker-calendar").hide();
+                            }
+                        }
+                    })
+        });
 
         $( function() {
             $( "#datepickerStudiesFrom" ).datepicker(
                     {
+                        dateFormat: "mm/yy",
                         changeMonth: true,
                         changeYear: true,
                         showButtonPanel: true,
-                        dateFormat: 'MM yy',
-                        yearRange: "1985:",
+                        yearRange: "1980:",
                         onClose: function(dateText, inst) {
-                            $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+
+
+                            function isDonePressed(){
+                                return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                            }
+
+                            if (isDonePressed()){
+                                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+                                
+                                 $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                            }
+                        },
+                        beforeShow : function(input, inst) {
+
+                            inst.dpDiv.addClass('month_year_datepicker')
+
+                            if ((datestr = $(this).val()).length > 0) {
+                                year = datestr.substring(datestr.length-4, datestr.length);
+                                month = datestr.substring(0, 2);
+                                $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                                $(this).datepicker('setDate', new Date(year, month-1, 1));
+                                $(".ui-datepicker-calendar").hide();
+                            }
                         }
-                    });
-        } );
+                    })
+        });
         $( function() {
             $( "#datepickerStudiesEnd" ).datepicker(
                     {
+                        dateFormat: "mm/yy",
                         changeMonth: true,
                         changeYear: true,
                         showButtonPanel: true,
-                        dateFormat: 'MM yy',
-                        yearRange: "1995:",
-                        onClose: function (dateText, inst) {
-                            $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                        yearRange: "1980:",
+                        onClose: function(dateText, inst) {
+
+
+                            function isDonePressed(){
+                                return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                            }
+
+                            if (isDonePressed()){
+                                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+                                
+                                 $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                            }
+                        },
+                        beforeShow : function(input, inst) {
+
+                            inst.dpDiv.addClass('month_year_datepicker')
+
+                            if ((datestr = $(this).val()).length > 0) {
+                                year = datestr.substring(datestr.length-4, datestr.length);
+                                month = datestr.substring(0, 2);
+                                $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                                $(this).datepicker('setDate', new Date(year, month-1, 1));
+                                $(".ui-datepicker-calendar").hide();
+                            }
                         }
-                    });
-        } );
+                    })
+        });
 
 
 
@@ -621,6 +734,15 @@
             callback: {onInit: function () {}}
         });
 
+        $.typeahead({
+            input: '.js-typeahead-skills',
+            order: "asc",
+            hint: true,
+            source: {
+                data: window.skills
+            },
+            callback: {onInit: function () {}}
+        });
 
 
 

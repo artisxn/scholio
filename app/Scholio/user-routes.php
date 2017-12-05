@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Skill;
+use App\Models\University;
 
 Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () {
     Route::post('/delete', 'RoutesController@studentDelete')->name('students-delete');
@@ -23,12 +25,15 @@ Route::group(['middleware' => 'is.teacher', 'prefix' => 'teacher'], function () 
     Route::get('/class/{lecture}', 'RoutesController@teacherClassLecture');
     Route::post('/class/{lecture}/badge/{student}', 'RoutesController@teacherClassBadge');
     Route::get('/cv', function () {
-        return view('panel.pages.teacher.profile.cv');
+        $skills = Skill::all()->pluck('name');
+        $cert = University::all()->pluck('name');
+        // $uni = Un
+        return view('panel.pages.teacher.profile.cv', compact('skills', 'cert'));
     })->name('teacher-cv');
     Route::post('/profile', function () {
     })->name('teachers-profile');
 
-    Route::get('/schools', function(){
+    Route::get('/schools', function () {
         // dd(auth()->user()->connectedSchool()->first()->pivot->status);
         return view('panel.pages.teacher.profile.schools');
     })->name('teachers-schools');
