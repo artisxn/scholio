@@ -133,7 +133,7 @@
 
                 {{--  ΝΑ ΤΟ ΒΑΛΛΟΥΜΕ ΣΤΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ ΣΤΟΝ ΠΙΝΑΚΑ teachers με field "title"  --}}
                 <div class="col-sm-6 basic-studies" style="margin: 110px 0 0 0; max-width: 350px">
-                    <input type="text" label="Βασικές Σπουδές/Ειδικότητα:" name="basic-studies" class="demo-form ad-input "  value="{{ auth()->user()->works[0]->name }}" id="datepicker">
+                <input type="text" label="Βασικές Σπουδές/Ειδικότητα:" name="basic-studies" class="demo-form ad-input " value="{{ auth()->user()->info->title }}" id="datepicker">
                     {{--<i class="icon-inp fa fa-graduation-cap"></i>--}}
                     <img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">
                 </div>
@@ -181,10 +181,10 @@
                                 @if(!auth()->user()->works->isEmpty())
                                     @foreach(auth()->user()->works as $work)
                                         <div class="t1">
-                                            <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#work-modal-edit"></i> {{ $work->name }}
+                                            <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#work-modal-edit"></i> {{ $work->job->name }}
                                         </div>
                                         <div class="t2">
-                                            {{ $work->company }}
+                                            {{ $work->company->name }}
                                         </div>
                                         <div class="t3">
                                             {{ \Carbon\Carbon::parse($work->from)->year }} - {{ \Carbon\Carbon::parse($work->until)->year }}
@@ -271,22 +271,25 @@
                 </div>
                 <div class="panel-body">
 
+                <form method="POST" action="{{ route('cv-about-post') }}" id="aboutForm">
+                {{ csrf_field() }}
                     <div class="section2-container ">
-                        <div class="inner-section">
-                            <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/info.png" alt=""> </i>@lang('teacher_profile.section.about')</div>
-                            <div class="input-container">
-                                <div class="info-text"> </div>
-                                <textarea class="notes" placeholder="Συμπληρώστε λίγα λόγια για το δημόσιο προφίλ σας."> </textarea>
+                            <div class="inner-section">
+                                <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/info.png" alt=""> </i>@lang('teacher_profile.section.about')</div>
+                                <div class="input-container">
+                                    <div class="info-text"> </div>
+                                    <textarea class="notes" placeholder="Συμπληρώστε λίγα λόγια για το δημόσιο προφίλ σας." name="about">{{ auth()->user()->info->about }}</textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                    <button type="button" onClick="" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
+                        <button type="submit" class="btn btn-info" onClick="document.getElementById('aboutForm').submit()">Αποθήκευση</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div><!-- /.modal -->

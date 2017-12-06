@@ -1,27 +1,19 @@
 <?php
 
-use App\Events\StudentAppliedOnScholarship;
-use App\Events\UserAppliedOnSchool;
 use App\Models\Admission;
 use App\Models\AdmissionField;
-use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
-use App\Models\DummyStudy;
-use App\Models\Level;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolSetting;
-use App\Models\Section;
-use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\Paginator;
-use App\Models\Skill;
-use App\Models\Certificate;
 
 Scholio::soonRoutes();
+
+Route::post('qqqa', function () {
+    dd(request()->about);
+});
 
 Route::get('/fake/login', function () {
     $oldUser = null;

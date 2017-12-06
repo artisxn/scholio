@@ -1089,6 +1089,11 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->attachTagToScholarship(2, 5);
         $this->attachTagToScholarship(3, 6);
 
+        factory(App\Models\Job::class, 10)->create();
+        factory(App\Models\Company::class, 10)->create();
+        factory(App\Models\University::class, 10)->create();
+        factory(App\Models\Cvteacherstudy::class, 10)->create();
+
         // ---------------------------------------------------------------- //
         // ----- ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ -------------------------------//
         factory(App\Models\Work::class, 2)->create(['user_id' => 42]);

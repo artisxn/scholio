@@ -167,18 +167,45 @@ $factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Work::class, function (Faker\Generator $faker) {
 
     return [
-        'name' => $faker->jobTitle,
-        'company' => $faker->company,
+        'job_id' => App\Models\Job::find($faker->numberBetween($min = 1, $max = 10))->id,
+        'company_id' => App\Models\Company::find($faker->numberBetween($min = 1, $max = 10))->id,
         'from' => Carbon::now()->subYears(5),
         'until' => Carbon::now(),
     ];
 });
 
+$factory->define(App\Models\Job::class, function(Faker\Generator $faker){
+    return [
+        'name' => $faker->jobTitle,
+    ];
+});
+
+$factory->define(App\Models\Company::class, function(Faker\Generator $faker){
+    return [
+        'name' => $faker->company,
+    ];
+    
+});
+
+$factory->define(App\Models\University::class, function(Faker\Generator $faker){
+    return [
+        'name' => $faker->state,
+    ];
+    
+});
+
+$factory->define(App\Models\Cvteacherstudy::class, function(Faker\Generator $faker){
+    return [
+        'name' => $faker->jobTitle,
+    ];
+    
+});
+
 $factory->define(App\Models\Certificate::class, function (Faker\Generator $faker) {
 
     return [
-        'name' => $faker->jobTitle,
-        'university' => $faker->state,
+        'study_id' => App\Models\Cvteacherstudy::find($faker->numberBetween($min = 1, $max = 10))->id,
+        'university_id' => App\Models\University::find($faker->numberBetween($min = 1, $max = 10))->id,
         'from' => Carbon::now()->subYears(5),
         'until' => Carbon::now(),
     ];

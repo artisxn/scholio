@@ -236,10 +236,10 @@
                             @if(!$works->isEmpty())
                                 @foreach($works as $work)
                                     <div class="t1">
-                                        {{ $work->name }}
+                                        {{ $work->job->name }}
                                     </div>
                                     <div class="t2">
-                                          {{ $work->company }}
+                                          {{ $work->company->name }}
                                     </div>
                                     <div class="t3">
                                         {{ \Carbon\Carbon::parse($work->from)->year }} - {{ \Carbon\Carbon::parse($work->until)->year }}
@@ -254,10 +254,10 @@
                                 <div class="title">@lang('teacher_profile.section.studies')</div>
                                 @foreach($certificates as $certificate)
                                     <div class="t1">
-                                        {{ $certificate->name  }}
+                                        {{ $certificate->study->name }}
                                     </div>
                                     <div class="t2">
-                                        {{ $certificate->university  }}
+                                        {{ $certificate->university->name  }}
                                     </div>
                                     <div class="t3">
                                         {{ \Carbon\Carbon::parse($certificate->from)->year }} - {{ \Carbon\Carbon::parse($certificate->until)->year }}
