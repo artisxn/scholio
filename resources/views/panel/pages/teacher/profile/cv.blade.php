@@ -13,9 +13,7 @@
 
     <style>
 
-    .ui-datepicker-calendar {
-    display: none;
-    }
+
 
         .upper{width: 100%;  height: 280px; border-top-right-radius: 6px; border-top-left-radius: 6px;
             background: linear-gradient(#dddddd, #b4b4b4);
@@ -32,6 +30,7 @@
         .polyfill-input-sc{margin: 0 0 0 0; max-width: 370px}
 
 
+         /* ========== Modal ============== */
 
         .modal-sc-logo{margin-top: -4px; height: 60px;}
         .modal-content{padding: 0!important; border: none; border-radius: 5px!important;}
@@ -46,12 +45,17 @@
 
         .section-text{margin-bottom: 20px;}
         .inner-section{border: none; margin-top: 30px; background-color: transparent;}
+
+        /* ================================ */
+
         textarea.notes{  background-image:
             -webkit-linear-gradient(left, transparent 10px, transparent 10px),
             -webkit-linear-gradient(right, transparent 10px, transparent 10px),
             -webkit-linear-gradient(transparent 30px, #bbb 30px, #bbb 31px, transparent 31px);
 
         }
+        .skill-text{float: left; width: 30%}
+        .thumps-up {float: left; width: 70%;}
 
         @media(max-width: 767px){
             .margin-top{margin-top: 25px;}
@@ -59,10 +63,11 @@
 
         /* ========== DatePicker jQuery ============== */
         .ui-datepicker{width: 350px}
-        .ui-datepicker-calendar {
+        .ui-datepicker-current,.ui-datepicker-calendar {
             display: none;
         }
-        .ui-widget-header {
+
+        .ui-datepicker-year,.ui-widget-header {
             /*background: #00bcd4;*/
             /*color: #fff;*/
         }
@@ -73,7 +78,7 @@
         }
         .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight
         { background: #00b2ca!important; color: #fff!important; border-color: #c5c5c5}
-        .ui-datepicker-month{width: 60px!important; margin-right: 20px!important;}
+        .ui-datepicker-month{width: 60px!important; margin-right: 30px!important;}
         .ui-datepicker-year{width: 60px!important; }
         .ui-datepicker-month,.ui-datepicker-year{background: #e9e9e9!important;}
 
@@ -87,9 +92,7 @@
 
     </style>
 
-    <script>
-        window.skills = <?php echo $skills ?>
-    </script>
+
 @endsection
 
 @section('content')
@@ -174,11 +177,11 @@
 
 
                                 <img class="up png-title" src="/new/img/teacher/desk.png" alt="">
-                                <div id="experience" class="title">@lang('teacher_profile.section.experience') <i class="fa fa-plus fa-input" data-toggle="modal" data-target="#work-modal"></i></div>
+                                <div id="experience" class="title">@lang('teacher_profile.section.experience') <i class="fa fa-plus fa-input" data-toggle="modal" data-target="#work-modal-new"></i></div>
                                 @if(!auth()->user()->works->isEmpty())
                                     @foreach(auth()->user()->works as $work)
                                         <div class="t1">
-                                            <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#work-modal"></i> {{ $work->name }}
+                                            <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#work-modal-edit"></i> {{ $work->name }}
                                         </div>
                                         <div class="t2">
                                             {{ $work->company }}
@@ -193,10 +196,10 @@
 
                                 <div id="spoudes">
                                     <img class="up png-title" src="/new/img/teacher/graduate.png" alt="">
-                                    <div class="title">@lang('teacher_profile.section.studies') <i class="fa fa-plus fa-input" data-toggle="modal" data-target="#studies-modal"></i></div>
+                                    <div class="title">@lang('teacher_profile.section.studies') <i class="fa fa-plus fa-input" data-toggle="modal" data-target="#studies-modal-new"></i></div>
                                     @foreach(auth()->user()->certificates as $certificate)
                                         <div class="t1">
-                                            <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#studies-modal"></i> {{ $certificate->name  }}
+                                            <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#studies-modal-edit"></i> {{ $certificate->name  }}
                                         </div>
                                         <div class="t2">
                                             {{ $certificate->university  }}
@@ -214,14 +217,14 @@
                                     <div   class="title ">@lang('teacher_profile.section.skills') <i class="fa fa-plus fa-input" data-toggle="modal" data-target="#skills-modal"></i></div>
                                     @foreach(auth()->user()->info->user->getUniqueSkills() as $skill)
                                         <div class="row ">
-                                    <span class="t2 col-lg-4 col-md-5 col-sm-5 col-xs-6">
-                                        <i class="fa fa-trash fa-input" onClick="deleteSkill()"></i> {{ $skill->name }} :
+                                    <span class="t2 skill-text">
+                                        <i class="fa fa-trash fa-input margin-right-15" onClick="deleteSkill()"></i> {{ $skill->name }} :
                                     </span>
 
-                                    <span class="col-lg-8 col-md-7 col-sm-7 col-xs-6">
-                                                <i id="bt_like{{$skill->id}}" onclick="like({{auth()->user()->info->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-up"></i>
+                                    <span class="thumps-up">
+                                        <i id="bt_like{{$skill->id}}" onclick="like({{auth()->user()->info->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-up"></i>
                                         <span id="count{{$skill->id}}" class="counter">
-                                            {{ auth()->user()->info->user->skills()->where('skill_id', $skill->id)->count() }}
+                                                {{ auth()->user()->info->user->skills()->where('skill_id', $skill->id)->count() }}
                                         </span>
                                         <div id="bar{{$skill->id}}" class="skill-bar"
                                              style="width: {{auth()->user()->info->user->skills()->where('skill_id', $skill->id)->count() * 25}}px; max-width: 95%" >
@@ -288,8 +291,8 @@
         </div>
     </div><!-- /.modal -->
 
-    <!-- ====== Work Modal  ======= -->
-    <div id="work-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+    <!-- ====== Work Modal New ======= -->
+    <div id="work-modal-new" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form id="" name="form-work">
@@ -357,9 +360,78 @@
         </div>
     </div><!-- /.modal -->
 
+    <!-- ====== Work Modal Edit ======= -->
+    <div id="work-modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="" name="form-work">
 
-    <!-- ====== Studies Modal  ======= -->
-    <div id="studies-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+                    <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
+                        <div class="panel-heading" style=" color: #fff">
+                            <button type="button" class="btn pull-right btn-close" data-dismiss="modal" >
+                                x
+                            </button>
+                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
+                            {{--<h3 class="pull-left panel-title">schol.io</h3>--}}
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="section2-container ">
+                            <div class="inner-section" style="">
+                                <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/desk.png" alt=""> </i>@lang('teacher_profile.section.experience')</div>
+                                <div class="input-container">
+
+                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
+                                        <div class="typeahead__field typeahead__query">
+                                            <input label="Ειδικότητα/Αντικείμενο Εργασίας" class="js-typeahead-work demo-form ad-input" name="work"
+                                                   type="text" placeholder="" autocomplete="off">
+                                            <i class="icon-inp fa fa-briefcase margin-top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
+                                        <div class="typeahead__field typeahead__query">
+                                            <input label="Εκπαιδευτικό Ίδρυμα/Εταιρία" class="js-typeahead-school demo-form ad-input" name="work-company"
+                                                   type="text" placeholder="" autocomplete="off">
+                                            <i class="icon-inp fa fa-university"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                    <div class="col-sm-8 polyfill-input-sc">
+                                        <input type="text" label="Από" name="work-start" class="demo-form ad-input"  id="datepickerWorkFromEdit" value="">
+                                        <i class="icon-inp fa fa-calendar-o"></i>
+                                        {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
+                                    </div>
+                                    <div class="clearfix polyfill-input-sc"></div>
+                                    <div class="col-sm-8 ">
+                                        <input type="text" label="Μέχρι" name="work-end" class="demo-form ad-input" id="datepickerWorkEndEdit"  value="">
+                                        <i class="icon-inp fa fa-calendar-o"></i>
+                                        {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
+                        <button type="button" onClick="" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- /.modal -->
+
+    <!-- ====== Studies Modal  New======= -->
+    <div id="studies-modal-new" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
         <div class="modal-dialog">
 
                 <div class="modal-content">
@@ -429,6 +501,77 @@
         </div>
     </div><!-- /.modal -->
 
+    <!-- ====== Studies Modal  Edit======= -->
+    <div id="studies-modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <form id="" name="form-studies">
+
+                    <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
+                        <div class="panel-heading" style=" color: #fff">
+                            <button type="button" class="btn pull-right btn-close" data-dismiss="modal" >
+                                x
+                            </button>
+                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
+                            {{--<h3 class="pull-left panel-title">schol.io</h3>--}}
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="section2-container ">
+                            <div class="inner-section" style="">
+                                <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/graduate.png" alt=""> </i>@lang('teacher_profile.section.studies')</div>
+                                <div class="input-container">
+
+                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
+                                        <div class="typeahead__field typeahead__query">
+                                            <input label="Τίτλος/Επίπεδο Σπουδών"
+                                                   class="js-typeahead-studies demo-form ad-input" name="studies"
+                                                   type="text" placeholder="" autocomplete="off">
+                                            <i class="icon-inp fa fa-graduation-cap margin-top"></i>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
+                                        <div class="typeahead__field typeahead__query">
+                                            <input label="Εκπαιδευτικό Ίδρυμα/Εταιρία"
+                                                   class="js-typeahead-university demo-form ad-input" name="university"
+                                                   type="text" placeholder="" autocomplete="off">
+                                            <i class="icon-inp fa fa-university"></i>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="clearfix"></div>
+                                    <div class="col-sm-8 polyfill-input-sc">
+                                        <input type="text" label="Από" name="work-start" class="demo-form ad-input"  id="datepickerStudiesFromEdit" value="">
+                                        <i class="icon-inp fa fa-calendar-o"></i>
+                                        {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-sm-8 polyfill-input-sc" >
+                                        <input type="text" label="Μέχρι" name="work-end" class="demo-form ad-input" id="datepickerStudiesEndEdit"  value="">
+                                        <i class="icon-inp fa fa-calendar-o"></i>
+                                        {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
+                        <button type="button" onClick="" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- /.modal -->
 
     <!-- ====== skills Modal  ======= -->
     <div id="skills-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
@@ -456,10 +599,10 @@
 
                                 <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                                 <div class="typeahead__field typeahead__query">
-                                                    <input label="Ικανοτητες"
+                                                    <input label="Δεξιότητες/Ικανότητες"
                                                            class="js-typeahead-skills demo-form ad-input" name="studies"
                                                            type="text" placeholder="" autocomplete="off">
-                                                    <i class="icon-inp fa fa-graduation-cap margin-top"></i>
+                                                    <i class="icon-inp fa fa-list margin-top"></i>
                                                 </div>
                                             </div>
 
@@ -493,7 +636,9 @@
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>--}}
     <script src="/panel/assets/js/jquery.typeahead.min.js"></script>
 
-
+    <script>
+        window.skills = <?php echo $skills ?>
+    </script>
 <script>
 
     function deleteSkill(){
@@ -585,6 +730,80 @@
         });
 
         $( function() {
+        $( "#datepickerWorkFromEdit" ).datepicker(
+                {
+                    dateFormat: "mm/yy",
+                    changeMonth: true,
+                    changeYear: true,
+                    showButtonPanel: true,
+                    yearRange: "1980:",
+                    onClose: function(dateText, inst) {
+
+
+                        function isDonePressed(){
+                            return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                        }
+
+                        if (isDonePressed()){
+                            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                            $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+                            $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                        }
+                    },
+                    beforeShow : function(input, inst) {
+
+                        inst.dpDiv.addClass('month_year_datepicker')
+
+                        if ((datestr = $(this).val()).length > 0) {
+                            year = datestr.substring(datestr.length-4, datestr.length);
+                            month = datestr.substring(0, 2);
+                            $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                            $(this).datepicker('setDate', new Date(year, month-1, 1));
+                            $(".ui-datepicker-calendar").hide();
+                        }
+                    }
+                })
+    });
+    $( function() {
+        $( "#datepickerWorkEndEdit" ).datepicker(
+                {
+                    dateFormat: "mm/yy",
+                    changeMonth: true,
+                    changeYear: true,
+                    showButtonPanel: true,
+                    yearRange: "1980:",
+                    onClose: function(dateText, inst) {
+
+
+                        function isDonePressed(){
+                            return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                        }
+
+                        if (isDonePressed()){
+                            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                            $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+                            $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                        }
+                    },
+                    beforeShow : function(input, inst) {
+
+                        inst.dpDiv.addClass('month_year_datepicker')
+
+                        if ((datestr = $(this).val()).length > 0) {
+                            year = datestr.substring(datestr.length-4, datestr.length);
+                            month = datestr.substring(0, 2);
+                            $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                            $(this).datepicker('setDate', new Date(year, month-1, 1));
+                            $(".ui-datepicker-calendar").hide();
+                        }
+                    }
+                })
+    });
+        $( function() {
             $( "#datepickerStudiesFrom" ).datepicker(
                     {
                         dateFormat: "mm/yy",
@@ -659,6 +878,80 @@
                     })
         });
 
+        $( function() {
+            $( "#datepickerStudiesFromEdit" ).datepicker(
+                    {
+                        dateFormat: "mm/yy",
+                        changeMonth: true,
+                        changeYear: true,
+                        showButtonPanel: true,
+                        yearRange: "1980:",
+                        onClose: function(dateText, inst) {
+
+
+                            function isDonePressed(){
+                                return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                            }
+
+                            if (isDonePressed()){
+                                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+                                $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                            }
+                        },
+                        beforeShow : function(input, inst) {
+
+                            inst.dpDiv.addClass('month_year_datepicker')
+
+                            if ((datestr = $(this).val()).length > 0) {
+                                year = datestr.substring(datestr.length-4, datestr.length);
+                                month = datestr.substring(0, 2);
+                                $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                                $(this).datepicker('setDate', new Date(year, month-1, 1));
+                                $(".ui-datepicker-calendar").hide();
+                            }
+                        }
+                    })
+        });
+        $( function() {
+            $( "#datepickerStudiesEndEdit" ).datepicker(
+                    {
+                        dateFormat: "mm/yy",
+                        changeMonth: true,
+                        changeYear: true,
+                        showButtonPanel: true,
+                        yearRange: "1980:",
+                        onClose: function(dateText, inst) {
+
+
+                            function isDonePressed(){
+                                return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                            }
+
+                            if (isDonePressed()){
+                                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+                                $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                            }
+                        },
+                        beforeShow : function(input, inst) {
+
+                            inst.dpDiv.addClass('month_year_datepicker')
+
+                            if ((datestr = $(this).val()).length > 0) {
+                                year = datestr.substring(datestr.length-4, datestr.length);
+                                month = datestr.substring(0, 2);
+                                $(this).datepicker('option', 'defaultDate', new Date(year, month-1, 1));
+                                $(this).datepicker('setDate', new Date(year, month-1, 1));
+                                $(".ui-datepicker-calendar").hide();
+                            }
+                        }
+                    })
+        });
 
 
 

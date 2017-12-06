@@ -42,28 +42,6 @@
             </div>
         </div>
 
-        <modal name="studiesStudent" :width="800" :height="200">
-            <div>
-                Choose the study:
-                <select v-model="selectedStudy">
-                    <optgroup :label="level.level.name" v-for="level in studies">
-                            <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
-                    </optgroup>
-                </select>
-            </div>
-
-            <div>
-                Choose status of the user:
-                <select v-model="selectedStatus">
-                    <option>connected</option>
-                    <option>allumni</option>
-                </select>
-            </div>
-            
-            <div>
-                <button class="btn btn-primary" @click="accept">Save</button>
-            </div>
-        </modal>
 
         <modal name="studiesTeacher" :width="800" :height="200">
             <div>
@@ -89,6 +67,67 @@
                 <button class="btn btn-primary" @click="accept">Save</button>
             </div>
         </modal>
+
+
+
+        <!-- ====== studiesStudent Modal  ======= -->
+        <modal name="studiesStudent" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="" name="form-work">
+
+                        <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
+                            <div class="panel-heading" style=" color: #fff">
+                                <button type="button" class="btn pull-right btn-close" >
+                                    x
+                                </button>
+                                <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
+
+                            </div>
+
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="section2-container ">
+                                <div class="inner-section" style="">
+                                    <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">Επιλογή Σπουδών</div>
+                                    <div class="input-container">
+
+                                        <div>
+                                            <select v-model="selectedStudy">
+                                                <optgroup :label="level.level.name" v-for="level in studies">
+                                                    <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+
+                                        <div style="margin-top: 40px">
+                                            <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/team.png" alt="">Επιλογή Κατάστασης</div>
+                                            <select v-model="selectedStatus">
+                                                <option>connected</option>
+                                                <option>allumni</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default">{{lang('profile.modal.abort')}}</button>
+                            <button type="button" onClick="accept"  class="btn btn-info" @click="accept">Αποδοχή</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </modal><!-- /.modal -->
+
+
+
+
+
+
     </div>
 </template>
 
@@ -99,6 +138,25 @@
 
     .btn-success{background: #00a6be; border-color: #00a6be; }
     .btn-success:hover{background: #0097af; border-color: #0097af; }
+
+    /* ========== Modal ============== */
+    div.v--modal-box.v--modal{height: 900px; overflow: visible; top: 200px;}
+
+    .modal-sc-logo{margin-top: -4px; height: 60px;}
+    .modal-content{padding: 0!important; border: none; border-radius: 5px!important;}
+    .panel-title{margin: 2px 0 0 15px; font-size: 190%; font-weight: 600;}
+    .btn-close{background-color: transparent}
+    .btn-close:hover{color: #FD6A33;}
+    .modal-icon{height: 30px; margin-right: 15px}
+    .panel-body{ min-height: 300px}
+    .modal-footer{padding: 15px!important;}
+    .btn-info{background: #008da5; border: none;}
+    .btn-info:hover{background: #007991;}
+
+    .section-text{margin-bottom: 20px;}
+    .inner-section{border: none; margin-top: 30px; background-color: transparent;}
+
+    /* ================================ */
 
 </style>
 
