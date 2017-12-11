@@ -250,7 +250,8 @@
                                     @endforeach
                             @else
                                 <div class="tool">
-                                    Πολλαπλές Σπουδές
+                                    {{--Πολλαπλές Σπουδές: --}}
+                                    {{count($scholarship->multipleStudies)}} Αντικείμενα Σπουδών
                                     @if(count($scholarship->multipleStudies )<6)
                                     <div class="tooltiptext tooltip3">
                                         @foreach($scholarship->multipleStudies as $study)
@@ -396,7 +397,7 @@
 
               <form method="POST" action="/scholarship/{{$scholarship->id}}/end">
                   @if($scholarship->active)
-                <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Επιλογή Νικητών Υποτροφίας - {{ $scholarship->winners }}</div>
+                <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Επιλογή Νικητών Υποτροφίας: Επιλογή {{ $scholarship->winners }}  Νικητών</div>
                   @else
                       <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Νικητές Υποτροφίας</div>
                   @endif

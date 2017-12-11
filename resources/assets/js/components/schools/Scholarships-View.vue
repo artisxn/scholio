@@ -41,7 +41,7 @@
                                                     <!--<span v-if="sortType == 'plan' && sortReverse" class="fa fa-sort-amount-desc"></span>-->
                                                 <!--</a>-->
                                             <!--</th>-->
-                                            <th class=" hidden-xsm">
+                                            <th class=" hidden-xsm" style="">
                                                 <a href="#" v-on:click="amountChangeSort" class="">
                                                 <!--{{ lang('panel_scholarships.view.price') }}-->
                                                     {{ lang('panel_scholarships.view.financial') }}
@@ -102,14 +102,14 @@
 
                                             <!--</td>-->
 
-                                            <td class="tool hidden-xsm">
+                                            <td class="tool hidden-xsm" style=" padding-left: 0; padding-right: 0">
                                                 <div class="dots-text dots-sm hidden-xxlx">
                                                     <img :src="'/panel/assets/images/steps/'+scholarship.financial_icon" height="30px" alt="" class="">
                                                 </div>
                                                 <span class="tooltiptext tooltip4 hidden-xxlx">
                                                     {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
                                                 </span>
-                                                <span class=" hidden-xxlxx">
+                                                <span class=" hidden-xxlxx" >
                                                     {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
                                                 </span>
 
@@ -124,9 +124,9 @@
                                             <td v-if="showLevel">
                                                 <span class="tool">
                                                     <div class="dots-text dots-mlg dots-lg dots-xl-left" v-if="scholarship.study_name">{{scholarship.study_name}}</div>
-                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left" v-else>ΠΟΛΛΑΠΛΕΣ</div>
+                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left" v-else>Πολλαπλά Αντικείμενα Σπουδών</div>
                                                     <span class="tooltiptext tooltip3" v-if="scholarship.study_name">{{scholarship.study_name}}</span>
-                                                    <span class="tooltiptext tooltip3" v-else>ΠΟΛΛΑΠΛΕΣ</span>
+                                                    <span class="tooltiptext tooltip3" v-else>Πολλαπλά Αντικείμενά Σπουδών </span>
                                                 </span>
                                             </td>
                                             <td  class="tool hidden-xxs">
@@ -199,11 +199,12 @@
          .dots-text{width:210px}
          .hidden-xxl{display: none;}
          .visible-xxl{display: block}
+         .dots-xl-left{text-align: left}
      }
      @media(min-width: 1580px){
          .dots-text{width:220px}
-         .dots-lg{width:250px;}
-         .dots-mlg3{width: 260px}
+         /*.dots-lg{width:95%;}*/
+         /*.dots-mlg3{width: 65%}*/
          .hidden-xlxl{display: none;}
      }
      @media(min-width: 1700px){
@@ -211,11 +212,11 @@
          .visible-xxlx{display: block}
      }
      @media(min-width: 1840px){
-         .dots-lg{width:300px;}
-         .dots-xl-left{text-align: left}
+         /*.dots-lg{width: 100%}*/
+
      }
      @media(min-width: 2140px){
-         .dots-lg{width:450px; }
+         /*.dots-lg{width:100% }*/
      }
      .dots-sm{width: 90px;}
      .dots-md{width: 110px;}

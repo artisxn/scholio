@@ -199,10 +199,10 @@
                                     <div class="title">@lang('teacher_profile.section.studies') <i class="fa fa-plus fa-input" data-toggle="modal" data-target="#studies-modal-new"></i></div>
                                     @foreach(auth()->user()->certificates as $certificate)
                                         <div class="t1">
-                                            <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#studies-modal-edit"></i> {{ $certificate->name  }}
+                                            <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#studies-modal-edit"></i> {{ $certificate->study->name  }}
                                         </div>
                                         <div class="t2">
-                                            {{ $certificate->university  }}
+                                            {{ $certificate->university->name  }}
                                         </div>
                                         <div class="t3">
                                             {{ \Carbon\Carbon::parse($certificate->from)->year }} - {{ \Carbon\Carbon::parse($certificate->until)->year }}
@@ -404,6 +404,7 @@
                                         </div>
                                     </div>
 
+
                                     <div class="clearfix"></div>
                                     <div class="col-sm-8 polyfill-input-sc">
                                         <input type="text" label="Από" name="work-start" class="demo-form ad-input"  id="datepickerWorkFromEdit" value="">
@@ -545,7 +546,6 @@
                                             <i class="icon-inp fa fa-university"></i>
                                         </div>
                                     </div>
-
 
                                     <div class="clearfix"></div>
                                     <div class="col-sm-8 polyfill-input-sc">

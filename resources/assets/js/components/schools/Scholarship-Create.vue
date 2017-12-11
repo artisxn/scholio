@@ -363,7 +363,7 @@
 
     #step1,#step2,#step3,#step4,.scholarship-info{ width: -webkit-calc(100% - 430px);}
 
-    .low-opacity{opacity: 0.2; cursor: default; pointer-events: none;}
+    .low-opacity{opacity: 0.2; cursor: default; pointer-events: none; display: none}
     .low-opacity:hover{color: #888}
 
     /* ///////////////////////////////////////////////////////////////////////////// */
