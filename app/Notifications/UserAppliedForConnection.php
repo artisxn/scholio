@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Study;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,6 +12,8 @@ class UserAppliedForConnection extends Notification
 {
     protected $user;
     protected $school;
+    protected $study;
+    protected $status;
 
     use Queueable;
 
@@ -19,10 +22,12 @@ class UserAppliedForConnection extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, User $school)
+    public function __construct(User $user, User $school, $study, $status)
     {
         $this->user = $user;
         $this->school = $school;
+        $this->study = $study;
+        $this->status = $status;
     }
 
     /**
@@ -57,11 +62,9 @@ class UserAppliedForConnection extends Notification
      */
     public function toArray($notifiable)
     {
-        // return [
-        //     'user' => $this->user->toArray(),
-        //     'scholarship' => $this->scholarship->id,
-        // ];
         $this->user->avatar = $this->user->info->avatar;
+        $this->user->study = $this->study;
+        $this->user->status = $this->status;
         return $this->user->toArray();
     }
 }

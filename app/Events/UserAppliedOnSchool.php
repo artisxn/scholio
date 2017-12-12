@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\School;
+use App\Models\Study;
 use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -14,6 +15,8 @@ class UserAppliedOnSchool implements ShouldBroadcast
 {
     public $user;
     public $school;
+    public $study;
+    public $status;
 
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -22,10 +25,12 @@ class UserAppliedOnSchool implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct(User $user, User $school)
+    public function __construct(User $user, User $school, $study, $status)
     {
         $this->user = $user;
         $this->school = $school;
+        $this->study = $study;
+        $this->status = $status;
     }
 
     /**

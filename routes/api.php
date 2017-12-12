@@ -23,8 +23,8 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
-Route::get('/notifications/getSchoolLevelSections',function(){
-   $school = auth()->user()->info;
+Route::get('/notifications/getSchoolLevelSections', function () {
+    $school = auth()->user()->info;
     $studies = [];
     $data = [];
     $sections = [];
@@ -42,7 +42,7 @@ Route::get('/notifications/getSchoolLevelSections',function(){
     return $data;
 })->middleware('auth:api');
 
-Route::get('/notifications/getSchoolLevelStudies',function(){
+Route::get('/notifications/getSchoolLevelStudies', function () {
     $school = auth()->user()->info;
     $studies = [];
     $data = [];
@@ -58,6 +58,46 @@ Route::get('/notifications/getSchoolLevelStudies',function(){
         }
         array_push($data, ['level' => Level::find($level), 'studies' => $studies]);
         $studies = [];
+    }
+
+    return $data;
+})->middleware('auth:api');
+
+Route::get('/notifications/getSchoolLevelStudies/public/{school_id}', function ($school_id) {
+    $school = School::find($school_id);
+    $studies = [];
+    $data = [];
+    $sections = [];
+
+    $schoolLevels = $school->levels();
+
+    foreach ($schoolLevels as $level) {
+        foreach ($school->section($level) as $section) {
+            foreach ($school->studyFromSection($section) as $study) {
+                array_push($studies, ['study' => Study::find($study)]);
+            }
+        }
+        array_push($data, ['level' => Level::find($level), 'studies' => $studies]);
+        $studies = [];
+    }
+
+    return $data;
+});
+
+Route::get('/notifications/getSchoolLevelSections/public/{school_id}', function ($school_id) {
+    $school = School::find($school_id);
+    $studies = [];
+    $data = [];
+    $sections = [];
+
+    $schoolLevels = $school->levels();
+
+    foreach ($schoolLevels as $level) {
+        foreach ($school->section($level) as $section) {
+            array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+        }
+        array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+        $sections = [];
     }
 
     return $data;
@@ -469,7 +509,12 @@ Route::get('/scholarship/getFullAdmissions', function () {
 Route::post('/request/school', function () {
     if (auth()->user()->role != 'school') {
         auth()->user()->apply()->toggle(request()->school);
-        event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school)));
+        if (auth()->user()->role == 'student') {
+            event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school), Study::find(request()->study), request()->status));
+        } else {
+            event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school), request()->study, request()->status));
+        }
+
         return 'OK';
     }
 
@@ -478,14 +523,14 @@ Route::post('/request/school', function () {
 
 Route::post('/connection/{id}/{type}/{status}/confirm', function ($id, $type, $status) {
     $user = User::find($id);
-    if($user->role == 'teacher'){
-        auth()->user()->info->users()->attach($user, ['type' => $type, 'status' => $status]);        
-    }else{
+    if ($user->role == 'teacher') {
+        auth()->user()->info->users()->attach($user, ['type' => $type, 'status' => $status]);
+    } else {
         $study = Study::find($type);
         auth()->user()->info->users()->attach($user, ['type' => $study->name, 'status' => $status, 'study_id' => $type, 'level' => $study->section[0]->level->name]);
-        $study->user()->attach($user);
+        $study->user()->attach($user, ['school_id' => auth()->user()->info->id]);
     }
-    
+
     $user->notify(new SchoolAcceptedUser($user, auth()->user()));
     return 'Accepted';
 })->middleware('auth:api');
@@ -572,7 +617,17 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
             $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
 
-            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) || preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) || preg_match('/'. $field .'(\w)/i', $item->studyConnection->pluck('name'))) {
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $item->studyConnection->pluck('name'));
+            $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
+            $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
+            $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
+            $replacement2 = preg_replace('/ό/iu', '${1}ο', $replacement2);
+            $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
+            $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
+
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
+                preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) ||
+                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $item->studyConnection->pluck('name'))) {
                 return $item;
             }
         });

@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Models\Level;
 use App\Models\Section;
-use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Illuminate\Database\Eloquent\Model;
 
 class Study extends Model
 {
@@ -61,10 +61,10 @@ class Study extends Model
     }
 
     /**
-    * @return 
-    */
+     * @return
+     */
     public function user()
     {
-        return $this->belongsToMany(User::class, 'study_user');
+        return $this->belongsToMany(User::class, 'study_user')->withPivot('school_id');
     }
 }

@@ -25,6 +25,6 @@ class NotifySchool
      */
     public function handle(UserAppliedOnSchool $event)
     {
-        $event->school->notify(new UserAppliedForConnection($event->user, $event->school));
+        $event->school->notify(new UserAppliedForConnection($event->user, $event->school, $event->study, $event->status));
     }
 }

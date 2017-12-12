@@ -392,7 +392,7 @@
                                         <i style="" class="social fa fa-{{ $link->name }}" aria-hidden="true"></i>
                                     </a>
                                 </li>
-                            @endforeach                                
+                            @endforeach
                         </ul>
                         @endif
 
@@ -1041,7 +1041,7 @@
                                     @else
                                         <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
                                         <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
-                                                data-toggle="modal" data-target="#connect-modal">
+                                                data-toggle="modal" data-target="#connect-modal" ng-disabled="!showButton">
                                             <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
                                         </button>
                                     </nav>
@@ -1098,6 +1098,55 @@
                         <img class="pull-left margin-right-10" style="height: 45px;"
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
                         <span> @{{ contactInfo.name }}:  @lang('profile.modal.message') </span>
+
+                        @if(auth()->user()->role == 'student')
+                            <div class="input-container">
+                                <div>
+                                    <select ng-model="selectedStudy">
+                                        <optgroup label="@{{level.level.name}}" ng-repeat="level in studies">
+                                            <option ng-repeat="study in level.studies" value="@{{study.study.id}}">@{{ study.study.name }}</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+                                <div style="margin-top: 40px">
+                                    <div class="section-text centered-text">
+                                        <img class="modal-icon" src="/new/img/teacher/team.png" alt="" style="height: 45px">Επιλογή Κατάστασης
+                                    </div>
+                                    <select ng-model="selectedStatus">
+                                        <option>connected</option>
+                                        <option>allumni</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        @elseif(auth()->user()->role == 'teacher')
+
+                            <div class="input-container">
+                                <div>
+
+                                    <input type="text" ng-model="selectedStudy" />
+                                    {{-- <select ng-model="selectedStudy">
+                                        <optgroup label="@{{level.level.name}}" ng-repeat="level in sections">
+                                            <option ng-repeat="section in level.sections" value="@{{section.section.id}}">@{{ section.section.name }}</option>
+                                        </optgroup>
+                                    </select> --}}
+                                </div>
+
+                                <div style="margin-top: 40px">
+                                    <div class="section-text centered-text">
+                                        <img class="modal-icon" src="/new/img/teacher/team.png" alt="" style="height: 45px">Επιλογή Κατάστασης
+                                    </div>
+                                    <select ng-model="selectedStatus">
+                                        <option>connected</option>
+                                        <option>allumni</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        @endif
+
+
                     </div>
 
                     <div class="modal-footer">
@@ -1179,6 +1228,42 @@
     angular.module("profileApp",[])
             .controller("profileCtrl",function ($timeout,$scope,$http, $sce) {
 
+                $scope.notifications = []
+                $scope.studies = []
+                $scope.sections = []
+                $scope.selectedUser = null
+                $scope.selectedStudy = null
+                $scope.selectedStatus = null
+                $scope.buttonsDisabled = true
+                $scope.studyConnection = 0
+                $scope.showButton = false
+
+//////////////////////
+                $scope.getSchoolStudies = function(){
+                    console.log('1')
+                    $http.get('/api/notifications/getSchoolLevelStudies/public/{{$id}}', {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': window.Scholio.csrfToken}})
+                        .success(function(data) {
+                            $scope.studies = data
+                            $scope.showButton = true
+                            console.log('gh')
+                        })
+                    }
+
+                    $scope.getSchoolSections = function(){
+                    $http.get('/api/notifications/getSchoolLevelSections/public/{{$id}}', {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': window.Scholio.csrfToken}})
+                        .success(function(data) {
+                            $scope.sections = data
+                            $scope.showButton = true
+                        })
+
+                    }
+/////////////////////
                 $scope.categoryReview = function(index, stars){
                     setTimeout(function() {
                         $('#catReview-' + index).raty({
@@ -1242,6 +1327,14 @@
                     $scope.message = null;
                     $scope.scholarship = ['sd'];
                     $scope.col_iek_eng_dan_mus = false;
+
+                    @if(auth()->check() && auth()->user()->role == 'student')
+                        $scope.getSchoolStudies();
+                    @elseif(auth()->check() && auth()->user()->role == 'teacher')
+                        $scope.showButton = true
+                        // $scope.getSchoolSections();
+                    @endif
+
                     var apiLink = '';
                     @if(auth()->check())
                         apiLink = '/api/profile/auth/{{ $id }}';
@@ -1492,7 +1585,8 @@
 
 
                 $scope.sendRequest = function(){
-                     $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id}, {
+                    console.log($scope.selectedStudy)
+                     $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id, 'study': $scope.selectedStudy, 'status': $scope.selectedStatus}, {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
                             'X-CSRF-TOKEN': window.Scholio.csrfToken
