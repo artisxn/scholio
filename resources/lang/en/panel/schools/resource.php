@@ -8,6 +8,8 @@ return [
     ],
 
     'teachers' => [
+        'active' => 'Active',
+        'alumni' => 'Former',
     ],
 
     'requests' => [

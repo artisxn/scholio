@@ -137,7 +137,7 @@ class School extends Model
      */
     public function students()
     {
-        return $this->users()->where('role', 'student')->withPivot('status', 'type', 'level');
+        return $this->users()->where('role', 'student')->withPivot('status', 'type', 'level', 'study_id');
     }
 
     /**
@@ -537,8 +537,8 @@ class School extends Model
     }
 
     /**
-    * @return
-    */
+     * @return
+     */
     public function socialLinks()
     {
         return $this->hasMany(SocialLink::class, 'school_id');

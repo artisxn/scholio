@@ -2,11 +2,11 @@
     <div class="row">
 
         <form class="sc-radio pull-left">
-            <input id="r1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active-many') }}
+            <input id="r1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch(1, 'connected')"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active-many') }}
                 <span class="pull-right" style="">{{ connectedStudents }}</span>
                 </div>
             </label> <br>
-            <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch">
+            <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch(1, 'allumni')">
             <label for="r2">
                 <div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni-many') }}
                     <span class="pull-right" style="">{{ allumniStudents }}</span>
@@ -95,7 +95,7 @@
                         </div>
 
                         <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)" ></i>
-                        <!--<i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student.cv)"></i>-->
+                        <i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student)" v-if="studies"></i>
 
                     </div>
 
@@ -190,19 +190,28 @@
 
 
         <!-- Modal -->
-        <div id="ModalStudentInfo" class="modal" role="dialog" >
+        <div id="ModalStudentInfo" class="modal" role="dialog">
             <div class="modal-dialog zoomIn animated" id="modalzoom" >
                 <!-- Modal content-->
-                <div class="modal-content" >
+                <div class="modal-content" v-if="info">
                     <div class="modal-up">
                         <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
                         <!--<h4 class="modal-title" style=" color: #fff"> </h4>-->
-                        <img src="/new/img/user.png" alt="" class="img-avatar">
-                        <div class="lastName">LastName</div>
-                        <div class="firstName">FirstName</div>
+                        <img :src="info.student.avatar" alt="" class="img-avatar">
+                        <div class="lastName">{{ info.student.lname }} </div>
+                        <div class="firstName">{{ info.student.fname }} </div>
                     </div>
                     <div class="modal-infos">
-                        <!--<p>{{ info.student_address }}</p>-->
+                        <p>{{ info.cv.student_address }}</p>
+
+                        <div class="input-container modal-input-container">
+                            <select v-model="selectedStudy" class="modal-select" v-on:change="saveStudy">
+                                <optgroup :label="level.level.name" v-for="level in studies">
+                                    <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
@@ -560,7 +569,9 @@
                 allumniStudents: 0,
                 connectedStudents: 0,
                 scholio: null,
-                info: ''
+                info: null,
+                studies: null,
+                selectedStudy: null
             }
         },
         computed: {
@@ -592,6 +603,20 @@
                     })
 
                     this.status = status
+            },
+            saveStudy(){
+                console.log(this.info.id)
+                if(this.selectedStudy){
+                    axios.post('/api/student/saveStudy', {study: this.selectedStudy, student: this.info.id})
+                    .then(response => {
+                        this.fetch()
+                    });
+                }
+            },
+             getSchoolStudies(){
+                axios.get('/api/notifications/getSchoolLevelStudies').then(({data})=>{
+                    this.studies = data
+                })
             },
             nameChangeSort: function(){
                 this.sortType = 'name';
@@ -632,7 +657,8 @@
                     return `/api/connected/students/search/${this.sortType}/${this.sortReverse}/${this.status}/${search}?page=${page}`;
                 }, 
 
-                fetch(page) {
+                fetch(page, status) {
+                    if (status) this.status = status
                     window.scrollTo(0, 0);
                     axios.get(this.url(page)).then(this.refresh);
                 },
@@ -654,6 +680,9 @@
             },
             changeInfo(data){
                 this.info = data
+                if(this.info.pivot.study_id) this.selectedStudy = this.info.pivot.study_id
+                else this.selectedStudy = 0
+                console.log(this.info)
                 setTimeout(function(){
 //                    document.getElementById('modalzoom').classList.remove('zoomIn');
 
@@ -697,6 +726,7 @@
         },
 
         mounted() {
+            this.getSchoolStudies()
             this.scholio = window.location.origin
         }
     }

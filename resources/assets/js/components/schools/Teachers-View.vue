@@ -2,7 +2,7 @@
     <div class="row">
 
         <form class="sc-radio pull-left" >
-            <input id="th1" type="radio" name="status" value="connectedTeachers" v-model="status" @click.prevent="fetch">
+            <input id="th1" type="radio" name="status" value="connectedTeachers" v-model="status" @click.prevent="fetch(1, 'connectedTeachers')">
             <label for="th1" >
                 <div class="r-lab">{{ lang('resource.teachers.active') }}
                     <span class="pull-right" style=""> {{ connectedTeachers }} </span>
@@ -10,7 +10,7 @@
             </label>
             <br>
 
-            <input id="th2" type="radio" name="status" value="allumniTeachers" v-model="status" @click.prevent="fetch">
+            <input id="th2" type="radio" name="status" value="allumniTeachers" v-model="status" @click.prevent="fetch(1, 'allumniTeachers')">
             <label for="th2">
                 <div class="r-lab">{{ lang('resource.teachers.nonactive') }}
                     <span class="pull-right" style=""> {{ allumniTeachers }} </span>
@@ -55,7 +55,7 @@
                 <!--<div class='wave'></div>-->
                 <div class="sc-bottom2">
                     <form class="sc-radio2 pull-right" v-on:change="changeStatus(teacher.id)">
-                        <input v-model="status" :id="'st' + teacher.id" type="radio" :name="'studentStatus' + teacher.id" value="connectedTeachers">
+                        <input v-model="status" :id="'st' + teacher.id" type="radio" :name="'teacherStatus' + teacher.id" value="connectedTeachers">
 
                         <label :for="'st' + teacher.id"><div class="r-lab">{{ lang('resource.teachers.active') }}</div>
                         </label>
@@ -119,7 +119,6 @@
     </div>
 </template>
 
-4
 <style>
     label{font-weight: 400;}
     .r-lab{margin: -23px 0 0 20px; width: 93px;}
@@ -344,14 +343,16 @@
                 var status = '';
                 if(document.getElementById('st'+id).checked) status = 'connected';
                 else status = 'allumni';
+                if(status=='connected') this.status = 'connectedTeachers'
+                else this.status = 'allumniTeachers'
+                    console.log('ydh')
                 axios.post('/api/school/changeTeacherStatus/' + id + '/' + status)
                     .then(response => {
                         if(response.data == 'ok'){
-                            this.fetch()
+                            this.fetch(1)
                         } 
                     })
-                    if(status=='connected') this.status = 'connectedTeachers'
-                    else this.status = 'allumniTeachers'
+                    
             },
             nameChangeSort: function(){
                 this.sortType = 'name';
@@ -401,7 +402,8 @@
                 return `/api/connected/teachers/search/${this.sortType}/${this.sortReverse}/${this.status}/${search}?page=${page}`;
             }, 
 
-            fetch(page) {
+            fetch(page, status) {
+                if(status) this.status = status
                 window.scrollTo(0, 0);
                 axios.get(this.url(page)).then(this.refresh);
             },

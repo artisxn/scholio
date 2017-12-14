@@ -23,6 +23,17 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::bot();
 
+Route::post('/student/saveStudy', function () {
+    $school = auth()->user()->info;
+    $study = Study::find(request()->study);
+    $student = User::find(request()->student);
+
+    $school->students->where('id', $student->id)->first()->pivot->type = $study->name;
+    $school->students->where('id', $student->id)->first()->pivot->study_id = $study->id;
+    $school->students->where('id', $student->id)->first()->pivot->level = $study->section[0]->level->name;
+    $school->students->where('id', $student->id)->first()->pivot->save();
+})->middleware('auth:api');
+
 Route::get('/notifications/getSchoolLevelSections', function () {
     $school = auth()->user()->info;
     $studies = [];
@@ -617,7 +628,9 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
             $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
 
-            $replacement2 = preg_replace('/ά/iu', '${1}α', $item->studyConnection->pluck('name'));
+            $study = $item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->first()->name ?? null;
+
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $study);
             $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
             $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
             $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
@@ -627,7 +640,7 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
             if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
                 preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) ||
-                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $item->studyConnection->pluck('name'))) {
+                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $study)) {
                 return $item;
             }
         });
@@ -663,7 +676,19 @@ Route::get('/connected/teachers/search/{order}/{asc}/{status}/{field}', function
             $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
             $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
             $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
-            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) || preg_match('/' . $field . '/i', $item->email)) {
+
+            $study = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type;
+
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $study);
+            $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
+            $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
+            $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
+            $replacement2 = preg_replace('/ό/iu', '${1}ο', $replacement2);
+            $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
+            $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
+
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
+                preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $study)) {
                 return $item;
             }
         });

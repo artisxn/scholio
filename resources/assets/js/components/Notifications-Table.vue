@@ -10,7 +10,7 @@
                         <!--</p>-->
                         <div class="p-20">
                             <div class="table-responsive">
-                                <table class="table table-striped m-0 noti-table">
+                                <table class="table m-0 noti-table">
                                     <thead>
                                         <tr>
                                             <th class="sxs-hide"></th>
@@ -25,19 +25,26 @@
                                         </tr>
                                     </thead>
                                     <tbody v-if="!buttonsDisabled" style="">
-                                        <tr v-for="notification in notifications" v-show='notification.type == "App\\Notifications\\UserAppliedForConnection"' >
+                                        <tr v-for="notification in notifications" v-show='notification.type == "App\\Notifications\\UserAppliedForConnection"'>
                                             <td class="table-img sxs-hide"><img v-bind:src=notification.data.avatar style="width: 65px"></td>
                                             <td class="text-center table-info" v-if="notification.data.role == 'student'">{{ lang('resource.requests.table.student') }}</td>
                                             <td class="text-center table-info" v-if="notification.data.role == 'teacher'">{{ lang('resource.requests.table.teacher') }}</td>
                                             <td class="text-center table-info">{{ notification.data.name }}</td>
-                                            <td class="text-center table-info lg-hide">{{ notification.data.status }}</td>
+                                            <td class="text-center table-info lg-hide" v-if="notification.data.role == 'student'">
+                                                <span v-if="notification.data.status == 'connected'">{{ lang('["panel/schools"].resource.students.active') }}</span>
+                                                <span v-else>{{ lang('["panel/schools"].resource.students.alumni')}}</span>
+                                            </td>
+                                            <td class="text-center table-info lg-hide" v-if="notification.data.role == 'teacher'">
+                                                <span v-if="notification.data.status == 'connected'">{{ lang('["panel/schools"].resource.teachers.active') }}</span>
+                                                <span v-else>{{ lang('["panel/schools"].resource.teachers.alumni')}}</span>
+                                            </td>
                                             <td class="text-center table-info mid-hide" v-if="notification.data.role == 'student'"> {{ notification.data.study.name }}</td>
                                             <td class="text-center table-info mid-hide" v-if="notification.data.role == 'teacher'"> {{ notification.data.study }}</td>
-                                            <td class="text-center table-info small-hide">{{ notification.created_at }}</td>
+                                            <td class="text-center table-info small-hide">{{ changeTimeFormat(notification.created_at) }}</td>
 
                                             <td class="text-center  table-btn">
-                                                <button  v-if="notification.data.role == 'student'"  v-on:click="load2(notification.data)"   data-toggle="modal" data-target="#studiesStudent-modal" class="btn btn-info" :disabled="buttonsDisabled">{{ lang('resource.requests.table.action') }}</button>
-                                                <button  v-if="notification.data.role == 'teacher'"  v-on:click="load2(notification.data)"   data-toggle="modal" data-target="#studiesTeacher-modal" class="btn btn-info" :disabled="buttonsDisabled">{{ lang('resource.requests.table.action') }}</button>
+                                                <button  v-if="notification.data.role == 'student'"  v-on:click="load(notification.id, notification.data)" data-toggle="modal" data-target="#studiesStudent-modal" class="btn btn-info">{{ lang('resource.requests.table.action') }}</button>
+                                                <button  v-if="notification.data.role == 'teacher'"  v-on:click="load(notification.id, notification.data)" data-toggle="modal" data-target="#studiesTeacher-modal" class="btn btn-info">{{ lang('resource.requests.table.action') }}</button>
                                                 <!--<button v-on:click="load(notification.data)"                     class="btn btn-info" :disabled="buttonsDisabled">{{ lang('resource.requests.table.confirm') }}</button>-->
 
                                             </td>
@@ -104,7 +111,7 @@
                                     <!--<input type="text" v-model="selectedStudy" size="80">-->
 
                                     <div class="polyfill-input-sc">
-                                        <input type="text" label="Περιγραφή Ειδικότητας" name="work-start" class="demo-form ad-input"  id="" v-model="selectedStudy" value="." >
+                                        <input type="text" label="Περιγραφή Ειδικότητας" name="work-start" class="demo-form ad-input"  id="" v-model="selectedStudy" value="*">
                                         <i class="icon-inp fa fa-graduation-cap"></i>
                                     </div>
 
@@ -114,8 +121,8 @@
                                             Επιλογή Κατάστασης</div>
                                         <i class="fa fa-cogs" style="color: #008da5"></i>
                                         <select v-model="selectedStatus" class="modal-select" style="margin-left: 4px">
-                                            <option selected>connected</option>
-                                            <option>allumni</option>
+                                            <option value="connected">{{ lang('["panel/schools"].resource.teachers.active') }}</option>
+                                            <option value="allumni">{{ lang('["panel/schools"].resource.teachers.alumni') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -126,8 +133,8 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >{{lang('profile.modal.abort')}}</button>
-                        <button v-on:click="deny(notification.id, notification.data.id)" class="btn btn-success" :disabled="buttonsDisabled">{{ lang('resource.requests.table.abort') }}</button>
-                        <button type="button" class="btn btn-info"    data-dismiss="modal" @click="accept">Αποδοχή</button>
+                        <button v-on:click="deny()" class="btn btn-success">{{ lang('resource.requests.table.abort') }}</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal" @click="accept">Αποδοχή</button>
                     </div>
                 </div>
             </div>
@@ -171,8 +178,8 @@
                                     <div style="margin-top: 50px" class="modal-input-container">
                                         <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/team.png" alt="">Επιλογή Κατάστασης</div>
                                         <select v-model="selectedStatus" class="modal-select">
-                                            <option selected>connected</option>
-                                            <option>alumni</option>
+                                            <option value="connected">{{ lang('["panel/schools"].resource.students.active') }}</option>
+                                            <option value="allumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -183,8 +190,8 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{lang('profile.modal.abort')}}</button>
-                        <button v-on:click="deny(notification.id, notification.data.id)" class="btn btn-success" :disabled="buttonsDisabled">{{ lang('resource.requests.table.abort') }}</button>
-                        <button type="button" class="btn btn-info"    data-dismiss="modal" @click="accept">Αποδοχή</button>
+                        <button v-on:click="deny()" class="btn btn-success" :disabled="buttonsDisabled">{{ lang('resource.requests.table.abort') }}</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal" @click="accept">Αποδοχή</button>
                     </div>
                 </div>
             </div>
@@ -269,6 +276,7 @@
 
 
 <script>
+    var moment = require('moment');
     export default {
 
         data: function() {
@@ -283,12 +291,18 @@
                 studyConnection: 0,
                 temp: null,
                 selectedName:null,
-                selectedImg:null
+                selectedImg:null,
+                currentNotificationID: 0,
+                currentUserID: 0
             }
         },
 
         methods: {
-            getNotifications: function(){
+            changeTimeFormat(time){
+                return moment(time).format('DD-MM-YYYY')
+            },
+
+            getNotifications(){
                 var temp = []
                 axios.get('/api/notifications/requests')
                     .then(response => {
@@ -297,7 +311,7 @@
                     });
             },
 
-            getSchoolStudies: function(){
+            getSchoolStudies(){
                 // school/getCurrentStudies
                 axios.get('/api/notifications/getSchoolLevelStudies').then(({data})=>{
                     this.studies = data
@@ -311,7 +325,7 @@
                 })
             },
 
-            markAsRead: function(id){
+            markAsRead(id){
                 axios.post('/api/notifications/read/' + id)
                     .then(response => {
                         console.log('Notifications are read')
@@ -319,7 +333,7 @@
                         Event.$emit('readNotifications')
                 });
             },
-            accept: function(){
+            accept(){
                 // console.log(this.selectedStudy)
                 if(this.selectedUser && this.selectedStudy && this.selectedStatus){
                     axios.post('/api/connection/' + this.selectedUser + '/' + this.selectedStudy + '/' + this.selectedStatus +'/confirm')
@@ -331,34 +345,24 @@
                     });
                 }
             },
-            deny: function(id, user){
-                axios.post('/api/connection/' + id + '/deny', {user:user})
+            deny(){
+                axios.post('/api/connection/' + this.currentNotificationID + '/deny', {user:this.currentUserID})
                     .then(response => {
-                        this.markAsRead(id)
+                        this.markAsRead(this.currentNotificationID)
                         window.location.reload();
                     });
             },
 
-            load(user){
-                if(user.role == 'student') this.selectedStudy = user.study.id
-                else this.selectedStudy = user.study
-    
-                this.selectedUser = user.id
-                if(user.role == 'student') this.$modal.show('studiesStudent')
-                else this.$modal.show('studiesTeacher')
-            },
-
-            load2(user){
+            load(notificationID, user){
+                this.selectedStatus = user.status
+                this.currentNotificationID = notificationID
+                this.currentUserID = user.id
                 if(user.role == 'student') this.selectedStudy = user.study.id
                 else this.selectedStudy = user.study
 
                 this.selectedName=user.name
                 this.selectedImg=user.avatar
                 this.selectedUser = user.id
-            },
-
-            hide () {
-                this.$modal.hide('studiesStudent');
             }
         },
 

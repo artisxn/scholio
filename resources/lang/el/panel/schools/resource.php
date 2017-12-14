@@ -8,6 +8,8 @@ return [
     ],
 
     'teachers' => [
+        'active' => 'Ενεργός',
+        'alumni' => 'Παλαιός',
     ],
 
     'requests' => [

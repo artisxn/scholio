@@ -8,11 +8,60 @@ use App\Models\School;
 use App\Models\SchoolSetting;
 use App\Scholio\Scholio;
 use App\User;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
-Route::post('qqqa', function () {
-    dd(request()->about);
+Route::get('qqqa/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
+    $user = auth()->user();
+    $school = $user->info;
+    $students = $school->$status;
+
+    $orderType = $asc == 'false' ? 'asc' : 'desc';
+
+    $students = $school->$status()->orderBy($order, $orderType)->with('cv', 'student')->get();
+
+    if ($field != '%20') {
+        $students = $students->filter(function ($item) use ($field) {
+
+            $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
+            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
+            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
+            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
+            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
+            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
+            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
+
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $item->studyConnection->pluck('name'));
+            $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
+            $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
+            $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
+            $replacement2 = preg_replace('/ό/iu', '${1}ο', $replacement2);
+            $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
+            $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
+
+            dd($item->studyConnection->pluck('name'));
+
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
+                preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) ||
+                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $item->studyConnection->pluck('name'))) {
+                return $item;
+            }
+        });
+    }
+
+    $items = $students;
+
+    $perPage = config('scholio.perPage.students');
+
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count()]);
+    $data = $custom->merge($p);
+    return $data;
 });
 
 Route::get('/fake/login', function () {

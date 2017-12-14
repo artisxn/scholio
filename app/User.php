@@ -11,6 +11,7 @@ use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SocialLink;
 use App\Models\Student;
+use App\Models\Study;
 use App\Models\Teacher;
 use App\Traits\EndorseSystem;
 use App\Traits\InterestedSystem;
@@ -20,7 +21,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use App\Models\Study;
 
 class User extends Authenticatable
 {
@@ -119,7 +119,7 @@ class User extends Authenticatable
 
     public function connectedSchool()
     {
-        return $this->belongsToMany(School::class, 'school_user')->withPivot('status');
+        return $this->belongsToMany(School::class, 'school_user')->withPivot('status', 'type', 'study_id');
     }
 
     public function isConnectedWithSchool($school)
@@ -198,10 +198,10 @@ class User extends Authenticatable
     }
 
     /**
-    * @return 
-    */
+     * @return
+     */
     public function studyConnection()
     {
-        return $this->belongsToMany(Study::class, 'study_user');
+        return $this->belongsToMany(Study::class, 'study_user')->withPivot('school_id', 'study_id');
     }
 }
