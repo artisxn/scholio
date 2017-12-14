@@ -143,6 +143,40 @@
 }
 
 .background-masker.content-third-end {
-    left: 300px;
-    top: 88px;
+      left: 300px;
+      top: 88px;
+  }
+
+/* ============== wide =================*/
+
+
+.animated-background-Wide {
+    /*background: -webkit-gradient(linear, left top, right top, color-stop(8%, #eeeeee), color-stop(18%, #dddddd), color-stop(33%, #eeeeee));*/
+    /*background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);*/
+    background: linear-gradient(to right,#bbb 8%, #eee 18%, #bbb 33%);
+}
+
+.background-masker-Wide {
+    background: #f5f5f5;
+}
+
+.background-masker.header-right-Wide{
+    left: 55%;
+}
+
+.background-masker.subheader-right-Wide {
+    left: 86%;
+}
+
+.background-masker.content-first-end-Wide {
+    left: 40%;
+
+}
+.background-masker.content-second-end-Wide {
+    left: 92%;
+
+}
+.background-masker.content-third-end-Wide {
+    left: 70%;
+
 }
