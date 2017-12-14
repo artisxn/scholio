@@ -1099,7 +1099,7 @@
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
                         <span> @{{ contactInfo.name }}:  @lang('profile.modal.message') </span>
 
-                        @if(auth()->user()->role == 'student')
+                        @if(auth()->check() && auth()->user()->role == 'student')
                             <div class="input-container">
                                 <div>
                                     <select ng-model="selectedStudy">
@@ -1120,7 +1120,7 @@
                                 </div>
                             </div>
 
-                        @elseif(auth()->user()->role == 'teacher')
+                        @elseif(auth()->check() && auth()->user()->role == 'teacher')
 
                             <div class="input-container">
                                 <div>
