@@ -24,6 +24,7 @@ class CommingSoon
         //     return $next($request);
         // }
 
+
         if (!$keys->soon) {
             return $next($request);
         }
@@ -33,6 +34,10 @@ class CommingSoon
         $up = strtoupper($agent);
 
         if (strpos($up, 'MESSENGER') !== false) {
+            return $next($request);
+        }
+
+        if($url == request()->is('1q1q*')){
             return $next($request);
         }
 

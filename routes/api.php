@@ -850,21 +850,3 @@ Route::get('/hashtag/all', function () {
 
 Route::post('/hashtag/{tag}/add', function ($tag) {
 })->middleware('auth:api');
-
-Route::get('/scholio/online/settings/dropdown/{p}', function ($p) {
-    $keys = Key::find(1);
-    $keys->dropdownLogin = $p;
-    $keys->save();
-});
-
-Route::get('/scholio/online/settings/login/{p}', function ($p) {
-    $keys = Key::find(1);
-    $keys->login = $p;
-    $keys->save();
-});
-
-Route::get('/scholio/online/settings/soon/{p}', function ($p) {
-    $keys = Key::find(1);
-    $keys->soon = $p;
-    $keys->save();
-});

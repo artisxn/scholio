@@ -14,6 +14,10 @@ use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
+Route::get('/qqa/aaa/aaa', function(){
+    dd(request()->is('qqa*'));
+});
+
 Route::get('/fake/login', function () {
     $oldUser = null;
     if (auth()->check()) {
@@ -200,4 +204,22 @@ Route::get('/userRole/save', function () {
     session(['registration' => 'user']);
     session(['userrole' => $role]);
     return redirect('/register');
+});
+
+Route::get('/1q1q/s/o/s/dropdown/{p}', function ($p) {
+    $keys = App\Key::find(1);
+    $keys->dropdownLogin = $p;
+    $keys->save();
+});
+
+Route::get('/1q1q/s/o/s/login/{p}', function ($p) {
+    $keys = App\Key::find(1);
+    $keys->login = $p;
+    $keys->save();
+});
+
+Route::get('/1q1q/s/o/s/soon/{p}', function ($p) {
+    $keys = App\Key::find(1);
+    $keys->soon = $p;
+    $keys->save();
 });
