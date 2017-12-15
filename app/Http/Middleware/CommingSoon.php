@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Key;
 
 class CommingSoon
 {
@@ -17,8 +18,13 @@ class CommingSoon
     {
         $url = request()->url();
         $soon = env('COMING_SOON', false);
+        $keys = Key::find(1);
 
-        if (!$soon) {
+        // if (!$soon) {
+        //     return $next($request);
+        // }
+
+        if (!$keys->soon) {
             return $next($request);
         }
 

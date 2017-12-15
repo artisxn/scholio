@@ -17,7 +17,7 @@
                         <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }} >GR</option>
                     </select>
                 </form>
-                @if(config('scholio.show.fakeLogin'))
+                @if(App\Key::find(1)->dropdownLogin)
                 <form  method="GET" action="/fake/login" id="langForm" style="display: inline-block; position: absolute; top: 18px; margin-left: 110px; color: #555">
                     <select onchange="this.form.submit()" style="border: none; background-color: transparent; margin: -15px; width: 250px;" name="userID">
                             @foreach(App\User::all() as $user)

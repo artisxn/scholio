@@ -4,6 +4,7 @@ use App\Models\School;
 use App\Models\SchoolSetting;
 use App\Scholio\Scholio;
 use Illuminate\Database\Seeder;
+use App\Key;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,12 +31,18 @@ class DatabaseSeeder extends Seeder
         $this->call(SocialLinksTableSeeder::class);
         $this->call(DummyScholarshipsTableSeeder::class);
 
+        $keys = new Key;
+        $keys->login = 1;
+        $keys->dropdownLogin = 1;
+        $keys->soon = 1;
+        $keys->save();
+
         foreach (School::all() as $school) {
             $settings = new SchoolSetting;
             $settings->school_id = $school->id;
             $settings->save();
 
-            $address = Scholio::geocode($school->address . ", " . $school->city);
+            $address = Scholio::geocode($school->address . ', ' . $school->city);
             if ($address == 'GEOCODE ERROR') {
                 dd($address);
             } else {

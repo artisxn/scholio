@@ -10,6 +10,7 @@ use App\Models\SocialLink;
 use App\Models\Student;
 use App\Models\Study;
 use App\Scholio\Scholio;
+use App\Key;
 
 class RoutesController extends Controller
 {
@@ -88,6 +89,9 @@ class RoutesController extends Controller
 
     public function devIn($data, $dash = null)
     {
+        if(!Key::find(1)->login){
+            return abort(404);
+        }
         if (auth()->check()) {
             auth()->logout();
         }
