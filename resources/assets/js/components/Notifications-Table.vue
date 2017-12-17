@@ -1,78 +1,97 @@
 <template>
     <div class="row full-content">
         <div class="col-sm-12">
-            <div class="card-box">
-                <div class="row">
+            <div class="card-box" style="padding: 7px;">
+                <div class="row" style="margin: 0">
                     <div class="col-lg-12">
                         <h4 class="m-t-0 header-title"><b>{{ lang('resource.requests.notifications') }}</b></h4>
                         <!--<p class="text-muted font-13">-->
                           <!--{{ lang('resource.requests.requests') }}-->
                         <!--</p>-->
-                        <div class="p-20">
+                        <div class="p-10">
                             <div class="table-responsive">
                                 <table class="table m-0 noti-table">
                                     <thead>
                                         <tr>
                                             <th class="sxs-hide"></th>
-                                            <th class="text-center">{{ lang('resource.requests.table.role') }}</th>
+                                            <th class="text-center sxsx-hide">{{ lang('resource.requests.table.role') }}</th>
                                             <th class="text-center">{{ lang('resource.requests.table.name') }}</th>
-                                            <th class="text-center lg-hide"> Κατάσταση </th>
+                                            <th class="text-center sxsx-hide"> Κατάσταση </th>
                                             <th class="text-center mid-hide"> Σπουδές </th>
-                                            <th class="text-center small-hide">{{ lang('resource.requests.table.date') }}</th>
+                                            <th class="text-center small-hide lg-hide">{{ lang('resource.requests.table.date') }}</th>
                                             <th class="text-center">
                                                 <!--{{ lang('resource.requests.table.action') }}-->
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody v-if="!buttonsDisabled" style="">
-                                        <tr v-for="notification in notifications" v-show='notification.type == "App\\Notifications\\UserAppliedForConnection"'>
-                                            <td class="table-img sxs-hide"><img v-bind:src=notification.data.avatar style="width: 65px"></td>
-                                            <td class="text-center table-info" v-if="notification.data.role == 'student'">{{ lang('resource.requests.table.student') }}</td>
-                                            <td class="text-center table-info" v-if="notification.data.role == 'teacher'">{{ lang('resource.requests.table.teacher') }}</td>
-                                            <td class="text-center table-info">{{ notification.data.name }}</td>
-                                            <td class="text-center table-info lg-hide" v-if="notification.data.role == 'student'">
-                                                <span v-if="notification.data.status == 'connected'">{{ lang('["panel/schools"].resource.students.active') }}</span>
-                                                <span v-else>{{ lang('["panel/schools"].resource.students.alumni')}}</span>
-                                            </td>
-                                            <td class="text-center table-info lg-hide" v-if="notification.data.role == 'teacher'">
-                                                <span v-if="notification.data.status == 'connected'">{{ lang('["panel/schools"].resource.teachers.active') }}</span>
-                                                <span v-else>{{ lang('["panel/schools"].resource.teachers.alumni')}}</span>
-                                            </td>
-                                            <td class="text-center table-info mid-hide" v-if="notification.data.role == 'student'"> {{ notification.data.study.name }}</td>
-                                            <td class="text-center table-info mid-hide" v-if="notification.data.role == 'teacher'"> {{ notification.data.study }}</td>
-                                            <td class="text-center table-info small-hide">{{ changeTimeFormat(notification.created_at) }}</td>
+                                    <transition name="fade">
+                                            <tbody v-if="!buttonsDisabled">
+                                                <tr v-for="notification in notifications" v-show='notification.type == "App\\Notifications\\UserAppliedForConnection"' :class="{teacherRow: notification.data.role == 'teacher'}">
 
-                                            <td class="text-center  table-btn">
-                                                <button  v-if="notification.data.role == 'student'"  v-on:click="load(notification.id, notification.data)" data-toggle="modal" data-target="#studiesStudent-modal" class="btn btn-info">{{ lang('resource.requests.table.action') }}</button>
-                                                <button  v-if="notification.data.role == 'teacher'"  v-on:click="load(notification.id, notification.data)" data-toggle="modal" data-target="#studiesTeacher-modal" class="btn btn-info">{{ lang('resource.requests.table.action') }}</button>
-                                                <!--<button v-on:click="load(notification.data)"                     class="btn btn-info" :disabled="buttonsDisabled">{{ lang('resource.requests.table.confirm') }}</button>-->
+                                                    <transition name="fade">
+                                                    <td v-if="!buttonsDisabled" class="table-img sxs-hide"><img v-bind:src=notification.data.avatar style="width: 65px" ></td>
+                                                    </transition>
 
-                                            </td>
-                                        </tr>
-                                    </tbody>
+
+                                                    <td class="text-center table-info sxsx-hide" v-if="notification.data.role == 'student'">{{ lang('resource.requests.table.student') }}</td>
+                                                    <td class="text-center table-info sxsx-hide" v-if="notification.data.role == 'teacher'">{{ lang('resource.requests.table.teacher') }}</td>
+                                                    <td class="text-center table-info">{{ notification.data.name }}</td>
+
+                                                    <td class="text-center table-info sxsx-hide" v-if="notification.data.role == 'student'">
+                                                        <span v-if="notification.data.status == 'connected'">{{ lang('["panel/schools"].resource.students.active') }}</span>
+                                                        <span v-else>{{ lang('["panel/schools"].resource.students.alumni')}}</span>
+                                                    </td>
+                                                    <td class="text-center table-info sxsx-hide" v-if="notification.data.role == 'teacher'" >
+                                                        <span v-if="notification.data.status == 'connected'">{{ lang('["panel/schools"].resource.teachers.active') }}</span>
+                                                        <span v-else>{{ lang('["panel/schools"].resource.teachers.alumni')}}</span>
+                                                    </td>
+
+                                                    <td class="tool mid-hide " v-if="notification.data.role == 'student'">
+                                                        <div class=" dots-text   text-center table-info" >{{ notification.data.study.name }}</div>
+                                                        <span class="tooltiptext tooltip2 xl-hide">{{ notification.data.study.name }}</span>
+                                                    </td>
+                                                    <td class="tool mid-hide" v-if="notification.data.role == 'teacher'">
+                                                        <div class="dots-text  text-center table-info"  style=""> {{ notification.data.study }}</div>
+                                                        <span class="tooltiptext tooltip2 xl-hide">{{ notification.data.study }}</span>
+                                                    </td>
+
+
+                                                    <td class="text-center table-info small-hide lg-hide">{{ changeTimeFormat(notification.created_at) }}</td>
+
+                                                    <td class="text-center  table-btn">
+                                                        <button  v-if="notification.data.role == 'student'"  v-on:click="load(notification.id, notification.data)" data-toggle="modal" data-target="#studiesStudent-modal" class="btn btn-info">{{ lang('resource.requests.table.action') }}</button>
+                                                        <button  v-if="notification.data.role == 'teacher'"  v-on:click="load(notification.id, notification.data)" data-toggle="modal" data-target="#studiesTeacher-modal" class="btn btn-info">{{ lang('resource.requests.table.action') }}</button>
+                                                        <!--<button v-on:click="load(notification.data)"                     class="btn btn-info" :disabled="buttonsDisabled">{{ lang('resource.requests.table.confirm') }}</button>-->
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                    </transition>
                                 </table>
 
-                                <transition name="fade" v-if="buttonsDisabled">
+                                <div v-if="buttonsDisabled">
                                     <div style="margin: 5px ">
                                         <div class="animated-background animated-background-Wide col-xs-12 "  v-for="i in notifications.length" style="margin-top: 17px;">
-                                            <div class="background-masker background-masker-Wide  header-top " ></div>
-                                            <div class="background-masker background-masker-Wide  header-left"></div>
-                                            <div class="background-masker background-masker-Wide  header-right header-right-Wide"></div>
-                                            <div class="background-masker background-masker-Wide  header-bottom"></div>
 
-                                            <div class="background-masker background-masker-Wide  subheader-left"></div>
-                                            <div class="background-masker background-masker-Wide  subheader-right subheader-right-Wide"></div>
-                                            <div class="background-masker background-masker-Wide  subheader-bottom"></div>
+                                                <div class="background-masker background-masker-Wide  header-top " ></div>
+                                                <div class="background-masker background-masker-Wide  header-left"></div>
+                                                <div class="background-masker background-masker-Wide  header-right header-right-Wide"></div>
+                                                <div class="background-masker background-masker-Wide  header-bottom"></div>
 
-                                            <div class="background-masker background-masker-Wide  content-top"></div>
-                                            <div class="background-masker background-masker-Wide  content-first-end content-first-end-Wide"></div>
-                                            <div class="background-masker background-masker-Wide  content-second-line"></div>
-                                            <div class="background-masker background-masker-Wide  content-second-end content-second-end-Wide"></div>
-                                            <div class="background-masker background-masker-Wide  content-third-line"></div>
-                                            <div class="background-masker background-masker-Wide  content-third-end content-third-end-Wide"></div>
+                                                <div class="background-masker background-masker-Wide  subheader-left"></div>
+                                                <div class="background-masker background-masker-Wide  subheader-right subheader-right-Wide"></div>
+                                                <div class="background-masker background-masker-Wide  subheader-bottom"></div>
+
+                                                <div class="background-masker background-masker-Wide  content-top"></div>
+                                                <div class="background-masker background-masker-Wide  content-first-end content-first-end-Wide"></div>
+                                                <div class="background-masker background-masker-Wide  content-second-line"></div>
+                                                <div class="background-masker background-masker-Wide  content-second-end content-second-end-Wide"></div>
+                                                <div class="background-masker background-masker-Wide  content-third-line"></div>
+                                                <div class="background-masker background-masker-Wide  content-third-end content-third-end-Wide"></div>
+
                                         </div>
                                     </div>
-                                </transition>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -217,23 +236,10 @@
     .btn-success,.btn-success:active,.btn-success:visited{background: #f8582b !important; border:none }
     .btn-success:hover{background: #d74c22 !important; }
 
+    .teacherRow{background: #f6f6f6
+    }
 
-    @media (max-width: 1400px) {
-        .lg-hide{ display: none;}
-        .p-20{padding: 5px!important;}
 
-        }
-    @media (max-width: 1100px) {
-        .mid-hide{ display: none;}
-    }
-    @media (max-width: 800px) {
-        .small-hide{ display: none;}
-    }
-    @media (max-width: 600px) {
-        .sxs-hide{ display: none;}
-        .p-20{padding: 5px 0!important; margin: 15px 0;}
-        .card-box{margin-left: 0; margin-right: 0; padding: 0}
-    }
 
 
     /* ========== Polymer Input ============== */
@@ -270,6 +276,101 @@
 
     /* ================================ */
 
+
+    /* =========TOOLTIP=========*/
+
+    .dots-text{display:inline-block;
+        white-space: nowrap;
+        overflow:hidden !important;
+        text-overflow: ellipsis;
+        width: 90%;
+        margin-left: 5%;
+        max-width: 450px;
+        position: relative;
+    }
+
+
+    .tool {
+        position: relative;
+    }
+
+    .tooltiptext  {
+        font-weight: 300;
+        visibility: hidden;
+        width: 420px;
+        background-color: #007991;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 4px 1px;
+        position: absolute;
+        z-index: 1;
+        bottom: 120%;
+        margin-left: -110px;
+        opacity: 0;
+        transition: opacity 0.1s;
+        background-color: #007991;
+    }
+
+    .tooltip2{width: 390px;  bottom: 80px; left: 160px;}
+
+    .tool:hover .tooltiptext{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @media (max-width: 1270px) {
+        .dots-text{max-width: 350px;}
+        .tooltip2{ left: 120px; width: 340px;}
+    }
+
+    @media (max-width: 1140px) {
+        .dots-text{max-width: 120px;}
+        .tooltip2{left: 20px; width: 290px;}
+    }
+
+    @media (max-width: 700px) {
+        .dots-text{max-width: 270px;}
+    }
+
+
+    /* =================================*/
+
+    @media (min-width: 1670px) {
+        .xl-hide{ display: none;}
+        .dots-text{max-width: 100%;}
+    }
+
+    @media (max-width: 1370px) {
+        .lg-hide{ display: none;}
+        .p-20{padding: 8px 5px!important;}
+    }
+
+    @media (max-width: 1010px) {
+        .mid-hide{ display: none;}
+    }
+    @media (max-width: 800px) {
+        .small-hide{ display: none;}
+    }
+    @media (max-width: 610px) {
+        .sxs-hide{ display: none;}
+        .p-20{padding: 5px 0!important; margin: 15px 0;}
+        .card-box{margin-left: 0; margin-right: 0; padding: 0}
+    }
+
+    @media (max-width:520px) {
+        .sxsx-hide{ display: none;}
+    }
+
+    /* =================================*/
+
+    .fade-enter-active {
+        transition: opacity 3.5s
+    }
+    .fade-enter {
+        opacity: 0
+    }
+
 </style>
 
 
@@ -293,7 +394,8 @@
                 selectedName:null,
                 selectedImg:null,
                 currentNotificationID: 0,
-                currentUserID: 0
+                currentUserID: 0,
+
             }
         },
 
@@ -308,6 +410,7 @@
                     .then(response => {
                         this.notifications = response.data
                         console.log(this.notifications)
+
                     });
             },
 

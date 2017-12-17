@@ -376,25 +376,34 @@
     @if($scholarship->active)
         <div class=" buttons centered-text">
             @if(auth()->check())
-                @if(auth()->user()->role != 'school')
+                @if(auth()->user()->role != 'school' && auth()->user()->role != 'teacher'  )
                     <span class="margin-right-20">
                         <a href="">
-                            <button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id)"
+                            <button id="button" type="button" ng-click="interested(scholarship.id)"
                                            class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
-                                <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                                <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('scholarship_view.top.interested_button')</span>
+                                <i id="icon" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                <span id="text" ng-init="check(scholarship)">@lang('scholarship_view.top.interested_button')</span>
                             </button>
                         </a>
                     </span>
                     @if(!auth()->user()->checkAdmission($scholarship))
                         @if($scholarship->admissions_limit > 0 && auth()->user()->info->admissions_limit > 0)
-                            <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}"><button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
+                            <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}">
+                                <button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0 ">
+                                    <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i>
+                                    @lang('scholarship_view.top.admission_button')
+                                </button>
+                            </a>
                         @else
                             <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> ΤΕΛΟΣ </button></a>
                         @endif
 
                     @else
-                        <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_past') </button></a>
+                        <a href=""><button disabled="true" type="button" class=" sch-button sc-button sc-t-light-gray  " >
+                                <i class="fa fa-file-text-o margin-right-10" aria-hidden="true" ></i>
+                                @lang('scholarship_view.top.admission_past')
+                            </button>
+                        </a>
                     @endif
 
                 @endif
@@ -558,7 +567,43 @@
                                 $scope.scholarship=data
 
                             })
+
+
                 }
+
+                $scope.interested = function(id){
+                    $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': window.Scholio.csrfToken
+                                }
+                            })
+                            .success(function(data)   {
+                                console.log(data,'data');
+                                if(data == 'YES'){
+                                    $('#text').text("@lang('profile.scholarship.button.interested')")
+                                    $('#icon').toggleClass('fa-thumbs-up fa-thumbs-o-up');
+                                    $('#button').css('background-color', '#008da5')
+                                }else{
+                                    $('#text').text("@lang('profile.scholarship.button.like')")
+                                    $('#icon').toggleClass('fa-thumbs-o-up fa-thumbs-up');
+                                    $('#button').css('background-color', '#ccc')
+                                }
+
+                            });
+                }
+                $scope.check = function(scholarship){
+
+                    setTimeout(function() {
+                        if(scholarship.userInterested){
+                            $('#icon').toggleClass('fa-thumbs-up fa-thumbs-o-up');
+                            $('#text').text('@lang('profile.scholarship.button.like')')
+                            $('#button').css("background-color", "#ccc");
+                        }
+                        console.log(scholarship.userInterested)
+                    }, 130);
+                }
+
 
 
             })

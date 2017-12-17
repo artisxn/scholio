@@ -12,14 +12,22 @@
 
 
     <style>
-
+        /* ======  avoid filled autocomplete input yellow background on chrome ============ */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #FFF inset;
+            -webkit-text-fill-color: #555;
+        }
+        /* =========================================================== */
 
 
         .upper{width: 100%;  height: 280px; border-top-right-radius: 6px; border-top-left-radius: 6px;
             background: linear-gradient(#dddddd, #b4b4b4);
             background: -webkit-linear-gradient(#dddddd, #b4b4b4);
         }
-        .social{}
+        .social{margin-left: 0;}
         .gray{color: #888; font-size: 280%;}
         .gray:hover,.fa-input:hover{color: #FD6A33; cursor: pointer;}
         .margin-right-25{margin-right: 25px; }
@@ -28,6 +36,9 @@
         .basic-studies>.polymer-form  label{font-size: 150%!important; color: #888!important;}
 
         .polyfill-input-sc{margin: 0 0 0 0; max-width: 370px}
+
+        .basic-title{position: absolute; left: 235px; top: 290px;  font-size: 115%; color: #888; }
+        .mail{margin-top: 20px; display: inline-block}
 
 
          /* ========== Modal ============== */
@@ -54,11 +65,67 @@
             -webkit-linear-gradient(transparent 30px, #bbb 30px, #bbb 31px, transparent 31px);
 
         }
-        .skill-text{float: left; width: 30%}
-        .thumps-up {float: left; width: 70%;}
+        .skill-text{float: left; width: 40%}
+        .thumps-up {float: left; width: 60%;}
+
+
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+
+        }
+
+
+        @media(max-width: 1200px){
+            .name{margin-top: -14px; display: inline-block;}
+            .social{font-size: 170%;}
+            .skill-text{ width: 45%}
+            .thumps-up { width: 55%;}
+            .basic-title{left: 235px;}
+
+        }
+
+        @media(min-width: 521px) and (max-width: 1160px){
+            .up{margin-top: 75px;}
+
+        }
+        @media(max-width: 1020px){
+            .social{display: none;}
+        }
+        @media(max-width: 990px){
+            .basic-title{left: 215px;}
+            .skill-text{float: left; width: 50%}
+            .thumps-up {float: left; width: 50%;}
+        }
 
         @media(max-width: 767px){
             .margin-top{margin-top: 25px;}
+            .basic-title{left: 200px;}
+            .skill-text{float: left; width: 55%}
+            .thumps-up {float: left; width: 45%;}
+        }
+
+        @media(min-width: 521px) and (max-width: 1160px){
+            .mail{display: none;}
+
+        }
+
+        @media(max-width:520px){
+            .margin-right-15{margin-right: 4px}
+            .skill-text{float: left; width: 60%}
+            .thumps-up {float: left; width: 40%;}
+            .basic-title{ display: none;}
+            .mail-centered{display: none;}
+            .xs-social{margin-top: 5px;}
+        }
+
+        @media(max-width:470px){
+            .skill-text{float: left; width: auto;}
+            .thumps-up {float: right; width: 45px;}
+            .skill-bar{display: none;}
+        }
+
+        @media(max-width:380px){
+            .basic-title,.mail-centered{display: none;}
         }
 
         /* ========== DatePicker jQuery ============== */
@@ -99,7 +166,7 @@
     <div id="full" class="hidden">
         <form method="GET" action="/qqqsss" id="test">
 
-            <div class="container" style="">
+            <div class="container" style="position: relative">
 
                 <div class="upper"></div>
 
@@ -110,18 +177,19 @@
                         <span>{{ auth()->user()->info->name() }} </span>
                 </span>
 
+
                 <span class="social hidden-xs">
                         <a href=""> <span class="pull-right margin-right-15"><i class="gray fa fa-instagram"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="gray fa fa-linkedin"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="gray fa fa-twitter"></i></span> </a>
                         <a href=""> <span class="pull-right margin-right-25"><i class="gray fa fa-facebook"></i></span> </a>
-                    @if(auth()->user()->info->links())
-                        @foreach(auth()->user()->info->links() as $link)
-                            <a href="{{$link->link}}" style="color: white;">
-                                <span class="pull-right margin-right-25"><i class="fa fa-{{$link->name}}"></i></span>
-                            </a>
-                        @endforeach
-                    @endif
+                    {{--@if(auth()->user()->info->links())--}}
+                        {{--@foreach(auth()->user()->info->links() as $link)--}}
+                            {{--<a href="{{$link->link}}" style="color: white;">--}}
+                                {{--<span class="pull-right margin-right-25"><i class="fa fa-{{$link->name}}"></i></span>--}}
+                            {{--</a>--}}
+                        {{--@endforeach--}}
+                    {{--@endif--}}
                 </span>
                 </div>
                 {{--  @if(!auth()->user()->works->isEmpty())
@@ -132,10 +200,14 @@
 
 
                 {{--  ΝΑ ΤΟ ΒΑΛΛΟΥΜΕ ΣΤΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ ΣΤΟΝ ΠΙΝΑΚΑ teachers με field "title"  --}}
-                <div class="col-sm-6 basic-studies" style="margin: 110px 0 0 0; max-width: 350px">
-                <input type="text" label="Βασικές Σπουδές/Ειδικότητα:" name="basic-studies" class="demo-form ad-input " value="{{ auth()->user()->info->title }}" id="datepicker">
+                {{--<div class="col-sm-6 basic-studies" style="margin: 110px 0 0 0; max-width: 350px">--}}
+                {{--<input type="text" label="Βασικές Σπουδές/Ειδικότητα:" name="basic-studies" class="demo-form ad-input " value="{{ auth()->user()->info->title }}" id="">--}}
                     {{--<i class="icon-inp fa fa-graduation-cap"></i>--}}
-                    <img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">
+                    {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
+                {{--</div>--}}
+
+                <div class="basic-title">
+                    <span>{{ auth()->user()->info->title }} </span>
                 </div>
                 <div class="clearfix"></div>
 

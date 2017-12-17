@@ -24,8 +24,8 @@
 
     .img-avatar{height:100px; margin: 5px 110px; box-shadow: 0 0 10px 2px #555; border-radius: 6px;}
     .btn-choose{ height: 40px!important; padding: 11px 0!important; clear: both; margin: 20px 50px; width: 270px;}
-    .btn-primary{background-color: #008da5; border: none;}
-    .btn-primary:hover{background-color: #006d7d;}
+    .btn-primary,.btn-primary:visited,.btn-primary:focus,.btn-primary:active{background-color: #008da5!important; border: none;}
+    .btn-primary:hover{background-color: #006d7d!important;}
     label{cursor: pointer; font-size: 102%!important; font-weight: 300!important; }
     .select-gender{ margin: 5px 0 0 5px;}
     .select-transparent{background: transparent; border: none; margin-top: -1px;}
@@ -166,6 +166,24 @@
 
                                 <div class="clearfix"></div>
                             </div>
+
+
+
+                            <div class="inner-section row m-b-40" >
+                                <div class="section-text centered-text"> Βασικές Σπουδές</div>
+
+                                    <div class="col-sm-6">
+                                        <div class="input-container">
+                                            <input  type="text" label="Περιγραφή Βασικών Σπουδών" name="title" class="demo-form ad-input" value="{{ auth()->user()->info->title }}">
+                                            <i class="icon-inp  fa fa-graduation-cap"></i>
+                                        </div>
+                                    </div>
+                            </div>
+
+
+
+
+
 
                             <div class="inner-section row m-b-40" >
                                 <div class="section-text centered-text"> Κοινωνικά Δίκτυα</div>

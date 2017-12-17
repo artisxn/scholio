@@ -13,19 +13,21 @@
 
         .section-container{ margin-top: 40px; }
 
-        .inner-section,.inner-section2{  padding: 5px 5px 25px 5px ; border: 1px solid #aaa; border-radius: 8px; background-color: #F1F4F5;
+        .inner-section,.inner-section2{  padding: 5px 5px 25px 5px ; border: 1px solid #aaa; border-radius: 8px;
+            /*background-color: #F1F4F5;*/
+            background-color: #f8f8f8;
         }
 
-        .section-text{color: #888; font-size: 110%; font-weight: 300; margin:-25px 0 30px 10px;
-            border: 1px solid #aaa; border-radius: 6px; padding: 7px; min-width: 190px; max-width: 250px; background-color: #fafafa;
-            box-shadow: 0 0 9px #aaa}
+        /*.section-text{color: #888; font-size: 110%; font-weight: 300; margin:-25px 0 30px 10px;*/
+            /*border: 1px solid #aaa; border-radius: 6px; padding: 7px; min-width: 190px; width: 480px; background-color: #fafafa;*/
+            /*box-shadow: 0 0 9px #aaa}*/
 
 
         .inner-section2{ min-width: 100%; min-height: 70%; margin: 0;}
         .section2-container{ padding: 0;}
 
         .section-text,.section-text2{color: #888; font-size: 110%; font-weight: 300; margin:-25px 0 30px 10px;
-            border: 1px solid #aaa; border-radius: 6px; padding: 7px; min-width: 190px; max-width: 250px; background-color: #fafafa;
+            border: 1px solid #aaa; border-radius: 6px; padding: 7px; min-width: 190px; max-width: 270px; background-color: #fafafa;
             box-shadow: 0 0 9px #aaa}
 
         .section-text2{margin-bottom: -5px;}
@@ -116,7 +118,7 @@
     @if($category->id < 8)
         <div class="section-container" style="padding: 10px" >
             <div class="row inner-section">
-                <div class="section-text centered-text"> {{ $category->name }}</div>
+                <div class="section-text text-center"> {{ $category->name }}</div>
                 @foreach($admission->fields as $field)
                     @if ($field->category_id==$category->id)
                             <div class="col-xxxs-12 col-xs-6 col-sm-6 info">
@@ -139,7 +141,7 @@
                 @if ($field->category_id==8)
                 <div class="section2-container col-sm-6" style="padding: 20px 10px;">
                     <div class="inner-section2 ">
-                        <div class="section-text2 centered-text"> <i class="icon-title  {{ $field->icon}}" style="margin-right: 10px;"></i>{{ $field->name }}</div>
+                        <div class="section-text2 "> <i class="icon-title  {{ $field->icon}}" style="margin-right: 10px;"></i>{{ $field->name }}</div>
                         <div class="info2">
                             <span class="value"> {{ $field->pivot->data }}</span>
                         </div>
@@ -153,7 +155,7 @@
 
     <form action="/admission/{{ $admission->id }}/notes/save" method="POST" class="col-sm-12 row" style="z-index: 09!important;">
         {{ csrf_field() }}
-        <div class="section-text2 centered-text" style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-pencil" style="margin-right: 10px;"></i>Σημειώσεις</div>
+        <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-pencil" style="margin-right: 10px;"></i>Σημειώσεις</div>
 
         <textarea name="notes" class="notes" placeholder="Εδώ κρατήστε τις σημειώσεις σας για τη συγκεκριμένη αίτηση">{{ $admission->notes }}</textarea>
         <div>
