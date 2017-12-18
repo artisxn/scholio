@@ -171,15 +171,15 @@
             <img src="{{ $teacher->avatar }}" class="avatar img-circle" >
 
             <div class="row1 xs-centered">
-                <span class="name">
-                        <span>{{ $teacher->name() }} </span>
-                </span>
+                <span class="name">{{ $teacher->name() }}</span>
+
+
 
                 <span class="social hidden-xs">
-                        {{-- <a href=""> <span class="pull-right "><i class="fa fa-instagram"></i></span> </a>
-                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
-                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-twitter"></i></span> </a>
-                        <a href=""> <span class="pull-right margin-right-25"><i class="fa fa-facebook"></i></span> </a> --}}
+                         <a href=""> <span class="pull-right social-icon"><i class="fa fa-instagram"></i></span> </a>
+                         <a href=""> <span class="pull-right margin-right-25 social-icon"><i class="fa fa-linkedin"></i></span> </a>
+                         <a href=""> <span class="pull-right margin-right-25 social-icon"><i class="fa fa-twitter"></i></span> </a>
+                         <a href=""> <span class="pull-right margin-right-25 social-icon"><i class="fa fa-facebook"></i></span> </a>
                         @if($links)
                             @foreach($links as $link)
                             <a href="{{$link->link}}" style="color: white;">
@@ -208,6 +208,9 @@
 
 
                 </div>
+
+               <div class="teacher-title">Basic Studies </div>
+
                 <hr class="xs-display">
 
 
@@ -272,11 +275,13 @@
                                 <div   class="title ">@lang('teacher_profile.section.skills')</div>
                                 @foreach($teacher->user->getUniqueSkills() as $skill)
                                     <div class="row ">
-                                    <span class="t2 col-lg-4 col-md-5 col-sm-5 col-xs-6">
+                                    <span class="t2 col-lg-4 col-md-5 col-sm-5 col-xs-6 skill-container">
                                         {{ $skill->name }} :
                                     </span>
 
-                                    <span class="col-lg-8 col-md-7 col-sm-7 col-xs-6">
+
+
+                                    <span class="col-lg-8 col-md-7 col-sm-7 col-xs-6 bar-container">
 
                                         @if(auth()->check() && auth()->user()->role == 'student')
                                             @if($teacher->user->checkSkill($skill))

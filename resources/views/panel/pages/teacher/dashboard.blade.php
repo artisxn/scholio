@@ -36,7 +36,7 @@
                             <a href="{{ url('panel/users/teacher/cv') }}">
                                 <div class="panel dash-card">
                                     <div class="cont-dash">
-                                        <img src="/panel/assets/images/steps/skills2.png" alt="cv image" class="image">
+                                        <img src="/panel/assets/images/steps/terms.png" alt="cv image" class="image">
                                         <div class="text">
                                             @lang('panel/students/navigation.cv')
                                         </div>

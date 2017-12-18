@@ -32,6 +32,7 @@
     .col-gender{border-bottom: 1px solid #aaa; padding: 0 14px; height: 56px;}
     .mar-right-10{margin-right: 10px;}
     .section-text{color: #008DA5; font-weight: 400; font-size: 110%}
+    .inner-section{min-height: 365px;}
 
     .clear-fix{clear: both }
 
@@ -43,6 +44,7 @@
     }
     @media (max-width: 1200px){
         .btn-choose{text-align: center; margin: 20px auto;}
+        .inner-section{min-height: 390px;}
     }
     @media (max-width: 767px){
         .fa-gender{margin-top: 27px}
@@ -215,7 +217,6 @@
                             {{--CV DATA --}}
                             <div class="col-xs-12">
                                 <div class="row flex-row">
-
                                     <div class="col-md-6 section2-container ">
                                         <div class="inner-section">
                                             <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
@@ -237,7 +238,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 section2-container ">
+
+
+                                    <div class="col-md-6 section2-container clearfix">
                                         <div class="inner-section" >
                                             <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i>Έπαινοι - Διακρίσεις</div>
                                             <div class=" input-container">
@@ -249,7 +252,7 @@
                                     </div>
 
                                     <!-- ============================= -->
-                                    <div class="col-md-6 section2-container clear-fix">
+                                    <div class="col-md-6 section2-container ">
                                         <div class="inner-section" >
                                             <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>Ενδιαφέροντα - Ασχολίες</div>
                                             <div class=" input-container">

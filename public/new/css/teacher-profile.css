@@ -124,13 +124,18 @@ body {
 
 .avatar {height: 180px; width: auto; margin: -100px 0 0 20px; border: 6px solid #fff}
 .row1{margin-top: -130px;}
-.name,.social { font-weight: 300; font-size: 230%; margin:0 0 0 220px; color: #fff}
+.name{margin:0 0 0 220px;}
+.name,.social { font-weight: 300; font-size: 230%; color: #fff; }
 .work {font-weight: 400; font-size: 130%; margin: 10px 0 0 220px; color: #888}
 .xs-display, .xs-social {display: none}
+
+.teacher-title{font-size:120%; display: inline-block; margin: 13px 0 0 0px; color: #888;}
 
 .mail-centered{color: #888; font-size: 80%; font-weight: 300}
 
 
+.social-icon{ color: white}
+.social-icon:hover{color: #FD6A33}
 .title{font-size: 185%; font-weight: 300; margin: -45px 0 30px 90px;}
 .png-title{ height: 50px; width: auto}
 .text{text-align: justify;}
@@ -141,7 +146,10 @@ body {
 .t3{ font-weight: 300; margin-bottom: 20px; }
 
 .skill-bar{height: 12px;  background-color: #00bcd4; margin: -15px 0 0 35px;
-    background-image: linear-gradient( to left, rgba(166, 206, 212, 0.85), rgba(0, 67, 79, 0.8))}
+    background-image: linear-gradient( to left, rgba(166, 206, 212, 0.85), rgba(0, 67, 79, 0.8));
+    border-radius: 3px;
+
+}
 
 #counter {margin-right: 10px;}
 #thumps{margin-right: 20px;}
@@ -209,17 +217,19 @@ body {
 
 /* Landscape tablets IPAD  col-md-class */
 @media (min-width: 992px) and (max-width: 1199px) {
-.mail{font-size: 125%}
+    .mail{font-size: 125%}
 
 }
 
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
-.avatar{margin: -100px 0 0 5px;}
-.row1{margin-top: -117px;}
-.name,.social{font-size: 170%; margin:0 0 0 200px;}
-.work{font-size: 110%; margin:15px 0 0 200px;}
+    .avatar{margin: -100px 0 0 5px;}
+    .row1{margin-top: -130px;}
+    .name{font-size: 170%; margin:15px 0 0 200px;}
+    .work{font-size: 110%; margin:15px 0 0 200px;}
+    .teacher-title{margin-top: 13px}
+    .mail{display: none;}
 
 }
 
@@ -235,6 +245,8 @@ body {
     .row1{margin-top: -113px;}
     .name { font-size: 180%; margin:10px 0 0 185px;}
     .work{ margin:15px 0 0 185px;}
+    .skill-container{width: 60%;}
+    .bar-container {width:40%;}
 
 
 }
@@ -266,6 +278,12 @@ body {
     .xs-social{ display: block; font-size: 140%; }
     .xs-social>a>span>i{padding: 20px 0; color: #888;}
     .xs-social>a>span>i:hover{ color: orange;}
+    .teacher-title{margin-left: auto; margin-right: auto; text-align: center; display: block; margin-top: -125px;}
+    .mail-centered{margin-top: 120px; display: block}
+    .xs-social{margin-top: -100px;}
+    .xs-display{margin-top: 100px;}
+    .margin-right-25{ margin: 0 30px 0 0;  }
+
 }
 
 
@@ -275,8 +293,12 @@ body {
 
 @media (min-width: 362px) and (max-width: 405px) {
 
-}
-
-@media (max-width: 361px) {
 
 }
+
+@media (max-width: 480px) {
+    .skill-container{width: 100%}
+    .bar-container {width:100%; margin-bottom: 20px;}
+
+}
+

@@ -166,6 +166,15 @@
         .xxs-custom-line{display: none; height: 1px; background-color: #bbb; left:3%; width: 94%;
             right:auto; position: absolute; top:165px;}
 
+
+        .modal-close{background-color: transparent; margin-top: 20px}
+        .modal-close:hover{color:#FD6A33}
+        .modal-select{border: none; background: transparent;}
+        .modal-icon{height: 45px; margin:0 15px 0 5px}
+        .select-container{border-bottom: 1px solid #777; margin-bottom: 20px}
+        .input-text{margin-top: 40px; font-size: 110%; color: #777}
+        .cursor-hand{cursor: pointer;}
+
         @media(max-width: 1109px) {
         .school-profile-nav-link{padding-right: 8px!important; padding-left: 8px!important; font-size: 95%;}
         }
@@ -747,7 +756,8 @@
 
                                             </div>
 
-                                            @if(auth()->check())
+                                            @if(auth()->check() && auth()->user()->role != 'school' && auth()->user()->role != 'teacher' )
+
                                                 <ul class="like-btn">
                                                     <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
                                                             <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
@@ -1083,49 +1093,59 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <div class="panel " style="background-color: #324c5a; height: 62px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+                    <div class="panel " style="background-color: #324c5a; height: 90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
                         <div class="panel-heading" style="height: 55px; color: #fff">
-                            <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
+                            <button type="button" class="btn pull-right modal-close" data-dismiss="modal" >
                                 x
 
                             </button>
-                            <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: -4px;">
-                            <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">@lang('profile.request')</h3>
+                            <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: 14px;">
+                            <h3 class="pull-left panel-title" style="margin: 20px 0 0 15px;">@lang('profile.request')</h3>
                         </div>
 
                     </div>
                     <div class="panel-body">
                         <img class="pull-left margin-right-10" style="height: 45px;"
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
-                        <span> @{{ contactInfo.name }}:  @lang('profile.modal.message') </span>
+
 
                         @if(auth()->check() && auth()->user()->role == 'student')
+                            <span> @{{ contactInfo.name }}:  @lang('profile.modal.message') </span>
+
+
                             <div class="input-container">
-                                <div>
-                                    <select ng-model="selectedStudy">
+
+                                <div class="select-container">
+                                    <div class="input-text" >
+                                        <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">Επιλoγή Σπουδών
+                                    </div>
+                                    <select ng-model="selectedStudy" class="modal-select">
                                         <optgroup label="@{{level.level.name}}" ng-repeat="level in studies">
                                             <option ng-repeat="study in level.studies" value="@{{study.study.id}}">@{{ study.study.name }}</option>
                                         </optgroup>
                                     </select>
                                 </div>
 
-                                <div style="margin-top: 40px">
-                                    <div class="section-text centered-text">
-                                        <img class="modal-icon" src="/new/img/teacher/team.png" alt="" style="height: 45px">Επιλογή Κατάστασης
+                                <div class="select-container">
+                                    <div class="input-text" >
+                                        <img class="modal-icon" src="/new/img/teacher/team.png" alt="" >Επιλογή Κατάστασης
                                     </div>
-                                    <select ng-model="selectedStatus">
-                                        <option>connected</option>
-                                        <option>allumni</option>
+                                    <select ng-model="selectedStatus" class="modal-select cursor-hand">
+                                        <option>@lang('panel/schools/resource.students.active')</option>
+                                        <option>@lang('panel/schools/resource.students.alumni')</option>
                                     </select>
                                 </div>
                             </div>
 
                         @elseif(auth()->check() && auth()->user()->role == 'teacher')
+                            <span>@{{ contactInfo.name }}:  Με τη σύνδεση σας, το δημόσιο προφίλ σας θα φαίνεται στο εκπαιδευτικό ίδρυμα</span>
 
                             <div class="input-container">
-                                <div>
-
-                                    <input type="text" ng-model="selectedStudy" />
+                                <div class="select-container">
+                                    <div class="input-text">
+                                        <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="" >Περιγραφή Βασικής Ειδικότητας/Σπουδών
+                                    </div>
+                                    <input type="text" ng-model="selectedStudy" class="modal-select"/>
                                     {{-- <select ng-model="selectedStudy">
                                         <optgroup label="@{{level.level.name}}" ng-repeat="level in sections">
                                             <option ng-repeat="section in level.sections" value="@{{section.section.id}}">@{{ section.section.name }}</option>
@@ -1133,13 +1153,13 @@
                                     </select> --}}
                                 </div>
 
-                                <div style="margin-top: 40px">
-                                    <div class="section-text centered-text">
+                                <div class="select-container">
+                                    <div class="input-text">
                                         <img class="modal-icon" src="/new/img/teacher/team.png" alt="" style="height: 45px">Επιλογή Κατάστασης
                                     </div>
-                                    <select ng-model="selectedStatus">
-                                        <option>connected</option>
-                                        <option>allumni</option>
+                                    <select ng-model="selectedStatus" class="modal-select cursor-hand">
+                                        <option>@lang('panel/schools/resource.teachers.active')</option>
+                                        <option>@lang('panel/schools/resource.teachers.alumni')</option>
                                     </select>
                                 </div>
                             </div>
@@ -1296,6 +1316,7 @@
 
                 $scope.test = function(scholarship){
                     setTimeout(function() {
+                        console.log(scholarship.userInterested)
                         if(scholarship.userInterested){
                         $('#i'+ scholarship.id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
                         $('#t'+ scholarship.id).text('@lang('profile.scholarship.button.like')')
