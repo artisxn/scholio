@@ -1,6 +1,6 @@
 <template>
 
-    <div class="forced">
+    <div class="forced  ">
 
         <!--<div class="topbar" style="  top: 100px; z-index: 1; padding: 0 20px; background: #aaa;">-->
             <!--<div class="topbar-left" style="background: transparent">-->
@@ -199,6 +199,8 @@
                     </div>
 
                     <div id="step3" class="step3" :class="[{'low-opacity': levels_disabled}]" v-if="">
+
+                        <div class="step-box">
                         <div class="step-title">Βήμα 3ο: Επιλέξτε Σπουδές</div>
                         <div>
                             <div class="" style="margin: 15px 0 6px 0 ">Επίπεδο Σπουδών</div>
@@ -235,11 +237,13 @@
                                 <span slot="noResult">Oops! Δεν βρέθηκε...</span>
                             </multiselect>
                         </div>
-
                         <div style="margin-top: 15px">
                             Επιλογή όλων των σπουδών <input id="checkBox" type="checkbox" v-model="allStudies">
                             <button @click="study_value = []; allStudies=false" v-if="study_value && study_value.length > 2" style="margin: 0 15px;">Διαγραφή Όλων</button>
                         </div>
+                        </div>
+
+
 
                     </div>
 
@@ -372,7 +376,7 @@
         /*width: 78vw;*/
         /*left: 250px;*/
         /*right: 10px;*/
-        width: 75%;
+        width: 70%;
 
     }
 
@@ -394,8 +398,15 @@
         min-height: 300px; margin-bottom:150px;
         padding-top: 220px; margin-top:-220px;
     }
+
+    #step2,#step3{
+        padding-top: 180px; margin-top:-180px;
+    }
+    .step2,#step3{padding-bottom: 7vh}
     .step-title{font-size: 130%; margin-bottom: 10px;}
-    .criteria{ max-width: 400px;}
+    /*.criteria{ max-width: 400px;}*/
+
+    .step3{padding-bottom: 35vh}
 
     .criteria-img-sm{display: none}
 
@@ -405,8 +416,13 @@
 
     .financial_value_input{ position: absolute; left: 380px; z-index: 1; width: 150px;}
 
+    .input-group-addon{border: 1px solid #E3E3E3}
 
-    #step2,#step3,#step4,.scholarship-info{ width: -webkit-calc(100% - 430px);}
+
+    /*.step3{padding-bottom: 530px}*/
+    #step2,#step3,#step4,.scholarship-info{
+        /*width: -webkit-calc(100% - 430px);*/
+    }
     /*#step1,#step2,#step3,#step4,.scholarship-info{ width: -webkit-calc(100% - 430px);}*/
 
     .low-opacity{opacity: 0.2; cursor: default; pointer-events: none; display: none}
@@ -430,14 +446,14 @@
     }
 
     .scholar-frame-fixed{
-        top: 230px;
+        top: 210px;
         position: fixed;
         right: 70px;
     }
     .scholar-frame-relative{
         position: absolute;
-        left: -webkit-calc(100% - 337px);
-        top: 810px;
+        left: -webkit-calc(100% - 382px);
+        top: 2090px;
     }
 
     /* //////////////////////////////////////////////////////////////////// */
@@ -474,9 +490,9 @@
 
 
 
-    .criteria .multiselect,         .step3 .multiselect{width: 540px;}
-    .criteria .multiselect__input,  .step3 .multiselect__input{width: 500px;}
-    .criteria .multiselect__single, .step3 .multiselect__single{width: 470px;}
+    .criteria .multiselect,         .step3 .multiselect{width: 480px;}
+    .criteria .multiselect__input,  .step3 .multiselect__input{width: 450px;}
+    .criteria .multiselect__single, .step3 .multiselect__single{width: 430px;}
 
     .study .multiselect{width: 835px}
     .study .multiselect__input{width: 800px}
@@ -513,9 +529,9 @@
         .step1 .multiselect__input,  .level .multiselect__input{width: 360px;}
         .step1 .multiselect__single, .level .multiselect__single{width: 340px;}
 
-        .study .multiselect{width: 635px}
+        .study .multiselect{width: 630px}
         .study .multiselect__input{width: 600px}
-        .study .multiselect__single{width: 580px}
+        .study .multiselect__single{width: 570px}
         .scholar-text{ width: 410px; margin-left: -95px}
 
 
@@ -539,11 +555,12 @@
         .scholar-frame{  right: 5.5%; top: 165px }
 
         .steps,.creation-container,.scholarship-info{ padding-right: 0!important; margin-right: 0!important;}
-        .step1 .multiselect,         .step3 .multiselect{width: 330px}
-        .step1 .multiselect__input,  .step3 .multiselect__input{width: 300px;}
-        .step1 .multiselect__single, .step3 .multiselect__single{width: 280px;}
+        .criteria{width: 57%}
+        .criteria .multiselect,         .step3 .multiselect{width: 90%}
+        .criteria .multiselect__input,  .step3 .multiselect__input{width: 87%;}
+        .criteria .multiselect__single, .step3 .multiselect__single{width: 85%;}
         .scholar-text{width: 340px}
-        .step-box{width: 89vw}
+        .step-box{width: 88vw}
 
     }
 
@@ -665,6 +682,7 @@
         .criteria .multiselect__single, .step3 .multiselect__single{width: 250px;}
         .scholar-text{width: 310px;}
         .step-box{width: 72.8vw;}
+        .fixed-nav-container{width: 73%}
     }
 
     @media (min-width: 1041px) {
@@ -673,6 +691,7 @@
         .criteria .multiselect__single, .step3 .multiselect__single{width: 320px;}
         .scholar-text{width: 380px;}
         .step-box{width: 100%;}
+        .fixed-nav-container{width: 74%}
     }
     @media (min-width: 1130px) {
         .criteria .multiselect,         .step3 .multiselect{width: 420px;}
@@ -681,6 +700,7 @@
         .scholar-text{width: 410px;}
         /*.step-box{width: 75vw;}*/
         .scholar-frame{  right: 5.3%;  }
+        .fixed-nav-container{width: 76%}
     }
 
     @media (min-width: 1200px) {
@@ -690,19 +710,22 @@
         /*.step-box{width: 75vw; padding: 30px;}*/
 
         .criteria .multiselect,         .step3 .multiselect{width: 470px;}
-        .criteria .multiselect__input,  .step3 .multiselect__input{width: 440px;}
-        .criteria .multiselect__single, .step3 .multiselect__single{width: 420px;}
+        .criteria .multiselect__input,  .step3 .multiselect__input{width: 410px;}
+        .criteria .multiselect__single, .step3 .multiselect__single{width: 400px;}
         .scholar-text{width: 480px;}
+        .fixed-nav-container{width: 78%}
 
     }
     @media (min-width: 1279px) {
         .scholar-frame-relative{  left: -webkit-calc(100% - 337px);  top: 790px;  }
         /*.step-box{width: 76vw}*/
+        .fixed-nav-container{width: 79%}
     }
     @media (min-width: 1302px) {
         .scholar-frame-relative{  left: -webkit-calc(100% - 336px);  top: 770px;  }
         /*.step-box{width: 78vw}*/
         .financial-text{padding-top: 50px; margin-left: -80px}
+        .fixed-nav-container{width: 80%}
 
     }
     @media (min-width: 1391px) {
@@ -711,22 +734,26 @@
             left: -webkit-calc(100% - 348px);
             top: 740px;
         }
+        .fixed-nav-container{width: 81%}
     }
     @media (min-width: 1400px) {
         .creation-container{  width: 90%; margin-left: 5%;}
         .scholar-frame{  right: 8.2%;  }
         /*.step-box{width: 73vw}*/
+        .fixed-nav-container{width: 81%}
     }
 
     @media (min-width: 1502px) {
         .financial-text{ }
         /*.step-box{width: 74vw}*/
+        .fixed-nav-container{width: 82%}
     }
 
     @media (min-width: 1600px) {
         .creation-container{  width: 84%; margin-left: 8%;}
         .scholar-frame{  right: 14%;  }
         /*.step-box{width: 68vw}*/
+        .fixed-nav-container{width: 84%}
     }
 
 
@@ -734,12 +761,14 @@
         .creation-container{  width: 80%; margin-left: 10%;}
         .scholar-frame{  right: 20%;  }
         /*.step-box{width: 64vw; padding: 50px;}*/
+        .fixed-nav-container{width: 85%}
     }
     @media (min-width: 2100px) {
         .creation-container{  width: 60%; margin-left: 15%;}
         .scholar-frame{  right: 24%;  }
         .financial-text{ margin-left: -110px}
         /*.step-box{width: 60vw;}*/
+        .fixed-nav-container{width: 86%}
     }
 
     /* //////////////////////////////////////////////////////////////////// */
@@ -796,6 +825,7 @@
 
     /*===============================*/
 
+
 </style>
 
 
@@ -808,13 +838,13 @@
         var width= $(window).width();
 
         if(width<1301){
-            if (scroll >= 680) {
+            if (scroll >= 1900) {
                 $("#sc-frame").removeClass("scholar-frame-fixed").addClass("scholar-frame-relative");
             } else{
                 $("#sc-frame").removeClass("scholar-frame-relative").addClass("scholar-frame-fixed");
             }
         }else if (width>=1302){
-            if (scroll >= 670) {
+            if (scroll >= 1950) {
                 $("#sc-frame").removeClass("scholar-frame-fixed").addClass("scholar-frame-relative");
             } else{
                 $("#sc-frame").removeClass("scholar-frame-relative").addClass("scholar-frame-fixed");
