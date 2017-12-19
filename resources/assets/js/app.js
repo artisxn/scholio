@@ -38,6 +38,7 @@ Vue.component('reviews-create', require('./components/schools/Reviews-Create.vue
 Vue.component('scholarship-request', require('./components/schools/Scholarship-Request.vue'));
 Vue.component('schools-reviews', require('./components/schools/Schools-Review.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
+Vue.component('schol-test', require('./components/Schol-Test.vue'));
 // Vue.component('chart-vue', require('./VueChart.vue'));
 
 

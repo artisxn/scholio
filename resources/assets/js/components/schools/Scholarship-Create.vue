@@ -15,11 +15,6 @@
                 <!--</div>-->
             <!--</div>-->
         <!--</div>-->
-
-
-
-
-
         <div style="position: relative; background: transparent;" class="scholarship-creation">
 
             <div class="fixed-nav-container" style="">
@@ -833,27 +828,6 @@
 
 <script>
 
-    $(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-        var width= $(window).width();
-
-        if(width<1301){
-            if (scroll >= 1900) {
-                $("#sc-frame").removeClass("scholar-frame-fixed").addClass("scholar-frame-relative");
-            } else{
-                $("#sc-frame").removeClass("scholar-frame-relative").addClass("scholar-frame-fixed");
-            }
-        }else if (width>=1302){
-            if (scroll >= 1950) {
-                $("#sc-frame").removeClass("scholar-frame-fixed").addClass("scholar-frame-relative");
-            } else{
-                $("#sc-frame").removeClass("scholar-frame-relative").addClass("scholar-frame-fixed");
-            }
-        }
-
-    });
-
-
     import Multiselect from '../../scholio-multiselect';
     import VueTinymce from 'vue-tinymce';
     Vue.use(VueTinymce)
@@ -1102,6 +1076,29 @@
                 if(this.study_value && this.study_value.length > 0) this.terms_disabled = false 
                 else this.terms_disabled = true
             }
+        },
+
+        created(){
+                    $(window).scroll(function() {
+                    var scroll = $(window).scrollTop();
+                    var width= $(window).width();
+                    console.log('test1')
+
+                if(width<1301){
+                    if (scroll >= 1830) {
+                        $("#sc-frame").removeClass("scholar-frame-fixed").addClass("scholar-frame-relative");
+                    } else{
+                        $("#sc-frame").removeClass("scholar-frame-relative").addClass("scholar-frame-fixed");
+                    }
+                }else if (width>=1302){
+                    if (scroll >= 1950) {
+                        $("#sc-frame").removeClass("scholar-frame-fixed").addClass("scholar-frame-relative");
+                    } else{
+                        $("#sc-frame").removeClass("scholar-frame-relative").addClass("scholar-frame-fixed");
+                    }
+                }
+
+            });
         },
 
         mounted(){

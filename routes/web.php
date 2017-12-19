@@ -1,21 +1,30 @@
 <?php
 
+use App\Events\UserAppliedOnSchool;
 use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolSetting;
+use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\Paginator;
 
 Scholio::soonRoutes();
 
-Route::get('/qqa/aaa/aaa', function(){
-    dd(request()->is('qqa*'));
+Route::get('/test', function () {
+    return view('scholarship-create-test');
+});
+
+Route::get('/fake/request/{school}/{user}', function (School $school, User $user) {
+    $user->apply()->toggle($school);
+    if ($user->role == 'student') {
+        event(new UserAppliedOnSchool($user, $school->admin, Study::find(252), 'connected'));
+    } else {
+        event(new UserAppliedOnSchool($user, $school->admin, 'Economics', 'connected'));
+    }
+    return 'OK';
 });
 
 Route::get('/fake/login', function () {

@@ -71,7 +71,7 @@
 
                                 <div v-if="buttonsDisabled">
                                     <div style="margin: 5px ">
-                                        <div class="animated-background animated-background-Wide col-xs-12 "  v-for="i in notifications.length" style="margin-top: 17px;">
+                                        <div class="animated-background animated-background-Wide col-xs-12 "  v-for="i in (notifications.length < 3 ? notifications.length : 3)" style="margin-top: 17px;">
 
                                                 <div class="background-masker background-masker-Wide  header-top " ></div>
                                                 <div class="background-masker background-masker-Wide  header-left"></div>
@@ -395,7 +395,7 @@
                 selectedImg:null,
                 currentNotificationID: 0,
                 currentUserID: 0,
-
+                notLength: false
             }
         },
 
@@ -409,8 +409,6 @@
                 axios.get('/api/notifications/requests')
                     .then(response => {
                         this.notifications = response.data
-                        console.log(this.notifications)
-
                     });
             },
 
