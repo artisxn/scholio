@@ -1,65 +1,158 @@
+
+
 <template>
-<div>
- <!--    <div class="left1"></div>
-    <div class="clearfix"></div>
-    <div class="left2"></div>
-    <div class="clearfix"></div>
-    <div class="left3"></div>
-    <div id="right"  class="right scholar-frame-fixed"></div> -->
+    <div>
+        <ul id="mmenu">
+            <li data-menuanchor="firstPage" class="">
+                <a href="#firstPage">
+                    <div class="btn-fixed">Κριτήρια</div>
+                </a>
+            </li>
+            <!--<li data-menuanchor="secondPage" class="" :class="[{'low-opacity': financial_disabled}]" v-if="!financial_disabled">-->
+            <li data-menuanchor="secondPage" class="" >
+                <a href="#secondPage">
+                    <div class="btn-fixed">Οικονομικά</div>
+                </a>
+            </li>
+            <li data-menuanchor="thirdPage" class="" :class="[{'low-opacity': levels_disabled}]" v-if="!levels_disabled">
+                <a href="#thirdPage">
+                    <div class="btn-fixed">Σπουδές</div>
+                </a>
+            </li>
+            <li data-menuanchor="fourthPage" class="" :class="[{'low-opacity': terms_disabled}]" v-if="!terms_disabled">
+                <a href="#fourthPage">
+                    <div class="btn-fixed">Όροι</div>
+                </a>
+            </li>
+        </ul>
+        <div id="right" class="right"></div>
+        <div id="fullpage" class="section-container">
 
-     <ul id="mmenu" style="height: 100%">
-        <li data-menuanchor="firstPage" class=""><a href="#firstPage">First section</a></li>
-        <li data-menuanchor="secondPage" class=""><a href="#secondPage">Second section</a></li>
-        <li data-menuanchor="thirdPage" class=""><a href="#thirdPage">Third section</a></li>
-        <li data-menuanchor="fourthPage" class=""><a href="#fourthPage">Fourth section</a></li>
-    </ul>
-<div id="right" class="right"></div>
-    <div id="fullpage" class="section-container">
-        <div class="section" data-anchor="firstPage" style="background: #bbb"></div>
-        <div class="section" data-anchor="secondPage" style="background: #ccc"></div>
-        <div class="section" data-anchor="thirdPage" style="background: #ddd"></div>
-        <div class="section" data-anchor="fourthPage" style="background: #eee"></div>
+            <div class="section sec1" data-anchor="firstPage">
+                <div class="section-box" >
+                    <div class="step-title">Βήμα 1ο: Επιλέξτε Κριτήρια</div>
+                    <div class="criteria">
+                        <multiselect   v-model="criteria_value" 
+                        :options="criteria_options" 
+                        track-by="name" 
+                        label="name" 
+                        :searchable="false" 
+                        :close-on-select="true" 
+                        :show-labels="false" 
+                        placeholder="Επιλέξτε Κριτήρια" 
+                        :deselectLabel="lang('panel_studies.input-delete')" 
+                        :selectLabel="lang('panel_scholarships.create.select')" 
+                        :selectedLabel="lang('panel_scholarships.create.selected')" 
+                        :disabled="criteria_disabled" 
+                        :custom-label="customLabel">
+                        <template slot="option" slot-scope="props">
+                            <div class="option__desc">
+                                <img :src="props.option.icon" height="15px">
+                                <span class="option__title">{{ props.option.name }}</span>
+                                <span class="option__small" style="float: right; color: #999;">{{ props.option.limit }} διαθέσιμες</span>
+                            </div>
+                        </template>
+                        </multiselect>
+                    </div>
+                    <div class="scholarship-info row" v-if="criteria_value && criteria_value.name">
+                        <span class="col-xs-2" style="margin-top: 11px;">
+                            <img class="criteria-img-sm img-responsive" :src="criteria_value.icon" alt="">
+                        </span>
+                        <span class="col-xs-10 col-sm-12 scholar-text"> 
+                            <div>Lorem Ipsum</div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section sec2" data-anchor="secondPage" ></div>
+            <!--<div class="section sec2" data-anchor="secondPage" v-if="!financial_disabled"></div>-->
+            <div class="section sec3" data-anchor="thirdPage"  v-if="!levels_disabled"></div>
+            <div class="section sec4" data-anchor="fourthPage" v-if="!terms_disabled"></div>
+        </div>
+
     </div>
-
-</div>
 </template>
 
 <style>
-.section-container{
-    margin-top: -30px;
-    margin-bottom: 30px;
-}
-li.active a{
-    color: orange!important;
-}
-#mmenu>li{
-    float:left;
-    color:white;
-    font-size: 150%;
-    margin-left: 30px;
-    list-style: none;
-}
-#mmenu{
-    top: 90px;
-    height: 40px;
-    width: 100%;
-    margin: 0;
-    position: fixed;
-    z-index: 150;
-}
-.left1{height: 700px; width:40%; float: left; background: greenyellow; margin: 20px}
-
-.left2{height: 500px; width:90%; float: left; background: pink; margin: 20px}
-
-.left3{height: 500px; width:90%; float: left; background: orange; margin: 20px}
-
-.right{width: 200px; top: 200px; right:90px; background: cyan; height: 300px; position: fixed; z-index: 200;}
-
-.scholar-frame-fixed{position:fixed;}
-.scholar-frame-relative{position:absolute; top:570px;} /*top:39%*/
-.scholar-frame-relative2{position:absolute; top:530px;} /*top:39%*/
+    .section-container{
+        margin-top: -30px;
+        margin-bottom: 30px;
+    }
+    .section{}
 
 
+    li.active a{
+        color: orange!important;
+    }
+
+
+    .btn-fixed {
+        color: #999;
+        border: 1px solid #bbb;
+        border-radius: 13px; background: #e1e1e1; padding: 5px 20px;
+        margin-left: 15px;
+        font-size: 120%;
+    }
+
+     li.active a {}
+     li.active a .btn-fixed {
+     border-color: #008da5;  background: #fff;
+      color: #008da5!important;}
+
+     .btn-fixed:hover {
+         border-color: #FD6A33 !important;
+         border-radius: 13px;
+         background: #e1e1e1;
+         color: #FD6A33!important;
+     }
+     li.active a.btn-fixed:hover {
+       color: #FD6A33!important;
+     }
+
+    #mmenu>li{
+        float:left;
+        list-style: none;
+    }
+    #mmenu{
+        top: 90px;
+        height: 40px;
+        width: 100%;
+        margin:  0 0 0 -50px;
+        position: fixed;
+        z-index: 50;
+    }
+
+    .section-box{
+        background: greenyellow; height: 80%; padding: 20px; border-radius: 10px;
+        box-shadow: 0 0 10px 2px #bbb
+    }
+
+    .fp-tableCell {
+        vertical-align: top;
+        padding-top:120px!important;
+    }
+
+
+    .sec1 {
+        background: transparent;
+    }
+    .sec2{
+        background: #f2f2f2
+    }
+    .sec3 {
+        background: #e8e8e8
+    }
+    .sec4 {background: #ddd}
+
+
+
+    .right{width: 200px; top: 200px; right:90px; background: cyan; height: 300px; position: fixed; z-index: 200;}
+
+
+    .criteria .multiselect,         .step3 .multiselect{width: 480px;}
+    .criteria .multiselect__input,  .step3 .multiselect__input{width: 450px;}
+    .criteria .multiselect__single, .step3 .multiselect__single{width: 430px;}
 </style>
 
 
