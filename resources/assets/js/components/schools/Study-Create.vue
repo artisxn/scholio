@@ -19,7 +19,7 @@
              </multiselect>
          </div>
 
-         <div class="sections col-xs-12 col-lg-6" style="margin-bottom: 15px;" :style="[sectionDisabled ? {opacity: 0.6}:{}]">
+         <div class="sections col-xs-12 col-lg-6" style="margin-bottom: 15px;" :style="[sectionDisabled ? {opacity: 0}:{}]">
              <label class="typo__label">{{ lang('panel_studies.step2') }}</label>
              <multiselect 
              v-model="sections" 
@@ -38,7 +38,7 @@
              </multiselect>
          </div>
 
-         <div class="studies col-xs-12" style="margin-top: 25px;" :style="[studyDisabled ? {opacity: 0.1}:{}]">
+         <div class="studies col-xs-12" style="margin-top: 25px;" :style="[studyDisabled ? {opacity: 0}:{}]">
              <label class="typo__label">{{ lang('panel_studies.step3') }}</label>
              <multiselect 
              v-model="studies" 
@@ -57,7 +57,7 @@
              </multiselect>
          </div>
 
-         <div style="clear: both; margin: 0 0 90px 10px;" :style="[saveDisabled ? {opacity: 0.3}:{}]">
+         <div style="clear: both; margin: 0 0 90px 10px;" :style="[saveDisabled ? {opacity: 0}:{}]">
              <button @click="save()" class="btn btn-primary" :disabled="saveDisabled">{{ lang('panel_studies.save') }}</button>
          </div>
 

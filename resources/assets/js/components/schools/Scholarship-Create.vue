@@ -196,6 +196,8 @@
                     <div id="step3" class="step3" :class="[{'low-opacity': levels_disabled}]" v-if="">
 
                         <div class="step-box">
+
+
                         <div class="step-title">Βήμα 3ο: Επιλέξτε Σπουδές</div>
                         <div>
                             <div class="" style="margin: 15px 0 6px 0 ">Επίπεδο Σπουδών</div>
@@ -236,6 +238,8 @@
                             Επιλογή όλων των σπουδών <input id="checkBox" type="checkbox" v-model="allStudies">
                             <button @click="study_value = []; allStudies=false" v-if="study_value && study_value.length > 2" style="margin: 0 15px;">Διαγραφή Όλων</button>
                         </div>
+
+
                         </div>
 
 
@@ -826,6 +830,7 @@
 
 
 
+
 <script>
 
     import Multiselect from '../../scholio-multiselect';
@@ -1015,6 +1020,7 @@
             criteria_value(){
                 if(this.criteria_value){
                     this.financial_disabled = false
+                    console.log(this.financial_disabled)
                 }else{
                     this.financial_value = null
                     this.financial_disabled = true

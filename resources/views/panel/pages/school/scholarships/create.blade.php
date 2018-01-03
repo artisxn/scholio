@@ -1,24 +1,15 @@
 @extends('panel.layouts.main')
 
 @section('styles')
-    <!-- Wizard CSS -->
-    <link rel="stylesheet" href="/panel/assets/css/wizard/smart_wizard.css"/>
-    {{-- <link href="/panel/assets/css/wizard/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" /> --}}
-    <link rel="stylesheet" href="/panel/assets/css/wizard/smart_wizard_theme_circles.css"/>
-    <link rel="stylesheet" href="/panel/assets/css/steps.css"/>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <link rel="stylesheet" href="{{asset('/css/atwho.css')}}"/>
     <link rel="stylesheet" href="{{'/panel/assets/css/vue-multiselect.css'}}" />
 
+    <!-- Horizontal Ribbons  CSS -->
+    <link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
 
-{{--<!-- Profile  CSS -->--}}
-{{--<link href="/new/css/profile.css" rel="stylesheet">--}}
-
-<!-- Horizontal Ribbons  CSS -->
-<link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
-
-<!-- Hexagon CSS -->
-<link href="/new/css/Hexagon.css" rel="stylesheet">
+    <!-- Hexagon CSS -->
+    <link href="/new/css/Hexagon.css" rel="stylesheet">
 
 
 @endsection
@@ -37,31 +28,12 @@
 @endsection
 
 @section('scriptsBefore')
-    <!-- Include SmartWizard JavaScript source -->
-    <script src="/panel/assets/js/wizard/jquery.smartWizard.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.2/tinymce.min.js"></script>
-    <script src="{{asset('/js/caret.js')}}"></script>
-    <script src="{{asset('/js/atwho.js')}}"></script>
 
-    <script>
-        $(document).ready(function(){
-            // Smart Wizard
-            $('#smartwizard').smartWizard({
-                selected: 0,
-                theme: 'circles', // default, arrows, circles, dots,
-                cycleSteps: false, // Allows to cycle the navigation of steps
-                transitionEffect:'fade',
-                toolbarSettings: {toolbarPosition: 'bottom',
-                    toolbarExtraButtons: [
-                        {label: "@lang('panel_scholarships.create.reset')", css: 'btn sc-dark-grey sc-t-white', onClick: function(){ $('#smartwizard').smartWizard("reset"); }},
-                        {label: "@lang('panel_scholarships.create.save')", css: 'btn sc-dark-green sc-t-white', onClick: function(){ Event.$emit('saveScholarship', 'OK'); }}
-                    ]
-                }
-            });
 
-        });
-    </script>
+
 @endsection
 
 
