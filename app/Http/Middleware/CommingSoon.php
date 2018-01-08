@@ -20,9 +20,9 @@ class CommingSoon
         $soon = env('COMING_SOON', false);
         $keys = Key::find(1);
 
-        // if (!$soon) {
-        //     return $next($request);
-        // }
+        if (!$soon) {
+            return $next($request);
+        }
 
 
         if (!$keys->soon) {

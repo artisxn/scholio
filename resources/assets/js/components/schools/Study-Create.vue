@@ -473,7 +473,7 @@
 
         watch:{
             sections(){
-                if(this.sections && !this.newSection){
+                if(this.sections && this.levels  && !this.newSection){
                     var parent = this
                     axios.get('/api/school/getStudiesFromSection/ '+ this.sections.id).then(({data})=>{
                         parent.studyOptions = data
@@ -490,7 +490,7 @@
                     this.newSection = false
                 }
 
-                if(this.sections && this.sections != []){
+                if(this.sections && this.sections != []  && this.levels){
                     this.saveDisabled = false
                     this.studyDisabled = false
                 } 
@@ -507,16 +507,15 @@
             },
 
             levels(){
-                if(this.levels && !this.newLevel){
-                    var parent = this
-                    axios.get('/api/school/getSectionsFromLevel/'+ this.levels.id).then(({data})=>{
-                        parent.sectionOptions = data
-                        parent.sections = null
-                    })
-                }
-
                 if(this.levels && this.levels != []){
                     this.sectionDisabled = false
+                    if(!this.newLevel){
+                        var parent = this
+                        axios.get('/api/school/getSectionsFromLevel/'+ this.levels.id).then(({data})=>{
+                            parent.sectionOptions = data
+                            parent.sections = null
+                        })
+                    }
                 } else{
                     this.studies = null
                     this.studyDisabled = true 
@@ -526,14 +525,14 @@
 
                 if(this.newLevel){
                     this.newSection = true
-                }
-                
+                }                
             },
 
             studies(){
                 
             }
         },
+
 
         mounted(){
           console.log(window.Connection)
