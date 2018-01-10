@@ -6,23 +6,23 @@
                     <div class="btn-fixed">Κριτήρια</div>
                 </a>
             </li>
-            <li data-menuanchor="secondPage">
+            <li data-menuanchor="secondPage" v-if="!financial_disabled">
             <!--<li data-menuanchor="secondPage" class="" >-->
                 <a href="#secondPage">
                     <div class="btn-fixed">Οικονομικά</div>
                 </a>
             </li>
-            <li data-menuanchor="thirdPage">
+            <li data-menuanchor="thirdPage" v-if="!levels_disabled">
                 <a href="#thirdPage">
                     <div class="btn-fixed">Σπουδές</div>
                 </a>
             </li>
-            <li data-menuanchor="fourthPage">
+            <li data-menuanchor="fourthPage" v-if="!settings_disabled">
                 <a href="#fourthPage">
                     <div class="btn-fixed">Ρυθμίσεις</div>
                 </a>
             </li>
-            <li data-menuanchor="fifthPage">
+            <li data-menuanchor="fifthPage" v-if="!terms_disabled">
                 <a href="#fifthPage">
                     <div class="btn-fixed">Όροι</div>
                 </a>
@@ -127,12 +127,12 @@
                 </div>
             </div>
 
-            <div class="section" data-anchor="secondPage">
-                <div class="section-box sec2">
+            <div class="section" data-anchor="secondPage" >
+                <div class="section-box sec2" >
 
-                        
+                    <div class="step-title">Βήμα 2ο: Επιλέξτε Οικονομική Προσφορά</div>
+
                         <div v-if="!financial_disabled">
-                            <div class="step-title">Βήμα 2ο: Επιλέξτε Οικονομική Προσφορά</div>
                             <div>
                                 <div class="financial-plan">
                                     <multiselect
@@ -149,8 +149,6 @@
                                             :disabled="financial_disabled">
                                     </multiselect>
                                 </div>
-
-
                                 <div class="financial-amount" v-if="financial_value">
                                     <div class="input-group financial_value_input" v-if="financial_value.id==1">
                                         <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" v-model="financial_amount">
@@ -181,7 +179,7 @@
                             </div>
                         </div>
 
-                        <div v-else> Συμπληρώστε πρώτα το Βημα 1.</div>
+                        <div v-else class="pre-step"> Συμπληρώστε πρώτα το βήμα 1.</div>
 
                 </div>
             </div>
@@ -189,8 +187,9 @@
             <div class="section" data-anchor="thirdPage">
                 <div class="section-box sec3">
 
+
+                    <div class="step-title">Βήμα 3ο: Επιλέξτε Σπουδές</div>
                     <div v-if="!levels_disabled">
-                        <div class="step-title">Βήμα 3ο: Επιλέξτε Σπουδές</div>
                         <div>
                             <div class="" style="margin: 15px 0 6px 0 ">Επίπεδο Σπουδών</div>
                             <div class="level">
@@ -210,7 +209,6 @@
                             </div>
 
                         </div>
-
                         <div class="" style="margin: 25px 0 6px 0 ">Αντικείμενο Σπουδών</div>
                         <div class="study">
                             <multiselect
@@ -241,7 +239,7 @@
                             </div>
                         </div>
                     </div>
-                    <div v-else>Συμπληρώστε πρώτα το Βημα 2</div>
+                    <div v-else class="pre-step">Συμπληρώστε πρώτα το βήμα 2.</div>
 
                 </div>
             </div>
@@ -252,9 +250,10 @@
                 <div class="section-box sec4">
 
 
-                    <div v-if="!terms_disabled">
+                    <div class="step-title">Βήμα 4ο: Νικητές - Εξετάσεις - Κλειδιά</div>
+                    <div v-if="!settings_disabled">
                         <div>
-                            <div class="step-title">Βήμα 4ο: Νικητές - Εξετάσεις - Κλειδιά</div>
+
                             <div class="row">
                                 <!--<h3>{{ lang('panel_scholarships.create.terms') }}</h3>-->
 
@@ -318,37 +317,41 @@
                             </multiselect>
                         </div>
                     </div>
-                    <div v-else>Συμπληρώστε πρώτα το Βήμα 3</div>
+                    <div v-else>Συμπληρώστε πρώτα το βήμα 3.</div>
 
                 </div>
             </div>
 
             <div class="section" data-anchor="fifthPage">
-                <div class="section-box sec5" style="margin: auto; text-align: center;">
+                <div class="section-box sec5" style="">
 
                     <div class="step-title">Βήμα 5ο: Περιγράψτε τους Όρους Συμμετοχής</div>
 
-                    <div class="">
-                        <div class="funkyradio" style="width: 240px; margin: 8px auto 0 auto; text-align: center;">
-                            <div class="funkyradio-success">
-                                <input type="checkbox" id="withTerms" v-model="withTerms">
-                                <label for="withTerms" style="width: 260px; text-align: center;"> {{ lang('panel_scholarships.create.terms') }}</label>
-                            </div>
+                    <div v-if="!terms_disabled">
+                        <!--<div class="">-->
+                        <!--<div class="funkyradio" style="width: 240px; margin: 8px auto 0 auto; text-align: center;">-->
+                        <!--<div class="funkyradio-success">-->
+                        <!--<input type="checkbox" id="withTerms" v-model="withTerms">-->
+                        <!--<label for="withTerms" style="width: 260px; text-align: center;"> {{ lang('panel_scholarships.create.terms') }}</label>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+
+                        <div id="" class="terms-container" >
+                            <span style="color: transparent">.</span>
+                            <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
+                            <div><span>{{ lang('panel_scholarships.create.remaining') }}:</span> <span id="chars_left"></span></div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="btn-container">
+                            <button class="btn btn-success" @click="saveScholarship()">Δημιουργία Υποτροφίας</button>
                         </div>
                     </div>
 
 
-                    <div id="" class="terms-container" v-if="withTerms">
-                        <span style="color: transparent">.</span>
-                        <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
-                        <div><span>{{ lang('panel_scholarships.create.remaining') }}:</span> <span id="chars_left"></span></div>
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <div class="btn-container">
-                        <button class="btn btn-success" @click="saveScholarship()">Δημιουργία Υποτροφίας</button>
-                    </div>
 
                 </div>
             </div>
@@ -368,6 +371,8 @@
         margin-top: -30px;
         margin-bottom: 30px;
     }
+
+
 
 
     /* //////////////////////////////////////////////////////////////////// */
@@ -393,9 +398,9 @@
     .btn-fixed {
         color: #999;
         border: 1px solid #bbb;
-        border-radius: 13px; background: #e1e1e1; padding: 5px 15px;
+        border-radius: 8px; background: #e1e1e1; padding: 5px 11px;
         margin-left: 15px;
-        font-size: 110%;
+        font-size: 103%;
     }
      li.active a .btn-fixed {
       border-color: #008da5;  background: #fff;
@@ -403,7 +408,6 @@
 
      .btn-fixed:hover {
          border-color: #FD6A33 !important;
-         border-radius: 13px;
          background: #e1e1e1;
          color: #FD6A33!important;
      }
@@ -450,6 +454,7 @@
 
     /* //////////////////////////////////////////////////////////////////// */
 
+    .pre-step{margin: 20px auto; color: #999;}
 
     .step-title{font-size: 130%; margin-bottom: 10px;}
 
@@ -532,7 +537,7 @@
 
     .datepicker-input{margin-top: 10px; height: 32px; border: 1px solid #D1D3D4; border-radius: 4px;}
 
-    .terms-container{margin-top: 60px;}
+    .terms-container{margin-top: 10px;}
 
     .btn-container{margin-top: 15px; text-align: center;}
     .btn-success{border: none; background: #008da5;}
@@ -827,7 +832,7 @@
 
     import Multiselect from '../scholio-multiselect';
     import VueTinymce from 'vue-tinymce';
-    import disableScroll from 'disable-scroll';
+//    import disableScroll from 'disable-scroll';
     Vue.use(VueTinymce)
 
     var max_chars = 100; //max characters
@@ -845,10 +850,12 @@
                 financial_disabled: true,
                 studies_disabled: true,
                 keywords_disabled: true,
+                settings_disabled:true,
                 terms_disabled: true,
                 levels_disabled: true,
                 financial_amount: 0,
                 financial_value: [],
+                date_value:null,
                 financial_options: [
                     { id:1, name:window.lang.panel_scholarships.create.financial1, metric: '%', icon: '/panel/assets/images/steps/step1-reduce2.png' },
                     { id:2, name:window.lang.panel_scholarships.create.financial2, metric: '€', icon: '/panel/assets/images/steps/step1-hand2.png' },
@@ -1016,6 +1023,9 @@
                 if(this.criteria_value){
                     this.financial_disabled = false
                     console.log(this.financial_disabled)
+
+
+
                 }else{
                     this.financial_value = null
                     this.financial_disabled = true
@@ -1052,6 +1062,14 @@
                 }
             },
 
+            end_at(){
+                if(this.end_at){
+                    this.terms_disabled = false
+                }else{
+                    this.terms_disabled = true
+                }
+            },
+
             allStudies(){
                 if(this.allStudies){
                     this.study_value = []
@@ -1075,8 +1093,8 @@
                 if(this.testStudy && this.testStudy.length > 1) this.multipleSectionsSelected = !this.uniqueArray(parent.testStudy)
                 else this.multipleSectionsSelected = false
 
-                if(this.study_value && this.study_value.length > 0) this.terms_disabled = false
-                else this.terms_disabled = true
+                if(this.study_value && this.study_value.length > 0) this.settings_disabled = false
+                else this.settings_disabled = true
             },
 
                 hashChanged(){
@@ -1095,6 +1113,7 @@
                 scrollingSpeed: 500,
                 menu: '#mmenu'
             });
+            $.fn.fullpage.setAllowScrolling(false);
 
             var vm = this
             this.fetchLevels()
