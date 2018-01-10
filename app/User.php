@@ -102,19 +102,9 @@ class User extends Authenticatable
         return $this->hasOne(Teacher::class);
     }
 
-    /**
-     *  Gets the social_link row of the user
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
     public function socialLinks()
     {
-        return $this->hasOne(SocialLink::class, 'user_id');
-    }
-
-    public function links()
-    {
-        return $this->hasMany(Link::class, 'user_id');
+        return $this->hasMany(SocialLink::class, 'user_id');
     }
 
     public function connectedSchool()

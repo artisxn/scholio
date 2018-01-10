@@ -76,10 +76,6 @@
             return datepicker.regional.el;
 
         } ) );
-
-        $( function() {
-            // $( "#datepicker" ).datepicker({ minDate: 0, maxDate: "+5M +10D" });
-        });
     </script>
 
 @endsection

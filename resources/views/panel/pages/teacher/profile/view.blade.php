@@ -61,6 +61,13 @@
         });
     </script>
 
+    <script>
+        function sbmt() {
+            $('#teacherForm').submit()
+        }
+
+    </script>
+
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script src="/panel/assets/js/cv.js"></script>
@@ -76,7 +83,7 @@
         <div class="col-sm-12">
             <div class="card-box">
                 <div class="row">
-                    <form method="POST" action="{{ route('teachers-profile') }}" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form id="teacherForm" method="POST" action="{{ route('teachers-profile') }}" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         {{-- CHANGE CV'S PHOTO  --}}
@@ -107,22 +114,22 @@
 
                                 <div class="col-sm-6">
                                     <div class="input-container">
-                                        <input  type="text" label="Όνομα*" name="firstName" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
+                                        <input  type="text" label="Όνομα*" name="fname" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
                                         <i class="icon-inp  fa fa-user"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 input-container clear-fix-sm" >
-                                    <input type="text" label="Επώνυμο*" name="lastName" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
+                                    <input type="text" label="Επώνυμο*" name="lname" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
                                     <i class="icon-inp fa fa-user"></i>
                                 </div>
 
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Διεύθυνση" name="student_address" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
+                                    <input type="text" label="Διεύθυνση" name="address" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
                                     <i class="icon-inp fa fa-street-view"></i>
                                 </div>
                                 {{--  ΝΑ ΒΑΛΛΟΥΜΕ CITY  --}}
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Πόλη/Περιοχή" name="student_city" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
+                                    <input type="text" label="Πόλη/Περιοχή" name="city" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
                                     <i class="icon-inp fa fa-map-marker"></i>
                                 </div>
 
@@ -132,7 +139,7 @@
                                 </div>
                                 <div class="col-sm-6 input-container">
                                     {{--<a href="tel:{{ $user->info->phone }}">--}}
-                                    <input type="text" label="Τηλέφωνο" name="student_phone" class="demo-form ad-input" value="{{ auth()->user()->info->phone }}">
+                                    <input type="text" label="Τηλέφωνο" name="phone" class="demo-form ad-input" value="{{ auth()->user()->info->phone }}">
                                     {{--</a>--}}
                                     <i class="icon-inp fa fa-phone"></i>
                                 </div>
@@ -190,30 +197,30 @@
 
                                 <div class="col-sm-6">
                                     <div class="input-container">
-                                        <input  type="text" label="Facebook" name="facebook" class="demo-form ad-input" value="{{ auth()->user()->info->social }}">
+                                        <input  type="text" label="Facebook" name="facebook" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('facebook') ? $links->where('name', 'facebook')->first()->link : '' }}">
                                         <i class="icon-inp  fa fa-facebook"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 input-container clear-fix-sm" >
-                                    <input type="text" label="Instagram" name="instagram" class="demo-form ad-input" value="{{ auth()->user()->info->social  }}">
+                                    <input type="text" label="Instagram" name="instagram" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('instagram') ? $links->where('name', 'instagram')->first()->link : '' }}">
                                     <i class="icon-inp fa fa-instagram"></i>
                                 </div>
 
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="YouTube" name="youtube" class="demo-form ad-input" value="{{  auth()->user()->info->social }}">
+                                    <input type="text" label="YouTube" name="youtube" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('youtube') ? $links->where('name', 'youtube')->first()->link : '' }}">
                                     <i class="icon-inp fa fa-youtube"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="LinkedIn" name="linkedin" class="demo-form ad-input" value="{{auth()->user()->info->social   }}">
+                                    <input type="text" label="LinkedIn" name="linkedin" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('linkedin') ? $links->where('name', 'linkedin')->first()->link : '' }}">
                                     <i class="icon-inp fa fa-linkedin"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="twitter" name="twitter" class="demo-form ad-input" value="{{auth()->user()->info->social   }}">
-                                    <i class="icon-inp fa fa-linkedin"></i>
+                                    <input type="text" label="twitter" name="twitter" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('twitter') ? $links->where('name', 'twitter')->first()->link : '' }}">
+                                    <i class="icon-inp fa fa-twitter"></i>
                                 </div>
 
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Google+" name="google" class="demo-form ad-input" value="{{auth()->user()->info->social   }}">
+                                    <input type="text" label="Google+" name="google" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('google') ? $links->where('name', 'google')->first()->link : '' }}">
                                     <i class="icon-inp fa fa-google"></i>
                                 </div>
 
@@ -228,7 +235,7 @@
                         {{-- SAVE FORM --}}
 
                         <div class="col-xs-12 text-center m-t-50 m-b-40 centered-text">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-primary" type="submit" onclick="sbmt()">
                                     <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
                                 </button>
                         </div>
@@ -237,5 +244,4 @@
             </div>
         </div>
     </div>
-
 @endsection

@@ -129,10 +129,8 @@
             <?php echo app('translator')->getFromJson('school_profile.subtitle'); ?>
         </p>
         <div class="row">
-
             <form class="form-horizontal m-t-20" method="POST" action="/panel/school/profile/<?php echo e($school->id); ?>" accept-charset="UTF-8" enctype="multipart/form-data">
                 <?php echo e(csrf_field()); ?>
-
 
                 <div class="form-group" align="center">
                     <img src="<?php echo e(substr($logo, 0, 4) == 'http' ? '' : '/images/schools/'); ?><?php echo e($logo); ?>" class="school-logo">
@@ -223,15 +221,14 @@
                         <input type="text" label="YouTube" name="youtube" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('youtube') ? $links->where('name', 'youtube')->first()->link : '' }}">
                         <i class="icon-inp fa fa-youtube"></i>
                     </div>
-                    {{--  <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
                         <input type="text" label="skype" name="skype" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('skype') ? $links->where('name', 'skype')->first()->link : '' }}">
                         <i class="icon-inp fa fa-skype"></i>
-                    </div>  --}}
+                    </div>  
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
                         <input type="text" label="Google+" name="google" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('google') ? $links->where('name', 'google')->first()->link : '' }}">
                         <i class="icon-inp fa fa-google-plus"></i>
                     </div>
-                    {{--  p  --}}
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
                         <input type="text" label="Linked in" name="linkedin" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('linkedin') ? $links->where('name', 'linkedin')->first()->link : '' }}">
                         <i class="icon-inp fa fa-linkedin"></i>

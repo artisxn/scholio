@@ -68,6 +68,11 @@
 
     <style>
 
+        .disabledButton{
+            opacity: 20%;
+            cursor:not-allowed;
+        }
+
         @media(max-width: 1250px) {
             .right-side-bar{padding-left: 2px}
         }
@@ -395,7 +400,7 @@
 
                         @if($school->settings->social)
                             <ul class="nav nav-ul socials" id="" style="">
-                            @foreach($school->socialLinks as $link)
+                            @foreach(auth()->user()->socialLinks as $link)
                                 <li>
                                     <a class="lg-pull-left" href="{{ $link->link }}" target="_blank">
                                         <i style="" class="social fa fa-{{ $link->name }}" aria-hidden="true"></i>
@@ -1088,7 +1093,7 @@
 
 
 
-        <!-- ====== Modal Συνδεσης =======-->
+        <!-- ====== Modal Connect =======-->
         <div id="connect-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -1171,7 +1176,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" ng-click="sendRequest()" data-dismiss="modal" class="btn btn-info">@lang('profile.modal.send')</button>
+                        <button type="button" ng-click="sendRequest()" data-dismiss="modal" class="btn btn-info" ng-class="[{'disabledButton': !(selectedStudy && selectedStatus)}]" ng-disabled="!(selectedStudy && selectedStatus)">@lang('profile.modal.send')</button>
                     </div>
                 </div>
             </div>
@@ -1606,16 +1611,17 @@
 
 
                 $scope.sendRequest = function(){
-                    console.log($scope.selectedStudy)
-                     $scope.sendRequestToSchool = $http.post('/api/request/school',{'school' : $scope.contactInfo.id, 'study': $scope.selectedStudy, 'status': $scope.selectedStatus}, {
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'X-CSRF-TOKEN': window.Scholio.csrfToken
-                        }
-                    })
-                     .success(function(data){
-                        window.location.reload();
-                    });
+                    if($scope.selectedStudy && $scope.selectedStatus){
+                        $scope.sendRequestToSchool = $http.post('/api/request/school', { 'school': $scope.contactInfo.id, 'study': $scope.selectedStudy, 'status': $scope.selectedStatus }, {
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': window.Scholio.csrfToken
+                            }
+                        })
+                        .success(function (data) {
+                            window.location.reload();
+                        });
+                    }
                 }
 
                 $scope.textAbout="@lang('profile.more')";

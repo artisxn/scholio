@@ -535,12 +535,4 @@ class School extends Model
     {
         return $this->scholarshipLimits->cr1 + $this->scholarshipLimits->cr2 + $this->scholarshipLimits->cr3 + $this->scholarshipLimits->cr4 + $this->scholarshipLimits->cr5;
     }
-
-    /**
-     * @return
-     */
-    public function socialLinks()
-    {
-        return $this->hasMany(SocialLink::class, 'school_id');
-    }
 }

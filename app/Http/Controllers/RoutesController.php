@@ -78,8 +78,109 @@ class RoutesController extends Controller
 
     public function teacherProfile()
     {
-        $links = SocialLink::all();
+        $links = SocialLink::where('user_id', auth()->user()->id)->get();
         return view('panel.pages.teacher.profile.view', compact('links'));
+    }
+
+    public function teacherProfileSave(){
+
+        $fname = request()->fname;
+        $lname = request()->lname;
+        $address = request()->address;
+        $city = request()->city;
+        $phone = request()->phone;
+        $dob = request()->dob;
+        $gender = request()->gender;
+        $title = request()->title;
+
+        $teacher = auth()->user()->info;
+        $teacher->fname = $fname;
+        $teacher->lname = $lname;
+        $teacher->address = $address;
+        // $teacher->city = $city;
+        $teacher->phone = $phone;
+        $teacher->dob = $dob;
+        $teacher->gender = $gender;
+        $teacher->title = $title;
+        $teacher->save();
+        auth()->user()->name = $lname . ' ' . $fname;
+        auth()->user()->save();
+
+        if (request()->facebook) {
+            $this->saveSocialLinks(request()->facebook, 'facebook');
+        } else {
+            $this->deleteIfExists('facebook');
+        }
+
+        if (request()->twitter) {
+            $this->saveSocialLinks(request()->twitter, 'twitter');
+        } else {
+            $this->deleteIfExists('twitter');
+        }
+
+        if (request()->youtube) {
+            $this->saveSocialLinks(request()->youtube, 'youtube');
+        } else {
+            $this->deleteIfExists('youtube');
+        }
+
+        if (request()->instagram) {
+            $this->saveSocialLinks(request()->instagram, 'instagram');
+        } else {
+            $this->deleteIfExists('instagram');
+        }
+
+        if (request()->skype) {
+            $this->saveSocialLinks(request()->skype, 'skype');
+        } else {
+            $this->deleteIfExists('skype');
+        }
+
+        if (request()->google) {
+            $this->saveSocialLinks(request()->google, 'google');
+        } else {
+            $this->deleteIfExists('google');
+        }
+
+        if (request()->pinterest) {
+            $this->saveSocialLinks(request()->pinterest, 'pinterest');
+        } else {
+            $this->deleteIfExists('pinterest');
+        }
+
+        if (request()->linkedin) {
+            $this->saveSocialLinks(request()->linkedin, 'linkedin');
+        } else {
+            $this->deleteIfExists('linkedin');
+        }
+
+        session()->flash('updated_profile', 'Your profile has been updated');
+        return back();
+
+    }
+
+    public function saveSocialLinks($link, $name)
+    {
+        if (!auth()->user()->socialLinks->pluck('name')->contains($name)) {
+            $social = new SocialLink;
+            $social->user_id = auth()->user()->id;
+            $social->name = $name;
+            $social->link = $link;
+            return $social->save();
+        } else {
+            $social = auth()->user()->socialLinks;
+            $s = $social->where('name', $name)->first();
+            $s->link = $link;
+            return $s->save();
+        }
+    }
+    public function deleteIfExists($name)
+    {
+        // dd(auth()->user()->);
+        if (auth()->user()->socialLinks->pluck('name')->contains($name)) {
+            $s = auth()->user()->socialLinks->where('name', $name)->first();
+            $s->delete();
+        }
     }
 
     public function parentProfile()

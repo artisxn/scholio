@@ -176,12 +176,8 @@
 
 
                 <span class="social hidden-xs">
-                         <a href=""> <span class="pull-right social-icon"><i class="fa fa-instagram"></i></span> </a>
-                         <a href=""> <span class="pull-right margin-right-25 social-icon"><i class="fa fa-linkedin"></i></span> </a>
-                         <a href=""> <span class="pull-right margin-right-25 social-icon"><i class="fa fa-twitter"></i></span> </a>
-                         <a href=""> <span class="pull-right margin-right-25 social-icon"><i class="fa fa-facebook"></i></span> </a>
-                        @if($links)
-                            @foreach($links as $link)
+                        @if(auth()->user()->socialLinks)
+                            @foreach(auth()->user()->socialLinks as $link)
                             <a href="{{$link->link}}" style="color: white;">
                                 <span class="pull-right margin-right-25"><i class="fa fa-{{$link->name}}"></i></span>
                             </a>
@@ -209,7 +205,7 @@
 
                 </div>
 
-               <div class="teacher-title">Basic Studies </div>
+               <div class="teacher-title">{{ $teacher->title }}</div>
 
                 <hr class="xs-display">
 

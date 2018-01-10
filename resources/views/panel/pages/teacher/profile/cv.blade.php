@@ -162,6 +162,8 @@
 
 @endsection
 
+
+
 @section('content')
     <div id="full" class="hidden">
         <form method="GET" action="/qqqsss" id="test">
@@ -698,6 +700,10 @@
 @endsection
 
 @section('scriptsBefore')
+<script>
+    
+</script>
+
         <!-- Polymer Float Input Form js -->
 <script src="/new/js/jquery.polymer-form.min.js"></script>
 <script src="/panel/assets/js/cv.js"></script>
@@ -705,25 +711,16 @@
     <!-- jQuery datePicker -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/panel/assets/js/datepicker-el.js"></script>
-    <!-- ----------------- -->
+
 
     <!-- TypeAhead -->
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>--}}
     <script src="/panel/assets/js/jquery.typeahead.min.js"></script>
 
-    <script>
-        window.skills = <?php echo $skills ?>
-    </script>
 <script>
-
-    function deleteSkill(){
-        console.log('delete skill')
-    };
-
-
     $(document).ready(function(){
-
-        console.log(window.skills)
+       window.University = '{{ $cert }}'
+        console.log(window.University)
 
         $('#full').fadeIn(60).removeClass('hidden');
 
@@ -1094,10 +1091,7 @@
             order: "asc",
             hint: true,
             source: {
-                data: [
-                    'American College of Thessaloniki','Μητροπολιτικό Κολλέγιο Θεσσαλονίκης','ΑΚΜΗ Θεσσαλονίκη','Εκπαιδευτήρια Βασιλειάδη','Εκπαιδευτήρια Φρυγανιώτη','New York College','Φροντιστήρια Υποδομή','Εκπαιδευτήρια Απόστολος Παύλος','Ευρωγνώση Τσιμισκή','Danza Fuerte','Danza Fuerte',
-                    'Hellenic American College','The American College of Greece','Aegean College','Dei College','Αττικό Κολλέγιο'
-                ]
+                data: window.University
             },
             callback: {onInit: function () {}}
         });

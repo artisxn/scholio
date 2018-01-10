@@ -162,7 +162,7 @@ class AdminPanelController extends Controller
 
         $schoolTypes = SchoolTypes::all();
 
-        $links = SocialLink::where('school_id', $school->id)->get();
+        $links = SocialLink::where('user_id', auth()->user()->id)->get();
 
         // dd($links->where('name', 'facebook')->first()->link);
 
@@ -258,20 +258,18 @@ class AdminPanelController extends Controller
     */
     public function saveSocialLinks($link, $name)
     {
-        $school = auth()->user()->info;
-
-        if (!$school->socialLinks->pluck('name')->contains($name)) {
+        if (!auth()->user()->socialLinks->pluck('name')->contains($name)) {
             $social = new SocialLink;
-            $social->school_id = $school->id;
+            $social->user_id = auth()->user()->id;
             $social->name = $name;
             $social->link = $link;
             return $social->save();
-        }
-
-        $social = $school->socialLinks;
-        $s = $social->where('name', $name)->first();
-        $s->link = $link;
-        return $s->save();
+        }else{
+            $social = auth()->user()->socialLinks;
+            $s = $social->where('name', $name)->first();
+            $s->link = $link;
+            return $s->save();
+        }  
     }
 
     /**
@@ -279,11 +277,9 @@ class AdminPanelController extends Controller
     */
     public function deleteIfExists($name)
     {
-        $school = auth()->user()->info;
-        $social = $school->socialLinks;
-
-        if ($social->pluck('name')->contains($name)) {
-            $s = $social->where('name', $name)->first();
+        // dd(auth()->user()->);
+        if (auth()->user()->socialLinks->pluck('name')->contains($name)) {
+            $s = auth()->user()->socialLinks->where('name', $name)->first();
             $s->delete();
         }
     }

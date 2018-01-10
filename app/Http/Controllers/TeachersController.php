@@ -19,8 +19,7 @@ class TeachersController extends Controller
         //     dd('ok');
         // }
         $certificates = $teacher->certificates();
-        $links = $teacher->links;
-        return view('teacher', compact('teacher', 'works', 'certificates', 'links'));
+        return view('teacher', compact('teacher', 'works', 'certificates'));
     }
 
     /**
