@@ -2,6 +2,12 @@
 
 use App\Models\Skill;
 use App\Models\University;
+use App\Models\Job;
+use App\Models\Company;
+use App\Models\Work;
+use Carbon\Carbon;
+use App\Models\Certificate;
+use App\Models\Cvteacherstudy;
 
 Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () {
     Route::post('/delete', 'RoutesController@studentDelete')->name('students-delete');
@@ -37,7 +43,162 @@ Route::group(['middleware' => 'is.teacher', 'prefix' => 'teacher'], function () 
         $teacher->about = $about;
         $teacher->save();
         return redirect('panel/users/teacher/cv');
-    })->name('cv-about-post');
+    })->name('teacher-cv-about-post');
+
+    Route::post('/cv/update/experience', function(){
+        $job = request()->job;
+        $company = request()->company;
+        $from = request()->start;
+        $until = request()->end;
+
+        $job_model = Job::where('name', $job)->first();
+        $company_model = Company::where('name', $company)->first();
+
+        if(!$job_model){
+            $newJob = new Job;
+            $newJob->name = $job;
+            $newJob->save();
+            $job_model = $newJob;
+        }
+
+        if(!$company_model){
+            $newCo = new Company;
+            $newCo->name = $company;
+            $newCo->save();
+            $company_model = $newCo;
+        }
+
+        $work = new Work;
+        $work->user_id = auth()->user()->id;
+        $work->job_id = $job_model->id;
+        $work->company_id = $company_model->id;
+        $work->from = $from;
+        $work->until = $until;
+        $work->save();
+
+        return redirect('panel/users/teacher/cv');
+
+    })->name('teacher-cv-experience-post');
+
+    Route::post('/cv/update/experience/edit', function () {
+        $work = Work::find(request()->workID);
+
+        if(request()->del == 'yes'){
+            $work->delete();
+            return redirect('panel/users/teacher/cv');
+        }
+
+        $job = request()->job;
+        $company = request()->company;
+        $from = request()->start;
+        $until = request()->end;
+        
+
+        $job_model = Job::where('name', $job)->first();
+        $company_model = Company::where('name', $company)->first();
+
+        if (!$job_model) {
+            $newJob = new Job;
+            $newJob->name = $job;
+            $newJob->save();
+            $job_model = $newJob;
+        }
+
+        if (!$company_model) {
+            $newCo = new Company;
+            $newCo->name = $company;
+            $newCo->save();
+            $company_model = $newCo;
+        }
+
+        
+        $work->user_id = auth()->user()->id;
+        $work->job_id = $job_model->id;
+        $work->company_id = $company_model->id;
+        $work->from = $from;
+        $work->until = $until;
+        $work->save();
+
+        return redirect('panel/users/teacher/cv');
+
+    })->name('teacher-cv-experience-edit');
+
+    Route::post('/cv/update/certificate', function () {
+        $degree = request()->degree;
+        $university = request()->university;
+        $from = request()->start;
+        $until = request()->end;
+
+        $degree_model = Cvteacherstudy::where('name', $degree)->first();
+        $university_model = University::where('name', $university)->first();
+
+        if (!$degree_model) {
+            $newDegree = new Cvteacherstudy;
+            $newDegree->name = $degree;
+            $newDegree->save();
+            $degree_model = $newDegree;
+        }
+
+        if (!$university_model) {
+            $newuniversity = new University;
+            $newuniversity->name = $university;
+            $newuniversity->save();
+            $university_model = $newuniversity;
+        }
+
+        $certificate = new Certificate;
+        $certificate->user_id = auth()->user()->id;
+        $certificate->study_id = $degree_model->id;
+        $certificate->university_id = $university_model->id;
+        $certificate->from = $from;
+        $certificate->until = $until;
+        $certificate->save();
+
+        return redirect('panel/users/teacher/cv');
+
+    })->name('teacher-cv-certificate-post');
+
+    Route::post('/cv/update/certificate/edit', function () {
+        $certificate = Certificate::find(request()->certID);
+
+        if (request()->del == 'yes') {
+            $certificate->delete();
+            return redirect('panel/users/teacher/cv');
+        }
+
+        $degree = request()->degree;
+        $university = request()->university;
+        $from = request()->start;
+        $until = request()->end;
+
+        $degree_model = Cvteacherstudy::where('name', $degree)->first();
+        $university_model = University::where('name', $university)->first();
+
+        if (!$degree_model) {
+            $newDegree = new Cvteacherstudy;
+            $newDegree->name = $degree;
+            $newDegree->save();
+            $degree_model = $newDegree;
+        }
+
+        if (!$university_model) {
+            $newuniversity = new University;
+            $newuniversity->name = $university;
+            $newuniversity->save();
+            $university_model = $newuniversity;
+        }
+
+        
+        $certificate->user_id = auth()->user()->id;
+        $certificate->study_id = $degree_model->id;
+        $certificate->university_id = $university_model->id;
+        $certificate->from = $from;
+        $certificate->until = $until;
+        $certificate->save();
+
+        return redirect('panel/users/teacher/cv');
+
+    })->name('teacher-cv-certificate-edit');
 
     Route::post('/profile', 'RoutesController@teacherProfileSave')->name('teachers-profile');
 

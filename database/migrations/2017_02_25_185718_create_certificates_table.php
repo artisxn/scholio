@@ -18,8 +18,8 @@ class CreateCertificatesTable extends Migration
             $table->integer('user_id')->index();
             $table->integer('study_id')->nullable();
             $table->integer('university_id')->nullable();
-            $table->date('from')->nullable();
-            $table->date('until')->nullable();
+            $table->string('from')->nullable();
+            $table->string('until')->nullable();
             $table->timestamps();
         });
     }

@@ -39,6 +39,7 @@ Vue.component('scholarship-request', require('./components/schools/Scholarship-R
 Vue.component('schools-reviews', require('./components/schools/Schools-Review.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('schol-test', require('./components/Schol-Test.vue'));
+Vue.component('teacher-cv', require('./components/teachers/Cv.vue'));
 // Vue.component('chart-vue', require('./VueChart.vue'));
 
 

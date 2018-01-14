@@ -166,7 +166,6 @@
 
 @section('content')
     <div id="full" class="hidden">
-        <form method="GET" action="/qqqsss" id="test">
 
             <div class="container" style="position: relative">
 
@@ -254,6 +253,7 @@
                                 <div id="experience" class="title">@lang('teacher_profile.section.experience') <i class="fa fa-plus fa-input" data-toggle="modal" data-target="#work-modal-new"></i></div>
                                 @if(!auth()->user()->works->isEmpty())
                                     @foreach(auth()->user()->works as $work)
+                                        @include('panel.pages.teacher.profile.modal-edit.work', ['work' => $work])
                                         <div class="t1">
                                             <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#work-modal-edit"></i> {{ $work->job->name }}
                                         </div>
@@ -261,7 +261,7 @@
                                             {{ $work->company->name }}
                                         </div>
                                         <div class="t3">
-                                            {{ \Carbon\Carbon::parse($work->from)->year }} - {{ \Carbon\Carbon::parse($work->until)->year }}
+                                             {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->from)->toDateTimeString())->year }} - {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->until)->toDateTimeString())->year }}
                                         </div>
                                     @endforeach
                                 @endif
@@ -272,6 +272,7 @@
                                     <img class="up png-title" src="/new/img/teacher/graduate.png" alt="">
                                     <div class="title">@lang('teacher_profile.section.studies') <i class="fa fa-plus fa-input" data-toggle="modal" data-target="#studies-modal-new"></i></div>
                                     @foreach(auth()->user()->certificates as $certificate)
+                                     @include('panel.pages.teacher.profile.modal-edit.study', ['certificate' => $certificate])
                                         <div class="t1">
                                             <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#studies-modal-edit"></i> {{ $certificate->study->name  }}
                                         </div>
@@ -279,7 +280,7 @@
                                             {{ $certificate->university->name  }}
                                         </div>
                                         <div class="t3">
-                                            {{ \Carbon\Carbon::parse($certificate->from)->year }} - {{ \Carbon\Carbon::parse($certificate->until)->year }}
+                                            {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->from)->toDateTimeString())->year }} - {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->until)->toDateTimeString())->year }}
                                         </div>
                                     @endforeach
                                     <hr>
@@ -323,9 +324,6 @@
                 </div>
             </div>
 
-
-        </form>
-
     </div>
 
     <!-- ====== AboutMe Modal  ======= -->
@@ -345,7 +343,7 @@
                 </div>
                 <div class="panel-body">
 
-                <form method="POST" action="{{ route('cv-about-post') }}" id="aboutForm">
+                <form method="POST" action="{{ route('teacher-cv-about-post') }}" id="aboutForm">
                 {{ csrf_field() }}
                     <div class="section2-container ">
                             <div class="inner-section">
@@ -372,8 +370,8 @@
     <div id="work-modal-new" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="" name="form-work">
-
+                <form id="form-experience" action="{{ route('teacher-cv-experience-post') }}" method="POST" name="form-work">
+                     {{ csrf_field() }}
                     <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
                         <div class="panel-heading" style=" color: #fff">
                             <button type="button" class="btn pull-right btn-close" data-dismiss="modal" >
@@ -393,7 +391,7 @@
 
                                     <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                             <div class="typeahead__field typeahead__query">
-                                                <input label="Ειδικότητα/Αντικείμενο Εργασίας" class="js-typeahead-work demo-form ad-input" name="work"
+                                                <input label="Ειδικότητα/Αντικείμενο Εργασίας" class="js-typeahead-work demo-form ad-input" name="job"
                                                        type="text" placeholder="" autocomplete="off">
                                                 <i class="icon-inp fa fa-briefcase margin-top"></i>
                                             </div>
@@ -403,7 +401,7 @@
 
                                     <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                             <div class="typeahead__field typeahead__query">
-                                                <input label="Εκπαιδευτικό Ίδρυμα/Εταιρία" class="js-typeahead-school demo-form ad-input" name="work-company"
+                                                <input label="Εκπαιδευτικό Ίδρυμα/Εταιρία" class="js-typeahead-school demo-form ad-input" name="company"
                                                        type="text" placeholder="" autocomplete="off">
                                                 <i class="icon-inp fa fa-university"></i>
                                             </div>
@@ -411,13 +409,13 @@
 
                                         <div class="clearfix"></div>
                                         <div class="col-sm-8 polyfill-input-sc">
-                                            <input type="text" label="Από" name="work-start" class="demo-form ad-input"  id="datepickerWorkFrom" value="">
+                                            <input type="text" label="Από" name="start" class="demo-form ad-input"  id="datepickerWorkFrom" value="">
                                             <i class="icon-inp fa fa-calendar-o"></i>
                                             {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
                                         </div>
                                         <div class="clearfix polyfill-input-sc"></div>
                                         <div class="col-sm-8 ">
-                                            <input type="text" label="Μέχρι" name="work-end" class="demo-form ad-input" id="datepickerWorkEnd"  value="">
+                                            <input type="text" label="Μέχρι" name="end" class="demo-form ad-input" id="datepickerWorkEnd"  value="">
                                             <i class="icon-inp fa fa-calendar-o"></i>
                                             {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
                                         </div>
@@ -430,78 +428,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" onClick="" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div><!-- /.modal -->
-
-    <!-- ====== Work Modal Edit ======= -->
-    <div id="work-modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form id="" name="form-work">
-
-                    <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
-                        <div class="panel-heading" style=" color: #fff">
-                            <button type="button" class="btn pull-right btn-close" data-dismiss="modal" >
-                                x
-                            </button>
-                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
-                            {{--<h3 class="pull-left panel-title">schol.io</h3>--}}
-                        </div>
-
-                    </div>
-                    <div class="panel-body">
-
-                        <div class="section2-container ">
-                            <div class="inner-section" style="">
-                                <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/desk.png" alt=""> </i>@lang('teacher_profile.section.experience')</div>
-                                <div class="input-container">
-
-                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
-                                        <div class="typeahead__field typeahead__query">
-                                            <input label="Ειδικότητα/Αντικείμενο Εργασίας" class="js-typeahead-work demo-form ad-input" name="work"
-                                                   type="text" placeholder="" autocomplete="off">
-                                            <i class="icon-inp fa fa-briefcase margin-top"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="clearfix"></div>
-
-                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
-                                        <div class="typeahead__field typeahead__query">
-                                            <input label="Εκπαιδευτικό Ίδρυμα/Εταιρία" class="js-typeahead-school demo-form ad-input" name="work-company"
-                                                   type="text" placeholder="" autocomplete="off">
-                                            <i class="icon-inp fa fa-university"></i>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="clearfix"></div>
-                                    <div class="col-sm-8 polyfill-input-sc">
-                                        <input type="text" label="Από" name="work-start" class="demo-form ad-input"  id="datepickerWorkFromEdit" value="">
-                                        <i class="icon-inp fa fa-calendar-o"></i>
-                                        {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
-                                    </div>
-                                    <div class="clearfix polyfill-input-sc"></div>
-                                    <div class="col-sm-8 ">
-                                        <input type="text" label="Μέχρι" name="work-end" class="demo-form ad-input" id="datepickerWorkEndEdit"  value="">
-                                        <i class="icon-inp fa fa-calendar-o"></i>
-                                        {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" onClick="" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
+                        <button type="button" onClick="document.getElementById('form-experience').submit()" class="btn btn-info">Αποθήκευση</button>
                     </div>
                 </form>
             </div>
@@ -513,8 +440,8 @@
         <div class="modal-dialog">
 
                 <div class="modal-content">
-                    <form id="" name="form-studies">
-
+                    <form id="form-studies" action="{{ route('teacher-cv-certificate-post') }}" method="POST" name="form-studies">
+                        {{ csrf_field() }}
                         <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
                             <div class="panel-heading" style=" color: #fff">
                                 <button type="button" class="btn pull-right btn-close" data-dismiss="modal" >
@@ -535,7 +462,7 @@
                                             <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                                 <div class="typeahead__field typeahead__query">
                                                     <input label="Τίτλος/Επίπεδο Σπουδών"
-                                                           class="js-typeahead-studies demo-form ad-input" name="studies"
+                                                           class="js-typeahead-studies demo-form ad-input" name="degree"
                                                            type="text" placeholder="" autocomplete="off">
                                                     <i class="icon-inp fa fa-graduation-cap margin-top"></i>
                                                 </div>
@@ -553,13 +480,13 @@
 
                                         <div class="clearfix"></div>
                                         <div class="col-sm-8 polyfill-input-sc">
-                                            <input type="text" label="Από" name="work-start" class="demo-form ad-input"  id="datepickerStudiesFrom" value="">
+                                            <input type="text" label="Από" name="start" class="demo-form ad-input"  id="datepickerStudiesFrom" value="">
                                             <i class="icon-inp fa fa-calendar-o"></i>
                                             {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="col-sm-8 polyfill-input-sc" >
-                                            <input type="text" label="Μέχρι" name="work-end" class="demo-form ad-input" id="datepickerStudiesEnd"  value="">
+                                            <input type="text" label="Μέχρι" name="end" class="demo-form ad-input" id="datepickerStudiesEnd"  value="">
                                             <i class="icon-inp fa fa-calendar-o"></i>
                                             {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
                                         </div>
@@ -572,79 +499,8 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                            <button type="button" onClick="" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
+                            <button type="button" onClick="document.getElementById('form-studies').submit()" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
                         </div>
-                </form>
-            </div>
-        </div>
-    </div><!-- /.modal -->
-
-    <!-- ====== Studies Modal  Edit======= -->
-    <div id="studies-modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-                <form id="" name="form-studies">
-
-                    <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
-                        <div class="panel-heading" style=" color: #fff">
-                            <button type="button" class="btn pull-right btn-close" data-dismiss="modal" >
-                                x
-                            </button>
-                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
-                            {{--<h3 class="pull-left panel-title">schol.io</h3>--}}
-                        </div>
-
-                    </div>
-                    <div class="panel-body">
-
-                        <div class="section2-container ">
-                            <div class="inner-section" style="">
-                                <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/graduate.png" alt=""> </i>@lang('teacher_profile.section.studies')</div>
-                                <div class="input-container">
-
-                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
-                                        <div class="typeahead__field typeahead__query">
-                                            <input label="Τίτλος/Επίπεδο Σπουδών"
-                                                   class="js-typeahead-studies demo-form ad-input" name="studies"
-                                                   type="text" placeholder="" autocomplete="off">
-                                            <i class="icon-inp fa fa-graduation-cap margin-top"></i>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
-                                        <div class="typeahead__field typeahead__query">
-                                            <input label="Εκπαιδευτικό Ίδρυμα/Εταιρία"
-                                                   class="js-typeahead-university demo-form ad-input" name="university"
-                                                   type="text" placeholder="" autocomplete="off">
-                                            <i class="icon-inp fa fa-university"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="clearfix"></div>
-                                    <div class="col-sm-8 polyfill-input-sc">
-                                        <input type="text" label="Από" name="work-start" class="demo-form ad-input"  id="datepickerStudiesFromEdit" value="">
-                                        <i class="icon-inp fa fa-calendar-o"></i>
-                                        {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-sm-8 polyfill-input-sc" >
-                                        <input type="text" label="Μέχρι" name="work-end" class="demo-form ad-input" id="datepickerStudiesEndEdit"  value="">
-                                        <i class="icon-inp fa fa-calendar-o"></i>
-                                        {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" onClick="" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
-                    </div>
                 </form>
             </div>
         </div>
@@ -718,9 +574,9 @@
     <script src="/panel/assets/js/jquery.typeahead.min.js"></script>
 
 <script>
+    
+
     $(document).ready(function(){
-       window.University = '{{ $cert }}'
-        console.log(window.University)
 
         $('#full').fadeIn(60).removeClass('hidden');
 

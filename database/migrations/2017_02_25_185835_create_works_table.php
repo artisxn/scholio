@@ -18,8 +18,8 @@ class CreateWorksTable extends Migration
             $table->integer('user_id')->index();
             $table->integer('job_id')->nullable();
             $table->integer('company_id')->nullable();
-            $table->date('from')->nullable();
-            $table->date('until')->nullable();
+            $table->string('from')->nullable();
+            $table->string('until')->nullable();
             $table->timestamps();
         });
     }
