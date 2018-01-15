@@ -1,13 +1,12 @@
 <template>
     <div>
-        <ul id="mmenu">
+        <ul id="mmenu" style="z-index: 5">
             <li data-menuanchor="firstPage" class="">
                 <a href="#firstPage">
                     <div class="btn-fixed">Κριτήρια</div>
                 </a>
             </li>
             <li data-menuanchor="secondPage" v-if="!financial_disabled">
-            <!--<li data-menuanchor="secondPage" class="" >-->
                 <a href="#secondPage">
                     <div class="btn-fixed">Οικονομικά</div>
                 </a>
@@ -123,7 +122,20 @@
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, aut fugiat magni nam placeat praesentium sint!
                         Accusamus aspernatur, at cum dolorem id iste iusto magni minus mollitia nemo placeat quaerat tempore vel! Aliquid culpa earum eligendi maxime non ratione similique?
                         </span>
+
+                        <div class="btns-next-container">
+                            <a href="#secondPage" class="btn-anchor">
+                                <div class="btn btn-success pull-right">Επόμενο <i class="fa fa-caret-right" aria-hidden="true"></i></div>
+                            </a>
+                        </div>
+
+
                     </div>
+
+                    <img class="back-img-full img-responsive" :src="criteria_value.icon">
+
+
+
                 </div>
             </div>
 
@@ -174,12 +186,30 @@
                                         <span class="scholarship-name">{{financial_value.name}}</span> αφορά
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         Aperiam, aut fugiat magni nam placeat praesentium sint!
+
                                     </div>
                                 </div>
                             </div>
+
+                            <img class="back-img-full img-responsive" :src="financial_value.icon">
+
                         </div>
 
                         <div v-else class="pre-step"> Συμπληρώστε πρώτα το βήμα 1.</div>
+
+
+                    <div class="btns-next-container-sec2 financial-text">
+                        <a href="#firstPage">
+                            <div class="btn btn-success pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i> Προηγούμενο </div>
+                        </a>
+
+                        <a href="#thirdPage" v-if="financial_value && financial_amount > 0">
+                            <div class="btn btn-success pull-right">Επόμενο <i class="fa fa-caret-right" aria-hidden="true"></i></div>
+                        </a>
+                    </div>
+
+
+
 
                 </div>
             </div>
@@ -209,41 +239,66 @@
                             </div>
 
                         </div>
-                        <div class="" style="margin: 25px 0 6px 0 ">Αντικείμενο Σπουδών</div>
-                        <div class="study">
-                            <multiselect
-                                    v-model="study_value"
-                                    :options="study_options"
-                                    :multiple="multipleFeature"
-                                    group-values="study"
-                                    group-label="section"
-                                    placeholder="Επιλέξτε Αντικείμενα Σπουδών"
-                                    track-by="name"
-                                    label="name"
-                                    :disabled="studies_disabled"
-                                    @remove="allStudies = false">
-                                <span slot="noResult">Oops! Δεν βρέθηκε...</span>
-                            </multiselect>
-                        </div>
-                        <div style="margin-top: 15px">
 
-                            <div class="funkyradio" style="margin: 8px 0 0 0;">
-                                <div class="funkyradio-success">
-                                    <input type="checkbox" id="checkBox" v-model="allStudies">
-                                    <label for="checkBox" style="text-align: center;"> Επιλογή όλων των σπουδών</label>
+                        <div v-if="level_value">
+                            <div class="" style="margin: 25px 0 6px 0 ">Αντικείμενο Σπουδών</div>
+                            <div class="study" >
+                                <multiselect style=""
+                                        v-model="study_value"
+                                        :options="study_options"
+                                        :multiple="multipleFeature"
+                                        group-values="study"
+                                        group-label="section"
+                                        placeholder="Επιλέξτε Αντικείμενα Σπουδών"
+                                        track-by="name"
+                                        label="name"
+                                        :disabled="studies_disabled"
+                                        @remove="allStudies = false">
+                                    <span slot="noResult">Oops! Δεν βρέθηκε...</span>
+                                </multiselect>
+                            </div>
+                            <div style="margin-top: 15px; position: relative; z-index: 4" v-if="study_value && study_value!=null">
+
+                                <div class="funkyradio" style="margin: 8px 0 0 0; ">
+                                    <div class="funkyradio-success">
+                                        <input type="checkbox" id="checkBox" v-model="allStudies">
+                                        <label for="checkBox" style="text-align: center; background: #f8f8f8;"> Επιλογή όλων των σπουδών</label>
+                                    </div>
+                                </div>
+
+                                <div class="btn-allStudies">
+                                    <button class="btn btn-info" @click="study_value = []; allStudies=false" v-if="study_value && study_value.length > 2" style="margin: 15px auto">Διαγραφή Όλων</button>
                                 </div>
                             </div>
 
-                            <div class="btn-allStudies">
-                                <button class="btn btn-success" @click="study_value = []; allStudies=false" v-if="study_value && study_value.length > 2" style="margin: 15px auto">Διαγραφή Όλων</button>
+
+
+                            <div class="" v-if="study_value && study_value.length > 0">
+                                <img class="back-img-full img-responsive" :src="study_value[0].icon"  v-if="!multipleSectionsSelected">
+                                <img class="back-img-full img-responsive" src="/panel/assets/images/steps/studies.png"  v-else>
                             </div>
+
                         </div>
+
+
+
+
                     </div>
                     <div v-else class="pre-step">Συμπληρώστε πρώτα το βήμα 2.</div>
 
+
+                    <div class="btns-next-container-sec2 financial-text">
+                        <a href="#secondPage">
+                            <div class="btn btn-success pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i> Προηγούμενο </div>
+                        </a>
+
+                        <a href="#fourthPage" v-if="study_value && study_value.length > 0">
+                            <div class="btn btn-success pull-right">Επόμενο <i class="fa fa-caret-right" aria-hidden="true"></i></div>
+                        </a>
+                    </div>
+
                 </div>
             </div>
-
 
 
             <div class="section" data-anchor="fourthPage">
@@ -251,24 +306,25 @@
 
 
                     <div class="step-title">Βήμα 4ο: Νικητές - Εξετάσεις - Κλειδιά</div>
-                    <div v-if="!settings_disabled">
+                    <!--<div v-if="!settings_disabled">-->
+                        <div>
                         <div>
 
-                            <div class="row">
+                            <div class="row" style="margin-top: 40px;">
                                 <!--<h3>{{ lang('panel_scholarships.create.terms') }}</h3>-->
 
-                                <div class="col-sm-6 winners-outer" style="text-align: center;">
+                                <div class="col-sm-4 col-lg-4 winners-outer col-xs-6s" style="text-align: center; padding: 0!important;">
                                     <div style="" class=""> {{ lang('panel_scholarships.create.winners') }}</div>
 
-                                        <div class="winners-pack" style="">
+                                        <div class="winners-pack" style="text-align: center; margin-left: 0; padding-left: 0">
                                             <span class="winners-container" style="display: inline-block">
-                                                <input class="winners-input" type="number" name="winners" min=1 max=20 v-model="winners" :disabled="allWinners" v-if="!allWinners">
+                                                <input class="winners-input" type="number" name="winners" min=1 max=5 v-model="winners" :disabled="allWinners" v-if="!allWinners" style="">
                                             </span>
 
                                             <span class="funkyradio" style=" display: inline-block">
                                                 <span class="funkyradio-success">
                                                     <input type="checkbox" id="multiple" v-model="allWinners">
-                                                    <label for="multiple" style="text-align: center; height: 33px;">Πολλαπλοί Νικητές</label>
+                                                    <label for="multiple" style="text-align: center; ">Πολλαπλοί Νικητές</label>
                                                 </span>
                                             </span>
 
@@ -276,16 +332,16 @@
                                 </div>
 
 
-                                <div class="col-sm-6 datepicker-outer" style="text-align: center;">
+                                <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important;">
                                     <div> {{ lang('panel_scholarships.create.active') }}: </div>
                                     <div>
-                                        <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center"
+                                        <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px;"
                                             v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)" />
                                     </div>
 
                                 </div>
 
-                                <div class=" col-sm-12" style="margin: 10px 0 0 0;">
+                                <div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;" v-if="">
                                     <div class="funkyradio" style="margin: 8px 0 0 0; text-align: center">
                                         <div class="funkyradio-success exams-container" style="">
                                             <input type="checkbox" id="exams" v-model="exams">
@@ -297,10 +353,13 @@
 
 
                             </div>
+
+
+
                         </div>
 
-                        <div style="margin: 40px 0">
-                            <div>Προσθέστε λέξεις/ετικέτες "κλειδιά" για στοχευμένη αναζήτηση υποτροφίας</div>
+                        <div class="keys" v-if="!terms_disabled">
+                            <div class="keys-text">Προσθέστε λέξεις/ετικέτες "κλειδιά" για στοχευμένη αναζήτηση υποτροφίας</div>
                             <multiselect
                                     v-model="value"
                                     tag-placeholder="Προσθήκη νέας ετικέτας"
@@ -317,7 +376,17 @@
                             </multiselect>
                         </div>
                     </div>
-                    <div v-else>Συμπληρώστε πρώτα το βήμα 3.</div>
+                    <!--<div v-else>Συμπληρώστε πρώτα το βήμα 3.</div>-->
+
+                    <div class="btns-next-container-sec2" style="margin-top: 50px" v-if="!terms_disabled">
+                        <a href="#thirdPage">
+                            <div class="btn btn-success pull-left"><i class="fa fa-caret-left" aria-hidden="true"></i> Προηγούμενο </div>
+                        </a>
+
+                        <a href="#fifthPage" >
+                            <div class="btn btn-success pull-right">Επόμενο <i class="fa fa-caret-right" aria-hidden="true"></i></div>
+                        </a>
+                    </div>
 
                 </div>
             </div>
@@ -376,6 +445,7 @@
 
 
     /* //////////////////////////////////////////////////////////////////// */
+
 
 
     #mmenu>li{
@@ -460,7 +530,7 @@
 
     .criteria-img-sm{display: none}
 
-    .financial_value_input{margin-top: 20px}
+    /*.financial_value_input{margin-top: 20px}*/
 
     .financial-text{ margin-top: 20px; padding-left: 10px;}
     .financial-plan .multiselect{z-index: 20}
@@ -491,15 +561,26 @@
 
     .study .multiselect__option {font-size: 90%; font-weight: 300;}
 
-    /*.study .multiselect__element, .study .multiselect__option, .study .multiselect__option--highlight{
 
 
-    /*}
+     .multiselect{margin-top: 20px; margin-bottom: 15px;}
+     .study .multiselect{margin-top: 20px; margin-bottom: 15px;  }
+     .study .multiselect, .level .multiselect{ z-index: 10!important; position: relative;}
+     .study .multiselect__tags{max-height: 110px; overflow-y: scroll;}
+
+    .financial-amount{margin-top: 30px; margin-bottom: 20px;}
+    .criteria .multiselect{margin-top: 15px; margin-bottom: 15px;}
+    .btn-anchor{display: block; z-index: 3;}
+
+    .btns-next-container, .btns-next-container-sec2{margin: 40px 10px 0 5px; z-index: 3; position: relative;}
+    .btns-next-container-sec2{margin: 40px -5px 0 -5px; }
+    .back-img-full{max-height: 40%; opacity: 0.06; position: absolute; left: 0; right: 0; bottom: 20%; margin-left: auto; margin-right: auto; text-align: center; }
+
 
 
 
         /* /////////////////////////////////////////////////////////////////////////////////////////////// */
-    /* /////////////////////////////////////////////////////////////////////////////////////////////// */
+       /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 
     .scholar-frame{
         /*background-image: linear-gradient(#f3f3f3, #fbfbfb);*/
@@ -526,10 +607,10 @@
 
     .criteria-img{height: 25px; margin: 7px 0 0 10px;}
 
-    .winners-container{ margin:0 25px 0  15px; }
-    .winners-input{border-radius: 6px; border: 1px solid #D1D3D4; box-shadow: none; padding: 0 0 0 19px!important; margin: 10px 0 0 0!important; height: 32px}
+    .winners-container{ margin:0 8px 0 -6px ; }
+    .winners-input{border-radius: 6px; border: 1px solid #D1D3D4; box-shadow: none; padding: 0 0 0 10px!important;  height: 37px; width:37px;}
 
-    .winners-pack .funkyradio{margin: -5px 0 0 0; width: 195px; padding: 5px auto}
+    .winners-pack .funkyradio{margin: -5px 0 0 -5px; width: 195px; padding: 5px auto}
     /* input[type="number"]::-webkit-input-placeholder { Chrome/Opera/Safari} */
 
     .btn-allStudies{width: 540px; text-align: center; }
@@ -540,8 +621,12 @@
     .terms-container{margin-top: 10px;}
 
     .btn-container{margin-top: 15px; text-align: center;}
-    .btn-success{border: none; background: #008da5;}
-    .btn-success:hover{background: #006f87;}
+    .btn-success,.btn-success:focus,.btn-success:visited{border: none; background: #008da5!important;}
+    .btn-success:hover{background: #006f87!important;}
+
+    .btn-info,.btn-info:focus,.btn-info:visited{border: none; background: #b9b9b9 !important;}
+    .btn-info:hover{background: #96a5a3 !important;}
+    .keys-text{margin: 40px 0 -10px 0; position: relative; z-index: 10; color: #777}
 
 
 
@@ -633,6 +718,13 @@
 
     /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 
+   @media (max-width: 560px) {
+      .section-box{
+          width: 100%; margin: auto;
+      }
+  }
+
+
 
     @media (min-width: 861px) {
         .showPreview{display: block}
@@ -645,15 +737,9 @@
 
     }
 
-    @media (max-width: 560px) {
-        .section-box{
-            width: 100%; margin: auto;
-        }
-    }
-
-
 
     @media (min-width: 1200px) {
+        .row,.col-lg-4{padding: auto 0;}
         .section-box{
             width: 96%; margin-left: 2%;
         }
@@ -736,18 +822,49 @@
 
     /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 
+  @media (max-width: 1070px) {
 
-    @media (max-width: 835px) {
+      .col-xs-6s{width: 50%}
+      .col-xs-12s{width: 102%; margin-left: -1%!important;}
 
-        .winners-pack{margin-left: 22%; width: 60%;}
-        .winners-outer,.datepicker-outer{ margin-bottom: 20px;}
+  }
+
+  @media (max-width: 1020px) {  .col-xs-12s{width: 105%;  margin-left: -2.5%!important;}  }
+  @media (max-width: 990px)  {  .col-xs-12s{width:  97%;  margin-left:  1.5%!important;}  }
+  @media (max-width: 930px)  {  .col-xs-12s{width: 100%;  margin-left:     0!important;}  }
+  @media (max-width: 880px)  {  .col-xs-12s{width: 102%;  margin-left:   -1%!important;}  }
+  @media (max-width: 860px)  {  .col-xs-12s{width: 114%;  margin-left:   -7%!important;}  }
+
+  @media (max-width: 840px)  {
+      .col-xs-6s,.col-xs-12s{width: 100%;  margin-left:   0!important;}
+      .col-xs-6s{margin-bottom: 20px;}
+      .exams-container{width: 300px; text-align: center; margin-left: auto; margin-right: auto;}
+      .winners-outer{margin-bottom: 35px;}
+      .keys-text{margin:30px auto  5px auto;}
+      .keys .multiselect{margin-top: 0;}
+      .section-box{padding-top: 8px; padding-bottom: 8px; margin-top: -10px;}
+  }
+
+
+
+  @media (max-width: 835px) {
+
+        /*.winners-pack{margin-left: 22%; width: 60%;}*/
+        /*.winners-outer,.datepicker-outer{ margin-bottom: 20px;}*/
 
     }
 
     @media (max-width: 766px) {
-        .winners-outer{ margin-bottom: 70px;}
+        .col-xs-6s{margin-bottom: 15px;}
+        #mmenu{text-align: center; }
+        /*.mce-container, .terms-container{height: 40px;}*/
+        /*.mce-tinymce .mce-container .mce-panel{height: 40px;}*/
     }
 
+  @media (max-width: 640px) {
+      .btns-next-container, .btns-next-container-sec2{display: none;}
+
+  }
 
     @media (max-width: 860px) {
         .col-sm-6{width: 100%}
