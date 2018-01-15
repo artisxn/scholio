@@ -297,7 +297,7 @@
                                     </span>
 
                                     <span class="thumps-up">
-                                        <i id="bt_like{{$skill->id}}" onclick="like({{auth()->user()->info->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-up"></i>
+                                        <i id="bt_like{{$skill->id}}" onclick="like({{ auth()->user()->info->user->id }}, {{$skill->id}})" class="thumps fa fa-thumbs-up"></i>
                                         <span id="count{{$skill->id}}" class="counter">
                                                 {{ auth()->user()->info->user->skills()->where('skill_id', $skill->id)->count() }}
                                         </span>
@@ -509,49 +509,50 @@
     <!-- ====== skills Modal  ======= -->
     <div id="skills-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
         <div class="modal-dialog">
-
+    
             <div class="modal-content">
-                <form id="" name="form-studies">
-
+                <form id="form-skills" method="POST" action="{{ route('teacher-cv-skills') }}" name="form-studies">
+                    {{ csrf_field()}}
                     <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
                         <div class="panel-heading" style=" color: #fff">
-                            <button type="button" class="btn pull-right btn-close" data-dismiss="modal" >
+                            <button type="button" class="btn pull-right btn-close" data-dismiss="modal">
                                 x
                             </button>
-                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
-                            {{--<h3 class="pull-left panel-title">schol.io</h3>--}}
+                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo"> {{--
+                            <h3 class="pull-left panel-title">schol.io</h3>--}}
                         </div>
-
+    
                     </div>
                     <div class="panel-body">
-
+    
                         <div class="section2-container ">
                             <div class="inner-section" style="">
-                                <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/skillsb.png" alt=""> </i>@lang('teacher_profile.section.skills')</div>
+                                <div class="section-text centered-text">
+                                    <img class="modal-icon" src="/new/img/teacher/skillsb.png" alt=""> </i>@lang('teacher_profile.section.skills')</div>
                                 <div class="input-container">
-
-                                <div class="typeahead__container col-sm-8 polyfill-input-sc">
-                                                <div class="typeahead__field typeahead__query">
-                                                    <input label="Δεξιότητες/Ικανότητες"
-                                                           class="js-typeahead-skills demo-form ad-input" name="studies"
-                                                           type="text" placeholder="" autocomplete="off">
-                                                    <i class="icon-inp fa fa-list margin-top"></i>
-                                                </div>
-                                            </div>
-
+    
+                                    <div class="typeahead__container col-sm-8 polyfill-input-sc">
+                                        <div class="typeahead__field typeahead__query">
+                                            <input label="Δεξιότητες/Ικανότητες" class="js-typeahead-skills demo-form ad-input" name="skill" type="text" placeholder=""
+                                                autocomplete="off">
+                                            <i class="icon-inp fa fa-list margin-top"></i>
+                                        </div>
+                                    </div>
+    
                                 </div>
                             </div>
                         </div>
                     </div>
-
+    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" onClick="" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
+                        <button type="button" onClick="document.getElementById('form-skills').submit()" class="btn btn-info">Αποθήκευση</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div><!-- /.modal -->
+    </div>
+    <!-- /.modal -->
 
 @endsection
 

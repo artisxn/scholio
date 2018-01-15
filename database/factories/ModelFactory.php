@@ -169,8 +169,8 @@ $factory->define(App\Models\Work::class, function (Faker\Generator $faker) {
     return [
         'job_id' => App\Models\Job::find($faker->numberBetween($min = 1, $max = 10))->id,
         'company_id' => App\Models\Company::find($faker->numberBetween($min = 1, $max = 10))->id,
-        'from' => Carbon::now()->subYears(5),
-        'until' => Carbon::now(),
+        'from' => '1/2010',
+        'until' => '1/2018',
     ];
 });
 
@@ -206,8 +206,8 @@ $factory->define(App\Models\Certificate::class, function (Faker\Generator $faker
     return [
         'study_id' => App\Models\Cvteacherstudy::find($faker->numberBetween($min = 1, $max = 10))->id,
         'university_id' => App\Models\University::find($faker->numberBetween($min = 1, $max = 10))->id,
-        'from' => Carbon::now()->subYears(5),
-        'until' => Carbon::now(),
+        'from' => '1/2010',
+        'until' => '1/2018',
     ];
 });
 

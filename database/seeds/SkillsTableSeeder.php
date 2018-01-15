@@ -73,6 +73,5 @@ class SkillsTableSeeder extends Seeder
             User::find($teacher)->addFakeSkill(Skill::find($skill), User::find($user));
             $user++;
         }
-
     }
 }

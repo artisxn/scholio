@@ -45,6 +45,27 @@ Route::group(['middleware' => 'is.teacher', 'prefix' => 'teacher'], function () 
         return redirect('panel/users/teacher/cv');
     })->name('teacher-cv-about-post');
 
+    Route::post('/cv/update/skills', function () {
+        $skill = request()->skill;
+
+        $skill_model = Skill::where('name', $skill)->first();
+
+        if(!$skill_model){
+            $newSkill = new Skill;
+            $newSkill->name = $skill;
+            $newSkill->save();
+            $skill_model = $newSkill;
+        }
+
+        /////////////////
+        //////////////////
+        //////////////
+        /////////////////
+        ///////////
+
+        return redirect('panel/users/teacher/cv');
+    })->name('teacher-cv-skills');
+
     Route::post('/cv/update/experience', function(){
         $job = request()->job;
         $company = request()->company;
