@@ -430,7 +430,7 @@
     /* ///////////////////////////////////////////////////////////////////////////// */
     /* //////////////////////// Scholarship Profile //////////////////////////////// */
 
-    
+
 
     .criteria-img{height: 25px; margin: 7px 0 0 10px;}
 
@@ -855,14 +855,14 @@
                 levels_disabled: true,
                 financial_amount: 0,
                 financial_value: [],
-                financial_options: [ 
-                    { id:1, name:window.lang.panel_scholarships.create.financial1, metric: '%', icon: '/panel/assets/images/steps/step1-reduce2.png' }, 
-                    { id:2, name:window.lang.panel_scholarships.create.financial2, metric: '€', icon: '/panel/assets/images/steps/step1-hand2.png' }, 
+                financial_options: [
+                    { id:1, name:window.lang.panel_scholarships.create.financial1, metric: '%', icon: '/panel/assets/images/steps/step1-reduce2.png' },
+                    { id:2, name:window.lang.panel_scholarships.create.financial2, metric: '€', icon: '/panel/assets/images/steps/step1-hand2.png' },
                     { id:3, name:window.lang.panel_scholarships.create.financial3, metric: 'Μήνες', icon: '/panel/assets/images/steps/step1-clock2.png' }
                 ],
                 criteria_amount: 0,
                 criteria_value: [],
-                criteria_options: [ 
+                criteria_options: [
                      { id: 1, name: window.lang.panel_scholarships.create.criteria1, icon: '/panel/assets/images/steps/talent.png' },
                      { id: 2, name: window.lang.panel_scholarships.create.criteria2, icon: '/panel/assets/images/steps/medal.png' },
                      { id: 3, name: window.lang.panel_scholarships.create.criteria3, icon: '/panel/assets/images/steps/social.png' },
@@ -928,7 +928,7 @@
                 axios.get('/api/school/getLevels').then(({data})=>{
                     this.level_options = data;
                 })
-                
+
             },
 
             uniqueArray(arr){
@@ -1079,7 +1079,7 @@
                 if(this.testStudy && this.testStudy.length > 1) this.multipleSectionsSelected = !this.uniqueArray(parent.testStudy)
                 else this.multipleSectionsSelected = false
 
-                if(this.study_value && this.study_value.length > 0) this.terms_disabled = false 
+                if(this.study_value && this.study_value.length > 0) this.terms_disabled = false
                 else this.terms_disabled = true
             }
         },
