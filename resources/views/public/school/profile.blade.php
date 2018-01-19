@@ -400,7 +400,7 @@
 
                         @if($school->settings->social)
                             <ul class="nav nav-ul socials" id="" style="">
-                            @foreach(auth()->user()->socialLinks as $link)
+                            @foreach($school->admin->socialLinks as $link)
                                 <li>
                                     <a class="lg-pull-left" href="{{ $link->link }}" target="_blank">
                                         <i style="" class="social fa fa-{{ $link->name }}" aria-hidden="true"></i>
@@ -519,7 +519,7 @@
 
 
 
-                              @if($school->settings->statistics)
+                              
                               <div class="xxs-custom-line"></div>
                               <div class="col-xs-5 col-sm-4 pad-left-0 pull-right xxs-custom-stats">
 
@@ -539,6 +539,7 @@
                                     </span>
                                   </div>
 
+                                 @if($school->settings->statistics)
                                   <div class="clearfix pad-top-10"></div>
                                   <span class="">
                                         <i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i>
@@ -553,19 +554,14 @@
                                         <span class="pad-left-2 pad-bot-10">@lang('profile.statistics.teachers')</span>
                                          <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
                                   </span>
+
+                                 @endif
                               </div>
-                               @endif
+                               
 
                             </div>
 
                         </div>
-
-
-
-
-
-
-
 
 
 @if($school->settings->about)
@@ -996,19 +992,14 @@
 
 
                     <div class="">
-                    @if($school->settings->statistics)
+                    
                         <div class=" box left-box2 sc-t-grey">
                             <div class="col-lg-12 margin-top-30" id="box-2nd" style="">
                                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-5">@lang('profile.statistics.scholarships')</span>
                                 <span class="pull-right badge" style="margin-right: -4px"> @{{contactInfo.activeScholarships}}</span>
                                 <br>
-                                <div class="pad-top-20"></div>
-                                <span><i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">@lang('profile.statistics.students')</span>
-                                <span class="pull-left pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">@lang('profile.statistics.students_s')</span>
-                                <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
-                                <br>
+                                
                                 <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
                                     <div class="pad-top-20"></div>
                                     <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
@@ -1016,16 +1007,27 @@
                                     <span class="pull-right">@{{contactInfo.lengthStudies}}</span>
                                     <br>
                                 </div>
+
+                                 @if($school->settings->statistics)
+                                <div class="pad-top-20"></div>
+                                <span>
+                                    <i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i>
+                                </span>
+                                <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">@lang('profile.statistics.students')</span>
+                                <span class="pull-left pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">@lang('profile.statistics.students_s')</span>
+                                <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
+                                <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-2 pad-bot-10">@lang('profile.statistics.teachers')</span>
                                 <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
+                                 @endif
 
                             </div>
 
                             <div class="clearfix"></div>
                         </div>
-                        @endif
+                        
 
                         @if($school->settings->map)
                         <div class="box" style="margin-top: 30px; margin-bottom: 90px;">

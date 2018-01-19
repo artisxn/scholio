@@ -13,7 +13,7 @@ use App\Models\Study;
 use App\Models\Tag;
 use App\Models\Temp;
 use App\Notifications\SchoolAcceptedUser;
-use App\ScholarshipLimit;
+use App\Models\ScholarshipLimit;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -122,6 +122,7 @@ Route::post('/school/scholarshipSave', function () {
         $scholarship->school_id = auth()->user()->info->id;
         $scholarship->financial_id = request()->financial;
         $scholarship->financial_amount = request()->financial_amount;
+        $scholarship->price = request()->price;
         if (count(request()->studies) == 1) {
             $scholarship->study_id = request()->studies[0]['id'];
             $scholarship->multiple = 0;

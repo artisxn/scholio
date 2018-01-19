@@ -8,7 +8,6 @@ use App\Models\School;
 use App\Models\Student;
 use App\Models\Study;
 use App\Models\Tag;
-use App\ScholarshipLimit;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -541,7 +540,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         ]);
 
         foreach (School::all() as $school) {
-            $scholarshipLimit = new ScholarshipLimit;
+            $scholarshipLimit = new App\Models\ScholarshipLimit;
             $scholarshipLimit->school_id = $school->id;
             $scholarshipLimit->save();
         }

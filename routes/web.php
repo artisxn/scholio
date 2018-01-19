@@ -10,8 +10,29 @@ use App\Models\SchoolSetting;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
+use App\Events\NewSubscription;
 
 Scholio::soonRoutes();
+
+Route::get('/admin', function(){
+    return view('panel.pages.admin.settings');
+})->middleware(['auth', 'is.admin']);
+
+Route::post('/admin/subscription', function(){
+    $user = App\User::find(request()->userID);
+    $plan = request()->plan;
+    $limits = [
+        'cr1' => request()->talent,
+        'cr2' => request()->excellent,
+        'cr3' => request()->social,
+        'cr4' => request()->friends,
+        'cr5' => request()->open,
+    ];
+
+    event(new NewSubscription($user, $plan, $limits));
+    return back();
+
+})->middleware(['auth', 'is.admin']);
 
 Route::get('/test', function () {
     return view('scholarship-create-test');

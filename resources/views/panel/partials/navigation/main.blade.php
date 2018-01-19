@@ -1,13 +1,14 @@
 <div class="left side-menu"  style="position: fixed;">
     <div class="user-details">
-
-        <div class="pull-left">
-        @if(auth()->user()->role == 'school')
-            <img src="{{substr(Auth::user()->info->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->info->logo }}" alt="" class="thumb-md" style="margin-top: 5px">
-        @else
-            <img src="{{substr(Auth::user()->info->avatar, 0, 4) == 'http' ? '' : ''}}{{ Auth::user()->info->avatar }}" alt="" class="thumb-md" style="margin-top: 5px">
+        @if(auth()->user()->role != 'admin')
+            <div class="pull-left">
+            @if(auth()->user()->role == 'school')
+                <img src="{{substr(Auth::user()->info->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->info->logo }}" alt="" class="thumb-md" style="margin-top: 5px">
+            @else
+                <img src="{{substr(Auth::user()->info->avatar, 0, 4) == 'http' ? '' : ''}}{{ Auth::user()->info->avatar }}" alt="" class="thumb-md" style="margin-top: 5px">
+            @endif
+            </div>
         @endif
-        </div>
         <div class="user-info">
             <div class="dropdown">
                     <span class="" style="font-weight: 100; font-size: 95%; color: #fff;">

@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Models\Subscription;
 
 class User extends Authenticatable
 {
@@ -193,5 +194,9 @@ class User extends Authenticatable
     public function studyConnection()
     {
         return $this->belongsToMany(Study::class, 'study_user')->withPivot('school_id', 'study_id');
+    }
+
+    public function subscription(){
+        return $this->hasOne(Subscription::class, 'user_id');
     }
 }

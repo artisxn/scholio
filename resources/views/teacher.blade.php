@@ -241,7 +241,9 @@
                                           {{ $work->company->name }}
                                     </div>
                                     <div class="t3">
-                                        {{ \Carbon\Carbon::parse($work->from)->year }} - {{ \Carbon\Carbon::parse($work->until)->year }}
+
+                                         {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->from)->toDateTimeString())->year }} - {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y',
+                                        $work->until)->toDateTimeString())->year }}
                                     </div>
                                 @endforeach
                             @endif
@@ -259,7 +261,8 @@
                                         {{ $certificate->university->name  }}
                                     </div>
                                     <div class="t3">
-                                        {{ \Carbon\Carbon::parse($certificate->from)->year }} - {{ \Carbon\Carbon::parse($certificate->until)->year }}
+                                         {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->from)->toDateTimeString())->year }} - {{
+                                        \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->until)->toDateTimeString())->year }}
                                     </div>
                                 @endforeach
                                 <hr>

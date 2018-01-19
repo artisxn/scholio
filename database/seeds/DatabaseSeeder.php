@@ -5,6 +5,9 @@ use App\Models\SchoolSetting;
 use App\Scholio\Scholio;
 use Illuminate\Database\Seeder;
 use App\Key;
+use App\Models\Subscription;
+use App\User;
+use App\Models\ScholarshipLimit;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillsTableSeeder::class);
         $this->call(SocialLinksTableSeeder::class);
         $this->call(DummyScholarshipsTableSeeder::class);
+        $this->call(SubscriptionPlansSeederTable::class);
 
         $keys = new Key;
         $keys->login = 1;
@@ -38,6 +42,13 @@ class DatabaseSeeder extends Seeder
         $keys->save();
 
         foreach (School::all() as $school) {
+            $subscription = new Subscription;
+            $subscription->user_id = $school->admin->id;
+            // if($school->id == 1){
+            //     $subscription->plan_id = 2;
+            // }
+            $subscription->save();
+
             $settings = new SchoolSetting;
             $settings->school_id = $school->id;
             $settings->save();
@@ -56,5 +67,32 @@ class DatabaseSeeder extends Seeder
                 }
             }
         }
+
+        // Only for development
+        DB::table('scholarship_limits')->truncate();
+        foreach (School::all() as $school) {
+            $scholarshipLimit = new ScholarshipLimit;
+            $scholarshipLimit->school_id = $school->id;
+            $scholarshipLimit->save();
+        }
+
+        // Create Admin Users
+        $user1 = new User;
+        $user1->name = 'Apostolos Siokas';
+        $user1->email = 'apostolos@schol.io';
+        $user1->password = 'Scholio13apostolos';
+        $user1->role = 'admin';
+        $user1->status = 'admin';
+        $user1->username = 'siokas';
+        $user1->save();
+
+        $user1 = new User;
+        $user1->name = 'Kostis Freiderikos';
+        $user1->email = 'kostis@schol.io';
+        $user1->password = 'Scholio13kostis';
+        $user1->role = 'admin';
+        $user1->status = 'admin';
+        $user1->username = 'kfrei';
+        $user1->save();
     }
 }

@@ -2,35 +2,37 @@
 {{--Styling on panel/pages/school/dashboard/main.blade.php--}}
 
 <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6" >
-        <a href="{{ url('/panel/school/students') }}" id="btn-students">
-            <div class="panel-box box1">
-                <img src="/panel/assets/images/dashBoard/students3.png"        alt="student image"  class="panel-image hidden"  id="img-student-color">
-                <img src="/panel/assets/images/dashBoard/students3Outline.png" alt="student image"  class="panel-image visible" id="img-student-black">
+
+     @if(auth()->user()->subscription->plan->id != 1)
+        <div class="col-lg-3 col-md-4 col-sm-6" >
+            <a href="{{ url('/panel/school/students') }}" id="btn-students">
+                <div class="panel-box box1">
+                    <img src="/panel/assets/images/dashBoard/students3.png"        alt="student image"  class="panel-image hidden"  id="img-student-color">
+                    <img src="/panel/assets/images/dashBoard/students3Outline.png" alt="student image"  class="panel-image visible" id="img-student-black">
 
 
-                <span class="sc-t-gray" id="students-text">
-                    <span class="panel-counter">{{ count($data['students']) }}</span>
-                    <span class="panel-text">@lang('panel/schools/dashboard.students')</span>
-                </span>
-            </div>
-        </a>
-    </div>
+                    <span class="sc-t-gray" id="students-text">
+                        <span class="panel-counter">{{ count($data['students']) }}</span>
+                        <span class="panel-text">@lang('panel/schools/dashboard.students')</span>
+                    </span>
+                </div>
+            </a>
+        </div>
 
+        <div class="col-lg-4 col-md-8 col-sm-6">
+            <a href="{{ url('/panel/school/teachers') }}" id="btn-teachers">
+                <div class="panel-box box2">
+                    <img src="/panel/assets/images/dashBoard/teachers2.png"        alt="teacher image" class="panel-image hidden"   id="img-teacher-color">
+                    <img src="/panel/assets/images/dashBoard/teachers2Outline.png" alt="teacher image" class="panel-image visible"  id="img-teacher-black">
 
-    <div class="col-lg-4 col-md-8 col-sm-6">
-        <a href="{{ url('/panel/school/teachers') }}" id="btn-teachers">
-            <div class="panel-box box2">
-                <img src="/panel/assets/images/dashBoard/teachers2.png"        alt="teacher image" class="panel-image hidden"   id="img-teacher-color">
-                <img src="/panel/assets/images/dashBoard/teachers2Outline.png" alt="teacher image" class="panel-image visible"  id="img-teacher-black">
-
-                <span class="sc-t-gray" id="teachers-text">
-                    <span class="panel-counter">{{ count($data['teachers']) }}</span>
-                    <span class="panel-text">@lang('panel/schools/dashboard.teachers')</span>
-                </span>
-            </div>
-        </a>
-    </div>
+                    <span class="sc-t-gray" id="teachers-text">
+                        <span class="panel-counter">{{ count($data['teachers']) }}</span>
+                        <span class="panel-text">@lang('panel/schools/dashboard.teachers')</span>
+                    </span>
+                </div>
+            </a>
+        </div>
+    @endif
     <!-- ==================== -->
     {{--<div class="clearfix"></div>--}}
 
@@ -92,31 +94,32 @@
 
     <!-- ==================== -->
     {{--<div class="clearfix"></div>--}}
-
-    <div class="col-lg-3 col-md-4 col-sm-6">
-        <a href="{{ url('panel/school/reviews/view') }}" id="btn-reviews">
-            <div class="panel-box box2">
-                <img src="/panel/assets/images/dashBoard/reviews.png"        alt="reviews image" class="panel-image hidden"   id="img-reviews-color">
-                <img src="/panel/assets/images/dashBoard/reviewsOutline.png" alt="reviews image" class="panel-image visible"  id="img-reviews-black">
-                 <span class="sc-t-gray" id="reviews-text">
-                    <span class="panel-counter">{{ $data['reviews'] }}</span>
-                    <span class="panel-text">@lang('panel/schools/dashboard.reviews')</span>
-                 </span>
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 ">
-        <a href="{{ url('/panel/dasboard') }}" id="btn-views">
-            <div class="panel-box box2">
-                <img src="/panel/assets/images/dashBoard/views.png"        alt="views image" class="panel-image hidden"   id="img-views-color">
-                <img src="/panel/assets/images/dashBoard/viewsOutline.png" alt="views image" class="panel-image visible"  id="img-views-black">
-                 <span class="sc-t-gray" id="views-text">
-                    <span class="panel-counter">{{ $data['pageviews'] }}</span>
-                    <span class="panel-text">@lang('panel/schools/dashboard.pageviews')</span>
-                 </span>
-            </div>
-        </a>
-    </div>
+     @if(auth()->user()->subscription->plan->id != 1)
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <a href="{{ url('panel/school/reviews/view') }}" id="btn-reviews">
+                <div class="panel-box box2">
+                    <img src="/panel/assets/images/dashBoard/reviews.png"        alt="reviews image" class="panel-image hidden"   id="img-reviews-color">
+                    <img src="/panel/assets/images/dashBoard/reviewsOutline.png" alt="reviews image" class="panel-image visible"  id="img-reviews-black">
+                    <span class="sc-t-gray" id="reviews-text">
+                        <span class="panel-counter">{{ $data['reviews'] }}</span>
+                        <span class="panel-text">@lang('panel/schools/dashboard.reviews')</span>
+                    </span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 ">
+            <a href="{{ url('/panel/dasboard') }}" id="btn-views">
+                <div class="panel-box box2">
+                    <img src="/panel/assets/images/dashBoard/views.png"        alt="views image" class="panel-image hidden"   id="img-views-color">
+                    <img src="/panel/assets/images/dashBoard/viewsOutline.png" alt="views image" class="panel-image visible"  id="img-views-black">
+                    <span class="sc-t-gray" id="views-text">
+                        <span class="panel-counter">{{ $data['pageviews'] }}</span>
+                        <span class="panel-text">@lang('panel/schools/dashboard.pageviews')</span>
+                    </span>
+                </div>
+            </a>
+        </div>
+    @endif
 
 
     <div class="col-lg-3 col-md-4 col-sm-6 hidden">

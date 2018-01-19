@@ -11,29 +11,33 @@
     {{--<li class="text-muted menu-title">@lang('panel/schools/navigation.management')</li>--}}
 <div style="height: 1px; margin: 0 15px; background-color: #3e5f6e"></div>
 
-    <li class="has_sub link">
-        <a href="#"><i class="icon-people"></i> <span> @lang('panel/schools/navigation.resource.title') </span> </a>
-        <ul class="list-unstyled submenu">
-            <li>
-                <a href="/panel/school/students" class="{{ request()->path() == 'panel/school/students' ? 'active' : ''}}">
-                    @lang('panel/schools/navigation.resource.students')
-                    <span class="pull-right badge  badge-nav  " >{{ count(auth()->user()->info->connected) }}</span>
-                </a>
-            </li>
-            <li><a href="/panel/school/teachers" class="{{ request()->path() == 'panel/school/teachers' ? 'active' : ''}}">@lang('panel/schools/navigation.resource.teachers')
-                <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->connectedTeachers) }}</span>
-            </a></li>
-            <li><a href="/panel/school/requests" class="{{ request()->path() == 'panel/school/requests' ? 'active' : ''}}">@lang('panel/schools/navigation.resource.requests')
-                <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->apply) }}</span>
-            </a></li>
-        </ul>
-    </li>
+     @if(auth()->user()->subscription->plan->id != 1)
+        <li class="has_sub link">
+            <a href="#"><i class="icon-people"></i> <span> @lang('panel/schools/navigation.resource.title') </span> </a>
+            <ul class="list-unstyled submenu">
+                <li>
+                    <a href="/panel/school/students" class="{{ request()->path() == 'panel/school/students' ? 'active' : ''}}">
+                        @lang('panel/schools/navigation.resource.students')
+                        <span class="pull-right badge  badge-nav  " >{{ count(auth()->user()->info->connected) }}</span>
+                    </a>
+                </li>
+                <li><a href="/panel/school/teachers" class="{{ request()->path() == 'panel/school/teachers' ? 'active' : ''}}">@lang('panel/schools/navigation.resource.teachers')
+                    <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->connectedTeachers) }}</span>
+                </a></li>
+                <li><a href="/panel/school/requests" class="{{ request()->path() == 'panel/school/requests' ? 'active' : ''}}">@lang('panel/schools/navigation.resource.requests')
+                    <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->apply) }}</span>
+                </a></li>
+            </ul>
+        </li>
+    @endif
 
     <li class="has_sub link">
         <a href="#" >
             <i class="ion-android-user-menu"></i><span> @lang('panel/schools/navigation.profile.title') </span> </a>
         <ul class="list-unstyled submenu">
-            <li><a href="{{ url('panel/school/settings/public') }}" class="{{ request()->path() == 'panel/school/settings/public' ? 'active' : ''}}">@lang('panel/schools/navigation.profile.settings')</a></li>
+             @if(auth()->user()->subscription->plan->id != 1)
+                <li><a href="{{ url('panel/school/settings/public') }}" class="{{ request()->path() == 'panel/school/settings/public' ? 'active' : ''}}">@lang('panel/schools/navigation.profile.settings')</a></li>
+             @endif
             <li><a href='/panel/school/profile' class="{{ request()->path() == 'panel/school/profile' ? 'active' : ''}}">@lang('panel/schools/navigation.profile.contact')</a></li>
             <li><a href='/panel/school/studies' class="{{ request()->path() == 'panel/school/studies' ? 'active' : ''}}">@lang('panel/schools/navigation.profile.studies')
                 <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->study) }}</span>
@@ -70,14 +74,16 @@
         {{--</ul>--}}
     {{--</li>--}}
 
-    <li class="has_sub">
-        <a href="#" class=""><i class="ion-ios7-star-half"></i><span> @lang('panel/schools/navigation.reviews.title') </span></a>
-        <ul class="list-unstyled">
-            <li><a href="{{ url('panel/school/reviews/view') }}" class="{{ request()->path() == 'panel/school/reviews/view' ? 'active' : ''}}">@lang('panel/schools/navigation.reviews.show')
-                <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->reviews) }}</span>
-            </a></li>
-        </ul>
-    </li>
+     @if(auth()->user()->subscription->plan->id != 1)
+        <li class="has_sub">
+            <a href="#" class=""><i class="ion-ios7-star-half"></i><span> @lang('panel/schools/navigation.reviews.title') </span></a>
+            <ul class="list-unstyled">
+                <li><a href="{{ url('panel/school/reviews/view') }}" class="{{ request()->path() == 'panel/school/reviews/view' ? 'active' : ''}}">@lang('panel/schools/navigation.reviews.show')
+                    <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->reviews) }}</span>
+                </a></li>
+            </ul>
+        </li>
+    @endif
 
     {{-- <li class="has_sub">
         <a href="#" class=""><i class="fa fa-graduation-cap"></i><span> Τάξεις </span></a>

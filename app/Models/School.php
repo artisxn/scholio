@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\ScholarshipLimit;
+use App\Models\ScholarshipLimit;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Model;

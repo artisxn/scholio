@@ -36,6 +36,13 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\CreateRequestAndNotifySchool',
         ],
 
+        'App\Events\NewSubscription' => [
+            // notify school via email
+            // notify us via slack
+            'App\Listeners\LoadScholarships',
+            'App\Listeners\ChangeSubscriptionStatus',
+        ]
+
     ];
 
     /**

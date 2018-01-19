@@ -23,9 +23,9 @@ class CreateSchoolSettingsTable extends Migration
             $table->boolean('about')->default(1);
             $table->boolean('studies')->default(1);
             $table->boolean('scholarships')->default(1);
-            $table->boolean('reviews')->default(1);
-            $table->boolean('teachers')->default(1);
-            $table->boolean('statistics')->default(1);
+            $table->boolean('reviews')->default(0);
+            $table->boolean('teachers')->default(0);
+            $table->boolean('statistics')->default(0);
             $table->boolean('info')->default(1);
 
             // For Scholarship Admissions
