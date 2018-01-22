@@ -195,8 +195,8 @@ echo json_encode($trans);
                         </div>
                     </div>
 
-                    @include('panel.partials.footer.main')
-
+                    {{-- @include('panel.partials.footer.main') --}}
+                
                 </div>
 
             </div>
