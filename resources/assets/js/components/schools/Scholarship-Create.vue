@@ -96,7 +96,7 @@
                         <multiselect v-model="criteria_value" :options="criteria_options" track-by="name" label="name" :close-on-select="true"
                             :show-labels="false" placeholder="Επιλέξτε Κριτήρια" :deselectLabel="lang('panel_studies.input-delete')"
                             :selectLabel="lang('panel_scholarships.create.select')" :selectedLabel="lang('panel_scholarships.create.selected')"
-                            :disabled="criteria_disabled" :custom-label="customLabel" :multiple="false" :taggable="true" readonly="true">
+                            :disabled="criteria_disabled" :custom-label="customLabel" :multiple="false" :taggable="true">
 
                             <template slot="option" slot-scope="props">
                                 <div class="option__desc">
@@ -160,7 +160,7 @@
                                 :selectLabel="lang('panel_scholarships.create.select')" 
                                 :selectedLabel="lang('panel_scholarships.create.selected')"
                                 :disabled="financial_disabled"
-                                 readonly="true">
+                                >
                                 </multiselect>
                             </div>
                             <div class="financial-amount" v-if="financial_value">
@@ -230,7 +230,7 @@
                                 <multiselect v-model="level_value" :options="level_options" track-by="name" label="name" :close-on-select="true"
                                     :show-labels="false" placeholder="Επιλέξτε Επίπεδο Σπουδών" :deselectLabel="lang('panel_studies.input-delete')"
                                     :selectLabel="lang('panel_scholarships.create.select')" :selectedLabel="lang('panel_scholarships.create.selected')"
-                                    :disabled="levels_disabled" readonly="true"></multiselect>
+                                    :disabled="levels_disabled"></multiselect>
                             </div>
 
                         </div>
@@ -239,7 +239,7 @@
                             <div class="" style="margin: 25px 0 6px 0 ">Αντικείμενο Σπουδών</div>
                             <div class="study">
                                 <multiselect style="" v-model="study_value" :options="study_options" :multiple="multipleFeature" group-values="study" group-label="section"
-                                    placeholder="Επιλέξτε Αντικείμενα Σπουδών" track-by="name" label="name" :disabled="studies_disabled" readonly="true"
+                                    placeholder="Επιλέξτε Αντικείμενα Σπουδών" track-by="name" label="name" :disabled="studies_disabled"
                                     @remove="allStudies = false">
                                     <span slot="noResult">Oops! Δεν βρέθηκε...</span>
                                 </multiselect>
@@ -324,7 +324,7 @@
                                     <div> {{ lang('panel_scholarships.create.active') }}: </div>
                                     <div>
                                         <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px;"
-                                            v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)" readonly="true" />
+                                            v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)" readonly="readonly" />
                                     </div>
 
                                 </div>
@@ -350,7 +350,7 @@
                             <div class="keys-text">Προσθέστε λέξεις/ετικέτες "κλειδιά" για στοχευμένη αναζήτηση υποτροφίας</div>
                             <multiselect v-model="value" tag-placeholder="Προσθήκη νέας ετικέτας" placeholder="Αναζητήστε ή Προσθέστε ετικέτα" label="name"
                                 track-by="code" :options="options" deselectLabel="Αφαίρεση" :selectLabel="lang('panel_scholarships.create.select')"
-                                :selectedLabel="lang('panel_scholarships.create.selected')" :multiple="true" :taggable="true" readonly="true"
+                                :selectedLabel="lang('panel_scholarships.create.selected')" :multiple="true" :taggable="true"
                                 @tag="addTag">
                             </multiselect>
                         </div>
@@ -964,7 +964,7 @@
         .section-box {
             width: 102%;
             margin-left: -1%;
-            height: 90%;
+            height: 93%;
             margin-top: -20px;
         }
         .scholar-frame-fixed {
