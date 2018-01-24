@@ -16,6 +16,7 @@
         .inner-section,.inner-section2{  padding: 5px 5px 25px 5px ; border: 1px solid #aaa; border-radius: 8px;
             /*background-color: #F1F4F5;*/
             background-color: #f8f8f8;
+
         }
 
         /*.section-text{color: #888; font-size: 110%; font-weight: 300; margin:-25px 0 30px 10px;*/
@@ -23,8 +24,8 @@
             /*box-shadow: 0 0 9px #aaa}*/
 
 
-        .inner-section2{ min-width: 100%; min-height: 70%; margin: 0;}
-        .section2-container{ padding: 0;}
+        .inner-section2{ min-width: 100%; min-height: 92%; margin: 0;}
+        .section2-container{ padding: 0; min-height: 190px;}
 
         .section-text,.section-text2{color: #888; font-size: 110%; font-weight: 300; margin:-25px 0 30px 10px;
             border: 1px solid #aaa; border-radius: 6px; padding: 7px; min-width: 190px; max-width: 270px; background-color: #fafafa;
@@ -158,10 +159,18 @@
         <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-pencil" style="margin-right: 10px;"></i>Σημειώσεις</div>
 
         <textarea name="notes" class="notes" placeholder="Εδώ κρατήστε τις σημειώσεις σας για τη συγκεκριμένη αίτηση">{{ $admission->notes }}</textarea>
+
+
+        <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-star" style=""></i><i class="icon-title  fa fa-star-half-o" style="margin-right: 10px;"></i>Αξιολόγηση Αίτησης </div>
+
+        <textarea name="evaluation" class="notes" placeholder="Εδώ αφήστε την αξιολόγηση σας για ενημέρωση του σπουδαστή"></textarea>
+
+
         <div>
             <button type="submit" class="btn btn-save" > <i class="fa fa-save" style="margin-right: 10px"></i>Αποθήκευση</button>
         </div>
     </form>
+
 
 
 
