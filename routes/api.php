@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use App\Key;
+use App\Models\Cvteacherstudy;
 
 Scholio::bot();
 
@@ -308,6 +309,14 @@ Route::post('/school/studySave', function () {
             $newStudy->name = $study['name'];
             $newStudy->save();
             $study_id = $newStudy->id;
+
+            $cvteacherstudy = Cvteacherstudy::where('name', $newStudy->name)->first();
+
+            if (!$cvteacherstudy) {
+                $cvteacherstudy = new Cvteacherstudy;
+                $cvteacherstudy->name = $newStudy->name;
+                $cvteacherstudy->save();
+            }
         }
 
         if (!Study::find($study_id)->section->contains(Section::find($section_id))) {

@@ -8,6 +8,7 @@ use App\Models\SchoolTypes;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Models\University;
 
 class SchoolRegistrationController extends Controller
 {
@@ -93,6 +94,10 @@ class SchoolRegistrationController extends Controller
         $school->logo_id = $image->id;
 
         $school->save();
+
+        $university = new University;
+        $university->name = $name;
+        $university->save();
 
         auth()->login($user);
 

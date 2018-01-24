@@ -122,8 +122,8 @@
                 </a>
                         <div class="card-bottom">
 
-                            @if($as->criteria->id==1)
-                                <span class="pull-right feedback-icon" data-toggle="modal" data-target="#feedback-modal" >
+                            @if($as->criteria->id==1 && $admission->review)
+                                <span class="pull-right feedback-icon" data-toggle="modal" data-target="#feedback-modal-{{ $admission->id }}" >
                                     <i class="fa fa-star-half-o"></i>
                                     <i class="fa fa-star-half-o"></i>
                                     <i class="fa fa-star-half-o"></i>
@@ -158,39 +158,38 @@
 
 
             </div>
+
+            <!-- ====== feedback Modal  ======= -->
+            <div id="feedback-modal-{{$admission->id}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+            
+                        <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
+                            <div class="panel-heading" style=" color: #fff">
+                                <button type="button" class="btn pull-right btn-close" data-dismiss="modal">
+                                    x
+                                </button>
+                                <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
+                            </div>
+            
+                        </div>
+                        <div class="panel-body">
+                            {{ $admission->review }}
+                        </div>
+            
+            
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Κλείσιμο</button>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal -->
         @endforeach
 
     </div>
 
-
-
-    <!-- ====== feedback Modal  ======= -->
-    <div id="feedback-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
-                    <div class="panel-heading" style=" color: #fff">
-                        <button type="button" class="btn pull-right btn-close" data-dismiss="modal" >
-                            x
-                        </button>
-                        <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
-                    </div>
-
-                </div>
-                <div class="panel-body">
-                    Αξιολόγηση Αίτησης
-
-                </div>
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Κλείσιμο</button>
-                </div>
-
-            </div>
-        </div>
-    </div><!-- /.modal -->
 
 
 @endsection

@@ -161,10 +161,10 @@
         <textarea name="notes" class="notes" placeholder="Εδώ κρατήστε τις σημειώσεις σας για τη συγκεκριμένη αίτηση">{{ $admission->notes }}</textarea>
 
 
-        <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-star" style=""></i><i class="icon-title  fa fa-star-half-o" style="margin-right: 10px;"></i>Αξιολόγηση Αίτησης </div>
-
-        <textarea name="evaluation" class="notes" placeholder="Εδώ αφήστε την αξιολόγηση σας για ενημέρωση του σπουδαστή"></textarea>
-
+        @if($admission->scholarship->criteria->id == 1)
+            <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-star" style=""></i><i class="icon-title  fa fa-star-half-o" style="margin-right: 10px;"></i>Αξιολόγηση Αίτησης </div>
+            <textarea name="review" class="notes" placeholder="Εδώ αφήστε την αξιολόγηση σας για ενημέρωση του σπουδαστή">{{ $admission->review }}</textarea>
+        @endif
 
         <div>
             <button type="submit" class="btn btn-save" > <i class="fa fa-save" style="margin-right: 10px"></i>Αποθήκευση</button>

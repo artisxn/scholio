@@ -3,6 +3,7 @@
 use App\Models\Section;
 use App\Models\Study;
 use Illuminate\Database\Seeder;
+use App\Models\Cvteacherstudy;
 
 class StudiesTableSeeder extends Seeder
 {
@@ -980,6 +981,14 @@ class StudiesTableSeeder extends Seeder
             $study->name = $type['name'];
             // $study->id = $type['id'];
             $study->save();
+
+            $cvteacherstudy = Cvteacherstudy::where('name', $study->name)->first();
+
+            if (!$cvteacherstudy) {
+                $cvteacherstudy = new Cvteacherstudy;
+                $cvteacherstudy->name = $study->name;
+                $cvteacherstudy->save();
+            }
 //
             //            $section = Section::find($type['section_id']);
             $section = Section::find($type['id']);

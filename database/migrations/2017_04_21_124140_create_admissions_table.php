@@ -18,6 +18,7 @@ class CreateAdmissionsTable extends Migration
             $table->integer('scholarship_id');
             $table->integer('user_id');
             $table->text('notes')->nullable();
+            $table->text('review')->nullable();
             $table->timestamps();
         });
     }

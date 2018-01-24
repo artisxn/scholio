@@ -338,6 +338,15 @@
                                     </div>
                                 </div>
 
+                                <div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;" v-if="">
+                                    <div class="funkyradio" style="margin: 8px 0 0 0; text-align: center">
+                                        <div class="funkyradio-success exams-container" style="">
+                                            <input type="checkbox" id="price" v-model="price">
+                                            <label for="price" style="text-align: center;width: 80%; margin-left: -1%"> ΤΙΜΗ </label>
+                                        </div>
+                                    </div>
+                                </div>
+
 
 
                             </div>
@@ -1397,6 +1406,7 @@
                 end_at: null,
                 today: null,
                 exams: false,
+                price: null,
                 content: '<p> Αναφέρετε εδώ τους <strong> Όρους και Προϋποθεσεις </strong> της Υποτροφίας</p>',
                 terms: null,
                 tinyOptions: {
@@ -1524,7 +1534,8 @@
                     'terms': this.terms,
                     'tags': this.value,
                     'allWinners': this.allWinners,
-                    'winners': this.winners
+                    'winners': this.winners,
+                    'price': this.price
                 }).then(({ data }) => {
                     console.log(data)
                     if (data.message == 'SAVED SUCCESSFULLY') window.location = data.url

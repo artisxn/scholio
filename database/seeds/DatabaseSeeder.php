@@ -8,6 +8,7 @@ use App\Key;
 use App\Models\Subscription;
 use App\User;
 use App\Models\ScholarshipLimit;
+use App\Models\University;
 
 class DatabaseSeeder extends Seeder
 {
@@ -42,6 +43,10 @@ class DatabaseSeeder extends Seeder
         $keys->save();
 
         foreach (School::all() as $school) {
+            $university = new University;
+            $university->name = $school->admin->name;
+            $university->save();
+
             $subscription = new Subscription;
             $subscription->user_id = $school->admin->id;
             // if($school->id == 1){

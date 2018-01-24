@@ -1,8 +1,8 @@
 <!-- ====== Work Modal Edit ======= -->
-<div id="work-modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+<div id="work-modal-edit-{{ $work->id }}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="form-experience-edit" method="POST" action="{{ route('teacher-cv-experience-edit') }}" name="form-work">
+            <form id="form-experience-edit-{{ $work->id }}" method="POST" action="{{ route('teacher-cv-experience-edit') }}" name="form-work">
                 {{ csrf_field() }}
                 <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
                     <div class="panel-heading" style=" color: #fff">
@@ -58,16 +58,16 @@
                                         alt="">--}}
                                 </div>
                                 <input type="hidden" name="workID" value="{{ $work->id }}">
-                                <input type="hidden" id="del" name="del" value="no">
+                                <input type="hidden" id="delwork-{{ $work->id }}" name="del" value="no">
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" onClick="document.getElementById('del').value = 'yes'; document.getElementById('form-experience-edit').submit()" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
+                    <button type="button" onClick="document.getElementById('delwork-{{ $work->id }}').value = 'yes'; document.getElementById('form-experience-edit-{{ $work->id }}').submit()" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                    <button type="button" onClick="document.getElementById('form-experience-edit').submit()" class="btn btn-info">Αποθήκευση</button>
+                    <button type="button" onClick="document.getElementById('form-experience-edit-{{ $work->id }}').submit()" class="btn btn-info">Αποθήκευση</button>
                 </div>
             </form>
         </div>

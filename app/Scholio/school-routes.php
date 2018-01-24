@@ -5,6 +5,7 @@ use App\Models\Badge;
 use App\Models\Lecture;
 use App\Models\Study;
 use App\User;
+use App\Models\Cvteacherstudy;
 Route::get('scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate')->name('scholarship-create');
 Route::get('scholarships/view', 'AdminPanelController@scholarshipView')->name('scholarship-view');
@@ -51,6 +52,7 @@ Route::group(['middleware' => 'is.school', 'prefix' => 'class'], function () {
         $students = $school->students()->get();
         $studies = $school->study;
         $teachers = $school->teachers()->get();
+
         return view('panel.pages.classes.create', compact('teachers', 'students', 'studies'));
     });
 

@@ -1,9 +1,9 @@
 <!-- ====== Studies Modal  Edit======= -->
-<div id="studies-modal-edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+<div id="studies-modal-edit-{{ $certificate->id }}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
     <div class="modal-dialog">
 
         <div class="modal-content">
-            <form id="form-study-edit" method="POST" action="{{ route('teacher-cv-certificate-edit') }}" name="form-studies">
+            <form id="form-study-edit-{{ $certificate->id }}" method="POST" action="{{ route('teacher-cv-certificate-edit') }}" name="form-studies">
                 {{ csrf_field() }}
                 <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
                     <div class="panel-heading" style=" color: #fff">
@@ -57,7 +57,7 @@
                                 </div>
 
                                 <input type="hidden" name="certID" value="{{ $certificate->id }}">
-                                <input type="hidden" id="del" name="del" value="no">
+                                <input type="hidden" id="delstudy-{{ $certificate->id }}" name="del" value="no">
 
                             </div>
                         </div>
@@ -65,9 +65,9 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" onClick="document.getElementById('del').value = 'yes'; document.getElementById('form-study-edit').submit()" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
+                    <button type="button" onClick="document.getElementById('delstudy-{{ $certificate->id }}').value = 'yes'; document.getElementById('form-study-edit-{{ $certificate->id }}').submit()" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                    <button type="button" onClick="document.getElementById('form-study-edit').submit()" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
+                    <button type="button" onClick="document.getElementById('form-study-edit-{{ $certificate->id }}').submit()" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
                 </div>
             </form>
         </div>

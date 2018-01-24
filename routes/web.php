@@ -98,6 +98,10 @@ Route::get('public/donor', function () {
 });
 
 Route::post('/admission/{admission}/notes/save', function (Admission $admission) {
+    if($review = request()->review){
+        $admission->review = $review;
+    }
+
     $admission->notes = request()->notes;
     $admission->save();
     return back();

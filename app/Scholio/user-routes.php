@@ -33,7 +33,8 @@ Route::group(['middleware' => 'is.teacher', 'prefix' => 'teacher'], function () 
     Route::get('/cv', function () {
         $skills = Skill::all()->pluck('name');
         $cert = University::all()->pluck('name');
-        return view('panel.pages.teacher.profile.cv', compact('skills', 'cert'));
+        $study = Cvteacherstudy::all()->pluck('name');
+        return view('panel.pages.teacher.profile.cv', compact('skills', 'cert', 'study'));
     })->name('teacher-cv');
 
     Route::post('/cv/update/about', function () {
@@ -61,6 +62,12 @@ Route::group(['middleware' => 'is.teacher', 'prefix' => 'teacher'], function () 
 
         return redirect('panel/users/teacher/cv');
     })->name('teacher-cv-skills');
+
+    Route::post('/cv/delete/skills', function () {
+        $skill = Skill::find(request()->skill);
+        auth()->user()->skills()->detach($skill);
+        return redirect('panel/users/teacher/cv');
+    })->name('teacher-cv-skills-delete');
 
     Route::post('/cv/update/experience', function(){
         $job = request()->job;
