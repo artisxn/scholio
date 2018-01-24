@@ -964,7 +964,7 @@
         .section-box {
             width: 102%;
             margin-left: -1%;
-            height: 93%;
+            height: 94%;
             margin-top: -20px;
         }
         .scholar-frame-fixed {
@@ -1145,7 +1145,7 @@
        @media (max-width: 1024px) {
 
         iframe#editor_ifr {
-            height: 270px!important;
+            height: 240px!important;
         }
  
     }

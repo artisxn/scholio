@@ -295,10 +295,10 @@
                                         @endif
 
                                         <span id="count{{$skill->id}}" class="counter">
-                                            {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() }}
+                                            {{ $teacher->user->skills()->where('skill_id', $skill->id)->count() - 1 }}
                                         </span>
                                         <div id="bar{{$skill->id}}" class="skill-bar"
-                                            style="width: {{$teacher->user->skills()->where('skill_id', $skill->id)->count() * 25}}px; max-width: 95%" >
+                                            style="width: {{($teacher->user->skills()->where('skill_id', $skill->id)->count() - 1) * 25}}px; max-width: 95%" >
                                         </div>
 
                                     </span>

@@ -11,7 +11,8 @@
         
                     <div class="row1 xs-centered">
                         <span class="name">
-                            <span>{{ auth()->user()->info->name() }} </span>
+                            <span>{{ auth()->user()->info->name() }}
+                            </span>
                         </span>
         
         

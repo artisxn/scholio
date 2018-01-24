@@ -57,11 +57,7 @@ Route::group(['middleware' => 'is.teacher', 'prefix' => 'teacher'], function () 
             $skill_model = $newSkill;
         }
 
-        /////////////////
-        //////////////////
-        //////////////
-        /////////////////
-        ///////////
+        auth()->user()->addFakeSkill($skill_model, auth()->user());
 
         return redirect('panel/users/teacher/cv');
     })->name('teacher-cv-skills');
