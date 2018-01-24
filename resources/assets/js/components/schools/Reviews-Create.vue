@@ -32,7 +32,9 @@
     .up{margin-top: 3px;}
     .text-com{margin: 30px 0 10px 0; letter-spacing:0.5px;}
     .review-area{width: 355px; border-radius: 5px; height: 100px; resize: none; border: 1px solid #008da5}
-    .btn-save{margin: 15px 0 0 120px;}
+    .btn-save,.btn-save:focus,.btn-save:visited,.btn-save:active{margin: 15px 0 0 120px; border: none; background: #0090ab!important;  }
+    .btn-save:hover{background: #007a94!important;  }
+    .star:hover{cursor: pointer;}
 
     @media (max-width: 600px){
         .review-content{width: 390px; margin-left: auto; margin-right: auto; padding: 0 0 0 14px;}
