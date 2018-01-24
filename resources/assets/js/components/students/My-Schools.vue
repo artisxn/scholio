@@ -75,7 +75,7 @@
 
                     </div>
                 </div>
-                <div class="pull-right">
+                <div class="pull-right" v-if="mySchool.admin.subscription.plan_id == 2">
                     <div v-if="hasNOTReviewed(mySchool.id)" class="cont-btn" >
                         <a :href="'/panel/users/student/review/create/' + mySchool.id" class="btn btn-primary sc-btn">
                             Αξιολόγηση
@@ -108,6 +108,7 @@
                 axios.get('/api/student/mySchools')
                     .then(response => {
                         this.mySchools = response.data;
+                        console.log(response.data)
                     });
             },
 
@@ -130,7 +131,8 @@
         },
 
         mounted() {
-            console.log('mySchools-Table component mounted!')
+            console.log('my')
+            
             this.fetchReviews()
             this.getAllMySchools()
         }

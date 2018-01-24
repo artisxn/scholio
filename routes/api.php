@@ -612,7 +612,7 @@ Route::get('/skill/check', function () {
 
 Route::get('/student/mySchools', function () {
     $schools = auth()->user()->connectedSchool;
-    return $schools->load('admin');
+    return $schools->load('admin.subscription');
 })->middleware('auth:api');
 
 Route::get('/scholarship/{id}', function (Scholarship $id) {

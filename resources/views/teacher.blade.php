@@ -178,7 +178,7 @@
                 <span class="social hidden-xs">
                         @if(auth()->user()->socialLinks)
                             @foreach(auth()->user()->socialLinks as $link)
-                            <a href="{{$link->link}}" style="color: white;">
+                            <a href="{{ substr( $link->link, 0, 4 ) == 'http' ? $link->link : 'https://' . $link->link}}" style="color: white;" target="_blank">
                                 <span class="pull-right margin-right-25"><i class="fa fa-{{$link->name}}"></i></span>
                             </a>
                             @endforeach

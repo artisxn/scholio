@@ -108,7 +108,6 @@
             </a>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 ">
-            <a href="{{ url('/panel/dasboard') }}" id="btn-views">
                 <div class="panel-box box2">
                     <img src="/panel/assets/images/dashBoard/views.png"        alt="views image" class="panel-image hidden"   id="img-views-color">
                     <img src="/panel/assets/images/dashBoard/viewsOutline.png" alt="views image" class="panel-image visible"  id="img-views-black">
@@ -117,7 +116,6 @@
                         <span class="panel-text">@lang('panel/schools/dashboard.pageviews')</span>
                     </span>
                 </div>
-            </a>
         </div>
     @endif
 

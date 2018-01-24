@@ -178,20 +178,6 @@
                         <span>{{ auth()->user()->info->name() }} </span>
                 </span>
 
-
-                <span class="social hidden-xs">
-                        <a href=""> <span class="pull-right margin-right-15"><i class="gray fa fa-instagram"></i></span> </a>
-                        <a href=""> <span class="pull-right margin-right-25"><i class="gray fa fa-linkedin"></i></span> </a>
-                        <a href=""> <span class="pull-right margin-right-25"><i class="gray fa fa-twitter"></i></span> </a>
-                        <a href=""> <span class="pull-right margin-right-25"><i class="gray fa fa-facebook"></i></span> </a>
-                    {{--@if(auth()->user()->info->links())--}}
-                        {{--@foreach(auth()->user()->info->links() as $link)--}}
-                            {{--<a href="{{$link->link}}" style="color: white;">--}}
-                                {{--<span class="pull-right margin-right-25"><i class="fa fa-{{$link->name}}"></i></span>--}}
-                            {{--</a>--}}
-                        {{--@endforeach--}}
-                    {{--@endif--}}
-                </span>
                 </div>
                 {{--  @if(!auth()->user()->works->isEmpty())
                     <span class="pull-left work xs-hidden">{{auth()->user()->works->first()->name}} </span>
@@ -214,18 +200,6 @@
 
 
 
-
-
-                <div class="xs-social xs-centered">
-                    <span class="hidden-sm hidden-md hidden-lg mail-centered clearfix "> {{ auth()->user()->info->email() }} </span>
-                    <div class="margin-top-20"></div>
-                    <a href=""> <span class="margin-right-25 "><i class="fa fa-facebook"></i></span> </a>
-                    <a href=""> <span class="margin-right-25"><i class="fa fa-twitter"></i></span> </a>
-                    <a href=""> <span class="margin-right-25"><i class="fa fa-linkedin"></i></span> </a>
-                    <a href=""> <span class=""><i class="fa fa-instagram"></i></span> </a>
-
-
-                </div>
                 <hr class="xs-display">
 
 
