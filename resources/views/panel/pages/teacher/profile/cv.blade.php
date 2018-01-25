@@ -12,6 +12,17 @@
 
 
     <style>
+
+
+        .photo-box{ height: 285px;
+            background-size: cover;
+            background-position: center;
+            background-image: linear-gradient( rgba(187, 218, 222, 0.2), rgba(0, 67, 79, 0.8)), url("/new/img/teacher/back1.jpg");
+
+        }
+
+
+
         /* ======  avoid filled autocomplete input yellow background on chrome ============ */
         input:-webkit-autofill,
         input:-webkit-autofill:hover,
@@ -169,7 +180,9 @@
 
             <div class="container" style="position: relative">
 
-                <div class="upper"></div>
+                {{--<div class="upper"></div>--}}
+
+                <div class="photo-box"></div>
 
                 <img src="{{ auth()->user()->info->avatar }}" class="avatar img-circle" >
 
@@ -558,6 +571,44 @@
     
 
     $(document).ready(function(){
+
+
+        var temp = JSON.stringify(window.sk)
+                .replace(/ά/g,"α")
+                .replace(/έ/g,"ε")
+                .replace(/ή/g,"η")
+                .replace(/ί/g,"ι")
+                .replace(/ό/g,"ο")
+                .replace(/ύ/g,"υ")
+                .replace(/ώ/g,"ω")
+        var skills= JSON.parse(temp);
+        var uniq = skills.filter(function(obj) { return window.sk.indexOf(obj) == -1; });
+        window.sk= window.sk.concat(uniq);
+
+        temp = JSON.stringify(window.cer)
+                .replace(/ά/g,"α")
+                .replace(/έ/g,"ε")
+                .replace(/ή/g,"η")
+                .replace(/ί/g,"ι")
+                .replace(/ό/g,"ο")
+                .replace(/ύ/g,"υ")
+                .replace(/ώ/g,"ω")
+        var cert= JSON.parse(temp);
+        uniq = cert.filter(function(obj) { return window.cer.indexOf(obj) == -1; });
+        window.cer= window.cer.concat(uniq);
+
+        temp = JSON.stringify(window.stud)
+                .replace(/ά/g,"α")
+                .replace(/έ/g,"ε")
+                .replace(/ή/g,"η")
+                .replace(/ί/g,"ι")
+                .replace(/ό/g,"ο")
+                .replace(/ύ/g,"υ")
+                .replace(/ώ/g,"ω")
+        var studies= JSON.parse(temp);
+        uniq = studies.filter(function(obj) { return window.stud.indexOf(obj) == -1; });
+        window.stud= window.stud.concat(uniq);
+
 
         $('#full').fadeIn(60).removeClass('hidden');
 

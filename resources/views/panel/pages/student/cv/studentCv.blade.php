@@ -37,7 +37,24 @@
     .clear-fix{clear: both }
 
     .img-container{text-align: center;}
+    .members{margin-top: 20px}
+    .family{margin-top: -60px}
 
+
+
+    @media (min-width: 2021px){
+        .col-xl-4{width: 33.33%}
+        .hidden-xl{display: none;}
+        .col-xl-line{border-bottom: 1px solid #aaa; margin-top: -6px; width: 100%;}
+        .members{margin-top: 0}
+        .family{margin-top: 5px;}
+
+
+    }
+
+    @media (max-width: 2020px){
+        .hidden-low{display: none;}
+    }
 
     @media (max-width: 543px){
     .br1{display: none;}
@@ -48,6 +65,8 @@
     }
     @media (max-width: 767px){
         .fa-gender{margin-top: 27px}
+        .family{margin-top: -10px}
+        .members{margin-top: 10px;}
     }
 </style>
 
@@ -64,6 +83,8 @@
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
+
+
 
 
 
@@ -105,43 +126,43 @@
                                 <div class="inner-section row">
                                     <div class="section-text centered-text"> Στοιχεία Επικοινωνίας</div>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 col-xl-4">
                                         <div class="input-container">
                                             <input  type="text" label="Όνομα*" name="firstName" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
                                             <i class="icon-inp  fa fa-user"></i>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 input-container clear-fix-sm" >
+                                    <div class="col-sm-6 input-container clear-fix-sm col-xl-4" >
                                         <input type="text" label="Επώνυμο*" name="lastName" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
                                         <i class="icon-inp fa fa-user"></i>
                                     </div>
 
-                                    <div class="col-sm-6 input-container">
+                                    <div class="col-sm-6 input-container col-xl-4">
                                         <input type="text" label="Διεύθυνση" name="student_address" class="demo-form ad-input" value="{{ auth()->user()->cv->student_address }}">
                                         <i class="icon-inp fa fa-street-view"></i>
                                     </div>
-                                    <div class="col-sm-6 input-container">
+                                    <div class="col-sm-6 input-container col-xl-4">
                                         <input type="text" label="Πόλη/Περιοχή" name="student_city" class="demo-form ad-input" value="{{ auth()->user()->cv->student_city }}">
                                         <i class="icon-inp fa fa-map-marker"></i>
                                     </div>
 
-                                    <div class="col-sm-6 input-container">
+                                    <div class="col-sm-6 input-container col-xl-4">
                                         <input type="text" label="Ηλεκτρονικό Tαχυδρομείο/ e-mail" name="email" class="demo-form ad-input" value="{{ auth()->user()->email}}">
                                         <i class="icon-inp fa fa-envelope"></i>
                                     </div>
-                                    <div class="col-sm-6 input-container">
+                                    <div class="col-sm-6 input-container col-xl-4">
                                         {{--<a href="tel:{{ $user->info->phone }}">--}}
                                         <input type="text" label="Τηλέφωνο" name="student_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->student_phone }}">
                                         {{--</a>--}}
-                                        <i class="icon-inp fa fa-phone"></i>
+                                        <i class="icon-inp fa fa-phone col-xl-4"></i>
                                     </div>
 
-                                    <div class="col-sm-6 input-container">
+                                    <div class="col-sm-6 input-container col-xl-4">
                                         <input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input"  value="{{ auth()->user()->cv->student_dob}}">
                                         <i class="icon-inp fa fa-calendar"></i>
                                     </div>
 
-                                    <div class="col-sm-6 input-container col-gender">
+                                    <div class="col-sm-6 input-container col-gender col-xl-4">
                                         <div class="drop-title">Φύλο*</div>
                                         <div class="select-gender">
                                             <select name="gender" class="select-transparent">
@@ -182,11 +203,11 @@
                                       @endforeach --}}
 
 
-                                    <div class="clearfix"></div>
-                                    <div class="col-sm-6 input-container">
+
+                                    <div class="col-sm-6 input-container col-xl-4 members" >
                                         <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
 
-                                        <div class="select-polyteknos">
+                                        <div class="select-polyteknos col-xl-4">
                                             <select class="select-transparent">
                                                 <option value="YES" {{auth()->user()->cv->student_polyteknos == 'YES' ? 'selected' : ''}}>Ναι</option>
                                                 <option value="NO" {{auth()->user()->cv->student_polyteknos == 'NO' ? 'selected' : ''}}>Όχι</option>
@@ -194,9 +215,14 @@
                                         </div>
 
                                         <i class="icon-inp fa fa-users select-icon"></i>
+
+                                        <div class="col-xl-line"></div>
                                     </div>
 
-                                    <div class="col-sm-6 ">
+
+                                    <div class="clearfix hidden-low"></div>
+
+                                    <div class="col-sm-6 col-xl-4 family">
                                         <div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
                                         <div class="select-polyteknos">
                                             <select class="select-transparent">
@@ -215,20 +241,50 @@
                             </div>
 
                             {{--CV DATA --}}
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 ">
                                 <div class="row flex-row">
-                                    <div class="col-md-6 section2-container ">
+                                    <div class="col-md-6 section2-container col-xl-4">
                                         <div class="inner-section">
                                             <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
                                             <div class=" input-container">
-                                                <div class="info-text"> Γράψε μας γιατί θεωρείς τον εαυτό σου κατάλληλο/κατάλληλη για την συγκεκριμένη υποτροφία.</div>
+                                                <div class="info-text"> Γράψε τις ξένες γλώσσες που μιλάς και σε πιο επίπεδο.</div>
                                                 <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ auth()->user()->cv->languages }}</textarea>
                                             </div>
                                         </div>
                                     </div>
 
+
+
+
+
+                                    <div class="col-md-6 col-xl-4" >
+                                        <div class="inner-section row" style="min-height: 100px">
+                                            <div class="section-text centered-text">Μy pinterest Board</div>
+
+                                            <div class="col-sm-12 ">
+                                                <div class="input-container">
+                                                    <input  type="text" label="Pinterest Board" name="Pinterest" class="demo-form ad-input" value="">
+                                                    <i class="icon-inp  fa fa-pinterest"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="margin-top: 6px;">
+                                                {{--<a data-pin-do="embedUser"   data-pin-scale-height="255" data-pin-scale-width="80" href="https://gr.pinterest.com/freiderikosk"></a>--}}
+                                                <a data-pin-do="embedBoard"   data-pin-scale-height="200" data-pin-scale-width="80" href="https://gr.pinterest.com/freiderikosk/scolarships/"></a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
                                     <!-- ============================= -->
-                                    <div class="col-md-6 section2-container ">
+                                    <div class="col-md-6 section2-container col-xl-4">
                                         <div class="inner-section" >
                                             <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
                                             <div class=" input-container">
@@ -239,8 +295,10 @@
                                         </div>
                                     </div>
 
+                                    {{--<div class="clearfix hidden-xl"></div>--}}
 
-                                    <div class="col-md-6 section2-container clearfix">
+
+                                    <div class="col-md-6 section2-container  col-xl-4">
                                         <div class="inner-section" >
                                             <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i>Έπαινοι - Διακρίσεις</div>
                                             <div class=" input-container">
@@ -252,7 +310,30 @@
                                     </div>
 
                                     <!-- ============================= -->
-                                    <div class="col-md-6 section2-container ">
+
+
+                                    <div class="col-md-6" >
+                                        <div class="inner-section row" style="min-height: 100px">
+                                            <div class="section-text centered-text">Μy YouTube Channel</div>
+
+                                            <div class="col-sm-12 ">
+                                                <div class="input-container">
+                                                    <input  type="text" label="YouTube Channel" name="YouTube" class="demo-form ad-input" value="">
+                                                    <i class="icon-inp  fa fa-youtube"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="margin-top: 6px;">
+                                                <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=kfrei00" width="100%" height="305"></iframe>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-6 section2-container col-xl-4">
                                         <div class="inner-section" >
                                             <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>Ενδιαφέροντα - Ασχολίες</div>
                                             <div class=" input-container">
@@ -262,7 +343,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 section2-container clearfix">
+
+
+
+
+
+
+
+
+
+                                    <div class="col-md-12 section2-container clearfix col-xl-4">
                                         <div class="inner-section" >
                                             <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>Πιστοποιήσεις - Σεμινάρια</div>
                                             <div class=" input-container">
@@ -273,15 +363,72 @@
                                         </div>
                                     </div>
 
+
+                                    <div class="col-xs-12" >
+                                        <div class="inner-section row" style="min-height: 100px">
+                                            <div class="section-text centered-text">Μy talent links</div>
+
+                                            <div class="col-sm-6 ">
+                                                <div class="input-container">
+                                                    <input  type="text" label="Pinterest Board" name="Pinterest" class="demo-form ad-input" value="">
+                                                    <i class="icon-inp  fa fa-pinterest"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 input-container" >
+                                                <input type="text" label="YouTube Channel" name="YouTube " class="demo-form ad-input" value="">
+                                                <i class="icon-inp fa fa-youtube"></i>
+                                            </div>
+
+                                            <div class="col-sm-6 ">
+                                                <div class="input-container">
+                                                    <input  type="text" label="Instagram Profile" name="Instagram" class="demo-form ad-input" value="">
+                                                    <i class="icon-inp  fa fa-instagram"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 input-container" >
+                                                <input type="text" label="Twitter" name="Twitter " class="demo-form ad-input" value="">
+                                                <i class="icon-inp fa fa-twitter"></i>
+                                            </div>
+
+
+
+
+
+                                            <div class="col-md-6" style="margin-top: 30px;">
+                                                {{--<a data-pin-do="embedUser"   data-pin-scale-height="255" data-pin-scale-width="80" href="https://gr.pinterest.com/freiderikosk"></a>--}}
+                                                <a data-pin-do="embedBoard"   data-pin-scale-height="255" data-pin-scale-width="80" href="https://gr.pinterest.com/freiderikosk/scolarships/"></a>
+
+                                            </div>
+
+                                            <div class="col-md-6" style="margin-top: 30px;">
+                                                <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=kfrei00" width="100%" height="365"></iframe>
+                                            </div>
+
+                                            <div class="col-md-6" style="margin-top: 30px;">
+                                                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="4">
+                                                    <a href="https://instagram.com/p/travel_greece/"></a>
+                                                </blockquote>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
                                 </div>
                             </div>
                             {{-- SAVE FORM --}}
+
+
+
+
 
                             <div class="col-xs-12 text-center m-t-40 centered-text">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
                                 </button>
                             </div>
+
 
                         </div>
 
@@ -296,5 +443,8 @@
 
 
 @section('scripts')
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
 
 @endsection
