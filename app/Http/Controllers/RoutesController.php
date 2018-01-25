@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use App\Key;
+use Carbon\Carbon;
 
 class RoutesController extends Controller
 {
@@ -285,7 +286,10 @@ class RoutesController extends Controller
 
             $scholarship->sectionIcon = $sectionIcon;
         }
-        return view('public.school.scholarship')
+
+        $end = Carbon::createFromFormat ('Y-m-d', $scholarship->end_at);
+        $activeDate = !($end->diffInDays(Carbon::now(), false) >=0);
+        return view('public.school.scholarship', compact('activeDate'))
             ->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria', 'study.section'));
     }
 
@@ -296,7 +300,9 @@ class RoutesController extends Controller
 
     public function scholarshipEdit(Scholarship $scholarship)
     {
-        return view('panel.pages.school.scholarships.edit')->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
+        $end = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
+        $activeDate = !($end->diffInDays(Carbon::now(), false) >= 0);
+        return view('panel.pages.school.scholarships.edit', compact('activeDate'))->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
     }
 
     public function scholarshipUpdate(Scholarship $scholarship)

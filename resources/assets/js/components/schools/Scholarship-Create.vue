@@ -326,23 +326,30 @@
                                         <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px;"
                                             v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)" readonly="readonly" />
                                     </div>
-
                                 </div>
 
-                                <div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;" v-if="">
+                                <div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;">
                                     <div class="funkyradio" style="margin: 8px 0 0 0; text-align: center">
                                         <div class="funkyradio-success exams-container" style="">
-                                            <input type="checkbox" id="exams" v-model="exams">
+                                            <input type="checkbox" id="exams" v-model="exams" :disabled="criteria_value.id == 1">
                                             <label for="exams" style="text-align: center;width: 80%; margin-left: -1%"> {{ lang('panel_scholarships.create.exams') }}</label>
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important;" v-show="exams">
+                                    <div> {{ lang('panel_scholarships.create.active') }}: </div>
+                                    <div>
+                                        <input type="text" id="examsdate" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px;"
+                                            v-bind:value="exams_date" onchange="Event.$emit('examsdate', event.target.value)" readonly="readonly" />
+                                    </div>
+                                </div>
+
                                 <div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;" v-if="">
-                                    <div class="funkyradio" style="margin: 8px 0 0 0; text-align: center">
+                                    <div class="" style="margin: 8px 0 0 0; text-align: center">
                                         <div class="funkyradio-success exams-container" style="">
-                                            <input type="checkbox" id="price" v-model="price">
-                                            <label for="price" style="text-align: center;width: 80%; margin-left: -1%"> ΤΙΜΗ </label>
+                                            TIMH:
+                                            <input type="number" id="price" v-model="price">
                                         </div>
                                     </div>
                                 </div>
@@ -1348,6 +1355,7 @@
         if (window.location.hash == '#fourthPage' || window.location.hash == '#fifthPage') {
             $('#sc-frame').addClass('hidePreview')
             $("#datepicker").datepicker({ minDate: 0, maxDate: "+5M +10D" })
+            $("#examsdate").datepicker({ minDate: 0, maxDate: "+5M +10D" })
         } else {
             $('#sc-frame').removeClass('hidePreview')
         }
@@ -1406,6 +1414,7 @@
                 end_at: null,
                 today: null,
                 exams: false,
+                exams_date: null,
                 price: null,
                 content: '<p> Αναφέρετε εδώ τους <strong> Όρους και Προϋποθεσεις </strong> της Υποτροφίας</p>',
                 terms: null,
@@ -1531,14 +1540,18 @@
                     'criteria': this.criteria_value.id,
                     'end_at': this.end_at,
                     'exams': this.exams,
+                    'exams_date': this.exams_date,
                     'terms': this.terms,
                     'tags': this.value,
                     'allWinners': this.allWinners,
                     'winners': this.winners,
                     'price': this.price
                 }).then(({ data }) => {
-                    console.log(data)
                     if (data.message == 'SAVED SUCCESSFULLY') window.location = data.url
+                    else {
+                        console.log(data.message)
+                        // window.location = "/error"
+                    }
                 })
             }
         },
@@ -1654,8 +1667,12 @@
             Event.$on('datePick', function (val) {
                 vm.end_at = val
                 // vm.errorDate()
-            }
-            )
+            })
+
+            Event.$on('examsdate', function (val) {
+                vm.exams_date = val
+                // vm.errorDate()
+            })
         }
     }
 </script>

@@ -407,18 +407,14 @@
                         <div class=" col-xxxs-12 col-xs-6 col-lg-4">
                             <img class="avatar-img" src="{{ $admission->user->info->avatar }}" width="20px">
                             @if($scholarship->active)
-                                <input class="winners-checkbox" type="checkbox" name="winner" value="User"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
+                                <input class="winners-checkbox" type="checkbox" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
                             @else
                                 <input type="checkbox" onclick="return false;" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
                             @endif
                         </div>
-
                     @endforeach
                 </div>
                 <div class="margin-top-30"></div>
-                @if($scholarship->active)
-                    <button class="sc-btn sc-dark-green"> <i class="fa fa-paper-plane-o margin-right-10"></i>Ενημέρωση Νικητών</button>
-                @endif
                 <div class="clearfix"></div>
                 <div class="col-sm-12 line"></div>
                 <!-- ================================ -->
@@ -441,9 +437,7 @@
                 <div class="margin-top-30"></div>
 
                     {{ csrf_field() }}
-                  @if($scholarship->active)
-                    <button class="sc-btn sc-dark-green"> <i class="fa fa-flag-o margin-right-10"></i>Λήξη Υποτροφίας</button>
-                  @endif
+                    <button id="saveButton" type="submit" class="sc-btn" disabled><i class="fa fa-flag-o margin-right-10"></i>Λήξη Υποτροφίας και Ενημέρωση Νικητών</button>
                 </form>
                 </div>
             </div>
@@ -469,6 +463,13 @@
     $('input.winners-checkbox').on('change', function(evt) {
        if( $('.winners-checkbox:checked').length >= limit+1) {
            this.checked = false;
+       }
+
+       if($('.winners-checkbox:checked').length >= limit){
+           @if(!$activeDate || $scholarship->admissions_limit == 0)
+               $('#saveButton').addClass("sc-dark-green");
+               $('#saveButton').prop('disabled', false);
+           @endif
        }
     });
 </script>

@@ -14,6 +14,10 @@ use App\Events\NewSubscription;
 
 Scholio::soonRoutes();
 
+Route::get('/error', function(){
+    abort('400');
+});
+
 Route::get('/admin', function(){
     return view('panel.pages.admin.settings');
 })->middleware(['auth', 'is.admin']);

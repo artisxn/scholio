@@ -376,34 +376,41 @@
     @if($scholarship->active)
         <div class=" buttons centered-text">
             @if(auth()->check())
-                @if(auth()->user()->role != 'school' && auth()->user()->role != 'teacher'  )
-                    <span class="margin-right-20">
-                        <a href="">
-                            <button id="button" type="button" ng-click="interested(scholarship.id)"
-                                           class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
-                                <i id="icon" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                                <span id="text" ng-init="check(scholarship)">@lang('scholarship_view.top.interested_button')</span>
-                            </button>
-                        </a>
-                    </span>
-                    @if(!auth()->user()->checkAdmission($scholarship))
-                        @if($scholarship->admissions_limit > 0 && auth()->user()->info->admissions_limit > 0)
-                            <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}">
-                                <button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0 ">
-                                    <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i>
-                                    @lang('scholarship_view.top.admission_button')
+                @if(auth()->user()->role != 'school' && auth()->user()->role != 'teacher')
+                    @if($activeDate)
+                        <span class="margin-right-20">
+                            <a href="">
+                                <button id="button" type="button" ng-click="interested(scholarship.id)"
+                                            class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
+                                    <i id="icon" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                    <span id="text" ng-init="check(scholarship)">@lang('scholarship_view.top.interested_button')</span>
                                 </button>
                             </a>
-                        @else
-                            <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> ΤΕΛΟΣ </button></a>
-                        @endif
+                        </span>
+                        @if(!auth()->user()->checkAdmission($scholarship))
+                            @if($scholarship->admissions_limit > 0 && auth()->user()->info->admissions_limit > 0)
+                                <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}">
+                                    <button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0 ">
+                                        <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i>
+                                        @lang('scholarship_view.top.admission_button')
+                                    </button>
+                                </a>
+                            @else
+                                <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> ΤΕΛΟΣ </button></a>
+                            @endif
 
+                        @else
+                            <a href=""><button disabled="true" type="button" class=" sch-button sc-button sc-t-light-gray  " >
+                                    <i class="fa fa-file-text-o margin-right-10" aria-hidden="true" ></i>
+                                    @lang('scholarship_view.top.admission_past')
+                                </button>
+                            </a>
+                        @endif
                     @else
-                        <a href=""><button disabled="true" type="button" class=" sch-button sc-button sc-t-light-gray  " >
-                                <i class="fa fa-file-text-o margin-right-10" aria-hidden="true" ></i>
-                                @lang('scholarship_view.top.admission_past')
-                            </button>
-                        </a>
+
+                        <span class="margin-right-20">
+                            Η καταλητικη ημερομηνια υποβολης αιτησεων εχει παρελθει.
+                        </span>
                     @endif
 
                 @endif
@@ -536,8 +543,15 @@
             <div class="text-right">
                 @lang('scholarship_view.cards.terms')  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}.
             </div>
+            @if($scholarship->price)
+                <div class="text-right">
+                    Συνολικα Δίδακτρα {{ $scholarship->price }}€
+                </div>
+            @endif
             <div class="clearfix"></div>
         </div>
+        
+        
     </div>
 </div>
 </div>

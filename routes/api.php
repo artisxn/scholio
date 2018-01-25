@@ -117,7 +117,6 @@ Route::get('/notifications/getSchoolLevelSections/public/{school_id}', function 
 })->middleware('auth:api');
 
 Route::post('/school/scholarshipSave', function () {
-    // return request()->studies[0];
     try {
         $scholarship = new Scholarship;
         $scholarship->school_id = auth()->user()->info->id;
@@ -136,6 +135,7 @@ Route::post('/school/scholarshipSave', function () {
         $scholarship->terms = request()->terms;
         if (request()->exams == 1) {
             $scholarship->exam = true;
+            $scholarship->exam_date = Carbon\Carbon::createFromFormat('d-m-Y', request()->exams_date);
         }
         $scholarship->end_at = Carbon\Carbon::createFromFormat('d-m-Y', request()->end_at);
 
@@ -167,9 +167,9 @@ Route::post('/school/scholarshipSave', function () {
 
         $data = ['message' => 'SAVED SUCCESSFULLY', 'url' => '/panel/school/scholarship/' . $scholarship->id];
         // Scholio::updateDummy($scholarship->school);
-        // Scholio::dummyScholarshipCreate($scholarship);
+        Scholio::dummyScholarshipCreate($scholarship);
     } catch (\Exception $e) {
-        $data = ['message' => 'ERROR ' . $e];
+        $data = ['message' => 'ERROR '.$e];
     }
     return $data;
 })->middleware('auth:api');

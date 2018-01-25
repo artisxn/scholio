@@ -82,6 +82,8 @@
 .content .content-box .big-content span.line:nth-child(6) {
     width: 8rem;
 }
+
+.content .content-box .big-content .fa-bug,
 .content .content-box .big-content .fa-key,
 .content .content-box .big-content .fa-search,
 .content .content-box .big-content .fa-ban,

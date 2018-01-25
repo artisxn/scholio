@@ -204,16 +204,22 @@ class Scholarship extends Model
 
     public function end()
     {
-        dd(request());
-        $this->end_at = Carbon::now();
+        foreach(request()->winner as $win){
+            $user = User::find($win);
+            $this->winner()->attach($user);
+            // Notify student
+            // Email student
+        }
         $this->active = 0;
         $this->save();
-        $alg = AlgoliaScholarship::where('scholarship_id', $this->id)->get()->first();
-        $alg->delete();
-        // WINNERS (create a pivot table 'scholarship_winner' to show multiple winners in one scholarship)
-        // Update statistics (algolia dummy)
-        // Email to student
-        //
+
+        // Update Dummy
+        $dummySchol = DummyScholarship::where('scholarship_id', $this->id)->first();
+        $dummySchol->active = 0;
+        $dummySchol->save();
+
+
+        // NA KANOUME KATI ME ALGOLIA
         return 'Done';
     }
 

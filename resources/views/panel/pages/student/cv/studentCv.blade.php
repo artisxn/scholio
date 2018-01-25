@@ -323,7 +323,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12" style="margin-top: 6px;">
-                                                <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=kfrei00" width="100%" height="305"></iframe>
+                                                <iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=kfrei00" width="100%" height="305"></iframe>
 
 
                                             </div>
@@ -401,12 +401,12 @@
                                             </div>
 
                                             <div class="col-md-6" style="margin-top: 30px;">
-                                                <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=kfrei00" width="100%" height="365"></iframe>
+                                                <iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=apple" width="100%" height="365"></iframe>
                                             </div>
 
                                             <div class="col-md-6" style="margin-top: 30px;">
                                                 <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="4">
-                                                    <a href="https://instagram.com/p/travel_greece/"></a>
+                                                    <a href="https://instagram.com/p/siokas_/"></a>
                                                 </blockquote>
                                             </div>
 
