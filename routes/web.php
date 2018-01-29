@@ -39,7 +39,7 @@ Route::post('/admin/subscription', function(){
 })->middleware(['auth', 'is.admin']);
 
 Route::get('/test', function () {
-    return view('scholarship-create-test');
+    return view('test');
 });
 
 Route::get('/fake/request/{school}/{user}', function (School $school, User $user) {

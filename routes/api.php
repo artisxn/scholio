@@ -22,8 +22,24 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use App\Key;
 use App\Models\Cvteacherstudy;
+use Illuminate\Support\Facades\Route;
 
 Scholio::bot();
+
+Route::post('/uploadImage', function(){
+    $data = request()->input('img');
+    list($type, $data) = explode(';', $data);
+    list(, $data) = explode(',', $data);
+    $data = base64_decode($data);
+    $imageName = time() . '.png';
+    $path = public_path('upload/');
+    if (!file_exists($path)) {
+        mkdir($path, 0777, true);
+    }
+    file_put_contents($path . $imageName, $data);
+    $imageUrl = url('upload/' . $imageName);
+    return response(['data' => $imageUrl, 'page' => Route::currentRouteName()], 201);
+})->middleware('auth:api');
 
 Route::post('/student/saveStudy', function () {
     $school = auth()->user()->info;

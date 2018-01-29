@@ -22,6 +22,7 @@
   "dependencies": {
     "at.js": "^1.5.3",
     "chart.js": "^2.5.0",
+    "croppie": "^2.5.1",
     "disable-scroll": "^0.4.0",
     "fullpage-vue": "^1.6.2",
     "fullpage.js": "^2.9.5",
