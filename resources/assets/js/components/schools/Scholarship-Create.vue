@@ -322,37 +322,58 @@
 
                                 <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important;">
                                     <div> {{ lang('panel_scholarships.create.active') }}: </div>
-                                    <div>
+                                    <div style="z-index: 3; position: relative;">
                                         <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px;"
-                                            v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)" readonly="readonly" />
+                                            v-bind:value="end_at" onchange="Event.$emit('datePick', event.target.value)"  />
                                     </div>
                                 </div>
 
-                                <div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;">
-                                    <div class="funkyradio" style="margin: 8px 0 0 0; text-align: center">
-                                        <div class="funkyradio-success exams-container" style="">
-                                            <input type="checkbox" id="exams" v-model="exams" :disabled="criteria_value.id == 1">
-                                            <label for="exams" style="text-align: center;width: 80%; margin-left: -1%"> {{ lang('panel_scholarships.create.exams') }}</label>
+
+                                <div class="clearfix hidden-mdlg"></div>
+
+                                <span class="mobile-hidden">
+                                    <div class=" col-sm-4 col-lg-4 col-xs-6s" style="text-align: center;" v-if="">
+                                        <div class="amount-text" >Ενδεικτικό αρχικό ποσό διδάκτρων</div>
+                                        <div class="input-group " style="width: 240px; margin-left: auto; margin-right: auto; text-align: center;">
+                                            <input type="text" class="form-control" style="text-align: center;" placeholder="" aria-describedby="basic-addon2" id="price" v-model="price">
+                                            <span class="input-group-addon" id="basic-addon4">€</span>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important;" v-show="exams">
-                                    <div> {{ lang('panel_scholarships.create.active') }}: </div>
-                                    <div>
-                                        <input type="text" id="examsdate" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px;"
-                                            v-bind:value="exams_date" onchange="Event.$emit('examsdate', event.target.value)" readonly="readonly" />
-                                    </div>
-                                </div>
-
-                                <div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;" v-if="">
-                                    <div class="" style="margin: 8px 0 0 0; text-align: center">
-                                        <div class="funkyradio-success exams-container" style="">
-                                            TIMH:
-                                            <input type="number" id="price" v-model="price">
+                                    <div class=" col-sm-4 col-lg-4 col-xs-6s" style="margin: 17px 0 0 0; padding: 0!important;">
+                                        <div class="funkyradio" style="margin: 8px 0 0 0; text-align: center">
+                                            <div class="funkyradio-success exams-container" style="z-index: 3; position: relative;">
+                                                <input type="checkbox" id="exams" v-model="exams" :disabled="criteria_value.id == 1">
+                                                <label for="exams" style="text-align: center;width: 240px; margin-left: -1%"> {{ lang('panel_scholarships.create.exams') }}</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                    <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important; margin-top: 18px;" v-show="exams">
+                                        <div> Ημερομηνία Εξετάσεων </div>
+                                        <div style="z-index: 3; position: relative;">
+                                            <input type="text" id="examsdate" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px; margin-top: 1px;"
+                                                   v-bind:value="exams_date" onchange="Event.$emit('examsdate', event.target.value)" />
+                                        </div>
+                                    </div>
+
+                                </span>
+
+
+
+
+
+
+                                <!--<div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;" v-if="">-->
+                                    <!--<div class="" style="margin: 8px 0 0 0; text-align: center">-->
+                                        <!--<div class="funkyradio-success exams-container" style="">-->
+                                            <!--Ενδεικτικό αρχικό ποσό διδάκτρων-->
+                                            <!--<input type="number" id="price" v-model="price">-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+
 
 
 
@@ -385,6 +406,8 @@
                             </div>
                         </a>
                     </div>
+
+                    <img class="back-img-full img-responsive" src="/panel/assets/images/steps/step2-earth.png" style="z-index: 0">
 
                 </div>
             </div>
@@ -436,6 +459,20 @@
 </template>
 
 <style>
+
+    /* ======  avoid yellow input background on chrome ============ */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{
+        -webkit-box-shadow: 0 0 0 30px #FFF inset;
+        -webkit-text-fill-color: #555;
+    }
+    /* =========================================================== */
+
+
+
+
     .section-container {
         margin-top: -30px;
         margin-bottom: 30px;
@@ -694,6 +731,7 @@
     }
 
 
+    .amount-text{margin-bottom: 10px;}
 
 
 
@@ -1139,7 +1177,12 @@
 
     /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 
+    @media (min-width: 1071px) {
+        .hidden-mdlg{display: none}
+    }
+
     @media (max-width: 1070px) {
+        .amount-text{margin-top: 18px; margin-bottom: 1px}
 
         .col-xs-6s {
             width: 50%
@@ -1204,7 +1247,7 @@
             margin-bottom: 20px;
         }
         .exams-container {
-            width: 300px;
+            width: 240px;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
@@ -1234,6 +1277,7 @@
     }
 
     @media (max-width: 766px) {
+        .mobile-hidden{display: none}
         .col-xs-6s {
             margin-bottom: 15px;
         }

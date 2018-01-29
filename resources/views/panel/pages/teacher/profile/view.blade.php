@@ -49,6 +49,15 @@
     @media (max-width: 767px){
         .fa-gender{margin-top: 27px}
     }
+
+    /* ========== typeAhead jQuery ============== */
+    .typeahead__field .typeahead__hint, .typeahead__field [contenteditable], .typeahead__field input, .typeahead__field textarea{
+        border: none!important; background: transparent!important;
+    }
+    .typeahead__container{font-size: 100%}
+    .typeahead__dropdown>li>a, .typeahead__list>li>a{color: #888; font-weight: 300;}
+
+    /* ========================================== */
 </style>
 
 @endsection
@@ -56,8 +65,21 @@
 @section('scriptsBefore')
 
     <script>
+
         $(document).ready(function(){
             $('#full').fadeIn(90).removeClass('hidden');
+
+
+
+//            $.typeahead({
+//                input: '.js-typeahead-studies',
+//                order: "asc",
+//                hint: true,
+//                source: {
+//                    data: window.stud
+//                },
+//                callback: {onInit: function () {}}
+//            });
         });
     </script>
 
@@ -71,6 +93,7 @@
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script src="/panel/assets/js/cv.js"></script>
+    <script src="/panel/assets/js/jquery.typeahead.min.js"></script>
 
 
 
@@ -179,12 +202,30 @@
                             <div class="inner-section row m-b-40" >
                                 <div class="section-text centered-text"> Βασικές Σπουδές</div>
 
-                                    <div class="col-sm-6">
-                                        <div class="input-container">
-                                            <input  type="text" label="Περιγραφή Βασικών Σπουδών" name="title" class="demo-form ad-input" value="{{ auth()->user()->info->title }}">
-                                            <i class="icon-inp  fa fa-graduation-cap"></i>
-                                        </div>
+                                    {{--<div class="col-sm-6">--}}
+                                        {{--<div class="input-container">--}}
+                                            {{--<input  type="text" label="Περιγραφή Βασικών Σπουδών" name="title" class="demo-form ad-input" value="{{ auth()->user()->info->title }}">--}}
+                                            {{--<i class="icon-inp  fa fa-graduation-cap"></i>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+
+
+                                <div class="typeahead__container col-sm-6 polyfill-input-sc">
+                                    <div class=" input-container typeahead__field typeahead__query">
+                                        <input type="text" label="Περιγραφή Βασικών Σπουδών" name="title"
+                                               class=" js-typeahead-studies demo-form ad-input demo-form ad-input"
+                                               value="{{ auth()->user()->info->title }}"
+                                               autocomplete="off">
+                                        <i class="icon-inp fa fa-graduation-cap"></i>
                                     </div>
+                                </div>
+
+
+
+
+
+
+
                             </div>
 
 

@@ -555,8 +555,8 @@
 </script>
 
         <!-- Polymer Float Input Form js -->
-<script src="/new/js/jquery.polymer-form.min.js"></script>
-<script src="/panel/assets/js/cv.js"></script>
+    <script src="/new/js/jquery.polymer-form.min.js"></script>
+    <script src="/panel/assets/js/cv.js"></script>
 
     <!-- jQuery datePicker -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

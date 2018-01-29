@@ -40,19 +40,37 @@
     .members{margin-top: 20px}
     .family{margin-top: -60px}
 
+    .social-board{display: inline-block; margin-right: 20px;!important; margin-top: 10px;}
+    .youtube{width: 600px;}
+    .Embed .Caption {display: none;}
+
+    /* ==================   Dribbble  ========================================= */
+    #dribbble-profile #dp-right-shot{display: none!important;}
+    #dribbble-profile{width: 200px!important; }
+
+    /* ================== Pinterest   ========================================= */
 
 
-    @media (min-width: 2021px){
+    /* ================== Instagram   ========================================= */
+    .instagram-media{float: left; display: inline; margin-right: 20px!important;}
+
+
+
+
+
+    @media (min-width: 1900px){
         .col-xl-4{width: 33.33%}
+        .col-xl-6{width: 50%}
         .hidden-xl{display: none;}
         .col-xl-line{border-bottom: 1px solid #aaa; margin-top: -6px; width: 100%;}
         .members{margin-top: 0}
         .family{margin-top: 5px;}
+        .inner-section{min-height: 260px;}
 
 
     }
 
-    @media (max-width: 2020px){
+    @media (max-width: 1899px){
         .hidden-low{display: none;}
     }
 
@@ -62,11 +80,13 @@
     @media (max-width: 1200px){
         .btn-choose{text-align: center; margin: 20px auto;}
         .inner-section{min-height: 390px;}
+
     }
     @media (max-width: 767px){
         .fa-gender{margin-top: 27px}
         .family{margin-top: -10px}
         .members{margin-top: 10px;}
+
     }
 </style>
 
@@ -78,6 +98,7 @@
         $(document).ready(function(){
             $('#full').fadeIn(90).removeClass('hidden');
             $('#content').fadeIn(200).removeClass('hidden');
+            $('#talent').fadeIn(3000).removeClass('hidden');
         });
     </script>
     <!-- Polymer Float Input Form js -->
@@ -124,7 +145,7 @@
                             {{-- PROFILE DATA --}}
                             <div class="col-xs-12" >
                                 <div class="inner-section row">
-                                    <div class="section-text centered-text"> Στοιχεία Επικοινωνίας</div>
+                                    <div class="section-text centered-text" style="max-width: 280px;"> Στοιχεία Επικοινωνίας Σπουδαστή</div>
 
                                     <div class="col-sm-6 col-xl-4">
                                         <div class="input-container">
@@ -220,23 +241,23 @@
                                     </div>
 
 
-                                    <div class="clearfix hidden-low"></div>
+                                    {{--<div class="clearfix hidden-low"></div>--}}
 
-                                    <div class="col-sm-6 col-xl-4 family">
-                                        <div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>
-                                        <div class="select-polyteknos">
-                                            <select class="select-transparent">
-                                                <option {{auth()->user()->cv->student_relatives == '0' ? 'selected' : ''}}>0</option>
-                                                <option {{auth()->user()->cv->student_relatives == '1' ? 'selected' : ''}}>1</option>
-                                                <option {{auth()->user()->cv->student_relatives == '2' ? 'selected' : ''}}>2</option>
-                                                <option {{auth()->user()->cv->student_relatives == '3' ? 'selected' : ''}}>3</option>
-                                                <option {{auth()->user()->cv->student_relatives == '4' ? 'selected' : ''}}>4</option>
-                                                <option {{auth()->user()->cv->student_relatives == '5' ? 'selected' : ''}}>5</option>
-                                            </select>
-                                        </div>
+                                    {{--<div class="col-sm-6 col-xl-4 family">--}}
+                                        {{--<div class="drop-title">Πόσα μέλη της οικογένειας σου φοιτούν στο Εκπαιδευτικό Ίδρυμα</div>--}}
+                                        {{--<div class="select-polyteknos">--}}
+                                            {{--<select class="select-transparent">--}}
+                                                {{--<option {{auth()->user()->cv->student_relatives == '0' ? 'selected' : ''}}>0</option>--}}
+                                                {{--<option {{auth()->user()->cv->student_relatives == '1' ? 'selected' : ''}}>1</option>--}}
+                                                {{--<option {{auth()->user()->cv->student_relatives == '2' ? 'selected' : ''}}>2</option>--}}
+                                                {{--<option {{auth()->user()->cv->student_relatives == '3' ? 'selected' : ''}}>3</option>--}}
+                                                {{--<option {{auth()->user()->cv->student_relatives == '4' ? 'selected' : ''}}>4</option>--}}
+                                                {{--<option {{auth()->user()->cv->student_relatives == '5' ? 'selected' : ''}}>5</option>--}}
+                                            {{--</select>--}}
+                                        {{--</div>--}}
 
-                                        <i class="icon-inp fa fa-users select-icon2"></i>
-                                    </div>
+                                        {{--<i class="icon-inp fa fa-users select-icon2"></i>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
 
@@ -252,35 +273,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-
-                                    <div class="col-md-6 col-xl-4" >
-                                        <div class="inner-section row" style="min-height: 100px">
-                                            <div class="section-text centered-text">Μy pinterest Board</div>
-
-                                            <div class="col-sm-12 ">
-                                                <div class="input-container">
-                                                    <input  type="text" label="Pinterest Board" name="Pinterest" class="demo-form ad-input" value="">
-                                                    <i class="icon-inp  fa fa-pinterest"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="margin-top: 6px;">
-                                                {{--<a data-pin-do="embedUser"   data-pin-scale-height="255" data-pin-scale-width="80" href="https://gr.pinterest.com/freiderikosk"></a>--}}
-                                                <a data-pin-do="embedBoard"   data-pin-scale-height="200" data-pin-scale-width="80" href="https://gr.pinterest.com/freiderikosk/scolarships/"></a>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-
-
-
-
 
 
                                     <!-- ============================= -->
@@ -312,28 +304,8 @@
                                     <!-- ============================= -->
 
 
-                                    <div class="col-md-6" >
-                                        <div class="inner-section row" style="min-height: 100px">
-                                            <div class="section-text centered-text">Μy YouTube Channel</div>
 
-                                            <div class="col-sm-12 ">
-                                                <div class="input-container">
-                                                    <input  type="text" label="YouTube Channel" name="YouTube" class="demo-form ad-input" value="">
-                                                    <i class="icon-inp  fa fa-youtube"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="margin-top: 6px;">
-                                                <iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=kfrei00" width="100%" height="305"></iframe>
-
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="col-md-6 section2-container col-xl-4">
+                                    <div class="col-md-6 section2-container col-xl-6">
                                         <div class="inner-section" >
                                             <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>Ενδιαφέροντα - Ασχολίες</div>
                                             <div class=" input-container">
@@ -346,13 +318,7 @@
 
 
 
-
-
-
-
-
-
-                                    <div class="col-md-12 section2-container clearfix col-xl-4">
+                                    <div class="col-md-12 section2-container clearfix col-xl-6">
                                         <div class="inner-section" >
                                             <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>Πιστοποιήσεις - Σεμινάρια</div>
                                             <div class=" input-container">
@@ -366,49 +332,102 @@
 
                                     <div class="col-xs-12" >
                                         <div class="inner-section row" style="min-height: 100px">
-                                            <div class="section-text centered-text">Μy talent links</div>
+                                            <div class="section-text centered-text ">Μy talent links</div>
 
+                                            <div class="col-sm-6 input-container" >
+                                                <input type="text" label="YouTube Channel" name="YouTube " class="demo-form ad-input" value="">
+                                                <i class="icon-inp fa fa-youtube"></i>
+                                            </div>
+                                            <div class="col-sm-6 input-container" >
+                                                <input type="text" label="Google Plus Profile Number" name="googleplus" class="demo-form ad-input" value="">
+                                                <i class="icon-inp fa fa-google-plus"></i>
+                                            </div>
+
+                                            <div class="col-sm-6 input-container" >
+                                                <input type="text" label="dribbble nickName" name="dribbble" class="demo-form ad-input" value="">
+                                                <i class="icon-inp fa fa-dribbble"></i>
+                                            </div>
                                             <div class="col-sm-6 ">
                                                 <div class="input-container">
                                                     <input  type="text" label="Pinterest Board" name="Pinterest" class="demo-form ad-input" value="">
                                                     <i class="icon-inp  fa fa-pinterest"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 input-container" >
-                                                <input type="text" label="YouTube Channel" name="YouTube " class="demo-form ad-input" value="">
-                                                <i class="icon-inp fa fa-youtube"></i>
-                                            </div>
+
 
                                             <div class="col-sm-6 ">
                                                 <div class="input-container">
-                                                    <input  type="text" label="Instagram Profile" name="Instagram" class="demo-form ad-input" value="">
+                                                    <input  type="text" label="Instagram Picture" name="Instagram" class="demo-form ad-input" value="">
                                                     <i class="icon-inp  fa fa-instagram"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 input-container" >
-                                                <input type="text" label="Twitter" name="Twitter " class="demo-form ad-input" value="">
-                                                <i class="icon-inp fa fa-twitter"></i>
+                                            <div class="col-sm-6 ">
+                                                <div class="input-container">
+                                                    <input  type="text" label="Instagram Picture" name="Instagram" class="demo-form ad-input" value="">
+                                                    <i class="icon-inp  fa fa-instagram"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 ">
+                                                <div class="input-container">
+                                                    <input  type="text" label="Instagram Picture" name="Instagram" class="demo-form ad-input" value="">
+                                                    <i class="icon-inp  fa fa-instagram"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 ">
+                                                <div class="input-container">
+                                                    <input  type="text" label="Instagram Picture" name="Instagram" class="demo-form ad-input" value="">
+                                                    <i class="icon-inp  fa fa-instagram"></i>
+                                                </div>
                                             </div>
 
 
+                                            <div class="clearfix"></div>
 
 
-
-                                            <div class="col-md-6" style="margin-top: 30px;">
+                                            {{--<div class="col-md-6" style="margin-top: 30px;">--}}
                                                 {{--<a data-pin-do="embedUser"   data-pin-scale-height="255" data-pin-scale-width="80" href="https://gr.pinterest.com/freiderikosk"></a>--}}
-                                                <a data-pin-do="embedBoard"   data-pin-scale-height="255" data-pin-scale-width="80" href="https://gr.pinterest.com/freiderikosk/scolarships/"></a>
+                                                {{--<a data-pin-do="embedBoard"   data-pin-board-width="240" data-pin-scale-height="255" data-pin-scale-width="80" style="overflow-y: hidden!important;"--}}
+                                                   {{--href="https://gr.pinterest.com/aidscholarship/college-scholarships-tips-and-resources/"></a>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-md-6" style="margin-top: 30px;">--}}
+                                                {{--<iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=apple" width="100%" height="365"></iframe>--}}
+                                            {{--</div>--}}
+
+
+                                            <div id="talent" class="hidden">
+
+                                                <div class="col-md-12" style=" margin-top: 32px;">
+                                                    <div class="pull-left social-board" >
+                                                        <iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=apple"  height="300" class="youtube"></iframe>
+                                                    </div>
+                                                    <div class="pull-left social-board">
+                                                        <div class="g-person" data-href="//plus.google.com/u/0/116192191945094336260" data-rel="author" data-width="240" data-layout="portrait"></div>
+                                                    </div>
+                                                    <div class="pull-left social-board">
+                                                        <div data-dribbble-id="rork" ></div>
+                                                    </div>
+                                                    <div class="pull-left social-board">
+                                                        <a data-pin-do="embedBoard"   data-pin-board-width="240" data-pin-scale-height="190" data-pin-scale-width="80" style=""
+                                                           href="https://gr.pinterest.com/aidscholarship/college-scholarships-tips-and-resources/"></a>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-12" style="margin-top: 30px;">
+                                                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="4">
+                                                        <a href="https://instagram.com/p/BeZ3zIEHNb_/"></a>
+                                                    </blockquote>
+                                                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="4">
+                                                        <a href="https://instagram.com/p/Bc9vdzVAEaD/"></a>
+                                                    </blockquote>
+                                                </div>
+
+                                                {{--<div class="clearfix"></div>--}}
+
 
                                             </div>
 
-                                            <div class="col-md-6" style="margin-top: 30px;">
-                                                <iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=apple" width="100%" height="365"></iframe>
-                                            </div>
 
-                                            <div class="col-md-6" style="margin-top: 30px;">
-                                                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="4">
-                                                    <a href="https://instagram.com/p/siokas_/"></a>
-                                                </blockquote>
-                                            </div>
 
                                         </div>
                                     </div>
@@ -445,6 +464,10 @@
 @section('scripts')
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+    <script async defer src="//apis.google.com/js/platform.js"></script>
+    <script async defer src="//nadikun.com/code/drbbbl-profile/dp-loader.js" ></script>
+
+
 
 
 @endsection
