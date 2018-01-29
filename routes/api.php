@@ -23,22 +23,64 @@ use Illuminate\Pagination\Paginator;
 use App\Key;
 use App\Models\Cvteacherstudy;
 use Illuminate\Support\Facades\Route;
+use App\Models\Image;
 
 Scholio::bot();
 
-Route::post('/uploadImage', function(){
+Route::post('/school/uploadImage', function(){
     $data = request()->input('img');
     list($type, $data) = explode(';', $data);
     list(, $data) = explode(',', $data);
     $data = base64_decode($data);
-    $imageName = time() . '.png';
-    $path = public_path('upload/');
+    $ext = '.jpg';
+    $imageName = time() . $ext;
+    $schoolName = auth()->user()->info->type->name . '_' . auth()->user()->id . '_' . auth()->user()->name;
+    $path = public_path('upload/school/' . $schoolName . '/');
     if (!file_exists($path)) {
         mkdir($path, 0777, true);
     }
     file_put_contents($path . $imageName, $data);
-    $imageUrl = url('upload/' . $imageName);
-    return response(['data' => $imageUrl, 'page' => Route::currentRouteName()], 201);
+    $imageUrl = url('upload/school/' . $schoolName . '/' . $imageName);
+
+    $image = new Image;
+    $image->name = $imageName;
+    $image->path = '/upload/school/' . $schoolName . '/';
+    $image->full_path = '/upload/school/' . $schoolName . '/' . $imageName;
+    $image->extension = $ext;
+    $image->alt = auth()->user()->name;
+    $image->type = 'Image';
+    $image->save();
+
+    auth()->user()->info->image()->attach($image);
+
+    return response(['data' => $imageUrl], 201);
+})->middleware('auth:api');
+
+Route::post('/user/uploadAvatar', function () {
+    $logo = request()->logo;
+    $data = request()->input('img');
+    list($type, $data) = explode(';', $data);
+    list(, $data) = explode(',', $data);
+    $data = base64_decode($data);
+    $ext = '.jpg';
+    // $imageName = time() . $ext;
+    $imageName = auth()->user()->role . '_' .auth()->user()->id . '_' . auth()->user()->name . $ext;
+    $path = public_path('upload/avatar/');
+    if (!file_exists($path)) {
+        mkdir($path, 0777, true);
+    }
+    file_put_contents($path . $imageName, $data);
+    $imageUrl = url('upload/avatar/' . $imageName);
+
+    if(!$logo){
+        auth()->user()->info->avatar = '/upload/avatar/' . $imageName;
+    }else{
+        auth()->user()->info->logo = '/upload/avatar/' . $imageName;
+    }
+    
+    auth()->user()->info->save();
+
+    return response(['data' => $imageUrl], 201);
 })->middleware('auth:api');
 
 Route::post('/student/saveStudy', function () {

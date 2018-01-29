@@ -4,6 +4,7 @@
     <!-- Polymer Float Form CSS -->
     <link rel="stylesheet" href="/new/css/jquery.polymer-form.min.css" >
     <link rel="stylesheet" href="/new/css/cv.css" type="text/css"  >
+    <!-- <link rel="stylesheet" href="/css/croppie.css"> -->
 
 
 <style>
@@ -128,15 +129,10 @@
                             </p>
                             <div class="row">
                                     <div>
-                                        <img class="img-avatar" src="{{substr(auth()->user()->info->avatar, 0, 4) == 'http' ? '' : ''}}{{ auth()->user()->info->avatar }}" >
+                                        <img class="img-avatar" src="{{ auth()->user()->info->avatar }}" >
                                     </div>
 
-
-                                    <div id="changePhoto" class="btn btn-primary btn-choose">
-                                        <label for="cvPhoto" class="label"> <i class="fa fa-upload mar-right-10"></i>Επιλογή φωτογραφίας προφίλ</label>
-                                        <input type="file" id="cvPhoto" class="form-control" name="logo" style="visibility:hidden;">
-                                    </div>
-
+                                     @include('panel.partials.body.uploadImage', ['type' => 'avatar', 'text' => 'Επιλογή φωτογραφίας προφίλ'])
                             </div>
                        </div>
 
@@ -403,9 +399,9 @@
                                                     <div class="pull-left social-board">
                                                         <div class="g-person" data-href="//plus.google.com/u/0/116192191945094336260" data-rel="author" data-width="240" data-layout="portrait"></div>
                                                     </div>
-                                                    <div class="pull-left social-board">
+                                                    <!-- <div class="pull-left social-board">
                                                         <div data-dribbble-id="rork" ></div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="pull-left social-board">
                                                         <a data-pin-do="embedBoard"   data-pin-board-width="240" data-pin-scale-height="190" data-pin-scale-width="80" style=""
                                                            href="https://gr.pinterest.com/aidscholarship/college-scholarships-tips-and-resources/"></a>
@@ -465,7 +461,7 @@
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
     <script async defer src="//apis.google.com/js/platform.js"></script>
-    <script async defer src="//nadikun.com/code/drbbbl-profile/dp-loader.js" ></script>
+    <!-- <script async defer src="//nadikun.com/code/drbbbl-profile/dp-loader.js" ></script> -->
 
 
 

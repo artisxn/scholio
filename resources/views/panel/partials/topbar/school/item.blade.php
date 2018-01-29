@@ -20,7 +20,7 @@
 
 <li class="dropdown">
     <a href="" class="dropdown-toggle profile waves-effect" data-toggle="dropdown" aria-expanded="true">
-        <img src="{{substr(Auth::user()->info->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->info->logo }}" alt="user-img" class="img-circle">
+        <img src="{{ Auth::user()->info->logo }}" alt="user-img" class="img-circle">
     </a>
     <ul class="dropdown-menu">
             <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>

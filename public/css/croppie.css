@@ -248,3 +248,17 @@ background: #ccc;
 .cr-rotate-r i:before {
 	content: '↻';
 }
+
+.modal-sc-logo{margin-top: -4px; height: 60px;}
+        .modal-content{padding: 0!important; border: none; border-radius: 5px!important;}
+        .panel-title{margin: 2px 0 0 15px; font-size: 190%; font-weight: 600;}
+        .btn-close{background-color: transparent}
+        .btn-close:hover{color: #FD6A33;}
+        .modal-icon{height: 30px; margin-right: 15px}
+        .panel-body{ min-height: 300px}
+        .modal-footer{padding: 15px!important;}
+        .btn-info{background: #008da5; border: none;}
+        .btn-info:hover{background: #007991;}
+
+        .section-text{margin-bottom: 20px;}
+        .inner-section2{border: none; margin-top: 30px; background-color: transparent;}

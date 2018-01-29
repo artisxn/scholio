@@ -117,14 +117,11 @@
                             </p>
                             <div class="row">
                                     <div>
-                                        <img class="img-avatar" src="{{substr(auth()->user()->info->avatar, 0, 4) == 'http' ? '' : ''}}{{ auth()->user()->info->avatar }}" >
+                                        <img class="img-avatar" src="{{ auth()->user()->info->avatar }}" >
                                     </div>
 
 
-                                    <div id="changePhoto" class="btn btn-primary btn-choose">
-                                        <label for="cvPhoto" class="label"> <i class="fa fa-upload mar-right-10"></i>Επιλογή φωτογραφίας προφίλ</label>
-                                        <input type="file" id="cvPhoto" class="form-control" name="logo" style="visibility:hidden;">
-                                    </div>
+                                     @include('panel.partials.body.uploadImage', ['type' => 'avatar', 'text' => 'Επιλογή φωτογραφίας προφίλ'])
 
                             </div>
                        </div>

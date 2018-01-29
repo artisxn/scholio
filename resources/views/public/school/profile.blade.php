@@ -418,32 +418,13 @@
             <!-- BX SLIDER -->
             <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
                 <div class="row xl-margin-right " style="padding-left: 7px;">
-                    <ul class="bxslider  "  data-bx-slider="
+                    <ul class="bxslider "  data-bx-slider="
                 pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
                 slideWidth: 305, slideMargin:19, infiniteLoop: true, hideControlOnEnd: false">
                         <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
-                            <img data-ng-src="/images/schools/@{{image.path}}" />
+                            <img id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
                         </li>
                     </ul>
-                </div>
-            </div>
-
-            <!-- Photo Grid  HIDDEN -->
-            <div class="hidden">
-                <div class="row margin-top-30 hidden-xs hidden-sm hidden2">
-                    <div class="" ng-repeat ="image in contactInfo.image">
-
-                        <div class="col-md-3" ng-show="$index<4" >
-                            <div class="">
-                                <img data-ng-src="/images/schools/@{{image.path}}" alt="profile-pic" style="" class=" img-grid2"/>
-                            </div>
-                        </div>
-                        <div class="col-md-4" ng-show="$index>3 " >
-                            <div class="">
-                                <img data-ng-src="/images/schools/@{{image.path}}" alt="profile-pic" style="" class=" img-grid"/>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -1184,6 +1165,19 @@
             </div>
         </div><!-- /.modal -->
 
+        <!-- ====== MODAL IMAGES =======-->
+        <div id="img-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <img src="/" id="bigImage" width="100%" height="100%"/>
+        
+                
+                        </div>
+                    </div>
+                </div>
+
+
 
         <!-- ====== Modal Υποτροφίας =======-->
         <div id="scholarship-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
@@ -1213,7 +1207,8 @@
                     </div>
                 </div>
             </div>
-        </div><!-- /.modal -->
+        </div>
+        <!-- modal -->
 
 
     </main>
@@ -1225,6 +1220,14 @@
 </body>
 
 <script>
+    function test(e){
+        var IMG = e.id
+
+        $('#bigImage').attr("src", IMG);
+
+        $('#img-modal').modal('toggle');
+    }
+
     var lengthStudents = 0;
 
 // $.nonbounce();

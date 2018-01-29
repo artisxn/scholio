@@ -166,7 +166,7 @@ class AdminPanelController extends Controller
 
         // dd($links->where('name', 'facebook')->first()->link);
 
-        return view('panel.pages.profile.form', compact('schoolTypes', 'logo', 'school', 'links'));
+        return view('panel.pages.school.profile.form', compact('schoolTypes', 'logo', 'school', 'links'));
     }
 
     /**

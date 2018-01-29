@@ -2,8 +2,7 @@
 
 @section('styles')
 
-    {{--<link rel="stylesheet" href="/panel/assets/css/cropper.css">--}}
-    {{--<link rel="stylesheet" href="/panel/assets/css/mainCrop.css">--}}
+    <link rel="stylesheet" href="/css/croppie.css">
 
 
     <style>
@@ -92,142 +91,36 @@
             .pic, .grow img {height: 195px;}
             .out-div{height: 212px;}
         }
+
+                     /* ========== Modal ============== */
+
+        .modal-sc-logo{margin-top: -4px; height: 60px;}
+        .modal-content{padding: 0!important; border: none; border-radius: 5px!important;}
+        .panel-title{margin: 2px 0 0 15px; font-size: 190%; font-weight: 600;}
+        .btn-close{background-color: transparent}
+        .btn-close:hover{color: #FD6A33;}
+        .modal-icon{height: 30px; margin-right: 15px}
+        .panel-body{ min-height: 300px}
+        .modal-footer{padding: 15px!important;}
+        .btn-info{background: #008da5; border: none;}
+        .btn-info:hover{background: #007991;}
+
+        .section-text{margin-bottom: 20px;}
+        .inner-section2{border: none; margin-top: 30px; background-color: transparent;}
+
+        /* ================================ */
     </style>
 @endsection
 
 @section('content')
 
-
-
-        <!-- Content trial for crop-->
-    <div class="container cropp">
-        {{--<div class="row">--}}
-            {{--<div class="col-md-8">--}}
-                {{--<!-- <h3 class="page-header">Demo:</h3> -->--}}
-                {{--<div class="img-container">--}}
-                    {{--<img id="image" src="/panel/assets/images/logo/logo.png" alt="Picture" >--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-md-4">--}}
-                {{--<!-- <h3 class="page-header">Preview:</h3> -->--}}
-                {{--<div class="docs-preview clearfix">--}}
-                    {{--<div class="img-preview preview-lg"></div>--}}
-                {{--</div>--}}
-
-
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-8 docs-buttons">--}}
-                {{--<!-- <h3 class="page-header">Toolbar:</h3> -->--}}
-
-                {{--<!--ZOOM -->--}}
-                {{--<div class="btn-group">--}}
-                    {{--<button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">--}}
-                        {{--<span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, 0.1)">--}}
-                          {{--<span class="fa fa-search-plus"></span>--}}
-                        {{--</span>--}}
-                    {{--</button>--}}
-                    {{--<button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">--}}
-                        {{--<span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, -0.1)">--}}
-                          {{--<span class="fa fa-search-minus"></span>--}}
-                        {{--</span>--}}
-                    {{--</button>--}}
-                {{--</div>--}}
-                {{--<!--FLIP & RESET-->--}}
-                {{--<div class="btn-group">--}}
-                    {{--<button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Flip Horizontal">--}}
-                        {{--<span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;scaleX&quot;, -1)">--}}
-                          {{--<span class="fa fa-arrows-h"></span>--}}
-                        {{--</span>--}}
-                    {{--</button>--}}
-                    {{--<button type="button" class="btn btn-primary" data-method="reset" title="Reset">--}}
-                        {{--<span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;reset&quot;)">--}}
-                          {{--<span class="fa fa-refresh"></span>--}}
-                        {{--</span>--}}
-                    {{--</button>--}}
-                {{--</div>--}}
-
-                {{--<!-- Upload & Get-->--}}
-                {{--<div class="btn-group btn-group-crop">--}}
-                    {{--<label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">--}}
-                                        {{--<input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">--}}
-                                            {{--<span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">--}}
-                                              {{--<span class="fa fa-upload"></span>--}}
-                                            {{--</span>--}}
-                    {{--</label>--}}
-                    {{--<button type="button" class="btn btn-primary" data-method="getCroppedCanvas">--}}
-                        {{--<span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;)">--}}
-                          {{--Προβολή--}}
-                        {{--</span>--}}
-                    {{--</button>--}}
-
-                {{--</div>--}}
-
-                {{--<!-- Show the cropped image in modal -->--}}
-                {{--<div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getclickCroppedCanvasTitle" role="dialog" tabindex="-1">--}}
-                    {{--<div class="modal-dialog">--}}
-                        {{--<div class="modal-content">--}}
-                            {{--<div class="modal-header">--}}
-                                {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--}}
-                                {{--<h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>--}}
-                            {{--</div>--}}
-                            {{--<div class="modal-body"></div>--}}
-                            {{--<div class="modal-footer">--}}
-                                {{--<button type="button" class="btn btn-default" data-dismiss="modal">Άκυρο</button>--}}
-                                {{--<a class="btn btn-primary" id="download" href="javascript:void(0);" download="cropped.jpg">Ανέβασμα</a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div><!-- /.modal -->--}}
-
-
-
-            {{--</div><!-- /.docs-buttons -->--}}
-
-            {{--<div class="col-md-4 docs-toggles">--}}
-                {{--<!-- <h3 class="page-header">Toggles:</h3> -->--}}
-                {{--<div class="btn-group btn-group-justified" data-toggle="buttons">--}}
-                    {{--<label class="btn btn-primary ">--}}
-                        {{--<input type="radio" class="sr-only" id="aspectRatio0" name="aspectRatio" value="1.7777777777777777">--}}
-                             {{--<span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: 16 / 9">--}}
-                                {{--16:9--}}
-                           {{--</span>--}}
-                    {{--</label>--}}
-                    {{--<label class="btn btn-primary">--}}
-                        {{--<input type="radio" class="sr-only" id="aspectRatio1" name="aspectRatio" value="1.3333333333333333">--}}
-                             {{--<span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: 4 / 3">--}}
-                                    {{--4:3--}}
-                            {{--</span>--}}
-                    {{--</label>--}}
-                    {{--<label class="btn btn-primary active">--}}
-                        {{--<input type="radio" class="sr-only" id="aspectRatio3" name="aspectRatio" value="1.5">--}}
-                            {{--<span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: 15 / 10">--}}
-                                  {{--15:10--}}
-                            {{--</span>--}}
-                    {{--</label>--}}
-                    {{--<label class="btn btn-primary">--}}
-                        {{--<input type="radio" class="sr-only" id="aspectRatio4" name="aspectRatio" value="NaN">--}}
-                            {{--<span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: NaN">--}}
-                                  {{--Free--}}
-                             {{--</span>--}}
-                    {{--</label>--}}
-                {{--</div>--}}
-
-
-            {{--</div><!-- /.docs-toggles -->--}}
-        {{--</div>--}}
-    </div>
     <!-- Content  ΟΚ  simple upload-->
     <div class="row  old">
 
         <div class="upper-texts">
             <h3 class="">@lang('school_photos.title')</h3>
-            <form id='myform' method="POST" action="/panel/school/profile/images/upload" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <input type="file"  class="hidden" id="files" name="images[]" onchange="document.getElementById('myform').submit()" multiple/>
-                <label for="files" class="btn btn-green"> <i class="fa fa-upload info info"  aria-hidden="true"></i> @lang('school_photos.button')</label>   <!--fa-cloud-upload  -->
-            </form>
+
+            <div class="btn btn-green" data-target="#upload-modal" data-toggle="modal"> @lang('school_photos.button')</div>
 
             <p class="text"> @lang('school_photos.subtitle')</p>
             <div class="row">
@@ -240,7 +133,7 @@
                                 @if(auth()->user()->info->background == $image->id)
                                     <div class="selectedImg out-div" style="padding-right: 8px;">
                                         <div class="grow pic">
-                                            <img id="img{{$image->id}}" class="" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
+                                            <img id="img{{$image->id}}" class="" src="{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
                                                     {{--onmouseover="hov({{$image->id}})"--}}
                                             />
                                         </div>
@@ -248,7 +141,7 @@
                                 @else
                                     <div class="out-div">
                                         <div class="grow pic" style="opacity: 0.;">
-                                            <img id="img{{$image->id}}" class="" src="{{substr($image->full_path, 0, 4) == 'http' ? '' : '/images/schools/'}}{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
+                                            <img id="img{{$image->id}}" class="" src="{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
                                                     {{--onmouseover="hov({{$image->id}})"--}}
                                             />
                                         </div>
@@ -272,12 +165,38 @@
                     @endforeach
                 </div>
     </div>
+
+    <!-- ====== Upload Modal  ======= -->
+    <div id="upload-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+    
+                <div class="panel " style="background-color: #324c5a; height:90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding: 10px">
+                    <div class="panel-heading" style=" color: #fff">
+                        <button type="button" class="btn pull-right btn-close" data-dismiss="modal">
+                            x
+                        </button>
+                        <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
+                        <!-- <h3 class="pull-left panel-title">schol.io</h3> -->
+                    </div>
+    
+                </div>
+                <div class="panel-body">
+    
+    
+                    <div class="section2-container ">
+                        <div class="inner-section2">
+                            <image-crop img-width="500" img-height="300" img-data="school"></image-crop>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
 @endsection
 
 @section('scripts')
-    {{--<script src="/panel/assets/js/cropper.min.js"></script>--}}
-    {{--<script src="/panel/assets/js/mainCrop.js"></script>--}}
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
@@ -306,22 +225,6 @@
             document.getElementById('img{{$image->id}}').className = '';
         @endforeach
     }
-        // $("span").hover(
-        //         function () {
-        //             $('button').addClass('btn-vis');
-        //         },
-        //         function () {
-        //             $('button').removeClass('btn-vis');
-        //         }
-        // );
-
-//        function hov(el){
-//            console.log(el);
-//            var g = "#bt-" + el;
-//            document.getElementById(g).addClass('btn-vis');
-
-            // el.style.hidden = false;
-//        }
 
 
     </script>

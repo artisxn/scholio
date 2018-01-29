@@ -3,7 +3,7 @@
         @if(auth()->user()->role != 'admin')
             <div class="pull-left">
             @if(auth()->user()->role == 'school')
-                <img src="{{substr(Auth::user()->info->logo, 0, 4) == 'http' ? '' : '/images/schools/'}}{{ Auth::user()->info->logo }}" alt="" class="thumb-md" style="margin-top: 5px">
+                <img src="{{ Auth::user()->info->logo }}" alt="" class="thumb-md" style="margin-top: 5px">
             @else
                 <img src="{{substr(Auth::user()->info->avatar, 0, 4) == 'http' ? '' : ''}}{{ Auth::user()->info->avatar }}" alt="" class="thumb-md" style="margin-top: 5px">
             @endif

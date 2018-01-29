@@ -49,7 +49,7 @@ class FakeSeeder extends Seeder
 <p><strong>W</strong><strong>e aspire:</strong></p>
 <p>to be the institution of choice for students seeking the highest levels of personal, intellectual, and professional attainment. We want to be known as the institution that contributes to society and produces well-rounded, principled, and open-minded citizens of the world.</p>
 </div>',
-            'logo' => 'fake/act-logo.png',
+            'logo' => '/images/schools/fake/act-logo.png',
             'background' => 1,
         ]);
         /*===============  2 AMC ================*/
@@ -64,7 +64,7 @@ class FakeSeeder extends Seeder
             'about' => '<p style="text-align: justify;">Το Μητροπολιτικό Κολλέγιο, από το 1982 μέχρι σήμερα έχει αποστολή και όραμα την πνευματική και μορφωτική ανέλιξη των φοιτητών του. Υπηρετεί με συνέπεια την Τριτοβάθμια Εκπαίδευση, έχοντας εδραιωθεί στη συνείδηση γονέων και φοιτητών ως <strong>η κορυφαία επιλογή ποιοτικών σπουδών Πανεπιστημιακού επιπέδου στην Ελλάδα</strong>, με παραρτήματα στην Αθήνα, τον Πειραιά και τη Θεσσαλονίκη. Η καλλιέργεια της κριτικής σκέψης, η ακαδημαϊκή πρόοδος και η ανάπτυξη του ερευνητικού πνεύματος του κάθε φοιτητή αποτελούν προτεραιότητα για το Κολλέγιό μας και αυτή η εταιρική μας κουλτούρα είναι που μας κάνει<strong> να ξεχωρίζουμε.</strong></p>
 <p style="text-align: justify;"> Με την εμπειρία <strong>34 χρόνων</strong> <strong>πορείας στην ελληνική εκπαίδευση</strong>, το Μητροπολιτικό Κολλέγιο παρέχει, σε συνεργασία με διακεκριμένα δημόσια Πανεπιστημιακά Ιδρύματα του εξωτερικού, μια σειρά από πιστοποιημένα προγράμματα σπουδών που καλύπτουν σύγχρονα επιστημονικά πεδία και ανταποκρίνονται στις σημερινές απαιτήσεις της ελληνικής και διεθνούς αγοράς εργασίας. Η διάρθρωση του Μητροπολιτικού Κολλεγίου, το Ακαδημαϊκό Συμβούλιο, η τεχνογνωσία και η εμπειρία του ακαδημαϊκού δυναμικού, οι υποδομές και οι κτιριακές εγκαταστάσεις, η βιβλιοθήκη χιλιάδων τίτλων και η τεχνολογική υποστήριξη της εκπαιδευτικής διαδικασίας, αποτελούν τις δικλείδες ασφαλείας για την υψηλή ποιότητα των σπουδών που προσφέρουμε.</p>
 <p style="text-align: justify;"></p>',
-            'logo' => 'fake/amc-logo.png',
+            'logo' => '/images/schools/fake/amc-logo.png',
             'background' => 7,
         ]);
         /*===============  3 AKMH ================*/
@@ -84,7 +84,7 @@ class FakeSeeder extends Seeder
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
             'approved' => 1,
-            'logo' => 'fake/akmi-logo.png',
+            'logo' => '/images/schools/fake/akmi-logo.png',
             'background' => 14,
         ]);
         /*===============  4 Εκπαιδευτήρια Βασιλειάδη ================*/
@@ -105,7 +105,7 @@ class FakeSeeder extends Seeder
 <li><strong>Ενθαρρύνουμε</strong>: Αφουγκραζόμαστε και κινητοποιούμε τη δημιουργικότητα των παιδιών από το επίπεδο της τάξης έως την εξειδικευμένη ενασχόληση στους ομίλους ενδιαφερόντων (clubs). Συμμετέχουμε ενεργά στους θεσμοθετημένους διαγωνισμούς με γνωστικό αλλά και πολιτιστικό-αθλητικό περιεχόμενο. Ενθαρρύνουμε τη συμμετοχή των μαθητών μας σε προγράμματα με κοινωνικό, οικολογικό και καλλιτεχνικό προσανατολισμό.</li>
 <li><strong>Εμπνέουμε</strong>: Στοχεύουμε σε ένα σχολείο ανοιχτό στην κοινωνία. Επιδιώκουμε να διατηρούμε συνεχή επαφή με τα συμβαίνοντα στην κοινωνική πραγματικότητα σε τοπικό, εθνικό και διεθνές περιβάλλον.</li>
 </ul>',
-            'logo' => 'fake/vasileiadi-logo.png',
+            'logo' => '/images/schools/fake/vasileiadi-logo.png',
             'background' => 23,
         ]);
         /*===============  5 Εκπαιδευτήρια Φρυγανιώτη ================*/
@@ -123,7 +123,7 @@ class FakeSeeder extends Seeder
 <p><br />Η <strong>ελεύθερη σκέψη</strong>, η <strong>κριτική ικανότητα</strong>, το <strong>δημιουργικό πνεύμα</strong>, ο <strong>σεβασμός για το περιβάλλον και τον άνθρωπο</strong> αποτελούν κατευθυντήριες έννοιες της σχολικής καθημερινότητας στα Εκπαιδευτήριά μας. Προσφέρουμε στους μαθητές μας υψηλής ποιότητας παιδεία, προσαρμοσμένη στις ανάγκες του κάθε παιδιού.<br /><br />Επιδιώκουμε με κάθε τρόπο να αναγνωρίσουμε και <strong>να αναδείξουμε τις ιδιαίτερες ικανότητες του κάθε μαθητή</strong>. Για μας το παιδί δεν είναι θεατής, αλλά ενεργός συμμέτοχος στην εκπαιδευτική διαδικασία. Προετοιμάζουμε σκεπτόμενους πολίτες που με τις γνώσεις και το ήθος τους θα είναι έτοιμοι να αντιμετωπίζουν τις προκλήσεις των καιρών.</p>
 <p>Το <strong>φιλικό και ζεστό περιβάλλον</strong> των Εκπαιδευτηρίων μας, αποτελεί πάντα σημαντικό παράγοντα στην υλοποίηση των στόχων μας. Με <strong>ιδιαίτερη στοργή</strong> και <strong>ενδιαφέρον</strong> σκύβουμε στις ανησυχίες και τις αναζητήσεις των νέων ανθρώπων, οπλίζοντάς τους με δύναμη και αισιοδοξία για τη ζωή.<br /><br />Πιστεύουμε ότι κάθε μορφωτικό αγαθό μπορεί να βλαστήσει μόνο μέσα από <strong>σχέσεις υγιείς και ευτυχισμένες,</strong> <strong>σχέσεις εμπιστοσύνης</strong> που μόνο στο <strong>οικογενειακό περιβάλλον που προσφέρουμε</strong> μπορούν να καλλιεργηθούν και με την προσωπική μας φροντίδα να καρποφορήσουν.</p>
 </div>',
-            'logo' => 'fake/fryganioti-logo.png',
+            'logo' => '/images/schools/fake/fryganioti-logo.png',
             'background' => 29,
         ]);
         /*===============   6 NYC   ================*/
@@ -144,7 +144,7 @@ class FakeSeeder extends Seeder
 <p style="text-align: justify;">We are proud of our commitment to education, to prepare students to become scholars and thinkers of a new century in which technology will continue to transform the way we advance the boundaries of knowledge. Our aim is to provide our students with prestigious degrees and more importantly, with the values and ethics necessary to excel in society in general.</p>
 <p style="text-align: justify;">I look forward to welcoming you to one of the institutions of the NYC Educational Group and let me assure you that you will enjoy top quality studies in one of the best educational environments you can find.</p>
 <p style="text-align: right;"><br /><strong>Dr. Elias Foutsis</strong><br />President</p>',
-            'logo' => 'fake/newyork-logo.png',
+            'logo' => '/images/schools/fake/newyork-logo.png',
             'background' => 37,
         ]);
         /*===============  7 Φροντιστήρια Μ.Ε.Υποδομή ================*/
@@ -167,7 +167,7 @@ class FakeSeeder extends Seeder
 <p>Οι μαθητές χωρίζονται με βάση το πραγματικό τους επίπεδο και όχι με κριτήριο το λύκειο στο οποίο φοιτούν. Το πρόγραμμα του κάθε τμήματος θα είναι ανάλογα διαμορφωμένο και οι μαθητές που θα φοιτούν σ’ αυτά τα τμήματα θα έχουν την δυνατότητα να δουλέψουν σωστά, ώστε και στο σχολείο να μην έχουν καμία δυσκολία, αλλά και το σπουδαιότερο, με άνεση θα μπορούν να στοχεύουν το άριστα στις εξετάσεις της Α’ ,  Β’ Λυκείου, όπως και στις Πανελλαδικές Εξετάσεις της Γ΄ Λυκείου.</p>
 <p><strong>Επιλογή άριστα καταρτισμένων καθηγητών</strong></p>
 <p>Η επιλογή των καθηγητών γίνεται με αυστηρά κριτήρια, τα οποία στηρίζονται στις εξής αρχές:<br />Την άρτια επιστημονική τους κατάρτιση<br />Την πολυετή τους πείρα<br />Την εργατικότητά τους<br />Το ήθος τους<br />Το ανθρωπιστικό και παιδαγωγικό τους υπόβαθρο<br />Το ενδιαφέρον τους για κάθε μαθητή χωριστά<br />Το σεβασμό για το γονιό</p>',
-            'logo' => 'fake/ypodomi-logo.png',
+            'logo' => '/images/schools/fake/ypodomi-logo.png',
             'background' => 42,
         ]);
         /*===============  8 Εκπαιδευτήρια Απόστολος Παύλος  ================*/
@@ -182,7 +182,7 @@ class FakeSeeder extends Seeder
             'about' => '<p>Τα Εκπαιδευτήρια «Ο Απόστολος Παύλος» ιδρύθηκαν <strong>το 1976</strong> από τον μακαριστό Μητροπολίτη Θεσσαλονίκης <strong>πατέρα Λεωνίδα Παρασκευόπουλο </strong>, ο οποίος οραματίστηκε για την αγαπημένη του Θεσσαλονίκη ένα σχολείο που θα κάλυπτε όλες τις βαθμίδες και θα παρείχε στους μαθητές του άριστη μόρφωση αλλά και χριστιανική αγωγή ψυχής.<br />Η επιθυμία του αειμνήστου πατρός βρήκε ένθερμους υποστηρικτές οι οποίοι με ζήλο και αυταπάρνηση υλοποίησαν το όραμα. Ο ιεραποστολικός σύλλογος της Θεσσαλονίκης<strong> "Απόστολος Παύλος" </strong>ανέλαβε την ευθύνη αυτού του έργου, την οποία έχει ως σήμερα. Πρώτα λειτούργησε ένα τμήμα του Νηπιαγωγείου με την ονομασία «Κυκλάμινα». Σιγά-σιγά ολοκληρώθηκαν οι τάξεις του Δημοτικού, του Γυμνασίου και του Λυκείου.</p>
 <p><strong>Παιδικός Σταθμός, </strong>δύο<strong> Νηπιαγωγεία, </strong>δύο <strong>Δημοτικά Σχολεία, </strong>δύο<strong> Γυμνάσια </strong>και το <strong>Λύκειο </strong>λειτουργούν σήμερα και έχουν φιλοξενήσει εκατοντάδες μαθητές παρέχοντας εξαιρετικού επιπέδου μόρφωση και αγωγή. Το Σχολείο αγαπήθηκε από τους Θεσσαλονίκεις, οι οποίοι με εμπιστοσύνη «ακούμπησαν» σ’ αυτό τα παιδιά τους.</p>
 <p>Με ταχύτατο ρυθμό αναπτύχθηκαν οι κτιριακές εγκαταστάσεις σ\' έναν χώρο μοναδικής θέσης και ομορφιάς στους πρόποδες του Πανοράματος που έχει το προνόμιο να είναι κατάφυτος. Το 1980 εγκαινιάστηκε το κτίριο του Δημοτικού Σχολείου από το ιδρυτή των Εκπαιδευτηρίων μας π. Λεωνίδα ο οποίος συγκινημένος έβλεπε να υλοποιείται το όραμά του, το 1983 ολοκληρώθηκε και εγκαινιάστηκε το κτίριο που στεγάζει το Γυμνάσιο, το 1992 το κτίριο του Λυκείου, το 2003 εγκαινιάστηκε νέο κτίριο νηπιαγωγείων και το 2006 νέο δεύτερο κτίριο Δημοτικού σχολείου. Αίθουσες τελετών, γυμναστήρια, γήπεδα και πολύ άνετοι προαύλιοι χώροι συμπληρώνουν τις εγκαταστάσεις.</p>',
-            'logo' => 'fake/eap-logo.png',
+            'logo' => '/images/schools/fake/eap-logo.png',
             'background' => 48,
         ]);
         /*===============  9 Ευρωγνώση Τσιμισκή ================*/
@@ -201,7 +201,7 @@ class FakeSeeder extends Seeder
 <h2>Όμιλος με Όραμα</h2>
 <p><br />Ακαδημαϊκή υπεροχή στους μαθητές μας μέσα από καινοτομία, συστηματικότητα, κερδοφόρο δίκτυο και δυνατό brand.</p>
 <p>Το όραμά μας είναι η ΕΥΡΩΓΝΩΣΗ να γίνει ο <strong>παγκόσμιος ηγέτης στο χώρο της ξενόγλωσσης εκπαίδευσης</strong>, υποστηρίζοντας σήμερα ένα σύνολο 350 εταιριών που παντρεύουν το κοινωνικό έργο της εκπαίδευσης και την απόλυτη επιχειρηματικότητα με άξονα την ποιότητα και τις ξεκάθαρες οργανωτικές δομές.</p>',
-            'logo' => 'fake/eurognosi-logo.png',
+            'logo' => '/images/schools/fake/eurognosi-logo.png',
             'background' => 56,
         ]);
         /*===============  10 Danza Fuerte ================*/
@@ -232,7 +232,7 @@ class FakeSeeder extends Seeder
 </div>
 </div>
 </div>',
-            'logo' => 'fake/danzafuerte-logo.png',
+            'logo' => '/images/schools/fake/danzafuerte-logo.png',
             'background' => 62,
         ]);
         /*===============  11 Αδαμάντιος Σχολή ================*/
@@ -248,7 +248,7 @@ class FakeSeeder extends Seeder
 <p class="homePadRight">Tο προσωπικό μας είναι άριστα καταρτισμένο. Η εκπαιδευτική διαδικασία υποστηρίζεται με σύνολο εξειδικευμένων δασκάλων που καλλιεργούν και αναπτύσσουν τις δεξιότητες και τα χαρίσματα των μαθητών.</p>
 <p class="homePadRight">Διδάσκονται τρεις ξένες γλώσσες, Αγγλικά, Γαλλικά και Γερμανικά, μέσα στις ώρες λειτουργίας του σχολικού προγράμματος. Στους νεοεγγραφόμενους μαθητές παραδίδονται μαθήματα ξένων γλωσσών για την ομαλή ένταξή τους στην τάξη. Επίσης, λαμβάνεται ιδιαίτερη μέριμνα για Δημιουργική Απασχόληση-Φύλαξη των παιδιών σε ώρες πέραν του ωρολογίου προγράμματος.</p>
 <p class="homePadRight">Η συνεργασία Γονέων- Σχολείου αποτελεί βασικό παράγοντα της εκπαιδευτικής μας διαδικασίας. Η επίδοση και η διαγωγή των μαθητών μας αποτελεί καθημερινό μας μέλημα.</p>',
-            'logo' => 'fake/adamantios-logo.png',
+            'logo' => '/images/schools/fake/adamantios-logo.png',
             'background' => 68,
         ]);
 
@@ -268,7 +268,7 @@ class FakeSeeder extends Seeder
 Από την αρχή των σπουδών σας μέχρι και την αποφοίτησή σας, συνεργάζεστε με τον Σύμβουλο Σταδιοδρομίας του Hellenic American College, ο οποίος θα σας βοηθήσει να δημιουργήσετε ένα ισχυρό σύνολο δεξιοτήτων και εμπειριών για τη μετέπειτα επαγγελματική σας σταδιοδρομία.
 Θα αποκτήσετε εξαιρετικές επικοινωνιακές δεξιότητες στο γραπτό και προφορικό λόγο στα Αγγλικά.
 Οι καθηγητές μας διαθέτουν διεθνές ακαδημαϊκό προφίλ, ενεργή δράση στην έρευνα και αποδίδουν ιδιαίτερη έμφαση στην ποιότητα της διδασκαλίας.',
-            'logo' => 'fake/haec-logo.png',
+            'logo' => '/images/schools/fake/haec-logo.png',
             'background' => 74,
         ]);
         /*===============   13 ACG   ================*/
@@ -283,7 +283,7 @@ class FakeSeeder extends Seeder
             'about' => 'Founded in Smyrna, Asia Minor, in 1875, by missionaries from Boston, Massachusetts, The American College of Greece is the oldest and largest US accredited college or university in Europe.
 For over 140 years, ACG has been offering transformative education and cultivating a fertile intellectual and cultural collaboration between Greece and the United States.
 ACG is an independent, not for profit, nonsectarian, co-educational academic institution. To add distinctive and sustainable value to our students as well as Greece, American education, Hellenic heritage, and the global community through transformative teaching, scholarship, and service. The Admissions Office offers one on one consultations with candidates and their families, conducts tours of the ACG Campus, and organizes information sessions throughout the year. Several times a year, we offer Discover Deree Days, designed to familiarize candidates and their families with the full range of the College’s programs and services.',
-            'logo' => 'fake/acg-logo.png',
+            'logo' => '/images/schools/fake/acg-logo.png',
             'background' => 80,
         ]);
         /*===============   14 AEGEAN   ================*/
@@ -303,7 +303,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 Η εφαρμογή μιας ενιαίας πολιτικής με στόχο την συστηματική επιμόρφωση των ανθρώπινων πόρων του Κολεγίου.
 Η διαρκής ανανέωση του υλικοτεχνικού εξοπλισμού του Κολεγίου και η εφαρμογή καινοτόμων λύσεων που διασφαλίζουν το υψηλότερο δυνατό εκπαιδευτικό αποτέλεσμα.
 Η οργάνωση προγραμμάτων διά βίου μάθησης με στόχο την επιμόρφωση ενηλίκων και επαγγελματιών με την εφαρμογή των πλέον εξελιγμένων μεθόδων και μέσων στην εκπαιδευτική διαδικασία, όπως το σύγχρονο και ασύγχρονο e-learning.',
-            'logo' => 'fake/aegean-logo.png',
+            'logo' => '/images/schools/fake/aegean-logo.png',
             'background' => 83,
         ]);
         /*===============   15 DEI   ================*/
@@ -319,7 +319,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 Σκοπός του DEI είναι να παρέχει ποιοτική εκπαίδευση σε ανθρώπους με ποικίλη εκπαιδευτική εμπειρία, σε ένα ευχάριστο περιβάλλον οργανωμένο με σχολαστικότητα και με αυστηρά επιλεγμένο εκπαιδευτικό προσωπικό.
 Μέσα από την εμπειρία χρόνων και τη στενή επαφή με φημισμένα Βρετανικά πανεπιστήμια, το DEI μπορεί πλέον να διδάσκει προγράμματα που αξιολογούνται και θεωρούνται ως εφάμιλλα εκείνων που διδάσκονται στη Βρετανία.
 Οι απόφοιτοί του έχουν στελεχώσει μεγάλες Ελληνικές και διεθνείς επιχειρήσεις.',
-            'logo' => 'fake/dei-logo.png',
+            'logo' => '/images/schools/fake/dei-logo.png',
             'background' => 88,
         ]);
         /*===============   16 ATT   ================*/
@@ -333,7 +333,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'approved' => 1,
             'about' => 'Με την εμπειρία και την παράδοση 37 ετών, το Αττικό Κολέγιο, σε ένα εξαιρετικό νεοκλασικό κτίριο στο κέντρο της
 Αθήνας, λειτουργεί με σύγχρονες εκπαιδευτικές καινοτομίες, βασισμένες στα Ευρωπαϊκά πρότυπα εκπαίδευσης των ιδρυμάτων με τα οποία συνεργαζόμαστε επί σειρά ετών.Η επιτυχία του Αττικού Κολεγίου χαρακτηρίζεται από τρεις περιόδους σταθμούς στην ανάπτυξη του: Πρώτον, τη δημιουργία του Κολεγίου Δημοσιογραφικών σπουδών το 1989, όπου εξαιρετικά δημοσιογραφικά στελέχη όπως, ο Λυκούργος Κομίνης, ο Γιώργος Παπαδάκης, η Λιάνα Κανέλη, η Μένυα Παπαδοπούλου κ.α. καθώς και οι πανεπιστημιακοί κ.κ. Λοβέρδος, Πασσάς, Τσάτσος, Κατσέλη κ.α, αποτέλεσαν ένα συνδυασμό δημοσιογραφικής και ακαδημαϊκής υπεροχής και στελέχωσαν με τεράστια επιτυχία την ιδιωτική τηλεόραση και μεγάλο μέρος των ΜΜΕ γενικότερα, γεγονός που μας καθιστά πολύ υπερήφανους. Δεύτερον, την επιλογή του Κολεγίου μας για συνεργασία, από το Βρετανικό κρατικό κολέγιο του Cambridge, το 2003, σε προγράμματα σπουδών για την απόκτηση διπλώματος Αγγλίας HND και τη δυνατότητα συνέχισης για την απόκτηση πτυχίου BSc.Τέλος, τη συνεργασία με κορυφαία ευρωπαϊκά πανεπιστήμια, καθιερώνοντας το Αττικό Κολέγιο πρωτοπόρο στην ανάπτυξη προγραμμάτων υγείας και ανθρωπιστικών σπουδών.',
-            'logo' => 'fake/att-logo.png',
+            'logo' => '/images/schools/fake/att-logo.png',
             'background' => 94,
         ]);
         /*===============   17 IST   ================*/
@@ -346,7 +346,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'website' => 'ist.edu.gr',
             'approved' => 1,
             'about' => 'Το IST ιδρύθηκε το 1989 και σήμερα, είναι ένα πολυδύναμο και πολυεπίπεδο εκπαιδευτικό ίδρυμα με άδεια από το Υπουργείο Παιδείας. Ανήκει στον εκπαιδευτικό οργανισμό Γ. Καστρινάκη & Δρακ. Φουντουκάκου, ο οποίος δραστηριοποιείται από το 1967 με μεγάλη επιτυχία στον χώρο της εκπαίδευσης μέσω της ΣΒΙΕ, της πρώτης Σχολής στα Επαγγέλματα Υγείας. Σήμερα, το IST διαθέτει ακαδημαϊκή δομή και οργάνωση εφάμιλλες με εκείνες των φημισμένων Πανεπιστημίων του εξωτερικού, διατηρώντας στενές σχέσεις και συνεργασία με επιχειρήσεις και οργανισμούς για καλύτερη εκπαίδευση και αποκατάσταση των φοιτητών του, ενώ στεγάζεται σε κτίριο διεθνών προδιαγραφών, συνολικής επιφάνειας 9.500 τ.μ., ειδικά κατασκευασμένο για τη λειτουργία ενός εκπαιδευτικού ιδρύματος πανεπιστημιακού επιπέδου.',
-            'logo' => 'fake/ist-logo.png',
+            'logo' => '/images/schools/fake/ist-logo.png',
             'background' => 100,
         ]);
         /*===============   18 CITY COLLEGE   ================*/
@@ -359,7 +359,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'website' => 'citycollege.sheffield.eu',
             'approved' => 1,
             'about' => 'Το CITY College είναι το Διεθνές Τμήμα του University of Sheffield και εδρεύει στη Θεσσαλονίκη. Το Πανεπιστήμιο του Sheffield είναι ένα από τα παλαιότερα, μεγαλύτερα και καλύτερα κρατικά Πανεπιστήμια της Αγγλίας. Στις παγκόσμιες κατατάξεις βρίσκεται συνεχώς ανάμεσα στα 100 καλύτερα πανεπιστήμια του κόσμου, ενώ στο δυναμικό του συγκαταλέγονται 6 νομπελίστες. Ανήκει στο 1% των καλύτερων Πανεπιστημίων του κόσμου και κατατάσσεται: 29º στην Ευρώπη και 84º στον κόσμο [QS World University Rankings 2016].Το CITY College ιδρύθηκε το 1989 στη Θεσσαλονίκη και έχει καθιερωθεί κατά την εικοσαπενταετή πορεία του ως ένα από τα καλύτερα εκπαιδευτικά ιδρύματα της νοτιοανατολικής Ευρώπης. Δεν είναι απλά ένα συνεργαζόμενο κολέγιο με ξένο πανεπιστήμιο, αλλά ένα πλήρες και αναπόσπαστο κομμάτι του University of Sheffield που λειτουργεί εκτός Βρετανίας με τους ίδιους όρους και κανονισμούς, υπόκειται στους ίδιους ελέγχους αξιολόγησης και προσφέρει τα ίδια προνόμια και τις ίδιες παροχές σπουδών στους φοιτητές του.',
-            'logo' => 'fake/citycol-logo.png',
+            'logo' => '/images/schools/fake/citycol-logo.png',
             'background' => 104,
         ]);
 
@@ -373,7 +373,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'website' => 'vakalo.gr',
             'approved' => 1,
             'about' => 'Το 1958, μια παρέα διακεκριμένων καλλιτεχνών και διανοούμενων αποφάσισαν να δημιουργήσουν ένα εργαστήριο καλών και εφαρμοσμένων τεχνών που θα γεφύρωνε την καλλιτεχνική ευαισθησία και το στοχασμό του πολιτισμού, με τα αντικείμενα, τις εικόνες και τους χώρους της καθημερινότητας. Το όραμα αυτής της πρώτης εμπνευσμένης ομάδας ενστερνίστηκαν, διαφύλαξαν και εμπλούτισαν μια σειρά δημιουργικών ανθρώπων που συνεργάστηκαν μαζί της και συνεχίζουν να γράφουν μέχρι σήμερα την ιστορία της Σχολής Βακαλό. Το Κολλέγιο Βακαλό είναι η πρώτη σχολή εφαρμοσμένων τεχνών στην Ελλάδα. Ιδρύθηκε το 1958 από τον ζωγράφο και σκηνογράφο Γιώργο Βακαλό, την ποιήτρια και ιστορικό της τέχνης Ελένη Βακαλό, τον ζωγράφο, τ. πρύτανη της ΑΣΚΤ, Παναγιώτη Τέτση, και τον εκδότη της καλλιτεχνικής επιθεώρησης Ζυγός Φραντζή Φραντζισκάκη. Η απόφαση για την ίδρυση της Σχολής προήλθε από τη συνειδητοποίηση αφενός του κρίσιμου ρόλου που διαδραματίζει το Design στην κοινωνία, αφετέρου της πλήρους απουσίας σχετικής εκπαίδευσης στη χώρα μας.',
-            'logo' => 'fake/vakalo-logo.png',
+            'logo' => '/images/schools/fake/vakalo-logo.png',
             'background' => 109,
         ]);
 
@@ -395,7 +395,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
             'approved' => 1,
-            'logo' => 'fake/akmi-logo.png',
+            'logo' => '/images/schools/fake/akmi-logo.png',
             'background' => 122,
         ]);
 
@@ -413,7 +413,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'about' => 'Στην πλούσια και μακρόχρονη πορεία μας μάθαμε τούτο:
          Ότι το πετυχημένο "επαγγελματικό σχολείο" πρέπει να δημιουργεί ολοκληρωμένους επαγγελματίες. Δεν διδάσκει απλώς μία εξειδίκευση. Οικοδομεί με όλα τα μέσα, όλο το γνωστικό αντικείμενο και πέρα από αυτό. Για αυτόν το λόγο το 60% του εκπαιδευτικού μας προγράμματος είναι πρακτικές εφαρμογές. Για αυτόν το λόγο το 70% του εκπαιδευτικού μας προσωπικού είναι αναγνωρισμένα στελέχη και πάνω απ’ όλα πετυχημένοι επαγγελματίες, με δραστηριότητα στις μεγαλύτερες εταιρείες της Αγοράς. Για αυτόν το λόγο παρέχουμε πρόσθετες δυνατότητες  για επιμόρφωση, δημιουργικότητα, κοινωνικότητα.  Και για τον ίδιο λόγο συνδέσαμε άμεσα τις σχολές μας με την Αγορά Εργασίας. Εταιρείες – ηγέτες στο χώρο τους, μέσα από την προσωπική επαφή, μεταδίδουν στους σπουδαστές όλη την κουλτούρα του επαγγέλματος. Τρέφουν τη φιλοδοξία τους  καθώς και την αισιοδοξία τους για τη σταδιοδρομία. Φροντίζουμε λοιπόν, να δίνουμε ευκαιρίες στους εκπαιδευόμενους να καλλιεργήσουν  τα ταλέντα τους, να αναπτύξουν τα προσωπικά τους χαρακτηριστικά. Σε τελική ανάλυση, δημιουργούμε σύγχρονους πολίτες, κοινωνικά ολοκληρωμένες  προσωπικότητες, όχι απλώς επαγγελματίες. Στην  προσωπική σας επαφή μαζί μας, θα διαπιστώσετε την αμεσότητα που  χαρακτηρίζει τη συνεργασία μας με τη σπουδαστική μας κοινότητα. Θα επιβεβαιώσετε τις ευκαιρίες διείσδυσης που παρέχουμε στον κλάδο επιλογής σας αλλά και στην ευρύτερη κοινωνία.',
             'approved' => 1,
-            'logo' => 'fake/delta-logo.png',
+            'logo' => '/images/schools/fake/delta-logo.png',
             'background' => 124,
         ]);
 
@@ -434,7 +434,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
             'approved' => 1,
-            'logo' => 'fake/akmi-logo.png',
+            'logo' => '/images/schools/fake/akmi-logo.png',
             'background' => 139,
         ]);
 
@@ -448,7 +448,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'website' => 'medcollege.edu.gr',
             'approved' => 1,
             'about' => 'Στον εικοστό πρώτο αιώνα, το Mediterranean College (MC), σε συνεργασία με ισχυρά πανεπιστήμια του εξωτερικού, αναδύεται ως ένα ιδιωτικό ίδρυμα ανώτατης εκπαίδευσης με ηγετικό ρόλο στους κλάδους σπουδών της Οικονομίας, της Διοίκησης, της Πληροφορικής, των Ανθρωπιστικών Επιστημών,του Τουρισμού, των Επαγγελμάτων Υγείας,  των Μηχανικών προσφέροντας προγράμματα υψηλής ποιότητας σε ένα περιβάλλον γαλούχησης όπου η ποιότητα υπαγορεύεται πάντα από τις ανάγκες των φοιτητών. Για να πραγματοποιήσει το όραμά του για ακαδημαϊκή διάκριση, επιτυχία των φοιτητών του, εκπαιδευτική και τεχνολογική καινοτομία, καθώς και για κοινωνική προσφορά, το Κολλέγιο προσελκύει και εξασφαλίζει αφοσιωμένους επαγγελματίες και εκπαιδευτικό προσωπικό με εξαιρετικές ικανότητες, αναγνωρισμένο για την εξειδίκευσή του στον τομέα της διδασκαλίας, της καθοδήγησης φοιτητών, της κατάρτισης, της έρευνας και της παροχής υπηρεσιών. Δομημένο σε αυτές τις σταθερές βάσεις και αρχές, το MC, αποσκοπεί στην υλοποίηση του οράματός του, να γίνει ένα μοναδικό διεθνές κέντρο μάθησης στον ελλαδικό χώρο.',
-            'logo' => 'fake/med-logo.png',
+            'logo' => '/images/schools/fake/med-logo.png',
             'background' => 144,
         ]);
 
@@ -477,7 +477,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 
                 ΕΜΦΑΣΗ ΣΤΗΝ ΕΠΙΧΕΙΡΗΜΑΤΙΚΟΤΗΤΑ
                 ώστε καινοτόμες και νέες ιδέες να δημιουργούνται και κυρίως να εξελίσσονται σε αποτελεσματική επιχειρηματική δράση.',
-            'logo' => 'fake/icbs-logo.png',
+            'logo' => '/images/schools/fake/icbs-logo.png',
             'background' => 149,
         ]);
 
@@ -506,7 +506,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 
                 ΕΜΦΑΣΗ ΣΤΗΝ ΕΠΙΧΕΙΡΗΜΑΤΙΚΟΤΗΤΑ
                 ώστε καινοτόμες και νέες ιδέες να δημιουργούνται και κυρίως να εξελίσσονται σε αποτελεσματική επιχειρηματική δράση.',
-            'logo' => 'fake/icbs-logo.png',
+            'logo' => '/images/schools/fake/icbs-logo.png',
             'background' => 150,
         ]);
 
@@ -535,7 +535,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 
                 ΕΜΦΑΣΗ ΣΤΗΝ ΕΠΙΧΕΙΡΗΜΑΤΙΚΟΤΗΤΑ
                 ώστε καινοτόμες και νέες ιδέες να δημιουργούνται και κυρίως να εξελίσσονται σε αποτελεσματική επιχειρηματική δράση.',
-            'logo' => 'fake/icbs-logo.png',
+            'logo' => '/images/schools/fake/icbs-logo.png',
             'background' => 158,
         ]);
 
@@ -551,7 +551,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         //        }
 
         /*===============   1 ACT   ================*/
-        $this->createImages($school1, 'fake/act-', 1, 6);
+        $this->createImages($school1, '/images/schools/fake/act-', 1, 6);
         $this->createStudy($school1, [206, 207, 208, 209, 210, 253, 252, 279, 306, 308, 309, 312, 324]);
         $this->createUsers($school1, 'students', [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]);
         $this->createUsers($school1, 'teachers', [51, 52, 53, 54, 55, 56, 57, 58]);
@@ -567,7 +567,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         // MultiScholarship
         $this->createScholarship($school1->id, 2, 800, [209, 207, 210], 1, 2, 2, 2, true);
         /*===============  2 AMC ================*/
-        $this->createImages($school2, 'fake/amc-', 1, 7);
+        $this->createImages($school2, '/images/schools/fake/amc-', 1, 7);
         $this->createStudy($school2, [202, 203, 204, 205, 240, 241, 244, 245, 246, 249, 250, 255, 256, 257, 258, 259, 260, 261,
             266, 267, 268, 269, 270, 281, 282, 283, 284, 285, 286, 287, 327, 328, 329, 330, 331, 332, 345, 346, 349, 350, 351, 352]);
         $this->createUsers($school2, 'students', [21, 22, 23, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]);
@@ -581,7 +581,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school2->id, 1, 80, 327, 3, 4, 1, 5);
         $this->createScholarship($school2->id, 2, 800, 250, 1, 4, 1, 5);
         /*===============  3 AKMH ================*/
-        $this->createImages($school3, 'fake/akmi-', 1, 9);
+        $this->createImages($school3, '/images/schools/fake/akmi-', 1, 9);
         $this->createUsers($school3, 'students', [31, 32, 33, 34, 35, 36, 37, 38]);
         $this->createUsers($school3, 'teachers', [55, 56, 57, 58]);
         $this->createStudy($school3, [1, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
@@ -601,7 +601,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school3->id, 2, 800, [108, 86, 34, 33], 3, 2, 2, 2, true);
         /*===============  4 Εκπαιδευτήρια Βασιλειάδη ================*/
         $this->createStudy($school4, [423, 424, 425]);
-        $this->createImages($school4, 'fake/vasileiadi-', 1, 6);
+        $this->createImages($school4, '/images/schools/fake/vasileiadi-', 1, 6);
         $this->createUsers($school4, 'students', [31, 42, 43, 44, 34, 35]);
         $this->createUsers($school4, 'teachers', [52, 63, 64, 65]);
         $this->createScholarship($school4->id, 2, 400, 423, 4, 1, 1, 1);
@@ -611,7 +611,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school4->id, 1, 20, 423, 4, 2, 1, 3);
         /*===============  5 Εκπαιδευτήρια Φρυγανιώτη ================*/
         $this->createStudy($school5, [423, 424, 425]);
-        $this->createImages($school5, 'fake/fryganioti-', 1, 8);
+        $this->createImages($school5, '/images/schools/fake/fryganioti-', 1, 8);
         $this->createUsers($school5, 'students', [31, 32, 23, 24, 34, 35]);
         $this->createUsers($school5, 'teachers', [52, 53, 64, 65]);
         $this->createScholarship($school5->id, 2, 850, 423, 4, 1, 1, 0);
@@ -619,7 +619,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school5->id, 2, 200, 425, 6, 3, 1, 0);
         $this->createScholarship($school5->id, 1, 40, 425, 6, 3, 1, 0);
         /*===============   6 NYC   ================*/
-        $this->createImages($school6, 'fake/newyork-', 1, 5);
+        $this->createImages($school6, '/images/schools/fake/newyork-', 1, 5);
         $this->createStudy($school6, [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 227, 234, 235, 237, 242, 243, 247, 248, 250, 252, 258, 262, 265, 270, 271, 272, 273, 274, 295, 296, 297,
             313, 317, 318, 319, 320, 321, 325, 329, 322, 332, 333, 334, 346, 347, 352]);
         $this->createUsers($school6, 'students', [21, 22, 23, 24, 25]);
@@ -630,7 +630,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school6->id, 2, 400, 352, 3, 3, 2, 1);
         /*===============  7 Φροντιστήρια Μ.Ε.Υποδομή ================*/
         $this->createStudy($school7, [353, 354, 355, 356, 357, 358, 359, 426, 427, 428, 429]);
-        $this->createImages($school7, 'fake/ypodomi-', 1, 6);
+        $this->createImages($school7, '/images/schools/fake/ypodomi-', 1, 6);
         $this->createUsers($school7, 'students', [31, 32, 33, 34, 44, 45, 46, 47, 48, 49, 50, 51]);
         $this->createUsers($school7, 'teachers', [52, 53, 54, 55, 56]);
         $this->createScholarship($school7->id, 2, 400, 353, 5, 1, 1, 1);
@@ -639,7 +639,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school7->id, 1, 50, 426, 6, 4, 3, 3);
         /*===============  8 Εκπαιδευτήρια Απόστολος Παύλος  ================*/
         $this->createStudy($school8, [430, 431, 432]);
-        $this->createImages($school8, 'fake/eap-', 1, 8);
+        $this->createImages($school8, '/images/schools/fake/eap-', 1, 8);
         $this->createUsers($school8, 'students', [21, 22, 23, 24, 38, 39, 40, 41, 42, 44, 50]);
         $this->createUsers($school8, 'teachers', [52, 53, 54, 55, 56]);
         $this->createScholarship($school8->id, 2, 400, 430, 13, 1, 1, 1);
@@ -647,7 +647,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school8->id, 2, 300, 432, 15, 1, 1, 3);
         /*===============  9 Ευρωγνώση Τσιμισκή ================*/
         $this->createStudy($school9, [360, 361, 362, 363, 371, 372, 373, 382, 384, 387, 388, 390]);
-        $this->createImages($school9, 'fake/eurognosi-', 1, 6);
+        $this->createImages($school9, '/images/schools/fake/eurognosi-', 1, 6);
         $this->createUsers($school9, 'students', [31, 32, 33, 34, 43, 45]);
         $this->createUsers($school9, 'teachers', [52, 53, 54, 55]);
         $this->createScholarship($school9->id, 2, 400, 360, 22, 1, 1, 1);
@@ -656,7 +656,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $s = $this->createScholarship($school9->id, 3, 2, 390, 24, 1, 1, 3);
         /*===============  10 Danza Fuerte ================*/
         $this->createStudy($school10, [393, 395, 396, 397, 402, 403, 409, 410, 413, 414, 415, 422]);
-        $this->createImages($school10, 'fake/danzafuerte-', 1, 6);
+        $this->createImages($school10, '/images/schools/fake/danzafuerte-', 1, 6);
         $this->createUsers($school10, 'students', [41, 42, 43, 44, 45, 46, 47]);
         $this->createUsers($school10, 'teachers', [52, 53, 64, 65, 66, 68]);
         $this->createScholarship($school10->id, 2, 100, 393, 25, 1, 1, 1);
@@ -665,7 +665,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school10->id, 3, 1, 422, 27, 1, 1, 3);
         /*===============  11 Αδαμάντιος Σχολή ================*/
         $this->createStudy($school11, [433, 434, 435, 436, 437, 438]);
-        $this->createImages($school11, 'fake/adamantios-', 1, 6);
+        $this->createImages($school11, '/images/schools/fake/adamantios-', 1, 6);
         $this->createUsers($school11, 'students', [31, 32, 33, 44, 46, 50]);
         $this->createUsers($school11, 'teachers', [52, 53, 54, 59, 60, 61]);
         $this->createScholarship($school11->id, 2, 100, 433, 16, 2, 1, 1);
@@ -674,7 +674,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school11->id, 1, 30, 438, 21, 2, 1);
 
         /*===============   12 HAEC  ================*/
-        $this->createImages($school12, 'fake/haec-', 1, 5);
+        $this->createImages($school12, '/images/schools/fake/haec-', 1, 5);
         $this->createStudy($school12, [216, 217, 208, 220, 211, 270, 274, 277, 281, 282, 283, 295, 296, 297, 309, 327, 339, 343]);
         $this->createUsers($school12, 'students', [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35]);
         $this->createUsers($school12, 'teachers', [51, 52, 53, 54, 55, 56]);
@@ -685,7 +685,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school12->id, 2, 900, 281, 1, 2, 2, 2);
         $this->createScholarship($school12->id, 2, 1000, 327, 3, 2, 2, 2);
         /*===============   13 ACG  ================*/
-        $this->createImages($school13, 'fake/acg-', 1, 5);
+        $this->createImages($school13, '/images/schools/fake/acg-', 1, 5);
         $this->createStudy($school13, [210, 211, 212, 216, 217, 208, 230, 209, 254, 256, 260, 306, 308, 309, 312, 324]);
         $this->createUsers($school13, 'students', [22, 24, 26, 27, 28, 29, 31, 36, 37, 40, 41, 43, 44]);
         $this->createUsers($school13, 'teachers', [51, 52, 53, 54, 55, 57, 58]);
@@ -698,7 +698,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school13->id, 1, 50, 324, 3, 2, 2, 2);
         $this->createScholarship($school13->id, 2, 200, 256, 1, 4, 2, 1);
         /*===============   14 Aegean ================*/
-        $this->createImages($school14, 'fake/aegean-', 1, 5);
+        $this->createImages($school14, '/images/schools/fake/aegean-', 1, 5);
         $this->createStudy($school14, [210, 220, 249, 250, 263, 266, 265, 267, 256, 257, 306, 308, 309, 312, 322, 327]);
         $this->createUsers($school14, 'students', [21, 22, 23, 24, 25, 26, 27, 28, 29, 38, 39]);
         $this->createUsers($school14, 'teachers', [51, 52, 53, 54, 58, 59]);
@@ -711,7 +711,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school14->id, 1, 50, 266, 1, 3, 2, 1);
 
         /*===============   15 DEI  ================*/
-        $this->createImages($school15, 'fake/dei-', 1, 5);
+        $this->createImages($school15, '/images/schools/fake/dei-', 1, 5);
         $this->createStudy($school15, [265, 268, 269, 216, 217, 208, 209, 211, 254, 256, 279, 306, 308, 309, 312, 324]);
         $this->createUsers($school15, 'students', [21, 22, 23, 24, 25, 26, 27]);
         $this->createUsers($school15, 'teachers', [51, 52, 53, 54]);
@@ -723,7 +723,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school15->id, 2, 800, 310, 3, 2, 2, 2);
 
         /*===============   16 ATT   ================*/
-        $this->createImages($school16, 'fake/att-', 1, 5);
+        $this->createImages($school16, '/images/schools/fake/att-', 1, 5);
         $this->createStudy($school16, [265, 268, 269, 216, 217, 208, 209, 211, 254, 256, 279, 306, 308, 309, 312, 324]);
         $this->createUsers($school16, 'students', [21, 22, 23, 24, 25, 26, 27, 30]);
         $this->createUsers($school16, 'teachers', [51, 52, 53, 54]);
@@ -735,7 +735,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school16->id, 2, 800, 310, 3, 2, 2, 2);
 
         /*===============   17 IST   ================*/
-        $this->createImages($school17, 'fake/ist-', 1, 5);
+        $this->createImages($school17, '/images/schools/fake/ist-', 1, 5);
         $this->createStudy($school17, [265, 266, 268, 269, 216, 217, 208, 209, 211, 254, 256, 279, 306, 308, 309, 312, 324]);
         $this->createUsers($school17, 'students', [21, 22, 23, 24, 25, 26, 27, 29]);
         $this->createUsers($school17, 'teachers', [51, 52, 53, 54]);
@@ -748,7 +748,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school17->id, 2, 600, 309, 3, 2, 2, 2);
 
         /*===============   18 CITY COLLEGE   ================*/
-        $this->createImages($school18, 'fake/citycol-', 1, 5);
+        $this->createImages($school18, '/images/schools/fake/citycol-', 1, 5);
         $this->createStudy($school18, [265, 268, 269, 216, 217, 208, 209, 211, 254, 256, 279, 306, 308, 309, 312, 324]);
         $this->createUsers($school18, 'students', [21, 22, 23, 24, 25, 26, 27, 28]);
         $this->createUsers($school18, 'teachers', [51, 52, 53, 54, 55]);
@@ -765,7 +765,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school18->id, 2, 800, 305, 3, 2, 2, 2);
 
         /*===============   19 Vakalo   ================*/
-        $this->createImages($school19, 'fake/vakalo-', 1, 5);
+        $this->createImages($school19, '/images/schools/fake/vakalo-', 1, 5);
         $this->createStudy($school19, [439, 440, 441, 442, 443]);
         $this->createUsers($school19, 'students', [21, 22, 23, 24, 25, 26, 27]);
         $this->createUsers($school19, 'teachers', [51, 52, 53, 54, 55, 56]);
@@ -776,7 +776,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school19->id, 2, 300, 442, 1, 2, 2, 2);
 
         /*=============== 20 AKMH Λαρισα ================*/
-        $this->createImages($school20, 'fake/akmi-', 2, 11);
+        $this->createImages($school20, '/images/schools/fake/akmi-', 2, 11);
         $this->createUsers($school20, 'students', [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]);
         $this->createUsers($school20, 'teachers', [55, 56, 57, 58, 59]);
         $this->createStudy($school20, [1, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
@@ -795,7 +795,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school20->id, 1, 60, 134, 2, 1, 1, 5);
 
         /*=============== 21 IEK ΔΕΛΤΑ ΙΩΑΝΝΙΝΑ ================*/
-        $this->createImages($school21, 'fake/deltaioa-', 1, 5);
+        $this->createImages($school21, '/images/schools/fake/deltaioa-', 1, 5);
         $this->createUsers($school21, 'students', [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]);
         $this->createUsers($school21, 'teachers', [51, 55, 56, 57, 58, 59]);
         $this->createStudy($school21, [1, 2, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
@@ -813,7 +813,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school21->id, 2, 600, 147, 2, 5, 1, 0);
         $this->createScholarship($school21->id, 1, 20, 180, 2, 1, 1, 5);
         /*=============== 22 AKMH Ηρακλειο ================*/
-        $this->createImages($school22, 'fake/akmicrete-', 1, 11);
+        $this->createImages($school22, '/images/schools/fake/akmicrete-', 1, 11);
         $this->createUsers($school22, 'students', [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]);
         $this->createUsers($school22, 'teachers', [55, 56, 57, 58, 59]);
         $this->createStudy($school22, [1, 4, 6, 8, 11, 13, 15, 17, 18, 19, 20, 22, 24, 25, 28, 29,
@@ -830,7 +830,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school22->id, 2, 600, 96, 2, 5, 1, 0);
         $this->createScholarship($school22->id, 1, 60, 175, 2, 1, 1, 5);
         /*===============   23 MEDITERRANEAN COLLEGE ATHENS   ================*/
-        $this->createImages($school23, 'fake/med-', 1, 5);
+        $this->createImages($school23, '/images/schools/fake/med-', 1, 5);
         $this->createStudy($school23, [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 227, 234, 235, 237, 242, 243, 247, 248, 250, 252, 258, 262, 265, 270, 271, 272, 273, 274, 295, 296, 297,
             313, 317, 318, 319, 320, 321, 325, 329, 322, 332, 333, 334, 346, 347, 352]);
         $this->createUsers($school23, 'students', [21, 22, 23, 24, 25, 26, 27]);
@@ -844,7 +844,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school23->id, 1, 20, 265, 1, 4, 2, 0);
         $this->createScholarship($school23->id, 2, 650, 325, 3, 3, 2, 1);
         /*===============   24 ICBS Athens  ================*/
-        $this->createImages($school24, 'fake/icbs-', 1, 5);
+        $this->createImages($school24, '/images/schools/fake/icbs-', 1, 5);
         $this->createStudy($school24, [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 227, 234, 235, 237, 242, 243, 247, 248, 250, 252, 258, 262, 265, 270, 271, 272, 273, 274, 295, 296, 297,
             313, 317, 318, 319, 320, 321, 325, 329, 322, 332, 333, 334, 346, 347, 352]);
         $this->createUsers($school24, 'students', [21, 22, 23, 24, 25]);
@@ -855,7 +855,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school24->id, 2, 400, 352, 3, 3, 2, 1);
         $this->createScholarship($school24->id, 2, 700, 321, 3, 3, 2, 1);
         /*===============   25 ICBS Thessaloniki  ================*/
-        $this->createImages($school25, 'fake/icbs-', 1, 5);
+        $this->createImages($school25, '/images/schools/fake/icbs-', 1, 5);
         $this->createStudy($school25, [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 227, 234, 235, 237, 242, 243, 247, 248, 250, 252, 258, 262, 265, 270, 271, 272, 273, 274, 295, 296, 297,
             313, 317, 318, 319, 320, 321, 325, 329, 322, 332, 333, 334, 346, 347, 352]);
         $this->createUsers($school25, 'students', [21, 22, 23, 24, 25, 29, 40]);
@@ -866,7 +866,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->createScholarship($school25->id, 2, 400, 333, 3, 3, 2, 1);
         $this->createScholarship($school24->id, 2, 400, 29, 3, 3, 2, 1);
         /*===============   26 ICBS Larisa  ================*/
-        $this->createImages($school26, 'fake/icbs-', 1, 5);
+        $this->createImages($school26, '/images/schools/fake/icbs-', 1, 5);
         $this->createStudy($school26, [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 227, 234, 235, 237, 242, 243, 247, 248, 250, 252, 258, 262, 265, 270, 271, 272, 273, 274, 295, 296, 297,
             313, 317, 318, 319, 320, 321, 325, 329, 322, 332, 333, 334, 346, 347, 352]);
         $this->createUsers($school26, 'students', [21, 22, 23, 24, 25]);

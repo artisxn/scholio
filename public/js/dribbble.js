@@ -2,13 +2,13 @@
 
         var dribbbleProfile, dribbbleId, script,
             apiEndpoint = 'https://api.dribbble.com/v1/',
-            token = '';
+            token = '171d1e8e3b391e29379ef3c679a56a5485761fb7365c03cc5e069fa13f97a0ed';
 
         //
         // Load stylesheet
 
-        dpAddStylesheet('//nadikun.com/code/dribbble-profile/style.css'); // style.css
-        dpAddStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+        dpAddStylesheet('/css/dribbble.css'); // style.css
+        dpAddStylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
 
 
         //
