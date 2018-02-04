@@ -135,6 +135,10 @@
     /*.mobile-input input[type='text']{font-size: 16px;}*/
     /*select{  font-size: 16px;  height: 36px; padding: 2px; margin-bottom: 7px;}*/
 
+    .talent-back{background: #f0f0f0
+    }
+    .talent-border{border-color: #f0f0f0}
+
 
 
 
@@ -521,7 +525,9 @@ angular.module("scholarshipsResultsApp",[])
     });
 
     var hitTemplate = `
-    <div class=" col-xs-12 pad-0-mar-0 inner-container">
+
+     <div class=" col-xs-12 pad-0-mar-0 inner-container">
+
 
     @{{#adminter}}
         <!-- <div  class="ribbon top5"><span style="font-size: 95%"><i class=" fa fa-bolt" style="margin-right: 7px"></i>Trend</span></div> -->
@@ -553,13 +559,28 @@ angular.module("scholarshipsResultsApp",[])
         <div class="header-line"></div>
     </div>
 
-    <div class="col-xs-12 pad-0-mar-0 section-container" >
+
+    @{{#talent}}
+            <div class="col-xs-12 pad-0-mar-0 section-container talent-back">
+    @{{/talent}}
+    @{{^talent}}
+        <div class="col-xs-12 pad-0-mar-0 section-container">
+    @{{/talent}}
+
+
           @{{#multiple}}
             <div class="col-lg-4 col-md-6 col-sm-4 section1" style="border: 1px solid #FD6A33; border-top: none">
           @{{/multiple}}
+
+          {{--@{{#talent}}--}}
+            {{--<div class="col-lg-4 col-md-6 col-sm-4 section1 talent-border">--}}
+          {{--@{{/talent}}--}}
           @{{^multiple}}
             <div class="col-lg-4 col-md-6 col-sm-4 section1">
           @{{/multiple}}
+
+
+
                <div class="hex-container centered">
 
                      @{{#multiple}}
@@ -636,7 +657,13 @@ angular.module("scholarshipsResultsApp",[])
         </div>
     </div>
 
-    <div class="col-xs-12 scholar-footer ">
+        @{{#talent}}
+        <div class="col-xs-12 scholar-footer talent-back">
+        @{{/talent}}
+        @{{^talent}}
+            <div class="col-xs-12 scholar-footer">
+         @{{/talent}}
+
         <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
             <div class="col-xs-6 col-sm-4  col-md-4 xxs-8 xxs-footer pad-0-mar-0 scholar-footer-left">
                     <div> <i class="fa fa-pencil margin-right-10"></i>@lang('scholarships.cards.admissions'): <span class="pull-right">@{{ requested }}</span> </div>
@@ -701,8 +728,9 @@ angular.module("scholarshipsResultsApp",[])
                     hit.adminter=[];
                     hit.adm=[];
                     hit.highAmount=[];
+                    hit.talent=[];
                     // hit.multipleStudies=[];
-                    // console.log(hit);
+                     console.log(hit);
 
                     for (var i = 1; i <= 5; ++i) {
                         hit.stars.push(i <= hit.rating);
@@ -718,6 +746,10 @@ angular.module("scholarshipsResultsApp",[])
 
                     if(hit.financial_amount> 750 || (hit.financial_amount>50 && hit.financial_metric=='%')){
                         hit.highAmount.push(true);
+                    }
+
+                    if(hit.criteria_en=="Scholarship for talents"){
+                        hit.talent.push(true);
                     }
 
                     // if(hit.multiple){
