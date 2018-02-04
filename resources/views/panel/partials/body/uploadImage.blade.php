@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="/css/croppie.css">
 
-<div class="btn btn-primary btn-choose" data-target="#upload-modal" data-toggle="modal">{{ $text }}</div>
+
+
+<div class="btn btn-primary btn-choose bb" data-target="#upload-modal" data-toggle="modal">
+    <i class="fa fa-upload" style="margin-right: 6px;"></i>
+    {{ $text }}
+</div>
 
 <!-- ====== Upload Modal  ======= -->
 <div id="upload-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
@@ -33,3 +38,4 @@
         </div>
     </div>
 </div>
+

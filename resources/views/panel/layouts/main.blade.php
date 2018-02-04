@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="description" content="Schol.io College Panel">
-        <meta name="author" content="Coderthemes">
+        <meta name="author" content="Schol.io">
         <meta property="fb:pages" content="934370089973049" />
 
         <!-- CSRF Token -->

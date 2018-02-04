@@ -4,6 +4,8 @@
     <!-- Polymer Float Form CSS -->
     <link rel="stylesheet" href="/new/css/jquery.polymer-form.min.css" >
     <link rel="stylesheet" href="/new/css/cv.css" type="text/css"  >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
     <!-- <link rel="stylesheet" href="/css/croppie.css"> -->
 
 
@@ -38,7 +40,7 @@
     .clear-fix{clear: both }
 
     .img-container{text-align: center;}
-    .members{margin-top: 20px}
+    /*.members{margin-top: 20px}*/
     .family{margin-top: -60px}
 
     .social-board{display: inline-block; margin-right: 20px;!important; margin-top: 10px;}
@@ -54,6 +56,7 @@
 
     /* ================== Instagram   ========================================= */
     .instagram-media{float: left; display: inline; margin-right: 20px!important;}
+
 
 
 
@@ -87,8 +90,68 @@
         .fa-gender{margin-top: 27px}
         .family{margin-top: -10px}
         .members{margin-top: 10px;}
+        .youtube{width: 100%}
 
     }
+
+
+    /* /////////////////////////////////////////////////////////////////////////////////////////////// */
+
+    /*==== DATE picker jQuery STYLING ====*/
+
+    .ui-widget-header {
+        background: #00bcd4;
+        color: #fff
+    }
+
+    .ui-icon,
+    .ui-icon:hover {
+        width: 16px;
+        height: 16px;
+        /*background-color: #00bcd4;*/
+    }
+
+    .ui-widget-header .ui-icon {
+        background-image: url("/images/ui-icons_ffffff_256x240.png");
+    }
+
+    .ui-state-default,
+    .ui-widget-content .ui-state-default,
+    .ui-widget-header .ui-state-default,
+    .ui-button,
+    html .ui-button.ui-state-disabled:hover,
+    html .ui-button.ui-state-disabled:active {
+        border: none;
+        background: #f4f4f4;
+        /*font-weight: bold;*/
+        color: #004276;
+    }
+
+    .ui-state-highlight,
+    .ui-widget-content .ui-state-highlight,
+    .ui-widget-header .ui-state-highlight {
+        border: none;
+        background: #008da5;
+        color: #fff;
+    }
+
+    .ui-state-active,
+    .ui-widget-content .ui-state-active,
+    .ui-widget-header .ui-state-active,
+    .ui-button:active,
+    .ui-button.ui-state-active:hover {
+        background: #00bcd4;
+        /*font-weight: bold;*/
+        color: #fff;
+    }
+
+    .error {
+        color: red
+    }
+
+    /*===============================*/
+
+    /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 </style>
 
 @endsection
@@ -105,11 +168,7 @@
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
-
-
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 @endsection
 
 
@@ -175,7 +234,9 @@
                                     </div>
 
                                     <div class="col-sm-6 input-container col-xl-4">
-                                        <input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input"  value="{{ auth()->user()->cv->student_dob}}">
+                                    {{--<input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input"  value="{{ auth()->user()->cv->student_dob}}">--}}
+                                        <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse(auth()->user()->cv->student_dob)->format('d/m/Y') }}" label="Ημερομηνία Γέννησης" name="dob">
+
                                         <i class="icon-inp fa fa-calendar"></i>
                                     </div>
 
@@ -221,7 +282,7 @@
 
 
 
-                                    <div class="col-sm-6 input-container col-xl-4 members" >
+                                    <div class="col-sm-6 input-container col-xl-4 members  clear-fix" >
                                         <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
 
                                         <div class="select-polyteknos col-xl-4">
@@ -458,6 +519,13 @@
 
 
 @section('scripts')
+
+
+    <script>
+        $("#datepicker").datepicker();
+    </script>
+
+
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
     <script async defer src="//apis.google.com/js/platform.js"></script>

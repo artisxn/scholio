@@ -7,17 +7,18 @@
             </button> -->
 
             <div class="Modal">
-                <h4>Upload an Image</h4>
-                <div class="input-file">
-                    <input type="file" id="upload-image" v-on:change="setUpFileUploader">
+                <!--<h4>Upload an Image</h4>-->
+                <div class="">
+                    <input type="file" class="hidden" id="upload-image" v-on:change="setUpFileUploader">
+                    <label for="upload-image" class="btn btn-upload">Επιλογή φωτογραφίας</label>
                 </div>
 
-                <button class="btn btn-success" v-on:click="uploadFile">
-                    <i class="fa" v-bind:class="button.class"></i> {{button.name}}
+                <button class="btn btn-primary" v-on:click="uploadFile">
+                    <i class="fa fa-check"></i> Αποδοχή
                 </button>
 
-                <button class="btn btn-warning" v-on:click="modalDismiss">
-                    <i class="fa fa-times"></i> Cancel
+                <button class="btn btn-default" v-on:click="modalDismiss">
+                    <i class="fa fa-times"></i> Ακύρωση
                 </button>
             </div>
         </div>
@@ -25,6 +26,31 @@
 </template>
 
 <style>
+
+    /***********************************/
+             /* MODAL UPLOAD */
+    /***********************************/
+
+    .modal-sc-logo{margin-top: -4px; height: 60px;}
+    .modal-content{padding: 0!important; border: none; border-radius: 5px!important;}
+
+    .panel-title{margin: 2px 0 0 15px; font-size: 190%; font-weight: 600;}
+    .btn-close{background-color: transparent}
+    .btn-close:hover{color: #FD6A33;}
+    .panel-body{ min-height: 300px}
+
+
+    /***********************************/
+
+    .section-text{margin-bottom: 20px;}
+    .inner-section2{border: none; margin-top: 30px; background-color: transparent;}
+
+    .btn-upload{color: #fff; background: #FD6A33; cursor: pointer; padding: 6px 28px; border-radius: 5px; margin: 12px auto;}
+    .btn-upload:hover{background: #cd5529;color: #fff;
+    }
+
+    .btn-primary, .btn-primary:focus, .btn-primary:visited, .btn-primary:active{background: #0094ac!important; border: none;}
+    .btn-primary:hover{background: #00687d!important;}
     .Modal {
         border-top: 1px solid #f4f4f4;
         margin-top: 10px;
@@ -41,6 +67,11 @@
         margin: 0px auto;
         margin-bottom: 20px;
     }
+
+    @media (min-width:710px ){
+        .modal-content{width: 670px;}
+    }
+
 </style>
 
 <script>
@@ -61,6 +92,7 @@
                 image: null,
                 width: null,
                 height: null,
+                widthHeightRatio:1.4,
                 data: null,
                 postURL: null,
                 logo: false
@@ -91,7 +123,7 @@
                 let el = document.getElementById('croppie')
                 this.croppie = new Croppie(el, {
                     viewport: { width: this.width, height: this.height },
-                    boundary: { width: parseInt(this.width + (this.width * 10 / 100)), height: parseInt(this.height + (this.height * 10 / 100)) },
+                    boundary: { width: parseInt(this.width + +20), height: parseInt(this.height +20) },
                     showZoomer: true,
                     enableOrientation: true
                 })
@@ -143,17 +175,19 @@
 
 
             setUpImageResolution(){
+                // widthHeightRatio:1.4,
                 if (this.imgWidth) {
                     this.width = parseInt(this.imgWidth)
                 } else {
-                    this.width = 450
+                    this.width = 600
                 }
 
                 if (this.imgHeight) {
                     this.height = parseInt(this.imgHeight)
                 } else {
-                    this.height = 200
+                    this.height = 400
                 }
+
             },
 
             modalDismiss(){

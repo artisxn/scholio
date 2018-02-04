@@ -67,6 +67,9 @@
     </script>
 
     <style>
+        
+        .bx-img{
+            cursor: pointer;}
 
         .disabledButton{
             opacity: 20%;
@@ -422,7 +425,7 @@
                 pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
                 slideWidth: 305, slideMargin:19, infiniteLoop: true, hideControlOnEnd: false">
                         <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
-                            <img id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
+                            <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
                         </li>
                     </ul>
                 </div>

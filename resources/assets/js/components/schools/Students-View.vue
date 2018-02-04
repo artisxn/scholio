@@ -370,6 +370,21 @@
 
     .btn-close{margin:0 30px 0 0;}
 
+    .modal-select{width: 100%}
+
+
+    @media (min-width: 1200px) {
+        .modal-content{width: 780px }
+    }
+    @media (min-width: 1600px) {
+        .modal-content{width: 940px }
+    }
+
+    @media (max-width: 620px) {
+        .modal-infos{height: 410px }
+    }
+
+
 
     /* ============ Animate.CSS ==========*/
     /* ==================================*/

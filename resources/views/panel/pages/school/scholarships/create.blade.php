@@ -12,7 +12,12 @@
 <link rel="stylesheet" href="/new/css/ribbonHorizontal.css">
 
 <!-- Hexagon CSS -->
-<link rel="stylesheet" href="/new/css/Hexagon.css"> 
+<link rel="stylesheet" href="/new/css/Hexagon.css">
+
+<style>
+    .btn-primary,.btn-primary:focus,.btn-primary:visited,.btn-primary:active{background: #0092aa !important; border: none; margin: 10px auto; padding: 5px 20px;}
+    .btn-primary:hover{background: #007187 !important;}
+</style>
 @endsection 
 
 @section('content') 
@@ -24,9 +29,11 @@
     Δεν υπάρχουν άλλες διαθέσιμες υποτροφίες !
 </div>
 <div>
-    <button>Μεταφορα σε αγορα υποτροφίας</button>
+    <button class="btn btn-primary">Μεταφορα σε αγορά υποτροφιών</button>
 </div>
-@endif @endsection @section('scriptsBefore') {{--
+@endif
+
+@endsection @section('scriptsBefore') {{--
 <script src="{{ asset('/new/js/jquery.raty-fa.js') }}"></script>--}} {{--
 <script src="{{ asset('/new/js/jquery.arctext.js') }}"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script>

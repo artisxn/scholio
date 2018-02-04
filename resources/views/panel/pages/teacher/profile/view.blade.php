@@ -5,6 +5,7 @@
     <!-- Polymer Float Form CSS -->
     <link rel="stylesheet" href="/new/css/jquery.polymer-form.min.css" >
     <link rel="stylesheet" href="/new/css/cv.css" type="text/css"  >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 
 
 <style>
@@ -58,6 +59,64 @@
     .typeahead__dropdown>li>a, .typeahead__list>li>a{color: #888; font-weight: 300;}
 
     /* ========================================== */
+
+    /* /////////////////////////////////////////////////////////////////////////////////////////////// */
+
+    /*==== DATE picker jQuery STYLING ====*/
+
+    .ui-widget-header {
+        background: #00bcd4;
+        color: #fff
+    }
+
+    .ui-icon,
+    .ui-icon:hover {
+        width: 16px;
+        height: 16px;
+        /*background-color: #00bcd4;*/
+    }
+
+    .ui-widget-header .ui-icon {
+        background-image: url("/images/ui-icons_ffffff_256x240.png");
+    }
+
+    .ui-state-default,
+    .ui-widget-content .ui-state-default,
+    .ui-widget-header .ui-state-default,
+    .ui-button,
+    html .ui-button.ui-state-disabled:hover,
+    html .ui-button.ui-state-disabled:active {
+        border: none;
+        background: #f4f4f4;
+        /*font-weight: bold;*/
+        color: #004276;
+    }
+
+    .ui-state-highlight,
+    .ui-widget-content .ui-state-highlight,
+    .ui-widget-header .ui-state-highlight {
+        border: none;
+        background: #008da5;
+        color: #fff;
+    }
+
+    .ui-state-active,
+    .ui-widget-content .ui-state-active,
+    .ui-widget-header .ui-state-active,
+    .ui-button:active,
+    .ui-button.ui-state-active:hover {
+        background: #00bcd4;
+        /*font-weight: bold;*/
+        color: #fff;
+    }
+
+    .error {
+        color: red
+    }
+
+    /*===============================*/
+
+    /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 </style>
 
 @endsection
@@ -68,6 +127,7 @@
 
         $(document).ready(function(){
             $('#full').fadeIn(90).removeClass('hidden');
+            $("#datepicker").datepicker();
 
 
 
@@ -94,6 +154,9 @@
     <script src="/new/js/jquery.polymer-form.min.js"></script>
     <script src="/panel/assets/js/cv.js"></script>
     <script src="/panel/assets/js/jquery.typeahead.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
 
 
 
@@ -165,7 +228,9 @@
                                 </div>
 
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input" value="{{ auth()->user()->info->dob }}">
+                                    {{--<input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input" value="{{ auth()->user()->info->dob }}">--}}
+                                    <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse(auth()->user()->info->dob)->format('d/m/Y') }}" label="Ημερομηνία Γέννησης" name="dob">
+
                                     <i class="icon-inp fa fa-calendar"></i>
                                 </div>
 

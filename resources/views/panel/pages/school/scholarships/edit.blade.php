@@ -3,7 +3,8 @@
 @section('styles')
     {{--<link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />--}}
     {{--<link href="/new/css/main.css" rel="stylesheet" type="text/css" />--}}
-    <link href="/new/css/Bootstrap-xxs-xxxs.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/new/css/Bootstrap-xxs-xxxs.css" />
+    <link rel="stylesheet" href="{{'/panel/assets/css/funkyradio.css'}}" />
     <style>
 
         .margin-right-10 { margin-right: 10px; }
@@ -35,6 +36,22 @@
             /*height: 90px;*/
         }
 
+
+
+
+
+        @media(min-width: 1450px){
+            .inner-column{max-width: 70%; margin-left: 16%;}
+        }
+        @media(min-width: 1820px){
+            .inner-column{max-width: 60%; margin-left: 22%;}
+        }
+        @media(min-width: 2120px){
+            .inner-column{max-width: 45%; margin-left: 27%;}
+        }
+
+
+
         .container-21{padding: 0 10px 0 0;}
         .container-22{padding: 0 0 0 10px;}
         /*.cont-in{ height: 80px; background-color: #f3f6f7; border: 1px solid #ccc; border-radius: 8px;}*/
@@ -60,14 +77,18 @@
         /*  ==========  Button  ===========  */
 
         .sc-btn {
-            float: right;
+            /*float: right;*/
+
             color: #ffffff;
             border: none;
             border-radius: 5px;
             padding: 7px 15px;
-            background: #4a5a62;
             font-weight: 300;
+            display: block; text-align: center;  float: none; margin-left: auto; margin-right: auto;
         }
+
+        .disabled{background: #5b7079;}
+        .disabled:hover{cursor: not-allowed;}
         .sc-green{background:#00bcd4;}
         .sc-orange {background: #FD6A33;}
         .sc-dark-green{background: #008da5;}
@@ -78,6 +99,51 @@
 
         @media (max-width: 420px) {
             .sc-btn{display: block; text-align: center;  float: none; margin-left: auto; margin-right: auto; padding: 8px 15px;}
+        }
+
+        .input-href,.input-href:visited,.input-href:active,.input-href:focus{color: #888;}
+        label{width: 280px;  padding-left: 6px;}
+        .funkyradio-success input[type="radio"]:checked~label:before,
+        .funkyradio-success input[type="checkbox"]:checked~label:before{text-align: center;}
+
+
+
+        @media (min-width: 1200px){
+            label{ width: 390px;}
+        }
+        @media (min-width: 1600px){
+            .col-xl-4{width: 33.33%}
+            label{ width: 350px;}
+        }
+        @media (min-width: 1910px){
+            .col-xl-4{width: 25%}
+            label{ width: 330px;}
+        }
+        @media (min-width: 2190px){
+            label{ width: 390px;}
+        }
+
+
+        @media (max-width: 840px){
+            .saveButton{text-align: center; margin-right: auto; margin-left: auto;}
+            .sc-btn{float: none;}
+            .col-xxs-name{margin-left: auto; margin-right: auto; text-align: center; width: 100%;}
+            label{ margin-left:10px; width: 420px;}
+        }
+
+        @media (max-width: 640px){
+            .col-xxs-name{margin-left: auto; margin-right: auto; text-align: center; width: 100%;}
+            label{margin-left:5px; width: 360px;}
+        }
+
+        @media(max-width: 460px){
+            label{margin-left:3px; width: 280px;}
+        }
+        @media(max-width: 380px){
+            label{margin-left:1px; width: 270px; padding-right: 2px;}
+        }
+        @media(max-width: 360px){
+            label{width: 220px;}
         }
 
 
@@ -279,45 +345,51 @@
 
                 <!-- ============= LG ================== -->
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-3 colmn">
-                    <span class="col-lg-10 ">
-                        <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
-                        <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
-                    </span>
-                    <span class="col-lg-2 text-right">
-                        <div class="">{{$scholarship->usersLength()}}</div>
-                        <div class="margin-top-10">{{$scholarship->interestsLength()}}</div>
-                    </span>
+                    <div class="inner-column">
+                        <span class="col-lg-10 ">
+                            <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
+                            <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
+                        </span>
+                        <span class="col-lg-2 text-right">
+                            <div class="">{{$scholarship->usersLength()}}</div>
+                            <div class="margin-top-10">{{$scholarship->interestsLength()}}</div>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-4 colmn">
-                    <span class="col-lg-7">
-                        <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
-                        <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
-                    </span>
-                    <span class=" col-lg-5 text-right">
-                        <div class="">
-                            {{Carbon\Carbon::parse($scholarship->created_at)->format('d-m-Y')}}
+                    <div class="inner-column">
+                        <span class="col-lg-7">
+                            <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
+                            <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
+                        </span>
+                        <span class=" col-lg-5 text-right">
+                            <div class="">
+                                {{Carbon\Carbon::parse($scholarship->created_at)->format('d-m-Y')}}
 
-                            </div>
-                        <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->end_at)->format('d-m-Y')}}</div>
-                    </span>
+                                </div>
+                            <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->end_at)->format('d-m-Y')}}</div>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-4">
-                    <span class="col-lg-7">
-                        <div class="">  <i class="fa fa-user-o margin-right-10"></i>Υπολ αιτήσεων:</div>
-                        <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
-                    </span>
-                    <span class="col-lg-5 text-right">
-                        <div class="">
-                            {{ $scholarship->admissions_limit }}
-                        </div>
-                        @if($scholarship->exam)
-                            <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
-                        @else
-                            _
-                        @endif
-                    </span>
+                    <div class="inner-column">
+                        <span class="col-lg-7">
+                            <div class="">  <i class="fa fa-user-o margin-right-10"></i>Υπολ αιτήσεων:</div>
+                            <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
+                        </span>
+                        <span class="col-lg-5 text-right">
+                            <div class="">
+                                {{ $scholarship->admissions_limit }}
+                            </div>
+                            @if($scholarship->exam)
+                                <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
+                            @else
+                                _
+                            @endif
+                        </span>
+                    </div>
                 </div>
 
                 <!-- ==============  SM XS XXS MD ================= -->
@@ -359,7 +431,6 @@
                     </div>
 
                 </div>
-
 
 
                 <div class="clearfix"></div>
@@ -404,12 +475,34 @@
 
                 <div>
                     @foreach($scholarship->admission as $admission)
-                        <div class=" col-xxxs-12 col-xs-6 col-lg-4">
+                        <div class=" col-xxs-name col-sm-6 col-xl-4">
                             <img class="avatar-img" src="{{ $admission->user->info->avatar }}" width="20px">
                             @if($scholarship->active)
-                                <input class="winners-checkbox" type="checkbox" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
+                                {{--<input class="winners-checkbox" type="checkbox" name="winner[]" value="{{ $admission->user->id }}">--}}
+
+
+
+                                <span class="funkyradio" style=" display: inline-block">
+                                            <span class="funkyradio-success">
+                                                <input class="winners-checkbox" type="checkbox" id="win{{ $admission->user->id }}" name="winner[]" value="{{ $admission->user->id }}">
+
+                                                <label for="win{{ $admission->user->id }}">
+                                                    <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}" class="input-href">
+                                                    {{$admission->user->name}}
+                                                    </a>
+                                                </label>
+
+                                            </span>
+                                 </span>
+
+                                {{--<a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}">--}}
+                                    {{--<span class="name-text"> {{$admission->user->name}} </span>--}}
+                                {{--</a>--}}
                             @else
-                                <input type="checkbox" onclick="return false;" name="winner[]" value="{{ $admission->user->id }}"> <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}"> <span class="name-text"> {{$admission->user->name}} </span></a>
+                                <input type="checkbox" onclick="return false;" name="winner[]" value="{{ $admission->user->id }}">
+                                <a href="/panel/school/admission/{{$admission->user->getAdmissionId($scholarship) }}">
+                                    <span class="name-text"> {{$admission->user->name}} </span>
+                                </a>
                             @endif
                         </div>
                     @endforeach
@@ -434,10 +527,13 @@
                 <div class="margin-top-50"></div>
 
 
-                <div class="margin-top-30"></div>
+                <div class="margin-top-30 saveButton">
 
                     {{ csrf_field() }}
-                    <button id="saveButton" type="submit" class="sc-btn" disabled><i class="fa fa-flag-o margin-right-10"></i>Λήξη Υποτροφίας και Ενημέρωση Νικητών</button>
+                    <button id="saveButton" type="submit" class="sc-btn disabled" disabled><i class="fa fa-flag-o margin-right-10"></i>Λήξη Υποτροφίας και Ενημέρωση Νικητών</button>
+                </div>
+
+
                 </form>
                 </div>
             </div>
@@ -467,7 +563,7 @@
 
        if($('.winners-checkbox:checked').length >= limit){
            @if(!$activeDate || $scholarship->admissions_limit == 0)
-               $('#saveButton').addClass("sc-dark-green");
+               $('#saveButton').addClass("sc-dark-green").removeClass("disabled");
                $('#saveButton').prop('disabled', false);
            @endif
        }

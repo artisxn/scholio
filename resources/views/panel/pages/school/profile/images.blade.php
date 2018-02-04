@@ -1,5 +1,9 @@
 @extends('panel.layouts.main')
 
+
+
+
+
 @section('styles')
 
     <link rel="stylesheet" href="/css/croppie.css">
@@ -35,6 +39,7 @@
             margin: 5px 5px;
             overflow: hidden;
             text-align:center;
+            cursor: pointer;
         }
 
         .grow img {
@@ -109,7 +114,14 @@
         .inner-section2{border: none; margin-top: 30px; background-color: transparent;}
 
         /* ================================ */
+
+        @media (max-width:709px ){
+            .btn-green{display: none;}
+        }
+
     </style>
+
+
 @endsection
 
 @section('content')
@@ -186,7 +198,8 @@
     
                     <div class="section2-container ">
                         <div class="inner-section2">
-                            <image-crop img-width="500" img-height="300" img-data="school"></image-crop>
+                            <!-- widthHeightRatio:15/10 -->
+                            <image-crop img-width="600" img-height="400" img-data="school"></image-crop>
                         </div>
                     </div>
                 </div>
@@ -202,6 +215,9 @@
 
 
     <script>
+
+
+
         window.axios.defaults.headers.common = {
             'X-CSRF-TOKEN': Scholio.csrfToken,
             'X-Requested-With': 'XMLHttpRequest'

@@ -340,7 +340,7 @@
                                         </div>
                                     </div>
 
-                                    <div class=" col-sm-4 col-lg-4 col-xs-6s" style="margin: 17px 0 0 0; padding: 0!important;">
+                                    <div class=" col-sm-4 col-lg-4 col-xs-6s" style="margin: 17px 0 0 0; padding: 0!important;" v-if="criteria_value.id != 1">
                                         <div class="funkyradio" style="margin: 8px 0 0 0; text-align: center">
                                             <div class="funkyradio-success exams-container" style="z-index: 3; position: relative;">
                                                 <input type="checkbox" id="exams" v-model="exams" :disabled="criteria_value.id == 1">
@@ -349,7 +349,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important; margin-top: 18px;" v-show="exams">
+                                    <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important; margin-top: 18px;" v-show="exams" v-if="criteria_value.id != 1">
                                         <div> Ημερομηνία Εξετάσεων </div>
                                         <div style="z-index: 3; position: relative;">
                                             <input type="text" id="examsdate" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px; margin-top: 1px;"
