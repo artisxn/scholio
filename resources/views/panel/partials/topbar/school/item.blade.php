@@ -24,6 +24,7 @@
     </a>
     <ul class="dropdown-menu">
             <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
+            <li><a href="{{ url('/password/change') }}"><i class="ti-key m-r-5"></i>Change Password</a></li>
         <li>
             <a href="javascript:void(0)"
                 onclick="event.preventDefault();

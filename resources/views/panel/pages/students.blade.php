@@ -1,8 +1,20 @@
 @extends('panel.layouts.main')
 
 @section('content')
-    <students-view> </students-view>
+    <students-view id="chrome"> </students-view>
+    <students-view-safari id="safari"></students-view-safari>
 @endsection
 
 @section('scripts')
+<script>
+    $(document).ready(function(){
+
+        if(navigator.vendor.indexOf('Apple') != -1){
+            $('#chrome').remove();
+        }else{
+            $('#safari').remove();
+        }
+        
+    })
+</script>
 @endsection

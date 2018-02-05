@@ -90,10 +90,10 @@ class RoutesController extends Controller
         $address = request()->address;
         $city = request()->city;
         $phone = request()->phone;
-        $dob = request()->dob;
+        $dob = Carbon::createFromFormat('d/m/Y', request()->dob);
         $gender = request()->gender;
         $title = request()->title;
-
+        
         $teacher = auth()->user()->info;
         $teacher->fname = $fname;
         $teacher->lname = $lname;
@@ -245,23 +245,32 @@ class RoutesController extends Controller
 
     public function studentCvStore()
     {
-        $studentCv = Student::where('user_id', auth()->user()->id)->first();
+        $student = Student::where('user_id', auth()->user()->id)->first();
 
         if (request()->logo != null) {
-            $studentCv->avatar = request()->logo;
+            $student->avatar = request()->logo;
         }
 
-        $studentCv->fname = request()->firstName;
-        $studentCv->lname = request()->lastName;
-        $studentCv->gender = request()->gender;
-        $studentCv->dob = request()->dob;
-        $studentCv->address = request()->student_address;
-        $studentCv->city = request()->student_city;
-        $studentCv->phone = request()->student_phone;
-        $studentCv->save();
+        $student->fname = request()->firstName;
+        $student->lname = request()->lastName;
+        $student->gender = request()->gender;
+        $student->save();
+
+        $cv = auth()->user()->cv;
+        $cv->student_dob = Carbon::createFromFormat('d/m/Y', request()->dob);
+        $cv->student_address = request()->student_address;
+        $cv->student_city = request()->student_city;
+        $cv->student_phone = request()->student_phone;
+        $cv->languages = request()->languages;
+        $cv->studies = request()->studies;
+        $cv->awards = request()->awards;
+        $cv->certifications = request()->certifications;
+        $cv->other_interests = request()->other_interests;
+
+        $cv->save();
+       
 
         return view('panel.pages.student.cv.studentCv');
-
     }
 
     public function devOut()

@@ -561,11 +561,14 @@
            this.checked = false;
        }
 
-       if($('.winners-checkbox:checked').length >= limit){
+       if($('.winners-checkbox:checked').length == limit){
            @if(!$activeDate || $scholarship->admissions_limit == 0)
                $('#saveButton').addClass("sc-dark-green").removeClass("disabled");
                $('#saveButton').prop('disabled', false);
            @endif
+       }else{
+           $('#saveButton').removeClass("sc-dark-green").addClass("disabled");
+           $('#saveButton').prop('disabled', true);
        }
     });
 </script>

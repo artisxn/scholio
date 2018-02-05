@@ -177,7 +177,7 @@
         <div class="col-sm-12">
             <div class="card-box">
                 <div class="row">
-                    <form method="POST" action="/panel/student/cv" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('studentCV-save')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         {{-- CHANGE CV'S PHOTO  --}}
@@ -234,8 +234,8 @@
                                     </div>
 
                                     <div class="col-sm-6 input-container col-xl-4">
-                                    {{--<input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input"  value="{{ auth()->user()->cv->student_dob}}">--}}
-                                        <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse(auth()->user()->cv->student_dob)->format('d/m/Y') }}" label="Ημερομηνία Γέννησης" name="dob">
+                                    {{--<input type="text" label="Ημερομηνία Γέννησης" name="dob" class="demo-form ad-input"  value="{{ auth()->user()->cv->student_dob}}">--}}
+                                        <input class="demo-form ad-input ll-skin-cangas" name="dob" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse(auth()->user()->cv->student_dob)->format('d/m/Y') }}" label="Ημερομηνία Γέννησης" name="dob">
 
                                         <i class="icon-inp fa fa-calendar"></i>
                                     </div>
@@ -392,21 +392,21 @@
                                             <div class="section-text centered-text ">Μy talent links</div>
 
                                             <div class="col-sm-6 input-container" >
-                                                <input type="text" label="YouTube Channel" name="YouTube " class="demo-form ad-input" value="">
+                                                <input type="text" label="YouTube Channel" name="youtube " class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'youtube')->first()->link ?? '' }}">
                                                 <i class="icon-inp fa fa-youtube"></i>
                                             </div>
                                             <div class="col-sm-6 input-container" >
-                                                <input type="text" label="Google Plus Profile Number" name="googleplus" class="demo-form ad-input" value="">
+                                                <input type="text" label="Google Plus" name="gplus" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'gplus')->first()->lin ?? '' }}">
                                                 <i class="icon-inp fa fa-google-plus"></i>
                                             </div>
 
                                             <div class="col-sm-6 input-container" >
-                                                <input type="text" label="dribbble nickName" name="dribbble" class="demo-form ad-input" value="">
+                                                <input type="text" label="dribbble" name="dribbble" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'dribbble')->first()->link ?? '' }}">
                                                 <i class="icon-inp fa fa-dribbble"></i>
                                             </div>
                                             <div class="col-sm-6 ">
                                                 <div class="input-container">
-                                                    <input  type="text" label="Pinterest Board" name="Pinterest" class="demo-form ad-input" value="">
+                                                    <input  type="text" label="Pinterest" name="pinterest" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'pinterest')->first()->link ?? '' }}">
                                                     <i class="icon-inp  fa fa-pinterest"></i>
                                                 </div>
                                             </div>
@@ -414,26 +414,26 @@
 
                                             <div class="col-sm-6 ">
                                                 <div class="input-container">
-                                                    <input  type="text" label="Instagram Picture" name="Instagram" class="demo-form ad-input" value="">
+                                                    <input  type="text" label="Instagram" name="instagram" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'instagram')->first()->link ?? '' }}">
                                                     <i class="icon-inp  fa fa-instagram"></i>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 ">
                                                 <div class="input-container">
-                                                    <input  type="text" label="Instagram Picture" name="Instagram" class="demo-form ad-input" value="">
-                                                    <i class="icon-inp  fa fa-instagram"></i>
+                                                    <input  type="text" label="Facebook" name="facebook" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'facebook')->first()->link ?? '' }}">
+                                                    <i class="icon-inp  fa fa-facebook"></i>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 ">
                                                 <div class="input-container">
-                                                    <input  type="text" label="Instagram Picture" name="Instagram" class="demo-form ad-input" value="">
-                                                    <i class="icon-inp  fa fa-instagram"></i>
+                                                    <input  type="text" label="Twitter" name="twitter" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'twitter')->first()->link ?? '' }}">
+                                                    <i class="icon-inp  fa fa-twitter"></i>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 ">
                                                 <div class="input-container">
-                                                    <input  type="text" label="Instagram Picture" name="Instagram" class="demo-form ad-input" value="">
-                                                    <i class="icon-inp  fa fa-instagram"></i>
+                                                    <input  type="text" label="LinkedIn" name="linkedin" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'linkedin')->first()->link ?? '' }}">
+                                                    <i class="icon-inp  fa fa-linkedin"></i>
                                                 </div>
                                             </div>
 
@@ -450,7 +450,7 @@
                                                 {{--<iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=apple" width="100%" height="365"></iframe>--}}
                                             {{--</div>--}}
 
-
+<!-- 
                                             <div id="talent" class="hidden">
 
                                                 <div class="col-md-12" style=" margin-top: 32px;">
@@ -460,9 +460,6 @@
                                                     <div class="pull-left social-board">
                                                         <div class="g-person" data-href="//plus.google.com/u/0/116192191945094336260" data-rel="author" data-width="240" data-layout="portrait"></div>
                                                     </div>
-                                                    <!-- <div class="pull-left social-board">
-                                                        <div data-dribbble-id="rork" ></div>
-                                                    </div> -->
                                                     <div class="pull-left social-board">
                                                         <a data-pin-do="embedBoard"   data-pin-board-width="240" data-pin-scale-height="190" data-pin-scale-width="80" style=""
                                                            href="https://gr.pinterest.com/aidscholarship/college-scholarships-tips-and-resources/"></a>
@@ -483,8 +480,7 @@
 
 
                                             </div>
-
-
+ -->
 
                                         </div>
                                     </div>
@@ -522,7 +518,9 @@
 
 
     <script>
-        $("#datepicker").datepicker();
+        $("#datepicker").datepicker({
+            dateFormat: "dd/mm/yy"
+        });
     </script>
 
 

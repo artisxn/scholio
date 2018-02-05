@@ -124,6 +124,10 @@
 @section('scriptsBefore')
 
     <script>
+        window.stud = <?php echo App\Models\Study::all()->pluck('name'); ?>;
+    </script>
+
+    <script>
 
         $(document).ready(function(){
             $('#full').fadeIn(90).removeClass('hidden');
@@ -131,15 +135,15 @@
 
 
 
-//            $.typeahead({
-//                input: '.js-typeahead-studies',
-//                order: "asc",
-//                hint: true,
-//                source: {
-//                    data: window.stud
-//                },
-//                callback: {onInit: function () {}}
-//            });
+           $.typeahead({
+               input: '.js-typeahead-studies',
+               order: "asc",
+               hint: true,
+               source: {
+                   data: window.stud
+               },
+               callback: {onInit: function () {}}
+           });
         });
     </script>
 

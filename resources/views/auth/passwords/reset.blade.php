@@ -34,7 +34,7 @@
     <div class="wrapper-page">
         <div class=" card-box">
             <div class="panel-heading">
-                <h3 class="text-center"> Sign Up to <strong class="text-custom">UBold</strong> </h3>
+                <h3 class="text-center"> Sign Up to <strong class="text-custom">UBold basjkdhbkhsbdhkasbjhd</strong> </h3>
             </div>
 
             <div class="panel-body">

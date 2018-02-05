@@ -68,6 +68,7 @@ class CreateCvsTable extends Migration
             $table->text('other_interests')->nullable();
             $table->text('notes')->nullable();
             $table->text('strongpoints')->nullable();
+            $table->text('studies')->nullable();
             $table->timestamps();
         });
     }

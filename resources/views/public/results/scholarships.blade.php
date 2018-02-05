@@ -135,9 +135,10 @@
     /*.mobile-input input[type='text']{font-size: 16px;}*/
     /*select{  font-size: 16px;  height: 36px; padding: 2px; margin-bottom: 7px;}*/
 
-    .talent-back{background: #f0f0f0
+    .talent-back{background: khaki
     }
-    .talent-border{border-color: #f0f0f0}
+    .talent-border{border-color: khaki
+    }
 
 
 
@@ -569,15 +570,29 @@ angular.module("scholarshipsResultsApp",[])
 
 
           @{{#multiple}}
-            <div class="col-lg-4 col-md-6 col-sm-4 section1" style="border: 1px solid #FD6A33; border-top: none">
+            @{{^talent}}
+                <div class="col-lg-4 col-md-6 col-sm-4 section1" style="border: 1px solid #FD6A33; border-top: none">
+            @{{/talent}}
           @{{/multiple}}
 
-          {{--@{{#talent}}--}}
-            {{--<div class="col-lg-4 col-md-6 col-sm-4 section1 talent-border">--}}
-          {{--@{{/talent}}--}}
+          @{{#talent}}
+            @{{^multiple}}
+                <div class="col-lg-4 col-md-6 col-sm-4 section1 talent-border">
+            @{{/multiple}}
+          @{{/talent}}
+
+
           @{{^multiple}}
-            <div class="col-lg-4 col-md-6 col-sm-4 section1">
+            @{{^talent}}
+                <div class="col-lg-4 col-md-6 col-sm-4 section1">
+            @{{/talent}}
           @{{/multiple}}
+
+          @{{#talent}}
+            @{{#multiple}}
+                <div class="col-lg-4 col-md-6 col-sm-4 section1 talent-border">
+            @{{/multiple}}
+          @{{/talent}}
 
 
 
@@ -612,7 +627,14 @@ angular.module("scholarshipsResultsApp",[])
             </div>
         </div>
 
+        @{{#talent}}
+        <div class="col-lg-4 col-md-6 col-sm-4 section2 hidden-xxxs talent-border">
+        @{{/talent}}
+        @{{^talent}}
         <div class="col-lg-4 col-md-6 col-sm-4 section2 hidden-xxxs ">
+        @{{/talent}}
+
+
             <div class="hex-container centered">
                 <div class="hexagon3 hex">
                     <span></span>
@@ -634,7 +656,14 @@ angular.module("scholarshipsResultsApp",[])
             </div>
         </div>
 
-        <div class="col-lg-4 col-sm-4 col-md-12 section3 hidden-xxxs hidden-xxs">
+        @{{#talent}}
+        <div class="col-lg-4 col-md-6 col-sm-4 section3 hidden-xxxs hidden-xxs talent-border">
+        @{{/talent}}
+        @{{^talent}}
+        <div class="col-lg-4 col-md-6 col-sm-4 section3 hidden-xxs hidden-xxxs ">
+        @{{/talent}}
+
+
             <div class="hex-container centered">
                 <div class="hexagon3 hex" style="">
                     <span></span>

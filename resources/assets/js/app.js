@@ -29,7 +29,7 @@ Vue.component('scholarships-create', require('./components/schools/Scholarship-C
 Vue.component('users-table', require('./components/Users-Table.vue'));
 Vue.component('schools-table', require('./components/schools/Schools-Table.vue'));
 Vue.component('scholarships-view', require('./components/schools/Scholarships-View.vue'));
-Vue.component('students-view', require('./components/schools/Students-View.vue'));
+Vue.component('students-view', require('./components/schools/Students-View.vue')); Vue.component('students-view-safari', require('./components/schools/Students-View-Safari.vue'));
 Vue.component('teachers-view', require('./components/schools/Teachers-View.vue'));
 Vue.component('resource-requests', require('./components/schools/Resource-Requests.vue'));
 Vue.component('studies-select', require('./components/schools/Study-Create.vue'));

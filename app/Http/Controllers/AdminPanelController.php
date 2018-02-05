@@ -326,7 +326,7 @@ class AdminPanelController extends Controller
 
         $school->image()->toggle($image);
 
-        unlink(public_path() . '/images/schools/' . $image->name);
+        unlink(public_path() . '/upload/school/'. $school->type->name . '_' . auth()->user()->id . '_' . auth()->user()->name . '/' . $image->name);
 
         // Scholio::updateDummy($school);
 

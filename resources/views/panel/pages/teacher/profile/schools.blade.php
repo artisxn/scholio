@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="pull-left  cont-img">
-                                    <img class="img-logo" src="/images/schools/{{$school->logo}}" alt=""/>
+                                    <img class="img-logo" src="{{$school->logo}}" alt=""/>
                                 </div>
                             </a>
 

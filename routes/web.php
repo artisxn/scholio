@@ -14,6 +14,10 @@ use App\Events\NewSubscription;
 
 Scholio::soonRoutes();
 
+Route::get('/password/change', function(){
+    return view('panel.change-password');
+})->middleware('auth');
+
 Route::get('/error', function(){
     abort('400');
 });
@@ -222,8 +226,6 @@ Route::get('/public/algolia/', function () {
 Route::get('/register/role/', function () {
     return view('auth.register-role');
 });
-
-Route::post('/panel/student/cv', 'RoutesController@studentCvStore');
 
 Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
     $settings = $scholarship->school->settings;

@@ -46,7 +46,7 @@
 
 
                             <div class="pull-left  cont-img">
-                                        <img class="img-logo" :src="'/images/schools/' + mySchool.logo" alt=""/>
+                                        <img class="img-logo" :src="mySchool.logo" alt=""/>
                             </div>
                         </a>
 

@@ -85,7 +85,7 @@
                         <div class="request-card {{ $as->active ? 'active' : 'inactive' }}" >
 
 
-                            <img class="school-logo" src="/images/schools/{{ $admission->scholarship->school->logo}}">
+                            <img class="school-logo" src="{{ $admission->scholarship->school->logo}}">
                             {{--<div>{{ $admission->scholarship->school->type->name}}</div>--}}
                             <div class="school-name ">{{ $admission->scholarship->school->admin->name }}</div>
                             <div class="clearfix"></div>

@@ -473,9 +473,11 @@
                             <div id="categoriesSection"></div> --}}
                             {{-- <div class="filter-title">Επίπεδο Σπουδών</div>
                             <div id="categoriesLevel"></div> --}}
-                            <div class="filter-container">
-                            <div id="rating" class="facet"></div>
-                            </div>
+                             {{--
+                                <div class="filter-container">
+                                    <div id="rating" class="facet"></div> 
+                                </div>
+                            --}}
                             {{--<div id="financial" class="facet"></div>--}}
 
 
@@ -652,6 +654,8 @@ angular.module("schoolsResultsApp",[])
                     <span class="sc-t-orange"> @{{stars}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{reviews}}  @lang('schools.cards.reviews'))</span>
                 </span>
             </div>
+
+            
             @{{#stats}}
             <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
@@ -804,7 +808,6 @@ angular.module("schoolsResultsApp",[])
                     hit.hot=[];
                     hit.scholarshipLion=[];
 
-
                     if(hit.lengthStudents > 8   && (window.STATS[hit.id-1] == 1) ){
                         hit.hot.push(true);
                     }
@@ -819,6 +822,7 @@ angular.module("schoolsResultsApp",[])
                     if(window.STATS[hit.id-1] == 1){
                         hit.stats.push(true);
                     }
+                    console.log('qqq')
                     console.log(hit);
                     for (var i = 1; i <= 5; ++i) {
                         hit.rating.push(i <= hit.stars);
@@ -910,15 +914,15 @@ angular.module("schoolsResultsApp",[])
     //         })
     // );
 
-    search.addWidget(
-      instantsearch.widgets.starRating({
-        container: '#rating',
-        attributeName: 'starsInt',
-        templates: {
-          header: '<div class="filter-title">@lang('schools.cards.reviews')</div class="filter-title">'
-        }
-      })
-    );
+    // search.addWidget(
+    //   instantsearch.widgets.starRating({
+    //     container: '#rating',
+    //     attributeName: 'starsInt',
+    //     templates: {
+    //       header: '<div class="filter-title">@lang('schools.cards.reviews')</div class="filter-title">'
+    //     }
+    //   })
+    // );
 
     // search.addWidget(
     //   instantsearch.widgets.sortBySelector({

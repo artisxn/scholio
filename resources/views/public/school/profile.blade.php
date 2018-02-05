@@ -371,7 +371,7 @@
                     <div class="">
                     <div class="xs-center">
                         <img id="img1"  class=" pull-left margin-right-10 margin-top-15 margin-bot-10"
-                             ng-src="/images/schools/@{{contactInfo.logo}}">
+                             ng-src="@{{contactInfo.logo}}">
                     </div>
 
                     <div class=" xs-centered-text">
@@ -1200,7 +1200,7 @@
                     </div>
                     <div class="panel-body">
                         <img  class="pull-left margin-right-10" style="height: 45px;"
-                              ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
+                              ng-src="@{{contactInfo.logo.full_path}}">
                         <span>@{{contactInfo.type }} @{{ contactInfo.name }}:   </span>
                     </div>
 

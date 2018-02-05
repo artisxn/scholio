@@ -13,11 +13,11 @@
                     <label for="upload-image" class="btn btn-upload">Επιλογή φωτογραφίας</label>
                 </div>
 
-                <button class="btn btn-primary" v-on:click="uploadFile">
+                <button class="btn btn-primary" v-on:click="uploadFile($event)" :disabled="acceptDisabled">
                     <i class="fa fa-check"></i> Αποδοχή
                 </button>
 
-                <button class="btn btn-default" v-on:click="modalDismiss">
+                <button class="btn btn-default" v-on:click="modalDismiss($event)">
                     <i class="fa fa-times"></i> Ακύρωση
                 </button>
             </div>
@@ -95,12 +95,14 @@
                 widthHeightRatio:1.4,
                 data: null,
                 postURL: null,
-                logo: false
+                logo: false,
+                acceptDisabled: true
             }
         },
 
         methods: {
-            uploadFile() {
+            uploadFile(event) {
+                if (event) event.preventDefault()
                 this.canUpload = false
                 this.button = {
                     name: 'Uploading...',
@@ -114,8 +116,8 @@
         
                     axios.post(this.postURL, { img: this.image, logo: this.logo })
                         .then((response) => {
-                            console.log(response)
-                            // location.reload();
+                            // console.log(response)
+                            location.reload();
                         })
                 })
             },
@@ -125,7 +127,9 @@
                     viewport: { width: this.width, height: this.height },
                     boundary: { width: parseInt(this.width + +20), height: parseInt(this.height +20) },
                     showZoomer: true,
-                    enableOrientation: true
+                    enableOrientation: true,
+                    quality: 0,
+                    format: 'jpeg'
                 })
                 this.croppie.bind({
                     url: this.image
@@ -136,6 +140,7 @@
                 if (!files.length) {
                     return
                 }
+                this.acceptDisabled = false
                 this.createImage(files[0])
             },
             createImage(file) {
@@ -190,7 +195,8 @@
 
             },
 
-            modalDismiss(){
+            modalDismiss(event){
+                if (event) event.preventDefault()
                 $('#upload-modal').modal('toggle');
             }
         },

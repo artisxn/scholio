@@ -11,7 +11,6 @@ use App\Models\Study;
 use App\Models\Tag;
 use App\Scholio\PivotTrait;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\ScholarshipLimit;

@@ -9,11 +9,13 @@ use Carbon\Carbon;
 use App\Models\Certificate;
 use App\Models\Cvteacherstudy;
 
+
 Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () {
     Route::post('/delete', 'RoutesController@studentDelete')->name('students-delete');
     Route::get('/profile', 'RoutesController@studentProfile')->name('students-profile');
     Route::get('/mySchools', 'RoutesController@mySchools')->name('students-my-schools');
     Route::get('/studentCv', 'RoutesController@studentCv')->name('students-cv');
+    Route::post('/student/cv', 'RoutesController@studentCvStore')->name('studentCV-save');
     Route::get('/kinship', 'RoutesController@studentKinship')->name('students-kinship');
     Route::get('/review/show', 'RoutesController@reviewShow')->name('student-review-show');
     Route::get('/review/create/{school}', 'RoutesController@reviewCreate')->name('student-review-create');
