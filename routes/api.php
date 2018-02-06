@@ -92,6 +92,8 @@ Route::post('/student/saveStudy', function () {
     $school->students->where('id', $student->id)->first()->pivot->study_id = $study->id;
     $school->students->where('id', $student->id)->first()->pivot->level = $study->section[0]->level->name;
     $school->students->where('id', $student->id)->first()->pivot->save();
+
+    $student->studyConnection()->save($study, ['school_id'=> $school->id]);
 })->middleware('auth:api');
 
 Route::get('/notifications/getSchoolLevelSections', function () {
@@ -697,9 +699,16 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
             $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
 
-            $study = $item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->first()->name ?? null;
+            // $study = $item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->first()->name ?? null;
+            $dummy = '';
 
-            $replacement2 = preg_replace('/ά/iu', '${1}α', $study);
+            foreach($item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->get() as $std){
+                $section = $std->section[0];
+                $level = $section->level;
+                $dummy .= $std->name . ',' . $section->name . ',' . $level->name . ',';
+            }
+
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $dummy);
             $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
             $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
             $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
@@ -709,7 +718,7 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
             if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
                 preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) ||
-                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $study)) {
+                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $dummy)) {
                 return $item;
             }
         });

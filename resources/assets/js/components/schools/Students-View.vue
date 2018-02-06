@@ -69,6 +69,7 @@
                                         <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
                                         <div class="name"> {{student.name}} </div>
                                     </a>
+                                    
                                     <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
                                 </div>
                             </div>
@@ -206,6 +207,14 @@
 
                         <div class="input-container modal-input-container">
                             <select v-model="selectedStudy" class="modal-select" v-on:change="saveStudy">
+                                <optgroup :label="level.level.name" v-for="level in studies">
+                                    <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
+                                </optgroup>
+                            </select>
+
+                            <i class="fa fa-plus" @click="secondStudy = true"></i>
+
+                            <select v-model="selectedStudy" class="modal-select" v-if="secondStudy">
                                 <optgroup :label="level.level.name" v-for="level in studies">
                                     <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
                                 </optgroup>
@@ -570,7 +579,11 @@
 
 <script>
 
+    import Multiselect from '../../scholio-multiselect';
+
     export default{
+        components: { Multiselect },
+
         data: function() {
             return{
                 items: [],
@@ -586,7 +599,10 @@
                 scholio: null,
                 info: null,
                 studies: null,
-                selectedStudy: null
+                selectedStudy: null,
+                std: [],
+                multipleStudies: true,
+                secondStudy: false
             }
         },
         computed: {
@@ -631,6 +647,16 @@
              getSchoolStudies(){
                 axios.get('/api/notifications/getSchoolLevelStudies').then(({data})=>{
                     this.studies = data
+                    var vm = this
+
+                    var arr = []
+                    this.studies.forEach((item)=>{
+                        item.studies.forEach((studies)=>{
+                            arr.push({id: studies.study.id, name: studies.study.name})
+                        })
+                        vm.std.push({ level: item.level.name, study: arr })
+                        arr = []
+                    })
                 })
             },
             nameChangeSort: function(){
@@ -743,7 +769,6 @@
         mounted() {
             this.getSchoolStudies()
             this.scholio = window.location.origin
-            console.log('chrome')
         }
     }
 
