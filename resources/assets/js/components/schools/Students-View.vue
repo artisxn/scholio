@@ -206,17 +206,27 @@
                         <!--<p>{{ info.cv.student_address }}</p>-->
 
                         <div class="input-container modal-input-container">
-                            <!--<select v-model="selectedStudy" class="modal-select" v-on:change="saveStudy">-->
-                                <!--<optgroup :label="level.level.name" v-for="level in studies">-->
-                                    <!--<option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>-->
-                                <!--</optgroup>-->
-                            <!--</select>-->
 
 
                             <div class="" >
-                                <div class="">Αντικείμενο Σπουδών</div>
-
+                                <div class="first-study-text">Αντικείμενο Σπουδών</div>
                                 <div class="">
+                                    <select class="select-transparent" v-model="selectedStudy" >
+                                        <optgroup :label="level.level.name" v-for="level in studies">
+                                            <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
+                                        </optgroup>
+                                    </select>
+                                    <i class="fa fa-graduation-cap select-icon"></i>
+                                    <div class="col-xl-line"></div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="second-study-text"><i class="fa fa-plus" @click="secondStudy = true"></i>Επιπλέον Αντικείμενο Σπουδών</div>
+
+
+                                <div class="" v-if="secondStudy">
                                     <select class="select-transparent" v-model="selectedStudy" >
                                         <optgroup :label="level.level.name" v-for="level in studies">
                                             <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
@@ -228,18 +238,6 @@
 
 
 
-
-                            </div>
-
-
-
-                            <i class="fa fa-plus" @click="secondStudy = true"></i>
-
-                            <select v-model="selectedStudy" class="modal-select" v-if="secondStudy">
-                                <optgroup :label="level.level.name" v-for="level in studies">
-                                    <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
-                                </optgroup>
-                            </select>
                         </div>
 
                     </div>
@@ -405,6 +403,10 @@
     .select-transparent{background: transparent; border: none; margin-top: 6px; margin-left: 4px;}
     .col-xl-line{border-bottom: 1px solid #008da5; margin-top: -2px; width: 100%;}
     .select-icon{margin-top: 8px; display: inline-block; float: left; color: #008da5}
+    .first-study-text,.second-study-text{color:#008da5; font-size: 110%}
+    .second-study-text{margin-top: 25px;}
+    .fa-plus{cursor: pointer; margin-right: 10px;}
+    .fa-plus:hover{color: #FD6A33}
 
 
     @media (min-width: 1200px) {
