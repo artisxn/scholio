@@ -18,9 +18,12 @@ class CreateSchoolUserTable extends Migration
             $table->integer('school_id')->index();
             $table->integer('user_id')->index();
             $table->string('status')->default('connected');
-            $table->string('type')->nullable();
             $table->integer('study_id')->nullable();
+            $table->string('type')->nullable();
             $table->string('level')->nullable();
+            $table->integer('study_id2')->nullable();
+            $table->string('type2')->nullable();
+            $table->string('level2')->nullable();
         });
     }
 

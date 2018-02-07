@@ -137,7 +137,7 @@ class School extends Model
      */
     public function students()
     {
-        return $this->users()->where('role', 'student')->withPivot('status', 'type', 'level', 'study_id');
+        return $this->users()->where('role', 'student')->withPivot('status', 'type', 'level', 'study_id', 'type2', 'level2', 'study_id2');
     }
 
     /**

@@ -818,12 +818,11 @@ angular.module("schoolsResultsApp",[])
                     if(hit.lengthScholarships > 7){
                         hit.scolarsLength.push(true);
                     }
-                    // console.log(window.STATS[0]);
+
                     if(window.STATS[hit.id-1] == 1){
                         hit.stats.push(true);
                     }
-                    console.log('qqq')
-                    console.log(hit);
+                    
                     for (var i = 1; i <= 5; ++i) {
                         hit.rating.push(i <= hit.stars);
                     }

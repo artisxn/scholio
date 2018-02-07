@@ -419,17 +419,21 @@
             </div>
 
             <!-- BX SLIDER -->
-            <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
-                <div class="row xl-margin-right " style="padding-left: 7px;">
-                    <ul class="bxslider "  data-bx-slider="
-                pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
-                slideWidth: 305, slideMargin:19, infiniteLoop: true, hideControlOnEnd: false">
-                        <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
-                            <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
-                        </li>
-                    </ul>
+            
+                <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
+                    <div class="row xl-margin-right " style="padding-left: 7px;">
+                        <ul class="bxslider "  data-bx-slider="
+                    pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
+                    slideWidth: 305, slideMargin:19, infiniteLoop: true, hideControlOnEnd: false">
+                            @if($school->image->count() >= 4)
+                                <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
+                                    <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
+                                </li>
+                             @endif
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            
 
             <div class="row">
                     @if(auth()->check())
@@ -779,16 +783,13 @@
                     <div class="show-more" style="background-color: #fff">
                         {{--ng-if="contactInfo.lengthScholarships>2"--}}
                         <div class="pad-top-20">
-                             <span ng-click="showMoreScholarships('ypotrofies')">@{{textScholarships}}
-                                 <i class="@{{ iconScholarships }}"></i></span>
+                            {{-- <span ng-click="showMoreScholarships('ypotrofies')">@{{textScholarships}}
+                                 <i class="@{{ iconScholarships }}"></i></span> --}}
+
+                                 <span><a href="{{ url('/public/scholarships?q=' . $school->admin->name) }}" target="_blank">MORE</a></span>
                         </div>
                     </div>
 @endif
-
-
-
-
-
 
 
 
@@ -1398,19 +1399,14 @@
                         $scope.mStudies = { };
                        var multipleStudies = []
 
-                        data.scholarship.forEach(function(item){
-                                item.multipleStudies.forEach(function(st){
-                                    multipleStudies.push(st.section[0].id)
-                                    $scope.mStudies[item.id] = multipleStudies
-                                    $scope.multipleSectionsSelected[item.id] = !$scope.uniqueArray(multipleStudies)
-                                })
-                                multipleStudies = []
-                        })
-
-
-
-                        console.log('ms')
-                        console.log($scope.mStudies)
+                        // data.scholarship.forEach(function(item){
+                        //         item.multipleStudies.forEach(function(st){
+                        //             multipleStudies.push(st.section[0].id)
+                        //             $scope.mStudies[item.id] = multipleStudies
+                        //             $scope.multipleSectionsSelected[item.id] = !$scope.uniqueArray(multipleStudies)
+                        //         })
+                        //         multipleStudies = []
+                        // })
 
 
                             });

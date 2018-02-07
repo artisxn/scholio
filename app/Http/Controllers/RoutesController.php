@@ -266,8 +266,61 @@ class RoutesController extends Controller
         $cv->awards = request()->awards;
         $cv->certifications = request()->certifications;
         $cv->other_interests = request()->other_interests;
-
         $cv->save();
+
+        if (request()->facebook) {
+            $this->saveSocialLinks(request()->facebook, 'facebook');
+        } else {
+            $this->deleteIfExists('facebook');
+        }
+
+        if (request()->twitter) {
+            $this->saveSocialLinks(request()->twitter, 'twitter');
+        } else {
+            $this->deleteIfExists('twitter');
+        }
+
+        if (request()->youtube) {
+            $this->saveSocialLinks(request()->youtube, 'youtube');
+        } else {
+            $this->deleteIfExists('youtube');
+        }
+
+        if (request()->instagram) {
+            $this->saveSocialLinks(request()->instagram, 'instagram');
+        } else {
+            $this->deleteIfExists('instagram');
+        }
+
+        if (request()->skype) {
+            $this->saveSocialLinks(request()->skype, 'skype');
+        } else {
+            $this->deleteIfExists('skype');
+        }
+
+        if (request()->google) {
+            $this->saveSocialLinks(request()->google, 'google');
+        } else {
+            $this->deleteIfExists('google');
+        }
+
+        if (request()->pinterest) {
+            $this->saveSocialLinks(request()->pinterest, 'pinterest');
+        } else {
+            $this->deleteIfExists('pinterest');
+        }
+
+        if (request()->linkedin) {
+            $this->saveSocialLinks(request()->linkedin, 'linkedin');
+        } else {
+            $this->deleteIfExists('linkedin');
+        }
+
+        if (request()->dribbble) {
+            $this->saveSocialLinks(request()->dribbble, 'dribbble');
+        } else {
+            $this->deleteIfExists('linkedin');
+        }
        
 
         return view('panel.pages.student.cv.studentCv');

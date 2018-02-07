@@ -172,6 +172,7 @@ class ApiController extends Controller
             $s->rating = $s->averageStars();
         }
         return $schools;
+
     }
 
     public function schoolProfile(School $school)
@@ -200,11 +201,13 @@ class ApiController extends Controller
 
         $ints = [];
 
-        foreach ($school->scholarship as $scholarship) {
+        $schols = $school->scholarship->where('active', 1)->take(2);
+
+        foreach ($schols as $scholarship) {
             $scholarship->level = $scholarship->level;
             // $scholarship->section = $scholarship->study->section;
             $scholarship->criteria = $scholarship->criteria->name;
-            $scholarship->financial = $scholarship->financial->plan;
+            $scholarship->financial = $scholarship->finacreatedncial->plan;
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
             $scholarship->multipleStudies = $scholarship->multipleStudies;
@@ -265,7 +268,9 @@ class ApiController extends Controller
 
         $ints = [];
 
-        foreach ($school->scholarship as $scholarship) {
+        $schols = $school->scholarship->where('active', 1)->take(2);
+
+        foreach ($schols as $scholarship) {
             $scholarship->level = $scholarship->level;
             $scholarship->criteria = $scholarship->criteria->name;
             $scholarship->financial = $scholarship->financial->plan;

@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Http\Middleware\School\PremiumAccount;
 
 class Kernel extends HttpKernel
 {
@@ -64,6 +65,7 @@ class Kernel extends HttpKernel
         'is.parent' => \App\Http\Middleware\Users\Parent\IsParent::class,
         'is.teacher' => \App\Http\Middleware\Users\Teacher\IsTeacher::class,
         'see.student' => \App\Http\Middleware\School\SeeStudentProfile::class,
-        'is.admin' => \App\Http\Middleware\Users\Admin\IsAdmin::class
+        'is.admin' => \App\Http\Middleware\Users\Admin\IsAdmin::class,
+        'is.vip'=> \App\Http\Middleware\School\PremiumAccount::class
     ];
 }

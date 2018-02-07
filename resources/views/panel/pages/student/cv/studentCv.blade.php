@@ -179,7 +179,6 @@
                 <div class="row">
                     <form method="POST" action="{{route('studentCV-save')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
-
                         {{-- CHANGE CV'S PHOTO  --}}
                        <div class="col-xs-12 img-container" >
                             <h4 class="header-title"><b>Επεξεργασία Βιογραφικού</b></h4>
@@ -391,20 +390,20 @@
                                         <div class="inner-section row" style="min-height: 100px">
                                             <div class="section-text centered-text ">Μy talent links</div>
 
-                                            <div class="col-sm-6 input-container" >
-                                                <input type="text" label="YouTube Channel" name="youtube " class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'youtube')->first()->link ?? '' }}">
+                                            <div class="col-sm-6 input-container">
+                                                <input type="text" label="YouTube Channel" name="youtube" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'youtube')->first()->link ?? '' }}">
                                                 <i class="icon-inp fa fa-youtube"></i>
                                             </div>
-                                            <div class="col-sm-6 input-container" >
-                                                <input type="text" label="Google Plus" name="gplus" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'gplus')->first()->lin ?? '' }}">
+                                            <div class="col-sm-6 input-container">
+                                                <input type="text" label="Google Plus" name="google" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'google')->first()->lin ?? '' }}">
                                                 <i class="icon-inp fa fa-google-plus"></i>
                                             </div>
 
-                                            <div class="col-sm-6 input-container" >
+                                            <div class="col-sm-6 input-container">
                                                 <input type="text" label="dribbble" name="dribbble" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'dribbble')->first()->link ?? '' }}">
                                                 <i class="icon-inp fa fa-dribbble"></i>
                                             </div>
-                                            <div class="col-sm-6 ">
+                                            <div class="col-sm-6">
                                                 <div class="input-container">
                                                     <input  type="text" label="Pinterest" name="pinterest" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'pinterest')->first()->link ?? '' }}">
                                                     <i class="icon-inp  fa fa-pinterest"></i>
@@ -412,19 +411,19 @@
                                             </div>
 
 
-                                            <div class="col-sm-6 ">
+                                            <div class="col-sm-6">
                                                 <div class="input-container">
                                                     <input  type="text" label="Instagram" name="instagram" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'instagram')->first()->link ?? '' }}">
                                                     <i class="icon-inp  fa fa-instagram"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 ">
+                                            <div class="col-sm-6">
                                                 <div class="input-container">
                                                     <input  type="text" label="Facebook" name="facebook" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'facebook')->first()->link ?? '' }}">
                                                     <i class="icon-inp  fa fa-facebook"></i>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 ">
+                                            <div class="col-sm-6">
                                                 <div class="input-container">
                                                     <input  type="text" label="Twitter" name="twitter" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'twitter')->first()->link ?? '' }}">
                                                     <i class="icon-inp  fa fa-twitter"></i>

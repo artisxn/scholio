@@ -153,6 +153,17 @@
             @endforeach
     </div>
 
+    @if($admission->scholarship->criteria_id == 1)
+    Social Links
+    <div class="row flex-row" style="margin-top: 40px;">
+        @foreach($admission->user->socialLinks as $link)
+        <div>
+            <a href="{{ $link->link }}"><i class="fa fa-{{$link->name}}"></i> </a>
+        </div>
+        @endforeach
+    </div>
+    @endif
+
 
     <form action="/admission/{{ $admission->id }}/notes/save" method="POST" class="col-sm-12 row" style="z-index: 09!important;">
         {{ csrf_field() }}

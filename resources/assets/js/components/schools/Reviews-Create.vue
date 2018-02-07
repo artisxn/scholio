@@ -117,7 +117,7 @@
                         review: this.review
                     })
                     .then(response => {
-                        window.location = '/panel/users/review/show'
+                        window.location = '/panel/users/student/mySchools'
                     });
             }
         },

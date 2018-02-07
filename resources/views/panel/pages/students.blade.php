@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <students-view id="chrome"> </students-view>
+    <students-view id="chrome" sxoles="{{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}"> </students-view>
     <students-view-safari id="safari"></students-view-safari>
 @endsection
 

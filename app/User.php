@@ -110,7 +110,7 @@ class User extends Authenticatable
 
     public function connectedSchool()
     {
-        return $this->belongsToMany(School::class, 'school_user')->withPivot('status', 'type', 'study_id');
+        return $this->belongsToMany(School::class, 'school_user')->withPivot('status', 'type', 'study_id', 'type2', 'study_id2', 'level', 'level2');
     }
 
     public function isConnectedWithSchool($school)

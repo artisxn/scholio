@@ -25,7 +25,7 @@
                     <span class="line"></span>
                 </div>
                 <!-- The animated searching tool -->
-                <i class="fa fa-ban"  aria-hidden="true"></i>
+                <i class="fa fa-key"  aria-hidden="true"></i>
             </div>
             <p>Δεν έχετε την άδεια να εισέλθετε σε αυτή την σελίδα!</p>
 

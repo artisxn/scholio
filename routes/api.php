@@ -88,12 +88,36 @@ Route::post('/student/saveStudy', function () {
     $study = Study::find(request()->study);
     $student = User::find(request()->student);
 
-    $school->students->where('id', $student->id)->first()->pivot->type = $study->name;
-    $school->students->where('id', $student->id)->first()->pivot->study_id = $study->id;
-    $school->students->where('id', $student->id)->first()->pivot->level = $study->section[0]->level->name;
-    $school->students->where('id', $student->id)->first()->pivot->save();
+    if(request()->std == 1){
+        $school->students->where('id', $student->id)->first()->pivot->type = $study->name;
+        $school->students->where('id', $student->id)->first()->pivot->study_id = $study->id;
+        $school->students->where('id', $student->id)->first()->pivot->level = $study->section[0]->level->name;
+        $school->students->where('id', $student->id)->first()->pivot->save();
+    }
+
+    if (request()->std == 2) {
+        $school->students->where('id', $student->id)->first()->pivot->type2 = $study->name;
+        $school->students->where('id', $student->id)->first()->pivot->study_id2 = $study->id;
+        $school->students->where('id', $student->id)->first()->pivot->level2 = $study->section[0]->level->name;
+        $school->students->where('id', $student->id)->first()->pivot->save();
+    }
+    
 
     $student->studyConnection()->save($study, ['school_id'=> $school->id]);
+})->middleware('auth:api');
+
+Route::post('/student/removeStudy', function () {
+    $school = auth()->user()->info;
+    $study = Study::find(request()->study);
+    $student = User::find(request()->student);
+
+    $school->students->where('id', $student->id)->first()->pivot->type2 = null;
+    $school->students->where('id', $student->id)->first()->pivot->study_id2 = null;
+    $school->students->where('id', $student->id)->first()->pivot->level2 = null;
+    $school->students->where('id', $student->id)->first()->pivot->save();
+
+
+    // $student->studyConnection()->save($study, ['school_id' => $school->id]);
 })->middleware('auth:api');
 
 Route::get('/notifications/getSchoolLevelSections', function () {
@@ -857,7 +881,7 @@ Route::post('/review/{school}/save', function (School $school) {
         return $total / $count;
     }
 
-    Scholio::updateDummy($school);
+    // Scholio::updateDummy($school);
     return 'OK';
 })->middleware('auth:api');
 

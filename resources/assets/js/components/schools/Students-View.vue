@@ -105,17 +105,29 @@
                         <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)"></i>
 
                         <div style="position: absolute; top: 30px">
+                            <span style="color:#eee; margin-left: 10px;">
+                                {{ student.pivot.type }}
+                                <br>
                                     <span style="color:#eee; margin-left: 10px;">
-                                        {{ student.pivot.type }}
-                                        <br>
-                                        <span style="color:#eee; margin-left: 10px;">
                                         {{ student.pivot.level }}
-                                        </span>
-                                        <br>
-                                        <br>
-                                       <div style="height: 1px; width: 96%; background: #aaa;margin-left: 3%; margin-bottom: 30px; clear: both"></div>
-                                        <br>
                                     </span>
+                                <br>
+                                <br>
+                                <div style="height: 1px; width: 96%; background: #aaa;margin-left: 3%; margin-bottom: 30px; clear: both"></div>
+                                <br>
+                            </span>
+
+                            <span style="color:#eee; margin-left: 10px;" v-if="sxoles">
+                                {{ student.pivot.type2 }}
+                                <br>
+                                <span style="color:#eee; margin-left: 10px;">
+                                    {{ student.pivot.level2 }}
+                                </span>
+                                <br>
+                                <br>
+                                <div style="height: 1px; width: 96%; background: #aaa;margin-left: 3%; margin-bottom: 30px; clear: both"></div>
+                                <br>
+                            </span>
 
                             <div class="fath" style="float: left; font-size: 90%">Πατέρας
                                 <br>
@@ -211,9 +223,11 @@
                             <div class="" >
                                 <div class="first-study-text">Αντικείμενο Σπουδών</div>
                                 <div class="">
-                                    <select class="select-transparent" v-model="selectedStudy" >
+                                    <select class="select-transparent" v-model="selectedStudy" v-on:change="saveStudy(1)">
                                         <optgroup :label="level.level.name" v-for="level in studies">
-                                            <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
+                                            <option v-for="study in level.studies" :value="study.study.id" :disabled="secondStudy == study.study.id">
+                                                {{ study.study.name }}
+                                            </option>
                                         </optgroup>
                                     </select>
                                     <i class="fa fa-graduation-cap select-icon"></i>
@@ -223,19 +237,22 @@
 
 
 
-                            <div class="second-study-text"><i class="fa fa-plus" @click="secondStudy = true"></i>Επιπλέον Αντικείμενο Σπουδών</div>
+                            <div class="second-study-text" v-if="selectedStudy"><i class="fa fa-plus" @click="study2 = true"></i>Επιπλέον Αντικείμενο Σπουδών</div>
 
 
-                                <div class="" v-if="secondStudy">
-                                    <select class="select-transparent" v-model="selectedStudy" >
+                                <div class="second" v-if="study2 || secondStudy">
+                                    <select class="select-transparent" v-model="secondStudy" v-on:change="saveStudy(2)">
                                         <optgroup :label="level.level.name" v-for="level in studies">
-                                            <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
+                                            <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
+                                               {{ study.study.name }}
+                                            </option>
                                         </optgroup>
                                     </select>
                                     <i class="fa fa-graduation-cap select-icon"></i>
                                     <div class="col-xl-line"></div>
                                 </div>
 
+                                <div class="second-study-text" v-if="secondStudy"><i class="fa fa-minus" @click="removeStudy"></i>Αφαιρεση Αντικείμενο Σπουδών</div>
 
 
                         </div>
@@ -248,18 +265,7 @@
 
             </div>
         </div>
-
-
-
-
-
     </div>
-
-
-
-
-
-
 
 </template>
 
@@ -611,8 +617,11 @@
     export default{
         components: { Multiselect },
 
+        props: ['sxoles'],
+
         data: function() {
             return{
+                secondStudy: null,
                 items: [],
                 searchStr:"",
                 selection:true,
@@ -629,7 +638,8 @@
                 selectedStudy: null,
                 std: [],
                 multipleStudies: true,
-                secondStudy: false
+                secondStudy: null,
+                study2: false
             }
         },
         computed: {
@@ -662,14 +672,31 @@
 
                     this.status = status
             },
-            saveStudy(){
-                console.log(this.info.id)
-                if(this.selectedStudy){
-                    axios.post('/api/student/saveStudy', {study: this.selectedStudy, student: this.info.id})
-                    .then(response => {
-                        this.fetch()
-                    });
+            removeStudy(){
+                let c = confirm('Are you sure?')
+                if(c){
+                    axios.post('/api/student/removeStudy', {study: this.secondStudy, student: this.info.id}).then(response=>{ location.reload()})
                 }
+            },
+            saveStudy(std){
+                if(std == 1){
+                    if (this.selectedStudy) {
+                        axios.post('/api/student/saveStudy', { study: this.selectedStudy, student: this.info.id, std: 1 })
+                            .then(response => {
+                                // this.fetch()
+                            });
+                    }
+                }
+
+                if(std == 2){
+                    if (this.secondStudy) {
+                        axios.post('/api/student/saveStudy', { study: this.secondStudy, student: this.info.id, std: 2 })
+                            .then(response => {
+                                // this.fetch()
+                            });
+                    }
+                }
+                
             },
              getSchoolStudies(){
                 axios.get('/api/notifications/getSchoolLevelStudies').then(({data})=>{
@@ -750,6 +777,8 @@
                 this.info = data
                 if(this.info.pivot.study_id) this.selectedStudy = this.info.pivot.study_id
                 else this.selectedStudy = 0
+                if (this.info.pivot.study_id2) this.secondStudy = this.info.pivot.study_id2
+                else this.secondStudy = 0
                 console.log(this.info)
                 setTimeout(function(){
 //                    document.getElementById('modalzoom').classList.remove('zoomIn');

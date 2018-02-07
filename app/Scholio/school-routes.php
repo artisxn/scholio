@@ -6,18 +6,20 @@ use App\Models\Lecture;
 use App\Models\Study;
 use App\User;
 use App\Models\Cvteacherstudy;
+
+
 Route::get('scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate')->name('scholarship-create');
 Route::get('scholarships/view', 'AdminPanelController@scholarshipView')->name('scholarship-view');
 Route::get('scholarships/request', 'AdminPanelController@scholarshipRequest')->name('scholarship-request');
 Route::get('dashboard', 'AdminPanelController@dashboard')->name('dashboard');
 Route::get('studies', 'AdminPanelController@studies')->name('studies-select');
-Route::get('/teachers', 'AdminPanelController@teachers')->name('teachers');
-Route::get('/students', 'AdminPanelController@students')->name('students');
+Route::get('/teachers', 'AdminPanelController@teachers')->name('teachers')->middleware('is.vip');
+Route::get('/students', 'AdminPanelController@students')->name('students')->middleware('is.vip');
 Route::get('profile/images', 'AdminPanelController@imageProfile')->name('profile-images');
 Route::get('profile', 'AdminPanelController@editProfile')->name('profile-edit');
 Route::post('profile/{id}', 'AdminPanelController@updateProfile');
-Route::get('requests', 'AdminPanelController@requests')->name('requests');
+Route::get('requests', 'AdminPanelController@requests')->name('requests')->middleware('is.vip');
 Route::post('profile/images/upload', 'AdminPanelController@imagesUpload');
 Route::delete('profile/images/upload', 'AdminPanelController@imageDelete');
 
@@ -38,7 +40,7 @@ Route::get('/settings/public', function () {
     $categories = App\Models\AdmissionCategory::all();
     $fields = App\Models\AdmissionField::all();
     return view('panel.pages.school.settings.public', compact('fields', 'categories'));
-});
+})->middleware('is.vip');
 
 Route::get('/settings/scholarships', function () {
     $categories = App\Models\AdmissionCategory::all();
@@ -92,4 +94,4 @@ Route::group(['middleware' => 'is.school', 'prefix' => 'class'], function () {
 
 Route::get('/reviews/view', function () {
     return view('panel.pages.school.reviews.view');
-});
+})->middleware('is.vip');
