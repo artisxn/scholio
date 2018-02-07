@@ -203,14 +203,35 @@
                         <div class="firstName">{{ info.student.fname }} </div>
                     </div>
                     <div class="modal-infos">
-                        <p>{{ info.cv.student_address }}</p>
+                        <!--<p>{{ info.cv.student_address }}</p>-->
 
                         <div class="input-container modal-input-container">
-                            <select v-model="selectedStudy" class="modal-select" v-on:change="saveStudy">
-                                <optgroup :label="level.level.name" v-for="level in studies">
-                                    <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
-                                </optgroup>
-                            </select>
+                            <!--<select v-model="selectedStudy" class="modal-select" v-on:change="saveStudy">-->
+                                <!--<optgroup :label="level.level.name" v-for="level in studies">-->
+                                    <!--<option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>-->
+                                <!--</optgroup>-->
+                            <!--</select>-->
+
+
+                            <div class="" >
+                                <div class="">Αντικείμενο Σπουδών</div>
+
+                                <div class="">
+                                    <select class="select-transparent" v-model="selectedStudy" >
+                                        <optgroup :label="level.level.name" v-for="level in studies">
+                                            <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
+                                        </optgroup>
+                                    </select>
+                                    <i class="fa fa-graduation-cap select-icon"></i>
+                                    <div class="col-xl-line"></div>
+                                </div>
+
+
+
+
+                            </div>
+
+
 
                             <i class="fa fa-plus" @click="secondStudy = true"></i>
 
@@ -380,6 +401,10 @@
     .btn-close{margin:0 30px 0 0;}
 
     .modal-select{width: 100%}
+
+    .select-transparent{background: transparent; border: none; margin-top: 6px; margin-left: 4px;}
+    .col-xl-line{border-bottom: 1px solid #008da5; margin-top: -2px; width: 100%;}
+    .select-icon{margin-top: 8px; display: inline-block; float: left; color: #008da5}
 
 
     @media (min-width: 1200px) {
