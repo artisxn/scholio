@@ -10,8 +10,12 @@
 @endsection
 
 @section('scripts')
-<script>
+
+
+
+    <script>
     $(document).ready(function(){
+
 
         if(navigator.vendor.indexOf('Apple') != -1){
             $('#chrome').remove();

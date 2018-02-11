@@ -23,13 +23,13 @@
         <img src="{{ Auth::user()->info->logo }}" alt="user-img" class="img-circle">
     </a>
     <ul class="dropdown-menu">
-            <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
-            <li><a href="{{ url('/password/change') }}"><i class="ti-key m-r-5"></i>Change Password</a></li>
+            <li><a href="/panel/{{ Auth::user()->role }}/profile"><i class="fa fa-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
+            <li><a href="{{ url('/password/change') }}"><i class="fa fa-key m-r-5"></i>@lang('panel/schools/topbar.password')</a></li>
         <li>
             <a href="javascript:void(0)"
                 onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
-                <i class="ti-power-off m-r-5"></i> @lang('panel/schools/topbar.logout')
+                <i class="fa fa-sign-out m-r-5"></i> @lang('panel/schools/topbar.logout')
             </a>
 
             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

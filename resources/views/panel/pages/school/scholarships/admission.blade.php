@@ -154,14 +154,31 @@
     </div>
 
     @if($admission->scholarship->criteria_id == 1)
-    Social Links
+
     <div class="row flex-row" style="margin-top: 40px;">
-        @foreach($admission->user->socialLinks as $link)
-        <div>
-            <a href="{{ $link->link }}"><i class="fa fa-{{$link->name}}"></i> </a>
-        </div>
-        @endforeach
+
+            <div class="section2-container col-sm-12" style="padding: 20px 10px;">
+                <div class="inner-section2 ">
+                    <div class="section-text2 "> <i class="fa fa-facebook icon-title" style="margin-right: 10px;"></i> Social Links</div>
+                    <div class="info2">
+                        @foreach($admission->user->socialLinks as $link)
+                            <div>
+                                <a href="{{ $link->link }}"><i class="fa fa-{{$link->name}} social-icons"></i> </a>
+                            </div>
+                        @endforeach
+
+                    </div>1
+                </div>
+            </div>
+
+
+
     </div>
+
+
+
+
+
     @endif
 
 

@@ -135,9 +135,9 @@
     /*.mobile-input input[type='text']{font-size: 16px;}*/
     /*select{  font-size: 16px;  height: 36px; padding: 2px; margin-bottom: 7px;}*/
 
-    .talent-back{background: khaki
+    .talent-back{background: #d3ecf5
     }
-    .talent-border{border-color: khaki
+    .talent-border{border-color: #D3ECF5
     }
 
 
@@ -657,10 +657,10 @@ angular.module("scholarshipsResultsApp",[])
         </div>
 
         @{{#talent}}
-        <div class="col-lg-4 col-md-6 col-sm-4 section3 hidden-xxxs hidden-xxs talent-border">
+        <div class="col-lg-4 col-md-12 col-sm-4 section3 hidden-xxxs hidden-xxs talent-border">
         @{{/talent}}
         @{{^talent}}
-        <div class="col-lg-4 col-md-6 col-sm-4 section3 hidden-xxs hidden-xxxs ">
+        <div class="col-lg-4 col-md-12 col-sm-4 section3 hidden-xxs hidden-xxxs ">
         @{{/talent}}
 
 

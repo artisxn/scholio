@@ -27,6 +27,15 @@ use App\Models\Image;
 
 Scholio::bot();
 
+
+// ========  kfrei testing ===============
+Route::get('/resetpass', function () {
+    return view('auth.passwords.reset');
+});
+// ========================================
+
+
+
 Route::post('/school/uploadImage', function(){
     $data = request()->input('img');
     list($type, $data) = explode(';', $data);

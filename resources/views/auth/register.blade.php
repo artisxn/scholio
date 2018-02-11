@@ -18,7 +18,6 @@
         <link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">
 
         <link href="/panel/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
         <link href="/new/css/main.css" rel="stylesheet" type="text/css" />
         <link href="/new/css/register-login.css" rel="stylesheet" type="text/css" />
 
@@ -218,7 +217,6 @@
         <!-- jQuery  -->
         <script src="/panel/assets/js/jquery.min.js"></script>
         <script src="/panel/assets/js/bootstrap.min.js"></script>
-
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
         <script>

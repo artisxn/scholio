@@ -60,7 +60,7 @@
 
                             <div class="row">
                                 <div class="sc-card">
-                                    <a class="" href="#">
+
                                         <div class="frame-cont">
                                             <img src="/new/img/photoFrame.png" class="frame" alt="">
                                             <img :src="scholio + student.student.avatar" class="avatar2" alt="">
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
                                         <div class="name"> {{student.name}} </div>
-                                    </a>
+
                                     
                                     <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
                                 </div>
@@ -220,8 +220,15 @@
                         <div class="input-container modal-input-container">
 
 
-                            <div class="" >
-                                <div class="first-study-text">Αντικείμενο Σπουδών</div>
+                            <div class="studies-selection-container" >
+                                <div class="first-study-text">
+                                    Αντικείμενο Σπουδών
+                                        <span class="tool">
+                                            <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy"></i>
+                                            <span class="tooltiptext">Προσθέστε Επιπλέον Αντικείμενο Σπουδών</span>
+                                        </span>
+
+                                </div>
                                 <div class="">
                                     <select class="select-transparent" v-model="selectedStudy" v-on:change="saveStudy(1)">
                                         <optgroup :label="level.level.name" v-for="level in studies">
@@ -233,26 +240,142 @@
                                     <i class="fa fa-graduation-cap select-icon"></i>
                                     <div class="col-xl-line"></div>
                                 </div>
+
+
+
+
+
+                                <!-- Αν δεν είναι σχολειο, φροντιστηριο, ιεκ, κολλεγιο -->
+                                <div v-if="" >
+                                    <div class="second-study-text" v-if="selectedStudy">
+
+
+
+
+
+
+                                        <span v-if="secondStudy">
+                                            Επιπλέον Αντικείμενο Σπουδών
+                                             <span class="second-study-remove"  @click="removeStudy">( <i class="fa fa-trash"></i>Διαγραφή )</span>
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="second" v-if="study2 || secondStudy">
+                                        <select class="select-transparent  select2" v-model="secondStudy" v-on:change="saveStudy(2)">
+                                            <optgroup :label="level.level.name" v-for="level in studies">
+                                                <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
+                                                    {{ study.study.name }}
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa fa-graduation-cap select-icon2"></i>
+                                        <div class="col-xl-line col-xl-line2"></div>
+                                    </div>
+
+                                </div>
+
+
+
+
                             </div>
 
 
+                            <div class="info-container row">
 
-                            <div class="second-study-text" v-if="selectedStudy"><i class="fa fa-plus" @click="study2 = true"></i>Επιπλέον Αντικείμενο Σπουδών</div>
 
 
-                                <div class="second" v-if="study2 || secondStudy">
-                                    <select class="select-transparent" v-model="secondStudy" v-on:change="saveStudy(2)">
-                                        <optgroup :label="level.level.name" v-for="level in studies">
-                                            <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
-                                               {{ study.study.name }}
-                                            </option>
-                                        </optgroup>
-                                    </select>
-                                    <i class="fa fa-graduation-cap select-icon"></i>
-                                    <div class="col-xl-line"></div>
+                                <div class="col-lg-6 col-data">
+                                    <div class="info-title">
+                                        Πόλη Μαθητή
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-home icon-data"></div>
+                                        {{info.cv.student_city}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-lg-6 col-data">
+                                    <div class="info-title">
+                                        Διεύθυνση Μαθητή
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-map-marker icon-data"></div>
+                                        {{info.cv.student_address}}
+                                    </div>
+                                    <div class="line"></div>
                                 </div>
 
-                                <div class="second-study-text" v-if="secondStudy"><i class="fa fa-minus" @click="removeStudy"></i>Αφαιρεση Αντικείμενο Σπουδών</div>
+                                <div class="col-lg-6 col-data">
+                                    <div class="info-title">
+                                        Τηλέφωνο Μαθητή
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-phone icon-data"></div>
+                                        {{info.cv.student_phone}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-lg-6 col-data">
+                                    <div class="info-title">
+                                        email Μαθητή
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-envelope icon-data"></div>
+                                        {{info.email}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+
+
+
+                                <div class="col-lg-6 col-data">
+                                    <div class="info-title">
+                                        Ονοματεπώνυμο Πατέρα
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-user icon-data"></div>
+                                       {{info.cv.father_fullname}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-lg-6 col-data">
+                                    <div class="info-title">
+                                        Ονοματεπώνυμο Μητέρας
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-user icon-data"></div>
+                                        {{info.cv.mother_fullname}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+
+
+                                <div class="col-lg-6 col-data">
+                                    <div class="info-title">
+                                        Τηλέφωνο Πατέρα
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-phone icon-data"></div>
+                                        {{info.cv.father_phone}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-lg-6 col-data">
+                                    <div class="info-title">
+                                        Τηλέφωνο Μητέρας
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-phone icon-data"></div>
+                                        {{info.cv.mother_phone}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+
+
+
+                            </div>
 
 
                         </div>
@@ -406,13 +529,41 @@
 
     .modal-select{width: 100%}
 
-    .select-transparent{background: transparent; border: none; margin-top: 6px; margin-left: 4px;}
+    .select-transparent{background: transparent; border: none; margin-top: 6px; margin-left: 18px;}
     .col-xl-line{border-bottom: 1px solid #008da5; margin-top: -2px; width: 100%;}
-    .select-icon{margin-top: 8px; display: inline-block; float: left; color: #008da5}
+
+    /*.select-icon{margin-top: 8px; display: inline-block; float: left; color: #008da5}*/
+
+    .studies-selection-container{position: relative; margin-top: 10px;}
+    .select-icon, .select-icon2{position: absolute; left: -2px; color: #008da5}
+    .select-icon {top: 30px;}
+    .select-icon2{top: 100px;}
+    .col-xl-line2{position: absolute; top:120px;}
+    .select2{position: absolute; top: 90px;}
+
     .first-study-text,.second-study-text{color:#008da5; font-size: 110%}
     .second-study-text{margin-top: 25px;}
-    .fa-plus{cursor: pointer; margin-right: 10px;}
-    .fa-plus:hover{color: #FD6A33}
+    .fa-plus{ margin-right: 10px;}
+    .fa-plus:hover{cursor: pointer; color: #FD6A33}
+    .second-study-remove{color: #bbb; font-size: 90%; font-weight: 300;}
+    .second-study-remove:hover{cursor: pointer; color: #FD6A33}
+    .fa-trash{margin-right: 6px;}
+
+    .info-container{position: absolute; top: 320px; width: 100%;}
+    .icon-data, .info-title {color: #008da5}
+    .col-data{margin-top: 30px;}
+    .line{height: 1px; width: 100%; background: #008da5}
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /*text-indent: 8px;*/
+        text-overflow: '';
+    }
+    select:hover {
+        cursor: pointer;
+    }
+
 
 
     @media (min-width: 1200px) {
@@ -425,6 +576,39 @@
     @media (max-width: 620px) {
         .modal-infos{height: 410px }
     }
+
+
+    /* =========TOOLTIP=========*/
+    .tool {
+        position: relative;
+    }
+
+    .tooltiptext  {
+        font-weight: 300;
+        font-size: 80%;
+        visibility: hidden;
+        width: 300px;
+        background-color: #007991;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 4px 1px;
+        position: absolute;
+        z-index: 1;
+        bottom: 130%;
+        margin-left: 2px;
+        opacity: 0;
+        transition: opacity 0.1s;
+        background-color: #007991;
+    }
+
+
+    .tool:hover .tooltiptext{
+        visibility: visible;
+        opacity: 0.9;
+    }
+
+    /* =================================*/
 
 
 
@@ -612,6 +796,7 @@
 
 <script>
 
+
     import Multiselect from '../../scholio-multiselect';
 
     export default{
@@ -779,6 +964,7 @@
                 else this.selectedStudy = 0
                 if (this.info.pivot.study_id2) this.secondStudy = this.info.pivot.study_id2
                 else this.secondStudy = 0
+                console.log('student info')
                 console.log(this.info)
                 setTimeout(function(){
 //                    document.getElementById('modalzoom').classList.remove('zoomIn');

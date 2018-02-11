@@ -183,6 +183,8 @@
         .input-text{margin-top: 40px; font-size: 110%; color: #777}
         .cursor-hand{cursor: pointer;}
 
+
+
         @media(max-width: 1109px) {
         .school-profile-nav-link{padding-right: 8px!important; padding-left: 8px!important; font-size: 95%;}
         }
@@ -297,8 +299,8 @@
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
                     @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
                     @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies" class="school-profile-nav-link">@lang('profile.navigation.scholarships')</a></li>@endif
-                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews" class="school-profile-nav-link">@lang('profile.navigation.reviews')</a></li>@endif
                     @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty" class="school-profile-nav-link">@lang('profile.navigation.teachers')</a></li>@endif
+                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews" class="school-profile-nav-link">@lang('profile.navigation.reviews')</a></li>@endif
 
 
 
@@ -552,250 +554,296 @@
                         </div>
 
 
-@if($school->settings->about)
-                    <!-- Σχετικά -->
-                    <div class="margin-bot-25 slideup slideAbout" id="sxetika">
-                        <div  class="section-header">
-                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300" style="">
-                                <i class="fa fa-info-circle fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.about') </span>
-                            </p>
-                        </div>
-                        <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
-                            <div class="margin-top-10" id="about-li" >
-                                <div ng-bind-html="trustAsHtml(contactInfo.about)"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Show More About  -->
-                    <div class="show-more" style="background-color: #fff"  >
-                        <div class="pad-top-20">
-                             <span ng-click="showMoreAbout('sxetika')" ng-if="contactInfo.lengthScholarships>2">@{{textAbout}}
-                                 <i class="@{{ iconAbout }}"></i></span>
-                        </div>
-                    </div>
-@endif
-
-@if($school->settings->studies)
-                    <!-- ======= Σπουδές ========-->
-
-                    <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes" style="overflow-x: hidden">
-                        <div id="sliderStudies" class=" main-box-2 slideup slideStudies">
-                            <div class="section-header2">
-                                <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
-                                    <i class="fa fa-book fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.studies') </span>
+                    @if($school->settings->about)
+                        <!-- Σχετικά -->
+                        <div class="margin-bot-25 slideup slideAbout" id="sxetika">
+                            <div  class="section-header">
+                                <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300" style="">
+                                    <i class="fa fa-info-circle fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.about') </span>
                                 </p>
                             </div>
-                            <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
-                            <div ng-if="col_iek_eng_dan_mus" >
-                                <div ng-repeat="(levIndex, level) in levelsName" >
-                                    <ul ng-class="[{'col-md-6': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==1 },  'col-sm-12']">
-                                        <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
-
-
-                                        <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="[{'col-lg-6': (contactInfo.type_id==2)},{'clearFloat': (( secIndex+1)%2 ==1)}]" style="list-style-type: none;">
-
-                                            <li class="margin-top-10 margin-left-10">
-                                                <img ng-src="@{{ sectionsIcon[levIndex][secIndex] }}" alt=""
-                                                     style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
-                                                <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%" >
-                                                    @{{ section }}
-                                                </span>
-                                            </li>
-
-                                            {{--@{{levIndex}} , , @{{secIndex}}--}}
-                                            <ul ng-repeat="study in studiesName[levIndex][secIndex]" style="list-style-type: none;">
-                                                <li class="pad-top-7 margin-left-10">
-                                                    <span class="  font-weight-300" style="">@{{ study}}</span>
-                                                </li>
-                                            </ul>
-                                        </ul>
-                                    </ul>
+                            <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
+                                <div class="margin-top-10" id="about-li" >
+                                    <div ng-bind-html="trustAsHtml(contactInfo.about)"></div>
                                 </div>
                             </div>
-
-                            <!-- Σπουδές Φροντιστηρια  -->
-                            <div ng-if=" (contactInfo.type_id==3 || contactInfo.type_id==6)" style="overflow-x: hidden">
-                                <div class="col-md-6 col-sm-12" style="margin-bottom: 40px;">
-                                    <div class="pad-left-5 text-incr-150 font-weight-300  margin-left-10" >Τμήματα
-                                    </div>
-                                    <div ng-repeat="(levIndex, level) in levelsName " >
-                                        <ul><div class="pad-left-20 font-weight-300 " style="">  @{{ level}} </div>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                        <!-- Show More Studies  -->
-                        <div class="show-more" style="background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">
+                        <!-- Show More About  -->
+                        <div class="show-more" style="background-color: #fff"  >
                             <div class="pad-top-20">
-                             <span ng-click="showMoreStudies('spoudes')" >@{{textStudies}}
-                                 <i class="@{{ iconStudies }}"></i></span>
+                                 <span ng-click="showMoreAbout('sxetika')" ng-if="contactInfo.lengthScholarships>2">@{{textAbout}}
+                                     <i class="@{{ iconAbout }}"></i></span>
                             </div>
                         </div>
+                    @endif
+
+                    @if($school->settings->studies)
+                    <!-- ======= Σπουδές ========-->
+                        <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes" style="overflow-x: hidden">
+                            <div id="sliderStudies" class=" main-box-2 slideup slideStudies">
+                                <div class="section-header2">
+                                    <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
+                                        <i class="fa fa-book fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.studies') </span>
+                                    </p>
+                                </div>
+                                <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
+                                <div ng-if="col_iek_eng_dan_mus" >
+                                    <div ng-repeat="(levIndex, level) in levelsName" >
+                                        <ul ng-class="[{'col-md-6': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==1 },  'col-sm-12']">
+                                            <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
 
 
-                    </div>
-                        @endif
+                                            <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="[{'col-lg-6': (contactInfo.type_id==2)},{'clearFloat': (( secIndex+1)%2 ==1)}]" style="list-style-type: none;">
 
-                        @if($school->settings->scholarships)
-                    <!-- Υποτροφίες -->
-                    <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.activeScholarships" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
-                        <div class="section-header3">
-                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
-                                <i class="fa fa-trophy fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.scholarships') </span>
-                            </p>
-                        </div>
-
-
-                        <div class=" scholar-box col-sm-12">
-                            <div ng-repeat="scholarship in contactInfo.scholarship" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
-                                 style="height: 400px!important; position: relative; margin: 20px 0 ; padding-left: 40px;">
-
-                                    <div class="scholar-frame " ng-class="{'sm-margin-left':($index%2==1)}">
-                                            <div class="ribbon-wrapper">
-                                                <div class="ribbon-front sc-medium-grey">
-                                                    {{--<i class="fa fa-diamond sc-t-white pad-left-20 text-incr-150 margin-top-10" aria-hidden="true"></i>--}}
-                                                    <span class="">
-                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-skills1.png" alt="" ng-if="scholarship.criteria.id==1">
-                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-best.png" alt="" ng-if="scholarship.criteria.id==2">
-                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-help.png" alt="" ng-if="scholarship.criteria.id==3">
-                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-friends.png" alt="" ng-if="scholarship.criteria.id==4">
-                                                        <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
+                                                <li class="margin-top-10 margin-left-10">
+                                                    <img ng-src="@{{ sectionsIcon[levIndex][secIndex] }}" alt=""
+                                                         style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
+                                                    <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%" >
+                                                        @{{ section }}
                                                     </span>
+                                                </li>
 
-                                                    <span class="sc-t-dark-green font-weight-400 text-incr-120 margin-left-10 scholar-title">@{{scholarship.criteria.name}}</span>
-                                                </div>
-                                                <div class="ribbon-edge-topright"></div>
-                                                <div class="ribbon-edge-bottomright"></div>
-                                                <div class="ribbon-back-right sc-medium-grey"></div>
-                                            </div>
-                                            <div class="hexagon hex1">
-
-                                                {{--<i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                                {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
-                                            </div>
-                                            <div class="hexagon hex2">
-
-                                                {{--<i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                                {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
-                                            </div>
-
-                                            {{--<div class="hexagon" style="top: 93px;">--}}
-                                            {{--<i class="fa fa-pencil text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                            {{--style=" position: relative; top: 3px; left: 17px; z-index: 2;"></i>--}}
-
-                                            {{--</div>--}}
-
-                                            <div class="scholar-content sc-t-grey font-weight-400">
-                                                <p class="scholar-left xxs-up">@{{scholarship.financial.plan}} @{{scholarship.financial_amount}}
-                                                    <span ng-if="scholarship.financial.id==1"> %</span>
-                                                    <span ng-if="scholarship.financial.id==2"> €  </span>
-                                                    <span ng-if="scholarship.financial.id==3"> @lang('profile.months')</span>
-                                                </p>
-
-                                                <div class="scholar-left xxs-text" style="padding-top: 40px;"ng-if="contactInfo.type_id==1 || contactInfo.type_id==3" >@{{scholarship.level.name}}</div>
-                                                <div class="margin-top-50 scholar-left xxs-text"  ng-if="contactInfo.type_id==2">@{{scholarship.section[0].name}}</div>
-                                                <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
-                                                     ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }" ng-if="scholarship.multiple == 0">
-                                                    @{{scholarship.study.name}}
-                                                </div>
-                                                <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
-                                                     ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }" ng-if="scholarship.multiple == 1">
-                                                   <div ng-repeat="st in scholarship.multipleStudies" ng-if="scholarship.multipleStudies.length < 3">
-                                                       @{{ st.name }}
-                                                   </div>
-
-                                                   <div ng-if="scholarship.multipleStudies.length > 2">
-                                                       Πολλαπλα αντικείμενα σπουδών: @{{ scholarship.multipleStudies.length }}
-                                                   </div>
-                                                </div>
-
-                                                <div>
-                                                    <img  ng-if="scholarship.financial_id==1" style="height: 34px; top: -6px; left: 5px;" class="hex1-img"
-                                                          ng-src="/panel/assets/images/steps/step1-reduce2.png">
-                                                    <img  ng-if="scholarship.financial_id==2" style="height: 37px; top: -6px; left: 19px;" class="hex1-img"
-                                                          ng-src="/panel/assets/images/steps/step1-hand2.png">
-                                                    <img  ng-if="scholarship.financial_id==3" style="height: 38px; top: -8px; left: 10px;" class="hex1-img"
-                                                          ng-src="/panel/assets/images/steps/step1-clock2.png">
-                                                </div>
-
-                                                <img ng-if="scholarship.multiple == 0" class="hex2-img" ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
-
-                                                <img ng-if="scholarship.multiple == 1 && multipleSectionsSelected[scholarship.id]" class="hex2-img" ng-src="/panel/assets/images/steps/studies.png">
-
-                                                <img ng-if="scholarship.multiple == 1 && !multipleSectionsSelected[scholarship.id]" class="hex2-img" ng-src="@{{scholarship.section[0]}}">
-
-
-                                            </div>
-
-                                            <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
-                                                <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey">
-                                                    <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
-                                                        @lang('profile.scholarship.interested'): <span class="pull-right" ng-bind="scholarship.interests"></span>
-                                                    </span>
-                                                </div>
-
-                                                <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey">
-                                                    <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
-                                                        @lang('profile.scholarship.requested'): <span class="pull-right"> @{{ scholarship.length}}</span>
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                            @if(auth()->check() && auth()->user()->role != 'school' && auth()->user()->role != 'teacher' )
-
-                                                <ul class="like-btn">
-                                                    <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
-                                                            <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                                                            <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('profile.scholarship.like')</span>
-                                                        </button>
-                                                    </a>
+                                                {{--@{{levIndex}} , , @{{secIndex}}--}}
+                                                <ul ng-repeat="study in studiesName[levIndex][secIndex]" style="list-style-type: none;">
+                                                    <li class="pad-top-7 margin-left-10">
+                                                        <span class="  font-weight-300" style="">@{{ study}}</span>
+                                                    </li>
                                                 </ul>
-                                            @endif
-
-                                            <ul class="show-btn">
-                                                <a href="/scholarship/@{{scholarship.id}}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white provoli">
-                                                        <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('profile.scholarship.show')</button></a>
-                                                {{--<span class="sc-t-grey font-weight-400" style="left: -210px; top: 10px; position: absolute">--}}
-                                                {{--<i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i>Αιτήθηκαν: @{{ scholarship.length}} </span>--}}
-                                                {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
-                                                {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
                                             </ul>
-                                            {{--<div ng-if="($index%2==0)" class="hidden-xs hidden-sm"--}}
-                                                 {{--style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  5px"></div>--}}
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Σπουδές Φροντιστηρια  -->
+                                <div ng-if=" (contactInfo.type_id==3 || contactInfo.type_id==6)" style="overflow-x: hidden">
+                                    <div class="col-md-6 col-sm-12" style="margin-bottom: 40px;">
+                                        <div class="pad-left-5 text-incr-150 font-weight-300  margin-left-10" >Τμήματα
+                                        </div>
+                                        <div ng-repeat="(levIndex, level) in levelsName " >
+                                            <ul><div class="pad-left-20 font-weight-300 " style="">  @{{ level}} </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Show More Studies  -->
+                            <div class="show-more" style="background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">
+                                <div class="pad-top-20">
+                                 <span ng-click="showMoreStudies('spoudes')" >@{{textStudies}}
+                                     <i class="@{{ iconStudies }}"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                     @endif
+
+                    @if($school->settings->scholarships)
+                            <!-- Υποτροφίες -->
+                            <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.activeScholarships" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
+                                <div class="section-header3">
+                                    <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
+                                        <i class="fa fa-trophy fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.scholarships') </span>
+                                    </p>
+                                </div>
 
 
-                                            {{--<hr class="mob-hr">--}}
+                                <div class=" scholar-box col-sm-12">
+                                    <div ng-repeat="scholarship in contactInfo.scholarship" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                                         style="height: 400px!important; position: relative; margin: 20px 0 ; padding-left: 40px;">
+
+                                            <div class="scholar-frame " ng-class="{'sm-margin-left':($index%2==1)}">
+                                                    <div class="ribbon-wrapper">
+                                                        <div class="ribbon-front sc-medium-grey">
+                                                            {{--<i class="fa fa-diamond sc-t-white pad-left-20 text-incr-150 margin-top-10" aria-hidden="true"></i>--}}
+                                                            <span class="">
+                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-skills1.png" alt="" ng-if="scholarship.criteria.id==1">
+                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-best.png" alt="" ng-if="scholarship.criteria.id==2">
+                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-help.png" alt="" ng-if="scholarship.criteria.id==3">
+                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-friends.png" alt="" ng-if="scholarship.criteria.id==4">
+                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
+                                                            </span>
+
+                                                            <span class="sc-t-dark-green font-weight-400 text-incr-120 margin-left-10 scholar-title">@{{scholarship.criteria.name}}</span>
+                                                        </div>
+                                                        <div class="ribbon-edge-topright"></div>
+                                                        <div class="ribbon-edge-bottomright"></div>
+                                                        <div class="ribbon-back-right sc-medium-grey"></div>
+                                                    </div>
+                                                    <div class="hexagon hex1">
+
+                                                        {{--<i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"--}}
+                                                        {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
+                                                    </div>
+                                                    <div class="hexagon hex2">
+
+                                                        {{--<i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"--}}
+                                                        {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
+                                                    </div>
+
+                                                    {{--<div class="hexagon" style="top: 93px;">--}}
+                                                    {{--<i class="fa fa-pencil text-incr-200 sc-t-green text" aria-hidden="true"--}}
+                                                    {{--style=" position: relative; top: 3px; left: 17px; z-index: 2;"></i>--}}
+
+                                                    {{--</div>--}}
+
+                                                    <div class="scholar-content sc-t-grey font-weight-400">
+                                                        <p class="scholar-left xxs-up">@{{scholarship.financial.plan}} @{{scholarship.financial_amount}}
+                                                            <span ng-if="scholarship.financial.id==1"> %</span>
+                                                            <span ng-if="scholarship.financial.id==2"> €  </span>
+                                                            <span ng-if="scholarship.financial.id==3"> @lang('profile.months')</span>
+                                                        </p>
+
+                                                        <div class="scholar-left xxs-text" style="padding-top: 40px;"ng-if="contactInfo.type_id==1 || contactInfo.type_id==3" >@{{scholarship.level.name}}</div>
+                                                        <div class="margin-top-50 scholar-left xxs-text"  ng-if="contactInfo.type_id==2">@{{scholarship.section[0].name}}</div>
+                                                        <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
+                                                             ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }" ng-if="scholarship.multiple == 0">
+                                                            @{{scholarship.study.name}}
+                                                        </div>
+                                                        <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
+                                                             ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }" ng-if="scholarship.multiple == 1">
+                                                           <div ng-repeat="st in scholarship.multipleStudies" ng-if="scholarship.multipleStudies.length < 3">
+                                                               @{{ st.name }}
+                                                           </div>
+
+                                                           <div ng-if="scholarship.multipleStudies.length > 2">
+                                                               Πολλαπλα αντικείμενα σπουδών: @{{ scholarship.multipleStudies.length }}
+                                                           </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <img  ng-if="scholarship.financial_id==1" style="height: 34px; top: -6px; left: 5px;" class="hex1-img"
+                                                                  ng-src="/panel/assets/images/steps/step1-reduce2.png">
+                                                            <img  ng-if="scholarship.financial_id==2" style="height: 37px; top: -6px; left: 19px;" class="hex1-img"
+                                                                  ng-src="/panel/assets/images/steps/step1-hand2.png">
+                                                            <img  ng-if="scholarship.financial_id==3" style="height: 38px; top: -8px; left: 10px;" class="hex1-img"
+                                                                  ng-src="/panel/assets/images/steps/step1-clock2.png">
+                                                        </div>
+
+                                                        <img ng-if="scholarship.multiple == 0" class="hex2-img" ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
+
+                                                        <img ng-if="scholarship.multiple == 1 && multipleSectionsSelected[scholarship.id]" class="hex2-img" ng-src="/panel/assets/images/steps/studies.png">
+
+                                                        <img ng-if="scholarship.multiple == 1 && !multipleSectionsSelected[scholarship.id]" class="hex2-img" ng-src="@{{scholarship.section[0]}}">
+
+
+                                                    </div>
+
+                                                    <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
+                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey">
+                                                            <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
+                                                                @lang('profile.scholarship.interested'): <span class="pull-right" ng-bind="scholarship.interests"></span>
+                                                            </span>
+                                                        </div>
+
+                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey">
+                                                            <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
+                                                                @lang('profile.scholarship.requested'): <span class="pull-right"> @{{ scholarship.length}}</span>
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+
+                                                    @if(auth()->check() && auth()->user()->role != 'school' && auth()->user()->role != 'teacher' )
+
+                                                        <ul class="like-btn">
+                                                            <a href=""><button id="b@{{scholarship.id}}" type="button" ng-click="interested(scholarship.id, $index)" class="sc-button-landing sc-button sc-dark-green sc-t-white" style="width:140px;">
+                                                                    <i id="i@{{scholarship.id}}" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                                                    <span id="t@{{scholarship.id}}" ng-init="test(scholarship)">@lang('profile.scholarship.like')</span>
+                                                                </button>
+                                                            </a>
+                                                        </ul>
+                                                    @endif
+
+                                                    <ul class="show-btn">
+                                                        <a href="/scholarship/@{{scholarship.id}}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white provoli">
+                                                                <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('profile.scholarship.show')</button></a>
+                                                        {{--<span class="sc-t-grey font-weight-400" style="left: -210px; top: 10px; position: absolute">--}}
+                                                        {{--<i class="fa fa-file-text-o" aria-hidden="true" style="margin-right: 10px;"></i>Αιτήθηκαν: @{{ scholarship.length}} </span>--}}
+                                                        {{--<div style="height: 1px; width: 390px; background-color: lightgrey;--}}
+                                                        {{--margin: 50px 0 0 0; right: -20px;  position: absolute"></div>--}}
+                                                    </ul>
+                                                    {{--<div ng-if="($index%2==0)" class="hidden-xs hidden-sm"--}}
+                                                         {{--style="border-right: 1px solid #dbdbdb; height: 355px; position: absolute; top: 18px; right:  5px"></div>--}}
+
+
+                                                    {{--<hr class="mob-hr">--}}
+                                                </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <!-- Show More Scholarships  -->
+                            <div class="show-more" style="background-color: #fff">
+                                {{--ng-if="contactInfo.lengthScholarships>2"--}}
+                                <div class="pad-top-20">
+                                    {{-- <span ng-click="showMoreScholarships('ypotrofies')">@{{textScholarships}}
+                                         <i class="@{{ iconScholarships }}"></i></span> --}}
+
+                                         <span><a class="more-scholarships-text" href="{{ url('/public/scholarships?q=' . $school->admin->name) }}" target="_blank">@{{textScholarships}}</a></span>
+                                </div>
+                            </div>
+                    @endif
+
+                            
+                    @if($school->settings->teachers)
+                        <!-- Διδακτικό Προσωπικό  -->
+                        <div class="slideTeachers slideup margin-bot-25" id="faculty" style="overflow-x: hidden">
+                            <div class="section-header3">
+                                <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
+                                    <i class="fa fa-graduation-cap fa-linear4 text-incr-115 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.teachers') </span></span>
+                                </p>
+                            </div>
+
+                            <div class="sc-t-grey text-justify">
+                                <div class="margin-top-10" id="about-li" >
+                                    <div ng-repeat="teacher in contactInfo.teachers">
+
+                                        <div class="col-sm-12 col-md-6 hidden-xs">
+                                            <div class="col-sm-12 user-card">
+                                               <div class="user-header ">
+                                                   <a href="/public/profile/teacher/@{{teacher.info.id}}">
+                                                   <img class="user-img img-circle" ng-src="@{{teacher.info.avatar}}" alt="">
+                                                    <span class="user-name">
+                                                            <span style="color: #fff !important;" >@{{teacher.name}}</span>
+                                                    </span>
+                                                   </a>
+                                                   <span class="user-info"> Marketing Evangelist</span>
+
+                                               </div>
+                                            </div>
                                         </div>
 
+                                        <div class="xs-user-card visible-xs hidden-sm hidden-md">
+                                            <div class="xs-user-header  center-block centered-text">
+                                                <a href="/public/profile/teacher/@{{teacher.info.id}}">
+                                                <img class="xs-user-img img-circle" ng-src="@{{teacher.info.avatar}}" alt="">
+                                                <div class="xs-user-name">
+                                                        <span class="xs-name" style="color: #888 !important;" >@{{teacher.name}}</span>
+                                                </div>
+                                                </a>
+                                                <span class="xs-user-info"> Marketing Evangelist</span>
+                                            </div>
+                                        </div>
 
-
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
-
-
-                    </div>
-                    <!-- Show More Scholarships  -->
-                    <div class="show-more" style="background-color: #fff">
-                        {{--ng-if="contactInfo.lengthScholarships>2"--}}
-                        <div class="pad-top-20">
-                            {{-- <span ng-click="showMoreScholarships('ypotrofies')">@{{textScholarships}}
-                                 <i class="@{{ iconScholarships }}"></i></span> --}}
-
-                                 <span><a href="{{ url('/public/scholarships?q=' . $school->admin->name) }}" target="_blank">MORE</a></span>
+                        <!-- Show More Reviews  -->
+                        <div class="show-more" style="background-color: #fff"  >
+                            <div class="pad-top-20">
+                                 <span ng-click="showMoreTeachers('faculty')">@{{textTeachers}}
+                                     <i class="@{{ iconTeachers }}"></i></span>
+                            </div>
                         </div>
-                    </div>
-@endif
+                    @endif
 
 
-
-
-@if($school->settings->reviews)
-                    <!-- Αξιολογησεις -->
+                    @if($school->settings->reviews)
+                            <!-- Αξιολογησεις -->
                     <div class="slideReviews slideup margin-bot-25 " id="reviews" style="overflow-x: hidden">
                         <div class="section-header2">
                             <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
@@ -819,16 +867,16 @@
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
 
 
-                            <div ng-repeat="review in contactInfo.avgReviews" >
-                                <div class="col-xs-12 col-sm-6 pad-0" >
-                                    <i class="@{{review.icon}} margin-right-10" aria-hidden="true"></i>
-                                    <span>@{{ review.name }}</span>
+                                <div ng-repeat="review in contactInfo.avgReviews" >
+                                    <div class="col-xs-12 col-sm-6 pad-0" >
+                                        <i class="@{{review.icon}} margin-right-10" aria-hidden="true"></i>
+                                        <span>@{{ review.name }}</span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6" style="margin-left: -12px; margin-bottom: 9px;">
+                                        <span id="catReview-@{{$index}}" ng-init="categoryReview($index, review.stars)" value="@{{review.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
+                                        <span> @{{review.stars}}</span>
+                                    </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-6" style="margin-left: -12px; margin-bottom: 9px;">
-                                    <span id="catReview-@{{$index}}" ng-init="categoryReview($index, review.stars)" value="@{{review.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
-                                    <span> @{{review.stars}}</span>
-                                </div>
-                            </div>
 
 
                             </div>
@@ -857,74 +905,21 @@
                     <!-- Show More Reviews  -->
                     <div class="show-more" style="background-color: #fff"  >
                         <div class="pad-top-20">
-                             <span ng-click="showMoreReviews('reviews')">@{{textReviews}}
-                                 <i class="@{{ iconReviews }}"></i></span>
+                                 <span ng-click="showMoreReviews('reviews')">@{{textReviews}}
+                                     <i class="@{{ iconReviews }}"></i></span>
                         </div>
                     </div>
-@endif
+                    @endif
 
-@if($school->settings->teachers)
-                    <!-- Διδακτικό Προσωπικό  -->
-                    <div class="slideTeachers slideup margin-bot-25" id="faculty" style="overflow-x: hidden">
-                        <div class="section-header3">
-                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
-                                <i class="fa fa-graduation-cap fa-linear4 text-incr-115 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.teachers') </span></span>
-                            </p>
-                        </div>
 
-                        <div class="sc-t-grey text-justify">
-                            <div class="margin-top-10" id="about-li" >
-                                <div ng-repeat="teacher in contactInfo.teachers">
 
-                                    <div class="col-sm-12 col-md-6 hidden-xs">
-                                        <div class="col-sm-12 user-card">
-                                           <div class="user-header ">
-                                               <a href="/public/profile/teacher/@{{teacher.info.id}}">
-                                               <img class="user-img img-circle" ng-src="@{{teacher.info.avatar}}" alt="">
-                                                <span class="user-name">
-                                                        <span style="color: #fff !important;" >@{{teacher.name}}</span>
-                                                </span>
-                                               </a>
-                                               <span class="user-info"> Marketing Evangelist</span>
-
-                                           </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="xs-user-card visible-xs hidden-sm hidden-md">
-                                        <div class="xs-user-header  center-block centered-text">
-                                            <a href="/public/profile/teacher/@{{teacher.info.id}}">
-                                            <img class="xs-user-img img-circle" ng-src="@{{teacher.info.avatar}}" alt="">
-                                            <div class="xs-user-name">
-                                                    <span class="xs-name" style="color: #888 !important;" >@{{teacher.name}}</span>
-                                            </div>
-                                            </a>
-                                            <span class="xs-user-info"> Marketing Evangelist</span>
-                                        </div>
-                                    </div>
-
-                                </div>
+                    @if($school->settings->map)
+                        <!-- SM - XS  contact & stats section -->
+                        <div class="hidden-lg hidden-md visible-sm visible-xs clearfix">
+                            <div class="margin-top-10 stats-box-xs">
+                             <div class=""  id="googleMapXS" style="height: 310px; width: 100%; "></div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Show More Reviews  -->
-                    <div class="show-more" style="background-color: #fff"  >
-                        <div class="pad-top-20">
-                             <span ng-click="showMoreTeachers('faculty')">@{{textTeachers}}
-                                 <i class="@{{ iconTeachers }}"></i></span>
-                        </div>
-                    </div>
-                @endif
-
-
-
-                        <!-- SM - XS  contact & stats section -->
-                    @if($school->settings->map)
-                    <div class="hidden-lg hidden-md visible-sm visible-xs clearfix">
-                        <div class="margin-top-10 stats-box-xs">
-                         <div class=""  id="googleMapXS" style="height: 310px; width: 100%; "></div>
-                        </div>
-                    </div>
                     @endif
 
 
@@ -973,8 +968,7 @@
                             </div>
                         </div>
                     </div>
-                    @endif
-
+                 @endif
 
                     <div class="">
                     
@@ -1067,8 +1061,6 @@
                         {{--@endif--}}
 
                     </div>
-
-
 
 
                 </div><!-- //col-lg-3-->
@@ -1180,7 +1172,6 @@
                         </div>
                     </div>
                 </div>
-
 
 
         <!-- ====== Modal Υποτροφίας =======-->

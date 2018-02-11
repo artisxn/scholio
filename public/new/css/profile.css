@@ -230,7 +230,9 @@ body {
 .show-btn{position: absolute; right: 8%; bottom: 5px;}
 
 .show-more {  padding-bottom: 15px;  text-align: center; color: #777; font-weight: 200; background-color: #fff; margin-bottom: 30px;}
-.show-more:hover {cursor: pointer; color: #008da5; font-weight: 300}
+.show-more:hover {cursor: pointer; color: #FD6A33}
+.more-scholarships-text,.more-scholarships-text:active,.more-scholarships-text:visited,.more-scholarships-text:focus{color: #777}
+.more-scholarships-text:hover{color: #FD6A33}
 
 
 .hex1{top: 37px; z-index: 0;}

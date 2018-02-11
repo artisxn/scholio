@@ -127,17 +127,19 @@
                         <div class="slider round"></div>
                     </label>
                 </div>
+
+                <div class="texts"> <i class="fa fa-graduation-cap fa-linear4"></i>@lang('settings.profile.teachers')
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" name="teachers" {{auth()->user()->info->settings->teachers ? 'checked' : ''}}>
+                        <div class="slider round"></div>
+                    </label>
+                </div>
                 <div class="texts"> <i class="fa fa-star fa-linear4"></i>@lang('settings.profile.reviews')
                     <label class="switch">
                         <input type="checkbox" onchange="change(this)" name="reviews" {{auth()->user()->info->settings->reviews ? 'checked' : ''}}>
                         <div class="slider round"></div>
                     </label>
                 </div>
-                <div class="texts"> <i class="fa fa-graduation-cap fa-linear4"></i>@lang('settings.profile.teachers')
-                    <label class="switch">
-                        <input type="checkbox" onchange="change(this)" name="teachers" {{auth()->user()->info->settings->teachers ? 'checked' : ''}}>
-                        <div class="slider round"></div>
-                    </label></div>
             </div>
 
         </div>
