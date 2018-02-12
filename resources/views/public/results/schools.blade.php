@@ -787,7 +787,7 @@ angular.module("schoolsResultsApp",[])
             '<div class="text-center">@lang('schools.error') <strong>@{{query}}</strong>.</div>';
 
     var menuTemplate =
-            '<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span class="facet-name"></a>';
+            '<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span class="facet-name"><span style="float: right;">@{{count}}</span></a>';
 
 
 
@@ -849,7 +849,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesType',
                 attributes: ['type'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
                 templates: {
                     item: menuTemplate
                 }
@@ -861,7 +861,8 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCity',
                 attributes: ['city'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -872,7 +873,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesTypeMobile',
                 attributes: ['type'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
                 templates: {
                     item: menuTemplate
                 }
@@ -884,7 +885,8 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCityMobile',
                 attributes: ['city'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }

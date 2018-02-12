@@ -155,8 +155,8 @@
                                         <input id="email" type="email" name="email" class="form-control" placeholder="Enter Email" required="" value="{{ old('email') }}" style="height: 40px;">
                                         @if ($errors->has('email'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
                                         @endif
                                         <span class="input-group-btn">
                                     <button type="submit" class="btn btn-primary">

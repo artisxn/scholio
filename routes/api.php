@@ -27,15 +27,6 @@ use App\Models\Image;
 
 Scholio::bot();
 
-
-// ========  kfrei testing ===============
-Route::get('/resetpass', function () {
-    return view('auth.passwords.reset');
-});
-// ========================================
-
-
-
 Route::post('/school/uploadImage', function(){
     $data = request()->input('img');
     list($type, $data) = explode(';', $data);
@@ -722,6 +713,8 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
     $students = $school->$status()->orderBy($order, $orderType)->with('cv', 'student')->get();
 
+    $studentCounter = 0;
+
     if ($field != '%20') {
         $students = $students->filter(function ($item) use ($field) {
             $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
@@ -732,16 +725,16 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
             $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
 
-            // $study = $item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->first()->name ?? null;
-            $dummy = '';
+            $active1 = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type;
+            $active2 = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type2;
 
-            foreach($item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->get() as $std){
-                $section = $std->section[0];
-                $level = $section->level;
-                $dummy .= $std->name . ',' . $section->name . ',' . $level->name . ',';
-            }
+            // foreach($item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->get() as $std){
+            //     $section = $std->section[0];
+            //     $level = $section->level;
+            //     $dummy .= $std->name . ',' . $section->name . ',' . $level->name . ',';
+            // }
 
-            $replacement2 = preg_replace('/ά/iu', '${1}α', $dummy);
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $active1);
             $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
             $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
             $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
@@ -749,22 +742,31 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
             $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
 
+            $replacement3 = preg_replace('/ά/iu', '${1}α', $active2);
+            $replacement3 = preg_replace('/έ/iu', '${1}ε', $replacement3);
+            $replacement3 = preg_replace('/ή/iu', '${1}η', $replacement3);
+            $replacement3 = preg_replace('/ί/iu', '${1}ι', $replacement3);
+            $replacement3 = preg_replace('/ό/iu', '${1}ο', $replacement3);
+            $replacement3 = preg_replace('/ύ/iu', '${1}υ', $replacement3);
+            $replacement3 = preg_replace('/ώ/iu', '${1}ω', $replacement3);
+
             if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
                 preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) ||
-                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $dummy)) {
+                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $replacement3) || preg_match('/' . $field . '/iu', $active1) || preg_match('/' . $field . '/iu', $active2)) {
                 return $item;
             }
         });
     }
 
     $items = $students;
+    $studentCounter = count($students);
 
     $perPage = config('scholio.perPage.students');
 
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
     $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
-    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count()]);
+    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count(), 'studentCounter'=> $studentCounter]);
     $data = $custom->merge($p);
     return $data;
 })->middleware('auth:api');

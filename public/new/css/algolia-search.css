@@ -93,11 +93,13 @@ aside {
     aside .facet-item input, aside a input {
       margin-right: 4px; }
   aside .facet-name {
-    width: 100%;
+    width: 90%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    display: inline-block; }
+    display: inline-block; 
+    /* color: red; */
+  }
   aside .facet-count {
     margin-left: 4px;
     color: #888; }
@@ -341,3 +343,6 @@ aside {
   text-align: center;
   font-size: .8em;
   padding: 10px; }
+
+  /* .ais-hierarchical-menu--item div a span {
+width: 90%  } */

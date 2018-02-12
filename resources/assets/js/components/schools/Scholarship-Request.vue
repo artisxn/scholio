@@ -55,11 +55,15 @@
                                         </td>
                                         <td><img :src="admission.criteria" height="30px"></td>
                                         <td>
-                                            <div class="text" :class="{unreadStudy: admission.unread}"
-                                            v-if="admission.scholarship != 'Multiple'">{{admission.scholarship}}</div>
-                                            <div v-else>
-                                                <div v-for="st in admission.tooltip">{{ st.name }}</div>
-                                            </div>
+                                            <a :href="'/scholarship/' + admission.scholarship_id" target="_blank">
+                                                <div class="text" :class="{unreadStudy: admission.unread}"
+                                                v-if="admission.scholarship != 'Multiple'">{{admission.scholarship}}</div>
+                                                <div v-else>
+                                                    <div v-for="st in admission.tooltip">
+                                                        {{ st.name }}
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -75,6 +79,8 @@
 
 <script>
     export default {
+
+        props: ['scholarshipLink'],
 
         data: function() {
             return{

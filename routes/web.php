@@ -13,7 +13,11 @@ use App\User;
 use App\Events\NewSubscription;
 
 Scholio::soonRoutes();
-
+// ========  kfrei testing ===============
+Route::get('/resetpass', function () {
+    return view('auth.passwords.reset');
+});
+// ========================================
 Route::get('/password/change', function(){
     return view('panel.change-password');
 })->middleware('auth');

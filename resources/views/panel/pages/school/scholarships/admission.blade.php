@@ -167,7 +167,7 @@
                             </div>
                         @endforeach
 
-                    </div>1
+                    </div>
                 </div>
             </div>
 

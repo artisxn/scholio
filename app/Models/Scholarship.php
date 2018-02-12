@@ -14,6 +14,7 @@ use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\ScholarshipLimit;
+use App\Notifications\ScholarshipWinner;
 
 class Scholarship extends Model
 {
@@ -205,9 +206,9 @@ class Scholarship extends Model
     {
         foreach(request()->winner as $win){
             $user = User::find($win);
-            $this->winner()->attach($user);
+            // $this->winner()->attach($user);
             // Notify student
-            // Email student
+            $user->notify(new ScholarshipWinner($user, $this));
         }
         $this->active = 0;
         $this->save();

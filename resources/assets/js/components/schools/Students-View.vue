@@ -21,6 +21,7 @@
             <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
                    v-model="searchStr" v-on:keyup="fetch(1)">
         </div>
+        <div>{{ studentCounter }}</div>
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
 
@@ -224,7 +225,7 @@
                                 <div class="first-study-text">
                                     Αντικείμενο Σπουδών
                                         <span class="tool">
-                                            <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy"></i>
+                                            <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy && !study2"></i>
                                             <span class="tooltiptext">Προσθέστε Επιπλέον Αντικείμενο Σπουδών</span>
                                         </span>
 
@@ -262,16 +263,17 @@
                                     </div>
 
 
-                                    <div class="second" v-if="study2 || secondStudy">
-                                        <select class="select-transparent  select2" v-model="secondStudy" v-on:change="saveStudy(2)">
-                                            <optgroup :label="level.level.name" v-for="level in studies">
-                                                <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
-                                                    {{ study.study.name }}
-                                                </option>
-                                            </optgroup>
-                                        </select>
-                                        <i class="fa fa-graduation-cap select-icon2"></i>
-                                        <div class="col-xl-line col-xl-line2"></div>
+                                    <div class="second" v-if="selectedStudy && (study2 || secondStudy)">
+                                            <select class="select-transparent  select2" v-model="secondStudy" v-on:change="saveStudy(2)">
+                                                <optgroup :label="level.level.name" v-for="level in studies">
+                                                    <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
+                                                        {{ study.study.name }}
+                                                    </option>
+                                                </optgroup>
+                                            </select>
+                                            <i class="fa fa-graduation-cap select-icon2"></i>
+                                            <div class="col-xl-line col-xl-line2"></div>
+
                                     </div>
 
                                 </div>
@@ -523,7 +525,7 @@
     .lastName{margin-top: 45px; margin-left: 130px; font-size: 200%; color: #fafafa}
     .firstName{margin-top: 8px; margin-left: 130px; font-size: 150%; color: #888}
 
-    .modal-infos{ height: 500px; margin-top: 40px; padding: 15px;}
+    .modal-infos{ min-height: 500px; margin-top: 40px; padding: 15px;}
 
     .btn-close{margin:0 30px 0 0;}
 
@@ -552,7 +554,7 @@
     .info-container{position: absolute; top: 320px; width: 100%;}
     .icon-data, .info-title {color: #008da5}
     .col-data{margin-top: 30px;}
-    .line{height: 1px; width: 100%; background: #008da5}
+    .line{height: 0px; width: 100%; background: #008da5}
 
     select {
         -webkit-appearance: none;
@@ -824,7 +826,9 @@
                 std: [],
                 multipleStudies: true,
                 secondStudy: null,
-                study2: false
+                study2: false,
+                test: true,
+                studentCounter: 0
             }
         },
         computed: {
@@ -949,7 +953,7 @@
                     this.allumniCount = this.items.allumniStudents
                     this.connectedCount = this.items.connectedStudents
 
-                    console.log(this.dataSet)
+                    this.studentCounter = data.studentCounter
                 },
 
             changeView: function () {
@@ -971,8 +975,21 @@
 
                 }, 800);
 
+                $('.modal').on('shown.bs.modal', function(){
+                    // if(!this.study2) this.test = false
+                    console.log('second')
+                    console.log(this.secondStudy)
+                    console.log('study2')
+                    console.log(this.study2)
+
+                })
+
                 $('.modal').on('hide.bs.modal', function () {
+                    // this.secondStudy = false
+                    // this.study2 = false
+                    
                     console.log('hide')
+                    // location.reload()
 //                    $('.modal-dialog').addClass('animated zoomOut');
                 })
 

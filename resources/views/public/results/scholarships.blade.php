@@ -47,7 +47,9 @@
 
 
     <!-- Algolia InstantSearch CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css"> -->
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.0/dist/instantsearch.min.css">
 
 
 
@@ -115,6 +117,8 @@
 
     <!-- Algolia InstantSearch.JS -->
     <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.0"></script> -->
+
     <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
     <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js"></script>
 
@@ -714,7 +718,7 @@ angular.module("scholarshipsResultsApp",[])
         </div>
 
 
-        <div class=" xxs-3 col-xs-3  col-sm-2 pad-0-mar-0" >
+        <div class="xxs-3 col-xs-3  col-sm-2 pad-0-mar-0" >
             <a href="/scholarship/@{{scholarship_id}}" >
                 <button type="button" class="sc-button-landing sc-button sc-green sc-t-white pull-right btn-provoli" style="">
                     <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarships.cards.show')
@@ -730,7 +734,8 @@ angular.module("scholarshipsResultsApp",[])
             '<div class="text-center">@lang('scholarships.error') <strong>@{{query}}</strong>.</div>';
 
     var menuTemplate =
-            '<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span class="facet-name"></a>';
+            `<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span>
+                <span style='float: right;'> @{{count}} </span></a>`;
 
     {{--var facetTemplateCheckbox =--}}
             {{--'<a href="javascript:void(0);" class="facet-item">' +--}}
@@ -808,7 +813,9 @@ angular.module("scholarshipsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesType',
                 attributes: ['type'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -820,7 +827,8 @@ angular.module("scholarshipsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCity',
                 attributes: ['city'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -832,7 +840,8 @@ angular.module("scholarshipsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteria',
                 attributes: ['criteria_en'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -842,7 +851,8 @@ angular.module("scholarshipsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteriaMobile',
                 attributes: ['criteria_en'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -855,7 +865,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteria',
                 attributes: ['criteria'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -865,7 +876,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteriaMobile',
                 attributes: ['criteria'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -878,7 +890,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesTypeMobile',
                 attributes: ['type'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -890,7 +903,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCityMobile',
                 attributes: ['city'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -902,7 +916,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesSection',
                 attributes: ['section'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -912,7 +927,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesSectionMobile',
                 attributes: ['section'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -923,7 +939,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesLevel',
                 attributes: ['level_en'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -933,7 +950,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesLevelMobile',
                 attributes: ['level_en'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -944,7 +962,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesLevel',
                 attributes: ['level'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
@@ -954,7 +973,8 @@ search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesLevelMobile',
                 attributes: ['level'],
-                sortBy: ['name:asc'],
+                sortBy: ['count'],
+                limit: 5,
                 templates: {
                     item: menuTemplate
                 }
