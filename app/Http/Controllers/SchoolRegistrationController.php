@@ -9,6 +9,9 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\University;
+use App\Models\Subscription;
+use App\Models\ScholarshipLimit;
+use App\Models\SchoolSetting;
 
 class SchoolRegistrationController extends Controller
 {
@@ -63,40 +66,45 @@ class SchoolRegistrationController extends Controller
         ]);
 
         $user = new User;
-        $user->name = $userName;
-        $user->email = $userEmail;
+        $user->name = request()->name;
+        $user->email = request()->email;
         $user->role = 'school';
-        $user->password = bcrypt($userPassword);
+        $user->password = bcrypt(request()->password);
         $user->save();
 
         $school = new School;
-        $school->name = request()->name;
-        $school->email = request()->email;
         $school->user_id = $user->id;
-        $school->address = request()->address;
-        $school->phone = request()->phone;
-        $school->website = request()->website;
-        $school->address = request()->address;
-        $school->city = request()->city;
         $school->type_id = request()->type;
-
-        $avatar = request()->file('avatar')->store('logo');
-        $image = new Image;
-        $image->path = $avatar;
-        $image->full_path = $avatar;
-        $image->name = $avatar;
-        $image->alt = $school->name . '-logo';
-        $image->type = 'Logo';
-        $image->extension = 'png';
-
-        $image->save();
-
-        $school->logo_id = $image->id;
-
+        $school->logo = '/upload/school/univ.png';
         $school->save();
 
+        // create subscription
+        $sub = new Subscription;
+        $sub->user_id = $user->id; 
+        $sub->plan_id = 1;
+        $sub->save();
+
+        // Scholarship Limits
+        $limit = new ScholarshipLimit;
+        $limit->school_id = $school->id;
+        $limit->cr1 = 5;
+        $limit->cr2 = 3;
+        $limit->cr3 = 3;
+        $limit->cr4 = 3;
+        $limit->cr5 = 3;
+        $limit->save();
+
+        // Seting 
+        $settings = new SchoolSetting;
+        $settings->school_id = $school->id;
+        $settings->save();
+
+
+        // Send confirmation email
+
+        // Create University
         $university = new University;
-        $university->name = $name;
+        $university->name = request()->name;
         $university->save();
 
         auth()->login($user);

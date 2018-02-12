@@ -22,15 +22,21 @@
 
 @section('content') 
 
-@if(auth()->user()->info->allScholarshipLimits() != 0)
-    <scholarships-create></scholarships-create>
+@if(count(auth()->user()->info->study) > 0)
+
+    @if(auth()->user()->info->allScholarshipLimits() != 0)
+        <scholarships-create></scholarships-create>
+    @else
+        <div>
+            Δεν υπάρχουν άλλες διαθέσιμες υποτροφίες !
+        </div>
+        <div>
+            <button class="btn btn-primary">Μεταφορα σε αγορά υποτροφιών</button>
+        </div>
+    @endif
+
 @else
-<div>
-    Δεν υπάρχουν άλλες διαθέσιμες υποτροφίες !
-</div>
-<div>
-    <button class="btn btn-primary">Μεταφορα σε αγορά υποτροφιών</button>
-</div>
+<div>ΚΑΝΕ ΠΡΩΤΑ ΚΑΝΑ STUDY -> <a href="{{ url('/panel/school/studies') }}">EDW ELA</a></div>
 @endif
 
 @endsection @section('scriptsBefore') {{--

@@ -1,9 +1,5 @@
 @extends('panel.layouts.main')
 
-
-
-
-
 @section('styles')
 
     <link rel="stylesheet" href="/css/croppie.css">
@@ -134,9 +130,25 @@
 
             <div class="btn btn-green" data-target="#upload-modal" data-toggle="modal"> @lang('school_photos.button')</div>
 
-            <p class="text"> @lang('school_photos.subtitle')</p>
+            @if(count(auth()->user()->info->image) == 0)
+                <p class="text">ΒΑΛΕ ΚΑΜΙΑ ΦΩΤΟ ΑΠΟ ΤΟ ΚΤΗΡΙΟ ΣΟΥ</p>
+            @elseif(count(auth()->user()->info->image) >1)
+                <p class="text"> ME KLIck </p>
+            @elseif(count(auth()->user()->info->image) < 4)
+                <p class="text"> @lang('school_photos.subtitle') </p>
+            @endif
+            
             <div class="row">
         </div>
+
+        @if(count(auth()->user()->info->image) == 1 && auth()->user()->info->background != auth()->user()->info->image->first()->id)
+            <script>
+                $(document).ready(function(){
+                    background({{ auth()->user()->info->image->first()->id }});
+                })
+                
+            </script>
+        @endif
 
                     @foreach($images as $image)
                         <div class="photo-container">
@@ -145,7 +157,7 @@
                                 @if(auth()->user()->info->background == $image->id)
                                     <div class="selectedImg out-div" style="padding-right: 8px;">
                                         <div class="grow pic">
-                                            <img id="img{{$image->id}}" class="" src="{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
+                                            <img id="img{{$image->id}}" class="" src="{{$image->full_path}}" onclick="background({{ $image->id }})"
                                                     {{--onmouseover="hov({{$image->id}})"--}}
                                             />
                                         </div>
@@ -153,7 +165,7 @@
                                 @else
                                     <div class="out-div">
                                         <div class="grow pic" style="opacity: 0.;">
-                                            <img id="img{{$image->id}}" class="" src="{{$image->full_path}}" onclick="background(this, {{ $image->id }})"
+                                            <img id="img{{$image->id}}" class="" src="{{$image->full_path}}" onclick="background({{ $image->id }})"
                                                     {{--onmouseover="hov({{$image->id}})"--}}
                                             />
                                         </div>
@@ -223,10 +235,9 @@
             'X-Requested-With': 'XMLHttpRequest'
         };
 
-    function background(vm, img){
+    function background(img){
         axios.post('/api/image/background/save', {image: img})
           .then(function (response) {
-            console.log(response.data);
             if(response.data == 'OK'){
                 window.location.reload();
             }

@@ -152,8 +152,7 @@ class Scholio
         }
     }
 
-    public static function fakeDummy()
-    {
+    public static function fakeDummy(){
         $schools = School::all();
 
         Dummy::query()->truncate();
@@ -255,16 +254,21 @@ class Scholio
                 }
                 $alg->study = $studyDummy;
                 $alg->multiple = true;
+                $alg->section = '';
             } else {
                 $alg->study = $scholarship->study->name;
+                $alg->section = $scholarship->study->section[0]->name;
                 $alg->multiple = false;
             }
-            $alg->section = $scholarship->study->section[0]->name;
+            
+            // $alg->study = $scholarship->study->name || '-';
+            echo ('-' . $scholarship->id . '-');
             // $alg->section_en = $scholarship;
             $alg->level = $scholarship->level->name;
             $alg->level_en = $scholarship->levelEN->name;
             $alg->criteria = $scholarship->criteria->name;
             $alg->criteria_en = $scholarship->criteriaEN->name;
+            
             $alg->school = $scholarship->school->name();
             $alg->school_id = $scholarship->school->id;
             $alg->school_logo = $scholarship->school->logo;
@@ -278,10 +282,10 @@ class Scholio
             $alg->financial_amount = (integer) $scholarship->financial_amount;
             $alg->financial_metric = $scholarship->financial->metric;
             $alg->financial_icon = $scholarship->financial->icon;
-
             $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
 
             $alg->exams_en = $scholarship->exam ? 'YES' : 'NO';
+            
 
             $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
             $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
@@ -294,6 +298,41 @@ class Scholio
             }
             $alg->tags = $scholarTagsDummy;
             $alg->save();
+            
+            $dummy->type = $s->type->name;
+            $dummy->school_id = $s->id;
+            $dummy->name = $s->name();
+            $dummy->email = $s->email();
+            $dummy->phone = $s->phone;
+            $dummy->city = $s->city;
+            $dummy->address = $s->address;
+            $dummy->logo = $s->logo;
+            $dummy->image = $s->profileImage();
+            $dummy->website = $s->website;
+            $dummy->lengthStudents = $s->lengthStudents();
+            $dummy->lengthTeachers = $s->lengthTeachers();
+            $dummy->lengthStudies = $s->lengthStudies();
+            // Na valw tis active
+            $dummy->lengthScholarships = $s->lengthScholarships();
+            $dummy->stars = $s->averageStars();
+            $dummy->reviews = $s->countReviews();
+            $dummy->username = $s->admin->username ?? 'nousername';
+
+            foreach ($s->study as $study) {
+                $studyDummy .= $study->name . ',';
+                $section = $study->section[0]->name;
+                if (strpos($studyDummy, $section) == false) {
+                    $studyDummy .= $study->section[0]->name . ',';
+                }
+                $level = $study->section[0]->level->name;
+                if (strpos($studyDummy, $level) == false) {
+                    $studyDummy .= $study->section[0]->level->name . ',';
+                }
+
+            }
+            $dummy->study = $studyDummy;
+            $dummy->save();
+
         }
 
         foreach (Study::all() as $study) {
@@ -331,8 +370,7 @@ class Scholio
         return 'OK';
     }
 
-    public static function updateDummy(School $s)
-    {
+    public static function updateDummy(School $s){
         $studyDummy = '.';
         $dummy = AlgoliaSchool::find($s->id);
         $dummy->type_id = $s->type_id;
@@ -379,8 +417,7 @@ class Scholio
         return 'OK';
     }
 
-    public static function createSchoolDummy(School $school)
-    {
+    public static function createSchoolDummy(School $school){
         $dummy = new AlgoliaSchool;
         $dummy->type_id = $school->type_id;
         $dummy->type = $school->type->name;
@@ -391,8 +428,7 @@ class Scholio
         $dummy->save();
     }
 
-    public static function algoliaGEO()
-    {
+    public static function algoliaGEO(){
         $schools = AlgoliaSchool::all();
         $scholarships = AlgoliaScholarship::all();
         $scholarshipss = Scholarship::all();
@@ -432,8 +468,7 @@ class Scholio
         });
     }
 
-    public static function dummyScholarshipUpdate($scholarship)
-    {
+    public static function dummyScholarshipUpdate($scholarship){
         $school = $scholarship->school;
 
         $dummy = $scholarship->dummy;
@@ -454,8 +489,7 @@ class Scholio
         $dummy->save();
     }
 
-    public static function dummyScholarshipCreate($scholarship)
-    {
+    public static function dummyScholarshipCreate($scholarship){
         $school = $scholarship->school;
 
         $dummy = new DummyScholarship;
@@ -477,8 +511,7 @@ class Scholio
         $dummy->save();
     }
 
-    public static function dummyScholarshipDelete($scholarship)
-    {
+    public static function dummyScholarshipDelete($scholarship){
         $dummy = $scholarship->dummy;
 
         $dummy->delete();

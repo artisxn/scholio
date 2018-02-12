@@ -84,6 +84,7 @@ class RegisterController extends Controller
         // event(new UserRegistered($user));
 
         if ($user->role == 'school') {
+            
             School::createSchoolAndDummy($user->id, request()->type);
         } else {
             if ($data['role'] == 'student') {

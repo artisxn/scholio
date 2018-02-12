@@ -297,10 +297,10 @@
 
                     @if($school->settings->about)<li class="sc-landing-menu-item "><a href="#sxetika" class="school-profile-nav-link ">@lang('profile.navigation.about')</a></li>@endif
                     {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
-                    @if($school->settings->studies)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
-                    @if($school->settings->scholarships)<li class="sc-landing-menu-item"><a href="#ypotrofies" class="school-profile-nav-link">@lang('profile.navigation.scholarships')</a></li>@endif
-                    @if($school->settings->teachers)<li class="sc-landing-menu-item"><a href="#faculty" class="school-profile-nav-link">@lang('profile.navigation.teachers')</a></li>@endif
-                    @if($school->settings->reviews)<li class="sc-landing-menu-item"><a href="#reviews" class="school-profile-nav-link">@lang('profile.navigation.reviews')</a></li>@endif
+                    @if($school->settings->studies && count($school->study) > 0)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
+                    @if($school->settings->scholarships && count($school->scholarship) > 0)<li class="sc-landing-menu-item"><a href="#ypotrofies" class="school-profile-nav-link">@lang('profile.navigation.scholarships')</a></li>@endif
+                    @if($school->settings->teachers && count($school->teachers) > 0)<li class="sc-landing-menu-item"><a href="#faculty" class="school-profile-nav-link">@lang('profile.navigation.teachers')</a></li>@endif
+                    @if($school->settings->reviews && count($school->review) > 0)<li class="sc-landing-menu-item"><a href="#reviews" class="school-profile-nav-link">@lang('profile.navigation.reviews')</a></li>@endif
 
 
 
@@ -378,7 +378,7 @@
 
                     <div class=" xs-centered-text">
                                                 <h4 class="xs-h4">@{{contactInfo.name}}</h4>
-                        @if($school->settings->reviews)
+                        @if($school->settings->reviews && count($school->review) >0)
                                                  <span class="pad-top-5 xs-pad-top xs-review">
 
                                         <span ng-show="contactInfo.ratingCounter!=0"> <rating class="text-incr-85 sc-t-orange" id="Rating"></rating>
@@ -637,7 +637,7 @@
                         </div>
                      @endif
 
-                    @if($school->settings->scholarships)
+                    @if($school->settings->scholarships && count($school->scholarship) > 0)
                             <!-- Υποτροφίες -->
                             <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.activeScholarships" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
                                 <div class="section-header3">
@@ -788,7 +788,7 @@
                     @endif
 
                             
-                    @if($school->settings->teachers)
+                    @if($school->settings->teachers && count($school->teachers) > 0)
                         <!-- Διδακτικό Προσωπικό  -->
                         <div class="slideTeachers slideup margin-bot-25" id="faculty" style="overflow-x: hidden">
                             <div class="section-header3">
@@ -842,7 +842,7 @@
                     @endif
 
 
-                    @if($school->settings->reviews)
+                    @if($school->settings->reviews && count($school->review) > 0)
                             <!-- Αξιολογησεις -->
                     <div class="slideReviews slideup margin-bot-25 " id="reviews" style="overflow-x: hidden">
                         <div class="section-header2">
@@ -1379,7 +1379,8 @@
                         window.totalStars = data.stars
                         $scope.ratings();
                         $scope.studies = data.levels;
-                        $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);
+                        if(data.scholarship[0]) $scope.message = $sce.trustAsHtml(data.scholarship[0].terms);
+                        else $scope.message = ''
 
                         if( $scope.studies.length) $scope.initial();
 
