@@ -84,7 +84,7 @@
 <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
 <script>
-    {{-- window.DATA = {{$settings[0]}}; --}}
+    window.REVIEWS = {{ $reviews }};
 </script>
 </head>
 
@@ -369,8 +369,8 @@
                             </div>
 
 
-                        <span class="sort-by-text">@lang('schools.sortby.title')</span>
-                        <div id="sort-by-container-Mobile"></div>
+                        <!-- <span class="sort-by-text">@lang('schools.sortby.title')</span> -->
+                        <!-- <div id="sort-by-container-Mobile"></div> -->
 
 
 
@@ -427,8 +427,8 @@
                         </div>
 
 
-                    <span class="sort-by-text">@lang('schools.sortby.title')</span>
-                    <div id="sort-by-container"></div>
+                    <!-- <span class="sort-by-text">@lang('schools.sortby.title')</span> -->
+                    <!-- <div id="sort-by-container"></div> -->
 
 
 
@@ -444,9 +444,7 @@
 
 
 
-                    <div id="sort-by-container">
-
-                    </div>
+                    <!-- <div id="sort-by-container"></div> -->
 
                     <div class="content-wrapper">
                         <aside>
@@ -508,12 +506,11 @@
 
 </body>
 <script>
-
-
     function showMap(){
         var s = document.getElementById('query').value;
                 window.location = '/public/schools/map/?search='+ s;
     }
+
 </script>
 
 
@@ -522,7 +519,8 @@
     window.STATS = {{$settings}}
 angular.module("schoolsResultsApp",[])
         .controller("schoolsResultsCtrl",function ($scope,$http) {
-            console.log(window.STATS);
+            
+            
             $scope.over=false;
             $scope.over2=false;
             $scope.over3=false;
@@ -531,10 +529,11 @@ angular.module("schoolsResultsApp",[])
                 $scope.role=role;
             }
 
-            console.log('start');
+            
+            
 
             $scope.rate = function(id, stars){
-                console.log('YYY');
+                
             setTimeout(function() {
                 $('#Rating-' + id).raty({
                     score    : stars,
@@ -580,27 +579,27 @@ angular.module("schoolsResultsApp",[])
             })
     );
 
-            search.addWidget(
-                    instantsearch.widgets.sortBySelector({
-                        container: '#sort-by-container',
-                        indices: [
-                            {name: 'dummySchools', label: '@lang('schools.sortby.stars')'},
-                            {name: 'dummySchools_scholarships_desc', label: '@lang('schools.sortby.scholarships')'},
-                            {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
-                        ]
-                    })
-            );
+            // search.addWidget(
+            //         instantsearch.widgets.sortBySelector({
+            //             container: '#sort-by-container',
+            //             indices: [
+            //                 {name: 'dummySchools', label: '@lang('schools.sortby.scholarships')'},
+            //                 {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'},
+            //                 // {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
+            //             ]
+            //         })
+            // );
 
-            search.addWidget(
-                    instantsearch.widgets.sortBySelector({
-                        container: '#sort-by-container-Mobile',
-                        indices: [
-                            {name: 'dummySchools', label: '@lang('schools.sortby.stars')'},
-                            {name: 'dummySchools_scholarships_desc', label: '@lang('schools.sortby.scholarships')'},
-                            {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
-                        ]
-                    })
-            );
+            // search.addWidget(
+            //         instantsearch.widgets.sortBySelector({
+            //             container: '#sort-by-container-Mobile',
+            //             indices: [
+            //                 {name: 'dummySchools', label: '@lang('schools.sortby.scholarships')'},
+            //                 {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'},
+            //                 // {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
+            //             ]
+            //         })
+            // );
 
     search.on('render', function() {
         $('.product-picture img').addClass('transparent');
@@ -619,12 +618,12 @@ angular.module("schoolsResultsApp",[])
 
             <photo class="">
                 <a href="/public/profile/@{{school_id}}">
-                    <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{image}})">
+                    <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(@{{image}})">
                 </a>
             </photo>
             <div class="card-ribbon">
-                <img id="img2" class=" sc-white img-med hidden-lg hidden-xs" src="/images/schools/@{{logo}}">
-                <img id="img3" class=" sc-white img-thumb hidden-lg hidden-md hidden-sm " src="/images/schools/@{{logo}}">
+                <img id="img2" class=" sc-white img-med hidden-lg hidden-xs" src="@{{logo}}">
+                <img id="img3" class=" sc-white img-thumb hidden-lg hidden-md hidden-sm " src="@{{logo}}">
             </div>
         </con>
 
@@ -644,14 +643,16 @@ angular.module("schoolsResultsApp",[])
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
                 <a href="/public/profile/@{{school_id}}" target="_blank">
-                <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="/images/schools/@{{logo}}">
+                <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="@{{logo}}">
                 </a>
                 <span class="pull-left">
                     <h5 class="pad-top-10"> <a href="/public/profile/@{{school_id}}"> @{{name}}</a></h5>
+                    @{{#review}}
                     <span>
                     <span class="product-rating">@{{#rating}}<span class="ais-star-rating--star@{{^.}}__empty@{{/.}}"></span>@{{/rating}}</span>
                     </span>
                     <span class="sc-t-orange"> @{{stars}} </span> <span class="xs-text-incr-85">  &nbsp; ( @{{reviews}}  @lang('schools.cards.reviews'))</span>
+                    @{{/review}}
                 </span>
             </div>
 
@@ -807,6 +808,7 @@ angular.module("schoolsResultsApp",[])
                     hit.stats = [];
                     hit.hot=[];
                     hit.scholarshipLion=[];
+                    hit.review=[];
 
                     if(hit.lengthStudents > 8   && (window.STATS[hit.id-1] == 1) ){
                         hit.hot.push(true);
@@ -821,6 +823,10 @@ angular.module("schoolsResultsApp",[])
 
                     if(window.STATS[hit.id-1] == 1){
                         hit.stats.push(true);
+                    }
+
+                    if (window.REVIEWS[hit.id-1] == 1) {
+                        hit.review.push(true);
                     }
                     
                     for (var i = 1; i <= 5; ++i) {
@@ -893,112 +899,6 @@ angular.module("schoolsResultsApp",[])
             })
     );
 
-    // search.addWidget(
-    //         instantsearch.widgets.hierarchicalMenu({
-    //             container: '#categoriesSection',
-    //             attributes: ['section'],
-    //             sortBy: ['name:asc'],
-    //             templates: {
-    //                 item: menuTemplate
-    //             }
-    //         })
-    // );
-
-    // search.addWidget(
-    //         instantsearch.widgets.hierarchicalMenu({
-    //             container: '#categoriesLevel',
-    //             attributes: ['level'],
-    //             sortBy: ['name:asc'],
-    //             templates: {
-    //                 item: menuTemplate
-    //             }
-    //         })
-    // );
-
-    // search.addWidget(
-    //   instantsearch.widgets.starRating({
-    //     container: '#rating',
-    //     attributeName: 'starsInt',
-    //     templates: {
-    //       header: '<div class="filter-title">@lang('schools.cards.reviews')</div class="filter-title">'
-    //     }
-    //   })
-    // );
-
-    // search.addWidget(
-    //   instantsearch.widgets.sortBySelector({
-    //     container: '#sort-by-container',
-    //     indices: [
-    //       {name: 'dummyScholarships', label: 'Σχετικές'},
-    //       {name: 'dummyScholarships_school_asc', label: 'Δημοφιλείς'},
-    //       {name: 'dummyScholarships_created_asc', label: 'Νέες'}
-    //     ]
-    //   })
-    // );
-
-    // search.addWidget(
-    //   instantsearch.widgets.refinementList({
-    //     container: '#materials',
-    //     attributeName: 'materials',
-    //     operator: 'or',
-    //     limit: 10,
-    //     templates: {
-    //       item: facetTemplateCheckbox,
-    //       header: '<div class="facet-title">Materials</div class="facet-title">'
-    //     }
-    //   })
-    // );
-
-    // search.addWidget(
-    //   instantsearch.widgets.refinementList({
-    //     container: '#colors',
-    //     attributeName: 'colors',
-    //     operator: 'or',
-    //     limit: 10,
-    //     templates: {
-    //       item: facetTemplateColors,
-    //       header: '<div class="facet-title">Colors</div class="facet-title">'
-    //     }
-    //   })
-    // );
-
-    // search.addWidget(
-    //   instantsearch.widgets.starRating({
-    //     container: '#rating',
-    //     attributeName: 'rating',
-    //     templates: {
-    //       header: '<div class="facet-title">Ratings</div class="facet-title">'
-    //     }
-    //   })
-    // );
-
-//     search.addWidget(
-//       instantsearch.widgets.priceRanges({
-//         container: '#financial',
-//         attributeName: 'financial_amount',
-//         cssClasses: {
-//           list: 'nav nav-list',
-//           count: 'badge pull-right',
-//           active: 'active'
-//         },
-//         templates: {
-//           header: '<div class="facet-title">Ποσό Επιδότησης</div class="facet-title">'
-//         }
-//       })
-//     );
-
-    // search.addWidget(
-    //   instantsearch.widgets.sortBySelector({
-    //     container: '#sort-by-selector',
-    //     indices: [
-    //       {name: 'ikea', label: 'Featured'},
-    //       {name: 'ikea_price_asc', label: 'Price asc.'},
-    //       {name: 'ikea_price_desc', label: 'Price desc.'}
-    //     ],
-    //     label:'sort by'
-    //   })
-    // );
-
     search.addWidget(
             instantsearch.widgets.clearAll({
                 container: '#clear-all',
@@ -1041,18 +941,6 @@ angular.module("schoolsResultsApp",[])
         algoliaHelper.setQueryParameter('aroundLatLng', '40.80, 22.41').search()
 
     })
-
-//setTimeout(function() {
-//    for(var i=1; i<=11; i++){
-//        var data = $('#s-'+i).attr('data-length');
-//        if(data >=8){
-//        console.log('OK');
-//        $('#s-'+i).addClass('testRed');
-//    }
-//    }
-//
-//}, 1500);
-
 
 </script>
 

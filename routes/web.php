@@ -138,8 +138,8 @@ Route::post('/admission/{scholarship}/save', 'RoutesController@admissionSave');
 
 Route::get('/public/schools/', function () {
     $settings = SchoolSetting::all()->pluck('statistics');
-    // dd($settings);
-    return view('public.results.schools')->withSettings($settings);
+    $reviews = SchoolSetting::all()->pluck('reviews');
+    return view('public.results.schools')->withSettings($settings)->withReviews($reviews);
 });
 
 Route::get('dashboard/profile', function () {

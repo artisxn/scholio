@@ -276,7 +276,7 @@
         <script type="text/template" id="hits-template">
             @{{#hits}}
             {{--<span class="hit clearfix">--}}
-            {{--<img id="" class="img-logo" src="/images/schools/@{{logo}}">--}}
+            {{--<img id="" class="img-logo" src="@{{logo}}">--}}
             {{--<span class="hit-name">@{{{ _highlightResult.name.value }}}</span>--}}
             {{--<span class="hit-distance" ng-if="false"> @{{ distance }}</span>--}}
             {{--</div>--}}
@@ -285,10 +285,10 @@
                 <con>
                     <photo class="col-sm-2 col-md-4 pad-0-mar-0" >
                         <a href="/public/profile/@{{school_id}}" class="hidden-xs hidden-sm">
-                            <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(/images/schools/@{{image}}) ">
+                            <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(@{{image}}) ">
                         </a>
                         <a href="/public/profile/@{{school_id}}" target="_blank">
-                            <img id="img1"  style="" class=" img-mini  photo-mini" src="/images/schools/@{{logo}}">
+                            <img id="img1"  style="" class=" img-mini  photo-mini" src="@{{logo}}">
                         </a>
                     </photo>
 
@@ -651,7 +651,7 @@
         message = hit.name;
 
         var content= '<div class="row"><span class="col-sm-2" >' +
-                '<img style="width: 98%; height: auto; " src="' +'/images/schools/'+ hit.logo + '"/></span> ' +
+                '<img style="width: 98%; height: auto; " src="' +''+ hit.logo + '"/></span> ' +
                 '<a target="_blank" style="color: #000 !important" href="/public/profile/' +hit.school_id+ '"><span class="col-sm-10 info-window-text" > ' +hit.name+
                 '<div style="padding-top: 3px;"> ' +
                 ' <span class="info-window-text2"><i class="fa fa-trophy margin-right-5"></i>Υποτροφίες: '+hit.lengthScholarships+'</span> </div>' +
