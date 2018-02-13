@@ -236,7 +236,7 @@
                         </div>
 
                         <div v-if="level_value">
-                            <div class="" style="margin: 25px 0 6px 0 ">Αντικείμενο Σπουδών</div>
+                            <div class="study-title">Αντικείμενο Σπουδών</div>
                             <div class="study">
                                 <multiselect style="" v-model="study_value" :options="study_options" :multiple="multipleFeature" group-values="study" group-label="section"
                                     placeholder="Επιλέξτε Αντικείμενα Σπουδών" track-by="name" label="name" :disabled="studies_disabled"
@@ -659,6 +659,8 @@
         font-weight: 300;
     }
 
+    .study-title{margin: 35px 0 0 0}
+
 
 
     .multiselect {
@@ -672,9 +674,14 @@
     }
 
     .study .multiselect,
-    .level .multiselect,
     .keys .multiselect {
         z-index: 10!important;
+        position: relative;
+    }
+
+
+    .level .multiselect{
+        z-index: 12!important;
         position: relative;
     }
 

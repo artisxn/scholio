@@ -178,7 +178,19 @@ p {padding: 15px; color: #5d5d5d;  }
 
 ::-webkit-input-placeholder {  color:    #888;   /* default placeholder text */  }
 
+.ais-search-box--input{width: 117%!important;}
 
+
+@media (max-width: 1449px)  {
+    .ais-search-box--input{width: 110%!important;}
+}
+
+@media (max-width: 1349px)  {
+    .ais-search-box--input{width: 103%!important;}
+}
+@media (max-width: 1249px)  {
+    .ais-search-box--input{width: 100%!important;}
+}
 
 
 

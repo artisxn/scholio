@@ -93,7 +93,7 @@ aside {
     aside .facet-item input, aside a input {
       margin-right: 4px; }
   aside .facet-name {
-    width: 90%;
+    width: 88%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

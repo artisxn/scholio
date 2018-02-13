@@ -6,6 +6,7 @@
 
 
     <style>
+        .title{color: #008da5; font-weight: 400; margin-bottom: 20px;}
         #myform { margin-top: 20px;}
         .span-cont{ padding: 10px ; position: relative} /* border: solid orange 1px; */
         .btn-del,.btn-del-sel{ background-color: #37515f; color: white; opacity: 0.7; bottom: 35px; right: 28px; position: absolute}
@@ -13,7 +14,7 @@
         .btn-del:hover{color: #ee980e; background-color: #1b2b37;}
         .btn-vis {visibility: visible}
         .info {font-size: 150%;  padding: 3px  10px 0 0;}   /* -webkit-text-stroke: 1px white;  color: transparent; */
-        .selectedImg{border: 5px solid #00bcd4;}
+        .selectedImg{border: 4px solid #00bcd4; border-radius: 6px;}
 
        /*.pic:before {*/
              /*content: '';*/
@@ -28,7 +29,8 @@
 
         .out-div{height: 258px;}
         .pic {
-            border: 6px solid #fff;
+            border: 5px solid #bbb;
+            border-radius: 8px;;
             float: left;
             height: 240px;
             width: 100%;
@@ -53,8 +55,9 @@
         }
         .btn-green{background-color: #00bcd4; padding-top: 4px; color: #fff; outline: none;}
         .btn-green:hover{background-color: #00a5bd; color: #fff; outline: none;}
-        .text{ max-width: 620px; font-size: 110%; text-align: justify; margin-top: 15px;}
-        .upper-texts{margin-left: 20px;}
+
+        .upper-texts{margin-left: auto; text-align: center; margin-right: auto; margin-top: 30px;}
+        .text{ width: 410px; font-size: 110%; text-align: center; margin-top: 15px; margin-bottom: 30px; margin-left: auto; margin-right: auto;}
         .photo-container {margin-left: -15px; }
         h3 {font-weight: 300;}
 
@@ -93,7 +96,7 @@
             .out-div{height: 212px;}
         }
 
-                     /* ========== Modal ============== */
+        /* ========== Modal ============== */
 
         .modal-sc-logo{margin-top: -4px; height: 60px;}
         .modal-content{padding: 0!important; border: none; border-radius: 5px!important;}
@@ -123,19 +126,19 @@
 @section('content')
 
     <!-- Content  ΟΚ  simple upload-->
-    <div class="row  old">
+    <div class="row ">
 
         <div class="upper-texts">
-            <h3 class="">@lang('school_photos.title')</h3>
+            <h3 class="title">@lang('school_photos.title')</h3>
 
             <div class="btn btn-green" data-target="#upload-modal" data-toggle="modal"> @lang('school_photos.button')</div>
 
-            @if(count(auth()->user()->info->image) == 0)
-                <p class="text">ΒΑΛΕ ΚΑΜΙΑ ΦΩΤΟ ΑΠΟ ΤΟ ΚΤΗΡΙΟ ΣΟΥ</p>
-            @elseif(count(auth()->user()->info->image) >1)
-                <p class="text"> ME KLIck </p>
-            @elseif(count(auth()->user()->info->image) < 4)
-                <p class="text"> @lang('school_photos.subtitle') </p>
+            @if(count(auth()->user()->info->image) >4 )
+                <p class="text"> @lang('school_photos.subtitle2') </p>
+            @else
+                <p class="text"> @lang('school_photos.subtitle1') </p>
+            {{--@elseif(count(auth()->user()->info->image) >1 )--}}
+
             @endif
             
             <div class="row">

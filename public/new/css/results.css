@@ -222,7 +222,7 @@ p {padding: 15px; color: #5d5d5d;  }
 .facet-category-title{ font-weight: 300; padding-top: 20px; margin-bottom: 0; padding-bottom: 0}
 .filter-title{ font-weight: 300; font-size: 120%;; margin-top: 0; padding-top: 0}
 .algolia-search-container{width:297px; padding: 0; margin-left: -16px; margin-right: 0}
-.algolia-search-input{ font-size: 95%; font-weight: 300}
+.algolia-search-input{ font-size: 95%; font-weight: 300;  border-radius: 5px!important;}
 
 .filter-container{
     padding-top: 10px; padding-bottom: 10px;

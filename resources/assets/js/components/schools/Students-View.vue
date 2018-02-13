@@ -20,8 +20,17 @@
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
             <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
                    v-model="searchStr" v-on:keyup="fetch(1)">
+            <span class="input-group-addon addon2">
+                        <span class="search-counter" >{{ studentCounter }} <i class="fa fa-graduation-cap"></i></span>
+            </span>
         </div>
-        <div>{{ studentCounter }}</div>
+
+
+
+
+
+
+        <!--<div class="search-counter" v-else>{{ studentCounter }} Σπουδαστές</div>-->
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
 
@@ -288,7 +297,7 @@
 
 
 
-                                <div class="col-lg-6 col-data">
+                                <div class="col-sm-6 col-data">
                                     <div class="info-title">
                                         Πόλη Μαθητή
                                     </div>
@@ -298,7 +307,7 @@
                                     </div>
                                     <div class="line"></div>
                                 </div>
-                                <div class="col-lg-6 col-data">
+                                <div class="col-sm-6 col-data">
                                     <div class="info-title">
                                         Διεύθυνση Μαθητή
                                     </div>
@@ -309,7 +318,7 @@
                                     <div class="line"></div>
                                 </div>
 
-                                <div class="col-lg-6 col-data">
+                                <div class="col-sm-6 col-data">
                                     <div class="info-title">
                                         Τηλέφωνο Μαθητή
                                     </div>
@@ -319,7 +328,7 @@
                                     </div>
                                     <div class="line"></div>
                                 </div>
-                                <div class="col-lg-6 col-data">
+                                <div class="col-sm-6 col-data">
                                     <div class="info-title">
                                         email Μαθητή
                                     </div>
@@ -332,7 +341,7 @@
 
 
 
-                                <div class="col-lg-6 col-data">
+                                <div class="col-sm-6 col-data">
                                     <div class="info-title">
                                         Ονοματεπώνυμο Πατέρα
                                     </div>
@@ -342,7 +351,7 @@
                                     </div>
                                     <div class="line"></div>
                                 </div>
-                                <div class="col-lg-6 col-data">
+                                <div class="col-sm-6 col-data">
                                     <div class="info-title">
                                         Ονοματεπώνυμο Μητέρας
                                     </div>
@@ -354,7 +363,7 @@
                                 </div>
 
 
-                                <div class="col-lg-6 col-data">
+                                <div class="col-sm-6 col-data">
                                     <div class="info-title">
                                         Τηλέφωνο Πατέρα
                                     </div>
@@ -364,7 +373,7 @@
                                     </div>
                                     <div class="line"></div>
                                 </div>
-                                <div class="col-lg-6 col-data">
+                                <div class="col-sm-6 col-data">
                                     <div class="info-title">
                                         Τηλέφωνο Μητέρας
                                     </div>
@@ -479,9 +488,16 @@
     .btn-info,.btn-info:focus{background: #00bcd4; border-color: #00bcd4; }
     .btn-info:hover{background: #00a6be; border-color: #00a6be; }
 
-    .btn-view{margin: 11px 10px 10px 0; height: 38px;}
+    .btn-view{margin: 11px 10px 10px 0!important; height: 38px;}
     .form-control{z-index: 0!important;}
-    .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
+    .form-control:focus,.form-control:active{border: none;}
+    .input-search{width: 290px!important; margin: 10px 0 10px 10px; border: 1px solid #c2c2c2; border-radius: 5px;}
+    .search-counter{display: inline-block; margin:3px 0 0 3px;}
+    .addon2{width: 70px; padding: 6px!important;}
+    .input-group-addon{border-radius: 5px; border:none; color: #9b9b9b
+    }
+    .form-control{border: none!important;}
+
 
     .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #a5a5a5; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
 
@@ -517,7 +533,7 @@
 
     /* ============ MODAL CARD ==========*/
     /* ==================================*/
-    .modal-content{border-radius: 7px!important; background-color: #f4f4f4; padding: 0!important; border: none!important;}
+    .modal-content{border-radius: 7px!important; background-color: #f4f4f4; padding: 0!important; border: none!important; }
     .modal-up{padding: 20px 15px ; margin: 0; background-color: #007087; height: 110px; border-top-left-radius: 6px; border-top-right-radius: 7px;}
     .modal-footer{padding: 15px; background-color: #a1afaa; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; height: 80px;
     }
@@ -567,16 +583,23 @@
     }
 
 
+    @media (min-width: 768px) {
+        .modal-content{width:670px }
+    }
+
+    @media (min-width: 900px) {
+        .modal-content{width:730px }
+    }
 
     @media (min-width: 1200px) {
-        .modal-content{width: 780px }
+        .modal-content{width: 840px }
     }
     @media (min-width: 1600px) {
-        .modal-content{width: 940px }
+        .modal-content{width: 980px }
     }
 
-    @media (max-width: 620px) {
-        .modal-infos{height: 410px }
+    @media (max-width: 767px) {
+        .modal-infos{height: 750px }
     }
 
 
@@ -718,16 +741,29 @@
         /*.pull-right{ margin-right: 50px!important;}*/
     }
 
+    @media  (max-width: 640px) {
+        .btn-view{width: 96%; margin: 0 auto 15px auto!important;  float: none!important; display: block; text-align: center!important;}
+        .form-control{ width: 210px;
+            border-bottom-right-radius: 4px!important; border-top-right-radius: 4px!important;
+            -moz-border-radius-bottomright: 4px!important; -moz-border-radius-topright: 4px;}
+        .input-search{width: 70%!important; }
+
+    }
+
+    @media  (max-width: 535px) {
+        .addon2{display: none;}
+    }
+
     @media  (max-width: 595px) {
         .col-xxs-12{width: 100%}
 
 
     }
-    @media  (max-width: 550px) {
-
-        .btn-view{width: 95%; margin: 0 auto 15px auto; float: none!important; display: block; text-align: center!important;}
-
-    }
+    @media  (max-width: 580px) {  .input-search{width: 68%!important; }  }
+    @media  (max-width: 540px) {  .input-search{width: 66%!important; }  }
+    @media  (max-width: 500px) {  .input-search{width: 62%!important; }  }
+    @media  (max-width: 450px) {  .input-search{width: 95%!important; }  .addon2{display: table-cell;} }
+    /*@media  (max-width: 380px) {  .input-search{width: 96%!important; }  }*/
 
 
     /*RADIO INPUT STYLE [same @ Scholarships-vue]*/
