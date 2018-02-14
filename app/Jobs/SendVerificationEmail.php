@@ -8,8 +8,13 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
+use Mail;
+use App\Mail\EmailVerification;
+
 class SendVerificationEmail implements ShouldQueue
 {
+    use App\Mail\EmailVerification;
+
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
@@ -17,9 +22,9 @@ class SendVerificationEmail implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -29,6 +34,7 @@ class SendVerificationEmail implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $email = new EmailVerification($this->user);
+        Mail::to($this->user->email)->send($email);
     }
 }

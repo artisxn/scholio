@@ -12,6 +12,7 @@ use App\Models\University;
 use App\Models\Subscription;
 use App\Models\ScholarshipLimit;
 use App\Models\SchoolSetting;
+use App\Jobs\SendVerificationEmail;
 
 class SchoolRegistrationController extends Controller
 {
@@ -69,8 +70,8 @@ class SchoolRegistrationController extends Controller
 
         $this->createUser()->createSchoolOfType(request()->type)->createSchoolPrefs();
 
-        // Send confirmation email
-        
+        dispatch(new SendVerificationEmail($this->user));
+
         
         auth()->login($this->user);
 
@@ -93,6 +94,7 @@ class SchoolRegistrationController extends Controller
         $user->email = request()->email;
         $user->role = 'school';
         $user->password = bcrypt(request()->password);
+        $user->email_token = base64_encode(request()->email);
         $user->save();
 
         $this->user = $user;
@@ -138,5 +140,14 @@ class SchoolRegistrationController extends Controller
         $university = new University;
         $university->name = $this->user->name;
         $university->save();
+    }
+
+    public function verify($token)
+    {
+        $user = User::where('email_token', $token)->first();
+        $user->verified = 1;
+        if ($user->save()) {
+            return view('emailconfirm', ['user' => $user]);
+        }
     }
 }
