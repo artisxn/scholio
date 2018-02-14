@@ -727,6 +727,10 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
 
             $active1 = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type;
             $active2 = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type2;
+            $active1Level = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->level;
+            $active2Level = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->level2;
+
+            $dummy = $active1 . ',' . $active2 . ',' . $active1Level . ',' . $active2Level;
 
             // foreach($item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->get() as $std){
             //     $section = $std->section[0];
@@ -734,7 +738,7 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             //     $dummy .= $std->name . ',' . $section->name . ',' . $level->name . ',';
             // }
 
-            $replacement2 = preg_replace('/ά/iu', '${1}α', $active1);
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $dummy);
             $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
             $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
             $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
@@ -742,17 +746,9 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
             $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
             $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
 
-            $replacement3 = preg_replace('/ά/iu', '${1}α', $active2);
-            $replacement3 = preg_replace('/έ/iu', '${1}ε', $replacement3);
-            $replacement3 = preg_replace('/ή/iu', '${1}η', $replacement3);
-            $replacement3 = preg_replace('/ί/iu', '${1}ι', $replacement3);
-            $replacement3 = preg_replace('/ό/iu', '${1}ο', $replacement3);
-            $replacement3 = preg_replace('/ύ/iu', '${1}υ', $replacement3);
-            $replacement3 = preg_replace('/ώ/iu', '${1}ω', $replacement3);
-
             if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
                 preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) ||
-                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $replacement3) || preg_match('/' . $field . '/iu', $active1) || preg_match('/' . $field . '/iu', $active2)) {
+                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $dummy)) {
                 return $item;
             }
         });

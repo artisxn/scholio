@@ -49,13 +49,18 @@ class DatabaseSeeder extends Seeder
 
             $subscription = new Subscription;
             $subscription->user_id = $school->admin->id;
-            // if($school->id == 1){
-            //     $subscription->plan_id = 2;
-            // }
+            if($school->id < 7){
+                $subscription->plan_id = 2;
+            }
             $subscription->save();
 
             $settings = new SchoolSetting;
             $settings->school_id = $school->id;
+            if ($school->id < 7) {
+                $settings->reviews = true;
+                $settings->teachers = true;
+                $settings->statistics = true;
+            }
             $settings->save();
 
             $address = Scholio::geocode($school->address . ', ' . $school->city);
@@ -74,12 +79,12 @@ class DatabaseSeeder extends Seeder
         }
 
         // Only for development
-        DB::table('scholarship_limits')->truncate();
-        foreach (School::all() as $school) {
-            $scholarshipLimit = new ScholarshipLimit;
-            $scholarshipLimit->school_id = $school->id;
-            $scholarshipLimit->save();
-        }
+        // DB::table('scholarship_limits')->truncate();
+        // foreach (School::all() as $school) {
+        //     $scholarshipLimit = new ScholarshipLimit;
+        //     $scholarshipLimit->school_id = $school->id;
+        //     $scholarshipLimit->save();
+        // }
 
         // Create Admin Users
         $user1 = new User;
