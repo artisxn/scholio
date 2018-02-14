@@ -13,6 +13,9 @@ use App\User;
 use App\Events\NewSubscription;
 
 Scholio::soonRoutes();
+
+Route::get('/verifyemail/{token}', 'VerifyController@verify');
+
 // ========  kfrei testing ===============
 Route::get('/resetpass', function () {
     return view('auth.passwords.reset');

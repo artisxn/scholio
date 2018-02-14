@@ -13,7 +13,7 @@ use App\Mail\EmailVerification;
 
 class SendVerificationEmail implements ShouldQueue
 {
-    use App\Mail\EmailVerification;
+    protected $user;
 
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 

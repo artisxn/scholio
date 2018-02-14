@@ -81,8 +81,6 @@ class RegisterController extends Controller
         $user->password = bcrypt($data['password']);
         $user->save();
 
-        // event(new UserRegistered($user));
-
         if ($user->role == 'school') {
             
             School::createSchoolAndDummy($user->id, request()->type);

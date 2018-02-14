@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('role')->default('guest');
             $table->string('username')->unique()->nullable();
             $table->string('status')->default('guest');
+            $table->string('email_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
