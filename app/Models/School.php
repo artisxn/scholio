@@ -87,7 +87,7 @@ class School extends Model
      */
     public function lengthScholarships()
     {
-        return $this->scholarship()->count();
+        return $this->activeScholarships()->count();
     }
 
     /**

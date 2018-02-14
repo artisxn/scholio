@@ -32,9 +32,11 @@ class CreateAlgoliaSchoolsTable extends Migration
             $table->integer('lengthTeachers')->nullable();
             $table->integer('lengthStudies')->nullable();
             $table->integer('lengthScholarships')->nullable();
+            $table->text('activeScholarships')->nullable(); // για να περνουμε την λεξη υποτροφια (οταν εχει πάνω απο 0 ενεργες υποτροφιες)
             $table->float('stars', 2, 1)->nullable();
             $table->integer('reviews')->nullable();
             $table->text('tags')->nullable();
+            $table->integer('subscription')->nullable();
         });
     }
 

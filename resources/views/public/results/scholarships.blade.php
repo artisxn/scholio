@@ -554,7 +554,7 @@ angular.module("scholarshipsResultsApp",[])
    <div class="col-xs-12 scholar-header">
        <div class="circle margin-top-8 pull-left">
            <div class=" trophy-container centered-abs">
-                    <img class="logo-img centered img-circle" src="/images/schools/@{{school_logo}}" alt="">
+                    <img class="logo-img centered img-circle" src="@{{school_logo}}" alt="">
                <!-- <img class="trophy-img centered" src="/new/img/trophy4.png" alt=""> --!>
            </div>
        </div>

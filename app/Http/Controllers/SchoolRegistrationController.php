@@ -16,6 +16,8 @@ use App\Models\SchoolSetting;
 class SchoolRegistrationController extends Controller
 {
 
+    protected $user;
+
     public function __construct()
     {
         $this->middleware('guest')->except('showSchoolUserRegistrationForm', 'registerUserSchool');
@@ -65,6 +67,27 @@ class SchoolRegistrationController extends Controller
             'email' => ['required', 'email', Rule::unique('users', 'email')],
         ]);
 
+        $this->createUser()->createSchoolOfType(request()->type)->createSchoolPrefs();
+
+        // Send confirmation email
+        
+        
+        auth()->login($this->user);
+
+        // Αν δεν πάει κάτι καλά με το School registration
+        // πρέπει να σβήσω και τον χρήστη από την βάση
+
+        return redirect('/dashboard');
+    }
+
+    public function createSchoolPrefs(){
+        $this->createSubscription();
+        $this->createScholarshipLimits();
+        $this->createSchoolSettings();
+        $this->createUniversity();
+    }
+
+    public function createUser(){
         $user = new User;
         $user->name = request()->name;
         $user->email = request()->email;
@@ -72,46 +95,48 @@ class SchoolRegistrationController extends Controller
         $user->password = bcrypt(request()->password);
         $user->save();
 
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function createSchoolOfType($type){
         $school = new School;
-        $school->user_id = $user->id;
-        $school->type_id = request()->type;
+        $school->user_id = $this->user->id;
+        $school->type_id = $type;
         $school->logo = '/upload/school/univ.png';
         $school->save();
 
-        // create subscription
+        return $this;
+    }
+
+    public function createSubscription(){
         $sub = new Subscription;
-        $sub->user_id = $user->id; 
+        $sub->user_id = $this->user->id;
         $sub->plan_id = 1;
         $sub->save();
+    }
 
-        // Scholarship Limits
+    public function createScholarshipLimits(){
         $limit = new ScholarshipLimit;
-        $limit->school_id = $school->id;
+        $limit->school_id = $this->user->info->id;
         $limit->cr1 = 5;
         $limit->cr2 = 3;
         $limit->cr3 = 3;
         $limit->cr4 = 3;
         $limit->cr5 = 3;
         $limit->save();
+    }
 
-        // Seting 
+    public function createSchoolSettings(){
         $settings = new SchoolSetting;
-        $settings->school_id = $school->id;
+        $settings->school_id = $this->user->info->id;
         $settings->save();
+    }
 
-
-        // Send confirmation email
-
-        // Create University
+    public function createUniversity(){
         $university = new University;
-        $university->name = request()->name;
+        $university->name = $this->user->name;
         $university->save();
-
-        auth()->login($user);
-
-        // Αν δεν πάει κάτι καλά με το School registration
-        // πρέπει να σβήσω και τον χρήστη από την βάση
-
-        return redirect('/dashboard');
     }
 }

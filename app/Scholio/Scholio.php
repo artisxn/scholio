@@ -182,6 +182,8 @@ class Scholio
             $dummy->stars = $s->averageStars();
             $dummy->reviews = $s->countReviews();
             $dummy->username = $s->admin->username ?? 'nousername';
+            $dummy->subscription = $s->admin->subscription->plan_id;
+            $dummy->activeScholarships = $s->lengthScholarships() > 0 ? 'υποτροφια, scholarship, υποτροφιες': '';
 
             foreach ($s->study as $study) {
                 $studyDummy .= $study->name . ',';
