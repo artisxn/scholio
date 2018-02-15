@@ -184,10 +184,9 @@ class School extends Model
     {
         $img = Image::find($this->background);
         if ($img) {
-            return $img->path;
+            return $img->full_path;
         }
         return;
-        // return $this->image()->pluck('path')->first();
     }
 
     public function dummy()
