@@ -380,11 +380,18 @@
                     @if($activeDate)
                         <span class="margin-right-20">
                             <a href="">
-                                <button id="button" type="button" ng-click="interested(scholarship.id)"
-                                            class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
+                                @if(auth()->check() && auth()->user()->role == 'student' && auth()->user()->interestedIn($scholarship->id))
+                                    <button id="button" type="button" ng-click="interested(scholarship.id)" class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white" style="background-color: #ccc;">
+                                        <i id="icon" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                        <span id="text" ng-init="check(scholarship)">ΕΝΔΙΑΦΕΡΘΗΚΑ</span>
+                                    </button>
+                                @else
+                                <button id="button" type="button" ng-click="interested(scholarship.id)" class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
                                     <i id="icon" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
                                     <span id="text" ng-init="check(scholarship)">@lang('scholarship_view.top.interested_button')</span>
                                 </button>
+                                    
+                                @endif
                             </a>
                         </span>
                         @if(!auth()->user()->checkAdmission($scholarship))
@@ -595,28 +602,29 @@
                             .success(function(data)   {
                                 console.log(data,'data');
                                 if(data == 'YES'){
-                                    $('#text').text("@lang('profile.scholarship.button.interested')")
+                                    $('#text').text("ΕΝΔΙΑΦΕΡΘΗΚΑ")
                                     $('#icon').toggleClass('fa-thumbs-up fa-thumbs-o-up');
-                                    $('#button').css('background-color', '#008da5')
-                                }else{
-                                    $('#text').text("@lang('profile.scholarship.button.like')")
-                                    $('#icon').toggleClass('fa-thumbs-o-up fa-thumbs-up');
                                     $('#button').css('background-color', '#ccc')
+                                }else{
+                                    $('#text').text("ΕΝΔΙΑΦΕΡΟΜΑΙ")
+                                    $('#icon').toggleClass('fa-thumbs-o-up fa-thumbs-up');
+                                    $('#button').css('background-color', '#008da5')
                                 }
 
                             });
                 }
-                $scope.check = function(scholarship){
 
-                    setTimeout(function() {
-                        if(scholarship.userInterested){
-                            $('#icon').toggleClass('fa-thumbs-up fa-thumbs-o-up');
-                            $('#text').text('@lang('profile.scholarship.button.like')')
-                            $('#button').css("background-color", "#ccc");
-                        }
-                        console.log(scholarship.userInterested)
-                    }, 130);
-                }
+                // $scope.check = function(scholarship){
+
+                //     setTimeout(function() {
+                //         if(scholarship.userInterested){
+                //             $('#icon').toggleClass('fa-thumbs-up fa-thumbs-o-up');
+                //             $('#text').text('@lang('profile.scholarship.button.like')')
+                //             $('#button').css("background-color", "#ccc");
+                //         }
+                //         console.log(scholarship)
+                //     }, 150);
+                // }
 
 
 
