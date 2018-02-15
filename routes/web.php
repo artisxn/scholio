@@ -14,6 +14,10 @@ use App\Events\NewSubscription;
 
 Scholio::soonRoutes();
 
+Route::get('/terms', function(){
+    return view('terms');
+});
+
 Route::get('/verifyemail/{token}', 'VerifyController@verify');
 
 // ========  kfrei testing ===============
