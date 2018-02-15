@@ -80,8 +80,9 @@
     <!-- Rating js-->
     <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
 
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+
 
 <script>
     window.REVIEWS = {{ $reviews }};

@@ -201,13 +201,13 @@ class ApiController extends Controller
 
         $ints = [];
 
-        $schols = $school->scholarship->where('active', 1)->take(2);
+        $schols = $school->scholarship->where('active', 1)->take(4);
 
         foreach ($schols as $scholarship) {
             $scholarship->level = $scholarship->level;
             // $scholarship->section = $scholarship->study->section;
             $scholarship->criteria = $scholarship->criteria->name;
-            $scholarship->financial = $scholarship->finacreatedncial->plan;
+            $scholarship->financial = $scholarship->financial->plan;
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
             $scholarship->multipleStudies = $scholarship->multipleStudies;
@@ -268,7 +268,7 @@ class ApiController extends Controller
 
         $ints = [];
 
-        $schols = $school->scholarship->where('active', 1)->take(2);
+        $schols = $school->scholarship->where('active', 1)->take(4);
 
         foreach ($schols as $scholarship) {
             $scholarship->level = $scholarship->level;
