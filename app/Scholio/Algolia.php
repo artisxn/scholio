@@ -2,12 +2,15 @@
 
 namespace App\Scholio;
 
+use App\Models\AlgoliaSchool;
+
+
 class Algolia {
 
     public static function newSchool($school){
         $studyDummy = '';
         $tagsDummy = '';
-        $dummy = new AlgoliaSchool;
+        $dummy = new AlgoliaSchool();
         $dummy->type_id = $school->type_id;
         $dummy->type = $school->type->name;
         $dummy->school_id = $school->id;

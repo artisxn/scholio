@@ -2,7 +2,6 @@
 {{--Styling on panel/pages/school/dashboard/main.blade.php--}}
 
 <div class="row">
-
      @if(auth()->user()->subscription->plan->id != 1)
         <div class="col-lg-3 col-md-4 col-sm-6" >
             <a href="{{ url('/panel/school/students') }}" id="btn-students">

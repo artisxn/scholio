@@ -24,6 +24,13 @@
 @endsection
 
 @section('content')
+
+<!-- ΕΔΩ ΜΠΑΙΝΕΙ ΤΟ ΜΗΝΥΜΑ ΓΙΑ ΤΟ EMAIL VERIFICATION -->
+@if(Session::has('verify'))
+<h1>{{ session('verify') }}</h1>
+@endif
+<!-- ΕΔΩ ΜΠΑΙΝΕΙ ΤΟ ΜΗΝΥΜΑ ΓΙΑ ΤΟ EMAIL VERIFICATION -->
+
     <!-- Page-Title -->
     <div class="row" >
         <div class="col-sm-12">
