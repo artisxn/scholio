@@ -67,7 +67,8 @@
             <div class=" text-center" >
                 <div class="content" >
                     <div class="content-box">
-                        <img src="/new/img/ScholioLogoNewSm.png" height="100px" alt="">
+                        {{--<img src="/new/img/ScholioLogoNewSm.png" height="100px" alt="">--}}
+                        <img src="/new/img/logoNXsquareBg.png" height="150px" alt="">
                         <h1 class="logo-title">schol.io</h1>
                              @yield('content')
 

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/new/css/jquery.polymer-form.min.css" >
     <link rel="stylesheet" href="/new/css/cv.css" type="text/css"  >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="/panel/assets/css/jquery.typeahead.min.css" >
 
 
 <style>
@@ -139,6 +140,9 @@
                input: '.js-typeahead-studies',
                order: "asc",
                hint: true,
+               minLength: 2,
+               maxItem: 5,
+               searchOnFocus: true,
                source: {
                    data: window.stud
                },
@@ -276,21 +280,15 @@
                                     {{--</div>--}}
 
 
-                                <div class="typeahead__container col-sm-6 polyfill-input-sc">
+                                <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                     <div class=" input-container typeahead__field typeahead__query">
                                         <input type="text" label="Περιγραφή Βασικών Σπουδών" name="title"
-                                               class=" js-typeahead-studies demo-form ad-input demo-form ad-input"
+                                               class=" js-typeahead-studies demo-form ad-input"
                                                value="{{ auth()->user()->info->title }}"
                                                autocomplete="off">
                                         <i class="icon-inp fa fa-graduation-cap"></i>
                                     </div>
                                 </div>
-
-
-
-
-
-
 
                             </div>
 

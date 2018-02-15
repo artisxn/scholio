@@ -213,6 +213,7 @@ a:hover  {  color: #FD6A33;  }
 .sc-t-white{color: white;}
 .sc-t-dark-blue{color:#324c5a;}
 .sc-t-dark-green{color: #008da5;}
+.sc-t-dark-green-facebook-logo{color: #007a91;}
 .sc-t-green{color: #00bcd4;}
 .sc-t-grey{color: #888;}
 .sc-t-dark-grey{color: #4a5a62;}
@@ -459,6 +460,20 @@ div>ul>.selected{ background-color: transparent; border: none; box-shadow: none;
 .checkbox-primary input[type="checkbox"]:checked + label::after {
     color: #ffffff;
 }
+
+/*============================================================*/
+/*  ///////////////////////////////////////////////////////  */
+/* AVOID filled autocomplete input YELLOW background on chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset!important;
+    -webkit-text-fill-color: #000 !important;
+}
+/*  //////////////////////////////////////////////////////  */
+/*==========================================================*/
+
 
 
 /*=============================================*/

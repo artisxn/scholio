@@ -12,6 +12,8 @@
     @media(max-width: 992px){
         .left-section{padding-left: 20px;}
     }
+    .social-link:visited,.social-link:active,.social-link:focus{color: #fff}
+    .social-link:hover{color: #FD6A33}
 
 </style>
 
@@ -22,19 +24,19 @@
     <div class="container">
         <div class="row" >
             <div class="pull-left pad-top-50 text-incr-125 left-section" >
-                <a href="#" class="sc-t-white margin-right-20 ">@lang('main.footer.contact')</a>
-                <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="#" class="sc-t-white margin-right-20">@lang('main.footer.blog')</a></span>
-                <span class="">  <a href="#" class="sc-t-white">@lang('main.footer.terms')</a></span>
+                <a href="#" class="sc-t-white margin-right-20 social-link">@lang('main.footer.contact')</a>
+                <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="http://scholio.netlify.com/" target="_blank" class="sc-t-white margin-right-20 social-link">@lang('main.footer.blog')</a></span>
+                <span class="">  <a href="#" class="sc-t-white social-link">@lang('main.footer.terms')</a></span>
             </div>
 
             <div class="pull-right pad-top-45 text-incr-175  pad-right-20">
-                <a href="#" class="sc-t-white "> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
-                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
-                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
+                <a href="mailto:scholioApp@gmail.com" target="_top"class="sc-t-white social-link"> <i class="fa fa-envelope-o" aria-hidden="true"></i>  </a>
+                <span>  <a href="https://www.facebook.com/scholioapp/" target="_blank" class="sc-t-white margin-left-20 social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
+                <span>  <a href="https://twitter.com/ScholioApp" target="_blank" class="sc-t-white margin-left-20 social-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
                 <div style="width: 20px; height: 10px;"></div>
-                <span>  <a href="#" class="sc-t-white"><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
-                <span>  <a href="#" class="sc-t-white margin-left-20"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
-                <span>  <a href="#" class="sc-t-white margin-left-20 "><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
+                <span>  <a href="https://www.linkedin.com/company/18063117/" target="_blank" class="sc-t-white social-link"><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
+                <span>  <a href="https://www.instagram.com/schol.io/" target="_blank" class="sc-t-white margin-left-20 social-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
+                <span>  <a href="#" class="sc-t-white margin-left-20 social-link"><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
             </div>
         </div>
 

@@ -75,7 +75,7 @@
         <div class="">
             <span><i class="fa fa-envelope icon-envelope" style="float: left"></i> <span class="email-text">{{auth()->user()->email}}</span></span>
         </div>
-        <div class="line"></div>
+        {{--<div class="line"></div>--}}
 
 
     </div>
@@ -83,11 +83,15 @@
 
     <form action="/change/password" method="POST">
         <div class="input-password">
+            <input  type="password" label="Τρέχων Κωδικός" name="password" class="demo-form " value="">
+            <i class="fa fa-key icon-password"></i>
+        </div>
+        <div class="input-password">
             <input  type="password" label="Νέος Κωδικός" name="password" class="demo-form " value="">
             <i class="fa fa-key icon-password"></i>
         </div>
         <div class="input-password">
-            <input  type="password" label="Επαλήθευση Κωδικού" name="password" class="demo-form " value="">
+            <input  type="password" label="Επαλήθευση Νέου Κωδικού" name="password" class="demo-form " value="">
             <i class="fa fa-key icon-password"></i>
         </div>
         <button class="btn btn-submit" type="submit">Αποδοχή</button>

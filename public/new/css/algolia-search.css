@@ -344,5 +344,8 @@ aside {
   font-size: .8em;
   padding: 10px; }
 
+.counter{color: #aaa; font-weight: 300; float: right;}
+.fa-angle-right{color: #008da5}
+
   /* .ais-hierarchical-menu--item div a span {
 width: 90%  } */

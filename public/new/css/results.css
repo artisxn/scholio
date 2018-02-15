@@ -508,3 +508,14 @@ p {padding: 15px; color: #5d5d5d;  }
     .selectpicker{width:99%!important;}
 
 }
+
+
+input[type="text"]:focus,.form-control:focus, input{
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: #008da5;
+    box-shadow: none!important;
+}

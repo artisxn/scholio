@@ -6,7 +6,7 @@
     <div class="card-box">
         <div class="panel-heading text-center">
             <a href="/">
-                <img src="/new/img/logo-dark-green-144.png" alt="" style="width: 90px;">
+                <img src="/new/img/logoNXsquareBDG.png" alt="" style="width: 90px;">
             </a>
             <div class="text-center font-weight-300 login-signUp-title">Εγγραφη Εκπαιδευτικού Ιδρύματος στο Schol.io</div>
         </div>

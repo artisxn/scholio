@@ -735,7 +735,7 @@ angular.module("scholarshipsResultsApp",[])
 
     var menuTemplate =
             `<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span>
-                <span style='float: right;'> @{{count}} </span></a>`;
+                <span  class="counter"> @{{count}} </span></a>`;
 
     {{--var facetTemplateCheckbox =--}}
             {{--'<a href="javascript:void(0);" class="facet-item">' +--}}

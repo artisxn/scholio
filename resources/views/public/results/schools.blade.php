@@ -788,7 +788,7 @@ angular.module("schoolsResultsApp",[])
             '<div class="text-center">@lang('schools.error') <strong>@{{query}}</strong>.</div>';
 
     var menuTemplate =
-            '<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span class="facet-name"><span style="float: right;">@{{count}}</span></a>';
+            '<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span class="facet-name"><span class="counter">@{{count}}</span></a>';
 
 
 

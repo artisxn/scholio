@@ -102,8 +102,12 @@
 .btn-primary{background-color: #008da5!important; border: none!important;}
 .btn-primary:hover {background-color: #007991 !important;}
 p{font-size: 115%; color: #555}
-.hand {font-family: 'Architects Daughter','Gloria Hallelujah', 'Indie Flower', cursive; letter-spacing: 3px; color: #555}
-.logo-title{font-size: 220%; font-weight: 400; color: #098AA8; margin-top: 0!important;}
+
+/*.hand {font-family: 'Architects Daughter','Gloria Hallelujah', 'Indie Flower', cursive; letter-spacing: 3px; color: #555}*/
+
+.hand { font-weight: 300; letter-spacing: 3px; color: #555}
+
+.logo-title{font-size: 300%; font-weight: 400; color: #1A8AA6; margin-top: 0!important;}
 
 @-webkit-keyframes corner {
     0% {

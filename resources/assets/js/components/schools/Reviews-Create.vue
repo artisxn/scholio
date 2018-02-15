@@ -25,14 +25,15 @@
 </template>
 
 <style>
+
     .review-content{padding-left: 10px; margin-top: 20px;}
     i {margin-right: 10px;}
     .review-category{color: #888; position: relative;}
-    .review-stars{position: absolute; left: 272px;}
+    .review-stars{position: absolute; left: 300px;}
     .up{margin-top: 3px;}
     .text-com{margin: 30px 0 10px 0; letter-spacing:0.5px;}
-    .review-area{width: 355px; border-radius: 5px; height: 100px; resize: none; border: 1px solid #008da5}
-    .btn-save,.btn-save:focus,.btn-save:visited,.btn-save:active{margin: 15px 0 0 120px; border: none; background: #0090ab!important;  }
+    .review-area{width: 375px; border-radius: 5px; height: 100px; resize: none; border: 1px solid #008da5}
+    .btn-save,.btn-save:focus,.btn-save:visited,.btn-save:active{margin: 15px auto 0 auto; border: none; background: #0090ab!important;  }
     .btn-save:hover{background: #007a94!important;  }
     .star:hover{cursor: pointer;}
 
@@ -57,6 +58,8 @@
         .review-content{width: 295px; padding: 0;}
         .review-area{width: 290px; margin-left: -5px;}
     }
+
+    .review-category{text-align: left!important; width: 400px; margin-left: auto; margin-right: auto; padding-left: 13px; }
 
 </style>
 
