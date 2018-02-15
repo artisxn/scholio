@@ -118,7 +118,7 @@ body {
     padding-bottom: 10px;
 }
 
-#ypotrofies{min-height: 515px;}
+#ypotrofies{min-height: 515px; max-height: 1980px;}
 
 .main-box3 {
     /*border: solid 1px #e1e1e1;*/

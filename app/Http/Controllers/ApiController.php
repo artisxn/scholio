@@ -201,7 +201,7 @@ class ApiController extends Controller
 
         $ints = [];
 
-        $schols = $school->scholarship->where('active', 1)->take(2);
+        $schols = $school->scholarship->where('active', 1)->take(4);
 
         foreach ($schols as $scholarship) {
             $scholarship->level = $scholarship->level;
@@ -267,7 +267,7 @@ class ApiController extends Controller
 
         $ints = [];
 
-        $schols = $school->scholarship->where('active', 1)->take(2);
+        $schols = $school->scholarship->where('active', 1)->take(4);
 
         foreach ($schols as $scholarship) {
             $scholarship->level = $scholarship->level;

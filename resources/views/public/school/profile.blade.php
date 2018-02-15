@@ -647,11 +647,11 @@
                                 </div>
 
 
-                                <div class=" scholar-box col-sm-12">
-                                    <div ng-repeat="scholarship in contactInfo.scholarship" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                                <div class=" scholar-box col-sm-12" >
+                                    <div ng-repeat="scholarship in contactInfo.scholarship | limitTo:4" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                                          style="height: 400px!important; position: relative; margin: 20px 0 ; padding-left: 40px;">
 
-                                            <div class="scholar-frame " ng-class="{'sm-margin-left':($index%2==1)}">
+                                            <div class="scholar-frame " ng-class="{'sm-margin-left':($index%2==1)}" >
                                                     <div class="ribbon-wrapper">
                                                         <div class="ribbon-front sc-medium-grey">
                                                             {{--<i class="fa fa-diamond sc-t-white pad-left-20 text-incr-150 margin-top-10" aria-hidden="true"></i>--}}
@@ -824,7 +824,7 @@
                                                         <span class="xs-name" style="color: #888 !important;" >@{{teacher.name}}</span>
                                                 </div>
                                                 </a>
-                                                <span class="xs-user-info"> @{{ teacher }}</span>
+                                                <span class="xs-user-info"> @{{ teacher.info.title }}</span>
                                             </div>
                                         </div>
 
