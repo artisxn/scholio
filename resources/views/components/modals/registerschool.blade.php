@@ -1,7 +1,24 @@
 
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+<style>
 
+    /*============================================================*/
+    /*  ////////////////////////////////////////////////////////  */
+    /*  ============= AVOID  input Blue Glow Shadow ==============*/
+
+    input[type="text"]:focus,.form-control:focus, input{
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+
+    .form-control:focus {
+        border-color: #008da5;
+        box-shadow: none!important;
+    }
+    /*  //////////////////////////////////////////////////////  */
+    /*==========================================================*/
+</style>
 <div class="wrapper-page" style="padding: 70px">
     <div class="card-box">
         <div class="panel-heading text-center">

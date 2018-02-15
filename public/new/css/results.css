@@ -509,6 +509,9 @@ p {padding: 15px; color: #5d5d5d;  }
 
 }
 
+/*============================================================*/
+/*  ////////////////////////////////////////////////////////  */
+/*  ============= AVOID  input Blue Glow Shadow ==============*/
 
 input[type="text"]:focus,.form-control:focus, input{
     box-shadow: none;
