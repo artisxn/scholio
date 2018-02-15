@@ -14,6 +14,11 @@
                     <span class="" style="font-weight: 100; font-size: 95%; color: #fff;">
                         {{ auth()->user()->name }}
                     </span>
+                    @if(auth()->user()->role == 'school' && auth()->user()->status == 'guest')
+                        <div style="color:red">
+                            UNVERIFIED
+                        </div>
+                    @endif
             </div>
         </div>
     </div>
