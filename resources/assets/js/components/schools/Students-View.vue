@@ -1,6 +1,8 @@
 <template>
     <div class="row">
 
+        <div v-if="dataSet">
+
         <form class="sc-radio pull-left">
             <input id="r1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch(1, 'connected')"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active-many') }}
                 <span class="pull-right" style="">{{ connectedStudents }}</span>
@@ -24,11 +26,6 @@
                         <span class="search-counter" >{{ studentCounter }} <i class="fa fa-graduation-cap"></i></span>
             </span>
         </div>
-
-
-
-
-
 
         <!--<div class="search-counter" v-else>{{ studentCounter }} Σπουδαστές</div>-->
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
@@ -399,6 +396,10 @@
 
             </div>
         </div>
+    </div>
+    <div v-else>
+        PERIMENE
+    </div>
     </div>
 
 </template>
@@ -984,7 +985,10 @@
                 },
 
                 refresh({data}) {
-                    this.dataSet = data;
+                    setTimeout(()=>{
+                        this.dataSet = data;
+                    }, 2000)
+                    
                     this.items = data.data;
                     this.allumniCount = this.items.allumniStudents
                     this.connectedCount = this.items.connectedStudents
