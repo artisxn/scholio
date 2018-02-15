@@ -810,7 +810,7 @@
                                                             <span style="color: #fff !important;" >@{{teacher.name}}</span>
                                                     </span>
                                                    </a>
-                                                   <span class="user-info"> Marketing Evangelist</span>
+                                                   <span class="user-info"> @{{ teacher.info.title }}</span>
 
                                                </div>
                                             </div>
@@ -824,7 +824,7 @@
                                                         <span class="xs-name" style="color: #888 !important;" >@{{teacher.name}}</span>
                                                 </div>
                                                 </a>
-                                                <span class="xs-user-info"> Marketing Evangelist</span>
+                                                <span class="xs-user-info"> @{{ teacher }}</span>
                                             </div>
                                         </div>
 
@@ -1376,6 +1376,7 @@
                                 .success(function(data)   {
                                    console.time('contactInfo API');
                         $scope.contactInfo=data;
+                        console.log(data)
                         window.totalStars = data.stars
                         $scope.ratings();
                         $scope.studies = data.levels;

@@ -205,9 +205,8 @@ class ApiController extends Controller
 
         foreach ($schols as $scholarship) {
             $scholarship->level = $scholarship->level;
-            // $scholarship->section = $scholarship->study->section;
             $scholarship->criteria = $scholarship->criteria->name;
-            $scholarship->financial = $scholarship->finacreatedncial->plan;
+            $scholarship->financial = $scholarship->financial->plan;
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
             $scholarship->multipleStudies = $scholarship->multipleStudies;
@@ -216,7 +215,7 @@ class ApiController extends Controller
                 $scholarship->financial = $scholarship->financialEN->plan;
             }
 
-            if (auth()->check()) {
+            if (auth()->check() && auth()->user()->role == 'student') {
                 $ints = ['sd'];
                 $student = User::find(auth()->user()->id);
                 if ($student->interested->contains($scholarship)) {
