@@ -34,30 +34,6 @@
 
         <div v-if="selection==true">
 
-            <transition name="fade">
-                <!--<div v-if="filteredStudents.length == 0" style="margin-left: 10px; margin-top:  60px;">-->
-                    <!--<div class="animated-background col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2"  v-for="i in 6" style="margin-bottom: 140px; padding-right: 15px;">-->
-                        <!--<div class="background-masker header-top"></div>-->
-                        <!--<div class="background-masker header-left"></div>-->
-                        <!--<div class="background-masker header-right"></div>-->
-                        <!--<div class="background-masker header-bottom"></div>-->
-
-                        <!--<div class="background-masker subheader-left"></div>-->
-                        <!--<div class="background-masker subheader-right"></div>-->
-                        <!--<div class="background-masker subheader-bottom"></div>-->
-
-                        <!--<div class="background-masker content-top"></div>-->
-                        <!--<div class="background-masker content-first-end"></div>-->
-                        <!--<div class="background-masker content-second-line"></div>-->
-                        <!--<div class="background-masker content-second-end"></div>-->
-                        <!--<div class="background-masker content-third-line"></div>-->
-                        <!--<div class="background-masker content-third-end"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            </transition>
-
-
-
             <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents" v-if="(student.role=='student')"  >
 
                 <div class="double-card"  :id="'card'+index"  >
@@ -157,12 +133,6 @@
 
             </div>
 
-
-
-
-
-
-
         </div>
 
         <div class="clearfix"></div>
@@ -204,9 +174,6 @@
                 </tbody>
             </table>
         </div>
-
-        <paginator :dataSet="dataSet" @changed="fetch"></paginator>
-
 
 
         <!-- Modal -->
@@ -398,14 +365,50 @@
         </div>
     </div>
     <div v-else>
-        PERIMENE
+
+        <!-- PRELOADER -->
+
+        <div style="margin-top: 40px;">
+            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 "  v-for="i in 12">
+                <transition name="fade">
+                        <div class="animated-background" style="margin-top: 100px;">
+                            <div class="preloader-container ">
+                                <div class="background-masker header-top"></div>
+                                <div class="background-masker header-left"></div>
+                                <div class="background-masker header-right"></div>
+                                <div class="background-masker header-bottom"></div>
+
+                                <div class="background-masker subheader-left"></div>
+                                <div class="background-masker subheader-right"></div>
+                                <div class="background-masker subheader-bottom"></div>
+
+                                <div class="background-masker content-top"></div>
+                                <div class="background-masker content-first-end"></div>
+                                <div class="background-masker content-second-line"></div>
+                                <div class="background-masker content-second-end"></div>
+                                <div class="background-masker content-third-line"></div>
+                                <div class="background-masker content-third-end"></div>
+                            </div>
+                        </div>
+                </transition>
+            </div>
+
+        </div>
+
+
+
+
     </div>
+
+        <paginator :dataSet="dataSet" @changed="fetch"></paginator>
+
     </div>
 
 </template>
 
 
 <style>
+
     .alumniFilter{-webkit-filter: grayscale(75%); opacity: 0.9}
 
 
@@ -987,7 +990,7 @@
                 refresh({data}) {
                     setTimeout(()=>{
                         this.dataSet = data;
-                    }, 2000)
+                    }, 700)
                     
                     this.items = data.data;
                     this.allumniCount = this.items.allumniStudents

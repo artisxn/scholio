@@ -86,6 +86,8 @@
 
 <script>
     window.REVIEWS = {{ $reviews }};
+
+
 </script>
 </head>
 
@@ -117,6 +119,17 @@
     .pos-xs{right: 11px;}
     .pos-right{right: -6px}
 
+    .report{ position: absolute; top: 20px; right:20px; font-size: 180%; color:#aaa; z-index: 50;}
+    .report:hover{color: #FD6A33; cursor: pointer;}
+    .report-logo{height: 50px; text-align: left; margin: 14px 0 0 14px; opacity: 0.3}
+    .report-drop{background: #fafafa;  border: 1px solid #ddd; box-shadow: 0px 0px 10px 2px #ccc; border-radius: 6px; width:0; height: 0; opacity:0;
+        margin-top: 30px; margin-right: 10px; display: inline-block; position: absolute; top: -16px; right: -1px; z-index: 20 }
+
+    .report-title{color: #00475d; opacity: 0.3; margin-left:10px; font-size: 110%}
+    .report-text{ width: 100%; height: 80px; text-align: justify; font-size: 90%; color: #ccc;margin-top: 20px; padding: 14px 18px;}
+    .report-text:hover{background: #aaa; color: #fff; cursor: pointer; }
+
+    .sc-button3{display: none;}
 
     @media (max-width:1449px){
         .pos-right{right: -30px}
@@ -220,9 +233,6 @@
         .text-Med{top: -204px;}
         .text-Large{top: -182px;}
     }
-
-
-
 
 
 
@@ -506,17 +516,64 @@
     @include('public.footer')
 
 </body>
+
+
 <script>
     function showMap(){
         var s = document.getElementById('query').value;
                 window.location = '/public/schools/map/?search='+ s;
     }
 
+
+    var open = false;
+    function dropReport(school){
+        if(open==false){
+            $('#card1'+school).css('filter','blur(2px)');
+            $('#card2'+school).css('filter','blur(2px)');
+            $('#card3'+school).css('filter','blur(2px)');
+            $('#card4'+school).css('filter','blur(2px)');
+            $('#card5'+school).css('filter','blur(2px)');
+
+//            $('#card1'+school).css('opacity','0.3');
+//            $('#card2'+school).css('opacity','0.3');
+//            $('#card3'+school).css('opacity','0.3');
+//            $('#card4'+school).css('opacity','0.3');
+//            $('#card5'+school).css('opacity','0.3');
+
+            console.log('blur')
+            $('#report-drop'+school).animate({opacity:1, width: 220, height: 260}, 190,"swing");
+
+        }
+        else{
+            $('#report-drop'+school).animate({opacity:0, width: 0, height: 0}, 150,"swing");
+            $('#card1'+school).css('filter','blur(0px)');
+            $('#card2'+school).css('filter','blur(0px)');
+            $('#card3'+school).css('filter','blur(0px)');
+            $('#card4'+school).css('filter','blur(0px)');
+            $('#card5'+school).css('filter','blur(0px)');
+
+//            $('#card1'+school).css('opacity','1');
+//            $('#card2'+school).css('opacity','1');
+//            $('#card3'+school).css('opacity','1');
+//            $('#card4'+school).css('opacity','1');
+//            $('#card5'+school).css('opacity','1');
+        }
+        open=!open
+    }
+
+
+    $( document ).ready(function() {
+
+    });
+
 </script>
 
 
 
 <script>
+
+
+
     window.STATS = {{$settings}}
 angular.module("schoolsResultsApp",[])
         .controller("schoolsResultsCtrl",function ($scope,$http) {
@@ -530,8 +587,8 @@ angular.module("schoolsResultsApp",[])
                 $scope.role=role;
             }
 
-            
-            
+            $scope.open=false;
+
 
             $scope.rate = function(id, stars){
                 
@@ -613,7 +670,7 @@ angular.module("schoolsResultsApp",[])
 
     var hitTemplate = `
 
-    <div class="card clear-fix margin-bot-25">
+    <div class="card clear-fix margin-bot-25" >
 
         <con>
 
@@ -629,7 +686,22 @@ angular.module("schoolsResultsApp",[])
         </con>
 
 
-        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-xl-custom">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-xl-custom" >
+
+
+                <i id="report" class="fa fa-ellipsis-h report" onClick="dropReport(@{{school_id}})" ></i>
+                <!-- =================== Report  Menu ====================-->
+                <div class="report-drop" id="report-drop@{{school_id}}">
+                     <img class="report-logo" style="" src="/new/img/logoNX-m.png" alt="">
+                     <span class="report-title"> Αναφορά </span>
+                     <div class="report-text"> Αναφορά του εκπαιδευτικού ιδρύματος στο διαχειριστή για προσβλητικό περιεχόμενο</div>
+                </div>
+
+                <!-- =====================================================-->
+
+
+
+
            @{{#hot}}
             <!-- <div  class="ribbon top20 pos-right"><span style="font-size: 95%">Popular</span></div> -->
             <img class="ribbonMed" style="" src="/new/img/RibbonMed.png" alt="">
@@ -642,7 +714,13 @@ angular.module("schoolsResultsApp",[])
            @{{/scholarshipLion}}
 
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 ">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 " id="card1@{{school_id}}">
+
+
+
+
+
+
                 <a href="/public/profile/@{{school_id}}" target="_blank">
                 <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="@{{logo}}">
                 </a>
@@ -659,7 +737,7 @@ angular.module("schoolsResultsApp",[])
 
             
             @{{#stats}}
-            <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
+            <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top" id="card2@{{school_id}}">
                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                 <span class="pull-left pad-left-5">@lang('schools.cards.scholarships')</span>
 
@@ -686,7 +764,7 @@ angular.module("schoolsResultsApp",[])
                 <br>
             </div>
 
-            <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3">
+            <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3" id="card3@{{school_id}}">
                 <div ng-show="type_id==1 || type_id==2 ">
                     <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-5">@lang('schools.cards.studies')</span>
@@ -730,12 +808,12 @@ angular.module("schoolsResultsApp",[])
             <div ng-show="type_id!=1 && type_id!=2">
                 <div class="margin-pad" style=""></div>
             </div>
-            <hr >
+            <hr id="card5@{{school_id}}" >
         </div>
 
 
 
-        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 " id="card4@{{school_id}}">
 
             <div class="">
                 <div class="col-lg-10 col-md-11 col-sm-6 col-xs-12 sc-t-grey">
