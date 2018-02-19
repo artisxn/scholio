@@ -67,13 +67,13 @@
 
             </div>
             <div v-if="level_value && study_value  && study_value.length>0">
-                <div style="position: absolute; top: 345px; width: 145px" class="font-weight-400 sc-t-grey">
-                    <span class="" style="">
-                        <i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
-                        {{lang('profile.scholarship.interested')}}:
-                        <span class="pull-right">0</span>
-                    </span>
-                </div>
+                <!--<div style="position: absolute; top: 345px; width: 145px" class="font-weight-400 sc-t-grey">-->
+                    <!--<span class="" style="">-->
+                        <!--<i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>-->
+                        <!--{{lang('profile.scholarship.interested')}}:-->
+                        <!--<span class="pull-right">0</span>-->
+                    <!--</span>-->
+                <!--</div>-->
                 <!-- <div style="position: absolute; top: 370px; width: 145px" class="font-weight-400 sc-t-grey">
                     <span class="" style="">
                         <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
@@ -113,16 +113,18 @@
                         </span>
                         <span class="scholar-text">
 
-                            H
-                            <span class="scholarship-name">{{criteria_value.name}}</span> αφορά Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Aperiam, aut fugiat magni nam placeat praesentium sint! Accusamus aspernatur, at cum dolorem
-                            id iste iusto magni minus mollitia nemo placeat quaerat tempore vel! Aliquid culpa earum eligendi
-                            maxime non ratione similique?
+                            {{criteria_value.text}}
+
+                            <!--H-->
+                            <!--<span class="scholarship-name">{{criteria_value.name}}</span> αφορά Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+                            <!--Aperiam, aut fugiat magni nam placeat praesentium sint! Accusamus aspernatur, at cum dolorem-->
+                            <!--id iste iusto magni minus mollitia nemo placeat quaerat tempore vel! Aliquid culpa earum eligendi-->
+                            <!--maxime non ratione similique?-->
                         </span>
 
                         <div class="btns-next-container">
                             <a href="#secondPage" class="btn-anchor">
-                                <div class="btn btn-success pull-right">Επόμενο
+                                <div class="btn btn-success pull-right" style="z-index: 2">Επόμενο
                                     <i class="fa fa-caret-right" aria-hidden="true"></i>
                                 </div>
                             </a>
@@ -185,8 +187,10 @@
                                 </span>
 
                                 <div class="financial-text">
-                                    <span class="scholarship-name">{{financial_value.name}}</span> αφορά Lorem ipsum dolor sit amet, consectetur adipisicing
-                                    elit. Aperiam, aut fugiat magni nam placeat praesentium sint!
+                                    <!--<span class="scholarship-name">{{financial_value.name}}</span> αφορά Lorem ipsum dolor sit amet, consectetur adipisicing-->
+                                    <!--elit. Aperiam, aut fugiat magni nam placeat praesentium sint!-->
+
+                                    {{financial_value.text2}}
 
                                 </div>
                             </div>
@@ -309,11 +313,14 @@
                                                 style="">
                                         </span>
 
-                                        <span class="funkyradio" style=" display: inline-block">
+                                        <span class="tool funkyradio" style=" display: inline-block">
                                             <span class="funkyradio-success">
                                                 <input type="checkbox" id="multiple" v-model="allWinners">
                                                 <label for="multiple" style="text-align: center; ">Πολλαπλοί Νικητές</label>
                                             </span>
+                                              <span class="tooltiptext">
+                                                    Επιλέξτε πολλαπλούς νικητές στην περίπτωση που η υποτροφία είναι με κοινωνικά κριτήρια ή για φίλους/αδέλφια ή ανοιχτου τύπου και ενδεχομένως ικανοποιούν τα κριτήρια πολλαπλοί συμμετέχοντες.
+                                             </span>
                                         </span>
 
                                     </div>
@@ -430,6 +437,7 @@
 
                         <div id="" class="terms-container">
                             <span style="color: transparent">.</span>
+                            <p style="margin-bottom: 8px"> Αναφέρετε παρακάτω σύντομα αλλά με σαφήνια τους <strong> Όρους και  τις Προϋποθεσεις </strong> της Υποτροφίας</p>
                             <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
                             <div>
                                 <span>{{ lang('panel_scholarships.create.remaining') }}:</span>
@@ -459,6 +467,37 @@
 </template>
 
 <style>
+
+    /* =========TOOLTIP=========*/
+    .tool {
+        position: relative;
+    }
+
+    .tooltiptext  {
+        font-weight: 300;
+        visibility: hidden;
+        width: 370px;
+        background-color: #007991;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding:  8px;
+        position: absolute;
+        z-index: 1;
+        bottom: 95%;
+        margin-left: -190px;
+        opacity: 0;
+        transition: opacity 0.1s;
+        background-color: #007991;
+        text-align: justify;
+    }
+
+    .tool:hover .tooltiptext{
+        visibility: visible;
+        opacity: 1;
+    }
+
+
 
     /* ======  avoid yellow input background on chrome ============ */
     input:-webkit-autofill,
@@ -597,9 +636,10 @@
     .financial-text {
         margin-top: 20px;
         padding-left: 10px;
+        text-align: justify;
     }
 
-    .financial-plan .multiselect {
+    .criteria .multiselect, .financial-plan .multiselect, .level .multiselect {
         z-index: 20
     }
 
@@ -867,7 +907,7 @@
         width: 430px;
     }
 
-    .scholarship-info {
+    .scholarship-info, .financial-text {
         width: 100%;
         max-width: 540px;
         margin: 20px 0;
@@ -1417,7 +1457,7 @@
     //    import disableScroll from 'disable-scroll';
     Vue.use(VueTinymce)
 
-    var max_chars = 100; //max characters
+    var max_chars = 4000; //max characters
     var chars_without_html = 0;
 
     export default {
@@ -1446,7 +1486,7 @@
                 criteria_amount: 0,
                 criteria_value: [],
                 criteria_options: [
-                    { id: 1, name: window.lang.panel_scholarships.create.criteria1, icon: '/panel/assets/images/steps/talent.png' },
+                    { id: 1, name: window.lang.panel_scholarships.create.criteria1, icon: '/panel/assets/images/steps/talent.png', },
                     { id: 2, name: window.lang.panel_scholarships.create.criteria2, icon: '/panel/assets/images/steps/medal.png' },
                     { id: 3, name: window.lang.panel_scholarships.create.criteria3, icon: '/panel/assets/images/steps/social.png' },
                     { id: 4, name: window.lang.panel_scholarships.create.criteria4, icon: '/panel/assets/images/steps/friends.png' },
@@ -1467,7 +1507,7 @@
                 exams: false,
                 exams_date: null,
                 price: null,
-                content: '<p> Αναφέρετε εδώ τους <strong> Όρους και Προϋποθεσεις </strong> της Υποτροφίας</p>',
+                content: '',
                 terms: null,
                 tinyOptions: {
                     language_url: '/el.js',
@@ -1610,8 +1650,36 @@
         watch: {
             criteria_value() {
                 if (this.criteria_value) {
-                    this.financial_disabled = false
-                    console.log(this.financial_disabled)
+                    this.financial_disabled = false;
+                    var text=null;
+                    if(this.criteria_value.id==1){
+                        text="Η υποτροφία ταλέντου/δεξιοτήτων είναι η πιο δημοφιλής μορφή υποτροφίας στην κοινότητα του schol.io. Δεν συνδέεται με κάποια διαδικασία διαγωνισμού ή εξετάσεων, αλλά στηρίζεται αποκλειστικά στην αξιολόγηση των ιδιαίτερων ικανοτήτων των συμμετεχόντων. " +
+                                "Βασίζεται στο βιογραφικό των υποψηφίων, που ενισχύεται με συνδέσμους από video και κοινωνικά δίκτυα που αναδεικνύουν τις ξεχωριστές δεξιότητες των συμμετεχόντων. Το είναι δυνατόν να αφορά αθλητικές διακρίσεις, μαγειρικές ικανότητες, κλίση στις τέχνες, " +
+                                "στις κατασκευές, στο προγραμματισμό, τη ρομποτική, τις ξένες γλώσσες ή σε ευρύτερα αντικείμενα. Τα ταλέντα μπορεί να είναι σχετικά ή παρεμφερή με το αντικείμενο σπουδών που παρέχεται. " +
+                                "Στην περιπτώση αυτή το εκπαιδευτικό ιδρυμα θα πρέπει να στείλει μια σύντομη ανατροφοδότηση στον κάθε υποψήφιο για το πως θα μπορούσε να βελτιώσει την αίτηση του. Οι λεπτομέρειες συμμετοχής θα πρέπει να περιγραφούν σύντομα αλλά με σαφήνια στα τελευταίο βήμα." +
+                                ""
+                    }
+                    else if(this.criteria_value.id==2){
+                        text="Η υποτροφία αριστείας αφορά μια υποτροφία που οι συμμετέχοντες συνήθως διαγωνίζονται σε κάποια μορφή γραπτών σύντομων εξετάσεεων που ορίζει το εκπαιδευτικό ίδρυμα. " +
+                                "Πιθανόν να μην υπάρχουν εξετάσεις, αλλά η αριστεία να καθορίζεται από τον βαθμό αποφοίτησης ή το βαθμό της προηγούμενης τάξης, ή από άλλες διακρίσεις αριστείας. " +
+                                "Το αν υπάρχουν εξετάσεις ή όχι, η ημερομηνία και οι θεματικές ενότητες των εξετάσεων που που θα διαγωνιστούν οι συμμετέχοντες, ή άλλα κριτηρια αριστείας θα πρεπει να τα περιγράψετε σύντομα αλλα με σαφήνια στα επόμενα βήματα."
+                    }
+                    else if(this.criteria_value.id==3){
+                        text="Η υποτροφία με κοινωνικά κριτήρια αφορά συνήθως συμμετέχοντες που ανήκουν σε πολύτεκνες ή μονογονεϊκές οικογένειες, οικογένειες με χαμηλό εισόδημα ή άνεργους γονείς ή που πληρούν άλλα κοινωνικά κριτήρια. " +
+                                "Αποτελεί μια προσφορά κοινωνικής ευθύνης για το εκπαιδευτικό ίδρυμα που την προσφέρει και ενδεχεμένως να έχει 'πολλαπλούς νικητές' εφόσον αρκετοί υποψήφιοι πληρούν τα κριτήρια διεκδίκισης. " +
+                                "Τα δικαιολογητικά και οι όροι συμμετοχής θα πρέπει να περιγραφούν σύντομα αλλά με σαφήνια στα τελευταίο βήμα. "
+                    }
+                    else if(this.criteria_value.id==4){
+                        text="Η υποτροφία για φίλους η αδέλφια αφορά φίλους ή αδέλφια που επιθυμούν να σπουδάσουν το ίδιο η παρεμφερή γνωστικά αντικείμενα στο ίδιο εκπαιδευτικό φορέα.  Ανάλογα με τα κριτήρια, η υποροφία αυτή ενδεχεμένως να έχει 'πολλαπλούς νικητές'. " +
+                                "Λεπτομέρειες και όροι συμμετοχής θα πρέπει να περιγραφούν σύντομα αλλά με σαφήνια στα τελευταίο βήμα."
+                    }
+                    else if(this.criteria_value.id==5){
+                        text="Η υποτροφία ανοιχτού τύπου, αφορά ιδιαίτερες κατηγορίες συμμετεχόντων, όπως μαθητές/σπουδαστές που προέχρονται από την επαρχία, ή νησιοτικές περιοχές, ή μαθητές με ιδιαιτέρα ενδιαφέροντα. Ανάλογα με τα κριτήρια, η υποροφία αυτή ενδεχεμένως να έχει 'πολλαπλούς νικητές'. " +
+                                "Λεπτομέρειες και όροι συμμετοχής θα πρέπει να περιγραφούν σύντομα αλλά με σαφήνια στα τελευταίο βήμα."
+                    }
+
+                    this.criteria_value.text=text;
+
 
 
 
@@ -1623,6 +1691,26 @@
             },
 
             financial_value() {
+
+                if (this.financial_value) {
+                    var text2 = null;
+                    if (this.financial_value.id == 1) {
+                        text2 = "Η μείωση διδάκτρων αφορά ένα % ποσοστό μείωσης των αρχικών διδάκτρων για το αντικείμενο σπουδών της παρεχόμενης υποτροφίας. Όταν το ποσοστό είναι 100% η υποτροφία είανι πλήρης και έχει δεσπόζουσα θέση κατά την ανάζητηση υποτροφιών. " +
+                                "Όταν το ποσοστό είναι 50% ή μεγαλύτερο η υποτροφία φέρει έντονο διακριτικό 'υψηλού κέρδους΄ κατά την αναζήτηση υποτροφιών. " +
+                                "Σε κάθε περίπτωση για να υπάρχει η αίσθηση του κέρδους από τους συμμετέχοντες, είναι θετικό να αναφερθεί το ενδεικτικό αρχικό ποσό διδάκτρων σε επόμενο βήμα."
+                    }
+                    else if (this.financial_value.id == 2) {
+                        text2 = "Το ποσό επιδότησης αφορά ένα ποσό σε € που θα 'κερδίσει' ο υποψήφιος επί των αρχικών διδάκτρων για το αντικείμενο σπουδών της παρεχόμενης υποτροφίας. " +
+                                "Όταν το ποσό είναι 1000€ ή μεγαλύτερο η υποτροφία φέρει έντονο διακριτικό 'υψηλού κέρδους΄ κατά την αναζήτηση υποτροφιών. " +
+                                "Σε κάθε περίπτωση για να υπάρχει η αίσθηση του κέρδους από τους συμμετέχοντες, είναι θετικό να αναφερθεί το ενδεικτικό αρχικό ποσό διδάκτρων σε επόμενο βήμα."
+                    }
+                    else if (this.financial_value.id == 3) {
+                        text2 = "Ο χρόνος δωρεάν φοίτησης αφορά συνήθως ένα 'δοκιμαστικό' χρονικό διάστημα σπουδών, ή θερινά ή εποχιακά μαθήματα. "+
+                                "Σε κάθε περίπτωση για να υπάρχει η αίσθηση του κέρδους από τους συμμετέχοντες, είναι θετικό να αναφερθεί το ενδεικτικό αρχικό ποσό διδάκτρων σε επόμενο βήμα."
+                    }
+                    this.financial_value.text2 = text2;
+                }
+
                 if (this.financial_value && this.financial_amount > 0) {
                     this.levels_disabled = false
                 } else {
