@@ -1,10 +1,99 @@
 @extends('panel.layouts.main')
 
+@section('scriptsBefore')
+<!-- tinyMCE js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.2/tinymce.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+<script>
+
+    (function (factory) {
+        if (typeof define === "function" && define.amd) {
+
+            // AMD. Register as an anonymous module.
+            define(["../widgets/datepicker"], factory);
+        } else {
+
+            // Browser globals
+            factory(jQuery.datepicker);
+        }
+    }(function (datepicker) {
+
+        datepicker.regional.el = {
+            closeText: "@lang('panel_scholarships.create.close')",
+            prevText: "@lang('panel_scholarships.create.previous')",
+            nextText: "@lang('panel_scholarships.create.next')",
+            currentText: "Σήμερα",
+            // monthNames: ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος",
+            //     "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"],
+            // monthNamesShort: ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαι", "Ιουν",
+            //     "Ιουλ", "Αυγ", "Σεπ", "Οκτ", "Νοε", "Δεκ"],
+            // dayNames: ["Κυριακή", "Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο"],
+            // dayNamesShort: ["Κυρ", "Δευ", "Τρι", "Τετ", "Πεμ", "Παρ", "Σαβ"],
+            // dayNamesMin: ["Κυ", "Δε", "Τρ", "Τε", "Πε", "Πα", "Σα"],
+            // weekHeader: "Εβδ",
+            dateFormat: "dd-mm-yy",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ""
+        };
+        datepicker.setDefaults(datepicker.regional.el);
+        return datepicker.regional.el;
+
+    }));
+</script>
+
+<script>
+    $('#terms-edit').hide();
+    
+    tinymce.init({
+        language_url: '/el.js',
+
+        entity_encoding: "raw",
+        selector: 'textarea',
+        height: 490,
+        menubar: false,
+
+        plugins: [
+            'autolink lists link  charmap  preview anchor',
+            'visualblocks  fullscreen',
+            'insertdatetime media table paste '
+        ],
+        toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link table',
+
+        setup: function (ed) {
+            ed.on("KeyDown", function (ed, evt) {
+                chars_without_html = $.trim(tinyMCE.activeEditor.getContent().replace(/(<([^>]+)>)/ig, "")).length;
+                var key = ed.keyCode;
+                console.log(ed.keyCode)
+
+                var remaining = max_chars - chars_without_html;
+
+                $('#chars_left').html(remaining);
+
+                if (remaining <= 0 && (key != 8 && key != 46)) {
+                    ed.stopPropagation();
+                    ed.preventDefault();
+                    $('#chars_left').html('ΟΧΙ ΑΛΛΟ!')
+                }
+            });
+        }
+
+    });
+
+
+</script>
+@endsection
+
 @section('styles')
     {{--<link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />--}}
     {{--<link href="/new/css/main.css" rel="stylesheet" type="text/css" />--}}
     <link rel="stylesheet" href="/new/css/Bootstrap-xxs-xxxs.css" />
     <link rel="stylesheet" href="{{'/panel/assets/css/funkyradio.css'}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
     <style>
 
         .margin-right-10 { margin-right: 10px; }
@@ -302,7 +391,7 @@
         <div class="col-sm-12">
             <div class="">   <!-- class="card-box" -->
 
-
+                <form method="POST" action="/scholarship/{{$scholarship->id}}/update">
                 <div class="col-xs-12 scholar-header">
                     {{--<div class="scholar-name">{{ $scholarship->study->section[0]->name }}</div>--}}
                     <div class="scholar-name">
@@ -384,7 +473,10 @@
                                 {{ $scholarship->admissions_limit }}
                             </div>
                             @if($scholarship->exam)
-                                <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
+                                <div class="margin-top-10">
+                                    <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px;"
+                                    value="{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}" name="exams" />
+                                </div>
                             @else
                                 _
                             @endif
@@ -466,7 +558,6 @@
                 <!-- ================================ -->
                 <div class="margin-top-50"></div>
 
-              <form method="POST" action="/scholarship/{{$scholarship->id}}/end">
                   @if($scholarship->active)
                 <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Επιλογή Νικητών Υποτροφίας: Επιλογή {{ $scholarship->winners }}  Νικητών</div>
                   @else
@@ -513,10 +604,14 @@
                 <!-- ================================ -->
                 <div class="margin-top-50"></div>
 
-                <div class="adm-sel-title"> <i class="fa fa-pencil margin-right-10"></i>Όροι και δικαίωμα συμμετοχής</div>
+                <div class="adm-sel-title"> <i id="open-terms" class="fa fa-pencil margin-right-10"></i>Όροι και δικαίωμα συμμετοχής</div>
 
-                <div>
+                <div id="terms-text">
                     <?php echo $scholarship->terms; ?>
+                </div>
+
+                <div id="terms-edit">
+                    <textarea value="" name="terms">{{ $scholarship->terms }}</textarea>
                 </div>
 
 
@@ -530,10 +625,24 @@
                 <div class="margin-top-30 saveButton">
 
                     {{ csrf_field() }}
-                    <button id="saveButton" type="submit" class="sc-btn disabled" disabled><i class="fa fa-flag-o margin-right-10"></i>Λήξη Υποτροφίας και Ενημέρωση Νικητών</button>
+                    <button type="submit" class="btn sc-btn btn-primary">
+                        <i class="fa fa-save margin-right-10"></i>Αποθήκευση</button>
                 </div>
 
+                </form>
 
+                <form method="POST" action="/scholarship/{{$scholarship->id}}/end" style="margin-top: 10px; margin-bottom: 10px;">
+                    <button id="saveButton" type="submit" class="sc-btn disabled" disabled>
+                        <i class="fa fa-flag-o margin-right-10"></i>Λήξη Υποτροφίας και Ενημέρωση Νικητών</button>
+                </form>
+
+                <form method="POST" action="/scholarship/{{$scholarship->id}}/delete">
+                    {{ csrf_field() }}
+                     {{ method_field('DELETE') }}
+                     @if($scholarship->usersLength() == 0)
+                    <button type="submit" class="btn sc-btn btn-danger">
+                        <i class="fa fa-trash margin-right-10"></i>Διαγραφή υποτροφίας</button>
+                    @endif
                 </form>
                 </div>
             </div>
@@ -553,8 +662,16 @@
 @endsection
 
 @section('scripts')
+
 <script>
+    $("#datepicker").datepicker({ minDate: 0, maxDate: "+5M +10D" })
+    $('#terms-edit').hide();
     var limit = {{ $scholarship->winners }};
+
+    $('#open-terms').click(function(){
+        $('#terms-text').hide();
+        $('#terms-edit').show();
+    })
 
     $('input.winners-checkbox').on('change', function(evt) {
        if( $('.winners-checkbox:checked').length >= limit+1) {

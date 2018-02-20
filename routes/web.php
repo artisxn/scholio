@@ -11,6 +11,7 @@ use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
 use App\Events\NewSubscription;
+use Carbon\Carbon;
 
 Scholio::soonRoutes();
 
@@ -112,6 +113,26 @@ Route::post('scholarship/{scholarship}/end', function (Scholarship $scholarship)
     return redirect('/dashboard');
 });
 
+Route::post('scholarship/{scholarship}/update', function (Scholarship $scholarship) {
+    if(request()->exams){
+        $proper_date = Carbon::createFromFormat('d-m-Y', request()->exams);
+        $scholarship->exam_date = $proper_date;
+    }
+
+    if(request()->terms){
+        $scholarship->terms = request()->terms;
+    }
+    
+    $scholarship->save();
+    return back();
+});
+
+Route::delete('scholarship/{scholarship}/delete', function (Scholarship $scholarship) {
+    // Delete Scholarship
+    // Delete Algolia Dummy Scholarship Row
+    dd($scholarship);
+});
+
 Route::get('public/donor', function () {
     return view('public.results.donor');
 });
@@ -179,7 +200,7 @@ Route::get('@{username}', function ($username) {
 
 Route::get('/scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('/scholarship/{scholarship}/edit', 'RoutesController@scholarshipEdit');
-Route::post('/scholarship/{scholarship}/update', 'RoutesController@scholarshipUpdate');
+// Route::post('/scholarship/{scholarship}/update', 'RoutesController@scholarshipUpdate');
 Route::get('/scholarship/{scholarship}/delete', 'RoutesController@scholarshipDelete');
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
 

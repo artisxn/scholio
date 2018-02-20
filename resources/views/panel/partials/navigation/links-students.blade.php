@@ -19,9 +19,10 @@
         <span>@lang('panel/students/navigation.scholarships')</span></a>
     <ul class="list-unstyled">
         <li><a class="{{ request()->path() == 'panel/users/student/scholarship/request' ? 'active' : ''}}" href="{{ route('student-scholarship-request') }}">@lang('panel/students/navigation.admissions')
-        {{ count(auth()->user()->admissions) }}
-        </a></li>
-        {{--  <li><a href="">@lang('panel/students/navigation.reply')</a></li>  --}}
+        <span class="pull-right badge  badge-nav">{{ count(auth()->user()->admissions) }}</span></a></li>
+        <li>
+            <a class="{{ request()->path() == 'panel/users/student/scholarship/interested' ? 'active' : ''}}" href="{{ route('student-scholarship-interested') }}">Ενδιαφέρουσες <span class="pull-right badge  badge-nav">{{ count(auth()->user()->interested) }}</span></a>
+    </li>
     </ul>
 </li>
 

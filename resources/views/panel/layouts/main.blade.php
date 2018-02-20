@@ -27,6 +27,10 @@
         <link rel="stylesheet" href="{{'/panel/assets/css/masonry.css'}}"/>
 
         <style>
+        .unverified:hover{
+            cursor: pointer;
+        }
+
         /*Styling topbar*/
         .top-bar-container{}
 
@@ -169,7 +173,6 @@ foreach ($files as $t) {
 
 }
 
-// dd($trans);
 echo json_encode($trans);
 ?>
         </script>
@@ -179,8 +182,6 @@ echo json_encode($trans);
         @yield('scriptsBefore')
     </head>
 
-
-    {{--<body class="" style="background: linear-gradient( #F1F4F5 ,#d9dcdd ); min-height: 550px">--}}
     <body class="" style="background: #F1F4F5; min-height: 550px">
         <div id="app">
             <div id="wrapper">

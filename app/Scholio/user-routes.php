@@ -23,6 +23,11 @@ Route::group(['middleware' => 'is.student', 'prefix' => 'student'], function () 
         $admissions = auth()->user()->admissions->load('scholarship');
         return view('panel.pages.student.scholarships.requests', compact('admissions'));
     })->name('student-scholarship-request');
+    Route::get('/scholarship/interested', function(){
+        $scholarships = auth()->user()->interested;
+        return view('panel.pages.student.scholarships.interested', compact('scholarships'));
+        // dd($scholarships);
+    })->name('student-scholarship-interested');
     // Route::get('/class/show', 'RoutesController@classShow')->name('student-class-show');
     // Route::get('/class/{lecture}', 'RoutesController@classLecture')->name('student-class-lecture');
 });
