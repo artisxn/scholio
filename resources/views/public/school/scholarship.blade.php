@@ -395,7 +395,7 @@
                             </a>
                         </span>
                         @if(!auth()->user()->checkAdmission($scholarship))
-                            @if($scholarship->admissions_limit > 0 && auth()->user()->info->admissions_limit > 0)
+                            @if($scholarship->admissions_limit > 0 && auth()->user()->role != 'admin' && auth()->user()->info->admissions_limit > 0)
                                 <a href="/public/scholarship/admission/{{ auth()->user()->id }}/{{$scholarship->id}}">
                                     <button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0 ">
                                         <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i>

@@ -13,10 +13,10 @@ class VerifyController extends Controller
         $user = User::where('email_token', $token)->first();
         if($user){
             $user->status = 'verified';
-//          $user->email_token = '';
+            $user->email_token = '';
             $user->save();
 
-//         Algolia::newSchool($user->info);
+            Algolia::newSchool($user->info);
 
             session()->flash('verify', 'Your email have been verified');
 

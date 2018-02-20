@@ -22,6 +22,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Models\Subscription;
+use App\Models\Report;
 
 class User extends Authenticatable
 {
@@ -188,9 +189,6 @@ class User extends Authenticatable
         return $this->belongsToMany(School::class, 'school_requests');
     }
 
-    /**
-     * @return
-     */
     public function studyConnection()
     {
         return $this->belongsToMany(Study::class, 'study_user')->withPivot('school_id', 'study_id');
@@ -198,5 +196,10 @@ class User extends Authenticatable
 
     public function subscription(){
         return $this->hasOne(Subscription::class, 'user_id');
+    }
+
+    public function report()
+    {
+        return $this->hasMany(Report::class, 'user_id');
     }
 }

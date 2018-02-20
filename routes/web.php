@@ -12,6 +12,7 @@ use App\Scholio\Scholio;
 use App\User;
 use App\Events\NewSubscription;
 use Carbon\Carbon;
+use App\Models\Report;
 
 Scholio::soonRoutes();
 
@@ -21,11 +22,27 @@ Route::get('/terms', function(){
 
 Route::get('/verifyemail/{token}', 'VerifyController@verify');
 
-// ========  kfrei testing ===============
-Route::get('/resetpass', function () {
-    return view('auth.passwords.reset');
+Route::post('/report/add/{user}/{id}', function (User $user, $id) {
+    
+    $report = new Report;
+    $report->user_id = $user->id;
+    $report->info = $id;
+    $report->save();
+    return back();
 });
-// ========================================
+
+Route::post('/report/delete/{report}', function(Report $report){
+    $report->delete();
+    return back();
+});
+
+Route::post('/report/delete/all/{user}', function (User $user) {
+    foreach($user->report as $report){
+        $report->delete();
+    }
+    return back();
+});
+
 Route::get('/password/change', function(){
     return view('panel.change-password');
 })->middleware('auth');

@@ -1,12 +1,15 @@
-<template>
+@extends('panel.layouts.main') @section('content')
+<div class="container">
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="m-t-0 header-title"><b>Schools Table</b></h4>
+                        <h4 class="m-t-0 header-title">
+                            <b>Schools Table</b>
+                        </h4>
                         <p class="text-muted font-13">
-                           Bla Bla
+                            Bla Bla
                         </p>
                         <div class="table-rep-plugin">
                             <div class="table-responsive" data-pattern="priority-columns">
@@ -27,19 +30,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="school in schools">
-                                            <td>{{ school.id }}</td>
-                                            <td>{{ school.name }}</td>
-                                            <td>{{ school.email }}</td>
-                                            <td>{{ school.type_id }}</td>
-                                            <td>{{ school.address }}</td>
-                                            <td>{{ school.city }}</td>
-                                            <td>{{ school.phone }}</td>
-                                            <td>{{ school.website }}</td>
-                                            <td>{{ school.logo_id }}</td>
-                                            <td>{{ school.approved }}</td>
-                                            <td>{{ school.created_at }}</td>
+                                        @foreach(App\Models\School::all() as $school)
+                                        <tr>
+                                            <td>{{ $school->id }}</td>
+                                            <td>{{ $school->admin->name }}</td>
+                                            <td>{{ $school->admin->email }}</td>
+                                            <td>{{ $school->type->name }}</td>
+                                            <td>{{ $school->address }}</td>
+                                            <td>{{ $school->city }}</td>
+                                            <td>{{ $school->phone }}</td>
+                                            <td>{{ $school->website }}</td>
+                                            <td>{{ $school->logo_id }}</td>
+                                            <td>{{ $school->approved }}</td>
+                                            <td>{{ $school->created_at }}</td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -49,31 +54,5 @@
             </div>
         </div>
     </div>
-</template>
-
-<script>
-    export default {
-
-        data: function() {
-            return{
-                schools: {}
-            }
-        },
-
-        methods: {
-            getSchools: function(){
-                axios.get('/api/schools/all')
-                    .then(response => {
-                        this.schools = response.data['schools']
-                        console.log(this.schools)
-                    });
-            }
-        },
-
-        mounted() {
-            console.log('Schools-Table component mounted!')
-
-            this.getSchools()
-        }
-    }
-</script>
+</div>
+@endsection

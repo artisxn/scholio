@@ -126,7 +126,7 @@ class Scholio
             include 'school-routes.php';
         });
 
-        Route::group(['middleware' => 'admin', 'prefix' => 'panel/admin'], function () {
+        Route::group(['middleware' => 'is.admin', 'prefix' => 'panel/admin'], function () {
             include 'admin-routes.php';
         });
     }

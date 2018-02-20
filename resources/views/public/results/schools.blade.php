@@ -694,7 +694,12 @@ angular.module("schoolsResultsApp",[])
                 <div class="report-drop" id="report-drop@{{school_id}}">
                      <img class="report-logo" style="" src="/new/img/logoNX-m.png" alt="">
                      <span class="report-title"> Αναφορά </span>
-                     <div class="report-text"> Αναφορά του εκπαιδευτικού ιδρύματος στο διαχειριστή για προσβλητικό περιεχόμενο</div>
+                     <form method="POST" action="/report/add/@{{school_id}}/Profile">
+                     {{ csrf_field() }}
+                        <div class="report-text"> 
+                            <button type="submit" style="background: none; color: inherit; border: none;padding: 0;font: inherit;outline: inherit;">Αναφορά του εκπαιδευτικού ιδρύματος στο διαχειριστή για προσβλητικό περιεχόμενο</button>
+                        </div>
+                     </form>
                 </div>
 
                 <!-- =====================================================-->
