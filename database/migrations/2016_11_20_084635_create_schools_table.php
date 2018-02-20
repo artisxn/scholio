@@ -24,7 +24,7 @@ class CreateSchoolsTable extends Migration
             $table->string('logo')->default('/upload/school/univ.png');
             $table->integer('background')->nullable();
             $table->text('about')->nullable();
-            $table->boolean('approved')->default(1);
+            $table->boolean('approved')->default(0);
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
             $table->timestamps();

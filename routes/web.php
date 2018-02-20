@@ -22,6 +22,18 @@ Route::get('/terms', function(){
 
 Route::get('/verifyemail/{token}', 'VerifyController@verify');
 
+Route::post('/school/approve/{school}', function(School $school){
+    $school->approved = true;
+    $school->save();
+    return back();
+})->middleware('is.admin');
+
+Route::post('/school/disapprove/{school}', function (School $school) {
+    $school->approved = true;
+    $school->save();
+    return back();
+})->middleware('is.admin');
+
 Route::post('/report/add/{user}/{id}', function (User $user, $id) {
     
     $report = new Report;
@@ -34,14 +46,14 @@ Route::post('/report/add/{user}/{id}', function (User $user, $id) {
 Route::post('/report/delete/{report}', function(Report $report){
     $report->delete();
     return back();
-});
+})->middleware('is.admin');
 
 Route::post('/report/delete/all/{user}', function (User $user) {
     foreach($user->report as $report){
         $report->delete();
     }
     return back();
-});
+})->middleware('is.admin');
 
 Route::get('/password/change', function(){
     return view('panel.change-password');

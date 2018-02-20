@@ -204,8 +204,6 @@
     </div>
 
     <!-- ==================== -->
-    {{--
-    <div class="clearfix"></div>--}} 
     <div class="col-lg-3 col-md-4 col-sm-6">
         <a href="#" id="btn-reviews">
             <div class="panel-box box2">
@@ -239,6 +237,19 @@
                 <span class="sc-t-gray" id="views-text">
                     <span class="panel-counter">{{ count(App\Models\Subscription::where('plan_id', 2)->get()) }}</span>
                     <span class="panel-text">VIP</span>
+                </span>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 ">
+        <a href="#">
+            <div class="panel-box box2">
+                <img src="/panel/assets/images/dashBoard/views.png" alt="views image" class="panel-image hidden" id="img-views-color">
+                <img src="/panel/assets/images/dashBoard/viewsOutline.png" alt="views image" class="panel-image visible" id="img-views-black">
+                <span class="sc-t-gray" id="views-text">
+                    <span class="panel-counter">{{ count(App\User::where('status', 'guest')->get()) }}</span>
+                    <span class="panel-text">Unverified Users</span>
                 </span>
             </div>
         </a>

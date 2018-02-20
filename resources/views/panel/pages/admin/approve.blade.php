@@ -19,30 +19,34 @@
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Type</th>
-                                            <!-- <th>Address</th> -->
-                                            <th>City</th>
-                                            <!-- <th>Phone</th> -->
-                                            <!-- <th>Website</th> -->
-                                            <!-- <th>Approved</th> -->
                                             <th>Reports</th>
                                             <th>Created At</th>
+                                            <th>Approve</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach(App\Models\School::all() as $school)
+                                        @foreach(App\Models\School::where('approved', 0)->get() as $school)
                                         <tr>
                                             <td>{{ $school->id }}</td>
-                                            <td>{{ $school->admin->name }}</td>
+                                            <td><a href="/public/profile/{{ $school->admin->id }}" target="_blank">{{ $school->admin->name }}</a></td>
                                             <td>{{ $school->admin->email }}</td>
-                                            <td>{{ $school->type->name }}</td>
-                                            <!-- <td>{{ $school->address }}</td> -->
-                                            <td>{{ $school->city }}</td>
-                                            <!-- <td>{{ $school->phone }}</td> -->
-                                            <!-- <td>{{ $school->website }}</td> -->
-                                            <!-- <td>{{ $school->approved }}</td> -->
                                             <td>{{ count($school->admin->report) }}</td>
                                             <td>{{ Carbon\Carbon::parse($school->created_at)->format('d-m-Y') }}</td>
+                                            <td>
+                                                <form method="POST" action="/school/approve/{{$school->id}}">
+                                                     {{ csrf_field() }}
+                                                    <button type="submit" class="btn sc-btn btn-success">
+                                                        <i class="fa fa-check"></i> Approve</button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form method="POST" action="/school/disapprove/{{$school->id}}">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn sc-btn btn-danger">
+                                                        <i class="fa fa-trash"></i> Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
