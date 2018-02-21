@@ -61,8 +61,8 @@
 
 <!-- ====== Modal Υποτροφίας =======-->
 <div id="ModalUnverified" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
-    <div class="modal-dialog" style="width: 600px; ">
-        <div class="modal-content" style="padding: 0; border: none; border-radius: 5px;">
+    <div class="modal-dialog" style="width: 600px ">
+        <div class="modal-content" style="padding: 0; border: none; border-radius: 5px; width: 500px; margin-left: auto; margin-right: auto;">
 
             <div class="panel " style="background-color: #324c5a; height: 100px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
                 <div class="panel-heading" style="height: 55px; color: #fff">

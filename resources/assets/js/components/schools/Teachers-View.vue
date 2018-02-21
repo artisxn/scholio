@@ -63,7 +63,7 @@
                         <input v-model="status" :id="'stt' + teacher.id" type="radio" :name="'teacherStatus' + teacher.id" value="allumniTeachers">
 
                         <label :for="'stt' + teacher.id">
-                            <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
+                            <div class="r-lab">{{ lang('resource.teachers.nonactive') }}</div>
                         </label>
                         <br>
                     </form>

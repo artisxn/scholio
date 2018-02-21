@@ -13,6 +13,13 @@ return [
         'phone' => 'Phone',
         'father' => 'Father',
         'mother' => 'Mother',
+        'modal' => [
+            'study1' => 'Field of Studies',
+            'study2' => 'Additional Field of Studies',
+            'addStudy' => 'Add Further Field of Studies',
+            'deleteStudy' => 'Delete',
+
+        ],
     ],
 
     'teachers' => [
@@ -20,7 +27,7 @@ return [
         'changeView' => 'Change View',
         'Teacher' => 'teacher',
         'active' => 'Active',
-        'nonactive' => 'Ex',
+        'nonactive' => 'Non active',
     ],
 
     'requests' => [

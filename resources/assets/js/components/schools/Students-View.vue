@@ -72,9 +72,9 @@
                                 <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
 
                                 <label :for="'stt' + student.id">
-                                    <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
+                                    <div class="r-lab r-lab2">{{ lang('resource.students.alumni') }}</div>
                                 </label>
-                                <br>
+                                <!--<br>-->
                             </form>
                         </div>
 
@@ -196,10 +196,12 @@
 
                             <div class="studies-selection-container" >
                                 <div class="first-study-text">
-                                    Αντικείμενο Σπουδών
+                                    {{ lang('resource.students.modal.study1') }}
                                         <span class="tool">
                                             <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy && !study2"></i>
-                                            <span class="tooltiptext">Προσθέστε Επιπλέον Αντικείμενο Σπουδών</span>
+                                            <span class="tooltiptext">
+                                                {{ lang('resource.students.modal.addStudy') }}
+                                                </span>
                                         </span>
 
                                 </div>
@@ -229,8 +231,8 @@
 
 
                                         <span v-if="secondStudy">
-                                            Επιπλέον Αντικείμενο Σπουδών
-                                             <span class="second-study-remove"  @click="removeStudy">( <i class="fa fa-trash"></i>Διαγραφή )</span>
+                                            {{ lang('resource.students.modal.study2') }}
+                                             <span class="second-study-remove"  @click="removeStudy">( <i class="fa fa-trash"></i>{{ lang('resource.students.modal.deleteStudy') }} )</span>
                                         </span>
 
                                     </div>
@@ -263,7 +265,8 @@
 
                                 <div class="col-sm-6 col-data">
                                     <div class="info-title">
-                                        Πόλη Μαθητή
+                                        {{lang('student_details.city') }}
+
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-home icon-data"></div>
@@ -273,7 +276,7 @@
                                 </div>
                                 <div class="col-sm-6 col-data">
                                     <div class="info-title">
-                                        Διεύθυνση Μαθητή
+                                        {{lang('student_details.address') }}
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-map-marker icon-data"></div>
@@ -284,7 +287,8 @@
 
                                 <div class="col-sm-6 col-data">
                                     <div class="info-title">
-                                        Τηλέφωνο Μαθητή
+                                        {{lang('student_details.phone') }}
+
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
@@ -294,7 +298,8 @@
                                 </div>
                                 <div class="col-sm-6 col-data">
                                     <div class="info-title">
-                                        email Μαθητή
+                                        {{lang('student_details.email') }}
+
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-envelope icon-data"></div>
@@ -307,7 +312,7 @@
 
                                 <div class="col-sm-6 col-data">
                                     <div class="info-title">
-                                        Ονοματεπώνυμο Πατέρα
+                                        {{lang('student_details.father.fullName') }}
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-user icon-data"></div>
@@ -317,7 +322,7 @@
                                 </div>
                                 <div class="col-sm-6 col-data">
                                     <div class="info-title">
-                                        Ονοματεπώνυμο Μητέρας
+                                        {{lang('student_details.mother.fullName') }}
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-user icon-data"></div>
@@ -329,7 +334,7 @@
 
                                 <div class="col-sm-6 col-data">
                                     <div class="info-title">
-                                        Τηλέφωνο Πατέρα
+                                        {{lang('student_details.father.phone') }}
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
@@ -339,7 +344,7 @@
                                 </div>
                                 <div class="col-sm-6 col-data">
                                     <div class="info-title">
-                                        Τηλέφωνο Μητέρας
+                                        {{lang('student_details.mother.phone') }}
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
@@ -534,6 +539,9 @@
     .phone-text{position: absolute; bottom: 36px;}
 
     .img-students{height: 55px; width: auto; position: absolute; right: 30px; top: 85px; opacity: 0.07}
+
+    .r-lab2{height: 18px!important; width: 72px!important;}
+    /*.r-lab2:hover{cursor: default;}*/
 
     /* ============ MODAL CARD ==========*/
     /* ==================================*/
