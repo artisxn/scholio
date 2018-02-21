@@ -1691,11 +1691,16 @@ function($) {
 
       var ua = navigator.userAgent,
         event = (ua.match(/iP/i)) ? "touchstart" : "click";
-      
+
+
+		//var open define the left side Navigation Menu By KFREI
+		var open=true;
       //bind on click
       this.$openLeftBtn.on(event, function(e) {
         e.stopPropagation();
         $this.openLeftBar();
+		  open=!open;
+		  console.log('open=',open)
       });
 
       // LEFT SIDE MAIN NAVIGATION

@@ -27,9 +27,8 @@
         <link rel="stylesheet" href="{{'/panel/assets/css/masonry.css'}}"/>
 
         <style>
-        .unverified:hover{
-            cursor: pointer;
-        }
+        .unverified{margin-top: 20px; font-size: 90%; color: #ccc4a7; text-align: center;}
+        .unverified:hover{ cursor: pointer;}
 
         /*Styling topbar*/
         .top-bar-container{}
@@ -47,7 +46,7 @@
 
 
 
-        @media(max-width: 990px){  .icon-box{display: none;}  }
+        @media(max-width: 990px){  .icon-box, .unverified{display: none;}  }
         @media(min-width: 576px){  .icon-box{left:  70px; width: 94%}  .top-bar-container{margin-left: 70px} }
         @media(min-width: 768px){  .icon-box{left:  70px; width: 92%}  .top-bar-container{margin-left: 70px} }
         @media(min-width: 991px){

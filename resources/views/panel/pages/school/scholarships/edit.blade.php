@@ -183,6 +183,9 @@
         .sc-dark-green{background: #008da5;}
 
         .sc-btn:focus,.sc-btn:active{outline:none;}
+        .btn-primary{background-color: #0097af  }
+        .btn-primary:hover{background-color: #007f97
+        }
 
         button.sc-dark-green:hover{background-color: #006880  }
 
@@ -234,6 +237,14 @@
         @media(max-width: 360px){
             label{width: 220px;}
         }
+
+
+        .datepicker-lg{ margin-left: -50px;}
+        /*.datepicker-mobile{margin-left: -23px;}*/
+        .datepicker-input{ background: transparent; border: none; margin-top: -18px;}
+        .datepicker-input:hover{cursor: pointer; color: #FD6A33}
+
+        .terms-icon:hover{color: #FD6A33; cursor: pointer;}
 
 
 
@@ -370,6 +381,73 @@
         /* =================================*/
 
 
+        /* /////////////////////////////////////////////////////////////////////////////////////////////// */
+
+        /*==== DATE picker jQuery STYLING ====*/
+
+        .ui-widget-header {
+            background: #00bcd4;
+            color: #fff
+        }
+
+        .ui-icon,
+        .ui-icon:hover {
+            width: 16px;
+            height: 16px;
+            /*background-color: #00bcd4;*/
+        }
+
+        .ui-widget-header .ui-icon {
+            background-image: url("/images/ui-icons_ffffff_256x240.png");
+        }
+
+        .ui-state-default,
+        .ui-widget-content .ui-state-default,
+        .ui-widget-header .ui-state-default,
+        .ui-button,
+        html .ui-button.ui-state-disabled:hover,
+        html .ui-button.ui-state-disabled:active {
+            border: none;
+            background: #f4f4f4;
+            /*font-weight: bold;*/
+            color: #004276;
+        }
+
+        .ui-state-highlight,
+        .ui-widget-content .ui-state-highlight,
+        .ui-widget-header .ui-state-highlight {
+            border: none;
+            background: #008da5;
+            color: #fff;
+        }
+
+        .ui-state-active,
+        .ui-widget-content .ui-state-active,
+        .ui-widget-header .ui-state-active,
+        .ui-button:active,
+        .ui-button.ui-state-active:hover {
+            background: #00bcd4;
+            /*font-weight: bold;*/
+            color: #fff;
+        }
+
+
+        /*===============================*/
+
+        /* ======  avoid yellow input background on chrome ============ */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #F1f4f5 inset;
+            -webkit-text-fill-color: #555;
+        }
+        /* =========================================================== */
+
+
+
+
+
     </style>
 @endsection
 
@@ -474,7 +552,7 @@
                             </div>
                             @if($scholarship->exam)
                                 <div class="margin-top-10">
-                                    <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px;"
+                                    <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input datepicker-lg" style="text-align: center; height: 37px;"
                                     value="{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}" name="exams" />
                                 </div>
                             @else
@@ -519,6 +597,14 @@
                         <div class="">{{Carbon\Carbon::parse($scholarship->created_at)->format('d-m-Y')}}</div>
                         <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->end_at)->format('d-m-Y')}}</div>
                         <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
+                        {{--@if($scholarship->exam)--}}
+                            {{--<div class="margin-top-10">--}}
+                                {{--<input type="text" id="datepicker-mob" size="32" class="ll-skin-cangas datepicker-input datepicker-mobile" style="text-align: center; height: 37px;"--}}
+                                       {{--value="{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}" name="exams" />--}}
+                            {{--</div>--}}
+                        {{--@else--}}
+                            {{--_--}}
+                        {{--@endif--}}
                     </span>
                     </div>
 
@@ -604,7 +690,7 @@
                 <!-- ================================ -->
                 <div class="margin-top-50"></div>
 
-                <div class="adm-sel-title"> <i id="open-terms" class="fa fa-pencil margin-right-10"></i>Όροι και δικαίωμα συμμετοχής</div>
+                <div class="adm-sel-title"> <i id="open-terms" class="fa fa-pencil margin-right-10 terms-icon"></i>Όροι και δικαίωμα συμμετοχής</div>
 
                 <div id="terms-text">
                     <?php echo $scholarship->terms; ?>
@@ -626,7 +712,7 @@
 
                     {{ csrf_field() }}
                     <button type="submit" class="btn sc-btn btn-primary">
-                        <i class="fa fa-save margin-right-10"></i>Αποθήκευση</button>
+                        <i class="fa fa-save margin-right-10"></i>Αποθήκευση Αλλαγών</button>
                 </div>
 
                 </form>
@@ -665,6 +751,7 @@
 
 <script>
     $("#datepicker").datepicker({ minDate: 0, maxDate: "+5M +10D" })
+    $("#datepicker-mob").datepicker({ minDate: 0, maxDate: "+5M +10D" })
     $('#terms-edit').hide();
     var limit = {{ $scholarship->winners }};
 

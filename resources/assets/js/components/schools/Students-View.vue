@@ -87,10 +87,10 @@
                     <div class="back">
                         <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)"></i>
 
-                        <div style="position: absolute; top: 30px">
+                        <div style="position: absolute; top: 25px">
                             <span style="color:#eee; margin-left: 10px;">
-                                {{ student.pivot.type }}
-                                <br>
+                                <p style=" text-indent: 0px; padding-left: 10px; line-height: 1;">{{ student.pivot.type }}</p>
+
                                     <span style="color:#eee; margin-left: 10px;">
                                         {{ student.pivot.level }}
                                     </span>
@@ -112,14 +112,14 @@
                                 <br>
                             </span>
 
-                            <div class="fath" style="float: left; font-size: 90%">Πατέρας
+                            <div class="fath" style="float: left; font-size: 90%">{{ lang('resource.students.father') }}
                                 <br>
                                 {{student.cv.father_fullname}}
                                 <br>
                                 {{student.cv.father_phone}}
                             </div>
 
-                            <div class="fath" style="position: absolute; right: -200px; font-size: 90%">Μητέρα
+                            <div class="fath" style="position: absolute; right: -200px; font-size: 90%">{{ lang('resource.students.mother') }}
                                 <br>
                                 {{student.cv.mother_fullname}}
                                 <br>

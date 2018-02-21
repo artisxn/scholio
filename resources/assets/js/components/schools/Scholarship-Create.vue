@@ -3,27 +3,27 @@
         <ul id="mmenu" style="z-index: 5">
             <li data-menuanchor="firstPage" class="">
                 <a href="#firstPage">
-                    <div class="btn-fixed">Κριτήρια</div>
+                    <div class="btn-fixed">{{ lang('panel_scholarships.create.steps.criteria') }}</div>
                 </a>
             </li>
             <li data-menuanchor="secondPage" v-if="!financial_disabled">
                 <a href="#secondPage">
-                    <div class="btn-fixed">Οικονομικά</div>
+                    <div class="btn-fixed">{{ lang('panel_scholarships.create.steps.financial') }}</div>
                 </a>
             </li>
             <li data-menuanchor="thirdPage" v-if="!levels_disabled">
                 <a href="#thirdPage">
-                    <div class="btn-fixed">Σπουδές</div>
+                    <div class="btn-fixed">{{ lang('panel_scholarships.create.steps.study') }}</div>
                 </a>
             </li>
             <li data-menuanchor="fourthPage" v-if="!settings_disabled">
                 <a href="#fourthPage">
-                    <div class="btn-fixed">Ρυθμίσεις</div>
+                    <div class="btn-fixed">{{ lang('panel_scholarships.create.steps.settings') }}</div>
                 </a>
             </li>
             <li data-menuanchor="fifthPage" v-if="!terms_disabled">
                 <a href="#fifthPage">
-                    <div class="btn-fixed">Όροι</div>
+                    <div class="btn-fixed">{{ lang('panel_scholarships.create.steps.terms') }}</div>
                 </a>
             </li>
         </ul>
@@ -62,7 +62,7 @@
                         </div>
 
                     </div>
-                    <div v-else style="margin-top: 10px; font-size: 88%">Πολλαπλά Αντικείμενα Σπουδών: {{ study_value.length }}</div>
+                    <div v-else style="margin-top: 10px; font-size: 88%">{{ lang('panel_scholarships.create.multiple') }}: {{ study_value.length }}</div>
                 </div>
 
             </div>
@@ -91,18 +91,31 @@
 
             <div class="section" data-anchor="firstPage">
                 <div class="section-box  sec1">
-                    <div class="step-title">Βήμα 1ο: Επιλέξτε Κριτήρια</div>
+                    <div class="step-title">{{ lang('panel_scholarships.create.stepsTitle.criteria') }}</div>
                     <div class="criteria">
-                        <multiselect v-model="criteria_value" :options="criteria_options" track-by="name" label="name" :close-on-select="true"
-                            :show-labels="false" placeholder="Επιλέξτε Κριτήρια" :deselectLabel="lang('panel_studies.input-delete')"
-                            :selectLabel="lang('panel_scholarships.create.select')" :selectedLabel="lang('panel_scholarships.create.selected')"
-                            :disabled="criteria_disabled" :custom-label="customLabel" :multiple="false" :taggable="true">
+                        <multiselect
+                                v-model="criteria_value"
+                                track-by="name"
+                                label="name"
+                                :options="criteria_options"
+                                :close-on-select="true"
+                                :show-labels="false"
+                                :placeholder="lang('panel_scholarships.create.selectCriteria')"
+                                :deselectLabel="lang('panel_studies.input-delete')"
+                                :selectLabel="lang('panel_scholarships.create.select')"
+                                :selectedLabel="lang('panel_scholarships.create.selected')"
+                                :disabled="criteria_disabled"
+                                :custom-label="customLabel"
+                                :multiple="false"
+                                :taggable="false"
+                                :searchable="false"
+                        >
 
                             <template slot="option" slot-scope="props">
                                 <div class="option__desc">
                                     <img :src="props.option.icon" height="15px">
                                     <span class="option__title">{{ props.option.name }}</span>
-                                    <span class="option__small" style="float: right; color: #999;">{{ props.option.limit }} διαθέσιμες</span>
+                                    <span class="option__small" style="float: right; color: #999;">{{ props.option.limit }} {{ lang('panel_scholarships.create.available') }}</span>
                                 </div>
                             </template>
                         </multiselect>
@@ -124,7 +137,7 @@
 
                         <div class="btns-next-container">
                             <a href="#secondPage" class="btn-anchor">
-                                <div class="btn btn-success pull-right" style="z-index: 2">Επόμενο
+                                <div class="btn btn-success pull-right" style="z-index: 2">{{ lang('panel_scholarships.create.next') }}
                                     <i class="fa fa-caret-right" aria-hidden="true"></i>
                                 </div>
                             </a>
@@ -143,7 +156,7 @@
             <div class="section" data-anchor="secondPage">
                 <div class="section-box sec2">
 
-                    <div class="step-title">Βήμα 2ο: Επιλέξτε Οικονομική Προσφορά</div>
+                    <div class="step-title">{{ lang('panel_scholarships.create.stepsTitle.financial') }}</div>
 
                     <div v-if="!financial_disabled">
                         <div>
@@ -157,11 +170,14 @@
                                 tag-placeholder="Προσθήκη νέου"
                                 :close-on-select="true"
                                 :show-labels="false" 
-                                placeholder="Επιλέξτε Οικονομικό πακέτο" 
+                                :placeholder="lang('panel_scholarships.create.selectFinancial')"
                                 :deselectLabel="lang('panel_studies.input-delete')"
                                 :selectLabel="lang('panel_scholarships.create.select')" 
                                 :selectedLabel="lang('panel_scholarships.create.selected')"
                                 :disabled="financial_disabled"
+                                :multiple="false"
+                                :taggable="false"
+                                :searchable="false"
                                 >
                                 </multiselect>
                             </div>
@@ -200,17 +216,17 @@
 
                     </div>
 
-                    <div v-else class="pre-step"> Συμπληρώστε πρώτα το βήμα 1.</div>
+                    <div v-else class="pre-step">{{ lang('panel_scholarships.create.prestep') }} 1.</div>
 
 
                     <div class="btns-next-container-sec2 financial-text">
                         <a href="#firstPage">
-                            <div class="btn btn-success pull-left">
-                                <i class="fa fa-caret-left" aria-hidden="true"></i> Προηγούμενο </div>
+                            <div class="btn btn-success pull-left" style="margin-left: -7px;">
+                                <i class="fa fa-caret-left" aria-hidden="true"></i> {{ lang('panel_scholarships.create.previous') }} </div>
                         </a>
 
                         <a href="#thirdPage" v-if="financial_value && financial_amount > 0">
-                            <div class="btn btn-success pull-right">Επόμενο
+                            <div class="btn btn-success pull-right">{{ lang('panel_scholarships.create.next') }}
                                 <i class="fa fa-caret-right" aria-hidden="true"></i>
                             </div>
                         </a>
@@ -226,26 +242,51 @@
                 <div class="section-box sec3">
 
 
-                    <div class="step-title">Βήμα 3ο: Επιλέξτε Σπουδές</div>
+                    <div class="step-title">{{ lang('panel_scholarships.create.stepsTitle.study') }}</div>
                     <div v-if="!levels_disabled">
                         <div>
-                            <div class="" style="margin: 15px 0 6px 0 ">Επίπεδο Σπουδών</div>
+                            <div class="" style="margin: 15px 0 6px 0 ">{{ lang('panel_scholarships.create.studiesLevel') }}</div>
                             <div class="level">
-                                <multiselect v-model="level_value" :options="level_options" track-by="name" label="name" :close-on-select="true"
-                                    :show-labels="false" placeholder="Επιλέξτε Επίπεδο Σπουδών" :deselectLabel="lang('panel_studies.input-delete')"
-                                    :selectLabel="lang('panel_scholarships.create.select')" :selectedLabel="lang('panel_scholarships.create.selected')"
-                                    :disabled="levels_disabled"></multiselect>
+                                <multiselect
+                                        v-model="level_value"
+                                        :options="level_options"
+                                        track-by="name" label="name"
+                                        :close-on-select="true"
+                                        :show-labels="false"
+                                        :placeholder="lang('panel_scholarships.create.selectStudyLevel')"
+                                        :deselectLabel="lang('panel_studies.input-delete')"
+                                        :selectLabel="lang('panel_scholarships.create.select')"
+                                        :selectedLabel="lang('panel_scholarships.create.selected')"
+                                        :disabled="levels_disabled"
+                                        :multiple="false"
+                                        :taggable="false"
+                                        :searchable="false"
+                                ></multiselect>
                             </div>
 
                         </div>
 
                         <div v-if="level_value">
-                            <div class="study-title">Αντικείμενο Σπουδών</div>
+                            <div class="study-title">{{ lang('panel_scholarships.create.studiesSubject') }}</div>
                             <div class="study">
-                                <multiselect style="" v-model="study_value" :options="study_options" :multiple="multipleFeature" group-values="study" group-label="section"
-                                    placeholder="Επιλέξτε Αντικείμενα Σπουδών" track-by="name" label="name" :disabled="studies_disabled"
-                                    @remove="allStudies = false">
-                                    <span slot="noResult">Oops! Δεν βρέθηκε...</span>
+                                <multiselect style=""
+                                             v-model="study_value"
+                                             :options="study_options"
+                                             :multiple="multipleFeature"
+                                             group-values="study"
+                                             group-label="section"
+                                             :placeholder="lang('panel_scholarships.create.selectStudySubject')"
+                                             :deselectLabel="lang('panel_studies.input-delete')"
+                                             :selectLabel="lang('panel_scholarships.create.select')"
+                                             :selectedLabel="lang('panel_scholarships.create.selected')"
+                                             track-by="name"
+                                             label="name"
+                                             :disabled="studies_disabled"
+                                             @remove="allStudies = false"
+                                             :taggable="false"
+                                             :searchable="true"
+                                >
+                                    <span slot="noResult">Oops! {{ lang('panel_scholarships.create.notFound') }} </span>
                                 </multiselect>
                             </div>
                             <div style="margin-top: 15px; position: relative; z-index: 4" v-if="study_value && study_value!=null">
@@ -253,12 +294,12 @@
                                 <div class="funkyradio" style="margin: 8px 0 0 0; ">
                                     <div class="funkyradio-success">
                                         <input type="checkbox" id="checkBox" v-model="allStudies">
-                                        <label for="checkBox" style="text-align: center; background: #f8f8f8;"> Επιλογή όλων των σπουδών</label>
+                                        <label for="checkBox" style="text-align: center; background: #f8f8f8;"> {{ lang('panel_scholarships.create.selectAll') }}</label>
                                     </div>
                                 </div>
 
                                 <div class="btn-allStudies">
-                                    <button class="btn btn-info" @click="study_value = []; allStudies=false" v-if="study_value && study_value.length > 2" style="margin: 15px auto">Διαγραφή Όλων</button>
+                                    <button class="btn btn-info" @click="study_value = []; allStudies=false" v-if="study_value && study_value.length > 2" style="margin: 15px auto"> {{ lang('panel_scholarships.create.deleteAll') }}</button>
                                 </div>
                             </div>
 
@@ -272,17 +313,17 @@
                         </div>
 
                     </div>
-                    <div v-else class="pre-step">Συμπληρώστε πρώτα το βήμα 2.</div>
+                    <div v-else class="pre-step">{{ lang('panel_scholarships.create.prestep') }} 2.</div>
 
 
                     <div class="btns-next-container-sec2 btns-sec3">
                         <a href="#secondPage">
                             <div class="btn btn-success pull-left">
-                                <i class="fa fa-caret-left" aria-hidden="true"></i> Προηγούμενο </div>
+                                <i class="fa fa-caret-left" aria-hidden="true"></i> {{ lang('panel_scholarships.create.previous') }} </div>
                         </a>
 
                         <a href="#fourthPage" v-if="study_value && study_value.length > 0">
-                            <div class="btn btn-success pull-right">Επόμενο
+                            <div class="btn btn-success pull-right">{{ lang('panel_scholarships.create.next') }}
                                 <i class="fa fa-caret-right" aria-hidden="true"></i>
                             </div>
                         </a>
@@ -296,7 +337,7 @@
                 <div class="section-box sec4">
 
 
-                    <div class="step-title">Βήμα 4ο: Νικητές - Εξετάσεις - Κλειδιά</div>
+                    <div class="step-title">{{ lang('panel_scholarships.create.stepsTitle.settings') }}</div>
                     <!--<div v-if="!settings_disabled">-->
                     <div>
                         <div>
@@ -316,10 +357,10 @@
                                         <span class="tool funkyradio" style=" display: inline-block">
                                             <span class="funkyradio-success">
                                                 <input type="checkbox" id="multiple" v-model="allWinners">
-                                                <label for="multiple" style="text-align: center; ">Πολλαπλοί Νικητές</label>
+                                                <label for="multiple" style="text-align: center; ">{{ lang('panel_scholarships.create.multiple_winners') }}</label>
                                             </span>
                                               <span class="tooltiptext">
-                                                    Επιλέξτε πολλαπλούς νικητές στην περίπτωση που η υποτροφία είναι με κοινωνικά κριτήρια ή για φίλους/αδέλφια ή ανοιχτου τύπου και ενδεχομένως ικανοποιούν τα κριτήρια πολλαπλοί συμμετέχοντες.
+                                                  {{ lang('panel_scholarships.create.multipleTooltip') }}
                                              </span>
                                         </span>
 
@@ -340,7 +381,7 @@
 
                                 <span class="mobile-hidden">
                                     <div class=" col-sm-4 col-lg-4 col-xs-6s" style="text-align: center;" v-if="">
-                                        <div class="amount-text" >Ενδεικτικό αρχικό ποσό διδάκτρων</div>
+                                        <div class="amount-text" > {{ lang('panel_scholarships.create.tuitionAmount') }}</div>
                                         <div class="input-group " style="width: 240px; margin-left: auto; margin-right: auto; text-align: center;">
                                             <input type="text" class="form-control" style="text-align: center;" placeholder="" aria-describedby="basic-addon2" id="price" v-model="price">
                                             <span class="input-group-addon" id="basic-addon4">€</span>
@@ -357,7 +398,7 @@
                                     </div>
 
                                     <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important; margin-top: 18px;" v-show="exams" v-if="criteria_value.id != 1">
-                                        <div> Ημερομηνία Εξετάσεων </div>
+                                        <div> {{ lang('panel_scholarships.create.examsDate') }} </div>
                                         <div style="z-index: 3; position: relative;">
                                             <input type="text" id="examsdate" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px; margin-top: 1px;"
                                                    v-bind:value="exams_date" onchange="Event.$emit('examsdate', event.target.value)" />
@@ -365,11 +406,6 @@
                                     </div>
 
                                 </span>
-
-
-
-
-
 
                                 <!--<div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;" v-if="">-->
                                     <!--<div class="" style="margin: 8px 0 0 0; text-align: center">-->
@@ -379,11 +415,6 @@
                                         <!--</div>-->
                                     <!--</div>-->
                                 <!--</div>-->
-
-
-
-
-
                             </div>
 
 
@@ -391,11 +422,20 @@
                         </div>
 
                         <div class="keys" v-if="!terms_disabled">
-                            <div class="keys-text">Προσθέστε λέξεις/ετικέτες "κλειδιά" για στοχευμένη αναζήτηση υποτροφίας</div>
-                            <multiselect v-model="value" tag-placeholder="Προσθήκη νέας ετικέτας" placeholder="Αναζητήστε ή Προσθέστε ετικέτα" label="name"
-                                track-by="code" :options="options" deselectLabel="Αφαίρεση" :selectLabel="lang('panel_scholarships.create.select')"
-                                :selectedLabel="lang('panel_scholarships.create.selected')" :multiple="true" :taggable="true"
-                                @tag="addTag">
+                            <div class="keys-text">{{ lang('panel_scholarships.create.tagsTitle') }} </div>
+                            <multiselect
+                                    v-model="value"
+                                    :tag-placeholder="lang('panel_scholarships.create.addNew')"
+                                    :placeholder= "lang('panel_scholarships.create.addLabel')"
+                                    label="name"
+                                    track-by="code"
+                                    :options="options"
+                                    :deselectLabel="lang('panel_studies.input-delete')"
+                                    :selectLabel="lang('panel_scholarships.create.select')"
+                                    :selectedLabel="lang('panel_scholarships.create.selected')"
+                                    :multiple="true"
+                                    :taggable="true"
+                                    @tag="addTag">
                             </multiselect>
                         </div>
                     </div>
@@ -404,11 +444,11 @@
                     <div class="btns-next-container-sec2 btns-next-container-sec4" style="margin-top: 50px" v-if="!terms_disabled">
                         <a href="#thirdPage">
                             <div class="btn btn-success pull-left">
-                                <i class="fa fa-caret-left" aria-hidden="true"></i> Προηγούμενο </div>
+                                <i class="fa fa-caret-left" aria-hidden="true"></i> {{ lang('panel_scholarships.create.previous') }} </div>
                         </a>
 
                         <a href="#fifthPage">
-                            <div class="btn btn-success pull-right">Επόμενο
+                            <div class="btn btn-success pull-right">{{ lang('panel_scholarships.create.next') }}
                                 <i class="fa fa-caret-right" aria-hidden="true"></i>
                             </div>
                         </a>
@@ -419,10 +459,13 @@
                 </div>
             </div>
 
+
+
+
             <div class="section" data-anchor="fifthPage">
                 <div class="section-box sec5" style="">
 
-                    <div class="step-title">Βήμα 5ο: Περιγράψτε τους Όρους Συμμετοχής</div>
+                    <div class="step-title">{{ lang('panel_scholarships.create.stepsTitle.terms') }}</div>
 
                     <div v-if="!terms_disabled">
                         <!--<div class="">-->
@@ -437,7 +480,10 @@
 
                         <div id="" class="terms-container">
                             <span style="color: transparent">.</span>
-                            <p style="margin-bottom: 8px"> Αναφέρετε παρακάτω σύντομα αλλά με σαφήνια τους <strong> Όρους και  τις Προϋποθεσεις </strong> της Υποτροφίας</p>
+                            <p style="margin-bottom: 8px">
+                                {{ lang('panel_scholarships.create.termsConditions') }}
+
+                            </p>
                             <tinymce id="editor" v-model="terms" :options="tinyOptions" @change="tinyMCE" :content='content'></tinymce>
                             <div>
                                 <span>{{ lang('panel_scholarships.create.remaining') }}:</span>
@@ -448,7 +494,7 @@
                         <div class="clearfix"></div>
 
                         <div class="btn-container">
-                            <button class="btn btn-success" @click="saveScholarship()">Δημιουργία Υποτροφίας</button>
+                            <button class="btn btn-success" @click="saveScholarship()">{{ lang('panel_scholarships.create.saveScholarship') }} </button>
                         </div>
                     </div>
 
@@ -485,7 +531,7 @@
         position: absolute;
         z-index: 1;
         bottom: 95%;
-        margin-left: -190px;
+        margin-left: -170px;
         opacity: 0;
         transition: opacity 0.1s;
         background-color: #007991;
@@ -1682,18 +1728,13 @@
                 if (this.financial_value) {
                     var text2 = null;
                     if (this.financial_value.id == 1) {
-                        text2 = "Η μείωση διδάκτρων αφορά ένα % ποσοστό μείωσης των αρχικών διδάκτρων για το αντικείμενο σπουδών της παρεχόμενης υποτροφίας. Όταν το ποσοστό είναι 100% η υποτροφία είανι πλήρης και έχει δεσπόζουσα θέση κατά την ανάζητηση υποτροφιών. " +
-                                "Όταν το ποσοστό είναι 50% ή μεγαλύτερο η υποτροφία φέρει έντονο διακριτικό 'υψηλού κέρδους΄ κατά την αναζήτηση υποτροφιών. " +
-                                "Σε κάθε περίπτωση για να υπάρχει η αίσθηση του κέρδους από τους συμμετέχοντες, είναι θετικό να αναφερθεί το ενδεικτικό αρχικό ποσό διδάκτρων σε επόμενο βήμα."
+                        text2 = window.lang.panel_scholarships.create.financialtext1
                     }
                     else if (this.financial_value.id == 2) {
-                        text2 = "Το ποσό επιδότησης αφορά ένα ποσό σε € που θα 'κερδίσει' ο υποψήφιος επί των αρχικών διδάκτρων για το αντικείμενο σπουδών της παρεχόμενης υποτροφίας. " +
-                                "Όταν το ποσό είναι 1000€ ή μεγαλύτερο η υποτροφία φέρει έντονο διακριτικό 'υψηλού κέρδους΄ κατά την αναζήτηση υποτροφιών. " +
-                                "Σε κάθε περίπτωση για να υπάρχει η αίσθηση του κέρδους από τους συμμετέχοντες, είναι θετικό να αναφερθεί το ενδεικτικό αρχικό ποσό διδάκτρων σε επόμενο βήμα."
+                        text2 = window.lang.panel_scholarships.create.financialtext2
                     }
                     else if (this.financial_value.id == 3) {
-                        text2 = "Ο χρόνος δωρεάν φοίτησης αφορά συνήθως ένα 'δοκιμαστικό' χρονικό διάστημα σπουδών, ή θερινά ή εποχιακά μαθήματα. "+
-                                "Σε κάθε περίπτωση για να υπάρχει η αίσθηση του κέρδους από τους συμμετέχοντες, είναι θετικό να αναφερθεί το ενδεικτικό αρχικό ποσό διδάκτρων σε επόμενο βήμα."
+                        text2 = window.lang.panel_scholarships.create.financialtext3
                     }
                     this.financial_value.text2 = text2;
                 }

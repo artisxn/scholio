@@ -11,6 +11,8 @@ return [
         'alumni-many' => 'Graduated',
         'name' => 'Name',
         'phone' => 'Phone',
+        'father' => 'Father',
+        'mother' => 'Mother',
     ],
 
     'teachers' => [
