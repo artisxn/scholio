@@ -917,7 +917,7 @@
                         <!-- SM - XS  contact & stats section -->
                         <div class="hidden-lg hidden-md visible-sm visible-xs clearfix">
                             <div class="margin-top-10 stats-box-xs">
-                             <div class=""  id="googleMapXS" style="height: 310px; width: 100%; "></div>
+                             <div class="" id="googleMapXS" style="height: 310px; width: 100%; "></div>
                             </div>
                         </div>
                     @endif

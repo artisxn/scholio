@@ -836,8 +836,11 @@ angular.module("schoolsResultsApp",[])
                     <span class="pull-left pad-left-5">@{{phone}}</span>
                     <br>
                     <div class="pad-top-3"></div>
+
+                    @{{^site}}
                     <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-5"> <a href="http://@{{website}}/" target="_blank">@{{website}}</a></span>
+                    @{{/site}}
 
                     <div class="hidden-xs">
                         <br>
@@ -893,6 +896,11 @@ angular.module("schoolsResultsApp",[])
                     hit.hot=[];
                     hit.scholarshipLion=[];
                     hit.review=[];
+                    hit.site=[];
+
+                    if(!(hit.website && hit.website != "")){
+                        hit.site.push(true);
+                    }
 
                     if(hit.lengthStudents > 8   && (window.STATS[hit.id-1] == 1) ){
                         hit.hot.push(true);

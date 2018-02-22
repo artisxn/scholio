@@ -15,7 +15,7 @@ class CreateAlgoliaSchoolsTable extends Migration
     {
         Schema::create('algolia_schools', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('school_id');
+            $table->integer('school_id')->unique();
             $table->string('name')->nullable();
             $table->string('type')->nullable();
             $table->integer('type_id')->nullable();

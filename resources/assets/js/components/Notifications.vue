@@ -106,6 +106,7 @@
 
         mounted() {
             this.getNotifications()
+            console.log('sd')
         }
     }
 

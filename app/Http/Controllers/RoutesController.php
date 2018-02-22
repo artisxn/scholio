@@ -59,7 +59,12 @@ class RoutesController extends Controller
     public function publicProfile($id)
     {
         $school = School::find($id);
-        return view('public.school.profile')->withId($id)->withSchool($school);
+
+        if(Scholio::ProfileActive($school)){
+            return view('public.school.profile')->withId($id)->withSchool($school);
+        }
+
+        abort(404);
     }
 
     public function redirectDashboard()

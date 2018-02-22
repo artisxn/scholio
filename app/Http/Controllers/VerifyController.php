@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Scholio\Algolia;
+use App\Scholio\Scholio;
 
 class VerifyController extends Controller
 {
@@ -16,7 +17,7 @@ class VerifyController extends Controller
             $user->email_token = '';
             $user->save();
 
-            Algolia::newSchool($user->info);
+            $algolia = (new Algolia($user->info))->handle();
 
             session()->flash('verify', 'Your email have been verified');
 

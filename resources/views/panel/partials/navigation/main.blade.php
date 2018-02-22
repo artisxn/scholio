@@ -1,5 +1,5 @@
 <style>
-    .unverified{margin-top: 20px; font-size: 90%; color: #ccc4a7; text-align: center;}
+    .unverified{margin-top: 40px; font-size: 90%; color: #ccc4a7; text-align: center;}
 </style>
 
 <div class="left side-menu"  style="position: fixed;">

@@ -478,6 +478,7 @@
         },
 
         mounted() {
+            console.log('ds')
             this.getNotifications()
             this.getSchoolStudies()
             this.getSchoolSections()

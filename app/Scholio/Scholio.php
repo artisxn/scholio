@@ -463,8 +463,7 @@ class Scholio
         return 'Algolia _geo ready';
     }
 
-    public static function bot()
-    {
+    public static function bot(){
         Route::group(['prefix' => 'bot'], function () {
             include 'bot-routes.php';
         });
@@ -517,5 +516,21 @@ class Scholio
         $dummy = $scholarship->dummy;
 
         $dummy->delete();
+    }
+
+    public static function ProfileActive(School $school){
+        $haveAbout = $school->about && $school->about != '';
+        $haveCity = $school->city && $school->city != '';
+        $haveTel = $school->phone && $school->phone != '';
+        $haveLogo = $school->logo && $school->logo != '';
+        $have4Images = count($school->image) >= 4;
+        $isApproved = $school->approved;
+        $isVerified = $school->admin->status = 'verified';
+
+        if ($haveAbout && $haveCity && $haveTel && $haveLogo && $have4Images && $isApproved) {
+            return true;
+        }
+
+        return false;
     }
 }

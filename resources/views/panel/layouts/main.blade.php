@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="{{'/panel/assets/css/masonry.css'}}"/>
 
         <style>
-        .unverified{margin-top: 20px; font-size: 90%; color: #ccc4a7; text-align: center;}
+        .unverified{margin-top: 40px; font-size: 90%; color: #ccc4a7; text-align: center;}
         .unverified:hover{ cursor: pointer;}
 
         /*Styling topbar*/

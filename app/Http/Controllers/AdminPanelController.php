@@ -8,6 +8,7 @@ use App\Models\SchoolTypes;
 use App\Scholio\Scholio;
 use GuzzleHttp\Psr7\Request;
 use App\Models\SocialLink;
+use App\Scholio\Algolia;
 
 class AdminPanelController extends Controller
 {
@@ -164,8 +165,6 @@ class AdminPanelController extends Controller
 
         $links = SocialLink::where('user_id', auth()->user()->id)->get();
 
-        // dd($links->where('name', 'facebook')->first()->link);
-
         return view('panel.pages.school.profile.form', compact('schoolTypes', 'logo', 'school', 'links'));
     }
 
@@ -195,8 +194,6 @@ class AdminPanelController extends Controller
         $school->about = request()->about;
 
         $school->save();
-
-        // dd(request());
 
         if (request()->facebook) {
             $this->saveSocialLinks(request()->facebook, 'facebook');
@@ -246,9 +243,8 @@ class AdminPanelController extends Controller
             $this->deleteIfExists('linkedin');
         }
 
-        session()->flash('updated_profile', 'Your profile has been updated');
-
-        // Scholio::updateDummy($school);
+        $algolia = (new Algolia($school))->handle();
+        // session()->flash('updated_profile', 'Your profile has been updated');
 
         return back();
     }
@@ -311,7 +307,7 @@ class AdminPanelController extends Controller
             $school->image()->toggle($i);
         }
 
-        Scholio::updateDummy($school);
+        $algolia = (new Algolia($school))->handle();
 
         return back();
     }
@@ -328,7 +324,15 @@ class AdminPanelController extends Controller
 
         unlink(public_path() . '/upload/school/'. $school->type->name . '_' . auth()->user()->id . '_' . auth()->user()->name . '/' . $image->name);
 
-        // Scholio::updateDummy($school);
+        if (Scholio::ProfileActive($school)) {
+            if (Algolia::exists($school)) {
+                Algolia::update($school);
+            }
+        }else{
+            if(Algolia::exists($school)){
+                Algolia::delete($school);
+            }
+        }
 
         return back();
     }
