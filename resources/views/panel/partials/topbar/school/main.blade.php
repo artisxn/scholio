@@ -8,7 +8,7 @@
 
             <span class="tooltiptext4">@lang('panel/schools/topbar.students')</span>
         </a>
-        
+
         <a href="/panel/school/teachers"  class="top-img tool {{ request()->path() == 'panel/school/teachers' ? 'img-active' : ''}}">
         {{--<img src="/new/img/teacher.png" alt="teacher image" class="top-image">--}}
             <img src="/panel/assets/images/dashBoard/teachers2.png" alt="teachers image" class="top-image">

@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'unverified' => 'Unverified Account',
+    'unverifiedModal' => 'Follow the confirmation link that was sent to you on your email when you signed up,
+    so that you have full rights of publicity and search for your educational provider.',
+    'close'=>'Close',
+
     'menu' => [
         'profile' => 'Profile',
         'settings' => 'Settings',

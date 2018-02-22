@@ -26,9 +26,9 @@
     </div>
 
     @if(auth()->user()->role == 'school' && auth()->user()->status == 'guest')
-        <div class="unverified" style="margin-top: 40px; font-size: 90%; color: #ccc4a7; text-align: center;" data-toggle="modal" data-target="#ModalUnverified">
+        <div class="unverified" data-toggle="modal" data-target="#ModalUnverified">
             <i class="fa fa-exclamation-circle m-r-5"></i>
-            Ανεπιβεβαίωτος Λογαριασμός
+            @lang('panel/schools/navigation.unverified')
         </div>
      @endif
         <!--- Divider -->
@@ -61,8 +61,8 @@
 
 <!-- ====== Modal Υποτροφίας =======-->
 <div id="ModalUnverified" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
-    <div class="modal-dialog" style="width: 600px; ">
-        <div class="modal-content" style="padding: 0; border: none; border-radius: 5px;">
+    <div class="modal-dialog" style="width: 600px ">
+        <div class="modal-content" style="padding: 0; border: none; border-radius: 5px; width: 500px; margin-left: auto; margin-right: auto;">
 
             <div class="panel " style="background-color: #324c5a; height: 100px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
                 <div class="panel-heading" style="height: 55px; color: #fff">
@@ -71,18 +71,20 @@
 
                     </button>
                     <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left" height="80px">
-                    <div style="margin: 30px 0 0 70px; font-size: 130%"> Ανεπιβεβαίωτος Λογαριασμός</div>
+                    <div style="margin: 30px 0 0 70px; font-size: 130%">@lang('panel/schools/navigation.unverified')</div>
                     <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;"></h3>
                 </div>
 
             </div>
             <div class="panel-body" style="min-height: 110px;">
 
-                <div style="text-align: justify"> Ακολουθήστε το σύνδεσμο επιβεβαίωσης που σας έχει αποσταλεί στο email σας κατά την εγγραφή σας, ώστε να αποκτήσετε πλήρη δικαίωματα δημόσιας προβολής και αναζήτησης του εκπαιδευτικού σας φορέα.  </div>
+                <div style="text-align: justify">
+                    @lang('panel/schools/navigation.unverifiedModal')
+                </div>
             </div>
 
             <div class="modal-footer" style="padding: 20px;">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Κλείσιμο</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('panel/schools/navigation.close')</button>
             </div>
         </div>
     </div>
