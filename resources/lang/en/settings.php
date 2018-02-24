@@ -80,5 +80,15 @@ return [
         'certifications' => 'Certifications',
         'notes' => 'Notes',
         'school_notes' => 'School Notes',
+        'category' => [
+            'student_info' => 'Student Info',
+            'mother_info' => 'Mother\'s Info',
+            'father_info' => 'Father\'s Info',
+            'guardian_info' => 'Στοιχεία Επικοινωνίας Κηδεμόνος',
+            'mother_financial_info' => 'Οικονομικά Στοιχεία Μητέρας',
+            'father_financial_info' => 'Οικονομικά Στοιχεία Πατέρα',
+            'guardian_financial_info' => 'Οικονομικά Στοιχεία Κηδεμόνος',
+            'student_extra_info' => 'Έπιπλέον Στοιχεία Μαθητή',
+        ]
     ],
 ];

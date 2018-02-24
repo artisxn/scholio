@@ -620,7 +620,7 @@
                 <div class="col-xs-6 container-22 img2-container">
                     <div class="cont-in col-sm-8 center-col">
                         <div class="img2-inner">
-                            <img class="finance-image" src="/panel/assets/images/steps/{{ $scholarship->criteria->name }}.png" alt="" style="">
+                            <img class="finance-image" src="{{ $scholarship->criteria->icon }}" alt="" style="">
                             <div class="finance-text">{{ $scholarship->criteria->name }}</div>
                         </div>
                     </div>
@@ -629,7 +629,7 @@
                 <div class="col-xs-6 container-21 img2-container " >
                     <div class="cont-in col-sm-8 center-col" >
                         <div class="img2-inner">
-                            <img class="finance-image" src="/panel/assets/images/steps/{{ $scholarship->financial->icon }}" alt="" style="">
+                            <img class="finance-image" src="{{ $scholarship->financial->icon }}" alt="" style="">
                             <div class="finance-text">{{ $scholarship->financial->plan }} <span class="amount-metric"> {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric }} </span> </div>
                         </div>
                     </div>

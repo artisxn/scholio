@@ -12,6 +12,7 @@ use App\Models\Work;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use App\Models\SocialLink;
 
 class SocialAuthController extends Controller
 {
@@ -160,12 +161,8 @@ class SocialAuthController extends Controller
 
     public function addSocialLinks($user, $provider, $link)
     {
-        // $links = new SocialLink;
-        // $links->user_id = $user->id;
-        // $links->{$provider} = $link;
-        // $links->save();
 
-        $links = new Link;
+        $links = new SocialLink;
         $links->user_id = $user->id;
         $links->name = $provider;
         $links->link = $link;

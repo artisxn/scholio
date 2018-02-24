@@ -14,14 +14,14 @@ class AdmissionCategoryTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['name' => 'Στοιχεία Υποψηφίου', 'icon' => ''],
-            ['name' => 'Στοιχεία Επικοινωνίας Μητέρας', 'icon' => ''],
-            ['name' => 'Στοιχεία Επικοινωνίας Πατέρα', 'icon' => ''],
-            ['name' => 'Στοιχεία Επικοινωνίας Κηδεμόνος', 'icon' => ''],
-            ['name' => 'Οικονομικά Στοιχεία Μητέρας', 'icon' => ''],
-            ['name' => 'Οικονομικά Στοιχεία Πατέρα', 'icon' => ''],
-            ['name' => 'Οικονομικά Στοιχεία Κηδεμόνος', 'icon' => ''],
-            ['name' => 'Έπιπλέον Στοιχεία Μαθητή', 'icon' => ''],
+            ['name' => 'student_info', 'icon' => ''],
+            ['name' => 'mother_info', 'icon' => ''],
+            ['name' => 'father_info', 'icon' => ''],
+            ['name' => 'guardian_info', 'icon' => ''],
+            ['name' => 'mother_financial_info', 'icon' => ''],
+            ['name' => 'father_financial_info', 'icon' => ''],
+            ['name' => 'guardian_financial_info', 'icon' => ''],
+            ['name' => 'student_extra_info', 'icon' => ''],
         ];
 
         foreach ($categories as $category) {

@@ -75,10 +75,6 @@ input:checked + .slider:before {
         .container-left {width: 99%;}
         .texts {width: 290px;}
     }
-
-
-
-
 </style>
 @endsection
 
@@ -109,8 +105,7 @@ input:checked + .slider:before {
 
                 <div class="">
                     @foreach($categories as $category)
-                        {{--@if($category->id<5)--}}
-                            <div class="top-pad title">{{ $category->name }}</div>
+                            <div class="top-pad title">@lang('settings.admissions.category.' . $category->name)</div>
                             <hr>
                             @foreach($category->fields as $field)
                                 <div class="texts"> <i class="{{ $field->icon }} fa-linear4"></i>

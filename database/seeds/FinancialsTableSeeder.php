@@ -14,15 +14,15 @@ class FinancialsTableSeeder extends Seeder
     public function run()
     {
         $types = [
-            ['plan' => 'Μείωση Διδάκτρων', 'icon' => 'Μείωση Διδάκτρων.png', 'metric' => '%'],
-            ['plan' => 'Ποσό Επιδότησης', 'icon' => 'Ποσό Επιδότησης.png', 'metric' => '€'],
-            ['plan' => 'Χρόνος Δωρεάν Φοίτησης', 'icon' => 'Χρόνος Δωρεάν Φοίτησης.png', 'metric' => 'Μηνες'],
+            ['plan' => 'Μείωση Διδάκτρων', 'icon' => '/panel/assets/images/steps/Μείωση Διδάκτρων.png', 'metric' => '%'],
+            ['plan' => 'Ποσό Επιδότησης', 'icon' => '/panel/assets/images/steps/Ποσό Επιδότησης.png', 'metric' => '€'],
+            ['plan' => 'Χρόνος Δωρεάν Φοίτησης', 'icon' => '/panel/assets/images/steps/Χρόνος Δωρεάν Φοίτησης.png', 'metric' => 'Μηνες'],
         ];
 
         $typesEN = [
-            ['plan' => 'Tuition Fee Reduction', 'icon' => 'Μείωση Διδάκτρων.png', 'metric' => '%'],
-            ['plan' => 'Amount of Subsidy', 'icon' => 'Ποσό Επιδότησης.png', 'metric' => '€'],
-            ['plan' => 'Free School Attendance Time', 'icon' => 'Χρόνος Δωρεάν Φοίτησης.png', 'metric' => 'Months'],
+            ['plan' => 'Tuition Fee Reduction', 'icon' => '/panel/assets/images/steps/Μείωση Διδάκτρων.png', 'metric' => '%'],
+            ['plan' => 'Amount of Subsidy', 'icon' => '/panel/assets/images/steps/Ποσό Επιδότησης.png', 'metric' => '€'],
+            ['plan' => 'Free School Attendance Time', 'icon' => '/panel/assets/images/steps/Χρόνος Δωρεάν Φοίτησης.png', 'metric' => 'Months'],
         ];
 
         foreach ($types as $type) {

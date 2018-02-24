@@ -16,6 +16,10 @@ use App\Models\Report;
 
 Scholio::soonRoutes();
 
+Route::get('/school/connection/link/{school}', function(School $school){
+    return view('con')->withSchool($school);
+});
+
 Route::get('/terms', function(){
     return view('terms');
 });

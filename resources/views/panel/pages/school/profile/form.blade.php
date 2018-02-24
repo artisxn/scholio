@@ -71,18 +71,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.2/tinymce.min.js"></script>
 
 <!-- GoogleMap API -->
-{{--<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>--}}
+<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
 
 {{--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>--}}
 
 {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA&libraries=places"></script>--}}
 
-<script src="http://maps.google.com/maps/api/js?libraries=places&region=uk&language=en&sensor=false"></script>
-
-
-
-
-
+<!-- <script src="https://maps.google.com/maps/api/js?libraries=places&region=uk&language=en&sensor=false"></script> -->
 
 
 

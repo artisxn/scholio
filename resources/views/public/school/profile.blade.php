@@ -438,6 +438,7 @@
             
 
             <div class="row">
+                @if($school->admin->subscription->plan_id == 2)
                     @if(auth()->check())
                         @if(auth()->user()->role != 'school')
                             @if(auth()->user()->apply->contains($school))
@@ -450,11 +451,11 @@
                                 <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                         data-toggle="modal" data-target="#connect-modal">
                                     <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
-
                                     @lang('profile.request')
                                 </button>
                             @endif
                         @endif
+                    @endif
                     @endif
                         {{-- <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                 data-toggle="modal" data-target="#connect-modal">
@@ -1015,6 +1016,8 @@
                         @endif
 
 {{--                        @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))--}}
+
+                         @if($school->admin->subscription->plan_id == 2)
                     @if(auth()->check())
                         @if(auth()->user()->role != 'school')
                                 @if(auth()->user()->apply->contains($school))
@@ -1058,7 +1061,7 @@
 
                     @endif
 
-                        {{--@endif--}}
+                        @endif
 
                     </div>
 
