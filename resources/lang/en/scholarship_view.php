@@ -33,4 +33,9 @@ return [
     ],
     'yes' => 'YES',
     'no' => 'NO',
+
+    'edit' => [
+        'studies'=>'Fields of Studies',
+        'limit'=>'Rest applications',
+    ]
 ];

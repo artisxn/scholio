@@ -1,6 +1,6 @@
 <?php
 return [
-    'select'=>'Select photo',
+    'select'=>' Select  a  photo ',
     'accept'=>'Accept',
     'cancel'=>'Cancel',
 

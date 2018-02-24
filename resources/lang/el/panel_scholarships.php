@@ -139,6 +139,9 @@ return [
             'active' => 'Ενεργές',
             'ended' => 'Έχουν Λήξει',
         ],
+        'applicants' => 'Πλήθος Αιτούντων',
+
+
     ],
 
     'admissions' => [

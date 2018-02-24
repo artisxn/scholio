@@ -484,7 +484,7 @@
                             @else
                                 <div class="tool">
                                     {{--Πολλαπλές Σπουδές: --}}
-                                    {{count($scholarship->multipleStudies)}} Αντικείμενα Σπουδών
+                                    {{count($scholarship->multipleStudies)}} @lang('scholarship_view.edit.studies')
                                     @if(count($scholarship->multipleStudies )<6)
                                     <div class="tooltiptext tooltip3">
                                         @foreach($scholarship->multipleStudies as $study)
@@ -514,8 +514,8 @@
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-3 colmn">
                     <div class="inner-column">
                         <span class="col-lg-10 ">
-                            <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
-                            <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
+                            <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
+                            <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
                         </span>
                         <span class="col-lg-2 text-right">
                             <div class="">{{$scholarship->usersLength()}}</div>
@@ -527,8 +527,8 @@
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-4 colmn">
                     <div class="inner-column">
                         <span class="col-lg-7">
-                            <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
-                            <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
+                            <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
+                            <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
                         </span>
                         <span class=" col-lg-5 text-right">
                             <div class="">
@@ -543,8 +543,8 @@
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-4">
                     <div class="inner-column">
                         <span class="col-lg-7">
-                            <div class="">  <i class="fa fa-user-o margin-right-10"></i>Υπολ αιτήσεων:</div>
-                            <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
+                            <div class="">  <i class="fa fa-user-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>
+                            <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
                         </span>
                         <span class="col-lg-5 text-right">
                             <div class="">

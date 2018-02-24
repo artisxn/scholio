@@ -462,7 +462,7 @@ import Chart from '../../VueChart.vue'
                   labels: this.sc_names,
                   datasets: [
                     {
-                      label: 'Πλήθος Αιτούντων',
+                      label: window.lang.panel_scholarships.view.applicants,
                       backgroundColor: '#008da5',
                       data: this.sc_amounts.sort(function(a, b){return b-a})
                     }

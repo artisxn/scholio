@@ -129,6 +129,7 @@ return [
             'active' =>'Active',
             'ended'  =>'No Available',
         ],
+        'applicants' => 'Number of Applicants',
     ],
 
     'admissions' => [
