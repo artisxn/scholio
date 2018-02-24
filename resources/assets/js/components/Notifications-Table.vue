@@ -16,8 +16,8 @@
                                             <th class="sxs-hide"></th>
                                             <th class="text-center sxsx-hide">{{ lang('resource.requests.table.role') }}</th>
                                             <th class="text-center">{{ lang('resource.requests.table.name') }}</th>
-                                            <th class="text-center sxsx-hide"> Κατάσταση </th>
-                                            <th class="text-center mid-hide"> Σπουδές </th>
+                                            <th class="text-center sxsx-hide"> {{ lang('resource.requests.table.status') }}</th>
+                                            <th class="text-center mid-hide"> {{ lang('resource.requests.table.studies') }} </th>
                                             <th class="text-center small-hide lg-hide">{{ lang('resource.requests.table.date') }}</th>
                                             <th class="text-center">
                                                 <!--{{ lang('resource.requests.table.action') }}-->
@@ -51,7 +51,7 @@
                                                         <span class="tooltiptext tooltip2 xl-hide">{{ notification.data.study.name }}</span>
                                                     </td>
                                                     <td class="tool mid-hide" v-if="notification.data.role == 'teacher'">
-                                                        <div class="dots-text  text-center table-info"  style=""> {{ notification.data.study }}</div>
+                                                        <div class="dots-text  text-center table-info"  style="margin-top: -9px;"> {{ notification.data.study }}</div>
                                                         <span class="tooltiptext tooltip2 xl-hide">{{ notification.data.study }}</span>
                                                     </td>
 
@@ -120,7 +120,7 @@
 
                         <img v-bind:src=selectedImg class="modal-img">
                         <span class="modal-name"> {{ selectedName }}</span>
-                        <div class="modal-role" style="margin-bottom: 45px">Καθηγητής</div>
+                        <div class="modal-role" style="margin-bottom: 45px">{{ lang('resource.requests.table.teacher') }}</div>
 
 
                         <div class="section2-container ">
@@ -137,7 +137,7 @@
                                     <div style="margin-top: 40px" class="modal-input-container">
                                         <div class="section-text centered-text ">
                                             <!--<img class="modal-icon" src="/new/img/teacher/team.png" alt="">-->
-                                            Επιλογή Κατάστασης</div>
+                                            {{ lang('resource.requests.table.selectStatus') }}</div>
                                         <i class="fa fa-cogs" style="color: #008da5"></i>
                                         <select v-model="selectedStatus" class="modal-select" style="margin-left: 4px">
                                             <option value="connected">{{ lang('["panel/schools"].resource.teachers.active') }}</option>
@@ -151,9 +151,9 @@
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >{{lang('profile.modal.abort')}}</button>
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >{{ lang('resource.requests.table.close') }}</button>
                         <button v-on:click="deny()" class="btn btn-success">{{ lang('resource.requests.table.abort') }}</button>
-                        <button type="button" class="btn btn-info" data-dismiss="modal" @click="accept">Αποδοχή</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal" @click="accept">{{ lang('resource.requests.table.confirm') }}</button>
                     </div>
                 </div>
             </div>
@@ -179,11 +179,11 @@
 
                         <img v-bind:src=selectedImg class="modal-img">
                         <div class="modal-name"> {{ selectedName }}</div>
-                        <div class="modal-role">Μαθητής</div>
+                        <div class="modal-role">{{ lang('resource.requests.table.student') }}</div>
 
                         <div class="section2-container ">
                             <div class="inner-section" style="">
-                                <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">Επιλογή Σπουδών</div>
+                                <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">{{ lang('resource.requests.table.selectStudies') }}</div>
                                 <div class="input-container">
 
                                     <div class="input-container modal-input-container">
@@ -195,7 +195,7 @@
                                     </div>
 
                                     <div style="margin-top: 50px" class="modal-input-container">
-                                        <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/team.png" alt="">Επιλογή Κατάστασης</div>
+                                        <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/team.png" alt="">{{ lang('resource.requests.table.selectStatus') }}</div>
                                         <select v-model="selectedStatus" class="modal-select">
                                             <option value="connected">{{ lang('["panel/schools"].resource.students.active') }}</option>
                                             <option value="allumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
@@ -210,7 +210,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{lang('profile.modal.abort')}}</button>
                         <button v-on:click="deny()" class="btn btn-success" :disabled="buttonsDisabled">{{ lang('resource.requests.table.abort') }}</button>
-                        <button type="button" class="btn btn-info" data-dismiss="modal" @click="accept">Αποδοχή</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal" @click="accept">{{ lang('resource.requests.table.confirm') }}</button>
                     </div>
                 </div>
             </div>
@@ -272,6 +272,11 @@
 
     .modal-input-container{border-bottom: 1px solid #008da5;  border-bottom-right-radius: 0!important; border-bottom-left-radius: 0!important;}
     .modal-select{border: none; background: transparent; margin-left: -10px; }
+    .modal-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    .modal-select:hover{color:#FD6A33; cursor: pointer;}
 
 
     /* ================================ */
@@ -312,7 +317,7 @@
         background-color: #007991;
     }
 
-    .tooltip2{width: 390px;  bottom: 80px; left: 160px;}
+    .tooltip2{width: 390px;  bottom: 80px; left: 10%;}
 
     .tool:hover .tooltiptext{
         visibility: visible;
@@ -321,16 +326,19 @@
 
     @media (max-width: 1270px) {
         .dots-text{max-width: 350px;}
-        .tooltip2{ left: 120px; width: 340px;}
+        .tooltip2{ left: 18%; width: 340px;}
     }
 
     @media (max-width: 1140px) {
         .dots-text{max-width: 120px;}
-        .tooltip2{left: 20px; width: 290px;}
+        .tooltip2{left: 25%; width: 290px;}
     }
 
     @media (max-width: 700px) {
         .dots-text{max-width: 270px;}
+    }
+    @media (min-width: 1371px) {
+        .tooltip2{ left: 20%; width: 360px;}
     }
 
 

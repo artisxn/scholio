@@ -10,15 +10,18 @@
                 <!--<h4>Upload an Image</h4>-->
                 <div class="">
                     <input type="file" class="hidden" id="upload-image" v-on:change="setUpFileUploader">
-                    <label for="upload-image" class="btn btn-upload">Επιλογή φωτογραφίας</label>
+                    <label for="upload-image" class="btn btn-upload">
+
+                        {{lang('upload_photo.select') }}
+                    </label>
                 </div>
 
                 <button class="btn btn-primary" v-on:click="uploadFile($event)" :disabled="acceptDisabled">
-                    <i class="fa fa-check"></i> Αποδοχή
+                    <i class="fa fa-check"></i> {{lang('upload_photo.accept') }}
                 </button>
 
                 <button class="btn btn-default" v-on:click="modalDismiss($event)">
-                    <i class="fa fa-times"></i> Ακύρωση
+                    <i class="fa fa-times"></i> {{lang('upload_photo.cancel') }}
                 </button>
             </div>
         </div>

@@ -50,6 +50,14 @@
     @media(min-width: 1800px){
         /*.col-xl-3{width: 25%}*/
     }
+
+    /*===========================================*/
+    /*=========== Google Autocomplete  ==========*/
+    .pac-container:after {
+        background-image: none !important;
+        height: 0px;
+    }
+
 </style>
 
 <?php $__env->stopSection(); ?>
@@ -62,7 +70,31 @@
 <!-- tinyMCE js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.2/tinymce.min.js"></script>
 
+<!-- GoogleMap API -->
+{{--<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>--}}
+
+{{--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>--}}
+
+{{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA&libraries=places"></script>--}}
+
+<script src="http://maps.google.com/maps/api/js?libraries=places&region=uk&language=en&sensor=false"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
+
+
+
     tinymce.init({
         language_url : '/el.js',
 
@@ -147,7 +179,9 @@
 
 
 
-                    <div class="title">Στοιχεία Επικοινωνίας</div>
+                    <div class="title">
+                        @lang('school_profile.contact')
+                    </div>
                     <!-- change foreach -->
                     <div class="input-container col-xs-12 col-sm-6 col-xl-3">
                         <?php $__currentLoopData = $schoolTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schoolType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -180,13 +214,15 @@
 
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
-                        <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.city'); ?>" name="city" class="demo-form ad-input" value="<?php echo e($school->city); ?>">
+                        <input  id="autocompleteCity"  placeholder=""
+                                type="text" label="<?php echo app('translator')->getFromJson('school_profile.city'); ?>" name="city" class="demo-form ad-input" value="<?php echo e($school->city); ?>">
                         <i class="icon-inp fa fa-map-marker"></i>
                     </div>
 
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
-                        <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.address'); ?>" name="address" class="demo-form ad-input" value="<?php echo e($school->address); ?>">
+                        <input id="autocompleteAddress" placeholder=""
+                               type="text" label="<?php echo app('translator')->getFromJson('school_profile.address'); ?>" name="address" class="demo-form ad-input" value="<?php echo e($school->address); ?>">
                         <i class="icon-inp fa fa-home"></i>
                     </div>
 
@@ -204,7 +240,9 @@
 
 
                     <div class="up clearfix"></div>
-                    <div class="title">Σύνδεσμοι των μέσων κοινωνικής δικτύωσης</div>
+                    <div class="title">
+                        @lang('school_profile.social')
+                    </div>
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 " style="">
                         <input type="text" label="facebook" name="facebook" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('facebook') ? $links->where('name', 'facebook')->first()->link : '' }}" style="">
@@ -285,3 +323,22 @@
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('panel.layouts.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+
+<script>
+    var input = document.getElementById('autocompleteCity');
+    var city = new google.maps.places.Autocomplete(input, {
+         types: ['(cities)']
+        ,  componentRestrictions: {country: 'GR'}
+    });
+
+    var input2 = document.getElementById('autocompleteAddress');
+    var address = new google.maps.places.Autocomplete(input2, {
+        types: ["geocode"]
+        ,  componentRestrictions: {country: 'GR'}
+    });
+
+
+
+</script>

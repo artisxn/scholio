@@ -66,7 +66,7 @@
 
 <div id="main" class="main-container hidden ">
 
-    <div class="title">Αλλαγή Κωδικού</div>
+    <div class="title"> @lang('panel/changePassword.changePassword')</div>
 
     <div class="email-cont">
         <div class="email">
@@ -83,18 +83,18 @@
 
     <form action="/change/password" method="POST">
         <div class="input-password">
-            <input  type="password" label="Τρέχων Κωδικός" name="password" class="demo-form " value="">
+            <input  type="password" label="@lang('panel/changePassword.currentPassword')" name="password" class="demo-form " value="">
             <i class="fa fa-key icon-password"></i>
         </div>
         <div class="input-password">
-            <input  type="password" label="Νέος Κωδικός" name="password" class="demo-form " value="">
+            <input  type="password" label="@lang('panel/changePassword.newPassword')" name="password" class="demo-form " value="">
             <i class="fa fa-key icon-password"></i>
         </div>
         <div class="input-password">
-            <input  type="password" label="Επαλήθευση Νέου Κωδικού" name="password" class="demo-form " value="">
+            <input  type="password" label="@lang('panel/changePassword.verifyPassword')" name="password" class="demo-form " value="">
             <i class="fa fa-key icon-password"></i>
         </div>
-        <button class="btn btn-submit" type="submit">Αποδοχή</button>
+        <button class="btn btn-submit" type="submit">@lang('panel/changePassword.accept')</button>
     </form>
 
 </div>

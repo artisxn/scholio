@@ -36,12 +36,17 @@ return [
         'table' => [
             'role' => 'Role',
             'name' => 'Name',
+            'status' => 'Status',
+            'studies' => 'Studies',
             'date' => 'Date',
             'action' => 'Action',
             'teacher' => 'Teacher',
             'student' => 'Student',
             'confirm' => 'Confirm',
-            'abort' => 'Abort',
+            'abort' => 'Reject',
+            'close' => 'Close',
+            'selectStudies' => 'Select Studies',
+            'selectStatus' => 'Select Status',
         ],
     ],
 ];

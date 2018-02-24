@@ -55,7 +55,7 @@
                                         </td>
                                         <td><img :src="admission.criteria" height="30px"></td>
                                         <td>
-                                            <a :href="'/scholarship/' + admission.scholarship_id" target="_blank">
+                                            <a :href="'/scholarship/' + admission.scholarship_id+'/edit'">
                                                 <div class="text" :class="{unreadStudy: admission.unread}"
                                                 v-if="admission.scholarship != 'Multiple'">{{admission.scholarship}}</div>
                                                 <div v-else>

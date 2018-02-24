@@ -146,7 +146,9 @@
 
 
 
-                    <div class="title">Στοιχεία Επικοινωνίας</div>
+                    <div class="title">
+
+                        Στοιχεία Επικοινωνίας</div>
                     <!-- change foreach -->
                     <div class="input-container col-xs-12 col-sm-6 col-xl-3">
                         <?php $__currentLoopData = $schoolTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schoolType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

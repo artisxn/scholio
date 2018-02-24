@@ -123,7 +123,7 @@
                                             <!--</td>-->
                                             <td v-if="showLevel">
                                                 <span class="tool">
-                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left" v-if="scholarship.study_name">{{scholarship.study_name}}</div>
+                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left dots-study" v-if="scholarship.study_name">{{scholarship.study_name}}</div>
                                                     <div class="dots-text dots-mlg dots-lg dots-xl-left" v-else>Πολλαπλά Αντικείμενα Σπουδών</div>
                                                     <span class="tooltiptext tooltip3" v-if="scholarship.study_name">{{scholarship.study_name}}</span>
                                                     <span class="tooltiptext tooltip3" v-else>Πολλαπλά Αντικείμενά Σπουδών </span>
@@ -337,6 +337,8 @@
         visibility: visible;
         opacity: 1;
     }
+
+    /*.dots-study{max-width: 90%!important; }*/
 
      /* =================================*/
 

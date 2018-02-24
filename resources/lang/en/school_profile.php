@@ -13,6 +13,10 @@ return [
     'password' => 'Password',
     'phone' => 'Phone Number',
     'manager' => 'Contact Manager Name',
+    'contact' => 'Contact info',
+    'social' => 'Links to social media',
+
+
     'about' => 'Write a short description here',
     'button' => 'Update',
 

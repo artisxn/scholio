@@ -210,6 +210,7 @@ echo json_encode($trans);
         <script src="/panel/assets/js/bootstrap-select.js"></script>
 
 
+
         {{--scripts for rounded select--}}
         <script src="{{ asset('panel/assets/js/selectClassie.js') }}"></script>
         <script src="{{ asset('panel/assets/js/selectFx.js') }}"></script>
@@ -289,8 +290,7 @@ echo json_encode($trans);
             $('#btnsvg').mouseover( function(){ $('#img-svg-color').removeClass('hidden');       $('#img-svg-black').addClass('hidden');     });
             $('#btnsvg').mouseout(  function(){ $('#img-svg-color').addClass('hidden');          $('#img-svg-black').removeClass('hidden');  });
         </script>
-        </script>
-        </script>
+
 
 
         <script>

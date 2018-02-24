@@ -691,13 +691,17 @@ angular.module("schoolsResultsApp",[])
 
                 <i id="report" class="fa fa-ellipsis-h report" onClick="dropReport(@{{school_id}})" ></i>
                 <!-- =================== Report  Menu ====================-->
-                <div class="report-drop" id="report-drop@{{school_id}}">
-                     <img class="report-logo" style="" src="/new/img/logoNX-m.png" alt="">
+                <div class="report-drop" id="report-drop@{{school_id}}" >
+                     <img class="report-logo"  src="/new/img/logoNX-m.png" alt="">
                      <span class="report-title"> Αναφορά </span>
                      <form method="POST" action="/report/add/@{{school_id}}/Profile">
                      {{ csrf_field() }}
-                        <div class="report-text"> 
-                            <button type="submit" style="background: none; color: inherit; border: none;padding: 0;font: inherit;outline: inherit;">Αναφορά του εκπαιδευτικού ιδρύματος στο διαχειριστή για προσβλητικό περιεχόμενο</button>
+                        <div class="report-text" style="overflow:hidden!important">
+                            <button type="submit" style=" width:185px; background: none; border: none; text-align: justify;">
+
+                               Αναφορά του εκπαιδευτικού ιδρύματος στο διαχειριστή για προσβλητικό περιεχόμενο
+                            </button>
+
                         </div>
                      </form>
                 </div>
@@ -835,19 +839,27 @@ angular.module("schoolsResultsApp",[])
                     <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-5">@{{phone}}</span>
                     <br>
-                    <div class="pad-top-3"></div>
 
-                    @{{^site}}
-                    <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                    <span class="pull-left pad-left-5"> <a href="http://@{{website}}/" target="_blank">@{{website}}</a></span>
-                    @{{/site}}
 
                     <div class="hidden-xs">
-                        <br>
+
                         <div class="pad-top-3"></div>
                         <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
                         <span class="pull-left pad-left-5"> <a href="mailto:@{{email}}">@{{email}}</a></span>
+                        <br>
                     </div>
+
+                    <div class="pad-top-3">
+                        @{{^site}}
+                            <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
+                            <span class="pull-left pad-left-5"> <a href="http://@{{website}}/" target="_blank">@{{website}}</a></span>
+                        @{{/site}}
+                    </div>
+
+
+
+
+
                 </div>
                 <div class="col-lg-2  col-md-1 col-sm-5 col-xs-12 margin-top-15 card-buttons text-incr-85">
                     <div class="hidden-xs but-pad">
