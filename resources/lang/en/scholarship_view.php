@@ -36,6 +36,15 @@ return [
 
     'edit' => [
         'studies'=>'Fields of Studies',
-        'limit'=>'Rest applications',
+        'limit'=>'Rest Applications',
+        'selectWinners'=>'Selection of Scholarship Winners: Choose',
+        'winners'=>' Winners',
+        'winner'=>' Winner',
+        'scholarWinners'=>'Scholarship Winners',
+        'terms'=>'Terms and eligibility',
+        'btnSave'=>'Save Changes',
+        'btnEnd'=>'End of Scholarship and Winners Update',
+        'btnDelete'=>'Delete Scholarship',
+
     ]
 ];

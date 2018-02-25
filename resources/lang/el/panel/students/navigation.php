@@ -10,6 +10,8 @@ return [
     'schools' => 'Τα εκπαιδευτήρια μου',
     'scholarships' => 'Υποτροφίες',
     'admissions' => 'Αιτήματα',
+    'interested' => 'Ενδιαφέρουσες',
+
     'my-admissions' => 'Αιτήσεις Υποτροφίων',
     'reply' => 'Απαντήσεις',
     'reviews' => 'Αξιολογήσεις',

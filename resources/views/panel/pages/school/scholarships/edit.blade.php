@@ -154,11 +154,15 @@
 
         .adm-sel-title{font-size: 130%; font-weight: 300; margin-left: 15px}
 
-        .avatar-img{height: 50px; width: auto; border-radius: 6px; border: 1px solid #bbb; box-shadow: 0 0 10px #fff; margin: 10px 0;}
+        .avatar-img{height: 42px; width: auto; border-radius: 6px; border: 1px solid #bbb; box-shadow: 0 0 10px #fff; margin: 8px 0;}
         .name-text{ font-weight: 300; color: #777}
 
 
         .pad-0{margin: 0}
+
+        .funkyradio input[type="radio"]:empty ~ label, .funkyradio input[type="checkbox"]:empty ~ label {
+            line-height: 2.9em;
+        }
 
 
 
@@ -228,7 +232,7 @@
             label{margin-left:5px; width: 360px;}
         }
 
-        @media(max-width: 460px){
+        @media(max-width: 478px){
             label{margin-left:3px; width: 280px;}
         }
         @media(max-width: 380px){
@@ -239,9 +243,9 @@
         }
 
 
-        .datepicker-lg{ margin-left: -50px;}
+        /*.datepicker-lg{ margin-left: -50px;}*/
         /*.datepicker-mobile{margin-left: -23px;}*/
-        .datepicker-input{ background: transparent; border: none; margin-top: -18px;}
+        .datepicker-input{ background: transparent; border: none; display: inline-block; margin-top: -10px}
         .datepicker-input:hover{cursor: pointer; color: #FD6A33}
 
         .terms-icon:hover{color: #FD6A33; cursor: pointer;}
@@ -542,17 +546,18 @@
 
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-4">
                     <div class="inner-column">
-                        <span class="col-lg-7">
+                        <span class="col-lg-8">
                             <div class="">  <i class="fa fa-user-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>
                             <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
                         </span>
-                        <span class="col-lg-5 text-right">
-                            <div class="">
+                        <span class="col-lg-4 text-right">
+                            <div class="" style="float: right">
                                 {{ $scholarship->admissions_limit }}
                             </div>
                             @if($scholarship->exam)
-                                <div class="margin-top-10">
-                                    <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input datepicker-lg" style="text-align: center; height: 37px;"
+                                <div class="margin-top-10" style="float: right">
+
+                                    <input type="text" id="datepicker" size="32" class="ll-skin-cangas datepicker-input datepicker-lg" style="text-align: right; height: 37px;"
                                     value="{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}" name="exams" />
                                 </div>
                             @else
@@ -567,9 +572,9 @@
                 <div class="row pad-0">
                     <div class=" hidden-lg col-xxxs-12 col-xxs-6 col-xs-6 col-sm-6 col-md-6 pad-0 colmn" >
                     <span class="col-xxxs-7 col-xxs-10 col-xs-8  col-sm-9 col-md-7 pad-0">
-                        <div class="">  <i class="fa fa-pencil margin-right-10"></i>Αιτήθηκαν:</div>
-                        <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>Ενδιαφέρθηκαν:</div>
-                        <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>Με εξετάσεις:</div>
+                        <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
+                        <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
+                        <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
 
                     </span>
                     <span class="col-xxxs-5 col-xxs-2 col-xs-2 col-sm-2 col-md-2 text-right">
@@ -577,9 +582,9 @@
                         <div class="margin-top-10 text-right">{{$scholarship->interestsLength()}}</div>
                         <div class="margin-top-10 text-right">
                             @if($scholarship->exams)
-                            NAI
+                                @lang('scholarship_view.yes')
                             @else
-                            OXI
+                                @lang('scholarship_view.no')
                             @endif
                         </div>
                     </span>
@@ -589,9 +594,9 @@
 
                     <div class="hidden-lg col-xxxs-12 col-xxs-6 col-xs-6 col-sm-6 pad-0 pad-left-5-xxs">
                         <span class="col-xxxs-7 col-xxs-7 col-xs-7 col-sm-7  col-md-7 pad-0" >
-                        <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>Αναρτήθηκε:</div>
-                        <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>Λήγει:</div>
-                         <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>Ημ/νία Εξ.:</div>
+                        <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
+                        <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
+                         <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
                     </span>
                     <span class="col-xxxs-5 col-xxs-5 col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right pad-0">
                         <div class="">{{Carbon\Carbon::parse($scholarship->created_at)->format('d-m-Y')}}</div>
@@ -620,7 +625,7 @@
                 <div class="col-xs-6 container-22 img2-container">
                     <div class="cont-in col-sm-8 center-col">
                         <div class="img2-inner">
-                            <img class="finance-image" src="/panel/assets/images/steps/{{ $scholarship->criteria->name }}.png" alt="" style="">
+                            <img class="finance-image" src="{{ $scholarship->criteria->icon }}" alt="" style="">
                             <div class="finance-text">{{ $scholarship->criteria->name }}</div>
                         </div>
                     </div>
@@ -645,21 +650,33 @@
                 <div class="margin-top-50"></div>
 
                   @if($scholarship->active)
-                <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Επιλογή Νικητών Υποτροφίας: Επιλογή {{ $scholarship->winners }}  Νικητών</div>
+                <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>@lang('scholarship_view.edit.selectWinners') {{ $scholarship->winners }}
+
+                    @if($scholarship->winners>1)
+                    <span>
+                        @lang('scholarship_view.edit.winners')
+                    </span>
+                    @else
+                        <span>
+                        @lang('scholarship_view.edit.winner')
+                    </span>
+                    @endif
+
+                </div>
                   @else
-                      <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>Νικητές Υποτροφίας</div>
+                      <div class="adm-sel-title"> <i class="fa fa-check margin-right-10"></i>@lang('scholarship_view.edit.scholarWinners') </div>
                   @endif
 
                 <div>
                     @foreach($scholarship->admission as $admission)
                         <div class=" col-xxs-name col-sm-6 col-xl-4">
-                            <img class="avatar-img" src="{{ $admission->user->info->avatar }}" width="20px">
+                            <img class="avatar-img" src="{{ $admission->user->info->avatar }}" >
                             @if($scholarship->active)
                                 {{--<input class="winners-checkbox" type="checkbox" name="winner[]" value="{{ $admission->user->id }}">--}}
 
 
 
-                                <span class="funkyradio" style=" display: inline-block">
+                                <span class="funkyradio" style=" display: inline-block;">
                                             <span class="funkyradio-success">
                                                 <input class="winners-checkbox" type="checkbox" id="win{{ $admission->user->id }}" name="winner[]" value="{{ $admission->user->id }}">
 
@@ -690,13 +707,13 @@
                 <!-- ================================ -->
                 <div class="margin-top-50"></div>
 
-                <div class="adm-sel-title"> <i id="open-terms" class="fa fa-pencil margin-right-10 terms-icon"></i>Όροι και δικαίωμα συμμετοχής</div>
+                <div class="adm-sel-title"> <i id="open-terms" class="fa fa-pencil margin-right-10 terms-icon"></i>@lang('scholarship_view.edit.terms')</div>
 
                 <div id="terms-text">
                     <?php echo $scholarship->terms; ?>
                 </div>
 
-                <div id="terms-edit">
+                <div id="terms-edit" class="hidden">
                     <textarea value="" name="terms">{{ $scholarship->terms }}</textarea>
                 </div>
 
@@ -712,14 +729,14 @@
 
                     {{ csrf_field() }}
                     <button type="submit" class="btn sc-btn btn-primary">
-                        <i class="fa fa-save margin-right-10"></i>Αποθήκευση Αλλαγών</button>
+                        <i class="fa fa-save margin-right-10"></i>@lang('scholarship_view.edit.btnSave')</button>
                 </div>
 
                 </form>
 
                 <form method="POST" action="/scholarship/{{$scholarship->id}}/end" style="margin-top: 10px; margin-bottom: 10px;">
                     <button id="saveButton" type="submit" class="sc-btn disabled" disabled>
-                        <i class="fa fa-flag-o margin-right-10"></i>Λήξη Υποτροφίας και Ενημέρωση Νικητών</button>
+                        <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.edit.btnEnd')</button>
                 </form>
 
                 <form method="POST" action="/scholarship/{{$scholarship->id}}/delete">
@@ -727,7 +744,7 @@
                      {{ method_field('DELETE') }}
                      @if($scholarship->usersLength() == 0)
                     <button type="submit" class="btn sc-btn btn-danger">
-                        <i class="fa fa-trash margin-right-10"></i>Διαγραφή υποτροφίας</button>
+                        <i class="fa fa-trash margin-right-10"></i>@lang('scholarship_view.edit.btnDelete')</button>
                     @endif
                 </form>
                 </div>
@@ -750,30 +767,55 @@
 @section('scripts')
 
 <script>
-    $("#datepicker").datepicker({ minDate: 0, maxDate: "+5M +10D" })
-    $("#datepicker-mob").datepicker({ minDate: 0, maxDate: "+5M +10D" })
-    $('#terms-edit').hide();
-    var limit = {{ $scholarship->winners }};
 
-    $('#open-terms').click(function(){
-        $('#terms-text').hide();
-        $('#terms-edit').show();
-    })
+    $( document ).ready(function() {
 
-    $('input.winners-checkbox').on('change', function(evt) {
-       if( $('.winners-checkbox:checked').length >= limit+1) {
-           this.checked = false;
-       }
 
-       if($('.winners-checkbox:checked').length == limit){
-           @if(!$activeDate || $scholarship->admissions_limit == 0)
-               $('#saveButton').addClass("sc-dark-green").removeClass("disabled");
-               $('#saveButton').prop('disabled', false);
-           @endif
-       }else{
-           $('#saveButton').removeClass("sc-dark-green").addClass("disabled");
-           $('#saveButton').prop('disabled', true);
-       }
+        $("#datepicker").datepicker({ minDate: 0, maxDate: "+5M +10D" })
+        $("#datepicker-mob").datepicker({ minDate: 0, maxDate: "+5M +10D" })
+        $('#terms-edit').hide();
+        var limit = {{ $scholarship->winners }};
+
+
+        var open=false;
+        $('#open-terms').click(function(){
+            if(!open){
+                $('#terms-text').hide();
+                $('#terms-edit').removeClass("hidden")
+                $('#terms-edit').show();
+            }
+            else{
+                $('#terms-edit').addClass("hidden")
+                $('#terms-edit').hide();
+                $('#terms-text').show();
+            }
+
+
+
+            open=!open;
+            console.log( open );
+        })
+
+        $('input.winners-checkbox').on('change', function(evt) {
+            if( $('.winners-checkbox:checked').length >= limit+1) {
+                this.checked = false;
+            }
+
+            if($('.winners-checkbox:checked').length == limit){
+                @if(!$activeDate || $scholarship->admissions_limit == 0)
+                    $('#saveButton').addClass("sc-dark-green").removeClass("disabled");
+                $('#saveButton').prop('disabled', false);
+                @endif
+            }else{
+                $('#saveButton').removeClass("sc-dark-green").addClass("disabled");
+                $('#saveButton').prop('disabled', true);
+            }
+        });
+
+
     });
+
+
+
 </script>
 @endsection
