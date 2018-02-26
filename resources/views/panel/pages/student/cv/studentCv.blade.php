@@ -21,9 +21,14 @@
     }
     /* =========================================================== */
 
+
+
     /*#content{display: none;}*/
+    .header-title{font-size: 140%}
     .card-box{min-height: 1200px}
     .text{font-size: 14px; font-weight: 400; color: #999;}
+    .title-text{max-width: 580px; text-align: center; margin-left: auto; margin-right: auto;}
+    select:hover{cursor: pointer}
 
     .img-avatar{height:100px; margin: 5px 110px; box-shadow: 0 0 10px 2px #555; border-radius: 6px;}
     .btn-choose{ height: 40px!important; padding: 11px 0!important; clear: both; margin: 20px 50px; width: 270px;}
@@ -36,6 +41,10 @@
     .mar-right-10{margin-right: 10px;}
     .section-text{color: #008DA5; font-weight: 400; font-size: 110%}
     .inner-section{min-height: 365px;}
+
+    .info-text{color: #008DA5; font-style: oblique;}
+
+
 
     .clear-fix{clear: both }
 
@@ -59,6 +68,10 @@
 
 
 
+    @media (min-width: 768px) and (max-width: 1899px){
+        .select-icon{top: 333px; left: 9px;}
+
+    }
 
 
 
@@ -69,13 +82,15 @@
         .col-xl-line{border-bottom: 1px solid #aaa; margin-top: -6px; width: 100%;}
         .members{margin-top: 0}
         .family{margin-top: 5px;}
-        .inner-section{min-height: 260px;}
+        .inner-section{min-height: 360px;}
+        .inner1{min-height: 300px;}
 
 
     }
 
     @media (max-width: 1899px){
         .hidden-low{display: none;}
+        .sx-clear-fix{float: none;}
     }
 
     @media (max-width: 543px){
@@ -181,16 +196,16 @@
                         {{ csrf_field() }}
                         {{-- CHANGE CV'S PHOTO  --}}
                        <div class="col-xs-12 img-container" >
-                            <h4 class="header-title"><b>Επεξεργασία Βιογραφικού</b></h4>
-                            <p class="text">
-                                    Συμπληρώστε τα στοιχεία επικοινωνίας σας και του βιογραφικού σας, <br class="br1"> για να διευκολυνθούν οι αιτήσεις υποτροφιών που θα πραγματοποιείσετε.
+                            <h4 class="header-title"><b>@lang('panel/students/cv.editCv')</b></h4>
+                            <p class="text title-text">
+                                @lang('panel/students/cv.titleText')
                             </p>
                             <div class="row">
                                     <div>
                                         <img class="img-avatar" src="{{ auth()->user()->info->avatar }}" >
                                     </div>
 
-                                     @include('panel.partials.body.uploadImage', ['type' => 'avatar', 'text' => 'Επιλογή φωτογραφίας προφίλ'])
+                                     @include('panel.partials.body.uploadImage', ['type' => 'avatar', 'text' => trans('panel/students/cv.selectPhoto')])
                             </div>
                        </div>
 
@@ -198,61 +213,61 @@
 
                             {{-- PROFILE DATA --}}
                             <div class="col-xs-12" >
-                                <div class="inner-section row">
-                                    <div class="section-text centered-text" style="max-width: 280px;"> Στοιχεία Επικοινωνίας Σπουδαστή</div>
+                                <div class="inner-section row inner1">
+                                    <div class="section-text centered-text" style="max-width: 280px;"> @lang('panel/students/cv.contactInfo')</div>
 
                                     <div class="col-sm-6 col-xl-4">
                                         <div class="input-container">
-                                            <input  type="text" label="Όνομα*" name="firstName" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
+                                            <input  type="text" label=" @lang('panel/students/cv.details.firstName') * " name="firstName" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
                                             <i class="icon-inp  fa fa-user"></i>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 input-container clear-fix-sm col-xl-4" >
-                                        <input type="text" label="Επώνυμο*" name="lastName" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
+                                        <input type="text" label="@lang('panel/students/cv.details.lastName') * " name="lastName" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
                                         <i class="icon-inp fa fa-user"></i>
                                     </div>
 
                                     <div class="col-sm-6 input-container col-xl-4">
-                                        <input type="text" label="Διεύθυνση" name="student_address" class="demo-form ad-input" value="{{ auth()->user()->cv->student_address }}">
+                                        <input type="text" label="@lang('panel/students/cv.details.address')" name="student_address" class="demo-form ad-input" value="{{ auth()->user()->cv->student_address }}">
                                         <i class="icon-inp fa fa-street-view"></i>
                                     </div>
                                     <div class="col-sm-6 input-container col-xl-4">
-                                        <input type="text" label="Πόλη/Περιοχή" name="student_city" class="demo-form ad-input" value="{{ auth()->user()->cv->student_city }}">
+                                        <input type="text" label="@lang('panel/students/cv.details.city')" name="student_city" class="demo-form ad-input" value="{{ auth()->user()->cv->student_city }}">
                                         <i class="icon-inp fa fa-map-marker"></i>
                                     </div>
 
                                     <div class="col-sm-6 input-container col-xl-4">
-                                        <input type="text" label="Ηλεκτρονικό Tαχυδρομείο/ e-mail" name="email" class="demo-form ad-input" value="{{ auth()->user()->email}}">
+                                        <input type="text" label="@lang('panel/students/cv.details.email')" name="email" class="demo-form ad-input" value="{{ auth()->user()->email}}">
                                         <i class="icon-inp fa fa-envelope"></i>
                                     </div>
                                     <div class="col-sm-6 input-container col-xl-4">
                                         {{--<a href="tel:{{ $user->info->phone }}">--}}
-                                        <input type="text" label="Τηλέφωνο" name="student_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->student_phone }}">
+                                        <input type="text" label="@lang('panel/students/cv.details.phone')" name="student_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->student_phone }}">
                                         {{--</a>--}}
                                         <i class="icon-inp fa fa-phone col-xl-4"></i>
                                     </div>
 
                                     <div class="col-sm-6 input-container col-xl-4">
                                     {{--<input type="text" label="Ημερομηνία Γέννησης" name="dob" class="demo-form ad-input"  value="{{ auth()->user()->cv->student_dob}}">--}}
-                                        <input class="demo-form ad-input ll-skin-cangas" name="dob" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse(auth()->user()->cv->student_dob)->format('d/m/Y') }}" label="Ημερομηνία Γέννησης" name="dob">
+                                        <input class="demo-form ad-input ll-skin-cangas" name="dob" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse(auth()->user()->cv->student_dob)->format('d/m/Y') }}" label="@lang('panel/students/cv.details.dateOfBirth')" name="dob">
 
                                         <i class="icon-inp fa fa-calendar"></i>
                                     </div>
 
                                     <div class="col-sm-6 input-container col-gender col-xl-4">
-                                        <div class="drop-title">Φύλο*</div>
+                                        <div class="drop-title">@lang('panel/students/cv.details.gender') *</div>
                                         <div class="select-gender">
                                             <select name="gender" class="select-transparent">
                                                 <option value="male"
                                                         @if (auth()->user()->info->gender == 'male' )
                                                         selected
                                                         @endif
-                                                >Ανδρας</option>
+                                                >@lang('panel/students/cv.details.male')</option>
                                                 <option value="female"
                                                         @if (auth()->user()->info->gender == 'female' )
                                                         selected
                                                         @endif
-                                                >Γυναίκα</option>
+                                                >@lang('panel/students/cv.details.female')</option>
 
                                             </select>
                                         </div>
@@ -281,18 +296,16 @@
 
 
 
-                                    <div class="col-sm-6 input-container col-xl-4 members  clear-fix" >
-                                        <div class="drop-title">Μέλος Πολύτεκνης Οικογένειας</div>
+                                    <div class="col-sm-6 input-container col-xl-4 members  sx-clear-fix" >
+                                        <div class="drop-title"> @lang('panel/students/cv.details.largeFamily')</div>
 
                                         <div class="select-polyteknos col-xl-4">
                                             <select class="select-transparent">
-                                                <option value="YES" {{auth()->user()->cv->student_polyteknos == 'YES' ? 'selected' : ''}}>Ναι</option>
-                                                <option value="NO" {{auth()->user()->cv->student_polyteknos == 'NO' ? 'selected' : ''}}>Όχι</option>
+                                                <option value="YES" {{auth()->user()->cv->student_polyteknos == 'YES' ? 'selected' : ''}}> @lang('panel/students/cv.yes')</option>
+                                                <option value="NO" {{auth()->user()->cv->student_polyteknos == 'NO' ? 'selected' : ''}}> @lang('panel/students/cv.no')</option>
                                             </select>
                                         </div>
-
                                         <i class="icon-inp fa fa-users select-icon"></i>
-
                                         <div class="col-xl-line"></div>
                                     </div>
 
@@ -322,9 +335,12 @@
                                 <div class="row flex-row">
                                     <div class="col-md-6 section2-container col-xl-4">
                                         <div class="inner-section">
-                                            <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> Ξένες Γλώσσες</div>
+                                            <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i> @lang('panel/students/cv.details.languages')</div>
                                             <div class=" input-container">
-                                                <div class="info-text"> Γράψε τις ξένες γλώσσες που μιλάς και σε πιο επίπεδο.</div>
+                                                <div class="info-text">
+                                                    @lang('panel/students/cv.languagesInfo')
+
+                                                    </div>
                                                 <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ auth()->user()->cv->languages }}</textarea>
                                             </div>
                                         </div>
@@ -334,9 +350,11 @@
                                     <!-- ============================= -->
                                     <div class="col-md-6 section2-container col-xl-4">
                                         <div class="inner-section" >
-                                            <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i> Προηγούμενες Σπουδές</div>
+                                            <div class="section-text centered-text">   <i class="icon-title fa fa-graduation-cap"></i>
+                                                @lang('panel/students/cv.details.studies')
+                                                </div>
                                             <div class=" input-container">
-                                                <div class="info-text"> Γράψε μας τις μέχρι τώρα σπουδές σου, τα εκπαιδευτικά ιδρύματα και το έτος αποφοίτησης, όπως φαίνονται στο επόμενο παράδειγμα.</div>
+                                                <div class="info-text">  @lang('panel/students/cv.studiesInfo')</div>
                                                 <textarea name="studies" class="notes" placeholder="1. ΜΒΑ in Business Administration / Πανεπιστημιο Μακεδονίας / 2016&#13;&#10;2. Οικονομικά / Αριστοτέλειο Πανεπιστημιο θεσσαλονίκης / 2014&#13;&#10;3. 7ο Λύκειο Θεσσαλονικης / 2009
                                                 ">{{ auth()->user()->cv->studies }}</textarea>
                                             </div>
@@ -348,9 +366,9 @@
 
                                     <div class="col-md-6 section2-container  col-xl-4">
                                         <div class="inner-section" >
-                                            <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i>Έπαινοι - Διακρίσεις</div>
+                                            <div class="section-text centered-text">   <i class="icon-title fa fa-trophy"></i>@lang('panel/students/cv.details.awards') </div>
                                             <div class=" input-container">
-                                                <div class="info-text"> Γράψε μας τις μέχρι τώρα διακρίσεις σου στις ξένες γλώσσες, στον αθλητισμό, στη μουσική ή σε προηγούμενες σπουδές σου.</div>
+                                                <div class="info-text"> @lang('panel/students/cv.awardsInfo') </div>
                                                 <textarea name="awards" class="notes" placeholder="1. &#13;&#10;2.&#13;&#10;3.
                                                 ">{{ auth()->user()->cv->awards }}</textarea>
                                             </div>
@@ -363,9 +381,9 @@
 
                                     <div class="col-md-6 section2-container col-xl-6">
                                         <div class="inner-section" >
-                                            <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>Ενδιαφέροντα - Ασχολίες</div>
+                                            <div class="section-text centered-text">   <i class="icon-title fa fa-paint-brush"></i>@lang('panel/students/cv.details.interests')</div>
                                             <div class=" input-container">
-                                                <div class="info-text"> Γράψε μας τα γενικότερα ενδιαφέροντα και τις ασχολίες σου.<span style="color: transparent">.</span></div>
+                                                <div class="info-text"> @lang('panel/students/cv.interestsInfo') <span style="color: transparent">.</span></div>
                                                 <textarea name="other_interests" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
                                                 ">{{ auth()->user()->cv->other_interests }}</textarea>
                                             </div>
@@ -376,9 +394,9 @@
 
                                     <div class="col-md-12 section2-container clearfix col-xl-6">
                                         <div class="inner-section" >
-                                            <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>Πιστοποιήσεις - Σεμινάρια</div>
+                                            <div class="section-text centered-text">   <i class="icon-title fa fa-certificate"></i>@lang('panel/students/cv.details.certifications')</div>
                                             <div class=" input-container">
-                                                <div class="info-text"> Γράψε μας τις μέχρι τωρα πιστοποιήσεις σου και τα σεμινάρια που έχεις παρακολουθήσει</div>
+                                                <div class="info-text"> @lang('panel/students/cv.certificationsInfo') </div>
                                                 <textarea name="certifications" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
                                                 ">{{ auth()->user()->cv->certifications }}</textarea>
                                             </div>
@@ -388,7 +406,10 @@
 
                                     <div class="col-xs-12" >
                                         <div class="inner-section row" style="min-height: 100px">
-                                            <div class="section-text centered-text ">Μy talent links</div>
+                                            <div class="section-text centered-text " style=""> <i class="icon-title fa fa-music"></i>
+                                                @lang('panel/students/cv.details.talents')</div>
+
+                                            <div class="info-text"> @lang('panel/students/cv.talentsInfo') </div>
 
                                             <div class="col-sm-6 input-container">
                                                 <input type="text" label="YouTube Channel" name="youtube" class="demo-form ad-input" value="{{ auth()->user()->sociallinks->where('name', 'youtube')->first()->link ?? '' }}">
@@ -496,7 +517,8 @@
 
                             <div class="col-xs-12 text-center m-t-40 centered-text">
                                 <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
+                                    <i class="fa fa-save mar-right-10"></i>
+                                    @lang('panel/students/cv.saveChanges')
                                 </button>
                             </div>
 

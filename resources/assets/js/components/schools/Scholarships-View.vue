@@ -104,13 +104,13 @@
 
                                             <td class="tool hidden-xsm" style=" padding-left: 0; padding-right: 0">
                                                 <div class="dots-text dots-sm hidden-xxlx">
-                                                    <img :src="'/panel/assets/images/steps/'+scholarship.financial_icon" height="30px" alt="" class="">
+                                                    <img :src="scholarship.financial_icon" height="30px" alt="" class="">
                                                 </div>
                                                 <span class="tooltiptext tooltip4 hidden-xxlx">
                                                     {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
                                                 </span>
                                                 <span class=" hidden-xxlxx" >
-                                                    {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
+                                                     {{ lang('seeder.financial.' + (scholarship.financial_plan == 'Μείωση Διδάκτρων' : 1 ? ) }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
                                                 </span>
 
                                             </td>

@@ -300,7 +300,7 @@
                     @if($school->settings->studies && count($school->study) > 0)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
                     @if($school->settings->scholarships && count($school->scholarship) > 0)<li class="sc-landing-menu-item"><a href="#ypotrofies" class="school-profile-nav-link">@lang('profile.navigation.scholarships')</a></li>@endif
                     @if($school->settings->teachers && count($school->teachers) > 0)<li class="sc-landing-menu-item"><a href="#faculty" class="school-profile-nav-link">@lang('profile.navigation.teachers')</a></li>@endif
-                    @if($school->settings->reviews && count($school->review) > 0)<li class="sc-landing-menu-item"><a href="#reviews" class="school-profile-nav-link">@lang('profile.navigation.reviews')</a></li>@endif
+                    @if($school->settings->reviews && count($school->reviews) > 0)<li class="sc-landing-menu-item"><a href="#reviews" class="school-profile-nav-link">@lang('profile.navigation.reviews')</a></li>@endif
 
 
 
@@ -378,7 +378,7 @@
 
                     <div class=" xs-centered-text">
                                                 <h4 class="xs-h4">@{{contactInfo.name}}</h4>
-                        @if($school->settings->reviews && count($school->review) >0)
+                        @if($school->settings->reviews && count($school->reviews) >0)
                                                  <span class="pad-top-5 xs-pad-top xs-review">
 
                                         <span ng-show="contactInfo.ratingCounter!=0"> <rating class="text-incr-85 sc-t-orange" id="Rating"></rating>
@@ -843,7 +843,7 @@
                     @endif
 
 
-                    @if($school->settings->reviews && count($school->review) > 0)
+                    @if($school->settings->reviews && count($school->reviews) > 0)
                             <!-- Αξιολογησεις -->
                     <div class="slideReviews slideup margin-bot-25 " id="reviews" style="overflow-x: hidden">
                         <div class="section-header2">
@@ -1107,7 +1107,7 @@
                                         <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">Επιλoγή Σπουδών
                                     </div>
                                     <select ng-model="selectedStudy" class="modal-select">
-                                        <optgroup label="@{{level.level.name}}" ng-repeat="level in studies">
+                                        <optgroup label="@{{level.level.name}}" ng-repeat="level in schoolStudies">
                                             <option ng-repeat="study in level.studies" value="@{{study.study.id}}">@{{ study.study.name }}</option>
                                         </optgroup>
                                     </select>
@@ -1265,6 +1265,7 @@
                 $scope.buttonsDisabled = true
                 $scope.studyConnection = 0
                 $scope.showButton = false
+                $scope.schoolStudies = null
 
 //////////////////////
                 $scope.getSchoolStudies = function(){
@@ -1274,9 +1275,11 @@
                             'X-Requested-With': 'XMLHttpRequest',
                             'X-CSRF-TOKEN': window.Scholio.csrfToken}})
                         .success(function(data) {
-                            $scope.studies = data
+                            $scope.schoolStudies = data
                             $scope.showButton = true
                             console.log('gh')
+                            console.log($scope.studies.length)
+
                         })
                     }
 

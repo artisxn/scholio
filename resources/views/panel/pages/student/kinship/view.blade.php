@@ -18,6 +18,7 @@
     @media (max-width: 543px){
         .br1{display: none;}
     }
+    .header{margin-left: auto; margin-right: auto; text-align: center;}
 </style>
 
 @endsection
@@ -45,7 +46,7 @@
                         {{ csrf_field() }}
 
                         {{-- CHANGE CV'S PHOTO  --}}
-                        <div class="col-xs-12" >                                    
+                        <div class="col-xs-12 header" >
                             <h4 class="header-title"><b>Επεξεργασία Στοιχείων Γονέων Και Κηδεμόνων</b></h4>
                             <p class="text-muted m-b-10 font-13">
                                 Συμπληρώστε τα στοιχεία των γονέων και κηδεμόνων σας <br class="br1"> για να πραγματοποιείσετε αιτήσεις υποτροφιών πιο εύκολα.

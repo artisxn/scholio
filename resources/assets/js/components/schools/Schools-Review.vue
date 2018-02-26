@@ -54,7 +54,7 @@
 
                 <div class="category-container-left">
                     <div class="category-master" v-for="category in totalReviews">
-                        <i :class='category.icon + " category-icon"'></i>{{ category.name }} <span class="pull-right">{{category.stars}}</span>
+                        <i :class='category.icon + " category-icon"'></i>{{ lang('seeder.category.' + (category.icon) ) }} <span class="pull-right">{{category.stars}}</span>
                     </div>
                 </div>
 
@@ -172,7 +172,7 @@
                     <div v-for="(category, index) in review.category" class="review-category">
                         <span class="left">
                             <i :class="category.category.icon" class="category-icon"></i>
-                            {{ category.category.name }}
+                            {{ lang('seeder.category.' + (category.category.icon) ) }}
                         </span>
                         
                         <stars :id="review.user.id + 'stars' + index" :stars="category.stars" name="stars" :read="true" class="pull-right"></stars>

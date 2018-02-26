@@ -21,7 +21,7 @@
         <li><a class="{{ request()->path() == 'panel/users/student/scholarship/request' ? 'active' : ''}}" href="{{ route('student-scholarship-request') }}">@lang('panel/students/navigation.admissions')
         <span class="pull-right badge  badge-nav">{{ count(auth()->user()->admissions) }}</span></a></li>
         <li>
-            <a class="{{ request()->path() == 'panel/users/student/scholarship/interested' ? 'active' : ''}}" href="{{ route('student-scholarship-interested') }}">Ενδιαφέρουσες <span class="pull-right badge  badge-nav">{{ count(auth()->user()->interested) }}</span></a>
+            <a class="{{ request()->path() == 'panel/users/student/scholarship/interested' ? 'active' : ''}}" href="{{ route('student-scholarship-interested') }}">@lang('panel/students/navigation.interested') <span class="pull-right badge  badge-nav">{{ count(auth()->user()->interested) }}</span></a>
     </li>
     </ul>
 </li>

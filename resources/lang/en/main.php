@@ -9,8 +9,7 @@ return [
         'login' => 'Login',
         'register' => 'Sign Up',
         'logout' => 'Logout',
-        'admin' => 'Administration
-',
+        'admin' => 'Administration',
     ],
     'first' => [
         'title' => [
@@ -31,6 +30,13 @@ return [
                 'button' => 'Search',
             ],
         ],
+        'algolia' => [
+            'search' => [
+                'institutions' => 'Institutions',
+                'studies' => 'Studies',
+                'results' => 'Results not found!'
+            ],
+        ]
     ],
     'about' => [
         'title' => 'Find your own Scholarship in 3 steps',

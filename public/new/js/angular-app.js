@@ -141,9 +141,9 @@
                  },
 
                   templates: {
-                      header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
+                    header: '<div class="aa-suggestions-category">' + lang.main.first.algolia.search.institutions +'</div>',
                       suggestion: function(suggestion) {
-                          return '<a target="_blank" style="color: #888;" href="/scholarship/' + suggestion.scholarship_id +'"><span ng-show="false"><img src="/images/schools/'+ suggestion.school_logo +'" height="30px" style="margin-right: 10px;">' +
+                          return '<a target="_blank" style="color: #888;" href="/scholarship/' + suggestion.scholarship_id +'"><span ng-show="false"><img src="'+ suggestion.school_logo +'" height="30px" style="margin-right: 10px;">' +
                               suggestion._highlightResult.school.value + ' - ' + suggestion._highlightResult.study.value + ' - ' + suggestion._highlightResult.criteria.value + '</span></a>';
                       },
                   }
@@ -152,7 +152,7 @@
                   source: algolia.sources.hits(scholarships, { hitsPerPage: 2 }),
                   displayKey: 'study',
                   templates: {
-                    header: '<div class="aa-suggestions-category2">Σπουδές</div>',
+                    header: '<div class="aa-suggestions-category2">' + lang.main.first.algolia.search.studies +'</div>',
                       suggestion: function(suggestion) {
                           return '<a style="color:black" target="_blank" href="public/scholarships?q='+ suggestion.study +'">' +
                               '<span>' + suggestion._highlightResult.study.value + ' - ' + suggestion.level + '</span></a>';
@@ -168,9 +168,9 @@
                   source: algolia.sources.hits(schools, { hitsPerPage: 3 }),
                   displayKey: 'name',
                   templates: {
-                      header: '<div class="aa-suggestions-category">Εκπαιδευτικά Ιδρύματα</div>',
+                      header: '<div class="aa-suggestions-category">'+ lang.main.first.algolia.search.institutions +'</div>',
                       suggestion: function(suggestion) {
-                          return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="/images/schools/'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
+                          return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
                               suggestion._highlightResult.name.value + '</span></a>';
                       },
                   }
@@ -179,12 +179,12 @@
                   source: algolia.sources.hits(studies, { hitsPerPage: 2 }),
                   displayKey: 'name',
                   templates: {
-                    header: '<div class="aa-suggestions-category2">Σπουδές</div>',
+                    header: '<div class="aa-suggestions-category2">' + lang.main.first.algolia.search.studies +'</div>',
                       suggestion: function(suggestion) {
                           return '<span>' +
                               suggestion._highlightResult.name.value + '</span>';
                       },
-                      empty: '<div class="aa-empty">Δεν βρεθηκαν αποτελεσματα!</div>'
+                    empty: '<div class="aa-empty">' + lang.main.first.algolia.search.results + '</div>'
                   }
               }
               ];

@@ -9,6 +9,7 @@ return [
     'schools' => 'My institutes',
     'scholarships' => 'Scholarships',
     'admissions' => 'Admissions',
+    'interested' => 'Interested',
     'my-admissions' => 'Scholarships admissions',
     'reply' => 'Replies',
     'reviews' => 'Reviews',
