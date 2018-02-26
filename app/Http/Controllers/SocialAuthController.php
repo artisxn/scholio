@@ -13,6 +13,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\SocialLink;
+use App\Models\Company;
+use App\Models\Job;
 
 class SocialAuthController extends Controller
 {
@@ -138,18 +140,29 @@ class SocialAuthController extends Controller
                     $user->info->save();
                     foreach ($profileBuilder['organizations'] as $org) {
                         if ($org['type'] == 'work') {
+
+                            $company = new Company;
+                            $company->name = $org['name'];
+                            $company->save();
+
+                            $job = new Job;
+                            $job->name = $org['title'];
+                            $job->save();
+
                             $work = new Work;
                             $work->user_id = $user->id;
-                            $work->company = $org['name'];
-                            $work->name = $org['title'];
+                            $work->company_id = $company->id;
+                            $work->job_id = $job->id;
+                            // form 
+                            // until
                             $work->save();
                         }
 
                         if ($org['type'] == 'school') {
                             $cert = new Certificate;
                             $cert->user_id = $user->id;
-                            $cert->university = $org['name'];
-                            $cert->name = $org['title'];
+                            // $cert->university = $org['name'];
+                            // $cert->name = $org['title'];
                             $cert->save();
                         }
                     }
