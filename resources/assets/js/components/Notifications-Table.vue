@@ -141,7 +141,7 @@
                                         <i class="fa fa-cogs" style="color: #008da5"></i>
                                         <select v-model="selectedStatus" class="modal-select" style="margin-left: 4px">
                                             <option value="connected">{{ lang('["panel/schools"].resource.teachers.active') }}</option>
-                                            <option value="allumni">{{ lang('["panel/schools"].resource.teachers.alumni') }}</option>
+                                            <option value="alumni">{{ lang('["panel/schools"].resource.teachers.alumni') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                         <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/team.png" alt="">{{ lang('resource.requests.table.selectStatus') }}</div>
                                         <select v-model="selectedStatus" class="modal-select">
                                             <option value="connected">{{ lang('["panel/schools"].resource.students.active') }}</option>
-                                            <option value="allumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
+                                            <option value="alumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -463,6 +463,7 @@
             },
 
             load(notificationID, user){
+                console.log(user)
                 this.selectedStatus = user.status
                 this.currentNotificationID = notificationID
                 this.currentUserID = user.id

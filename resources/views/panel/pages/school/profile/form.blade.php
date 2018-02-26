@@ -91,7 +91,9 @@
 
 
     tinymce.init({
-        language_url : '/el.js',
+        @if(request()->cookie('lang') == 'el')
+            language_url : '/el.js',
+        @endif
 
         entity_encoding : "raw",
         selector: 'textarea',

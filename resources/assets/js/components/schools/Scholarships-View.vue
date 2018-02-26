@@ -110,7 +110,7 @@
                                                     {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
                                                 </span>
                                                 <span class=" hidden-xxlxx" >
-                                                     {{ lang('seeder.financial.' + (scholarship.financial_plan == 'Μείωση Διδάκτρων' : 1 ? ) }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
+                                                    {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
                                                 </span>
 
                                             </td>

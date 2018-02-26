@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta property="og:url" content="http://www.schol.io/public/profile/1" />
+    <meta property="og:url" content="https://www.schol.io/public/profile/1" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
@@ -497,7 +497,7 @@
 
                                     <div class="pad-top-10"></div>
                                     <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                    <span class="pad-left-5"> <a href="http://@{{contactInfo.website}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
+                                    <span class="pad-left-5"> <a href="https://@{{contactInfo.website}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
 
                                     <div class="pad-top-10"></div>
                                     <span><i class="fa fa-envelope  pad-top-2 " aria-hidden="true"></i></span>
@@ -957,7 +957,7 @@
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-5"> <a href="http://@{{contactInfo.website}}/" target="_blank">@{{contactInfo.website}}</a></span>
+                                <span class="pull-left pad-left-5"> <a href="https://@{{contactInfo.website}}/" target="_blank">@{{contactInfo.website}}</a></span>
 
                                 <div class="hidden-xs ">
                                     <br>
@@ -1118,8 +1118,8 @@
                                         <img class="modal-icon" src="/new/img/teacher/team.png" alt="" >Επιλογή Κατάστασης
                                     </div>
                                     <select ng-model="selectedStatus" class="modal-select cursor-hand">
-                                        <option>@lang('panel/schools/resource.students.active')</option>
-                                        <option>@lang('panel/schools/resource.students.alumni')</option>
+                                        <option value="connected">@lang('panel/schools/resource.students.active')</option>
+                                        <option value="alumni">@lang('panel/schools/resource.students.alumni')</option>
                                     </select>
                                 </div>
                             </div>
@@ -1145,8 +1145,8 @@
                                         <img class="modal-icon" src="/new/img/teacher/team.png" alt="" style="height: 45px">Επιλογή Κατάστασης
                                     </div>
                                     <select ng-model="selectedStatus" class="modal-select cursor-hand">
-                                        <option>@lang('panel/schools/resource.teachers.active')</option>
-                                        <option>@lang('panel/schools/resource.teachers.alumni')</option>
+                                        <option value="connected">@lang('panel/schools/resource.teachers.active')</option>
+                                        <option value="alumni">@lang('panel/schools/resource.teachers.alumni')</option>
                                     </select>
                                 </div>
                             </div>
