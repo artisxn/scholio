@@ -752,6 +752,12 @@
                     @endif
                 </form>
                 </div>
+                <div>
+                    TAGS
+                    @foreach($tags as $tag)
+                        <li>{{ $tag->name }}</li>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

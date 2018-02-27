@@ -369,7 +369,8 @@ class RoutesController extends Controller
     {
         $end = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
         $activeDate = !($end->diffInDays(Carbon::now(), false) >= 0);
-        return view('panel.pages.school.scholarships.edit', compact('activeDate'))->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
+        $tags = $scholarship->tag;
+        return view('panel.pages.school.scholarships.edit', compact('activeDate', 'tags'))->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria'));
     }
 
     public function scholarshipUpdate(Scholarship $scholarship)
