@@ -13,8 +13,13 @@ use App\User;
 use App\Events\NewSubscription;
 use Carbon\Carbon;
 use App\Models\Report;
+use App\Models\Message;
 
 Scholio::soonRoutes();
+
+Route::get('/deletemessages', function(){
+    Message::truncate(); 
+});
 
 Route::get('/school/connection/link/{school}', function(School $school){
     return view('con')->withSchool($school);

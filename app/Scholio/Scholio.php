@@ -17,6 +17,7 @@ use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use App\Models\Message;
 
 class Scholio
 {
@@ -68,11 +69,11 @@ class Scholio
 
         Route::post('coming', function () {
             if (request()->sub == 'sub') {
-                $subscription = new Subscription;
+                $subscription = new Message;
                 $subscription->email = request()->email;
                 $subscription->save();
             } else {
-                $subscription = new Subscription;
+                $subscription = new Message;
                 $subscription->name = request()->name;
                 $subscription->email = request()->email;
                 $subscription->message = request()->message;
