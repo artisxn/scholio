@@ -21,46 +21,49 @@ class FakeSeeder extends Seeder
      */
     public function run()
     {
-        /*===============   1 SOUTH   ================*/
+        /*===============   1 ACT   ================*/
         $school1 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'South College of Thessaloniki', 'email' => 'webminfo@south.edu', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'south'])->id,
-            'address' => 'Τζων Κεννεντυ 52, 17, Πυλαία',
+            'user_id' => factory(App\User::class)->create(['name' => 'American College of Thessaloniki', 'email' => 'webmaster@act.edu', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'act'])->id,
+            'address' => 'Σεβενίδη, 17, Πυλαία',
             'city' => 'Θεσσαλονίκη',
-            'phone' => 2310456789,
+            'phone' => 2310398398,
             'type_id' => 1,
-            'website' => 'lsbu.ac.uk ',
-            'approved' => 1,
-            'about' => '<div class="lead">
-<h4 class="last-child"><strong>SBU has focused on providing professional opportunity for all who can benefit for 125 years</strong></h4>
-</div>
-<div>
-<p> South Bank University (SBU) is celebrating 125 years this year. Established as the Borough Polytechnic Institute in 1892, the original aim of LSBU was \'to promote the industrial skill, general knowledge, health and well-being of young men and women\', which remains remarkably similar today. Our continuous focus on vocational education and professional opportunity allows us to produce graduates who can meet the challenges of today\'s workplace.</p>
-<p> </p>
-<div >
-<h4><strong>Our mission is to be recognised as an enterprising civic university that addresses real world challenges</strong></h4>
-</div>
-<p> South Bank University\'s (SBU) Corporate Strategy 2015–2020 (PDF File 749 KB) sets out how LSBU will achieve its vision of becoming London\'s top modern university by 2020.</p>
-<p>The strategy builds on the strengths of LSBU by focusing on its ability to enhance student success and deliver real world impact through academic activity and links to business and the professions.</p>
+            'website' => 'act.edu',
+            'approved' => 0,
+            'about' => '<p style="text-align: justify;">ACT (American College of Thessaloniki) is the tertiary division of Anatolia College, an institution with a long and prestigious history that dates back to 1886.</p>
+<p style="text-align: justify;">ACT is <strong>accredited in the United States by NEASC</strong> (New England Association of Schools and Colleges) through its Commission on Institutions of Higher Education. In addition to ACT having full NEASC accreditation, <strong>the undergraduate programs delivered at ACT are also validated by Open University, UK</strong>. ACT has also been granted a license by the Greek government to operate as a private post-secondary educational institution (“College”).</p>
+<ul style="text-align: justify;">
+<li>ACT\'s comprehensive undergraduate curriculum offers <strong>Bachelor degrees in Business</strong> (with 4 concentrations), <strong>Computer Science, Business Computing, International Relations, English</strong> (with 2 concentrations) and combined bachelor degrees in<strong>Tourism and Hospitality</strong> in collaboration with renowned educational institutions in Switzerland and the U.S.</li>
+</ul>
+<ul style="text-align: justify;">
+<li>Moreover, the college offers a <strong>Master of Science (MS) in Hospitality and Tourism Management</strong> and a <strong>Master in Business Administration (MBA)</strong> with concentrations in <em>Banking &amp; Finance, Entrepreneurship, Management</em>, and <em>Marketing in the Digital Era</em>.</li>
+</ul>
+<ul>
+<li style="text-align: justify;">ACT also offers an <strong>extensive need and merit-based financial aid program</strong></li>
+</ul>
+<div class="WordSection1">
+<p align="center"><strong> </strong></p>
+<h3 align="center"><strong>Mission</strong><strong> </strong></h3>
+<p>The American College of Thessaloniki (ACT ) provides to a diverse student body, a high quality, tertiary level multidisciplinary, student-centered educational experience in an innovative learning environment. Drawing on the principles of the American liberal Arts educational philosophy we foster depth and breadth of knowledge, grounded on theory, scholarly research, and intellectual freedom. Our faculty members are passionate about teaching, value close relationships with our students and strive to instill in them the desire to pursuit academic and professional excellence and personal enrichment.</p>
+<h3 align="center"><strong>Vision</strong></h3>
+<p><strong>W</strong><strong>e aspire:</strong></p>
+<p>to be the institution of choice for students seeking the highest levels of personal, intellectual, and professional attainment. We want to be known as the institution that contributes to society and produces well-rounded, principled, and open-minded citizens of the world.</p>
 </div>',
             'logo' => '/images/schools/fake/act-logo.png',
             'background' => 1,
         ]);
-        /*===============  2 polytec ================*/
+        /*===============  2 AMC ================*/
         $school2 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Πολυτεχνικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@education.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'polytec'])->id,
-            'address' => 'Τσιμισκή 124',
+            'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amc'])->id,
+            'address' => 'Ελ. Βενιζέλου 14 & Τσιμισκή',
             'city' => 'Θεσσαλονίκη',
-            'phone' => 2310789456,
+            'phone' => 2310241010,
             'type_id' => 1,
-            'website' => 'www.polyu.edu.hk',
-            'approved' => 1,
-            'about' => '<div>
-<h4 style="text-align: justify;"><strong>Innovative education model</strong></h4>
-<p  style="text-align: justify;">PolyU is the only university in Hong Kong that incorporates Work-Integrated Education and Service-Learning as mandatory components within the undergraduate curriculum, encouraging students to apply their knowledge in practice to address societal needs and improve the lives of the needy. Hence, graduates are sought after by employers.<br />
-<br />The University has close links with institutions, professional and business sectors at home and abroad. This gives PolyU students countless learning opportunities both inside and outside the classroom. Through student exchange and internship programmes, leadership training, Service-Learning programme as well as other co-curricular activities, students are nurtured to be future leaders with a global outlook.<br />
-<br /><br /><strong>A research and entrepreneurship powerhouse</strong></p>
-<p  style="text-align: justify;">PolyU’s culture of blazing new trails drives the University to challenge boundaries and uncover knowledge that benefits mankind. It has a reputation for delivering high-impact research projects and successful student startups. Entrepreneurship is highly encouraged by the University, with various funding schemes in place to provide seed funding to budding entrepreneurs. You can find out more about entrepreneurship development here. </p>
-</div>',
+            'website' => 'mitropolitiko.edu.gr',
+            'approved' => 0,
+            'about' => '<p style="text-align: justify;">Το Μητροπολιτικό Κολλέγιο, από το 1982 μέχρι σήμερα έχει αποστολή και όραμα την πνευματική και μορφωτική ανέλιξη των φοιτητών του. Υπηρετεί με συνέπεια την Τριτοβάθμια Εκπαίδευση, έχοντας εδραιωθεί στη συνείδηση γονέων και φοιτητών ως <strong>η κορυφαία επιλογή ποιοτικών σπουδών Πανεπιστημιακού επιπέδου στην Ελλάδα</strong>, με παραρτήματα στην Αθήνα, τον Πειραιά και τη Θεσσαλονίκη. Η καλλιέργεια της κριτικής σκέψης, η ακαδημαϊκή πρόοδος και η ανάπτυξη του ερευνητικού πνεύματος του κάθε φοιτητή αποτελούν προτεραιότητα για το Κολλέγιό μας και αυτή η εταιρική μας κουλτούρα είναι που μας κάνει<strong> να ξεχωρίζουμε.</strong></p>
+<p style="text-align: justify;"> Με την εμπειρία <strong>34 χρόνων</strong> <strong>πορείας στην ελληνική εκπαίδευση</strong>, το Μητροπολιτικό Κολλέγιο παρέχει, σε συνεργασία με διακεκριμένα δημόσια Πανεπιστημιακά Ιδρύματα του εξωτερικού, μια σειρά από πιστοποιημένα προγράμματα σπουδών που καλύπτουν σύγχρονα επιστημονικά πεδία και ανταποκρίνονται στις σημερινές απαιτήσεις της ελληνικής και διεθνούς αγοράς εργασίας. Η διάρθρωση του Μητροπολιτικού Κολλεγίου, το Ακαδημαϊκό Συμβούλιο, η τεχνογνωσία και η εμπειρία του ακαδημαϊκού δυναμικού, οι υποδομές και οι κτιριακές εγκαταστάσεις, η βιβλιοθήκη χιλιάδων τίτλων και η τεχνολογική υποστήριξη της εκπαιδευτικής διαδικασίας, αποτελούν τις δικλείδες ασφαλείας για την υψηλή ποιότητα των σπουδών που προσφέρουμε.</p>
+<p style="text-align: justify;"></p>',
             'logo' => '/images/schools/fake/amc-logo.png',
             'background' => 7,
         ]);
@@ -80,7 +83,7 @@ class FakeSeeder extends Seeder
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
-            'approved' => 1,
+            'approved' => 0,
             'logo' => '/images/schools/fake/akmi-logo.png',
             'background' => 14,
         ]);
@@ -92,7 +95,7 @@ class FakeSeeder extends Seeder
             'phone' => 2310475958,
             'type_id' => 6,
             'website' => 'vassiliadis.edu.gr',
-            'approved' => 1,
+            'approved' => 0,
             'about' => '<p><strong>Στα Εκπαιδευτήρια Βασιλειάδη</strong></p>
 <ul>
 <li><strong>Επικοινωνούμε</strong>: Επιδιώκουμε την ουσιαστική επικοινωνία μεταξύ διεύθυνσης, διδακτικού προσωπικού, γονέων και μαθητών. Η συνεργασία και η αλληλοκατανόηση αποκτούν ουσιαστικό περιεχόμενο στην τάξη, έξω απ’ αυτήν, αλλά και με τακτικές προγραμματισμένες συναντήσεις.</li>
