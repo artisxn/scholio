@@ -4,7 +4,7 @@
     <title>Scholio</title>
 </head>
 <body>
-@foreach($subscriptions as $subscription)
+@foreach(App\Models\Message::all() as $subscription)
 NAME: {{$subscription->name}} <br>
 EMAIL: {{$subscription->email}} <br>
 MESSAGE: {{$subscription->message}} <br>
@@ -12,6 +12,6 @@ MESSAGE: {{$subscription->message}} <br>
 @endforeach
 
 <hr><hr>
-{{$emails}}
+<!-- {{$emails}} -->
 </body>
 </html>
