@@ -53,7 +53,7 @@ return [
         'criteria4' => 'Scholarship for Friends-Brothers and Sisters',
         'criteria5' => 'Open Scholarship',
 
-        'criteriatext1'=>'Scholarship for talents is the most popular scholarship in the schol.io community.
+        'criteriatext1'=>'Scholarship for talented is the most popular scholarship in the schol.io community.
         It is not linked to a competition or examination procedure but is based solely on the assessment of the participants\' particular abilities.
         It is based on the CV of the candidates, reinforced by links from video and social networks that highlight their individual skills.
         Talent can relate to athletic distinctions, culinary skills, inclination to the arts, construction, programming, robotics, foreign languages ​​or to wider objects.
@@ -61,16 +61,16 @@ return [
         In this form of scholarship, the educational institution provides a brief feedback to each candidate on how to improve his / her application.
         Entry details should be described briefly but clearly in the last step.',
 
-        'criteriatext2'=>'Scholarship for excellent students concerns a scholarship that participants usually compete in some form of short written examinations set by the educational institution.
+        'criteriatext2'=>'Scholarship of excellence concerns a scholarship that participants usually compete in some form of short written examinations set by the educational institution.
         Probably there are no exams, but excellence is determined by the degree of graduation or the rank of the previous class, or by other distinctions of excellence.
         Whether or not there are examinations, the date and thematic modules of the examinations that the participants will compete for, or other criteria of excellence should be described briefly but clearly in the next steps.',
 
-        'criteriatext3'=>'Scholarship for Social Criteria usually involves participants from large or single parent families,
+        'criteriatext3'=>'Scholarship of Social Criteria usually involves participants from large or single parent families,
         families with low income or unemployed parents or other social criteria.
         It is a social responsibility offer for the educational institution that offers it and may have multiple winners as many candidates meet the criteria for claiming.
         The supporting documents and conditions of participation should be described briefly but clearly in the last step.',
 
-        'criteriatext4'=>'Scholarship for Friends-Brothers and Sisters involves friends or siblings wishing to study the same subject similarly in the same educational institution.
+        'criteriatext4'=>'Scholarship for Friends or Siblings involves friends or siblings wishing to study the same subject similarly in the same educational institution.
         Depending on the criteria, this scholarship may have multiple winners. Details and terms of participation should be described briefly but clearly in the last step.',
 
         'criteriatext5'=>'Open Scholarship concerns particular categories of participants, such as students from the province or islands, or students with special interests.

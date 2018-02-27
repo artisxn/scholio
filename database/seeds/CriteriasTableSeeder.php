@@ -22,10 +22,10 @@ class CriteriasTableSeeder extends Seeder
         ];
 
         $namesENG = [
-            ['name' => 'Scholarship for talents', 'icon' => '/panel/assets/images/steps/talents.png'],
-            ['name' => 'Scholarship for excellent students', 'icon' => '/panel/assets/images/steps/medal.png'],
-            ['name' => 'Scholarship for Social Criterias', 'icon' => '/panel/assets/images/steps/social.png'],
-            ['name' => 'Scholarship for Friends-Brothers and Sisters', 'icon' => '/panel/assets/images/steps/friends.png'],
+            ['name' => 'Scholarship for talented', 'icon' => '/panel/assets/images/steps/talents.png'],
+            ['name' => 'Scholarship of Excellence', 'icon' => '/panel/assets/images/steps/medal.png'],
+            ['name' => 'Scholarship of Social Criteria', 'icon' => '/panel/assets/images/steps/social.png'],
+            ['name' => 'Scholarship for Friends or Siblings', 'icon' => '/panel/assets/images/steps/friends.png'],
             ['name' => 'Open Scholarships', 'icon' => '/panel/assets/images/steps/open.png'],
         ];
 

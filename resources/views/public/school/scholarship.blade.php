@@ -62,6 +62,7 @@
     .ended{ opacity: 0.8; font-size: 4vw; font-weight: 300; color: #008da5; position: relative;
         top: 50%;  transform: translateY(-50%); text-align: center;}
     .img-sad{height:100px; width: auto; margin-top: -10px;}
+    .applied:hover{cursor: not-allowed}
 
 
     @media (min-width:1800px){
@@ -308,7 +309,7 @@
         <div class="col-md-4 col-sm-6 col-xs-12 col-lg-5 ">
             {{--col-lg-offset-1--}}
             <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6">
-                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>Υπολ Αιτήσεων:</div>
+                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>
                 <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
             </span>
             <span class=" col-xxxs-5 col-xs-4 col-sm-5 col-md-5col-lg-4 align-right" >
@@ -381,9 +382,9 @@
                         <span class="margin-right-20">
                             <a href="">
                                 @if(auth()->check() && auth()->user()->role == 'student' && auth()->user()->interestedIn($scholarship->id))
-                                    <button id="button" type="button" ng-click="interested(scholarship.id)" class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white" style="background-color: #ccc;">
-                                        <i id="icon" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
-                                        <span id="text" ng-init="check(scholarship)">ΕΝΔΙΑΦΕΡΘΗΚΑ</span>
+                                    <button id="button" type="button" ng-click="interested(scholarship.id)" class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white" style="background-color: #aaa;">
+                                        <i id="icon" class="fa fa-thumbs-up margin-right-10 margin-left-5" aria-hidden="true"></i>
+                                        <span id="text" ng-init="check(scholarship)">@lang('scholarship_view.top.interested_yes')</span>
                                     </button>
                                 @else
                                 <button id="button" type="button" ng-click="interested(scholarship.id)" class="sch-button sc-button-landing sc-button sc-dark-green sc-t-white">
@@ -407,7 +408,7 @@
                             @endif
 
                         @else
-                            <a href=""><button disabled="true" type="button" class=" sch-button sc-button sc-t-light-gray  " >
+                            <a href=""><button disabled="true" type="button" class=" sch-button sc-button sc-t-white  applied " style="background: #87b0be">
                                     <i class="fa fa-file-text-o margin-right-10" aria-hidden="true" ></i>
                                     @lang('scholarship_view.top.admission_past')
                                 </button>
@@ -416,7 +417,8 @@
                     @else
 
                         <span class="margin-right-20">
-                            Η καταλητικη ημερομηνια υποβολης αιτησεων εχει παρελθει.
+                            @lang('scholarship_view.top.ended_text')
+
                         </span>
                     @endif
 
@@ -497,7 +499,7 @@
     <div class="scholar-box">
         <div class="centered-text hex-box-right">
                 <img class="hex" src="/new/img/hex02.png" alt="">
-                <img class="hex-in" style=" margin-top: -115px;"  src="/panel/assets/images/steps/{{$scholarship->criteria->name}}.png"  alt="">
+                <img class="hex-in" style=" margin-top: -115px;"  src="{{$scholarship->criteria->icon}}"  alt="">
         </div>
         <div class="xs-hex-box-right">
             <img class="hex-in-xs" src="/new/img/hex02upb.png" alt="">
@@ -538,7 +540,7 @@
     <div class="scholar-box">
         <div class="centered-text hex-box-right">
                 <img class="hex"  src="/new/img/hex04.png" alt="">
-                <img class="hex-in"  style="margin-top: -115px;"  src="/panel/assets/images/steps/{{ $scholarship->financial->plan}}.png" alt="">
+                <img class="hex-in"  style="margin-top: -115px;"  src="{{ $scholarship->financial->icon}}" alt="">
         </div>
         <div class="xs-hex-box-right">
             <img class="hex-in-xs" src="/new/img/hex04upb.png" alt="">
@@ -602,12 +604,12 @@
                             .success(function(data)   {
                                 console.log(data,'data');
                                 if(data == 'YES'){
-                                    $('#text').text("ΕΝΔΙΑΦΕΡΘΗΚΑ")
-                                    $('#icon').toggleClass('fa-thumbs-up fa-thumbs-o-up');
-                                    $('#button').css('background-color', '#ccc')
-                                }else{
-                                    $('#text').text("ΕΝΔΙΑΦΕΡΟΜΑΙ")
+                                    $('#text').text(" @lang('scholarship_view.top.interested_yes') ")
                                     $('#icon').toggleClass('fa-thumbs-o-up fa-thumbs-up');
+                                    $('#button').css('background-color', '#aaa')
+                                }else{
+                                    $('#text').text(" @lang('scholarship_view.top.interested_button')")
+                                    $('#icon').toggleClass('fa-thumbs-up fa-thumbs-o-up');
                                     $('#button').css('background-color', '#008da5')
                                 }
 

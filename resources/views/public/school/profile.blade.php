@@ -496,12 +496,14 @@
                                     <span class="pad-left-5">@{{contactInfo.phone}}</span>
 
                                     <div class="pad-top-10"></div>
-                                    <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                    <span class="pad-left-5"> <a href="https://@{{contactInfo.website}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
-
-                                    <div class="pad-top-10"></div>
                                     <span><i class="fa fa-envelope  pad-top-2 " aria-hidden="true"></i></span>
                                     <span class="pad-left-5 "> <a href="mailto:@{{contactInfo.email}}" class="school-links">@{{contactInfo.email}}</a></span>
+
+                                    <span ng-if="contactInfo.website">
+                                        <div class="pad-top-10"></div>
+                                        <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
+                                        <span class="pad-left-5"> <a href="https://@{{contactInfo.website}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
+                                    </span>
 
                                 </div>
 
@@ -872,6 +874,7 @@
                                     <div class="col-xs-12 col-sm-6 pad-0" >
                                         <i class="@{{review.icon}} margin-right-10" aria-hidden="true"></i>
                                         <span>@{{ review.name }}</span>
+                                        {{--<span>@lang('seeder.category.' . @{{review.icon}} )</span>--}}
                                     </div>
                                     <div class="col-xs-12 col-sm-6" style="margin-left: -12px; margin-bottom: 9px;">
                                         <span id="catReview-@{{$index}}" ng-init="categoryReview($index, review.stars)" value="@{{review.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
@@ -954,10 +957,6 @@
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-5">@{{contactInfo.phone}}</span>
-                                <br>
-                                <div class="pad-top-20"></div>
-                                <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-5"> <a href="https://@{{contactInfo.website}}/" target="_blank">@{{contactInfo.website}}</a></span>
 
                                 <div class="hidden-xs ">
                                     <br>
@@ -965,6 +964,14 @@
                                     <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
                                     <span class="pull-left pad-left-5 "> <a href="mailto:@{{contactInfo.email}}">@{{contactInfo.email}}</a></span>
                                 </div>
+
+                                <span ng-if="contactInfo.website">
+                                     <br>
+                                    <div class="pad-top-20"></div>
+                                    <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
+                                    <span class="pull-left pad-left-5"> <a href="https://@{{contactInfo.website}}/" target="_blank">@{{contactInfo.website}}</a></span>
+                                </span>
+
 
                             </div>
                         </div>
@@ -1104,7 +1111,7 @@
 
                                 <div class="select-container">
                                     <div class="input-text" >
-                                        <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">Επιλoγή Σπουδών
+                                        <img class="modal-icon" src="/new/img/teacher/graduate.png" alt=""> @lang('profile.modal.studiesSelect')
                                     </div>
                                     <select ng-model="selectedStudy" class="modal-select">
                                         <optgroup label="@{{level.level.name}}" ng-repeat="level in schoolStudies">
@@ -1115,7 +1122,7 @@
 
                                 <div class="select-container">
                                     <div class="input-text" >
-                                        <img class="modal-icon" src="/new/img/teacher/team.png" alt="" >Επιλογή Κατάστασης
+                                        <img class="modal-icon" src="/new/img/teacher/team.png" alt="" >@lang('profile.modal.statusSelect')
                                     </div>
                                     <select ng-model="selectedStatus" class="modal-select cursor-hand">
                                         <option value="connected">@lang('panel/schools/resource.students.active')</option>

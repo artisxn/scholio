@@ -112,7 +112,7 @@
 
                             <div class="financial-container">
                                  <span class="img-container">
-                                    <img class="financial-img" src="/panel/assets/images/steps/{{ $scholarship->financial->icon }}">
+                                    <img class="financial-img" src="{{ $scholarship->financial->icon }}">
                                  </span>
                                 <span>{{ $scholarship->financial->plan }} {{ $scholarship->financial_amount}}{{$scholarship->financial->metric }}</span>
                             </div>

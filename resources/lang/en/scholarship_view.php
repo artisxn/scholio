@@ -17,10 +17,13 @@ return [
         'end' => 'End at',
         'exams' => 'With exams',
         'exam_date' => 'Exams Date',
-        'interested_button' => 'Interested',
-        'admission_button' => 'Admit Now',
-        'admission_past' => 'Admited',
+        'interested_button' => 'I am Interested',
+        'interested_yes' => 'I was Interested',
+        'admission_button' => 'Apply Now',
+        'admission_past' => 'Applied',
         'ended'=>'no longer available since',
+        'ended_text'=>'The deadline for submitting applications has expired.',
+
     ],
     'cards' => [
         'study' => 'Study',
@@ -31,8 +34,8 @@ return [
         'terms' => 'Terms & Conditions',
         'financial' => 'The winner will aquire the scholarship for its studies.',
     ],
-    'yes' => 'YES',
-    'no' => 'NO',
+    'yes' => 'Yes',
+    'no' => 'No',
 
     'edit' => [
         'studies'=>'Fields of Studies',

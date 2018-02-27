@@ -39,14 +39,17 @@ return [
         'like' => 'I am Interested',
         'show' => 'Show',
         'button' => [
-            'like' => 'I am Interested',
-            'interested' => 'Interested',
+            'like' => 'I was Interested',
+            'interested' => ' I am Interested',
         ],
     ],
     'modal' => [
         'message' => 'By connecting with the institution, you will be able to write a review.',
         'send' => 'Send',
         'abort' => 'Abort',
-        'request' => 'Admit',
+        'request' => 'Apply',
+        'studiesSelect' => 'Studies Select',
+        'statusSelect' => 'Status Select',
+
     ],
 ];

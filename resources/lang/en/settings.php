@@ -81,14 +81,14 @@ return [
         'notes' => 'Notes',
         'school_notes' => 'School Notes',
         'category' => [
-            'student_info' => 'Student Info',
-            'mother_info' => 'Mother\'s Info',
-            'father_info' => 'Father\'s Info',
-            'guardian_info' => 'Στοιχεία Επικοινωνίας Κηδεμόνος',
-            'mother_financial_info' => 'Οικονομικά Στοιχεία Μητέρας',
-            'father_financial_info' => 'Οικονομικά Στοιχεία Πατέρα',
-            'guardian_financial_info' => 'Οικονομικά Στοιχεία Κηδεμόνος',
-            'student_extra_info' => 'Έπιπλέον Στοιχεία Μαθητή',
+            'student_info' => 'Student Information',
+            'mother_info' => 'Mother\'s Contact Information',
+            'father_info' => 'Father\'s Contact Information',
+            'guardian_info' => 'Guardian\'s Contact Information',
+            'mother_financial_info' => 'Mother\'s Financial Information',
+            'father_financial_info' => 'Father\'s Financial Information',
+            'guardian_financial_info' => 'Guardian\'s Financial Information',
+            'student_extra_info' => 'Additional Student Information',
         ]
     ],
 ];
