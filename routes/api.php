@@ -27,6 +27,10 @@ use App\Models\Image;
 
 Scholio::bot();
 
+Route::get('/school/getCards', function(){
+    return auth()->user()->card;
+})->middleware('auth:api');
+
 Route::post('/school/uploadImage', function(){
     $data = request()->input('img');
     list($type, $data) = explode(';', $data);

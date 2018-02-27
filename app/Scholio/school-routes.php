@@ -2,11 +2,11 @@
 
 use App\Models\Admission;
 use App\Models\Badge;
+use App\Models\Card;
 use App\Models\Lecture;
 use App\Models\Study;
 use App\User;
-use App\Models\Cvteacherstudy;
-
+use Carbon\Carbon;
 
 Route::get('scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate')->name('scholarship-create');
@@ -22,6 +22,27 @@ Route::post('profile/{id}', 'AdminPanelController@updateProfile');
 Route::get('requests', 'AdminPanelController@requests')->name('requests')->middleware('is.vip');
 Route::post('profile/images/upload', 'AdminPanelController@imagesUpload');
 Route::delete('profile/images/upload', 'AdminPanelController@imageDelete');
+
+Route::post('/card/create', function () {
+
+    $card = new Card;
+    $card->user_id = auth()->user()->id;
+    $card->student_city = request()->city;
+    $card->student_address = request()->address;
+    $card->student_phone = request()->phone;
+    $card->email = request()->email;
+    $card->father_name = request()->father_name;
+    $card->mother_name = request()->mother_name;
+    $card->father_phone = request()->father_phone;
+    $card->mother_phone = request()->mother_phone;
+    $card->study = request()->study;
+    $card->study2 = request()->study2;
+    $card->level = request()->level;
+    $card->grades = request()->grades;
+    $card->dob = Carbon::createFromFormat('d-m-Y', request()->dob); 
+    $card->save();
+
+})->name('create-card');
 
 Route::get('/admission/{admission}', function (Admission $admission) {
     $categories = $admission->categories();

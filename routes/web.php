@@ -13,8 +13,111 @@ use App\User;
 use App\Events\NewSubscription;
 use Carbon\Carbon;
 use App\Models\Report;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 Scholio::soonRoutes();
+
+Route::get('qqq', function () {
+    
+    $order = 'name';
+    $asc = true;
+    $status = 'connected';
+    $field = '';
+
+    $user = auth()->user();
+    $school = $user->info;
+    $students = $school->$status;
+
+
+    $orderType = $asc == 'false' ? 'asc' : 'desc';
+
+    $students = $school->$status()->orderBy($order, $orderType)->with('cv', 'student')->get();
+
+    $cards = auth()->user()->card;
+    $s = null;
+
+    foreach ($cards as $card) {
+        $st = collect(["fname" => "Ζήνων", "lname" => "Τριανταφυλλίδης", "gender" => "male"]);
+        $cv = collect([
+            "student_city" => "ΘεολόγοςVille" ,
+            "student_country"=> "Ανγκόλα" ,
+            "student_address"=> "Λεωφόρος Παπαδοπούλου, 512-828" ,
+            "student_phone"=> "+30 697 4630824"]);
+        $piv = collect([
+            "school_id" => 1 ,
+            "user_id"=> 22 ,
+            "status"=> "connected"]);
+        $s = collect(['student'=>$st, 'cv'=> $cv, 'pivot'=>$piv]);
+    }
+
+    return $s;
+
+    $data = $students->merge($s);
+
+    
+    return $data;
+    return $cards;
+
+    $studentCounter = 0;
+
+    if ($field != '%20') {
+        $students = $students->filter(function ($item) use ($field) {
+            $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
+            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
+            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
+            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
+            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
+            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
+            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
+
+            $active1 = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type;
+            $active2 = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type2;
+            $active1Level = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->level;
+            $active2Level = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->level2;
+
+            $dummy = $active1 . ',' . $active2 . ',' . $active1Level . ',' . $active2Level;
+
+            // foreach($item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->get() as $std){
+            //     $section = $std->section[0];
+            //     $level = $section->level;
+            //     $dummy .= $std->name . ',' . $section->name . ',' . $level->name . ',';
+            // }
+
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $dummy);
+            $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
+            $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
+            $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
+            $replacement2 = preg_replace('/ό/iu', '${1}ο', $replacement2);
+            $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
+            $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
+
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
+                preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) ||
+                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $dummy)) {
+                return $item;
+            }
+        });
+    }
+
+    $items = $students;
+    $studentCounter = count($students);
+
+    $perPage = config('scholio.perPage.students');
+
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count(), 'studentCounter' => $studentCounter]);
+    $data = $custom->merge($p);
+    return $data;
+});
+
+
+Route::get('cardtest', function(){
+    return view('cardtest');
+});
 
 Route::get('/school/connection/link/{school}', function(School $school){
     return view('con')->withSchool($school);

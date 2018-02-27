@@ -26,6 +26,10 @@
                         <span class="search-counter" >{{ studentCounter }} <i class="fa fa-graduation-cap"></i></span>
             </span>
         </div>
+        <div>
+            <!-- <span data-toggle="modal" data-target="#CardModal">+ Add New Student</span> -->
+            <span data-toggle="modal" data-target="#CardModal" @click="">ADD NEW STUDENT</span>
+        </div>
 
         <!--<div class="search-counter" v-else>{{ studentCounter }} Σπουδαστές</div>-->
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
@@ -368,6 +372,201 @@
 
             </div>
         </div>
+
+        <!-- Card MODAL -->
+        <div id="CardModal" class="modal" role="dialog">
+            <div class="modal-dialog zoomIn animated" id="modalzoom">
+                <!-- Modal content-->
+                <div class="modal-content" v-if="info">
+                    <div class="modal-up">
+                        <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
+                        <!--<h4 class="modal-title" style=" color: #fff"> </h4>-->
+                        <!-- <img :src="info.student.avatar" alt="" class="img-avatar"> -->
+                        <input type="text" class="lastName">
+                        <input type="text" class="firstName">
+                    </div>
+                    <div class="modal-infos">
+                        <!--<p>{{ info.cv.student_address }}</p>-->
+        
+                        <div class="input-container modal-input-container">
+        
+        
+                            <div class="studies-selection-container">
+                                <div class="first-study-text">
+                                    {{ lang('resource.students.modal.study1') }}
+                                    <span class="tool">
+                                        <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy && !study2"></i>
+                                        <span class="tooltiptext">
+                                            {{ lang('resource.students.modal.addStudy') }}
+                                        </span>
+                                    </span>
+        
+                                </div>
+                                <div class="">
+                                    <select class="select-transparent" v-model="selectedStudy" v-on:change="saveStudy(1)">
+                                        <optgroup :label="level.level.name" v-for="level in studies">
+                                            <option v-for="study in level.studies" :value="study.study.id" :disabled="secondStudy == study.study.id">
+                                                {{ study.study.name }}
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                    <i class="fa fa-graduation-cap select-icon"></i>
+                                    <div class="col-xl-line"></div>
+                                </div>
+        
+        
+        
+        
+        
+                                <!-- Αν δεν είναι σχολειο, φροντιστηριο, ιεκ, κολλεγιο -->
+                                <div v-if="">
+                                    <div class="second-study-text" v-if="selectedStudy">
+        
+        
+        
+        
+        
+        
+                                        <span v-if="secondStudy">
+                                            {{ lang('resource.students.modal.study2') }}
+                                            <span class="second-study-remove" @click="removeStudy">(
+                                                <i class="fa fa-trash"></i>{{ lang('resource.students.modal.deleteStudy') }} )</span>
+                                        </span>
+        
+                                    </div>
+        
+        
+                                    <div class="second" v-if="selectedStudy && (study2 || secondStudy)">
+                                        <select class="select-transparent  select2" v-model="secondStudy" v-on:change="saveStudy(2)">
+                                            <optgroup :label="level.level.name" v-for="level in studies">
+                                                <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
+                                                    {{ study.study.name }}
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa fa-graduation-cap select-icon2"></i>
+                                        <div class="col-xl-line col-xl-line2"></div>
+        
+                                    </div>
+        
+                                </div>
+        
+        
+        
+        
+                            </div>
+        
+        
+                            <div class="info-container row">
+        
+        
+        
+                                <div class="col-sm-6 col-data">
+                                    <div class="info-title">
+                                        {{lang('student_details.city') }}
+        
+                                    </div>
+                                    <div class="info-data">
+                                        <input type="text" class="fa fa-home icon-data">
+                                        {{info.cv.student_city}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-sm-6 col-data">
+                                    <div class="info-title">
+                                        {{lang('student_details.address') }}
+                                    </div>
+                                    <div class="info-data">
+                                        <input type="text" class="fa fa-map-marker icon-data">
+                                        {{info.cv.student_address}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+        
+                                <!-- <div class="col-sm-6 col-data">
+                                    <div class="info-title">
+                                        {{lang('student_details.phone') }}
+        
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-phone icon-data"></div>
+                                        {{info.cv.student_phone}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-sm-6 col-data">
+                                    <div class="info-title">
+                                        {{lang('student_details.email') }}
+        
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-envelope icon-data"></div>
+                                        {{info.email}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+        
+        
+        
+                                <div class="col-sm-6 col-data">
+                                    <div class="info-title">
+                                        {{lang('student_details.father.fullName') }}
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-user icon-data"></div>
+                                        {{info.cv.father_fullname}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-sm-6 col-data">
+                                    <div class="info-title">
+                                        {{lang('student_details.mother.fullName') }}
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-user icon-data"></div>
+                                        {{info.cv.mother_fullname}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+        
+        
+                                <div class="col-sm-6 col-data">
+                                    <div class="info-title">
+                                        {{lang('student_details.father.phone') }}
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-phone icon-data"></div>
+                                        {{info.cv.father_phone}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-sm-6 col-data">
+                                    <div class="info-title">
+                                        {{lang('student_details.mother.phone') }}
+                                    </div>
+                                    <div class="info-data">
+                                        <div class="fa fa-phone icon-data"></div>
+                                        {{info.cv.mother_phone}}
+                                    </div>
+                                    <div class="line"></div>
+                                </div> -->
+        
+        
+        
+                            </div>
+        
+        
+                        </div>
+        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+
     </div>
     <div v-else>
 
@@ -876,7 +1075,8 @@
                 secondStudy: null,
                 study2: false,
                 test: true,
-                studentCounter: 0
+                studentCounter: 0,
+                cards: null
             }
         },
         computed: {
@@ -995,6 +1195,12 @@
                     axios.get(this.url(page)).then(this.refresh);
                 },
 
+                fetchCards() {
+                    axios.get('/api/school/getCards').then(({data}) => {
+                        this.cards = data
+                    })
+                },
+
                 refresh({data}) {
                     setTimeout(()=>{
                         this.dataSet = data;
@@ -1061,6 +1267,7 @@
 
         created() {
             this.fetch();
+            this.fetchCards();
         },
 
         watch: {
