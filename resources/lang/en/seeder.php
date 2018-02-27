@@ -70,6 +70,11 @@ return [
         3 => 'Free School Attendance Time usually involves a probationary period of study, or summer or seasonal lessons.',
     ],
 
+    'role' => [
+        'student' => 'Student',
+        'parent' => 'Parent'
+    ]
+
 
 
 

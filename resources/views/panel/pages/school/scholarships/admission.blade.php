@@ -119,12 +119,12 @@
     @if($category->id < 8)
         <div class="section-container" style="padding: 10px" >
             <div class="row inner-section">
-                <div class="section-text text-center"> {{ $category->name }}</div>
+                <div class="section-text text-center"> {{ trans('settings.admissions.' . $category->name) }} </div>
                 @foreach($admission->fields as $field)
                     @if ($field->category_id==$category->id)
                             <div class="col-xxxs-12 col-xs-6 col-sm-6 info">
                                 <i class="icon-inp {{ $field->icon}}"></i>
-                                {{ $field->name }}
+                                {{ trans('settings.admissions.' . $field->slug)  }}
                                 <span class="value"> {{ $field->pivot->data }}</span>
                             </div>
                     @endif
@@ -142,13 +142,12 @@
                 @if ($field->category_id==8)
                 <div class="section2-container col-sm-6" style="padding: 20px 10px;">
                     <div class="inner-section2 ">
-                        <div class="section-text2 "> <i class="icon-title  {{ $field->icon}}" style="margin-right: 10px;"></i>{{ $field->name }}</div>
+                        <div class="section-text2 "> <i class="icon-title  {{ $field->icon}}" style="margin-right: 10px;"></i>{{ trans('settings.admissions.' .$field->slug) }}</div>
                         <div class="info2">
                             <span class="value"> {{ $field->pivot->data }}</span>
                         </div>
                     </div>
                 </div>
-
                 @endif
             @endforeach
     </div>
@@ -170,14 +169,7 @@
                     </div>
                 </div>
             </div>
-
-
-
     </div>
-
-
-
-
 
     @endif
 
@@ -202,18 +194,5 @@
 
 
 
-
-@endsection
-
-
-
-@section('scripts')
-    {{--<script>--}}
-        {{--angular.module("studentApp",[])--}}
-                {{--.controller("studentCtrl",function ($scope,$http) {--}}
-
-
-                {{--})--}}
-    {{--</script>--}}
 
 @endsection

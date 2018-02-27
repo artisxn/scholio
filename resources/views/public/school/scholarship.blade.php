@@ -509,7 +509,8 @@
                 {{ $scholarship->criteria->name }}
             </div>
             <div class="text-right" style="" >
-                @lang('scholarship_view.cards.scholarship_message')
+                @lang('seeder.criteriaInfo.' . $scholarship->criteria->id)
+
             </div>
             <div class="clearfix"></div>
         </div>
@@ -550,7 +551,7 @@
                 {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}
             </div>
             <div class="text-right">
-                @lang('scholarship_view.cards.terms')  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}.
+                 @lang('seeder.financialInfo.' . $scholarship->financial->id)  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}.
             </div>
             @if($scholarship->price)
                 <div class="text-right">

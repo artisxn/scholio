@@ -438,12 +438,12 @@
                         @if($field->slug != 'student_relatives' && $field->slug != 'student_polyteknos' && $field->slug != 'student_phone' && $field->slug != 'student_address' && $field->slug != 'student_city')
                             @if($field->slug == 'student_dob')
                                 <div class="col-sm-6 input-container">
-                                    <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y') }}" label="{{ $field->name }}" name="{{ $field->slug }}">
+                                    <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y') }}" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}">
                                     <i class="icon-inp {{ $field->icon }}"></i>
                                 </div>
                             @else
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                                    <input type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
                                     <i class="icon-inp {{ $field->icon }}"></i>
                                 </div>
                             @endif
@@ -492,7 +492,7 @@
                 @foreach($fields as $field)
                     @if(($field->category->id == 2 || $field->category->id == 5) && $settings->{$field->slug})
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <input type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
                             <i class="icon-inp {{ $field->icon }}"></i>
                         </div>
                     @endif
@@ -502,7 +502,7 @@
                 @foreach($fields as $field)
                     @if(($field->category->id == 3 || $field->category->id == 6) && $settings->{$field->slug})
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <input  type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
                             <i class="icon-inp {{ $field->icon }}"></i>
                         </div>
                     @endif
@@ -513,7 +513,7 @@
                 @foreach($fields as $field)
                     @if(($field->category->id == 4 || $field->category->id == 7) && $settings->{$field->slug})
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="{{ $field->name }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <input  type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
                             <i class="icon-inp {{ $field->icon }}"></i>
                         </div>
                     @endif

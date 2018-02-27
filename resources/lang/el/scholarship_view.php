@@ -29,7 +29,6 @@ return [
         'study_message1' => 'Το αντικείμενο σπουδών αφορά τους υποψηφίους που στοχεύουν σε',
         'study_message2' => 'με ειδικότητα',
         'study_message3' => 'με ειδικότητες',
-        'scholarship_message' => 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
         'terms' => 'Όροι & Δικαίωμα Συμμετοχής',
         'financial' => 'Ο τελικός νικητής από όλους τους συμμετέχοντες για τη συγκεκριμένη υποτροφία, θα αποκτήσει για τις σπουδές του',
     ],

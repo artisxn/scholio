@@ -81,7 +81,7 @@
                         <div class="star-row">
                             <span class="category">
                                 <i class="{{$category->category->icon}}"></i>
-                                <span class="cat-name"> {{$category->category->name}}:</span>
+                                <span class="cat-name"> {{ trans('seeder.category.' . $category->category->icon) }}:</span>
 
                             </span>
                             <span class="stars">

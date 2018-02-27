@@ -66,6 +66,8 @@
 ]); ?>
     </script>
 
+    @include('public.window-lang')
+
     <style>
         
         .bx-img{
@@ -873,8 +875,7 @@
                                 <div ng-repeat="review in contactInfo.avgReviews" >
                                     <div class="col-xs-12 col-sm-6 pad-0" >
                                         <i class="@{{review.icon}} margin-right-10" aria-hidden="true"></i>
-                                        <span>@{{ review.name }}</span>
-                                        {{--<span>@lang('seeder.category.' . @{{review.icon}} )</span>--}}
+                                        <span>@{{ categ(review.icon) }}</span>
                                     </div>
                                     <div class="col-xs-12 col-sm-6" style="margin-left: -12px; margin-bottom: 9px;">
                                         <span id="catReview-@{{$index}}" ng-init="categoryReview($index, review.stars)" value="@{{review.stars}}" class="margin-left-20 raty" id="studyProgram"></span>
@@ -893,7 +894,7 @@
                             {{-- @{{ contactInfo.reviews }} --}}
                             <div class="col-lg-12">
                                 <div class="margin-left-10  person-review">
-                                    <span>@{{review.user.name}}</span> - @{{ review.user.role }}
+                                    <span>@{{review.user.name}}</span> - @{{ role(review.user.role) }}
                                     <br />
                                     <span value="@{{review.stars.total}}" class="raty margin-right-10 sc-t-grey" style="margin-left: -3px"></span>
                                     <span class="sc-t-grey"> <div class="raty" id="totalRating-@{{review.id}}" ng-init="rate(review.id, review.average)">@{{ review.average }}</div> </span>
@@ -1275,6 +1276,15 @@
                 $scope.schoolStudies = null
 
 //////////////////////
+
+                $scope.role = function(r){
+                    return lang.seeder.role[''+r]
+                }
+
+                $scope.categ = function(icon){
+                    return lang.seeder.category['' + icon]
+                }
+
                 $scope.getSchoolStudies = function(){
                     console.log('1')
                     $http.get('/api/notifications/getSchoolLevelStudies/public/{{$id}}', {

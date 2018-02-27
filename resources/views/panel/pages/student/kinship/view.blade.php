@@ -58,40 +58,40 @@
                             <div class="row inner-section">
                                 <div class="section-text centered-text"> Στοιχεία Γονέων και Κηδεμόνων</div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Ονοματεπώνυμο Μητέρας" name="mother_fullname" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_fullname }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_fullname') }}" name="mother_fullname" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_fullname }}">
                                     <i class="icon-inp fa fa-user-o"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Tαυτότητα Μητέρας" name="mother_id_number" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_id_number }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.') }}" name="mother_id_number" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_id_number }}">
                                     <i class="icon-inp fa fa fa-user-o"></i>
                                 </div>
                             
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Τηλέφωνο Μητέρας" name="mother_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_phone }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_phone') }}" name="mother_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_phone }}">
                                     <i class="icon-inp fa fa-phone"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="email" label="Email Μητέρας" name="mother_email" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_email }}">
+                                    <input  type="email" label="{{ trans('settings.admissions.mother_email') }}" name="mother_email" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_email }}">
                                     <i class="icon-inp fa fa-envelope"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Διεύθυνση,Πόλη Μητέρας" name="mother_address" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_address }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_address') }}" name="mother_address" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_address }}">
                                     <i class="icon-inp fa fa-address-book"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="ΤΚ Μητέρας" name="mother_tk" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_tk }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_tk') }}" name="mother_tk" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_tk }}">
                                     <i class="icon-inp fa fa-address-book"></i>
                                 </div>
                                  <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Επάγγελμα Μητέρας" name="mother_job" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_job }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_job') }}" name="mother_job" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_job }}">
                                     <i class="icon-inp fa fa-building"></i>
                                 </div>
                                  <div class="col-sm-6 input-container">
-                                    <input  type="text" label="ΑΦΜ Μητέρας" name="mother_afm" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_afm }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_afm') }}" name="mother_afm" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_afm }}">
                                     <i class="icon-inp fa fa-info"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Εισόδημα Μητέρας" name="mother_income" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_income }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_income') }}" name="mother_income" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_income }}">
                                     <i class="icon-inp fa fa-eur"></i>
                                 </div>
 
@@ -100,40 +100,40 @@
 
                                 {{--  Father's Details --}}
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Ονοματεπώνυμο Πατέρα" name="father_fullname" class="demo-form ad-input" value="{{ auth()->user()->cv->father_fullname }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_income') }}" name="father_fullname" class="demo-form ad-input" value="{{ auth()->user()->cv->father_fullname }}">
                                     <i class="icon-inp fa fa-user-o"></i>
                                 </div>
                                  <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Tαυτότητα Πατέρα" name="father_id_number" class="demo-form ad-input" value="{{ auth()->user()->cv->father_id_number }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.mother_income') }}" name="father_id_number" class="demo-form ad-input" value="{{ auth()->user()->cv->father_id_number }}">
                                     <i class="icon-inp fa fa fa-user-o"></i>
                                 </div>
                             
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Τηλέφωνο Πατέρα" name="father_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->father_phone }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.father_phone') }}" name="father_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->father_phone }}">
                                     <i class="icon-inp fa fa-phone"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="email" label="Email Πατέρα" name="father_email" class="demo-form ad-input" value="{{ auth()->user()->cv->father_email }}">
+                                    <input  type="email" label="{{ trans('settings.admissions.father_email') }}" name="father_email" class="demo-form ad-input" value="{{ auth()->user()->cv->father_email }}">
                                     <i class="icon-inp fa fa-envelope"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Διεύθυνση,Πόλη Πατέρα" name="father_address" class="demo-form ad-input" value="{{ auth()->user()->cv->father_address }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.father_address') }}" name="father_address" class="demo-form ad-input" value="{{ auth()->user()->cv->father_address }}">
                                     <i class="icon-inp fa fa-address-book"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="ΤΚ Πατέρα" name="father_tk" class="demo-form ad-input" value="{{ auth()->user()->cv->father_tk }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.father_tk') }}" name="father_tk" class="demo-form ad-input" value="{{ auth()->user()->cv->father_tk }}">
                                     <i class="icon-inp fa fa-address-book"></i>
                                 </div>
                                  <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Επάγγελμα Πατέρα" name="father_job" class="demo-form ad-input" value="{{ auth()->user()->cv->father_job }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.father_job') }}" name="father_job" class="demo-form ad-input" value="{{ auth()->user()->cv->father_job }}">
                                     <i class="icon-inp fa fa-building"></i>
                                 </div>
                                  <div class="col-sm-6 input-container">
-                                    <input  type="text" label="ΑΦΜ Πατέρα" name="father_afm" class="demo-form ad-input" value="{{ auth()->user()->cv->father_afm }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.father_afm') }}" name="father_afm" class="demo-form ad-input" value="{{ auth()->user()->cv->father_afm }}">
                                     <i class="icon-inp fa fa-info"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Εισόδημα Πατέρα" name="father_income" class="demo-form ad-input" value="{{ auth()->user()->cv->father_income }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.father_income') }}" name="father_income" class="demo-form ad-input" value="{{ auth()->user()->cv->father_income }}">
                                     <i class="icon-inp fa fa-eur"></i>
                                 </div>
 
@@ -142,39 +142,39 @@
                                {{--  Guardian's Details --}}
                      
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Ονοματεπώνυμο Κηδεμόνα" name="guardian_fullname" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_fullname }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.guardian_fullname') }}" name="guardian_fullname" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_fullname }}">
                                     <i class="icon-inp fa fa-user-o"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Tαυτότητα Κηδεμόνα" name="guardian_id_number" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_id_number }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.guardian_id_number') }}" name="guardian_id_number" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_id_number }}">
                                     <i class="icon-inp fa fa fa-user-o"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Τηλέφωνο Κηδεμόνα" name="guardian_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_phone }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.guardian_phone') }}" name="guardian_phone" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_phone }}">
                                     <i class="icon-inp fa fa-phone"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="email" label="Email Κηδεμόνα" name="guardian_email" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_email }}">
+                                    <input  type="email" label="{{ trans('settings.admissions.guardian_email') }}" name="guardian_email" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_email }}">
                                     <i class="icon-inp fa fa-envelope"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Διεύθυνση,Πόλη Κηδεμόνα" name="guardian_address" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_address }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.guardian_address') }}" name="guardian_address" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_address }}">
                                     <i class="icon-inp fa fa-address-book"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="ΤΚ Κηδεμόνα" name="guardian_tk" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_tk }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.guardian_tk') }}" name="guardian_tk" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_tk }}">
                                     <i class="icon-inp fa fa-address-book"></i>
                                 </div>
                                  <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Επάγγελμα Κηδεμόνα" name="guardian_job" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_job }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.guardian_job') }}" name="guardian_job" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_job }}">
                                     <i class="icon-inp fa fa-building"></i>
                                 </div>
                                  <div class="col-sm-6 input-container">
-                                    <input  type="text" label="ΑΦΜ Κηδεμόνα" name="guardian_afm" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_afm }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.guardian_afm') }}" name="guardian_afm" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_afm }}">
                                     <i class="icon-inp fa fa-info"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
-                                    <input  type="text" label="Εισόδημα Κηδεμόνα" name="guardian_income" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_income }}">
+                                    <input  type="text" label="{{ trans('settings.admissions.guardian_income') }}" name="guardian_income" class="demo-form ad-input" value="{{ auth()->user()->cv->guardian_income }}">
                                     <i class="icon-inp fa fa-eur"></i>
                                 </div>
 
