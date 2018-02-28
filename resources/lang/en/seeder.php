@@ -2,11 +2,18 @@
 
 return [
     'criteria' => [
-        1 => 'Scholarship for talents',
+        1 => 'Scholarship for talented',
         2 => 'Scholarship of excellence',
         3 => 'Scholarship for Social Criteria',
         4 => 'Scholarship for Friends-Siblings',
         5 => 'Open Scholarships'
+    ],
+    'criteriaN' => [
+        'Υποτροφία Ταλέντου-Δεξιοτήτων' => 'Scholarship for talented',
+        'Υποτροφία Αριστείας' => 'Scholarship of excellence',
+        'Υποτροφία με Κοινωνικά Κριτήρια' => 'Scholarship for Social Criteria',
+        'Υποτροφία για Φίλους-Αδέλφια' => 'Scholarship for Friends-Siblings',
+        'Υποτροφία Ανοιχτού Τύπου' => 'Open Scholarships'
     ],
 
     'financial' => [
@@ -14,6 +21,17 @@ return [
         2 => 'Amount of Subsidy',
         3 => 'Free School Attendance Time'
     ],
+
+    'financialN' => [
+        'Μείωση Διδάκτρων' => 'Tuition Fee Reduction',
+        'Ποσό Επιδότησης' => 'Amount of Subsidy',
+        'Χρόνος Δωρεάν Φοίτησης' => 'Free School Attendance Time'
+    ],
+
+    'metricΝ' => [
+        'Μήνες' => 'Months',
+    ],
+
 
     'school_types' => [
         1 => 'College',

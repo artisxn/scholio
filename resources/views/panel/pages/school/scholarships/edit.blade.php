@@ -253,6 +253,14 @@
         .datepicker-input:hover{cursor: pointer; color: #FD6A33}
 
         .terms-icon:hover{color: #FD6A33; cursor: pointer;}
+        .tag-container{margin-top: 7px; margin-left: 16px;}
+        .tag-item{margin-right: 25px; display: inline-block;}
+
+        .tag-item::first-letter {
+            font-size: 130%;
+            color: #777;
+            font-weight: 500;
+        }
 
 
 
@@ -707,9 +715,27 @@
                 </div>
                 <div class="margin-top-30"></div>
                 <div class="clearfix"></div>
+                 <div class="margin-top-30"></div>
                 <div class="col-sm-12 line"></div>
                 <!-- ================================ -->
                 <div class="margin-top-50"></div>
+
+                    <div>
+                        <div class="adm-sel-title"> <i id="open-terms" class="fa fa-tags margin-right-10 terms-icon"></i>@lang('scholarship_view.edit.tags')</div>
+                        <div class="tag-container">
+                            @foreach($tags as $tag)
+                                <span class="tag-item">
+                                {{ $tag->name }}
+                            </span>
+                            @endforeach
+                        </div>
+                    </div>
+
+                <div class="margin-top-30"></div>
+                <div class="col-sm-12 line"></div>
+                <!-- ================================ -->
+                <div class="margin-top-50"></div>
+
 
                 <div class="adm-sel-title"> <i id="open-terms" class="fa fa-pencil margin-right-10 terms-icon"></i>@lang('scholarship_view.edit.terms')</div>
 
@@ -752,12 +778,9 @@
                     @endif
                 </form>
                 </div>
-                <div>
-                    TAGS
-                    @foreach($tags as $tag)
-                        <li>{{ $tag->name }}</li>
-                    @endforeach
-                </div>
+
+
+
             </div>
         </div>
     </div>

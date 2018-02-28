@@ -107,10 +107,18 @@
                                                     <img :src="scholarship.financial_icon" height="30px" alt="" class="">
                                                 </div>
                                                 <span class="tooltiptext tooltip4 hidden-xxlx">
-                                                    {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
+                                                    <!--{{ scholarship.financial_plan }}-->
+                                                    {{ lang('seeder.financialN.' + (scholarship.financial_plan) ) }}
+                                                    {{ scholarship.financial_amount }}<span>
+                                                    <!--{{ lang('seeder.metricN.' + (scholarship.financial_metric) ) }}-->
+                                                    {{scholarship.financial_metric}}</span>
                                                 </span>
                                                 <span class=" hidden-xxlxx" >
-                                                    {{ scholarship.financial_plan }} {{ scholarship.financial_amount }}<span>{{scholarship.financial_metric}}</span>
+                                                    <!--{{ scholarship.financial_plan }} -->
+                                                    {{ lang('seeder.financialN.' + (scholarship.financial_plan) ) }}
+                                                    {{ scholarship.financial_amount }}<span>
+                                                    <!--{{ lang('seeder.metricN.' + (scholarship.financial_metric) ) }}-->
+                                                    {{scholarship.financial_metric}}</span>
                                                 </span>
 
                                             </td>
@@ -124,9 +132,9 @@
                                             <td v-if="showLevel">
                                                 <span class="tool">
                                                     <div class="dots-text dots-mlg dots-lg dots-xl-left dots-study" v-if="scholarship.study_name">{{scholarship.study_name}}</div>
-                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left" v-else>Πολλαπλά Αντικείμενα Σπουδών</div>
+                                                    <div class="dots-text dots-mlg dots-lg dots-xl-left" v-else>{{ lang('scholarship_view.edit.multiple') }}</div>
                                                     <span class="tooltiptext tooltip3" v-if="scholarship.study_name">{{scholarship.study_name}}</span>
-                                                    <span class="tooltiptext tooltip3" v-else>Πολλαπλά Αντικείμενά Σπουδών </span>
+                                                    <span class="tooltiptext tooltip3" v-else>{{ lang('scholarship_view.edit.multiple') }}</span>
                                                 </span>
                                             </td>
                                             <td  class="tool hidden-xxs">
@@ -137,9 +145,15 @@
                                                 <div class="dots-text dots-sm hidden-xxl">
                                                 <img :src="'/panel/assets/images/steps/'+ scholarship.criteria_name+'.png'" height="30px" alt="" class="">
                                                 </div>
-                                                <span class="tooltiptext tooltip5 hidden-xlxl">{{ scholarship.criteria_name }}</span>
+                                                <span class="tooltiptext tooltip5 hidden-xlxl">
+                                                    {{ scholarship.criteria_name }}
+                                                </span>
 
-                                                <span class="hidden-xl dots-text dots-mlg3 visible-xxl dots-xl-left">{{ scholarship.criteria_name }}</span>
+                                                <span class="hidden-xl dots-text dots-mlg3 visible-xxl dots-xl-left">
+                                                    <!--{{ scholarship.criteria_name }}-->
+                                                    {{ lang('seeder.criteriaN.' + (scholarship.criteria_name) ) }}
+
+                                                </span>
 
                                             </td>
                                             <td class="hidden-lgm" style=""> <div class="dots-text dots-md"> {{ scholarship.end_at }}</div></td>

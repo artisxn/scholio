@@ -54,10 +54,16 @@
         /*flex-direction: column;*/
         /*}*/
 
-        .btn-save{background: #008da5; color: #fff; margin-bottom: 40px}
+        .btn-save{background: #008da5; color: #fff; margin-bottom: 40px; margin-top: 30px;}
+        .btn-container{ margin-left: auto; margin-right: auto; text-align: center;}
 
         .notes{ margin-top: 2px; width: 100%; height: 90px; color: #c9c9c9; font-weight: 300; padding: 10px;
             background-color: #f6f9fa; border-radius: 8px; border: 1px solid #aaa; resize: none;}
+
+
+          textarea::placeholder  {color: #aaa }
+
+
 
         /*  ======================================= */
 
@@ -158,7 +164,7 @@
 
             <div class="section2-container col-sm-12" style="padding: 20px 10px;">
                 <div class="inner-section2 ">
-                    <div class="section-text2 "> <i class="fa fa-facebook icon-title" style="margin-right: 10px;"></i> Social Links</div>
+                    <div class="section-text2 "> <i class="fa fa-facebook icon-title" style="margin-right: 10px;"></i> {{ trans('admission.school.socialLinks') }}</div>
                     <div class="info2">
                         @foreach($admission->user->socialLinks as $link)
                             <div>
@@ -176,18 +182,18 @@
 
     <form action="/admission/{{ $admission->id }}/notes/save" method="POST" class="col-sm-12 row" style="z-index: 09!important;">
         {{ csrf_field() }}
-        <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-pencil" style="margin-right: 10px;"></i>Σημειώσεις</div>
+        <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-pencil" style="margin-right: 10px;"></i>{{ trans('admission.school.notes') }}</div>
 
-        <textarea name="notes" class="notes" placeholder="Εδώ κρατήστε τις σημειώσεις σας για τη συγκεκριμένη αίτηση">{{ $admission->notes }}</textarea>
+        <textarea name="notes" class="notes" placeholder="{{ trans('admission.school.notesText') }}">{{ $admission->notes }}</textarea>
 
 
         @if($admission->scholarship->criteria->id == 1)
-            <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-star" style=""></i><i class="icon-title  fa fa-star-half-o" style="margin-right: 10px;"></i>Αξιολόγηση Αίτησης </div>
-            <textarea name="review" class="notes" placeholder="Εδώ αφήστε την αξιολόγηση σας για ενημέρωση του σπουδαστή">{{ $admission->review }}</textarea>
+            <div class="section-text2 " style="margin: 20px 0 0 0; "> <i class="icon-title  fa fa-star" style=""></i><i class="icon-title  fa fa-star-half-o" style="margin-right: 10px;"></i>{{ trans('admission.school.evaluation') }} </div>
+            <textarea name="review" class="notes" placeholder="{{ trans('admission.school.evaluationText') }}">{{ $admission->review }}</textarea>
         @endif
 
-        <div>
-            <button type="submit" class="btn btn-save" > <i class="fa fa-save" style="margin-right: 10px"></i>Αποθήκευση</button>
+        <div class="btn-container">
+            <button type="submit" class="btn btn-save" > <i class="fa fa-save" style="margin-right: 10px"></i>{{ trans('admission.school.save') }}</button>
         </div>
     </form>
 

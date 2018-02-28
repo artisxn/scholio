@@ -202,6 +202,9 @@ p {padding: 15px; color: #5d5d5d;  }
     background-position: center;
 }
 
+/*.carPad{padding-left: 8px!important; padding-right: 8px!important;}*/
+/*.col-lg-12, .col-md-12, .col-sm-12, .col-xs-12{padding-left: 4px!important; padding-right: 15px!important;}*/
+
 #img2 {  top: 165px;  }
 
 #img2, #img3  {
@@ -478,7 +481,7 @@ p {padding: 15px; color: #5d5d5d;  }
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
     /* */
-    .card { height: 650px;}
+    .card { height: 600px;}
     .card-photo {width: 100%; height: 285px; max-height: 270px;}
     #img3 {   left: 30px;  top: 218px; }
     .xs-text-incr-85 {font-size: 86%;}
@@ -496,7 +499,7 @@ p {padding: 15px; color: #5d5d5d;  }
 
 @media (max-width: 400px) {
     /* */
-    .card { height: 635px;}
+    .card { height: 560px;}
     .card-photo {width: 100%; height: 242px; max-height: 280px;}
     #img3 {  left: 30px; top: 190px; }
     .xs-text-incr-80 {font-size:81%;}
@@ -506,7 +509,6 @@ p {padding: 15px; color: #5d5d5d;  }
     .shortDrop{ width: 135px!important;}
     .btn-close { margin-left: 83%;}
     .selectpicker{width:99%!important;}
-
 }
 
 /*============================================================*/

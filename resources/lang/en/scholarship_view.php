@@ -44,10 +44,12 @@ return [
         'winners'=>' Winners',
         'winner'=>' Winner',
         'scholarWinners'=>'Scholarship Winners',
+        'tags'=>'Tags',
         'terms'=>'Terms and eligibility',
         'btnSave'=>'Save Changes',
         'btnEnd'=>'End of Scholarship and Winners Update',
         'btnDelete'=>'Delete Scholarship',
+        'multiple'=>'Multiple Field of Studies',
 
     ]
 ];

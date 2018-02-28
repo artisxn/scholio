@@ -1451,9 +1451,12 @@ pre {
 }
 
 .profile img {
-  border: 2px solid #edf0f0;
-  height: 36px;
-  width: 36px;
+  /*border: 2px solid #edf0f0;*/
+  border: none;
+  box-shadow: 0 0 11px 1px #bbb;
+
+  height: 38px;
+  width: 38px;
 }
 
 .dropdown-menu-lg {

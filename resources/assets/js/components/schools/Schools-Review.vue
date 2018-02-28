@@ -169,14 +169,14 @@
 
                     <div class="review-name">{{ review.user.name }}, {{ review.user.role }}, {{ review.created_at }}</div>
 
-                    <div v-for="(category, index) in review.category" class="review-category">
+                <div v-for="(category, index) in review.category" class="review-category">
                         <span class="left">
                             <i :class="category.category.icon" class="category-icon"></i>
                             {{ lang('seeder.category.' + (category.category.icon) ) }}
                         </span>
-                        
-                        <stars :id="review.user.id + 'stars' + index" :stars="category.stars" name="stars" :read="true" class="pull-right"></stars>
-                    </div>
+
+                    <stars :id="review.user.id + 'stars' + index" :stars="category.stars" name="stars" :read="true" class="pull-right"></stars>
+                </div>
 
                     <div class="review-full-text">
                         {{ review.text }}
@@ -360,7 +360,7 @@
                 }
                 console.log('axios = ' + this.role + ' - ' + this.status)
                 return `/api/school/getReviews/${this.role}/${this.status}/${this.reviewsFilteredByRating}/?page=${page}`;
-            }, 
+            },
 
             fetch(page) {
                 axios.get(this.url(page)).then(this.refresh);
@@ -377,7 +377,7 @@
 
             getAvg(){
                 axios.get(`/api/school/getAvgReviews/${this.role}/${this.status}`).then(this.setAvg)
-            }, 
+            },
 
             setAvg({data}){
                 this.totalReviews = data.avgReviews
@@ -472,7 +472,7 @@
             console.log('created')
             this.getAvg()
             this.fetch()
-        }, 
+        },
 
         updated(){
             for(var i = 5; i>=1; i--){

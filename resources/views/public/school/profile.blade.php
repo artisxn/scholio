@@ -99,7 +99,7 @@
         }
 
         .main-box2  ul li{text-indent: -20px;}
-        .bx-wrapper img {height: 220px !important;}
+        .bx-wrapper img {height: 260px !important;}
         .slideup, .slidedown {
             background-color: #fff;
             overflow-y: hidden;
@@ -428,7 +428,7 @@
                     <div class="row xl-margin-right " style="padding-left: 7px;">
                         <ul class="bxslider "  data-bx-slider="
                     pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
-                    slideWidth: 305, slideMargin:19, infiniteLoop: true, hideControlOnEnd: false">
+                    slideWidth: 380, slideMargin:15, infiniteLoop: true, hideControlOnEnd: false">
                             @if($school->image->count() >= 4)
                                 <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
                                     <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
@@ -1177,7 +1177,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <img src="/" id="bigImage" width="100%" height="100%"/>
+                    <img src="/" id="bigImage" width="120%" height="auto"/>
         
                 
                         </div>

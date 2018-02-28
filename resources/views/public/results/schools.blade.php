@@ -119,11 +119,11 @@
     .pos-xs{right: 11px;}
     .pos-right{right: -6px}
 
-    .report{ position: absolute; top: 20px; right:20px; font-size: 180%; color:#aaa; z-index: 50;}
+    .report{ position: absolute; bottom: -110px; right:20px; font-size: 180%; color:#aaa; z-index: 50;}
     .report:hover{color: #FD6A33; cursor: pointer;}
     .report-logo{height: 50px; text-align: left; margin: 14px 0 0 14px; opacity: 0.3}
     .report-drop{background: #fafafa;  border: 1px solid #ddd; box-shadow: 0px 0px 10px 2px #ccc; border-radius: 6px; width:0; height: 0; opacity:0;
-        margin-top: 30px; margin-right: 10px; display: inline-block; position: absolute; top: -16px; right: -1px; z-index: 20 }
+        margin-top: 30px; margin-right: 10px; display: inline-block; position: absolute; bottom: -110px; right: -1px; z-index: 20 }
 
     .report-title{color: #00475d; opacity: 0.3; margin-left:10px; font-size: 110%}
     .report-text{ width: 100%; height: 80px; text-align: justify; font-size: 90%; color: #ccc;margin-top: 20px; padding: 14px 18px;}
@@ -225,6 +225,7 @@
         .ribbonMed,.ribbonLarge{top: -273px;}
         .text-Med{top: -230px;}
         .text-Large{top: -210px;}
+        .report{bottom: -100px;!important;}
     }
 
     @media (max-width:400px){
@@ -232,6 +233,7 @@
         .ribbonMed,.ribbonLarge{top: -245px;}
         .text-Med{top: -204px;}
         .text-Large{top: -182px;}
+        .report{bottom: -90px;!important;}
     }
 
 
@@ -691,10 +693,10 @@ angular.module("schoolsResultsApp",[])
 
                 <i id="report" class="fa fa-ellipsis-h report" onClick="dropReport(@{{school_id}})" ></i>
                 <!-- =================== Report  Menu ====================-->
-                <div class="report-drop" id="report-drop@{{school_id}}" >
-                     <img class="report-logo"  src="/new/img/logoNX-m.png" alt="">
+                <div class="report-drop" id="report-drop@{{school_id}}" style="overflow:hidden!important">
+                     <img class="report-logo"  src="/new/img/logoNX-m.png" alt="" style="overflow:hidden!important">
                      <span class="report-title"> Αναφορά </span>
-                     <form method="POST" action="/report/add/@{{school_id}}/Profile">
+                     <form method="POST" action="/report/add/@{{school_id}}/Profile" >
                      {{ csrf_field() }}
                         <div class="report-text" style="overflow:hidden!important">
                             <button type="submit" style=" width:185px; background: none; border: none; text-align: justify;">
@@ -723,7 +725,7 @@ angular.module("schoolsResultsApp",[])
            @{{/scholarshipLion}}
 
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 " id="card1@{{school_id}}">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 cardPad" id="card1@{{school_id}}">
 
 
 
@@ -822,10 +824,10 @@ angular.module("schoolsResultsApp",[])
 
 
 
-        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 " id="card4@{{school_id}}">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 " id="card4@{{school_id}}" >
 
-            <div class="">
-                <div class="col-lg-10 col-md-11 col-sm-6 col-xs-12 sc-t-grey">
+            <div class="" >
+                <div class="col-lg-10 col-md-11 col-sm-6 col-xs-12 sc-t-grey" >
                     <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95">@{{address}}</span>
                     <br>

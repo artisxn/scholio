@@ -187,13 +187,13 @@
                 if (this.imgWidth) {
                     this.width = parseInt(this.imgWidth)
                 } else {
-                    this.width = 600
+                    this.width = 870
                 }
 
                 if (this.imgHeight) {
                     this.height = parseInt(this.imgHeight)
                 } else {
-                    this.height = 400
+                    this.height = 600
                 }
 
             },

@@ -40,6 +40,18 @@ return [
     'send'=>'Send Request',
     'cancel'=>'Cancel',
 
+    'school'=>[
+        'socialLinks'=>'Social Links',
+        'notes'=>'Application Notes',
+        'notesText'=>'Here write your notes for this application...',
+        'evaluation'=>'Application Assessment',
+        'evaluationText'=>'Here leave your assessment to inform the student...',
+        'save'=>'Save Notes',
+
+
+
+    ]
+
 
 
 
