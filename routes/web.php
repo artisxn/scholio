@@ -1,135 +1,69 @@
 <?php
 
+use App\Events\NewSubscription;
 use App\Events\UserAppliedOnSchool;
 use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\AlgoliaSchool;
+use App\Models\Card;
+use App\Models\Report;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolSetting;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
-use App\Events\NewSubscription;
 use Carbon\Carbon;
-use App\Models\Report;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 
 Scholio::soonRoutes();
 
-Route::get('qqq', function () {
-    
-    $order = 'name';
-    $asc = true;
-    $status = 'connected';
-    $field = '';
-
-    $user = auth()->user();
-    $school = $user->info;
-    $students = $school->$status;
-
-
-    $orderType = $asc == 'false' ? 'asc' : 'desc';
-
-    $students = $school->$status()->orderBy($order, $orderType)->with('cv', 'student')->get();
-
-    $cards = auth()->user()->card;
-    $s = null;
-
-    foreach ($cards as $card) {
-        $st = collect(["fname" => "Ζήνων", "lname" => "Τριανταφυλλίδης", "gender" => "male"]);
-        $cv = collect([
-            "student_city" => "ΘεολόγοςVille" ,
-            "student_country"=> "Ανγκόλα" ,
-            "student_address"=> "Λεωφόρος Παπαδοπούλου, 512-828" ,
-            "student_phone"=> "+30 697 4630824"]);
-        $piv = collect([
-            "school_id" => 1 ,
-            "user_id"=> 22 ,
-            "status"=> "connected"]);
-        $s = collect(['student'=>$st, 'cv'=> $cv, 'pivot'=>$piv]);
+Route::get('aaa', function () {
+    Card::truncate();
+    foreach (School::all() as $school) {
+        foreach ($school->students as $student) {
+            $card = new Card;
+            $card->user_id = $school->admin->id;
+            $card->student_id = $student->id;
+            $card->name = $student->name;
+            $card->email = $student->email;
+            $card->fname = $student->info->fname;
+            $card->lname = $student->info->lname;
+            $card->status = $student->pivot->status;
+            $card->student_country = $student->cv->student_country;
+            $card->dob = $student->cv->dob;
+            $card->student_city = $student->cv->student_city;
+            $card->student_address = $student->cv->student_address;
+            $card->student_phone = $student->cv->student_phone;
+            $card->email = $student->email;
+            $card->father_fullname = $student->cv->father_fullname;
+            $card->mother_fullname = $student->cv->mother_fullname;
+            $card->father_phone = $student->cv->father_phone;
+            $card->mother_phone = $student->cv->mother_phone;
+            $card->avatar = $student->info->avatar;
+            $card->save();
+        }
+        echo $school->admin->name;
     }
-
-    return $s;
-
-    $data = $students->merge($s);
-
-    
-    return $data;
-    return $cards;
-
-    $studentCounter = 0;
-
-    if ($field != '%20') {
-        $students = $students->filter(function ($item) use ($field) {
-            $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
-            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
-            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
-            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
-            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
-            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
-            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
-
-            $active1 = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type;
-            $active2 = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->type2;
-            $active1Level = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->level;
-            $active2Level = $item->connectedSchool->where('id', auth()->user()->info->id)->first()->pivot->level2;
-
-            $dummy = $active1 . ',' . $active2 . ',' . $active1Level . ',' . $active2Level;
-
-            // foreach($item->studyConnection()->wherePivot('school_id', auth()->user()->info->id)->get() as $std){
-            //     $section = $std->section[0];
-            //     $level = $section->level;
-            //     $dummy .= $std->name . ',' . $section->name . ',' . $level->name . ',';
-            // }
-
-            $replacement2 = preg_replace('/ά/iu', '${1}α', $dummy);
-            $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
-            $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
-            $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
-            $replacement2 = preg_replace('/ό/iu', '${1}ο', $replacement2);
-            $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
-            $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
-
-            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
-                preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->cv->student_phone) ||
-                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $dummy)) {
-                return $item;
-            }
-        });
-    }
-
-    $items = $students;
-    $studentCounter = count($students);
-
-    $perPage = config('scholio.perPage.students');
-
-    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
-    $items = $items instanceof Collection ? $items : Collection::make($items);
-    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
-    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count(), 'studentCounter' => $studentCounter]);
-    $data = $custom->merge($p);
-    return $data;
+    echo 'OK';
 });
-
-
 Route::get('cardtest', function(){
     return view('cardtest');
 });
 
-Route::get('/school/connection/link/{school}', function(School $school){
+Route::get('/school/connection/link/{school}', function (School $school) {
     return view('con')->withSchool($school);
 });
 
-Route::get('/terms', function(){
+Route::get('/terms', function () {
     return view('terms');
 });
 
 Route::get('/verifyemail/{token}', 'VerifyController@verify');
 
-Route::post('/school/approve/{school}', function(School $school){
+Route::post('/school/approve/{school}', function (School $school) {
     $school->approved = true;
     $school->save();
     return back();
@@ -142,7 +76,7 @@ Route::post('/school/disapprove/{school}', function (School $school) {
 })->middleware('is.admin');
 
 Route::post('/report/add/{user}/{id}', function (User $user, $id) {
-    
+
     $report = new Report;
     $report->user_id = $user->id;
     $report->info = $id;
@@ -150,31 +84,31 @@ Route::post('/report/add/{user}/{id}', function (User $user, $id) {
     return back();
 });
 
-Route::post('/report/delete/{report}', function(Report $report){
+Route::post('/report/delete/{report}', function (Report $report) {
     $report->delete();
     return back();
 })->middleware('is.admin');
 
 Route::post('/report/delete/all/{user}', function (User $user) {
-    foreach($user->report as $report){
+    foreach ($user->report as $report) {
         $report->delete();
     }
     return back();
 })->middleware('is.admin');
 
-Route::get('/password/change', function(){
+Route::get('/password/change', function () {
     return view('panel.change-password');
 })->middleware('auth');
 
-Route::get('/error', function(){
+Route::get('/error', function () {
     abort('400');
 });
 
-Route::get('/admin', function(){
+Route::get('/admin', function () {
     return view('panel.pages.admin.settings');
 })->middleware(['auth', 'is.admin']);
 
-Route::post('/admin/subscription', function(){
+Route::post('/admin/subscription', function () {
     $user = App\User::find(request()->userID);
     $plan = request()->plan;
     $limits = [
@@ -250,15 +184,15 @@ Route::post('scholarship/{scholarship}/end', function (Scholarship $scholarship)
 });
 
 Route::post('scholarship/{scholarship}/update', function (Scholarship $scholarship) {
-    if(request()->exams){
+    if (request()->exams) {
         $proper_date = Carbon::createFromFormat('d-m-Y', request()->exams);
         $scholarship->exam_date = $proper_date;
     }
 
-    if(request()->terms){
+    if (request()->terms) {
         $scholarship->terms = request()->terms;
     }
-    
+
     $scholarship->save();
     return back();
 });
@@ -274,7 +208,7 @@ Route::get('public/donor', function () {
 });
 
 Route::post('/admission/{admission}/notes/save', function (Admission $admission) {
-    if($review = request()->review){
+    if ($review = request()->review) {
         $admission->review = $review;
     }
 

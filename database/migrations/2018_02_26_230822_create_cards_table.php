@@ -34,14 +34,15 @@ class CreateCardsTable extends Migration
             $table->string('student_address')->nullable();
             $table->string('student_phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('father_name')->nullable();
-            $table->string('mother_name')->nullable();
+            $table->string('father_fullname')->nullable();
+            $table->string('mother_fullname')->nullable();
             $table->string('father_phone')->nullable();
             $table->string('mother_phone')->nullable();
             $table->string('study')->nullable();
             $table->string('study2')->nullable();
             $table->string('level')->nullable();
             $table->text('grades')->nullable();
+            $table->string('avatar')->default('/images/student.png');
             $table->timestamps();
         });
     }

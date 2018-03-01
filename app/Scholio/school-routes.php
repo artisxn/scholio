@@ -27,19 +27,21 @@ Route::post('/card/create', function () {
 
     $card = new Card;
     $card->user_id = auth()->user()->id;
-    $card->student_city = request()->city;
-    $card->student_address = request()->address;
-    $card->student_phone = request()->phone;
+    $card->fname = request()->fname;
+    $card->lname = request()->lname;
+    $card->name = request()->fname . ' ' . request()->lname;
+
+    $card->student_city = request()->student_city;
+    $card->student_address = request()->student_address;
+    $card->student_phone = request()->student_phone;
     $card->email = request()->email;
-    $card->father_name = request()->father_name;
-    $card->mother_name = request()->mother_name;
+    $card->father_fullname = request()->father_name;
+    $card->mother_fullname = request()->mother_name;
     $card->father_phone = request()->father_phone;
     $card->mother_phone = request()->mother_phone;
-    $card->study = request()->study;
-    $card->study2 = request()->study2;
-    $card->level = request()->level;
-    $card->grades = request()->grades;
+    $card->status = request()->status;
     $card->dob = Carbon::createFromFormat('d-m-Y', request()->dob); 
+    $card->role = 'fake';
     $card->save();
 
 })->name('create-card');

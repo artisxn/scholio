@@ -9,6 +9,7 @@ use App\Models\Subscription;
 use App\User;
 use App\Models\ScholarshipLimit;
 use App\Models\University;
+use App\Models\Card;
 
 class DatabaseSeeder extends Seeder
 {
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
         $keys->save();
 
         foreach (School::all() as $school) {
+            $this->createCards($school);
             $university = new University;
             $university->name = $school->admin->name;
             $university->save();
@@ -104,5 +106,9 @@ class DatabaseSeeder extends Seeder
         $user1->status = 'admin';
         $user1->username = 'kfrei';
         $user1->save();
+    }
+
+    public function createCards($school){
+      
     }
 }
