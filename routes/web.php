@@ -6,6 +6,7 @@ use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\AlgoliaSchool;
 use App\Models\Card;
+use App\Models\Message;
 use App\Models\Report;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -14,23 +15,42 @@ use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
 use Carbon\Carbon;
-use App\Models\Message;
 
 Scholio::soonRoutes();
 
-Route::get('/deletemessages', function(){
-    Message::truncate(); 
+Route::get('/deletemessages', function () {
+    Message::truncate();
 });
 
-Route::get('/ddd', function(){
+Route::get('/ddd', function () {
     $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get();
-$card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get();
+    $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get();
 
-return $card->merge($card2);
+    return $card->merge($card2);
 
 });
 
-Route::get('cardtest', function(){
+Route::get('/fakes', function () {
+    $name = 'Jewel Kris';
+    $exact = Card::where('name', $name)->first();
+    $card = null;
+    $card2 = null;
+    if ($exact) {
+        $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get();
+        $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get();
+    } else {
+        $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get();
+        $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get();
+    }
+
+    $mergedCards = $card->merge($card2);
+
+    $final = collect(['exact' => $exact]);
+
+    return $final->merge($mergedCards);
+});
+
+Route::get('cardtest', function () {
     return view('cardtest');
 });
 

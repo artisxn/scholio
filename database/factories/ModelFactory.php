@@ -209,6 +209,43 @@ $factory->define(App\Models\Certificate::class, function (Faker\Generator $faker
         'until' => '1/2018',
     ];
 });
+// Fakes
+$factory->define(App\Models\Card::class, function (Faker\Generator $faker) {
+
+    $rand = $faker->randomElement($array = array('el_GR', 'en_US'));
+    $randStatus = $faker->randomElement($array = array('connected', 'allumni'));
+
+
+    $faker = Faker\Factory::create($rand);
+
+    $g = $faker->randomElement(array('male', 'female'));
+
+    $fname = $faker->firstName($g);
+    $lname = $faker->lastName($g);
+    $fullname = $fname . ' ' . $lname;
+
+
+    return [
+        'name' => $fullname,
+        'fname' => $fname,
+        'lname' => $lname,
+        'student_address' => $faker->streetAddress,
+        'student_city' => $faker->city,
+        'student_country' => $faker->country,
+        'student_phone' => $faker->phoneNumber,
+        'student_dob' => Carbon::now()->subYears(20),
+        'father_fullname' => $faker->name,
+        'father_phone' => $faker->phoneNumber,
+        'mother_fullname' => $faker->name,
+        'mother_phone' => $faker->phoneNumber,
+        'guardian_fullname' => $faker->name,
+        'role' => 'fake',
+        'gender'=> $g,
+        'email' => $faker->email,
+        'status' => $randStatus
+    ];
+});
+
 
 $factory->define(App\Models\Cv::class, function (Faker\Generator $faker) {
 

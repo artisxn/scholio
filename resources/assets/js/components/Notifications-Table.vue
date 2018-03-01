@@ -205,9 +205,14 @@
                                     <div style="margin-top: 50px" class="modal-input-container">
                                         <div class="section-text centered-text">
                                             <img class="modal-icon" src="/new/img/teacher/team.png" alt="">Αντιστοιχια με Student Card</div>
-                                        <select v-model="selectedCard" class="modal-select">
+                                        <select v-model="selectedCard" v-if="availableCards" class="modal-select">
                                             <option value="0" selected>NOT IN CARD</option>
-                                            <option v-for="card in availableCards" :value="card.id">{{ card.name }}</option>
+                                            <optgroup label="Suggested">
+                                                <option v-if="availableCards.exact" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
+                                            </optgroup>
+                                            <optgroup label="OTHER">
+                                                <option v-for="card in availableCards" v-if="card.id != exact_id" :value="card.id">{{ card.name }}</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
@@ -410,16 +415,19 @@
                 currentUserID: 0,
                 notLength: false,
                 selectedCard: 0,
-                availableCards: null
+                availableCards: null,
+                exact_id: 0
             }
         },
 
         methods: {
             getCards(){
-                axios.get('/api/school/getCards/' + this.selectedStatus + '/' + this.selectedStudy).then(({data})=>{
+                axios.get('/api/school/getCards/' + this.selectedStatus + '/' + this.selectedStudy + '/' + this.selectedName).then(({data})=>{
                     this.availableCards = data
-                    console.log(this.selectedStatus)
-                    console.log(data)
+                    if(this.availableCards.exact){
+                        this.exact_id = this.availableCards.exact.id
+                    }
+                    console.log(this.availableCards.exact.id)
                 })
             },
 

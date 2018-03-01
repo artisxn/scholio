@@ -51,16 +51,29 @@ Route::post('/school/update/cards/swap/{from}/{to}', function ($from, $to) {
 
 })->middleware('auth:api');
 
-Route::get('/school/getCards/{status}/{study}', function ($status, $study) {
-    $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', $study)->get();
-    $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', null)->get();
+Route::get('/school/getCards/{status}/{study}/{name}', function ($status, $study, $name) {
+    // $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', $study)->get();
+    // $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', null)->get();
 
-    return $card->merge($card2);
+    // return $card->merge($card2);
+    $exact = Card::where('name', $name)->first();
+    $card = null;
+    $card2 = null;
+    if ($exact) {
+        $card = Card::where('student_id', $exact->student_id)->where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get()->except($exact->id);
+        $card2 = Card::where('student_id', $exact->student_id)->where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get()->except($exact->id);
+    } else {
+        $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get();
+        $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get();
+    }
+
+    $mergedCards = $card->merge($card2);
+
+    $final = collect(['exact' => $exact]);
+
+    return $final->merge($mergedCards);
+
 })->middleware('auth:api');
-
-// Route::get('/school/getCards', function () {
-//     return auth()->user()->card;
-// })->middleware('auth:api');
 
 Route::post('/school/update/card/{card}/{field}/{newValue}', function (Card $card, $field, $newValue) {
     $card->$field = $newValue;
@@ -818,7 +831,7 @@ Route::get('/connected/students/card/search/{order}/{asc}/{status}/{field}', fun
             $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
             $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
 
-            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->school_number) || preg_match('/' . $field . '/iu', $item->name) ||
                 preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->student_phone) ||
                 preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $dummy)) {
                 return $item;

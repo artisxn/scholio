@@ -29,7 +29,7 @@ class CreateCardsTable extends Migration
             $table->string('study_id')->nullable();
             $table->string('study_id2')->nullable();
             $table->string('student_country')->nullable();
-            $table->date('dob')->nullable();
+            $table->date('student_dob')->nullable();
             $table->string('student_city')->nullable();
             $table->string('student_address')->nullable();
             $table->string('student_phone')->nullable();
@@ -43,6 +43,10 @@ class CreateCardsTable extends Migration
             $table->string('level')->nullable();
             $table->text('grades')->nullable();
             $table->string('avatar')->default('/images/student.png');
+            $table->string('guardian_fullname')->nullable();
+            $table->string('guardian_phone')->nullable();
+            $table->string('school_number')->nullable();
+            $table->string('gender')->nullable();
             $table->timestamps();
         });
     }

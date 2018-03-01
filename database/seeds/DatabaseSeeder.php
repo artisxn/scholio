@@ -9,6 +9,8 @@ use App\Models\University;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Seeder;
+use App\Models\Cv;
+use App\Models\Student;
 
 class DatabaseSeeder extends Seeder
 {
@@ -44,6 +46,7 @@ class DatabaseSeeder extends Seeder
 
         foreach (School::all() as $school) {
             $this->createCards($school);
+            $this->addFakeCards($school);
             $university = new University;
             $university->name = $school->admin->name;
             $university->save();
@@ -107,6 +110,34 @@ class DatabaseSeeder extends Seeder
         $user1->save();
     }
 
+    public function addFakeCards($school)
+    {
+        for ($i = 1; $i <= (16 - (int) $school->id); $i++) {
+            $card = factory(App\Models\Card::class)->create(['user_id' => $school->id]);
+            $this->createNonConnectedStudents($card);
+        }
+    }
+
+    public function createNonConnectedStudents($card){
+        $user = new User;
+        $user->name = $card->name;
+        $user->email = $card->email;
+        $user->password = bcrypt('123456');
+        $user->role = 'student';
+        $user->save();
+
+        $student = new Student();
+        $student->user_id = $user->id;
+        $student->fname = $card->fname;
+        $student->lname = $card->lname;
+        $student->gender = $card->gender;
+        $student->save();
+
+        $cv = new Cv;
+        $cv->user_id = $user->id;
+        $cv->save();
+    }
+
     public function createCards($school)
     {
         foreach ($school->students as $student) {
@@ -119,7 +150,7 @@ class DatabaseSeeder extends Seeder
             $card->lname = $student->info->lname;
             $card->status = $student->pivot->status;
             $card->student_country = $student->cv->student_country;
-            $card->dob = $student->cv->dob;
+            $card->student_dob = $student->cv->dob;
             $card->student_city = $student->cv->student_city;
             $card->student_address = $student->cv->student_address;
             $card->student_phone = $student->cv->student_phone;
@@ -131,6 +162,5 @@ class DatabaseSeeder extends Seeder
             $card->avatar = $student->info->avatar;
             $card->save();
         }
-
     }
 }
