@@ -207,11 +207,11 @@
                                             <img class="modal-icon" src="/new/img/teacher/team.png" alt="">Αντιστοιχια με Student Card</div>
                                         <select v-model="selectedCard" v-if="availableCards" class="modal-select">
                                             <option value="0" selected>NOT IN CARD</option>
-                                            <optgroup label="Suggested">
-                                                <option v-if="availableCards.exact" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
+                                            <optgroup label="Suggested" v-if="availableCards.exact">
+                                                <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
                                             </optgroup>
                                             <optgroup label="OTHER">
-                                                <option v-for="card in availableCards" v-if="card.id != exact_id" :value="card.id">{{ card.name }}</option>
+                                                <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
                                             </optgroup>
                                         </select>
                                     </div>
@@ -427,7 +427,6 @@
                     if(this.availableCards.exact){
                         this.exact_id = this.availableCards.exact.id
                     }
-                    console.log(this.availableCards.exact.id)
                 })
             },
 

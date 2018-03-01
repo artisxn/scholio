@@ -56,7 +56,7 @@ Route::get('/school/getCards/{status}/{study}/{name}', function ($status, $study
     // $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', null)->get();
 
     // return $card->merge($card2);
-    $exact = Card::where('name', $name)->first();
+    $exact = Card::where('name', $name)->where('role', 'fake')->first();
     $card = null;
     $card2 = null;
     if ($exact) {

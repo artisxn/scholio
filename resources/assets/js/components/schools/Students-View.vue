@@ -253,9 +253,14 @@
 
                                 </div>
 
-                                <select v-model="selectedCard" class="modal-select" v-if="info.role == 'student'" @change="updateCards">
+                                <select v-model="selectedCard" class="modal-select" v-if="availableCards && info.role == 'student'" @change="updateCards">
                                     <option value="0" selected>NOT IN CARD</option>
-                                    <option v-for="card in availableCards" :value="card.id">{{ card.name }}</option>
+                                    <optgroup label="Suggested" v-if="availableCards.exact">
+                                        <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
+                                    </optgroup>
+                                    <optgroup label="OTHER">
+                                        <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
+                                    </optgroup>
                                 </select>
 
                                 
@@ -886,7 +891,8 @@
                 studentCounter: 0,
                 cards: null,
                 selectedCard: 0,
-                availableCards: null
+                availableCards: null,
+                exact_id: 0
             }
         },
         computed: {
@@ -906,8 +912,13 @@
 
         methods: {
             getCards() {
-                axios.get('/api/school/getCards/' + this.info.status + '/' + this.info.type).then(({ data }) => {
+                axios.get('/api/school/getCards/' + this.info.status + '/' + this.info.type + '/' + this.info.name).then(({ data }) => {
                     this.availableCards = data
+                    if (this.availableCards.exact) {
+                        this.exact_id = 0
+                    }
+                    console.log('aaa')
+                    console.log(this.availableCards)
                 })
             },
             updateCards(){
