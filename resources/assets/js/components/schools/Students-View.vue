@@ -253,6 +253,12 @@
 
                                 </div>
 
+                                <select v-model="selectedCard" class="modal-select" v-if="info.role == 'student'" @change="updateCards">
+                                    <option value="0" selected>NOT IN CARD</option>
+                                    <option v-for="card in availableCards" :value="card.id">{{ card.name }}</option>
+                                </select>
+
+                                
 
 
 
@@ -414,7 +420,6 @@
 
 
 <style>
-
     .alumniFilter{-webkit-filter: grayscale(75%); opacity: 0.9}
     .fakeFilter{-webkit-filter: grayscale(90%); opacity: 0.5}
 
@@ -879,7 +884,9 @@
                 study2: false,
                 test: true,
                 studentCounter: 0,
-                cards: null
+                cards: null,
+                selectedCard: 0,
+                availableCards: null
             }
         },
         computed: {
@@ -898,6 +905,16 @@
         },
 
         methods: {
+            getCards() {
+                axios.get('/api/school/getCards/' + this.info.status + '/' + this.info.type).then(({ data }) => {
+                    this.availableCards = data
+                })
+            },
+            updateCards(){
+                axios.post('/api/school/update/cards/swap/' + this.info.id + '/' + this.selectedCard).then(({data})=>{
+                    console.log(data)
+                })
+            },
             saveCard(e, card){
                 let field = e.target.name
                 let value = e.target.value
@@ -1028,6 +1045,9 @@
             },
             changeInfo(data){
                 this.info = data
+                console.log('info')
+                console.log(this.info)
+                this.getCards()
                 if(this.info.study_id) this.selectedStudy = this.info.study_id
                 else this.selectedStudy = 0
                 if (this.info.study_id2) this.secondStudy = this.info.study_id2

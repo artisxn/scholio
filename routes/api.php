@@ -27,7 +27,31 @@ use Illuminate\Support\Facades\Route;
 
 Scholio::bot();
 
-Route::get('/school/getCards/{status}/{study}', function($status, $study){
+Route::post('/school/update/cards/swap/{from}/{to}', function ($from, $to) {
+    $error = null;
+
+    try {
+        $card1 = Card::find($from);
+        $card2 = Card::find($to);
+        $student = $card1->student_id;
+
+        $card1->role = 'fake';
+        $card1->student_id = null;
+        $card1->save();
+
+        $card2->role = 'student';
+        $card2->student_id = $student;
+        $card2->save();
+        return 'OK';
+    } catch (Exception $e) {
+        $error = $e;
+    }
+
+    return $error;
+
+})->middleware('auth:api');
+
+Route::get('/school/getCards/{status}/{study}', function ($status, $study) {
     $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', $study)->get();
     $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', null)->get();
 
@@ -38,18 +62,18 @@ Route::get('/school/getCards/{status}/{study}', function($status, $study){
 //     return auth()->user()->card;
 // })->middleware('auth:api');
 
-Route::post('/school/update/card/{card}/{field}/{newValue}', function(Card $card, $field, $newValue){
+Route::post('/school/update/card/{card}/{field}/{newValue}', function (Card $card, $field, $newValue) {
     $card->$field = $newValue;
     $error = null;
-    try{
+    try {
         $card->save();
         return 'OK';
-    }catch(Exception $e){
+    } catch (Exception $e) {
         $error = $e;
     }
 
     return $error;
-    
+
 })->middleware('auth:api');
 
 Route::post('/school/uploadImage', function () {
@@ -112,7 +136,6 @@ Route::post('/student/saveStudy', function () {
     $school = auth()->user()->info;
     $study = Study::find(request()->study);
     $card = Card::find(request()->student);
-    
 
     if ($card->role == 'student' && $card->student_id) {
         $student = User::find($card->student_id);
@@ -688,7 +711,7 @@ Route::post('/connection/{id}/{type}/{status}/{card}/confirm', function ($id, $t
         $study->user()->attach($user, ['school_id' => auth()->user()->info->id]);
     }
 
-    if($card != 0){
+    if ($card != 0) {
         $oldCard = Card::find($card);
         $oldCard->student_id = $user->id;
         $oldCard->role = 'student';
