@@ -1,18 +1,19 @@
 <?php
 
+use App\Events\NewSubscription;
 use App\Events\UserAppliedOnSchool;
 use App\Models\Admission;
 use App\Models\AdmissionField;
 use App\Models\AlgoliaSchool;
+use App\Models\Card;
+use App\Models\Report;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolSetting;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
-use App\Events\NewSubscription;
 use Carbon\Carbon;
-use App\Models\Report;
 use App\Models\Message;
 
 Scholio::soonRoutes();
@@ -21,17 +22,21 @@ Route::get('/deletemessages', function(){
     Message::truncate(); 
 });
 
-Route::get('/school/connection/link/{school}', function(School $school){
+Route::get('cardtest', function(){
+    return view('cardtest');
+});
+
+Route::get('/school/connection/link/{school}', function (School $school) {
     return view('con')->withSchool($school);
 });
 
-Route::get('/terms', function(){
+Route::get('/terms', function () {
     return view('terms');
 });
 
 Route::get('/verifyemail/{token}', 'VerifyController@verify');
 
-Route::post('/school/approve/{school}', function(School $school){
+Route::post('/school/approve/{school}', function (School $school) {
     $school->approved = true;
     $school->save();
     return back();
@@ -44,7 +49,7 @@ Route::post('/school/disapprove/{school}', function (School $school) {
 })->middleware('is.admin');
 
 Route::post('/report/add/{user}/{id}', function (User $user, $id) {
-    
+
     $report = new Report;
     $report->user_id = $user->id;
     $report->info = $id;
@@ -52,31 +57,31 @@ Route::post('/report/add/{user}/{id}', function (User $user, $id) {
     return back();
 });
 
-Route::post('/report/delete/{report}', function(Report $report){
+Route::post('/report/delete/{report}', function (Report $report) {
     $report->delete();
     return back();
 })->middleware('is.admin');
 
 Route::post('/report/delete/all/{user}', function (User $user) {
-    foreach($user->report as $report){
+    foreach ($user->report as $report) {
         $report->delete();
     }
     return back();
 })->middleware('is.admin');
 
-Route::get('/password/change', function(){
+Route::get('/password/change', function () {
     return view('panel.change-password');
 })->middleware('auth');
 
-Route::get('/error', function(){
+Route::get('/error', function () {
     abort('400');
 });
 
-Route::get('/admin', function(){
+Route::get('/admin', function () {
     return view('panel.pages.admin.settings');
 })->middleware(['auth', 'is.admin']);
 
-Route::post('/admin/subscription', function(){
+Route::post('/admin/subscription', function () {
     $user = App\User::find(request()->userID);
     $plan = request()->plan;
     $limits = [
@@ -152,15 +157,15 @@ Route::post('scholarship/{scholarship}/end', function (Scholarship $scholarship)
 });
 
 Route::post('scholarship/{scholarship}/update', function (Scholarship $scholarship) {
-    if(request()->exams){
+    if (request()->exams) {
         $proper_date = Carbon::createFromFormat('d-m-Y', request()->exams);
         $scholarship->exam_date = $proper_date;
     }
 
-    if(request()->terms){
+    if (request()->terms) {
         $scholarship->terms = request()->terms;
     }
-    
+
     $scholarship->save();
     return back();
 });
@@ -176,7 +181,7 @@ Route::get('public/donor', function () {
 });
 
 Route::post('/admission/{admission}/notes/save', function (Admission $admission) {
-    if($review = request()->review){
+    if ($review = request()->review) {
         $admission->review = $review;
     }
 

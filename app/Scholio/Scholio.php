@@ -153,7 +153,8 @@ class Scholio
         }
     }
 
-    public static function fakeDummy(){
+    public static function fakeDummy()
+    {
         $schools = School::all();
 
         Dummy::query()->truncate();
@@ -184,7 +185,7 @@ class Scholio
             $dummy->reviews = $s->countReviews();
             $dummy->username = $s->admin->username ?? 'nousername';
             $dummy->subscription = $s->admin->subscription->plan_id;
-            $dummy->activeScholarships = $s->lengthScholarships() > 0 ? 'υποτροφια, scholarship, υποτροφιες': '';
+            $dummy->activeScholarships = $s->lengthScholarships() > 0 ? 'υποτροφια, scholarship, υποτροφιες' : '';
 
             foreach ($s->study as $study) {
                 $studyDummy .= $study->name . ',';
@@ -263,7 +264,7 @@ class Scholio
                 $alg->section = $scholarship->study->section[0]->name;
                 $alg->multiple = false;
             }
-            
+
             // $alg->study = $scholarship->study->name || '-';
             echo ('-' . $scholarship->id . '-');
             // $alg->section_en = $scholarship;
@@ -271,7 +272,7 @@ class Scholio
             $alg->level_en = $scholarship->levelEN->name;
             $alg->criteria = $scholarship->criteria->name;
             $alg->criteria_en = $scholarship->criteriaEN->name;
-            
+
             $alg->school = $scholarship->school->name();
             $alg->school_id = $scholarship->school->id;
             $alg->school_logo = $scholarship->school->logo;
@@ -288,7 +289,6 @@ class Scholio
             $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
 
             $alg->exams_en = $scholarship->exam ? 'YES' : 'NO';
-            
 
             $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
             $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;
@@ -301,7 +301,7 @@ class Scholio
             }
             $alg->tags = $scholarTagsDummy;
             $alg->save();
-            
+
             $dummy->type = $s->type->name;
             $dummy->school_id = $s->id;
             $dummy->name = $s->name();
@@ -373,7 +373,8 @@ class Scholio
         return 'OK';
     }
 
-    public static function updateDummy(School $s){
+    public static function updateDummy(School $s)
+    {
         $studyDummy = '.';
         $dummy = AlgoliaSchool::find($s->id);
         $dummy->type_id = $s->type_id;
@@ -420,7 +421,8 @@ class Scholio
         return 'OK';
     }
 
-    public static function createSchoolDummy(School $school){
+    public static function createSchoolDummy(School $school)
+    {
         $dummy = new AlgoliaSchool;
         $dummy->type_id = $school->type_id;
         $dummy->type = $school->type->name;
@@ -431,7 +433,8 @@ class Scholio
         $dummy->save();
     }
 
-    public static function algoliaGEO(){
+    public static function algoliaGEO()
+    {
         $schools = AlgoliaSchool::all();
         $scholarships = AlgoliaScholarship::all();
         $scholarshipss = Scholarship::all();
@@ -464,13 +467,15 @@ class Scholio
         return 'Algolia _geo ready';
     }
 
-    public static function bot(){
+    public static function bot()
+    {
         Route::group(['prefix' => 'bot'], function () {
             include 'bot-routes.php';
         });
     }
 
-    public static function dummyScholarshipUpdate($scholarship){
+    public static function dummyScholarshipUpdate($scholarship)
+    {
         $school = $scholarship->school;
 
         $dummy = $scholarship->dummy;
@@ -491,7 +496,8 @@ class Scholio
         $dummy->save();
     }
 
-    public static function dummyScholarshipCreate($scholarship){
+    public static function dummyScholarshipCreate($scholarship)
+    {
         $school = $scholarship->school;
 
         $dummy = new DummyScholarship;
@@ -513,13 +519,15 @@ class Scholio
         $dummy->save();
     }
 
-    public static function dummyScholarshipDelete($scholarship){
+    public static function dummyScholarshipDelete($scholarship)
+    {
         $dummy = $scholarship->dummy;
 
         $dummy->delete();
     }
 
-    public static function ProfileActive(School $school){
+    public static function ProfileActive(School $school)
+    {
         $haveAbout = $school->about && $school->about != '';
         $haveCity = $school->city && $school->city != '';
         $haveTel = $school->phone && $school->phone != '';

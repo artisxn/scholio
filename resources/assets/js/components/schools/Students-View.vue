@@ -34,11 +34,11 @@
 
         <div v-if="selection==true">
 
-            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents" v-if="(student.role=='student')"  >
+            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents">
 
                 <div class="double-card"  :id="'card'+index"  >
                     <div class="front">
-                        <div class="sc-box" :class="[{'alumniFilter': status=='allumni' }]">
+                        <div class="sc-box" :class="[{'alumniFilter': status=='allumni', 'fakeFilter': student.role=='fake' }]">
                             <div class="sc-up"></div>
 
                             <div class="row">
@@ -46,10 +46,10 @@
 
                                         <div class="frame-cont">
                                             <img src="/new/img/photoFrame.png" class="frame" alt="">
-                                            <img :src="scholio + student.student.avatar" class="avatar2" alt="">
+                                            <img :src="scholio + student.avatar" class="avatar2" alt="">
                                             <img src="/new/img/clip2.png" class="clip" alt="">
                                         </div>
-                                        <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
+                                        <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.avatar" alt=""/></div>
                                         <div class="name"> {{student.name}} </div>
 
                                     
@@ -61,7 +61,7 @@
                         </div>
                         <div class="sc-bottom" >
                             <div class="phone">
-                                <a :href="'tel:'+student.cv.student_phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.cv.student_phone }}</span></a>
+                                <a :href="'tel:'+student.student_phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.student_phone }}</span></a>
                             </div>
                             <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
                                 <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
@@ -89,10 +89,10 @@
 
                         <div style="position: absolute; top: 25px">
                             <span style="color:#eee; margin-left: 10px;">
-                                <p style=" text-indent: 0px; padding-left: 10px; line-height: 1;">{{ student.pivot.type }}</p>
+                                <p style=" text-indent: 0px; padding-left: 10px; line-height: 1;">{{ student.type }}</p>
 
                                     <span style="color:#eee; margin-left: 10px;">
-                                        {{ student.pivot.level }}
+                                        {{ student.level }}
                                     </span>
                                 <br>
                                 <br>
@@ -101,10 +101,10 @@
                             </span>
 
                             <span style="color:#eee; margin-left: 10px;" v-if="sxoles">
-                                {{ student.pivot.type2 }}
+                                {{ student.type2 }}
                                 <br>
                                 <span style="color:#eee; margin-left: 10px;">
-                                    {{ student.pivot.level2 }}
+                                    {{ student.level2 }}
                                 </span>
                                 <br>
                                 <br>
@@ -114,16 +114,16 @@
 
                             <div class="fath" style="float: left; font-size: 90%">{{ lang('resource.students.father') }}
                                 <br>
-                                {{student.cv.father_fullname}}
+                                {{student.father_fullname}}
                                 <br>
-                                {{student.cv.father_phone}}
+                                {{student.father_phone}}
                             </div>
 
                             <div class="fath" style="position: absolute; right: -200px; font-size: 90%">{{ lang('resource.students.mother') }}
                                 <br>
-                                {{student.cv.mother_fullname}}
+                                {{student.mother_fullname}}
                                 <br>
-                                {{student.cv.mother_phone}}
+                                {{student.mother_phone}}
                             </div>
 
                         </div>
@@ -164,11 +164,11 @@
                 <tr v-for="student in filteredStudents">
                     <td>
                         <a class="" href="#">
-                            <img class="img-circle" width="35" v-bind:src=student.student.avatar alt=""/>
+                            <img class="img-circle" width="35" v-bind:src=student.avatar alt=""/>
                         </a>
                     </td>
                     <td style="text-transform: capitalize">{{ student.name }}</td>
-                    <td>{{ student.cv.student_phone }}</td>
+                    <td>{{ student.student_phone }}</td>
                     <td>{{ student.email }}</td>
                 </tr>
                 </tbody>
@@ -184,9 +184,9 @@
                     <div class="modal-up">
                         <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
                         <!--<h4 class="modal-title" style=" color: #fff"> </h4>-->
-                        <img :src="info.student.avatar" alt="" class="img-avatar">
-                        <div class="lastName">{{ info.student.lname }} </div>
-                        <div class="firstName">{{ info.student.fname }} </div>
+                        <img :src="info.avatar" alt="" class="img-avatar">
+                        <div class="lastName">{{ info.lname }} </div>
+                        <div class="firstName">{{ info.fname }} </div>
                     </div>
                     <div class="modal-infos">
                         <!--<p>{{ info.cv.student_address }}</p>-->
@@ -270,7 +270,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-home icon-data"></div>
-                                        {{info.cv.student_city}}
+                                        {{info.student_city}}
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -280,7 +280,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-map-marker icon-data"></div>
-                                        {{info.cv.student_address}}
+                                        {{info.student_address}}
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -292,7 +292,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        {{info.cv.student_phone}}
+                                        {{info.student_phone}}
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -316,7 +316,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-user icon-data"></div>
-                                       {{info.cv.father_fullname}}
+                                       {{info.father_fullname}}
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -326,7 +326,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-user icon-data"></div>
-                                        {{info.cv.mother_fullname}}
+                                        {{info.mother_fullname}}
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -338,7 +338,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        {{info.cv.father_phone}}
+                                        {{info.father_phone}}
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -348,7 +348,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        {{info.cv.mother_phone}}
+                                        {{info.mother_phone}}
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -368,6 +368,7 @@
 
             </div>
         </div>
+
     </div>
     <div v-else>
 
@@ -415,6 +416,7 @@
 <style>
 
     .alumniFilter{-webkit-filter: grayscale(75%); opacity: 0.9}
+    .fakeFilter{-webkit-filter: grayscale(90%); opacity: 0.5}
 
 
     .fade3-enter-active, .fade3-leave-active {
@@ -876,7 +878,8 @@
                 secondStudy: null,
                 study2: false,
                 test: true,
-                studentCounter: 0
+                studentCounter: 0,
+                cards: null
             }
         },
         computed: {
@@ -899,6 +902,7 @@
                 var status = '';
                 if(document.getElementById('st'+id).checked) status = 'connected';
                 else status = 'allumni';
+
                 axios.post('/api/school/changeStudentStatus/' + id + '/' + status)
                     .then(response => {
                         if(response.data == 'ok'){
@@ -986,7 +990,7 @@
                         search = "%20"
                     }
 
-                    return `/api/connected/students/search/${this.sortType}/${this.sortReverse}/${this.status}/${search}?page=${page}`;
+                    return `/api/connected/students/card/search/${this.sortType}/${this.sortReverse}/${this.status}/${search}?page=${page}`;
                 }, 
 
                 fetch(page, status) {
@@ -1001,6 +1005,7 @@
                     }, 700)
                     
                     this.items = data.data;
+                    console.log(this.items)
                     this.allumniCount = this.items.allumniStudents
                     this.connectedCount = this.items.connectedStudents
 
@@ -1015,16 +1020,10 @@
             },
             changeInfo(data){
                 this.info = data
-                if(this.info.pivot.study_id) this.selectedStudy = this.info.pivot.study_id
+                if(this.info.study_id) this.selectedStudy = this.info.study_id
                 else this.selectedStudy = 0
-                if (this.info.pivot.study_id2) this.secondStudy = this.info.pivot.study_id2
+                if (this.info.study_id2) this.secondStudy = this.info.study_id2
                 else this.secondStudy = 0
-                console.log('student info')
-                console.log(this.info)
-                setTimeout(function(){
-//                    document.getElementById('modalzoom').classList.remove('zoomIn');
-
-                }, 800);
 
                 $('.modal').on('shown.bs.modal', function(){
                     // if(!this.study2) this.test = false

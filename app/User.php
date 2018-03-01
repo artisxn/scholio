@@ -23,6 +23,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Models\Subscription;
 use App\Models\Report;
+use App\Models\Card;
 
 class User extends Authenticatable
 {
@@ -201,5 +202,9 @@ class User extends Authenticatable
     public function report()
     {
         return $this->hasMany(Report::class, 'user_id');
+    }
+
+    public function card(){
+        return $this->hasMany(Card::class, 'user_id');
     }
 }

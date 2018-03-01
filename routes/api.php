@@ -1,11 +1,15 @@
 <?php
 
 use App\Events\UserAppliedOnSchool;
+use App\Models\Card;
 use App\Models\CategoryReview as Category;
+use App\Models\Cvteacherstudy;
 use App\Models\DummyScholarship;
+use App\Models\Image;
 use App\Models\Level;
 use App\Models\Review;
 use App\Models\Scholarship;
+use App\Models\ScholarshipLimit;
 use App\Models\School;
 use App\Models\Section;
 use App\Models\Skill;
@@ -13,21 +17,21 @@ use App\Models\Study;
 use App\Models\Tag;
 use App\Models\Temp;
 use App\Notifications\SchoolAcceptedUser;
-use App\Models\ScholarshipLimit;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
-use App\Key;
-use App\Models\Cvteacherstudy;
 use Illuminate\Support\Facades\Route;
-use App\Models\Image;
 
 Scholio::bot();
 
-Route::post('/school/uploadImage', function(){
+Route::get('/school/getCards', function () {
+    return auth()->user()->card;
+})->middleware('auth:api');
+
+Route::post('/school/uploadImage', function () {
     $data = request()->input('img');
     list($type, $data) = explode(';', $data);
     list(, $data) = explode(',', $data);
@@ -64,7 +68,7 @@ Route::post('/user/uploadAvatar', function () {
     $data = base64_decode($data);
     $ext = '.jpg';
     // $imageName = time() . $ext;
-    $imageName = auth()->user()->role . '_' .auth()->user()->id . '_' . auth()->user()->name . $ext;
+    $imageName = auth()->user()->role . '_' . auth()->user()->id . '_' . auth()->user()->name . $ext;
     $path = public_path('upload/avatar/');
     if (!file_exists($path)) {
         mkdir($path, 0777, true);
@@ -72,12 +76,12 @@ Route::post('/user/uploadAvatar', function () {
     file_put_contents($path . $imageName, $data);
     $imageUrl = url('upload/avatar/' . $imageName);
 
-    if(!$logo){
+    if (!$logo) {
         auth()->user()->info->avatar = '/upload/avatar/' . $imageName;
-    }else{
+    } else {
         auth()->user()->info->logo = '/upload/avatar/' . $imageName;
     }
-    
+
     auth()->user()->info->save();
 
     return response(['data' => $imageUrl], 201);
@@ -86,36 +90,62 @@ Route::post('/user/uploadAvatar', function () {
 Route::post('/student/saveStudy', function () {
     $school = auth()->user()->info;
     $study = Study::find(request()->study);
-    $student = User::find(request()->student);
+    $card = Card::find(request()->student);
+    
 
-    if(request()->std == 1){
-        $school->students->where('id', $student->id)->first()->pivot->type = $study->name;
-        $school->students->where('id', $student->id)->first()->pivot->study_id = $study->id;
-        $school->students->where('id', $student->id)->first()->pivot->level = $study->section[0]->level->name;
-        $school->students->where('id', $student->id)->first()->pivot->save();
+    if ($card->role == 'student' && $card->student_id) {
+        $student = User::find($card->student_id);
+
+        if (request()->std == 1) {
+            $school->students->where('id', $card->student_id)->first()->pivot->type = $study->name;
+            $school->students->where('id', $card->student_id)->first()->pivot->study_id = $study->id;
+            $school->students->where('id', $card->student_id)->first()->pivot->level = $study->section[0]->level->name;
+            $school->students->where('id', $card->student_id)->first()->pivot->save();
+        }
+
+        if (request()->std == 2) {
+            $school->students->where('id', $card->student_id)->first()->pivot->type2 = $study->name;
+            $school->students->where('id', $card->student_id)->first()->pivot->study_id2 = $study->id;
+            $school->students->where('id', $card->student_id)->first()->pivot->level2 = $study->section[0]->level->name;
+            $school->students->where('id', $card->student_id)->first()->pivot->save();
+        }
+
+        $student->studyConnection()->save($study, ['school_id' => $school->id]);
+    }
+
+    if (request()->std == 1) {
+        $card->type = $study->name;
+        $card->study_id = $study->id;
+        $card->level = $study->section[0]->level->name;
+        $card->save();
     }
 
     if (request()->std == 2) {
-        $school->students->where('id', $student->id)->first()->pivot->type2 = $study->name;
-        $school->students->where('id', $student->id)->first()->pivot->study_id2 = $study->id;
-        $school->students->where('id', $student->id)->first()->pivot->level2 = $study->section[0]->level->name;
-        $school->students->where('id', $student->id)->first()->pivot->save();
+        $card->type2 = $study->name;
+        $card->study_id2 = $study->id;
+        $card->level2 = $study->section[0]->level->name;
+        $card->save();
     }
-    
 
-    $student->studyConnection()->save($study, ['school_id'=> $school->id]);
 })->middleware('auth:api');
 
 Route::post('/student/removeStudy', function () {
     $school = auth()->user()->info;
     $study = Study::find(request()->study);
+    $card = Card::find(request()->student);
     $student = User::find(request()->student);
 
-    $school->students->where('id', $student->id)->first()->pivot->type2 = null;
-    $school->students->where('id', $student->id)->first()->pivot->study_id2 = null;
-    $school->students->where('id', $student->id)->first()->pivot->level2 = null;
-    $school->students->where('id', $student->id)->first()->pivot->save();
+    if ($card->role == 'student' && $card->student_id) {
+        $school->students->where('id', $card->student_id)->first()->pivot->type2 = null;
+        $school->students->where('id', $card->student_id)->first()->pivot->study_id2 = null;
+        $school->students->where('id', $card->student_id)->first()->pivot->level2 = null;
+        $school->students->where('id', $card->student_id)->first()->pivot->save();
+    }
 
+    $card->type2 = null;
+    $card->study_id2 = null;
+    $card->level2 = null;
+    $card->save();
 
     // $student->studyConnection()->save($study, ['school_id' => $school->id]);
 })->middleware('auth:api');
@@ -253,7 +283,7 @@ Route::post('/school/scholarshipSave', function () {
         // Scholio::updateDummy($scholarship->school);
         Scholio::dummyScholarshipCreate($scholarship);
     } catch (\Exception $e) {
-        $data = ['message' => 'ERROR '.$e];
+        $data = ['message' => 'ERROR ' . $e];
     }
     return $data;
 })->middleware('auth:api');
@@ -704,6 +734,61 @@ Route::get('/scholarship/{id}', function (Scholarship $id) {
     return $scholarship->load('school', 'level', 'financial', 'criteria');
 })->middleware('api');
 
+Route::get('/connected/students/card/search/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
+    $user = auth()->user();
+    $school = $user->info;
+    $students = auth()->user()->card->where('status', $status);
+
+    $orderType = $asc == 'false' ? 'asc' : 'desc';
+    $studentCounter = 0;
+
+    if ($field != '%20') {
+        $students = $students->filter(function ($item) use ($field) {
+            $replacement = preg_replace('/ά/iu', '${1}α', $item->name);
+            $replacement = preg_replace('/έ/iu', '${1}ε', $replacement);
+            $replacement = preg_replace('/ή/iu', '${1}η', $replacement);
+            $replacement = preg_replace('/ί/iu', '${1}ι', $replacement);
+            $replacement = preg_replace('/ό/iu', '${1}ο', $replacement);
+            $replacement = preg_replace('/ύ/iu', '${1}υ', $replacement);
+            $replacement = preg_replace('/ώ/iu', '${1}ω', $replacement);
+
+            $active1 = $item->type;
+            $active2 = $item->type2;
+            $active1Level = $item->level;
+            $active2Level = $item->level2;
+
+            $dummy = $active1 . ',' . $active2 . ',' . $active1Level . ',' . $active2Level;
+
+            $replacement2 = preg_replace('/ά/iu', '${1}α', $dummy);
+            $replacement2 = preg_replace('/έ/iu', '${1}ε', $replacement2);
+            $replacement2 = preg_replace('/ή/iu', '${1}η', $replacement2);
+            $replacement2 = preg_replace('/ί/iu', '${1}ι', $replacement2);
+            $replacement2 = preg_replace('/ό/iu', '${1}ο', $replacement2);
+            $replacement2 = preg_replace('/ύ/iu', '${1}υ', $replacement2);
+            $replacement2 = preg_replace('/ώ/iu', '${1}ω', $replacement2);
+
+            if (preg_match('/' . $field . '/iu', $replacement) || preg_match('/' . $field . '/iu', $item->name) ||
+                preg_match('/' . $field . '/i', $item->email) || preg_match('/' . $field . '/i', $item->student_phone) ||
+                preg_match('/' . $field . '/iu', $replacement2) || preg_match('/' . $field . '/iu', $dummy)) {
+                return $item;
+            }
+        });
+    }
+
+    $items = $students;
+    $studentCounter = count($students);
+
+    $perPage = config('scholio.perPage.students');
+
+    $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
+    $custom = collect(['allumniStudents' => auth()->user()->card->where('status', 'allumni')->count(), 'connectedStudents' => auth()->user()->card->where('status', 'connected')->count(), 'studentCounter' => $studentCounter]);
+    $data = $custom->merge($p);
+    return $data;
+
+})->middleware('auth:api');
+
 Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
     $user = auth()->user();
     $school = $user->info;
@@ -762,7 +847,7 @@ Route::get('/connected/students/search/{order}/{asc}/{status}/{field}', function
     $page = $page ?? (Paginator::resolveCurrentPage() ?? 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
     $p = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, []);
-    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count(), 'studentCounter'=> $studentCounter]);
+    $custom = collect(['allumniStudents' => $school->allumni()->count(), 'connectedStudents' => $school->connected()->count(), 'studentCounter' => $studentCounter]);
     $data = $custom->merge($p);
     return $data;
 })->middleware('auth:api');
@@ -937,9 +1022,16 @@ Route::get('/searchTag', function () {
 
 Route::post('/school/changeStudentStatus/{id}/{status}', function ($id, $status) {
     $school = auth()->user()->info;
-    $line = $school->students->where('id', $id)->first();
-    $line->pivot->status = $status;
-    $line->pivot->save();
+    $card = Card::find($id);
+    if ($card->role == 'student' && $card->student_id) {
+        $line = $school->students->where('id', $card->student_id)->first();
+        $line->pivot->status = $status;
+        $line->pivot->save();
+    }
+
+    $card->status = $status;
+    $card->save();
+
     return 'ok';
 })->middleware('auth:api');
 
