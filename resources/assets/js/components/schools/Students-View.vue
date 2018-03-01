@@ -270,7 +270,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-home icon-data"></div>
-                                        {{info.student_city}}
+                                        <input type="text" name="student_city" :value="info.student_city" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -280,7 +280,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-map-marker icon-data"></div>
-                                        {{info.student_address}}
+                                        <input type="text" name="student_address" :value="info.student_address" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -292,7 +292,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        {{info.student_phone}}
+                                        <input type="text" name="student_phone" :value="info.student_phone" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -303,7 +303,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-envelope icon-data"></div>
-                                        {{info.email}}
+                                        <input type="text" name="email" :value="info.email" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -316,7 +316,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-user icon-data"></div>
-                                       {{info.father_fullname}}
+                                    <input type="text" name="father_fullname" :value="info.father_fullname" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -326,7 +326,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-user icon-data"></div>
-                                        {{info.mother_fullname}}
+                                        <input type="text" name="mother_fullname" :value="info.mother_fullname" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -338,7 +338,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        {{info.father_phone}}
+                                        <input type="text" name="father_phone" :value="info.father_phone" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -348,7 +348,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        {{info.mother_phone}}
+                                        <input type="text" name="mother_phone" :value="info.mother_phone" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -362,6 +362,7 @@
 
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-close" @click="saveCard">Save</button>
                         <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
                     </div>
                 </div>
@@ -898,6 +899,14 @@
         },
 
         methods: {
+            saveCard(e, card){
+                let field = e.target.name
+                let value = e.target.value
+
+                axios.post('/api/school/update/card/' + card.id + '/' + field + '/' + value).then(response =>{
+                    console.log(response.data)
+                })
+            },
             changeStatus: function(id, st){
                 var status = '';
                 if(document.getElementById('st'+id).checked) status = 'connected';

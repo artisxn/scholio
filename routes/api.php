@@ -31,6 +31,20 @@ Route::get('/school/getCards', function () {
     return auth()->user()->card;
 })->middleware('auth:api');
 
+Route::post('/school/update/card/{card}/{field}/{newValue}', function(Card $card, $field, $newValue){
+    $card->$field = $newValue;
+    $error = null;
+    try{
+        $card->save();
+        return 'OK';
+    }catch(Exception $e){
+        $error = $e;
+    }
+
+    return $error;
+    
+})->middleware('auth:api');
+
 Route::post('/school/uploadImage', function () {
     $data = request()->input('img');
     list($type, $data) = explode(';', $data);
