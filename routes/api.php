@@ -27,9 +27,16 @@ use Illuminate\Support\Facades\Route;
 
 Scholio::bot();
 
-Route::get('/school/getCards', function () {
-    return auth()->user()->card;
+Route::get('/school/getCards/{status}/{study}', function($status, $study){
+    $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', $study)->get();
+    $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', $status)->where('type', null)->get();
+
+    return $card->merge($card2);
 })->middleware('auth:api');
+
+// Route::get('/school/getCards', function () {
+//     return auth()->user()->card;
+// })->middleware('auth:api');
 
 Route::post('/school/update/card/{card}/{field}/{newValue}', function(Card $card, $field, $newValue){
     $card->$field = $newValue;
@@ -671,7 +678,7 @@ Route::post('/request/school', function () {
     return 'Error';
 })->middleware('auth:api');
 
-Route::post('/connection/{id}/{type}/{status}/confirm', function ($id, $type, $status) {
+Route::post('/connection/{id}/{type}/{status}/{card}/confirm', function ($id, $type, $status, $card) {
     $user = User::find($id);
     if ($user->role == 'teacher') {
         auth()->user()->info->users()->attach($user, ['type' => $type, 'status' => $status]);
@@ -679,6 +686,13 @@ Route::post('/connection/{id}/{type}/{status}/confirm', function ($id, $type, $s
         $study = Study::find($type);
         auth()->user()->info->users()->attach($user, ['type' => $study->name, 'status' => $status, 'study_id' => $type, 'level' => $study->section[0]->level->name]);
         $study->user()->attach($user, ['school_id' => auth()->user()->info->id]);
+    }
+
+    if($card != 0){
+        $oldCard = Card::find($card);
+        $oldCard->student_id = $user->id;
+        $oldCard->role = 'student';
+        $oldCard->save();
     }
 
     $user->notify(new SchoolAcceptedUser($user, auth()->user()));

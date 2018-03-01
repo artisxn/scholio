@@ -362,7 +362,6 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-close" @click="saveCard">Save</button>
                         <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
                     </div>
                 </div>

@@ -22,6 +22,14 @@ Route::get('/deletemessages', function(){
     Message::truncate(); 
 });
 
+Route::get('/ddd', function(){
+    $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get();
+$card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get();
+
+return $card->merge($card2);
+
+});
+
 Route::get('cardtest', function(){
     return view('cardtest');
 });

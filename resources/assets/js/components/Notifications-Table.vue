@@ -201,6 +201,15 @@
                                             <option value="alumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
                                         </select>
                                     </div>
+
+                                    <div style="margin-top: 50px" class="modal-input-container">
+                                        <div class="section-text centered-text">
+                                            <img class="modal-icon" src="/new/img/teacher/team.png" alt="">Αντιστοιχια με Student Card</div>
+                                        <select v-model="selectedCard" class="modal-select">
+                                            <option value="0" selected>NOT IN CARD</option>
+                                            <option v-for="card in availableCards" :value="card.id">{{ card.name }}</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -215,10 +224,6 @@
                 </div>
             </div>
         </div><!-- /.modal -->
-
-
-
-
 
     </div>
 </template>
@@ -403,11 +408,21 @@
                 selectedImg:null,
                 currentNotificationID: 0,
                 currentUserID: 0,
-                notLength: false
+                notLength: false,
+                selectedCard: 0,
+                availableCards: null
             }
         },
 
         methods: {
+            getCards(){
+                axios.get('/api/school/getCards/' + this.selectedStatus + '/' + this.selectedStudy).then(({data})=>{
+                    this.availableCards = data
+                    console.log(this.selectedStatus)
+                    console.log(data)
+                })
+            },
+
             changeTimeFormat(time){
                 return moment(time).format('DD-MM-YYYY')
             },
@@ -445,7 +460,7 @@
             accept(){
                 // console.log(this.selectedStudy)
                 if(this.selectedUser && this.selectedStudy && this.selectedStatus){
-                    axios.post('/api/connection/' + this.selectedUser + '/' + this.selectedStudy + '/' + this.selectedStatus +'/confirm')
+                    axios.post('/api/connection/' + this.selectedUser + '/' + this.selectedStudy + '/' + this.selectedStatus + '/' + this.selectedCard +'/confirm')
                     .then(response => {
                         console.log(response.data)
                         this.getNotifications()
@@ -463,7 +478,6 @@
             },
 
             load(notificationID, user){
-                console.log(user)
                 this.selectedStatus = user.status
                 this.currentNotificationID = notificationID
                 this.currentUserID = user.id
@@ -473,6 +487,8 @@
                 this.selectedName=user.name
                 this.selectedImg=user.avatar
                 this.selectedUser = user.id
+
+                this.getCards()
             }
         },
 
