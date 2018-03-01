@@ -119,15 +119,7 @@
     .pos-xs{right: 11px;}
     .pos-right{right: -6px}
 
-    .report{ position: absolute; bottom: -110px; right:20px; font-size: 180%; color:#aaa; z-index: 50;}
-    .report:hover{color: #FD6A33; cursor: pointer;}
-    .report-logo{height: 50px; text-align: left; margin: 14px 0 0 14px; opacity: 0.3}
-    .report-drop{background: #fafafa;  border: 1px solid #ddd; box-shadow: 0px 0px 10px 2px #ccc; border-radius: 6px; width:0; height: 0; opacity:0;
-        margin-top: 30px; margin-right: 10px; display: inline-block; position: absolute; bottom: -110px; right: -1px; z-index: 20 }
 
-    .report-title{color: #00475d; opacity: 0.3; margin-left:10px; font-size: 110%}
-    .report-text{ width: 100%; height: 80px; text-align: justify; font-size: 90%; color: #ccc;margin-top: 20px; padding: 14px 18px;}
-    .report-text:hover{background: #aaa; color: #fff; cursor: pointer; }
 
     .sc-button3{display: none;}
 

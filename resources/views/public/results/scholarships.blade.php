@@ -457,6 +457,21 @@
 <script>
 
 
+    var open = false;
+    function dropReport(school){
+        if(open==false){
+            $('#card1'+school).css('filter','blur(2px)');
+            console.log(school)
+            $('#report-drop'+school).animate({opacity:1, width: 220, height: 260}, 190,"swing");
+        }
+        else{
+            $('#report-drop'+school).animate({opacity:0, width: 0, height: 0}, 150,"swing");
+            $('#card1'+school).css('filter','blur(0px)');
+        }
+        open=!open
+    }
+
+
 
 
 angular.module("scholarshipsResultsApp",[])
@@ -532,6 +547,26 @@ angular.module("scholarshipsResultsApp",[])
     var hitTemplate = `
 
      <div class=" col-xs-12 pad-0-mar-0 inner-container">
+
+
+           <i id="report" class="fa fa-ellipsis-h report report-scholar" onClick="dropReport(@{{scholarship_id}})" ></i>
+                <!-- =================== Report  Menu ====================-->
+            <div class="report-drop report-scholar-drop" id="report-drop@{{scholarship_id}}" style="overflow:hidden!important">
+            <img class="report-logo"  src="/new/img/logoNX-m.png" alt="" style="overflow:hidden!important">
+            <span class="report-title"> Αναφορά </span>
+            <form method="POST" action="/report/add/@{{scholarship_id}}/Profile" >
+            {{ csrf_field() }}
+            <div class="report-text" style="overflow:hidden!important">
+            <button type="submit" style=" width:185px; background: none; border: none; text-align: justify;">
+
+            Αναφορά του εκπαιδευτικού ιδρύματος στο διαχειριστή για προσβλητικό περιεχόμενο
+            </button>
+
+            </div>
+            </form>
+            </div>
+
+        <!-- =====================================================-->
 
 
     @{{#adminter}}

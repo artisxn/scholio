@@ -24,6 +24,7 @@
     <ul class="dropdown-menu">
             <li><a href="/panel/users/student/studentCv"><i class="ti-user m-r-5"></i>@lang('panel/schools/topbar.profile')</a></li>
         {{-- <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li> --}}
+        <li><a href="{{ url('/password/change') }}"><i class="fa fa-key m-r-5"></i>@lang('panel/schools/topbar.password')</a></li>
 
         <li>
             <a href="javascript:void(0)"
