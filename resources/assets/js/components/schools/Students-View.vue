@@ -27,6 +27,14 @@
             </span>
         </div>
 
+        <span class="tool">
+             <div class="addStudent"><i class="fa fa-user-plus" data-toggle="modal" data-target="#ModalAddStudent"></i></div>
+             <span class="tooltiptext  tooltiptext2 ">
+                  {{ lang('resource.students.modal.addStudent') }}
+             </span>
+        </span>
+
+
         <!--<div class="search-counter" v-else>{{ studentCounter }} Σπουδαστές</div>-->
         <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
         <div class="clearfix"></div>
@@ -38,7 +46,7 @@
 
                 <div class="double-card"  :id="'card'+index"  >
                     <div class="front">
-                        <div class="sc-box" :class="[{'alumniFilter': status=='allumni', 'fakeFilter': student.role=='fake' }]">
+                        <div class="sc-box" :class="[{'fakeFilter': student.role=='fake' ,'alumniFilter': status=='allumni', }]">
                             <div class="sc-up"></div>
 
                             <div class="row">
@@ -176,7 +184,8 @@
         </div>
 
 
-        <!-- Modal -->
+        <!--=============  ModalStudentInfo   ================ -->
+        <!--================================================== -->
         <div id="ModalStudentInfo" class="modal" role="dialog">
             <div class="modal-dialog zoomIn animated" id="modalzoom" >
                 <!-- Modal content-->
@@ -185,8 +194,13 @@
                         <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
                         <!--<h4 class="modal-title" style=" color: #fff"> </h4>-->
                         <img :src="info.avatar" alt="" class="img-avatar">
-                        <div class="lastName">{{ info.lname }} </div>
-                        <div class="firstName">{{ info.fname }} </div>
+                        <!--<div class="lastName">{{ info.lname }} </div>-->
+
+                        <input type="text" class="demo-form ad-input cardName " name="student_lname" :value="info.lname " @change="saveCard($event, info)">
+
+
+                        <!--<div class="firstName">{{ info.fname }} </div>-->
+                        <input type="text" class="demo-form ad-input cardFname " name="student_fname" :value="info.fname " @change="saveCard($event, info)">
                     </div>
                     <div class="modal-infos">
                         <!--<p>{{ info.cv.student_address }}</p>-->
@@ -253,15 +267,26 @@
 
                                 </div>
 
-                                <select v-model="selectedCard" class="modal-select" v-if="availableCards && info.role == 'student'" @change="updateCards">
-                                    <option value="0" selected>NOT IN CARD</option>
-                                    <optgroup label="Suggested" v-if="availableCards.exact">
-                                        <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
-                                    </optgroup>
-                                    <optgroup label="OTHER">
-                                        <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
-                                    </optgroup>
-                                </select>
+
+                                <div class="matching" v-if="availableCards && info.role == 'student'">
+                                    <div class="info-title">
+                                        {{lang('resource.students.modal.matching') }}
+                                    </div>
+
+                                    <select v-model="selectedCard" class="select-matching "  @change="updateCards">
+                                        <option value="0" selected>{{lang('resource.requests.table.noMatching')}}</option>
+                                        <optgroup :label="lang('resource.requests.table.suggestion')" v-if="availableCards.exact">
+                                            <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
+                                        </optgroup>
+                                        <optgroup :label="lang('resource.requests.table.noMatchingYet')">
+                                            <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
+                                        </optgroup>
+                                    </select>
+                                    <i class="fa fa-id-card select-icon"></i>
+                                        <div class="col-xl-line"></div>
+
+                                </div>
+
 
                                 
 
@@ -279,9 +304,10 @@
                                         {{lang('student_details.city') }}
 
                                     </div>
-                                    <div class="info-data">
+                                    <div class="input-container">
                                         <div class="fa fa-home icon-data"></div>
-                                        <input type="text" name="student_city" :value="info.student_city" @change="saveCard($event, info)">
+                                        <input type="text" class="demo-form ad-input card-input" name="student_city" :value="info.student_city" @change="saveCard($event, info)">
+
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -289,9 +315,9 @@
                                     <div class="info-title">
                                         {{lang('student_details.address') }}
                                     </div>
-                                    <div class="info-data">
+                                    <div class="info-data input-container">
                                         <div class="fa fa-map-marker icon-data"></div>
-                                        <input type="text" name="student_address" :value="info.student_address" @change="saveCard($event, info)">
+                                        <input type="text" name="student_address"  class="demo-form ad-input card-input"  :value="info.student_address" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -303,7 +329,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        <input type="text" name="student_phone" :value="info.student_phone" @change="saveCard($event, info)">
+                                        <input type="text" name="student_phone" class="card-input"  :value="info.student_phone" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -314,7 +340,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-envelope icon-data"></div>
-                                        <input type="text" name="email" :value="info.email" @change="saveCard($event, info)">
+                                        <input type="text" name="email" class="card-input" :value="info.email" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -327,7 +353,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-user icon-data"></div>
-                                    <input type="text" name="father_fullname" :value="info.father_fullname" @change="saveCard($event, info)">
+                                    <input type="text" name="father_fullname" class="card-input" :value="info.father_fullname" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -337,7 +363,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-user icon-data"></div>
-                                        <input type="text" name="mother_fullname" :value="info.mother_fullname" @change="saveCard($event, info)">
+                                        <input type="text" name="mother_fullname" class="card-input" :value="info.mother_fullname" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -349,7 +375,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        <input type="text" name="father_phone" :value="info.father_phone" @change="saveCard($event, info)">
+                                        <input type="text" name="father_phone" class="card-input" :value="info.father_phone" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -359,7 +385,7 @@
                                     </div>
                                     <div class="info-data">
                                         <div class="fa fa-phone icon-data"></div>
-                                        <input type="text" name="mother_phone" :value="info.mother_phone" @change="saveCard($event, info)">
+                                        <input type="text" name="mother_phone" class="card-input" :value="info.mother_phone" @change="saveCard($event, info)">
                                     </div>
                                     <div class="line"></div>
                                 </div>
@@ -379,6 +405,237 @@
 
             </div>
         </div>
+
+
+
+
+            <!--=============  ModalAddStudent    ================ -->
+            <!--================================================== -->
+            <div id="ModalAddStudent" class="modal" role="dialog">
+                <div class="modal-dialog zoomIn animated" id="" >
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-up">
+                            <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
+
+                            <img src="/images/student.png" alt="" class="img-avatar">
+
+                            <input type="text" class="cardName " name="student_lname" placeholder="Επώνυμο"  @change="saveCard($event, info)">
+
+                            <input type="text" class= "cardFname " name="student_fname" placeholder="Όνομα"   @change="saveCard($event, info)">
+                        </div>
+                        <div class="modal-infos">
+
+
+                            <div class="input-container modal-input-container">
+
+
+                                <div class="studies-selection-container" >
+                                    <div class="first-study-text">
+                                        {{ lang('resource.students.modal.study1') }}
+                                        <span class="tool">
+                                            <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy && !study2"></i>
+                                            <span class="tooltiptext">
+                                                {{ lang('resource.students.modal.addStudy') }}
+                                                </span>
+                                        </span>
+
+                                    </div>
+                                    <div class="">
+                                        <select class="select-transparent" v-model="selectedStudy" v-on:change="saveStudy(1)">
+                                            <optgroup :label="level.level.name" v-for="level in studies">
+                                                <option v-for="study in level.studies" :value="study.study.id" :disabled="secondStudy == study.study.id">
+                                                    {{ study.study.name }}
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa fa-graduation-cap select-icon"></i>
+                                        <div class="col-xl-line"></div>
+                                    </div>
+
+
+
+
+
+                                    <!-- Αν δεν είναι σχολειο, φροντιστηριο, ιεκ, κολλεγιο -->
+                                    <div v-if="" >
+                                        <div class="second-study-text" v-if="selectedStudy">
+
+
+
+
+
+
+                                        <span v-if="secondStudy">
+                                            {{ lang('resource.students.modal.study2') }}
+                                             <span class="second-study-remove"  @click="removeStudy">( <i class="fa fa-trash"></i>{{ lang('resource.students.modal.deleteStudy') }} )</span>
+                                        </span>
+
+                                        </div>
+
+
+                                        <div class="second" v-if="selectedStudy && (study2 || secondStudy)">
+                                            <select class="select-transparent  select2" v-model="secondStudy" v-on:change="saveStudy(2)">
+                                                <optgroup :label="level.level.name" v-for="level in studies">
+                                                    <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
+                                                        {{ study.study.name }}
+                                                    </option>
+                                                </optgroup>
+                                            </select>
+                                            <i class="fa fa-graduation-cap select-icon2"></i>
+                                            <div class="col-xl-line col-xl-line2"></div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="matching" v-if="availableCards && info.role == 'student'">
+                                        <div class="info-title">
+                                            {{lang('resource.students.modal.matching') }}
+                                        </div>
+
+                                        <select v-model="selectedCard" class="select-matching "  @change="updateCards">
+                                            <option value="0" selected>{{lang('resource.requests.table.noMatching')}}</option>
+                                            <optgroup :label="lang('resource.requests.table.suggestion')" v-if="availableCards.exact">
+                                                <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
+                                            </optgroup>
+                                            <optgroup :label="lang('resource.requests.table.noMatchingYet')">
+                                                <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa fa-id-card select-icon"></i>
+                                        <div class="col-xl-line"></div>
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="info-container row">
+
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.city') }}
+
+                                        </div>
+                                        <div class="input-container">
+                                            <div class="fa fa-home icon-data"></div>
+                                            <input type="text" class="demo-form ad-input card-input" name="student_city"  @change="saveCard($event, info)">
+
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.address') }}
+                                        </div>
+                                        <div class="info-data input-container">
+                                            <div class="fa fa-map-marker icon-data"></div>
+                                            <input type="text" name="student_address"  class="demo-form ad-input card-input"   @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.phone') }}
+
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="student_phone" class="card-input"   @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.email') }}
+
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-envelope icon-data"></div>
+                                            <input type="text" name="email" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.father.fullName') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-user icon-data"></div>
+                                            <input type="text" name="father_fullname" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.mother.fullName') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-user icon-data"></div>
+                                            <input type="text" name="mother_fullname" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.father.phone') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="father_phone" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.mother.phone') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="mother_phone" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
 
     </div>
     <div v-else>
@@ -425,8 +682,8 @@
 
 
 <style>
-    .alumniFilter{-webkit-filter: grayscale(75%); opacity: 0.9}
-    .fakeFilter{-webkit-filter: grayscale(90%); opacity: 0.5}
+    .alumniFilter{-webkit-filter: grayscale(85%); opacity: 0.9}
+    .fakeFilter{-webkit-filter: grayscale(70%); opacity: 0.7}
 
 
     .fade3-enter-active, .fade3-leave-active {
@@ -519,6 +776,11 @@
     }
     .form-control{border: none!important;}
 
+    .addStudent{margin:8px 0 0 15px; font-size: 240%; color: #999; display: inline-block; padding-left: 30px;}
+    .addStudent:hover{cursor: pointer; color: #FD6A33}
+
+
+
 
     .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #a5a5a5; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
 
@@ -565,7 +827,23 @@
     .lastName{margin-top: 45px; margin-left: 130px; font-size: 200%; color: #fafafa}
     .firstName{margin-top: 8px; margin-left: 130px; font-size: 150%; color: #888}
 
-    .modal-infos{ min-height: 500px; margin-top: 40px; padding: 15px;}
+    .cardName,.cardFname{margin-left: 130px;  background: transparent; border: none; width: 90%}
+    .cardName{margin-top: 25px;  font-size: 200%; color: #fafafa; }
+    .cardFname{margin-top: 7px;  font-size: 150%; color: #888}
+    .cardName:focus{color: #cdcdcd
+    }
+    .cardFname:focus{color: #006075;
+    }
+
+    .cardName::placeholder {
+        color:    #cdcdcd;
+    }
+    .cardFname::placeholder {
+        color:    #888;
+    }
+    .card-input:focus{opacity: 0.65}
+
+    .modal-infos{ min-height: 540px; margin-top: 40px; padding: 15px;}
 
     .btn-close{margin:0 30px 0 0;}
 
@@ -591,10 +869,15 @@
     .second-study-remove:hover{cursor: pointer; color: #FD6A33}
     .fa-trash{margin-right: 6px;}
 
-    .info-container{position: absolute; top: 320px; width: 100%;}
+    .info-container{position: absolute; top: 360px; width: 100%;}
     .icon-data, .info-title {color: #008da5}
     .col-data{margin-top: 30px;}
-    .line{height: 0px; width: 100%; background: #008da5}
+    .line{height: 1px; width: 97%; background: #008da5}
+
+    .card-input{border: none; background: transparent;  width: 92%}
+    .select-matching{ border: none; background: transparent;border-radius: 0; width: 100%!important; padding-left: 17px; position: relative;}
+    .matching{position: absolute; top: 150px;  right: 0; left:0;}
+    .fa-id-card{margin-top: -8px;}
 
     select {
         -webkit-appearance: none;
@@ -623,7 +906,7 @@
     }
 
     @media (max-width: 767px) {
-        .modal-infos{height: 750px }
+        .modal-infos{height: 800px }
     }
 
 
@@ -650,6 +933,11 @@
         transition: opacity 0.1s;
         background-color: #007991;
     }
+
+    .tooltiptext2{
+        background-color: #FD6A33;
+        color: #fff;
+        width: 200px;}
 
 
     .tool:hover .tooltiptext{

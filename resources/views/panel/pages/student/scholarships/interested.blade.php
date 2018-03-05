@@ -11,7 +11,9 @@
         background-color: #fdfdfd;
     }
 
-    .outer{border: 1px solid #aaa; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 0 8px 2px #ccc;}
+    .infoContainer, .outer{border: 1px solid #aaa; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 0 8px 2px #ccc;}
+    .infoPad{min-height: 110px; padding: 15px 15px 10px 15px; margin: 30px 0; color: #008da5}
+    .like{height: 85px; float: right; display: inline-block; margin-top: -50px; margin-right: 10px}
     .request-card,.card-bottom{ padding: 12px;  color: #888 }
     .request-card{ border-top-left-radius: 5px; border-top-right-radius: 5px;  min-height: 350px; }
     .school-logo{ float: left; margin-right: 7px; width: 45px;}
@@ -68,16 +70,28 @@
         .level{font-size: 99%}
 
     }
+
+    @media (max-width: 570px)  {
+        .like{opacity: 0.3}
+    }
 </style>
 @endsection
 
 @section('content')
 
-<h1>Interested</h1>
+    <div class="infoContainer infoPad">
+        <div class="scholar-limit"> <i class="fa fa-thumbs-up m-r-10"></i>@lang('panel/students/panel.scholarships.liked') {{ count(auth()->user()->interested) }}  @lang('panel/students/panel.scholarships.scholarships') </div>
+        <img class="like" src="/new/img/likeOutline.png" alt="">
+    </div>
+
+
+
 
     <div class="row">
 
-        @foreach($scholarships as $scholarship)
+
+
+    @foreach($scholarships as $scholarship)
             <div class=" col-sm-6 col-xl-4">
                 <a href="/scholarship/{{ $scholarship->id }}" target="_blank">
                     <div class="outer">
@@ -123,7 +137,7 @@
 
                             <div style="width: 270px">
                                 <div style="margin: 0 0 8px 0"> <i class="fa fa-pencil-square-o" style="margin-right: 9px"></i>
-                                    <span class="">Δέχθηκε {{ $scholarship->usersLength() }}</span> αιτήσεις συνολικά
+                                    <span class="">@lang('panel/students/panel.scholarships.received') {{ $scholarship->usersLength() }}</span>@lang('panel/students/panel.scholarships.applications')
 
 
 
@@ -136,9 +150,9 @@
                                     $end = Carbon\Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
                                     $endDiff = ($end->diff(new Carbon\Carbon())->days < 1) ? 'today' : $end->diffForHumans(new Carbon\Carbon());
                                     ?>
-                                    <div> <i class="fa fa-flag" style="margin-right: 13px"></i>Λήγει <span class="">{{$endDiff}} </span></div>
+                                    <div> <i class="fa fa-flag" style="margin-right: 13px"></i>@lang('panel/students/panel.scholarships.expires') <span class="">{{$endDiff}} </span></div>
                                 @else
-                                    <div class="ended"> <i class="fa fa-flag" style="margin-right: 13px"></i>Έληξε: {{ $scholarship->winner->contains(auth()->user()->id) ? 'Είσαι Επιλαχών Νικήτης' : 'Δεν επιλέχθηκες ως νικητής' }}</div>
+                                    <div class="ended"> <i class="fa fa-flag" style="margin-right: 13px"></i>@lang('panel/students/panel.scholarships.expired'): {{ $scholarship->winner->contains(auth()->user()->id) ? 'Είσαι Επιλαχών Νικήτης' : 'Δεν επιλέχθηκες ως νικητής' }}</div>
                                 @endif
                             </div>
 

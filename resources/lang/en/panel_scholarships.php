@@ -107,6 +107,10 @@ return [
         'saveScholarship' => 'Save Scholarship',
 
         'termsConditions' => 'Please indicate below briefly but clearly the Terms and Conditions of the Scholarship',
+        'noMoreText' => 'No other scholarships available!',
+        'createStudies' => 'Firstly create study levels and  subjects ' ,
+        'here' => ' here.',
+        'buyMore' => 'Transfer to Scholarship Market',
 
 
 

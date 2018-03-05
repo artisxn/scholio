@@ -26,7 +26,8 @@
                                     <div class="cont-dash">
                                         <img src="/panel/assets/images/steps/open.png" alt="cv image" class="image">
                                         <div class="text">
-                                            Στοιχεία Επικοινωνίας
+                                            @lang('panel/teachers/panel.contactInfo')
+
                                         </div>
                                     </div>
                                 </div>

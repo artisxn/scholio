@@ -3,7 +3,7 @@
 
             <div class="review-category" v-for="category in categories">
                 <i :class="category.icon"></i>
-                <span class="category-name">{{ category.name }}</span>
+                <span class="category-name">{{ lang('seeder.category.' + (category.icon) ) }}</span>
                 <span class="review-stars">
                     <span class="star" :id="category.id + '-1'" v-on:click="star(category.id, 1, $event)">☆</span>
                     <span class="star" :id="category.id + '-2'" v-on:click="star(category.id, 2, $event)">☆</span>
@@ -14,11 +14,11 @@
                 <div class="up"></div>
             </div>
 
-        <div class="text-com">Γράψτε τα σχόλια σας για το εκπαιδευτικό ίδρυμα</div>
+        <div class="text-com"> {{ lang('["panel/students/"].panel.review.text') }}</div>
         <!--<label for="text">Text:</label>-->
         <textarea v-model='text' class="review-area"></textarea>
         <div class="clearfix"></div>
-        <button v-on:click="save()" class="btn btn-primary btn-save">Αποθήκευση</button>
+        <button v-on:click="save()" class="btn btn-primary btn-save"> <i class="fa fa-save" style="margin-right: 7px;"></i> {{ lang('["panel/students/"].panel.review.save') }}</button>
 
       
     </div>

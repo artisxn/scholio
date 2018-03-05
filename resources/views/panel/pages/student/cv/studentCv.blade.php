@@ -90,7 +90,7 @@
 
     @media (max-width: 1899px){
         .hidden-low{display: none;}
-        .sx-clear-fix{float: none;}
+        .sx-clear-fix{clear: both!important;}
     }
 
     @media (max-width: 543px){
@@ -182,7 +182,7 @@
     </script>
     <!-- Polymer Float Input Form js -->
     <script src="/new/js/jquery.polymer-form.min.js"></script>
-    <script type="text/javascript" src="/panel/assets/js/cv.js"></script>
+    <script src="/panel/assets/js/cv.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 @endsection
 
@@ -217,10 +217,10 @@
                                     <div class="section-text centered-text" style="max-width: 280px;"> @lang('panel/students/cv.contactInfo')</div>
 
                                     <div class="col-sm-6 col-xl-4">
-                                        <div class="input-container">
+
                                             <input  type="text" label=" @lang('panel/students/cv.details.firstName') * " name="firstName" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
                                             <i class="icon-inp  fa fa-user"></i>
-                                        </div>
+
                                     </div>
                                     <div class="col-sm-6 input-container clear-fix-sm col-xl-4" >
                                         <input type="text" label="@lang('panel/students/cv.details.lastName') * " name="lastName" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
@@ -296,7 +296,10 @@
 
 
 
-                                    <div class="col-sm-6 input-container col-xl-4 members  sx-clear-fix" >
+
+                                    <div class="sx-clear-fix"></div>
+
+                                    <div class="col-sm-6 input-container col-xl-4 members  " >
                                         <div class="drop-title"> @lang('panel/students/cv.details.largeFamily')</div>
 
                                         <div class="select-polyteknos col-xl-4">
@@ -545,9 +548,9 @@
     </script>
 
 
-    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-    <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
-    <script async defer src="//apis.google.com/js/platform.js"></script>
+    {{--<script async defer src="//assets.pinterest.com/js/pinit.js"></script>--}}
+    {{--<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>--}}
+    {{--<script async defer src="//apis.google.com/js/platform.js"></script>--}}
     <!-- <script async defer src="//nadikun.com/code/drbbbl-profile/dp-loader.js" ></script> -->
 
 

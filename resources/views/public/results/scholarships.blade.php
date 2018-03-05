@@ -706,7 +706,7 @@ angular.module("scholarshipsResultsApp",[])
             <div class="hex-container centered">
                 <div class="hexagon3 hex" style="">
                     <span></span>
-                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{financial_icon}}" alt="">
+                    <img class="centered-abs hex-img" src="@{{financial_icon}}" alt="">
                 </div>
             </div>
             <div class="centered-text">

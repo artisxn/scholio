@@ -3,7 +3,7 @@
 @section('styles')
     <style>
         .school-logo{height: 55px; }
-        .school-name{ margin: 31px 0 0 10px;}
+        .school-name{ font-size: 140%; color: #999; margin: 31px 0 0 10px;}
         .up{margin-top: 30px}
         .sc-center{margin-right: auto; margin-left: auto; text-align: center}
 
@@ -20,7 +20,13 @@
         <div class="up"></div>
         <img class="school-logo" src="/images/schools/{{$school->logo }}" alt="">
 
-        <h3 class="school-name">{{ $school->name() }}</h3>
+        <img src="{{ $school->logo }}" style="height: 45px;" alt="">
+        <span class="school-name">{{ $school->name() }}
+        </span>
+
+
+
+
         <div class="clearfix"></div>
 
         <reviews-create></reviews-create>

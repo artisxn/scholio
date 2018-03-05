@@ -6,13 +6,13 @@
 </li>
 
 
-<li class="text-muted menu-title">Διαχείριση</li>
+<li class="text-muted menu-title">@lang('panel/students/navigation.management')</li>
     <li class="has_sub">
-        <a href="#" class=""><i class="ion-android-user-menu"></i><span> Προφίλ </span> </a>
+        <a href="#" class=""><i class="ion-android-user-menu"></i><span> @lang('panel/students/navigation.profile') </span> </a>
         <ul class="list-unstyled">
-            <li><a class="{{ request()->path() == 'panel/users/teacher/profile' ? 'active' : ''}}" href="{{ route('teachers-profile') }}">Στοιχεία Επικοινωνίας</a></li>
-            <li><a class="{{ request()->path() == 'panel/users/teacher/cv' ? 'active' : ''}}" href="{{ route('teacher-cv') }}">Το Βιογραφικό μου</a></li>
-            <li><a class="{{ request()->path() == 'panel/users/teacher/schools' ? 'active' : ''}}" href="{{ route('teachers-schools') }}">Τα Εκπαιδευτήρια μου</a></li>
+            <li><a class="{{ request()->path() == 'panel/users/teacher/profile' ? 'active' : ''}}" href="{{ route('teachers-profile') }}">@lang('panel/teachers/panel.contactInfo')</a></li>
+            <li><a class="{{ request()->path() == 'panel/users/teacher/cv' ? 'active' : ''}}" href="{{ route('teacher-cv') }}">@lang('panel/students/navigation.cv')</a></li>
+            <li><a class="{{ request()->path() == 'panel/users/teacher/schools' ? 'active' : ''}}" href="{{ route('teachers-schools') }}">@lang('panel/students/navigation.schools')</a></li>
 
         </ul>
     </li>

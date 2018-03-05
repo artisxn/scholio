@@ -78,12 +78,13 @@
                 <div class="pull-right" v-if="mySchool.admin.subscription.plan_id == 2">
                     <div v-if="hasNOTReviewed(mySchool.id)" class="cont-btn" >
                         <a :href="'/panel/users/student/review/create/' + mySchool.id" class="btn btn-primary sc-btn">
-                            Αξιολόγηση
+                            {{ lang('["panel/students"].panel.review.leave') }}
                         </a>
                     </div>
                     <div v-else class="cont-text">
                         <a href="/panel/users/student/review/show">
-                            Έχετε ήδη αφήσει αξιολογήση
+                            {{ lang('["panel/students"].panel.review.left') }}
+
                         </a>
 
                     </div>

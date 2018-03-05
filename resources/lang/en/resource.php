@@ -17,7 +17,9 @@ return [
             'study1' => 'Field of Studies',
             'study2' => 'Additional Field of Studies',
             'addStudy' => 'Add Further Field of Studies',
+            'addStudent' => 'Add New Student',
             'deleteStudy' => 'Delete',
+            'matching' => 'Connect with:',
 
         ],
     ],
@@ -47,6 +49,10 @@ return [
             'close' => 'Close',
             'selectStudies' => 'Select Studies',
             'selectStatus' => 'Select Status',
+            'matchingCard' => 'Connect with Student:',
+            'noMatching' => 'No Student Connection',
+            'noMatchingYet' => 'Not Connected Yet',
+            'suggestion' => 'Suggested Connection With:',
         ],
     ],
 ];

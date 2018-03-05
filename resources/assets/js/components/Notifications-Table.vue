@@ -187,7 +187,7 @@
                                 <div class="input-container">
 
                                     <div class="input-container modal-input-container">
-                                        <select v-model="selectedStudy" class="modal-select">
+                                        <select v-model="selectedStudy" class="modal-select student-select-pad">
                                             <optgroup :label="level.level.name" v-for="level in studies">
                                                 <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
                                             </optgroup>
@@ -195,8 +195,8 @@
                                     </div>
 
                                     <div style="margin-top: 50px" class="modal-input-container">
-                                        <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/team.png" alt="">{{ lang('resource.requests.table.selectStatus') }}</div>
-                                        <select v-model="selectedStatus" class="modal-select">
+                                        <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/skills.png" alt="">{{ lang('resource.requests.table.selectStatus') }}</div>
+                                        <select v-model="selectedStatus" class="modal-select student-select-pad" >
                                             <option value="connected">{{ lang('["panel/schools"].resource.students.active') }}</option>
                                             <option value="alumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
                                         </select>
@@ -204,13 +204,13 @@
 
                                     <div style="margin-top: 50px" class="modal-input-container">
                                         <div class="section-text centered-text">
-                                            <img class="modal-icon" src="/new/img/teacher/team.png" alt="">Αντιστοιχια με Student Card</div>
-                                        <select v-model="selectedCard" v-if="availableCards" class="modal-select">
-                                            <option value="0" selected>NOT IN CARD</option>
-                                            <optgroup label="Suggested" v-if="availableCards.exact">
+                                            <img class="modal-icon" src="/new/img/teacher/team.png" alt="">{{ lang('resource.requests.table.matchingCard') }}</div>
+                                        <select v-model="selectedCard" v-if="availableCards" class="modal-select student-select-pad">
+                                            <option value="0" selected>{{ lang('resource.requests.table.noMatching') }}</option>
+                                            <optgroup :label="ang('resource.requests.table.suggestion')" v-if="availableCards.exact">
                                                 <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
                                             </optgroup>
-                                            <optgroup label="OTHER">
+                                            <optgroup :label="  lang('resource.requests.table.noMatchingYet')  ">
                                                 <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
                                             </optgroup>
                                         </select>
@@ -222,7 +222,7 @@
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{lang('profile.modal.abort')}}</button>
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{lang('resource.requests.table.close')}}</button>
                         <button v-on:click="deny()" class="btn btn-success" :disabled="buttonsDisabled">{{ lang('resource.requests.table.abort') }}</button>
                         <button type="button" class="btn btn-info" data-dismiss="modal" @click="accept">{{ lang('resource.requests.table.confirm') }}</button>
                     </div>
@@ -287,6 +287,7 @@
         -moz-appearance: none;
     }
     .modal-select:hover{color:#FD6A33; cursor: pointer;}
+    .student-select-pad{margin-left: 4px;}
 
 
     /* ================================ */

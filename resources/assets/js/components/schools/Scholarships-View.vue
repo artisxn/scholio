@@ -147,6 +147,7 @@
                                                 </div>
                                                 <span class="tooltiptext tooltip5 hidden-xlxl">
                                                     {{ scholarship.criteria_name }}
+                                                    <!--{{ lang('seeder.criteriaN.' + (scholarship.criteria_name) ) }}-->
                                                 </span>
 
                                                 <span class="hidden-xl dots-text dots-mlg3 visible-xxl dots-xl-left">

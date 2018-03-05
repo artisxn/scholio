@@ -7,6 +7,11 @@ return [
     'selectPhoto' => 'Select a profile photo',
     'contactInfo' => 'Student Contact Information',
 
+    'editParentInfo' => 'Edit Parent and Guardian Information',
+    'textParentInfo' => 'Fill in the details of your parents and guardians to make scholarship applications more easily.',
+    'parentInfo' => 'Parent and Guardian Information',
+
+
     'details' => [
         'firstName' => 'First Name',
         'lastName' => 'Last Name',

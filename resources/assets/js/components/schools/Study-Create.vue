@@ -57,8 +57,11 @@
              </multiselect>
          </div>
 
-         <div style="clear: both; margin: 0 0 90px 10px;" :style="[saveDisabled ? {opacity: 0}:{}]">
-             <button @click="save()" class="btn btn-primary" :disabled="saveDisabled">{{ lang('panel_studies.save') }}</button>
+         <div style="clear: both; margin-bottom: 10px;" :style="[saveDisabled ? {opacity: 0}:{}]" class="container-centered">
+             <button @click="save()" class="btn btn-primary btn-centered btn-save" :disabled="saveDisabled">
+                 <i class="fa fa-save" style="margin-right: 6px"></i>
+                 {{ lang('panel_studies.save') }}
+             </button>
          </div>
 
 
@@ -145,7 +148,7 @@
                     </div>
 
                     <div class="btn-deleteAll-container">
-                        <button  class="btn btn-primary"  data-toggle="modal" data-target="#delete-modal">{{ lang('panel_studies.delete-all') }}</button>
+                        <button  class="btn btn-primary"  data-toggle="modal" data-target="#delete-modal">  <i class="fa fa-trash m-r-5"></i> {{ lang('panel_studies.delete-all') }}</button>
                     </div>
                 </div>
             </transition>
@@ -181,8 +184,10 @@
                     </div>
 
                     <div class="modal-footer">
-                        <div  class="btn btn-default btn-modal1" data-dismiss="modal">{{ lang('panel_studies.modal-reject') }}</div>
-                        <div  class="btn btn-primary btn-modal2" data-dismiss="modal" @click="deleteAllStudies()">{{ lang('panel_studies.modal-submit') }}</div>
+                        <div  class="btn btn-default btn-modal1" data-dismiss="modal"> {{ lang('panel_studies.modal-reject') }}</div>
+                        <div  class="btn btn-primary btn-modal2" data-dismiss="modal" @click="deleteAllStudies()">
+                            {{ lang('panel_studies.modal-submit') }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -208,6 +213,7 @@
     .panel-body{height: 120px; padding-top: 30px}
     .btn-modal1{margin: 0 15px 0 0 }
     .btn-modal2{margin: 0 25px 0 0 }
+
 
 
     .mar-right{margin-right: 20px;}
@@ -276,9 +282,11 @@
 
     .hover-study{color: #FD6A33!important;}
 
-    .btn-primary,.btn-primary:visited,.btn-primary:focus{background-color: #008da5; border: none;}
+    .btn-primary,.btn-primary:visited,.btn-primary:focus{background-color: #008da5; border: none; padding: 10px 25px!important;}
     .btn-primary:hover{background-color: #006d7d;}
+    .btn-save{padding: 10px 50px!important;}
     .btn-deleteAll-container{clear: both; padding-top: 40px; margin-left: auto; margin-right: auto; text-align: center;}
+    .container-centered{margin-left: auto; margin-right: auto; text-align: center;}
 
 
 

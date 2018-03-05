@@ -14,6 +14,7 @@
     .mar-right-10{margin-right: 10px;}
     .btn-primary{background-color: #008da5;}
     .btn-primary:hover{background-color: #00758c;}
+    .titleText{max-width: 380px; margin-right: auto; margin-left: auto; text-align: center;}
 
     @media (max-width: 543px){
         .br1{display: none;}
@@ -47,16 +48,16 @@
 
                         {{-- CHANGE CV'S PHOTO  --}}
                         <div class="col-xs-12 header" >
-                            <h4 class="header-title"><b>Επεξεργασία Στοιχείων Γονέων Και Κηδεμόνων</b></h4>
-                            <p class="text-muted m-b-10 font-13">
-                                Συμπληρώστε τα στοιχεία των γονέων και κηδεμόνων σας <br class="br1"> για να πραγματοποιείσετε αιτήσεις υποτροφιών πιο εύκολα.
+                            <h4 class="header-title"><b>@lang('/panel/students/cv.editParentInfo')</b></h4>
+                            <p class="text-muted m-b-10 font-13 titleText">
+                                @lang('/panel/students/cv.textParentInfo')
                             </p>
                                     
                         </div>
 
                         <div class="col-xs-12">
                             <div class="row inner-section">
-                                <div class="section-text centered-text"> Στοιχεία Γονέων και Κηδεμόνων</div>
+                                <div class="section-text centered-text">@lang('/panel/students/cv.parentInfo')</div>
                                 <div class="col-sm-6 input-container">
                                     <input  type="text" label="{{ trans('settings.admissions.mother_fullname') }}" name="mother_fullname" class="demo-form ad-input" value="{{ auth()->user()->cv->mother_fullname }}">
                                     <i class="icon-inp fa fa-user-o"></i>
@@ -186,7 +187,7 @@
 
                             <div class="col-xs-12 text-center m-t-40 centered-text">
                                 <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
+                                    <i class="fa fa-save mar-right-10"></i>@lang('/panel/students/cv.saveChanges')
                                 </button>
                             </div>
 

@@ -23,6 +23,7 @@
 
     #content{display: none;}
     .text{font-size: 14px; font-weight: 400; color: #999;}
+    .title-text{max-width: 580px; text-align: center; margin-left: auto; margin-right: auto;}
 
     .img-avatar{height:100px; margin: 5px 110px; box-shadow: 0 0 10px 2px #555; border-radius: 6px;}
     .btn-choose{ height: 40px!important; padding: 11px 0!important; clear: both; margin: 20px 50px; width: 270px;}
@@ -36,6 +37,8 @@
     .section-text{color: #008DA5; font-weight: 400; font-size: 110%}
     .m-b-40{margin-bottom: 40px}
     .m-t-50{margin-top: 60px;}
+
+    #datepicker{z-index: 15}
 
     .clear-fix{clear: both }
 
@@ -182,9 +185,9 @@
 
                         {{-- CHANGE CV'S PHOTO  --}}
                        <div class="col-xs-12 img-container" >
-                            <h4 class="header-title"><b>Επεξεργασία Βιογραφικού</b></h4>
-                            <p class="text">
-                                    Συμπληρώστε τα στοιχεία επικοινωνίας σας και του βιογραφικού σας, <br class="br1"> για να διευκολυνθούν οι αιτήσεις υποτροφιών που θα πραγματοποιείσετε.
+                            <h4 class="header-title"><b>@lang('panel/teachers/panel.contactInfoEdit')</b></h4>
+                            <p class="text title-text">
+                                @lang('panel/teachers/panel.contactInfoText')
                             </p>
                             <div class="row">
                                     <div>
@@ -192,7 +195,7 @@
                                     </div>
 
 
-                                     @include('panel.partials.body.uploadImage', ['type' => 'avatar', 'text' => 'Επιλογή φωτογραφίας προφίλ'])
+                                     @include('panel.partials.body.uploadImage', ['type' => 'avatar', 'text' => trans('panel/students/cv.selectPhoto')])
 
                             </div>
                        </div>
@@ -201,61 +204,61 @@
                         {{-- PROFILE DATA --}}
                         <div class="col-xs-12" >
                              <div class="inner-section row">
-                                <div class="section-text centered-text"> Στοιχεία Επικοινωνίας</div>
+                                <div class="section-text centered-text">@lang('panel/teachers/panel.contactInfo')</div>
 
                                 <div class="col-sm-6">
                                     <div class="input-container">
-                                        <input  type="text" label="Όνομα*" name="fname" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
+                                        <input  type="text" label=" @lang('panel/students/cv.details.firstName') *" name="fname" class="demo-form ad-input" value="{{ auth()->user()->info->fname }}">
                                         <i class="icon-inp  fa fa-user"></i>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 input-container clear-fix-sm" >
-                                    <input type="text" label="Επώνυμο*" name="lname" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
+                                    <input type="text" label=" @lang('panel/students/cv.details.lastName') *" name="lname" class="demo-form ad-input" value="{{ auth()->user()->info->lname }}">
                                     <i class="icon-inp fa fa-user"></i>
                                 </div>
 
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Διεύθυνση" name="address" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
+                                    <input type="text" label=" @lang('panel/students/cv.details.address')" name="address" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
                                     <i class="icon-inp fa fa-street-view"></i>
                                 </div>
                                 {{--  ΝΑ ΒΑΛΛΟΥΜΕ CITY  --}}
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Πόλη/Περιοχή" name="city" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
+                                    <input type="text" label=" @lang('panel/students/cv.details.city')" name="city" class="demo-form ad-input" value="{{ auth()->user()->info->address }}">
                                     <i class="icon-inp fa fa-map-marker"></i>
                                 </div>
 
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="Ηλεκτρονικό Tαχυδρομείο/ e-mail" name="email" class="demo-form ad-input" value="{{ auth()->user()->email}}">
+                                    <input type="text" label=" @lang('panel/students/cv.details.email')" name="email" class="demo-form ad-input" value="{{ auth()->user()->email}}">
                                     <i class="icon-inp fa fa-envelope"></i>
                                 </div>
                                 <div class="col-sm-6 input-container">
                                     {{--<a href="tel:{{ $user->info->phone }}">--}}
-                                    <input type="text" label="Τηλέφωνο" name="phone" class="demo-form ad-input" value="{{ auth()->user()->info->phone }}">
+                                    <input type="text" label=" @lang('panel/students/cv.details.phone')" name="phone" class="demo-form ad-input" value="{{ auth()->user()->info->phone }}">
                                     {{--</a>--}}
                                     <i class="icon-inp fa fa-phone"></i>
                                 </div>
 
                                 <div class="col-sm-6 input-container">
                                     {{--<input type="text" label="Ημερομηνία Γέννησης" name="dob"  class="demo-form ad-input" value="{{ auth()->user()->info->dob }}">--}}
-                                    <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse(auth()->user()->info->dob)->format('d/m/Y') }}" label="Ημερομηνία Γέννησης" name="dob">
+                                    <input class="demo-form ad-input ll-skin-cangas " id="datepicker" size="30" value="{{ \Carbon\Carbon::parse(auth()->user()->info->dob)->format('d/m/Y') }}" label=" @lang('panel/students/cv.details.dateOfBirth')" name="dob">
 
                                     <i class="icon-inp fa fa-calendar"></i>
                                 </div>
 
                                <div class="col-sm-6 input-container col-gender">
-                                    <div class="drop-title">Φύλο*</div>
+                                    <div class="drop-title">@lang('panel/students/cv.details.gender') *</div>
                                     <div class="select-gender">
                                         <select name="gender" class="select-transparent">
                                             <option value="male"
                                             @if (auth()->user()->info->gender == 'male' )
                                                 selected
                                             @endif
-                                            >Ανδρας</option>
+                                            >@lang('panel/students/cv.details.male')</option>
                                             <option value="female"
                                                 @if (auth()->user()->info->gender == 'female' )
                                                 selected
                                                 @endif
-                                            >Γυναίκα</option>
+                                            >@lang('panel/students/cv.details.female')</option>
 
                                         </select>
                                     </div>
@@ -270,7 +273,7 @@
 
 
                             <div class="inner-section row m-b-40" >
-                                <div class="section-text centered-text"> Βασικές Σπουδές</div>
+                                <div class="section-text centered-text">@lang('panel/teachers/panel.basicStudies')</div>
 
                                     {{--<div class="col-sm-6">--}}
                                         {{--<div class="input-container">--}}
@@ -281,8 +284,8 @@
 
 
                                 <div class="typeahead__container col-sm-8 polyfill-input-sc">
-                                    <div class=" input-container typeahead__field typeahead__query">
-                                        <input type="text" label="Περιγραφή Βασικών Σπουδών" name="title"
+                                    <div class=" input-container typeahead__field typeahead__query" style="z-index: 0">
+                                        <input type="text" label=" @lang('panel/teachers/panel.basicStudiesDescription') " name="title"
                                                class=" js-typeahead-studies demo-form ad-input"
                                                value="{{ auth()->user()->info->title }}"
                                                autocomplete="off">
@@ -298,7 +301,7 @@
 
 
                             <div class="inner-section row m-b-40" >
-                                <div class="section-text centered-text"> Κοινωνικά Δίκτυα</div>
+                                <div class="section-text centered-text">Social Media Links</div>
 
                                 <div class="col-sm-6">
                                     <div class="input-container">
@@ -341,7 +344,7 @@
 
                         <div class="col-xs-12 text-center m-t-50 m-b-40 centered-text">
                                 <button class="btn btn-primary" type="submit" onclick="sbmt()">
-                                    <i class="fa fa-save mar-right-10"></i>Αποθήκευση Στοιχείων
+                                    <i class="fa fa-save mar-right-10"></i>@lang('panel/students/cv.saveChanges')
                                 </button>
                         </div>
                     </form>

@@ -3,7 +3,7 @@
 @section('styles')
 <style>
     .scholar-limit,.scholar-count{font-size: 110%; margin: 10px 0;}
-    .scholar-count{ margin: 15px 0 20px 0 ;}
+    .scholar-count{ margin: 20px 0 20px 0 ;}
     .inactive{
         background-color: #f5f5f5; filter: grayscale(0.6);
     }
@@ -11,7 +11,9 @@
         background-color: #fdfdfd;
     }
 
-    .outer{border: 1px solid #aaa; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 0 8px 2px #ccc;}
+    .infoContainer, .outer{border: 1px solid #aaa; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 0 8px 2px #ccc;}
+    .infoPad{min-height: 110px; padding: 15px 15px 10px 15px; margin: 30px 0; color: #008da5}
+    .trophy{height: 85px; float: right; display: inline-block; margin-top: -90px; margin-right: 5px}
     .request-card,.card-bottom{ padding: 12px;  color: #888 }
     .request-card{ border-top-left-radius: 5px; border-top-right-radius: 5px;  min-height: 350px; }
     .school-logo{ float: left; margin-right: 7px; width: 45px;}
@@ -68,12 +70,21 @@
         .level{font-size: 99%}
 
     }
+
+    @media (max-width: 570px)  {
+        .trophy{opacity: 0.3}
+    }
 </style>
 @endsection
 
 @section('content')
-    <div class="scholar-limit"> <i class="fa fa-trophy m-r-10"></i>Έχεις ακόμη {{ auth()->user()->info->admissions_limit }} διαθέσιμες αιτήσεις υποτροφιών.</div>
-    <div class="scholar-count"> <i class="fa fa-pencil-square-o m-r-10"></i>Έχεις πραγματοποιήσει {{ count($admissions) }} αιτήματα.</div>
+    <div class="infoContainer infoPad">
+        <div class="scholar-limit"> <i class="fa fa-trophy m-r-10"></i>@lang('panel/students/panel.scholarships.have') {{ auth()->user()->info->admissions_limit }} @lang('panel/students/panel.scholarships.available') </div>
+        <div class="scholar-count"> <i class="fa fa-pencil-square-o m-r-10"></i>@lang('panel/students/panel.scholarships.done') {{ count($admissions) }} @lang('panel/students/panel.scholarships.applications')</div>
+
+        <img class="trophy" src="/new/img/trophy3.png" alt="">
+    </div>
+
 
     <div class="row">
 
@@ -132,7 +143,7 @@
 
                             <div style="width: 270px">
                                 <div style="margin: 0 0 8px 0"> <i class="fa fa-pencil-square-o" style="margin-right: 9px"></i>
-                                    <span class="">Δέχθηκε {{ $as->usersLength() }}</span> αιτήσεις συνολικά
+                                    <span class="">@lang('panel/students/panel.scholarships.received') {{ $as->usersLength() }}</span>@lang('panel/students/panel.scholarships.applications')
 
 
 
@@ -145,9 +156,9 @@
                                     $end = Carbon\Carbon::createFromFormat('Y-m-d', $admission->scholarship->end_at);
                                     $endDiff = ($end->diff(new Carbon\Carbon())->days < 1) ? 'today' : $end->diffForHumans(new Carbon\Carbon());
                                     ?>
-                                    <div> <i class="fa fa-flag" style="margin-right: 13px"></i>Λήγει <span class="">{{$endDiff}} </span></div>
+                                    <div> <i class="fa fa-flag" style="margin-right: 13px"></i>@lang('panel/students/panel.scholarships.expires')  <span class="">{{$endDiff}} </span></div>
                                 @else
-                                    <div class="ended"> <i class="fa fa-flag" style="margin-right: 13px"></i>Έληξε: {{ $as->winner->contains(auth()->user()->id) ? 'Είσαι Επιλαχών Νικήτης' : 'Δεν επιλέχθηκες ως νικητής' }}</div>
+                                    <div class="ended"> <i class="fa fa-flag" style="margin-right: 13px"></i>@lang('panel/students/panel.scholarships.expired'): {{ $as->winner->contains(auth()->user()->id) ? 'Είσαι Επιλαχών Νικήτης' : 'Δεν επιλέχθηκες ως νικητής' }}</div>
                                 @endif
                             </div>
 

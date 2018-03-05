@@ -17,6 +17,8 @@
 <style>
     .btn-primary,.btn-primary:focus,.btn-primary:visited,.btn-primary:active{background: #0092aa !important; border: none; margin: 10px auto; padding: 5px 20px;}
     .btn-primary:hover{background: #007187 !important;}
+    .centered{text-align: center; margin-left: auto; margin-right: auto;}
+    .titleText{font-size: 130%;  margin-top: 50px;}
 </style>
 @endsection 
 
@@ -27,16 +29,17 @@
     @if(auth()->user()->info->allScholarshipLimits() != 0)
         <scholarships-create></scholarships-create>
     @else
-        <div>
-            Δεν υπάρχουν άλλες διαθέσιμες υποτροφίες !
+        <div class="titleText centered">
+            @lang('panel_scholarships.create.noMoreText')
+
         </div>
         <div>
-            <button class="btn btn-primary">Μεταφορα σε αγορά υποτροφιών</button>
+            <button class="btn btn-primary centered">@lang('panel_scholarships.create.buyMore')</button>
         </div>
     @endif
 
 @else
-<div>ΚΑΝΕ ΠΡΩΤΑ ΚΑΝΑ STUDY -> <a href="{{ url('/panel/school/studies') }}">EDW ELA</a></div>
+<div class="titleText centered" > @lang('panel_scholarships.create.createStudies') -> <a href="{{ url('/panel/school/studies') }}"> @lang('panel_scholarships.create.here')</a></div>
 @endif
 
 @endsection @section('scriptsBefore') {{--
