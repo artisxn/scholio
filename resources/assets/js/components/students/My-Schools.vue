@@ -33,22 +33,31 @@
 
 
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
-    <div class="row ">
-        <div class="col-xs-12 col-xsm-6 col-sm-6 col-xl-4 col-xxl-3 col-xxxl-2"  v-for="mySchool in mySchools">
-            <div class="card-box">
-                <div class="row">
-                    <div class="contact-card" style="">
+    <div>
+        <div class="infoContainer infoPad">
+            <div class="scholar-limit"> <i class="fa fa-pencil m-r-10"></i>
+                {{lang('["panel/students"].panel.schools.connect')}} 1000000000 {{lang('["panel/students"].panel.schools.until')}}
+            </div>
 
-                        <a target="_blank" :href='"/public/profile/" + mySchool.id'>
-                            <div class="admin-name">
-                                {{mySchool.admin.name}}
-                            </div>
+            <img class="trophy" src="/new/img/univ.png" alt="">
+        </div>
+
+        <div class="row ">
+            <div class="col-xs-12 col-xsm-6 col-sm-6 col-xl-4 col-xxl-3 col-xxxl-2"  v-for="mySchool in mySchools">
+                <div class="card-box">
+                    <div class="row">
+                        <div class="contact-card" style="">
+
+                            <a target="_blank" :href='"/public/profile/" + mySchool.id'>
+                                <div class="admin-name">
+                                    {{mySchool.admin.name}}
+                                </div>
 
 
-                            <div class="pull-left  cont-img">
-                                        <img class="img-logo" :src="mySchool.logo" alt=""/>
-                            </div>
-                        </a>
+                                <div class="pull-left  cont-img">
+                                    <img class="img-logo" :src="mySchool.logo" alt=""/>
+                                </div>
+                            </a>
 
                             <div class="member-info pull-left ">
                                 <!--<p class="text-muted">Καθηγητής</p>-->
@@ -73,27 +82,31 @@
                             </div>
 
 
+                        </div>
                     </div>
-                </div>
-                <div class="pull-right" v-if="mySchool.admin.subscription.plan_id == 2">
-                    <div v-if="hasNOTReviewed(mySchool.id)" class="cont-btn" >
-                        <a :href="'/panel/users/student/review/create/' + mySchool.id" class="btn btn-primary sc-btn">
-                            {{ lang('["panel/students"].panel.review.leave') }}
-                        </a>
-                    </div>
-                    <div v-else class="cont-text">
-                        <a href="/panel/users/student/review/show">
-                            {{ lang('["panel/students"].panel.review.left') }}
+                    <div class="pull-right" v-if="mySchool.admin.subscription.plan_id == 2">
+                        <div v-if="hasNOTReviewed(mySchool.id)" class="cont-btn" >
+                            <a :href="'/panel/users/student/review/create/' + mySchool.id" class="btn btn-primary sc-btn">
+                                {{ lang('["panel/students"].panel.review.leave') }}
+                            </a>
+                        </div>
+                        <div v-else class="cont-text">
+                            <a href="/panel/users/student/review/show">
+                                {{ lang('["panel/students"].panel.review.left') }}
 
-                        </a>
+                            </a>
 
+                        </div>
                     </div>
+
                 </div>
 
             </div>
-
         </div>
     </div>
+
+
+
 </template>
 <script>
     export default{

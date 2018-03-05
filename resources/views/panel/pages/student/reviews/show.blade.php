@@ -2,6 +2,13 @@
 
 @section('styles')
     <style>
+        .infoContainer{border: 1px solid #aaa; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 0 8px 2px #ccc;}
+        .infoPad{min-height: 110px; padding: 15px 15px 10px 15px; margin: 30px 0; color: #008da5}
+        .scholar-limit{font-size: 110%; margin: 10px 0;}
+        .trophy{height: 85px; float: right; display: inline-block; margin-top: -45px; margin-right: 5px}
+
+
+
         .centered-text {
             text-align:center;
             margin-left: auto;
@@ -63,6 +70,15 @@
 @endsection
 
 @section('content')
+
+    <div class="infoContainer infoPad">
+        <div class="scholar-limit"> <i class="fa fa-pencil m-r-10"></i>
+            @lang('panel/students/panel.review.write') {{ count(auth()->user()->reviews) }} @lang('panel/students/panel.review.until')
+        </div>
+
+        <img class="trophy" src="/new/img/reviewOutline.png" alt="">
+    </div>
+
     <div class="row">
         @foreach($reviews as $review)
             <div class="col-xs-12 col-sm-6 col-xl-4 col-xxl-3 col-med-12">

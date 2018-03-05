@@ -7,6 +7,8 @@ return [
         'left' => 'You have already left a review',
         'text' => 'Write your comments about the educational institution',
         'save' => 'Save',
+        'write' => 'You have written',
+        'until' => ' reviews so far.',
     ],
 
     'scholarships' =>[
@@ -20,9 +22,12 @@ return [
         'liked' => 'You are interested in ',
         'scholarships' => ' scholarships. ',
 
-
     ],
 
+    'schools' =>[
+        'connect' => 'You have been linked to ',
+        'until' => ' educational institutions so far.',
+    ],
 
 
 
