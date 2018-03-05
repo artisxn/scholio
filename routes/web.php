@@ -15,6 +15,7 @@ use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
 use Carbon\Carbon;
+use App\Models\AlgoliaScholarship;
 
 Scholio::soonRoutes();
 
@@ -23,10 +24,10 @@ Route::get('/deletemessages', function () {
 });
 
 Route::get('/ddd', function () {
-    $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get();
-    $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get();
 
-    return $card->merge($card2);
+    foreach (AlgoliaScholarship::all() as $al) {
+        $al->delete();
+    }
 
 });
 

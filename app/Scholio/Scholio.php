@@ -135,8 +135,10 @@ class Scholio
     public static function geocode($ad)
     {
         $address = urlencode($ad);
+        // dd($address);
 
-        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+        $url = "https://maps.google.com/maps/api/geocode/json?address={$address}&key=AIzaSyCQZammyxSxewFkb7Y9lNWroZLRuJlH14A";
+        // AIzaSyCQZammyxSxewFkb7Y9lNWroZLRuJlH14A
 
         $resp_json = file_get_contents($url);
         $resp = json_decode($resp_json, true);
@@ -146,9 +148,11 @@ class Scholio
             $lati = $resp['results'][0]['geometry']['location']['lat'];
             $longi = $resp['results'][0]['geometry']['location']['lng'];
             $formatted_address = $resp['results'][0]['formatted_address'];
+            echo('Scholio-->>'.  $lati);
 
             return ['lat' => $lati, 'lng' => $longi];
         } else {
+            // dd($resp);
             return ('Geocode Error');
         }
     }
