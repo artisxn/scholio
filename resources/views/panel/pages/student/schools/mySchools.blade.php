@@ -1,8 +1,5 @@
 @extends('panel.layouts.main')
 
-
-
-
 @section('styles')
     <style>
         .infoContainer{border: 1px solid #aaa; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 0 8px 2px #ccc;}

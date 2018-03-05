@@ -330,10 +330,10 @@ Route::get('/register/role/', function () {
     return view('auth.register-role');
 });
 
-Route::get('/public/scholarship/admission/{user}/{scholarship}', function (User $user, Scholarship $scholarship) {
+Route::get('/public/scholarship/admission/{scholarship}', function (Scholarship $scholarship) {
     $settings = $scholarship->school->settings;
-    // dd($scholarship->school);
     $fields = AdmissionField::all();
+    $user = auth()->user();
     return view('public.school.admission', compact('user', 'scholarship', 'settings', 'fields'));
 });
 

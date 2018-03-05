@@ -286,12 +286,6 @@
                                         <div class="col-xl-line"></div>
 
                                 </div>
-
-
-                                
-
-
-
                             </div>
 
 

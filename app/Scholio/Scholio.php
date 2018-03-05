@@ -266,7 +266,7 @@ class Scholio
             }
 
             // $alg->study = $scholarship->study->name || '-';
-            echo ('-' . $scholarship->id . '-');
+            echo ('-' . $scholarship->id . '-' . $scholarship->school->name());
             // $alg->section_en = $scholarship;
             $alg->level = $scholarship->level->name;
             $alg->level_en = $scholarship->levelEN->name;

@@ -14,12 +14,11 @@
                 <div class="up"></div>
             </div>
 
-        <div class="text-com"> {{ lang('["panel/students/"].panel.review.text') }}</div>
+        <div class="text-com"> {{ lang('["panel/students"].panel.review.text') }}</div>
         <!--<label for="text">Text:</label>-->
         <textarea v-model='text' class="review-area"></textarea>
         <div class="clearfix"></div>
-        <button v-on:click="save()" class="btn btn-primary btn-save"> <i class="fa fa-save" style="margin-right: 7px;"></i> {{ lang('["panel/students/"].panel.review.save') }}</button>
-
+        <button v-on:click="save()" class="btn btn-primary btn-save"> <i class="fa fa-save" style="margin-right: 7px;"></i> {{ lang('["panel/students"].panel.review.save') }}</button>
       
     </div>
 </template>

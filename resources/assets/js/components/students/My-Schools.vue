@@ -36,7 +36,7 @@
     <div>
         <div class="infoContainer infoPad">
             <div class="scholar-limit"> <i class="fa fa-pencil m-r-10"></i>
-                {{lang('["panel/students"].panel.schools.connect')}} 1000000000 {{lang('["panel/students"].panel.schools.until')}}
+                {{lang('["panel/students"].panel.schools.connect')}} {{ schoolsLength }}  {{lang('["panel/students"].panel.schools.until')}}
             </div>
 
             <img class="trophy" src="/new/img/univ.png" alt="">
@@ -117,6 +117,12 @@
             }
         },
 
+        computed:{
+            schoolsLength(){
+                return this.mySchools.length
+            }
+        },
+
         methods: {
             getAllMySchools: function(){
                 axios.get('/api/student/mySchools')
@@ -145,8 +151,6 @@
         },
 
         mounted() {
-            console.log('my')
-            
             this.fetchReviews()
             this.getAllMySchools()
         }

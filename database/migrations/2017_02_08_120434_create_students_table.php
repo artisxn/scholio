@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
             $table->string('gender')->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('/images/student.png');
             $table->integer('admissions_limit')->default(10);
             $table->string('status')->default('guest');
             $table->timestamps();

@@ -177,7 +177,7 @@
 
                     <div class="panel-body">
 
-                        <img v-bind:src=selectedImg class="modal-img">
+                        <img :src="selectedImg" class="modal-img">
                         <div class="modal-name"> {{ selectedName }}</div>
                         <div class="modal-role">{{ lang('resource.requests.table.student') }}</div>
 
@@ -207,10 +207,10 @@
                                             <img class="modal-icon" src="/new/img/teacher/team.png" alt="">{{ lang('resource.requests.table.matchingCard') }}</div>
                                         <select v-model="selectedCard" v-if="availableCards" class="modal-select student-select-pad">
                                             <option value="0" selected>{{ lang('resource.requests.table.noMatching') }}</option>
-                                            <optgroup :label="ang('resource.requests.table.suggestion')" v-if="availableCards.exact">
+                                            <optgroup :label="lang('resource.requests.table.suggestion')" v-if="availableCards.exact">
                                                 <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
                                             </optgroup>
-                                            <optgroup :label="  lang('resource.requests.table.noMatchingYet')  ">
+                                            <optgroup :label="lang('resource.requests.table.noMatchingYet')">
                                                 <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
                                             </optgroup>
                                         </select>
