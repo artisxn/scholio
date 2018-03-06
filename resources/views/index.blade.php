@@ -732,19 +732,19 @@ function rsearch($folder, $pattern) {
 								<div class="carousel-inner">
 									<div class="item active">
 										{{--<img src="/new/img/ScreenSchools.jpg" alt="schools image" class="carousel-img">--}}
-										<img src="/new/img/Screen1b.jpg" alt="schools image" class="carousel-img">
+										<img src="/new/img/screen1b.jpg" alt="schools image" class="carousel-img">
 										<div class="carousel-caption">
 										</div>
 									</div>
 									<div class="item">
 										{{--<img src="/new/img/ScreenScholarships.jpg" alt="scholarships image" class="carousel-img">--}}
-										<img src="/new/img/Screen2b.jpg" alt="scholarships image" class="carousel-img">
+										<img src="/new/img/screen2b.jpg" alt="scholarships image" class="carousel-img">
 										<div class="carousel-caption">
 										</div>
 									</div>
 									<div class="item">
 										{{--<img src="/new/img/ScreenTrophy.jpg" alt="trophy image" class="carousel-img">--}}
-										<img src="/new/img/Screen3b.jpg" alt="trophy image" class="carousel-img">
+										<img src="/new/img/screen3b.jpg" alt="trophy image" class="carousel-img">
 										<div class="carousel-caption">
 										</div>
 									</div>
