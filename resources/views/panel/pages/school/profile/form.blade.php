@@ -1,5 +1,6 @@
 <?php $__env->startSection('styles'); ?>
-        <!-- Polymer Float Form CSS -->
+<!-- <link rel="stylesheet" href="{{'/panel/assets/css/vue-multiselect.css'}}" /> -->
+
 <link rel="stylesheet" href="/new/css/jquery.polymer-form.min.css" >
 
 <link href="/panel/assets/css/form.css" rel="stylesheet" type="text/css" />
@@ -269,6 +270,10 @@
                         <input type="text" label="Linked in" name="linkedin" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('linkedin') ? $links->where('name', 'linkedin')->first()->link : '' }}">
                         <i class="icon-inp fa fa-linkedin"></i>
                     </div>
+                </div>
+
+                <div>
+                    <multi></multi>
                 </div>
 
                 <div class="col-xs-12 about-container">

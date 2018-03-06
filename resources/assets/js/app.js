@@ -39,6 +39,7 @@ Vue.component('scholarship-request', require('./components/schools/Scholarship-R
 Vue.component('schools-reviews', require('./components/schools/Schools-Review.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('image-crop', require('./components/Image-Crop.vue'));
+Vue.component('multi', require('./components/Multiselect.vue'));
 // Vue.component('schol-test', require('./components/Schol-Test.vue'));
 
 

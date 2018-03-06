@@ -27,6 +27,43 @@ use Illuminate\Support\Facades\Route;
 
 Scholio::bot();
 
+Route::get('/school/profile/hashtag', function () {
+    $tags = auth()->user()->info->tag;
+
+    return $tags;
+})->middleware('auth:api');
+
+Route::post('/school/profile/hashtag/save/{tag}', function(Tag $tag){
+    $message = 'OK';
+    try{
+        auth()->user()->info->tag()->toggle($tag);
+    }catch(Exception $e){
+        $message = $e;
+    }
+
+    return $message;
+})->middleware('auth:api');
+
+Route::post('/school/profile/hashtag/delete/{tag}', function (Tag $tag) {
+    $message = 'OK';
+    try {
+        auth()->user()->info->tag()->detach($tag);
+    } catch (Exception $e) {
+        $message = $e;
+    }
+
+    return $message;
+})->middleware('auth:api');
+
+Route::post('/school/profile/hashtag/new/{tag}', function ($tag) {
+    $newTag = new Tag;
+    $newTag->name = $tag;
+    $newTag->slag = str_replace("_", " ", $tag);
+    $newTag->save();
+
+    return $newTag;
+})->middleware('auth:api');
+
 Route::post('/school/update/cards/swap/{from}/{to}', function ($from, $to) {
     $error = null;
 

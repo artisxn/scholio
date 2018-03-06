@@ -177,6 +177,7 @@ class AdminPanelController extends Controller
      */
     public function updateProfile()
     {
+        dd(request()->all());
         $school = auth()->user()->info;
 
         if ($file = request()->file('logo')) {

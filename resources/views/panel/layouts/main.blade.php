@@ -97,9 +97,6 @@
         /* ===========================*/
 
 
-        {{-- @media(max-width: 390px){.hidden-xxs{display: none;}} --}}
-
-
 
 
         /* ============   Styling School navigation links   ===============*/
@@ -190,20 +187,14 @@ echo json_encode($trans);
                 <div class="content-page">
                     <div class="content">
                         <div class="container paddingTop">
-                        @yield('content')
-
+                            @yield('content')
                         </div>
                     </div>
-
-                    {{-- @include('panel.partials.footer.main') --}}
-                
                 </div>
 
             </div>
 
         </div>
-        <script src="/panel/assets/js/modernizr.min.js"></script>
-        <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
         <script src="/js/app.js"></script>
         <script src="/js/bold.js"></script>
 
@@ -211,11 +202,9 @@ echo json_encode($trans);
 
 
 
-        {{--scripts for rounded select--}}
         <script src="{{ asset('panel/assets/js/selectClassie.js') }}"></script>
         <script src="{{ asset('panel/assets/js/selectFx.js') }}"></script>
         <script>
-                //  script for rounded select
                 (function() {
                     [].slice.call( document.querySelectorAll( 'select.cs-select-school' ) ).forEach( function(el) {
                         new SelectFx(el, {
