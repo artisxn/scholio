@@ -268,14 +268,9 @@ class Scholio
                 $alg->section = $scholarship->study->section[0]->name;
                 $alg->multiple = false;
             }
-
-            // $alg->study = $scholarship->study->name || '-';
-            echo ('-' . $scholarship->id . '-' . $scholarship->school->name());
-            // $alg->section_en = $scholarship;
             $alg->level = $scholarship->level->name;
-            $alg->level_en = $scholarship->levelEN->name;
             $alg->criteria = $scholarship->criteria->name;
-            $alg->criteria_en = $scholarship->criteriaEN->name;
+            $alg->criteria_id = $scholarship->criteria->id;
 
             $alg->school = $scholarship->school->name();
             $alg->school_id = $scholarship->school->id;
@@ -283,16 +278,14 @@ class Scholio
             $alg->city = $scholarship->school->city;
             $alg->address = $scholarship->school->address;
             $alg->type = $scholarship->school->type->name;
-            $alg->type_en = $scholarship->school->typeEN->name;
+            $alg->type_id = $scholarship->school->type->id;
             $alg->financial_plan = $scholarship->financial->plan;
-            $alg->financial_plan_en = $scholarship->financialEN->plan;
+            $alg->financial_plan_id = $scholarship->financial->id;
 
             $alg->financial_amount = (integer) $scholarship->financial_amount;
             $alg->financial_metric = $scholarship->financial->metric;
             $alg->financial_icon = $scholarship->financial->icon;
-            $alg->exams = $scholarship->exam ? 'ΝΑΙ' : 'ΟΧΙ';
-
-            $alg->exams_en = $scholarship->exam ? 'YES' : 'NO';
+            $alg->exams = $scholarship->exam ? 'y' : 'n';
 
             $date = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
             $alg->end_at = $date->day . '/' . $date->month . '/' . $date->year;

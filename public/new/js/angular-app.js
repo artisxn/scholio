@@ -144,7 +144,7 @@
                     header: '<div class="aa-suggestions-category">' + lang.main.first.algolia.search.institutions +'</div>',
                       suggestion: function(suggestion) {
                           return '<a target="_blank" style="color: #888;" href="/scholarship/' + suggestion.scholarship_id +'"><span ng-show="false"><img src="'+ suggestion.school_logo +'" height="30px" style="margin-right: 10px;">' +
-                              suggestion._highlightResult.school.value + ' - ' + suggestion._highlightResult.study.value + ' - ' + suggestion._highlightResult.criteria.value + '</span></a>';
+                            suggestion._highlightResult.school.value + ' - ' + suggestion._highlightResult.study.value + ' - ' + lang.seeder.criteria[suggestion.criteria_id] + '</span></a>';
                       },
                   }
               },

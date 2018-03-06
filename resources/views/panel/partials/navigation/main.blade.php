@@ -1,7 +1,3 @@
-<style>
-    .unverified{margin-top: 40px; font-size: 90%; color: #ccc4a7; text-align: center;}
-</style>
-
 <div class="left side-menu"  style="position: fixed;">
     <div class="user-details">
         @if(auth()->user()->role != 'admin')

@@ -189,7 +189,7 @@
 
                 <div class="pull-left">
                 @if(config('scholio.show.fakeLogin'))
-                         <form method="GET" action="/fake/login" id="langForm" style="display: inline-block; position: absolute; top: 18px; margin-left: 110px; color: #555">
+                         <form method="GET" action="/fake/login" style="display: inline-block; position: absolute; top: 18px; margin-left: 110px; color: #555">
                     <select onchange="this.form.submit()" style="border: none; background-color: transparent; margin: -15px; width: 250px;" name="userID">
                             @foreach(App\User::all() as $key=>$user)
                                 @if(auth()->check() && auth()->user()->id == $user->id)
@@ -461,7 +461,6 @@
     function dropReport(school){
         if(open==false){
             $('#card1'+school).css('filter','blur(2px)');
-            console.log(school)
             $('#report-drop'+school).animate({opacity:1, width: 220, height: 260}, 190,"swing");
         }
         else{
@@ -477,8 +476,6 @@
 angular.module("scholarshipsResultsApp",[])
         .controller("scholarshipsResultsCtrl",function ($scope,$http) {
 
-            console.log('start');
-
             $scope.over=false;
             $scope.over2=false;
             $scope.over3=false;
@@ -486,6 +483,7 @@ angular.module("scholarshipsResultsApp",[])
             $scope.active=function(role){
                 $scope.role=role;
             }
+            $scope.ttt = 'ppp';
 
 
 
@@ -682,15 +680,11 @@ angular.module("scholarshipsResultsApp",[])
             </div>
             <div class="centered-text">
                 <div class="text-title">
-                @if(request()->cookie('lang') == 'en')
-                    @{{{_highlightResult.criteria_en.value}}}
-                @else
-                    @{{{_highlightResult.criteria.value}}}
-                @endif
+                    <!-- @{{{_highlightResult.criteria.value}}} -->
+                    @{{ scholcriteria }}
                 </div>
-                <div class="text-content">Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-
+                <div class="text-content">
+                    @{{ scholcriteriainfo }}
                 </div>
             </div>
         </div>
@@ -711,15 +705,11 @@ angular.module("scholarshipsResultsApp",[])
             </div>
             <div class="centered-text">
                 <div class="text-title">
-                @if(request()->cookie('lang') == 'en')
-                @{{financial_plan_en}}
-                @else
-                @{{financial_plan}}
-                @endif
+                <!-- @{{financial_plan}} -->
+                @{{ scholfinancial }}
                 @{{financial_amount}} @{{financial_metric}}</div>
-                <div class="text-content">Ιn faucibus interdum et malesuada fames ac ante ipsum primis.
-                    Torquent per conubia nostra.
-
+                <div class="text-content">
+                    @{{{ scholfinancialinfo }}}
                 </div>
             </div>
         </div>
@@ -741,11 +731,7 @@ angular.module("scholarshipsResultsApp",[])
             <div class="col-xs-5 col-sm-4 pad-0-mar-0 xs-hidden scholar-footer-right">
                     <div>  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarships.cards.exams'):
                     <span class="pull-right">
-                         @if(request()->cookie('lang') == 'en')
-                         @{{exams_en}}
-                         @else
-                         @{{exams}}
-                         @endif
+                        @{{ scholexams }}
                     </span>
                     </div>
                     <div class="margin-top-5">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarships.cards.end'):  <span class="pull-right">@{{ end_at }}</span> </div>
@@ -798,8 +784,26 @@ angular.module("scholarshipsResultsApp",[])
                     hit.adm=[];
                     hit.highAmount=[];
                     hit.talent=[];
+                    hit.scholfinancial = function () {
+                        return lang.seeder.financial[hit.financial_plan_id]
+                    };
+                    hit.scholcriteria = function () {
+                        return lang.seeder.criteria[hit.criteria_id]
+                    };
+                    hit.scholfinancialinfo = function(){
+                        return lang.seeder.financialInfo[hit.financial_plan_id]
+                    };
+                    hit.scholcriteriainfo = function(){
+                        return lang.seeder.criteriaInfoShort[hit.criteria_id]
+                    };
+                    hit.scholexams = function(){
+                        if(hit.exams == 'y')
+                            return lang.seeder.exams.y;
+                        else
+                            return lang.seeder.exams.n;
+                        
+                    };
                     // hit.multipleStudies=[];
-                     console.log(hit);
 
                     for (var i = 1; i <= 5; ++i) {
                         hit.stars.push(i <= hit.rating);
@@ -817,7 +821,7 @@ angular.module("scholarshipsResultsApp",[])
                         hit.highAmount.push(true);
                     }
 
-                    if(hit.criteria_en=="Scholarship for talents"){
+                    if(hit.criteria=="Scholarship for talents"){
                         hit.talent.push(true);
                     }
 
@@ -874,7 +878,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteria',
-                attributes: ['criteria_en'],
+                attributes: ['criteria'],
                 sortBy: ['count'],
                 limit: 5,
                 templates: {
@@ -885,7 +889,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteriaMobile',
-                attributes: ['criteria_en'],
+                attributes: ['criteria'],
                 sortBy: ['count'],
                 limit: 5,
                 templates: {
@@ -973,7 +977,7 @@ search.addWidget(
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesLevel',
-                attributes: ['level_en'],
+                attributes: ['level'],
                 sortBy: ['count'],
                 limit: 5,
                 templates: {
@@ -984,7 +988,7 @@ search.addWidget(
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesLevelMobile',
-                attributes: ['level_en'],
+                attributes: ['level'],
                 sortBy: ['count'],
                 limit: 5,
                 templates: {
