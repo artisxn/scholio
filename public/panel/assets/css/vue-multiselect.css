@@ -127,7 +127,7 @@
 
 .multiselect__input:hover,
 .multiselect__single:hover {
-    border-color: #cfcfcf
+    border-color: #cfcfcf;
 }
 
 .multiselect__input:focus,
@@ -206,7 +206,7 @@
     padding-right: 30px;
     white-space: nowrap;
     border-radius: 5px;
-    border: 1px solid #e8e8e8
+    border: 1px solid 1
 }
 
 .multiselect__current,
