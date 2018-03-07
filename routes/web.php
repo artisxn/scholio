@@ -19,6 +19,8 @@ use App\Models\AlgoliaScholarship;
 
 Scholio::soonRoutes();
 
+Route::post('/password/change', 'RoutesController@changePassword')->middleware('auth');
+
 Route::get('/deletemessages', function () {
     Message::truncate();
 });

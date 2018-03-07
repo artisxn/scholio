@@ -81,17 +81,30 @@
     </div>
 
 
-    <form action="/change/password" method="POST">
+    <form action="{{ url('/password/change') }}" method="POST">
+        {{ csrf_field() }}
         <div class="input-password">
-            <input  type="password" label="@lang('panel/changePassword.currentPassword')" name="password" class="demo-form " value="">
+            <input  type="password" label="@lang('panel/changePassword.currentPassword')" name="current_password" class="demo-form " value="" required>
             <i class="fa fa-key icon-password"></i>
+             @if (session()->has('samepass'))
+            <span class="help-block">
+                <strong>{{ session()->get('samepass') }}</strong>
+            </span>
+            @endif
         </div>
         <div class="input-password">
-            <input  type="password" label="@lang('panel/changePassword.newPassword')" name="password" class="demo-form " value="">
+            <input  type="password" label="@lang('panel/changePassword.newPassword')" name="password" class="demo-form " value="" required>
             <i class="fa fa-key icon-password"></i>
+             @if ($errors->has('password'))
+            <span class="help-block">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+            @endif
+            
         </div>
+        
         <div class="input-password">
-            <input  type="password" label="@lang('panel/changePassword.verifyPassword')" name="password" class="demo-form " value="">
+            <input  type="password" label="@lang('panel/changePassword.verifyPassword')" name="password_confirmation" class="demo-form " value="" required>
             <i class="fa fa-key icon-password"></i>
         </div>
         <button class="btn btn-submit" type="submit">@lang('panel/changePassword.accept')</button>

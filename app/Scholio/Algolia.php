@@ -129,5 +129,4 @@ class Algolia {
 
         return false;
     }
-
 }

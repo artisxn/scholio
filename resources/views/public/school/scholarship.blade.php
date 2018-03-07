@@ -273,6 +273,8 @@
 
     <div class="Hero1"> @lang('scholarship_view.top.title'):</div>
 
+    <img src="{{ $scholarship->school->logo }}" height="40px">
+
     <div class="Hero2"> <a class="school-title" href="/public/profile/{{ $scholarship->school->id}}" target="_blank">{{ $scholarship->school->name() }}</a></div>
 </div>
 <div class="line {{ $scholarship->active ? '' : 'opacity04'}}"></div>
@@ -283,12 +285,12 @@
         <div class="col-md-4 col-sm-6  col-xs-12 col-lg-3 colmn ">
             {{--col-md-offset-2 col-lg-offset-2--}}
             <span class="col-xs-10  col-sm-10  col-md-10 col-lg-9  first-col">
-                <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
-                <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
+                <div class="" ng-if="scholarship.length > 5">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
+                <div class="margin-top-10" ng-if="scholarship.interested > 5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
             </span>
             <span class="col-xs-2 col-sm-2 col-md-1 col-lg-3 align-right">
-                <div class="">@{{scholarship.length}}</div>
-                <div class="margin-top-10">@{{scholarship.interested}}</div>
+                <div class="" ng-if="scholarship.length > 5">@{{scholarship.length}}</div>
+                <div class="margin-top-10" ng-if="scholarship.interested > 5">@{{scholarship.interested}}</div>
             </span>
 
         </div>
@@ -333,13 +335,13 @@
     <div class="box-in sc-t-grey  ">
         <div class="col-sm-4  col-xs-5 colmn ">
             <span class="col-sm-10  col-xs-10 first-col">
-                <div class="">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
-                <div class="margin-top-10">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
+                <div class="" ng-if="scholarship.length > 5">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
+                <div class="margin-top-10" ng-if="scholarship.interested > 5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
                 <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
             </span>
             <span class="col-sm-1 col-xs-1 align-right">
-                <div class="">@{{scholarship.length}}</div>
-                <div class="margin-top-10">@{{scholarship.interested}}</div>
+                <div class="" ng-if="scholarship.length > 5">@{{scholarship.length}}</div>
+                <div class="margin-top-10" ng-if="scholarship.interested > 5">@{{scholarship.interested}}</div>
                   <div class="margin-top-10" >
                       @if($scholarship->exam)
                           @lang('scholarship_view.yes')

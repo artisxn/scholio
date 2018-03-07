@@ -12,6 +12,7 @@ use App\Models\Study;
 use App\Scholio\Scholio;
 use App\Key;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class RoutesController extends Controller
 {
@@ -367,6 +368,9 @@ class RoutesController extends Controller
 
     public function scholarshipEdit(Scholarship $scholarship)
     {
+        if($scholarship->school->admin != auth()->user()){
+            abort('403');
+        }
         $end = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
         $activeDate = !($end->diffInDays(Carbon::now(), false) >= 0);
         $tags = $scholarship->tag;
@@ -447,12 +451,31 @@ class RoutesController extends Controller
         if (auth()->user()->isConnectedWithSchool($school) && !auth()->user()->reviewedSchool($school)) {
             return view('panel.pages.student.reviews.create', compact('school'));
         }
-        return redirect('/panel/users/review/show');
+        abort(403);
     }
 
     public function studentDelete()
     {
         Scholio::deleteUser(auth()->user());
         return 'DELETED';
+    }
+
+    public function changePassword()
+    {
+        $data = $this->validate(request(), [
+            'current_password' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+
+        if(Hash::check($data['current_password'], auth()->user()->password)){
+            auth()->user()->password = bcrypt($data['password']);
+            auth()->user()->save();
+            session()->flash('passwordchanged', 'Your password have been changed successfully');
+            return redirect('/panel/dashboard');
+        }
+        session()->flash('samepass', 'The password you have entered is not the same with your current password');
+        return back();
+
     }
 }

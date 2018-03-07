@@ -724,17 +724,23 @@ angular.module("scholarshipsResultsApp",[])
 
         <div class="col-xs-9 col-sm-10  sc-t-grey font-weight-300 pad-0-mar-0">
             <div class="col-xs-6 col-sm-4  col-md-4 xxs-8 xxs-footer pad-0-mar-0 scholar-footer-left">
-                    <div> <i class="fa fa-pencil margin-right-10"></i>@lang('scholarships.cards.admissions'): <span class="pull-right">@{{ requested }}</span> </div>
-                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarships.cards.interested'): <span class="pull-right">@{{ interested }}</span> </div>
-            </div>
-            <div class="col-sm-1"></div>
-            <div class="col-xs-5 col-sm-4 pad-0-mar-0 xs-hidden scholar-footer-right">
+                    
+
                     <div>  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarships.cards.exams'):
                     <span class="pull-right">
                         @{{ scholexams }}
                     </span>
                     </div>
                     <div class="margin-top-5">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarships.cards.end'):  <span class="pull-right">@{{ end_at }}</span> </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-xs-5 col-sm-4 pad-0-mar-0 xs-hidden scholar-footer-right">
+                    @{{#admissionsShow}}
+                    <div> <i class="fa fa-pencil margin-right-10"></i>@lang('scholarships.cards.admissions'): <span class="pull-right">@{{ requested }}</span> </div>
+                    @{{/admissionsShow}}
+                    @{{#interestedShow}}
+                    <div class="margin-top-5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarships.cards.interested'): <span class="pull-right">@{{ interested }}</span> </div>
+                    @{{/interestedShow}}
             </div>
         </div>
 
@@ -784,6 +790,14 @@ angular.module("scholarshipsResultsApp",[])
                     hit.adm=[];
                     hit.highAmount=[];
                     hit.talent=[];
+                    hit.admissionsShow = function(){
+                        if(hit.requested > 5) return true;
+                        return false;
+                    };
+                    hit.interestedShow = function () {
+                        if (hit.interested > 5) return true;
+                        return false;
+                    };
                     hit.criteriaicon = function(){
                         if (this.criteria_id == 1) return '/panel/assets/images/steps/talents.png';
                         if (this.criteria_id == 2) return '/panel/assets/images/steps/medal.png';

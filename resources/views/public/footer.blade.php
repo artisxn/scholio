@@ -1,12 +1,3 @@
-{{--<!-- ======   Modal Εγγραφής  Εκπ. Ιδρύματος=======-->--}}
-<div id="signUp-school-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            @include('components.modals.registerschool')
-        </div>
-    </div>
-</div><!-- /.modal -->
-
 <style>
     .left-section{padding-left: 10px;}
     @media(max-width: 992px){
@@ -26,7 +17,7 @@
             <div class="pull-left pad-top-50 text-incr-125 left-section" >
                 <a href="#" class="sc-t-white margin-right-20 social-link">@lang('main.footer.contact')</a>
                 <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="http://scholio.netlify.com/" target="_blank" class="sc-t-white margin-right-20 social-link">@lang('main.footer.blog')</a></span>
-                <span class="">  <a href="#" class="sc-t-white social-link">@lang('main.footer.terms')</a></span>
+                <span class="">  <a href="{{ url('terms') }}" class="sc-t-white social-link">@lang('main.footer.terms')</a></span>
             </div>
 
             <div class="pull-right pad-top-45 text-incr-175  pad-right-20">

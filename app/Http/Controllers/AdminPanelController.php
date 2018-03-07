@@ -177,7 +177,6 @@ class AdminPanelController extends Controller
      */
     public function updateProfile()
     {
-        dd(request()->all());
         $school = auth()->user()->info;
 
         if ($file = request()->file('logo')) {
@@ -244,8 +243,22 @@ class AdminPanelController extends Controller
             $this->deleteIfExists('linkedin');
         }
 
+        $address = Scholio::geocode($school->address . ', ' . $school->city);
+        if ($address == 'GEOCODE ERROR') {
+           
+        } else {
+            try {
+                $lat = $address['lat'];
+                $lng = $address['lng'];
+                $school->lat = $lat;
+                $school->lng = $lng;
+                $school->save();
+            } catch (Exception $e) {
+            }
+        }
+
         $algolia = (new Algolia($school))->handle();
-        // session()->flash('updated_profile', 'Your profile has been updated');
+        session()->flash('updated_profile', 'Your profile has been updated');
 
         return back();
     }

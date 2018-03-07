@@ -94,7 +94,7 @@
                             <div class="col-xs-12">
                                 <div class="checkbox checkbox-primary">
                                     <input id="checkbox-signup" type="checkbox">
-                                    <label for="checkbox-signup">I accept <a href="#">Terms and Conditions</a></label>
+                                    <label for="checkbox-signup">I accept <a href="{{ url('terms') }}">Terms and Conditions</a></label>
                                 </div>
                             </div>
                         </div>

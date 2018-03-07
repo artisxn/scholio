@@ -42,6 +42,18 @@
     </div>
 
 @endif
+
+@if(session()->has('passwordchanged'))
+
+<div class="alert-dismissable alert alert-primary" style="margin-bottom: 40px">
+    <button type="button" class="close-x" data-dismiss="alert" aria-hidden="true">
+        ×
+    </button>
+    <h3 class="verify-title">
+        <i class="fa fa-key" style="margin-right: 20px;"></i>{{ session()->get('passwordchanged') }}</h3>
+</div>
+
+@endif
 <!---------------------------------------------------->
 
     <!-- Page-Title -->

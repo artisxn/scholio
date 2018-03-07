@@ -95,6 +95,13 @@
                     </div>
                 </div>
 
+                <input id="checkbox-signup" type="checkbox">
+                <label for="checkbox-signup">@lang('register-step2.accept')
+                    <a href="{{ url('terms') }}" target="_blank">
+                        <span class=" orange-hover">@lang('register-step2.terms')</span>
+                    </a>
+                </label>
+
                 <div class="form-group text-center m-t-40">
                     <div class="col-xs-12">
                         <button class="btn btn-block sc-t-white sc-dark-green" type="submit">
@@ -102,6 +109,8 @@
                         </button>
                     </div>
                 </div>
+
+                
             </form>
         </div>
     </div>

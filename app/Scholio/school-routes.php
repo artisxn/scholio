@@ -47,6 +47,9 @@ Route::post('/card/create', function () {
 })->name('create-card');
 
 Route::get('/admission/{admission}', function (Admission $admission) {
+    if($admission->scholarship->school->admin != auth()->user()){
+        abort('403');
+    }
     $categories = $admission->categories();
     foreach (auth()->user()->unreadNotifications as $notification) {
         if ($notification->type == 'App\Notifications\StudentAppliedOnScholarship') {

@@ -840,7 +840,7 @@
 							<input type="text" class="knob1" data-min="0" data-max="2000" data-fgcolor="#00bcd4" data-bgColor="#fff" data-angleArc="250"
 							 data-angleOffset="-125" data-thickness=".05" data-displayInput=false data-readOnly=true data-linecap="round" data-width="215">
 							<div class="counter-icon text-incr-200 ">
-								<div>480</div>
+								<div>{{ count(App\Models\Study::all()) }}</div>
 								<div>
 									<i class="fa fa-book text-incr-200 sc-t-green "></i>
 								</div>
@@ -855,7 +855,7 @@
 							<input type="text" class="knob2" data-min="0" data-max="200" data-fgcolor="#00bcd4" data-bgColor="#fff" data-angleArc="250"
 							 data-angleOffset="-125" data-thickness=".05" data-displayInput=false data-readOnly=true data-linecap="round" data-width="215">
 							<div class="counter-icon text-incr-200">
-								<div>128</div>
+								<div>{{ count(App\Models\Scholarship::all()) }}</div>
 								<div>
 									<i class="fa fa-trophy text-incr-200 sc-t-green"></i>
 								</div>
@@ -870,7 +870,7 @@
 							<input type="text" class="knob3" data-min="0" data-max="500" data-fgcolor="#00bcd4" data-bgColor="#fff" data-angleArc="250"
 							 data-angleOffset="-125" data-thickness=".05" data-displayInput=false data-readOnly=true data-linecap="round" data-width="215">
 							<div class="counter-icon text-incr-200">
-								<div>268</div>
+								<div>{{ count(App\User::where('role', 'student')->orWhere('role', 'parent')->get()) }}</div>
 								<div>
 									<i class="fa fa-user text-incr-200 sc-t-green"></i>
 								</div>
@@ -885,7 +885,7 @@
 							<input type="text" class="knob4" data-min="0" data-max="160" data-fgcolor="#00bcd4" data-bgColor="#fff" data-angleArc="250"
 							 data-angleOffset="-125" data-thickness=".05" data-displayInput=false data-readOnly=true data-linecap="round" data-width="215">
 							<div class="counter-icon text-incr-200">
-								<div>130</div>
+								<div>{{ count(App\User::where('role', 'teacher')->orWhere('role', 'school')->get()) }}</div>
 								<div>
 									<i class="fa fa-graduation-cap text-incr-200 sc-t-green"></i>
 								</div>
@@ -903,6 +903,17 @@
 
 
 	</main>
+
+	 {{--
+	<!-- ======   Modal Εγγραφής  Εκπ. Ιδρύματος=======-->--}}
+	<div id="signUp-school-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				@include('components.modals.registerschool')
+			</div>
+		</div>
+	</div>
+	<!-- /.modal -->
 
 	<!-- Footer -->
 	@include('public.footer')
