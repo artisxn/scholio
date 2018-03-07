@@ -33,7 +33,7 @@ class SchoolTypesEN extends Model
      */
     public function level()
     {
-        return $this->hasMany(LevelEN::class, 'school_types_id');
+        return $this->hasMany(Level::class, 'school_types_id');
     }
 
     public function review_categories()

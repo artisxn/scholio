@@ -40,11 +40,6 @@ class SchoolTypes extends Model
         return $this->hasMany(Level::class);
     }
 
-    public function levelEN()
-    {
-        return $this->hasMany(LevelEN::class);
-    }
-
     public function review_categories()
     {
         return $this->hasMany(Category::class, 'type_id');

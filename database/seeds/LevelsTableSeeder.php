@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Level;
-use App\Models\LevelEN;
 use Illuminate\Database\Seeder;
 
 class LevelsTableSeeder extends Seeder
@@ -90,14 +89,6 @@ class LevelsTableSeeder extends Seeder
             $studylevel->school_types_id = $level['type_id'];
             $studylevel->name = $level['name'];
             $studylevel->save();
-        }
-
-        foreach ($levelsEN as $level) {
-            $s = new LevelEn;
-            $s->id = $level['id'];
-            $s->school_types_id = $level['type_id'];
-            $s->name = $level['name'];
-            $s->save();
         }
 
     }
