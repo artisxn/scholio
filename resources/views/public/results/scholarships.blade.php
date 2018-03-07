@@ -214,7 +214,7 @@
 
                         <li class="langDropWhite" style="margin-top: -2px; ">
                         <form method="GET" id="langForm">
-                            <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                            <select onchange="changeLang(this)" class="selectpicker " data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
                                 <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
                                 <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                             </select>

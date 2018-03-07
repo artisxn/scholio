@@ -296,10 +296,11 @@ button:focus, button:active {outline: none;!important;}
 input[type="text"]{ border-radius:3px; width:100%; height:40px; outline:none; padding:10px;}
 input[type="submit"]{border-radius:3px; width:100%; height:40px; outline:none; padding:10px;}
 
-select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40px; outline:none; padding:10px;}
+/*select{color:#A4B0B4; background:white; border-radius:3px; width:100%; height:40px; outline:none; padding:10px;}*/
+select{color:#A4B0B4; border-radius:3px; width:100%; height:40px; outline:none; padding:10px;}
 
 
-/* ------------- Mozila ------------- */
+/* ------------- Mozilla ------------- */
 
 select{
     -moz-appearance: treeview;
@@ -328,6 +329,12 @@ a, a:visited, a:focus, a:active, a:hover{
     outline:0 none !important;
 }
 
+
+/* ---------------- BootStrap SelectPicker ------------------- */
+.bootstrap-select.btn-group .dropdown-menu li a span.text:hover {
+    color: #FD6A33;
+}
+.bootstrap-select:focus, .bootstrap-select:active, .bootstrap-select:visited { border: none!important; box-shadow: none!important; outline: none!important;}
 
 
 /*=============================================*/

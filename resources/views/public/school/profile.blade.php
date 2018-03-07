@@ -20,6 +20,11 @@
     <!--====== CSS  Styles =======-->
     @include('public.styles')
 
+
+    <!-- Bootstrap Select -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+
+
     <!-- BX Slider CSS -->
     <link href="/new/css/jquery.bxslider.css" rel="stylesheet">
 
@@ -185,6 +190,8 @@
         .input-text{margin-top: 40px; font-size: 110%; color: #777}
         .cursor-hand{cursor: pointer;}
 
+        .langSelect{background-color: transparent}
+
 
 
         @media(max-width: 1109px) {
@@ -308,7 +315,7 @@
 
                         <li class="langDropWhite " style="margin-top: 15px;">
                             <form method="GET" id="langForm">
-                                <select onchange="changeLang(this)" class="selectpicker select-white landDrop school-profile-lang" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                <select onchange="changeLang(this)" class="selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
                                     <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
                                     <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                                 </select>

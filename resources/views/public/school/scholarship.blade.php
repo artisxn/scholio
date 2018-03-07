@@ -18,9 +18,16 @@
     <!--====== CSS  Styles =======-->
     @include('public.styles')
 
+     <!-- Bootstrap Select -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
-            <!-- Profile  CSS -->
+
+
+
+
+    <!-- Profile  CSS -->
     <link href="/new/css/scholarship-profile.css" rel="stylesheet">
+
 
     <!-- Horizontal Ribbons  CSS -->
     {{--<link href="/new/css/ribbonHorizontal.css" rel="stylesheet">--}}
@@ -33,6 +40,9 @@
 
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Select js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
 
 
     <!-- Angular js-->
@@ -50,7 +60,13 @@
 ]); ?>
     </script>
 
+
+
     <style>
+
+    .imgLogo{height: 50px; border-radius: 4px; border: 1px solid #ddd; box-shadow: 0 0 7px 1px #ccc; margin-top: -5px; margin-right: 8px}
+
+
     .margin-right-30{margin-right: 30px}
     .opacity04{opacity: 0.4;}
     .opacity05{opacity: 0.5;}
@@ -94,14 +110,13 @@
     @media (max-width:600px){
         #trophy-svg{margin-left: auto; margin-right: auto; left:0; right: 0; top: 50px; height: 270px!important; width: 210px!important;}
         .Hero1{margin-top: 30px;}
+        .Hero2{position: absolute; z-index: 20; right: 0; left: 0; top: 70px;}
     }
 
 
         #trophy-svg{float: right;  height: 400px; width: 260px ;position: absolute;  right: 20px}
 
-
-
-
+    .dropdown-menu{background-color: #eee; padding-top: 20px}
 
 
 
@@ -147,9 +162,9 @@
             <div class="pull-right visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
 
-                    <li class="langDropWhite" style="margin-top: 16px">
+                    <li class="" style="margin-top: 16px">
                         <form method="GET" id="langForm">
-                            <select onchange="changeLang(this)" class="selectpicker select-white landDrop" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                            <select onchange="changeLang(this)" class="selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
                                 <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
                                 <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                             </select>
@@ -273,24 +288,36 @@
 
     <div class="Hero1"> @lang('scholarship_view.top.title'):</div>
 
-    <img src="{{ $scholarship->school->logo }}" height="40px">
 
-    <div class="Hero2"> <a class="school-title" href="/public/profile/{{ $scholarship->school->id}}" target="_blank">{{ $scholarship->school->name() }}</a></div>
+
+    <div class="Hero2">
+        <img src="{{ $scholarship->school->logo }}"  class="imgLogo">
+        <a class="school-title" href="/public/profile/{{ $scholarship->school->id}}" target="_blank">{{ $scholarship->school->name() }}</a>
+    </div>
 </div>
 <div class="line {{ $scholarship->active ? '' : 'opacity04'}}"></div>
 
 
 <div class="container stats hidden-sm sc-xs-visible {{ $scholarship->active ? '' : 'opacity04'}}">
     <div class="col-lg-11 box-in sc-t-grey row ">
-        <div class="col-md-4 col-sm-6  col-xs-12 col-lg-3 colmn ">
+
+        <div class="col-md-4 col-sm-6  col-xs-12 col-lg-4 colmn ">
             {{--col-md-offset-2 col-lg-offset-2--}}
-            <span class="col-xs-10  col-sm-10  col-md-10 col-lg-9  first-col">
-                <div class="" ng-if="scholarship.length > 5">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
-                <div class="margin-top-10" ng-if="scholarship.interested > 5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
+            <span class="col-xs-7  col-sm-10  col-md-7 col-lg-7  first-col">
+                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
+                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
             </span>
-            <span class="col-xs-2 col-sm-2 col-md-1 col-lg-3 align-right">
-                <div class="" ng-if="scholarship.length > 5">@{{scholarship.length}}</div>
-                <div class="margin-top-10" ng-if="scholarship.interested > 5">@{{scholarship.interested}}</div>
+            <span class="col-xs-5 col-sm-2 col-md-5 col-lg-5 align-right">
+
+
+                <div class="margin-top-10">@{{scholarship.end}}</div>
+                @if($scholarship->exam)
+                    <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
+                @else
+                    <div> - </div>
+                @endif
+
+
             </span>
 
         </div>
@@ -298,31 +325,28 @@
         <div class="col-md-4  col-xxxs-12 col-sm-6 col-xs-12 col-lg-4 colmn ">
             {{--col-lg-offset-1--}}
             <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6  ">
-                <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
-                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
+                <div class="margin-top-10">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
+                <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>
+
             </span>
             <span class="col-xxxs-5 col-xs-4 col-sm-5 col-md-5 col-lg-5 align-right">
-                <div class="">@{{scholarship.created}}</div>
-                <div class="margin-top-10">@{{scholarship.end}}</div>
+                <div class="margin-top-10">@{{scholarship.created}}</div>
+                 <div class="margin-top-10" >{{ $scholarship->admissions_limit }}</div>
+
             </span>
 
         </div>
 
-        <div class="col-md-4 col-sm-6 col-xs-12 col-lg-5 ">
+        <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 ">
             {{--col-lg-offset-1--}}
             <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6">
-                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>
-                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
+                 <div class="margin-top-10" ng-if="scholarship.length > 5">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
+                <div class="margin-top-10" ng-if="scholarship.interested > 5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
             </span>
             <span class=" col-xxxs-5 col-xs-4 col-sm-5 col-md-5col-lg-4 align-right" >
-                <div class="">
-                            {{ $scholarship->admissions_limit }}
-                        </div>
-                        @if($scholarship->exam)
-                            <div class="margin-top-10">{{Carbon\Carbon::parse($scholarship->exam_date)->format('d-m-Y')}}</div>
-                        @else
-                            _
-                        @endif
+                <div class="margin-top-10" ng-if="scholarship.length > 5">@{{scholarship.length}}</div>
+                <div class="margin-top-10" ng-if="scholarship.interested > 5">@{{scholarship.interested}}</div>
+
             </span>
 
         </div>
@@ -331,37 +355,47 @@
 
 
 
+
+
+
 <div class="container stats sc-xs-hidden hidden-md hidden-lg {{ $scholarship->active ? '' : 'opacity04'}}">
     <div class="box-in sc-t-grey  ">
-        <div class="col-sm-4  col-xs-5 colmn ">
-            <span class="col-sm-10  col-xs-10 first-col">
-                <div class="" ng-if="scholarship.length > 5">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
-                <div class="margin-top-10" ng-if="scholarship.interested > 5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
-                <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
+
+
+        <div class="col-sm-5  col-xs-7 colmn">
+            <span class=" col-sm-7   col-xs-6">
+                 <div class="">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
+                <div class="margin-top-10">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
+                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
+
             </span>
-            <span class="col-sm-1 col-xs-1 align-right">
-                <div class="" ng-if="scholarship.length > 5">@{{scholarship.length}}</div>
-                <div class="margin-top-10" ng-if="scholarship.interested > 5">@{{scholarship.interested}}</div>
-                  <div class="margin-top-10" >
-                      @if($scholarship->exam)
-                          @lang('scholarship_view.yes')
-                      @else
-                          @lang('scholarship_view.no')
-                      @endif</div>
+            <span class="col-sm-5  col-xs-5 align-right">
+                 <div class="">@{{scholarship.exams}}</div>
+                <div class="margin-top-10">@{{scholarship.created}}</div>
+                <div class="margin-top-10">@{{scholarship.end}}</div>
+
             </span>
 
         </div>
 
-        <div class="col-sm-5  col-xs-7">
-            <span class=" col-sm-7   col-xs-6">
-                <div class="">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
-                <div class="margin-top-10">  <i class="fa fa-flag-o margin-right-10"></i>@lang('scholarship_view.top.end'):</div>
-                <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
+        <div class="col-sm-4  col-xs-5  ">
+            <span class="col-sm-10  col-xs-10 first-col">
+                <div class="">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.top.exams'):</div>
+                <div class="margin-top-10" ng-if="scholarship.length > 5">  <i class="fa fa-pencil margin-right-10"></i>@lang('scholarship_view.top.admission'):</div>
+                <div class="margin-top-10" ng-if="scholarship.interested > 5">  <i class="fa fa-thumbs-o-up margin-right-10"></i>@lang('scholarship_view.top.interested'):</div>
+
             </span>
-            <span class="col-sm-5  col-xs-6 align-right">
-                <div class="">@{{scholarship.created}}</div>
-                <div class="margin-top-10">@{{scholarship.end}}</div>
-                <div class="margin-top-10">@{{scholarship.exams}}</div>
+            <span class="col-sm-1 col-xs-1 align-right">
+                      <div class="" >
+                          @if($scholarship->exam)
+                              @lang('scholarship_view.yes')
+                          @else
+                              @lang('scholarship_view.no')
+                          @endif
+                      </div>
+                <div class="margin-top-10" ng-if="scholarship.length > 5">@{{scholarship.length}}</div>
+                <div class="margin-top-10" ng-if="scholarship.interested > 5">@{{scholarship.interested}}</div>
+
             </span>
 
         </div>
