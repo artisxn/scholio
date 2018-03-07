@@ -18,8 +18,12 @@ use Carbon\Carbon;
 use App\Models\AlgoliaScholarship;
 
 Scholio::soonRoutes();
+Auth::routes();
 
 Route::post('/password/change', 'RoutesController@changePassword')->middleware('auth');
+// Route::post('/password/reset', 'RoutesController@resetPassword');
+
+
 
 Route::get('/deletemessages', function () {
     Message::truncate();
@@ -284,8 +288,6 @@ Route::get('connection/{id}/confirm', function ($id) {
 });
 
 Route::get('/', 'RoutesController@index');
-
-Auth::routes();
 
 Route::get('/register/school', 'SchoolRegistrationController@showSchoolRegistrationForm');
 Route::post('/register/school', 'SchoolRegistrationController@register');

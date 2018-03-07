@@ -478,4 +478,13 @@ class RoutesController extends Controller
         return back();
 
     }
+
+    public function resetPassword(){
+        $data = $this->validate(request(), [
+            'email' => 'required|email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        return 'ok';
+    }
 }
