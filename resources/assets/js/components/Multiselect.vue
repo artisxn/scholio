@@ -1,14 +1,25 @@
 <template>
     <div>
-        <multiselect v-model="value" :tag-placeholder="lang('panel_scholarships.create.addNew')" :placeholder="lang('panel_scholarships.create.addLabel')"
-            label="name" track-by="slag" :options="options" :deselectLabel="lang('panel_studies.input-delete')" :selectLabel="lang('panel_scholarships.create.select')"
-            :selectedLabel="lang('panel_scholarships.create.selected')" :multiple="true" :taggable="true" @tag="addTag" @select="saveTag" @remove="deleteTag">
+        <multiselect v-model="value"
+                     :tag-placeholder="lang('panel_scholarships.create.addNew')"
+                     :placeholder="lang('panel_scholarships.create.addLabel')"
+                     label="name"
+                     track-by="slag"
+                     :options="options"
+                     :deselectLabel="lang('panel_studies.input-delete')"
+                     :selectLabel="lang('panel_scholarships.create.select')"
+                     :selectedLabel="lang('panel_scholarships.create.selected')"
+                     :multiple="true"
+                     :taggable="true"
+                     @tag="addTag"
+                     @select="saveTag"
+                     @remove="deleteTag">
         </multiselect>
     </div>
 </template>
 
 <style>
-    
+
 </style>
 
 <script>

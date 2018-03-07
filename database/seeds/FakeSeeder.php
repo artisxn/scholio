@@ -68,7 +68,7 @@ class FakeSeeder extends Seeder
         $school3 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'IEK Full Studies Θεσσαλονίκη', 'email' => 'info@iek.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'full'])->id,
             'address' => 'Tsimiski 74',
-            'city' => 'Thessaloniki',
+            'city' => 'Θεσσαλονίκη',
             'phone' => 2310262333,
             'type_id' => 2,
             'website' => 'www.dtu.dk',
@@ -84,7 +84,7 @@ class FakeSeeder extends Seeder
         /*===============  4 Δημήτρια Εκπαιδευτήρια  ================*/
         $school4 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Δημήτρια Εκπαιδευτήρια ', 'email' => 'info@loudovikos.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'loudovikos'])->id,
-            'address' => '3o χλμ Θεσ/νίκης-Μουδανιών, Θέρμη',
+            'address' => 'Θεσσαλονίκης Ν. Μουδανιών 10ο χιλ',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310445577,
             'type_id' => 6,

@@ -18,7 +18,8 @@ return [
 
 
     'about' => 'Write a short description here',
-    'button' => 'Update',
+    'tags' => 'Add optionally some keywords/tags for more accurate search for your educational institution.',
+    'button' => 'Save Changes',
 
     'studies' => [
         'title' => 'Choose all Available Studies',

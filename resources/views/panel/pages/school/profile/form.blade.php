@@ -1,5 +1,5 @@
 <?php $__env->startSection('styles'); ?>
-<!-- <link rel="stylesheet" href="{{'/panel/assets/css/vue-multiselect.css'}}" /> -->
+ <link rel="stylesheet" href="{{'/panel/assets/css/vue-multiselect.css'}}" />
 
 <link rel="stylesheet" href="/new/css/jquery.polymer-form.min.css" >
 
@@ -25,7 +25,7 @@
     .btn-label{font-size: 110%; font-weight: 300; cursor: pointer;}
 
     .full-content{display: none;}
-    input[type=text],input[type=text]:focus{border-radius:0; border: none; border-bottom: 1px solid #ccc; }
+    /*input[type=text],input[type=text]:focus{border-radius:0; border: none; border-bottom: 1px solid #ccc; }*/
     .school-logo{height: 100px; border-radius: 10px; box-shadow: 0 0 10px 2px #bbb;}
 
 
@@ -52,11 +52,21 @@
         /*.col-xl-3{width: 25%}*/
     }
 
+    .tagText{color: #888; margin-bottom: 10px;}
+    .multiSel{}
+    .multiselectContainer{margin: 40px 10px 80px 10px;}
+
     /*===========================================*/
     /*=========== Google Autocomplete  ==========*/
     .pac-container:after {
         background-image: none !important;
         height: 0px;
+    }
+
+    /*===========================================*/
+    /*=========== Multiselect  ==========*/
+    .multiselect__tags {
+        border: 1px solid #d0d0d0;
     }
 
 </style>
@@ -175,8 +185,6 @@
 
                 <div class="col-xs-12">
 
-
-
                     <div class="title">
                         @lang('school_profile.contact')
                     </div>
@@ -191,25 +199,20 @@
                         <i class="icon-inp fa fa-university"></i>
                     </div>
 
-
                     <div class="input-container col-xs-12 col-sm-6 col-xl-3">
                         <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.email'); ?>" name="email" class="demo-form ad-input" value="<?php echo e(auth()->user()->email); ?>" disabled>
                         <i class="icon-inp fa fa-envelope"></i>
                     </div>
-
-
 
                     <div class="input-container col-xs-12 col-sm-6 col-xl-3">
                         <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.name'); ?>" name="name" class="demo-form ad-input" value="<?php echo e($school->name()); ?>">
                         <i class="icon-inp fa fa-university"></i>
                     </div>
 
-
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
                         <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.website'); ?>" name="website" class="demo-form ad-input" value="<?php echo e($school->website); ?>" >
                         <i class="icon-inp fa fa-globe"></i>
                     </div>
-
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
                         <input  id="autocompleteCity"  placeholder=""
@@ -217,25 +220,21 @@
                         <i class="icon-inp fa fa-map-marker"></i>
                     </div>
 
-
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
                         <input id="autocompleteAddress" placeholder=""
                                type="text" label="<?php echo app('translator')->getFromJson('school_profile.address'); ?>" name="address" class="demo-form ad-input" value="<?php echo e($school->address); ?>">
                         <i class="icon-inp fa fa-home"></i>
                     </div>
 
-
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
                         <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.phone'); ?>" name="phone" class="demo-form ad-input" value="<?php echo e($school->phone); ?>">
                         <i class="icon-inp fa fa-phone"></i>
                     </div>
 
-
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
                         <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.manager'); ?>" name="user_name" class="demo-form ad-input" value="<?php echo e(auth()->user()->name); ?>">
                         <i class="icon-inp fa fa-user"></i>
                     </div>
-
 
                     <div class="up clearfix"></div>
                     <div class="title">
@@ -258,7 +257,7 @@
                         <input type="text" label="YouTube" name="youtube" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('youtube') ? $links->where('name', 'youtube')->first()->link : '' }}">
                         <i class="icon-inp fa fa-youtube"></i>
                     </div>
-                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
+                    <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
                         <input type="text" label="skype" name="skype" class="demo-form ad-input" value="{{ $links->pluck('name')->contains('skype') ? $links->where('name', 'skype')->first()->link : '' }}">
                         <i class="icon-inp fa fa-skype"></i>
                     </div>  
@@ -272,9 +271,7 @@
                     </div>
                 </div>
 
-                <div>
-                    <multi></multi>
-                </div>
+
 
                 <div class="col-xs-12 about-container">
                     <div class="form-group">
@@ -288,9 +285,19 @@
 
                 <div class="clearfix"></div>
                 <div class="text-centered">
+
+                    <div class="multiselectContainer" >
+                        <div class="tagText">
+                            @lang('school_profile.tags')
+                        </div>
+                        <multi class="multiSel"></multi>
+                    </div>
+
+
                     <div class="col-xs-6 col-sm-3 centered-text">
                         <button class="btn btn-primary btn-submit" type="submit">
-                            <?php echo app('translator')->getFromJson('school_profile.button'); ?>
+                            <i class="fa fa-save m-r-10" ></i>
+                            @lang('school_profile.button')
                         </button>
                     </div>
                 </div>
@@ -298,9 +305,16 @@
             </form>
 
         </div>
+
+
+
     </div>
 
+
 </div>
+
+
+
 
 <?php if(count($errors) > 0 ): ?>
 <div class="alert alert-danger">
