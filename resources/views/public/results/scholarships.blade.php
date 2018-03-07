@@ -675,7 +675,7 @@ angular.module("scholarshipsResultsApp",[])
             <div class="hex-container centered">
                 <div class="hexagon3 hex">
                     <span></span>
-                    <img class="centered-abs hex-img" src="/panel/assets/images/steps/@{{criteria}}.png" alt="">
+                    <img class="centered-abs hex-img" src="@{{criteriaicon}}" alt="">
                 </div>
             </div>
             <div class="centered-text">
@@ -784,6 +784,13 @@ angular.module("scholarshipsResultsApp",[])
                     hit.adm=[];
                     hit.highAmount=[];
                     hit.talent=[];
+                    hit.criteriaicon = function(){
+                        if (this.criteria_id == 1) return '/panel/assets/images/steps/talents.png';
+                        if (this.criteria_id == 2) return '/panel/assets/images/steps/medal.png';
+                        if (this.criteria_id == 3) return '/panel/assets/images/steps/social.png';
+                        if (this.criteria_id == 4) return '/panel/assets/images/steps/friends.png';
+                        if (this.criteria_id == 5) return '/panel/assets/images/steps/open.png';
+                    };
                     hit.scholfinancial = function () {
                         return lang.seeder.financial[hit.financial_plan_id]
                     };
