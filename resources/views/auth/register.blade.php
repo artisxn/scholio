@@ -182,7 +182,7 @@
                     <div class="form-group">
                         <div class="col-xs-12">
                             <div class="checkbox checkbox-primary">
-                                <input id="checkbox-signup" type="checkbox">
+                                <input id="checkbox-signup" type="checkbox" name="terms" required>
                                 <label for="checkbox-signup" >@lang('register-step2.accept')<a href="{{ url('terms') }}"> <span class=" orange-hover">@lang('register-step2.terms')</span></a></label>
                             </div>
                         </div>

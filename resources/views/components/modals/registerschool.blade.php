@@ -95,7 +95,7 @@
                     </div>
                 </div>
 
-                <input id="checkbox-signup" type="checkbox">
+                <input id="checkbox-signup" type="checkbox" name="terms" required>
                 <label for="checkbox-signup">@lang('register-step2.accept')
                     <a href="{{ url('terms') }}" target="_blank">
                         <span class=" orange-hover">@lang('register-step2.terms')</span>
