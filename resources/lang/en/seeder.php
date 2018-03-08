@@ -81,19 +81,19 @@ return [
     ],
 
     'criteriaInfoShort' => [
-        1 => 'Scholarship for talented is the most popular scholarship in the schol.io community.
-        It is not linked to a competition or examination procedure but is based solely on the assessment of the participants\' particular abilities.',
+        1 => 'It is the most popular form of scholarship in the schol.io community.
+        It is not linked to a competition or examination procedure but is based solely on the assessment of the participants\' particular abilities',
 
-        2 => 'Scholarship of excellence concerns a scholarship that participants usually compete in some form of short written examinations set by the educational institution.
-        Probably there are no exams, but excellence is determined by the degree of graduation or the rank of the previous class, or by other distinctions of excellence.',
+        2 => 'It concerns participants who usually compete in some form of short examinations set by the educational institution.
+        Probably not exams, but excellence is determined by graduation or previous grade.',
 
-        3 => 'Scholarship of Social Criteria usually involves participants from large or single parent families, families with low income or unemployed parents or other social criteria.
-        It is a social responsibility offer and may have multiple winners as many candidates meet the criteria for claiming.',
+        3 => 'It usually involves participants belonging to large or single parent families, families with low income or unemployed parents or other social criteria.
+        It is a social responsibility offer and may have multiple winners if several candidates meet the claim criteria.',
 
-        4 => 'Scholarship for Friends or Siblings involves friends or siblings wishing to study the same subject similarly in the same educational institution.
+        4 => 'It concerns friends or siblings wishing to study the same similar subjects in the same educational institution.
         Depending on the criteria, this scholarship may have multiple winners.',
 
-        5 => 'Open Scholarship concerns particular categories of participants, such as students from the province or islands, or students with special interests.
+        5 => 'It concerns particular categories of participants, such as students / students coming from the province, islands, or students with special interests.
         Depending on the criteria, this scholarship may have multiple winners.'
     ],
 

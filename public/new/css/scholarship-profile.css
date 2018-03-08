@@ -138,12 +138,6 @@ body {
     margin-left: -25px;
 }
 
-.colmn{
-    border-right: 1px solid #cdcdcd;
-    margin-bottom: 10px;
-    /*background-color: #ddd; */
-    /*height: 90px;*/
-}
 
 .first-col{margin-left: -20px}
 
@@ -248,6 +242,17 @@ body {
 
 
 
+@media (min-width: 992px)  {
+    .colmn{
+        border-right: 1px solid #cdcdcd;
+        margin-bottom: 10px;
+
+    }
+
+
+
+}
+
 
 
 
@@ -256,6 +261,14 @@ body {
     .trophy{ height: 240px; margin-top: -55px}
     .Hero1{ font-size: 150%;  margin-top: 180px}
     .Hero2{ font-size: 200%;  margin-top: 10px}
+    .colmn{
+        border-right: 1px solid #cdcdcd;
+        margin-bottom: 10px;
+        /*background-color: #ddd; */
+        /*height: 90px;*/
+
+    }
+
 
 
 }
