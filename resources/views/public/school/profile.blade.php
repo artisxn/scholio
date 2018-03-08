@@ -1659,7 +1659,7 @@
 //                        location.hash = "#" + hash;
                     };
                 }
-                $scope.textStudies="@lang('profile.more')";
+                $scope.textStudies='@lang('profile.more')';
                 $scope.iconStudies='fa fa-angle-down'
                 $scope.showMoreStudies= function (hash){
                     if($scope.textStudies === "@lang('profile.more')"){
@@ -1675,7 +1675,7 @@
 //
                     };
                 }
-                $scope.textScholarships="@lang('profile.more')";
+                $scope.textScholarships='@lang('profile.more')';
                 $scope.iconScholarships='fa fa-angle-down'
                 $scope.showMoreScholarships= function (hash){
                     if($scope.textScholarships === "@lang('profile.more')"){
@@ -1690,7 +1690,7 @@
                         location.hash = "#" + hash;
                     };
                 }
-                $scope.textReviews="@lang('profile.more')";
+                $scope.textReviews='@lang('profile.more')';
                 $scope.iconReviews='fa fa-angle-down'
                 $scope.showMoreReviews= function (hash){
                     if($scope.textReviews === "@lang('profile.more')"){
@@ -1705,7 +1705,7 @@
                         location.hash = "#" + hash;
                     };
                 }
-                $scope.textTeachers="@lang(profile.more')";
+                $scope.textTeachers='@lang('profile.more')';
                 $scope.iconTeachers='fa fa-angle-down'
                 $scope.showMoreTeachers= function (){
                     if($scope.textTeachers === "@lang('profile.more')"){

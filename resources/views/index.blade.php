@@ -254,6 +254,8 @@
 		}
 	</style>
 
+	@include('javascript_lang')
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp"

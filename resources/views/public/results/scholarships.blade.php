@@ -130,6 +130,7 @@
     window.Search = "{{ session('search') }}"
     </script>
 
+     @include('javascript_lang')
 </head>
 
 <style>
