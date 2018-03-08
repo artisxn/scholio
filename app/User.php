@@ -3,32 +3,35 @@
 namespace App;
 
 use App\Models\Admission;
+use App\Models\Card;
 use App\Models\Cv;
 use App\Models\Guardian;
-use App\Models\Link;
+use App\Models\Report;
 use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SocialLink;
 use App\Models\Student;
 use App\Models\Study;
+use App\Models\Subscription;
 use App\Models\Teacher;
 use App\Traits\EndorseSystem;
 use App\Traits\InterestedSystem;
 use App\Traits\TeacherProfiler;
+use App\Traits\UserAdmissions;
+use App\Traits\UserConnections;
+use App\Traits\UserReviews;
 use App\Traits\UserScopes;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use App\Models\Subscription;
-use App\Models\Report;
-use App\Models\Card;
 
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, UserScopes, Notifiable;
     use EndorseSystem, InterestedSystem, TeacherProfiler;
+    use UserConnections, UserAdmissions, UserReviews;
     use SoftDeletes;
 
     /**
@@ -37,7 +40,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type', 'avatar', 'role', 'email_token'
+        'name', 'email', 'password', 'type', 'avatar', 'role', 'email_token',
     ];
 
     /**
@@ -95,125 +98,113 @@ class User extends Authenticatable
         }
     }
 
+    /**
+     * Gets the student model (if the current user is student)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function student()
     {
         return $this->hasOne(Student::class);
     }
 
+    /**
+     * Gets the teacher model (if the current user is teacher)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function teacher()
     {
         return $this->hasOne(Teacher::class);
     }
 
+    /**
+     * Gets all the social links of the current user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function socialLinks()
     {
         return $this->hasMany(SocialLink::class, 'user_id');
     }
 
-    public function connectedSchool()
-    {
-        return $this->belongsToMany(School::class, 'school_user')->withPivot('status', 'type', 'study_id', 'type2', 'study_id2', 'level', 'level2');
-    }
-
-    public function isConnectedWithSchool($school)
-    {
-        if ($this->connectedSchool->contains('id', $school->id)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function checkConnection($user)
-    {
-        foreach ($this->connectedSchool as $connections) {
-            if ($connections->admin->id == $user) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    /**
+     * Gets all the reviews of the current user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    public function reviewedSchool($school)
-    {
-        if ($this->reviews->contains('school_id', $school->id)) {
-            return true;
-        }
-
-        return false;
-    }
-
+    /**
+     * Gets the cv of the current user (only if it is student)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function cv()
     {
         return $this->hasOne(Cv::class);
     }
 
+    /**
+     * Gets all the admissions of the current user (only if it is student)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function admissions()
     {
         return $this->hasMany(Admission::class);
     }
 
-    public function checkAdmission(Scholarship $scholarship)
-    {
-        $check = false;
-        foreach ($this->admissions as $admission) {
-            if ($admission->scholarship_id == $scholarship->id) {
-                $check = true;
-                break;
-            }
-        }
-
-        return $check;
-    }
-
-    public function getAdmissionId(Scholarship $scholarship)
-    {
-        $id = 0;
-        foreach ($this->admissions as $admission) {
-            // dd($scholarship->id);
-            if ($admission->scholarship_id == $scholarship->id) {
-                $id = $admission->id;
-                break;
-            }
-        }
-
-        return $id;
-    }
-
+    /**
+     * Gets all the schools that the current user is connected with
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function apply()
     {
         return $this->belongsToMany(School::class, 'school_requests');
     }
 
+    /**
+     * Gets all the studies that the current user is attending
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function studyConnection()
     {
         return $this->belongsToMany(Study::class, 'study_user')->withPivot('school_id', 'study_id');
     }
 
-    public function subscription(){
+    /**
+     * Gets the subscription model (only if it is school)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function subscription()
+    {
         return $this->hasOne(Subscription::class, 'user_id');
     }
 
+    /**
+     * Gets all the reports regarding this user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function report()
     {
         return $this->hasMany(Report::class, 'user_id');
     }
 
-    public function card(){
+    /**
+     * Gets the cards of this user (only if it is school)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function card()
+    {
         return $this->hasMany(Card::class, 'user_id');
-    }
-
-    public function studentTeacher($teacher){
-        $schools = $this->connectedSchool->pluck('id');
-
-        $teacherSchools = User::find($teacher)->connectedSchool->pluck('id');
-
-        return !empty(array_intersect($schools->toArray(), $teacherSchools->toArray()));
-
     }
 }
