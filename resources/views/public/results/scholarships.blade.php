@@ -546,7 +546,7 @@ angular.module("scholarshipsResultsApp",[])
             <div class="report-drop report-scholar-drop" id="report-drop@{{scholarship_id}}" style="overflow:hidden!important">
             <img class="report-logo"  src="/new/img/logoNX-m.png" alt="" style="overflow:hidden!important">
             <span class="report-title"> Αναφορά </span>
-            <form method="POST" action="/report/add/@{{scholarship_id}}/Profile" >
+            <form method="POST" action="/report/add/@{{scholarship_id}}/Scholarship" >
             {{ csrf_field() }}
             <div class="report-text" style="overflow:hidden!important">
             <button type="submit" style=" width:185px; background: none; border: none; text-align: justify;">
@@ -888,7 +888,7 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteria',
-                attributes: ['criteria_id'],
+                attributes: ['criteria'],
                 sortBy: ['count'],
                 limit: 5,
                 templates: {

@@ -282,7 +282,7 @@
 
                                     <span class="col-lg-8 col-md-7 col-sm-7 col-xs-6 bar-container">
 
-                                        @if(auth()->check() && auth()->user()->role == 'student')
+                                        @if(auth()->check() && auth()->user()->role == 'student' && auth()->user()->studentTeacher($teacher->user->id))
                                             @if($teacher->user->checkSkill($skill))
 
                                                     <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-up"></i>

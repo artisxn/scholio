@@ -16,6 +16,7 @@ use App\Scholio\Scholio;
 use App\User;
 use Carbon\Carbon;
 use App\Models\AlgoliaScholarship;
+use App\Models\DummyScholarship;
 
 Scholio::soonRoutes();
 Auth::routes();
@@ -31,14 +32,6 @@ Route::get('/card/{card}/delete', function(Card $card){
 
 Route::get('/deletemessages', function () {
     Message::truncate();
-});
-
-Route::get('/ddd', function () {
-
-    $students = Card::where('user_id', auth()->user()->id)->where('status', 'connected')->orderBy('name')->get();
-
-    return $students;
-
 });
 
 Route::get('/fakes', function () {
@@ -210,9 +203,11 @@ Route::post('scholarship/{scholarship}/update', function (Scholarship $scholarsh
 });
 
 Route::delete('scholarship/{scholarship}/delete', function (Scholarship $scholarship) {
-    // Delete Scholarship
+    $scholarship->delete();
+    DummyScholarship::where('scholarship_id', $scholarship->id)->delete();
+
     // Delete Algolia Dummy Scholarship Row
-    dd($scholarship);
+    return redirect('/panel/school/scholarships/view');
 });
 
 Route::get('public/donor', function () {

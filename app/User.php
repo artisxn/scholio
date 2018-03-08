@@ -207,4 +207,13 @@ class User extends Authenticatable
     public function card(){
         return $this->hasMany(Card::class, 'user_id');
     }
+
+    public function studentTeacher($teacher){
+        $schools = $this->connectedSchool->pluck('id');
+
+        $teacherSchools = User::find($teacher)->connectedSchool->pluck('id');
+
+        return !empty(array_intersect($schools->toArray(), $teacherSchools->toArray()));
+
+    }
 }

@@ -244,9 +244,8 @@ class AdminPanelController extends Controller
         }
 
         $address = Scholio::geocode($school->address . ', ' . $school->city);
-        if ($address == 'GEOCODE ERROR') {
-           
-        } else {
+
+        if (is_array($address) && strtoupper(var_dump($address)) != 'GEOCODE ERROR') {
             try {
                 $lat = $address['lat'];
                 $lng = $address['lng'];
