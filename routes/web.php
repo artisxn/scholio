@@ -35,9 +35,9 @@ Route::get('/deletemessages', function () {
 
 Route::get('/ddd', function () {
 
-    foreach (AlgoliaScholarship::all() as $al) {
-        $al->delete();
-    }
+    $students = Card::where('user_id', auth()->user()->id)->where('status', 'connected')->orderBy('name')->get();
+
+    return $students;
 
 });
 

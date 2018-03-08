@@ -838,9 +838,10 @@ Route::get('/scholarship/{id}', function (Scholarship $id) {
 Route::get('/connected/students/card/search/{order}/{asc}/{status}/{field}', function ($order, $asc, $status, $field) {
     $user = auth()->user();
     $school = $user->info;
-    $students = auth()->user()->card->where('status', $status);
 
     $orderType = $asc == 'false' ? 'asc' : 'desc';
+    $students = Card::where('user_id', auth()->user()->id)->where('status', $status)->orderBy($order, $orderType)->get();
+
     $studentCounter = 0;
 
     if ($field != '%20') {

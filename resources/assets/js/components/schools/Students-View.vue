@@ -166,6 +166,20 @@
                         <span v-if="sortType == 'email' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                         <span v-if="sortType == 'email' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
                     </th>
+                    <th>
+                        <a href="#" v-on:click="levelChangeSort">
+                        Level
+                        <span v-if="sortType == 'level' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                        <span v-if="sortType == 'level' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" v-on:click="studyChangeSort">
+                        Study
+                        <span v-if="sortType == 'study' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                        <span v-if="sortType == 'study' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                        </a>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -178,6 +192,8 @@
                     <td style="text-transform: capitalize">{{ student.name }}</td>
                     <td>{{ student.student_phone }}</td>
                     <td>{{ student.email }}</td>
+                    <td>{{ student.level }}</td>
+                    <td>{{ student.type }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -1281,6 +1297,16 @@
             emailChangeSort: function(){
                 this.sortType = 'email';
                 this.sortReverse=!this.sortReverse;
+                this.fetch(1)
+            },
+            levelChangeSort: function () {
+                this.sortType = 'level';
+                this.sortReverse = !this.sortReverse;
+                this.fetch(1)
+            },
+            studyChangeSort: function () {
+                this.sortType = 'type';
+                this.sortReverse = !this.sortReverse;
                 this.fetch(1)
             },
             dynamicSort: function (property,order) {

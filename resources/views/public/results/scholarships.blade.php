@@ -145,13 +145,6 @@
     .talent-border{border-color: #D3ECF5
     }
 
-
-
-
-
-
-
-
 </style>
 
 
@@ -765,16 +758,11 @@ angular.module("scholarshipsResultsApp",[])
             `<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span>
                 <span  class="counter"> @{{count}} </span></a>`;
 
-    {{--var facetTemplateCheckbox =--}}
-            {{--'<a href="javascript:void(0);" class="facet-item">' +--}}
-            {{--'<input type="checkbox" class="@{{cssClasses.checkbox}}" value="@{{name}}" @{{#isRefined}}checked@{{/isRefined}} />@{{name}}' +--}}
-            {{--'<span class="facet-count">(@{{count}})</span>' +--}}
-            {{--'</a>';--}}
-
-    {{--var facetTemplateColors =--}}
-            {{--'<a href="javascript:void(0);" data-facet-value="@{{name}}" class="facet-color @{{#isRefined}}checked@{{/isRefined}}"></a>';--}}
-
-
+    var criteriaTemplate =
+            `<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}">
+                <span class="facet-name"><i class="fa fa-angle-right"></i> @{{ name }} </span>
+                <span  class="counter"> @{{count}} </span>
+            </a>`;
 
 
     search.addWidget(
@@ -900,11 +888,11 @@ angular.module("scholarshipsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCriteria',
-                attributes: ['criteria'],
+                attributes: ['criteria_id'],
                 sortBy: ['count'],
                 limit: 5,
                 templates: {
-                    item: menuTemplate
+                    item: criteriaTemplate
                 }
             })
     );
