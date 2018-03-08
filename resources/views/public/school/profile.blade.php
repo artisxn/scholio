@@ -400,10 +400,8 @@
                          @else
 
                          <style>
-                         .socials{
-                            margin-top: -65px;
-                         }
-                            </style>
+                          .socials{  margin-top: -65px;  }
+                         </style>
 
                          @endif
 

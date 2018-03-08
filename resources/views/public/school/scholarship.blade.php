@@ -96,6 +96,7 @@
     @media (max-width:420px){
         .ended{font-size: 5.8vw;}
         .margin-right-30{margin-right: 5px}
+
     }
     @media (max-width:1199px){
         #trophy-svg{top: -67px;}
@@ -111,6 +112,8 @@
         #trophy-svg{margin-left: auto; margin-right: auto; left:0; right: 0; top: 50px; height: 270px!important; width: 210px!important;}
         .Hero1{margin-top: 30px;}
         .Hero2{position: absolute; z-index: 20; right: 0; left: 0; top: 70px;}
+        .imgLogo{display: none;}
+
     }
 
 
