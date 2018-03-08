@@ -23,7 +23,11 @@ Auth::routes();
 Route::post('/password/change', 'RoutesController@changePassword')->middleware('auth');
 // Route::post('/password/reset', 'RoutesController@resetPassword');
 
-
+Route::get('/card/{card}/delete', function(Card $card){
+    $card->delete();
+    session()->flash('carddelete', 'You have deleted your card successfully!');
+    return back();
+});
 
 Route::get('/deletemessages', function () {
     Message::truncate();

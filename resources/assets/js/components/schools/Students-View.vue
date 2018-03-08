@@ -393,6 +393,7 @@
 
                     </div>
                     <div class="modal-footer">
+                        <a :href="'/card/' + info.id + '/delete'" class="btn btn-danger btn-close" v-if="info.role == 'fake'">DELETE CARD</a>
                         <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
                     </div>
                 </div>
