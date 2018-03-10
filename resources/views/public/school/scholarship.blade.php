@@ -18,10 +18,6 @@
     <!--====== CSS  Styles =======-->
     @include('public.styles')
 
-     <!-- Bootstrap Select -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
-
-
 
 
 
@@ -35,11 +31,15 @@
             <!-- Horizontal Ribbons  CSS -->
     {{--<link href="/new/css/Hexagon.css" rel="stylesheet">--}}
 
-            <!-- jQuery js-->
+
+
+    <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     <!-- Bootstrap Select js  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
@@ -79,6 +79,7 @@
         top: 50%;  transform: translateY(-50%); text-align: center;}
     .img-sad{height:100px; width: auto; margin-top: -10px;}
     .applied:hover{cursor: not-allowed}
+    .modalNoApplyContent{width: 500px;}
 
 
     @media (min-width:1800px){
@@ -108,11 +109,13 @@
         #trophy-svg{top: -40px;}
     }
 
+
     @media (max-width:600px){
         #trophy-svg{margin-left: auto; margin-right: auto; left:0; right: 0; top: 50px; height: 270px!important; width: 210px!important;}
         .Hero1{margin-top: 30px;}
         .Hero2{position: absolute; z-index: 20; right: 0; left: 0; top: 70px;}
         .imgLogo{display: none;}
+        .modalNoApplyContent{width: 94%}
 
     }
 
@@ -130,9 +133,9 @@
 <!-- Για ληγμενες -->
 
 
+
+
 <!-- Scholio Header -->
-
-
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header {{ $scholarship->active ? '' : 'opacity10'}}" id="header" style="z-index: 2">
 
@@ -430,7 +433,7 @@
                                     <i id="icon" class="fa fa-thumbs-o-up margin-right-10 margin-left-5" aria-hidden="true"></i>
                                     <span id="text" ng-init="check(scholarship)">@lang('scholarship_view.top.interested_button')</span>
                                 </button>
-                                    
+
                                 @endif
                             </a>
                         </span>
@@ -443,11 +446,17 @@
                                     </button>
                                 </a>
                             @else
-                                <a href=""><button disabled="true" type="button" class="sch-button sc-button sc-t-white"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> ΤΕΛΟΣ </button></a>
+                                <a href="">
+                                    <button type="button" class="sch-button sc-button sc-orange sc-t-white" data-toggle="modal" data-target="#modalNoApply">
+                                        <i class="fa fa-file margin-right-10" aria-hidden="true"></i>
+                                        @lang('scholarship_view.top.admission_button')
+                                    </button>
+                                </a>
                             @endif
 
                         @else
-                            <a href=""><button disabled="true" type="button" class=" sch-button sc-button sc-t-white  applied " style="background: #87b0be">
+                            <a href="">
+                                <button disabled="true" type="button" class=" sch-button sc-button sc-t-white  applied " style="background: #87b0be">
                                     <i class="fa fa-file-text-o margin-right-10" aria-hidden="true" ></i>
                                     @lang('scholarship_view.top.admission_past')
                                 </button>
@@ -599,11 +608,46 @@
             @endif
             <div class="clearfix"></div>
         </div>
-        
-        
+
+
     </div>
 </div>
 </div>
+
+
+<!-- ====== Modal NoApply =======-->
+<div id="modalNoApply" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
+    <div class="modal-dialog" >
+        <div class="modal-content modalNoApplyContent" style="padding: 0; border: none; border-radius: 5px; margin-left: auto; margin-right: auto;">
+
+            <div class="panel " style="background-color: #324c5a; height: 100px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+                <div class="panel-heading" style="height: 55px; color: #fff">
+                    <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
+                        x
+
+                    </button>
+                    <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left" height="80px">
+                    <div style="margin: 30px 0 0 70px; font-size: 130%"> @lang('scholarship_view.noApplyModal.title')</div>
+                    <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;"></h3>
+                </div>
+
+            </div>
+            <div class="panel-body" style="min-height: 110px;">
+
+                <div style="text-align: justify">
+                    @lang('scholarship_view.noApplyModal.text')
+                </div>
+            </div>
+
+            <div class="modal-footer" style="padding: 20px;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('panel/schools/navigation.close')</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+
+
 
 <!-- Footer -->
 <div class="{{ $scholarship->active ? '' : 'opacity10'}}">

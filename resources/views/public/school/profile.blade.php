@@ -45,6 +45,9 @@
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- Bootstrap Select js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+
     <!-- Angular js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 
@@ -263,6 +266,9 @@
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp" ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
 
+@include('components.preloader')
+
+
     {{\Counter::showAndCount('school-profile', $school->id)}}
 <!-- Scholio Header -->
 
@@ -444,11 +450,21 @@
                     @if(auth()->check())
                         @if(auth()->user()->role != 'school')
                             @if(auth()->user()->apply->contains($school))
-                                <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-green sc-t-white margin-top-10 center-block" disabled>
+                                <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-green sc-t-white margin-top-10 center-block" style="background-color: #7fafbb" disabled>
                                     <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
-
-                                    Αίτημα Ενεργό
+                                    @lang('profile.pending')
                                 </button>
+
+
+                            @elseif(auth()->user()->connectedSchool->contains($school))
+
+                                        <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block" style="background-color: #bbb" disabled >
+                                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
+                                            @lang('profile.connected')
+                                        </button>
+
+
+
                             @else
                                 <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                         data-toggle="modal" data-target="#connect-modal">
@@ -734,13 +750,13 @@
                                                     </div>
 
                                                     <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
-                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey">
+                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.interests>3">
                                                             <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
                                                                 @lang('profile.scholarship.interested'): <span class="pull-right" ng-bind="scholarship.interests"></span>
                                                             </span>
                                                         </div>
 
-                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey">
+                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.length>2">
                                                             <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
                                                                 @lang('profile.scholarship.requested'): <span class="pull-right"> @{{ scholarship.length}}</span>
                                                             </span>
@@ -1040,11 +1056,11 @@
 
                                     @if(auth()->user()->connectedSchool->contains($school))
                                      <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
-                                    <button id="submButton" type="button" class="affix-button sc-t-white center-block" style="background-color: #bbb" disabled >
+                                        <button id="submButton" type="button" class="affix-button sc-t-white center-block" style="background-color: #bbb" disabled >
                                         <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
                                         @lang('profile.connected')
-                                    </button>
-                                </nav>
+                                        </button>
+                                     </nav>
                                     @else
                                         <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
                                         <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
@@ -1084,11 +1100,11 @@
 
 
         <!-- ====== Modal Connect =======-->
-        <div id="connect-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
-            <div class="modal-dialog">
-                <div class="modal-content">
+        <div id="connect-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;" >
+            <div class="modal-dialog" >
+                <div class="modal-content" >
 
-                    <div class="panel " style="background-color: #324c5a; height: 90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+                    <div class="panel " style="background-color: #324c5a; height: 90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" >
                         <div class="panel-heading" style="height: 55px; color: #fff">
                             <button type="button" class="btn pull-right modal-close" data-dismiss="modal" >
                                 x
@@ -1187,8 +1203,7 @@
 
         <!-- ====== Modal Υποτροφίας =======-->
         <div id="scholarship-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
-            <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" >
 
                     <div class="panel " style="background-color: #324c5a;">
                         <div class="panel-heading" style="height: 55px; color: #fff">

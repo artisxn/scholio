@@ -55,7 +55,7 @@
 </div>
 
 
-<!-- ====== Modal Υποτροφίας =======-->
+<!-- ====== Modal Unverified =======-->
 <div id="ModalUnverified" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; top: 100px;">
     <div class="modal-dialog" style="width: 600px ">
         <div class="modal-content" style="padding: 0; border: none; border-radius: 5px; width: 500px; margin-left: auto; margin-right: auto;">

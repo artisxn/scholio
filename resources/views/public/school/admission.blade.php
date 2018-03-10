@@ -40,6 +40,8 @@
 
     <!-- Bootstrap js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Select js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
 
     <!-- Angular js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
@@ -383,13 +385,16 @@
         <div class="upper-box relative" >
             <div class="" >
                 <img src="{{ $user->info->avatar }}" class="avatarUp">
-                <label for="avatarUpload" class="">
-                <div class="tool">
-                   <div class="upload"> <i class="fa fa-picture-o fa-img-up tool"></i></div>
-                    <span class="tooltip hidden-xs"> @lang('admission.photo')</span>
-                    <input type="file" id="avatarUpload" class="" name="avatarUpload" style="visibility: hidden;">
-                </div>
-                </label>
+
+                <!-- ================ CHANGE PHOTO ==============  -->
+
+                {{--<label for="avatarUpload" class="">--}}
+                {{--<div class="tool">--}}
+                   {{--<div class="upload"> <i class="fa fa-picture-o fa-img-up tool"></i></div>--}}
+                    {{--<span class="tooltip hidden-xs"> @lang('admission.photo')</span>--}}
+                    {{--<input type="file" id="avatarUpload" class="" name="avatarUpload" style="visibility: hidden;">--}}
+                {{--</div>--}}
+                {{--</label>--}}
 
             </div>
 

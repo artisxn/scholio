@@ -5,6 +5,7 @@ return [
         'changeView' => 'Αλλαγή Προβολής',
         'active' => 'Ενεργός',
         'alumni' => 'Απόφοιτος',
+
     ],
 
     'teachers' => [
@@ -14,4 +15,8 @@ return [
 
     'requests' => [
     ],
+
+
+
+
 ];

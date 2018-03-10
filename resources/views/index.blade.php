@@ -8,7 +8,7 @@
 	<!-- prevent zoomIn in mobile inputs,selects,etc -->
 	<meta property="fb:pages" content="934370089973049" />
 
-	<title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
+	<title>schol.io | Your Scholarship is a Click Away</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />

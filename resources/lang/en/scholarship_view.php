@@ -51,5 +51,9 @@ return [
         'btnDelete'=>'Delete Scholarship',
         'multiple'=>'Multiple Field of Studies',
 
-    ]
+    ],
+    'noApplyModal' => [
+        'title'=>'Applications are over',
+        'text'=>'The available scholarship applications are over for you this year.',
+    ],
 ];

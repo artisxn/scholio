@@ -19,6 +19,18 @@
     .btn-primary:hover{background: #007187 !important;}
     .centered{text-align: center; margin-left: auto; margin-right: auto;}
     .titleText{font-size: 130%;  margin-top: 50px;}
+
+    /*===========================================*/
+    /*=============== FLASH ALERT ===============*/
+    .verify-title{margin-left: auto; margin-right: auto; text-align: center; color: #fff; font-weight: 300}
+    .alert-primary{background: #7CA2B0; border-color: none;  }
+    .close-x{color: #fff !important; font-size: 150%; background: transparent; float: right; border: none; padding: 0; margin-top: -11px;}
+    .close-x:hover{color: #FD6A33!important;}
+    .alert-dismissable{padding: 20px;}
+
+    .verify-title>a{font-weight: 400; color: #fafafa}
+    .verify-title>a:hover{font-weight: 400; color: #90fdee
+    }
 </style>
 @endsection 
 
@@ -39,7 +51,17 @@
     @endif
 
 @else
-<div class="titleText centered" > @lang('panel_scholarships.create.createStudies') -> <a href="{{ url('/panel/school/studies') }}"> @lang('panel_scholarships.create.here')</a></div>
+    <div class="alert-dismissable alert alert-primary" style="margin-bottom: 40px">
+        {{--<button type="button" class="close-x" data-dismiss="alert" aria-hidden="true">--}}
+            {{--×--}}
+        {{--</button>--}}
+        <h3 class="verify-title"><i class="fa fa-exclamation" style="margin-right: 20px;"></i>
+            @lang('panel_scholarships.create.createStudies')
+            <a href="{{ url('/panel/school/studies') }}"> @lang('panel_scholarships.create.here')
+            </a>
+        </h3>
+    </div>
+
 @endif
 
 @endsection @section('scriptsBefore') {{--

@@ -10,12 +10,12 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
+
+        <title>schol.io | Your Scholarship is a click Away</title>
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="{{asset('new/img/favicon.ico')}}" type="image/x-icon" />
+        <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
 
         <link rel="stylesheet" href="/panel/assets/css/bootstrap.min.css" />
 

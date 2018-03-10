@@ -6,11 +6,7 @@
     <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/new/img/favicon-144.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/new/img/favicon-72.ico">
-    <link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">
-
+    <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
 
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -121,6 +117,8 @@
 </style>
 
 <body ng-app="app" ng-controller="resultsCtrl">
+
+@include('components.preloader')
 
 
 <!-- Scholio Header -->

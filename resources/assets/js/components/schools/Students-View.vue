@@ -86,8 +86,8 @@
                             </form>
                         </div>
 
-                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)" ></i>
-                        <i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student)" v-if="studies"></i>
+                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)"  :class="[{'fakeBtn': student.role=='fake'}]"></i>
+                        <i class="fa fa-file-text-o flip-info" aria-hidden="true"  :class="[{'fakeBtn': student.role=='fake'}]" data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student)" v-if="studies"></i>
 
                     </div>
 
@@ -153,32 +153,32 @@
                     <th style="width: 30px">
 
                     </th>
-                    <th> <a href="#" v-on:click="nameChangeSort">
+                    <th class="text-center"> <a href="#" v-on:click="nameChangeSort">
                         {{ lang('resource.students.name') }}
                         <span v-if="sortType == 'name' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                         <span v-if="sortType == 'name' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
                     </th>
-                    <th>
+                    <th class="text-center thPhone">
                         {{ lang('resource.students.phone') }}
                     </th>
-                    <th> <a href="#" v-on:click="emailChangeSort">
-                        e-mail
-                        <span v-if="sortType == 'email' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                        <span v-if="sortType == 'email' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
-                    </th>
-                    <th>
+                    <th class="text-center thLevel">
                         <a href="#" v-on:click="levelChangeSort">
-                        Level
+                            {{ lang('resource.students.level') }}
                         <span v-if="sortType == 'level' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                         <span v-if="sortType == 'level' && sortReverse" class="fa fa-sort-amount-desc"></span>
                         </a>
                     </th>
-                    <th>
+                    <th class="text-center thStudies">
                         <a href="#" v-on:click="studyChangeSort">
-                        Study
+                         {{ lang('resource.students.studies') }}
                         <span v-if="sortType == 'study' && !sortReverse" class="fa fa-sort-amount-asc"></span>
                         <span v-if="sortType == 'study' && sortReverse" class="fa fa-sort-amount-desc"></span>
                         </a>
+                    </th>
+                    <th class="text-center thEmail"> <a href="#" v-on:click="emailChangeSort">
+                        e-mail
+                        <span v-if="sortType == 'email' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                        <span v-if="sortType == 'email' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
                     </th>
                 </tr>
                 </thead>
@@ -190,10 +190,10 @@
                         </a>
                     </td>
                     <td style="text-transform: capitalize">{{ student.name }}</td>
-                    <td>{{ student.student_phone }}</td>
-                    <td>{{ student.email }}</td>
-                    <td>{{ student.level }}</td>
-                    <td>{{ student.type }}</td>
+                    <td class="thPhone">{{ student.student_phone }}</td>
+                    <td class="thLevel">   <span class="dots-text">{{ student.level }}</span></td>
+                    <td class="thStudies"> <span class="dots-text">{{ student.type }}</span></td>
+                    <td class="thEmail">{{ student.email }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -409,8 +409,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <a :href="'/card/' + info.id + '/delete'" class="btn btn-danger btn-close" v-if="info.role == 'fake'">DELETE CARD</a>
-                        <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
+                        <a :href="'/card/' + info.id + '/delete'" class="btn btn-orange btn-close" v-if="info.role == 'fake'">{{ lang('resource.students.modal.delete') }}</a>
+                        <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">{{lang('resource.students.modal.close') }}</button>
                     </div>
                 </div>
 
@@ -632,7 +632,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
+                            <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">{{lang('resource.students.modal.close') }}</button>
                         </div>
                     </div>
 
@@ -695,6 +695,8 @@
 <style>
     .alumniFilter{-webkit-filter: grayscale(85%); opacity: 0.9}
     .fakeFilter{-webkit-filter: grayscale(70%); opacity: 0.7}
+    .fakeBtn{color: #e1e1e1 !important;}
+    .fakeBtn:hover{color: #90fdee !important;}
 
 
     .fade3-enter-active, .fade3-leave-active {
@@ -761,6 +763,38 @@
 
     .fath{color: #b8b8b8; font-size: 105%; margin-left: 10px;}
 
+    th{min-width: 100px;}
+
+    .dots-text{display:inline-block;
+        /*min-width: 150px;*/
+        /*max-width: 200px;*/
+        /*width: 95%;*/
+        /*white-space: nowrap;*/
+        /*overflow:hidden !important;*/
+        /*text-overflow: ellipsis;*/
+    }
+
+    @media (max-width: 470px){
+        .thLevel{display: none}
+    }
+    @media (max-width: 670px){
+        .thPhone{display: none}
+    }
+    @media (max-width: 1170px){
+        .thStudies{display: none}
+    }
+
+    @media (max-width: 1650px){
+        .thEmail{display: none}
+    }
+
+    @media (min-width: 641px) and (max-width: 680px){
+         .fa.fa-user-plus{display: none}
+    }
+
+    @media (max-width: 640px){
+        /*.tool{margin-left: auto;  margin-right: auto; text-align: center;}*/
+    }
 
 
 
@@ -776,6 +810,11 @@
 
     .btn-info,.btn-info:focus{background: #00bcd4; border-color: #00bcd4; }
     .btn-info:hover{background: #00a6be; border-color: #00a6be; }
+
+    .btn-orange,.btn-orange:focus{background: #7f8d9b; border:none;  color: #e8e8e8
+    }
+    .btn-orange:hover{background: #777; border:none; color: #ececec
+    }
 
     .btn-view{margin: 11px 10px 10px 0!important; height: 38px;}
     .form-control{z-index: 0!important;}
@@ -1082,6 +1121,7 @@
 
 
     }
+    @media  (max-width: 640px) {  .input-search{width: 96%!important; }  }
     @media  (max-width: 580px) {  .input-search{width: 68%!important; }  }
     @media  (max-width: 540px) {  .input-search{width: 66%!important; }  }
     @media  (max-width: 500px) {  .input-search{width: 62%!important; }  }

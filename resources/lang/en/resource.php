@@ -13,6 +13,8 @@ return [
         'phone' => 'Phone',
         'father' => 'Father',
         'mother' => 'Mother',
+        'level' => 'Level',
+        'studies' => 'Studies',
         'modal' => [
             'study1' => 'Field of Studies',
             'study2' => 'Additional Field of Studies',
@@ -20,6 +22,8 @@ return [
             'addStudent' => 'Add New Student',
             'deleteStudy' => 'Delete',
             'matching' => 'Connect with:',
+            'close' => 'Close',
+            'delete' => 'Delete Card',
 
         ],
     ],

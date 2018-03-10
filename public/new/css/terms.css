@@ -1,0 +1,81 @@
+
+/*=============================================*/
+/*  /////////////////////////////////////////  */
+/* -------------  HEADER      ------------- */
+/*  /////////////////////////////////////////  */
+
+#header {
+    background:rgba(240,240,240,0.92);
+    border-bottom: 1px solid #c1c1c1;
+    height: 61px;
+}
+
+#header .active a {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #8e8e8e;
+}
+
+#header2 {z-index: 90}
+
+#header2 a:link, #header2 a:visited  {
+    background-color: transparent!important;
+    color: #fff;
+}
+
+
+#header2 .active a {
+    color: #FD6A33;
+}
+#header2 a:hover {
+    color: #dde0e1 !important;
+}
+
+/*  /////////////////////////////////////////  */
+
+.navbar-scroll li {
+    top: -11px;
+}
+
+.nav-web .sc-landing-logo, .nav-web .sc-landing-logo-sticky {
+    padding-top: 15px;
+}
+
+
+
+
+.nav-mobile {
+    padding-top: 11px;
+}
+
+section{padding-top:100px!important; padding-bottom:100px!important;}
+/*Landing Header */
+.sc-landing-header{height:79px;background:transparent; }
+
+.sc-landing-header-sticky{background:transparent; }
+
+.sc-landing-brand{padding-top:26px!important;}
+
+.sc-landing-menu{  padding-top:10px;  }
+
+.sc-landing-menu a{  color:#324c5a;}
+.sc-landing-menu li>a:hover{background-color:transparent}
+.sc-landing-menu li>a:focus{background-color:transparent}
+/*.sc-landing-menu li>a:hover{color:#ffffff;}*/
+/*.sc-landing-menu li>a:focus{color:#ffffff;}*/
+
+.sc-landing-menu-item{padding-top:8px;}
+
+.sc-button-landing{margin-top:-4px;}
+
+.sc-landing-logo-sticky{display:block}
+.sc-landing-logo{}
+
+.sc-landing-menu-mobile-sandwitch{padding-right:20px;margin-top: 25px!important; cursor:pointer;}
+.sc-landing-menu-button-sandwitch{}
+.sc-landing-menu-sandwitch-button-sticky{display:block;}
+.sc-landing-menu-sandwitch{}
+
+.sc-landing-menu-mobile-holder{padding:20px;width:230px;height:100%;position:fixed;right:0; top:0;z-index: 999;display:none;}
+.sc-landing-menu-mobile-close{font-size:25px;cursor:pointer;}
+.sc-landing-menu-mobile-item{font-size:18px;text-align:right;color:white;font-weight:300;padding-top:20px;}
+/*=============================================*/

@@ -155,7 +155,7 @@
                         <div class="middle-text centered-text">@lang('register.select')</div>
 
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="btn-role centered-text" ng-mouseover="over=true"  ng-mouseleave="over=false" ng-click="active('student')" ng-class="{selected: role=='student'}">
                                     <img src="/new/img/student2-line.png" class="role-img centered-abs " alt="">
                                     <div class="colored" ng-class="{show: (over||role=='student')}">
@@ -165,17 +165,17 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
-                                <div class="btn-role centered-text" ng-mouseover="over2=true"  ng-mouseleave="over2=false" ng-click="active('parent')" ng-class="{selected: role=='parent'}">
-                                    <img src="/new/img/parent-line.png" class="role-img2 centered-abs " alt="">
-                                    <div class="colored" ng-class="{show: over2||role=='parent'}">
-                                        <img src="/new/img/parent.png" class="role-img-cl2 centered-abs " alt="">
-                                        <div class="btn-text">@lang('register.parent')</div>
-                                    </div>
-                                </div>
+                            {{--<div class="col-sm-4">--}}
+                                {{--<div class="btn-role centered-text" ng-mouseover="over2=true"  ng-mouseleave="over2=false" ng-click="active('parent')" ng-class="{selected: role=='parent'}">--}}
+                                    {{--<img src="/new/img/parent-line.png" class="role-img2 centered-abs " alt="">--}}
+                                    {{--<div class="colored" ng-class="{show: over2||role=='parent'}">--}}
+                                        {{--<img src="/new/img/parent.png" class="role-img-cl2 centered-abs " alt="">--}}
+                                        {{--<div class="btn-text">@lang('register.parent')</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
-                            </div>
-                            <div class="col-sm-4">
+                            {{--</div>--}}
+                            <div class="col-sm-6">
                                 <div class="btn-role centered-text" ng-mouseover="over3=true"  ng-mouseleave="over3=false" ng-click="active('teacher')" ng-class="{selected: role=='teacher'}" >
                                     <img src="/new/img/teacher-line.png" class="role-img3 centered-abs " alt="">
                                     <div class="colored" ng-class="{show: over3||role=='teacher'}" >

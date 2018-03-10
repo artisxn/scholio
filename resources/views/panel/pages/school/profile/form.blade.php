@@ -16,6 +16,8 @@
     }
     /* =========================================================== */
 
+    .header-title{margin-bottom: 15px;}
+
 
     .margin-right-5{margin-right: 5px}
     .btn-primary{background-color: #008da5; border: none;}
@@ -55,6 +57,19 @@
     .tagText{color: #888; margin-bottom: 10px;}
     .multiSel{}
     .multiselectContainer{margin: 40px 10px 80px 10px;}
+
+    .card-box{margin-top: 20px;}
+
+    /*===========================================*/
+    /*=============== FLASH ALERT ===============*/
+    .verify-title{margin-left: auto; margin-right: auto; text-align: center; color: #fff; font-weight: 300}
+    .alert-primary{background: #7CA2B0; border-color: none;  }
+    .close-x{color: #fff !important; font-size: 150%; background: transparent; float: right; border: none; padding: 0; margin-top: -11px;}
+    .close-x:hover{color: #FD6A33!important;}
+    .alert-dismissable{padding: 20px;}
+
+
+
 
     /*===========================================*/
     /*=========== Google Autocomplete  ==========*/
@@ -162,11 +177,24 @@
 
 <?php $__env->startSection('content'); ?>
 
+
+
 <div class="row full-content">
+
+   @if(Session::has('updated_profile'))
+        <div class="alert-dismissable alert alert-primary" style="margin-bottom: 40px">
+            <button type="button" class="close-x" data-dismiss="alert" aria-hidden="true">
+                ×
+            </button>
+            <h3 class="verify-title"><i class="fa fa-check-circle" style="margin-right: 20px;"></i>{{ session('updated_profile') }}</h3>
+        </div>
+   @endif
+
+
     <div class="card-box">
-        <h4 class="m-t-0 header-title"><b><?php echo app('translator')->getFromJson('school_profile.title'); ?></b></h4>
-        <p class="text-muted m-b-30 font-13">
-            <?php echo app('translator')->getFromJson('school_profile.subtitle'); ?>
+        <h4 class="m-t-0 header-title text-center"><b>@lang('school_profile.title')</b></h4>
+        <p class="text-muted m-b-30 font-13 text-center">
+            @lang('school_profile.subtitle')
         </p>
         <div class="row">
             <form class="form-horizontal m-t-20" method="POST" action="/panel/school/profile/<?php echo e($school->id); ?>" accept-charset="UTF-8" enctype="multipart/form-data">
@@ -176,10 +204,6 @@
                     <img src="<?php echo e($logo); ?>" class="school-logo">
                     <div class="clearfix up30"></div>
                      @include('panel.partials.body.uploadImage', ['text' => app('translator')->getFromJson('school_profile.avatar'), 'type' => 'logo'])
-                   <!--  <div class="btn btn-primary text-centered btn-photo">
-                        <label for="avatar" class="btn-label"> <i class="fa fa-upload margin-right-5"></i><?php echo app('translator')->getFromJson('school_profile.avatar'); ?></label>
-                        <input type="file" id="avatar" class="form-control" name="logo" style="visibility: hidden;">
-                    </div> -->
                 </div>
 
 
@@ -192,7 +216,7 @@
                     <div class="input-container col-xs-12 col-sm-6 col-xl-3">
                         <?php $__currentLoopData = $schoolTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $schoolType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if($schoolType->id == $school->type_id ): ?>
-                        <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.type'); ?>" name="type" class="demo-form ad-input" value="<?php echo e($schoolType->name); ?>" disabled>
+                        <input type="text" label="@lang('school_profile.type')" name="type" class="demo-form ad-input" value="<?php echo e($schoolType->name); ?>" disabled>
                         <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -200,39 +224,39 @@
                     </div>
 
                     <div class="input-container col-xs-12 col-sm-6 col-xl-3">
-                        <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.email'); ?>" name="email" class="demo-form ad-input" value="<?php echo e(auth()->user()->email); ?>" disabled>
+                        <input type="text" label="@lang('school_profile.email')" name="email" class="demo-form ad-input" value="<?php echo e(auth()->user()->email); ?>" disabled>
                         <i class="icon-inp fa fa-envelope"></i>
                     </div>
 
                     <div class="input-container col-xs-12 col-sm-6 col-xl-3">
-                        <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.name'); ?>" name="name" class="demo-form ad-input" value="<?php echo e($school->name()); ?>">
+                        <input type="text" label="@lang('school_profile.name')" name="name" class="demo-form ad-input" value="<?php echo e($school->name()); ?>">
                         <i class="icon-inp fa fa-university"></i>
                     </div>
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
-                        <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.website'); ?>" name="website" class="demo-form ad-input" value="<?php echo e($school->website); ?>" >
+                        <input type="text" label="@lang('school_profile.website')" name="website" class="demo-form ad-input" value="<?php echo e($school->website); ?>" >
                         <i class="icon-inp fa fa-globe"></i>
                     </div>
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
                         <input  id="autocompleteCity"  placeholder=""
-                                type="text" label="<?php echo app('translator')->getFromJson('school_profile.city'); ?>" name="city" class="demo-form ad-input" value="<?php echo e($school->city); ?>">
+                                type="text" label="@lang('school_profile.city')" name="city" class="demo-form ad-input" value="<?php echo e($school->city); ?>">
                         <i class="icon-inp fa fa-map-marker"></i>
                     </div>
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
                         <input id="autocompleteAddress" placeholder=""
-                               type="text" label="<?php echo app('translator')->getFromJson('school_profile.address'); ?>" name="address" class="demo-form ad-input" value="<?php echo e($school->address); ?>">
+                               type="text" label="@lang('school_profile.address')" name="address" class="demo-form ad-input" value="<?php echo e($school->address); ?>">
                         <i class="icon-inp fa fa-home"></i>
                     </div>
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
-                        <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.phone'); ?>" name="phone" class="demo-form ad-input" value="<?php echo e($school->phone); ?>">
+                        <input type="text" label="@lang('school_profile.phone')" name="phone" class="demo-form ad-input" value="<?php echo e($school->phone); ?>">
                         <i class="icon-inp fa fa-phone"></i>
                     </div>
 
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3 ">
-                        <input type="text" label="<?php echo app('translator')->getFromJson('school_profile.manager'); ?>" name="user_name" class="demo-form ad-input" value="<?php echo e(auth()->user()->name); ?>">
+                        <input type="text" label="@lang('school_profile.manager')" name="user_name" class="demo-form ad-input" value="<?php echo e(auth()->user()->name); ?>">
                         <i class="icon-inp fa fa-user"></i>
                     </div>
 
@@ -275,7 +299,7 @@
 
                 <div class="col-xs-12 about-container">
                     <div class="form-group">
-                        <p><?php echo e($school->name()); ?>: <span class="tiny-text"><?php echo app('translator')->getFromJson('school_profile.about'); ?></span></p>
+                        <p><?php echo e($school->name()); ?>: <span class="tiny-text">@lang('school_profile.about')</p>
                         <textarea value="" name="about"><?php echo e($school->about); ?></textarea>
                         <!-- Height change on scrpit @ tinymce.init-->
                     </div>
@@ -326,11 +350,7 @@
 </div>
 <?php endif; ?>
 
-<?php if(Session::has('updated_profile')): ?>
-<div class="row">
-    <p class="alert alert-success col-lg-6"  style="margin: 0 10px"><?php echo e(session('updated_profile')); ?></p>
-</div>
-<?php endif; ?>
+
 
 <?php $__env->stopSection(); ?>
 
