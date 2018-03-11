@@ -338,13 +338,13 @@ class SocialAuthController extends Controller
                     $links->link = $media['value'];
                 }
                 
-                if (in_array('facebook', $media)) {
+                if (in_array('facebook', $profileBuilder)) {
                     $links->user_id = $user->id;
                     $links->name = 'facebook';
                     $links->link = $media['value'];
                 }
 
-                if (in_array('google', $media)) {
+                if (in_array('google', $profileBuilder)) {
                     $links->user_id = $user->id;
                     $links->name = 'google';
                     $links->link = $media['value'];
