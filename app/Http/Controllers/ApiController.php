@@ -210,10 +210,10 @@ class ApiController extends Controller
             $scholarship->length = $scholarship->usersLength();
             $scholarship->interests = $scholarship->interestsLength();
             $scholarship->multipleStudies = $scholarship->multipleStudies;
-            if (request()->cookie('lang') == 'en') {
-                $scholarship->criteria = $scholarship->criteriaEN->name;
-                $scholarship->financial = $scholarship->financialEN->plan;
-            }
+            // if (request()->cookie('lang') == 'en') {
+                // $scholarship->criteria = $scholarship->criteriaEN->name;
+                // $scholarship->financial = $scholarship->financialEN->plan;
+            // }
 
             if (auth()->check() && auth()->user()->role == 'student') {
                 $ints = ['sd'];
