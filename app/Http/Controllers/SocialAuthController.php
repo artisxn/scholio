@@ -260,6 +260,12 @@ class SocialAuthController extends Controller
             $link->save();
 
         } else {
+            $link = new SocialLink;
+            $link->user_id = $user->id;
+            $link->name = 'google';
+            $link->link = $profileBuilder['url'];
+            $link->save();
+
             foreach ($profileBuilder['media'] as $media) {
                 if ($media['type'] == 'otherProfile') {
                     $links = new SocialLink;
@@ -345,12 +351,6 @@ class SocialAuthController extends Controller
                         $links->user_id = $user->id;
                         $links->name = 'tumblr';
                         $links->link = $media['value'];
-                    }
-
-                    if ($profileBuilder['social'] == 'google') {
-                        $links->user_id = $user->id;
-                        $links->name = 'google';
-                        $links->link = $profileBuilder['url'];
                     }
 
                     $links->save();
