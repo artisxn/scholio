@@ -192,10 +192,10 @@ class SocialAuthController extends Controller
 
                             $cert = new Certificate;
                             $cert->user_id = $user->id;
-                            if (in_array('startDate') && isset($org['startDate'])) {
+                            if (in_array('startDate', $org) && isset($org['startDate'])) {
                                 $cert->from = '1/' . $org['startDate'];
                             }
-                            if (in_array('endDate') && isset($org['endDate'])) {
+                            if (in_array('endDate', $org) && isset($org['endDate'])) {
                                 $cert->until = '1/' . $org['endDate'];
                             }
 
