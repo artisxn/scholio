@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
+use App\Models\Company;
 use App\Models\Cv;
 use App\Models\Guardian;
+use App\Models\Job;
 use App\Models\Link;
+use App\Models\Skill;
+use App\Models\SocialLink;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\University;
 use App\Models\Work;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\SocialLink;
-use App\Models\Company;
-use App\Models\Job;
-use App\Models\Cvteacherstudy;
 
 class SocialAuthController extends Controller
 {
@@ -141,6 +142,10 @@ class SocialAuthController extends Controller
                 if ($role == 'teacher') {
                     $user->info->cover = $profileBuilder['cover'];
                     $user->info->save();
+                    if (isset($profileBuilder['skills'])) {
+                        $this->addTeacherSkills($profileBuilder['skills'], $user);
+                    }
+
                     foreach ($profileBuilder['organizations'] as $org) {
                         if ($org['type'] == 'work') {
 
@@ -156,18 +161,34 @@ class SocialAuthController extends Controller
                             $work->user_id = $user->id;
                             $work->company_id = $company->id;
                             $work->job_id = $job->id;
-                            // form 
-                            // until
+                            if ($org['startDate'] && isset($org['startDate'])) {
+                                $work->from = '1/' . $org['startDate'];
+                            }
+                            if ($org['endDate'] && isset($org['endDate'])) {
+                                $work->until = '1/' . $org['endDate'];
+                            }
                             $work->save();
                         }
 
                         if ($org['type'] == 'school') {
-                            // $study = new Cvteacherstudy;
-                            // $study->name = 
+                            $study = new Cvteacherstudy;
+                            $study->name = $org['title'];
+                            $study->save();
+
+                            $uni = new University;
+                            $uni->name = $org['name'];
+                            $uni->save();
+
                             $cert = new Certificate;
                             $cert->user_id = $user->id;
-                            // $cert->university = $org['name'];
-                            // $cert->name = $org['title'];
+                            if ($org['startDate'] && isset($org['startDate'])) {
+                                $cert->from = '1/' . $org['startDate'];
+                            }
+                            if ($org['endDate'] && isset($org['endDate'])) {
+                                $cert->until = '1/' . $org['endDate'];
+                            }
+
+                            $cert->university_id = $uni->id;
                             $cert->save();
                         }
                     }
@@ -175,6 +196,18 @@ class SocialAuthController extends Controller
                 $this->addBuildProfile($user, $profileBuilder);
             }
         }
+    }
+
+    public function addTeacherSkills($skills, $user)
+    {
+        foreach ($skills as $skill) {
+            $sk = new Skill;
+            $sk->name = $skill;
+            $sk->save();
+
+            $user->addFakeSkill($sk, $user);
+        }
+
     }
 
     public function addSocialLinks($user, $provider, $link)
