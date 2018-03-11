@@ -121,6 +121,9 @@ class SocialAuthController extends Controller
                 $info->user_id = $user->id;
                 $info->avatar = $avatar;
                 $info->gender = $profileBuilder['gender'];
+                if (isset($profileBuilder['about']) && $profileBuilder['about'] != '') {
+                    $info->about = $profileBuilder['about'];
+                }
                 $info->save();
             }
             if ($role == 'parent') {
@@ -176,7 +179,7 @@ class SocialAuthController extends Controller
 
                         if ($org['type'] == 'school') {
                             $study = Cvteacherstudy::where('name', $org['title'])->first();
-                            
+
                             if (!$study || !isset($study)) {
                                 $study = new Cvteacherstudy;
                                 $study->name = $org['title'];
