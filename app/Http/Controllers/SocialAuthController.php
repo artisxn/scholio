@@ -175,13 +175,11 @@ class SocialAuthController extends Controller
                         }
 
                         if ($org['type'] == 'school') {
-
                             $study = Cvteacherstudy::find('name', $org['title'])->first();
                             if (!$study || !isset($study)) {
                                 $study = new Cvteacherstudy;
                                 $study->name = $org['title'];
                                 $study->save();
-
                             }
 
                             $uni = University::where('name', $org['name'])->first();
@@ -189,7 +187,6 @@ class SocialAuthController extends Controller
                                 $uni = new University;
                                 $uni->name = $org['name'];
                                 $uni->save();
-
                             }
 
                             $cert = new Certificate;
