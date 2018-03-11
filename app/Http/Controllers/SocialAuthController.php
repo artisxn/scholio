@@ -15,6 +15,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Models\SocialLink;
 use App\Models\Company;
 use App\Models\Job;
+use App\Models\Cvteacherstudy;
 
 class SocialAuthController extends Controller
 {
@@ -39,7 +40,7 @@ class SocialAuthController extends Controller
         //     config(['services.' . $provider . '.redirect' => 'http://scholio.dev/auth/' . $provider . '/callback']);
         // }
 
-        // dd(config('services.facebook'));
+        // dd(config('services.google'));
 
         return Socialite::driver($provider)->redirect();
     }
@@ -53,6 +54,8 @@ class SocialAuthController extends Controller
     {
         $user_provider = Socialite::driver($provider)->user();
         $token = $user_provider->token;
+
+        dd($user_provider);
 
         $user = User::where('email', $user_provider->getEmail())->first();
 
@@ -96,7 +99,7 @@ class SocialAuthController extends Controller
         $this->createInfo($user, $role, $user_provider->avatar, $provider, $profileBuilder);
 
         Auth::login($user);
-        return redirect('/new/user');
+        return redirect('/dashboard');
     }
 
     public function createInfo($user, $role, $avatar, $provider, $profileBuilder)
@@ -159,6 +162,8 @@ class SocialAuthController extends Controller
                         }
 
                         if ($org['type'] == 'school') {
+                            // $study = new Cvteacherstudy;
+                            // $study->name = 
                             $cert = new Certificate;
                             $cert->user_id = $user->id;
                             // $cert->university = $org['name'];
