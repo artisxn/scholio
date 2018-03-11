@@ -17,6 +17,7 @@ use App\Models\Work;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use App\Models\Cvteacherstudy;
 
 class SocialAuthController extends Controller
 {
