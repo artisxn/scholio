@@ -11,4 +11,5 @@ return [
     'account'=>'Do you have an account?',
     'signin'=>' Log In',
 
+
 ];

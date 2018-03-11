@@ -25,7 +25,7 @@
             <a href="/">
                 <img src="/new/img/logoNXsquareBDG.png" alt="" style="width: 90px;">
             </a>
-            <div class="text-center font-weight-300 login-signUp-title">Εγγραφη Εκπαιδευτικού Ιδρύματος στο Schol.io</div>
+            <div class="text-center font-weight-300 login-signUp-title">@lang('register-step2.school.title')</div>
         </div>
 
         <div class="panel-body">
@@ -34,7 +34,7 @@
                 {{ session()->put('registration', 'school') }}
 
                 <div class="form-group">
-                    <label for="type" class="col-sm-4 font-weight-400">Τύπος Εκπαιδευτικού Ιδρύματος</label>
+                    <label for="type" class="col-sm-4 font-weight-400">@lang('register-step2.school.type')</label>
 
                     <div class="col-sm-8">
                         <select id="type" name="type" class="form-control selectpicker" data-width="100%" data-style="btn-primary">
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <label for="name" class="col-sm-4 font-weight-400">Όνομα Ιδρύματος</label>
+                    <label for="name" class="col-sm-4 font-weight-400">@lang('register-step2.school.name')</label>
 
                     <div class="col-sm-8">
                         <input  id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <label for="email" class="col-sm-4 font-weight-400">e-mail Ιδρύματος</label>
+                    <label for="email" class="col-sm-4 font-weight-400">@lang('register-step2.school.email')</label>
 
                     <div class="col-sm-8">
                         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label for="password" class="col-sm-4 font-weight-400">Κωδικός</label>
+                    <label for="password" class="col-sm-4 font-weight-400">@lang('register-step2.password')</label>
 
                     <div class="col-sm-8">
                         <input id="password" type="password" class="form-control" name="password" required>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password-confirm" class="col-sm-4 font-weight-400">Επιβεβαίωση Κωδικού</label>
+                    <label for="password-confirm" class="col-sm-4 font-weight-400">@lang('register-step2.confirm')</label>
 
                     <div class="col-sm-8">
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -105,7 +105,7 @@
                 <div class="form-group text-center m-t-40">
                     <div class="col-xs-12">
                         <button class="btn btn-block sc-t-white sc-dark-green" type="submit">
-                            Εγγραφή
+                            @lang('register-step2.signup')
                         </button>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
     <div class="row">
         <div class="col-sm-12 text-center">
             <p>
-                Έχετε ήδη λογαριασμό;<a href="" onClick="modal_toggle1()" class="text-primary m-l-5 a-text"><b>Συνδεθείτε</b></a>
+                @lang('register-step2.school.account')<a href="" onClick="modal_toggle1()" class="text-primary m-l-5 a-text"><b>@lang('register-step2.school.login')</b></a>
             </p>
         </div>
     </div>

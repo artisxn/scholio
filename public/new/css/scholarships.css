@@ -133,7 +133,13 @@ p {padding: 15px; color: #5d5d5d;  }
 .hex-img{height: 34px;  top: 0; z-index: 3; position: absolute;}
 
 .text-title ,.text-content{color: #888; font-weight: 300;}
-.text-title { margin-top: 25px; text-decoration: underline; font-size: 116%}
+.text-title { margin-top: 25px;
+    color: #4d95a5; font-size: 120%;
+
+}
+
+.text-title::first-letter{font-size: 123%;}
+
 .text-content{ margin-top: 4px; font-size: 97%;}
 
 .scholar-footer{height: 60px; background-color: #f0f0f0;

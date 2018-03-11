@@ -31,10 +31,16 @@
         body {
             background-color: #F1F4F5;
         }
-        h1{font-size: 150%; font-weight: 300; color: #888;}
+        h1{font-size: 170%; font-weight: 300; color: #667;}
+        h3{font-size: 130%; font-weight: 400; color: #778;}
         .dropdown-menu{background-color: #eee; padding-top: 20px}
-        .mainBody{min-height: 1000px;}
-        .outerBox{min-height: 600px; background: #fafafa; border: 1px solid #ccc; border-radius: 6px; width: 80%;  margin: 120px auto 50px auto; padding: 20px;}
+        .mainBody{min-height: 1100px;}
+        .outerBox{min-height: 800px; background: #fafafa; border: 1px solid #ccc; border-radius: 6px; width: 80%;  margin: 120px auto 50px auto; padding: 30px;}
+        .terms{color: #999; text-indent: 50px; line-height: 180%; word-spacing: 3px; text-align: justify;}
+
+        .terms::first-letter {
+            font-size: 130%;
+        }
     </style>
 
 </head>
@@ -130,7 +136,25 @@
 <div class="container mainBody">
     <div class="outerBox">
 
-        <h1>Όροι Χρήσης</h1>
+        <h1>@lang('terms.termsOfUse')</h1>
+
+        <h3>@lang('terms.titles.a')</h3>
+        <p class="terms">@lang('terms.terms.1')</p>
+        <p class="terms">@lang('terms.terms.2')</p>
+        <p class="terms">@lang('terms.terms.3')</p>
+        <p class="terms">@lang('terms.terms.4')</p>
+        <p class="terms">@lang('terms.terms.5')</p>
+
+        <h3>@lang('terms.titles.b')</h3>
+        <p class="terms">@lang('terms.terms.6')</p>
+        <p class="terms">@lang('terms.terms.7')</p>
+
+
+        <h3>@lang('terms.titles.c')</h3>
+        <p class="terms">@lang('terms.terms.8')</p>
+        <p class="terms">@lang('terms.terms.9')</p>
+        <p class="terms">@lang('terms.terms.10')</p>
+        <p class="terms">@lang('terms.terms.11')</p>
 
     </div>
 

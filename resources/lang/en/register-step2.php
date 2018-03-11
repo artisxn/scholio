@@ -11,4 +11,17 @@ return [
     'account'=>'Already have an account?',
     'signup'=>'Sign up',
     'login'=>'Log in',
+
+
+    'school'=>[
+
+        'title'=>'Registration of Educational Institution at Schol.io',
+        'type'=>'Type of Institution',
+        'name'=>'Name of Institution',
+        'email'=>'eMail of Institution',
+        'account'=>'Already have an account?',
+        'login'=>'Log in',
+
+    ],
+
 ];
