@@ -56,7 +56,6 @@ class SocialAuthController extends Controller
     {
         $user_provider = Socialite::driver($provider)->user();
         $token = $user_provider->token;
-        dd($user_provider);
 
         $user = User::where('email', $user_provider->getEmail())->first();
 
@@ -148,7 +147,7 @@ class SocialAuthController extends Controller
 
                     foreach ($profileBuilder['organizations'] as $org) {
                         if ($org['type'] == 'work') {
-                            $company = Company::where('name', $org['name']) - first();
+                            $company = Company::where('name', $org['name'])->first();
                             if (!$company || !isset($company)) {
                                 $company = new Company;
                                 $company->name = $org['name'];
