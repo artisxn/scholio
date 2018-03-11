@@ -200,12 +200,22 @@ class SocialAuthController extends Controller
 
     public function addTeacherSkills($skills, $user)
     {
-        foreach ($skills as $skill) {
+        if (is_array($skills)) {
+            foreach ($skills as $skill) {
+                $sk = new Skill;
+                $sk->name = $skill;
+                $sk->save();
+
+                $user->addFakeSkill($sk, $user);
+            }
+
+        } else {
             $sk = new Skill;
             $sk->name = $skill;
             $sk->save();
 
             $user->addFakeSkill($sk, $user);
+
         }
 
     }
