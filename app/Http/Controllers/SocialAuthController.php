@@ -56,8 +56,6 @@ class SocialAuthController extends Controller
         $user_provider = Socialite::driver($provider)->user();
         $token = $user_provider->token;
 
-        // dd($user_provider);
-
         $user = User::where('email', $user_provider->getEmail())->first();
 
         if (isset($user)) {
@@ -211,7 +209,7 @@ class SocialAuthController extends Controller
 
         } else {
             $sk = new Skill;
-            $sk->name = $skill;
+            $sk->name = $skills;
             $sk->save();
 
             $user->addFakeSkill($sk, $user);
