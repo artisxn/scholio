@@ -57,6 +57,8 @@ class SocialAuthController extends Controller
         $user_provider = Socialite::driver($provider)->user();
         $token = $user_provider->token;
 
+        dd($user_provider);
+
         $user = User::where('email', $user_provider->getEmail())->first();
 
         if (isset($user)) {
