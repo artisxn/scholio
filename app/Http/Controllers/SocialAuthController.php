@@ -90,12 +90,13 @@ class SocialAuthController extends Controller
                 'tagline' => $user_provider->user['tagline'] ?? '',
                 'organizations' => $user_provider->user['organizations'] ?? '',
                 'cover' => $user_provider->user['cover']['coverPhoto']['url'] ?? '',
-                'google' => $user_provider->user['url'] ?? '',
+                'social' => 'google',
             ];
         } else if ($provider == 'facebook') {
             $profileBuilder = [
                 'gender' => $user_provider->user['gender'] ?? '',
-                'facebook' => $user_provider->user['link'] ?? '',
+                'url' => $user_provider->user['link'] ?? '',
+                'social' => 'facebook',
             ];
         }
 
@@ -251,106 +252,109 @@ class SocialAuthController extends Controller
 
     public function addBuildProfile($user, $profileBuilder)
     {
-        foreach ($profileBuilder['media'] as $media) {
-            if ($media['type'] == 'otherProfile') {
-                $links = new SocialLink;
-                if (strpos($media['value'], 'twitter') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'twitter';
-                    $links->link = $media['value'];
-                }
+        if ($profileBuilder['social'] == 'facebook') {
+            $link = new SocialLink;
+            $link->user_id = $user->id;
+            $link->name = 'facebook';
+            $link->link = $profileBuilder['url'];
+            $link->save();
 
-                if (strpos($media['value'], 'google') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'google';
-                    $links->link = $media['value'];
-                }
-                
-                if (strpos($media['value'], 'facebook') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'facebook';
-                    $links->link = $media['value'];
-                }
+        } else {
+            foreach ($profileBuilder['media'] as $media) {
+                if ($media['type'] == 'otherProfile') {
+                    $links = new SocialLink;
+                    if (strpos($media['value'], 'twitter') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'twitter';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'github') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'github';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'google') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'google';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'flickr') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'flickr';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'facebook') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'facebook';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'linkedin') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'linkedin';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'github') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'github';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'youtube') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'youtube';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'flickr') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'flickr';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'instagram') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'instagram';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'linkedin') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'linkedin';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'snapchat') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'snapchat';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'youtube') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'youtube';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'skype') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'skype';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'instagram') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'instagram';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'bitbucket') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'bitbucket';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'snapchat') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'snapchat';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'dribbble') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'dribbble';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'skype') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'skype';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'pinterest') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'pinterest';
-                    $links->link = $media['value'];
-                }
+                    if (strpos($media['value'], 'bitbucket') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'bitbucket';
+                        $links->link = $media['value'];
+                    }
 
-                if (strpos($media['value'], 'tumblr') !== false) {
-                    $links->user_id = $user->id;
-                    $links->name = 'tumblr';
-                    $links->link = $media['value'];
-                }
-                
-                if (in_array('facebook', $profileBuilder)) {
-                    $links->user_id = $user->id;
-                    $links->name = 'facebook';
-                    $links->link = $profileBuilder['facebook'];
-                }
+                    if (strpos($media['value'], 'dribbble') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'dribbble';
+                        $links->link = $media['value'];
+                    }
 
-                if (in_array('google', $profileBuilder)) {
-                    $links->user_id = $user->id;
-                    $links->name = 'google';
-                    $links->link = $profileBuilder['google'];
-                }
+                    if (strpos($media['value'], 'pinterest') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'pinterest';
+                        $links->link = $media['value'];
+                    }
 
-                $links->save();
+                    if (strpos($media['value'], 'tumblr') !== false) {
+                        $links->user_id = $user->id;
+                        $links->name = 'tumblr';
+                        $links->link = $media['value'];
+                    }
+
+                    if ($profileBuilder['social'] == 'google') {
+                        $links->user_id = $user->id;
+                        $links->name = 'google';
+                        $links->link = $profileBuilder['url'];
+                    }
+
+                    $links->save();
+                }
             }
         }
     }
