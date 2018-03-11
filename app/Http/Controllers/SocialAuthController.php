@@ -175,7 +175,7 @@ class SocialAuthController extends Controller
                         }
 
                         if ($org['type'] == 'school') {
-                            $study = Cvteacherstudy::find('name', $org['title'])->first();
+                            $study = Cvteacherstudy::where('name', $org['title'])->first();
                             
                             if (!$study || !isset($study)) {
                                 $study = new Cvteacherstudy;
