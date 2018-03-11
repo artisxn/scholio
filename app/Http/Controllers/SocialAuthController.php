@@ -187,7 +187,7 @@ class SocialAuthController extends Controller
     {
         foreach ($profileBuilder['media'] as $media) {
             if ($media['type'] == 'otherProfile') {
-                $links = new Link;
+                $links = new SocialLink;
                 if (strpos($media['value'], 'twitter') !== false) {
                     $links->user_id = $user->id;
                     $links->name = 'twitter';
