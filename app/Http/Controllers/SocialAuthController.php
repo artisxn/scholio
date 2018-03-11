@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Certificate;
 use App\Models\Company;
 use App\Models\Cv;
+use App\Models\Cvteacherstudy;
 use App\Models\Guardian;
 use App\Models\Job;
 use App\Models\Link;
@@ -17,7 +18,6 @@ use App\Models\Work;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\Cvteacherstudy;
 
 class SocialAuthController extends Controller
 {
@@ -147,14 +147,19 @@ class SocialAuthController extends Controller
 
                     foreach ($profileBuilder['organizations'] as $org) {
                         if ($org['type'] == 'work') {
+                            $company = Company::where('name', $org['name']) - first();
+                            if (!$company || !isset($company)) {
+                                $company = new Company;
+                                $company->name = $org['name'];
+                                $company->save();
+                            }
 
-                            $company = new Company;
-                            $company->name = $org['name'];
-                            $company->save();
-
-                            $job = new Job;
-                            $job->name = $org['title'];
-                            $job->save();
+                            $job = Job::where('name', $org['title'])->first();
+                            if (!$job || !isset($job)) {
+                                $job = new Job;
+                                $job->name = $org['title'];
+                                $job->save();
+                            }
 
                             $work = new Work;
                             $work->user_id = $user->id;
@@ -170,13 +175,22 @@ class SocialAuthController extends Controller
                         }
 
                         if ($org['type'] == 'school') {
-                            $study = new Cvteacherstudy;
-                            $study->name = $org['title'];
-                            $study->save();
 
-                            $uni = new University;
-                            $uni->name = $org['name'];
-                            $uni->save();
+                            $study = Cvteacherstudy::find('name', $org['title'])->first();
+                            if (!$study || !isset($study)) {
+                                $study = new Cvteacherstudy;
+                                $study->name = $org['title'];
+                                $study->save();
+
+                            }
+
+                            $uni = University::where('name', $org['name'])->first();
+                            if (!$uni || !isset($uni)) {
+                                $uni = new University;
+                                $uni->name = $org['name'];
+                                $uni->save();
+
+                            }
 
                             $cert = new Certificate;
                             $cert->user_id = $user->id;
