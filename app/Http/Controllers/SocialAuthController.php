@@ -175,8 +175,6 @@ class SocialAuthController extends Controller
                         }
 
                         if ($org['type'] == 'school') {
-                            dd($org);
-
                             $study = Cvteacherstudy::find('name', $org['title'])->first();
                             
                             if (!$study || !isset($study)) {
@@ -202,6 +200,7 @@ class SocialAuthController extends Controller
                             }
 
                             $cert->university_id = $uni->id;
+                            $cert->study_id = $study->id;
                             $cert->save();
                         }
                     }
