@@ -248,7 +248,13 @@
                                             {{ $work->company->name }}
                                         </div>
                                         <div class="t3">
-                                             {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->from)->toDateTimeString())->year }} - {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->until)->toDateTimeString())->year }}
+                                             @if(isset($work->from))
+                                                {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->from)->toDateTimeString())->year }}
+                                             @endif
+                                             -
+                                             @if(isset($work->until))
+                                                {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->until)->toDateTimeString())->year }}
+                                             @endif
                                         </div>
                                     @endforeach
                                 @endif
@@ -267,7 +273,13 @@
                                             {{ $certificate->university->name  }}
                                         </div>
                                         <div class="t3">
-                                            {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->from)->toDateTimeString())->year }} - {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->until)->toDateTimeString())->year }}
+                                            @if(isset($certificate->from))
+                                                {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->from)->toDateTimeString())->year }}
+                                            @endif
+                                            -
+                                            @if(isset($certificate->until))
+                                                {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->until)->toDateTimeString())->year }}
+                                            @endif
                                         </div>
                                     @endforeach
                                     <hr>
