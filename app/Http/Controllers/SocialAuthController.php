@@ -252,6 +252,7 @@ class SocialAuthController extends Controller
 
     public function addBuildProfile($user, $profileBuilder)
     {
+        echo $profileBuilder['social'] . '--<br>';
         if ($profileBuilder['social'] == 'facebook') {
             $link = new SocialLink;
             $link->user_id = $user->id;
@@ -259,7 +260,9 @@ class SocialAuthController extends Controller
             $link->link = $profileBuilder['url'];
             $link->save();
 
-        } else {
+            dd($link);
+
+        } else if ($profileBuilder['social'] == 'google') {
             $link = new SocialLink;
             $link->user_id = $user->id;
             $link->name = 'google';
@@ -357,5 +360,7 @@ class SocialAuthController extends Controller
                 }
             }
         }
+
+        dd('no');
     }
 }
