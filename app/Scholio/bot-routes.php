@@ -53,7 +53,7 @@ Route::get('/test/{find}', function ($find) {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/images/schools/' . $result->image,
+            "image_url" => 'https://schol.io/' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
@@ -104,7 +104,7 @@ Route::get('/school/search', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/images/schools/' . $result->image,
+            "image_url" => 'https://schol.io/' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
@@ -154,7 +154,7 @@ Route::get('/scholarship/search', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->study,
-            "image_url" => 'https://schol.io/images/schools/' . $result->school_logo,
+            "image_url" => 'https://schol.io/' . $result->school_logo,
             // "image_url" => 'https://schol.io/panel/assets/images/steps' . $result->section . '.png',
             "subtitle" => $result->criteria,
             "buttons" => array(
@@ -205,7 +205,7 @@ Route::get('/scholarship/custom', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->study,
-            "image_url" => 'https://schol.io/images/schools/' . $result->school_logo,
+            "image_url" => 'https://schol.io/' . $result->school_logo,
             // "image_url" => 'https://schol.io/panel/assets/images/steps' . $result->section . '.png',
             "subtitle" => $result->criteria,
             "buttons" => array(
@@ -256,7 +256,7 @@ Route::get('/school/custom', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/images/schools/' . $result->image,
+            "image_url" => 'https://schol.io/' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
