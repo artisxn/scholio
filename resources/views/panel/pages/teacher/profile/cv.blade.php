@@ -259,7 +259,7 @@
                                         <div class="t2 tp tp2">
                                             {{ $work->company->name }}
                                         </div>
-                                        <div class="t3">
+                                        <div class="t3 tp">
                                              @if(isset($work->from))
                                                 {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->from)->toDateTimeString())->year }}
                                              @endif
@@ -284,7 +284,7 @@
                                         <div class="t2 tp tp2">
                                             {{ $certificate->university->name  }}
                                         </div>
-                                        <div class="t3">
+                                        <div class="t3 tp">
                                             @if(isset($certificate->from))
                                                 {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->from)->toDateTimeString())->year }}
                                             @endif

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use App\Models\Dummy;
 use App\Models\Financial;
 use App\Models\Scholarship;
@@ -211,8 +212,8 @@ class ApiController extends Controller
             $scholarship->interests = $scholarship->interestsLength();
             $scholarship->multipleStudies = $scholarship->multipleStudies;
             // if (request()->cookie('lang') == 'en') {
-                // $scholarship->criteria = $scholarship->criteriaEN->name;
-                // $scholarship->financial = $scholarship->financialEN->plan;
+            // $scholarship->criteria = $scholarship->criteriaEN->name;
+            // $scholarship->financial = $scholarship->financialEN->plan;
             // }
 
             if (auth()->check() && auth()->user()->role == 'student') {
@@ -456,4 +457,205 @@ class ApiController extends Controller
     {
         return auth()->user()->info->admissions();
     }
+
+    public function getSchoolProfileHastags()
+    {
+        $tags = auth()->user()->info->tag;
+
+        return $tags;
+    }
+
+    public function saveSchoolProfileHastags(Tag $tag)
+    {
+        $message = 'OK';
+        try {
+            auth()->user()->info->tag()->toggle($tag);
+        } catch (\Exception $e) {
+            $message = $e;
+        }
+
+        return $message;
+    }
+
+    public function deleteSchoolProfileHastags(Tag $tag)
+    {
+        $message = 'OK';
+        try {
+            auth()->user()->info->tag()->detach($tag);
+        } catch (Exception $e) {
+            $message = $e;
+        }
+
+        return $message;
+    }
+
+    public function addSchoolProfileHastag($tag)
+    {
+        $newTag = new Tag;
+        $newTag->name = $tag;
+        $newTag->slag = str_replace("_", " ", $tag);
+        $newTag->save();
+
+        return $newTag;
+    }
+
+    public function swapSchoolCards($from, $to)
+    {
+        $error = null;
+
+        try {
+            $card1 = Card::find($from);
+            $card2 = Card::find($to);
+            $student = $card1->student_id;
+
+            $card1->role = 'fake';
+            $card1->student_id = null;
+            $card1->save();
+
+            $card2->role = 'student';
+            $card2->student_id = $student;
+            $card2->save();
+            return 'OK';
+        } catch (Exception $e) {
+            $error = $e;
+        }
+
+        return $error;
+
+    }
+
+    public function getSchoolCards($status, $study, $name)
+    {
+        $exact = Card::where('name', $name)->where('role', 'fake')->first();
+        $card = null;
+        $card2 = null;
+        if ($exact) {
+            $card = Card::where('student_id', $exact->student_id)->where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get()->except($exact->id);
+            $card2 = Card::where('student_id', $exact->student_id)->where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get()->except($exact->id);
+        } else {
+            $card = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', 'sd')->get();
+            $card2 = Card::where('user_id', auth()->user()->id)->where('role', 'fake')->where('status', 'connected')->where('type', null)->get();
+        }
+
+        $mergedCards = $card->merge($card2);
+
+        $final = collect(['exact' => $exact]);
+
+        return $final->merge($mergedCards);
+    }
+
+    public function updateSchoolCard(Card $card, $field, $newValue)
+    {
+        $card->$field = $newValue;
+        $error = null;
+        try {
+            $card->save();
+            return 'OK';
+        } catch (Exception $e) {
+            $error = $e;
+        }
+
+        return $error;
+    }
+
+    public function uploadSchoolImage()
+    {
+        $data = request()->input('img');
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $data = base64_decode($data);
+        $ext = '.jpg';
+        $imageName = time() . $ext;
+        $schoolName = auth()->user()->info->type->name . '_' . auth()->user()->id . '_' . auth()->user()->name;
+        $path = public_path('upload/school/' . $schoolName . '/');
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        file_put_contents($path . $imageName, $data);
+        $imageUrl = url('upload/school/' . $schoolName . '/' . $imageName);
+
+        $image = new Image;
+        $image->name = $imageName;
+        $image->path = '/upload/school/' . $schoolName . '/';
+        $image->full_path = '/upload/school/' . $schoolName . '/' . $imageName;
+        $image->extension = $ext;
+        $image->alt = auth()->user()->name;
+        $image->type = 'Image';
+        $image->save();
+
+        auth()->user()->info->image()->attach($image);
+
+        return response(['data' => $imageUrl], 201);
+    }
+
+    public function uploadUserAvatar()
+    {
+        $logo = request()->logo;
+        $data = request()->input('img');
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $data = base64_decode($data);
+        $ext = '.jpg';
+// $imageName = time() . $ext;
+        $imageName = auth()->user()->role . '_' . auth()->user()->id . '_' . auth()->user()->name . $ext;
+        $path = public_path('upload/avatar/');
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        file_put_contents($path . $imageName, $data);
+        $imageUrl = url('upload/avatar/' . $imageName);
+
+        if (!$logo) {
+            auth()->user()->info->avatar = '/upload/avatar/' . $imageName;
+        } else {
+            auth()->user()->info->logo = '/upload/avatar/' . $imageName;
+        }
+
+        auth()->user()->info->save();
+
+        return response(['data' => $imageUrl], 201);
+    }
+
+    public function saveStudentStudy()
+    {
+        $school = auth()->user()->info;
+        $study = Study::find(request()->study);
+        $card = Card::find(request()->student);
+
+        if ($card->role == 'student' && $card->student_id) {
+            $student = User::find($card->student_id);
+
+            if (request()->std == 1) {
+                $school->students->where('id', $card->student_id)->first()->pivot->type = $study->name;
+                $school->students->where('id', $card->student_id)->first()->pivot->study_id = $study->id;
+                $school->students->where('id', $card->student_id)->first()->pivot->level = $study->section[0]->level->name;
+                $school->students->where('id', $card->student_id)->first()->pivot->save();
+            }
+
+            if (request()->std == 2) {
+                $school->students->where('id', $card->student_id)->first()->pivot->type2 = $study->name;
+                $school->students->where('id', $card->student_id)->first()->pivot->study_id2 = $study->id;
+                $school->students->where('id', $card->student_id)->first()->pivot->level2 = $study->section[0]->level->name;
+                $school->students->where('id', $card->student_id)->first()->pivot->save();
+            }
+
+            $student->studyConnection()->save($study, ['school_id' => $school->id]);
+        }
+
+        if (request()->std == 1) {
+            $card->type = $study->name;
+            $card->study_id = $study->id;
+            $card->level = $study->section[0]->level->name;
+            $card->save();
+        }
+
+        if (request()->std == 2) {
+            $card->type2 = $study->name;
+            $card->study_id2 = $study->id;
+            $card->level2 = $study->section[0]->level->name;
+            $card->save();
+        }
+
+    }
+
 }
