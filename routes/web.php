@@ -353,9 +353,9 @@ Route::get('/userRole/save', function () {
     return redirect('/register');
 });
 
-Route::get('/1q1q/s/o/s/dropdown/{p}', function ($p) {
+Route::get('/dropdown/toggle', function () {
     $keys = App\Key::find(1);
-    $keys->dropdownLogin = $p;
+    $keys->dropdownLogin = !$keys->dropdownLogin;
     $keys->save();
 });
 
