@@ -6,7 +6,7 @@ use App\Events\StudentAppliedOnTeacher;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyTeacher
+class NotifyTeacher implements ShouldQueue
 {
     /**
      * Create the event listener.

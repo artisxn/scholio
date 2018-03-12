@@ -4,8 +4,9 @@ namespace App\Listeners;
 
 use App\Events\StudentAppliedOnScholarship;
 use App\Models\Request;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CreateRequestAndNotifySchool
+class CreateRequestAndNotifySchool implements ShouldQueue
 {
     /**
      * Create the event listener.

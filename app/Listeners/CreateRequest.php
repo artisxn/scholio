@@ -3,8 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\StudentAppliedOnScholarship;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CreateRequest
+class CreateRequest implements ShouldQueue
 {
     /**
      * Create the event listener.

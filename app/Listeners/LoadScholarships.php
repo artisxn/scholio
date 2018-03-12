@@ -7,7 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Models\School;
 
-class LoadScholarships
+class LoadScholarships implements ShouldQueue
 {
     /**
      * Create the event listener.

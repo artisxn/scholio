@@ -3,8 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\UserAppliedOnSchool;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UpdateRequestsTable
+class UpdateRequestsTable implements ShouldQueue
 {
     /**
      * Create the event listener.

@@ -7,7 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Models\Subscription;
 
-class ChangeSubscriptionStatus
+class ChangeSubscriptionStatus implements ShouldQueue
 {
     /**
      * Create the event listener.

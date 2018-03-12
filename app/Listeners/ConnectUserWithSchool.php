@@ -3,8 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\SchoolConfirmsUser;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ConnectUserWithSchool
+class ConnectUserWithSchool implements ShouldQueue
 {
     /**
      * Create the event listener.

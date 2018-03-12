@@ -6,7 +6,7 @@ use App\Events\UserRegistered;
 use App\Listeners\SlackMessageForUserRegistration;
 use App\Notifications\SlackUserRegistered;
 
-class SlackMessageForUserRegistration
+class SlackMessageForUserRegistration implements ShouldQueue
 {
     /**
      * Create the event listener.

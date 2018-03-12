@@ -4,8 +4,9 @@ namespace App\Listeners;
 
 use App\Events\SchoolConfirmsUser;
 use App\Notifications\SchoolAcceptedUser;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyUser
+class NotifyUser implements ShouldQueue
 {
     /**
      * Create the event listener.

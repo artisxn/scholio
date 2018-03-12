@@ -4,8 +4,9 @@ namespace App\Listeners;
 
 use App\Events\UserAppliedOnSchool;
 use App\Notifications\UserAppliedForConnection;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifySchool
+class NotifySchool implements ShouldQueue
 {
     /**
      * Create the event listener.
