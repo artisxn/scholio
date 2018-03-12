@@ -6,15 +6,15 @@ use App\Models\Criteria;
 use App\Models\CriteriaEn;
 use App\Models\Financial;
 use App\Models\Level;
+use App\Models\ScholarshipLimit;
 use App\Models\School;
 use App\Models\Study;
 use App\Models\Tag;
+use App\Notifications\ScholarshipWinner;
 use App\Scholio\PivotTrait;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\ScholarshipLimit;
-use App\Notifications\ScholarshipWinner;
 
 class Scholarship extends Model
 {
@@ -196,7 +196,7 @@ class Scholarship extends Model
 
     public function end()
     {
-        foreach(request()->winner as $win){
+        foreach (request()->winner as $win) {
             $user = User::find($win);
             // $this->winner()->attach($user);
             // Notify student
@@ -210,7 +210,6 @@ class Scholarship extends Model
         $dummySchol->active = 0;
         $dummySchol->save();
 
-
         // NA KANOUME KATI ME ALGOLIA
         return 'Done';
     }
@@ -221,8 +220,8 @@ class Scholarship extends Model
     }
 
     /**
-    * @return 
-    */
+     * @return
+     */
     public function winner()
     {
         return $this->belongsToMany(User::class, 'scholarship_winner');

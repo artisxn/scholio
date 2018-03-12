@@ -297,13 +297,9 @@
 
                                         @if(auth()->check() && auth()->user()->role == 'student' && auth()->user()->studentTeacher($teacher->user->id))
                                             @if($teacher->user->checkSkill($skill))
-
                                                     <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-up"></i>
-
                                             @else
-
                                                     <i id="bt_like{{$skill->id}}" onclick="like({{$teacher->user->id}}, {{$skill->id}})" class="thumps fa fa-thumbs-o-up"></i>
-
                                             @endif
                                         @endif
 
