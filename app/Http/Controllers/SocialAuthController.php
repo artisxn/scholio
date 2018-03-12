@@ -38,12 +38,6 @@ class SocialAuthController extends Controller
             abort(404);
         }
 
-        // if (env('APP_SCHOLIO') == 'local') {
-        //     config(['services.' . $provider . '.redirect' => 'http://scholio.dev/auth/' . $provider . '/callback']);
-        // }
-
-        // dd(config('services.google'));
-
         return Socialite::driver($provider)->redirect();
     }
 
@@ -56,8 +50,6 @@ class SocialAuthController extends Controller
     {
         $user_provider = Socialite::driver($provider)->user();
         $token = $user_provider->token;
-
-        // dd($user_provider);
 
         $user = User::where('email', $user_provider->getEmail())->first();
 
@@ -137,8 +129,6 @@ class SocialAuthController extends Controller
                 $info->avatar = $avatar;
                 $info->save();
             }
-
-            // $links = $this->addSocialLinks($user, $provider, $profileBuilder['url']);
 
             if ($provider == 'google') {
                 $user->info->fname = $profileBuilder['fname'];
