@@ -68,9 +68,9 @@ class Scholarship extends Model
      */
     public function financial()
     {
-        if (request()->cookie('lang') == 'en') {
-            return $this->belongsTo(FinancialEn::class, 'financial_id');
-        }
+        // if (request()->cookie('lang') == 'en') {
+        //     return $this->belongsTo(FinancialEn::class, 'financial_id');
+        // }
         return $this->belongsTo(Financial::class, 'financial_id');
     }
 
@@ -86,9 +86,9 @@ class Scholarship extends Model
      */
     public function criteria()
     {
-        if (request()->cookie('lang') == 'en') {
-            return $this->belongsTo(CriteriaEn::class, 'criteria_id');
-        }
+        // if (request()->cookie('lang') == 'en') {
+        //     return $this->belongsTo(CriteriaEn::class, 'criteria_id');
+        // }
         return $this->belongsTo(Criteria::class, 'criteria_id');
     }
 
