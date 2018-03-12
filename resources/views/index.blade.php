@@ -326,8 +326,9 @@
 								<form method="GET" id="langForm">
 									<select onchange="changeLang(this)" class="trans selectpicker" data-live-search="false" data-mobile="false" data-size='2'
 									 data-width="100%" data-style="btn-transparent">
-										<option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
-										<option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
+										<!-- <option data-icon="fa" value="en" {{ request()->cookie('lang') == 'en' ? 'selected' : '' }}>&nbsp; EN</option> -->
+										<option data-icon="fa" value="el" {{ request()->cookie('lang') == 'el' ? 'selected' : '' }}>&nbsp; GR</option>
+										<option data-icon="fa" value="en" {{ request()->cookie('lang') == 'en' ? 'selected' : '' }}>&nbsp; EN</option>
 									</select>
 								</form>
 								@if(App\Key::find(1)->dropdownLogin)
@@ -346,15 +347,15 @@
 
 							</li>
 
-							<li class="langDropWhite hide">
+							<!-- <li class="langDropWhite hide">
 								<form method="GET" id="langForm">
 									<select onchange="changeLang(this)" class="selectpicker select-white" data-live-search="false" data-mobile="false" data-size='2'
 									 data-width="100%" data-style="btn-white">
-										<option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
-										<option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
+										<option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected' : '' }}>&nbsp; ENG</option>
+										<option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected' : '' }}>&nbsp; GR</option>
 									</select>
 								</form>
-							</li>
+							</li> -->
 							@if(auth()->check())
 							<li>
 								<a href="{{ url('/dashboard') }}">

@@ -12,7 +12,7 @@
         "kryptonit3/counter": "^5.2",
         "laravel/framework": "5.6.*",
         "laravel/passport": "^4.0",
-        "laravel/scout": "^3.0",
+        "laravel/scout": "^4.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "mockery/mockery": "0.9.*",

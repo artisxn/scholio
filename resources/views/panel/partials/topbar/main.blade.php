@@ -13,8 +13,9 @@
                 <form method="GET" id="langForm" style="display: inline-block; position: absolute; top: 18px; margin-left: 60px; color: #555">
                     <select onchange="changeLang(this)" class="" data-live-search="false" data-mobile="false" data-size='3' data-width="100%" data-style=""
                             style="border: none; background-color: transparent; margin: -15px">
+                            <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }} >GR</option>
                         <option data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }} >ENG</option>
-                        <option data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }} >GR</option>
+                        
                     </select>
                 </form>
                 @if(App\Key::find(1)->dropdownLogin)

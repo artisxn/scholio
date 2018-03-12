@@ -19,7 +19,9 @@ use App\Models\AlgoliaScholarship;
 use App\Models\DummyScholarship;
 
 Scholio::soonRoutes();
+Scholio::bot();
 Auth::routes();
+
 
 Route::post('/password/change', 'RoutesController@changePassword')->middleware('auth');
 // Route::post('/password/reset', 'RoutesController@resetPassword');

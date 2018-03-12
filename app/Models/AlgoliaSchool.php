@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class AlgoliaSchool extends Model
 {
-    use \Laravel\Scout\Searchable;
+    use Searchable;
 
     public $timestamps = false;
 

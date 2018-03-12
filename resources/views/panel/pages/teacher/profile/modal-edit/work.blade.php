@@ -43,7 +43,7 @@
 
                                 <div class="clearfix"></div>
                                 <div class="col-sm-8 polyfill-input-sc">
-                                    <input id="from" type="text" label="@lang('teacher_profile.since')" name="start" class="demo-form ad-input" id="datepickerWorkFromEdit" value="{{ $work->from }}">
+                                    <input type="text" label="@lang('teacher_profile.since')" name="start" class="demo-form ad-input" id="datepickerWorkFromEdit-{{ $work->id }}" value="{{ $work->from }}">
                                     <i class="icon-inp fa fa-calendar-o"></i>
                                     {{--
                                     <img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px"
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="clearfix polyfill-input-sc"></div>
                                 <div class="col-sm-8 ">
-                                    <input id="until" type="text" label="@lang('teacher_profile.until')" name="end" class="demo-form ad-input" id="datepickerWorkEndEdit" value="{{ $work->until }}">
+                                    <input type="text" label="@lang('teacher_profile.until')" name="end" class="demo-form ad-input" id="datepickerWorkEndEdit-{{$work->id}}" value="{{ $work->until }}">
                                     <i class="icon-inp fa fa-calendar-o"></i>
                                     {{--
                                     <img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px"
@@ -73,4 +73,85 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+            $("#datepickerWorkFromEdit-{{ $work->id }}").datepicker(
+                {
+                    dateFormat: "mm/yy",
+                    changeMonth: true,
+                    changeYear: true,
+                    showButtonPanel: true,
+                    yearRange: "1980:",
+                    onClose: function (dateText, inst) {
+
+
+                        function isDonePressed() {
+                            return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                        }
+
+                        if (isDonePressed()) {
+                            datestr = $(this).val()
+                            var year = datestr.substring(datestr.length - 4, datestr.length);
+                            var month = datestr.substring(0, 2);
+                            // var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                            // var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                            $(this).datepicker('setDate', new Date(year, month -1, 1)).trigger('change');
+
+                            $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                        }
+                    },
+                    beforeShow: function (input, inst) {
+
+                        inst.dpDiv.addClass('month_year_datepicker')
+                        
+                        if ((datestr = $(this).val()).length > 0) {
+                            year = datestr.substring(datestr.length - 4, datestr.length);
+                            month = datestr.substring(0, 2);
+                            $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+                            $(this).datepicker('setDate', new Date(year, month - 1, 1));
+                            $(".ui-datepicker-calendar").hide();
+                        }
+                    }
+                });
+        });
+
+        $(function () {
+                $("#datepickerWorkEndEdit-{{$work->id}}").datepicker(
+                    {
+                        dateFormat: "mm/yy",
+                        changeMonth: true,
+                        changeYear: true,
+                        showButtonPanel: true,
+                        yearRange: "1980:",
+                        onClose: function (dateText, inst) {
+
+
+                            function isDonePressed() {
+                                return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                            }
+
+                            if (isDonePressed()) {
+                                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+                                $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                            }
+                        },
+                        beforeShow: function (input, inst) {
+
+                            inst.dpDiv.addClass('month_year_datepicker')
+
+                            if ((datestr = $(this).val()).length > 0) {
+                                year = datestr.substring(datestr.length - 4, datestr.length);
+                                month = datestr.substring(0, 2);
+                                $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+                                $(this).datepicker('setDate', new Date(year, month - 1, 1));
+                                $(".ui-datepicker-calendar").hide();
+                            }
+                        }
+                    })
+            });
+</script>
 <!-- /.modal -->
