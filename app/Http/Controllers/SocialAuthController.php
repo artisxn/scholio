@@ -143,7 +143,7 @@ class SocialAuthController extends Controller
             if ($provider == 'google') {
                 $user->info->fname = $profileBuilder['fname'];
                 $user->info->lname = $profileBuilder['lname'];
-                // $user->info->about = $profileBuilder['about'];
+                $user->info->about = $profileBuilder['about'];
                 $user->info->save();
                 if ($role == 'teacher') {
                     $user->info->cover = $profileBuilder['cover'];
@@ -212,8 +212,8 @@ class SocialAuthController extends Controller
                         }
                     }
                 }
-                $this->addBuildProfile($user, $profileBuilder);
             }
+            $this->addBuildProfile($user, $profileBuilder);
         }
     }
 
@@ -252,15 +252,12 @@ class SocialAuthController extends Controller
 
     public function addBuildProfile($user, $profileBuilder)
     {
-        echo $profileBuilder['social'] . '--<br>';
         if ($profileBuilder['social'] == 'facebook') {
             $link = new SocialLink;
             $link->user_id = $user->id;
             $link->name = 'facebook';
             $link->link = $profileBuilder['url'];
             $link->save();
-
-            dd($link);
 
         } else if ($profileBuilder['social'] == 'google') {
             $link = new SocialLink;
@@ -360,7 +357,5 @@ class SocialAuthController extends Controller
                 }
             }
         }
-
-        dd('no');
     }
 }
