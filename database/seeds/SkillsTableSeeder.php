@@ -70,7 +70,7 @@ class SkillsTableSeeder extends Seeder
     {
         $user = 12;
         foreach ($skills as $skill) {
-            User::find($teacher)->addFakeSkill(Skill::find($skill), User::find($user));
+            // User::find($teacher)->skills(Skill::find($skill), User::find($user));
             $user++;
         }
     }
