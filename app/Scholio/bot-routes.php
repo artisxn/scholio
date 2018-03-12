@@ -53,7 +53,7 @@ Route::get('/test/{find}', function ($find) {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/' . $result->image,
+            "image_url" => 'https://schol.io' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
@@ -104,7 +104,7 @@ Route::get('/school/search', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/' . $result->image,
+            "image_url" => 'https://schol.io' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
@@ -256,7 +256,7 @@ Route::get('/school/custom', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/' . $result->image,
+            "image_url" => 'https://schol.io' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
