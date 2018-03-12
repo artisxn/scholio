@@ -52,6 +52,17 @@
         .mail{margin-top: 20px; display: inline-block}
 
 
+
+        .tp{margin-left: 30px}
+        .tp2::first-letter{font-size: 120%}
+
+
+        @media(max-width: 600px){
+            .t1{text-indent:-4px;}
+            .tp{margin-left: 0px}
+
+        }
+
          /* ========== Modal ============== */
 
         .modal-sc-logo{margin-top: -4px; height: 60px;}
@@ -67,6 +78,12 @@
 
         .section-text{margin-bottom: 20px;}
         .inner-section{border: none; margin-top: 30px; background-color: transparent;}
+
+        .btn-primary, .btn-primary:active, .btn-primary:focus, .btn-primary:visited{border: none; background-color: #508bb0
+        }
+        .btn-primary:hover{background-color: #416b8a
+        }
+
 
         /* ================================ */
 
@@ -227,11 +244,6 @@
                                 <div class="title">@lang('teacher_profile.section.about') <i class="fa fa-pencil fa-input"  data-toggle="modal" data-target="#about-modal" ></i></div>
                                 <div class="text">
                                     {{ auth()->user()->info->about }}
-                                    {{-- Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                                    beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-                                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? --}}
                                 </div>
                                 <hr>
 
@@ -244,10 +256,10 @@
                                         <div class="t1">
                                             <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#work-modal-edit-{{ $work->id }}"></i> {{ $work->job->name }}
                                         </div>
-                                        <div class="t2">
+                                        <div class="t2 tp tp2">
                                             {{ $work->company->name }}
                                         </div>
-                                        <div class="t3">
+                                        <div class="t3 tp">
                                              {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->from)->toDateTimeString())->year }} - {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $work->until)->toDateTimeString())->year }}
                                         </div>
                                     @endforeach
@@ -263,10 +275,10 @@
                                         <div class="t1">
                                             <i class="fa fa-pencil fa-input" data-toggle="modal" data-target="#studies-modal-edit-{{ $certificate->id }}"></i> {{ $certificate->study->name  }}
                                         </div>
-                                        <div class="t2">
+                                        <div class="t2 tp tp2">
                                             {{ $certificate->university->name  }}
                                         </div>
-                                        <div class="t3">
+                                        <div class="t3 tp">
                                             {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->from)->toDateTimeString())->year }} - {{ \Carbon\Carbon::parse(\Carbon\Carbon::createFromFormat('m/Y', $certificate->until)->toDateTimeString())->year }}
                                         </div>
                                     @endforeach
@@ -328,7 +340,6 @@
                             x
                         </button>
                         <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
-                        {{--<h3 class="pull-left panel-title">schol.io</h3>--}}
                     </div>
 
                 </div>
@@ -341,7 +352,7 @@
                                 <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/info.png" alt=""> </i>@lang('teacher_profile.section.about')</div>
                                 <div class="input-container">
                                     <div class="info-text"> </div>
-                                    <textarea class="notes" placeholder="Συμπληρώστε λίγα λόγια για το δημόσιο προφίλ σας." name="about">{{ auth()->user()->info->about }}</textarea>
+                                    <textarea class="notes" placeholder=" @lang('teacher_profile.section.aboutPlaceholder')" name="about">{{ auth()->user()->info->about }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -382,7 +393,7 @@
 
                                     <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                             <div class="typeahead__field typeahead__query">
-                                                <input label="Ειδικότητα/Αντικείμενο Εργασίας" class="js-typeahead-work demo-form ad-input" name="job"
+                                                <input label="@lang('teacher_profile.section.experiencePlaceholder')" class="js-typeahead-work demo-form ad-input" name="job"
                                                        type="text" placeholder="" autocomplete="off">
                                                 <i class="icon-inp fa fa-briefcase margin-top"></i>
                                             </div>
@@ -392,7 +403,7 @@
 
                                     <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                             <div class="typeahead__field typeahead__query">
-                                                <input label="Εκπαιδευτικό Ίδρυμα/Εταιρία" class="js-typeahead-school demo-form ad-input" name="company"
+                                                <input label="@lang('teacher_profile.section.experienceInstitute')" class="js-typeahead-school demo-form ad-input" name="company"
                                                        type="text" placeholder="" autocomplete="off">
                                                 <i class="icon-inp fa fa-university"></i>
                                             </div>
@@ -400,13 +411,13 @@
 
                                         <div class="clearfix"></div>
                                         <div class="col-sm-8 polyfill-input-sc">
-                                            <input type="text" label="Από" name="start" class="demo-form ad-input"  id="datepickerWorkFrom" value="">
+                                            <input type="text" label="@lang('teacher_profile.since')" name="start" class="demo-form ad-input"  id="datepickerWorkFrom" value="">
                                             <i class="icon-inp fa fa-calendar-o"></i>
                                             {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
                                         </div>
                                         <div class="clearfix polyfill-input-sc"></div>
                                         <div class="col-sm-8 ">
-                                            <input type="text" label="Μέχρι" name="end" class="demo-form ad-input" id="datepickerWorkEnd"  value="">
+                                            <input type="text" label="@lang('teacher_profile.until')" name="end" class="demo-form ad-input" id="datepickerWorkEnd"  value="">
                                             <i class="icon-inp fa fa-calendar-o"></i>
                                             {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
                                         </div>
@@ -419,7 +430,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" onClick="document.getElementById('form-experience').submit()" class="btn btn-info">Αποθήκευση</button>
+                        <button type="button" onClick="document.getElementById('form-experience').submit()" class="btn btn-info">@lang('teacher_profile.save')</button>
                     </div>
                 </form>
             </div>
@@ -439,7 +450,6 @@
                                     x
                                 </button>
                                 <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left modal-sc-logo">
-                                {{--<h3 class="pull-left panel-title">schol.io</h3>--}}
                             </div>
 
                         </div>
@@ -452,7 +462,7 @@
 
                                             <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                                 <div class="typeahead__field typeahead__query">
-                                                    <input label="Τίτλος/Επίπεδο Σπουδών"
+                                                    <input label="@lang('teacher_profile.section.studiesTitle')"
                                                            class="js-typeahead-studies demo-form ad-input" name="degree"
                                                            type="text" placeholder="" autocomplete="off">
                                                     <i class="icon-inp fa fa-graduation-cap margin-top"></i>
@@ -461,7 +471,7 @@
                                         <div class="clearfix"></div>
                                             <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                                 <div class="typeahead__field typeahead__query">
-                                                    <input label="Εκπαιδευτικό Ίδρυμα/Εταιρία"
+                                                    <input label="@lang('teacher_profile.section.studiesInstitute')"
                                                            class="js-typeahead-university demo-form ad-input" name="university"
                                                            type="text" placeholder="" autocomplete="off">
                                                     <i class="icon-inp fa fa-university"></i>
@@ -471,13 +481,13 @@
 
                                         <div class="clearfix"></div>
                                         <div class="col-sm-8 polyfill-input-sc">
-                                            <input type="text" label="Από" name="start" class="demo-form ad-input"  id="datepickerStudiesFrom" value="">
+                                            <input type="text" label="@lang('teacher_profile.since')" name="start" class="demo-form ad-input"  id="datepickerStudiesFrom" value="">
                                             <i class="icon-inp fa fa-calendar-o"></i>
                                             {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="col-sm-8 polyfill-input-sc" >
-                                            <input type="text" label="Μέχρι" name="end" class="demo-form ad-input" id="datepickerStudiesEnd"  value="">
+                                            <input type="text" label="@lang('teacher_profile.until')" name="end" class="demo-form ad-input" id="datepickerStudiesEnd"  value="">
                                             <i class="icon-inp fa fa-calendar-o"></i>
                                             {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
                                         </div>
@@ -490,7 +500,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                            <button type="button" onClick="document.getElementById('form-studies').submit()" data-dismiss="modal" class="btn btn-info">Αποθήκευση</button>
+                            <button type="button" onClick="document.getElementById('form-studies').submit()" data-dismiss="modal" class="btn btn-info">@lang('teacher_profile.save')</button>
                         </div>
                 </form>
             </div>
@@ -524,7 +534,7 @@
     
                                     <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                         <div class="typeahead__field typeahead__query">
-                                            <input label="Δεξιότητες/Ικανότητες" class="js-typeahead-skills demo-form ad-input" name="skill" type="text" placeholder=""
+                                            <input label="@lang('teacher_profile.section.skillsExpertise')" class="js-typeahead-skills demo-form ad-input" name="skill" type="text" placeholder=""
                                                 autocomplete="off">
                                             <i class="icon-inp fa fa-list margin-top"></i>
                                         </div>
@@ -537,7 +547,7 @@
     
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" onClick="document.getElementById('form-skills').submit()" class="btn btn-info">Αποθήκευση</button>
+                        <button type="button" onClick="document.getElementById('form-skills').submit()" class="btn btn-info">@lang('teacher_profile.save')</button>
                     </div>
                 </form>
             </div>
