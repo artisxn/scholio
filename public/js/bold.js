@@ -1641,6 +1641,7 @@ function($) {
     Sidemenu.prototype.openLeftBar = function() {
       $("#wrapper").toggleClass("enlarged");
       $("#wrapper").addClass("forced");
+      $("#unverifiedInfo").toggleClass("hidden");
 
       if($("#wrapper").hasClass("enlarged") && $("body").hasClass("fixed-left")) {
         $("body").removeClass("fixed-left").addClass("fixed-left-void");
@@ -1699,8 +1700,9 @@ function($) {
       this.$openLeftBtn.on(event, function(e) {
         e.stopPropagation();
         $this.openLeftBar();
-		  open=!open;
-		  console.log('open=',open)
+
+        window.navBar = !window.navBar;
+        localStorage.setItem("navBar", window.navBar);
       });
 
       // LEFT SIDE MAIN NAVIGATION

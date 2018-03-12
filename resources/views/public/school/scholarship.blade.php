@@ -554,7 +554,7 @@
         </div>
         <div class="box-right">
             <div class="title right" style="">
-                {{ $scholarship->criteria->name }}
+                {{ trans('seeder.criteria.' . $scholarship->criteria->id) }}
             </div>
             <div class="text-right" style="" >
                 @lang('seeder.criteriaInfo.' . $scholarship->criteria->id)
@@ -596,10 +596,10 @@
         </div>
         <div style="" class="box-right">
             <div class="title right">
-                {{ $scholarship->financial->plan}} {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}
+                {{ trans('seeder.financial.' . $scholarship->financial->id )}} {{ $scholarship->financial_amount }} {{ trans('seeder.financialMetric.' . $scholarship->financial->id) }}
             </div>
             <div class="text-right">
-                 @lang('seeder.financialInfo.' . $scholarship->financial->id)  {{ $scholarship->financial->plan}}  {{ $scholarship->financial_amount }} {{ $scholarship->financial->metric}}.
+                 @lang('seeder.financialInfo.' . $scholarship->financial->id)
             </div>
             @if($scholarship->price)
                 <div class="text-right">

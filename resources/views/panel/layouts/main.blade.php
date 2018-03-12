@@ -195,6 +195,23 @@ echo json_encode($trans);
             </div>
 
         </div>
+        <script>
+                if(window.innerWidth <= 600){
+                    console.log('rrr')
+                    if (localStorage.getItem("navBar") === null) {
+                        localStorage.setItem("navBar", false);
+                    }
+                    window.navBar = 0;
+                }else{
+                    window.navBar = localStorage.getItem("navBar");
+                    if (localStorage.getItem("navBar") === null) {
+                        localStorage.setItem("navBar", true);
+                    }
+                    if (window.navBar === 'false' || window.navBar === 0 || window.navBar === false) {
+                        window.navBar = 0
+                    }
+                }
+        </script>
         <script src="/js/app.js"></script>
         <script src="/js/bold.js"></script>
 
@@ -288,6 +305,29 @@ echo json_encode($trans);
                     var form = document.getElementById('langForm');
                     form.action = '/lang/'+el.value;
                     form.submit();
+                }
+        </script>
+
+        <script>
+            console.log(window.navBar)
+            if (window.navBar === 'false' || window.navBar === 0 || window.navBar === false) {
+                    $("#wrapper").toggleClass("enlarged");
+                    $("#wrapper").addClass("forced");
+
+                    if ($("#wrapper").hasClass("enlarged") && $("body").hasClass("fixed-left")) {
+                        $("body").removeClass("fixed-left").addClass("fixed-left-void");
+                    } else if (!$("#wrapper").hasClass("enlarged") && $("body").hasClass("fixed-left-void")) {
+                        $("body").removeClass("fixed-left-void").addClass("fixed-left");
+                    }
+
+                    if ($("#wrapper").hasClass("enlarged")) {
+                        $(".left ul").removeAttr("style");
+                    } else {
+                        $(".subdrop").siblings("ul:first").show();
+                    }
+
+                    toggle_slimscroll(".slimscrollleft");
+                    $("body").trigger("resize");
                 }
         </script>
 

@@ -24,7 +24,7 @@
     @if(auth()->user()->role == 'school' && auth()->user()->status == 'guest')
         <div class="unverified" data-toggle="modal" data-target="#ModalUnverified">
             <i class="fa fa-exclamation-circle m-r-5"></i>
-            @lang('panel/schools/navigation.unverified')
+            <span id="unverifiedInfo" class="">@lang('panel/schools/navigation.unverified')</span>
         </div>
      @endif
         <!--- Divider -->

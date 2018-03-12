@@ -32,6 +32,13 @@ return [
         'Μήνες' => 'Months',
     ],
 
+    'financialMetric' => [
+        1 => '%',
+        2 => '€',
+        3 => 'Months'
+    ],
+
+
 
     'school_types' => [
         1 => 'College',
