@@ -24,7 +24,7 @@
 
                                 <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                     <div class="typeahead__field typeahead__query">
-                                        <input id="job" label="Ειδικότητα/Αντικείμενο Εργασίας" class="js-typeahead-work demo-form ad-input" name="job" type="text"
+                                        <input id="job" label="@lang('teacher_profile.section.experiencePlaceholder')" class="js-typeahead-work demo-form ad-input" name="job" type="text"
                                             placeholder="" autocomplete="off" value="{{ $work->job->name }}">
                                         <i class="icon-inp fa fa-briefcase margin-top"></i>
                                     </div>
@@ -34,7 +34,7 @@
 
                                 <div class="typeahead__container col-sm-8 polyfill-input-sc">
                                     <div class="typeahead__field typeahead__query">
-                                        <input id="company" label="Εκπαιδευτικό Ίδρυμα/Εταιρία" class="js-typeahead-school demo-form ad-input" name="company"
+                                        <input id="company" label="@lang('teacher_profile.section.experienceInstitute')" class="js-typeahead-school demo-form ad-input" name="company"
                                             type="text" placeholder="" autocomplete="off" value="{{ $work->company->name }}">
                                         <i class="icon-inp fa fa-university"></i>
                                     </div>
@@ -43,7 +43,7 @@
 
                                 <div class="clearfix"></div>
                                 <div class="col-sm-8 polyfill-input-sc">
-                                    <input id="from" type="text" label="Από" name="start" class="demo-form ad-input" id="datepickerWorkFromEdit" value="{{ $work->from }}">
+                                    <input id="from" type="text" label="@lang('teacher_profile.since')" name="start" class="demo-form ad-input" id="datepickerWorkFromEdit" value="{{ $work->from }}">
                                     <i class="icon-inp fa fa-calendar-o"></i>
                                     {{--
                                     <img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px"
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="clearfix polyfill-input-sc"></div>
                                 <div class="col-sm-8 ">
-                                    <input id="until" type="text" label="Μέχρι" name="end" class="demo-form ad-input" id="datepickerWorkEndEdit" value="{{ $work->until }}">
+                                    <input id="until" type="text" label="@lang('teacher_profile.until')" name="end" class="demo-form ad-input" id="datepickerWorkEndEdit" value="{{ $work->until }}">
                                     <i class="icon-inp fa fa-calendar-o"></i>
                                     {{--
                                     <img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px"
@@ -63,11 +63,11 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="modal-footer">
-                    <button type="button" onClick="document.getElementById('delwork-{{ $work->id }}').value = 'yes'; document.getElementById('form-experience-edit-{{ $work->id }}').submit()" class="btn btn-default" data-dismiss="modal">Διαγραφή</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                    <button type="button" onClick="document.getElementById('form-experience-edit-{{ $work->id }}').submit()" class="btn btn-info">Αποθήκευση</button>
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">@lang('profile.modal.abort')</button>
+
+                    <button type="button" onClick="document.getElementById('delwork-{{ $work->id }}').value = 'yes'; document.getElementById('form-experience-edit-{{ $work->id }}').submit()" class="btn btn-primary" data-dismiss="modal">@lang('teacher_profile.delete')</button>
+                    <button type="button" onClick="document.getElementById('form-experience-edit-{{ $work->id }}').submit()" class="btn btn-info">@lang('teacher_profile.save')</button>
                 </div>
             </form>
         </div>

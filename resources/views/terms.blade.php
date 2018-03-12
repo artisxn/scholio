@@ -41,6 +41,14 @@
         .terms::first-letter {
             font-size: 130%;
         }
+
+
+        @media( max-width: 620px){
+            .outerBox{width: 90%;}
+        }
+        @media( max-width: 560px){
+            .outerBox{width: 98%;}
+        }
     </style>
 
 </head>
@@ -155,6 +163,7 @@
         <p class="terms">@lang('terms.terms.9')</p>
         <p class="terms">@lang('terms.terms.10')</p>
         <p class="terms">@lang('terms.terms.11')</p>
+        <p class="terms">@lang('terms.terms.12')</p>
 
     </div>
 
