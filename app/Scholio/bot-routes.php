@@ -39,7 +39,7 @@ use App\Models\Request;
 //     return $test;
 // });
 
-Route::get('/test/{find}', function ($find) {
+Route::get('/app/{find}', function ($find) {
     $results = AlgoliaSchool::search($find)->get();
 
     if ($results->isEmpty()) {
