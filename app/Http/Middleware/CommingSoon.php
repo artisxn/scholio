@@ -41,6 +41,10 @@ class CommingSoon
             return $next($request);
         }
 
+        if ($url == request()->is('/bot/app/*')) {
+            return $next($request);
+        }
+
         if ($url == url('/scholio/ready')) {
             return $next($request);
         }

@@ -72,21 +72,7 @@ Route::get('/test/{find}', function ($find) {
             array_push($elements, $array);
         }
     }
-
-    $json = [
-        "messages" => [
-            [
-                "attachment" => [
-                    "type" => "template",
-                    "payload" => [
-                        "template_type" => "generic",
-                        "elements" => $elements,
-                    ],
-                ],
-            ],
-        ],
-    ];
-    return $json;
+    return $elements;
 });
 
 
