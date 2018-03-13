@@ -41,7 +41,7 @@
 
 @endif
     <students-view id="chrome" sxoles="{{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}"> </students-view>
-    {{--<students-view-safari id="safari"></students-view-safari>--}}
+    <students-view-safari id="safari"></students-view-safari>
 @endsection
 
 
@@ -71,12 +71,12 @@
 
 
 
-//
-//        if(navigator.vendor.indexOf('Apple') != -1){
-//            $('#chrome').remove();
-//        }else{
-//            $('#safari').remove();
-//        }
+
+        if(navigator.vendor.indexOf('Apple') != -1){
+            $('#chrome').remove();
+        }else{
+            $('#safari').remove();
+        }
         
     })
 </script>

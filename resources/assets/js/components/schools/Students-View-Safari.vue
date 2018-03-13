@@ -1,106 +1,596 @@
 <template>
     <div class="row">
 
-        <form class="sc-radio pull-left">
-            <input id="r1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch(1, 'connected')"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active-many') }}
+        <div v-if="dataSet">
+
+            <form class="sc-radio pull-left">
+                <input id="r1" type="radio" name="status" value="connected" v-model="status" @click.prevent="fetch(1, 'connected')"> <label for="r1"><div class="r-lab" style="width: 100px;">{{ lang('resource.students.active-many') }}
                 <span class="pull-right" style="">{{ connectedStudents }}</span>
-                </div>
+            </div>
             </label> <br>
-            <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch(1, 'allumni')">
-            <label for="r2">
-                <div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni-many') }}
-                    <span class="pull-right" style="">{{ allumniStudents }}</span>
-                 </div>
-            </label>
-            <br>
-        </form>
+                <input id="r2" type="radio" name="status" value="allumni" v-model="status" @click.prevent="fetch(1, 'allumni')">
+                <label for="r2">
+                    <div class="r-lab" style="width: 100px;">{{ lang('resource.students.alumni-many') }}
+                        <span class="pull-right" style="">{{ allumniStudents }}</span>
+                    </div>
+                </label>
+                <br>
+            </form>
 
 
-        <div class="input-group pull-left input-search">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
-                   v-model="searchStr" v-on:keyup="fetch(1)">
-        </div>
-        <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
-        <div class="clearfix"></div>
+            <div class="input-group pull-left input-search">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" :placeholder="lang('resource.students.search')"
+                       v-model="searchStr" v-on:keyup="fetch(1)">
+            <span class="input-group-addon addon2">
+                        <span class="search-counter" >{{ studentCounter }} <i class="fa fa-graduation-cap"></i></span>
+            </span>
+            </div>
+
+        <span class="tool">
+             <div class="addStudent"><i class="fa fa-user-plus" data-toggle="modal" data-target="#ModalAddStudent"></i></div>
+             <span class="tooltiptext  tooltiptext2 ">
+                  {{ lang('resource.students.modal.addStudent') }}
+             </span>
+        </span>
 
 
-        <div v-if="selection==true">
-
-            <transition name="fade">
-                <!--<div v-if="filteredStudents.length == 0" style="margin-left: 10px; margin-top:  60px;">-->
-                    <!--<div class="animated-background col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2"  v-for="i in 6" style="margin-bottom: 140px; padding-right: 15px;">-->
-                        <!--<div class="background-masker header-top"></div>-->
-                        <!--<div class="background-masker header-left"></div>-->
-                        <!--<div class="background-masker header-right"></div>-->
-                        <!--<div class="background-masker header-bottom"></div>-->
-
-                        <!--<div class="background-masker subheader-left"></div>-->
-                        <!--<div class="background-masker subheader-right"></div>-->
-                        <!--<div class="background-masker subheader-bottom"></div>-->
-
-                        <!--<div class="background-masker content-top"></div>-->
-                        <!--<div class="background-masker content-first-end"></div>-->
-                        <!--<div class="background-masker content-second-line"></div>-->
-                        <!--<div class="background-masker content-second-end"></div>-->
-                        <!--<div class="background-masker content-third-line"></div>-->
-                        <!--<div class="background-masker content-third-end"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            </transition>
+            <!--<div class="search-counter" v-else>{{ studentCounter }} Σπουδαστές</div>-->
+            <button class="btn btn-info pull-right btn-view" v-on:click="changeView()"> <!-- <i class="margin-right-10 fa fa-list"></i> --> {{ lang('resource.students.changeView') }}</button>
+            <div class="clearfix"></div>
 
 
+            <div v-if="selection==true">
 
-            <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2" v-for="(student, index) in filteredStudents" v-if="(student.role=='student')"  >
+                <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents">
 
-                <div class=""  :id="'card'+index"  >
-                    <div class="front">
-                        <div class="sc-box" :class="[{'alumniFilter': status=='allumni' }]">
-                            <div class="sc-up"></div>
+                    <div class=""  :id="'card'+index"  >
+                        <div class="">
+                            <div class="sc-box" :class="[{'fakeFilter': student.role=='fake' ,'alumniFilter': status=='allumni', }]">
+                                <div class="sc-up"></div>
 
-                            <div class="row">
-                                <div class="sc-card">
-                                    <a class="" href="#">
+                                <div class="row">
+                                    <div class="sc-card" >
+
                                         <div class="frame-cont">
                                             <img src="/new/img/photoFrame.png" class="frame" alt="">
-                                            <img :src="scholio + student.student.avatar" class="avatar2" alt="">
+                                            <img :src="scholio + student.avatar" class="avatar2" alt="">
                                             <img src="/new/img/clip2.png" class="clip" alt="">
                                         </div>
-                                        <div class="img-cont"><img class="img-circle sc-img" width="70" :src="scholio + student.student.avatar" alt=""/></div>
-                                        <div class="name"> {{student.name}} </div>
-                                    </a>
-                                    <div class="email"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
+                                        <div class="img-cont img-contSAFARI"><img class="img-circle sc-img" width="70" :src="scholio + student.avatar" alt=""/></div>
+                                        <div class="name nameSAFARI"> {{student.name}} </div>
+                                        <div class="email emailSAFARI"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
+
+                                    </div>
                                 </div>
+                                <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
+
                             </div>
-                            <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
+                            <div class="sc-bottom sc-bottomSAFARI" >
+                                <div class="phone phoneSAFARI">
+                                    <a :href="'tel:'+student.student_phone"><div class="circle circleSAFARI"></div> <span class="phone-text phone-textSAFARI"><i class="fa fa-phone"></i> {{ student.student_phone }}</span></a>
+                                </div>
+                                <form class="sc-radio2 pull-right sc-radio2SAFARI" v-on:change="changeStatus(student.id)">
+                                    <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
+
+                                    <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}</div>
+                                    </label>
+                                    <br>
+                                    <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
+
+                                    <label :for="'stt' + student.id">
+                                        <div class="r-lab r-lab2">{{ lang('resource.students.alumni') }}</div>
+                                    </label>
+                                    <!--<br>-->
+                                </form>
+                            </div>
+
+                            <i class="fa fa-file-text-o flip-info" aria-hidden="true"  :class="[{'fakeBtn': student.role=='fake'}]" data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student)" v-if="studies"></i>
 
                         </div>
-                        <div class="sc-bottom" >
-                            <div class="phone">
-                                <a :href="'tel:'+student.cv.student_phone"><div class="circle"></div> <span class="phone-text"><i class="fa fa-phone"></i> {{ student.cv.student_phone }}</span></a>
-                            </div>
-                            <form class="sc-radio2 pull-right" v-on:change="changeStatus(student.id)">
-                                <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
 
-                                <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}</div>
-                                </label>
-                                <br>
-                                <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
 
-                                <label :for="'stt' + student.id">
-                                    <div class="r-lab">{{ lang('resource.students.alumni') }}</div>
-                                </label>
-                                <br>
-                            </form>
-                        </div>
-
-                        <i class="fa fa-refresh flip-icon" aria-hidden="true" @click="flip(index)" ></i>
-                        <i class="fa fa-file-text-o flip-info" aria-hidden="true"  data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student)" v-if="studies"></i>
 
                     </div>
 
                 </div>
 
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover"
+                       style="background-color: #fff;" v-if="selection==false">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px">
+
+                        </th>
+                        <th class="text-center"> <a href="#" v-on:click="nameChangeSort">
+                            {{ lang('resource.students.name') }}
+                            <span v-if="sortType == 'name' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                            <span v-if="sortType == 'name' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
+                        </th>
+                        <th class="text-center thPhone">
+                            {{ lang('resource.students.phone') }}
+                        </th>
+                        <th class="text-center thLevel">
+                            <a href="#" v-on:click="levelChangeSort">
+                                {{ lang('resource.students.level') }}
+                                <span v-if="sortType == 'level' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                <span v-if="sortType == 'level' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                            </a>
+                        </th>
+                        <th class="text-center thStudies">
+                            <a href="#" v-on:click="studyChangeSort">
+                                {{ lang('resource.students.studies') }}
+                                <span v-if="sortType == 'study' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                                <span v-if="sortType == 'study' && sortReverse" class="fa fa-sort-amount-desc"></span>
+                            </a>
+                        </th>
+                        <th class="text-center thEmail"> <a href="#" v-on:click="emailChangeSort">
+                            e-mail
+                            <span v-if="sortType == 'email' && !sortReverse" class="fa fa-sort-amount-asc"></span>
+                            <span v-if="sortType == 'email' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="student in filteredStudents">
+                        <td>
+                            <a class="" href="#">
+                                <img class="img-circle" width="35" v-bind:src=student.avatar alt=""/>
+                            </a>
+                        </td>
+                        <td style="text-transform: capitalize">{{ student.name }}</td>
+                        <td class="thPhone">{{ student.student_phone }}</td>
+                        <td class="thLevel">   <span class="dots-text">{{ student.level }}</span></td>
+                        <td class="thStudies"> <span class="dots-text">{{ student.type }}</span></td>
+                        <td class="thEmail">{{ student.email }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!--=============  ModalStudentInfo   ================ -->
+            <!--================================================== -->
+            <div id="ModalStudentInfo" class="modal" role="dialog">
+                <div class="modal-dialog zoomIn animated" id="modalzoom" >
+                    <!-- Modal content-->
+                    <div class="modal-content" v-if="info">
+                        <div class="modal-up">
+                            <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
+                            <!--<h4 class="modal-title" style=" color: #fff"> </h4>-->
+                            <img :src="info.avatar" alt="" class="img-avatar">
+                            <!--<div class="lastName">{{ info.lname }} </div>-->
+
+                            <input type="text" class="demo-form ad-input cardName " name="student_lname" :value="info.lname " @change="saveCard($event, info)">
+
+
+                            <!--<div class="firstName">{{ info.fname }} </div>-->
+                            <input type="text" class="demo-form ad-input cardFname " name="student_fname" :value="info.fname " @change="saveCard($event, info)">
+                        </div>
+                        <div class="modal-infos">
+                            <!--<p>{{ info.cv.student_address }}</p>-->
+
+                            <div class="input-container modal-input-container">
+
+
+                                <div class="studies-selection-container" >
+                                    <div class="first-study-text">
+                                        {{ lang('resource.students.modal.study1') }}
+                                        <span class="tool">
+                                            <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy && !study2"></i>
+                                            <span class="tooltiptext">
+                                                {{ lang('resource.students.modal.addStudy') }}
+                                                </span>
+                                        </span>
+
+                                    </div>
+                                    <div class="">
+                                        <select class="select-transparent" v-model="selectedStudy" v-on:change="saveStudy(1)">
+                                            <optgroup :label="level.level.name" v-for="level in studies">
+                                                <option v-for="study in level.studies" :value="study.study.id" :disabled="secondStudy == study.study.id">
+                                                    {{ study.study.name }}
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa fa-graduation-cap select-icon"></i>
+                                        <div class="col-xl-line"></div>
+                                    </div>
+
+
+
+
+
+                                    <!-- Αν δεν είναι σχολειο, φροντιστηριο, ιεκ, κολλεγιο -->
+                                    <div v-if="" >
+                                        <div class="second-study-text" v-if="selectedStudy">
+
+
+
+
+
+
+                                        <span v-if="secondStudy">
+                                            {{ lang('resource.students.modal.study2') }}
+                                             <span class="second-study-remove"  @click="removeStudy">( <i class="fa fa-trash"></i>{{ lang('resource.students.modal.deleteStudy') }} )</span>
+                                        </span>
+
+                                        </div>
+
+
+                                        <div class="second" v-if="selectedStudy && (study2 || secondStudy)">
+                                            <select class="select-transparent  select2" v-model="secondStudy" v-on:change="saveStudy(2)">
+                                                <optgroup :label="level.level.name" v-for="level in studies">
+                                                    <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
+                                                        {{ study.study.name }}
+                                                    </option>
+                                                </optgroup>
+                                            </select>
+                                            <i class="fa fa-graduation-cap select-icon2"></i>
+                                            <div class="col-xl-line col-xl-line2"></div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="matching" v-if="availableCards && info.role == 'student'">
+                                        <div class="info-title">
+                                            {{lang('resource.students.modal.matching') }}
+                                        </div>
+
+                                        <select v-model="selectedCard" class="select-matching "  @change="updateCards">
+                                            <option value="0" selected>{{lang('resource.requests.table.noMatching')}}</option>
+                                            <optgroup :label="lang('resource.requests.table.suggestion')" v-if="availableCards.exact">
+                                                <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
+                                            </optgroup>
+                                            <optgroup :label="lang('resource.requests.table.noMatchingYet')">
+                                                <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa fa-id-card select-icon"></i>
+                                        <div class="col-xl-line"></div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="info-container row">
+
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.city') }}
+
+                                        </div>
+                                        <div class="input-container">
+                                            <div class="fa fa-home icon-data"></div>
+                                            <input type="text" class="demo-form ad-input card-input" name="student_city" :value="info.student_city" @change="saveCard($event, info)">
+
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.address') }}
+                                        </div>
+                                        <div class="info-data input-container">
+                                            <div class="fa fa-map-marker icon-data"></div>
+                                            <input type="text" name="student_address"  class="demo-form ad-input card-input"  :value="info.student_address" @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.phone') }}
+
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="student_phone" class="card-input"  :value="info.student_phone" @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.email') }}
+
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-envelope icon-data"></div>
+                                            <input type="text" name="email" class="card-input" :value="info.email" @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.father.fullName') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-user icon-data"></div>
+                                            <input type="text" name="father_fullname" class="card-input" :value="info.father_fullname" @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.mother.fullName') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-user icon-data"></div>
+                                            <input type="text" name="mother_fullname" class="card-input" :value="info.mother_fullname" @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.father.phone') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="father_phone" class="card-input" :value="info.father_phone" @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.mother.phone') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="mother_phone" class="card-input" :value="info.mother_phone" @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <a :href="'/card/' + info.id + '/delete'" class="btn btn-orange btn-close" v-if="info.role == 'fake'">{{ lang('resource.students.modal.delete') }}</a>
+                            <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">{{lang('resource.students.modal.close') }}</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <!--=============  ModalAddStudent    ================ -->
+            <!--================================================== -->
+            <div id="ModalAddStudent" class="modal" role="dialog">
+                <div class="modal-dialog zoomIn animated" id="" >
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-up">
+                            <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
+
+                            <img src="/images/student.png" alt="" class="img-avatar">
+
+                            <input type="text" class="cardName " name="student_lname" placeholder="Επώνυμο"  @change="saveCard($event, info)">
+
+                            <input type="text" class= "cardFname " name="student_fname" placeholder="Όνομα"   @change="saveCard($event, info)">
+                        </div>
+                        <div class="modal-infos">
+
+
+                            <div class="input-container modal-input-container">
+
+
+                                <div class="studies-selection-container" >
+                                    <div class="first-study-text">
+                                        {{ lang('resource.students.modal.study1') }}
+                                        <span class="tool">
+                                            <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy && !study2"></i>
+                                            <span class="tooltiptext">
+                                                {{ lang('resource.students.modal.addStudy') }}
+                                                </span>
+                                        </span>
+
+                                    </div>
+                                    <div class="">
+                                        <select class="select-transparent" v-model="selectedStudy" v-on:change="saveStudy(1)">
+                                            <optgroup :label="level.level.name" v-for="level in studies">
+                                                <option v-for="study in level.studies" :value="study.study.id" :disabled="secondStudy == study.study.id">
+                                                    {{ study.study.name }}
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa fa-graduation-cap select-icon"></i>
+                                        <div class="col-xl-line"></div>
+                                    </div>
+
+
+
+
+
+                                    <!-- Αν δεν είναι σχολειο, φροντιστηριο, ιεκ, κολλεγιο -->
+                                    <div v-if="" >
+                                        <div class="second-study-text" v-if="selectedStudy">
+
+
+
+
+
+
+                                        <span v-if="secondStudy">
+                                            {{ lang('resource.students.modal.study2') }}
+                                             <span class="second-study-remove"  @click="removeStudy">( <i class="fa fa-trash"></i>{{ lang('resource.students.modal.deleteStudy') }} )</span>
+                                        </span>
+
+                                        </div>
+
+
+                                        <div class="second" v-if="selectedStudy && (study2 || secondStudy)">
+                                            <select class="select-transparent  select2" v-model="secondStudy" v-on:change="saveStudy(2)">
+                                                <optgroup :label="level.level.name" v-for="level in studies">
+                                                    <option v-for="study in level.studies" :value="study.study.id" :disabled="selectedStudy == study.study.id">
+                                                        {{ study.study.name }}
+                                                    </option>
+                                                </optgroup>
+                                            </select>
+                                            <i class="fa fa-graduation-cap select-icon2"></i>
+                                            <div class="col-xl-line col-xl-line2"></div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="matching" v-if="availableCards && info.role == 'student'">
+                                        <div class="info-title">
+                                            {{lang('resource.students.modal.matching') }}
+                                        </div>
+
+                                        <select v-model="selectedCard" class="select-matching "  @change="updateCards">
+                                            <option value="0" selected>{{lang('resource.requests.table.noMatching')}}</option>
+                                            <optgroup :label="lang('resource.requests.table.suggestion')" v-if="availableCards.exact">
+                                                <option v-if="availableCards.exact.id" :value="availableCards.exact.id">{{ availableCards.exact.name }}</option>
+                                            </optgroup>
+                                            <optgroup :label="lang('resource.requests.table.noMatchingYet')">
+                                                <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
+                                            </optgroup>
+                                        </select>
+                                        <i class="fa fa-id-card select-icon"></i>
+                                        <div class="col-xl-line"></div>
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+                                <div class="info-container row">
+
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.city') }}
+
+                                        </div>
+                                        <div class="input-container">
+                                            <div class="fa fa-home icon-data"></div>
+                                            <input type="text" class="demo-form ad-input card-input" name="student_city"  @change="saveCard($event, info)">
+
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.address') }}
+                                        </div>
+                                        <div class="info-data input-container">
+                                            <div class="fa fa-map-marker icon-data"></div>
+                                            <input type="text" name="student_address"  class="demo-form ad-input card-input"   @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.phone') }}
+
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="student_phone" class="card-input"   @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.email') }}
+
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-envelope icon-data"></div>
+                                            <input type="text" name="email" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.father.fullName') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-user icon-data"></div>
+                                            <input type="text" name="father_fullname" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.mother.fullName') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-user icon-data"></div>
+                                            <input type="text" name="mother_fullname" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.father.phone') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="father_phone" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-data">
+                                        <div class="info-title">
+                                            {{lang('student_details.mother.phone') }}
+                                        </div>
+                                        <div class="info-data">
+                                            <div class="fa fa-phone icon-data"></div>
+                                            <input type="text" name="mother_phone" class="card-input"  @change="saveCard($event, info)">
+                                        </div>
+                                        <div class="line"></div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">{{lang('resource.students.modal.close') }}</button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
 
@@ -109,108 +599,65 @@
 
 
 
+
+
+
         </div>
+        <div v-else>
 
-        <div class="clearfix"></div>
+            <!-- PRELOADER -->
 
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover"
-                   style="background-color: #fff;" v-if="selection==false">
-                <thead>
-                <tr>
-                    <th style="width: 30px">
+            <div style="margin-top: 40px;">
+                <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 "  v-for="i in 12">
+                    <transition name="fade">
+                        <div class="animated-background" style="margin-top: 100px;">
+                            <div class="preloader-container ">
+                                <div class="background-masker header-top"></div>
+                                <div class="background-masker header-left"></div>
+                                <div class="background-masker header-right"></div>
+                                <div class="background-masker header-bottom"></div>
 
-                    </th>
-                    <th> <a href="#" v-on:click="nameChangeSort">
-                        {{ lang('resource.students.name') }}
-                        <span v-if="sortType == 'name' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                        <span v-if="sortType == 'name' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
-                    </th>
-                    <th>
-                        {{ lang('resource.students.phone') }}
-                    </th>
-                    <th> <a href="#" v-on:click="emailChangeSort">
-                        e-mail
-                        <span v-if="sortType == 'email' && !sortReverse" class="fa fa-sort-amount-asc"></span>
-                        <span v-if="sortType == 'email' && sortReverse" class="fa fa-sort-amount-desc"></span></a>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="student in filteredStudents">
-                    <td>
-                        <a class="" href="#">
-                            <img class="img-circle" width="35" v-bind:src=student.student.avatar alt=""/>
-                        </a>
-                    </td>
-                    <td style="text-transform: capitalize">{{ student.name }}</td>
-                    <td>{{ student.cv.student_phone }}</td>
-                    <td>{{ student.email }}</td>
-                </tr>
-                </tbody>
-            </table>
+                                <div class="background-masker subheader-left"></div>
+                                <div class="background-masker subheader-right"></div>
+                                <div class="background-masker subheader-bottom"></div>
+
+                                <div class="background-masker content-top"></div>
+                                <div class="background-masker content-first-end"></div>
+                                <div class="background-masker content-second-line"></div>
+                                <div class="background-masker content-second-end"></div>
+                                <div class="background-masker content-third-line"></div>
+                                <div class="background-masker content-third-end"></div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+
+            </div>
+
+
+
+
         </div>
 
         <paginator :dataSet="dataSet" @changed="fetch"></paginator>
 
-
-
-        <!-- Modal -->
-        <div id="ModalStudentInfo" class="modal" role="dialog">
-            <div class="modal-dialog zoomIn animated" id="modalzoom" >
-                <!-- Modal content-->
-                <div class="modal-content" v-if="info">
-                    <div class="modal-up">
-                        <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
-                        <!--<h4 class="modal-title" style=" color: #fff"> </h4>-->
-                        <img :src="info.student.avatar" alt="" class="img-avatar">
-                        <div class="lastName">{{ info.student.lname }} </div>
-                        <div class="firstName">{{ info.student.fname }} </div>
-                    </div>
-                    <div class="modal-infos">
-                        <p>{{ info.cv.student_address }}</p>
-
-                        <div class="input-container modal-input-container">
-                            <select v-model="selectedStudy" class="modal-select" v-on:change="saveStudy">
-                                <optgroup :label="level.level.name" v-for="level in studies">
-                                    <option v-for="study in level.studies" :value="study.study.id">{{ study.study.name }}</option>
-                                </optgroup>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-close" data-dismiss="modal" @click="modalClose">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-
-
-
     </div>
-
-
-
-
-
-
 
 </template>
 
 
 <style>
-    .alumniFilter{-webkit-filter: grayscale(75%); opacity: 0.9}
+    .alumniFilter{-webkit-filter: grayscale(85%); opacity: 0.9}
+    .fakeFilter{-webkit-filter: grayscale(70%); opacity: 0.7}
+    .fakeBtn{color: #e1e1e1 !important;}
+    .fakeBtn:hover{color: #90fdee !important;}
 
 
     .fade3-enter-active, .fade3-leave-active {
-    transition: opacity 1.3s
+        transition: opacity 1.3s
     }
     .fade3-enter, .fade3-leave-to {
-    opacity: 0
+        opacity: 0
     }
 
     .cards-container{
@@ -233,7 +680,7 @@
         backface-visibility: hidden;
     }
 
-   .front {
+    .front {
 
     }
     .back {
@@ -270,6 +717,38 @@
 
     .fath{color: #b8b8b8; font-size: 105%; margin-left: 10px;}
 
+    th{min-width: 100px;}
+
+    .dots-text{display:inline-block;
+        /*min-width: 150px;*/
+        /*max-width: 200px;*/
+        /*width: 95%;*/
+        /*white-space: nowrap;*/
+        /*overflow:hidden !important;*/
+        /*text-overflow: ellipsis;*/
+    }
+
+    @media (max-width: 470px){
+        .thLevel{display: none}
+    }
+    @media (max-width: 670px){
+        .thPhone{display: none}
+    }
+    @media (max-width: 1170px){
+        .thStudies{display: none}
+    }
+
+    @media (max-width: 1650px){
+        .thEmail{display: none}
+    }
+
+    @media (min-width: 641px) and (max-width: 680px){
+        .fa.fa-user-plus{display: none}
+    }
+
+    @media (max-width: 640px){
+        /*.tool{margin-left: auto;  margin-right: auto; text-align: center;}*/
+    }
 
 
 
@@ -286,9 +765,26 @@
     .btn-info,.btn-info:focus{background: #00bcd4; border-color: #00bcd4; }
     .btn-info:hover{background: #00a6be; border-color: #00a6be; }
 
-    .btn-view{margin: 11px 10px 10px 0; height: 38px;}
+    .btn-orange,.btn-orange:focus{background: #7f8d9b; border:none;  color: #e8e8e8
+    }
+    .btn-orange:hover{background: #777; border:none; color: #ececec
+    }
+
+    .btn-view{margin: 11px 10px 10px 0!important; height: 38px;}
     .form-control{z-index: 0!important;}
-    .input-search{width: 210px; margin: 10px 0 10px 10px; border: 1px solid #d1d1d1; border-radius: 5px;}
+    .form-control:focus,.form-control:active{border: none;}
+    .input-search{width: 290px!important; margin: 10px 0 10px 10px; border: 1px solid #c2c2c2; border-radius: 5px;}
+    .search-counter{display: inline-block; margin:3px 0 0 3px;}
+    .addon2{width: 70px; padding: 6px!important;}
+    .input-group-addon{border-radius: 5px; border:none; color: #9b9b9b
+    }
+    .form-control{border: none!important;}
+
+    .addStudent{margin:8px 0 0 15px; font-size: 240%; color: #999; display: inline-block; padding-left: 30px;}
+    .addStudent:hover{cursor: pointer; color: #FD6A33}
+
+
+
 
     .sc-box{min-height: 160px; background: #fafafa; border: 1px solid #a5a5a5; border-top-left-radius: 8px; border-top-right-radius: 8px;  padding: 0 25px;  border-bottom: none; position: relative;}
 
@@ -306,25 +802,54 @@
     /*.email{font-size: 90%; color: #888; font-weight: 300; margin: 5px 0 0 90px;}*/
     /*.phone{margin: 20px 0 0 90px;}*/
 
-    .circle{height: 19px!important; width: 19px!important; border-radius: 50%; background-color:#008da5; position: absolute; left: -4px; bottom: 37px; }
 
     /*.sc-bottom{height: 40px; background: #cad8d3; margin: 0 -25px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px;}*/
     .sc-bottom{height: 50px!important; background: #cad8d3; margin: 0 0 20px 0; bottom: -25px;
         border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border: 1px solid #a5a5a5; border-top: none; padding: 15px;}
-    .sc-radio2{margin:-10px 80px 0 0 ; opacity: 0.8;}
+
+
+    /* ==========================================================================================*/
+    /* ==========================================================================================*/
+
+    .sc-radio2{ opacity: 0.8;}
+    .circle{height: 19px!important; width: 19px!important; border-radius: 50%; background-color:#008da5; position: absolute; }
+    .phone-text{position: absolute;}
+
+
+
+    /* =====================  CHROME  & IOS =====================================*/
+    .sc-radio2{margin:-10px 80px 0 0;}
+    .circle{ left: -4px; bottom: 37px;}
+    .phone-text{ bottom: 36px;}
+    /* =========================================================================*/
+
+    /*!* ===================== SAFARI  ===========================================*!*/
+    .sc-radio2SAFARI{margin:-22px 10px 0 0 ; opacity: 0.8;}
+    .circleSAFARI{ left: 21px; bottom: 5px; }
+    .phone-textSAFARI{ bottom: 4px;}
+    /* =========================================================================*/
+
+    /* ==========================================================================================*/
+    /* ==========================================================================================*/
+
+
+
 
     .phone{margin: 10px 0;}
     .phone>a,.phone>a:visited{color: #008da5;}
     .phone>a:hover, .email>a:hover{color: #FD6A33}
 
     .phone-text>i{color: #cad8d3; margin-right: 7px}
-    .phone-text{position: absolute; bottom: 36px;}
+
 
     .img-students{height: 55px; width: auto; position: absolute; right: 30px; top: 85px; opacity: 0.07}
 
+    .r-lab2{height: 18px!important; width: 72px!important;}
+    /*.r-lab2:hover{cursor: default;}*/
+
     /* ============ MODAL CARD ==========*/
     /* ==================================*/
-    .modal-content{border-radius: 7px!important; background-color: #f4f4f4; padding: 0!important; border: none!important;}
+    .modal-content{border-radius: 7px!important; background-color: #f4f4f4; padding: 0!important; border: none!important; }
     .modal-up{padding: 20px 15px ; margin: 0; background-color: #007087; height: 110px; border-top-left-radius: 6px; border-top-right-radius: 7px;}
     .modal-footer{padding: 15px; background-color: #a1afaa; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; height: 80px;
     }
@@ -332,23 +857,125 @@
     .lastName{margin-top: 45px; margin-left: 130px; font-size: 200%; color: #fafafa}
     .firstName{margin-top: 8px; margin-left: 130px; font-size: 150%; color: #888}
 
-    .modal-infos{ height: 500px; margin-top: 40px; padding: 15px;}
+    .cardName,.cardFname{margin-left: 130px;  background: transparent; border: none; width: 90%}
+    .cardName{margin-top: 25px;  font-size: 200%; color: #fafafa; }
+    .cardFname{margin-top: 7px;  font-size: 150%; color: #888}
+    .cardName:focus{color: #cdcdcd
+    }
+    .cardFname:focus{color: #006075;
+    }
+
+    .cardName::placeholder {
+        color:    #cdcdcd;
+    }
+    .cardFname::placeholder {
+        color:    #888;
+    }
+    .card-input:focus{opacity: 0.65}
+
+    .modal-infos{ min-height: 540px; margin-top: 40px; padding: 15px;}
 
     .btn-close{margin:0 30px 0 0;}
 
     .modal-select{width: 100%}
 
+    .select-transparent{background: transparent; border: none; margin-top: 6px; margin-left: 18px;}
+    .col-xl-line{border-bottom: 1px solid #008da5; margin-top: -2px; width: 100%;}
+
+    /*.select-icon{margin-top: 8px; display: inline-block; float: left; color: #008da5}*/
+
+    .studies-selection-container{position: relative; margin-top: 10px;}
+    .select-icon, .select-icon2{position: absolute; left: -2px; color: #008da5}
+    .select-icon {top: 30px;}
+    .select-icon2{top: 100px;}
+    .col-xl-line2{position: absolute; top:120px;}
+    .select2{position: absolute; top: 90px;}
+
+    .first-study-text,.second-study-text{color:#008da5; font-size: 110%}
+    .second-study-text{margin-top: 25px;}
+    .fa-plus{ margin-right: 10px;}
+    .fa-plus:hover{cursor: pointer; color: #FD6A33}
+    .second-study-remove{color: #bbb; font-size: 90%; font-weight: 300;}
+    .second-study-remove:hover{cursor: pointer; color: #FD6A33}
+    .fa-trash{margin-right: 6px;}
+
+    .info-container{position: absolute; top: 360px; width: 100%;}
+    .icon-data, .info-title {color: #008da5}
+    .col-data{margin-top: 30px;}
+    .line{height: 1px; width: 97%; background: #008da5}
+
+    .card-input{border: none; background: transparent;  width: 92%}
+    .select-matching{ border: none; background: transparent;border-radius: 0; width: 100%!important; padding-left: 17px; position: relative;}
+    .matching{position: absolute; top: 150px;  right: 0; left:0;}
+    .fa-id-card{margin-top: -8px;}
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /*text-indent: 8px;*/
+        text-overflow: '';
+    }
+    select:hover {
+        cursor: pointer;
+    }
+
+
+    @media (min-width: 768px) {
+        .modal-content{width:670px }
+    }
+
+    @media (min-width: 900px) {
+        .modal-content{width:730px }
+    }
 
     @media (min-width: 1200px) {
-        .modal-content{width: 780px }
+        .modal-content{width: 840px }
     }
     @media (min-width: 1600px) {
-        .modal-content{width: 940px }
+        .modal-content{width: 980px }
     }
 
-    @media (max-width: 620px) {
-        .modal-infos{height: 410px }
+    @media (max-width: 767px) {
+        .modal-infos{height: 800px }
     }
+
+
+    /* =========TOOLTIP=========*/
+    .tool {
+        position: relative;
+    }
+
+    .tooltiptext  {
+        font-weight: 300;
+        font-size: 80%;
+        visibility: hidden;
+        width: 300px;
+        background-color: #007991;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 4px 1px;
+        position: absolute;
+        z-index: 1;
+        bottom: 130%;
+        margin-left: 2px;
+        opacity: 0;
+        transition: opacity 0.1s;
+        background-color: #007991;
+    }
+
+    .tooltiptext2{
+        background-color: #FD6A33;
+        color: #fff;
+        width: 200px;}
+
+
+    .tool:hover .tooltiptext{
+        visibility: visible;
+        opacity: 0.9;
+    }
+
+    /* =================================*/
 
 
 
@@ -397,7 +1024,7 @@
 
 
     /* =========== photo frame ==========*/
-   /* ==================================*/
+    /* ==================================*/
     .img-cont{display: none}
     .frame-cont{position: absolute; top:-3px; left: -10px;}
     .frame{height: 70px; width: 70px; display: none;}
@@ -437,6 +1064,15 @@
         .frame-cont{display: none;}
         .img-cont{display: block}
 
+        .img-contSAFARI{margin: -60px auto; }
+        .nameSAFARI{margin: 60px auto 0 auto; }
+        .emailSAFARI{margin: -1px auto;}
+        .sc-radio2SAFARI{margin: 24px auto;}
+        .sc-bottomSAFARI{margin-top: -65px;  z-index: 30; position: relative;}
+        .phoneSAFARI{margin-bottom: -47px; margin-left: 1px}
+        .circleSAFARI{bottom: 13px; left: 11px;}
+        .phone-textSAFARI{margin-bottom: 9px;}
+
     }
 
 
@@ -456,16 +1092,30 @@
         /*.pull-right{ margin-right: 50px!important;}*/
     }
 
+    @media  (max-width: 640px) {
+        .btn-view{width: 96%; margin: 0 auto 15px auto!important;  float: none!important; display: block; text-align: center!important;}
+        .form-control{ width: 210px;
+            border-bottom-right-radius: 4px!important; border-top-right-radius: 4px!important;
+            -moz-border-radius-bottomright: 4px!important; -moz-border-radius-topright: 4px;}
+        .input-search{width: 70%!important; }
+
+    }
+
+    @media  (max-width: 535px) {
+        .addon2{display: none;}
+    }
+
     @media  (max-width: 595px) {
         .col-xxs-12{width: 100%}
 
 
     }
-    @media  (max-width: 550px) {
-
-        .btn-view{width: 95%; margin: 0 auto 15px auto; float: none!important; display: block; text-align: center!important;}
-
-    }
+    @media  (max-width: 640px) {  .input-search{width: 96%!important; }  }
+    @media  (max-width: 580px) {  .input-search{width: 68%!important; }  }
+    @media  (max-width: 540px) {  .input-search{width: 66%!important; }  }
+    @media  (max-width: 500px) {  .input-search{width: 62%!important; }  }
+    @media  (max-width: 450px) {  .input-search{width: 95%!important; }  .addon2{display: table-cell;} }
+    /*@media  (max-width: 380px) {  .input-search{width: 96%!important; }  }*/
 
 
     /*RADIO INPUT STYLE [same @ Scholarships-vue]*/
@@ -536,9 +1186,17 @@
 
 <script>
 
+
+    import Multiselect from '../../scholio-multiselect';
+
     export default{
+        components: { Multiselect },
+
+        props: ['sxoles'],
+
         data: function() {
             return{
+                secondStudy: null,
                 items: [],
                 searchStr:"",
                 selection:true,
@@ -552,7 +1210,17 @@
                 scholio: null,
                 info: null,
                 studies: null,
-                selectedStudy: null
+                selectedStudy: null,
+                std: [],
+                multipleStudies: true,
+                secondStudy: null,
+                study2: false,
+                test: true,
+                studentCounter: 0,
+                cards: null,
+                selectedCard: 0,
+                availableCards: null,
+                exact_id: 0
             }
         },
         computed: {
@@ -571,33 +1239,84 @@
         },
 
         methods: {
+            getCards() {
+                axios.get('/api/school/getCards/' + this.info.status + '/' + this.info.type + '/' + this.info.name).then(({ data }) => {
+                    this.availableCards = data
+                if (this.availableCards.exact) {
+                    this.exact_id = 0
+                }
+                console.log('aaa')
+                console.log(this.availableCards)
+            })
+            },
+            updateCards(){
+                axios.post('/api/school/update/cards/swap/' + this.info.id + '/' + this.selectedCard).then(({data})=>{
+                    console.log(data)
+            })
+            },
+            saveCard(e, card){
+                let field = e.target.name
+                let value = e.target.value
+
+                axios.post('/api/school/update/card/' + card.id + '/' + field + '/' + value).then(response =>{
+                    console.log(response.data)
+            })
+            },
             changeStatus: function(id, st){
                 var status = '';
                 if(document.getElementById('st'+id).checked) status = 'connected';
                 else status = 'allumni';
-                axios.post('/api/school/changeStudentStatus/' + id + '/' + status)
-                    .then(response => {
-                        if(response.data == 'ok'){
-                            // location.reload(); // ---------------------------------->>>>>>
-                            this.fetch()
-                        } 
-                    })
 
-                    this.status = status
+                axios.post('/api/school/changeStudentStatus/' + id + '/' + status)
+                        .then(response => {
+                    if(response.data == 'ok'){
+                    // location.reload(); // ---------------------------------->>>>>>
+                    this.fetch()
+                }
+            })
+
+                this.status = status
             },
-            saveStudy(){
-                console.log(this.info.id)
-                if(this.selectedStudy){
-                    axios.post('/api/student/saveStudy', {study: this.selectedStudy, student: this.info.id})
-                    .then(response => {
-                        this.fetch()
-                    });
+            removeStudy(){
+                let c = confirm('Are you sure?')
+                if(c){
+                    axios.post('/api/student/removeStudy', {study: this.secondStudy, student: this.info.id}).then(response=>{ location.reload()})
                 }
             },
-             getSchoolStudies(){
+            saveStudy(std){
+                if(std == 1){
+                    if (this.selectedStudy) {
+                        axios.post('/api/student/saveStudy', { study: this.selectedStudy, student: this.info.id, std: 1 })
+                                .then(response => {
+                            // this.fetch()
+                        });
+                    }
+                }
+
+                if(std == 2){
+                    if (this.secondStudy) {
+                        axios.post('/api/student/saveStudy', { study: this.secondStudy, student: this.info.id, std: 2 })
+                                .then(response => {
+                            // this.fetch()
+                        });
+                    }
+                }
+
+            },
+            getSchoolStudies(){
                 axios.get('/api/notifications/getSchoolLevelStudies').then(({data})=>{
                     this.studies = data
-                })
+                var vm = this
+
+                var arr = []
+                this.studies.forEach((item)=>{
+                    item.studies.forEach((studies)=>{
+                    arr.push({id: studies.study.id, name: studies.study.name})
+            })
+                vm.std.push({ level: item.level.name, study: arr })
+                arr = []
+            })
+            })
             },
             nameChangeSort: function(){
                 this.sortType = 'name';
@@ -609,49 +1328,63 @@
                 this.sortReverse=!this.sortReverse;
                 this.fetch(1)
             },
+            levelChangeSort: function () {
+                this.sortType = 'level';
+                this.sortReverse = !this.sortReverse;
+                this.fetch(1)
+            },
+            studyChangeSort: function () {
+                this.sortType = 'type';
+                this.sortReverse = !this.sortReverse;
+                this.fetch(1)
+            },
             dynamicSort: function (property,order) {
-                    var sortOrder = 1;
-                    if (order) {sortOrder = -1}
+                var sortOrder = 1;
+                if (order) {sortOrder = -1}
 
-                    if(property[0] === "-") {
-                        sortOrder = -1;
-                        property = property.substr(1);
-                    }
-                    return function (a,b) {
-                        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-                        return result * sortOrder;
-                    }
-                },
+                if(property[0] === "-") {
+                    sortOrder = -1;
+                    property = property.substr(1);
+                }
+                return function (a,b) {
+                    var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+                    return result * sortOrder;
+                }
+            },
 
-                url(page) {
-                    if (! page) {
-                        let query = location.search.match(/page=(\d+)/);
-                        page = query ? query[1] : 1;
-                    }
+            url(page) {
+                if (! page) {
+                    let query = location.search.match(/page=(\d+)/);
+                    page = query ? query[1] : 1;
+                }
 
-                    let search = this.searchStr
+                let search = this.searchStr
 
-                    if(search == ""){
-                        search = "%20"
-                    }
+                if(search == ""){
+                    search = "%20"
+                }
 
-                    return `/api/connected/students/search/${this.sortType}/${this.sortReverse}/${this.status}/${search}?page=${page}`;
-                }, 
+                return `/api/connected/students/card/search/${this.sortType}/${this.sortReverse}/${this.status}/${search}?page=${page}`;
+            },
 
-                fetch(page, status) {
-                    if (status) this.status = status
-                    window.scrollTo(0, 0);
-                    axios.get(this.url(page)).then(this.refresh);
-                },
+            fetch(page, status) {
+                if (status) this.status = status
+                window.scrollTo(0, 0);
+                axios.get(this.url(page)).then(this.refresh);
+            },
 
-                refresh({data}) {
+            refresh({data}) {
+                setTimeout(()=>{
                     this.dataSet = data;
-                    this.items = data.data;
-                    this.allumniCount = this.items.allumniStudents
-                    this.connectedCount = this.items.connectedStudents
+            }, 700)
 
-                    console.log(this.dataSet)
-                },
+                this.items = data.data;
+                console.log(this.items)
+                this.allumniCount = this.items.allumniStudents
+                this.connectedCount = this.items.connectedStudents
+
+                this.studentCounter = data.studentCounter
+            },
 
             changeView: function () {
                 this.selection=!this.selection;
@@ -661,16 +1394,29 @@
             },
             changeInfo(data){
                 this.info = data
-                if(this.info.pivot.study_id) this.selectedStudy = this.info.pivot.study_id
-                else this.selectedStudy = 0
+                console.log('info')
                 console.log(this.info)
-                setTimeout(function(){
-//                    document.getElementById('modalzoom').classList.remove('zoomIn');
+                this.getCards()
+                if(this.info.study_id) this.selectedStudy = this.info.study_id
+                else this.selectedStudy = 0
+                if (this.info.study_id2) this.secondStudy = this.info.study_id2
+                else this.secondStudy = 0
 
-                }, 800);
+                $('.modal').on('shown.bs.modal', function(){
+                    // if(!this.study2) this.test = false
+                    console.log('second')
+                    console.log(this.secondStudy)
+                    console.log('study2')
+                    console.log(this.study2)
+
+                })
 
                 $('.modal').on('hide.bs.modal', function () {
+                    // this.secondStudy = false
+                    // this.study2 = false
+
                     console.log('hide')
+                    // location.reload()
 //                    $('.modal-dialog').addClass('animated zoomOut');
                 })
 
@@ -709,7 +1455,6 @@
         mounted() {
             this.getSchoolStudies()
             this.scholio = window.location.origin
-            console.log('safari')
         }
     }
 
