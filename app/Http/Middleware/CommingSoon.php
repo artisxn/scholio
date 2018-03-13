@@ -16,6 +16,8 @@ class CommingSoon
      */
     public function handle($request, Closure $next)
     {
+        // dd(strpos(request()->url(), 'app'));
+
         // dd(request()->server->all());
         $url = request()->url();
         $soon = env('COMING_SOON', false);
@@ -41,7 +43,7 @@ class CommingSoon
             return $next($request);
         }
 
-        if ($url == request()->is('/bot/app/*')) {
+        if (strpos(request()->url(), 'bot') !== false) {
             return $next($request);
         }
 

@@ -40,6 +40,7 @@ use App\Models\Request;
 // });
 
 Route::get('/app/{find}', function ($find) {
+    // dd(substr(request()->url(),0,25));
     $results = AlgoliaSchool::search($find)->get();
 
     if ($results->isEmpty()) {
