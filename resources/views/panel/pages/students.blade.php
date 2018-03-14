@@ -69,7 +69,7 @@
 
 //            $(".full-content").hide().fadeIn(100);
 
-            $('#nav').text(navigator.platform);
+            $('#nav').text(navigator.appName);
 
             console.log(navigator)
 
