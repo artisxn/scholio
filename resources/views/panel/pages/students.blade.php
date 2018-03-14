@@ -69,7 +69,7 @@
 
 //            $(".full-content").hide().fadeIn(100);
 
-            $('#nav').text(navigator.userAgent);
+            $('#nav').text(navigator.platform);
 
             console.log(navigator)
 
