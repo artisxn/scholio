@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Financial;
-use App\Models\FinancialEN;
 use Illuminate\Database\Seeder;
 
 class FinancialsTableSeeder extends Seeder
@@ -19,11 +18,11 @@ class FinancialsTableSeeder extends Seeder
             ['plan' => 'Χρόνος Δωρεάν Φοίτησης', 'icon' => '/panel/assets/images/steps/Χρόνος Δωρεάν Φοίτησης.png', 'metric' => 'Μηνες'],
         ];
 
-        $typesEN = [
-            ['plan' => 'Tuition Fee Reduction', 'icon' => '/panel/assets/images/steps/Μείωση Διδάκτρων.png', 'metric' => '%'],
-            ['plan' => 'Amount of Subsidy', 'icon' => '/panel/assets/images/steps/Ποσό Επιδότησης.png', 'metric' => '€'],
-            ['plan' => 'Free School Attendance Time', 'icon' => '/panel/assets/images/steps/Χρόνος Δωρεάν Φοίτησης.png', 'metric' => 'Months'],
-        ];
+        // $typesEN = [
+        //     ['plan' => 'Tuition Fee Reduction', 'icon' => '/panel/assets/images/steps/Μείωση Διδάκτρων.png', 'metric' => '%'],
+        //     ['plan' => 'Amount of Subsidy', 'icon' => '/panel/assets/images/steps/Ποσό Επιδότησης.png', 'metric' => '€'],
+        //     ['plan' => 'Free School Attendance Time', 'icon' => '/panel/assets/images/steps/Χρόνος Δωρεάν Φοίτησης.png', 'metric' => 'Months'],
+        // ];
 
         foreach ($types as $type) {
             $financial = new Financial;
@@ -33,12 +32,12 @@ class FinancialsTableSeeder extends Seeder
             $financial->save();
         }
 
-        foreach ($typesEN as $t) {
-            $financial = new FinancialEN;
-            $financial->plan = $t['plan'];
-            $financial->icon = $t['icon'];
-            $financial->metric = $t['metric'];
-            $financial->save();
-        }
+        // foreach ($typesEN as $t) {
+        //     $financial = new FinancialEN;
+        //     $financial->plan = $t['plan'];
+        //     $financial->icon = $t['icon'];
+        //     $financial->metric = $t['metric'];
+        //     $financial->save();
+        // }
     }
 }

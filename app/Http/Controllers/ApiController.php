@@ -658,4 +658,108 @@ class ApiController extends Controller
 
     }
 
+    public function removeStudentStudy()
+    {
+        $school = auth()->user()->info;
+        $study = Study::find(request()->study);
+        $card = Card::find(request()->student);
+        $student = User::find(request()->student);
+
+        if ($card->role == 'student' && $card->student_id) {
+            $school->students->where('id', $card->student_id)->first()->pivot->type2 = null;
+            $school->students->where('id', $card->student_id)->first()->pivot->study_id2 = null;
+            $school->students->where('id', $card->student_id)->first()->pivot->level2 = null;
+            $school->students->where('id', $card->student_id)->first()->pivot->save();
+        }
+
+        $card->type2 = null;
+        $card->study_id2 = null;
+        $card->level2 = null;
+        $card->save();
+    }
+
+    public function notificationGetSchoolLevelSections()
+    {
+        $school = auth()->user()->info;
+        $studies = [];
+        $data = [];
+        $sections = [];
+
+        $schoolLevels = $school->levels();
+
+        foreach ($schoolLevels as $level) {
+            foreach ($school->section($level) as $section) {
+                array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+            }
+            array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+            $sections = [];
+        }
+
+        return $data;
+    }
+
+    public function notificationGetSchoolLevelStudies()
+    {
+        $school = auth()->user()->info;
+        $studies = [];
+        $data = [];
+        $sections = [];
+
+        $schoolLevels = $school->levels();
+
+        foreach ($schoolLevels as $level) {
+            foreach ($school->section($level) as $section) {
+                foreach ($school->studyFromSection($section) as $study) {
+                    array_push($studies, ['study' => Study::find($study)]);
+                }
+            }
+            array_push($data, ['level' => Level::find($level), 'studies' => $studies]);
+            $studies = [];
+        }
+
+        return $data;
+    }
+
+    public function notificationGetSchoolLevelStudiesFromSchool($school_id)
+    {
+        $school = School::find($school_id);
+        $studies = [];
+        $data = [];
+        $sections = [];
+
+        $schoolLevels = $school->levels();
+
+        foreach ($schoolLevels as $level) {
+            foreach ($school->section($level) as $section) {
+                foreach ($school->studyFromSection($section) as $study) {
+                    array_push($studies, ['study' => Study::find($study)]);
+                }
+            }
+            array_push($data, ['level' => Level::find($level), 'studies' => $studies]);
+            $studies = [];
+        }
+
+        return $data;
+    }
+
+    public function notificationGetSchoolLevelSectionsFromSchool($school_id)
+    {
+        $school = School::find($school_id);
+        $studies = [];
+        $data = [];
+        $sections = [];
+
+        $schoolLevels = $school->levels();
+
+        foreach ($schoolLevels as $level) {
+            foreach ($school->section($level) as $section) {
+                array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+            }
+            array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+            $sections = [];
+        }
+
+        return $data;
+    }
+
 }

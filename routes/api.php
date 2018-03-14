@@ -39,107 +39,37 @@ Route::post('/school/update/card/{card}/{field}/{newValue}', 'ApiController@upda
 Route::post('/school/uploadImage', 'ApiController@uploadSchoolImage')->middleware('auth:api');
 Route::post('/user/uploadAvatar', 'ApiController@uploadUserAvatar')->middleware('auth:api');
 Route::post('/student/saveStudy', 'ApiController@saveStudentStudy')->middleware('auth:api');
-
-Route::post('/student/removeStudy', function () {
-    $school = auth()->user()->info;
-    $study = Study::find(request()->study);
-    $card = Card::find(request()->student);
-    $student = User::find(request()->student);
-
-    if ($card->role == 'student' && $card->student_id) {
-        $school->students->where('id', $card->student_id)->first()->pivot->type2 = null;
-        $school->students->where('id', $card->student_id)->first()->pivot->study_id2 = null;
-        $school->students->where('id', $card->student_id)->first()->pivot->level2 = null;
-        $school->students->where('id', $card->student_id)->first()->pivot->save();
-    }
-
-    $card->type2 = null;
-    $card->study_id2 = null;
-    $card->level2 = null;
-    $card->save();
-
-    // $student->studyConnection()->save($study, ['school_id' => $school->id]);
-})->middleware('auth:api');
-
-Route::get('/notifications/getSchoolLevelSections', function () {
-    $school = auth()->user()->info;
-    $studies = [];
-    $data = [];
-    $sections = [];
-
-    $schoolLevels = $school->levels();
-
-    foreach ($schoolLevels as $level) {
-        foreach ($school->section($level) as $section) {
-            array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
-        }
-        array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
-        $sections = [];
-    }
-
-    return $data;
-})->middleware('auth:api');
-
-Route::get('/notifications/getSchoolLevelStudies', function () {
-    $school = auth()->user()->info;
-    $studies = [];
-    $data = [];
-    $sections = [];
-
-    $schoolLevels = $school->levels();
-
-    foreach ($schoolLevels as $level) {
-        foreach ($school->section($level) as $section) {
-            foreach ($school->studyFromSection($section) as $study) {
-                array_push($studies, ['study' => Study::find($study)]);
-            }
-        }
-        array_push($data, ['level' => Level::find($level), 'studies' => $studies]);
-        $studies = [];
-    }
-
-    return $data;
-})->middleware('auth:api');
-
-Route::get('/notifications/getSchoolLevelStudies/public/{school_id}', function ($school_id) {
-    $school = School::find($school_id);
-    $studies = [];
-    $data = [];
-    $sections = [];
-
-    $schoolLevels = $school->levels();
-
-    foreach ($schoolLevels as $level) {
-        foreach ($school->section($level) as $section) {
-            foreach ($school->studyFromSection($section) as $study) {
-                array_push($studies, ['study' => Study::find($study)]);
-            }
-        }
-        array_push($data, ['level' => Level::find($level), 'studies' => $studies]);
-        $studies = [];
-    }
-
-    return $data;
-});
-
-Route::get('/notifications/getSchoolLevelSections/public/{school_id}', function ($school_id) {
-    $school = School::find($school_id);
-    $studies = [];
-    $data = [];
-    $sections = [];
-
-    $schoolLevels = $school->levels();
-
-    foreach ($schoolLevels as $level) {
-        foreach ($school->section($level) as $section) {
-            array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
-        }
-        array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
-        $sections = [];
-    }
-
-    return $data;
-})->middleware('auth:api');
+Route::post('/student/removeStudy', 'ApiController@removeStudentStudy')->middleware('auth:api');
+Route::get('/notifications/getSchoolLevelSections', 'ApiController@notificationGetSchoolLevelSections')->middleware('auth:api');
+Route::get('/notifications/getSchoolLevelStudies', 'ApiController@notificationGetSchoolLevelStudies')->middleware('auth:api');
+Route::get('/notifications/getSchoolLevelStudies/public/{school_id}', 'ApiController@notificationGetSchoolLevelStudiesFromSchool')->middleware('api');
+Route::get('/notifications/getSchoolLevelSections/public/{school_id}', 'ApiController@notificationGetSchoolLevelSectionsFromSchool')->middleware('auth:api');
+Route::get('/user', 'ApiController@users')->middleware('auth:api');
+Route::get('/users/all', 'ApiController@usersAll')->middleware('auth:api');
+Route::get('/notifications', 'ApiController@notifications')->middleware('auth:api');
+Route::get('/notifications/requests', 'ApiController@notificationsRequest')->middleware('auth:api');
+Route::post('/notifications/read/{id}', 'ApiController@notificationsRead')->middleware('auth:api');
+Route::get('/notifications/all', 'ApiController@notificationsAll')->middleware('auth:api');
+Route::get('/schools/all', 'ApiController@schoolsAll')->middleware('auth:api');
+Route::get('/school/id/{id}', 'ApiController@schoolId')->middleware('auth:api');
+Route::get('/financial/id/{id}', 'ApiController@financialId')->middleware('auth:api');
+Route::get('/scholarships/all', 'ApiController@scholarshipsAll')->middleware('auth:api');
+Route::get('/scholarship/{school}', 'ApiController@scholarship')->middleware('auth:api');
+Route::get('/scholarship/requests', 'ApiController@scholarshipRequests')->middleware('auth:api');
+Route::get('/school/studies', 'ApiController@studiesGET')->middleware('auth:api');
+Route::post('/school/studies', 'ApiController@studiesPOST')->middleware('auth:api');
+Route::get('/school/getSchoolStudies', 'ApiController@getStudies')->middleware('auth:api');
+Route::get('/public/profile', 'ApiController@publicProfile')->middleware('auth:api');
+Route::get('/school/{school}', 'ApiController@school')->middleware('api');
+Route::get('/results/{type}', 'ApiController@results')->middleware('api');
+Route::get('/profile/{school}', 'ApiController@schoolProfile')->middleware('api');
+Route::get('/profile/auth/{school}', 'ApiController@schoolAuthProfile')->middleware('auth:api');
+Route::post('/scholarship/save', 'ApiController@scholarshipSave')->middleware('auth:api');
+Route::get('/scholarship/get/{scholarship}', 'ApiController@getScholarship')->middleware('api');
+Route::post('/interested/save', 'ApiController@interestedSave')->middleware('auth:api');
+Route::get('/interested/check', 'ApiController@interestedCheck')->middleware('auth:api');
+Route::get('/school/types/all', 'ApiController@schoolTypes')->middleware('api');
+Route::get('/socialLinks/get/{user}', 'ApiController@getSocialLinks')->middleware('api');
 
 Route::post('/school/scholarshipSave', function () {
     try {
@@ -600,32 +530,6 @@ Route::post('/connection/{id}/deny', function ($id) {
     return 'Denied';
 })->middleware('auth:api');
 
-Route::get('/user', 'ApiController@users')->middleware('auth:api');
-Route::get('/users/all', 'ApiController@usersAll')->middleware('auth:api');
-Route::get('/notifications', 'ApiController@notifications')->middleware('auth:api');
-Route::get('/notifications/requests', 'ApiController@notificationsRequest')->middleware('auth:api');
-Route::post('/notifications/read/{id}', 'ApiController@notificationsRead')->middleware('auth:api');
-Route::get('/notifications/all', 'ApiController@notificationsAll')->middleware('auth:api');
-Route::get('/schools/all', 'ApiController@schoolsAll')->middleware('auth:api');
-Route::get('/school/id/{id}', 'ApiController@schoolId')->middleware('auth:api');
-Route::get('/financial/id/{id}', 'ApiController@financialId')->middleware('auth:api');
-Route::get('/scholarships/all', 'ApiController@scholarshipsAll')->middleware('auth:api');
-Route::get('/scholarship/{school}', 'ApiController@scholarship')->middleware('auth:api');
-Route::get('/scholarship/requests', 'ApiController@scholarshipRequests')->middleware('auth:api');
-Route::get('/school/studies', 'ApiController@studiesGET')->middleware('auth:api');
-Route::post('/school/studies', 'ApiController@studiesPOST')->middleware('auth:api');
-Route::get('/school/getSchoolStudies', 'ApiController@getStudies')->middleware('auth:api');
-Route::get('/public/profile', 'ApiController@publicProfile')->middleware('auth:api');
-Route::get('/school/{school}', 'ApiController@school')->middleware('api');
-Route::get('/results/{type}', 'ApiController@results')->middleware('api');
-Route::get('/profile/{school}', 'ApiController@schoolProfile')->middleware('api');
-Route::get('/profile/auth/{school}', 'ApiController@schoolAuthProfile')->middleware('auth:api');
-Route::post('/scholarship/save', 'ApiController@scholarshipSave')->middleware('auth:api');
-Route::get('/scholarship/get/{scholarship}', 'ApiController@getScholarship')->middleware('api');
-Route::post('/interested/save', 'ApiController@interestedSave')->middleware('auth:api');
-Route::get('/interested/check', 'ApiController@interestedCheck')->middleware('auth:api');
-Route::get('/school/types/all', 'ApiController@schoolTypes')->middleware('api');
-Route::get('/socialLinks/get/{user}', 'ApiController@getSocialLinks')->middleware('api');
 Route::post('/skills/set', function () {
     $user = User::find(request()->user);
     $skill = Skill::find(request()->skill);

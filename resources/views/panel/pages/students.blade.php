@@ -39,9 +39,15 @@
         <i class="fa fa-id-card" style="margin-right: 20px;"></i>{{ session()->get('carddelete') }}</h3>
 </div>
 @endif
+<<<<<<< HEAD
     {{--<h2 id="nav">...</h2>--}}
     {{--<students-view id="chrome" sxoles="{{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}"> </students-view>--}}
     <students-view-safari id="safari" {{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}></students-view-safari>
+=======
+    <!-- <h2 id="nav">...</h2> -->
+    <students-view id="chrome" sxoles="{{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}"> </students-view>
+    <students-view-safari id="safari"></students-view-safari>
+>>>>>>> origin/master
 @endsection
 
 
@@ -54,8 +60,6 @@
 
     <script>
     $(document).ready(function(){
-
-
             console.log('polymer')
             $(".demo-form").polymerForm({
                 bar_height: "1px",
@@ -67,10 +71,13 @@
                 margin_bottom: '20px'
             });
 
+<<<<<<< HEAD
 //            $(".full-content").hide().fadeIn(100);
 
 //            $('#nav').text(navigator.userAgent);
 
+=======
+>>>>>>> origin/master
             console.log(navigator)
 
 //        if(navigator.vendor.indexOf('Apple') != -1){
