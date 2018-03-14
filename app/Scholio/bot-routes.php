@@ -39,7 +39,8 @@ use App\Models\Request;
 //     return $test;
 // });
 
-Route::get('/test/{find}', function ($find) {
+Route::get('/app/{find}', function ($find) {
+    // dd(substr(request()->url(),0,25));
     $results = AlgoliaSchool::search($find)->get();
 
     if ($results->isEmpty()) {
@@ -53,7 +54,7 @@ Route::get('/test/{find}', function ($find) {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/images/schools/' . $result->image,
+            "image_url" => 'https://schol.io' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
@@ -72,21 +73,7 @@ Route::get('/test/{find}', function ($find) {
             array_push($elements, $array);
         }
     }
-
-    $json = [
-        "messages" => [
-            [
-                "attachment" => [
-                    "type" => "template",
-                    "payload" => [
-                        "template_type" => "generic",
-                        "elements" => $elements,
-                    ],
-                ],
-            ],
-        ],
-    ];
-    return $json;
+    return $elements;
 });
 
 
@@ -104,7 +91,7 @@ Route::get('/school/search', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/images/schools/' . $result->image,
+            "image_url" => 'https://schol.io' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [
@@ -154,7 +141,7 @@ Route::get('/scholarship/search', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->study,
-            "image_url" => 'https://schol.io/images/schools/' . $result->school_logo,
+            "image_url" => 'https://schol.io/' . $result->school_logo,
             // "image_url" => 'https://schol.io/panel/assets/images/steps' . $result->section . '.png',
             "subtitle" => $result->criteria,
             "buttons" => array(
@@ -205,7 +192,7 @@ Route::get('/scholarship/custom', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->study,
-            "image_url" => 'https://schol.io/images/schools/' . $result->school_logo,
+            "image_url" => 'https://schol.io/' . $result->school_logo,
             // "image_url" => 'https://schol.io/panel/assets/images/steps' . $result->section . '.png',
             "subtitle" => $result->criteria,
             "buttons" => array(
@@ -256,7 +243,7 @@ Route::get('/school/custom', function () {
     foreach ($results as $index => $result) {
         $array = array(
             "title" => $result->name,
-            "image_url" => 'https://schol.io/images/schools/' . $result->image,
+            "image_url" => 'https://schol.io' . $result->image,
             "subtitle" => $result->lengthScholarships . " Υποτροφίες",
             "buttons" => array(
                 [

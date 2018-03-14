@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use App\Key;
+use Closure;
 
 class CommingSoon
 {
@@ -16,6 +16,8 @@ class CommingSoon
      */
     public function handle($request, Closure $next)
     {
+        // dd(strpos(request()->url(), 'app'));
+
         // dd(request()->server->all());
         $url = request()->url();
         $soon = env('COMING_SOON', false);
@@ -24,7 +26,6 @@ class CommingSoon
         if (!$soon) {
             return $next($request);
         }
-
 
         if (!$keys->soon) {
             return $next($request);
@@ -38,7 +39,11 @@ class CommingSoon
             return $next($request);
         }
 
-        if($url == request()->is('1q1q*')){
+        if ($url == request()->is('1q1q*')) {
+            return $next($request);
+        }
+
+        if (strpos(request()->url(), 'bot') !== false) {
             return $next($request);
         }
 
@@ -51,6 +56,14 @@ class CommingSoon
         }
 
         if ($url == url('/api/bot/scholarship/custom') || $url == url('/api/bot/school/custom')) {
+            return $next($request);
+        }
+
+        if ($url == url('/bot/scholarship/search') || $url == url('/bot/school/search')) {
+            return $next($request);
+        }
+
+        if ($url == url('/bot/scholarship/custom') || $url == url('/bot/school/custom')) {
             return $next($request);
         }
 
