@@ -1067,11 +1067,12 @@
         .img-contSAFARI{margin: -60px auto; }
         .nameSAFARI{margin: 60px auto 0 auto; }
         .emailSAFARI{margin: -1px auto;}
-        .sc-radio2SAFARI{margin: 24px auto;}
+        /*.sc-radio2SAFARI{margin: 4px auto;}*/
         .sc-bottomSAFARI{margin-top: -65px;  z-index: 30; position: relative;}
         .phoneSAFARI{margin-bottom: -47px; margin-left: 1px}
         .circleSAFARI{bottom: 13px; left: 11px;}
         .phone-textSAFARI{margin-bottom: 9px;}
+        .sc-radio2SAFARI{position: absolute; bottom: 0; right: 7px;}
 
     }
 
