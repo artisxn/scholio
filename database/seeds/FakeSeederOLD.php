@@ -12,7 +12,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class FakeSeeder extends Seeder
+class FakeSeederOLD extends Seeder
 {
     /**
      * Run the database seeds.

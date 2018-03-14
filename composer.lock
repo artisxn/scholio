@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6dc50e2806d45b47e1e6ab86f78a0dde",
-    "content-hash": "0a5d8d39a54e66feb41c6ca756b0c814",
+    "hash": "0723712e75f5a4c582ad04550e96de8b",
+    "content-hash": "dc5cb317361e39764eead82fcd8a542e",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1142,16 +1142,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v3.0.14",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "154beb9255cef7e341c5838824ed1234e71e194d"
+                "reference": "e15bd7333a52e3ea693c4f599de7d4e408752394"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/154beb9255cef7e341c5838824ed1234e71e194d",
-                "reference": "154beb9255cef7e341c5838824ed1234e71e194d",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/e15bd7333a52e3ea693c4f599de7d4e408752394",
+                "reference": "e15bd7333a52e3ea693c4f599de7d4e408752394",
                 "shasum": ""
             },
             "require": {
@@ -1161,12 +1161,12 @@
                 "illuminate/pagination": "~5.4",
                 "illuminate/queue": "~5.4",
                 "illuminate/support": "~5.4",
-                "php": ">=5.6.4"
+                "php": ">=7.0"
             },
             "require-dev": {
                 "algolia/algoliasearch-client-php": "^1.10",
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~5.0"
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~6.0"
             },
             "suggest": {
                 "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^1.10)."
@@ -1203,7 +1203,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2018-01-26 22:15:03"
+            "time": "2018-03-10 19:51:36"
         },
         {
             "name": "laravel/socialite",
