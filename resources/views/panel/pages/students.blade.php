@@ -39,7 +39,7 @@
         <i class="fa fa-id-card" style="margin-right: 20px;"></i>{{ session()->get('carddelete') }}</h3>
 </div>
 @endif
-
+    <h2 id="nav">...</h2>
     <students-view id="chrome" sxoles="{{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}"> </students-view>
     <students-view-safari id="safari"></students-view-safari>
 @endsection
@@ -69,6 +69,7 @@
 
 //            $(".full-content").hide().fadeIn(100);
 
+            $('#nav').text(navigator.vendor);
 
         if(navigator.vendor.indexOf('Apple') != -1){
             $('#chrome').remove();
