@@ -39,7 +39,7 @@
         <i class="fa fa-id-card" style="margin-right: 20px;"></i>{{ session()->get('carddelete') }}</h3>
 </div>
 @endif
-    <h2 id="nav">...</h2>
+    <!-- <h2 id="nav">...</h2> -->
     <students-view id="chrome" sxoles="{{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}"> </students-view>
     <students-view-safari id="safari"></students-view-safari>
 @endsection
@@ -54,8 +54,6 @@
 
     <script>
     $(document).ready(function(){
-
-
             console.log('polymer')
             $(".demo-form").polymerForm({
                 bar_height: "1px",
@@ -66,10 +64,6 @@
                 margin_top: '25px',
                 margin_bottom: '20px'
             });
-
-//            $(".full-content").hide().fadeIn(100);
-
-            $('#nav').text(navigator.userAgent);
 
             console.log(navigator)
 
