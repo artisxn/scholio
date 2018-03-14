@@ -207,7 +207,7 @@
                 <!-- Modal content-->
                 <div class="modal-content" v-if="info">
                     <div class="modal-up">
-                        <button type="button" class="close" data-dismiss="modal" style=" color: #fff;">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal" style=" color: #fff;" @click="qqq">&times;</button>
                         <!--<h4 class="modal-title" style=" color: #fff"> </h4>-->
                         <img :src="info.avatar" alt="" class="img-avatar">
                         <!--<div class="lastName">{{ info.lname }} </div>-->
@@ -1328,6 +1328,9 @@
                         arr = []
                     })
                 })
+            },
+            qqq (){
+                console.log('close')
             },
             nameChangeSort: function(){
                 this.sortType = 'name';

@@ -38,8 +38,8 @@
     <h3 class="verify-title">
         <i class="fa fa-id-card" style="margin-right: 20px;"></i>{{ session()->get('carddelete') }}</h3>
 </div>
-
 @endif
+
     <students-view id="chrome" sxoles="{{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}"> </students-view>
     <students-view-safari id="safari"></students-view-safari>
 @endsection
@@ -68,8 +68,6 @@
             });
 
 //            $(".full-content").hide().fadeIn(100);
-
-
 
 
         if(navigator.vendor.indexOf('Apple') != -1){
