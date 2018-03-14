@@ -44,6 +44,8 @@ Route::get('/notifications/getSchoolLevelSections', 'ApiController@notificationG
 Route::get('/notifications/getSchoolLevelStudies', 'ApiController@notificationGetSchoolLevelStudies')->middleware('auth:api');
 Route::get('/notifications/getSchoolLevelStudies/public/{school_id}', 'ApiController@notificationGetSchoolLevelStudiesFromSchool')->middleware('api');
 Route::get('/notifications/getSchoolLevelSections/public/{school_id}', 'ApiController@notificationGetSchoolLevelSectionsFromSchool')->middleware('auth:api');
+
+
 Route::get('/user', 'ApiController@users')->middleware('auth:api');
 Route::get('/users/all', 'ApiController@usersAll')->middleware('auth:api');
 Route::get('/notifications', 'ApiController@notifications')->middleware('auth:api');

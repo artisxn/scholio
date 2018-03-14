@@ -22,6 +22,14 @@ Scholio::soonRoutes();
 Scholio::bot();
 Auth::routes();
 
+Route::get('/demo', function(){
+    Config::set('database.connections.mysql.database', 'scholioready');
+    dd(config('database.connections.mysql'));
+    dd(User::all());
+    // dd(config('database.connections.mysql.database'));
+    return redirect('/');
+});
+
 Route::post('/password/change', 'RoutesController@changePassword')->middleware('auth');
 // Route::post('/password/reset', 'RoutesController@resetPassword');
 

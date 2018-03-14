@@ -23,10 +23,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(BasicTables::class);
         $this->call(StudyTables::class);
-        $this->call(AdminTables::class);
+        
 
         if (App::environment('local')) {
             $this->call(FakeTables::class);
         }
+
+        $this->call(AdminTables::class);
     }
 }
