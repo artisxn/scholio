@@ -69,7 +69,7 @@
 
 //            $(".full-content").hide().fadeIn(100);
 
-            $('#nav').text(navigator.appName);
+            $('#nav').text(navigator.userAgent);
 
             console.log(navigator)
 
