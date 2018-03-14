@@ -40,54 +40,69 @@
             <div class="clearfix"></div>
 
 
+
+
             <div v-if="selection==true">
+
+                <!--<div class="cardNew">-->
+                    <!--<div class="front" style="height: 90px; width: 120px; background: green"></div>-->
+                    <!--<div class="back" style="height: 90px; width: 120px; background: yellow"></div>-->
+                <!--</div>-->
+
+
+
+
+
+
 
                 <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents">
 
                     <div class=""  :id="'card'+index"  >
-                        <div class="">
-                            <div class="sc-box" :class="[{'fakeFilter': student.role=='fake' ,'alumniFilter': status=='allumni', }]">
-                                <div class="sc-up"></div>
 
-                                <div class="row">
-                                    <div class="sc-card" >
+                            <div class="">
+                                <div class="sc-box" :class="[{'fakeFilter': student.role=='fake' ,'alumniFilter': status=='allumni', }]">
+                                    <div class="sc-up"></div>
 
-                                        <div class="frame-cont">
-                                            <img src="/new/img/photoFrame.png" class="frame" alt="">
-                                            <img :src="scholio + student.avatar" class="avatar2" alt="">
-                                            <img src="/new/img/clip2.png" class="clip" alt="">
+                                    <div class="row">
+                                        <div class="sc-card" >
+
+                                            <div class="frame-cont">
+                                                <img src="/new/img/photoFrame.png" class="frame" alt="">
+                                                <img :src="scholio + student.avatar" class="avatar2" alt="">
+                                                <img src="/new/img/clip2.png" class="clip" alt="">
+                                            </div>
+                                            <div class="img-cont img-contSAFARI"><img class="img-circle sc-img" width="70" :src="scholio + student.avatar" alt=""/></div>
+                                            <div class="name nameSAFARI"> {{student.name}} </div>
+                                            <div class="email emailSAFARI"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
+
                                         </div>
-                                        <div class="img-cont img-contSAFARI"><img class="img-circle sc-img" width="70" :src="scholio + student.avatar" alt=""/></div>
-                                        <div class="name nameSAFARI"> {{student.name}} </div>
-                                        <div class="email emailSAFARI"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
-
                                     </div>
+                                    <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
+
                                 </div>
-                                <div><img src="/new/img/students.png" class="img-students hidden-sm hidden-xs" alt=""></div>
+                                <div class="sc-bottom sc-bottomSAFARI" >
+                                    <div class="phone phoneSAFARI">
+                                        <a :href="'tel:'+student.student_phone"><div class="circle circleSAFARI"></div> <span class="phone-text phone-textSAFARI"><i class="fa fa-phone"></i> {{ student.student_phone }}</span></a>
+                                    </div>
+                                    <form class="sc-radio2 pull-right sc-radio2SAFARI" v-on:change="changeStatus(student.id)">
+                                        <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
 
-                            </div>
-                            <div class="sc-bottom sc-bottomSAFARI" >
-                                <div class="phone phoneSAFARI">
-                                    <a :href="'tel:'+student.student_phone"><div class="circle circleSAFARI"></div> <span class="phone-text phone-textSAFARI"><i class="fa fa-phone"></i> {{ student.student_phone }}</span></a>
+                                        <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}</div>
+                                        </label>
+                                        <br>
+                                        <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
+
+                                        <label :for="'stt' + student.id">
+                                            <div class="r-lab r-lab2">{{ lang('resource.students.alumni') }}</div>
+                                        </label>
+                                        <!--<br>-->
+                                    </form>
                                 </div>
-                                <form class="sc-radio2 pull-right sc-radio2SAFARI" v-on:change="changeStatus(student.id)">
-                                    <input v-model="status" :id="'st' + student.id" type="radio" :name="'studentStatus' + student.id" value="connected">
 
-                                    <label :for="'st' + student.id"><div class="r-lab">{{ lang('resource.students.active') }}</div>
-                                    </label>
-                                    <br>
-                                    <input v-model="status" :id="'stt' + student.id" type="radio" :name="'studentStatus' + student.id" value="allumni">
-
-                                    <label :for="'stt' + student.id">
-                                        <div class="r-lab r-lab2">{{ lang('resource.students.alumni') }}</div>
-                                    </label>
-                                    <!--<br>-->
-                                </form>
+                                <i class="fa fa-file-text-o flip-info" aria-hidden="true"  :class="[{'fakeBtn': student.role=='fake'}]" data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student)" v-if="studies"></i>
                             </div>
 
-                            <i class="fa fa-file-text-o flip-info" aria-hidden="true"  :class="[{'fakeBtn': student.role=='fake'}]" data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student)" v-if="studies"></i>
 
-                        </div>
 
 
 
@@ -373,7 +388,6 @@
 
 
 
-
             <!--=============  ModalAddStudent    ================ -->
             <!--================================================== -->
             <div id="ModalAddStudent" class="modal" role="dialog">
@@ -595,13 +609,6 @@
 
 
 
-
-
-
-
-
-
-
         </div>
         <div v-else>
 
@@ -683,22 +690,22 @@
     .front {
 
     }
-    .back {
-        height: 205px!important;
-        background-color: #ddd;
-        border-radius: 5px;
-        border: 1px solid #a5a5a5;
+    /*.back {*/
+        /*height: 205px!important;*/
+        /*background-color: #ddd;*/
+        /*border-radius: 5px;*/
+        /*border: 1px solid #a5a5a5;*/
 
-        transform: rotateY( 180deg );
-    }
+        /*transform: rotateY( 180deg );*/
+    /*}*/
 
-    .back{
-        /*background: -webkit-linear-gradient(top,  #5D5278,#6783B7); !* For Safari 5.1 to 6.0 *!*/
-        /*background: -o-linear-gradient(top,  #5D5278,#6783B7); !* For Opera 11.1 to 12.0 *!*/
-        /*background: -moz-linear-gradient(top,  #5D5278,#6783B7); !* For Firefox 3.6 to 15 *!*/
-        background: linear-gradient(to top,  #008da5,#324c5a); /* Standard syntax */
-        /*background: #ddd;*/
-    }
+    /*.back{*/
+        /*!*background: -webkit-linear-gradient(top,  #5D5278,#6783B7); !* For Safari 5.1 to 6.0 *!*!*/
+        /*!*background: -o-linear-gradient(top,  #5D5278,#6783B7); !* For Opera 11.1 to 12.0 *!*!*/
+        /*!*background: -moz-linear-gradient(top,  #5D5278,#6783B7); !* For Firefox 3.6 to 15 *!*!*/
+        /*background: linear-gradient(to top,  #008da5,#324c5a); !* Standard syntax *!*/
+        /*!*background: #ddd;*!*/
+    /*}*/
 
 
 
@@ -1182,10 +1189,32 @@
         background-size: 20px 10px;
         background-image: radial-gradient(circle at 5px 7.5px, #cad8d3 6px, transparent 6.5px);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
+
+<script>
+
+</script>
 
 
 <script>
+//    $(document).ready(function() {
+//        $('.cardNew').flip();
+//    });
+
+
 
 
     import Multiselect from '../../scholio-multiselect';
@@ -1452,6 +1481,7 @@
                 $("#card"+i).removeClass("flipped");
             }
         },
+
 
         mounted() {
             this.getSchoolStudies()
