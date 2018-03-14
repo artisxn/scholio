@@ -69,7 +69,9 @@
 
 //            $(".full-content").hide().fadeIn(100);
 
-            $('#nav').text(navigator.vendor);
+            $('#nav').text(navigator.userAgent);
+
+            console.log(navigator)
 
         if(navigator.vendor.indexOf('Apple') != -1){
             $('#chrome').remove();
