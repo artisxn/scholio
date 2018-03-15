@@ -200,7 +200,7 @@
 
         methods: {
             getCheckedStudies: function () {
-                axios.get('/api/school/getSchoolStudies')
+                axios.get('/api/getSchoolStudies')
                         .then(response => {
                     this.testTable = response.data
                 var parent = this
@@ -215,7 +215,7 @@
                 
             },
             getStudies: function () {
-                axios.get('/api/school/studies/')
+                axios.get('/api/schoolstudies/')
                         .then(response => {
                     console.log('API 1 Full Studies OK ')
                     this.all_studies = response.data['levels']
@@ -223,7 +223,7 @@
                 });
             },
             setSchoolStudies: function (schoolCheckedStudies) {
-                axios.post('/api/school/studies', { checkedStudies: this.checkedStudies })
+                axios.post('/api/schoolstudies', { checkedStudies: this.checkedStudies })
                 .then(response => {
                    console.log(response.data)
                 });

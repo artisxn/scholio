@@ -355,6 +355,7 @@ class RoutesController extends Controller
 
         $end = Carbon::createFromFormat ('Y-m-d', $scholarship->end_at);
         $activeDate = !($end->diffInDays(Carbon::now(), false) >=0);
+        
         return view('public.school.scholarship', compact('activeDate'))
             ->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria', 'study.section'));
     }

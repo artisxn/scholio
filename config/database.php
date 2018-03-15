@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('DB_CONNECTION', 'mysql'),
+    // 'default' => request()->cookie('demo') == null ? 'mysql' : 'demo',
 
     /*
     |--------------------------------------------------------------------------

@@ -472,7 +472,7 @@ html .ui-button.ui-state-disabled:active {
 
 
             getStudies: function () {
-                axios.get('/api/school/studies/')
+                axios.get('/api/schoolstudies/')
                         .then(response => {
                     console.log('API 1 Full Studies OK ')
                 this.all_studies = response.data['levels']
@@ -493,7 +493,7 @@ html .ui-button.ui-state-disabled:active {
                 }
             },
             getCheckedStudies: function () {
-                axios.get('/api/school/getSchoolStudies')
+                axios.get('/api/getSchoolStudies')
                         .then(response => {
                     this.studyTable = response.data
                     if(this.studyTable == 0){

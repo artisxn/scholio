@@ -16,9 +16,6 @@ class CommingSoon
      */
     public function handle($request, Closure $next)
     {
-        // dd(strpos(request()->url(), 'app'));
-
-        // dd(request()->server->all());
         $url = request()->url();
         $soon = env('COMING_SOON', false);
         $keys = Key::find(1);

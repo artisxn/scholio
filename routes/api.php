@@ -45,7 +45,6 @@ Route::get('/notifications/getSchoolLevelStudies', 'ApiController@notificationGe
 Route::get('/notifications/getSchoolLevelStudies/public/{school_id}', 'ApiController@notificationGetSchoolLevelStudiesFromSchool')->middleware('api');
 Route::get('/notifications/getSchoolLevelSections/public/{school_id}', 'ApiController@notificationGetSchoolLevelSectionsFromSchool')->middleware('auth:api');
 
-
 Route::get('/user', 'ApiController@users')->middleware('auth:api');
 Route::get('/users/all', 'ApiController@usersAll')->middleware('auth:api');
 Route::get('/notifications', 'ApiController@notifications')->middleware('auth:api');
@@ -58,9 +57,9 @@ Route::get('/financial/id/{id}', 'ApiController@financialId')->middleware('auth:
 Route::get('/scholarships/all', 'ApiController@scholarshipsAll')->middleware('auth:api');
 Route::get('/scholarship/{school}', 'ApiController@scholarship')->middleware('auth:api');
 Route::get('/scholarship/requests', 'ApiController@scholarshipRequests')->middleware('auth:api');
-Route::get('/school/studies', 'ApiController@studiesGET')->middleware('auth:api');
+Route::get('/schoolstudies', 'ApiController@studiesGET')->middleware('auth:api');
 Route::post('/school/studies', 'ApiController@studiesPOST')->middleware('auth:api');
-Route::get('/school/getSchoolStudies', 'ApiController@getStudies')->middleware('auth:api');
+Route::get('/getSchoolStudies', 'ApiController@getStudies')->middleware('auth:api');
 Route::get('/public/profile', 'ApiController@publicProfile')->middleware('auth:api');
 Route::get('/school/{school}', 'ApiController@school')->middleware('api');
 Route::get('/results/{type}', 'ApiController@results')->middleware('api');
@@ -131,7 +130,7 @@ Route::post('/school/scholarshipSave', function () {
     return $data;
 })->middleware('auth:api');
 
-Route::get('/school/getLevels', function () {
+Route::get('/getSchoolLevels', function () {
     $school = auth()->user()->info;
     $levels = [];
 
@@ -159,7 +158,7 @@ Route::get('/school/getStudiesGroupedFromLevel/{level}', function ($level) {
     return $data;
 })->middleware('auth:api');
 
-Route::get('/school/studiesCount', function () {
+Route::get('/schoolstudiesCount', function () {
     $school = auth()->user()->info;
     return count($school->study);
 })->middleware('auth:api');
@@ -198,30 +197,6 @@ Route::post('/school/deleteAllStudies', function () {
     $school->study()->detach();
 
     return 'OK';
-})->middleware('auth:api');
-
-Route::get('/school/getCurrentStudies', function () {
-    $school = auth()->user()->info;
-    $studies = [];
-    $data = [];
-    $sections = [];
-
-    $schoolLevels = $school->levels();
-
-    foreach ($schoolLevels as $level) {
-        foreach ($school->section($level) as $section) {
-            foreach ($school->studyFromSection($section) as $study) {
-                array_push($studies, ['study' => Study::find($study)->load('user')]);
-            }
-
-            array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
-            $studies = [];
-        }
-        array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
-        $sections = [];
-    }
-
-    return $data;
 })->middleware('auth:api');
 
 Route::post('/school/studySave', function () {
@@ -295,7 +270,7 @@ Route::get('/school/getSectionsFromLevel/{level}', function (Level $level) {
     return $sections;
 })->middleware('auth:api');
 
-Route::get('/school/getLevelsWithRelations', function () {
+Route::get('/getSchoolLevelsWithRelations', function () {
     $school = auth()->user()->info;
     $result = [];
 
@@ -874,4 +849,28 @@ Route::get('/hashtag/all', function () {
 })->middleware('auth:api');
 
 Route::post('/hashtag/{tag}/add', function ($tag) {
+})->middleware('auth:api');
+
+Route::get('/getSchoolCurrentStudies', function () {
+    $school = auth()->user()->info;
+    $studies = [];
+    $data = [];
+    $sections = [];
+
+    $schoolLevels = $school->levels();
+
+    foreach ($schoolLevels as $level) {
+        foreach ($school->section($level) as $section) {
+            foreach ($school->studyFromSection($section) as $study) {
+                array_push($studies, ['study' => Study::find($study)->load('user')]);
+            }
+
+            array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+            $studies = [];
+        }
+        array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+        $sections = [];
+    }
+
+    return $data;
 })->middleware('auth:api');

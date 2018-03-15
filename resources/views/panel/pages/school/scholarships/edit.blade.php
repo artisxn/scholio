@@ -721,7 +721,7 @@
                 <div class="margin-top-50"></div>
 
                     <div>
-                        <div class="adm-sel-title"> <i id="open-terms" class="fa fa-tags margin-right-10 terms-icon"></i>@lang('scholarship_view.edit.tags')</div>
+                        <div class="adm-sel-title"> <i class="fa fa-tags margin-right-10 terms-icon"></i>@lang('scholarship_view.edit.tags')</div>
                         <div class="tag-container">
                             @foreach($tags as $tag)
                                 <span class="tag-item">

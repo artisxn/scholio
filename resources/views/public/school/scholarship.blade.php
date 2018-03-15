@@ -472,6 +472,8 @@
 
                 @endif
             @else
+
+                @if($activeDate)
                 <span class="margin-right-20" >
                         <a href="{{ url('login') }}">
                             <button type="button" style=""
@@ -483,7 +485,11 @@
                 </span>
 
                 <a href="{{ url('login') }}"><button type="button" class="sch-button sc-button sc-orange sc-t-white" style="margin-right: 0"><i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i> @lang('scholarship_view.top.admission_button') </button></a>
-
+                @else
+                    <span class="margin-right-20">
+                        @lang('scholarship_view.top.ended_text')
+                    </span>
+                @endif
 
 
             @endif

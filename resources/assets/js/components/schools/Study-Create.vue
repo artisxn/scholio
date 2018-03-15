@@ -398,11 +398,11 @@
             },
 
             getLevels(){
-                axios.get('/api/school/getLevelsWithRelations').then(this._loadData)
+                axios.get('/api/getSchoolLevelsWithRelations').then(this._loadData)
             },
 
             getCurrentStudies(){
-                axios.get('/api/school/getCurrentStudies').then(this._loadStudies)
+                axios.get('/api/getSchoolCurrentStudies').then(this._loadStudies)
             },
 
             _loadStudies({data}){
@@ -470,7 +470,7 @@
             },
 
             getStudiesCounter(){
-                axios.get('/api/school/studiesCount').then(({data})=>{
+                axios.get('/api/schoolstudiesCount').then(({data})=>{
                     this.studiesCounter = data
                     if(data == 0){
                         this.counterMessage = 'Δεν εχεις επιλεξει σπουδες ακομα'

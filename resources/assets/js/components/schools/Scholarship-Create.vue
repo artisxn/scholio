@@ -1597,7 +1597,7 @@
             },
 
             fetchLevels() {
-                axios.get('/api/school/getLevels').then(({ data }) => {
+                axios.get('/api/getSchoolLevels').then(({ data }) => {
                     this.level_options = data;
                 })
 
