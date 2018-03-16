@@ -41,7 +41,11 @@ use App\Models\School;
 //     return $test;
 // });
 
-Route::get('/app/schools/all', function(){
+Route::get('/app/schools/{num}', function($num){
+    return School::with('admin')->take($num)->get();
+});
+
+Route::get('/app/allSchools', function($num){
     return School::with('admin')->get();
 });
 
