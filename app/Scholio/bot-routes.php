@@ -2,6 +2,8 @@
 use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
 use App\Models\Request;
+use Illuminate\Support\Facades\Route;
+use App\Models\School;
 
 // Route::get('/test', function () {
 //     $test = [
@@ -38,6 +40,10 @@ use App\Models\Request;
 
 //     return $test;
 // });
+
+Route::get('/app/schools/all', function(){
+    return School::with('admin')->get();
+});
 
 Route::get('/app/{find}', function ($find) {
     // dd(substr(request()->url(),0,25));
