@@ -42,11 +42,11 @@ use App\Models\School;
 // });
 
 Route::get('/app/schools/{num}', function($num){
-    return School::with('admin')->take($num)->get();
+    return School::with('admin', 'type')->take($num)->get();
 });
 
 Route::get('/app/allSchools', function($num){
-    return School::with('admin')->get();
+    return School::with('admin', 'type')->get();
 });
 
 Route::get('/app/{find}', function ($find) {
