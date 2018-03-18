@@ -1,11 +1,11 @@
 
 {{--Styling on panel/pages/school/dashboard/main.blade.php--}}
 
-<div class="row">
+<div class="row" >
      @if(auth()->user()->subscription->plan->id != 1)
         <div class="col-lg-3 col-md-4 col-sm-6" >
             <a href="{{ url('/panel/school/students') }}" id="btn-students">
-                <div class="panel-box box1">
+                <div class="panel-box box1" >
                     <img src="/panel/assets/images/dashBoard/students3.png"        alt="student image"  class="panel-image hidden"  id="img-student-color">
                     <img src="/panel/assets/images/dashBoard/students3Outline.png" alt="student image"  class="panel-image visible" id="img-student-black">
 
@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-lg-4 col-md-8 col-sm-6">
-            <a href="{{ url('/panel/school/teachers') }}" id="btn-teachers">
+            <a href="{{ url('/panel/school/teachers') }}" >
                 <div class="panel-box box2">
                     <img src="/panel/assets/images/dashBoard/teachers2.png"        alt="teacher image" class="panel-image hidden"   id="img-teacher-color">
                     <img src="/panel/assets/images/dashBoard/teachers2Outline.png" alt="teacher image" class="panel-image visible"  id="img-teacher-black">
@@ -196,4 +196,10 @@
 
         });
     </script>
+
+
+
+
+
+
 @endsection

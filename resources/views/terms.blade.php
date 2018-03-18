@@ -31,8 +31,9 @@
         body {
             background-color: #F1F4F5;
         }
-        h1{font-size: 170%; font-weight: 300; color: #667;}
-        h3{font-size: 130%; font-weight: 400; color: #778;}
+        h1{font-size: 170%; font-weight: 300; color: #667; margin-top: 50px;}
+        h3{font-size: 130%; font-weight: 400; color: #778; margin-top: 45px;}
+        h5{font-size: 115%; font-weight: 400; color: #997; margin-top: 25px;}
         .dropdown-menu{background-color: #eee; padding-top: 20px}
         .mainBody{min-height: 1100px;}
         .outerBox{min-height: 800px; background: #fafafa; border: 1px solid #ccc; border-radius: 6px; width: 80%;  margin: 120px auto 50px auto; padding: 30px;}
@@ -159,11 +160,18 @@
 
 
         <h3>@lang('terms.titles.c')</h3>
+        <h5>@lang('terms.titles.c1')</h5>
         <p class="terms">@lang('terms.terms.8')</p>
         <p class="terms">@lang('terms.terms.9')</p>
         <p class="terms">@lang('terms.terms.10')</p>
         <p class="terms">@lang('terms.terms.11')</p>
         <p class="terms">@lang('terms.terms.12')</p>
+        <h5>@lang('terms.titles.c2')</h5>
+        <p class="terms">@lang('terms.terms.13')</p>
+        <h5>@lang('terms.titles.c3')</h5>
+        <p class="terms">@lang('terms.terms.14')</p>
+        <h5>@lang('terms.titles.c4')</h5>
+        <p class="terms">@lang('terms.terms.15')</p>
 
     </div>
 

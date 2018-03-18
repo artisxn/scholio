@@ -6,7 +6,7 @@
     </style>
 @endsection
 
-<li class="link"><a href="{{ url('dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}"><i class="fa fa-tachometer"></i> <span>@lang('panel/schools/navigation.dashboard')</span> </a></li>
+<li class="link" ><a href="{{ url('dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}"><i class="fa fa-tachometer"></i> <span>@lang('panel/schools/navigation.dashboard')</span> </a></li>
 
     {{--<li class="text-muted menu-title">@lang('panel/schools/navigation.management')</li>--}}
 <div style="height: 1px; margin: 0 15px; background-color: #3e5f6e"></div>
@@ -54,7 +54,7 @@
             <span> @lang('panel/schools/navigation.scholarships.title')</span></a>
         <ul class="list-unstyled submenu">
             <li><a href="{{ url('panel/school/settings/scholarships') }}" class="{{ request()->path() == 'panel/school/settings/scholarships' ? 'active' : ''}}">@lang('panel/schools/navigation.scholarships.settings')</a></li>
-            <li >
+            <li class="hidden-xs">
                 <a href="/panel/school/scholarships/create" class="{{ request()->path() == 'panel/school/scholarships/create' ? 'active' : ''}}">@lang('panel/schools/navigation.scholarships.add')
                     <span class="pull-right badge badge-danger badge-nav">{{auth()->user()->info->allScholarshipLimits()}}</span></a>
             </li>
@@ -85,6 +85,11 @@
         </li>
     @endif
 
+<div style="height: 1px; margin: 0 15px; background-color: #3e5f6e"></div>
+
+<li class="link" id="startTour"><a href="#"><i class="fa fa-tv"></i> <span >Ξενάγηση</span> </a></li>
+
+
     {{-- <li class="has_sub">
         <a href="#" class=""><i class="fa fa-graduation-cap"></i><span> Τάξεις </span></a>
         <ul class="list-unstyled">
@@ -94,5 +99,7 @@
     </li> --}}
 
 @section('scripts')
+
+
 
 @endsection
