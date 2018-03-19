@@ -82,13 +82,13 @@
             max-width: 350px;
         }
         .card__side {
-            padding: 1em;
+            /* padding: 1em;
             border-radius: 5px;
             color: white;
-            background-color: #ff4136;
+            background-color: #ff4136; */
         }
         .card__side--back {
-            background-color: #0074d9;
+            /* background-color: #0074d9; */
         }
 
 
@@ -123,22 +123,26 @@
 
 
 {{--========== FLIP 1 =========--}}
-<!-- <div class="cardN">
-    <div class="front" style=" background: pink"></div>
-    <div class="back" style=" background: greenyellow"></div>
-</div> -->
+<div class="cardN">
+    <div class="front" style=" background: pink">
+        <button onclick="alert('1rrr')">CLLLC</button>
+    </div>
+    <div class="back" style=" background: greenyellow"><button onclick="alert('2www')">CLLLC</button></div>
+</div>
 
 
 {{--========== FLIP 2 =========--}}
-<!-- <button id="btn">Flip card</button>
 
-<div class="card js-card">
+
+<!-- <div class="card js-card">
     <div class="card__wrapper">
-        <div class="card__side is-active">
+        <div class="card__side is-active" style="background: red; height: 90px">
             <h1>FRONT</h1>
+            <button id="btn">Flip card</button>
         </div>
-        <div class="card__side card__side--back">
+        <div class="card__side card__side--back" style="background: greenyellow; height: 90px">
             <h2>BACK</h2>
+            <button id="btn">Flip card</button>
         </div>
     </div>
 </div> -->
