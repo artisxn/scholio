@@ -693,6 +693,7 @@
 
 
 <style>
+    
     .alumniFilter{-webkit-filter: grayscale(85%); opacity: 0.9}
     .fakeFilter{-webkit-filter: grayscale(70%); opacity: 0.7}
     .fakeBtn{color: #e1e1e1 !important;}

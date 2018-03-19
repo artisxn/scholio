@@ -13,7 +13,7 @@
 
      @if(auth()->user()->subscription->plan->id != 1)
         <li class="has_sub link">
-            <a href="#"><i class="icon-people"></i> <span> @lang('panel/schools/navigation.resource.title') </span> </a>
+            <a href="#" id="navResources"><i class="icon-people"></i> <span> @lang('panel/schools/navigation.resource.title') </span> </a>
             <ul class="list-unstyled submenu">
                 <li>
                     <a href="/panel/school/students" class="{{ request()->path() == 'panel/school/students' ? 'active' : ''}}">
@@ -87,7 +87,7 @@
 
 <div style="height: 1px; margin: 0 15px; background-color: #3e5f6e"></div>
 
-<li class="link" id="startTour"><a href="#"><i class="fa fa-tv"></i> <span >Ξενάγηση</span> </a></li>
+<li class="link"><a href="#" onclick="startTour()"><i class="fa fa-tv"></i> <span >Ξενάγηση</span> </a></li>
 
 
     {{-- <li class="has_sub">

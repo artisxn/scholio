@@ -179,7 +179,67 @@ echo json_encode($trans);
         <!-- Ubold Tour js -->
         <script src="/panel/assets/plugins/hopscotch/js/hopscotch.min.js"></script>
 
+        <script>
+        function newTour(target, title, content, placement, y, x){
+            return  {
+                            target: target,
+                            title: title,
+                            content: content,
+                            placement: placement,
+                            yOffset: y,
+                            xOffset: x
+
+                        };
+        }
+        </script>
+
+        @if(auth()->user()->subscription->plan_id == 2)
+        <script>
+            
+            function startTour(){
+                var b = 'bottom';
+                var t = 'top';
+                var r = 'right';
+                var l = 'left';
+
+                var tour = {
+                    id: "my-intro",
+                    steps: [
+                        newTour('studentsBtn', 'Students', 'You can find here students cards', b, 1, -18),
+                        newTour('teachersBtn', 'Teachers', "You can find here teachers' cards.", b, 1, -18),
+                        newTour('navResources', 'Resources', lang.seeder.exams.n, r, -10, -90)
+                    ],
+                    showPrevButton: true
+                };
+
+                hopscotch.startTour(tour);
+                }
+        </script>
+        @elseif(auth()->user()->subscription->plan_id == 1)
+        <script>
+            
+            function startTour(){
+                var b = 'bottom';
+                var t = 'top';
+                var r = 'right';
+                var l = 'left';
+
+                var tour = {
+                    id: "my-intro",
+                    steps: [
+                        
+                    ],
+                    showPrevButton: true
+                };
+
+                hopscotch.startTour(tour);
+                }
+        </script>
+        @endif
+
+
         @yield('scriptsBefore')
+        
     </head>
 
     <body class="" style="background: #F1F4F5; min-height: 550px">
@@ -334,53 +394,6 @@ echo json_encode($trans);
                     $("body").trigger("resize");
                 }
         </script>
-
-        <script>
-            $(document).ready(function () {
-                var placementRight = 'right';
-                var placementLeft = 'left';
-
-                // Define the tour!
-                var tour = {
-                    id: "my-intro",
-                    steps: [
-                        {
-                            target: "studentsBtn",
-                            title: "Students",
-                            content: "You can find here students' cards",
-                            placement: 'bottom',
-                            yOffset: 1,
-                            xOffset: -18
-
-                        },
-                        {
-                            target: "teachersBtn",
-                            title: "Teachers",
-                            content: "You can find here teachers' cards.",
-                            placement: 'bottom',
-                            yOffset: 1,
-                            xOffset: -18
-
-                        },
-
-                    ],
-                    showPrevButton: true
-                };
-
-
-
-                $("#startTour").click(
-                        // Start the tour!
-//                        hopscotch.startTour(tour)
-
-                );
-
-
-
-
-            });
-        </script>
-
 
 
         @yield('scripts')

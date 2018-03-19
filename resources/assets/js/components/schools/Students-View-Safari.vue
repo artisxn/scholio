@@ -1,6 +1,19 @@
 <template>
     <div class="row">
 
+            <button id="btn">Flip card</button>
+
+            <div class="card js-card">
+                <div class="card__wrapper">
+                    <div class="card__side is-active">
+                        <h1>FRONT</h1>
+                    </div>
+                    <div class="card__side card__side--back">
+                        <h2>BACK</h2>
+                    </div>
+                </div>
+            </div>
+
         <div v-if="dataSet">
 
             <form class="sc-radio pull-left">
@@ -55,11 +68,11 @@
 
 
 
-                <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents">
+                <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container card js-card" :id="'card-'+index" v-for="(student, index) in filteredStudents">
+                        <button @click="flipCard(index)">Flip card</button>
+                    <div class="card__wrapper"  :id="'card'+index"  >
 
-                    <div class=""  :id="'card'+index"  >
-
-                            <div class="">
+                            <div class="card__side is-active">
                                 <div class="sc-box" :class="[{'fakeFilter': student.role=='fake' ,'alumniFilter': status=='allumni', }]">
                                     <div class="sc-up"></div>
 
@@ -102,6 +115,9 @@
                                 <i class="fa fa-file-text-o flip-info" aria-hidden="true"  :class="[{'fakeBtn': student.role=='fake'}]" data-toggle="modal" data-target="#ModalStudentInfo" @click="changeInfo(student)" v-if="studies"></i>
                             </div>
 
+                            <div class="card__side card__side--back">
+                                    <h2>BACK</h2>
+                                </div>
 
 
 
@@ -1269,6 +1285,26 @@
         },
 
         methods: {
+            flipCard(index){
+
+                let cardTransitionTime = 500;
+
+                let $card = $('#card-'+index)
+                let switching = false
+
+                    console.log('pp')
+                    if (switching) {
+                        return false
+                    }
+                    switching = true
+
+                    $card.toggleClass('is-switched')
+                    window.setTimeout(function () {
+                        $card.children().children().toggleClass('is-active')
+                        switching = false
+                    }, cardTransitionTime / 2)
+
+            },
             getCards() {
                 axios.get('/api/school/getCards/' + this.info.status + '/' + this.info.type + '/' + this.info.name).then(({ data }) => {
                     this.availableCards = data

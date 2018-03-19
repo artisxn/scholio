@@ -53,6 +53,7 @@
         }
         .card__side--back {
             transform: rotateY(180deg);
+            z-index: 200!important;
         }
         @keyframes rotate {
             0% {
@@ -122,24 +123,25 @@
 
 
 {{--========== FLIP 1 =========--}}
-{{--<div class="cardN">--}}
-    {{--<div class="front" style=" background: pink"></div>--}}
-    {{--<div class="back" style=" background: greenyellow"></div>--}}
-{{--</div>--}}
+<!-- <div class="cardN">
+    <div class="front" style=" background: pink"></div>
+    <div class="back" style=" background: greenyellow"></div>
+</div> -->
+
 
 {{--========== FLIP 2 =========--}}
-{{--<button id="btn">Flip card</button>--}}
+<!-- <button id="btn">Flip card</button>
 
-{{--<div class="card js-card">--}}
-    {{--<div class="card__wrapper">--}}
-        {{--<div class="card__side is-active">--}}
-            {{--<h1>FRONT</h1>--}}
-        {{--</div>--}}
-        {{--<div class="card__side card__side--back">--}}
-            {{--<h2>BACK</h2>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div class="card js-card">
+    <div class="card__wrapper">
+        <div class="card__side is-active">
+            <h1>FRONT</h1>
+        </div>
+        <div class="card__side card__side--back">
+            <h2>BACK</h2>
+        </div>
+    </div>
+</div> -->
 
 
     <!-- {{--<students-view id="chrome" sxoles="{{ (auth()->user()->info->type->id == 4 || auth()->user()->info->type->id == 10 || auth()->user()->info->type->id == 11) }}"> </students-view>--}} -->
