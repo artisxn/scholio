@@ -123,12 +123,12 @@
 
 
 {{--========== FLIP 1 =========--}}
-<div class="cardN">
+<!-- <div class="cardN">
     <div class="front" style=" background: pink">
         <button onclick="alert('1rrr')">CLLLC</button>
     </div>
     <div class="back" style=" background: greenyellow"><button onclick="alert('2www')">CLLLC</button></div>
-</div>
+</div> -->
 
 
 {{--========== FLIP 2 =========--}}
