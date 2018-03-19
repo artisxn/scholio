@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="/panel/assets/css/cs-select-circular2.css">
         <link rel="stylesheet" href="{{'/panel/assets/css/animated-placeholder.css'}}" />
         <link rel="stylesheet" href="{{'/panel/assets/css/masonry.css'}}"/>
+        <link rel="stylesheet" href="{{'/panel/assets/plugins/hopscotch/css/hopscotch.css'}}" />
 
         <style>
         .unverified{margin-top: 40px; font-size: 90%; color: #ccc4a7; text-align: center;}
@@ -174,6 +175,9 @@ echo json_encode($trans);
         </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+        <!-- Ubold Tour js -->
+        <script src="/panel/assets/plugins/hopscotch/js/hopscotch.min.js"></script>
 
         @yield('scriptsBefore')
     </head>
@@ -331,8 +335,59 @@ echo json_encode($trans);
                 }
         </script>
 
+        <script>
+            $(document).ready(function () {
+                var placementRight = 'right';
+                var placementLeft = 'left';
+
+                // Define the tour!
+                var tour = {
+                    id: "my-intro",
+                    steps: [
+                        {
+                            target: "studentsBtn",
+                            title: "Students",
+                            content: "You can find here students' cards",
+                            placement: 'bottom',
+                            yOffset: 1,
+                            xOffset: -18
+
+                        },
+                        {
+                            target: "teachersBtn",
+                            title: "Teachers",
+                            content: "You can find here teachers' cards.",
+                            placement: 'bottom',
+                            yOffset: 1,
+                            xOffset: -18
+
+                        },
+
+                    ],
+                    showPrevButton: true
+                };
+
+
+
+                $("#startTour").click(
+                        // Start the tour!
+//                        hopscotch.startTour(tour)
+
+                );
+
+
+
+
+            });
+        </script>
+
 
 
         @yield('scripts')
     </body>
+
+
+
+
+
 </html>

@@ -8,7 +8,8 @@
 
             <div class="pull-left">
                 <button class="button-menu-mobile open-left">
-                    <i class="fa fa-outdent"></i>
+                    {{--<i class="fa fa-outdent"></i>--}}
+                    <i class="fa fa-bars"></i>
                 </button>
                 <form method="GET" id="langForm" style="display: inline-block; position: absolute; top: 18px; margin-left: 60px; color: #555">
                     <select onchange="changeLang(this)" class="" data-live-search="false" data-mobile="false" data-size='3' data-width="100%" data-style=""

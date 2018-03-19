@@ -1,7 +1,7 @@
 {{--Styling on panel/layouts//main.blade.php--}}
 
     @if(auth()->user()->subscription->plan->id != 1)
-        <a href="/panel/school/students"  class="top-img tool {{ request()->path() == 'panel/school/students' ? 'img-active' : ''}}">
+        <a href="/panel/school/students"  class="top-img tool {{ request()->path() == 'panel/school/students' ? 'img-active' : ''}}" id="studentsBtn">
             {{--<img src="/new/img/student2.png" alt="student image" class="top-image">--}}
             <img src="/panel/assets/images/dashBoard/students3.png" alt="students image" class="top-image">
 
@@ -9,7 +9,7 @@
             <span class="tooltiptext4">@lang('panel/schools/topbar.students')</span>
         </a>
 
-        <a href="/panel/school/teachers"  class="top-img tool {{ request()->path() == 'panel/school/teachers' ? 'img-active' : ''}}">
+        <a href="/panel/school/teachers"  class="top-img tool {{ request()->path() == 'panel/school/teachers' ? 'img-active' : ''}}" id="teachersBtn">
         {{--<img src="/new/img/teacher.png" alt="teacher image" class="top-image">--}}
             <img src="/panel/assets/images/dashBoard/teachers2.png" alt="teachers image" class="top-image">
             <span class="tooltiptext4">@lang('panel/schools/topbar.teachers')</span>
