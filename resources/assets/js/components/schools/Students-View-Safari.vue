@@ -50,11 +50,6 @@
                 <!--</div>-->
 
 
-
-
-
-
-
                 <div class="col-xxs-12 col-xs-6 col-lg-4 col-xl-3 col-xxl-2 cards-container" v-for="(student, index) in filteredStudents">
 
                     <div class=""  :id="'card'+index"  >

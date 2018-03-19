@@ -193,7 +193,7 @@ echo json_encode($trans);
         }
         </script>
 
-        @if(auth()->user()->subscription->plan_id == 2)
+        @if(auth()->user()->role == 'school' && auth()->user()->subscription->plan_id == 2)
         <script>
             
             function startTour(){
@@ -215,7 +215,7 @@ echo json_encode($trans);
                 hopscotch.startTour(tour);
                 }
         </script>
-        @elseif(auth()->user()->subscription->plan_id == 1)
+        @elseif(auth()->user()->role == 'school' && auth()->user()->subscription->plan_id == 1)
         <script>
             
             function startTour(){
