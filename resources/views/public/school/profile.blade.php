@@ -1143,7 +1143,7 @@
                                     </div>
                                     <select ng-model="selectedStatus" class="modal-select cursor-hand">
                                         <option value="connected">@lang('panel/schools/resource.students.active')</option>
-                                        <option value="alumni">@lang('panel/schools/resource.students.alumni')</option>
+                                        <option value="allumni">@lang('panel/schools/resource.students.alumni')</option>
                                     </select>
                                 </div>
                             </div>
@@ -1170,7 +1170,7 @@
                                     </div>
                                     <select ng-model="selectedStatus" class="modal-select cursor-hand">
                                         <option value="connected">@lang('panel/schools/resource.teachers.active')</option>
-                                        <option value="alumni">@lang('panel/schools/resource.teachers.alumni')</option>
+                                        <option value="allumni">@lang('panel/schools/resource.teachers.alumni')</option>
                                     </select>
                                 </div>
                             </div>

@@ -141,7 +141,7 @@
                                         <i class="fa fa-cogs" style="color: #008da5"></i>
                                         <select v-model="selectedStatus" class="modal-select" style="margin-left: 4px">
                                             <option value="connected">{{ lang('["panel/schools"].resource.teachers.active') }}</option>
-                                            <option value="alumni">{{ lang('["panel/schools"].resource.teachers.alumni') }}</option>
+                                            <option value="allumni">{{ lang('["panel/schools"].resource.teachers.alumni') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                         <div class="section-text centered-text">   <img class="modal-icon" src="/new/img/teacher/skills.png" alt="">{{ lang('resource.requests.table.selectStatus') }}</div>
                                         <select v-model="selectedStatus" class="modal-select student-select-pad" >
                                             <option value="connected">{{ lang('["panel/schools"].resource.students.active') }}</option>
-                                            <option value="alumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
+                                            <option value="allumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
                                         </select>
                                     </div>
 
@@ -467,7 +467,6 @@
                 });
             },
             accept(){
-                // console.log(this.selectedStudy)
                 if(this.selectedUser && this.selectedStudy && this.selectedStatus){
                     axios.post('/api/connection/' + this.selectedUser + '/' + this.selectedStudy + '/' + this.selectedStatus + '/' + this.selectedCard +'/confirm')
                     .then(response => {

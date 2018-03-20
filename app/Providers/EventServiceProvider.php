@@ -21,16 +21,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\UpdateRequestsTable',
             'App\Listeners\NotifySchool',
         ],
-        'App\Events\StudentAppliedOnTeacher' => [
-            'App\Listeners\NotifyTeacher',
-        ],
         'App\Events\SchoolConfirmsUser' => [
             'App\Listeners\ConnectUserWithSchool',
-            'App\Listeners\NotifyUser',
-        ],
-        'App\Events\TeacherConfirmsStudent' => [
-            'App\Listeners\ConnectStudentWithTeacher',
-            'App\Listeners\NotifyStudent',
+            'App\Listeners\CreateOrUpdateStudentCard',
         ],
         'App\Events\StudentAppliedOnScholarship' => [
             'App\Listeners\CreateRequestAndNotifySchool',
@@ -38,7 +31,7 @@ class EventServiceProvider extends ServiceProvider
 
         'App\Events\NewSubscription' => [
             // notify school via email
-            // notify us via slack
+            // notify us via slack 
             'App\Listeners\LoadScholarships',
             'App\Listeners\ChangeSubscriptionStatus',
         ]

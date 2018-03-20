@@ -25,6 +25,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
 use App\Scholio\Algolia;
+use App\Events\SchoolConfirmsUser;
 
 Scholio::bot();
 
@@ -478,23 +479,14 @@ Route::post('/request/school', function () {
 })->middleware('auth:api');
 
 Route::post('/connection/{id}/{type}/{status}/{card}/confirm', function ($id, $type, $status, $card) {
+    
     $user = User::find($id);
-    if ($user->role == 'teacher') {
-        auth()->user()->info->users()->attach($user, ['type' => $type, 'status' => $status]);
-    } else {
-        $study = Study::find($type);
-        auth()->user()->info->users()->attach($user, ['type' => $study->name, 'status' => $status, 'study_id' => $type, 'level' => $study->section[0]->level->name]);
-        $study->user()->attach($user, ['school_id' => auth()->user()->info->id]);
-    }
+    $school = auth()->user()->info;
+    event(new SchoolConfirmsUser($school, $user, $card, $type, $status));
 
-    if ($card != 0) {
-        $oldCard = Card::find($card);
-        $oldCard->student_id = $user->id;
-        $oldCard->role = 'student';
-        $oldCard->save();
-    }
 
-    $user->notify(new SchoolAcceptedUser($user, auth()->user()));
+    // $user->notify(new SchoolAcceptedUser($user, auth()->user()));
+
     return 'Accepted';
 })->middleware('auth:api');
 
