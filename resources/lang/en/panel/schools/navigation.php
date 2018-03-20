@@ -6,6 +6,7 @@ return [
     'unverifiedModal' => 'Follow the confirmation link that was sent to you on your email when you signed up,
     so that you have full rights of publicity and search for your educational provider.',
     'close'=>'Close',
+    'tourStart'=>'Start Tour',
 
     'menu' => [
         'profile' => 'Profile',
@@ -49,4 +50,5 @@ return [
         'title' => 'Reviews',
         'show' => 'Show',
     ],
+
 ];

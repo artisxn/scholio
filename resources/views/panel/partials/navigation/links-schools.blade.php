@@ -87,7 +87,7 @@
 
 <div style="height: 1px; margin: 0 15px; background-color: #3e5f6e"></div>
 
-<li class="link"><a href="#" onclick="startTour()"><i class="fa fa-tv"></i> <span >Ξενάγηση</span> </a></li>
+<li class="link hidden-xs hidden-sm"><a href="#" onclick="startTour()"><i class="fa fa-tv"></i> <span >@lang('panel/schools/navigation.tourStart')</span> </a></li>
 
 
     {{-- <li class="has_sub">

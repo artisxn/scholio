@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-lg-4 col-md-8 col-sm-6">
-            <a href="{{ url('/panel/school/teachers') }}" >
+            <a href="{{ url('/panel/school/teachers') }}" id="btn-teachers">
                 <div class="panel-box box2">
                     <img src="/panel/assets/images/dashBoard/teachers2.png"        alt="teacher image" class="panel-image hidden"   id="img-teacher-color">
                     <img src="/panel/assets/images/dashBoard/teachers2Outline.png" alt="teacher image" class="panel-image visible"  id="img-teacher-black">

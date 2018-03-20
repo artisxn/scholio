@@ -16,32 +16,32 @@
         </a>
     @endif
 
-     <a href="/panel/school/studies"  class="top-img tool {{ request()->path() == 'panel/school/studies' ? 'img-active' : ''}}">
+     <a href="/panel/school/studies"  class="top-img tool {{ request()->path() == 'panel/school/studies' ? 'img-active' : ''}}" id="studiesBtn">
          {{--<img src="/panel/assets/images/steps/step3-skills2.png" alt="skills image" class="top-image">--}}
          <img src="/panel/assets/images/dashBoard/studies2.png" alt="studies image" class="top-image">
          <span class="tooltiptext4">@lang('panel/schools/topbar.studies')</span>
      </a>
 
-     <a href="/panel/school/profile/images"  class="top-img tool {{ request()->path() == 'panel/school/profile/images' ? 'img-active' : ''}}">
+     <a href="/panel/school/profile/images"  class="top-img tool {{ request()->path() == 'panel/school/profile/images' ? 'img-active' : ''}}" id="photosBtn">
          {{--<img src="/panel/assets/images/steps/photo.png" alt="photos image" class="top-image">--}}
          <img src="/panel/assets/images/dashBoard/photos3.png" alt="photos image" class="top-image">
          <span class="tooltiptext4">@lang('panel/schools/topbar.photos')</span>
      </a>
 
-     <a href="/panel/school/scholarships/view"  class="top-img tool {{ request()->path() == 'panel/school/scholarships/view' ? 'img-active' : ''}}">
+     <a href="/panel/school/scholarships/view"  class="top-img tool {{ request()->path() == 'panel/school/scholarships/view' ? 'img-active' : ''}}" id="scholarshipsBtn">
          {{--<img src="/new/img/trophyB.png" alt="trophy image" class="top-image">--}}
          <img src="/panel/assets/images/dashBoard/trophy.png" alt="trophy image" class="top-image">
          <span class="tooltiptext4">@lang('panel/schools/topbar.scholarships')</span>
      </a>
 
-     <a href="/panel/school/scholarships/request"  class="top-img tool {{ request()->path() == 'panel/school/scholarships/request' ? 'img-active' : ''}}">
+     <a href="/panel/school/scholarships/request"  class="top-img tool {{ request()->path() == 'panel/school/scholarships/request' ? 'img-active' : ''}}" id="admissionsBtn">
          {{--<img src="/panel/assets/images/steps/terms.png" alt="view image" class="top-image">--}}
          <img src="/panel/assets/images/dashBoard/admissions.png" alt="admissions image" class="top-image">
          <span class="tooltiptext4">@lang('panel/schools/topbar.admissions')</span>
      </a>
 
      @if(auth()->user()->subscription->plan->id != 1)
-        <a href="/panel/school/reviews/view"  class="top-img tool  {{ request()->path() == 'panel/school/reviews/view' ? 'img-active' : ''}}">
+        <a href="/panel/school/reviews/view"  class="top-img tool  {{ request()->path() == 'panel/school/reviews/view' ? 'img-active' : ''}}" id="reviewsBtn">
             {{--<img src="/panel/assets/images/steps/stars.png" alt="photos image" class="top-image">--}}
             <img src="/panel/assets/images/dashBoard/reviews.png" alt="reviews image" class="top-image">
 

@@ -11,7 +11,7 @@
 
 <template>
         <li class="dropdown hidden-xs">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="notificationsBtn">
                 <i class="icon-bell"></i> 
                 <span class="badge badge-xs badge-danger" v-if="unreadNotifications.length">
                     {{ unreadNotifications.length }}

@@ -1,5 +1,5 @@
 <div class="topbar-left" style="">
-    <div class="text-center">
+    <div class="text-center" id="logoBtn">
         <a href="{{ url('/') }}" class="logo">
         <div class="icon-c-logo">
 

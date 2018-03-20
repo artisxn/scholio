@@ -195,6 +195,7 @@ echo json_encode($trans);
 
         @if(auth()->user()->role == 'school' && auth()->user()->subscription->plan_id == 2)
         <script>
+            console.log(window.navBar)
             
             function startTour(){
                 var b = 'bottom';
@@ -205,9 +206,16 @@ echo json_encode($trans);
                 var tour = {
                     id: "my-intro",
                     steps: [
-                        newTour('studentsBtn', 'Students', 'You can find here students cards', b, 1, -18),
-                        newTour('teachersBtn', 'Teachers', "You can find here teachers' cards.", b, 1, -18),
-                        newTour('navResources', 'Resources', lang.seeder.exams.n, r, -10, -90)
+                        newTour('logoBtn',         lang.tourSchools.title0,  lang.tourSchools.text0,  r,   0,  -110),
+                        newTour('studentsBtn',     lang.tourSchools.title1,  lang.tourSchools.text1,  b,   1,  -18),
+                        newTour('teachersBtn',     lang.tourSchools.title2,  lang.tourSchools.text2,  b,   1,  -18),
+                        newTour('studiesBtn',      lang.tourSchools.title3,  lang.tourSchools.text3,  b,   1,  -18),
+                        newTour('photosBtn',       lang.tourSchools.title4,  lang.tourSchools.text4,  b,   1,  -18),
+                        newTour('scholarshipsBtn', lang.tourSchools.title5,  lang.tourSchools.text5,  b,   1,  -18),
+                        newTour('admissionsBtn',   lang.tourSchools.title6,  lang.tourSchools.text6,  b,   1,  -18),
+                        newTour('reviewsBtn',      lang.tourSchools.title7,  lang.tourSchools.text7,  b,   1,  -18),
+                        newTour('notificationsBtn',lang.tourSchools.title8,  lang.tourSchools.text8,  l,   0,   10),
+                        newTour('navResources',    lang.tourSchools.title13, lang.tourSchools.text13, r, -10,  -90)
                     ],
                     showPrevButton: true
                 };
