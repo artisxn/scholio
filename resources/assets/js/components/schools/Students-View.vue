@@ -212,11 +212,11 @@
                         <img :src="info.avatar" alt="" class="img-avatar">
                         <!--<div class="lastName">{{ info.lname }} </div>-->
 
-                        <input type="text" class="demo-form ad-input cardName " name="student_lname" :value="info.lname " @change="saveCard($event, info)">
+                        <input type="text" class="demo-form ad-input cardName " name="lname" :value="info.lname " @change="saveCard($event, info)">
 
 
                         <!--<div class="firstName">{{ info.fname }} </div>-->
-                        <input type="text" class="demo-form ad-input cardFname " name="student_fname" :value="info.fname " @change="saveCard($event, info)">
+                        <input type="text" class="demo-form ad-input cardFname " name="fname" :value="info.fname " @change="saveCard($event, info)">
                     </div>
                     <div class="modal-infos">
                         <!--<p>{{ info.cv.student_address }}</p>-->
@@ -1273,6 +1273,7 @@
                 axios.post('/api/school/update/card/' + card.id + '/' + field + '/' + value).then(response =>{
                     console.log(response.data)
                 })
+
             },
             changeStatus: function(id, st){
                 var status = '';
@@ -1427,12 +1428,7 @@
                 })
 
                 $('.modal').on('hide.bs.modal', function () {
-                    // this.secondStudy = false
-                    // this.study2 = false
-                    
-                    console.log('hide')
-                    // location.reload()
-//                    $('.modal-dialog').addClass('animated zoomOut');
+                    location.reload();
                 })
 
 

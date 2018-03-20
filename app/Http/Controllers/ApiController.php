@@ -548,6 +548,9 @@ class ApiController extends Controller
     public function updateSchoolCard(Card $card, $field, $newValue)
     {
         $card->$field = $newValue;
+        if($field == 'fname' || $field == 'lname'){
+            $card->name = $card->fname . ' ' . $card->lname;
+        }
         $error = null;
         try {
             $card->save();
