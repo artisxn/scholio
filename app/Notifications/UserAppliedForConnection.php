@@ -38,20 +38,7 @@ class UserAppliedForConnection extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
-    }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-            ->line('User ' . $this->user->name . ' wants to connect with you!')
-            ->action('Confirm Connection', url('connection/' . $this->user->id . '/confirm'));
+        return ['database'];
     }
 
     /**

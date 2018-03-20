@@ -17,7 +17,7 @@ class VerifyController extends Controller
             $user->email_token = '';
             $user->save();
 
-            $algolia = (new Algolia($user->info))->handle();
+            $algolia = new Algolia($user->info);
 
             session()->flash('verify', 'Your email have been verified');
 

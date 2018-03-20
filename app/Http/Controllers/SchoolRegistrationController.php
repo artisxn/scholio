@@ -13,6 +13,7 @@ use App\Models\Subscription;
 use App\Models\ScholarshipLimit;
 use App\Models\SchoolSetting;
 use App\Jobs\SendVerificationEmail;
+use App\Events\UserRegistered;
 
 class SchoolRegistrationController extends Controller
 {
@@ -70,7 +71,7 @@ class SchoolRegistrationController extends Controller
 
         $this->createUser()->createSchoolOfType(request()->type)->createSchoolPrefs();
 
-        dispatch(new SendVerificationEmail($this->user));
+        event(new UserRegistered($this->user));
 
         
         auth()->login($this->user);

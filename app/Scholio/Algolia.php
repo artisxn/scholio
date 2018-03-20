@@ -19,23 +19,27 @@ class Algolia
     public function __construct($model)
     {
         $this->model = $model;
+        $this->handle();
     }
 
     public function handle()
     {
-        $this->prepeareSchool();
-        $this->detect();
+        if($this->model instanceof Scholarship){
+            $this->prepeareSchool();
+            $this->detect($this->model->school);
+        }
+
+        if ($this->model instanceof School) {
+            $this->prepeareScholarship();
+            $this->detect($this->model);
+        }
+        
+        
     }
 
-    public function handleScholarships()
+    public function detect($school)
     {
-        $this->prepeareScholarship();
-        $this->detect();
-    }
-
-    public function detect()
-    {
-        if (Scholio::ProfileActive($this->school)) {
+        if (Scholio::ProfileActive($school)) {
             if ($this->exists()) {
                 $this->update();
             } else {
@@ -51,13 +55,13 @@ class Algolia
     public function prepeareSchool()
     {
         $this->isProfile = true;
-        $this->school = School::find($this->model);
+        $this->school = $this->model;
     }
 
     public function prepeareScholarship()
     {
         $this->isProfile = false;
-        $this->scholarship = Scholarship::find($this->model);
+        $this->scholarship = $this->model;
     }
 
     public function insert()

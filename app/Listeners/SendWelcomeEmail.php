@@ -5,6 +5,9 @@ namespace App\Listeners;
 use App\Events\UserRegistered;
 use App\Notifications\WelcomeEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SchoolRegister;
+use App\Mail\UserRegister;
 
 class SendWelcomeEmail implements ShouldQueue
 {
@@ -26,6 +29,10 @@ class SendWelcomeEmail implements ShouldQueue
      */
     public function handle(UserRegistered $event)
     {
-        $event->user->notify(new WelcomeEmail($event->user));
+        if($this->event->user->role == 'school'){
+            Mail::to($this->event->user->email)->queue(new SchoolRegister($this->event->user));
+        }else{
+            Mail::to($this->event->user->email)->queue(new UserRegister($this->event->user));
+        }
     }
 }

@@ -24,6 +24,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
+use App\Scholio\Algolia;
 
 Scholio::bot();
 
@@ -124,6 +125,7 @@ Route::post('/school/scholarshipSave', function () {
         $data = ['message' => 'SAVED SUCCESSFULLY', 'url' => '/panel/school/scholarship/' . $scholarship->id];
         // Scholio::updateDummy($scholarship->school);
         Scholio::dummyScholarshipCreate($scholarship);
+        $algolia = new Algolia($scholarship);
     } catch (\Exception $e) {
         $data = ['message' => 'ERROR ' . $e];
     }

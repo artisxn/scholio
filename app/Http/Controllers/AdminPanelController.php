@@ -256,7 +256,7 @@ class AdminPanelController extends Controller
             }
         }
 
-        $algolia = (new Algolia($school))->handle();
+        $algolia = new Algolia($school);
         session()->flash('updated_profile', 'Your profile has been updated');
 
         return back();
@@ -320,7 +320,7 @@ class AdminPanelController extends Controller
             $school->image()->toggle($i);
         }
 
-        $algolia = (new Algolia($school))->handle();
+        $algolia = new Algolia($school);
 
         return back();
     }
