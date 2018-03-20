@@ -166,14 +166,14 @@ $factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Work::class, function (Faker\Generator $faker) {
 
     return [
-        'job_id' => App\Models\Job::find($faker->numberBetween($min = 1, $max = 10))->id,
+        'job_id' => App\Models\TeacherJob::find($faker->numberBetween($min = 1, $max = 10))->id,
         'company_id' => App\Models\Company::find($faker->numberBetween($min = 1, $max = 10))->id,
         'from' => '1/2010',
         'until' => '1/2018',
     ];
 });
 
-$factory->define(App\Models\Job::class, function(Faker\Generator $faker){
+$factory->define(App\Models\TeacherJob::class, function(Faker\Generator $faker){
     return [
         'name' => $faker->jobTitle,
     ];

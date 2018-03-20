@@ -5,7 +5,7 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Company;
-use App\Models\Job;
+use App\Models\TeacherJob as Job;
 
 class Work extends Model
 {

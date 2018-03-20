@@ -2,7 +2,7 @@
 
 use App\Models\Skill;
 use App\Models\University;
-use App\Models\Job;
+use App\Models\TeacherJob as Job;
 use App\Models\Company;
 use App\Models\Work;
 use Carbon\Carbon;

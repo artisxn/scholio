@@ -816,7 +816,7 @@ ECG is an independent, not for profit, nonsectarian, co-educational academic ins
         $this->attachTagToScholarship(2, 5);
         $this->attachTagToScholarship(3, 6);
 
-        factory(App\Models\Job::class, 10)->create();
+        factory(App\Models\TeacherJob::class, 10)->create();
         factory(App\Models\Company::class, 10)->create();
         factory(App\Models\University::class, 10)->create();
         factory(App\Models\Cvteacherstudy::class, 10)->create();

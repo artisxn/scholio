@@ -88,7 +88,7 @@
             <i class="fa fa-key icon-password"></i>
              @if (session()->has('samepass'))
             <span class="help-block">
-                <strong>{{ session()->get('samepass') }}</strong>
+                    <strong>Ο ΚΩΔΙΚΟΣ ΠΟΥ ΕΙΣΗΓΑΓΕΣ ΔΕΝ ΕΙΝΑΙ ΙΔΙΟΣ ΜΕ ΤΟΝ ΤΡΕΧΟΝΤΑ ΚΩΔΙΚΟ</strong>
             </span>
             @endif
         </div>
@@ -97,7 +97,12 @@
             <i class="fa fa-key icon-password"></i>
              @if ($errors->has('password'))
             <span class="help-block">
-                <strong>{{ $errors->first('password') }}</strong>
+                @if($errors->first('password') == 'validation.confirmed')
+                <strong>ΔΕΝ ΕΙΝΑΙ ΙΔΙΟΙ ΟΙ ΚΩΔΙΚΟΙ</strong>
+                @endif
+                @if($errors->first('password') == 'validation.min.string')
+                <strong>ΠΡΠΕΙ ΝΑ ΒΑΛΕΙΣ ΑΠΟ 6 ΚΑΙ ΠΑΝΩ ΧΑΡΑΚΤΗΡΕΣ</strong>
+                @endif
             </span>
             @endif
             

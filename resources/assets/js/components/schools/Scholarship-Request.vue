@@ -93,7 +93,7 @@
 
         methods: {
             getAdmissions: function(){
-                axios.get('/api/scholarship/getFullAdmissions')
+                axios.get('/api/getScholarshipFullAdmissions')
                     .then(response => {
                         this.admissions = response.data
                         this.getUnreadNotifications()

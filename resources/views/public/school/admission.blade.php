@@ -290,7 +290,6 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="admissionApp"  ng-controller="admissionCtrl" data-ng-init="init()"  ng-cloak>
 <!-- Scholio Header -->
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header {{ $scholarship->active ? '' : 'opacity10'}}" id="header" style="z-index: 5">
-
     <div class="container" style="">
         <div class="row scholarship-profile-nav-row">
 
@@ -380,7 +379,7 @@
 <div class="container">
 
     <div>
-    <form id="admissionForm" action="/admission/{{ $scholarship->id }}/save" method="POST">
+    <form id="admissionForm" action="/admission/{{ $scholarship->id }}/save" method="POST" onsubmit="return confirm('Are you sure you want to submit?')">
     {{ csrf_field() }}
         <div class="upper-box relative" >
             <div class="" >
@@ -410,30 +409,30 @@
                 <div class="section-text centered-text">@lang('admission.candidate.info')</div>
 
                 <div class="col-sm-6 input-container  input-container">
-                        <input  type="text" label="@lang('admission.candidate.name')" name="firstName" class="demo-form ad-input" value="{{ $user->info->fname }}">
+                        <input  type="text" label="@lang('admission.candidate.name')" name="firstName" class="demo-form ad-input" value="{{ $user->info->fname }}" required>
                         <i class="icon-inp fa fa-user-o"></i>
                 </div>
                 <div class="col-sm-6 input-container clear-fix-sm" >
-                    <input type="text" label="@lang('admission.candidate.last-name')" name="lastName" class="demo-form ad-input" value="{{ $user->info->lname }}" >
+                    <input type="text" label="@lang('admission.candidate.last-name')" name="lastName" class="demo-form ad-input" value="{{ $user->info->lname }}"  required>
                     <i class="icon-inp fa fa-user"></i>
                 </div>
 
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="@lang('admission.candidate.address')" name="student_address" class="demo-form ad-input" value="{{ $user->cv->student_address }}">
+                    <input type="text" label="@lang('admission.candidate.address')" name="student_address" class="demo-form ad-input" value="{{ $user->cv->student_address }}" required>
                     <i class="icon-inp fa fa-street-view"></i>
                 </div>
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="@lang('admission.candidate.city')" name="student_city" class="demo-form ad-input" value="{{ $user->cv->student_city }}">
+                    <input type="text" label="@lang('admission.candidate.city')" name="student_city" class="demo-form ad-input" value="{{ $user->cv->student_city }}" required>
                     <i class="icon-inp fa fa-map-marker"></i>
                 </div>
 
                 <div class="col-sm-6 input-container">
-                    <input type="text" label="@lang('admission.candidate.email')" name="email" class="demo-form ad-input" value="{{ $user->email}}">
+                    <input type="text" label="@lang('admission.candidate.email')" name="email" class="demo-form ad-input" value="{{ $user->email}}" required>
                     <i class="icon-inp fa fa-envelope"></i>
                 </div>
                 <div class="col-sm-6 input-container">
                     {{--<a href="tel:{{ $user->info->phone }}">--}}
-                    <input type="text" label="@lang('admission.candidate.phone')" name="student_phone" class="demo-form ad-input" value="{{ $user->cv->student_phone }}">
+                    <input type="text" label="@lang('admission.candidate.phone')" name="student_phone" class="demo-form ad-input" value="{{ $user->cv->student_phone }}" required>
                     {{--</a>--}}
                     <i class="icon-inp fa fa-phone"></i>
                 </div>
@@ -443,12 +442,12 @@
                         @if($field->slug != 'student_relatives' && $field->slug != 'student_polyteknos' && $field->slug != 'student_phone' && $field->slug != 'student_address' && $field->slug != 'student_city')
                             @if($field->slug == 'student_dob')
                                 <div class="col-sm-6 input-container">
-                                    <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y') }}" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}">
+                                    <input class="demo-form ad-input ll-skin-cangas" id="datepicker" size="30" value="{{ \Carbon\Carbon::parse($user->info->dob)->format('d/m/Y') }}" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" required>
                                     <i class="icon-inp {{ $field->icon }}"></i>
                                 </div>
                             @else
                                 <div class="col-sm-6 input-container">
-                                    <input type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                                    <input type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}" required>
                                     <i class="icon-inp {{ $field->icon }}"></i>
                                 </div>
                             @endif
@@ -463,7 +462,7 @@
                     <div class="drop-title">@lang('admission.candidate.multi-child')</div>
 
                         <div class="select-polyteknos">
-                            <select name="student_polyteknos">
+                            <select name="student_polyteknos" required>
                                 <option value="0" default>@lang('admission.candidate.no')</option>
                                 <option value="1">@lang('admission.candidate.yes')</option>
                             </select>
@@ -477,7 +476,7 @@
                 <div class="col-sm-6 ">
                 <div class="drop-title">@lang('admission.candidate.relatives')</div>
                     <div class="select-polyteknos">
-                        <select name="student_relatives">
+                        <select name="student_relatives" required>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -497,7 +496,7 @@
                 @foreach($fields as $field)
                     @if(($field->category->id == 2 || $field->category->id == 5) && $settings->{$field->slug})
                         <div class="col-sm-6 input-container">
-                            <input type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <input type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}" required>
                             <i class="icon-inp {{ $field->icon }}"></i>
                         </div>
                     @endif
@@ -507,7 +506,7 @@
                 @foreach($fields as $field)
                     @if(($field->category->id == 3 || $field->category->id == 6) && $settings->{$field->slug})
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <input  type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}" required>
                             <i class="icon-inp {{ $field->icon }}"></i>
                         </div>
                     @endif
@@ -518,7 +517,7 @@
                 @foreach($fields as $field)
                     @if(($field->category->id == 4 || $field->category->id == 7) && $settings->{$field->slug})
                         <div class="col-sm-6 input-container">
-                            <input  type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}">
+                            <input  type="text" label="{{ trans('settings.admissions.' . $field->slug) }}" name="{{ $field->slug }}" class="demo-form ad-input" value="{{ $user->cv->{$field->slug} }}" required>
                             <i class="icon-inp {{ $field->icon }}"></i>
                         </div>
                     @endif
@@ -545,7 +544,7 @@
                         <div class="section-text centered-text">  <i class="icon-title fa fa-flag"></i>@lang('admission.languages')</div>
                         <div class=" input-container">
                         <div class="info-text">@lang('admission.languages-text')</div>
-                            <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2">{{ $user->cv->languages }}</textarea>
+                            <textarea name="languages" class="notes" placeholder="Αγγλικά - Β1&#13;&#10;Γερμανικά - C2" required>{{ $user->cv->languages }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -560,7 +559,7 @@
                         <div class=" input-container">
                             <div class="info-text">@lang('admission.strongpoints-text')</div>
                                      <textarea name="strongpoints" class="notes" placeholder="1. Είμαι Επίμονος&#13;&#10; 2. Εργάζομαι με μέθοδο & πρόγραμμα &#13;&#10; 3. Μου αρέσει συνεχώς να βελτιώνομαι και να αποκτώ νέες δεξιότητες
-                                ">{{ $user->cv->strongpoints}}</textarea>
+                                " required>{{ $user->cv->strongpoints}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -575,7 +574,7 @@
                         <div class=" input-container">
                             <div class="info-text">@lang('admission.studies-text')</div>
                                 <textarea name="studies" class="notes" placeholder="1. ΜΒΑ in Business Administration / Πανεπιστημιο Μακεδονίας / 2016&#13;&#10;2. Οικονομικά / Αριστοτέλειο Πανεπιστημιο θεσσαλονίκης / 2014&#13;&#10;3. 7ο Λύκειο Θεσσαλονικης / 2009
-                                ">{{ $user->cv->student_previous }}</textarea>
+                                " required>{{ $user->cv->student_previous }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -590,7 +589,7 @@
                         <div class=" input-container">
                             <div class="info-text">@lang('admission.accomplishments-text')</div>
                                 <textarea name="awards" class="notes" placeholder="1. &#13;&#10;2.&#13;&#10;3.
-                                ">{{ $user->cv->awards }}</textarea>
+                                " required>{{ $user->cv->awards }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -605,7 +604,7 @@
                         <div class=" input-container">
                             <div class="info-text">@lang('admission.interests-text')<br> <span style="color: transparent">.</span></div>
                                 <textarea name="other_interests" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                                ">{{ $user->cv->other_interests }}</textarea>
+                                " required>{{ $user->cv->other_interests }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -620,7 +619,7 @@
                         <div class=" input-container">
                             <div class="info-text"> @lang('admission.certifications-text')</div>
                                 <textarea name="certifications" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                                ">{{ $user->cv->certifications }}</textarea>
+                                " required>{{ $user->cv->certifications }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -635,16 +634,15 @@
                         <div class=" input-container">
                             <div class="info-text">@lang('admission.notes-text') </div>
                                     <textarea name="notes" class="notes" placeholder="1.&#13;&#10;2.&#13;&#10;3.
-                                    ">{{ $user->cv->notes }}</textarea>
+                                    " required>{{ $user->cv->notes }}</textarea>
                         </div>
                     </div>
                 </div>
                 @endif
             </div>
 
-            <div class="send-button centered">
-                <a href=""><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white " data-toggle="modal" data-target="#send-modal">
-                        <i class="icon-title fa fa-paper-plane-o pad-right-10"></i>@lang('admission.send')</button></a>
+            <div class="send-button centered"><button type="submit" class="sc-button-landing sc-button sc-orange sc-t-white">
+                        <i class="icon-title fa fa-paper-plane-o pad-right-10"></i>@lang('admission.send')</button>
             </div>
         </div>
     </form>

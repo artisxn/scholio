@@ -448,6 +448,7 @@
                 axios.get('/api/notifications/getSchoolLevelStudies').then(({data})=>{
                     this.studies = data
                     console.log(this.studies)
+                    
                 })
             },
 

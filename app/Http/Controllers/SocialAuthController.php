@@ -7,7 +7,7 @@ use App\Models\Company;
 use App\Models\Cv;
 use App\Models\Cvteacherstudy;
 use App\Models\Guardian;
-use App\Models\Job;
+use App\Models\TeacherJob as Job;
 use App\Models\Link;
 use App\Models\Skill;
 use App\Models\SocialLink;

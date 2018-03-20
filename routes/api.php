@@ -443,7 +443,7 @@ Route::get('/school/getReviews/{role}/{status}/{stars}', function ($role, $statu
     return $data;
 })->middleware('auth:api');
 
-Route::get('/scholarship/getFullAdmissions', function () {
+Route::get('/getScholarshipFullAdmissions', function () {
     $arr = [];
     $school = auth()->user()->info;
     foreach ($school->admissions() as $admission) {
