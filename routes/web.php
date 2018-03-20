@@ -17,6 +17,8 @@ use App\User;
 use Carbon\Carbon;
 use App\Models\AlgoliaScholarship;
 use App\Models\DummyScholarship;
+use App\Jobs\Algolia;
+use App\Jobs\DeleteFromAlgolia;
 
 Scholio::soonRoutes();
 Scholio::bot();
@@ -72,11 +74,21 @@ Route::post('/school/approve/{school}', function (School $school) {
     $school->approved = true;
     $school->save();
     return back();
+    dispatch(new Algolia($school));
 })->middleware('is.admin');
 
 Route::post('/school/disapprove/{school}', function (School $school) {
-    $school->approved = true;
+    $school->approved = false;
     $school->save();
+    return back();
+    dispatch(new DeleteFromAlgolia($school));
+})->middleware('is.admin');
+
+Route::post('/school/deleteAlgolia/{school}', function (School $school) {
+    $school->approved = false;
+    $school->save();
+    
+    dispatch(new DeleteFromAlgolia($school));
     return back();
 })->middleware('is.admin');
 
