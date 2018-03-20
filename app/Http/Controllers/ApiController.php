@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use App\Models\Level;
 use App\Models\Section;
+use App\Models\Image;
+use App\Jobs\Algolia;
 
 class ApiController extends Controller
 {
@@ -589,6 +591,8 @@ class ApiController extends Controller
         $image->save();
 
         auth()->user()->info->image()->attach($image);
+
+        dispatch(new Algolia(auth()->user()->info));
 
         return response(['data' => $imageUrl], 201);
     }

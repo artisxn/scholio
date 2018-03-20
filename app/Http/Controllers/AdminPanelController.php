@@ -8,7 +8,7 @@ use App\Models\SchoolTypes;
 use App\Scholio\Scholio;
 use GuzzleHttp\Psr7\Request;
 use App\Models\SocialLink;
-use App\Scholio\Algolia;
+use App\Jobs\Algolia;
 
 class AdminPanelController extends Controller
 {
@@ -256,7 +256,8 @@ class AdminPanelController extends Controller
             }
         }
 
-        $algolia = new Algolia($school);
+        dispatch(new Algolia($school));
+
         session()->flash('updated_profile', 'Your profile has been updated');
 
         return back();
@@ -320,7 +321,7 @@ class AdminPanelController extends Controller
             $school->image()->toggle($i);
         }
 
-        $algolia = new Algolia($school);
+        dispatch(new Algolia($school));
 
         return back();
     }
@@ -337,15 +338,7 @@ class AdminPanelController extends Controller
 
         unlink(public_path() . '/upload/school/'. $school->type->name . '_' . auth()->user()->id . '_' . auth()->user()->name . '/' . $image->name);
 
-        if (Scholio::ProfileActive($school)) {
-            if (Algolia::exists($school)) {
-                Algolia::update($school);
-            }
-        }else{
-            if(Algolia::exists($school)){
-                Algolia::delete($school);
-            }
-        }
+        dispatch(new Algolia($school));
 
         return back();
     }
