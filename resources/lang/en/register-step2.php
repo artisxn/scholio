@@ -11,6 +11,8 @@ return [
     'account'=>'Already have an account?',
     'signup'=>'Sign up',
     'login'=>'Log in',
+    'required'=>'Please fill in this field',
+
 
 
     'school'=>[

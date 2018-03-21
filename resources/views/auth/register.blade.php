@@ -117,7 +117,8 @@
                         <label for="name" class="col-sm-3 font-weight-400">@lang('register-step2.name')</label>
 
                         <div class="col-sm-9">
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required=""
+                                   oninvalid="this.setCustomValidity('@lang("register-step2.required")')" oninput="setCustomValidity('')">
 
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -132,7 +133,8 @@
                         <label for="last-name" class="col-sm-3 font-weight-400">@lang('register-step2.last-name')</label>
 
                         <div class="col-sm-9">
-                            <input id="last-name" name="lastName" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+                            <input id="last-name" name="lastName" type="text" class="form-control" name="name" value="{{ old('name') }}" required=""
+                                   oninvalid="this.setCustomValidity('@lang("register-step2.required")')" oninput="setCustomValidity('')">
 
                             @if ($errors->has('name'))
                                 <span class="help-block">
