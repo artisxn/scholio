@@ -167,7 +167,7 @@
                                     </div>
                                 @else
                                     <div class="out-div">
-                                        <div class="grow pic" style="opacity: 0.;">
+                                        <div class="grow pic">
                                             <img id="img{{$image->id}}" class="" src="{{$image->full_path}}" onclick="background({{ $image->id }})"
                                                     {{--onmouseover="hov({{$image->id}})"--}}
                                             />

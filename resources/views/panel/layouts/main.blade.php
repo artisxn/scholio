@@ -207,15 +207,24 @@ echo json_encode($trans);
                     id: "my-intro",
                     steps: [
                         newTour('logoBtn',         lang.tourSchools.title0,  lang.tourSchools.text0,  r,   0,  -110),
-                        newTour('studentsBtn',     lang.tourSchools.title1,  lang.tourSchools.text1,  b,   1,  -18),
-                        newTour('teachersBtn',     lang.tourSchools.title2,  lang.tourSchools.text2,  b,   1,  -18),
-                        newTour('studiesBtn',      lang.tourSchools.title3,  lang.tourSchools.text3,  b,   1,  -18),
-                        newTour('photosBtn',       lang.tourSchools.title4,  lang.tourSchools.text4,  b,   1,  -18),
-                        newTour('scholarshipsBtn', lang.tourSchools.title5,  lang.tourSchools.text5,  b,   1,  -18),
-                        newTour('admissionsBtn',   lang.tourSchools.title6,  lang.tourSchools.text6,  b,   1,  -18),
-                        newTour('reviewsBtn',      lang.tourSchools.title7,  lang.tourSchools.text7,  b,   1,  -18),
+//                        newTour('studentsBtn',     lang.tourSchools.title1,  lang.tourSchools.text1,  b,   1,  -18),
+//                        newTour('teachersBtn',     lang.tourSchools.title2,  lang.tourSchools.text2,  b,   1,  -18),
+//                        newTour('studiesBtn',      lang.tourSchools.title3,  lang.tourSchools.text3,  b,   1,  -18),
+//                        newTour('photosBtn',       lang.tourSchools.title4,  lang.tourSchools.text4,  b,   1,  -18),
+//                        newTour('scholarshipsBtn', lang.tourSchools.title5,  lang.tourSchools.text5,  b,   1,  -18),
+//                        newTour('admissionsBtn',   lang.tourSchools.title6,  lang.tourSchools.text6,  b,   1,  -18),
+//                        newTour('reviewsBtn',      lang.tourSchools.title7,  lang.tourSchools.text7,  b,   1,  -18),
+
+                        newTour('photosBtn',       lang.tourSchools.titleS,  lang.tourSchools.textS,  b,   4,  -40),
+
                         newTour('notificationsBtn',lang.tourSchools.title8,  lang.tourSchools.text8,  l,   0,   10),
-                        newTour('navResources',    lang.tourSchools.title13, lang.tourSchools.text13, r, -10,  -90)
+
+
+                        newTour('navDashoboard',   lang.tourSchools.title12, lang.tourSchools.text12, r, -10,  -100),
+                        newTour('navResources',    lang.tourSchools.title13, lang.tourSchools.text13, r, -10,  -100),
+                        newTour('navProfile',      lang.tourSchools.title14, lang.tourSchools.text14, r, -10,  -100),
+                        newTour('navScholarships', lang.tourSchools.title15, lang.tourSchools.text15, r, -10,  -95),
+                        newTour('navReviews',      lang.tourSchools.title16, lang.tourSchools.text16, r, -10,  -90),
                     ],
                     showPrevButton: true
                 };

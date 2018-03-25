@@ -104,7 +104,7 @@ p {padding: 15px; color: #5d5d5d;  }
     border: 5px solid #f0f0f0; border-top: none; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;
 }
 .scholar-header { border: 1px solid #008da5; border-bottom-color: #FD6A33;min-height: 80px; background-color: #008da5; border-top-left-radius: 5px; border-top-right-radius: 5px}
-.section1,.section2,.section3 { min-height: 260px; }
+.section1,.section2,.section3 { min-height: 308px; }
 .section4{min-height: 100px;}
 /*.section1{border-left-color: #008da5;}*/
 /*.section3{ border-right-color: #008da5;}*/

@@ -19,13 +19,32 @@ return [
         'text6' => '',
         'title7' => 'Reviews',
         'text7' => '',
+
+        'titleS' => 'Shortcuts',
+        'textS' => '',
+
         'title8' => 'Notifications',
         'text8' => '',
         'title9' => '',
         'text9' => '',
+        'title10' => '',
+        'text10' => '',
+        'title11' => '',
+        'text11' => '',
 
 
+    'title12' => 'Control Panel',
+    'text12' => '',
     'title13' => 'Resources',
     'text113' => '',
+    'title14' => 'Profile',
+    'text14' => '',
+    'title15' => 'Scholarships',
+    'text15' => '',
+    'title16' => 'Reviews',
+    'text16' => '',
+
+
+
 
 ];

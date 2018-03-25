@@ -123,6 +123,11 @@
 
     .sc-button3{display: none;}
 
+    .backImageSm, .backImageLg{position: absolute; z-index: 2; filter: grayscale(10%);opacity: 0.02; overflow: hidden!important;}
+
+    .backImageSm{ height: 170px; width: 80%; left: 40px; bottom: -6px; }
+    .backImageLg{ height: 260px; width: 101%; left: 10px; bottom: -13px;}
+
     @media (max-width:1449px){
         .pos-right{right: -30px}
         .ribbonMed{ right: -11px}
@@ -148,6 +153,7 @@
         .ribbonMed,.ribbonLarge{ right: -54px}
         .text-Med{right: -42px}
         .text-Large{right: -66px;}
+        .backImageSm, .backImageLg{display: none;}
     }
 
     @media (max-width:1149px){
@@ -174,6 +180,7 @@
         .ribbonMed,.ribbonLarge{ right: -102px}
         .text-Med{right: -90px}
         .text-Large{right: -115px;}
+        /*.backImageSm, .backImageLg{display: block}*/
     }
 
     @media (max-width:929px){
@@ -785,7 +792,11 @@ angular.module("schoolsResultsApp",[])
 
 
             @{{^stats}}
-            <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top" style="color: #ddd">
+
+            <!-- <img src="/new/img/notepad.png"  style="opacity: 0.07; height: 100px; width: auto; position: absolute; z-index: 2; right: 10px; bottom: 30px;"></img> -->
+
+            <span style="color: #eee; opacity: 0.4; filter: blur(0.6px);">
+            <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
                  <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                  <span class="pull-left pad-left-5">@lang('schools.cards.scholarships')</span>
                 <br>
@@ -795,7 +806,7 @@ angular.module("schoolsResultsApp",[])
                  <br>
             </div>
 
-            <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3" style="color: #ddd">
+            <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3">
                 <div ng-show="type_id==1 || type_id==2 ">
                     <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-5">@lang('schools.cards.studies')</span>
@@ -806,6 +817,7 @@ angular.module("schoolsResultsApp",[])
                 <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
                 <span class="pull-left pad-left-2 pad-bot-10">@lang('schools.cards.con_teachers')</span>
             </div>
+            </span>
             @{{/stats}}
 
             <div ng-show="type_id!=1 && type_id!=2">
@@ -819,7 +831,7 @@ angular.module("schoolsResultsApp",[])
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 " id="card4@{{school_id}}" >
 
             <div class="" >
-                <div class="col-lg-10 col-md-11 col-sm-6 col-xs-12 sc-t-grey" >
+                <div class="col-lg-10 col-md-11 col-sm-6 col-xs-12 sc-t-grey"  style="z-index: 4; position relative">
                     <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95">@{{address}}</span>
                     <br>
@@ -849,17 +861,27 @@ angular.module("schoolsResultsApp",[])
                             <span class="pull-left pad-left-5"> <a href="http://@{{website}}/" target="_blank">@{{website}}</a></span>
                         @{{/site}}
                     </div>
-
-
-
-
-
                 </div>
-                <div class="col-lg-2  col-md-1 col-sm-5 col-xs-12 margin-top-15 card-buttons text-incr-85">
-                    <div class="hidden-xs but-pad">
-                        <a href="">
-                            <button type="button" class="sc-button3 sc-dark-green sc-t-white pull-right margin-top-70">
-                                <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('schools.cards.request')</button>
+
+
+            @{{^stats}}
+            <img src="/new/img/bars2.png" class="backImageLg" style=""></img>
+            @{{/stats}}
+
+            @{{#stats}}
+            <img src="/new/img/bars2.png" class="backImageSm" style=""></img>
+            @{{/stats}}
+            <div style=" height: 120px; width: 40%; position: absolute; z-index: 2; left: 20px; bottom: -6px;
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, #fff 100%);
+            "></div>
+
+
+
+      <div class="col-lg-2  col-md-1 col-sm-5 col-xs-12 margin-top-15 card-buttons text-incr-85">
+          <div class="hidden-xs but-pad">
+              <a href="">
+                  <button type="button" class="sc-button3 sc-dark-green sc-t-white pull-right margin-top-70">
+                      <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('schools.cards.request')</button>
                         </a>
                     </div>
 

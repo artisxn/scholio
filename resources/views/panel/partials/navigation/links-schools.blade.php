@@ -6,7 +6,8 @@
     </style>
 @endsection
 
-<li class="link" ><a href="{{ url('dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}"><i class="fa fa-tachometer"></i> <span>@lang('panel/schools/navigation.dashboard')</span> </a></li>
+<li class="link" ><a id="navDashboard" href="{{ url('dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}"><i class="fa fa-tachometer"></i> <span>@lang('panel/schools/navigation.dashboard')</span> </a></li>
+<li class="link hidden-xs hidden-sm"><a href="#" onclick="startTour()"><i class="fa fa-tv"></i> <span >@lang('panel/schools/navigation.tourStart')</span> </a></li>
 
     {{--<li class="text-muted menu-title">@lang('panel/schools/navigation.management')</li>--}}
 <div style="height: 1px; margin: 0 15px; background-color: #3e5f6e"></div>
@@ -32,7 +33,7 @@
     @endif
 
     <li class="has_sub link">
-        <a href="#" >
+        <a href="#" id="navProfile">
             <i class="ion-android-user-menu"></i><span> @lang('panel/schools/navigation.profile.title') </span> </a>
         <ul class="list-unstyled submenu">
              @if(auth()->user()->subscription->plan->id != 1)
@@ -49,7 +50,7 @@
     </li>
 
     <li class="has_sub link">
-        <a href="#" class="{{ 0 === strpos(request()->path(), 'panel/school/admission/') ? 'active' : ''}}">
+        <a id="navScholarships" href="#" class="{{ 0 === strpos(request()->path(), 'panel/school/admission/') ? 'active' : ''}}">
             <i class="ion-trophy"></i>
             <span> @lang('panel/schools/navigation.scholarships.title')</span></a>
         <ul class="list-unstyled submenu">
@@ -75,8 +76,8 @@
     {{--</li>--}}
 
      @if(auth()->user()->subscription->plan->id != 1)
-        <li class="has_sub">
-            <a href="#" class=""><i class="ion-ios7-star-half"></i><span> @lang('panel/schools/navigation.reviews.title') </span></a>
+        <li class="has_sub" >
+            <a href="#" id="navReviews" class=""><i class="ion-ios7-star-half"></i><span> @lang('panel/schools/navigation.reviews.title') </span></a>
             <ul class="list-unstyled">
                 <li><a href="{{ url('panel/school/reviews/view') }}" class="{{ request()->path() == 'panel/school/reviews/view' ? 'active' : ''}}">@lang('panel/schools/navigation.reviews.show')
                     <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->reviews) }}</span>
@@ -85,9 +86,8 @@
         </li>
     @endif
 
-<div style="height: 1px; margin: 0 15px; background-color: #3e5f6e"></div>
+{{--<div style="height: 1px; margin: 0 15px; background-color: #3e5f6e"></div>--}}
 
-<li class="link hidden-xs hidden-sm"><a href="#" onclick="startTour()"><i class="fa fa-tv"></i> <span >@lang('panel/schools/navigation.tourStart')</span> </a></li>
 
 
     {{-- <li class="has_sub">
