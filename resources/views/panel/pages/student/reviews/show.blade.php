@@ -84,7 +84,7 @@
             <div class="col-xs-12 col-sm-6 col-xl-4 col-xxl-3 col-med-12">
                 <div class="review-cont">
                     <div class="centered-text">
-                        <img class="school-logo" src="/images/schools/{{ $review->school->logo }}" alt="">
+                        <img class="school-logo" src="{{ $review->school->logo }}" alt="">
                         <h3 class="title">{{ $review->school->name() }}</h3>
                     </div>
 
