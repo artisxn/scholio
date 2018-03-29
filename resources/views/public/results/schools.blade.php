@@ -125,8 +125,25 @@
 
     .backImageSm, .backImageLg{position: absolute; z-index: 2; filter: grayscale(10%);opacity: 0.02; overflow: hidden!important;}
 
-    .backImageSm{ height: 170px; width: 80%; left: 40px; bottom: -6px; }
-    .backImageLg{ height: 260px; width: 101%; left: 10px; bottom: -13px;}
+    .backImageSm{ height: 170px; width: 80%; left: 40px; bottom: -36px; }
+    .backImageLg{ height: 260px; width: 101%; left: 10px; bottom: -30px;}
+
+    @media(min-width: 768px){
+        .pad-top{padding-top: 10px;}
+    }
+
+
+    @media(min-width: 1200px){
+        .pad-top{padding-top: 10px;}
+    }
+
+    @media(min-width: 1338px){
+        .pad-left{padding-left:40px}
+    }
+    @media(min-width: 1465px){
+        .pad-left{padding-left:30px}
+    }
+
 
     @media (max-width:1449px){
         .pos-right{right: -30px}
@@ -671,6 +688,8 @@ angular.module("schoolsResultsApp",[])
 
     var hitTemplate = `
 
+
+
     <div class="card clear-fix margin-bot-25" >
 
         <con>
@@ -747,7 +766,7 @@ angular.module("schoolsResultsApp",[])
 
             
             @{{#stats}}
-            <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top" id="card2@{{school_id}}">
+            <div class=" col-md-9  col-lg-5 col-sm-9 col-xs-12 kf-margin-top" id="card2@{{school_id}}">
                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                 <span class="pull-left pad-left-5">@lang('schools.cards.scholarships')</span>
 
@@ -774,7 +793,7 @@ angular.module("schoolsResultsApp",[])
                 <br>
             </div>
 
-            <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3" id="card3@{{school_id}}">
+            <div class="col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3 pad-left" id="card3@{{school_id}}">
                 <div ng-show="type_id==1 || type_id==2 ">
                     <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-5">@lang('schools.cards.studies')</span>
@@ -796,7 +815,7 @@ angular.module("schoolsResultsApp",[])
             <!-- <img src="/new/img/notepad.png"  style="opacity: 0.07; height: 100px; width: auto; position: absolute; z-index: 2; right: 10px; bottom: 30px;"></img> -->
 
             <span style="color: #eee; opacity: 0.4; filter: blur(0.6px);">
-            <div class="col-lg-5 col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
+            <div class="col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
                  <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                  <span class="pull-left pad-left-5">@lang('schools.cards.scholarships')</span>
                 <br>
@@ -806,7 +825,7 @@ angular.module("schoolsResultsApp",[])
                  <br>
             </div>
 
-            <div class="col-lg-offset-1 col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3">
+            <div class=" col-lg-6 col-md-9 col-sm-9 col-xs-12 margin-bot-10 kf-margin-top margin-top-3">
                 <div ng-show="type_id==1 || type_id==2 ">
                     <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-5">@lang('schools.cards.studies')</span>
@@ -828,40 +847,43 @@ angular.module("schoolsResultsApp",[])
 
 
 
-        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 " id="card4@{{school_id}}" >
+        <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12 " id="card4@{{school_id}}" >
 
             <div class="" >
-                <div class="col-lg-10 col-md-11 col-sm-6 col-xs-12 sc-t-grey"  style="z-index: 4; position relative">
+                <div class="col-lg-6 col-sm-6 col-xs-12 sc-t-grey"  style="z-index: 4; position relative ">
                     <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95">@{{address}}</span>
                     <br>
-                    <div class="hidden-xs">
+                    <div class="hidden-xs pad-top">
                         <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
                         <span class="pull-left pad-left-3">@{{city}} </span>
 
                         <br>
                     </div>
-                    <div class="pad-top-3"></div>
+                    <div class="pad-top-3 pad-top"></div>
                     <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-5">@{{phone}}</span>
                     <br>
 
+              </div>
 
-                    <div class="hidden-xs">
 
-                        <div class="pad-top-3"></div>
-                        <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                        <span class="pull-left pad-left-5"> <a href="mailto:@{{email}}">@{{email}}</a></span>
-                        <br>
-                    </div>
+            <div class="col-sm-6 col-xs-12 sc-t-grey" >
+                   <div class="hidden-xs ">
+                                <div class="pad-top-3"></div>
+                                <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
+                                <span class="pull-left pad-left-5"> <a href="mailto:@{{email}}">@{{email}}</a></span>
+                                <br>
+                   </div>
 
-                    <div class="pad-top-3">
-                        @{{^site}}
+                   <div class="pad-top-3 pad-top">
+                            @{{^site}}
                             <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
                             <span class="pull-left pad-left-5"> <a href="http://@{{website}}/" target="_blank">@{{website}}</a></span>
-                        @{{/site}}
-                    </div>
-                </div>
+                            @{{/site}}
+                  </div>
+           </div>
+
 
 
             @{{^stats}}
@@ -871,7 +893,7 @@ angular.module("schoolsResultsApp",[])
             @{{#stats}}
             <img src="/new/img/bars2.png" class="backImageSm" style=""></img>
             @{{/stats}}
-            <div style=" height: 120px; width: 40%; position: absolute; z-index: 2; left: 20px; bottom: -6px;
+            <div class="hidden-xs" style=" height: 100px; width: 40%; position: absolute; z-index: 2; left: 20px; bottom: -26px;
             background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, #fff 100%);
             "></div>
 
@@ -895,6 +917,7 @@ angular.module("schoolsResultsApp",[])
             </div>
         </div>
     </div>
+
     `;
 
 

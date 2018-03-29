@@ -193,7 +193,7 @@ p {padding: 15px; color: #5d5d5d;  }
 /* //////////////////////////////////////////////////////////////////// */
 .card-ribbon {position: relative;}
 
-.card { background: white;  }
+.card { background: white; }
 .card, .card-photo {height: 310px;}
 .card-photo {width: 345px; margin-right: 8px;
     /*background-image: -webkit-linear-gradient(rgba(5,5,16,0.4), rgba(0,0,5,0.8)),url("../img/colleges/act-pic1.jpg") ;*/
