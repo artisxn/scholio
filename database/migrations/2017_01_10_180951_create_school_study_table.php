@@ -15,9 +15,12 @@ class CreateSchoolStudyTable extends Migration
     {
         Schema::create('school_study', function (Blueprint $table) {
             $table->primary(['school_id', 'study_id']);
-            $table->integer('school_id')->index();
-            $table->integer('study_id')->index();
+            $table->integer('school_id')->unsigned();
+            $table->integer('study_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
+            $table->foreign('study_id')->references('id')->on('studies')->onDelete('cascade');
         });
     }
 

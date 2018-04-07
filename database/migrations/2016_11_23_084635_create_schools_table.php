@@ -15,19 +15,33 @@ class CreateSchoolsTable extends Migration
     {
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
-            $table->integer('type_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
+            $table->integer('type_id')->unsigned();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->string('website')->unique()->nullable();
             $table->string('logo')->default('/upload/school/univ.png');
-            $table->integer('background')->nullable();
+            $table->integer('background')->unsigned();
             $table->text('about')->nullable();
             $table->boolean('approved')->default(0);
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('type_id')->references('id')->on('school_types')->onDelete('cascade');
+            // $table->foreign('background')->references('id')->on('images')->onDelete('cascade');
+        });
+
+        Schema::create('image_school', function (Blueprint $table) {
+            $table->primary(['image_id', 'school_id']);
+            $table->integer('image_id')->unsigned();
+            $table->integer('school_id')->unsigned();
+            $table->timestamps();
+
+            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
 
     }
@@ -39,6 +53,7 @@ class CreateSchoolsTable extends Migration
      */
     public function down()
     {
+        Schema::drop('image_school');
         Schema::dropIfExists('schools');
     }
 }

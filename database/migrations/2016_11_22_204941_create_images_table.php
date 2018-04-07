@@ -23,13 +23,6 @@ class CreateImagesTable extends Migration
             $table->string('type')->default('Image');
             $table->timestamps();
         });
-
-        Schema::create('image_school', function (Blueprint $table) {
-            $table->primary(['image_id', 'school_id']);
-            $table->integer('image_id')->index();
-            $table->integer('school_id')->index();
-            $table->timestamps();
-        });
     }
 
     /**
@@ -40,6 +33,5 @@ class CreateImagesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('images');
-        Schema::drop('image_school');
     }
 }

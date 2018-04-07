@@ -18,6 +18,7 @@ class CreateKeysTable extends Migration
             $table->boolean('login')->default(0);
             $table->boolean('dropdownLogin')->default(0);
             $table->boolean('soon')->default(1);
+            $table->boolean('stats')->default(1);
             $table->timestamps();
         });
     }

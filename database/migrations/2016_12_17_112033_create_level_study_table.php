@@ -15,9 +15,12 @@ class CreateLevelStudyTable extends Migration
     {
         Schema::create('level_study', function (Blueprint $table) {
             $table->primary(['level_id', 'study_id']);
-            $table->integer('level_id')->index();
-            $table->integer('study_id')->index();
+            $table->integer('level_id')->unsigned();
+            $table->integer('study_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
+            $table->foreign('study_id')->references('id')->on('studies')->onDelete('cascade');
         });
     }
 

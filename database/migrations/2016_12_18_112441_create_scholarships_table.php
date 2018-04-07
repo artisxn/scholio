@@ -15,12 +15,12 @@ class CreateScholarshipsTable extends Migration
     {
         Schema::create('scholarships', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('school_id')->index();
-            $table->integer('financial_id')->index();
+            $table->integer('school_id')->unsigned();
+            $table->integer('financial_id')->unsigned();
             $table->string('financial_amount');
-            $table->integer('study_id')->index();
-            $table->string('level_id');
-            $table->integer('criteria_id')->index();
+            $table->integer('study_id')->unsigned();
+            $table->integer('level_id')->unsigned();
+            $table->integer('criteria_id')->unsigned();
             $table->date('end_at');
             $table->integer('winners')->default(1);
             $table->text('terms')->nullable();
@@ -32,6 +32,12 @@ class CreateScholarshipsTable extends Migration
             $table->float('price', 10, 2)->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('financial_id')->references('id')->on('financials')->onDelete('cascade');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
+            $table->foreign('study_id')->references('id')->on('studies')->onDelete('cascade');
+            $table->foreign('criteria_id')->references('id')->on('criterias')->onDelete('cascade');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
         });
     }
 

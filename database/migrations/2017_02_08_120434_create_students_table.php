@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
+            $table->integer('user_id')->unsigned();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
             $table->string('gender')->nullable();
@@ -23,6 +23,8 @@ class CreateStudentsTable extends Migration
             $table->integer('admissions_limit')->default(10);
             $table->string('status')->default('guest');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

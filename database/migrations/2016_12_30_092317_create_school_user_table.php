@@ -15,8 +15,8 @@ class CreateSchoolUserTable extends Migration
     {
         Schema::create('school_user', function (Blueprint $table) {
             $table->primary(['school_id', 'user_id']);
-            $table->integer('school_id')->index();
-            $table->integer('user_id')->index();
+            $table->integer('school_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('status')->default('connected');
             $table->integer('study_id')->nullable();
             $table->string('type')->nullable();
@@ -24,7 +24,12 @@ class CreateSchoolUserTable extends Migration
             $table->integer('study_id2')->nullable();
             $table->string('type2')->nullable();
             $table->string('level2')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
+
+        
     }
 
     /**

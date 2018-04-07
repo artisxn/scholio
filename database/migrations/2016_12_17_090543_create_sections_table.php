@@ -15,10 +15,12 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('level_id')->index();
+            $table->integer('level_id')->unsigned();
             $table->string('name');
             $table->string('icon')->default('/panel/assets/images/steps/studies.png');
             $table->timestamps();
+
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
         });
     }
 

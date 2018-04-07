@@ -941,7 +941,7 @@ ECG is an independent, not for profit, nonsectarian, co-educational academic ins
         $scholarship->financial_id = $financial_id;
         $scholarship->financial_amount = $financial_amount;
         if ($multiple) {
-            $scholarship->study_id = 0;
+            $scholarship->study_id = $study_id[0];
             $scholarship->multiple = true;
         } else {
             $scholarship->study_id = $study_id;
