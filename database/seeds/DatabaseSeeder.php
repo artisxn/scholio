@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
         
 
         if (App::environment('local')) {
-            $this->call(FakeTables::class);
+            // $this->call(FakeTables::class);
+            $this->call(FakeSeederCopy::class);
         }
 
         $this->call(AdminTables::class);

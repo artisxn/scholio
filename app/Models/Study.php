@@ -57,7 +57,7 @@ class Study extends Model
      */
     public function school()
     {
-        return $this->belongsToMany(School::class, 'school_study')->withTimestamps();
+        return $this->belongsToMany(School::class, 'school_study')->withTimestamps()->withPivot('url');
     }
 
     /**

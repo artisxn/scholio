@@ -31,7 +31,7 @@ class CreateSchoolsTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('type_id')->references('id')->on('school_types')->onDelete('cascade');
-            // $table->foreign('background')->references('id')->on('images')->onDelete('cascade');
+            $table->foreign('background')->references('id')->on('images')->onDelete('cascade');
         });
 
         Schema::create('image_school', function (Blueprint $table) {

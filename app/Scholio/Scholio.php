@@ -148,8 +148,6 @@ class Scholio
             $lati = $resp['results'][0]['geometry']['location']['lat'];
             $longi = $resp['results'][0]['geometry']['location']['lng'];
             $formatted_address = $resp['results'][0]['formatted_address'];
-            echo('Scholio-->>'.  $lati);
-
             return ['lat' => $lati, 'lng' => $longi];
         } else {
             // dd($resp);

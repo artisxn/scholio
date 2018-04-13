@@ -304,7 +304,6 @@
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
 
                     @if($school->settings->about)<li class="sc-landing-menu-item "><a href="#sxetika" class="school-profile-nav-link ">@lang('profile.navigation.about')</a></li>@endif
-                    {{--ng-if="studies.length && col_iek_eng_dan_mus" ng-cloak--}}
                     @if($school->settings->studies && count($school->study) > 0)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
                     @if($school->settings->scholarships && count($school->scholarship) > 0)<li class="sc-landing-menu-item"><a href="#ypotrofies" class="school-profile-nav-link">@lang('profile.navigation.scholarships')</a></li>@endif
                     @if($school->settings->teachers && count($school->teachers) > 0)<li class="sc-landing-menu-item"><a href="#faculty" class="school-profile-nav-link">@lang('profile.navigation.teachers')</a></li>@endif
@@ -627,7 +626,12 @@
                                                 {{--@{{levIndex}} , , @{{secIndex}}--}}
                                                 <ul ng-repeat="study in studiesName[levIndex][secIndex]" style="list-style-type: none;">
                                                     <li class="pad-top-7 margin-left-10">
-                                                        <span class="  font-weight-300" style="">@{{ study}}</span>
+                                                        <span class="  font-weight-300" style="" ng-if="studiesUrl[levIndex][secIndex][$index]">
+                                                            <a href="@{{ studiesUrl[levIndex][secIndex][$index] }}">@{{ study }}</a>
+                                                        </span>
+                                                        <span class="  font-weight-300" style="" ng-if="!studiesUrl[levIndex][secIndex][$index]">
+                                                            @{{ study }}
+                                                        </span>
                                                     </li>
                                                 </ul>
                                             </ul>
@@ -1310,6 +1314,7 @@
                             $scope.schoolStudies = data
                             $scope.showButton = true
                             console.log('gh')
+                            console
                             console.log($scope.studies.length)
 
                         })
@@ -1467,6 +1472,8 @@
                     $scope.sectionsName=[];
                     $scope.sectionsIcon=[];
                     $scope.studiesName=[];
+                    $scope.studiesUrl=[];
+
                     $scope.initial=function (){
                         console.time('initial');
                         /* ========== BUILD levelsName ARRAY============ */
@@ -1522,14 +1529,21 @@
                         var study=0
                         for (lev in $scope.levelsName ){
                             $scope.studiesName[lev]=[];
+                            $scope.studiesUrl[lev]=[];
                             for (sec in $scope.sectionsName[lev] ){
                                 $scope.studiesName[lev][sec]=[];
+                                $scope.studiesUrl[lev][sec]=[];
+
                                 study=0
                                 for (std in $scope.studies){
                                     if( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name
                                             && $scope.sectionsName[lev][sec]==$scope.studies[std][0].section[0].name
                                     ){
+                                        // console.log($scope.studies[std]);
                                         $scope.studiesName[lev][sec][study]=$scope.studies[std][0].name
+                                        $scope.studiesUrl[lev][sec][study]=$scope.contactInfo.study[std].pivot.url
+                                        // console.log($scope.contactInfo.study[std].pivot.url)
+
                                     // $scope.studiesIcon[lev][sec][study]=$scope.studies[std][0].icon
                                         study++
                                     }

@@ -157,7 +157,7 @@ class School extends Model
      */
     public function study()
     {
-        return $this->belongsToMany(Study::class, 'school_study');
+        return $this->belongsToMany(Study::class, 'school_study')->withPivot('url');
     }
 
     /**

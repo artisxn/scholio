@@ -17,6 +17,7 @@ class CreateSchoolStudyTable extends Migration
             $table->primary(['school_id', 'study_id']);
             $table->integer('school_id')->unsigned();
             $table->integer('study_id')->unsigned();
+            $table->string('url')->nullable();
             $table->timestamps();
 
             $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
