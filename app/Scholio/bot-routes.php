@@ -50,8 +50,9 @@ Route::get('/app/allSchools', function($num){
 });
 
 Route::get('/app/{find}', function ($find) {
-    // dd(substr(request()->url(),0,25));
     $results = AlgoliaSchool::search($find)->get();
+
+    return $results;
 
     if ($results->isEmpty()) {
         return [
