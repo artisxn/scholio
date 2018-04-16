@@ -589,9 +589,9 @@
                             </div>
                         </div>
                         <!-- Show More About  -->
-                        <div class="show-more" style="background-color: #fff"  >
+                        <div class="show-more" style="background-color: #fff">
                             <div class="pad-top-20">
-                                 <span ng-click="showMoreAbout('sxetika')" ng-if="contactInfo.lengthScholarships>2">@{{textAbout}}
+                                 <span ng-click="showMoreAbout('sxetika')">@{{textAbout}}
                                      <i class="@{{ iconAbout }}"></i></span>
                             </div>
                         </div>
@@ -609,7 +609,7 @@
                                 <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
                                 <div ng-if="col_iek_eng_dan_mus" >
                                     <div ng-repeat="(levIndex, level) in levelsName" >
-                                        <ul ng-class="[{'col-md-6': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==1 },  'col-sm-12']">
+                                        <ul ng-class="[{'col-md-6': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==1 },  'col-sm-12']" style="padding-bottom: 20px;">
                                             <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
 
 

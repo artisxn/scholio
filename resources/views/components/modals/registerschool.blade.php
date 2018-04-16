@@ -118,7 +118,7 @@
     <div class="row">
         <div class="col-sm-12 text-center">
             <p>
-                @lang('register-step2.school.account')<a href="" onClick="modal_toggle1()" class="text-primary m-l-5 a-text"><b>@lang('register-step2.school.login')</b></a>
+                @lang('register-step2.school.account')<a href="" onClick="window.location.href='{{ url('login') }}'" class="text-primary m-l-5 a-text"><b>@lang('register-step2.school.login')</b></a>
             </p>
         </div>
     </div>
@@ -127,8 +127,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 
 <script>
-function modal_toggle1(){
-    $('#signUp-school-modal').modal('toggle');
-    $('#signIn-modal').modal('toggle');
-}
+//function modal_toggle1(){
+//    $('#signUp-school-modal').modal('toggle');
+//    $('#signIn-modal').modal('toggle');
+//}
 </script>

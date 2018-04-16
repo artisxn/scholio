@@ -53,6 +53,15 @@ class FakeSeederCopy extends Seeder
         $back31 = $this->createImages($path);
         $back32 = $this->createImages($path);
         $back33 = $this->createImages($path);
+        $back34 = $this->createImages($path);
+        $back35 = $this->createImages($path);
+        $back36 = $this->createImages($path);
+        $back37 = $this->createImages($path);
+        $back38 = $this->createImages($path);
+        $back39 = $this->createImages($path);
+        $back40 = $this->createImages($path);
+        $back41 = $this->createImages($path);
+        $back42 = $this->createImages($path);
 
         /*===============   1 ACT   ================*/
         $school1 = factory(App\Models\School::class)->create([
@@ -428,7 +437,7 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
 
         /*===============   20 MEDITERRANEAN COLLEGE ATHENS  ================*/
         $school20 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Mediterranean College', 'email' => 'info@medcollege.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'med'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Mediterranean College Athens', 'email' => 'info@medcollege.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'med'])->id,
             'address' => 'Πατησίων 107 & Πελλήνης 8',
             'city' => 'Αθήνα',
             'phone' => 2108899600,
@@ -702,10 +711,94 @@ ACG is an independent, not for profit, nonsectarian, co-educational academic ins
             'background' => $back33,
         ]);
 
+
+
+        /*===============  34 MBS College of Crete ================*/
+        $school2 = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'MBS College of Crete', 'email' => 'admin@mbs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mbs'])->id,
+            'address' => 'Ολυμπιονικών 84 & Αντήνορος, Θέρισος',
+            'city' => 'Ηράκλειο Κρήτης',
+            'phone' => 2810342700,
+            'type_id' => 1,
+            'website' => 'www.collegeofcrete.gr',
+            'approved' => 1,
+            'about' => '<p>Εμείς στο MBS College of Crete, μέλος του ομίλου Μ. ΦΟΥΚΑΡΑΚΗ, σας μιλάμε για μια εμπειρία στην ποιοτική και εξειδικευμένη γνώση από το 1979 που δημιουργήσαμε και το πρώτο μας εκπαιδευτήριο.</p>
+​                        <p>Σήμερα, μετά από 39 χρόνια μπορούμε και σας μιλάμε για δομές και συνεργασίες κύρους, με διεθνή αποδοχή, για παροχή σύγχρονης Πανεπιστημιακής εκπαίδευσης.
+                           Οι διεθνείς αγορές απαιτούν από τους σημερινούς πτυχιούχους ιδιαίτερες γνώσεις και δεξιότητες προκειμένου να εξασφαλίσουν επιτυχημένη καριέρα στο δύσκολο και ανταγωνιστικό εργασιακό περιβάλλον.</p>
+                        <p>Το MBS College of Crete είναι Αναγνωρισμένο από το Υπουργείο Παιδείας, προσφέροντας αναγνωρισμένα προπτυχιακά και μεταπτυχιακά προγράμματα ισότιμα των Ελληνικών Δημοσίων Πανεπιστημίων.</p>
+                        <p>​Οι διεθνείς συνεργασίες του MBS College of Crete ξεκίνησαν από το 1979, με διακεκριμένα κρατικά Ευρωπαϊκά Πανεπιστήμια, σε συνδυασμό με το άρτια καταρτισμένο ακαδημαϊκό προσωπικό, παρέχουν υψηλής ποιότητας Ανώτατη Εκπαίδευση.
+                           Η εκπαίδευση των φοιτητών του MBS College of Crete, πραγματώνεται σε υπερσύγχρονες και άρτια εξοπλισμένες εγκαταστάσεις και εξειδικευμένα εργαστήρια.</p>
+                        <p>Η ιδιαίτερη έμφαση στην επιστημονική έρευνα που δίνουν τα συνεργαζόμενα Ευρωπαϊκά Πανεπιστήμια, αποτελεί το κλειδί της επιτυχίας των προγραμμάτων σπουδών τους.
+                           Το σύγχρονο εκπαιδευτικό περιβάλλον του MBS College of Crete δημιουργεί τις άριστες προϋποθέσεις υλοποίησης αυτών των προγραμμάτων, σε ένα εκπαιδευτικό περιβάλλον υψηλών προδιαγραφών.</p>',
+            'logo' => '/upload/avatar/school_34_mbs-logo.png',
+            'background' => $back34,
+        ]);
+
+        /*===============  35 Perrotis College================*/
+        $school2 = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Perrotis College', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'perrotis'])->id,
+            'address' => 'Μαρίνου Αντύπα 54, Θέρμη',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310492800,
+            'type_id' => 1,
+            'website' => 'www.perrotiscollege.edu.gr',
+            'approved' => 1,
+            'about' => '<p>Αποστολή του ιδρύματος είναι να εκπαιδεύσει νέους και ενήλικες, ώστε να καταρτισθούν επαγγελματικά στις τελευταίες εξελίξεις στον τομέα της γεωργίας, του περιβάλλοντος και των επιστημών ζωής.</p>
+            <p>Η Αμερικανική Γεωργική Σχολή Θεσσαλονίκης είναι ένας ανεξάρτητος, μη κερδοσκοπικός εκπαιδευτικός οργανισμός, που ιδρύθηκε το 1904 στη Θεσσαλονίκη για να εξυπηρετήσει τις ανάγκες του πληθυσμού της Ελλάδος και των Βαλκανίων.</p>
+            <p>Ως το τριτοβάθμιο τμήμα της το Perrotis College of Agriculture, Environment and Life Sciences προετοιμάζει τους σπουδαστές του να αναλάβουν ηγετικές θέσεις στη διοίκηση επιχειρήσεων αγροδιατροφικού τομέα, την τεχνολογία τροφίμων, τη γεωργία ακριβείας και τη διατήρηση φυσικών πόρων.</p>
+            <p>Το Perrotis College ιδρύθηκε το 1995 μέσω μια δωρεάς της κας Αλίκης Περρωτή στη μνήμη του συζύγου της Δημήτρη Περρωτή. </p>',
+             'logo' => '/upload/avatar/school_35_perrotis-logo.png',
+            'background' => $back35,
+        ]);
+
+        /*===============  36 Αμερικανική Γεωργική Σχολή Θεσσαλονίκης (Λύκειο)================*/
+        $school2 = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Αμερικανική Γεωργική Σχολή Θεσσαλονίκης, (Λύκειο)', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'afsGel'])->id,
+            'address' => 'Μαρίνου Αντύπα 54, Θέρμη',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310492700,
+            'type_id' => 6,
+            'website' => 'www.afs.edu.gr',
+            'approved' => 1,
+            'about' => '<p>Η Αμερικανική Γεωργική Σχολή Θεσσαλονίκης είναι ένας ανεξάρτητος, μη κερδοσκοπικός εκπαιδευτικός οργανισμός, που ιδρύθηκε το 1904 στη Θεσσαλονίκη για να εξυπηρετήσει τις ανάγκες του πληθυσμού της Ελλάδος και των Βαλκανίων.
+            Τα κύρια εκπαιδευτικά της τμήματα είναι η Πρωτοβάθμια Εκπαίδευση, η Δευτεροβάθμια Εκπαίδευση (Γενικό Λύκειο), η Σχολή Επαγγελματικής Εκπαίδευσης (Επαγγελματικό Λύκειο και Εκπαίδευση Ενηλίκων) και το Perrotis College of Agriculture, Environment and Life Sciences.
+            Η Σχολή προετοιμάζει τους αποφοίτους της για ανάληψη κυρίαρχων ρόλων στην κοινωνική ζωή και για ποικίλες επαγγελματικές σταδιοδρομίες στη γεωργία, την επιστήμη και τη βιομηχανία τροφίμων μέσω της μάθησης αγροτικών και επιχειρηματικών πρακτικών που είναι οικονομικά βιώσιμες,
+            φιλικές προς το περιβάλλον και κοινωνικά υπεύθυνες. Ο ιδρυτής της Σχολής, Dr. John Henry House, ήταν ένας πρακτικός ιδεαλιστής που πίστευε ότι η εκπαίδευση πρέπει να απευθύνεται σε ολόκληρο το άτομο: στο νου, στα χέρια και στην ψυχή.
+            Μετά από περισσότερο από έναν αιώνα εφαρμογής του οράματος του ιδρυτή της, η Σχολή παραμένει προσηλωμένη στη δυναμική συνύπαρξη θεωρίας και πράξης σε όλα τα επίπεδα της γεωργίας και των επιστημών ζωής, σήμα κατατεθέν του οργανισμού.</p>',
+            'logo' => '/upload/avatar/school_36_afs-logo.png',
+            'background' => $back36,
+        ]);
+
+        /*===============  37 Αμερικανική Γεωργική Σχολή Θεσσαλονίκης (Δημοτικό) ================*/
+        $school2 = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Αμερικανική Γεωργική Σχολή Θεσσαλονίκης, (Δημοτικό)', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'afsElem'])->id,
+            'address' => 'Μαρίνου Αντύπα 54, Θέρμη',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310492700,
+            'type_id' => 8,
+            'website' => 'www.afs.edu.gr',
+            'approved' => 1,
+            'about' => '<p>Η Αμερικανική Γεωργική Σχολή Θεσσαλονίκης είναι ένας ανεξάρτητος, μη κερδοσκοπικός εκπαιδευτικός οργανισμός, που ιδρύθηκε το 1904 στη Θεσσαλονίκη για να εξυπηρετήσει τις ανάγκες του πληθυσμού της Ελλάδος και των Βαλκανίων.
+            Τα κύρια εκπαιδευτικά της τμήματα είναι η Πρωτοβάθμια Εκπαίδευση, η Δευτεροβάθμια Εκπαίδευση (Γενικό Λύκειο), η Σχολή Επαγγελματικής Εκπαίδευσης (Επαγγελματικό Λύκειο και Εκπαίδευση Ενηλίκων) και το Perrotis College of Agriculture, Environment and Life Sciences.
+            Η Σχολή προετοιμάζει τους αποφοίτους της για ανάληψη κυρίαρχων ρόλων στην κοινωνική ζωή και για ποικίλες επαγγελματικές σταδιοδρομίες στη γεωργία, την επιστήμη και τη βιομηχανία τροφίμων μέσω της μάθησης αγροτικών και επιχειρηματικών πρακτικών που είναι οικονομικά βιώσιμες,
+            φιλικές προς το περιβάλλον και κοινωνικά υπεύθυνες. Ο ιδρυτής της Σχολής, Dr. John Henry House, ήταν ένας πρακτικός ιδεαλιστής που πίστευε ότι η εκπαίδευση πρέπει να απευθύνεται σε ολόκληρο το άτομο: στο νου, στα χέρια και στην ψυχή.
+            Μετά από περισσότερο από έναν αιώνα εφαρμογής του οράματος του ιδρυτή της, η Σχολή παραμένει προσηλωμένη στη δυναμική συνύπαρξη θεωρίας και πράξης σε όλα τα επίπεδα της γεωργίας και των επιστημών ζωής, σήμα κατατεθέν του οργανισμού.</p>',
+            'logo' => '/upload/avatar/school_37_afs-logo.png',
+            'background' => $back37,
+        ]);
+
+
+
+
+
         $this->insertImages($school1, '/upload/school/1/', 5);
         $this->insertImages($school2, '/upload/school/2/', 5);
         $this->insertImages($school3, '/upload/school/3/', 5);
         $this->insertImages($school4, '/upload/school/4/', 5);
+        $this->insertImages($school5, '/upload/school/5/', 5);
+        $this->insertImages($school6, '/upload/school/6/', 5);
+        $this->insertImages($school7, '/upload/school/7/', 5);
+        $this->insertImages($school8, '/upload/school/8/', 5);
 
         $this->makeSettings();
     }
