@@ -66,7 +66,8 @@ Route::get('/app/{find}', function ($find) {
         $array = array(
             "title" => $result->name,
             "image_url" => 'https://schol.io' . $result->image,
-            "subtitle" => $result->lengthScholarships . " Υποτροφίες",
+            "subtitle" => $result->lengthScholarships(),
+            "studies" => $result->lengthStudies(),
             "buttons" => array(
                 [
                     "type" => "web_url",
