@@ -40,6 +40,10 @@ use App\Models\School;
 
 //     return $test;
 // });
+Route::get('/app/school/{school}', function(School $school){
+    return $school->load('admin', 'type');
+    // return School::with('admin', 'type')->take($num)->get();
+});
 
 Route::get('/app/schools/{num}', function($num){
     return School::with('admin', 'type')->take($num)->get();
