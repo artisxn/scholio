@@ -10,6 +10,7 @@ use App\Models\DonatedScholarship;
 use App\Models\Dummy;
 use App\Models\DummyScholarship;
 use App\Models\Image;
+use App\Models\Level;
 use App\Models\Message;
 use App\Models\Scholarship;
 use App\Models\School;
@@ -18,6 +19,7 @@ use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use App\Models\Section;
 
 class Scholio
 {
@@ -536,5 +538,54 @@ class Scholio
         }
 
         return false;
+    }
+
+    public static function portalStudy($school, $level, $section, $study)
+    {
+        // Προπτυχιακές Σπουδές-Bachelor
+        // Πληροφορική - Informatics & Technology
+        // BSc of Science in Computer Science
+
+        $new = false;
+
+        $l = Level::where('name', $level)->get();
+        $newLevel = $l;
+
+        $s = Section::where('name', $section)->get();
+        $newSection = $s;
+
+        $st = Study::where('name', $study)->get();
+        $newStudy = $st;
+
+        if (count($l) == 0) {
+            $newLevel = new Level;
+            $newLevel->name = $level;
+            $newLevel->school_types_id = $school->type->id;
+            $newLevel->save();
+        }
+
+        if (count($s) == 0) {
+            $newSection = new Section;
+            $newSection->name = $section;
+            $newSection->level_id = $newLevel->id;
+            $newSection->save();
+
+            $new = true;
+        }
+
+        if (count($st) == 0) {
+            $newStudy = new Study;
+            $newStudy->name = $study;
+            $newStudy->save();
+
+            $new = true;
+        }
+
+        if($new){
+            $newStudy->section()->attach($newSection);
+        }
+
+        $school->study()->attach($newStudy);
+        echo 'test';
     }
 }

@@ -28,44 +28,9 @@ Scholio::soonRoutes();
 Scholio::bot();
 Auth::routes();
 
-// Route::get('pppp', function(){
-//         foreach (School::all() as $school) {
-//             $scholarshipLimit = new ScholarshipLimit;
-//             $scholarshipLimit->school_id = $school->id;
-//             $scholarshipLimit->cr1 = 10;
-//             $scholarshipLimit->cr2 = 6;
-//             $scholarshipLimit->cr3 = 2;
-//             $scholarshipLimit->cr4 = 2;
-//             $scholarshipLimit->cr5 = 1;
-//             $scholarshipLimit->save();
-
-//             $university = new University;
-//             $university->name = $school->admin->name;
-//             $university->save();
-
-//             $subscription = new Subscription;
-//             $subscription->user_id = $school->admin->id;
-//             $subscription->save();
-
-//             $settings = new SchoolSetting;
-//             $settings->school_id = $school->id;
-//             $settings->save();
-
-//             $address = Scholio::geocode($school->address . ', ' . $school->city);
-//             if ($address == 'GEOCODE ERROR') {
-//                 dd($address);
-//             } else {
-//                 try {
-//                     $lat = $address['lat'];
-//                     $lng = $address['lng'];
-//                     $school->lat = $lat;
-//                     $school->lng = $lng;
-//                     $school->save();
-//                 } catch (Exception $e) {
-//                 }
-//             }
-//         }
-// });
+Route::get('pppp', function(){
+    Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BSc of Science in Computer Science');
+});
 
 Route::post('/password/change', 'RoutesController@changePassword')->middleware('auth');
 
