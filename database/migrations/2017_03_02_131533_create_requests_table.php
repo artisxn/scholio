@@ -16,11 +16,14 @@ class CreateRequestsTable extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
-            $table->integer('user_id');
-            $table->integer('school_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('school_id')->unsigned();
             $table->integer('scholarship_id')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

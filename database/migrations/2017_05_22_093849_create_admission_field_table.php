@@ -15,10 +15,13 @@ class CreateAdmissionFieldTable extends Migration
     {
         Schema::create('admission_field', function (Blueprint $table) {
             $table->primary(['admission_id', 'admission_field_id']);
-            $table->integer('admission_id');
-            $table->integer('admission_field_id');
+            $table->integer('admission_id')->unsigned();
+            $table->integer('admission_field_id')->unsigned();
             $table->text('data');
             $table->timestamps();
+
+            $table->foreign('admission_id')->references('id')->on('admissions')->onDelete('cascade');
+            $table->foreign('admission_field_id')->references('id')->on('admission_fields')->onDelete('cascade');
         });
     }
 

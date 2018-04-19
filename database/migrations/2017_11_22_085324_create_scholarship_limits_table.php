@@ -15,13 +15,15 @@ class CreateScholarshipLimitsTable extends Migration
     {
         Schema::create('scholarship_limits', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('school_id')->index();
+            $table->integer('school_id')->unsigned();
             $table->integer('cr1')->default(0);
             $table->integer('cr2')->default(0);
             $table->integer('cr3')->default(0);
             $table->integer('cr4')->default(0);
             $table->integer('cr5')->default(0);
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

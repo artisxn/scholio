@@ -15,10 +15,14 @@ class CreateBadgeStudentTable extends Migration
     {
         Schema::create('badge_student', function (Blueprint $table) {
             $table->primary(['badge_id', 'student_id', 'lecture_id']);
-            $table->integer('badge_id');
-            $table->integer('student_id');
-            $table->integer('lecture_id');
+            $table->integer('badge_id')->unsigned();
+            $table->integer('student_id')->unsigned();
+            $table->integer('lecture_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('badge_id')->references('id')->on('badges')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('lecture_id')->references('id')->on('lectures')->onDelete('cascade');
         });
     }
 

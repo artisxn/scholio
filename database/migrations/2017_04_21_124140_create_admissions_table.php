@@ -15,11 +15,14 @@ class CreateAdmissionsTable extends Migration
     {
         Schema::create('admissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('scholarship_id');
-            $table->integer('user_id');
+            $table->integer('scholarship_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->text('notes')->nullable();
             $table->text('review')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('scholarship_id')->references('id')->on('scholarships')->onDelete('cascade');
         });
     }
 

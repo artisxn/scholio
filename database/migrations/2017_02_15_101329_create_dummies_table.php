@@ -15,7 +15,7 @@ class CreateDummiesTable extends Migration
     {
         Schema::create('dummies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('school_id');
+            $table->integer('school_id')->unsigned();
             $table->string('name')->nullable();
             $table->string('type')->nullable();
             $table->integer('type_id')->nullable();
@@ -35,6 +35,8 @@ class CreateDummiesTable extends Migration
             $table->float('stars', 2, 1)->nullable();
             $table->integer('reviews')->nullable();
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

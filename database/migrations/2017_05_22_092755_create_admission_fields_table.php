@@ -15,12 +15,14 @@ class CreateAdmissionFieldsTable extends Migration
     {
         Schema::create('admission_fields', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id');
+            $table->integer('category_id')->unsigned();
             $table->string('name');
             $table->string('type')->nullable();
             $table->string('icon')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('admission_categories')->onDelete('cascade');
         });
     }
 

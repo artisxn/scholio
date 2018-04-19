@@ -15,13 +15,15 @@ class CreateParentsTable extends Migration
     {
         Schema::create('parents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
+            $table->integer('user_id')->unsigned();
             $table->bigInteger('phone')->nullable();
             $table->date('dob')->nullable();
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

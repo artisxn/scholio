@@ -15,7 +15,7 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
+            $table->integer('user_id')->unsigned();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
             $table->bigInteger('phone')->nullable();
@@ -29,6 +29,8 @@ class CreateTeachersTable extends Migration
             $table->string('cover')->nullable();
             $table->string('status')->default('active');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

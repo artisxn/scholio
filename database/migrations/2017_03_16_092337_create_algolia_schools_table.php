@@ -15,7 +15,7 @@ class CreateAlgoliaSchoolsTable extends Migration
     {
         Schema::create('algolia_schools', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('school_id')->unique();
+            $table->integer('school_id')->unsigned();
             $table->string('name')->nullable();
             $table->string('type')->nullable();
             $table->integer('type_id')->nullable();
@@ -37,6 +37,8 @@ class CreateAlgoliaSchoolsTable extends Migration
             $table->integer('reviews')->nullable();
             $table->text('tags')->nullable();
             $table->integer('subscription')->nullable();
+
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

@@ -15,7 +15,7 @@ class CreateGuardiansTable extends Migration
     {
         Schema::create('guardians', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
+            $table->integer('user_id')->unsigned();
             $table->bigInteger('phone')->nullable();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
@@ -26,6 +26,8 @@ class CreateGuardiansTable extends Migration
             $table->string('status')->default('guest');
             $table->integer('admissions_limit')->default(10);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -15,7 +15,7 @@ class CreateSchoolSettingsTable extends Migration
     {
         Schema::create('school_settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('school_id')->index();
+            $table->integer('school_id')->unsigned();
 
             // For Public Profile
             $table->boolean('social')->default(1);
@@ -85,6 +85,8 @@ class CreateSchoolSettingsTable extends Migration
             $table->boolean('notes')->default(1);
             $table->boolean('strongpoints')->default(1);
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

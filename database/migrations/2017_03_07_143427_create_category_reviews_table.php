@@ -15,10 +15,13 @@ class CreateCategoryReviewsTable extends Migration
     {
         Schema::create('category_reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('review_id')->index();
-            $table->integer('category_id')->index();
+            $table->integer('review_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->integer('stars');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('review_id')->references('id')->on('reviews')->onDelete('cascade');
         });
     }
 

@@ -15,7 +15,7 @@ class CreateCvsTable extends Migration
     {
         Schema::create('cvs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->string('student_city')->nullable();
             $table->string('student_country')->nullable();
             $table->string('student_address')->nullable();
@@ -70,6 +70,8 @@ class CreateCvsTable extends Migration
             $table->text('strongpoints')->nullable();
             $table->text('studies')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

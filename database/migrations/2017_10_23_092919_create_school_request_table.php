@@ -15,8 +15,11 @@ class CreateSchoolRequestTable extends Migration
     {
         Schema::create('school_requests', function (Blueprint $table) {
             $table->primary(['school_id', 'user_id']);
-            $table->integer('school_id')->index();
-            $table->integer('user_id')->index();
+            $table->integer('school_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

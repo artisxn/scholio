@@ -15,8 +15,8 @@ class CreateLecturesTable extends Migration
     {
         Schema::create('lectures', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('school_id');
-            $table->integer('teacher_id');
+            $table->integer('school_id')->unsigned();
+            $table->integer('teacher_id')->unsigned();
             $table->string('title');
             $table->text('studies')->nullable(); // comma seperated values
             $table->text('sections')->nullable(); // comma seperated values
@@ -26,6 +26,9 @@ class CreateLecturesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
+
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

@@ -15,9 +15,12 @@ class CreateInterestedTable extends Migration
     {
         Schema::create('interested', function (Blueprint $table) {
             $table->primary(['scholarship_id', 'user_id']);
-            $table->integer('scholarship_id')->index();
-            $table->integer('user_id')->index();
+            $table->integer('scholarship_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('scholarship_id')->references('id')->on('scholarships')->onDelete('cascade');
         });
     }
 

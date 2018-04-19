@@ -15,13 +15,15 @@ class CreateDonatedScholarshipsTable extends Migration
     {
         Schema::create('donated_scholarships', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('donor_id')->index();
+            $table->integer('donor_id')->unsigned();
             $table->text('study')->nullable();
             $table->text('institution')->nullable();
             $table->string('financial_amount');
             $table->string('level');
             $table->text('terms');
             $table->timestamps();
+
+            $table->foreign('donor_id')->references('id')->on('donors')->onDelete('cascade');
         });
     }
 

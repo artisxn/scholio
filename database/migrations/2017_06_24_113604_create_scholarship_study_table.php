@@ -14,9 +14,13 @@ class CreateScholarshipStudyTable extends Migration
     public function up()
     {
         Schema::create('scholarship_study', function (Blueprint $table) {
-            $table->integer('scholarship_id')->index();
-            $table->integer('study_id')->index();
             $table->primary(['scholarship_id', 'study_id']);
+            $table->integer('scholarship_id')->unsigned();
+            $table->integer('study_id')->unsigned();
+            
+
+            $table->foreign('scholarship_id')->references('id')->on('scholarships')->onDelete('cascade');
+            $table->foreign('study_id')->references('id')->on('studies')->onDelete('cascade');
         });
     }
 

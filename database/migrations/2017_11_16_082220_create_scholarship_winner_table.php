@@ -15,8 +15,11 @@ class CreateScholarshipWinnerTable extends Migration
     {
         Schema::create('scholarship_winner', function (Blueprint $table) {
             $table->primary(['scholarship_id', 'user_id']);
-            $table->integer('scholarship_id')->index();
-            $table->integer('user_id')->index();
+            $table->integer('scholarship_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('scholarship_id')->references('id')->on('scholarships')->onDelete('cascade');
         });
     }
 

@@ -16,7 +16,7 @@ class CreateAlgoliaSearchesTable extends Migration
         Schema::create('algolia_searches', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('type_id')->nullable();
-            $table->integer('school_id')->unique();
+            $table->integer('school_id')->unsigned();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
@@ -33,6 +33,8 @@ class CreateAlgoliaSearchesTable extends Migration
             $table->string('lng')->nullable();
             $table->string('background')->nullable();
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
     }
 

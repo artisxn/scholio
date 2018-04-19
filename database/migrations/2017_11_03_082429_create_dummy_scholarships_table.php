@@ -30,6 +30,9 @@ class CreateDummyScholarshipsTable extends Migration
             $table->date('end_at');
             $table->integer('admissions_length');
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
+            $table->foreign('scholarship_id')->references('id')->on('scholarships')->onDelete('cascade');
         });
     }
 
