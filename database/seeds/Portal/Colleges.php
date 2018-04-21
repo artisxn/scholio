@@ -41,7 +41,7 @@ class Colleges extends Seeder
         $logo19 = '/upload/avatar/college_19.png';
         $logo20 = '/upload/avatar/college_20.png';
 
-        /*===============   1 ACT   ================*/
+        /*===============   1 ACT   Thessaloniki ================*/
         $school1 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'American College of Thessaloniki', 'email' => 'webmaster@act.edu', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'act'])->id,
             'address' => 'Σεβενίδη, 17, Πυλαία',
@@ -73,7 +73,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============  2 AMC ================*/
+        /*===============  2 AMC  Thessaloniki ================*/
         $school2 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amc'])->id,
             'address' => 'Ελ. Βενιζέλου 14 & Τσιμισκή',
@@ -89,7 +89,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   6 NYC   ================*/
+        /*===============   3 NYC   Athens ================*/
         $school3 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nyc'])->id,
             'address' => 'Αμαλίας 38, Σύνταγμα',
@@ -111,7 +111,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   12 HAEC   ================*/
+        /*===============   4  HAEC  Athens  ================*/
         $school4 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Hellenic American College', 'email' => 'info@haec.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'haec'])->id,
             'address' => 'Μασσαλίας 22',
@@ -131,9 +131,9 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   13 ACG   ================*/
+        /*===============   5 Deree ACG  Athens ================*/
         $school5 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'The American College of Greece', 'email' => 'admissions@acg.edu', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'acg'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Deere - The American College of Greece', 'email' => 'admissions@acg.edu', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'acg'])->id,
             'address' => 'Γραβιάς 6, Αγία Παρασκευή',
             'city' => 'Αθήνα',
             'phone' => 2106009800,
@@ -147,7 +147,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   14 AEGEAN   ================*/
+        /*===============   6 AEGEAN   Athens ================*/
         $school6 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Aegean College', 'email' => 'info@aegeancollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aegean'])->id,
             'address' => 'Βερανζέρου 3',
@@ -168,7 +168,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   15 DEI   ================*/
+        /*===============   7 DEI  Thessaloniki ================*/
         $school7 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Dei College', 'email' => 'info@dei.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'dei'])->id,
             'address' => 'Εθνικής Αμύνης 9 & Τσιμισκή 131',
@@ -185,7 +185,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   16 ATT   ================*/
+        /*===============   8 ATT  Athens ================*/
         $school8 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Αττικό Κολλέγιο', 'email' => 'info@atticocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'att'])->id,
             'address' => 'Πατησίων & Στουρνάρη 26',
@@ -200,7 +200,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   17 IST   ================*/
+        /*===============   9 IST   Athens ================*/
         $school9 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Independent Studies of Science and Technology', 'email' => 'info@ist.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ist'])->id,
             'address' => 'Πειραιώς 72, Μοσχάτο',
@@ -214,7 +214,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   18 CITY COLLEGE   ================*/
+        /*===============   10 CITY COLLEGE   Thesssaloniki ================*/
         $school10 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'City College', 'email' => 'acadreg@city.academic.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'citycol'])->id,
             'address' => 'Προξένου Κορομηλά 24',
@@ -228,7 +228,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   19 ΒΑΚΑΛΟ   ================*/
+        /*===============   11 ΒΑΚΑΛΟ   Athens ================*/
         $school11 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Βακαλο Art & Design College', 'email' => 'info@vakalo.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'vakalo'])->id,
             'address' => 'Λ. Κατσώνη 26',
@@ -242,7 +242,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   20 MEDITERRANEAN COLLEGE ATHENS  ================*/
+        /*===============   12 MEDITERRANEAN COLLEGE ATHENS  ================*/
         $school12 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Mediterranean College Athens', 'email' => 'info@medcollege.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'med'])->id,
             'address' => 'Πατησίων 107 & Πελλήνης 8',
@@ -257,7 +257,7 @@ class Colleges extends Seeder
         ]);
         //
 
-        /*===============   21 iCBS THESSALONIKI ================*/
+        /*===============   13 iCBS THESSALONIKI ================*/
         $school13 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Thessaloniki Business College ', 'email' => 'icbs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbsthess'])->id,
             'address' => 'Θεσσαλονίκης 108, Γαλήνη Ωραιοκάστρου',
@@ -286,7 +286,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   22 iCBS ATHENS ================*/
+        /*===============   14 iCBS ATHENS ================*/
         $school14 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Athens International College ', 'email' => 'icbs-abs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbsath'])->id,
             'address' => 'Λ. Ιωνίας 200 & Ιακωβατων, Κ. Πατήσια,',
@@ -315,7 +315,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   23 iCBS LARISSA ================*/
+        /*===============   15 iCBS LARISSA ================*/
         $school15 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Larissa Business College ', 'email' => 'icbs-lbs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbslar'])->id,
             'address' => 'Ηπείρου 96-98',
@@ -345,7 +345,7 @@ class Colleges extends Seeder
         ]);
         //
 
-        /*===============   25 AKTO ATHENS ================*/
+        /*===============   16 AKTO ATHENS ================*/
         $school16 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AKTO', 'email' => 'information@aktocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aktoath'])->id,
             'address' => 'Ευελπίδων 11Α',
@@ -359,7 +359,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   26 AKTO THESSALONIKI ================*/
+        /*===============   17 AKTO THESSALONIKI ================*/
         $school17 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AKTO', 'email' => 'informationThess@aktocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aktothess'])->id,
             'address' => '26ης Οκτωβρίου 38-40 & Ανδρέου Γεωργίου',
@@ -373,7 +373,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   27 ATH/TECH ================*/
+        /*===============   18 ATH/TECH  Athens ================*/
         $school18 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ATH/TECH Athens Tech College', 'email' => 'info@athtech.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'athtech'])->id,
             'address' => 'Τατοΐου 2 & Όθωνος 77',
@@ -387,7 +387,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============  34 MBS College of Crete ================*/
+        /*===============  19 MBS College of Crete ================*/
         $school19 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'MBS College of Crete', 'email' => 'admin@mbs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mbs'])->id,
             'address' => 'Ολυμπιονικών 84 & Αντήνορος, Θέρισος',
@@ -408,7 +408,7 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============  35 Perrotis College================*/
+        /*===============  20 Perrotis College Thessaloniki ================*/
         $school20 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Perrotis College', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'perrotis'])->id,
             'address' => 'Μαρίνου Αντύπα 54, Θέρμη',
