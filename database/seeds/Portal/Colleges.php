@@ -73,6 +73,16 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Computer Science', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-computer-science');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Business Computing', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-business-computing');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Communication & New Media', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-communication-new-media');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Language and Literature', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-language-and-literature');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BS in Business Administration', 'http://www.act.edu/academics/undergraduate-studies/business-administration/bs-in-business-administration');
+        Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MS in Hospitality and Tourism Management', 'http://www.act.edu/academics/graduate-studies/ms-in-hospitality-and-tourism-management');
+        Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'Master of Business Administration (MBA)', 'http://www.act.edu/academics/graduate-studies/mba');
+
         /*===============  2 AMC ================*/
         $school2 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amc'])->id,
