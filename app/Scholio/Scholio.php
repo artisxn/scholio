@@ -14,12 +14,12 @@ use App\Models\Level;
 use App\Models\Message;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\Section;
 use App\Models\Study;
 use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
-use App\Models\Section;
 
 class Scholio
 {
@@ -540,22 +540,20 @@ class Scholio
         return false;
     }
 
-    public static function portalStudy($school, $level, $section, $study)
+    public static function portalStudy($school, $level, $section, $study, $link = null)
     {
-        // Προπτυχιακές Σπουδές-Bachelor
-        // Πληροφορική - Informatics & Technology
-        // BSc of Science in Computer Science
-
         $new = false;
 
-        $l = Level::where('name', $level)->get();
+        $l = Level::where('name', $level)->first();
         $newLevel = $l;
 
-        $s = Section::where('name', $section)->get();
+        $s = Section::where('name', $section)->first();
         $newSection = $s;
 
-        $st = Study::where('name', $study)->get();
+        $st = Study::where('name', $study)->first();
         $newStudy = $st;
+
+        // dd($newLevel);
 
         if (count($l) == 0) {
             $newLevel = new Level;
@@ -581,11 +579,10 @@ class Scholio
             $new = true;
         }
 
-        if($new){
+        if ($new) {
             $newStudy->section()->attach($newSection);
         }
 
-        $school->study()->attach($newStudy);
-        echo 'test';
+        $school->study()->attach($newStudy, ['url' => $link]);
     }
 }

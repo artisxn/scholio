@@ -40,7 +40,6 @@ class Colleges extends Seeder
         $logo18 = '/upload/avatar/college_18.png';
         $logo19 = '/upload/avatar/college_19.png';
         $logo20 = '/upload/avatar/college_20.png';
-        $logo21 = '/upload/avatar/college_20.png';
 
         /*===============   1 ACT   Thessaloniki ================*/
         $school1 = factory(App\Models\School::class)->create([
@@ -92,7 +91,7 @@ class Colleges extends Seeder
 
         /*===============   3 NYC   Athens ================*/
         $school3 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycath'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nyc'])->id,
             'address' => 'Αμαλίας 38, Σύνταγμα',
             'city' => 'Αθήνα',
             'phone' => 2103225961,
@@ -426,29 +425,6 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-        /*===============   21 NYC   Thessaloniki ================*/
-        $school3 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycthess'])->id,
-            'address' => 'Εγνατίας 138 & Π.Π. Γερμανού',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310889879,
-            'type_id' => 1,
-            'website' => 'nyc.gr',
-            'approved' => 1,
-            'about' => '<p><strong>Dear Students, Guests and Friends,</strong></p>
-<p> <span style="text-align: justify;">I am pleased to welcome you to the NYC Educational Group (NYC), one of the largest and most rapidly developing multinational educational organization in South-East Europe.</span></p>
-<p style="text-align: justify;">Founded in 1989 in Athens, in collaboration with the State University of New York Empire State College, NYC established four educational institutions, offering undergraduate and postgraduate programs in partnership with American and European universities.</p>
-<p style="text-align: justify;">Over the years we have taken justifiable pride in having expanded our presence both within Greece, to Thessaloniki and abroad, to Prague and Tirana, while at the same time, establishing stable partnerships with reputable universities in offering cutting-edge programs of study.</p>
-<p style="text-align: justify;">Our institutions offer educational opportunities with a global perspective, while hosting students and faculty from as many as 70 nations, who enjoy high quality instruction and opportunities of communication, academic exchange and an international experience. At NYC, we consider diversity an advantage, since it opens for us new horizons to knowledge, enriches our cultural contacts, and most importantly, allows our students to interact in a multicultural milieu, so indispensable for the citizen of the global tomorrow.</p>
-<p style="text-align: justify;">Furthermore, NYC has proven that it can provide businesses and organizations with qualified professionals who pursue remarkable careers, within and beyond their own country. In particular, studying for one of our degrees can enhance your career prospects and open doors to fresh opportunities in the fast-changing world of business, commerce and industry.</p>
-<p style="text-align: justify;">We are proud of our commitment to education, to prepare students to become scholars and thinkers of a new century in which technology will continue to transform the way we advance the boundaries of knowledge. Our aim is to provide our students with prestigious degrees and more importantly, with the values and ethics necessary to excel in society in general.</p>
-<p style="text-align: justify;">I look forward to welcoming you to one of the institutions of the NYC Educational Group and let me assure you that you will enjoy top quality studies in one of the best educational environments you can find.</p>
-<p style="text-align: right;"><br /><strong>Dr. Elias Foutsis</strong><br />President</p>',
-            'logo' => $logo21,
-            'background' => $background,
-        ]);
-
-
         $school1->background = $this->createImages('/upload/school/' . $school1->id . '/1.jpg')->id;
         $school1->save();
         $school2->background = $this->createImages('/upload/school/' . $school2->id . '/1.jpg')->id;
@@ -489,8 +465,6 @@ class Colleges extends Seeder
         $school19->save();
         $school20->background = $this->createImages('/upload/school/' . $school20->id . '/1.jpg')->id;
         $school20->save();
-        $school21->background = $this->createImages('/upload/school/' . $school21->id . '/1.jpg')->id;
-        $school21->save();
 
         $school1->background = $this->createImages('/upload/school/' . $school1->id . '/1.jpg')->id;
         $school2->background = $this->createImages('/upload/school/' . $school2->id . '/1.jpg')->id;
@@ -512,7 +486,6 @@ class Colleges extends Seeder
         $school18->background = $this->createImages('/upload/school/' . $school18->id . '/1.jpg')->id;
         $school19->background = $this->createImages('/upload/school/' . $school19->id . '/1.jpg')->id;
         $school20->background = $this->createImages('/upload/school/' . $school20->id . '/1.jpg')->id;
-        $school21->background = $this->createImages('/upload/school/' . $school21->id . '/1.jpg')->id;
 
         $this->makeSettings($school1);
         $this->makeSettings($school2);
@@ -534,7 +507,6 @@ class Colleges extends Seeder
         $this->makeSettings($school18);
         $this->makeSettings($school19);
         $this->makeSettings($school20);
-        $this->makeSettings($school21);
 
         $this->insertImages($school1, '/upload/school/1/', 5);
         $this->insertImages($school2, '/upload/school/2/', 5);
@@ -556,7 +528,6 @@ class Colleges extends Seeder
         $this->insertImages($school18, '/upload/school/18/', 5);
         $this->insertImages($school19, '/upload/school/19/', 5);
         $this->insertImages($school20, '/upload/school/20/', 5);
-        $this->insertImages($school21, '/upload/school/21/', 5);
     }
 
     public function makeSettings($school)
