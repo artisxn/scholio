@@ -386,7 +386,7 @@ class Colleges extends Seeder
             'logo' => $logo15,
             'background' => $background,
         ]);
-        //
+
 
 
 
