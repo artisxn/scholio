@@ -88,8 +88,8 @@ class Colleges extends Seeder
             Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
             Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
             Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BS in Business Administration', 'http://www.act.edu/academics/undergraduate-studies/business-administration/bs-in-business-administration');
-            Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MS in Hospitality and Tourism Management', 'http://www.act.edu/academics/graduate-studies/ms-in-hospitality-and-tourism-management');
-            Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'Master of Business Administration (MBA)', 'http://www.act.edu/academics/graduate-studies/mba');
+            Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master',  'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MS in Hospitality and Tourism Management', 'http://www.act.edu/academics/graduate-studies/ms-in-hospitality-and-tourism-management');
+            Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master',  'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'Master of Business Administration (MBA)', 'http://www.act.edu/academics/graduate-studies/mba');
 
 
 
@@ -110,10 +110,29 @@ class Colleges extends Seeder
             'logo' => $logo2,
             'background' => $background,
         ]);
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BA (Hons) Business Management (Διοίκηση Επιχειρήσεων)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=155&Itemid=447');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BSc (Hons) Economics for Business (Οικονομικά)',         'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=156&Itemid=448');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BA (Hons) Marketing (Μάρκετινγκ)',  'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=157&Itemid=449');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Maritime Business (Ναυτιλιακές Σπουδές)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=1558&Itemid=1188&lang=el');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Shipping and Port Management(Διοίκηση Λιμένων και Ναυτιλιακών Επιχειρήσεων)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=1557&Itemid=1187');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Marine Operations Management (Εκπαίδευση Πλοιάρχων Εμπορικού Ναυτικού)','https://mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxolh-naftiliakwn-spoudwn/2017-08-24-09-07-19/bsc-hons-marine-operations-management');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Marine Engineering and Management (Εκπαίδευση Μηχανικών Εμπορικού Ναυτικού)','https://mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxolh-naftiliakwn-spoudwn/2017-08-24-09-07-19/beng-hons-marine-engineering-management');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Πληροφορικής', 'BSc (Hons) Computing (Πληροφορική)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=159&Itemid=452');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Πληροφορικής', 'BSc (Hons) Computer Networks (Πληροφορική και Δίκτυα Η/Υ)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=160&Itemid=454');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA (Hons) International Hospitality and Tourism Management (Τουρισμός και Ξενοδοχειακές Επιχειρήσεις)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=158&Itemid=450');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA Culinary Arts and Food Service Development (Επισιτιστικές Τέχνες και Ανάπτυξη Υπηρεσιών Εστίασης)',  'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxoli-touristikwn/ba-culinary-arts-and-food-service-development');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA Culinary Arts, Baking and Patisserie  (Αρτοποιία / Ζαχαροπλαστική)', 'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxoli-touristikwn/ba-culinary-arts-baking-patisserie');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Nursing (Νοσηλευτική)','http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/mitropolitiko-kollegio-sxoli-ygeias/bsc-nursing-sxoli-ptixio-nosileftikis');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Logopeadics (Λογοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=187&Itemid=461');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Physiotherapy (Φυσικοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=163&Itemid=462');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Biomedical Sciences (Βιοϊατρικές Επιστήμες)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=164&Itemid=463');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Dietetics (Διαιτολογία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=165&Itemid=464');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Occupational Therapy (Εργοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=166&Itemid=465');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Sports Coaching and Physical Education (Προπονητική και Φυσική Αγωγή)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=785&Itemid=893');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Podiatry (Ποδιατρική)', 'https://mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=2264&Itemid=1791');
 
 
-
-        /*===============   3 NYC   Athens ================*/
+            /*===============   3 NYC   Athens ================*/
         $school3 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycath'])->id,
             'address' => 'Αμαλίας 38, Σύνταγμα',
