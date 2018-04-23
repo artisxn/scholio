@@ -111,7 +111,7 @@ video {
 .search-container{margin-top: 100px; padding-bottom: 5px;
     background-color: rgba(31,52,63,0.96); border-radius: 5px;
     border: 1px solid #999;
-    border-top-left-radius: 0;
+    /* border-top-left-radius: 0;  NA TO ΞΑΒΑΒΑΛΟΥΜΕ ΜΕΤΑ ΤΟ PORTAL */
     width: 92.5%;
 
 }

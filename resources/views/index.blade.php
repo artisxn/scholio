@@ -448,15 +448,15 @@
 			<div class="">
 				<div class=" container search-container" style="position: relative;">
 
-					<button class=" sc-button sc-t-white navbar-btn btn-scholarships btn-non-active" ng-click="selectedButton=1" ng-class="{'btn-active': selectedButton==1}">
+					<!-- <button class=" sc-button sc-t-white navbar-btn btn-scholarships btn-non-active" ng-click="selectedButton=1" ng-class="{'btn-active': selectedButton==1}">
 						<i class="fa fa-trophy margin-right-10"></i>@lang('main.first.searchbar.scholarships.title')</button>
 					<button class=" sc-button sc-t-white navbar-btn btn-schools btn-non-active" ng-click="selectedButton=2" ng-class="{'btn-active': selectedButton==2}">
-						<i class="fa fa-university margin-right-10"></i>@lang('main.first.searchbar.institutions.title')</button>
+						<i class="fa fa-university margin-right-10"></i>@lang('main.first.searchbar.institutions.title')</button> -->
 
 					<div class=" sc-landing-search-bar-content">
 
 						<form onsubmit="event.preventDefault(); validateMyForm(this,1);" action="/search/scholarships" id="scholarship" method="post"
-						 ng-if="selectedButton==1">
+						 ng-if="selectedButton==2">
 							{{ csrf_field() }}
 							<div class="col-md-10 col-sm-10" id="">
 								<input name="text" type="text" class="font-weight-300 algolia-input" id="search-input" autocomplete aa-datasets="getDatasets1()"
@@ -472,8 +472,8 @@
 							</div>
 						</form>
 
-
-						<form onsubmit="event.preventDefault(); validateMyForm(this,2)" action="/search/scholarships" method="post" ng-if="selectedButton==2">
+						<!-- ΤΟ RADIUS LEFT EINAI STO landing.css 111 grammi -->
+						<form onsubmit="event.preventDefault(); validateMyForm(this,2)" action="/search/scholarships" method="post" ng-if="selectedButton==1">
 							{{ csrf_field() }}
 							<div class="col-md-10 col-sm-10" id="">
 								<input name="text" type="text" class="font-weight-300 algolia-input" id="search-input" autocomplete aa-datasets="getDatasets2()"
@@ -829,7 +829,7 @@
 		</section>
 
 		<!-- Fifth Section -->
-		<section id="sc-landing-sec5" class="sc-landing-sec3" style="overflow-x: hidden!important;">
+		<!-- <section id="sc-landing-sec5" class="sc-landing-sec3" style="overflow-x: hidden!important;">
 			<div class="container">
 				<div class="row">
 
@@ -902,7 +902,7 @@
 
 				</div>
 			</div>
-		</section>
+		</section> -->
 
 
 	</main>
