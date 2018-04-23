@@ -40,17 +40,9 @@ class Colleges extends Seeder
         $logo18 = '/upload/avatar/college_18.png';
         $logo19 = '/upload/avatar/college_19.png';
         $logo20 = '/upload/avatar/college_20.png';
-        $logo21 = '/upload/avatar/college_21.png';
-        $logo22 = '/upload/avatar/college_22.png';
-        $logo23 = '/upload/avatar/college_23.png';
-        $logo24 = '/upload/avatar/college_24.png';
-        $logo25 = '/upload/avatar/college_25.png';
-
-
 
         /*===============   1 ACT   Thessaloniki ================*/
-
-            $school1 = factory(App\Models\School::class)->create([
+        $school1 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'American College of Thessaloniki', 'email' => 'webmaster@act.edu', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'act'])->id,
             'address' => 'Σεβενίδη, 17, Πυλαία',
             'city' => 'Θεσσαλονίκη',
@@ -81,23 +73,9 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Computer Science', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-computer-science');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Business Computing', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-business-computing');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Communication & New Media', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-communication-new-media');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Language and Literature', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-language-and-literature');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BS in Business Administration', 'http://www.act.edu/academics/undergraduate-studies/business-administration/bs-in-business-administration');
-            Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master',  'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MS in Hospitality and Tourism Management', 'http://www.act.edu/academics/graduate-studies/ms-in-hospitality-and-tourism-management');
-            Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master',  'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'Master of Business Administration (MBA)', 'http://www.act.edu/academics/graduate-studies/mba');
-
-
-
-
         /*===============  2 AMC  Thessaloniki ================*/
-
         $school2 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amcThess'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amc'])->id,
             'address' => 'Ελ. Βενιζέλου 14 & Τσιμισκή',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310241010,
@@ -110,31 +88,10 @@ class Colleges extends Seeder
             'logo' => $logo2,
             'background' => $background,
         ]);
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BA (Hons) Business Management (Διοίκηση Επιχειρήσεων)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=155&Itemid=447');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BSc (Hons) Economics for Business (Οικονομικά)',         'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=156&Itemid=448');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BA (Hons) Marketing (Μάρκετινγκ)',  'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=157&Itemid=449');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Maritime Business (Ναυτιλιακές Σπουδές)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=1558&Itemid=1188&lang=el');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Shipping and Port Management(Διοίκηση Λιμένων και Ναυτιλιακών Επιχειρήσεων)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=1557&Itemid=1187');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Marine Operations Management (Εκπαίδευση Πλοιάρχων Εμπορικού Ναυτικού)','https://mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxolh-naftiliakwn-spoudwn/2017-08-24-09-07-19/bsc-hons-marine-operations-management');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Marine Engineering and Management (Εκπαίδευση Μηχανικών Εμπορικού Ναυτικού)','https://mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxolh-naftiliakwn-spoudwn/2017-08-24-09-07-19/beng-hons-marine-engineering-management');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Πληροφορικής', 'BSc (Hons) Computing (Πληροφορική)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=159&Itemid=452');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Πληροφορικής', 'BSc (Hons) Computer Networks (Πληροφορική και Δίκτυα Η/Υ)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=160&Itemid=454');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA (Hons) International Hospitality and Tourism Management (Τουρισμός και Ξενοδοχειακές Επιχειρήσεις)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=158&Itemid=450');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA Culinary Arts and Food Service Development (Επισιτιστικές Τέχνες και Ανάπτυξη Υπηρεσιών Εστίασης)',  'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxoli-touristikwn/ba-culinary-arts-and-food-service-development');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA Culinary Arts, Baking and Patisserie  (Αρτοποιία / Ζαχαροπλαστική)', 'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxoli-touristikwn/ba-culinary-arts-baking-patisserie');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Nursing (Νοσηλευτική)','http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/mitropolitiko-kollegio-sxoli-ygeias/bsc-nursing-sxoli-ptixio-nosileftikis');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Logopeadics (Λογοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=187&Itemid=461');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Physiotherapy (Φυσικοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=163&Itemid=462');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Biomedical Sciences (Βιοϊατρικές Επιστήμες)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=164&Itemid=463');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Dietetics (Διαιτολογία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=165&Itemid=464');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Occupational Therapy (Εργοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=166&Itemid=465');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Sports Coaching and Physical Education (Προπονητική και Φυσική Αγωγή)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=785&Itemid=893');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Podiatry (Ποδιατρική)', 'https://mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=2264&Itemid=1791');
 
-
-            /*===============   3 NYC   Athens ================*/
+        /*===============   3 NYC   Athens ================*/
         $school3 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycath'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nyc'])->id,
             'address' => 'Αμαλίας 38, Σύνταγμα',
             'city' => 'Αθήνα',
             'phone' => 2103225961,
@@ -153,8 +110,6 @@ class Colleges extends Seeder
             'logo' => $logo3,
             'background' => $background,
         ]);
-
-
 
         /*===============   4  HAEC  Athens  ================*/
         $school4 = factory(App\Models\School::class)->create([
@@ -176,8 +131,6 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-
-
         /*===============   5 Deree ACG  Athens ================*/
         $school5 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Deere - The American College of Greece', 'email' => 'admissions@acg.edu', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'acg'])->id,
@@ -193,8 +146,6 @@ class Colleges extends Seeder
             'logo' => $logo5,
             'background' => $background,
         ]);
-
-
 
         /*===============   6 AEGEAN   Athens ================*/
         $school6 = factory(App\Models\School::class)->create([
@@ -217,8 +168,6 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-
-
         /*===============   7 DEI  Thessaloniki ================*/
         $school7 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Dei College', 'email' => 'info@dei.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'dei'])->id,
@@ -235,8 +184,6 @@ class Colleges extends Seeder
             'logo' => $logo7,
             'background' => $background,
         ]);
-
-
 
         /*===============   8 ATT  Athens ================*/
         $school8 = factory(App\Models\School::class)->create([
@@ -267,8 +214,6 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-
-
         /*===============   10 CITY COLLEGE   Thesssaloniki ================*/
         $school10 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'City College', 'email' => 'acadreg@city.academic.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'citycol'])->id,
@@ -297,11 +242,9 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-
-
         /*===============   12 MEDITERRANEAN COLLEGE ATHENS  ================*/
         $school12 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Mediterranean College Athens', 'email' => 'info@medcollege.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'medAth'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Mediterranean College Athens', 'email' => 'info@medcollege.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'med'])->id,
             'address' => 'Πατησίων 107 & Πελλήνης 8',
             'city' => 'Αθήνα',
             'phone' => 2108899600,
@@ -312,8 +255,7 @@ class Colleges extends Seeder
             'logo' => $logo12,
             'background' => $background,
         ]);
-
-
+        //
 
         /*===============   13 iCBS THESSALONIKI ================*/
         $school13 = factory(App\Models\School::class)->create([
@@ -344,8 +286,6 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-
-
         /*===============   14 iCBS ATHENS ================*/
         $school14 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Athens International College ', 'email' => 'icbs-abs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbsath'])->id,
@@ -375,8 +315,6 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-
-
         /*===============   15 iCBS LARISSA ================*/
         $school15 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Larissa Business College ', 'email' => 'icbs-lbs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbslar'])->id,
@@ -405,53 +343,35 @@ class Colleges extends Seeder
             'logo' => $logo15,
             'background' => $background,
         ]);
-
-
-
+        //
 
         /*===============   16 AKTO ATHENS ================*/
         $school16 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AKTO', 'email' => 'information@aktocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aktoath'])->id,
             'address' => 'Ευελπίδων 11Α',
             'city' => 'Αθήνα',
-            'phone' => 2105230130,
+            'phone' => 2410671177,
             'type_id' => 1,
             'website' => 'akto.gr',
             'approved' => 1,
-            'about' => 'O ΑΚΤΟ είναι ο μεγαλύτερος εκπαιδευτικός όμιλος Τέχνης, Design & Media στην Ελλάδα. Οι Εφαρμοσμένες Τέχνες διδάσκονται στον ΑΚΤΟ με ένα σφαιρικό, διακλαδικό πνεύμα που συνδυάζει μοναδικά την επιστημονική Θεωρία με τη καλλιτεχνική Πράξη.
-            Αποστολή μας είναι να δώσουμε ώθηση στους νέους, να τους βοηθήσουμε να αναδείξουν τα ταλέντα και τις δεξιότητες τους και να ανακαλύψουν τη δική τους δημιουργική φωνή. Με την επικύρωση του κρατικού Βρετανικού Πανεπιστημίου Middlesex,
-            ο ΑΚΤΟ προσφέρει μεταπτυχιακά και προπτυχιακά προγράμματα σπουδών σε επίπεδο Bachelor of Arts Honours Degree και Master of Arts in Design. Παράλληλα λειτουργούν και διετή προγράμματα επαγγελματικής κατάρτισης – ΙΕΚ,
-            προσφέροντας μεγαλύτερη ευελιξία στην διάρκεια παρακολούθησης και τα δίδακτρα, με το κύρος και την αξιοπιστία, του πιο εξειδικευμένου εκπαιδευτικού οργανισμού στις περιοχές του art & design.
-            Σύμφωνα με έρευνα που δημοσίευσε το DOMUS Magazine, ο ΑΚΤΟ κατατάσσεται στα 100 καλύτερα εκπαιδευτικά ιδρύματα Αρχιτεκτονικής & Design της Ευρώπης, για το έτος 2013. To εμβληματικό ιταλικό περιοδικό, που εδώ και σχεδόν έναν αιώνα όρισε τάσεις, προανήγγειλε κινήματα και συνέδεσε με αξεπέραστο τρόπο το design με την αρχιτεκτονική,
-            επέλεξε τις καλύτερες σχολές στον Τομέα και τις συμπεριέλαβε στην Ειδική Έκδοση με τίτλο “Europe’s Top 100 School of Architecture & Design 2013
-            ',
+            'about' => 'O ΑΚΤΟ είναι ο μεγαλύτερος εκπαιδευτικός όμιλος Τέχνης, Design & Media στην Ελλάδα. Οι Εφαρμοσμένες Τέχνες διδάσκονται στον ΑΚΤΟ με ένα σφαιρικό, διακλαδικό πνεύμα που συνδυάζει μοναδικά την επιστημονική Θεωρία με τη καλλιτεχνική Πράξη. Αποστολή μας είναι να δώσουμε ώθηση στους νέους, να τους βοηθήσουμε να αναδείξουν τα ταλέντα και τις δεξιότητες τους και να ανακαλύψουν τη δική τους δημιουργική φωνή. Με την επικύρωση του κρατικού Βρετανικού Πανεπιστημίου Middlesex, ο ΑΚΤΟ προσφέρει μεταπτυχιακά και προπτυχιακά προγράμματα σπουδών σε επίπεδο Bachelor of Arts Honours Degree και Master of Arts in Design. Παράλληλα λειτουργούν και διετή προγράμματα επαγγελματικής κατάρτισης – ΙΕΚ, προσφέροντας μεγαλύτερη ευελιξία στην διάρκεια παρακολούθησης και τα δίδακτρα, με το κύρος και την αξιοπιστία, του πιο εξειδικευμένου εκπαιδευτικού οργανισμού στις περιοχές του art & design.',
             'logo' => $logo16,
             'background' => $background,
         ]);
-
-
 
         /*===============   17 AKTO THESSALONIKI ================*/
         $school17 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AKTO', 'email' => 'informationThess@aktocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aktothess'])->id,
             'address' => '26ης Οκτωβρίου 38-40 & Ανδρέου Γεωργίου',
             'city' => 'Θεσσαλονίκη',
-            'phone' => 2310221231,
+            'phone' => 2410671177,
             'type_id' => 1,
             'website' => 'aktoThess.gr',
             'approved' => 1,
-            'about' => 'O ΑΚΤΟ είναι ο μεγαλύτερος εκπαιδευτικός όμιλος Τέχνης, Design & Media στην Ελλάδα. Οι Εφαρμοσμένες Τέχνες διδάσκονται στον ΑΚΤΟ με ένα σφαιρικό, διακλαδικό πνεύμα που συνδυάζει μοναδικά την επιστημονική Θεωρία με τη καλλιτεχνική Πράξη.
-            Αποστολή μας είναι να δώσουμε ώθηση στους νέους, να τους βοηθήσουμε να αναδείξουν τα ταλέντα και τις δεξιότητες τους και να ανακαλύψουν τη δική τους δημιουργική φωνή. Με την επικύρωση του κρατικού Βρετανικού Πανεπιστημίου Middlesex,
-            ο ΑΚΤΟ προσφέρει μεταπτυχιακά και προπτυχιακά προγράμματα σπουδών σε επίπεδο Bachelor of Arts Honours Degree και Master of Arts in Design. Παράλληλα λειτουργούν και διετή προγράμματα επαγγελματικής κατάρτισης – ΙΕΚ, προσφέροντας μεγαλύτερη ευελιξία στην διάρκεια παρακολούθησης
-            και τα δίδακτρα, με το κύρος και την αξιοπιστία, του πιο εξειδικευμένου εκπαιδευτικού οργανισμού στις περιοχές του art & design.
-            Σύμφωνα με έρευνα που δημοσίευσε το DOMUS Magazine, ο ΑΚΤΟ κατατάσσεται στα 100 καλύτερα εκπαιδευτικά ιδρύματα Αρχιτεκτονικής & Design της Ευρώπης, για το έτος 2013. To εμβληματικό ιταλικό περιοδικό, που εδώ και σχεδόν έναν αιώνα όρισε τάσεις, προανήγγειλε κινήματα και συνέδεσε με αξεπέραστο τρόπο το design με την αρχιτεκτονική,
-            επέλεξε τις καλύτερες σχολές στον Τομέα και τις συμπεριέλαβε στην Ειδική Έκδοση με τίτλο “Europe’s Top 100 School of Architecture & Design 2013
-            ',
+            'about' => 'O ΑΚΤΟ είναι ο μεγαλύτερος εκπαιδευτικός όμιλος Τέχνης, Design & Media στην Ελλάδα. Οι Εφαρμοσμένες Τέχνες διδάσκονται στον ΑΚΤΟ με ένα σφαιρικό, διακλαδικό πνεύμα που συνδυάζει μοναδικά την επιστημονική Θεωρία με τη καλλιτεχνική Πράξη. Αποστολή μας είναι να δώσουμε ώθηση στους νέους, να τους βοηθήσουμε να αναδείξουν τα ταλέντα και τις δεξιότητες τους και να ανακαλύψουν τη δική τους δημιουργική φωνή. Με την επικύρωση του κρατικού Βρετανικού Πανεπιστημίου Middlesex, ο ΑΚΤΟ προσφέρει μεταπτυχιακά και προπτυχιακά προγράμματα σπουδών σε επίπεδο Bachelor of Arts Honours Degree και Master of Arts in Design. Παράλληλα λειτουργούν και διετή προγράμματα επαγγελματικής κατάρτισης – ΙΕΚ, προσφέροντας μεγαλύτερη ευελιξία στην διάρκεια παρακολούθησης και τα δίδακτρα, με το κύρος και την αξιοπιστία, του πιο εξειδικευμένου εκπαιδευτικού οργανισμού στις περιοχές του art & design.',
             'logo' => $logo17,
             'background' => $background,
         ]);
-
-
 
         /*===============   18 ATH/TECH  Athens ================*/
         $school18 = factory(App\Models\School::class)->create([
@@ -466,8 +386,6 @@ class Colleges extends Seeder
             'logo' => $logo18,
             'background' => $background,
         ]);
-
-
 
         /*===============  19 MBS College of Crete ================*/
         $school19 = factory(App\Models\School::class)->create([
@@ -490,8 +408,6 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-
-
         /*===============  20 Perrotis College Thessaloniki ================*/
         $school20 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Perrotis College', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'perrotis'])->id,
@@ -509,224 +425,109 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
 
-
-
-        /*===============   21 NYC   Thessaloniki ================*/
-        $school21 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycthess'])->id,
-            'address' => 'Εγνατίας 138 & Π.Π. Γερμανού',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310889879,
-            'type_id' => 1,
-            'website' => 'nyc.gr',
-            'approved' => 1,
-            'about' => '<p><strong>Dear Students, Guests and Friends,</strong></p>
-<p> <span style="text-align: justify;">I am pleased to welcome you to the NYC Educational Group (NYC), one of the largest and most rapidly developing multinational educational organization in South-East Europe.</span></p>
-<p style="text-align: justify;">Founded in 1989 in Athens, in collaboration with the State University of New York Empire State College, NYC established four educational institutions, offering undergraduate and postgraduate programs in partnership with American and European universities.</p>
-<p style="text-align: justify;">Over the years we have taken justifiable pride in having expanded our presence both within Greece, to Thessaloniki and abroad, to Prague and Tirana, while at the same time, establishing stable partnerships with reputable universities in offering cutting-edge programs of study.</p>
-<p style="text-align: justify;">Our institutions offer educational opportunities with a global perspective, while hosting students and faculty from as many as 70 nations, who enjoy high quality instruction and opportunities of communication, academic exchange and an international experience. At NYC, we consider diversity an advantage, since it opens for us new horizons to knowledge, enriches our cultural contacts, and most importantly, allows our students to interact in a multicultural milieu, so indispensable for the citizen of the global tomorrow.</p>
-<p style="text-align: justify;">Furthermore, NYC has proven that it can provide businesses and organizations with qualified professionals who pursue remarkable careers, within and beyond their own country. In particular, studying for one of our degrees can enhance your career prospects and open doors to fresh opportunities in the fast-changing world of business, commerce and industry.</p>
-<p style="text-align: justify;">We are proud of our commitment to education, to prepare students to become scholars and thinkers of a new century in which technology will continue to transform the way we advance the boundaries of knowledge. Our aim is to provide our students with prestigious degrees and more importantly, with the values and ethics necessary to excel in society in general.</p>
-<p style="text-align: justify;">I look forward to welcoming you to one of the institutions of the NYC Educational Group and let me assure you that you will enjoy top quality studies in one of the best educational environments you can find.</p>
-<p style="text-align: right;"><br /><strong>Dr. Elias Foutsis</strong><br />President</p>',
-            'logo' => $logo21,
-            'background' => $background,
-        ]);
-
-
-
-        /*===============   22 MEDITERRANEAN COLLEGE Thessaloniki  ================*/
-        $school22 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Mediterranean College Thessaloniki', 'email' => 'medcollege@medcollege.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'medThess'])->id,
-            'address' => 'Εγνατία 2-4, Κτίριο «ΒΙΕΝΝΗ»',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310287779,
-            'type_id' => 1,
-            'website' => 'medcollege.edu.gr',
-            'approved' => 1,
-            'about' => 'Στον εικοστό πρώτο αιώνα, το Mediterranean College (MC), σε συνεργασία με ισχυρά πανεπιστήμια του εξωτερικού, αναδύεται ως ένα ιδιωτικό ίδρυμα ανώτατης εκπαίδευσης με ηγετικό ρόλο στους κλάδους σπουδών της Οικονομίας, της Διοίκησης, της Πληροφορικής, των Ανθρωπιστικών Επιστημών,του Τουρισμού, των Επαγγελμάτων Υγείας,  των Μηχανικών προσφέροντας προγράμματα υψηλής ποιότητας σε ένα περιβάλλον γαλούχησης όπου η ποιότητα υπαγορεύεται πάντα από τις ανάγκες των φοιτητών. Για να πραγματοποιήσει το όραμά του για ακαδημαϊκή διάκριση, επιτυχία των φοιτητών του, εκπαιδευτική και τεχνολογική καινοτομία, καθώς και για κοινωνική προσφορά, το Κολλέγιο προσελκύει και εξασφαλίζει αφοσιωμένους επαγγελματίες και εκπαιδευτικό προσωπικό με εξαιρετικές ικανότητες, αναγνωρισμένο για την εξειδίκευσή του στον τομέα της διδασκαλίας, της καθοδήγησης φοιτητών, της κατάρτισης, της έρευνας και της παροχής υπηρεσιών. Δομημένο σε αυτές τις σταθερές βάσεις και αρχές, το MC, αποσκοπεί στην υλοποίηση του οράματός του, να γίνει ένα μοναδικό διεθνές κέντρο μάθησης στον ελλαδικό χώρο.',
-            'logo' => $logo22,
-            'background' => $background,
-        ]);
-
-        /*===============   23 AAS THESSALONIKI ================*/
-        $school23 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'AAS College ', 'email' => 'info@aas.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aas'])->id,
-            'address' => 'Θεσσαλονίκης 108, Γαλήνη Ωραιοκάστρου',
-            'city' => 'θεσσαλονίκη',
-            'phone' => 2310220807,
-            'type_id' => 1,
-            'website' => 'www.aas.gr',
-            'approved' => 1,
-            'about' => 'Χάρη στη συνεργασία franchise(δικαιόχρησης) του AAS College με το Πανεπιστήμιο του Central Lancashire (UCLan), οι σπουδαστές του ακολουθούν  το πρόγραμμα μαθημάτων του UCLan, έχουν την ίδια φοιτητική ταυτότητα και απολαμβάνουν τα ίδια προνόμια με τους φοιτητές του αγγλικού πανεπιστημίου.
-             Ενώ ταυτόχρονα, μπορούν να χρησιμοποιήσουν τις πανεπιστημιακές σημειώσεις, και εκτός από την πλούσια βιβλιοθήκη του AAS με περισσότερους από 4.000 τίτλους βιβλίων,
-             μέσω της ιστοσελίδας του UCLan έχουν πρόσβαση σε παγκόσμιες ηλεκτρονικές βιβλιοθήκες, με τις οποίες είναι συμβεβλημένο το πανεπιστήμιο.',
-            'logo' => $logo23,
-            'background' => $background,
-        ]);
-
-        /*===============   24 IHU THESSALONIKI ================*/
-        $school24 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'AAS College ', 'email' => 'infoseba@ihu.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aas'])->id,
-            'address' => '14th km Thessaloniki - Moudania, Thermi',
-            'city' => 'θεσσαλονίκη',
-            'phone' => 2310807520,
-            'type_id' => 1,
-            'website' => 'www.ihu.edu.gr',
-            'approved' => 1,
-            'about' => 'This is the tenth year of the International Hellenic University’s existence. During this period, the IHU has created nineteen postgraduate programmes, fresh, dynamic and forward-looking.
-             The programmes are taught in an academic environment where the knowledge is researched, the knowledge is taught, the knowledge is disseminated within and outside Greece.
-             Our central target from the first instant has been academic excellence. How to achieve this was and is the major task and challenge as it involves the human element.
-             How to recruit those with the greatest potential; to motivate them; to inspire them. Not only the academics but the administrators and professionals, who should work with dedication and harmony towards excellence, each in his or her own capacity.
-             I believe we have achieved a lot in this respect.',
-            'logo' => $logo24,
-            'background' => $background,
-        ]);
-
-        /*===============  25 AMC  Athens ================*/
-
-        $school25 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Αθήνας', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amcAth'])->id,
-            'address' => 'Πατησίων 125',
-            'city' => 'Αθήνα',
-            'phone' => 2106199891,
-            'type_id' => 1,
-            'website' => 'mitropolitiko.edu.gr',
-            'approved' => 1,
-            'about' => '<p style="text-align: justify;">Το Μητροπολιτικό Κολλέγιο, από το 1982 μέχρι σήμερα έχει αποστολή και όραμα την πνευματική και μορφωτική ανέλιξη των φοιτητών του. Υπηρετεί με συνέπεια την Τριτοβάθμια Εκπαίδευση, έχοντας εδραιωθεί στη συνείδηση γονέων και φοιτητών ως <strong>η κορυφαία επιλογή ποιοτικών σπουδών Πανεπιστημιακού επιπέδου στην Ελλάδα</strong>, με παραρτήματα στην Αθήνα, τον Πειραιά και τη Θεσσαλονίκη. Η καλλιέργεια της κριτικής σκέψης, η ακαδημαϊκή πρόοδος και η ανάπτυξη του ερευνητικού πνεύματος του κάθε φοιτητή αποτελούν προτεραιότητα για το Κολλέγιό μας και αυτή η εταιρική μας κουλτούρα είναι που μας κάνει<strong> να ξεχωρίζουμε.</strong></p>
-<p style="text-align: justify;"> Με την εμπειρία <strong>34 χρόνων</strong> <strong>πορείας στην ελληνική εκπαίδευση</strong>, το Μητροπολιτικό Κολλέγιο παρέχει, σε συνεργασία με διακεκριμένα δημόσια Πανεπιστημιακά Ιδρύματα του εξωτερικού, μια σειρά από πιστοποιημένα προγράμματα σπουδών που καλύπτουν σύγχρονα επιστημονικά πεδία και ανταποκρίνονται στις σημερινές απαιτήσεις της ελληνικής και διεθνούς αγοράς εργασίας. Η διάρθρωση του Μητροπολιτικού Κολλεγίου, το Ακαδημαϊκό Συμβούλιο, η τεχνογνωσία και η εμπειρία του ακαδημαϊκού δυναμικού, οι υποδομές και οι κτιριακές εγκαταστάσεις, η βιβλιοθήκη χιλιάδων τίτλων και η τεχνολογική υποστήριξη της εκπαιδευτικής διαδικασίας, αποτελούν τις δικλείδες ασφαλείας για την υψηλή ποιότητα των σπουδών που προσφέρουμε.</p>
-<p style="text-align: justify;"></p>',
-            'logo' => $logo25,
-            'background' => $background,
-        ]);
-
-
-
-
         $school1->background = $this->createImages('/upload/school/' . $school1->id . '/1.jpg')->id;
         $school1->save();
-        $this->makeSettings($school1);
-        $this->insertImages($school1, '/upload/school/1/', 5);
-
         $school2->background = $this->createImages('/upload/school/' . $school2->id . '/1.jpg')->id;
         $school2->save();
-        $this->makeSettings($school2);
-        $this->insertImages($school2, '/upload/school/2/', 5);
-
         $school3->background = $this->createImages('/upload/school/' . $school3->id . '/1.jpg')->id;
         $school3->save();
-        $this->makeSettings($school3);
-        $this->insertImages($school3, '/upload/school/3/', 5);
-
         $school4->background = $this->createImages('/upload/school/' . $school4->id . '/1.jpg')->id;
         $school4->save();
-        $this->makeSettings($school4);
-        $this->insertImages($school4, '/upload/school/4/', 5);
-
         $school5->background = $this->createImages('/upload/school/' . $school5->id . '/1.jpg')->id;
         $school5->save();
-        $this->makeSettings($school5);
-        $this->insertImages($school5, '/upload/school/5/', 5);
-
         $school6->background = $this->createImages('/upload/school/' . $school6->id . '/1.jpg')->id;
         $school6->save();
-        $this->makeSettings($school6);
-        $this->insertImages($school6, '/upload/school/6/', 5);
-
         $school7->background = $this->createImages('/upload/school/' . $school7->id . '/1.jpg')->id;
         $school7->save();
-        $this->makeSettings($school7);
-        $this->insertImages($school7, '/upload/school/7/', 5);
-
         $school8->background = $this->createImages('/upload/school/' . $school8->id . '/1.jpg')->id;
         $school8->save();
-        $this->makeSettings($school8);
-        $this->insertImages($school8, '/upload/school/8/', 5);
-
         $school9->background = $this->createImages('/upload/school/' . $school9->id . '/1.jpg')->id;
         $school9->save();
-        $this->makeSettings($school9);
-        $this->insertImages($school9, '/upload/school/9/', 5);
-
         $school10->background = $this->createImages('/upload/school/' . $school10->id . '/1.jpg')->id;
         $school10->save();
-        $this->makeSettings($school10);
-        $this->insertImages($school10, '/upload/school/10/', 5);
-
         $school11->background = $this->createImages('/upload/school/' . $school11->id . '/1.jpg')->id;
         $school11->save();
-        $this->makeSettings($school11);
-        $this->insertImages($school11, '/upload/school/11/', 5);
-
         $school12->background = $this->createImages('/upload/school/' . $school12->id . '/1.jpg')->id;
         $school12->save();
-        $this->makeSettings($school12);
-        $this->insertImages($school12, '/upload/school/12/', 5);
-
         $school13->background = $this->createImages('/upload/school/' . $school13->id . '/1.jpg')->id;
         $school13->save();
-        $this->makeSettings($school13);
-        $this->insertImages($school13, '/upload/school/13/', 5);
-
         $school14->background = $this->createImages('/upload/school/' . $school14->id . '/1.jpg')->id;
         $school14->save();
-        $this->makeSettings($school14);
-        $this->insertImages($school14, '/upload/school/14/', 5);
-
         $school15->background = $this->createImages('/upload/school/' . $school15->id . '/1.jpg')->id;
         $school15->save();
-        $this->makeSettings($school15);
-        $this->insertImages($school15, '/upload/school/15/', 5);
-
         $school16->background = $this->createImages('/upload/school/' . $school16->id . '/1.jpg')->id;
         $school16->save();
-        $this->makeSettings($school16);
-        $this->insertImages($school16, '/upload/school/16/', 5);
-
         $school17->background = $this->createImages('/upload/school/' . $school17->id . '/1.jpg')->id;
         $school17->save();
-        $this->makeSettings($school17);
-        $this->insertImages($school17, '/upload/school/17/', 5);
-
         $school18->background = $this->createImages('/upload/school/' . $school18->id . '/1.jpg')->id;
         $school18->save();
-        $this->makeSettings($school18);
-        $this->insertImages($school18, '/upload/school/18/', 5);
-
         $school19->background = $this->createImages('/upload/school/' . $school19->id . '/1.jpg')->id;
         $school19->save();
-        $this->makeSettings($school19);
-        $this->insertImages($school19, '/upload/school/19/', 5);
-
         $school20->background = $this->createImages('/upload/school/' . $school20->id . '/1.jpg')->id;
         $school20->save();
+
+        $school1->background = $this->createImages('/upload/school/' . $school1->id . '/1.jpg')->id;
+        $school2->background = $this->createImages('/upload/school/' . $school2->id . '/1.jpg')->id;
+        $school3->background = $this->createImages('/upload/school/' . $school3->id . '/1.jpg')->id;
+        $school4->background = $this->createImages('/upload/school/' . $school4->id . '/1.jpg')->id;
+        $school5->background = $this->createImages('/upload/school/' . $school5->id . '/1.jpg')->id;
+        $school6->background = $this->createImages('/upload/school/' . $school6->id . '/1.jpg')->id;
+        $school7->background = $this->createImages('/upload/school/' . $school7->id . '/1.jpg')->id;
+        $school8->background = $this->createImages('/upload/school/' . $school8->id . '/1.jpg')->id;
+        $school9->background = $this->createImages('/upload/school/' . $school9->id . '/1.jpg')->id;
+        $school10->background = $this->createImages('/upload/school/' . $school10->id . '/1.jpg')->id;
+        $school11->background = $this->createImages('/upload/school/' . $school11->id . '/1.jpg')->id;
+        $school12->background = $this->createImages('/upload/school/' . $school12->id . '/1.jpg')->id;
+        $school13->background = $this->createImages('/upload/school/' . $school13->id . '/1.jpg')->id;
+        $school14->background = $this->createImages('/upload/school/' . $school14->id . '/1.jpg')->id;
+        $school15->background = $this->createImages('/upload/school/' . $school15->id . '/1.jpg')->id;
+        $school16->background = $this->createImages('/upload/school/' . $school16->id . '/1.jpg')->id;
+        $school17->background = $this->createImages('/upload/school/' . $school17->id . '/1.jpg')->id;
+        $school18->background = $this->createImages('/upload/school/' . $school18->id . '/1.jpg')->id;
+        $school19->background = $this->createImages('/upload/school/' . $school19->id . '/1.jpg')->id;
+        $school20->background = $this->createImages('/upload/school/' . $school20->id . '/1.jpg')->id;
+
+        $this->makeSettings($school1);
+        $this->makeSettings($school2);
+        $this->makeSettings($school3);
+        $this->makeSettings($school4);
+        $this->makeSettings($school5);
+        $this->makeSettings($school6);
+        $this->makeSettings($school7);
+        $this->makeSettings($school8);
+        $this->makeSettings($school9);
+        $this->makeSettings($school10);
+        $this->makeSettings($school11);
+        $this->makeSettings($school12);
+        $this->makeSettings($school13);
+        $this->makeSettings($school14);
+        $this->makeSettings($school15);
+        $this->makeSettings($school16);
+        $this->makeSettings($school17);
+        $this->makeSettings($school18);
+        $this->makeSettings($school19);
         $this->makeSettings($school20);
+
+        $this->insertImages($school1, '/upload/school/1/', 5);
+        $this->insertImages($school2, '/upload/school/2/', 5);
+        $this->insertImages($school3, '/upload/school/3/', 5);
+        $this->insertImages($school4, '/upload/school/4/', 5);
+        $this->insertImages($school5, '/upload/school/5/', 5);
+        $this->insertImages($school6, '/upload/school/6/', 5);
+        $this->insertImages($school7, '/upload/school/7/', 5);
+        $this->insertImages($school8, '/upload/school/8/', 5);
+        $this->insertImages($school9, '/upload/school/9/', 5);
+        $this->insertImages($school10, '/upload/school/10/', 5);
+        $this->insertImages($school11, '/upload/school/11/', 5);
+        $this->insertImages($school12, '/upload/school/12/', 5);
+        $this->insertImages($school13, '/upload/school/13/', 5);
+        $this->insertImages($school14, '/upload/school/14/', 5);
+        $this->insertImages($school15, '/upload/school/15/', 5);
+        $this->insertImages($school16, '/upload/school/16/', 5);
+        $this->insertImages($school17, '/upload/school/17/', 5);
+        $this->insertImages($school18, '/upload/school/18/', 5);
+        $this->insertImages($school19, '/upload/school/19/', 5);
         $this->insertImages($school20, '/upload/school/20/', 5);
-
-        $school21->background = $this->createImages('/upload/school/' . $school21->id . '/1.jpg')->id;
-        $school21->save();
-        $this->makeSettings($school21);
-        $this->insertImages($school21, '/upload/school/21/', 5);
-
-        $school22->background = $this->createImages('/upload/school/' . $school22->id . '/1.jpg')->id;
-        $school22->save();
-        $this->makeSettings($school22);
-        $this->insertImages($school22, '/upload/school/22/', 5);
-
-        $school23->background = $this->createImages('/upload/school/' . $school23->id . '/1.jpg')->id;
-        $school23->save();
-        $this->makeSettings($school23);
-        $this->insertImages($school23, '/upload/school/23/', 5);
-
-        $school24->background = $this->createImages('/upload/school/' . $school24->id . '/1.jpg')->id;
-        $school24->save();
-        $this->makeSettings($school24);
-        $this->insertImages($school24, '/upload/school/24/', 5);
-
-        $school25->background = $this->createImages('/upload/school/' . $school25->id . '/1.jpg')->id;
-        $school25->save();
-        $this->makeSettings($school25);
-        $this->insertImages($school25, '/upload/school/25/', 5);
     }
 
     public function makeSettings($school)
