@@ -554,7 +554,7 @@ class Scholio
             $newLevel->save();
         }
 
-        $s = Section::where('name', $section)->andWhere('level_id', $newLevel->id)->first();
+        $s = Section::where('name', $section)->where('level_id', $newLevel->id)->first();
         $newSection = $s;
 
         if (count($s) == 0) {

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Portal\Portal;
 
 class IEK extends Seeder
 {
@@ -11,8 +12,10 @@ class IEK extends Seeder
      */
     public function run()
     {
-        /*===============  3 AKMH ΘΕΣΣΑΛΟΝΙΚΗ================*/
-        $school3 = factory(App\Models\School::class)->create([
+        $background = $this->createImages('/upload/school/univ.png')->id;
+
+        /*===============  1 AKMH ΘΕΣΣΑΛΟΝΙΚΗ================*/
+        $school1 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ', 'email' => 'infoThess@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiThess'])->id,
             'address' => 'Τσιμισκή 14',
             'city' => 'Θεσσαλονίκη',
@@ -28,12 +31,15 @@ class IEK extends Seeder
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
             'approved' => 1,
-            'logo' => 'fake/akmi-logo.png',
-            'background' => $back3,
+            'background' => $background,
         ]);
+
+        new Portal($school1, 5, 'iek');
+
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
         
-        /*===============  28 AKMH ΑΘΗΝΑ================*/
-        $school27 = factory(App\Models\School::class)->create([
+        /*===============  2 AKMH ΑΘΗΝΑ================*/
+        $school2 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ', 'email' => 'info@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmi'])->id,
             'address' => 'Κοδριγκτώνος 16',
             'city' => 'Αθήνα',
@@ -49,12 +55,15 @@ class IEK extends Seeder
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
             'approved' => 1,
-            'logo' => 'fake/akmi-logo.png',
-            'background' => $back27,
+            'background' => $background,
         ]);
 
-        /*===============  29 AKMH ΗΡΑΚΛΕΙΟ================*/
-        $school28 = factory(App\Models\School::class)->create([
+        new Portal($school2, 5, 'iek');
+
+        Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', '', '', '');
+
+        /*===============  3 AKMH ΗΡΑΚΛΕΙΟ================*/
+        $school3 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ Ηράκλειο', 'email' => 'infoHer@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiHer'])->id,
             'address' => 'Θεοτοκοπούλου & Κορωναίου',
             'city' => 'Ηράκλειο Κρήτης',
@@ -70,13 +79,16 @@ class IEK extends Seeder
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
             'approved' => 1,
-            'logo' => 'fake/akmi-logo.png',
-            'background' => $back28,
+            'background' => $background,
         ]);
+
+        new Portal($school3, 5, 'iek');
+
+        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', '', '', '');
 //
 
-        /*===============  30 AKMH ΠΕΙΡΑΙΑΣ================*/
-        $school29 = factory(App\Models\School::class)->create([
+        /*===============  4 AKMH ΠΕΙΡΑΙΑΣ================*/
+        $school4 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ', 'email' => 'infoPeir@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiPeir'])->id,
             'address' => 'Σωτήρος Διός 1, Πειραιάς',
             'city' => 'Αθήνα',
@@ -92,12 +104,15 @@ class IEK extends Seeder
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
             'approved' => 1,
-            'logo' => 'fake/akmi-logo.png',
-            'background' => $back29,
+            'background' => $background,
         ]);
 
-        /*===============  31 AKMH ΛΑΡΙΣΑ ================*/
-        $school30 = factory(App\Models\School::class)->create([
+        new Portal($school4, 5, 'iek');
+
+        Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', '', '', '');
+
+        /*===============  5 AKMH ΛΑΡΙΣΑ ================*/
+        $school5 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ Λάρισα', 'email' => 'infoLar@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiLAr'])->id,
             'address' => '6ο χλμ Λάρισας - Νίκαιας',
             'city' => 'Λάρισα',
@@ -113,13 +128,16 @@ class IEK extends Seeder
 <p style="text-align: right;"> </p>
 <p style="text-align: right;"> <strong>Καλλιόπη Ροδοπούλου</strong><br />Διευθύνουσα Σύμβουλος</p>',
             'approved' => 1,
-            'logo' => 'fake/akmi-logo.png',
-            'background' => $back30,
+            'background' => $background,
         ]);
+
+        new Portal($school5, 5, 'iek');
+
+        Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', '', '', '');
 //
 
-        /*===============  32 ΙΕΚ ΔΕΛΤΑ ΑΘΗΝΑ ================*/
-        $school31 = factory(App\Models\School::class)->create([
+        /*===============  6 ΙΕΚ ΔΕΛΤΑ ΑΘΗΝΑ ================*/
+        $school6 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΔΕΛΤΑ', 'email' => 'grekpedefsis@delta-iek.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltaath'])->id,
             'address' => 'Ιπποκράτους 22',
             'city' => 'Αθήνα',
@@ -129,12 +147,15 @@ class IEK extends Seeder
             'about' => 'Στην πλούσια και μακρόχρονη πορεία μας μάθαμε τούτο:
         Ότι το πετυχημένο "επαγγελματικό σχολείο" πρέπει να δημιουργεί ολοκληρωμένους επαγγελματίες. Δεν διδάσκει απλώς μία εξειδίκευση. Οικοδομεί με όλα τα μέσα, όλο το γνωστικό αντικείμενο και πέρα από αυτό. Για αυτόν το λόγο το 60% του εκπαιδευτικού μας προγράμματος είναι πρακτικές εφαρμογές. Για αυτόν το λόγο το 70% του εκπαιδευτικού μας προσωπικού είναι αναγνωρισμένα στελέχη και πάνω απ’ όλα πετυχημένοι επαγγελματίες, με δραστηριότητα στις μεγαλύτερες εταιρείες της Αγοράς. Για αυτόν το λόγο παρέχουμε πρόσθετες δυνατότητες  για επιμόρφωση, δημιουργικότητα, κοινωνικότητα.  Και για τον ίδιο λόγο συνδέσαμε άμεσα τις σχολές μας με την Αγορά Εργασίας. Εταιρείες – ηγέτες στο χώρο τους, μέσα από την προσωπική επαφή, μεταδίδουν στους σπουδαστές όλη την κουλτούρα του επαγγέλματος. Τρέφουν τη φιλοδοξία τους  καθώς και την αισιοδοξία τους για τη σταδιοδρομία. Φροντίζουμε λοιπόν, να δίνουμε ευκαιρίες στους εκπαιδευόμενους να καλλιεργήσουν  τα ταλέντα τους, να αναπτύξουν τα προσωπικά τους χαρακτηριστικά. Σε τελική ανάλυση, δημιουργούμε σύγχρονους πολίτες, κοινωνικά ολοκληρωμένες  προσωπικότητες, όχι απλώς επαγγελματίες. Στην  προσωπική σας επαφή μαζί μας, θα διαπιστώσετε την αμεσότητα που  χαρακτηρίζει τη συνεργασία μας με τη σπουδαστική μας κοινότητα. Θα επιβεβαιώσετε τις ευκαιρίες διείσδυσης που παρέχουμε στον κλάδο επιλογής σας αλλά και στην ευρύτερη κοινωνία.',
             'approved' => 1,
-            'logo' => 'fake/delta-logo.png',
-            'background' => $back31,
+            'background' => $background,
         ]);
 
-        /*===============  32 ΙΕΚ ΔΕΛΤΑ ΙΩΑΝΝΙΝΑ ================*/
-        $school32 = factory(App\Models\School::class)->create([
+        new Portal($school6, 5, 'iek');
+
+        Scholio::portalStudy($school6, 'Επαγγελματικές Σπουδές', '', '', '');
+
+        /*===============  7 ΙΕΚ ΔΕΛΤΑ ΙΩΑΝΝΙΝΑ ================*/
+        $school7 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΔΕΛΤΑ', 'email' => 'ioannina@delta.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltaioa'])->id,
             'address' => 'Κωλέττη & Καπλάνη 5',
             'city' => 'Ιωάννινα',
@@ -144,12 +165,15 @@ class IEK extends Seeder
             'about' => 'Στην πλούσια και μακρόχρονη πορεία μας μάθαμε τούτο:
         Ότι το πετυχημένο "επαγγελματικό σχολείο" πρέπει να δημιουργεί ολοκληρωμένους επαγγελματίες. Δεν διδάσκει απλώς μία εξειδίκευση. Οικοδομεί με όλα τα μέσα, όλο το γνωστικό αντικείμενο και πέρα από αυτό. Για αυτόν το λόγο το 60% του εκπαιδευτικού μας προγράμματος είναι πρακτικές εφαρμογές. Για αυτόν το λόγο το 70% του εκπαιδευτικού μας προσωπικού είναι αναγνωρισμένα στελέχη και πάνω απ’ όλα πετυχημένοι επαγγελματίες, με δραστηριότητα στις μεγαλύτερες εταιρείες της Αγοράς. Για αυτόν το λόγο παρέχουμε πρόσθετες δυνατότητες  για επιμόρφωση, δημιουργικότητα, κοινωνικότητα.  Και για τον ίδιο λόγο συνδέσαμε άμεσα τις σχολές μας με την Αγορά Εργασίας. Εταιρείες – ηγέτες στο χώρο τους, μέσα από την προσωπική επαφή, μεταδίδουν στους σπουδαστές όλη την κουλτούρα του επαγγέλματος. Τρέφουν τη φιλοδοξία τους  καθώς και την αισιοδοξία τους για τη σταδιοδρομία. Φροντίζουμε λοιπόν, να δίνουμε ευκαιρίες στους εκπαιδευόμενους να καλλιεργήσουν  τα ταλέντα τους, να αναπτύξουν τα προσωπικά τους χαρακτηριστικά. Σε τελική ανάλυση, δημιουργούμε σύγχρονους πολίτες, κοινωνικά ολοκληρωμένες  προσωπικότητες, όχι απλώς επαγγελματίες. Στην  προσωπική σας επαφή μαζί μας, θα διαπιστώσετε την αμεσότητα που  χαρακτηρίζει τη συνεργασία μας με τη σπουδαστική μας κοινότητα. Θα επιβεβαιώσετε τις ευκαιρίες διείσδυσης που παρέχουμε στον κλάδο επιλογής σας αλλά και στην ευρύτερη κοινωνία.',
             'approved' => 1,
-            'logo' => 'fake/delta-logo.png',
-            'background' => $back32,
+            'background' => $background,
         ]);
 
-        /*===============  33 ΙΕΚ ΔΕΛΤΑ ΘΕΣΣΑΛΟΝΙΚΗ ================*/
-        $school33 = factory(App\Models\School::class)->create([
+        new Portal($school7, 5, 'iek');
+
+        Scholio::portalStudy($school7, 'Επαγγελματικές Σπουδές', '', '', '');
+
+        /*===============  8 ΙΕΚ ΔΕΛΤΑ ΘΕΣΣΑΛΟΝΙΚΗ ================*/
+        $school8 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΔΕΛΤΑ', 'email' => 'deliek@delta.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltathess'])->id,
             'address' => 'Ερμού 45',
             'city' => 'Θεσσαλονίκη',
@@ -159,8 +183,11 @@ class IEK extends Seeder
             'about' => 'Στην πλούσια και μακρόχρονη πορεία μας μάθαμε τούτο:
         Ότι το πετυχημένο "επαγγελματικό σχολείο" πρέπει να δημιουργεί ολοκληρωμένους επαγγελματίες. Δεν διδάσκει απλώς μία εξειδίκευση. Οικοδομεί με όλα τα μέσα, όλο το γνωστικό αντικείμενο και πέρα από αυτό. Για αυτόν το λόγο το 60% του εκπαιδευτικού μας προγράμματος είναι πρακτικές εφαρμογές. Για αυτόν το λόγο το 70% του εκπαιδευτικού μας προσωπικού είναι αναγνωρισμένα στελέχη και πάνω απ’ όλα πετυχημένοι επαγγελματίες, με δραστηριότητα στις μεγαλύτερες εταιρείες της Αγοράς. Για αυτόν το λόγο παρέχουμε πρόσθετες δυνατότητες  για επιμόρφωση, δημιουργικότητα, κοινωνικότητα.  Και για τον ίδιο λόγο συνδέσαμε άμεσα τις σχολές μας με την Αγορά Εργασίας. Εταιρείες – ηγέτες στο χώρο τους, μέσα από την προσωπική επαφή, μεταδίδουν στους σπουδαστές όλη την κουλτούρα του επαγγέλματος. Τρέφουν τη φιλοδοξία τους  καθώς και την αισιοδοξία τους για τη σταδιοδρομία. Φροντίζουμε λοιπόν, να δίνουμε ευκαιρίες στους εκπαιδευόμενους να καλλιεργήσουν  τα ταλέντα τους, να αναπτύξουν τα προσωπικά τους χαρακτηριστικά. Σε τελική ανάλυση, δημιουργούμε σύγχρονους πολίτες, κοινωνικά ολοκληρωμένες  προσωπικότητες, όχι απλώς επαγγελματίες. Στην  προσωπική σας επαφή μαζί μας, θα διαπιστώσετε την αμεσότητα που  χαρακτηρίζει τη συνεργασία μας με τη σπουδαστική μας κοινότητα. Θα επιβεβαιώσετε τις ευκαιρίες διείσδυσης που παρέχουμε στον κλάδο επιλογής σας αλλά και στην ευρύτερη κοινωνία.',
             'approved' => 1,
-            'logo' => 'fake/delta-logo.png',
-            'background' => $back33,
+            'background' => $background,
         ]);
+
+        new Portal($school8, 5, 'iek');
+
+        Scholio::portalStudy($school8, 'Επαγγελματικές Σπουδές', '', '', '');
     }
 }

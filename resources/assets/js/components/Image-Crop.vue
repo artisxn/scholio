@@ -113,7 +113,11 @@
                 }
                 this.croppie.result({
                     type: 'canvas',
-                    size: 'viewport'
+                    size: {width: 750, height: 500},
+                    resultSize: {
+                        width: 750,
+                        height: 500
+				    }
                 }).then((response) => {
                     this.image = response
         
@@ -128,7 +132,7 @@
                 let el = document.getElementById('croppie')
                 this.croppie = new Croppie(el, {
                     viewport: { width: this.width, height: this.height },
-                    boundary: { width: parseInt(this.width + +20), height: parseInt(this.height +20) },
+                    boundary: { width: parseInt(this.width +20), height: parseInt(this.height +20) },
                     showZoomer: true,
                     enableOrientation: true,
                     quality: 0,

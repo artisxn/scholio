@@ -3,11 +3,12 @@
 use App\Models\Image;
 use App\Models\ScholarshipLimit;
 use App\Models\School;
+use App\Models\SchoolSetting;
+use App\Models\Subscription;
+use App\Models\University;
 use App\Scholio\Scholio;
 use Illuminate\Database\Seeder;
-use App\Models\University;
-use App\Models\Subscription;
-use App\Models\SchoolSetting;
+use Portal\Portal;
 
 class Colleges extends Seeder
 {
@@ -18,39 +19,11 @@ class Colleges extends Seeder
      */
     public function run()
     {
-        $background = $this->createImages('/upload/school/univ.png')->id;
-
-        $logo1 = '/upload/avatar/college_1.png';
-        $logo2 = '/upload/avatar/college_2.png';
-        $logo3 = '/upload/avatar/college_3.png';
-        $logo4 = '/upload/avatar/college_4.png';
-        $logo5 = '/upload/avatar/college_5.png';
-        $logo6 = '/upload/avatar/college_6.png';
-        $logo7 = '/upload/avatar/college_7.png';
-        $logo8 = '/upload/avatar/college_8.png';
-        $logo9 = '/upload/avatar/college_9.png';
-        $logo10 = '/upload/avatar/college_10.png';
-        $logo11 = '/upload/avatar/college_11.png';
-        $logo12 = '/upload/avatar/college_12.png';
-        $logo13 = '/upload/avatar/college_13.png';
-        $logo14 = '/upload/avatar/college_14.png';
-        $logo15 = '/upload/avatar/college_15.png';
-        $logo16 = '/upload/avatar/college_16.png';
-        $logo17 = '/upload/avatar/college_17.png';
-        $logo18 = '/upload/avatar/college_18.png';
-        $logo19 = '/upload/avatar/college_19.png';
-        $logo20 = '/upload/avatar/college_20.png';
-        $logo21 = '/upload/avatar/college_21.png';
-        $logo22 = '/upload/avatar/college_22.png';
-        $logo23 = '/upload/avatar/college_23.png';
-        $logo24 = '/upload/avatar/college_24.png';
-        $logo25 = '/upload/avatar/college_25.png';
-
-
+        $background = Portal::createImages('/upload/school/univ.png')->id;
 
         /*===============   1 ACT   Thessaloniki ================*/
 
-            $school1 = factory(App\Models\School::class)->create([
+        $school1 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'American College of Thessaloniki', 'email' => 'webmaster@act.edu', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'act'])->id,
             'address' => 'Σεβενίδη, 17, Πυλαία',
             'city' => 'Θεσσαλονίκη',
@@ -77,64 +50,77 @@ class Colleges extends Seeder
 <p><strong>W</strong><strong>e aspire:</strong></p>
 <p>to be the institution of choice for students seeking the highest levels of personal, intellectual, and professional attainment. We want to be known as the institution that contributes to society and produces well-rounded, principled, and open-minded citizens of the world.</p>
 </div>',
-            'logo' => $logo1,
             'background' => $background,
         ]);
 
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Computer Science', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-computer-science');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Business Computing', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-business-computing');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Communication & New Media', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-communication-new-media');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Language and Literature', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-language-and-literature');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
-            Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BS in Business Administration', 'http://www.act.edu/academics/undergraduate-studies/business-administration/bs-in-business-administration');
-            Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master',  'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MS in Hospitality and Tourism Management', 'http://www.act.edu/academics/graduate-studies/ms-in-hospitality-and-tourism-management');
-            Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master',  'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'Master of Business Administration (MBA)', 'http://www.act.edu/academics/graduate-studies/mba');
+        new Portal($school1, 5, 'college');
 
-
-
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Computer Science', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-computer-science');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Business Computing', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-business-computing');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Communication & New Media', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-communication-new-media');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Language and Literature', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-language-and-literature');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
+        Scholio::portalStudy($school1, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BS in Business Administration', 'http://www.act.edu/academics/undergraduate-studies/business-administration/bs-in-business-administration');
+        Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MS in Hospitality and Tourism Management', 'http://www.act.edu/academics/graduate-studies/ms-in-hospitality-and-tourism-management');
+        Scholio::portalStudy($school1, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'Master of Business Administration (MBA)', 'http://www.act.edu/academics/graduate-studies/mba');
 
         /*===============  2 AMC  Thessaloniki ================*/
 
+//         $school2 = factory(App\Models\School::class)->create([
+        //             'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amcThess'])->id,
+        //             'address' => 'Ελ. Βενιζέλου 14 & Τσιμισκή',
+        //             'city' => 'Θεσσαλονίκη',
+        //             'phone' => 2310241010,
+        //             'type_id' => 1,
+        //             'website' => 'mitropolitiko.edu.gr',
+        //             'approved' => 1,
+        //             'about' => '<p style="text-align: justify;">Το Μητροπολιτικό Κολλέγιο, από το 1982 μέχρι σήμερα έχει αποστολή και όραμα την πνευματική και μορφωτική ανέλιξη των φοιτητών του. Υπηρετεί με συνέπεια την Τριτοβάθμια Εκπαίδευση, έχοντας εδραιωθεί στη συνείδηση γονέων και φοιτητών ως <strong>η κορυφαία επιλογή ποιοτικών σπουδών Πανεπιστημιακού επιπέδου στην Ελλάδα</strong>, με παραρτήματα στην Αθήνα, τον Πειραιά και τη Θεσσαλονίκη. Η καλλιέργεια της κριτικής σκέψης, η ακαδημαϊκή πρόοδος και η ανάπτυξη του ερευνητικού πνεύματος του κάθε φοιτητή αποτελούν προτεραιότητα για το Κολλέγιό μας και αυτή η εταιρική μας κουλτούρα είναι που μας κάνει<strong> να ξεχωρίζουμε.</strong></p>
+        // <p style="text-align: justify;"> Με την εμπειρία <strong>34 χρόνων</strong> <strong>πορείας στην ελληνική εκπαίδευση</strong>, το Μητροπολιτικό Κολλέγιο παρέχει, σε συνεργασία με διακεκριμένα δημόσια Πανεπιστημιακά Ιδρύματα του εξωτερικού, μια σειρά από πιστοποιημένα προγράμματα σπουδών που καλύπτουν σύγχρονα επιστημονικά πεδία και ανταποκρίνονται στις σημερινές απαιτήσεις της ελληνικής και διεθνούς αγοράς εργασίας. Η διάρθρωση του Μητροπολιτικού Κολλεγίου, το Ακαδημαϊκό Συμβούλιο, η τεχνογνωσία και η εμπειρία του ακαδημαϊκού δυναμικού, οι υποδομές και οι κτιριακές εγκαταστάσεις, η βιβλιοθήκη χιλιάδων τίτλων και η τεχνολογική υποστήριξη της εκπαιδευτικής διαδικασίας, αποτελούν τις δικλείδες ασφαλείας για την υψηλή ποιότητα των σπουδών που προσφέρουμε.</p>
+        // <p style="text-align: justify;"></p>',
+        //
+        //             'background' => $background,
+        //         ]);
+
         $school2 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Θεσσαλονίκης', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amcThess'])->id,
-            'address' => 'Ελ. Βενιζέλου 14 & Τσιμισκή',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310241010,
+            'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Αθήνας', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amcAth'])->id,
+            'address' => 'Πατησίων 125',
+            'city' => 'Αθήνα',
+            'phone' => 2106199891,
             'type_id' => 1,
             'website' => 'mitropolitiko.edu.gr',
             'approved' => 1,
             'about' => '<p style="text-align: justify;">Το Μητροπολιτικό Κολλέγιο, από το 1982 μέχρι σήμερα έχει αποστολή και όραμα την πνευματική και μορφωτική ανέλιξη των φοιτητών του. Υπηρετεί με συνέπεια την Τριτοβάθμια Εκπαίδευση, έχοντας εδραιωθεί στη συνείδηση γονέων και φοιτητών ως <strong>η κορυφαία επιλογή ποιοτικών σπουδών Πανεπιστημιακού επιπέδου στην Ελλάδα</strong>, με παραρτήματα στην Αθήνα, τον Πειραιά και τη Θεσσαλονίκη. Η καλλιέργεια της κριτικής σκέψης, η ακαδημαϊκή πρόοδος και η ανάπτυξη του ερευνητικού πνεύματος του κάθε φοιτητή αποτελούν προτεραιότητα για το Κολλέγιό μας και αυτή η εταιρική μας κουλτούρα είναι που μας κάνει<strong> να ξεχωρίζουμε.</strong></p>
 <p style="text-align: justify;"> Με την εμπειρία <strong>34 χρόνων</strong> <strong>πορείας στην ελληνική εκπαίδευση</strong>, το Μητροπολιτικό Κολλέγιο παρέχει, σε συνεργασία με διακεκριμένα δημόσια Πανεπιστημιακά Ιδρύματα του εξωτερικού, μια σειρά από πιστοποιημένα προγράμματα σπουδών που καλύπτουν σύγχρονα επιστημονικά πεδία και ανταποκρίνονται στις σημερινές απαιτήσεις της ελληνικής και διεθνούς αγοράς εργασίας. Η διάρθρωση του Μητροπολιτικού Κολλεγίου, το Ακαδημαϊκό Συμβούλιο, η τεχνογνωσία και η εμπειρία του ακαδημαϊκού δυναμικού, οι υποδομές και οι κτιριακές εγκαταστάσεις, η βιβλιοθήκη χιλιάδων τίτλων και η τεχνολογική υποστήριξη της εκπαιδευτικής διαδικασίας, αποτελούν τις δικλείδες ασφαλείας για την υψηλή ποιότητα των σπουδών που προσφέρουμε.</p>
 <p style="text-align: justify;"></p>',
-            'logo' => $logo2,
             'background' => $background,
         ]);
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BA (Hons) Business Management (Διοίκηση Επιχειρήσεων)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=155&Itemid=447');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BSc (Hons) Economics for Business (Οικονομικά)',         'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=156&Itemid=448');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Διοίκησης Επιχειρήσεων & Οικονομικών', 'BA (Hons) Marketing (Μάρκετινγκ)',  'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=157&Itemid=449');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Maritime Business (Ναυτιλιακές Σπουδές)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=1558&Itemid=1188&lang=el');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Shipping and Port Management(Διοίκηση Λιμένων και Ναυτιλιακών Επιχειρήσεων)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=1557&Itemid=1187');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Marine Operations Management (Εκπαίδευση Πλοιάρχων Εμπορικού Ναυτικού)','https://mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxolh-naftiliakwn-spoudwn/2017-08-24-09-07-19/bsc-hons-marine-operations-management');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Ναυτιλίας', 'BSc (Hons) Marine Engineering and Management (Εκπαίδευση Μηχανικών Εμπορικού Ναυτικού)','https://mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxolh-naftiliakwn-spoudwn/2017-08-24-09-07-19/beng-hons-marine-engineering-management');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Πληροφορικής', 'BSc (Hons) Computing (Πληροφορική)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=159&Itemid=452');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Πληροφορικής', 'BSc (Hons) Computer Networks (Πληροφορική και Δίκτυα Η/Υ)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=160&Itemid=454');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA (Hons) International Hospitality and Tourism Management (Τουρισμός και Ξενοδοχειακές Επιχειρήσεις)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=158&Itemid=450');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA Culinary Arts and Food Service Development (Επισιτιστικές Τέχνες και Ανάπτυξη Υπηρεσιών Εστίασης)',  'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxoli-touristikwn/ba-culinary-arts-and-food-service-development');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Τουρισμού', 'BA Culinary Arts, Baking and Patisserie  (Αρτοποιία / Ζαχαροπλαστική)', 'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxoli-touristikwn/ba-culinary-arts-baking-patisserie');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Nursing (Νοσηλευτική)','http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/mitropolitiko-kollegio-sxoli-ygeias/bsc-nursing-sxoli-ptixio-nosileftikis');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Logopeadics (Λογοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=187&Itemid=461');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Physiotherapy (Φυσικοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=163&Itemid=462');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Biomedical Sciences (Βιοϊατρικές Επιστήμες)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=164&Itemid=463');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Dietetics (Διαιτολογία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=165&Itemid=464');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Occupational Therapy (Εργοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=166&Itemid=465');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Sports Coaching and Physical Education (Προπονητική και Φυσική Αγωγή)','http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=785&Itemid=893');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Σχολή Υγείας', 'BSc (Hons) Podiatry (Ποδιατρική)', 'https://mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=2264&Itemid=1791');
 
+        new Portal($school2, 5, 'college');
 
-            /*===============   3 NYC   Athens ================*/
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BA (Hons) Business Management (Διοίκηση Επιχειρήσεων)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=155&Itemid=447');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BSc (Hons) Economics for Business (Οικονομικά)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=156&Itemid=448');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BA (Hons) Marketing (Μάρκετινγκ)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=157&Itemid=449');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Ναυτιλιακά - Nautical Education', 'BSc (Hons) Maritime Business (Ναυτιλιακές Σπουδές)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=1558&Itemid=1188&lang=el');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Ναυτιλιακά - Nautical Education', 'BSc (Hons) Shipping and Port Management(Διοίκηση Λιμένων και Ναυτιλιακών Επιχειρήσεων)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=1557&Itemid=1187');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Ναυτιλιακά - Nautical Education', 'BSc (Hons) Marine Operations Management (Εκπαίδευση Πλοιάρχων Εμπορικού Ναυτικού)', 'https://mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxolh-naftiliakwn-spoudwn/2017-08-24-09-07-19/bsc-hons-marine-operations-management');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Ναυτιλιακά - Nautical Education', 'BSc (Hons) Marine Engineering and Management (Εκπαίδευση Μηχανικών Εμπορικού Ναυτικού)', 'https://mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxolh-naftiliakwn-spoudwn/2017-08-24-09-07-19/beng-hons-marine-engineering-management');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BSc (Hons) Computing (Πληροφορική)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=159&Itemid=452');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BSc (Hons) Computer Networks (Πληροφορική και Δίκτυα Η/Υ)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=160&Itemid=454');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Τουρισμός - Tourism', 'BA (Hons) International Hospitality and Tourism Management (Τουρισμός και Ξενοδοχειακές Επιχειρήσεις)', 'http://mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=158&Itemid=450');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Τουρισμός - Tourism', 'BA Culinary Arts and Food Service Development (Επισιτιστικές Τέχνες και Ανάπτυξη Υπηρεσιών Εστίασης)', 'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxoli-touristikwn/ba-culinary-arts-and-food-service-development');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Τουρισμός - Tourism', 'BA Culinary Arts, Baking and Patisserie  (Αρτοποιία / Ζαχαροπλαστική)', 'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/sxoli-touristikwn/ba-culinary-arts-baking-patisserie');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Nursing (Νοσηλευτική)', 'http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/mitropolitiko-kollegio-sxoli-ygeias/bsc-nursing-sxoli-ptixio-nosileftikis');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Logopeadics (Λογοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=187&Itemid=461');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Physiotherapy (Φυσικοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=163&Itemid=462');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Biomedical Sciences (Βιοϊατρικές Επιστήμες)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=164&Itemid=463');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Dietetics (Διαιτολογία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=165&Itemid=464');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Occupational Therapy (Εργοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=166&Itemid=465');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Sports Coaching and Physical Education (Προπονητική και Φυσική Αγωγή)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=785&Itemid=893');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Podiatry (Ποδιατρική)', 'https://mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=2264&Itemid=1791');
+
+        /*===============   3 NYC   Athens ================*/
         $school3 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycath'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'New York College Athens', 'email' => 'nycath@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycath'])->id,
             'address' => 'Αμαλίας 38, Σύνταγμα',
             'city' => 'Αθήνα',
             'phone' => 2103225961,
@@ -150,11 +136,10 @@ class Colleges extends Seeder
 <p style="text-align: justify;">We are proud of our commitment to education, to prepare students to become scholars and thinkers of a new century in which technology will continue to transform the way we advance the boundaries of knowledge. Our aim is to provide our students with prestigious degrees and more importantly, with the values and ethics necessary to excel in society in general.</p>
 <p style="text-align: justify;">I look forward to welcoming you to one of the institutions of the NYC Educational Group and let me assure you that you will enjoy top quality studies in one of the best educational environments you can find.</p>
 <p style="text-align: right;"><br /><strong>Dr. Elias Foutsis</strong><br />President</p>',
-            'logo' => $logo3,
             'background' => $background,
         ]);
 
-
+        new Portal($school3, 5, 'college');
 
         /*===============   4  HAEC  Athens  ================*/
         $school4 = factory(App\Models\School::class)->create([
@@ -172,11 +157,10 @@ class Colleges extends Seeder
         Από την αρχή των σπουδών σας μέχρι και την αποφοίτησή σας, συνεργάζεστε με τον Σύμβουλο Σταδιοδρομίας του Hellenic American College, ο οποίος θα σας βοηθήσει να δημιουργήσετε ένα ισχυρό σύνολο δεξιοτήτων και εμπειριών για τη μετέπειτα επαγγελματική σας σταδιοδρομία.
         Θα αποκτήσετε εξαιρετικές επικοινωνιακές δεξιότητες στο γραπτό και προφορικό λόγο στα Αγγλικά.
         Οι καθηγητές μας διαθέτουν διεθνές ακαδημαϊκό προφίλ, ενεργή δράση στην έρευνα και αποδίδουν ιδιαίτερη έμφαση στην ποιότητα της διδασκαλίας.',
-            'logo' => $logo4,
             'background' => $background,
         ]);
 
-
+        new Portal($school4, 5, 'college');
 
         /*===============   5 Deree ACG  Athens ================*/
         $school5 = factory(App\Models\School::class)->create([
@@ -190,11 +174,10 @@ class Colleges extends Seeder
             'about' => 'Founded in Smyrna, Asia Minor, in 1875, by missionaries from Boston, Massachusetts, The American College of Greece is the oldest and largest US accredited college or university in Europe.
         For over 140 years, ACG has been offering transformative education and cultivating a fertile intellectual and cultural collaboration between Greece and the United States.
         ACG is an independent, not for profit, nonsectarian, co-educational academic institution. To add distinctive and sustainable value to our students as well as Greece, American education, Hellenic heritage, and the global community through transformative teaching, scholarship, and service. The Admissions Office offers one on one consultations with candidates and their families, conducts tours of the ACG Campus, and organizes information sessions throughout the year. Several times a year, we offer Discover Deree Days, designed to familiarize candidates and their families with the full range of the College’s programs and services.',
-            'logo' => $logo5,
             'background' => $background,
         ]);
 
-
+        new Portal($school5, 5, 'college');
 
         /*===============   6 AEGEAN   Athens ================*/
         $school6 = factory(App\Models\School::class)->create([
@@ -213,11 +196,10 @@ class Colleges extends Seeder
         Η εφαρμογή μιας ενιαίας πολιτικής με στόχο την συστηματική επιμόρφωση των ανθρώπινων πόρων του Κολεγίου.
         Η διαρκής ανανέωση του υλικοτεχνικού εξοπλισμού του Κολεγίου και η εφαρμογή καινοτόμων λύσεων που διασφαλίζουν το υψηλότερο δυνατό εκπαιδευτικό αποτέλεσμα.
         Η οργάνωση προγραμμάτων διά βίου μάθησης με στόχο την επιμόρφωση ενηλίκων και επαγγελματιών με την εφαρμογή των πλέον εξελιγμένων μεθόδων και μέσων στην εκπαιδευτική διαδικασία, όπως το σύγχρονο και ασύγχρονο e-learning.',
-            'logo' => $logo6,
             'background' => $background,
         ]);
 
-
+        new Portal($school6, 5, 'college');
 
         /*===============   7 DEI  Thessaloniki ================*/
         $school7 = factory(App\Models\School::class)->create([
@@ -232,11 +214,10 @@ class Colleges extends Seeder
         Σκοπός του DEI είναι να παρέχει ποιοτική εκπαίδευση σε ανθρώπους με ποικίλη εκπαιδευτική εμπειρία, σε ένα ευχάριστο περιβάλλον οργανωμένο με σχολαστικότητα και με αυστηρά επιλεγμένο εκπαιδευτικό προσωπικό.
         Μέσα από την εμπειρία χρόνων και τη στενή επαφή με φημισμένα Βρετανικά πανεπιστήμια, το DEI μπορεί πλέον να διδάσκει προγράμματα που αξιολογούνται και θεωρούνται ως εφάμιλλα εκείνων που διδάσκονται στη Βρετανία.
         Οι απόφοιτοί του έχουν στελεχώσει μεγάλες Ελληνικές και διεθνείς επιχειρήσεις.',
-            'logo' => $logo7,
             'background' => $background,
         ]);
 
-
+        new Portal($school7, 5, 'college');
 
         /*===============   8 ATT  Athens ================*/
         $school8 = factory(App\Models\School::class)->create([
@@ -249,11 +230,12 @@ class Colleges extends Seeder
             'approved' => 1,
             'about' => 'Με την εμπειρία και την παράδοση 37 ετών, το Αττικό Κολέγιο, σε ένα εξαιρετικό νεοκλασικό κτίριο στο κέντρο της
         Αθήνας, λειτουργεί με σύγχρονες εκπαιδευτικές καινοτομίες, βασισμένες στα Ευρωπαϊκά πρότυπα εκπαίδευσης των ιδρυμάτων με τα οποία συνεργαζόμαστε επί σειρά ετών.Η επιτυχία του Αττικού Κολεγίου χαρακτηρίζεται από τρεις περιόδους σταθμούς στην ανάπτυξη του: Πρώτον, τη δημιουργία του Κολεγίου Δημοσιογραφικών σπουδών το 1989, όπου εξαιρετικά δημοσιογραφικά στελέχη όπως, ο Λυκούργος Κομίνης, ο Γιώργος Παπαδάκης, η Λιάνα Κανέλη, η Μένυα Παπαδοπούλου κ.α. καθώς και οι πανεπιστημιακοί κ.κ. Λοβέρδος, Πασσάς, Τσάτσος, Κατσέλη κ.α, αποτέλεσαν ένα συνδυασμό δημοσιογραφικής και ακαδημαϊκής υπεροχής και στελέχωσαν με τεράστια επιτυχία την ιδιωτική τηλεόραση και μεγάλο μέρος των ΜΜΕ γενικότερα, γεγονός που μας καθιστά πολύ υπερήφανους. Δεύτερον, την επιλογή του Κολεγίου μας για συνεργασία, από το Βρετανικό κρατικό κολέγιο του Cambridge, το 2003, σε προγράμματα σπουδών για την απόκτηση διπλώματος Αγγλίας HND και τη δυνατότητα συνέχισης για την απόκτηση πτυχίου BSc.Τέλος, τη συνεργασία με κορυφαία ευρωπαϊκά πανεπιστήμια, καθιερώνοντας το Αττικό Κολέγιο πρωτοπόρο στην ανάπτυξη προγραμμάτων υγείας και ανθρωπιστικών σπουδών.',
-            'logo' => $logo8,
             'background' => $background,
         ]);
 
-        /*===============   9 IST   Athens ================*/
+        new Portal($school8, 5, 'college');
+
+        /*===============   9 IST Athens ================*/
         $school9 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Independent Studies of Science and Technology', 'email' => 'info@ist.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ist'])->id,
             'address' => 'Πειραιώς 72, Μοσχάτο',
@@ -263,11 +245,10 @@ class Colleges extends Seeder
             'website' => 'ist.edu.gr',
             'approved' => 1,
             'about' => 'Το IST ιδρύθηκε το 1989 και σήμερα, είναι ένα πολυδύναμο και πολυεπίπεδο εκπαιδευτικό ίδρυμα με άδεια από το Υπουργείο Παιδείας. Ανήκει στον εκπαιδευτικό οργανισμό Γ. Καστρινάκη & Δρακ. Φουντουκάκου, ο οποίος δραστηριοποιείται από το 1967 με μεγάλη επιτυχία στον χώρο της εκπαίδευσης μέσω της ΣΒΙΕ, της πρώτης Σχολής στα Επαγγέλματα Υγείας. Σήμερα, το IST διαθέτει ακαδημαϊκή δομή και οργάνωση εφάμιλλες με εκείνες των φημισμένων Πανεπιστημίων του εξωτερικού, διατηρώντας στενές σχέσεις και συνεργασία με επιχειρήσεις και οργανισμούς για καλύτερη εκπαίδευση και αποκατάσταση των φοιτητών του, ενώ στεγάζεται σε κτίριο διεθνών προδιαγραφών, συνολικής επιφάνειας 9.500 τ.μ., ειδικά κατασκευασμένο για τη λειτουργία ενός εκπαιδευτικού ιδρύματος πανεπιστημιακού επιπέδου.',
-            'logo' => $logo9,
             'background' => $background,
         ]);
 
-
+        new Portal($school9, 5, 'college');
 
         /*===============   10 CITY COLLEGE   Thesssaloniki ================*/
         $school10 = factory(App\Models\School::class)->create([
@@ -279,9 +260,10 @@ class Colleges extends Seeder
             'website' => 'citycollege.sheffield.eu',
             'approved' => 1,
             'about' => 'Το CITY College είναι το Διεθνές Τμήμα του University of Sheffield και εδρεύει στη Θεσσαλονίκη. Το Πανεπιστήμιο του Sheffield είναι ένα από τα παλαιότερα, μεγαλύτερα και καλύτερα κρατικά Πανεπιστήμια της Αγγλίας. Στις παγκόσμιες κατατάξεις βρίσκεται συνεχώς ανάμεσα στα 100 καλύτερα πανεπιστήμια του κόσμου, ενώ στο δυναμικό του συγκαταλέγονται 6 νομπελίστες. Ανήκει στο 1% των καλύτερων Πανεπιστημίων του κόσμου και κατατάσσεται: 29º στην Ευρώπη και 84º στον κόσμο [QS World University Rankings 2016].Το CITY College ιδρύθηκε το 1989 στη Θεσσαλονίκη και έχει καθιερωθεί κατά την εικοσαπενταετή πορεία του ως ένα από τα καλύτερα εκπαιδευτικά ιδρύματα της νοτιοανατολικής Ευρώπης. Δεν είναι απλά ένα συνεργαζόμενο κολέγιο με ξένο πανεπιστήμιο, αλλά ένα πλήρες και αναπόσπαστο κομμάτι του University of Sheffield που λειτουργεί εκτός Βρετανίας με τους ίδιους όρους και κανονισμούς, υπόκειται στους ίδιους ελέγχους αξιολόγησης και προσφέρει τα ίδια προνόμια και τις ίδιες παροχές σπουδών στους φοιτητές του.',
-            'logo' => $logo10,
             'background' => $background,
         ]);
+
+        new Portal($school10, 5, 'college');
 
         /*===============   11 ΒΑΚΑΛΟ   Athens ================*/
         $school11 = factory(App\Models\School::class)->create([
@@ -293,11 +275,9 @@ class Colleges extends Seeder
             'website' => 'vakalo.gr',
             'approved' => 1,
             'about' => 'Το 1958, μια παρέα διακεκριμένων καλλιτεχνών και διανοούμενων αποφάσισαν να δημιουργήσουν ένα εργαστήριο καλών και εφαρμοσμένων τεχνών που θα γεφύρωνε την καλλιτεχνική ευαισθησία και το στοχασμό του πολιτισμού, με τα αντικείμενα, τις εικόνες και τους χώρους της καθημερινότητας. Το όραμα αυτής της πρώτης εμπνευσμένης ομάδας ενστερνίστηκαν, διαφύλαξαν και εμπλούτισαν μια σειρά δημιουργικών ανθρώπων που συνεργάστηκαν μαζί της και συνεχίζουν να γράφουν μέχρι σήμερα την ιστορία της Σχολής Βακαλό. Το Κολλέγιο Βακαλό είναι η πρώτη σχολή εφαρμοσμένων τεχνών στην Ελλάδα. Ιδρύθηκε το 1958 από τον ζωγράφο και σκηνογράφο Γιώργο Βακαλό, την ποιήτρια και ιστορικό της τέχνης Ελένη Βακαλό, τον ζωγράφο, τ. πρύτανη της ΑΣΚΤ, Παναγιώτη Τέτση, και τον εκδότη της καλλιτεχνικής επιθεώρησης Ζυγός Φραντζή Φραντζισκάκη. Η απόφαση για την ίδρυση της Σχολής προήλθε από τη συνειδητοποίηση αφενός του κρίσιμου ρόλου που διαδραματίζει το Design στην κοινωνία, αφετέρου της πλήρους απουσίας σχετικής εκπαίδευσης στη χώρα μας.',
-            'logo' => $logo11,
             'background' => $background,
         ]);
-
-
+        new Portal($school11, 5, 'college');
 
         /*===============   12 MEDITERRANEAN COLLEGE ATHENS  ================*/
         $school12 = factory(App\Models\School::class)->create([
@@ -309,11 +289,9 @@ class Colleges extends Seeder
             'website' => 'medcollege.edu.gr',
             'approved' => 1,
             'about' => 'Στον εικοστό πρώτο αιώνα, το Mediterranean College (MC), σε συνεργασία με ισχυρά πανεπιστήμια του εξωτερικού, αναδύεται ως ένα ιδιωτικό ίδρυμα ανώτατης εκπαίδευσης με ηγετικό ρόλο στους κλάδους σπουδών της Οικονομίας, της Διοίκησης, της Πληροφορικής, των Ανθρωπιστικών Επιστημών,του Τουρισμού, των Επαγγελμάτων Υγείας,  των Μηχανικών προσφέροντας προγράμματα υψηλής ποιότητας σε ένα περιβάλλον γαλούχησης όπου η ποιότητα υπαγορεύεται πάντα από τις ανάγκες των φοιτητών. Για να πραγματοποιήσει το όραμά του για ακαδημαϊκή διάκριση, επιτυχία των φοιτητών του, εκπαιδευτική και τεχνολογική καινοτομία, καθώς και για κοινωνική προσφορά, το Κολλέγιο προσελκύει και εξασφαλίζει αφοσιωμένους επαγγελματίες και εκπαιδευτικό προσωπικό με εξαιρετικές ικανότητες, αναγνωρισμένο για την εξειδίκευσή του στον τομέα της διδασκαλίας, της καθοδήγησης φοιτητών, της κατάρτισης, της έρευνας και της παροχής υπηρεσιών. Δομημένο σε αυτές τις σταθερές βάσεις και αρχές, το MC, αποσκοπεί στην υλοποίηση του οράματός του, να γίνει ένα μοναδικό διεθνές κέντρο μάθησης στον ελλαδικό χώρο.',
-            'logo' => $logo12,
             'background' => $background,
         ]);
-
-
+        new Portal($school12, 5, 'college');
 
         /*===============   13 iCBS THESSALONIKI ================*/
         $school13 = factory(App\Models\School::class)->create([
@@ -340,11 +318,9 @@ class Colleges extends Seeder
 
                        ΕΜΦΑΣΗ ΣΤΗΝ ΕΠΙΧΕΙΡΗΜΑΤΙΚΟΤΗΤΑ
                        ώστε καινοτόμες και νέες ιδέες να δημιουργούνται και κυρίως να εξελίσσονται σε αποτελεσματική επιχειρηματική δράση.',
-            'logo' => $logo13,
             'background' => $background,
         ]);
-
-
+        new Portal($school13, 5, 'college');
 
         /*===============   14 iCBS ATHENS ================*/
         $school14 = factory(App\Models\School::class)->create([
@@ -371,11 +347,9 @@ class Colleges extends Seeder
 
                        ΕΜΦΑΣΗ ΣΤΗΝ ΕΠΙΧΕΙΡΗΜΑΤΙΚΟΤΗΤΑ
                        ώστε καινοτόμες και νέες ιδέες να δημιουργούνται και κυρίως να εξελίσσονται σε αποτελεσματική επιχειρηματική δράση.',
-            'logo' => $logo14,
             'background' => $background,
         ]);
-
-
+        new Portal($school14, 5, 'college');
 
         /*===============   15 iCBS LARISSA ================*/
         $school15 = factory(App\Models\School::class)->create([
@@ -402,12 +376,9 @@ class Colleges extends Seeder
 
                        ΕΜΦΑΣΗ ΣΤΗΝ ΕΠΙΧΕΙΡΗΜΑΤΙΚΟΤΗΤΑ
                        ώστε καινοτόμες και νέες ιδέες να δημιουργούνται και κυρίως να εξελίσσονται σε αποτελεσματική επιχειρηματική δράση.',
-            'logo' => $logo15,
             'background' => $background,
         ]);
-
-
-
+        new Portal($school15, 5, 'college');
 
         /*===============   16 AKTO ATHENS ================*/
         $school16 = factory(App\Models\School::class)->create([
@@ -425,16 +396,14 @@ class Colleges extends Seeder
             Σύμφωνα με έρευνα που δημοσίευσε το DOMUS Magazine, ο ΑΚΤΟ κατατάσσεται στα 100 καλύτερα εκπαιδευτικά ιδρύματα Αρχιτεκτονικής & Design της Ευρώπης, για το έτος 2013. To εμβληματικό ιταλικό περιοδικό, που εδώ και σχεδόν έναν αιώνα όρισε τάσεις, προανήγγειλε κινήματα και συνέδεσε με αξεπέραστο τρόπο το design με την αρχιτεκτονική,
             επέλεξε τις καλύτερες σχολές στον Τομέα και τις συμπεριέλαβε στην Ειδική Έκδοση με τίτλο “Europe’s Top 100 School of Architecture & Design 2013
             ',
-            'logo' => $logo16,
             'background' => $background,
         ]);
-
-
+        new Portal($school16, 5, 'college');
 
         /*===============   17 AKTO THESSALONIKI ================*/
         $school17 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AKTO', 'email' => 'informationThess@aktocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aktothess'])->id,
-            'address' => '26ης Οκτωβρίου 38-40 & Ανδρέου Γεωργίου',
+            'address' => '26ης Οκτωβρίου 38-40',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310221231,
             'type_id' => 1,
@@ -447,27 +416,23 @@ class Colleges extends Seeder
             Σύμφωνα με έρευνα που δημοσίευσε το DOMUS Magazine, ο ΑΚΤΟ κατατάσσεται στα 100 καλύτερα εκπαιδευτικά ιδρύματα Αρχιτεκτονικής & Design της Ευρώπης, για το έτος 2013. To εμβληματικό ιταλικό περιοδικό, που εδώ και σχεδόν έναν αιώνα όρισε τάσεις, προανήγγειλε κινήματα και συνέδεσε με αξεπέραστο τρόπο το design με την αρχιτεκτονική,
             επέλεξε τις καλύτερες σχολές στον Τομέα και τις συμπεριέλαβε στην Ειδική Έκδοση με τίτλο “Europe’s Top 100 School of Architecture & Design 2013
             ',
-            'logo' => $logo17,
             'background' => $background,
         ]);
-
-
+        new Portal($school17, 5, 'college');
 
         /*===============   18 ATH/TECH  Athens ================*/
         $school18 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ATH/TECH Athens Tech College', 'email' => 'info@athtech.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'athtech'])->id,
-            'address' => 'Τατοΐου 2 & Όθωνος 77',
+            'address' => 'Τατοΐου 2, Κηφισιά',
             'city' => 'Αθήνα',
             'phone' => 2108088008,
             'type_id' => 1,
             'website' => 'athtech.gr',
             'approved' => 1,
             'about' => 'Το Athens Tech είναι το πρώτο τεχνολογικό εκπαιδευτικό ίδρυμα στην Ελλάδα που συνδυάζει την τεχνολογία, την έρευνα και την επιχειρηματικότητα, με τις ανάγκες της πραγματικής οικονομίας. Χάρη στην συνδυασμένη εμπειρία 45+ ετών των τριών πρωτοπόρων δημιουργών του (BCA College, Intracom Holdings και 24media Group), είναι σε θέση να προσφέρει μια σειρά από εξειδικευμένα εκπαιδευτικά προγράμματα Bachelor και Masters, πιστοποιημένα από το πανεπιστήμιο του Sheffield, ενός εκ των 10 καλύτερων Βρετανικών Πανεπιστημίων. Επιπλέον, το ΑΤΗ/TECH προσφέρει στους φοιτητές του, τόσο την δυνατότητα 9 θέσεων πρακτικής άσκησης στην 24media (Ηuffington Post , Contra gr, Oneman, Ladylike, Νews 247), την Intrasoft International και το BCA College, όσο και την δυνατότητα ερευνητικής εργασίας στο πρότυπο ερευνητικό κέντρο AIT. Σπούδασε την τεχνολογία του αύριο, σήμερα, επιλέγοντας μία σειρά από καινοτόμα εκπαιδευτικά προγράμματα στην επιστήμη των υπολογιστών που προσφέρει το Athens Tech College.',
-            'logo' => $logo18,
             'background' => $background,
         ]);
-
-
+        new Portal($school18, 5, 'college');
 
         /*===============  19 MBS College of Crete ================*/
         $school19 = factory(App\Models\School::class)->create([
@@ -486,11 +451,9 @@ class Colleges extends Seeder
                            Η εκπαίδευση των φοιτητών του MBS College of Crete, πραγματώνεται σε υπερσύγχρονες και άρτια εξοπλισμένες εγκαταστάσεις και εξειδικευμένα εργαστήρια.</p>
                         <p>Η ιδιαίτερη έμφαση στην επιστημονική έρευνα που δίνουν τα συνεργαζόμενα Ευρωπαϊκά Πανεπιστήμια, αποτελεί το κλειδί της επιτυχίας των προγραμμάτων σπουδών τους.
                            Το σύγχρονο εκπαιδευτικό περιβάλλον του MBS College of Crete δημιουργεί τις άριστες προϋποθέσεις υλοποίησης αυτών των προγραμμάτων, σε ένα εκπαιδευτικό περιβάλλον υψηλών προδιαγραφών.</p>',
-            'logo' => $logo19,
             'background' => $background,
         ]);
-
-
+        new Portal($school19, 5, 'college');
 
         /*===============  20 Perrotis College Thessaloniki ================*/
         $school20 = factory(App\Models\School::class)->create([
@@ -505,16 +468,14 @@ class Colleges extends Seeder
             <p>Η Αμερικανική Γεωργική Σχολή Θεσσαλονίκης είναι ένας ανεξάρτητος, μη κερδοσκοπικός εκπαιδευτικός οργανισμός, που ιδρύθηκε το 1904 στη Θεσσαλονίκη για να εξυπηρετήσει τις ανάγκες του πληθυσμού της Ελλάδος και των Βαλκανίων.</p>
             <p>Ως το τριτοβάθμιο τμήμα της το Perrotis College of Agriculture, Environment and Life Sciences προετοιμάζει τους σπουδαστές του να αναλάβουν ηγετικές θέσεις στη διοίκηση επιχειρήσεων αγροδιατροφικού τομέα, την τεχνολογία τροφίμων, τη γεωργία ακριβείας και τη διατήρηση φυσικών πόρων.</p>
             <p>Το Perrotis College ιδρύθηκε το 1995 μέσω μια δωρεάς της κας Αλίκης Περρωτή στη μνήμη του συζύγου της Δημήτρη Περρωτή. </p>',
-            'logo' => $logo20,
             'background' => $background,
         ]);
-
-
+        new Portal($school20, 5, 'college');
 
         /*===============   21 NYC   Thessaloniki ================*/
         $school21 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'New York College', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycthess'])->id,
-            'address' => 'Εγνατίας 138 & Π.Π. Γερμανού',
+            'user_id' => factory(App\User::class)->create(['name' => 'New York College Thessaloniki', 'email' => 'nycth@nyc.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'nycthess'])->id,
+            'address' => 'Εγνατίας 138',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310889879,
             'type_id' => 1,
@@ -529,11 +490,9 @@ class Colleges extends Seeder
 <p style="text-align: justify;">We are proud of our commitment to education, to prepare students to become scholars and thinkers of a new century in which technology will continue to transform the way we advance the boundaries of knowledge. Our aim is to provide our students with prestigious degrees and more importantly, with the values and ethics necessary to excel in society in general.</p>
 <p style="text-align: justify;">I look forward to welcoming you to one of the institutions of the NYC Educational Group and let me assure you that you will enjoy top quality studies in one of the best educational environments you can find.</p>
 <p style="text-align: right;"><br /><strong>Dr. Elias Foutsis</strong><br />President</p>',
-            'logo' => $logo21,
             'background' => $background,
         ]);
-
-
+        new Portal($school21, 5, 'college');
 
         /*===============   22 MEDITERRANEAN COLLEGE Thessaloniki  ================*/
         $school22 = factory(App\Models\School::class)->create([
@@ -545,9 +504,9 @@ class Colleges extends Seeder
             'website' => 'medcollege.edu.gr',
             'approved' => 1,
             'about' => 'Στον εικοστό πρώτο αιώνα, το Mediterranean College (MC), σε συνεργασία με ισχυρά πανεπιστήμια του εξωτερικού, αναδύεται ως ένα ιδιωτικό ίδρυμα ανώτατης εκπαίδευσης με ηγετικό ρόλο στους κλάδους σπουδών της Οικονομίας, της Διοίκησης, της Πληροφορικής, των Ανθρωπιστικών Επιστημών,του Τουρισμού, των Επαγγελμάτων Υγείας,  των Μηχανικών προσφέροντας προγράμματα υψηλής ποιότητας σε ένα περιβάλλον γαλούχησης όπου η ποιότητα υπαγορεύεται πάντα από τις ανάγκες των φοιτητών. Για να πραγματοποιήσει το όραμά του για ακαδημαϊκή διάκριση, επιτυχία των φοιτητών του, εκπαιδευτική και τεχνολογική καινοτομία, καθώς και για κοινωνική προσφορά, το Κολλέγιο προσελκύει και εξασφαλίζει αφοσιωμένους επαγγελματίες και εκπαιδευτικό προσωπικό με εξαιρετικές ικανότητες, αναγνωρισμένο για την εξειδίκευσή του στον τομέα της διδασκαλίας, της καθοδήγησης φοιτητών, της κατάρτισης, της έρευνας και της παροχής υπηρεσιών. Δομημένο σε αυτές τις σταθερές βάσεις και αρχές, το MC, αποσκοπεί στην υλοποίηση του οράματός του, να γίνει ένα μοναδικό διεθνές κέντρο μάθησης στον ελλαδικό χώρο.',
-            'logo' => $logo22,
             'background' => $background,
         ]);
+        new Portal($school22, 5, 'college');
 
         /*===============   23 AAS THESSALONIKI ================*/
         $school23 = factory(App\Models\School::class)->create([
@@ -561,230 +520,74 @@ class Colleges extends Seeder
             'about' => 'Χάρη στη συνεργασία franchise(δικαιόχρησης) του AAS College με το Πανεπιστήμιο του Central Lancashire (UCLan), οι σπουδαστές του ακολουθούν  το πρόγραμμα μαθημάτων του UCLan, έχουν την ίδια φοιτητική ταυτότητα και απολαμβάνουν τα ίδια προνόμια με τους φοιτητές του αγγλικού πανεπιστημίου.
              Ενώ ταυτόχρονα, μπορούν να χρησιμοποιήσουν τις πανεπιστημιακές σημειώσεις, και εκτός από την πλούσια βιβλιοθήκη του AAS με περισσότερους από 4.000 τίτλους βιβλίων,
              μέσω της ιστοσελίδας του UCLan έχουν πρόσβαση σε παγκόσμιες ηλεκτρονικές βιβλιοθήκες, με τις οποίες είναι συμβεβλημένο το πανεπιστήμιο.',
-            'logo' => $logo23,
             'background' => $background,
         ]);
+        new Portal($school23, 5, 'college');
 
         /*===============   24 IHU THESSALONIKI ================*/
         $school24 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'AAS College ', 'email' => 'infoseba@ihu.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aas'])->id,
-            'address' => '14th km Thessaloniki - Moudania, Thermi',
+            'user_id' => factory(App\User::class)->create(['name' => 'AAS College ', 'email' => 'infoseba@ihu.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ihu'])->id,
+            'address' => '14th km Thessaloniki, Nea Moudania',
             'city' => 'θεσσαλονίκη',
             'phone' => 2310807520,
             'type_id' => 1,
             'website' => 'www.ihu.edu.gr',
             'approved' => 1,
+            'lat' => '40.537330',
+            'lng' => '23.008409',
             'about' => 'This is the tenth year of the International Hellenic University’s existence. During this period, the IHU has created nineteen postgraduate programmes, fresh, dynamic and forward-looking.
              The programmes are taught in an academic environment where the knowledge is researched, the knowledge is taught, the knowledge is disseminated within and outside Greece.
              Our central target from the first instant has been academic excellence. How to achieve this was and is the major task and challenge as it involves the human element.
              How to recruit those with the greatest potential; to motivate them; to inspire them. Not only the academics but the administrators and professionals, who should work with dedication and harmony towards excellence, each in his or her own capacity.
              I believe we have achieved a lot in this respect.',
-            'logo' => $logo24,
             'background' => $background,
         ]);
-
-        /*===============  25 AMC  Athens ================*/
+        new Portal($school24, 5, 'college');
 
         $school25 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Μητροπολιτικό Κολλέγιο Αθήνας', 'email' => 'info@metropolitan.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'amcAth'])->id,
-            'address' => 'Πατησίων 125',
+            'user_id' => factory(App\User::class)->create(['name' => 'Business College of Athens', 'email' => 'info@bca.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'bca'])->id,
+            'address' => 'Δημητρέσσα 4',
             'city' => 'Αθήνα',
-            'phone' => 2106199891,
+            'phone' => 2107253783,
             'type_id' => 1,
-            'website' => 'mitropolitiko.edu.gr',
+            'website' => 'http://www.bca.edu.gr/',
             'approved' => 1,
-            'about' => '<p style="text-align: justify;">Το Μητροπολιτικό Κολλέγιο, από το 1982 μέχρι σήμερα έχει αποστολή και όραμα την πνευματική και μορφωτική ανέλιξη των φοιτητών του. Υπηρετεί με συνέπεια την Τριτοβάθμια Εκπαίδευση, έχοντας εδραιωθεί στη συνείδηση γονέων και φοιτητών ως <strong>η κορυφαία επιλογή ποιοτικών σπουδών Πανεπιστημιακού επιπέδου στην Ελλάδα</strong>, με παραρτήματα στην Αθήνα, τον Πειραιά και τη Θεσσαλονίκη. Η καλλιέργεια της κριτικής σκέψης, η ακαδημαϊκή πρόοδος και η ανάπτυξη του ερευνητικού πνεύματος του κάθε φοιτητή αποτελούν προτεραιότητα για το Κολλέγιό μας και αυτή η εταιρική μας κουλτούρα είναι που μας κάνει<strong> να ξεχωρίζουμε.</strong></p>
-<p style="text-align: justify;"> Με την εμπειρία <strong>34 χρόνων</strong> <strong>πορείας στην ελληνική εκπαίδευση</strong>, το Μητροπολιτικό Κολλέγιο παρέχει, σε συνεργασία με διακεκριμένα δημόσια Πανεπιστημιακά Ιδρύματα του εξωτερικού, μια σειρά από πιστοποιημένα προγράμματα σπουδών που καλύπτουν σύγχρονα επιστημονικά πεδία και ανταποκρίνονται στις σημερινές απαιτήσεις της ελληνικής και διεθνούς αγοράς εργασίας. Η διάρθρωση του Μητροπολιτικού Κολλεγίου, το Ακαδημαϊκό Συμβούλιο, η τεχνογνωσία και η εμπειρία του ακαδημαϊκού δυναμικού, οι υποδομές και οι κτιριακές εγκαταστάσεις, η βιβλιοθήκη χιλιάδων τίτλων και η τεχνολογική υποστήριξη της εκπαιδευτικής διαδικασίας, αποτελούν τις δικλείδες ασφαλείας για την υψηλή ποιότητα των σπουδών που προσφέρουμε.</p>
-<p style="text-align: justify;"></p>',
-            'logo' => $logo25,
+            'about' => 'Το BCA, το οποίο ιδρύθηκε το 1971, ήταν το πρώτο κολλέγιο στην Ελλάδα το οποίο κάλυψε το εκπαιδευτικό κενό που υπήρχε εκείνα τα χρόνια σε αναπτυσσόμενους τομείς με μεγάλη ζήτηση όπως οικονομία και διοίκηση, τουριστικές σπουδές και μηχανογράφηση. Ταυτόχρονα, το BCA ήταν το πρώτο εκπαιδευτικό ίδρυμα με παραρτήματα σε Ελβετία και Ιταλία, ο πρώτος εκπαιδευτικός οργανισμός που εισήγαγε σπουδές άρρηκτα συνδεδεμένες με την αγορά εργασίας με καθηγητές –  επαγγελματίες του χώρου.
+            Κινητήριος δύναμη και όραμα από την ίδρυση του BCA έως και σήμερα είναι να προσφέρουμε και να διδάσκουμε την ποιότητα σε όλες τις διαστάσεις της. Το σύγχρονο επαγγελματικό και οικονομικό περιβάλλον μιας παγκοσμιοποιημένης αγοράς επιτάσσουν την εμμονή στην ποιότητα, την άμεση προσαρμογή στις ραγδαία μεταβαλλόμενες συνθήκες και ευκαιρίες καθώς και την ανάγκη ύπαρξης στρατηγικής μακροπρόθεσμου ορίζοντα.
+            Προσφέρουμε σύγχρονα προγράμματα και διδακτική εμπειρία που ανταποκρίνονται στην αγορά εργασίας, διαθέτουμε κτιριακές υποδομές υψηλής αισθητικής και τεχνολογίας και παρέχουμε εκπαίδευση από καταξιωμένους επαγγελματίες ακαδημαϊκούς και διδάκτορες των διαφόρων ειδικοτήτων. Στόχος μας, σε βάθος χρόνου, είναι η εδραίωσή μας ως κορυφαίο ίδρυμα προπτυχιακών και μεταπτυχιακών σπουδών στην ταχύτατα αναπτυσσόμενη περιοχή των Βαλκανίων και της Νοτιοανατολικής Ευρώπης, ως ίδρυμα που θα παρέχει σπουδές άρρηκτα συνδεδεμένες με την αγορά εργασίας. 
+            Το BCA στεγάζεται σε δύο καλαίσθητα κτίρια στην Αθήνα και τη Γλυφάδα.
+            Τα κτίρια είναι ειδικά μελετημένα και εξοπλισμένα ώστε να ικανοποιούν απόλυτα και τις πιο αυστηρές εκπαιδευτικές απαιτήσεις. Διαθέτουν βιβλιοθήκη, σύγχρονα εργαστήρια πληροφορικής καθώς και κάθε είδους οπτικοακουστικά μέσα, σύμφωνα με τις νέες αντιλήψεις εκπαίδευσης. Οι άνετοι χώροι, ο εργονομικός εξοπλισμός, το σύστημα κλιματισμού και κάθε άλλο απαραίτητο μέσο, δημιουργούν ένα ιδανικό εκπαιδευτικό περιβάλλον.
+            Κάθε κτίριο διαθέτει πλήρη ακαδημαϊκή και διοικητική υποστήριξη, απόλυτη αυτονομία, αλλά παράλληλα και διασύνδεση μέσω δικτύου με τα άλλα κτίρια.
+            Η συνολική επιφάνεια των εκπαιδευτικών εγκαταστάσεων του BCA είναι 6.000 τ.μ.',
             'background' => $background,
         ]);
 
+        new Portal($school25, 5, 'college');
 
-
-
-        $school1->background = $this->createImages('/upload/school/' . $school1->id . '/1.jpg')->id;
-        $school1->save();
-        $this->makeSettings($school1);
-        $this->insertImages($school1, '/upload/school/1/', 5);
-
-        $school2->background = $this->createImages('/upload/school/' . $school2->id . '/1.jpg')->id;
-        $school2->save();
-        $this->makeSettings($school2);
-        $this->insertImages($school2, '/upload/school/2/', 5);
-
-        $school3->background = $this->createImages('/upload/school/' . $school3->id . '/1.jpg')->id;
-        $school3->save();
-        $this->makeSettings($school3);
-        $this->insertImages($school3, '/upload/school/3/', 5);
-
-        $school4->background = $this->createImages('/upload/school/' . $school4->id . '/1.jpg')->id;
-        $school4->save();
-        $this->makeSettings($school4);
-        $this->insertImages($school4, '/upload/school/4/', 5);
-
-        $school5->background = $this->createImages('/upload/school/' . $school5->id . '/1.jpg')->id;
-        $school5->save();
-        $this->makeSettings($school5);
-        $this->insertImages($school5, '/upload/school/5/', 5);
-
-        $school6->background = $this->createImages('/upload/school/' . $school6->id . '/1.jpg')->id;
-        $school6->save();
-        $this->makeSettings($school6);
-        $this->insertImages($school6, '/upload/school/6/', 5);
-
-        $school7->background = $this->createImages('/upload/school/' . $school7->id . '/1.jpg')->id;
-        $school7->save();
-        $this->makeSettings($school7);
-        $this->insertImages($school7, '/upload/school/7/', 5);
-
-        $school8->background = $this->createImages('/upload/school/' . $school8->id . '/1.jpg')->id;
-        $school8->save();
-        $this->makeSettings($school8);
-        $this->insertImages($school8, '/upload/school/8/', 5);
-
-        $school9->background = $this->createImages('/upload/school/' . $school9->id . '/1.jpg')->id;
-        $school9->save();
-        $this->makeSettings($school9);
-        $this->insertImages($school9, '/upload/school/9/', 5);
-
-        $school10->background = $this->createImages('/upload/school/' . $school10->id . '/1.jpg')->id;
-        $school10->save();
-        $this->makeSettings($school10);
-        $this->insertImages($school10, '/upload/school/10/', 5);
-
-        $school11->background = $this->createImages('/upload/school/' . $school11->id . '/1.jpg')->id;
-        $school11->save();
-        $this->makeSettings($school11);
-        $this->insertImages($school11, '/upload/school/11/', 5);
-
-        $school12->background = $this->createImages('/upload/school/' . $school12->id . '/1.jpg')->id;
-        $school12->save();
-        $this->makeSettings($school12);
-        $this->insertImages($school12, '/upload/school/12/', 5);
-
-        $school13->background = $this->createImages('/upload/school/' . $school13->id . '/1.jpg')->id;
-        $school13->save();
-        $this->makeSettings($school13);
-        $this->insertImages($school13, '/upload/school/13/', 5);
-
-        $school14->background = $this->createImages('/upload/school/' . $school14->id . '/1.jpg')->id;
-        $school14->save();
-        $this->makeSettings($school14);
-        $this->insertImages($school14, '/upload/school/14/', 5);
-
-        $school15->background = $this->createImages('/upload/school/' . $school15->id . '/1.jpg')->id;
-        $school15->save();
-        $this->makeSettings($school15);
-        $this->insertImages($school15, '/upload/school/15/', 5);
-
-        $school16->background = $this->createImages('/upload/school/' . $school16->id . '/1.jpg')->id;
-        $school16->save();
-        $this->makeSettings($school16);
-        $this->insertImages($school16, '/upload/school/16/', 5);
-
-        $school17->background = $this->createImages('/upload/school/' . $school17->id . '/1.jpg')->id;
-        $school17->save();
-        $this->makeSettings($school17);
-        $this->insertImages($school17, '/upload/school/17/', 5);
-
-        $school18->background = $this->createImages('/upload/school/' . $school18->id . '/1.jpg')->id;
-        $school18->save();
-        $this->makeSettings($school18);
-        $this->insertImages($school18, '/upload/school/18/', 5);
-
-        $school19->background = $this->createImages('/upload/school/' . $school19->id . '/1.jpg')->id;
-        $school19->save();
-        $this->makeSettings($school19);
-        $this->insertImages($school19, '/upload/school/19/', 5);
-
-        $school20->background = $this->createImages('/upload/school/' . $school20->id . '/1.jpg')->id;
-        $school20->save();
-        $this->makeSettings($school20);
-        $this->insertImages($school20, '/upload/school/20/', 5);
-
-        $school21->background = $this->createImages('/upload/school/' . $school21->id . '/1.jpg')->id;
-        $school21->save();
-        $this->makeSettings($school21);
-        $this->insertImages($school21, '/upload/school/21/', 5);
-
-        $school22->background = $this->createImages('/upload/school/' . $school22->id . '/1.jpg')->id;
-        $school22->save();
-        $this->makeSettings($school22);
-        $this->insertImages($school22, '/upload/school/22/', 5);
-
-        $school23->background = $this->createImages('/upload/school/' . $school23->id . '/1.jpg')->id;
-        $school23->save();
-        $this->makeSettings($school23);
-        $this->insertImages($school23, '/upload/school/23/', 5);
-
-        $school24->background = $this->createImages('/upload/school/' . $school24->id . '/1.jpg')->id;
-        $school24->save();
-        $this->makeSettings($school24);
-        $this->insertImages($school24, '/upload/school/24/', 5);
-
-        $school25->background = $this->createImages('/upload/school/' . $school25->id . '/1.jpg')->id;
-        $school25->save();
-        $this->makeSettings($school25);
-        $this->insertImages($school25, '/upload/school/25/', 5);
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BSc (Hons) Accounting and Finance', 'http://www.bca.edu.gr/course/1168/bsc-hons-accounting-and-finance');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BSc (Hons) Business Management', 'http://www.bca.edu.gr/course/961/bsc-hons-business-management');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BSc (Hons) Business Management [Entrepreneurship and Innovation]', 'http://www.bca.edu.gr/course/1164/bsc-hons-business-management-entrepreneurship-and-innovation');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BSc (Hons) Business Management [Marketing]', 'http://www.bca.edu.gr/course/2017/bsc-hons-business-management-marketing');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Ναυτιλιακά - Nautical Education', 'BSc (Hons) Shipping', 'http://www.bca.edu.gr/course/1165/bsc-hons-shipping');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Ναυτιλιακά - Nautical Education', 'BSc (Hons) Maritime Business', 'http://www.bca.edu.gr/course/1872/bsc-hons-maritime-business');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Τουρισμός - Tourism', 'BA (Hons) Hospitality and Tourism Management', 'http://www.bca.edu.gr/course/1167/ba-hons-hospitality-and-tourism-management');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BSc Computer Science', 'http://www.athtech.gr/studies/bachelors/bsc-computer-science/');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BSc Computer Science (Business Informatics)', 'http://www.athtech.gr/courses/bachelors/business-informatics/');
+        Scholio::portalStudy($school25, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BSc Computer Science (Internet Computing)', 'http://www.athtech.gr/courses/bachelors/internet-computing/');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'Master in Business Administration (MBA)', 'http://www.bca.edu.gr/course/1171/mba');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MBA for Executives', 'http://www.bca.edu.gr/course/1864/mba-executives');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MSc Accounting and Finance', 'http://www.bca.edu.gr/course/1172/msc-accounting-and-finance');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MSc Digital Marketing', 'http://www.bca.edu.gr/course/1174/msc-digital-marketing');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MSc Business Psychology', 'http://www.bca.edu.gr/course/1378/msc-business-psychology');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MSc Consumer Psychology', 'http://www.bca.edu.gr/course/1170/msc-consumer-psychology');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Ναυτιλιακά - Nautical Education', 'MSc Shipping Business', 'http://www.bca.edu.gr/course/1183/msc-shipping-business');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Ναυτιλιακά - Nautical Education', 'LLM Maritime Law', 'http://www.bca.edu.gr/course/2407/llm-maritime-law');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Ναυτιλιακά - Nautical Education', 'MSc Shipping - e-Learning', 'http://shipping.education/');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Management of Business, Innovation and Technology (MBIT)', 'http://www.athtech.gr/studies/masters/management-of-business-innovation-and-technology/');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Security', 'http://www.athtech.gr/courses/masters/advanced-software-engineering/information-security/');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Telecommunications', 'http://www.athtech.gr/studies/masters/telecommunications/');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Web and Mobile Applications', 'http://www.athtech.gr/courses/masters/advanced-software-engineering/web-mobile-applications/');
+        Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Data Analytics', 'http://www.athtech.gr/studies/masters/data-analytics/');
     }
 
-    public function makeSettings($school)
-    {
-        $scholarshipLimit = new ScholarshipLimit;
-        $scholarshipLimit->school_id = $school->id;
-        $scholarshipLimit->cr1 = 10;
-        $scholarshipLimit->cr2 = 6;
-        $scholarshipLimit->cr3 = 2;
-        $scholarshipLimit->cr4 = 2;
-        $scholarshipLimit->cr5 = 1;
-        $scholarshipLimit->save();
-
-        $university = new University;
-        $university->name = $school->admin->name;
-        $university->save();
-
-        $subscription = new Subscription;
-        $subscription->user_id = $school->admin->id;
-        $subscription->save();
-
-        $settings = new SchoolSetting;
-        $settings->school_id = $school->id;
-        $settings->save();
-
-        $address = Scholio::geocode($school->address . ', ' . $school->city);
-        if ($address == 'GEOCODE ERROR') {
-            dd($address);
-        } else {
-            try {
-                $lat = $address['lat'];
-                $lng = $address['lng'];
-                $school->lat = $lat;
-                $school->lng = $lng;
-                $school->save();
-            } catch (Exception $e) {
-            }
-        }
-    }
-
-    public function insertImages($school, $path, $until)
-    {
-        for ($i = 2; $i <= $until; $i++) {
-            $image = $this->createImages($path . $i . '.jpg');
-            $school->image()->toggle($image);
-        }
-    }
-
-    public function createImages($path)
-    {
-        $image = new Image;
-        $image->full_path = $path;
-        $image->path = $path;
-        $image->name = $path;
-        $image->extension = 'jpg';
-        $image->alt = 'School Image';
-        $image->save();
-
-        return $image;
-    }
 }
