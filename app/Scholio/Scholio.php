@@ -547,20 +547,15 @@ class Scholio
         $l = Level::where('name', $level)->first();
         $newLevel = $l;
 
-        $s = Section::where('name', $section)->first();
-        $newSection = $s;
-
-        $st = Study::where('name', $study)->first();
-        $newStudy = $st;
-
-        // dd($newLevel);
-
         if (count($l) == 0) {
             $newLevel = new Level;
             $newLevel->name = $level;
             $newLevel->school_types_id = $school->type->id;
             $newLevel->save();
         }
+
+        $s = Section::where('name', $section)->andWhere('level_id', $newLevel->id)->first();
+        $newSection = $s;
 
         if (count($s) == 0) {
             $newSection = new Section;
@@ -570,6 +565,9 @@ class Scholio
 
             $new = true;
         }
+
+        $st = Study::where('name', $study)->first();
+        $newStudy = $st;
 
         if (count($st) == 0) {
             $newStudy = new Study;
