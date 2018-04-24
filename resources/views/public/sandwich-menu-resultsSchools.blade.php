@@ -109,10 +109,12 @@
             <div class="choose-lang" >
                 <a href="/lang/en" style="z-index: 7000!important;">ENG &nbsp;</a> | <a href="/lang/el"> &nbsp;&nbsp;GR</a>
             </div>
-            <a href="{{url('public/scholarships')}}" class="nav-item btn-school-results" >
-                <i class="fa fa-trophy margin-right-5">
-                </i>@lang('schools.navigation.search_scholarship')
-            </a>
+            <!-- ================  For portal only ==================== -->
+            {{--<a href="{{url('public/scholarships')}}" class="nav-item btn-school-results" >--}}
+                {{--<i class="fa fa-trophy margin-right-5">--}}
+                {{--</i>@lang('schools.navigation.search_scholarship')--}}
+            {{--</a>--}}
+            <!-- ===================================================== -->
             <a href="{{url('/')}}" class="nav-item btn-home" >
                 @lang('scholarships.navigation.home')
             </a>

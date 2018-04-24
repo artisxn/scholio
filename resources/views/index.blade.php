@@ -499,17 +499,64 @@
 		</section>
 
 		<!-- Second Section -->
+		{{--<section id="sc-landing-sec2" class="sc-landing-sec2">--}}
+			{{--<div class="container ">--}}
+				{{--<div class="sc-landing-sec2-content">--}}
+					{{--<h2 class="text-center sc-t-white sc-t-dark-grey">@lang('main.about.title')</h2>--}}
+					{{--<br>--}}
+					{{--<br>--}}
+					{{--<div class="row">--}}
+						{{--<div class="col-md-4 text-center">--}}
+							{{--<img src="{{asset('new/img/landing-icon-1search.png')}}">--}}
+							{{--<h5 class="">@lang('main.about.section1.title')</h5>--}}
+							{{--<p class="centered-text">@lang('main.about.section1.subtitle')</p>--}}
+						{{--</div>--}}
+						{{--<div class="visible-sm visible-xs">--}}
+							{{--<br>--}}
+							{{--<br>--}}
+							{{--<br>--}}
+						{{--</div>--}}
+						{{--<div class="col-md-4 text-center">--}}
+							{{--<img src="{{asset('new/img/landing-icon-2pencil.png')}}">--}}
+							{{--<h5>@lang('main.about.section2.title')</h5>--}}
+							{{--<p class="centered-text">@lang('main.about.section2.subtitle')</p>--}}
+						{{--</div>--}}
+						{{--<div class="visible-sm visible-xs">--}}
+							{{--<br>--}}
+							{{--<br>--}}
+							{{--<br>--}}
+						{{--</div>--}}
+						{{--<div class="col-md-4 text-center">--}}
+							{{--<img src="{{asset('new/img/landing-icon-3startup.png')}}">--}}
+							{{--<h5>@lang('main.about.section3.title')</h5>--}}
+							{{--<p class="centered-text">@lang('main.about.section3.subtitle')</p>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+
+					{{--<div class="row" id="">--}}
+						{{--<div class="col-md-4 col-md-offset-4">--}}
+							{{--<br>--}}
+							{{--<a href="register/role/">--}}
+								{{--<button class=" col-xs-offset-3 col-sm-offset-3 col-md-offset-1  col-lg-10 col-md-10 col-sm-6 col-xs-6 sc-button sc-green sc-t-white navbar-btn">@lang('main.about.button') </button>--}}
+							{{--</a>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+				{{--</div>--}}
+			{{--</div>--}}
+		{{--</section>--}}
+
+
 		<section id="sc-landing-sec2" class="sc-landing-sec2">
 			<div class="container ">
 				<div class="sc-landing-sec2-content">
-					<h2 class="text-center sc-t-white sc-t-dark-grey">@lang('main.about.title')</h2>
+					<h2 class="text-center sc-t-white sc-t-dark-grey">Ανακάλυψε τα δημοφιλέστερα εκπαιδευτικά ιδρύματα</h2>
 					<br>
 					<br>
 					<div class="row">
 						<div class="col-md-4 text-center">
 							<img src="{{asset('new/img/landing-icon-1search.png')}}">
-							<h5 class="">@lang('main.about.section1.title')</h5>
-							<p class="centered-text">@lang('main.about.section1.subtitle')</p>
+							<h5 class="">Αναζήτησε</h5>
+							<p class="centered-text">Αναζήτησε εκπαιδευτικά ιδρύματα όπως κολλέγια, Επαγγελματικές Σχολές και ιδιωτικά Σχολεία.</p>
 						</div>
 						<div class="visible-sm visible-xs">
 							<br>
@@ -518,8 +565,8 @@
 						</div>
 						<div class="col-md-4 text-center">
 							<img src="{{asset('new/img/landing-icon-2pencil.png')}}">
-							<h5>@lang('main.about.section2.title')</h5>
-							<p class="centered-text">@lang('main.about.section2.subtitle')</p>
+							<h5>Εγγράψου</h5>
+							<p class="centered-text">Συμπλήρωσε το προφίλ σου και εκδήλωσε το ενδιαφέρον σου για τα εκπαιδευτικά ιδρύματα της προτίμησής σου.</p>
 						</div>
 						<div class="visible-sm visible-xs">
 							<br>
@@ -529,7 +576,7 @@
 						<div class="col-md-4 text-center">
 							<img src="{{asset('new/img/landing-icon-3startup.png')}}">
 							<h5>@lang('main.about.section3.title')</h5>
-							<p class="centered-text">@lang('main.about.section3.subtitle')</p>
+							<p class="centered-text">Ο εκπαιδευτικός φορέας σε ενημερώνει για της λεπτομέρειες της εγγραφής σου.</p>
 						</div>
 					</div>
 
@@ -546,6 +593,142 @@
 		</section>
 
 		<!-- Fourth Section -->
+		{{--<section id="sc-landing-sec4" class="sc-landing-sec4">--}}
+			{{--<div class="container">--}}
+				{{--<div class="sc-landing-sec4-content">--}}
+
+					{{--<h2 class="text-center sc-t-white sc-t-dark-grey margin-bot-50">@lang('main.institutions.title')</h2>--}}
+
+
+					{{--<div class="row">--}}
+						{{--<a href="{{url('public/schools?q=κολλέγια')}}">--}}
+							{{--<div class=" col-lg-6 col-md-7 col-sm-8 col-xs-6 col-xxs-12 col-xxxs-12">--}}
+								{{--<div class="grid">--}}
+									{{--<figure class="effect-lily sc-landing-card">--}}
+										{{--<img src="{{asset('new/img/sect-photo/college2.png')}}" alt="student" style="" class="img-responsive " />--}}
+
+										{{--<figcaption>--}}
+											{{--<div class="centered-text">--}}
+												{{--<h2>@lang('main.institutions.colleges')</h2>--}}
+												{{--<p>@lang('main.institutions.button')</p>--}}
+											{{--</div>--}}
+											{{--@lang('main.institutions.button')--}}
+										{{--</figcaption>--}}
+									{{--</figure>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</a>--}}
+
+						{{--<a href="{{url('public/schools?q=Φροντιστήρια')}}">--}}
+							{{--<div class=" col-lg-3 col-md-5 col-sm-4 col-xs-6 col-xxs-12 col-xxxs-12">--}}
+								{{--<div class="grid">--}}
+									{{--<figure class="effect-lily sc-landing-card ">--}}
+										{{--<img src="{{asset('new/img/sect-photo/student2.jpg')}}" alt="student" style="" class="img-responsive " />--}}
+
+										{{--<figcaption>--}}
+											{{--<div class="centered-text">--}}
+												{{--<h2>@lang('main.institutions.frontistirio')--}}
+													{{--<span></span>--}}
+												{{--</h2>--}}
+												{{--<p>@lang('main.institutions.button')</p>--}}
+											{{--</div>--}}
+											{{--@lang('main.institutions.button')--}}
+										{{--</figcaption>--}}
+									{{--</figure>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</a>--}}
+
+						{{--<a href="{{url('public/schools?q=Ξένες Γλώσσες')}}">--}}
+							{{--<div class=" col-lg-3 col-md-5 col-sm-5 col-xs-6 col-xxs-12 col-xxxs-12">--}}
+								{{--<div class="grid">--}}
+									{{--<figure class="effect-lily sc-landing-card ">--}}
+										{{--<img src="{{asset('new/img/sect-photo/Schoolchildren2.png')}}" alt="student" style="" class="img-responsive " />--}}
+
+										{{--<figcaption>--}}
+											{{--<div class="centered-text">--}}
+												{{--<h2>@lang('main.institutions.languages1')--}}
+													{{--<span>@lang('main.institutions.languages2')</span>--}}
+												{{--</h2>--}}
+												{{--<p>@lang('main.institutions.button')</p>--}}
+											{{--</div>--}}
+											{{--@lang('main.institutions.button')--}}
+										{{--</figcaption>--}}
+									{{--</figure>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</a>--}}
+
+						{{--<a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">--}}
+							{{--<div class="col-lg-3 col-md-7 col-sm-7 col-xs-6 col-xxs-12 col-xxxs-12">--}}
+								{{--<div class="grid">--}}
+									{{--<figure class="effect-lily sc-landing-card ">--}}
+										{{--<img src="{{asset('new/img/sect-photo/belfast2.png')}}" alt="student" style="" class="img-responsive " />--}}
+
+										{{--<figcaption>--}}
+											{{--<div class="centered-text">--}}
+												{{--<h2>@lang('main.institutions.private_schools1')--}}
+													{{--<span>@lang('main.institutions.private_schools2')</span>--}}
+												{{--</h2>--}}
+												{{--<p>@lang('main.institutions.button')</p>--}}
+											{{--</div>--}}
+											{{--@lang('main.institutions.button')--}}
+										{{--</figcaption>--}}
+									{{--</figure>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</a>--}}
+
+						{{--<a href="{{url('public/schools?q=Παιδικοί Σταθμοί')}}">--}}
+							{{--<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-xxs-12 col-xxxs-12">--}}
+								{{--<div class="grid">--}}
+									{{--<figure class="effect-lily sc-landing-card ">--}}
+										{{--<img src="{{asset('new/img/sect-photo/cubes2.png')}}" alt="student" style="" class="img-responsive " />--}}
+
+										{{--<figcaption>--}}
+											{{--<div class="centered-text">--}}
+												{{--<h2>@lang('main.institutions.playground')--}}
+													{{--<span></span>--}}
+												{{--</h2>--}}
+												{{--<p>@lang('main.institutions.button')</p>--}}
+											{{--</div>--}}
+											{{--@lang('main.institutions.button')--}}
+										{{--</figcaption>--}}
+									{{--</figure>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</a>--}}
+
+						{{--<a href="{{url('public/schools?q=ΙΕΚ, Επαγγελματική Σχολή')}}">--}}
+							{{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-xxs-12 col-xxxs-12">--}}
+								{{--<div class="grid">--}}
+									{{--<figure class="effect-lily sc-landing-card ">--}}
+										{{--<img src="{{asset('new/img/sect-photo/doct2.png')}}" alt="student" style="" class="img-responsive " />--}}
+
+										{{--<figcaption>--}}
+											{{--<div class="centered-text">--}}
+												{{--<h2>@lang('main.institutions.iek1')--}}
+													{{--<span> @lang('main.institutions.iek2')</span>--}}
+												{{--</h2>--}}
+												{{--<p>@lang('main.institutions.button')</p>--}}
+											{{--</div>--}}
+											{{--@lang('main.institutions.button')--}}
+										{{--</figcaption>--}}
+									{{--</figure>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</a>--}}
+
+					{{--</div>--}}
+				{{--</div>--}}
+			{{--</div>--}}
+		{{--</section>--}}
+
+		<!-- Third Section -->
+
+
+
+
 		<section id="sc-landing-sec4" class="sc-landing-sec4">
 			<div class="container">
 				<div class="sc-landing-sec4-content">
@@ -554,66 +737,9 @@
 
 
 					<div class="row">
-						<a href="{{url('public/schools?q=κολλέγια')}}">
-							<div class=" col-lg-6 col-md-7 col-sm-8 col-xs-6 col-xxs-12 col-xxxs-12">
-								<div class="grid">
-									<figure class="effect-lily sc-landing-card">
-										<img src="{{asset('new/img/sect-photo/college2.png')}}" alt="student" style="" class="img-responsive " />
-
-										<figcaption>
-											<div class="centered-text">
-												<h2>@lang('main.institutions.colleges')</h2>
-												<p>@lang('main.institutions.button')</p>
-											</div>
-											@lang('main.institutions.button')
-										</figcaption>
-									</figure>
-								</div>
-							</div>
-						</a>
-
-						<a href="{{url('public/schools?q=Φροντιστήρια')}}">
-							<div class=" col-lg-3 col-md-5 col-sm-4 col-xs-6 col-xxs-12 col-xxxs-12">
-								<div class="grid">
-									<figure class="effect-lily sc-landing-card ">
-										<img src="{{asset('new/img/sect-photo/student2.jpg')}}" alt="student" style="" class="img-responsive " />
-
-										<figcaption>
-											<div class="centered-text">
-												<h2>@lang('main.institutions.frontistirio')
-													<span></span>
-												</h2>
-												<p>@lang('main.institutions.button')</p>
-											</div>
-											@lang('main.institutions.button')
-										</figcaption>
-									</figure>
-								</div>
-							</div>
-						</a>
-
-						<a href="{{url('public/schools?q=Ξένες Γλώσσες')}}">
-							<div class=" col-lg-3 col-md-5 col-sm-5 col-xs-6 col-xxs-12 col-xxxs-12">
-								<div class="grid">
-									<figure class="effect-lily sc-landing-card ">
-										<img src="{{asset('new/img/sect-photo/Schoolchildren2.png')}}" alt="student" style="" class="img-responsive " />
-
-										<figcaption>
-											<div class="centered-text">
-												<h2>@lang('main.institutions.languages1')
-													<span>@lang('main.institutions.languages2')</span>
-												</h2>
-												<p>@lang('main.institutions.button')</p>
-											</div>
-											@lang('main.institutions.button')
-										</figcaption>
-									</figure>
-								</div>
-							</div>
-						</a>
 
 						<a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">
-							<div class="col-lg-3 col-md-7 col-sm-7 col-xs-6 col-xxs-12 col-xxxs-12">
+							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card ">
 										<img src="{{asset('new/img/sect-photo/belfast2.png')}}" alt="student" style="" class="img-responsive " />
@@ -632,17 +758,17 @@
 							</div>
 						</a>
 
-						<a href="{{url('public/schools?q=Παιδικοί Σταθμοί')}}">
-							<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-xxs-12 col-xxxs-12">
+
+
+						<a href="{{url('public/schools?q=κολλέγια')}}">
+							<div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 col-xxxs-12">
 								<div class="grid">
-									<figure class="effect-lily sc-landing-card ">
-										<img src="{{asset('new/img/sect-photo/cubes2.png')}}" alt="student" style="" class="img-responsive " />
+									<figure class="effect-lily sc-landing-card">
+										<img src="{{asset('new/img/sect-photo/college2.png')}}" alt="student" style="" class="img-responsive " />
 
 										<figcaption>
 											<div class="centered-text">
-												<h2>@lang('main.institutions.playground')
-													<span></span>
-												</h2>
+												<h2>@lang('main.institutions.colleges')</h2>
 												<p>@lang('main.institutions.button')</p>
 											</div>
 											@lang('main.institutions.button')
@@ -652,8 +778,9 @@
 							</div>
 						</a>
 
+
 						<a href="{{url('public/schools?q=ΙΕΚ, Επαγγελματική Σχολή')}}">
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-xxs-12 col-xxxs-12">
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card ">
 										<img src="{{asset('new/img/sect-photo/doct2.png')}}" alt="student" style="" class="img-responsive " />
@@ -678,6 +805,9 @@
 		</section>
 
 		<!-- Third Section -->
+
+
+
 		<section id="sc-landing-sec3" class="sc-landing-sec3 sc-light-grey" style="overflow-x: hidden!important;">
 			<div class="container" style="padding-left: 0">
 				<div class="sc-landing-sec3-content">
@@ -739,14 +869,14 @@
 								{{--</div>--}} {{--
 
 							<div class="col-xs-12">--}}
-								<h5 class="text-left">
-									<span>
-										<img height="18" width="18" src="{{asset('new/img/check.svg')}}">
-									</span>
-									<span href="#myCarousel" data-slide-to="1" class="carousel-select">
-										&nbsp;&nbsp;@lang('main.features.section2')
-									</span>
-								</h5>
+								{{--<h5 class="text-left">--}}
+									{{--<span>--}}
+										{{--<img height="18" width="18" src="{{asset('new/img/check.svg')}}">--}}
+									{{--</span>--}}
+									{{--<span href="#myCarousel" data-slide-to="1" class="carousel-select">--}}
+										{{--&nbsp;&nbsp;@lang('main.features.section2')--}}
+									{{--</span>--}}
+								{{--</h5>--}}
 								{{--</div>--}} {{--
 							<div class="col-xs-12">--}}
 								<h5 class="text-left">
