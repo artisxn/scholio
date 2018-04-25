@@ -125,7 +125,9 @@ class Colleges extends Seeder
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','BEng (Hons) Electrical and Electronic Systems (Ηλεκτρολόγων - Ηλεκτρονικών Μηχανικών)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=172&Itemid=469');
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολιτισμός & Επικοινωνία','BA in Media Production - Journalism (Δημοσιογραφία)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=173&Itemid=471');
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολιτισμός & Επικοινωνία','BA in Media Production - Film Directing (Σκηνοθεσία Κινηματογράφου)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=174&Itemid=472');
-        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολιτισμός & Επικοινωνία','','');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολιτισμός & Επικοινωνία','BA (Hons) Music Technology and Production (Μουσική Τεχνολογία και Παραγωγή)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=175&Itemid=473');
+         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολιτισμός & Επικοινωνία','','','');
+
 
 
         /*===============   3 NYC   Athens ================*/
