@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\SchoolConfirmsUser;
 use App\Events\UserAppliedOnSchool;
 use App\Models\Card;
 use App\Models\CategoryReview as Category;
@@ -16,7 +17,7 @@ use App\Models\Skill;
 use App\Models\Study;
 use App\Models\Tag;
 use App\Models\Temp;
-use App\Notifications\SchoolAcceptedUser;
+use App\Scholio\Algolia;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -24,8 +25,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
-use App\Scholio\Algolia;
-use App\Events\SchoolConfirmsUser;
+use App\Models\SchoolInterest;
 
 Scholio::bot();
 
@@ -73,6 +73,22 @@ Route::post('/interested/save', 'ApiController@interestedSave')->middleware('aut
 Route::get('/interested/check', 'ApiController@interestedCheck')->middleware('auth:api');
 Route::get('/school/types/all', 'ApiController@schoolTypes')->middleware('api');
 Route::get('/socialLinks/get/{user}', 'ApiController@getSocialLinks')->middleware('api');
+
+Route::post('/interest/school', function () {
+    $user = User::where('email', request()->email)->get();
+    $interest = new SchoolInterest;
+    $interest->name = request()->name;
+    $interest->email = request()->email;
+    $interest->tel = request()->tel;
+    $interest->study_id = request()->study_id;
+    $interest->school_id = request()->school_id;
+    $interest->student = request()->student == 'student' ? true : false;
+    if(count($user) > 0){
+        $interest->user_id = $user->id;
+    }
+    $interest->save();
+
+})->middleware('api');
 
 Route::post('/school/scholarshipSave', function () {
     try {
@@ -479,11 +495,10 @@ Route::post('/request/school', function () {
 })->middleware('auth:api');
 
 Route::post('/connection/{id}/{type}/{status}/{card}/confirm', function ($id, $type, $status, $card) {
-    
+
     $user = User::find($id);
     $school = auth()->user()->info;
     event(new SchoolConfirmsUser($school, $user, $card, $type, $status));
-
 
     // $user->notify(new SchoolAcceptedUser($user, auth()->user()));
 
