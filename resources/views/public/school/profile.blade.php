@@ -186,6 +186,7 @@
         .modal-icon{height: 45px; margin:0 15px 0 5px}
         .select-container{border-bottom: 1px solid #777; margin-bottom: 20px}
         .input-text{margin-top: 40px; font-size: 110%; color: #777}
+        .input-text-interest{margin-top: 40px; font-size: 110%; color: #777; margin-bottom: -10px; }
         .cursor-hand{cursor: pointer;}
 
 
@@ -445,6 +446,11 @@
             
 
             <div class="row">
+                <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
+                                        data-toggle="modal" data-target="#interest-modal">
+                                    <i class="fa fa-pencil pad-right-15" aria-hidden="true"></i>
+                                    Ενδιαφέρομαι
+                                </button>
                 @if($school->admin->subscription->plan_id == 2)
                     @if(auth()->check())
                         @if(auth()->user()->role != 'school')
@@ -1043,53 +1049,56 @@
                         </div>
                         @endif
 
-{{--                        @if(auth()->check() && auth()->user()->role != 'school' && !auth()->user()->checkConnection($id))--}}
-
                          @if($school->admin->subscription->plan_id == 2)
-                    @if(auth()->check())
-                        @if(auth()->user()->role != 'school')
-                                @if(auth()->user()->apply->contains($school))
-                                <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
-                                    <button id="submButton" type="button" class="affix-button  sc-t-white center-block" style="background-color: #7fafbb" disabled>
-                                        <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
-                                         @lang('profile.pending')
-                                    </button>
-                                </nav>
-
-                                @else
-
-                                    @if(auth()->user()->connectedSchool->contains($school))
-                                     <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
-                                        <button id="submButton" type="button" class="affix-button sc-t-white center-block" style="background-color: #bbb" disabled >
-                                        <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
-                                        @lang('profile.connected')
-                                        </button>
-                                     </nav>
-                                    @else
+                            @if(auth()->check())
+                                @if(auth()->user()->role != 'school')
+                                        @if(auth()->user()->apply->contains($school))
                                         <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
-                                        <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
-                                                data-toggle="modal" data-target="#connect-modal" ng-disabled="!showButton">
-                                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
-                                        </button>
-                                    </nav>
+                                            <button id="submButton" type="button" class="affix-button  sc-t-white center-block" style="background-color: #7fafbb" disabled>
+                                                <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
+                                                @lang('profile.pending')
+                                            </button>
+                                        </nav>
+
+                                        @else
+
+                                            @if(auth()->user()->connectedSchool->contains($school))
+                                            <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
+                                                <button id="submButton" type="button" class="affix-button sc-t-white center-block" style="background-color: #bbb" disabled >
+                                                <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
+                                                @lang('profile.connected')
+                                                </button>
+                                            </nav>
+                                            @else
+                                                <nav data-spy="affix" data-offset-top="1170" id="connectionButton">
+                                                <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
+                                                        data-toggle="modal" data-target="#connect-modal" ng-disabled="!showButton">
+                                                    <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
+                                                </button>
+                                            </nav>
+                                            @endif
+
+                                        @endif
                                     @endif
 
-                                @endif
+                                @else
+                                    <nav data-spy="affix" data-offset-top="1240" id="connectionButton">
+                                        <a href="{{ url('/login') }}">
+                                            <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block">
+                                                <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
+                                            </button>
+                                        </a>
+
+                                    </nav>
                             @endif
-
-                        @else
-                            <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
-                                <a href="{{ url('/login') }}">
-                                    <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block">
-                                        <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
-                                    </button>
-                                </a>
-
-                            </nav>
-
-                    @endif
-
                         @endif
+
+                        <nav data-spy="affix" data-offset-top="1180" id="interestButton" style="top: 120px!important">
+                            <button id="interestButton" type="button" class="affix-button sc-orange sc-t-white center-block"
+                                    data-toggle="modal" data-target="#interest-modal">
+                                <i class="fa fa-pencil pad-right-15" aria-hidden="true"></i>Ενδιαφέρομαι
+                            </button>
+                        </nav>
 
                     </div>
 
@@ -1187,6 +1196,71 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
                         <button type="button" ng-click="sendRequest()" data-dismiss="modal" class="btn btn-info" ng-class="[{'disabledButton': !(selectedStudy && selectedStatus)}]" ng-disabled="!(selectedStudy && selectedStatus)">@lang('profile.modal.send')</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+        <!-- ====== interest Modal =======-->
+        <div id="interest-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;" >
+            <div class="modal-dialog" >
+                <div class="modal-content" >
+
+                    <div class="panel " style="background-color: #324c5a; height: 90px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" >
+                        <div class="panel-heading" style="height: 55px; color: #fff">
+                            <button type="button" class="btn pull-right modal-close" data-dismiss="modal" >
+                                x
+
+                            </button>
+                            <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: 14px;">
+                            <h3 class="pull-left panel-title" style="margin: 20px 0 0 15px;">Αίτημα Ενδιαφέροντος</h3>
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+                        <img class="pull-left margin-right-10" style="height: 45px;"
+                              ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
+
+                              <div class="select-container">
+                                    <div class="input-text-interest">
+                                    Ονοματεπώνυμο
+                                    </div>
+                                    <input type="text" ng-model="interestName" class="modal-select"/>
+                                </div>
+                                <div class="select-container">
+                                    <div class="input-text-interest">
+                                        Τηλεφωνο
+                                    </div>
+                                    <input type="text" ng-model="interestTel" class="modal-select"/>
+                                </div>
+                                <div class="select-container">
+                                    <div class="input-text-interest">
+                                        Email
+                                    </div>
+                                    <input type="text" ng-model="interestEmail" class="modal-select"/>
+                                </div>
+
+
+                              <div class="select-container">
+                                    <div class="input-text" >
+                                        <img class="modal-icon" src="/new/img/teacher/graduate.png" alt=""> @lang('profile.modal.studiesSelect')
+                                    </div>
+                                    <select ng-model="interestStudy" class="modal-select">
+                                        <optgroup label="@{{level.level.name}}" ng-repeat="level in schoolStudies">
+                                            <option ng-repeat="study in level.studies" value="@{{study.study.id}}">@{{ study.study.name }}</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+                                <div class="">
+                                    <input type="radio" ng-model="interestStudent" value="student"> Μαθητής<br>
+                                    <input type="radio" ng-model="interestStudent" value="guardian"> Γονέας<br>
+                                </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
+                        <button type="button" ng-click="sendInterest()" data-dismiss="modal" class="btn btn-info" ng-class="[{'disabledButton': !(selectedStudy && selectedStatus)}]" ng-disabled="!(interestName && interestTel && interestEmail && interestStudy)">@lang('profile.modal.send')</button>
                     </div>
                 </div>
             </div>
@@ -1305,7 +1379,6 @@
                 }
 
                 $scope.getSchoolStudies = function(){
-                    console.log('1')
                     $http.get('/api/notifications/getSchoolLevelStudies/public/{{$id}}', {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
@@ -1314,7 +1387,6 @@
                             $scope.schoolStudies = data
                             $scope.showButton = true
                             console.log('gh')
-                            console
                             console.log($scope.studies.length)
 
                         })
@@ -1392,6 +1464,7 @@
                 }
 
                 $scope.init = function () {
+                    $scope.interestStudent = 'student';
                     $scope.trustAsHtml = $sce.trustAsHtml;
                     $scope.message = null;
                     $scope.scholarship = ['sd'];
@@ -1476,6 +1549,7 @@
 
                     $scope.initial=function (){
                         console.time('initial');
+                        $scope.getSchoolStudies();
                         /* ========== BUILD levelsName ARRAY============ */
                         $scope.levelsName[0]=$scope.studies[0][0].section[0].level.name
 //                        console.log($scope.levelsName[0])
@@ -1673,6 +1747,19 @@
                     }
                 }
 
+                $scope.sendInterest = function(){
+                    console.log($scope.interestStudent);
+                    $scope.sendInterestToSchool = $http.post('/api/interest/school', { 'school_id': $scope.contactInfo.id, 'study_id': $scope.interestStudy, 'name': $scope.interestName, 'email': $scope.interestEmail, 'tel': $scope.interestTel, 'student': $scope.interestStudent }, {
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': window.Scholio.csrfToken
+                            }
+                        })
+                        .success(function (data) {
+                            window.location.reload();
+                        });
+                }
+
                 $scope.textAbout="@lang('profile.more')";
                 $scope.iconAbout='fa fa-angle-down'
                 $scope.showMoreAbout= function (hash){
@@ -1688,7 +1775,7 @@
 //                        location.hash = "#" + hash;
                     };
                 }
-                $scope.textStudies='@lang('profile.more')';
+                $scope.textStudies="@lang('profile.more')";
                 $scope.iconStudies='fa fa-angle-down'
                 $scope.showMoreStudies= function (hash){
                     if($scope.textStudies === "@lang('profile.more')"){
@@ -1704,7 +1791,7 @@
 //
                     };
                 }
-                $scope.textScholarships='@lang('profile.more')';
+                $scope.textScholarships="@lang('profile.more')";
                 $scope.iconScholarships='fa fa-angle-down'
                 $scope.showMoreScholarships= function (hash){
                     if($scope.textScholarships === "@lang('profile.more')"){
@@ -1719,7 +1806,7 @@
                         location.hash = "#" + hash;
                     };
                 }
-                $scope.textReviews='@lang('profile.more')';
+                $scope.textReviews="@lang('profile.more')";
                 $scope.iconReviews='fa fa-angle-down'
                 $scope.showMoreReviews= function (hash){
                     if($scope.textReviews === "@lang('profile.more')"){
@@ -1734,7 +1821,7 @@
                         location.hash = "#" + hash;
                     };
                 }
-                $scope.textTeachers='@lang('profile.more')';
+                $scope.textTeachers="@lang('profile.more')";
                 $scope.iconTeachers='fa fa-angle-down'
                 $scope.showMoreTeachers= function (){
                     if($scope.textTeachers === "@lang('profile.more')"){

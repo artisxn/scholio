@@ -16,9 +16,12 @@ class CreateSchoolInterestsTable extends Migration
         Schema::create('school_interests', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
+            $table->integer('school_id')->nullable();
+            $table->string('email')->nullable();
             $table->string('name')->nullable();
             $table->string('tel')->nullable();
-            $table->string('study')->nullable();
+            $table->integer('study_id')->nullable();
+            $table->boolean('student')->default(1);
             $table->timestamps();
         });
     }
