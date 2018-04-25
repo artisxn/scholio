@@ -117,6 +117,16 @@ class Colleges extends Seeder
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Occupational Therapy (Εργοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=166&Itemid=465');
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Sports Coaching and Physical Education (Προπονητική και Φυσική Αγωγή)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=785&Itemid=893');
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Podiatry (Ποδιατρική)', 'https://mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=2264&Itemid=1791');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BSc (Hons) Psychology (Ψυχολογία)','BA (Hons) Early Childhood Studies (Προσχολική Ηλικία)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=168&Itemid=458');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA (Hons) Special Education (Ειδική Αγωγή)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=169&Itemid=459');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','BA (Hons) Architecture (RIBA part 1) (Αρχιτεκτονική)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=170&Itemid=467');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','BEng (Hons) Civil Engineering & Construction (Πολιτικών Μηχανικών)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=171&Itemid=468');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','BEng (Hons) / MEng Mechanical Engineering and Manufacturing  (Μηχανολόγων Μηχανικών)','http://www.mitropolitiko.edu.gr/el/proptyxiaka-programmata-bachelors/polytexnikes-sxoles/beng-meng-mechanical-engineering-manufacturing');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','BEng (Hons) Electrical and Electronic Systems (Ηλεκτρολόγων - Ηλεκτρονικών Μηχανικών)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=172&Itemid=469');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολιτισμός & Επικοινωνία','BA in Media Production - Journalism (Δημοσιογραφία)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=173&Itemid=471');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολιτισμός & Επικοινωνία','BA in Media Production - Film Directing (Σκηνοθεσία Κινηματογράφου)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=174&Itemid=472');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Πολιτισμός & Επικοινωνία','','');
+
 
         /*===============   3 NYC   Athens ================*/
         $school3 = factory(App\Models\School::class)->create([
