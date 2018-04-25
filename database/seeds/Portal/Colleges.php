@@ -117,6 +117,10 @@ class Colleges extends Seeder
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Occupational Therapy (Εργοθεραπεία)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=166&Itemid=465');
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Sports Coaching and Physical Education (Προπονητική και Φυσική Αγωγή)', 'http://www.mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=785&Itemid=893');
         Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc (Hons) Podiatry (Ποδιατρική)', 'https://mitropolitiko.edu.gr/index.php?option=com_content&view=article&id=2264&Itemid=1791');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BSc (Hons) Psychology (Ψυχολογία)','BA (Hons) Early Childhood Studies (Προσχολική Ηλικία)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=168&Itemid=458');
+        Scholio::portalStudy($school2, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA (Hons) Special Education (Ειδική Αγωγή)','http://www.mitropolitiko.edu.gr/index.php?option=com_tz_portfolio&view=article&id=169&Itemid=459');
+
+
 
         /*===============   3 NYC   Athens ================*/
         $school3 = factory(App\Models\School::class)->create([
