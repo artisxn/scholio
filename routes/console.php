@@ -3,6 +3,7 @@
 use App\Models\Dummy;
 use App\Models\School;
 use App\Scholio\Scholio;
+use App\Jobs\Algolia;
 
 /*
 |--------------------------------------------------------------------------
@@ -156,3 +157,10 @@ Artisan::command('scholio:refresh {--s|show} {--a|algolia} {schools?}', function
     }
 
 })->describe('Refresh the Scholio App');
+
+Artisan::command('scholio:algolia', function(){
+    foreach(School::all() as $school){
+        dispatch(new Algolia($school));
+        $this->info('School ID: ' . $school->id . ' inserted!');
+    }
+})->describe('Insert Schools in Algolia');
