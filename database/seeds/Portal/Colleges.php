@@ -680,6 +680,26 @@ class Colleges extends Seeder
         ]);
         new Portal($school14, 5, 'college');
 
+        Scholio::portalStudy($school14, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Business Administration - Διοίκηση Επιχειρήσεων','http://icbs.gr/default.aspx?catid=1053');
+        Scholio::portalStudy($school14, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Marketing','http://icbs.gr/marketing.aspx');
+        Scholio::portalStudy($school14, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Marketing, Communications and Public Relations - Μάρκετινγκ, Επικοινωνία και Δημόσιες Σχέσεις','http://icbs.gr/marketing-communications-and-public-relations.aspx');
+        Scholio::portalStudy($school14, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Accounting and Finance - Λογιστική και Χρηματοοικονομική','http://icbs.gr/accounting-and-finance.aspx');
+        Scholio::portalStudy($school14, 'Προπτυχιακές Σπουδές-Bachelor','Τουρισμός - Tourism','Tourism Management - Τουριστικό Μάνατζμεντ','http://icbs.gr/tourism-and-hospitality-management.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA Executive','http://icbs.gr/mba-executive.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Marketing','http://icbs.gr/mba-in-marketing-management.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Banking and Finance - Τραπεζικά και Χρηματοοικονομικά','http://icbs.gr/mba-in-banking-and-finance.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Operations Management - Μάνατζμεντ Λειτουργιών','http://icbs.gr/mba-in-operations-management-and-systems.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Strategic Management - Στρατηγικό Μάνατζμεντ','http://icbs.gr/mba-in-strategic-management.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Human Resources Management - Μάνατζμεντ Ανθρωπίνων Πόρων','http://icbs.gr/mba-in-human-resources-management.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Logistics Management - Μάνατζμεντ Logistics','http://icbs.gr/mba-in-logistics-management.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MA in Management -  Μάνατζμεντ','http://icbs.gr/ma-in-business-management.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Accounting and Finance - Χρηματοοικονομικά και τη Λογιστική','http://icbs.gr/msc-in-accounting-and-finance.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','PG Diploma in Management Studies','http://icbs.gr/diploma-in-management-studies-dms.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisations in Health Care Management - Μάνατζμεντ Μονάδων Υγείας','http://icbs.gr/mba-in-health-care-management.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Law Operations Management - Μάνατζμεντ Νομικών Λειτουργιών','http://icbs.gr/mba-in-law-operations-management.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Management in the Public Sector - Μάνατζμεντ στο Δημόσιο Τομέα','http://icbs.gr/mba-publicsector.aspx');
+        Scholio::portalStudy($school14, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Tourism and Hospitality - Μάνατζμεντ Τουριστικών Επιχειρήσεων','http://icbs.gr/default.aspx?catid=1037');
+
         /*===============   15 iCBS LARISSA ================*/
         $school15 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Larissa Business College ', 'email' => 'icbs-lbs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbslar'])->id,
@@ -709,6 +729,26 @@ class Colleges extends Seeder
         ]);
         new Portal($school15, 5, 'college');
 
+        Scholio::portalStudy($school15, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Business Administration - Διοίκηση Επιχειρήσεων','http://icbs.gr/default.aspx?catid=1053');
+        Scholio::portalStudy($school15, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Marketing','http://icbs.gr/marketing.aspx');
+        Scholio::portalStudy($school15, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Marketing, Communications and Public Relations - Μάρκετινγκ, Επικοινωνία και Δημόσιες Σχέσεις','http://icbs.gr/marketing-communications-and-public-relations.aspx');
+        Scholio::portalStudy($school15, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Accounting and Finance - Λογιστική και Χρηματοοικονομική','http://icbs.gr/accounting-and-finance.aspx');
+        Scholio::portalStudy($school15, 'Προπτυχιακές Σπουδές-Bachelor','Τουρισμός - Tourism','Tourism Management - Τουριστικό Μάνατζμεντ','http://icbs.gr/tourism-and-hospitality-management.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA Executive','http://icbs.gr/mba-executive.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Marketing','http://icbs.gr/mba-in-marketing-management.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Banking and Finance - Τραπεζικά και Χρηματοοικονομικά','http://icbs.gr/mba-in-banking-and-finance.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Operations Management - Μάνατζμεντ Λειτουργιών','http://icbs.gr/mba-in-operations-management-and-systems.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Strategic Management - Στρατηγικό Μάνατζμεντ','http://icbs.gr/mba-in-strategic-management.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Human Resources Management - Μάνατζμεντ Ανθρωπίνων Πόρων','http://icbs.gr/mba-in-human-resources-management.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Logistics Management - Μάνατζμεντ Logistics','http://icbs.gr/mba-in-logistics-management.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MA in Management -  Μάνατζμεντ','http://icbs.gr/ma-in-business-management.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Accounting and Finance - Χρηματοοικονομικά και τη Λογιστική','http://icbs.gr/msc-in-accounting-and-finance.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','PG Diploma in Management Studies','http://icbs.gr/diploma-in-management-studies-dms.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisations in Health Care Management - Μάνατζμεντ Μονάδων Υγείας','http://icbs.gr/mba-in-health-care-management.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Law Operations Management - Μάνατζμεντ Νομικών Λειτουργιών','http://icbs.gr/mba-in-law-operations-management.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Management in the Public Sector - Μάνατζμεντ στο Δημόσιο Τομέα','http://icbs.gr/mba-publicsector.aspx');
+        Scholio::portalStudy($school15, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA with specialisation in Tourism and Hospitality - Μάνατζμεντ Τουριστικών Επιχειρήσεων','http://icbs.gr/default.aspx?catid=1037');
+
         /*===============   16 AKTO ATHENS ================*/
         $school16 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AKTO', 'email' => 'information@aktocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aktoath'])->id,
@@ -729,6 +769,17 @@ class Colleges extends Seeder
         ]);
         new Portal($school16, 5, 'college');
 
+        Scholio::portalStudy($school16, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Graphic Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-graphic-design');
+        Scholio::portalStudy($school16, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Interior Architecture', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-interior-architecture');
+        Scholio::portalStudy($school16, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Product & Design Innovation', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-product-design');
+        Scholio::portalStudy($school16, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Photography', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-photography');
+        Scholio::portalStudy($school16, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Fashion Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-fashion-design');
+        Scholio::portalStudy($school16, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Fine Art & New Media', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-fine-arts-technology');
+        Scholio::portalStudy($school16, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Animation & Interactive Media', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-3d-animation-interactive-media');
+        Scholio::portalStudy($school16, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Sketch-Comics-Cartoon', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-sketch-comics-cartoon');
+        Scholio::portalStudy($school16, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','Master of Arts in Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/master-of-arts-in-design');
+        Scholio::portalStudy($school16, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','Master of Arts in Digital Design & Interactive Applications', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/digital-design-interactive-applications');
+
         /*===============   17 AKTO THESSALONIKI ================*/
         $school17 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AKTO', 'email' => 'informationThess@aktocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aktothess'])->id,
@@ -747,7 +798,20 @@ class Colleges extends Seeder
             ',
             'background' => $background,
         ]);
+
         new Portal($school17, 5, 'college');
+
+        Scholio::portalStudy($school17, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Graphic Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-graphic-design');
+        Scholio::portalStudy($school17, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Interior Architecture', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-interior-architecture');
+        Scholio::portalStudy($school17, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Product & Design Innovation', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-product-design');
+        Scholio::portalStudy($school17, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Photography', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-photography');
+        Scholio::portalStudy($school17, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Fashion Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-fashion-design');
+        Scholio::portalStudy($school17, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Fine Art & New Media', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-fine-arts-technology');
+        Scholio::portalStudy($school17, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Animation & Interactive Media', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-3d-animation-interactive-media');
+        Scholio::portalStudy($school17, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design', 'BA in Sketch-Comics-Cartoon', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CF%80%CF%81%CE%BF%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/ba-in-sketch-comics-cartoon');
+        Scholio::portalStudy($school17, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','Master of Arts in Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/master-of-arts-in-design');
+        Scholio::portalStudy($school17, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','Master of Arts in Digital Design & Interactive Applications', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/digital-design-interactive-applications');
+
 
         /*===============   18 ATH/TECH  Athens ================*/
         $school18 = factory(App\Models\School::class)->create([
@@ -761,6 +825,7 @@ class Colleges extends Seeder
             'about' => 'Το Athens Tech είναι το πρώτο τεχνολογικό εκπαιδευτικό ίδρυμα στην Ελλάδα που συνδυάζει την τεχνολογία, την έρευνα και την επιχειρηματικότητα, με τις ανάγκες της πραγματικής οικονομίας. Χάρη στην συνδυασμένη εμπειρία 45+ ετών των τριών πρωτοπόρων δημιουργών του (BCA College, Intracom Holdings και 24media Group), είναι σε θέση να προσφέρει μια σειρά από εξειδικευμένα εκπαιδευτικά προγράμματα Bachelor και Masters, πιστοποιημένα από το πανεπιστήμιο του Sheffield, ενός εκ των 10 καλύτερων Βρετανικών Πανεπιστημίων. Επιπλέον, το ΑΤΗ/TECH προσφέρει στους φοιτητές του, τόσο την δυνατότητα 9 θέσεων πρακτικής άσκησης στην 24media (Ηuffington Post , Contra gr, Oneman, Ladylike, Νews 247), την Intrasoft International και το BCA College, όσο και την δυνατότητα ερευνητικής εργασίας στο πρότυπο ερευνητικό κέντρο AIT. Σπούδασε την τεχνολογία του αύριο, σήμερα, επιλέγοντας μία σειρά από καινοτόμα εκπαιδευτικά προγράμματα στην επιστήμη των υπολογιστών που προσφέρει το Athens Tech College.',
             'background' => $background,
         ]);
+        
         new Portal($school18, 5, 'college');
 
         /*===============  19 MBS College of Crete ================*/
