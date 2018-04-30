@@ -490,6 +490,25 @@ class Colleges extends Seeder
 
         new Portal($school9, 5, 'college');
 
+        Scholio::portalStudy($school9, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Bachelor in International Business','http://www.ist.edu.gr/bachelors/business-and-economics/ba-in-international-business/');
+        Scholio::portalStudy($school9, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc (Honours) Business Information Technology','http://www.ist.edu.gr/bachelors/computer-science-&-information-technology/bsc-honours-business-information-technology/');
+        Scholio::portalStudy($school9, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BΑ (Honours) Accounting and Finance','http://www.ist.edu.gr/bachelors/business-and-economics/ba-honours-accounting-and-finance/');
+        Scholio::portalStudy($school9, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Honours) Tourism, Hospitality and Leisure Management','http://www.ist.edu.gr/bachelors/business-and-economics/ba-honours-tourism-hospitality-and-leisure-management/');
+        Scholio::portalStudy($school9, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc(Hons) Computer Applications Development','http://www.ist.edu.gr/bachelors/computer-science-&-information-technology/bsc-hons-computer-applications-development/');
+        Scholio::portalStudy($school9, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Honours) Business Information Technology','http://www.ist.edu.gr/bachelors/computer-science-&-information-technology/bsc-honours-business-information-technology/');
+        Scholio::portalStudy($school9, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Honours) Computing','http://www.ist.edu.gr/bachelors/computer-science-&-information-technology/bsc-honours-computing/');
+        Scholio::portalStudy($school9, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Honours) Web Development','http://www.ist.edu.gr/bachelors/computer-science-&-information-technology/bsc-honours-web-development/');
+        Scholio::portalStudy($school9, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA (Masters in Business Administration)','http://www.ist.edu.gr/masters/business-&-economics/mba-masters-in-business-administration/');
+        Scholio::portalStudy($school9, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MIBA (Master of International Business Administration)','http://www.ist.edu.gr/masters/business-&-economics/miba/');
+        Scholio::portalStudy($school9, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc International Accounting with Finance','http://www.ist.edu.gr/masters/business-&-economics/msc-international-accounting-with-finance/');
+        Scholio::portalStudy($school9, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc International Tourism and Hospitality Management','http://www.ist.edu.gr/masters/business-&-economics/msc-international-tourism-and-hospitality-management/');
+        Scholio::portalStudy($school9, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc Web and Mobile Computing','http://www.ist.edu.gr/masters/computer-science-&-information-technology/msc-web-and-mobile-computing/');
+        Scholio::portalStudy($school9, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc Internet and Database Systems','http://www.ist.edu.gr/masters/computer-science-&-information-technology/msc-internet-and-database-systems/');
+        Scholio::portalStudy($school9, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc Computer Systems Security','http://www.ist.edu.gr/masters/computer-science-&-information-technology/msc-computer-systems-security/');
+        Scholio::portalStudy($school9, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc Computing and Information Systems','http://www.ist.edu.gr/masters/computer-science-&-information-technology/msc-computing-and-information-systems/');
+
+
+
         /*===============   10 CITY COLLEGE   Thesssaloniki ================*/
         $school10 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'City College', 'email' => 'acadreg@city.academic.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'citycol'])->id,
@@ -520,6 +539,27 @@ class Colleges extends Seeder
         Scholio::portalStudy($school10, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','English Language and Linguistics - BA (Hons) 3 years - Αγγλική Γλώσσα και Γλωσσολογία','http://citycollege.sheffield.eu/frontend/articles.php?cid=322&t=English-Language-and-Linguistics-BA-(Hons)');
         Scholio::portalStudy($school10, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','English Language and Linguistics - BA (Hons) 4 years - Αγγλική Γλώσσα και Γλωσσολογία','http://citycollege.sheffield.eu/frontend/articles.php?cid=333&t=English-Language-and-Linguistics-BA-(Hons)');
 
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Banking & Finance - MSc','Banking & Finance - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=47&t=MSc-in-Banking-&-Finance');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Digital Marketing and Social Media - MA','','');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Executive MBA','http://citycollege.sheffield.eu/frontend/articles.php?cid=94&t=Executive-MBA&chlang=GR_EL');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Hotel and Tourism Management - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=51&t=MSc-in-Hotel-and-Tourism-Management');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Management - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=48&t=MSc-in-Management');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Management (Human Resource Management) - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=49&t=MSc-in-Management-%28Human-Resource-Management%29');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Management (Logistics and Supply Chain Management) - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=50&t=MSc-in-Management-Logistics-and-Supply-Chain-Management');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Marketing, Advertising & Public Relations - MA','http://citycollege.sheffield.eu/frontend/articles.php?cid=45&t=MA-in-Marketing-Advertising-&-Public-Relations');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','Clinical Neuropsychology - MA','http://citycollege.sheffield.eu/frontend/articles.php?cid=346&t=MA-in-Clinical-Neuropsychology');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','Cognitive Neuropsychology - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=347&t=MSc-in-Cognitive-Neuropsychology');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','Counselling Psychology - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=56&t=MSc-in-Counselling-Psychology');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','Counselling Psychology with a Practicum - MA','http://citycollege.sheffield.eu/frontend/articles.php?cid=57&t=MA-in-Counselling-Psychology-with-a-Practicum');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','Advanced Software Engineering (Data Networks) - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=365&t=MSc-in-Advanced-Software-Engineering-(Data-Networks)');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','Advanced Software Engineering (Web and Mobile Applications) - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=366&t=MSc-in-Advanced-Software-Engineering-Web-and-Mobile-Applications');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','Advanced Software Engineering (Information Security) - MSc','http://citycollege.sheffield.eu/frontend/articles.php?cid=367&t=MSc-in-Advanced-Software-Engineering-(Information-Security)');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','Applied Linguistics with TESOL - MA','http://citycollege.sheffield.eu/frontend/articles.php?cid=324&t=Applied-Linguistics-with-TESOL-MA');
+        Scholio::portalStudy($school10, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','Translation and Interpreting - MA','http://citycollege.sheffield.eu/frontend/articles.php?cid=393&t=MA-in-Translation-and-Interpreting');
+
+
+
+
 
 
 
@@ -536,6 +576,14 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
         new Portal($school11, 5, 'college');
+
+        Scholio::portalStudy($school11, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','Graphic Design','https://vakalo.gr/course-category/ba-graphic-design/');
+        Scholio::portalStudy($school11, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','Interior Design','https://vakalo.gr/course-category/ba-interior-design/');
+        Scholio::portalStudy($school11, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','Digital Design','https://vakalo.gr/course-category/ba-digital-design/');
+        Scholio::portalStudy($school11, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','Visual Communication','https://vakalo.gr/course-category/ma-visual-communication/');
+        Scholio::portalStudy($school11, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','Architectural Design','https://vakalo.gr/course-category/ma-architectural-design/');
+
+
 
         /*===============   12 MEDITERRANEAN COLLEGE ATHENS  ================*/
         $school12 = factory(App\Models\School::class)->create([
