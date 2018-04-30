@@ -623,8 +623,8 @@ angular.module("schoolsResultsApp",[])
         }
 
     var search = instantsearch({
-        appId: 'FM3GHJGA1T',
-        apiKey: 'de6f693844a49775415380088208bc66',
+        appId: 'N08SZYEUO0',
+        apiKey: 'e00bc4548ea05c691c81f7c30c100bd7',
         indexName: 'dummySchools',
         urlSync: true
     });

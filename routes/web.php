@@ -28,20 +28,6 @@ Scholio::soonRoutes();
 Scholio::bot();
 Auth::routes();
 
-Route::get('pppp', function(){
-    // Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BSc of Science in Computer Science');
-    // Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Technology & Sciences', 'BS in Computer Science', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-computer-science');
-
-    // Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Computer Science', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-computer-science');
-    //     Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology', 'BS in Business Computing', 'http://www.act.edu/academics/undergraduate-studies/computing/bs-in-business-computing');
-    //     Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Communication & New Media', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-communication-new-media');
-    //     Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in English - Language and Literature', 'http://www.act.edu/academics/undergraduate-studies/english/ba-in-english-language-and-literature');
-    //     Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Humanities and Social Sciences', 'BA in International Relations', 'http://www.act.edu/academics/undergraduate-studies/international-relations/ba-in-international-relations');
-    //     Scholio::portalStudy(School::find(1), 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BS in Business Administration', 'http://www.act.edu/academics/undergraduate-studies/business-administration/bs-in-business-administration');
-    //     Scholio::portalStudy(School::find(1), 'Μεταπτυχιακές Σπουδές-Master', 'Τουρισμός - Tourism', 'MS in Hospitality and Tourism Management', 'http://www.act.edu/academics/graduate-studies/ms-in-hospitality-and-tourism-management');
-    //     Scholio::portalStudy(School::find(1), 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'Master of Business Administration (MBA)', 'http://www.act.edu/academics/graduate-studies/mba');
-});
-
 Route::post('/password/change', 'RoutesController@changePassword')->middleware('auth');
 
 Route::get('/card/{card}/delete', function(Card $card){

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Portal\Portal;
+use App\Scholio\Scholio;
 
 class IEK extends Seeder
 {
@@ -12,7 +13,7 @@ class IEK extends Seeder
      */
     public function run()
     {
-        $background = $this->createImages('/upload/school/univ.png')->id;
+        $background = Portal::createImages('/upload/school/univ.png')->id;
 
         /*===============  1 AKMH ΘΕΣΣΑΛΟΝΙΚΗ================*/
         $school1 = factory(App\Models\School::class)->create([
@@ -53,21 +54,16 @@ class IEK extends Seeder
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Τραπεζικά', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1131-trapezika');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Στέλεχος Κοστολόγησης', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1157-stelexos-kostologisis');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φυσικοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/fysikotherapeia');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φαρμακείου - Τεχνικός Φαρμάκων/Καλλυντικών & Παρεμφερών Προϊόντων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-farmakeioy');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/maieytiki');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/nosileytiki');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφής & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/diaititiki');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ιατρικών Εργαστηρίων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-mikrobiologoy');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φαρμακείου - Τεχνικός Φαρμάκων/Καλλυντικών & Παρεμφερών Προϊόντων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-farmakeioy');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ραδιολόγου - Ακτινολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-aktinologoy');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Εργοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/ergotherapeia');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ακτινολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/171-voithoc-aktinologou');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μικροβιολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1117-voithos-mikrobiologou');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφολογίας & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1118-stelexos-diatrofologias-diaitologias');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Εργοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1119-voithoc-ergotherapias');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1121-voithos-maieftikis');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Β. Φαρμακείου - Τεχν. Φαρμάκων / Καλλυντικών', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1122-v-farmakeiou-texn-farmakon-kallyntikon');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1120-voithos-nosileytikis');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Τέχνη Σκηνοθεσίας', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/skinothesia');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Χειριστής Ηλεκτρονικής Συνάρμοσης Εικόνας (Monter)', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/montaz');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Εικονοληψία', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/eikonolipsia');
@@ -156,21 +152,16 @@ class IEK extends Seeder
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Τραπεζικά', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1131-trapezika');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Στέλεχος Κοστολόγησης', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1157-stelexos-kostologisis');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φυσικοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/fysikotherapeia');
-        Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φαρμακείου - Τεχνικός Φαρμάκων/Καλλυντικών & Παρεμφερών Προϊόντων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-farmakeioy');
-        Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/maieytiki');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/nosileytiki');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφής & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/diaititiki');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ιατρικών Εργαστηρίων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-mikrobiologoy');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φαρμακείου - Τεχνικός Φαρμάκων/Καλλυντικών & Παρεμφερών Προϊόντων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-farmakeioy');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ραδιολόγου - Ακτινολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-aktinologoy');
-        Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Εργοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/ergotherapeia');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ακτινολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/171-voithoc-aktinologou');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μικροβιολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1117-voithos-mikrobiologou');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφολογίας & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1118-stelexos-diatrofologias-diaitologias');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Εργοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1119-voithoc-ergotherapias');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1121-voithos-maieftikis');
-        Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Β. Φαρμακείου - Τεχν. Φαρμάκων / Καλλυντικών', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1122-v-farmakeiou-texn-farmakon-kallyntikon');
-        Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1120-voithos-nosileytikis');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Τέχνη Σκηνοθεσίας', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/skinothesia');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Χειριστής Ηλεκτρονικής Συνάρμοσης Εικόνας (Monter)', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/montaz');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Εικονοληψία', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/eikonolipsia');
@@ -259,21 +250,16 @@ class IEK extends Seeder
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Τραπεζικά', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1131-trapezika');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Στέλεχος Κοστολόγησης', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1157-stelexos-kostologisis');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φυσικοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/fysikotherapeia');
-        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φαρμακείου - Τεχνικός Φαρμάκων/Καλλυντικών & Παρεμφερών Προϊόντων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-farmakeioy');
-        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/maieytiki');
-        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/nosileytiki');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφής & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/diaititiki');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ιατρικών Εργαστηρίων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-mikrobiologoy');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φαρμακείου - Τεχνικός Φαρμάκων/Καλλυντικών & Παρεμφερών Προϊόντων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-farmakeioy');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ραδιολόγου - Ακτινολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-aktinologoy');
-        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Εργοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/ergotherapeia');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ακτινολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/171-voithoc-aktinologou');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μικροβιολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1117-voithos-mikrobiologou');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφολογίας & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1118-stelexos-diatrofologias-diaitologias');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Εργοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1119-voithoc-ergotherapias');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1121-voithos-maieftikis');
-        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Β. Φαρμακείου - Τεχν. Φαρμάκων / Καλλυντικών', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1122-v-farmakeiou-texn-farmakon-kallyntikon');
-        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1120-voithos-nosileytikis');
+        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/nosileytiki');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Τέχνη Σκηνοθεσίας', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/skinothesia');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Χειριστής Ηλεκτρονικής Συνάρμοσης Εικόνας (Monter)', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/montaz');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Εικονοληψία', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/eikonolipsia');
@@ -363,7 +349,6 @@ class IEK extends Seeder
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Τραπεζικά', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1131-trapezika');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Στέλεχος Κοστολόγησης', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1157-stelexos-kostologisis');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φυσικοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/fysikotherapeia');
-        Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φαρμακείου - Τεχνικός Φαρμάκων/Καλλυντικών & Παρεμφερών Προϊόντων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-farmakeioy');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/maieytiki');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/nosileytiki');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφής & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/diaititiki');
@@ -374,10 +359,6 @@ class IEK extends Seeder
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ακτινολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/171-voithoc-aktinologou');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μικροβιολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1117-voithos-mikrobiologou');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφολογίας & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1118-stelexos-diatrofologias-diaitologias');
-        Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Εργοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1119-voithoc-ergotherapias');
-        Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1121-voithos-maieftikis');
-        Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Β. Φαρμακείου - Τεχν. Φαρμάκων / Καλλυντικών', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1122-v-farmakeiou-texn-farmakon-kallyntikon');
-        Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1120-voithos-nosileytikis');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Τέχνη Σκηνοθεσίας', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/skinothesia');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Χειριστής Ηλεκτρονικής Συνάρμοσης Εικόνας (Monter)', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/montaz');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Εικονοληψία', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/eikonolipsia');
@@ -466,7 +447,6 @@ class IEK extends Seeder
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Τραπεζικά', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1131-trapezika');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Στέλεχος Κοστολόγησης', 'https://iek-akmi.edu.gr/index.php/tomeis/53-spoudes/oikonomia-dioikisi/1157-stelexos-kostologisis');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φυσικοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/fysikotherapeia');
-        Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Φαρμακείου - Τεχνικός Φαρμάκων/Καλλυντικών & Παρεμφερών Προϊόντων', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/b-farmakeioy');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/maieytiki');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/nosileytiki');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφής & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/epaggelmata-ygeias/diaititiki');
@@ -477,10 +457,6 @@ class IEK extends Seeder
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Ακτινολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/171-voithoc-aktinologou');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μικροβιολόγου', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1117-voithos-mikrobiologou');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Στέλεχος Διατροφολογίας & Διαιτολογίας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1118-stelexos-diatrofologias-diaitologias');
-        Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Εργοθεραπείας', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1119-voithoc-ergotherapias');
-        Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Μαιευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1121-voithos-maieftikis');
-        Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Β. Φαρμακείου - Τεχν. Φαρμάκων / Καλλυντικών', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1122-v-farmakeiou-texn-farmakon-kallyntikon');
-        Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Επαγγέλματα Υγείας', 'Βοηθός Νοσηλευτικής', 'https://iek-akmi.edu.gr/index.php/tomeis/39-spoudes/epaggelmata-ygeias/1120-voithos-nosileytikis');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Τέχνη Σκηνοθεσίας', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/skinothesia');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Χειριστής Ηλεκτρονικής Συνάρμοσης Εικόνας (Monter)', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/montaz');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Οπτικοακουστικά & Τέχνες', 'Εικονοληψία', 'https://iek-akmi.edu.gr/index.php/tomeis/optikoakoystika-texni/eikonolipsia');

@@ -346,8 +346,8 @@
     var LNG = '23.00';
     var MAX_D=10;
     var c = null;
-    var APPLICATION_ID = 'FM3GHJGA1T';
-    var SEARCH_ONLY_API_KEY = 'de6f693844a49775415380088208bc66';
+    var APPLICATION_ID = 'N08SZYEUO0';
+    var SEARCH_ONLY_API_KEY = 'e00bc4548ea05c691c81f7c30c100bd7';
     var INDEX_NAME = 'dummySchools';
     var PARAMS = { hitsPerPage: 80 };
     // Client + Helper initialization

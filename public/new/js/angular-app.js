@@ -127,7 +127,7 @@
           //========Algolia Autocomplete=================
 
           $scope.input=''
-          var client = algolia.Client('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
+          var client = algolia.Client('N08SZYEUO0', 'e00bc4548ea05c691c81f7c30c100bd7');
           var schools = client.initIndex('dummySchools');
           var scholarships = client.initIndex('dummyScholarships');
           var studies = client.initIndex('dummyStudies');
