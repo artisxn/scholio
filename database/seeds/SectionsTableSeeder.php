@@ -24,6 +24,7 @@ class SectionsTableSeeder extends Seeder
             ['id' => 1, 'name' => 'Πολιτισμός & Επικοινωνία'],
             ['id' => 1, 'name' => 'Liberal Arts & Sciences'],
             ['id' => 1, 'name' => 'Fine and Performing Arts'],
+            ['id' => 1, 'name' => 'Arts & Design'],
 
             ['id' => 3, 'name' => 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business'], /** κολλέγια  Master 11-20 */
             ['id' => 3, 'name' => 'Ναυτιλιακά - Nautical Education'],
@@ -34,7 +35,7 @@ class SectionsTableSeeder extends Seeder
             ['id' => 3, 'name' => 'Πολυτεχνικές Σπουδές - Engineering'],
             ['id' => 3, 'name' => 'Πολιτισμός & Επικοινωνία'],
             ['id' => 3, 'name' => 'Liberal Arts & Sciences'],
-            ['id' => 3, 'name' => 'Fine and Performing Arts'],
+            ['id' => 3, 'name' => 'Arts & Design'],
 
             ['id' => 2, 'name' => 'Οικονομία & Διοίκηση'], /** IEK Επαγγελματικές Σπουδές 21-34 */
             ['id' => 2, 'name' => 'Επαγγέλματα Υγείας'],
@@ -50,6 +51,11 @@ class SectionsTableSeeder extends Seeder
             ['id' => 2, 'name' => 'ΜΜΕ & Αθλητισμός'],
             ['id' => 2, 'name' => 'Αγροτική Κατάρτιση - Γεωργικές Σπουδές - Γεωπονία'],
             ['id' => 2, 'name' => 'Φροντίδα Ζώων'],
+            ['id' => 2, 'name' => 'Μηχανολογία'],
+            ['id' => 2, 'name' => 'Ηλεκτρονικά'],
+            ['id' => 2, 'name' => 'Επικοινωνία & ΜΜΕ'],
+            ['id' => 2, 'name' => 'Ηλεκτρολογία & Αυτοματισμοί'],
+
 
             ['id' => 4, 'name' => 'Γενική Παιδεία'],
             ['id' => 5, 'name' => 'Ομάδα Προσανατολισμού'], /** Φροντιστήρια Μέσης Εκπαίδευσης 35-38 */

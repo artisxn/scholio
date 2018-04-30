@@ -71,10 +71,13 @@
     <!-- javascript Results -->
     <script src="{{asset('/new/js/results.js')}}"></script>
 
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+
 
     <!-- Algolia InstantSearch.JS -->
     <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3"></script> -->
     <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js"></script>
 
     <!-- Rating js-->
@@ -1070,20 +1073,21 @@ angular.module("schoolsResultsApp",[])
             })
     );
 
-    search.addWidget(
-            instantsearch.widgets.googleMaps({
-                container: document.querySelector('#map'),
-                scrollwheel: false
-            })
-    );
+    // ΒΓΑΖΕΙ ΛΑΘΟΣ rectangle bounding error
+    // search.addWidget(
+    //         instantsearch.widgets.googleMaps({
+    //             container: document.querySelector('#map'),
+    //             scrollwheel: false
+    //         })
+    // );
 
 
 
     search.start();
         var algolia = algoliasearch('FM3GHJGA1T', 'de6f693844a49775415380088208bc66');
-        var algoliaHelper = algoliasearchHelper(search, 'dummySchools', { hitsPerPage: 60 });
+        // var algoliaHelper = algoliasearchHelper(search, 'dummySchools', { hitsPerPage: 60 });
 
-        algoliaHelper.setQueryParameter('aroundLatLng', '40.80, 22.41').search()
+        // algoliaHelper.setQueryParameter('aroundLatLng', '40.80, 22.41').search()
 
     })
 
