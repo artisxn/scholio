@@ -8,6 +8,8 @@
 	<!-- prevent zoomIn in mobile inputs,selects,etc -->
 	<meta property="fb:pages" content="934370089973049" />
 
+	@include('google.main')
+	<meta name="google-site-verification" content="gIvgFOmd0fljlwlSORv5tswdbBGRoT9zU5reco2Ni0c" />
 	<title>schol.io | Your Scholarship is a Click Away</title>
 
     <!-- Favicon -->
