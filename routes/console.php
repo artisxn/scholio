@@ -4,6 +4,7 @@ use App\Models\Dummy;
 use App\Models\School;
 use App\Scholio\Scholio;
 use App\Jobs\Algolia;
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,39 +17,9 @@ use App\Jobs\Algolia;
 |
  */
 
-Artisan::command('noalgolia', function () {
-
-    $schools = School::all();
-
-    Dummy::query()->truncate();
-
-    foreach ($schools as $s) {
-        $dummy = new Dummy;
-        $dummy->type_id = $s->type_id;
-        $dummy->type = 'dfdsfsd';
-        $dummy->study = 'dfdsfsd';
-        $dummy->username = 'dfdsfsd';
-        $dummy->school_id = $s->id;
-        $dummy->name = $s->name();
-        $dummy->email = $s->email();
-        $dummy->phone = $s->phone;
-        $dummy->city = $s->city;
-        $dummy->address = $s->address;
-        $dummy->logo = $s->logo;
-        $dummy->image = $s->profileImage();
-        $dummy->website = $s->website;
-        $dummy->lengthStudents = $s->lengthStudents();
-        $dummy->lengthTeachers = $s->lengthTeachers();
-        $dummy->lengthStudies = $s->lengthStudies();
-        $dummy->lengthScholarships = $s->lengthScholarships();
-        $dummy->stars = 1.2;
-        $dummy->reviews = 55;
-        // $dummy->lat = $s->lat;
-        // $dummy->lng = $s->lng;
-        $dummy->save();
-    }
-    return 'OK';
-});
+Artisan::command('scholio:sitemap', function(){
+    SitemapGenerator::create('https://schol.io')->writeToFile(public_path() . '/sitemap.xml');
+})->describe('Generate a sitemap for the site');
 
 Artisan::command('scholio:soon {prop}', function ($prop) {
     if ($prop) {
