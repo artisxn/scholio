@@ -422,7 +422,8 @@
 					<h1 class="text-center sc-t-white typed">
 						<span class="typed-js"></span>
 					</h1>
-					<h3 class="text-center sc-t-white main-title">@lang('main.first.subtitle')</h3>
+					{{--<h3 class="text-center sc-t-white main-title">@lang('main.first.subtitle')</h3>--}}
+					<h3 class="text-center sc-t-white main-title">@lang('main.first.subtitlePortal')</h3>
 
 				</div>
 			</div>
@@ -549,14 +550,14 @@
 		<section id="sc-landing-sec2" class="sc-landing-sec2">
 			<div class="container ">
 				<div class="sc-landing-sec2-content">
-					<h2 class="text-center sc-t-white sc-t-dark-grey">Ανακάλυψε τα δημοφιλέστερα εκπαιδευτικά ιδρύματα</h2>
+					<h2 class="text-center sc-t-white sc-t-dark-grey">@lang('main.about.titlePortal')</h2>
 					<br>
 					<br>
 					<div class="row">
 						<div class="col-md-4 text-center">
 							<img src="{{asset('new/img/landing-icon-1search.png')}}">
-							<h5 class="">Αναζήτησε</h5>
-							<p class="centered-text">Αναζήτησε εκπαιδευτικά ιδρύματα όπως κολλέγια, Επαγγελματικές Σχολές και ιδιωτικά Σχολεία.</p>
+							<h5 class="">@lang('main.about.section1.titlePortal')</h5>
+							<p class="centered-text">@lang('main.about.section1.subtitlePortal')</p>
 						</div>
 						<div class="visible-sm visible-xs">
 							<br>
@@ -565,8 +566,8 @@
 						</div>
 						<div class="col-md-4 text-center">
 							<img src="{{asset('new/img/landing-icon-2pencil.png')}}">
-							<h5>Εγγράψου</h5>
-							<p class="centered-text">Συμπλήρωσε το προφίλ σου και εκδήλωσε το ενδιαφέρον σου για τα εκπαιδευτικά ιδρύματα της προτίμησής σου.</p>
+							<h5>@lang('main.about.section2.titlePortal')</h5>
+							<p class="centered-text">@lang('main.about.section2.subtitlePortal')</p>
 						</div>
 						<div class="visible-sm visible-xs">
 							<br>
@@ -576,7 +577,7 @@
 						<div class="col-md-4 text-center">
 							<img src="{{asset('new/img/landing-icon-3startup.png')}}">
 							<h5>@lang('main.about.section3.title')</h5>
-							<p class="centered-text">Ο εκπαιδευτικός φορέας σε ενημερώνει για της λεπτομέρειες της εγγραφής σου.</p>
+							<p class="centered-text">@lang('main.about.section3.subtitlePortal')</p>
 						</div>
 					</div>
 
@@ -1057,7 +1058,8 @@
 	jQuery(document).ready(function($) {
     $(function(){
         $(".typed-js").typed({
-            strings: ["@lang('main.first.title.talent')","@lang('main.first.title.student')","@lang('main.first.title.student1')"],
+            {{--strings: ["@lang('main.first.title.talent')","@lang('main.first.title.student')","@lang('main.first.title.student1')"],--}}
+			strings: ["@lang('main.first.title.student')","@lang('main.first.title.student1')"],
             typeSpeed: 100,
             backSpeed:100,
             loop: true

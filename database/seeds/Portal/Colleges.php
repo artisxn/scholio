@@ -599,6 +599,42 @@ class Colleges extends Seeder
         ]);
         new Portal($school12, 5, 'college');
 
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Επιστήμες Υγείας - Health Sciences','BSc (Hons) Physiotherapy - Φυσικοθεραπεία','https://www.medcollege.edu.gr/courses/bsc-hons-physiotherapy/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Επιστήμες Υγείας - Health Sciences','BSc (Hons) Speech and Language Therapy - Λογοθεραπεία','https://www.medcollege.edu.gr/courses/bsc-hons-speech-language-therapy/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Τουρισμός - Tourism','BA (Hons) International Hospitality Management','https://www.medcollege.edu.gr/courses/ba-hons-hospitality-management/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Τουρισμός - Tourism','BA (Hons) Professional Culinary Arts','https://www.medcollege.edu.gr/courses/ba-professional-culinary-arts/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','MEng / BEng (Hons) Mechanical Engineering & Design - Μηχανολόγος Μηχανικός','https://www.medcollege.edu.gr/courses/bsc-hons-mechanical-engineering/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','MEng / BEng (Hons) Civil Engineering & Construction - Πολιτικός Μηχανικός','https://www.medcollege.edu.gr/courses/bsc-hons-civil-engineering-and-construction/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) Computer Science','https://www.medcollege.edu.gr/courses/bsc-hons-computer-science/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) Computer Games Programming','https://www.medcollege.edu.gr/courses/bsc-hons-computer-games-programming/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) Computer Networks & Security','BSc (Hons) Computer Networks & Security');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc (Hons) Computer Networks & Security','BA (Hons) Business Management');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) Business Management (Marketing)','BA (Hons) Business Management (Marketing)');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) Business Management (Finance)','https://www.medcollege.edu.gr/courses/ba-hons-business-finance/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA (Hons) Early Childhood Studies','https://www.medcollege.edu.gr/courses/ba-hons-early-childhood-studies/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BSc (Hons) Applied Psychology - Ψυχολογία','https://www.medcollege.edu.gr/courses/bsc-hons-applied-psychology/');
+        Scholio::portalStudy($school12, 'Προπτυχιακές Σπουδές-Bachelor','Ναυτιλιακά - Nautical Education','BA (Hons) Business Management (Shipping)','https://www.medcollege.edu.gr/courses/ba-hons-business-management-shipping/');
+
+
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc Big Data Analytics','https://www.medcollege.edu.gr/courses/msc-big-data-analytics/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc Advanced Computer Networks','https://www.medcollege.edu.gr/courses/msc-advanced-computer-networks/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Ναυτιλιακά - Nautical Education','MBA Global Shipping','https://www.medcollege.edu.gr/courses/mba-global-shipping/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Counselling and Psychology in Educational Settings - Σχολική Ψυχολογία & Συμβουλευτική','https://www.medcollege.edu.gr/courses/msc-counselling-psychology-educational-settings/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Applied Psychology: Clinical Psychology and Counselling - Κλινική Ψυχολογία & Συμβουλευτική','https://www.medcollege.edu.gr/courses/msc-applied-psychology-clinical-psychology-counselling/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Applied Psychology: Health Psychology and Counselling - Ψυχολογία Υγείας & Συμβουλευτική','https://www.medcollege.edu.gr/courses/msc-applied-psychology-health-psychology-counselling/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Integrative Counselling & Psychotherapy - Συνθετική Ψυχοθεραπεία','https://www.medcollege.edu.gr/courses/msc-integrative-counselling-psychotherapy/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Cognitive Behavioural Psychotherapy (Adult)','https://www.medcollege.edu.gr/courses/msc-cognitive-behavioural-psychotherapy-adult/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MA Inclusion and Special Educational Needs and Disability (ISEND) - Ειδική Αγωγή & Ένταξη','https://www.medcollege.edu.gr/courses/ma-education-special-educational-needs-disabilities/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MA Education (Leadership & Management)','https://www.medcollege.edu.gr/courses/ma-education-leadership-management/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA Global','https://www.medcollege.edu.gr/courses/mba-master-of-business-administration/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA Global Finance','https://www.medcollege.edu.gr/courses/mba-global-finance/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','ΜSc Marketing Management','https://www.medcollege.edu.gr/courses/%ce%bcsc-marketing-management/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Πολυτεχνικές Σπουδές - Engineering','MSc Mechanical Engineering and Design','https://www.medcollege.edu.gr/courses/msc-mechanical-engineering-design/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Πολυτεχνικές Σπουδές - Engineering','MSc Civil Engineering and Construction','https://www.medcollege.edu.gr/courses/msc-civil-engineering-construction/');
+        Scholio::portalStudy($school12, 'Μεταπτυχιακές Σπουδές-Master','Τουρισμός - Tourism','MSc International Hospitality Management','https://www.medcollege.edu.gr/courses/msc-international-hospitality-management/');
+
+
+
         /*===============   13 iCBS THESSALONIKI ================*/
         $school13 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'iCBS Thessaloniki Business College ', 'email' => 'icbs@icbs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'icbsthess'])->id,
@@ -902,6 +938,42 @@ class Colleges extends Seeder
         ]);
         new Portal($school22, 5, 'college');
 
+
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Επιστήμες Υγείας - Health Sciences','BSc (Hons) Physiotherapy - Φυσικοθεραπεία','https://www.medcollege.edu.gr/courses/bsc-hons-physiotherapy/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Επιστήμες Υγείας - Health Sciences','BSc (Hons) Speech and Language Therapy - Λογοθεραπεία','https://www.medcollege.edu.gr/courses/bsc-hons-speech-language-therapy/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Τουρισμός - Tourism','BA (Hons) International Hospitality Management','https://www.medcollege.edu.gr/courses/ba-hons-hospitality-management/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Τουρισμός - Tourism','BA (Hons) Professional Culinary Arts','https://www.medcollege.edu.gr/courses/ba-professional-culinary-arts/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','MEng / BEng (Hons) Mechanical Engineering & Design - Μηχανολόγος Μηχανικός','https://www.medcollege.edu.gr/courses/bsc-hons-mechanical-engineering/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Πολυτεχνικές Σπουδές - Engineering','MEng / BEng (Hons) Civil Engineering & Construction - Πολιτικός Μηχανικός','https://www.medcollege.edu.gr/courses/bsc-hons-civil-engineering-and-construction/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) Computer Science','https://www.medcollege.edu.gr/courses/bsc-hons-computer-science/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) Computer Games Programming','https://www.medcollege.edu.gr/courses/bsc-hons-computer-games-programming/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) Computer Networks & Security','BSc (Hons) Computer Networks & Security');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc (Hons) Computer Networks & Security','BA (Hons) Business Management');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) Business Management (Marketing)','BA (Hons) Business Management (Marketing)');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) Business Management (Finance)','https://www.medcollege.edu.gr/courses/ba-hons-business-finance/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA (Hons) Early Childhood Studies','https://www.medcollege.edu.gr/courses/ba-hons-early-childhood-studies/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BSc (Hons) Applied Psychology - Ψυχολογία','https://www.medcollege.edu.gr/courses/bsc-hons-applied-psychology/');
+        Scholio::portalStudy($school22, 'Προπτυχιακές Σπουδές-Bachelor','Ναυτιλιακά - Nautical Education','BA (Hons) Business Management (Shipping)','https://www.medcollege.edu.gr/courses/ba-hons-business-management-shipping/');
+        
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc Big Data Analytics','https://www.medcollege.edu.gr/courses/msc-big-data-analytics/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc Advanced Computer Networks','https://www.medcollege.edu.gr/courses/msc-advanced-computer-networks/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Ναυτιλιακά - Nautical Education','MBA Global Shipping','https://www.medcollege.edu.gr/courses/mba-global-shipping/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Counselling and Psychology in Educational Settings - Σχολική Ψυχολογία & Συμβουλευτική','https://www.medcollege.edu.gr/courses/msc-counselling-psychology-educational-settings/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Applied Psychology: Clinical Psychology and Counselling - Κλινική Ψυχολογία & Συμβουλευτική','https://www.medcollege.edu.gr/courses/msc-applied-psychology-clinical-psychology-counselling/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Applied Psychology: Health Psychology and Counselling - Ψυχολογία Υγείας & Συμβουλευτική','https://www.medcollege.edu.gr/courses/msc-applied-psychology-health-psychology-counselling/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Integrative Counselling & Psychotherapy - Συνθετική Ψυχοθεραπεία','https://www.medcollege.edu.gr/courses/msc-integrative-counselling-psychotherapy/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MSc Cognitive Behavioural Psychotherapy (Adult)','https://www.medcollege.edu.gr/courses/msc-cognitive-behavioural-psychotherapy-adult/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MA Inclusion and Special Educational Needs and Disability (ISEND) - Ειδική Αγωγή & Ένταξη','https://www.medcollege.edu.gr/courses/ma-education-special-educational-needs-disabilities/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MA Education (Leadership & Management)','https://www.medcollege.edu.gr/courses/ma-education-leadership-management/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA Global','https://www.medcollege.edu.gr/courses/mba-master-of-business-administration/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA Global Finance','https://www.medcollege.edu.gr/courses/mba-global-finance/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','ΜSc Marketing Management','https://www.medcollege.edu.gr/courses/%ce%bcsc-marketing-management/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Πολυτεχνικές Σπουδές - Engineering','MSc Mechanical Engineering and Design','https://www.medcollege.edu.gr/courses/msc-mechanical-engineering-design/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Πολυτεχνικές Σπουδές - Engineering','MSc Civil Engineering and Construction','https://www.medcollege.edu.gr/courses/msc-civil-engineering-construction/');
+        Scholio::portalStudy($school22, 'Μεταπτυχιακές Σπουδές-Master','Τουρισμός - Tourism','MSc International Hospitality Management','https://www.medcollege.edu.gr/courses/msc-international-hospitality-management/');
+
+
+
         /*===============   23 AAS THESSALONIKI ================*/
         $school23 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AAS College ', 'email' => 'info@aas.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aas'])->id,
@@ -938,6 +1010,9 @@ class Colleges extends Seeder
         ]);
         new Portal($school24, 5, 'college');
 
+
+
+        /*===============   25 BCA Athens ================*/
         $school25 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Business College of Athens', 'email' => 'info@bca.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'bca'])->id,
             'address' => 'Δημητρέσσα 4',
@@ -983,5 +1058,8 @@ class Colleges extends Seeder
         Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Web and Mobile Applications', 'http://www.athtech.gr/courses/masters/advanced-software-engineering/web-mobile-applications/');
         Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Data Analytics', 'http://www.athtech.gr/studies/masters/data-analytics/');
     }
+
+
+    /*===============   26      ================*/
 
 }
