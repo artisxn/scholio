@@ -3,8 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
+    <meta name="description" content="Αναζήτηση εκπαιδευτικών ιρδυμάτων και των υπηρεσιών τους.">
+    <meta name="keywords" content="Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, ΙΙΕΚ, Σχολές, Σπουδές,">
     @include('google.main')
-    <title>schol.io | Διεκδίκησε την υποτροφία σου.</title>
+    <title>schol.io | Αναζήτηση εκπαιδευτικών ιρδυμάτων.</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
