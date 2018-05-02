@@ -901,9 +901,12 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
         new Portal($school19, 5, 'college');
+
         Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) Business','https://www.collegeofcrete.gr/business');
-        // Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','','');
-        // Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','','');
+        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Τουρισμός - Tourism','BA (Hons) Hospitality, Tourism & Event Management','https://www.collegeofcrete.gr/hospitality');
+        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BSc (Hons) Psychology','https://www.collegeofcrete.gr/psychology');
+        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Επιστήμες Υγείας - Health Sciences','BSc in Pharmacy','https://www.collegeofcrete.gr/pharmacy');
+        Scholio::portalStudy($school19,'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA - Master in Business Administration','https://www.collegeofcrete.gr/mba');
 
 
 
@@ -925,6 +928,12 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
         new Portal($school20, 5, 'college');
+
+        Scholio::portalStudy($school20,'Προπτυχιακές Σπουδές-Bachelor','Agriculture - Environment - Life Sciences','BSc Agro-Environmental Systems Management - Διαχείριση Aγρο-Περιβαλλοντικών Συστημάτων','http://www.perrotiscollege.edu.gr/agro-environmental-systems-management/');
+        // Scholio::portalStudy($school20,'Προπτυχιακές Σπουδές-Bachelor','Agriculture - Environment - Life Sciences','','');
+
+
+
 
         /*===============   21 NYC   Thessaloniki ================*/
         $school21 = factory(App\Models\School::class)->create([
