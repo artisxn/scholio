@@ -20,6 +20,7 @@ use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use App\Models\SocialLink;
 
 class Scholio
 {
@@ -582,5 +583,21 @@ class Scholio
         }
 
         $school->study()->attach($newStudy, ['url' => $link]);
+    }
+
+    public function portalSocial($school, $name, $link)
+    {
+        if (!$school->admin->socialLinks->pluck('name')->contains($name)) {
+            $social = new SocialLink;
+            $social->user_id = $school->admin->id;
+            $social->name = $name;
+            $social->link = $link;
+            return $social->save();
+        }else{
+            $social = $school->admin->socialLinks;
+            $s = $social->where('name', $name)->first();
+            $s->link = $link;
+            return $s->save();
+        }  
     }
 }

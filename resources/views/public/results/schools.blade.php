@@ -444,7 +444,8 @@
                     <div class="btn-group">
                         {{-- <a href="{{ url('/public/schools/map') }}"> --}}
                         <button class="btn btn-primary btn-map-mob" onClick="showMap()">
-                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>@lang('schools.show_map')
+                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>
+                            @lang('schools.show_map')
                         </button>
                         </a>
                     </div>
@@ -472,9 +473,14 @@
                     <div class="btn-group">
 
                         {{-- <a href="{{ url('/public/schools/map') }}"> --}}
-                            <a href="{{ url('/public/schools/map') }}">MAP</a>
                         <button class="btn btn-primary btn-map" onClick="showMap()">
-                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>@lang('schools.show_map')
+                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>
+                            @lang('schools.show_map')
+
+                            <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
+                            <a href="/public/schools/map" style="position: relative; z-index: -5;">MAPS</a>
+                            <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
+                            
                         </button>
                         </a>
                     </div>
