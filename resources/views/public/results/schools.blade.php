@@ -472,6 +472,7 @@
                     <div class="btn-group">
 
                         {{-- <a href="{{ url('/public/schools/map') }}"> --}}
+                            <a href="{{ url('/public/schools/map') }}">MAP</a>
                         <button class="btn btn-primary btn-map" onClick="showMap()">
                             <i class="fa fa-map pad-right-15" aria-hidden="true"></i>@lang('schools.show_map')
                         </button>
