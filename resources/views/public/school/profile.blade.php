@@ -638,7 +638,7 @@
                                                 <ul ng-repeat="study in studiesName[levIndex][secIndex]" style="list-style-type: none;">
                                                     <li class="pad-top-7 margin-left-10">
                                                         <span class="  font-weight-300" style="" ng-if="studiesUrl[levIndex][secIndex][$index]">
-                                                            <a href="@{{ studiesUrl[levIndex][secIndex][$index] }}">@{{ study }}</a>
+                                                            <a href="@{{ studiesUrl[levIndex][secIndex][$index] }}" target="_blank">@{{ study }}</a>
                                                         </span>
                                                         <span class="  font-weight-300" style="" ng-if="!studiesUrl[levIndex][secIndex][$index]">
                                                             @{{ study }}

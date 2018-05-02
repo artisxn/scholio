@@ -139,15 +139,15 @@
                 {{--</a>--}}
             {{--@endif--}}
 
-
-            <a href="{{url('public/schools')}}" class="nav-item btn-scholarship-results" >
+            <!-- class="nav-item btn-scholarship-results" -->
+            <a href="{{url('public/schools')}}" class="nav-item btn-school-results" >
                 <i class="fa fa-university margin-right-5">
                 </i>@lang('scholarships.search_institution')
             </a>
-            <a href="{{url('public/scholarships')}}" class="nav-item btn-school-results" >
+            <!-- <a href="{{url('public/scholarships')}}" class="nav-item btn-school-results" >
                 <i class="fa fa-trophy margin-right-5">
                 </i>@lang('schools.navigation.search_scholarship')
-            </a>
+            </a> -->
             <a href="{{url('/')}}" class="nav-item btn-home" >
                 @lang('scholarships.navigation.home')
             </a>
