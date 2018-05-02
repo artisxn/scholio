@@ -1228,9 +1228,10 @@
                         <img class="pull-left margin-right-10" style="height: 45px;"
                               ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
 
+                              <div class="clearfix"></div>
+
                               <div class="select-container">
-                                    <div class="input-text-interest">
-                                    Ονοματεπώνυμο
+                                    <div class="input-text-interest">Ονοματεπώνυμο
                                     </div>
                                     <input type="text" ng-model="interestName" class="modal-select"/>
                                 </div>
@@ -1265,7 +1266,7 @@
                                 </div>
                     </div>
 
-                    <div class="modal-footer">
+                    <div class="modal-footer" style="margin-bottom: 40px;">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
                         <button type="button" ng-click="sendInterest()" data-dismiss="modal" class="btn btn-info" ng-class="[{'disabledButton': !(selectedStudy && selectedStatus)}]" ng-disabled="!(interestName && interestTel && interestEmail && interestStudy)">@lang('profile.modal.send')</button>
                     </div>
