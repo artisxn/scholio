@@ -930,7 +930,17 @@ class Colleges extends Seeder
         new Portal($school20, 5, 'college');
 
         Scholio::portalStudy($school20,'Προπτυχιακές Σπουδές-Bachelor','Agriculture - Environment - Life Sciences','BSc Agro-Environmental Systems Management - Διαχείριση Aγρο-Περιβαλλοντικών Συστημάτων','http://www.perrotiscollege.edu.gr/agro-environmental-systems-management/');
-        // Scholio::portalStudy($school20,'Προπτυχιακές Σπουδές-Bachelor','Agriculture - Environment - Life Sciences','','');
+        Scholio::portalStudy($school20,'Προπτυχιακές Σπουδές-Bachelor','Agriculture - Environment - Life Sciences','BSc Food Science & Technology - Επιστήμη & Τεχνολογία Τροφίμων
+','http://www.perrotiscollege.edu.gr/food-science-technology/');
+        Scholio::portalStudy($school20,'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc International Business
+ - Διεθνής Επιχειρηματικότητα','http://www.perrotiscollege.edu.gr/international-business/');
+        Scholio::portalStudy($school20,'Μεταπτυχιακές Σπουδές-Master','Agriculture - Environment - Life Sciences','MSc in New Food Product & Business Development','http://www.perrotiscollege.edu.gr/new-food-product/');
+        Scholio::portalStudy($school20,'Μεταπτυχιακές Σπουδές-Master','Agriculture - Environment - Life Sciences','MSc in Marketing for the Agro-Food Sector','http://www.perrotiscollege.edu.gr/marketing-agro-food/');
+
+        Scholio::portalSocial($school20, 'facebook', 'https://www.facebook.com/Perrotis-College-135011496521638/');
+        Scholio::portalSocial($school20, 'instagram', 'https://www.instagram.com/americanfarmschool/');
+        Scholio::portalSocial($school20, 'youtube', 'https://www.youtube.com/user/AmericanFarmSchool?feature=mhee');
+        Scholio::portalSocial($school20, 'flickr', 'https://www.flickr.com/photos/americanfarmschool/');
 
 
 
@@ -1142,6 +1152,36 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
         new Portal($school24, 5, 'college');
+
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Executive MBA','http://www.econ.ihu.edu.gr/index.php/courses/executive-mba.html');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Management','http://www.econ.ihu.edu.gr/index.php/en/courses/mastersmscs/programmes/msc-in-management.html');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Banking & Finance','http://www.econ.ihu.edu.gr/index.php/en/courses/mastersmscs/programmes/msc-in-banking-a-finance');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Environmental Management and Sustainability','http://www.econ.ihu.edu.gr/index.php/courses/mastersmscs/programmes/msc-in-environmental-management-and-sustainability.html');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Strategic Product Design','http://www.econ.ihu.edu.gr/index.php/en/courses/mastersmscs/programmes/msc-in-strategic-product-design.html');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in International Accounting, Auditing, and Financial Management','http://www.econ.ihu.edu.gr/index.php/courses/mastersmscs/programmes/msc-in-international-accounting-auditing-and-financial-management.html');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Hospitality and Tourism Management','http://www.econ.ihu.edu.gr/index.php/en/courses/mastersmscs/programmes/msc-in-hospitality-and-tourism-management.html');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Sustainable Agriculture and Business','http://www.econ.ihu.edu.gr/index.php/en/courses/mastersmscs/programmes/msc-in-sustainable-agriculture-and-business.html');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Bioeconomy: Biotechnology and Law','http://www.econ.ihu.edu.gr/index.php/en/courses/mastersmscs/programmes/msc-in-bioeconomy-biotechnology-law.html');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','LLM in Transnational and European Commercial Law, Banking Law, Arbitration/Mediation','http://legal.ihu.edu.gr/index.php/en/llm-in-transnational-and-european-commercial-law-banking-law-arbitration-mediation');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MA in Art Law and Arts Management','http://legal.ihu.edu.gr/index.php/en/ma-in-art-law-and-arts-management');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MSc in Energy Law, Business, Regulation and Policy ','http://legal.ihu.edu.gr/index.php/msc-in-energy-law-business-regulation-and-policy');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MA in Black Sea & Eastern Mediterranean Studies','http://www.hum.ihu.edu.gr/index.php/courses/masters/ma-in-black-sea-cultural-studies');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MA in the Classical Archaeology and the Ancient History of Macedonia','http://www.hum.ihu.edu.gr/index.php/courses/masters/ma-in-the-history-and-archaeology-of-ancient-macedonia');
+
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Science & Technology','MSc in Data Science','http://www.tech.ihu.edu.gr/index.php/en/msc-in-data-science');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Science & Technology','MSc in Information & Communication Technology Systems','http://www.tech.ihu.edu.gr/index.php/msc-in-information-and-communication-technology-ict-systems');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Science & Technology','MSc in e-Business and Digital Marketing','http://www.tech.ihu.edu.gr/index.php/msc-in-e-business-and-digital-marketing');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Science & Technology','MSc in Mobile and Web Computing','http://www.tech.ihu.edu.gr/index.php/msc-in-mobile-and-web-computing');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Science & Technology','MSc in Cybersecurity','http://www.tech.ihu.edu.gr/index.php/msc-in-cybersecurity');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Science & Technology','MSc in Energy Systems','http://www.tech.ihu.edu.gr/index.php/msc-in-energy-systems');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Science & Technology','MSc in Energy and Finance','http://www.tech.ihu.edu.gr/index.php/msc-in-energy-and-finance');
+         Scholio::portalStudy($school24, 'Μεταπτυχιακές Σπουδές-Master', 'Science & Technology','MSc in Energy Building Design','http://www.tech.ihu.edu.gr/index.php/msc-in-energy-building-design');
+
+
+
+
+
+
 
 
 
