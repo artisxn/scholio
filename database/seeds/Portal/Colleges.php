@@ -866,6 +866,13 @@ class Colleges extends Seeder
         Scholio::portalStudy($school16, 'Μεταπτυχιακές Σπουδές-Master', 'Arts & Design', 'Master of Arts in Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/master-of-arts-in-design');
         Scholio::portalStudy($school16, 'Μεταπτυχιακές Σπουδές-Master', 'Arts & Design', 'Master of Arts in Digital Design & Interactive Applications', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/digital-design-interactive-applications');
 
+        Scholio::portalSocial($school1, 'facebook', 'https://www.facebook.com/AKTOcollege');
+        Scholio::portalSocial($school, 'instagram', 'https://instagram.com/aktocollege');
+        Scholio::portalSocial($school, 'twitter', 'https://twitter.com/AKTOcollege');
+        Scholio::portalSocial($school, 'youtube', 'http://www.youtube.com/user/aktocollege');
+        // Scholio::portalSocial($school, 'linkedin', '');
+        Scholio::portalSocial($school, 'google', 'https://www.google.com/+AktoGreece');
+
         /*===============   17 AKTO THESSALONIKI ================*/
         $school17 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AKTO', 'email' => 'informationThess@aktocollege.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aktothess'])->id,
@@ -898,6 +905,13 @@ class Colleges extends Seeder
         Scholio::portalStudy($school17, 'Μεταπτυχιακές Σπουδές-Master', 'Arts & Design', 'Master of Arts in Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/master-of-arts-in-design');
         Scholio::portalStudy($school17, 'Μεταπτυχιακές Σπουδές-Master', 'Arts & Design', 'Master of Arts in Digital Design & Interactive Applications', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/digital-design-interactive-applications');
 
+        Scholio::portalSocial($school17, 'facebook', 'https://www.facebook.com/AKTOcollege');
+        Scholio::portalSocial($school17, 'instagram', 'https://instagram.com/aktocollege');
+        Scholio::portalSocial($school17, 'twitter', 'https://twitter.com/AKTOcollege');
+        Scholio::portalSocial($school17, 'youtube', 'http://www.youtube.com/user/aktocollege');
+        // Scholio::portalSocial($school17, 'linkedin', '');
+        Scholio::portalSocial($school17, 'google', 'https://www.google.com/+AktoGreece');
+
         /*===============   18 ATH/TECH  Athens ================*/
         $school18 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ATH/TECH Athens Tech College', 'email' => 'info@athtech.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'athtech'])->id,
@@ -923,6 +937,12 @@ class Colleges extends Seeder
         Scholio::portalStudy($school18, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering - Information Security', 'http://www.athtech.gr/courses/masters/advanced-software-engineering/information-security/');
         Scholio::portalStudy($school18, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Computing', 'http://www.athtech.gr/courses/masters/msc-in-computing/');
 
+        Scholio::portalSocial($school18, 'facebook', 'https://www.facebook.com/athtech.gr/');
+        // Scholio::portalSocial($school, 'instagram', '');
+        Scholio::portalSocial($school18, 'twitter', 'https://twitter.com/AthensTechGR');
+        Scholio::portalSocial($school18, 'youtube', 'https://www.youtube.com/channel/UC6u_wm-7R2EhYvvsg60hdlg');
+        Scholio::portalSocial($school18, 'linkedin', 'https://www.linkedin.com/company/athens-tech-college');
+
         /*===============  19 MBS College of Crete ================*/
         $school19 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'MBS College of Crete', 'email' => 'admin@mbs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mbs'])->id,
@@ -944,12 +964,17 @@ class Colleges extends Seeder
         ]);
         new Portal($school19, 5, 'college');
 
+        Scholio::portalStudy($school19, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'BA (Hons) Business', 'https://www.collegeofcrete.gr/business');
+        Scholio::portalStudy($school19, 'Προπτυχιακές Σπουδές-Bachelor', 'Τουρισμός - Tourism', 'BA (Hons) Hospitality, Tourism & Event Management', 'https://www.collegeofcrete.gr/hospitality');
+        Scholio::portalStudy($school19, 'Προπτυχιακές Σπουδές-Bachelor', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences', 'BSc (Hons) Psychology', 'https://www.collegeofcrete.gr/psychology');
+        Scholio::portalStudy($school19, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences', 'BSc in Pharmacy', 'https://www.collegeofcrete.gr/pharmacy');
+        Scholio::portalStudy($school19, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business', 'MBA - Master in Business Administration', 'https://www.collegeofcrete.gr/mba');
 
-        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) Business','https://www.collegeofcrete.gr/business');
-        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Τουρισμός - Tourism','BA (Hons) Hospitality, Tourism & Event Management','https://www.collegeofcrete.gr/hospitality');
-        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BSc (Hons) Psychology','https://www.collegeofcrete.gr/psychology');
-        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Επιστήμες Υγείας - Health Sciences','BSc in Pharmacy','https://www.collegeofcrete.gr/pharmacy');
-        Scholio::portalStudy($school19,'Μεταπτυχιακές Σπουδές-Master','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','MBA - Master in Business Administration','https://www.collegeofcrete.gr/mba');
+        Scholio::portalSocial($school19, 'facebook', 'http://www.facebook.com/mbscollegeofcrete');
+        Scholio::portalSocial($school19, 'instagram', 'https://www.instagram.com/mbscollegeofcrete/');
+        Scholio::portalSocial($school19, 'twitter', 'https://twitter.com/collegeofcrete');
+        Scholio::portalSocial($school19, 'youtube', 'http://www.youtube.com/user/MBSCOLLEGEourvideos');
+        Scholio::portalSocial($school19, 'linkedin', 'https://www.linkedin.com/company/998619?trk=tyah&trkInfo=clickedVertical%3Acompany%2CclickedEntityId%3A998619%2Cidx%3A3-1-6%2CtarId%3A1468506172471%2Ctas%3Ambs%20col');
 
         /*===============  20 Perrotis College Thessaloniki ================*/
         $school20 = factory(App\Models\School::class)->create([
@@ -968,11 +993,8 @@ class Colleges extends Seeder
         ]);
         new Portal($school20, 5, 'college');
 
-        Scholio::portalStudy($school20,'Προπτυχιακές Σπουδές-Bachelor','Agriculture - Environment - Life Sciences','BSc Agro-Environmental Systems Management - Διαχείριση Aγρο-Περιβαλλοντικών Συστημάτων','http://www.perrotiscollege.edu.gr/agro-environmental-systems-management/');
+        Scholio::portalStudy($school20, 'Προπτυχιακές Σπουδές-Bachelor', 'Agriculture - Environment - Life Sciences', 'BSc Agro-Environmental Systems Management - Διαχείριση Aγρο-Περιβαλλοντικών Συστημάτων', 'http://www.perrotiscollege.edu.gr/agro-environmental-systems-management/');
         // Scholio::portalStudy($school20,'Προπτυχιακές Σπουδές-Bachelor','Agriculture - Environment - Life Sciences','','');
-
-
-
 
         /*===============   21 NYC   Thessaloniki ================*/
         $school21 = factory(App\Models\School::class)->create([
@@ -1071,6 +1093,12 @@ class Colleges extends Seeder
         Scholio::portalStudy($school21, 'Μεταπτυχιακές Σπουδές-Master', 'Ναυτιλιακά - Nautical Education', 'MSc in Marine Engineering Management (University of Greenwich)', 'http://www.nyc.gr/study-at-nyc/postgraduate/shipping/msc-marine-engineering-management-university-greenwich');
         Scholio::portalStudy($school21, 'Μεταπτυχιακές Σπουδές-Master', 'Πολυτεχνικές Σπουδές - Engineering', 'MSc. in Civil Engineering (University of Bolton)', 'http://www.nyc.gr/study-at-nyc/postgraduate/engineering-and-informatics/msc-civil-engineering-university-bolton');
 
+        Scholio::portalSocial($school21, 'facebook', 'http://www.facebook.com/nyc.gr');
+        // Scholio::portalSocial($school, 'instagram', 'https://instagram.com/');
+        Scholio::portalSocial($school21, 'twitter', 'http://www.twitter.com/nyc_gr');
+        Scholio::portalSocial($school21, 'youtube', 'http://www.youtube.com/user/nycath');
+        Scholio::portalSocial($school21, 'linkedin', 'https://www.linkedin.com/company/new-york-college');
+
         /*===============   22 MEDITERRANEAN COLLEGE Thessaloniki  ================*/
         $school22 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Mediterranean College Thessaloniki', 'email' => 'medcollege@medcollege.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'medThess'])->id,
@@ -1158,6 +1186,13 @@ class Colleges extends Seeder
         Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master', 'Arts & Design', 'MA GRAPHIC DESIGN', 'http://www.aas.gr/el/ma-graphic-design/');
         Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master', 'Arts & Design', 'MA INTERIOR DESIGN', 'http://www.aas.gr/el/ma-interior-design/');
 
+        Scholio::portalSocial($school23, 'facebook', 'https://www.facebook.com/AAS.College/');
+        // Scholio::portalSocial($school23, 'instagram', '');
+        Scholio::portalSocial($school23, 'twitter', 'https://twitter.com/aas_college');
+        Scholio::portalSocial($school23, 'youtube', 'https://youtube.com/aascollege');
+        // Scholio::portalSocial($school23, 'linkedin', '');
+        Scholio::portalSocial($school23, 'google', 'https://plus.google.com/106801520123648808536/posts');
+
         /*===============   24 IHU THESSALONIKI ================*/
         $school24 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'AAS College ', 'email' => 'infoseba@ihu.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ihu'])->id,
@@ -1177,6 +1212,12 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
         new Portal($school24, 5, 'college');
+
+        Scholio::portalSocial($school24, 'facebook', 'http://www.facebook.com/pages/International-Hellenic-University%CE%94%CE%B9%CE%B5%CE%B8%CE%BD%CE%AD%CF%82-%CE%A0%CE%B1%CE%BD%CE%B5%CF%80%CE%B9%CF%83%CF%84%CE%AE%CE%BC%CE%B9%CE%BF-%CF%84%CE%B7%CF%82-%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%BF%CF%82/348423608514448');
+        Scholio::portalSocial($school24, 'instagram', 'http://instagram.com/ihu_scitech');
+        Scholio::portalSocial($school24, 'twitter', 'http://twitter.com/IHU_SciTech');
+        Scholio::portalSocial($school24, 'youtube', 'http://www.youtube.com/IHUweb');
+        Scholio::portalSocial($school24, 'linkedin', 'http://www.linkedin.com/company/international-hellenic-university?trk=top_nav_home');
 
         /*===============   25 BCA Athens ================*/
         $school25 = factory(App\Models\School::class)->create([
@@ -1223,6 +1264,11 @@ class Colleges extends Seeder
         Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Telecommunications', 'http://www.athtech.gr/studies/masters/telecommunications/');
         Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Web and Mobile Applications', 'http://www.athtech.gr/courses/masters/advanced-software-engineering/web-mobile-applications/');
         Scholio::portalStudy($school25, 'Μεταπτυχιακές Σπουδές-Master', 'Πληροφορική - Informatics & Technology', 'MSc in Advanced Software Engineering – Data Analytics', 'http://www.athtech.gr/studies/masters/data-analytics/');
+
+        Scholio::portalSocial($school25, 'facebook', 'https://www.facebook.com/bca.business.college?ref=hl');
+        Scholio::portalSocial($school25, 'instagram', 'http://instagram.com/bcacollege#');
+        Scholio::portalSocial($school25, 'twitter', 'https://twitter.com/BCA_COLLEGE');
+        Scholio::portalSocial($school25, 'youtube', 'https://www.youtube.com/user/BCACOLLEGEOFFICIAL');
     }
 
     /*===============   26      ================*/
