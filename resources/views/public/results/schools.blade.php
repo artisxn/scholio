@@ -125,6 +125,8 @@
     .pos-xs{right: 11px;}
     .pos-right{right: -6px}
 
+    .pad-rl-2{padding-right: 2px!important; padding-left: 2px!important}
+
 
 
     .sc-button3{display: none;}
@@ -133,6 +135,8 @@
 
     .backImageSm{ height: 170px; width: 80%; left: 40px; bottom: -36px; }
     .backImageLg{ height: 260px; width: 101%; left: 10px; bottom: -30px;}
+
+
 
     @media(min-width: 768px){
         .pad-top{padding-top: 10px;}
@@ -256,6 +260,37 @@
         .text-Med{top: -204px;}
         .text-Large{top: -182px;}
         .report{bottom: -90px;!important;}
+    }
+
+
+    /* ====== Portal CSS Changes ========*/
+
+    @media (max-width:766px) {
+        .margin-portal {  margin-top: -100px;  }
+        .card-portal {  height: 550px;  }
+        .report-portal {  bottom: 30px;!important;  }
+
+        .report-drop-portal {  bottom: 25px!important;  }
+        .hr-portal{display: none }
+
+    }
+
+    @media (max-width:650px) {
+        .margin-portal {  margin-top: -120px;  }
+        .card-portal {  height: 500px;  }
+
+    }
+
+    @media (max-width:490px) {
+        .margin-portal {  margin-top: -120px;  }
+        .card-portal {  height: 440px;  }
+
+    }
+
+    @media (max-width:415px) {
+        .margin-portal {  margin-top: -100px;  }
+        .card-portal {  height: 430px;  }
+
     }
 
 
@@ -705,7 +740,7 @@ angular.module("schoolsResultsApp",[])
 
 
 
-    <div class="card clear-fix margin-bot-25" >
+    <div class="card clear-fix margin-bot-25 card-portal" >
 
         <con>
 
@@ -724,9 +759,9 @@ angular.module("schoolsResultsApp",[])
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-xl-custom" >
 
 
-                <i id="report" class="fa fa-ellipsis-h report" onClick="dropReport(@{{school_id}})" ></i>
+                <i id="report" class="fa fa-ellipsis-h report report-portal" onClick="dropReport(@{{school_id}})" ></i>
                 <!-- =================== Report  Menu ====================-->
-                <div class="report-drop" id="report-drop@{{school_id}}" style="overflow:hidden!important">
+                <div class="report-drop report-drop-portal" id="report-drop@{{school_id}}" style="overflow:hidden!important">
                      <img class="report-logo"  src="/new/img/logoNX-m.png" alt="" style="overflow:hidden!important">
                      <span class="report-title"> Αναφορά </span>
                      <form method="POST" action="/report/add/@{{school_id}}/Profile" >
@@ -829,7 +864,7 @@ angular.module("schoolsResultsApp",[])
 
             <!-- <img src="/new/img/notepad.png"  style="opacity: 0.07; height: 100px; width: auto; position: absolute; z-index: 2; right: 10px; bottom: 30px;"></img> -->
 
-            <span style="color: #eee; opacity: 0.4; filter: blur(0.6px);">
+            <span style="color: #eee; opacity: 0.001; filter: blur(0.6px);">
             <div class="col-md-9  col-lg-6 col-sm-9 col-xs-12 kf-margin-top">
                  <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                  <span class="pull-left pad-left-5">@lang('schools.cards.scholarships')</span>
@@ -857,25 +892,25 @@ angular.module("schoolsResultsApp",[])
             <div ng-show="type_id!=1 && type_id!=2">
                 <div class="margin-pad" style=""></div>
             </div>
-            <hr id="card5@{{school_id}}" >
+            <hr class="hr-portal" id="card5@{{school_id}}" >
         </div>
 
 
 
-        <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12 " id="card4@{{school_id}}" >
+        <div class="col-lg-7 col-md-10 col-sm-12 col-xs-12 margin-portal" id="card4@{{school_id}}" >
 
             <div class="" >
-                <div class="col-lg-6 col-sm-6 col-xs-12 sc-t-grey"  style="z-index: 4; position relative ">
+                <div class="col-lg-7 col-sm-7 col-xs-12 sc-t-grey pad-rl-2"  style="z-index: 4; position relative; ">
                     <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                    <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95">@{{address}}</span>
+                    <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95 ellipsis">@{{address}}</span>
                     <br>
                     <div class="hidden-xs pad-top">
                         <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
-                        <span class="pull-left pad-left-3">@{{city}} </span>
+                        <span class="pull-left pad-left-3 ellipsis">@{{city}} </span>
 
                         <br>
                     </div>
-                    <div class="pad-top-3 pad-top"></div>
+                    <div class="pad-top-3 pad-top clearfix"></div>
                     <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
                     <span class="pull-left pad-left-5">@{{phone}}</span>
                     <br>
@@ -883,18 +918,18 @@ angular.module("schoolsResultsApp",[])
               </div>
 
 
-            <div class="col-sm-6 col-xs-12 sc-t-grey" >
+            <div class="col-lg-5 col-sm-5 col-xs-12 sc-t-grey pad-rl-2" >
                    <div class="hidden-xs ">
                                 <div class="pad-top-3"></div>
                                 <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-5"> <a href="mailto:@{{email}}">@{{email}}</a></span>
+                                <span class="pull-left pad-left-3 "> <a class="ellipsis2" href="mailto:@{{email}}">@{{email}}</a></span>
                                 <br>
                    </div>
 
                    <div class="pad-top-3 pad-top">
                             @{{^site}}
                             <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                            <span class="pull-left pad-left-5"> <a href="http://@{{website}}/" target="_blank">@{{website}}</a></span>
+                            <span class="pull-left pad-left-5"> <a class="ellipsis2"  href="http://@{{website}}/" target="_blank">@{{website}}</a></span>
                             @{{/site}}
                   </div>
            </div>

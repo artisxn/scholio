@@ -488,3 +488,9 @@ video {
     .sc-landing-sec3-text{margin-left: -15px;}
 
 }
+
+/* ========  Portal changes =========== */
+@media (min-width: 351px) and (max-width: 367px) {
+    .sc-landing-secNew{height: 610px;}
+
+}

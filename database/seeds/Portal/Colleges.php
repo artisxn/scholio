@@ -1203,7 +1203,7 @@ class Colleges extends Seeder
 
         /*===============   24 IHU THESSALONIKI ================*/
         $school24 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'AAS College ', 'email' => 'infoseba@ihu.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ihu'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'International Hellenic University ', 'email' => 'infoseba@ihu.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ihu'])->id,
             'address' => '14th km Thessaloniki, Nea Moudania',
             'city' => 'θεσσαλονίκη',
             'phone' => 2310807520,

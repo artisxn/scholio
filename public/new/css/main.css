@@ -44,6 +44,21 @@ hr {
     clear: both;
     border-top: 1px solid #9b9b9b;
 }
+.ellipsis{
+    display:inline-block;
+    max-width: 93%;
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+}
+.ellipsis2{
+    display:inline-block;
+    max-width: 167px;
+    /*max-width: 99%;*/
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+}
 
 .text-incr-78{  font-size: 78%;  }
 .text-incr-85{  font-size: 85%;  }
