@@ -864,6 +864,18 @@ class Colleges extends Seeder
         
         new Portal($school18, 5, 'college');
 
+        Scholio::portalStudy($school18, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) in Computer Science','http://www.athtech.gr/courses/bachelors/computer-science/');
+        Scholio::portalStudy($school18, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) in Computer Science - Business Informatics','http://www.athtech.gr/courses/bachelors/business-informatics/');
+        Scholio::portalStudy($school18, 'Προπτυχιακές Σπουδές-Bachelor','Πληροφορική - Informatics & Technology','BSc (Hons) in Computer Science - Internet Computing','http://www.athtech.gr/courses/bachelors/internet-computing/');
+        Scholio::portalStudy($school18, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc in Management of Business, Innovation & Technology (MBIT)','http://www.athtech.gr/courses/masters/management-of-business-innovation-technology/');
+        Scholio::portalStudy($school18, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc in Advanced Software Engineering - Web & Mobile Applications','http://www.athtech.gr/courses/masters/advanced-software-engineering/web-mobile-applications/');
+        Scholio::portalStudy($school18, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc in Advanced Software Engineering - Data Analytics','http://www.athtech.gr/courses/masters/advanced-software-engineering/data-analytics/');
+        Scholio::portalStudy($school18, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc in Advanced Software Engineering - Data Networks','http://www.athtech.gr/courses/masters/advanced-software-engineering/data-networks/');
+        Scholio::portalStudy($school18, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc in Advanced Software Engineering - Information Security','http://www.athtech.gr/courses/masters/advanced-software-engineering/information-security/');
+        Scholio::portalStudy($school18, 'Μεταπτυχιακές Σπουδές-Master','Πληροφορική - Informatics & Technology','MSc in Computing','http://www.athtech.gr/courses/masters/msc-in-computing/');
+
+
+
         /*===============  19 MBS College of Crete ================*/
         $school19 = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'MBS College of Crete', 'email' => 'admin@mbs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mbs'])->id,
@@ -884,6 +896,13 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
         new Portal($school19, 5, 'college');
+        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) Business','https://www.collegeofcrete.gr/business');
+        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','','');
+        Scholio::portalStudy($school19,'Προπτυχιακές Σπουδές-Bachelor','Διοίκηση Επιχειρήσεων & Οικονομικά - Business','','');
+
+
+
+
 
         /*===============  20 Perrotis College Thessaloniki ================*/
         $school20 = factory(App\Models\School::class)->create([
@@ -923,6 +942,85 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
         new Portal($school21, 5, 'college');
+
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) Business Studies (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/business/ba-hons-business-studies-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) in Business Studies (Finance) (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/business/ba-hons-business-studies-finance-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) in Business Studies (Human Resource Management) (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/business/ba-hons-business-studies-human-resource-management-university');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) in Business Studies (International Business) (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/business/ba-hons-business-studies-international-business-university');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) in Business Studies (Logistics) (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/business/ba-hons-business-studies-logistics-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) in Business Studies (Marketing) (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/business/ba-hons-business-studies-marketing-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Bachelor in Management (Universite Toulouse 1 Capitole)','http://www.nyc.gr/study-at-nyc/undergraduate/business/bachelor-management-universite-toulouse-1-capitole');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BS Concentration Business Communications (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/business/bs-concentration-business-communications-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BS Concentration in Business Administration (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/business/bs-concentration-business-administration-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BS Concentration in Finance (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/business/bs-concentration-finance-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BS Concentration in International Business (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/business/bs-concentration-international-business-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BS Concentration in Management (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/business/bs-concentration-management-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BS Concentration in Marketing (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/business/bs-concentration-marketing-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BA (Hons) in Business with Shipping (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/shipping/ba-hons-business-shipping-university-greenwich');
+
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Accounting (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-accounting-national-american-university-distance-learning');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Applied Management (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-applied-management-national-american-university-distance');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-national-american-university');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Accounting (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-accounting-national');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Entrepreneurship (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-entrepreneurship-national');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Financial Management (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-financial-management');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Human Resource Management (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-human-resource-management');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Information Systems (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-information-systems');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in International Business (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-international-business');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Management (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-management-national');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Marketing (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-marketing-national-american');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Supply Chain Management (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-supply-chain-management');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Business Administration emphasis in Tourism and Hospitality Management (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-business-administration-emphasis-tourism-and-hospitality');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','BSc in Organizational Leadership (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/business/bsc-organizational-leadership-national-american-university');
+
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Τουρισμός - Tourism','BA (Hons) in Business Studies with Tourism (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/tourism/ba-hons-business-studies-tourism-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Τουρισμός - Tourism','BSc (Hons) International Hospitality Management (University of Bolton)','http://www.nyc.gr/study-at-nyc/undergraduate/tourism/bsc-hons-international-hospitality-management-university-bolton');
+
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA (Hons) in English Language and English Language Teaching (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/humanities-and-social-sciences/ba-hons-english-language-and-english');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA (Hons) in Film Studies (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/humanities-and-social-sciences/ba-hons-film-studies-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA Concentration Communication: Mass Media Production (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/humanities-and-social-sciences/ba-concentration-communication-mass-media');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA Concentration in Communications (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/humanities-and-social-sciences/ba-concentration-communications-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','BA Concentration in International Relations (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/humanities-and-social-sciences/ba-concentration-international-relations');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','Extended BA (Hons) International Studies (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/humanities-and-social-sciences/extended-ba-hons-international-studies');
+
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Ναυτιλιακά - Nautical Education','Bachelor in Marine Engineering (Marine Engineer Officer)','http://www.nyc.gr/study-at-nyc/undergraduate/nautical-education/bachelor-marine-engineering-marine-engineer-officer');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Ναυτιλιακά - Nautical Education','Bachelor in Navigation (Deck Officer)','http://www.nyc.gr/study-at-nyc/undergraduate/nautical-education/bachelor-navigation-deck-officer');
+
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences','BS Concentration in Psychology (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/health-sciences/bs-concentration-psychology-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences','BSc (Hons) in Biomedical Sciences (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/health-sciences/bsc-hons-biomedical-sciences-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences','BSc (Hons) in Human Nutrition (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/health-sciences/bsc-hons-human-nutrition-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences','BSc (Hons) in Psychology (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/health-sciences/bsc-hons-psychology-university-greenwich');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Επιστήμες Υγείας - Health Sciences','Extended BSc Hons Science Pathway (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/health-sciences/extended-bsc-hons-science-pathway-university-greenwich');
+
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BS. in Computer Science (State University of New York -Empire State College)','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bs-computer-science-state-university-new-york');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BS. in Information Systems (SUNY-ESC)','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bs-information-systems-suny-esc');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc (Hons) in Computer Games Programming (University of Bolton)','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-computer-games-programming');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc (Hons) in Computer Networking (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-hons-computer-networking-university');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc (Hons) in Computing (University of Bolton)','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-hons-computing-university-bolton');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc (Hons) in Internet Engineering and Web Management (University of Greenwich)','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-hons-internet-engineering-and-web');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc in Applied Information Technology (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-applied-information-technology-national');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc in Information Technology emphasis in Computer Security and Forensics (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-information-technology-emphasis-computer');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc in Information Technology emphasis in Internet Systems Development (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-information-technology-emphasis-internet');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc in Information Technology emphasis in Management Information Systems (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-information-technology-emphasis');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','BSc in Information Technology emphasis in Network Management/Microsoft (National American University) | DISTANCE LEARNING','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/bsc-information-technology-emphasis-network');
+        Scholio::portalStudy($school3, 'Προπτυχιακές Σπουδές-Bachelor', 'Πληροφορική - Informatics & Technology','Extended BEng (Hons) Computer Systems and Software Engineering (Greenwich University)','http://www.nyc.gr/study-at-nyc/undergraduate/engineering-and-informatics/extended-beng-hons-computer-systems-and');
+
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','Executive MBA (University of Bolton)','http://www.nyc.gr/study-at-nyc/postgraduate/business/executive-mba-university-bolton');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business','The University of Greenwich MBA (University of Greenwich)','http://www.nyc.gr/study-at-nyc/postgraduate/business/university-greenwich-mba-university-greenwich');
+
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MA. Second Language Learning and Teaching (University of Greenwich)','http://www.nyc.gr/study-at-nyc/postgraduate/humanities-and-social-sciences/ma-second-language-learning-and-teaching');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Ανθρωπιστικές Επιστήμες - Humanities and Social Sciences','MPhil - Education Specialisms (University of Bolton)','http://www.nyc.gr/study-at-nyc/postgraduate/humanities-and-social-sciences/mphil-education-specialisms-university');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Τουρισμός - Tourism','Master 2 Management- Pathway Management of International Tourism (Universite Toulouse 1 Capitole)','http://www.nyc.gr/study-at-nyc/postgraduate/tourism/master-2-management-pathway-management-international-tourism');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Επιστήμες Υγείας - Health Sciences','MPhil - Psychology Specialisms (University of Bolton)','http://www.nyc.gr/study-at-nyc/postgraduate/health-sciences/mphil-psychology-specialisms-university-bolton');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Επιστήμες Υγείας - Health Sciences','MSc Cognitive Behavioural Psychotherapies','http://www.nyc.gr/study-at-nyc/postgraduate/health-sciences/msc-cognitive-behavioural-therapy-university-bolton');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Επιστήμες Υγείας - Health Sciences','MSc in Psychology (University of Bolton)','http://www.nyc.gr/study-at-nyc/postgraduate/health-sciences/msc-psychology-university-bolton');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Ναυτιλιακά - Nautical Education','MSc Global Shipping Management','http://www.nyc.gr/study-at-nyc/postgraduate/shipping/msc-global-shipping-management');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Ναυτιλιακά - Nautical Education','MSc in Marine Engineering Management (University of Greenwich)','http://www.nyc.gr/study-at-nyc/postgraduate/shipping/msc-marine-engineering-management-university-greenwich');
+        Scholio::portalStudy($school3, 'Μεταπτυχιακές Σπουδές-Master', 'Πολυτεχνικές Σπουδές - Engineering','MSc. in Civil Engineering (University of Bolton)','http://www.nyc.gr/study-at-nyc/postgraduate/engineering-and-informatics/msc-civil-engineering-university-bolton');
+
+
+
+
 
         /*===============   22 MEDITERRANEAN COLLEGE Thessaloniki  ================*/
         $school22 = factory(App\Models\School::class)->create([
@@ -989,6 +1087,27 @@ class Colleges extends Seeder
             'background' => $background,
         ]);
         new Portal($school23, 5, 'college');
+
+        Scholio::portalStudy($school23, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','BA(Hons) Animation','http://www.aas.gr/el/bahons-animation/');
+        Scholio::portalStudy($school23, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','BA(Hons) Games Design','http://www.aas.gr/el/bahons-games-design-3/');
+        Scholio::portalStudy($school23, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','BA(Hons) Fashion Design','http://www.aas.gr/el/bahons-fashion-design-3/');
+        Scholio::portalStudy($school23, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','BA(Hons) Fashion Promotion','http://www.aas.gr/el/bahons-fashion-promotion-3/');
+        Scholio::portalStudy($school23, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','BA(Hons) Graphic Design','http://www.aas.gr/el/bahons-graphic-design-3/');
+        Scholio::portalStudy($school23, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','BA(Hons) Interior Design','http://www.aas.gr/el/bahons-interior-design-3/');
+        Scholio::portalStudy($school23, 'Προπτυχιακές Σπουδές-Bachelor','Arts & Design','BA(Hons) Product Design','http://www.aas.gr/el/bahons-interior-design-3/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA DESIGN Specialising in Advertising','http://www.aas.gr/el/ma-design-specialising-in-advertising/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA DESIGN Specialising in Animation','http://www.aas.gr/el/ma-design-specialising-in-animation/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA DESIGN Specialising in Digital Graphics','http://www.aas.gr/el/ma-design-specialising-in-digital-graphi/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA DESIGN specialising in Fashion Promotion','http://www.aas.gr/el/ma-design-specialising-fashion-promotion-2/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA DESIGN Specialising in Fashion Design','http://www.aas.gr/el/ma-design-specialising-in-fashion-design-2/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA DESIGN Specialising in Games Design','http://www.aas.gr/el/ma-design-specialising-in-games-design/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA DESIGN Specialising in Product Design','http://www.aas.gr/el/ma-design-specializing-in-product-design/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA DESIGN Specialising in Photography','http://www.aas.gr/el/ma-design-specializing-in-photography/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA GRAPHIC DESIGN','http://www.aas.gr/el/ma-graphic-design/');
+        Scholio::portalStudy($school23, 'Μεταπτυχιακές Σπουδές-Master','Arts & Design','MA INTERIOR DESIGN','http://www.aas.gr/el/ma-interior-design/');
+
+
+
 
         /*===============   24 IHU THESSALONIKI ================*/
         $school24 = factory(App\Models\School::class)->create([
