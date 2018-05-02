@@ -26,6 +26,8 @@ class SectionsTableSeeder extends Seeder
             ['id' => 1, 'name' => 'Fine and Performing Arts'],
             ['id' => 1, 'name' => 'Arts & Design'],
             ['id' => 1, 'name' => 'Agriculture - Environment - Life Sciences'],
+            ['id' => 1, 'name' => 'Science & Technology'],
+
 
 
             ['id' => 3, 'name' => 'Διοίκηση Επιχειρήσεων & Οικονομικά - Business'], /** κολλέγια  Master 11-20 */
@@ -39,6 +41,8 @@ class SectionsTableSeeder extends Seeder
             ['id' => 3, 'name' => 'Liberal Arts & Sciences'],
             ['id' => 3, 'name' => 'Arts & Design'],
             ['id' => 3, 'name' => 'Agriculture - Environment - Life Sciences'],
+            ['id' => 3, 'name' => 'Science & Technology'],
+
 
 
             ['id' => 2, 'name' => 'Οικονομία & Διοίκηση'], /** IEK Επαγγελματικές Σπουδές 21-34 */
