@@ -866,12 +866,12 @@ class Colleges extends Seeder
         Scholio::portalStudy($school16, 'Μεταπτυχιακές Σπουδές-Master', 'Arts & Design', 'Master of Arts in Design', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/master-of-arts-in-design');
         Scholio::portalStudy($school16, 'Μεταπτυχιακές Σπουδές-Master', 'Arts & Design', 'Master of Arts in Digital Design & Interactive Applications', 'https://akto.gr/%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1-%CF%83%CF%80%CE%BF%CF%85%CE%B4%CF%8E%CE%BD/%CE%BC%CE%B5%CF%84%CE%B1%CF%80%CF%84%CF%85%CF%87%CE%B9%CE%B1%CE%BA%CE%AC-%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1/digital-design-interactive-applications');
 
-        Scholio::portalSocial($school1, 'facebook', 'https://www.facebook.com/AKTOcollege');
-        Scholio::portalSocial($school, 'instagram', 'https://instagram.com/aktocollege');
-        Scholio::portalSocial($school, 'twitter', 'https://twitter.com/AKTOcollege');
-        Scholio::portalSocial($school, 'youtube', 'http://www.youtube.com/user/aktocollege');
-        // Scholio::portalSocial($school, 'linkedin', '');
-        Scholio::portalSocial($school, 'google', 'https://www.google.com/+AktoGreece');
+        Scholio::portalSocial($school16, 'facebook', 'https://www.facebook.com/AKTOcollege');
+        Scholio::portalSocial($school16, 'instagram', 'https://instagram.com/aktocollege');
+        Scholio::portalSocial($school16, 'twitter', 'https://twitter.com/AKTOcollege');
+        Scholio::portalSocial($school16, 'youtube', 'http://www.youtube.com/user/aktocollege');
+        // Scholio::portalSocial($school16, 'linkedin', '');
+        Scholio::portalSocial($school16, 'google', 'https://www.google.com/+AktoGreece');
 
         /*===============   17 AKTO THESSALONIKI ================*/
         $school17 = factory(App\Models\School::class)->create([

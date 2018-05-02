@@ -119,11 +119,6 @@ class SectionsTableSeeder extends Seeder
             $section->name = $category['name'];
             $section->icon = '/panel/assets/images/steps/' . $category['name'] . '.png';
             $section->save();
-
-            $s = new SectionEn;
-            $s->level_id = $category['id'];
-            $s->name = $category['name'];
-            $s->save();
         }
     }
 }

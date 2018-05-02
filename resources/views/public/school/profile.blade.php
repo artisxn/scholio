@@ -584,8 +584,8 @@
 
 
                     @if($school->settings->about)
-                        <!-- Σχετικά -->
-                        <div class="margin-bot-25 slideup slideAbout" id="sxetika">
+                        <!-- Σχετικά  Να προσθέσουμε την slideAbout κλαση  και να ανοιξουμε το show more-->
+                        <div class="margin-bot-25 slideup" id="sxetika">
                             <div  class="section-header">
                                 <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300" style="">
                                     <i class="fa fa-info-circle fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.about') </span>
@@ -600,16 +600,18 @@
                         <!-- Show More About  -->
                         <div class="show-more" style="background-color: #fff">
                             <div class="pad-top-20">
-                                 <span ng-click="showMoreAbout('sxetika')">@{{textAbout}}
+                                 <!--
+                                    <span ng-click="showMoreAbout('sxetika')">@{{textAbout}}
                                      <i class="@{{ iconAbout }}"></i></span>
+                                     -->
                             </div>
                         </div>
                     @endif
 
                     @if($school->settings->studies)
-                    <!-- ======= Σπουδές ========-->
+                    <!-- ======= Σπουδές  slideStudies class========-->
                         <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes" style="overflow-x: hidden">
-                            <div id="sliderStudies" class=" main-box-2 slideup slideStudies">
+                            <div id="sliderStudies" class=" main-box-2 slideup">
                                 <div class="section-header2">
                                     <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
                                         <i class="fa fa-book fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.studies') </span>
@@ -664,8 +666,10 @@
                             <!-- Show More Studies  -->
                             <div class="show-more" style="background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">
                                 <div class="pad-top-20">
+                                    <!--
                                  <span ng-click="showMoreStudies('spoudes')" >@{{textStudies}}
                                      <i class="@{{ iconStudies }}"></i></span>
+                                     -->
                                 </div>
                             </div>
                         </div>

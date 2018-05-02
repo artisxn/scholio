@@ -13,6 +13,6 @@ class StudyTables extends Seeder
     {
         $this->call(LevelsTableSeeder::class);      // Levels
         $this->call(SectionsTableSeeder::class);    // Sections
-        $this->call(StudiesTableSeeder::class);     // Studies
+        // $this->call(StudiesTableSeeder::class);     // Studies
     }
 }

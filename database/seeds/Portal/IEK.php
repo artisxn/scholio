@@ -1,8 +1,8 @@
 <?php
 
+use App\Scholio\Scholio;
 use Illuminate\Database\Seeder;
 use Portal\Portal;
-use App\Scholio\Scholio;
 
 class IEK extends Seeder
 {
@@ -17,7 +17,7 @@ class IEK extends Seeder
 
         /*===============  1 AKMH ΘΕΣΣΑΛΟΝΙΚΗ================*/
         $school1 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ', 'email' => 'infoThess@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiThess'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΑΚΜΗ (Θεσσαλονίκη)', 'email' => 'infoThess@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiThess'])->id,
             'address' => 'Τσιμισκή 14',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310260200,
@@ -112,10 +112,17 @@ class IEK extends Seeder
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Δημοσιογραφία, Συντακτών & Ρεπόρτερ', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/dimosiografos');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
-        
+
+        Scholio::portalSocial($school1, 'facebook', 'https://www.facebook.com/iekakmiedu');
+        Scholio::portalSocial($school1, 'instagram', 'https://www.instagram.com/iekakmiedu/');
+        Scholio::portalSocial($school1, 'twitter', 'https://twitter.com/iekakmiedu');
+        Scholio::portalSocial($school1, 'youtube', 'https://www.youtube.com/user/AKMICHANNEL');
+        Scholio::portalSocial($school1, 'google', 'https://plus.google.com/+IEKAKMIEDU/posts');
+        Scholio::portalSocial($school1, 'blogger', 'http://iekakmi-sxolh-mme-athlitismou.blogspot.gr/');
+
         /*===============  2 AKMH ΑΘΗΝΑ================*/
         $school2 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ', 'email' => 'info@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmi'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΑΚΜΗ (Αθήνα)', 'email' => 'info@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmi'])->id,
             'address' => 'Κοδριγκτώνος 16',
             'city' => 'Αθήνα',
             'phone' => 2108224074,
@@ -211,9 +218,16 @@ class IEK extends Seeder
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
 
+        Scholio::portalSocial($school2, 'facebook', 'https://www.facebook.com/iekakmiedu');
+        Scholio::portalSocial($school2, 'instagram', 'https://www.instagram.com/iekakmiedu/');
+        Scholio::portalSocial($school2, 'twitter', 'https://twitter.com/iekakmiedu');
+        Scholio::portalSocial($school2, 'youtube', 'https://www.youtube.com/user/AKMICHANNEL');
+        Scholio::portalSocial($school2, 'google', 'https://plus.google.com/+IEKAKMIEDU/posts');
+        Scholio::portalSocial($school2, 'blogger', 'http://iekakmi-sxolh-mme-athlitismou.blogspot.gr/');
+
         /*===============  3 AKMH ΗΡΑΚΛΕΙΟ================*/
         $school3 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ Ηράκλειο', 'email' => 'infoHer@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiHer'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΑΚΜΗ (Ηράκλειο)', 'email' => 'infoHer@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiHer'])->id,
             'address' => 'Θεοτοκοπούλου & Κορωναίου',
             'city' => 'Ηράκλειο Κρήτης',
             'phone' => 2810300900,
@@ -308,11 +322,18 @@ class IEK extends Seeder
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Δημοσιογραφία, Συντακτών & Ρεπόρτερ', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/dimosiografos');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
+
+        Scholio::portalSocial($school3, 'facebook', 'https://www.facebook.com/iekakmiedu');
+        Scholio::portalSocial($school3, 'instagram', 'https://www.instagram.com/iekakmiedu/');
+        Scholio::portalSocial($school3, 'twitter', 'https://twitter.com/iekakmiedu');
+        Scholio::portalSocial($school3, 'youtube', 'https://www.youtube.com/user/AKMICHANNEL');
+        Scholio::portalSocial($school3, 'google', 'https://plus.google.com/+IEKAKMIEDU/posts');
+        Scholio::portalSocial($school3, 'blogger', 'http://iekakmi-sxolh-mme-athlitismou.blogspot.gr/');
 //
 
         /*===============  4 AKMH ΠΕΙΡΑΙΑΣ================*/
         $school4 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ', 'email' => 'infoPeir@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiPeir'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΑΚΜΗ (Πειραιάς)', 'email' => 'infoPeir@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiPeir'])->id,
             'address' => 'Σωτήρος Διός 1, Πειραιάς',
             'city' => 'Αθήνα',
             'phone' => 2108224074,
@@ -408,9 +429,16 @@ class IEK extends Seeder
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
 
+        Scholio::portalSocial($school4, 'facebook', 'https://www.facebook.com/iekakmiedu');
+        Scholio::portalSocial($school4, 'instagram', 'https://www.instagram.com/iekakmiedu/');
+        Scholio::portalSocial($school4, 'twitter', 'https://twitter.com/iekakmiedu');
+        Scholio::portalSocial($school4, 'youtube', 'https://www.youtube.com/user/AKMICHANNEL');
+        Scholio::portalSocial($school4, 'google', 'https://plus.google.com/+IEKAKMIEDU/posts');
+        Scholio::portalSocial($school4, 'blogger', 'http://iekakmi-sxolh-mme-athlitismou.blogspot.gr/');
+
         /*===============  5 AKMH ΛΑΡΙΣΑ ================*/
         $school5 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΑΚΜΗ Λάρισα', 'email' => 'infoLar@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiLar'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΑΚΜΗ (Λάρισα)', 'email' => 'infoLar@iek-akmi.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'akmiLar'])->id,
             'address' => '6ο χλμ Λάρισας - Νίκαιας',
             'city' => 'Λάρισα',
             'phone' => 2410660400,
@@ -506,16 +534,34 @@ class IEK extends Seeder
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
 
+        Scholio::portalSocial($school5, 'facebook', 'https://www.facebook.com/iekakmiedu');
+        Scholio::portalSocial($school5, 'instagram', 'https://www.instagram.com/iekakmiedu/');
+        Scholio::portalSocial($school5, 'twitter', 'https://twitter.com/iekakmiedu');
+        Scholio::portalSocial($school5, 'youtube', 'https://www.youtube.com/user/AKMICHANNEL');
+        Scholio::portalSocial($school5, 'google', 'https://plus.google.com/+IEKAKMIEDU/posts');
+        Scholio::portalSocial($school5, 'blogger', 'http://iekakmi-sxolh-mme-athlitismou.blogspot.gr/');
+
         /*===============  6 ΙΕΚ ΔΕΛΤΑ ΑΘΗΝΑ ================*/
         $school6 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΔΕΛΤΑ', 'email' => 'grekpedefsis@delta-iek.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltaath'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΔΕΛΤΑ (Αθήνα)', 'email' => 'grekpedefsis@delta-iek.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltaath'])->id,
             'address' => 'Ιπποκράτους 22',
             'city' => 'Αθήνα',
             'phone' => 2108225983,
             'type_id' => 2,
             'website' => 'delta-iek.gr',
-            'about' => 'Στην πλούσια και μακρόχρονη πορεία μας μάθαμε τούτο:
-        Ότι το πετυχημένο "επαγγελματικό σχολείο" πρέπει να δημιουργεί ολοκληρωμένους επαγγελματίες. Δεν διδάσκει απλώς μία εξειδίκευση. Οικοδομεί με όλα τα μέσα, όλο το γνωστικό αντικείμενο και πέρα από αυτό. Για αυτόν το λόγο το 60% του εκπαιδευτικού μας προγράμματος είναι πρακτικές εφαρμογές. Για αυτόν το λόγο το 70% του εκπαιδευτικού μας προσωπικού είναι αναγνωρισμένα στελέχη και πάνω απ’ όλα πετυχημένοι επαγγελματίες, με δραστηριότητα στις μεγαλύτερες εταιρείες της Αγοράς. Για αυτόν το λόγο παρέχουμε πρόσθετες δυνατότητες  για επιμόρφωση, δημιουργικότητα, κοινωνικότητα.  Και για τον ίδιο λόγο συνδέσαμε άμεσα τις σχολές μας με την Αγορά Εργασίας. Εταιρείες – ηγέτες στο χώρο τους, μέσα από την προσωπική επαφή, μεταδίδουν στους σπουδαστές όλη την κουλτούρα του επαγγέλματος. Τρέφουν τη φιλοδοξία τους  καθώς και την αισιοδοξία τους για τη σταδιοδρομία. Φροντίζουμε λοιπόν, να δίνουμε ευκαιρίες στους εκπαιδευόμενους να καλλιεργήσουν  τα ταλέντα τους, να αναπτύξουν τα προσωπικά τους χαρακτηριστικά. Σε τελική ανάλυση, δημιουργούμε σύγχρονους πολίτες, κοινωνικά ολοκληρωμένες  προσωπικότητες, όχι απλώς επαγγελματίες. Στην  προσωπική σας επαφή μαζί μας, θα διαπιστώσετε την αμεσότητα που  χαρακτηρίζει τη συνεργασία μας με τη σπουδαστική μας κοινότητα. Θα επιβεβαιώσετε τις ευκαιρίες διείσδυσης που παρέχουμε στον κλάδο επιλογής σας αλλά και στην ευρύτερη κοινωνία.',
+            'about' => '<h3 style="text-align: center;">Η Αποστολή Μας</h3>
+            <h3 style="text-align: center;">Μέσα από μια ολοκληρωμένη σπουδαστική εμπειρία δημιουργούμε τους επαγγελματίες του μέλλοντος, αλλάζοντας δραστικά την ελληνική ιδιωτική εκπαίδευση!</h3>
+            <p> </p>
+            <h3 style="text-align: center;">ΙΕΚ ΔΕΛΤΑ: Η Φιλοσοφία Μας</h3>
+            <ul class="list_style1">
+            <li> Στο ΙΕΚ ΔΕΛΤΑ, <strong>όραμά μας είναι να παρέχουμε ουσιαστική και ολοκληρωμένη κατάρτιση</strong> στους σπουδαστές μας, <strong>με συνέπεια και επαγγελματισμό</strong>.</li>
+            <li> <strong>Συμβάλλουμε δραστικά</strong> στην αλλαγή της ελληνικής ιδιωτικής εκπαίδευσης προς όφελος της κοινωνίας.</li>
+            <li> <strong>Δίνουμε ελπίδα</strong>, αλλά και πραγματικά εφόδια στους νέους, τις επόμενες γενιές που θα κάνουν τη διαφορά στο μέλλον της χώρας.</li>
+            <li> <strong>Αναβαθμίζουμε την ελληνική ιδιωτική εκπαίδευση</strong>, δημιουργώντας νέες ειδικότητες επενδύοντας σε υλικοτεχνικούς εξοπλισμούς, δημιουργώντας παράλληλα χιλιάδες θέσεις εργασίας.</li>
+            <li> <strong>Βασικές αξίες μας</strong>, που καθορίζουν τα βήματα μας, είναι η <strong>Ειλικρίνεια</strong>, η <strong>Διαφάνεια</strong>, η <strong>Ηθική</strong>, η <strong>Υπευθυνότητα</strong> και η <strong>Αξιοπιστία</strong>.</li>
+            <li> <strong>Συνδυάζοντας την εκπαίδευση με τον αθλητισμό και τον εθελοντισμό</strong>, συντελούμε στην προσωπική, πνευματική και επαγγελματική ανάπτυξη των σπουδαστών μας.</li>
+            <li> <strong>Στο ΙΕΚ ΔΕΛΤΑ δεν επαναπαυόμαστε ποτέ!</strong> Κοιτάμε το μέλλον με όραμα και θέτουμε συνεχώς υψηλότερους στόχους. Δεν συμβιβαζόμαστε με τίποτα λιγότερο από την παροχή της πιο ολοκληρωμένης σπουδαστικής εμπειρίας στους νέους που μας εμπιστεύονται!</li>
+            </ul>',
             'approved' => 1,
             'background' => $background,
         ]);
@@ -585,16 +631,38 @@ class IEK extends Seeder
         Scholio::portalStudy($school6, 'Επαγγελματικές Σπουδές', 'Αγροτική Κατάρτιση - Γεωργικές Σπουδές - Γεωπονία', 'Τεχνικός Μελισσοκομίας', 'http://www.delta-iek.gr/%CE%A3%CF%80%CE%BF%CF%85%CE%B4%CE%AD%CF%82-%CE%99%CE%95%CE%9A-%CE%94%CE%95%CE%9B%CE%A4%CE%91/%CE%91%CE%B3%CF%81%CE%BF%CF%84%CE%B9%CE%BA%CE%AE-%CE%9A%CE%B1%CF%84%CE%AC%CF%81%CF%84%CE%B9%CF%83%CE%B7/%CE%A4%CE%B5%CF%87%CE%BD%CE%B9%CE%BA%CF%8C%CF%82-%CE%9C%CE%B5%CE%BB%CE%B9%CF%83%CF%83%CE%BF%CE%BA%CE%BF%CE%BC%CE%AF%CE%B1%CF%82');
         Scholio::portalStudy($school6, 'Επαγγελματικές Σπουδές', 'Αγροτική Κατάρτιση - Γεωργικές Σπουδές - Γεωπονία', 'Τεχνικός Θερμοκηπίων', 'http://www.delta-iek.gr/%CE%A3%CF%80%CE%BF%CF%85%CE%B4%CE%AD%CF%82-%CE%99%CE%95%CE%9A-%CE%94%CE%95%CE%9B%CE%A4%CE%91/%CE%91%CE%B3%CF%81%CE%BF%CF%84%CE%B9%CE%BA%CE%AE-%CE%9A%CE%B1%CF%84%CE%AC%CF%81%CF%84%CE%B9%CF%83%CE%B7/%CE%A4%CE%B5%CF%87%CE%BD%CE%B9%CE%BA%CF%8C%CF%82-%CE%98%CE%B5%CF%81%CE%BC%CE%BF%CE%BA%CE%B7%CF%80%CE%AF%CF%89%CE%BD');
 
+        Scholio::portalSocial($school6, 'facebook', 'http://www.facebook.com/IEKDelta');
+        Scholio::portalSocial($school6, 'instagram', 'http://instagram.com/iekdelta');
+        Scholio::portalSocial($school6, 'twitter', 'http://twitter.com/IekDelta');
+        Scholio::portalSocial($school6, 'youtube', 'https://www.youtube.com/user/iiekDelta/videos');
+        Scholio::portalSocial($school6, 'linkedin', 'http://www.linkedin.com/company/3171861');
+        Scholio::portalSocial($school6, 'google', 'https://plus.google.com/+iekdelta/about');
+        Scholio::portalSocial($school6, 'pinterest', 'http://www.pinterest.com/iekdelta/');
+        Scholio::portalSocial($school6, 'flickr', 'https://www.flickr.com/photos/iekdelta/');
+        Scholio::portalSocial($school6, 'tumblr', 'http://iekdelta.tumblr.com/');
+        // // Scholio::portalSocial($school6, 'soundcloud', 'https://soundcloud.com/iekdelta');
+
         /*===============  7 ΙΕΚ ΔΕΛΤΑ ΙΩΑΝΝΙΝΑ ================*/
         $school7 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΔΕΛΤΑ', 'email' => 'ioannina@delta.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltaioa'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΔΕΛΤΑ (Ιωάννινα)', 'email' => 'ioannina@delta.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltaioa'])->id,
             'address' => 'Κωλέττη & Καπλάνη 5',
             'city' => 'Ιωάννινα',
             'phone' => 2651077472,
             'type_id' => 2,
             'website' => 'delta-iek-Ioan.gr',
-            'about' => 'Στην πλούσια και μακρόχρονη πορεία μας μάθαμε τούτο:
-        Ότι το πετυχημένο "επαγγελματικό σχολείο" πρέπει να δημιουργεί ολοκληρωμένους επαγγελματίες. Δεν διδάσκει απλώς μία εξειδίκευση. Οικοδομεί με όλα τα μέσα, όλο το γνωστικό αντικείμενο και πέρα από αυτό. Για αυτόν το λόγο το 60% του εκπαιδευτικού μας προγράμματος είναι πρακτικές εφαρμογές. Για αυτόν το λόγο το 70% του εκπαιδευτικού μας προσωπικού είναι αναγνωρισμένα στελέχη και πάνω απ’ όλα πετυχημένοι επαγγελματίες, με δραστηριότητα στις μεγαλύτερες εταιρείες της Αγοράς. Για αυτόν το λόγο παρέχουμε πρόσθετες δυνατότητες  για επιμόρφωση, δημιουργικότητα, κοινωνικότητα.  Και για τον ίδιο λόγο συνδέσαμε άμεσα τις σχολές μας με την Αγορά Εργασίας. Εταιρείες – ηγέτες στο χώρο τους, μέσα από την προσωπική επαφή, μεταδίδουν στους σπουδαστές όλη την κουλτούρα του επαγγέλματος. Τρέφουν τη φιλοδοξία τους  καθώς και την αισιοδοξία τους για τη σταδιοδρομία. Φροντίζουμε λοιπόν, να δίνουμε ευκαιρίες στους εκπαιδευόμενους να καλλιεργήσουν  τα ταλέντα τους, να αναπτύξουν τα προσωπικά τους χαρακτηριστικά. Σε τελική ανάλυση, δημιουργούμε σύγχρονους πολίτες, κοινωνικά ολοκληρωμένες  προσωπικότητες, όχι απλώς επαγγελματίες. Στην  προσωπική σας επαφή μαζί μας, θα διαπιστώσετε την αμεσότητα που  χαρακτηρίζει τη συνεργασία μας με τη σπουδαστική μας κοινότητα. Θα επιβεβαιώσετε τις ευκαιρίες διείσδυσης που παρέχουμε στον κλάδο επιλογής σας αλλά και στην ευρύτερη κοινωνία.',
+            'about' => '<h3 style="text-align: center;">Η Αποστολή Μας</h3>
+            <h3 style="text-align: center;">Μέσα από μια ολοκληρωμένη σπουδαστική εμπειρία δημιουργούμε τους επαγγελματίες του μέλλοντος, αλλάζοντας δραστικά την ελληνική ιδιωτική εκπαίδευση!</h3>
+            <p> </p>
+            <h3 style="text-align: center;">ΙΕΚ ΔΕΛΤΑ: Η Φιλοσοφία Μας</h3>
+            <ul class="list_style1">
+            <li> Στο ΙΕΚ ΔΕΛΤΑ, <strong>όραμά μας είναι να παρέχουμε ουσιαστική και ολοκληρωμένη κατάρτιση</strong> στους σπουδαστές μας, <strong>με συνέπεια και επαγγελματισμό</strong>.</li>
+            <li> <strong>Συμβάλλουμε δραστικά</strong> στην αλλαγή της ελληνικής ιδιωτικής εκπαίδευσης προς όφελος της κοινωνίας.</li>
+            <li> <strong>Δίνουμε ελπίδα</strong>, αλλά και πραγματικά εφόδια στους νέους, τις επόμενες γενιές που θα κάνουν τη διαφορά στο μέλλον της χώρας.</li>
+            <li> <strong>Αναβαθμίζουμε την ελληνική ιδιωτική εκπαίδευση</strong>, δημιουργώντας νέες ειδικότητες επενδύοντας σε υλικοτεχνικούς εξοπλισμούς, δημιουργώντας παράλληλα χιλιάδες θέσεις εργασίας.</li>
+            <li> <strong>Βασικές αξίες μας</strong>, που καθορίζουν τα βήματα μας, είναι η <strong>Ειλικρίνεια</strong>, η <strong>Διαφάνεια</strong>, η <strong>Ηθική</strong>, η <strong>Υπευθυνότητα</strong> και η <strong>Αξιοπιστία</strong>.</li>
+            <li> <strong>Συνδυάζοντας την εκπαίδευση με τον αθλητισμό και τον εθελοντισμό</strong>, συντελούμε στην προσωπική, πνευματική και επαγγελματική ανάπτυξη των σπουδαστών μας.</li>
+            <li> <strong>Στο ΙΕΚ ΔΕΛΤΑ δεν επαναπαυόμαστε ποτέ!</strong> Κοιτάμε το μέλλον με όραμα και θέτουμε συνεχώς υψηλότερους στόχους. Δεν συμβιβαζόμαστε με τίποτα λιγότερο από την παροχή της πιο ολοκληρωμένης σπουδαστικής εμπειρίας στους νέους που μας εμπιστεύονται!</li>
+            </ul>',
             'approved' => 1,
             'background' => $background,
         ]);
@@ -664,16 +732,38 @@ class IEK extends Seeder
         Scholio::portalStudy($school7, 'Επαγγελματικές Σπουδές', 'Αγροτική Κατάρτιση - Γεωργικές Σπουδές - Γεωπονία', 'Τεχνικός Μελισσοκομίας', 'http://www.delta-iek.gr/%CE%A3%CF%80%CE%BF%CF%85%CE%B4%CE%AD%CF%82-%CE%99%CE%95%CE%9A-%CE%94%CE%95%CE%9B%CE%A4%CE%91/%CE%91%CE%B3%CF%81%CE%BF%CF%84%CE%B9%CE%BA%CE%AE-%CE%9A%CE%B1%CF%84%CE%AC%CF%81%CF%84%CE%B9%CF%83%CE%B7/%CE%A4%CE%B5%CF%87%CE%BD%CE%B9%CE%BA%CF%8C%CF%82-%CE%9C%CE%B5%CE%BB%CE%B9%CF%83%CF%83%CE%BF%CE%BA%CE%BF%CE%BC%CE%AF%CE%B1%CF%82');
         Scholio::portalStudy($school7, 'Επαγγελματικές Σπουδές', 'Αγροτική Κατάρτιση - Γεωργικές Σπουδές - Γεωπονία', 'Τεχνικός Θερμοκηπίων', 'http://www.delta-iek.gr/%CE%A3%CF%80%CE%BF%CF%85%CE%B4%CE%AD%CF%82-%CE%99%CE%95%CE%9A-%CE%94%CE%95%CE%9B%CE%A4%CE%91/%CE%91%CE%B3%CF%81%CE%BF%CF%84%CE%B9%CE%BA%CE%AE-%CE%9A%CE%B1%CF%84%CE%AC%CF%81%CF%84%CE%B9%CF%83%CE%B7/%CE%A4%CE%B5%CF%87%CE%BD%CE%B9%CE%BA%CF%8C%CF%82-%CE%98%CE%B5%CF%81%CE%BC%CE%BF%CE%BA%CE%B7%CF%80%CE%AF%CF%89%CE%BD');
 
+        Scholio::portalSocial($school7, 'facebook', 'http://www.facebook.com/IEKDelta');
+        Scholio::portalSocial($school7, 'instagram', 'http://instagram.com/iekdelta');
+        Scholio::portalSocial($school7, 'twitter', 'http://twitter.com/IekDelta');
+        Scholio::portalSocial($school7, 'youtube', 'https://www.youtube.com/user/iiekDelta/videos');
+        Scholio::portalSocial($school7, 'linkedin', 'http://www.linkedin.com/company/3171861');
+        Scholio::portalSocial($school7, 'google', 'https://plus.google.com/+iekdelta/about');
+        Scholio::portalSocial($school7, 'pinterest', 'http://www.pinterest.com/iekdelta/');
+        Scholio::portalSocial($school7, 'flickr', 'https://www.flickr.com/photos/iekdelta/');
+        Scholio::portalSocial($school7, 'tumblr', 'http://iekdelta.tumblr.com/');
+        // // Scholio::portalSocial($school7, 'soundcloud', 'https://soundcloud.com/iekdelta');
+
         /*===============  8 ΙΕΚ ΔΕΛΤΑ ΘΕΣΣΑΛΟΝΙΚΗ ================*/
         $school8 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΔΕΛΤΑ', 'email' => 'deliek@delta.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltathess'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΔΕΛΤΑ (Θεσσαλονίκη)', 'email' => 'deliek@delta.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'deltathess'])->id,
             'address' => 'Ερμού 45',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310226318,
             'type_id' => 2,
             'website' => 'delta-iek-Thess.gr',
-            'about' => 'Στην πλούσια και μακρόχρονη πορεία μας μάθαμε τούτο:
-        Ότι το πετυχημένο "επαγγελματικό σχολείο" πρέπει να δημιουργεί ολοκληρωμένους επαγγελματίες. Δεν διδάσκει απλώς μία εξειδίκευση. Οικοδομεί με όλα τα μέσα, όλο το γνωστικό αντικείμενο και πέρα από αυτό. Για αυτόν το λόγο το 60% του εκπαιδευτικού μας προγράμματος είναι πρακτικές εφαρμογές. Για αυτόν το λόγο το 70% του εκπαιδευτικού μας προσωπικού είναι αναγνωρισμένα στελέχη και πάνω απ’ όλα πετυχημένοι επαγγελματίες, με δραστηριότητα στις μεγαλύτερες εταιρείες της Αγοράς. Για αυτόν το λόγο παρέχουμε πρόσθετες δυνατότητες  για επιμόρφωση, δημιουργικότητα, κοινωνικότητα.  Και για τον ίδιο λόγο συνδέσαμε άμεσα τις σχολές μας με την Αγορά Εργασίας. Εταιρείες – ηγέτες στο χώρο τους, μέσα από την προσωπική επαφή, μεταδίδουν στους σπουδαστές όλη την κουλτούρα του επαγγέλματος. Τρέφουν τη φιλοδοξία τους  καθώς και την αισιοδοξία τους για τη σταδιοδρομία. Φροντίζουμε λοιπόν, να δίνουμε ευκαιρίες στους εκπαιδευόμενους να καλλιεργήσουν  τα ταλέντα τους, να αναπτύξουν τα προσωπικά τους χαρακτηριστικά. Σε τελική ανάλυση, δημιουργούμε σύγχρονους πολίτες, κοινωνικά ολοκληρωμένες  προσωπικότητες, όχι απλώς επαγγελματίες. Στην  προσωπική σας επαφή μαζί μας, θα διαπιστώσετε την αμεσότητα που  χαρακτηρίζει τη συνεργασία μας με τη σπουδαστική μας κοινότητα. Θα επιβεβαιώσετε τις ευκαιρίες διείσδυσης που παρέχουμε στον κλάδο επιλογής σας αλλά και στην ευρύτερη κοινωνία.',
+            'about' => '<h3 style="text-align: center;">Η Αποστολή Μας</h3>
+            <h3 style="text-align: center;">Μέσα από μια ολοκληρωμένη σπουδαστική εμπειρία δημιουργούμε τους επαγγελματίες του μέλλοντος, αλλάζοντας δραστικά την ελληνική ιδιωτική εκπαίδευση!</h3>
+            <p> </p>
+            <h3 style="text-align: center;">ΙΕΚ ΔΕΛΤΑ: Η Φιλοσοφία Μας</h3>
+            <ul class="list_style1">
+            <li> Στο ΙΕΚ ΔΕΛΤΑ, <strong>όραμά μας είναι να παρέχουμε ουσιαστική και ολοκληρωμένη κατάρτιση</strong> στους σπουδαστές μας, <strong>με συνέπεια και επαγγελματισμό</strong>.</li>
+            <li> <strong>Συμβάλλουμε δραστικά</strong> στην αλλαγή της ελληνικής ιδιωτικής εκπαίδευσης προς όφελος της κοινωνίας.</li>
+            <li> <strong>Δίνουμε ελπίδα</strong>, αλλά και πραγματικά εφόδια στους νέους, τις επόμενες γενιές που θα κάνουν τη διαφορά στο μέλλον της χώρας.</li>
+            <li> <strong>Αναβαθμίζουμε την ελληνική ιδιωτική εκπαίδευση</strong>, δημιουργώντας νέες ειδικότητες επενδύοντας σε υλικοτεχνικούς εξοπλισμούς, δημιουργώντας παράλληλα χιλιάδες θέσεις εργασίας.</li>
+            <li> <strong>Βασικές αξίες μας</strong>, που καθορίζουν τα βήματα μας, είναι η <strong>Ειλικρίνεια</strong>, η <strong>Διαφάνεια</strong>, η <strong>Ηθική</strong>, η <strong>Υπευθυνότητα</strong> και η <strong>Αξιοπιστία</strong>.</li>
+            <li> <strong>Συνδυάζοντας την εκπαίδευση με τον αθλητισμό και τον εθελοντισμό</strong>, συντελούμε στην προσωπική, πνευματική και επαγγελματική ανάπτυξη των σπουδαστών μας.</li>
+            <li> <strong>Στο ΙΕΚ ΔΕΛΤΑ δεν επαναπαυόμαστε ποτέ!</strong> Κοιτάμε το μέλλον με όραμα και θέτουμε συνεχώς υψηλότερους στόχους. Δεν συμβιβαζόμαστε με τίποτα λιγότερο από την παροχή της πιο ολοκληρωμένης σπουδαστικής εμπειρίας στους νέους που μας εμπιστεύονται!</li>
+            </ul>',
             'approved' => 1,
             'background' => $background,
         ]);
@@ -742,5 +832,16 @@ class IEK extends Seeder
         Scholio::portalStudy($school8, 'Επαγγελματικές Σπουδές', 'Αγροτική Κατάρτιση - Γεωργικές Σπουδές - Γεωπονία', 'Τεχνικός Γαλακτοκομίας – Τυροκόμος', 'http://www.delta-iek.gr/%CE%A3%CF%80%CE%BF%CF%85%CE%B4%CE%AD%CF%82-%CE%99%CE%95%CE%9A-%CE%94%CE%95%CE%9B%CE%A4%CE%91/%CE%91%CE%B3%CF%81%CE%BF%CF%84%CE%B9%CE%BA%CE%AE-%CE%9A%CE%B1%CF%84%CE%AC%CF%81%CF%84%CE%B9%CF%83%CE%B7/%CE%A4%CE%B5%CF%87%CE%BD%CE%B9%CE%BA%CF%8C%CF%82-%CE%93%CE%B1%CE%BB%CE%B1%CE%BA%CF%84%CE%BF%CE%BA%CE%BF%CE%BC%CE%AF%CE%B1%CF%82-%E2%80%93-%CE%A4%CF%85%CF%81%CE%BF%CE%BA%CF%8C%CE%BC%CE%BF%CF%82');
         Scholio::portalStudy($school8, 'Επαγγελματικές Σπουδές', 'Αγροτική Κατάρτιση - Γεωργικές Σπουδές - Γεωπονία', 'Τεχνικός Μελισσοκομίας', 'http://www.delta-iek.gr/%CE%A3%CF%80%CE%BF%CF%85%CE%B4%CE%AD%CF%82-%CE%99%CE%95%CE%9A-%CE%94%CE%95%CE%9B%CE%A4%CE%91/%CE%91%CE%B3%CF%81%CE%BF%CF%84%CE%B9%CE%BA%CE%AE-%CE%9A%CE%B1%CF%84%CE%AC%CF%81%CF%84%CE%B9%CF%83%CE%B7/%CE%A4%CE%B5%CF%87%CE%BD%CE%B9%CE%BA%CF%8C%CF%82-%CE%9C%CE%B5%CE%BB%CE%B9%CF%83%CF%83%CE%BF%CE%BA%CE%BF%CE%BC%CE%AF%CE%B1%CF%82');
         Scholio::portalStudy($school8, 'Επαγγελματικές Σπουδές', 'Αγροτική Κατάρτιση - Γεωργικές Σπουδές - Γεωπονία', 'Τεχνικός Θερμοκηπίων', 'http://www.delta-iek.gr/%CE%A3%CF%80%CE%BF%CF%85%CE%B4%CE%AD%CF%82-%CE%99%CE%95%CE%9A-%CE%94%CE%95%CE%9B%CE%A4%CE%91/%CE%91%CE%B3%CF%81%CE%BF%CF%84%CE%B9%CE%BA%CE%AE-%CE%9A%CE%B1%CF%84%CE%AC%CF%81%CF%84%CE%B9%CF%83%CE%B7/%CE%A4%CE%B5%CF%87%CE%BD%CE%B9%CE%BA%CF%8C%CF%82-%CE%98%CE%B5%CF%81%CE%BC%CE%BF%CE%BA%CE%B7%CF%80%CE%AF%CF%89%CE%BD');
+
+        Scholio::portalSocial($school8, 'facebook', 'http://www.facebook.com/IEKDelta');
+        Scholio::portalSocial($school8, 'instagram', 'http://instagram.com/iekdelta');
+        Scholio::portalSocial($school8, 'twitter', 'http://twitter.com/IekDelta');
+        Scholio::portalSocial($school8, 'youtube', 'https://www.youtube.com/user/iiekDelta/videos');
+        Scholio::portalSocial($school8, 'linkedin', 'http://www.linkedin.com/company/3171861');
+        Scholio::portalSocial($school8, 'google', 'https://plus.google.com/+iekdelta/about');
+        Scholio::portalSocial($school8, 'pinterest', 'http://www.pinterest.com/iekdelta/');
+        Scholio::portalSocial($school8, 'flickr', 'https://www.flickr.com/photos/iekdelta/');
+        Scholio::portalSocial($school8, 'tumblr', 'http://iekdelta.tumblr.com/');
+        // // Scholio::portalSocial($school8, 'soundcloud', 'https://soundcloud.com/iekdelta');
     }
 }
