@@ -585,7 +585,7 @@ class Scholio
         $school->study()->attach($newStudy, ['url' => $link]);
     }
 
-    public function portalSocial($school, $name, $link)
+    public static function portalSocial($school, $name, $link)
     {
         if (!$school->admin->socialLinks->pluck('name')->contains($name)) {
             $social = new SocialLink;
