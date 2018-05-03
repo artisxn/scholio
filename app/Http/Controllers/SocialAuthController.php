@@ -48,7 +48,6 @@ class SocialAuthController extends Controller
      */
     public function handleProviderCallback($provider = null)
     {
-        dd($provider);
         $user_provider = Socialite::driver($provider)->user();
         $token = $user_provider->token;
 
