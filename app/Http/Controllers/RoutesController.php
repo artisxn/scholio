@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewSubscription;
 use App\Events\StudentAppliedOnScholarship;
+use App\Jobs\Algolia;
+use App\Jobs\DeleteFromAlgolia;
+use App\Key;
 use App\Models\Admission;
+use App\Models\Card;
+use App\Models\DummyScholarship;
+use App\Models\Report;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\SchoolSetting;
 use App\Models\SocialLink;
 use App\Models\Student;
 use App\Models\Study;
 use App\Scholio\Scholio;
-use App\Key;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 
 class RoutesController extends Controller
 {
@@ -87,7 +96,8 @@ class RoutesController extends Controller
         return view('panel.pages.teacher.profile.view', compact('links'));
     }
 
-    public function teacherProfileSave(){
+    public function teacherProfileSave()
+    {
 
         $fname = request()->fname;
         $lname = request()->lname;
@@ -97,7 +107,7 @@ class RoutesController extends Controller
         $dob = Carbon::createFromFormat('d/m/Y', request()->dob);
         $gender = request()->gender;
         $title = request()->title;
-        
+
         $teacher = auth()->user()->info;
         $teacher->fname = $fname;
         $teacher->lname = $lname;
@@ -195,7 +205,7 @@ class RoutesController extends Controller
 
     public function devIn($data, $dash = null)
     {
-        if(!Key::find(1)->login){
+        if (!Key::find(1)->login) {
             return abort(404);
         }
         if (auth()->check()) {
@@ -325,7 +335,6 @@ class RoutesController extends Controller
         } else {
             $this->deleteIfExists('linkedin');
         }
-       
 
         return view('panel.pages.student.cv.studentCv');
     }
@@ -353,9 +362,9 @@ class RoutesController extends Controller
             $scholarship->sectionIcon = $sectionIcon;
         }
 
-        $end = Carbon::createFromFormat ('Y-m-d', $scholarship->end_at);
-        $activeDate = !($end->diffInDays(Carbon::now(), false) >=0);
-        
+        $end = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
+        $activeDate = !($end->diffInDays(Carbon::now(), false) >= 0);
+
         return view('public.school.scholarship', compact('activeDate'))
             ->withScholarship($scholarship->load('school', 'level', 'financial', 'criteria', 'study.section'));
     }
@@ -367,7 +376,7 @@ class RoutesController extends Controller
 
     public function scholarshipEdit(Scholarship $scholarship)
     {
-        if($scholarship->school->admin != auth()->user()){
+        if ($scholarship->school->admin != auth()->user()) {
             abort('403');
         }
         $end = Carbon::createFromFormat('Y-m-d', $scholarship->end_at);
@@ -466,8 +475,7 @@ class RoutesController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-
-        if(Hash::check($data['current_password'], auth()->user()->password)){
+        if (Hash::check($data['current_password'], auth()->user()->password)) {
             auth()->user()->password = bcrypt($data['password']);
             auth()->user()->save();
             session()->flash('passwordchanged', 'Your password have been changed successfully');
@@ -478,7 +486,13 @@ class RoutesController extends Controller
 
     }
 
-    public function resetPassword(){
+    public function changePasswordView()
+    {
+        return view('panel.change-password');
+    }
+
+    public function resetPassword()
+    {
         $data = $this->validate(request(), [
             'email' => 'required|email',
             'password' => 'required|min:6|confirmed',
@@ -486,4 +500,214 @@ class RoutesController extends Controller
 
         return 'ok';
     }
+
+    public function cardDelete(Card $card)
+    {
+        $card->delete();
+        session()->flash('carddelete', 'You have deleted your card successfully!');
+        return back();
+    }
+
+    public function terms()
+    {
+        return view('terms');
+    }
+
+    public function adminApproveSchool(School $school)
+    {
+        $school->approved = true;
+        $school->save();
+        return back();
+        dispatch(new Algolia($school));
+    }
+
+    public function adminDisapproveSchool(School $school)
+    {
+        $school->approved = false;
+        $school->save();
+        return back();
+        dispatch(new DeleteFromAlgolia($school));
+    }
+
+    public function adminDeleteAlgoliaSchool(School $school)
+    {
+        $school->approved = false;
+        $school->save();
+
+        dispatch(new DeleteFromAlgolia($school));
+        return back();
+    }
+
+    public function report(User $user, $id)
+    {
+        $report = new Report;
+        $report->user_id = $user->id;
+        $report->info = $id;
+        $report->save();
+        return back();
+    }
+
+    public function adminDeleteReport(Report $report)
+    {
+        $report->delete();
+        return back();
+    }
+
+    public function adminDeleteAllReports(User $user)
+    {
+        foreach ($user->report as $report) {
+            $report->delete();
+        }
+        return back();
+    }
+
+    public function adminSubscriptionMake()
+    {
+        $user = App\User::find(request()->userID);
+        $plan = request()->plan;
+        $limits = [
+            'cr1' => request()->talent,
+            'cr2' => request()->excellent,
+            'cr3' => request()->social,
+            'cr4' => request()->friends,
+            'cr5' => request()->open,
+        ];
+
+        event(new NewSubscription($user, $plan, $limits));
+
+        return back();
+    }
+
+    public function endScholarship(Scholarship $scholarship)
+    {
+        $winners = request()->winner;
+        $scholarship->end($winners);
+        return redirect('/dashboard');
+    }
+
+    public function updateScholarship(Scholarship $scholarship)
+    {
+        if (request()->exams) {
+            $proper_date = Carbon::createFromFormat('d-m-Y', request()->exams);
+            $scholarship->exam_date = $proper_date;
+        }
+
+        if (request()->terms) {
+            $scholarship->terms = request()->terms;
+        }
+
+        $scholarship->save();
+        return back();
+    }
+
+    public function deleteScholarship(Scholarship $scholarship)
+    {
+        $scholarship->delete();
+        DummyScholarship::where('scholarship_id', $scholarship->id)->delete();
+
+        // Delete Algolia Dummy Scholarship Row
+        return redirect('/panel/school/scholarships/view');
+    }
+
+    public function admissionNotesSave(Admission $admission)
+    {
+        if ($review = request()->review) {
+            $admission->review = $review;
+        }
+
+        $admission->notes = request()->notes;
+        $admission->save();
+        return back();
+    }
+
+    public function lang($locale)
+    {
+        return back()->withCookie(cookie()->forever('lang', $locale));
+    }
+
+    public function schoolsMap()
+    {
+        $search = request()->search;
+        session(['inputSearch' => $search]);
+        return view('public.results.map');
+    }
+
+    public function schools()
+    {
+        $settings = SchoolSetting::all()->pluck('statistics');
+        $reviews = SchoolSetting::all()->pluck('reviews');
+        return view('public.results.schools')->withSettings($settings)->withReviews($reviews);
+    }
+
+    public function dashboardProfile()
+    {
+        if (auth()->user()->role == 'student') {
+            return redirect(route('students-profile'));
+        }
+        if (auth()->user()->role == 'teacher') {
+            return redirect(route('teachers-profile'));
+        }
+
+        if (auth()->user()->role == 'parent') {
+            return redirect(route('parent-profile'));
+        }
+    }
+
+    public function username($username)
+    {
+        $user = User::where('username', $username)->first();
+        if (!$user) {
+            abort(452);
+        }
+        $url = '';
+        if ($user->role == 'teacher') {
+            $url = '/public/profile/teacher';
+        }
+        if ($user->role == 'school') {
+            $url = '/public/profile';
+        }
+        return redirect($url . '/' . $user->info->id);
+    }
+
+    public function confirmConnectionSchoolUser($id)
+    {
+        Scholio::connectUserWithSchool(auth()->user()->info, User::find($id));
+        return 'OK';
+    }
+
+    public function publicResultsAll()
+    {
+        return redirect('public/results/all');
+    }
+
+    public function userRole()
+    {
+        $role = request()->role;
+        session(['registration' => 'user']);
+        session(['userrole' => $role]);
+        return redirect('/register');
+    }
+
+    public function student(User $user)
+    {
+        // $admission = Admission::where('user_id', $user->id)->where('scholarship_id', $scholarship->id)->first();
+        return view('public.school.student-profile', compact('user'));
+    }
+
+    public function publicScholarshipAdmission(Scholarship $scholarship)
+    {
+        $settings = $scholarship->school->settings;
+        $fields = AdmissionField::all();
+        $user = auth()->user();
+        return view('public.school.admission', compact('user', 'scholarship', 'settings', 'fields'));
+    }
+
+    public function registerRole(){
+        return view('auth.register-role');
+    }
+
+    public function publicscholarships(){
+        return view('public.results.scholarships');
+    }
+
 }

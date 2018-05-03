@@ -1,0 +1,63 @@
+// routes/web.php
+
+Route::get('/fake/login', function () {
+    $oldUser = null;
+    if (auth()->check()) {
+        $oldUser = auth()->user();
+    }
+
+    $newUser = User::find(request()->userID);
+
+    auth()->loginUsingId($newUser->id);
+
+    if ($oldUser && $oldUser->role == $newUser->role) {
+        return back();
+    }
+
+    return redirect('/dashboard');
+});
+
+Route::get('/fake/request/{school}/{user}', function (School $school, User $user) {
+    $user->apply()->toggle($school);
+    if ($user->role == 'student') {
+        event(new UserAppliedOnSchool($user, $school->admin, Study::find(252), 'connected'));
+    } else {
+        event(new UserAppliedOnSchool($user, $school->admin, 'Economics', 'connected'));
+    }
+    return 'OK';
+});
+
+Route::get('/scholio/ready', function () {
+    $array = config('scholio');
+    $array['show']['fakeLogin'] = !config('scholio.show.fakeLogin');
+    $data = var_export($array, 1);
+    if (File::put(base_path() . '/config/scholio.php', "<?php\n return $data ;")) {
+        return 'ok';
+    }
+});
+
+Route::get('test/student', function () {
+    for ($i = 1; $i <= 8; $i++) {
+        $school = App\Models\School::find($i);
+        $st = factory(App\Models\Student::class, ($i * 2) * 100)->create();
+
+        foreach ($st as $s) {
+            factory(App\Models\Cv::class)
+                ->create(['user_id' => $s->user->id]);
+            $school->students()->toggle($s->user);
+        }
+    }
+});
+
+Route::get('algotest/{query}', function ($query) {
+    $result = AlgoliaSchool::search($query)->get();
+    return $result;
+});
+
+Route::get('public/donor', function () {
+    return view('public.results.donor');
+});
+
+Route::get('/public/scholarships/d', function () {
+    return view('public.results.scholarships');
+});
