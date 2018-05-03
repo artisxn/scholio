@@ -48,6 +48,7 @@ class SocialAuthController extends Controller
      */
     public function handleProviderCallback($provider = null)
     {
+        dd($provider);
         $user_provider = Socialite::driver($provider)->user();
         $token = $user_provider->token;
 
@@ -117,9 +118,9 @@ class SocialAuthController extends Controller
                 $info->user_id = $user->id;
                 $info->avatar = $avatar;
                 $info->gender = $profileBuilder['gender'];
-                if (isset($profileBuilder['about']) && $profileBuilder['about'] != '') {
-                    $info->about = $profileBuilder['about'];
-                }
+                // if (isset($profileBuilder['about']) && $profileBuilder['about'] != '') {
+                //     $info->about = $profileBuilder['about'];
+                // }
                 $info->save();
             }
             if ($role == 'parent') {
