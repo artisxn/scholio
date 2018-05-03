@@ -180,7 +180,7 @@
                 <!-- Scholio sMenu -->
 
                 <div class="pull-left">
-                @if(config('scholio.show.fakeLogin'))
+                @if(App\Key::find(1)->dropdownLogin)
                          <form method="GET" action="/fake/login" style="display: inline-block; position: absolute; top: 18px; margin-left: 110px; color: #555">
                     <select onchange="this.form.submit()" style="border: none; background-color: transparent; margin: -15px; width: 250px;" name="userID">
                             @foreach(App\User::all() as $key=>$user)
@@ -491,8 +491,8 @@ angular.module("scholarshipsResultsApp",[])
     /* global instantsearch */
 
     var search = instantsearch({
-        appId: 'FM3GHJGA1T',
-        apiKey: 'de6f693844a49775415380088208bc66',
+        appId: 'N08SZYEUO0',
+        apiKey: 'e00bc4548ea05c691c81f7c30c100bd7',
         indexName: 'dummyScholarships',
         urlSync: true
     });
