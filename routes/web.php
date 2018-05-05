@@ -24,7 +24,7 @@ use App\Models\ScholarshipLimit;
 use App\Models\University;
 use App\Models\Subscription;
 
-Scholio::soonRoutes();
+// Scholio::soonRoutes();
 Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
@@ -51,51 +51,39 @@ Route::post('/report/delete/{report}', 'RoutesController@adminDeleteReport')->mi
 Route::post('/report/delete/all/{user}', 'RoutesController@adminDeleteAllReports')->middleware('is.admin');
 Route::post('/admin/subscription', 'RoutesController@adminSubscriptionMake')->middleware(['auth', 'is.admin']);
 
+// Other
 Route::get('/card/{card}/delete', 'RoutesController@cardDelete');
 Route::get('/terms', 'RoutesController@terms');
 Route::get('/verifyemail/{token}', 'VerifyController@verify');
 Route::post('/report/add/{user}/{id}', 'RoutesController@report');
-
 Route::post('scholarship/{scholarship}/end', 'RoutesController@endScholarship'); // Security...
 Route::post('scholarship/{scholarship}/update', 'RoutesController@updateScholarship'); // Security...
 Route::delete('scholarship/{scholarship}/delete', 'RoutesController@deleteScholarship'); // Security | Delete from Algolia
 Route::post('/admission/{admission}/notes/save', 'RoutesController@deleteScholarship'); // Security...
 Route::post('/admission/{scholarship}/save', 'RoutesController@admissionSave'); // Security...
-
 Route::get('/lang/{locale}', 'RoutesController@lang');
-
 Route::get('dashboard/profile', 'RoutesController@dashboardProfile')->middleware('auth');
 Route::get('@{username}', 'RoutesController@username');
-
 Route::get('/scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('/scholarship/{scholarship}/edit', 'RoutesController@scholarshipEdit');
 // Route::post('/scholarship/{scholarship}/update', 'RoutesController@scholarshipUpdate');
 Route::get('/scholarship/{scholarship}/delete', 'RoutesController@scholarshipDelete');
 Route::get('/public/profile/teacher/{teacher}', 'TeachersController@index');
-
 Route::get('connection/{id}/confirm', 'RoutesController@confirmConnectionSchoolUser'); // ?? Security...
-
 Route::get('/register/school', 'SchoolRegistrationController@showSchoolRegistrationForm');
 Route::post('/register/school', 'SchoolRegistrationController@register');
-
 Route::get('/token/register', 'RoutesController@token');
-
 Route::get('auth/{provider}/', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
-
 Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
 Route::get('/public/results/','RoutesController@publicResultsAll' );
 Route::get('/public/results/{id}', 'RoutesController@publicResults');
 Route::get('connected/students', 'ApiController@connectedStudents');
 Route::get('connected/teachers', 'ApiController@connectedTeachers');
-
 Route::get('/connection/school/{school}', 'ApiController@connectionSchool')->middleware('auth');
 Route::get('/test/results/{type}', 'ApiController@testResults');
 Route::post('search/school/type', 'RoutesController@searchSchoolType');
 Route::get('/test/{school}', 'RoutesController@testSchools');
-
-
 Route::get('/public/scholarship/admission/{scholarship}', 'RoutesController@publicScholarshipAdmission');
 Route::get('/student/{user}', 'RoutesController@student')->middleware('is.school:see.student');
-
 Route::get('/userRole/save', 'RoutesController@userRole');
