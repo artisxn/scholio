@@ -13,9 +13,9 @@ class Schools extends Seeder
     {
         $background = Portal::createImages('/upload/school/univ.png')->id;
 
-        /*===============  4 Εκπαιδευτήρια Βασιλειάδη ================*/
-        $school1 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Βασιλειάδη', 'email' => 'info@vassiliadis.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'vasileiadi'])->id,
+        /*===============  Εκπαιδευτήρια Βασιλειάδη ================*/
+        $vas = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Βασιλειάδη (Γυμνάσιο)', 'email' => 'info@vassiliadis.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'vasileiadi'])->id,
             'address' => '12o χλμ Θεσ/νίκης-Μουδανιών, Θέρμη',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310475958,
@@ -34,8 +34,13 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        /*===============  5 Εκπαιδευτήρια Φρυγανιώτη ================*/
-        $school2 = factory(App\Models\School::class)->create([
+        Scholio::portalSocial($vas, 'facebook', 'https://www.facebook.com/ekpaideftiria.vassiliadi/');
+        Scholio::portalSocial($vas, 'instagram', 'https://www.instagram.com/vassiliadis.school/');
+        Scholio::portalSocial($vas, 'youtube', 'https://www.youtube.com/user/VASSILIADISSCHOOL');
+        Scholio::portalSocial($vas, 'google', 'https://plus.google.com/u/0/+%CE%95%CE%BA%CF%80%CE%B1%CE%B9%CE%B4%CE%B5%CF%85%CF%84%CE%AE%CF%81%CE%B9%CE%B1%CE%92%CE%B1%CF%83%CE%B9%CE%BB%CE%B5%CE%B9%CE%AC%CE%B4%CE%B7');
+
+        /*===============  Εκπαιδευτήρια Φρυγανιώτη ================*/
+        $fryg = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Φρυγανιώτη', 'email' => 'info@fryganiotis.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'fryganioti'])->id,
             'address' => 'Περιοχή Νοσ. Παπαγεωργίου, Πολίχνη',
             'city' => 'Θεσσαλονίκη',
@@ -52,8 +57,13 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
+        Scholio::portalSocial($fryg, 'facebook', 'https://www.facebook.com/pages/%CE%95%CE%BA%CF%80%CE%B1%CE%B9%CE%B4%CE%B5%CF%85%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%A6%CF%81%CF%85%CE%B3%CE%B1%CE%BD%CE%B9%CF%8E%CF%84%CE%B7/177952078968022');
+        Scholio::portalSocial($fryg, 'twitter', 'https://twitter.com/Fryganiotis');
+        Scholio::portalSocial($fryg, 'google', 'https://plus.google.com/115516704175748625108');
+        Scholio::portalSocial($fryg, 'youtube', 'http://www.youtube.com/user/Fryganiotis');
+
         /*===============  8 Εκπαιδευτήρια Απόστολος Παύλος  ================*/
-        $school3 = factory(App\Models\School::class)->create([
+        $eap = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Απόστολος Παύλος', 'email' => 'gymnasio@eap.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'eap'])->id,
             'address' => 'Κένεντι 119, Πυλαία',
             'city' => 'Θεσσαλονίκη',
@@ -67,8 +77,12 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        /*===============  11 Αδαμάντιος Σχολή ================*/
-        $school4 = factory(App\Models\School::class)->create([
+        Scholio::portalSocial($eap, 'facebook', 'https://www.facebook.com/%CE%95%CE%BA%CF%80%CE%B1%CE%B9%CE%B4%CE%B5%CF%85%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%9F-%CE%91%CF%80%CF%8C%CF%83%CF%84%CE%BF%CE%BB%CE%BF%CF%82-%CE%A0%CE%B1%CF%8D%CE%BB%CE%BF%CF%82-%CE%94%CE%B7%CE%BC%CE%BF%CF%84%CE%B9%CE%BA%CF%8C-183084695556876/');
+        Scholio::portalSocial($eap, 'youtube', 'https://www.youtube.com/channel/UCsUqecWmvPDYEUe9Y2xxbow');
+        Scholio::portalSocial($eap, 'blogger', 'http://eapdim.blogspot.gr/');
+
+        /*===============  Αδαμάντιος Σχολή ================*/
+        $adam = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Αδαμάντιος Σχολή', 'email' => 'info@adamantios.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'adamantios'])->id,
             'address' => 'Λεωφ. Γεωργικής Σχολής 44, Πυλαία',
             'city' => 'Θεσσαλονίκη',
@@ -84,7 +98,7 @@ class Schools extends Seeder
         ]);
 
          /*===============  36 Αμερικανική Γεωργική Σχολή Θεσσαλονίκης (Λύκειο)================*/
-         $school5 = factory(App\Models\School::class)->create([
+         $afsL = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Αμερικανική Γεωργική Σχολή Θεσσαλονίκης, (Λύκειο)', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'afsGel'])->id,
             'address' => 'Μαρίνου Αντύπα 54, Θέρμη',
             'city' => 'Θεσσαλονίκη',
@@ -99,6 +113,11 @@ class Schools extends Seeder
             Μετά από περισσότερο από έναν αιώνα εφαρμογής του οράματος του ιδρυτή της, η Σχολή παραμένει προσηλωμένη στη δυναμική συνύπαρξη θεωρίας και πράξης σε όλα τα επίπεδα της γεωργίας και των επιστημών ζωής, σήμα κατατεθέν του οργανισμού.</p>',
             'background' => $background,
         ]);
+
+        Scholio::portalSocial($afsL, 'facebook', 'https://www.facebook.com/AmericanFarmSchoolThessaloniki');
+        Scholio::portalSocial($afsL, 'intagram', 'https://www.instagram.com/americanfarmschool/');
+        Scholio::portalSocial($afsL, 'flickr', 'https://www.flickr.com/photos/americanfarmschool/');
+        Scholio::portalSocial($afsL, 'youtube', 'https://www.youtube.com/user/AmericanFarmSchool?feature=mhee');
 
         /*===============  37 Αμερικανική Γεωργική Σχολή Θεσσαλονίκης (Δημοτικό) ================*/
         $school6 = factory(App\Models\School::class)->create([
