@@ -3,9 +3,9 @@
 return [
     'navigation' => [
         'about' => 'ΛΙΓΑ ΛΟΓΙΑ',
-        'experience' => 'ΕΠΕΙΡΙΑ',
-        'studies'=>'ΣΠΟΥΔΕΣ',
-        'skills'=>'ΔΕΞΙΟΤΗΤΕΣ',
+        'experience' => 'ΕΜΠΕΙΡΙΑ',
+        'studies' => 'ΣΠΟΥΔΕΣ',
+        'skills' => 'ΔΕΞΙΟΤΗΤΕΣ',
     ],
 
     'section' => [
@@ -14,16 +14,16 @@ return [
         'experience' => 'Επαγγελματική Εμπειρία',
         'experiencePlaceholder' => 'Ειδικότητα/Αντικείμενο Εργασίας',
         'experienceInstitute' => 'Εκπαιδευτικό Ίδρυμα/Εταιρία',
-        'studies'=>'Σπουδές',
-        'studiesTitle'=>'Τίτλος/Επίπεδο Σπουδών',
+        'studies' => 'Σπουδές',
+        'studiesTitle' => 'Τίτλος/Επίπεδο Σπουδών',
         'studiesInstitute' => 'Εκπαιδευτικό Ίδρυμα',
-        'skills'=>'Δεξιότητες',
-        'skillsExpertise'=>'Δεξιότητες/Ικανότητες',
+        'skills' => 'Δεξιότητες',
+        'skillsExpertise' => 'Δεξιότητες/Ικανότητες',
     ],
 
-    'since'=>'Από',
-    'until'=>'Μέχρι',
-    'save'=>'Αποθήκευση',
-    'delete'=>'Διαγραφή',
+    'since' => 'Από',
+    'until' => 'Μέχρι',
+    'save' => 'Αποθήκευση',
+    'delete' => 'Διαγραφή',
 
 ];
