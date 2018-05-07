@@ -7,8 +7,8 @@
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!-- prevent zoomIn in mobile inputs,selects,etc -->
 	<meta property="fb:pages" content="934370089973049" />
-	<meta name="description" content="Αναζήτηση εκπαιδευτικών ιρδυμάτων και των υπηρεσιών τους.">
-    <meta name="keywords" content="Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, ΙΙΕΚ, Σχολές, Σπουδές,">
+	<meta name="description" content="Αναζήτηση υποτροφιών και εκπαιδευτικών υπηρεσιών.">
+    <meta name="keywords" content="Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, ΙΙΕΚ, Σχολές, Σπουδές, Εκπαιδευτικά Ιδρύματα">
 
 	@include('google.main')
 	<title>schol.io | Your Scholarship is a Click Away</title>
@@ -426,7 +426,7 @@
 						<span class="typed-js"></span>
 					</h1>
 					{{--<h3 class="text-center sc-t-white main-title">@lang('main.first.subtitle')</h3>--}}
-					<h3 class="text-center sc-t-white main-title">@lang('main.first.subtitlePortal')</h3>
+					<h2 class="text-center sc-t-white main-title">@lang('main.first.subtitlePortal')</h2>
 
 				</div>
 			</div>
