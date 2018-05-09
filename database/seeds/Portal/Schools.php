@@ -91,7 +91,7 @@ class Schools extends Seeder
         Scholio::portalSocial($fryg, 'google', 'https://plus.google.com/115516704175748625108');
         Scholio::portalSocial($fryg, 'youtube', 'http://www.youtube.com/user/Fryganiotis');
 
-        /*===============  8 Εκπαιδευτήρια Απόστολος Παύλος  ================*/
+        /*===============  Εκπαιδευτήρια Απόστολος Παύλος  ================*/
         $eap = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Απόστολος Παύλος', 'email' => 'gymnasio@eap.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'eap'])->id,
             'address' => 'Κένεντι 119, Πυλαία',
@@ -217,7 +217,7 @@ class Schools extends Seeder
         Scholio::portalSocial($kalam, 'youtube', 'https://www.youtube.com/channel/UC-hZdASj0OHVn8NJsivcLwQ');
         Scholio::portalSocial($kalam, 'google', 'https://www.google.gr/webhp?source=search_app&gws_rd=cr,ssl#bav=on.2,or.r_qf.&ei=7z8SUp_iNsexhAfGjoCgDA&fp=3025ea08a36d24bb&psj=1&q=%CE%95%CE%BB%CE%BB%CE%B7%CE%BD%CE%BF%CE%B3%CE%B1%CE%BB%CE%BB%CE%B9%CE%BA%CE%AE+%CE%A3%CF%87%CE%BF%CE%BB%CE%AE+%CE%9A%CE%B1%CE%BB%CE%B1%CE%BC%CE%B1%CF%81%CE%AF&sa=X&spell=1&ved=0CCcQBSgA');
 
-        /*===============  36 Αμερικανική Γεωργική Σχολή Θεσσαλονίκης================*/
+        /*===============   Αμερικανική Γεωργική Σχολή Θεσσαλονίκης================*/
         $afs = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Αμερικανική Γεωργική Σχολή Θεσσαλονίκης', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'afsGel'])->id,
             'address' => 'Μαρίνου Αντύπα 54, Θέρμη',
@@ -255,9 +255,9 @@ class Schools extends Seeder
         Scholio::portalSocial($afs, 'flickr', 'https://www.flickr.com/photos/americanfarmschool/');
         Scholio::portalSocial($afs, 'youtube', 'https://www.youtube.com/user/AmericanFarmSchool?feature=mhee');
 
-        /*===============  37 Αριστοτέλειο Κολλέγιο ================*/
+        /*===============   Αριστοτέλειο Κολλέγιο ================*/
         $aristotelio = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Αριστοτέλειο Κολλέγιο', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aristoteleioCollegeD'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Αριστοτέλειο Κολλέγιο', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aristoteleioCollege'])->id,
             'address' => 'Τζων Κέννεντυ, Πυλαία',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310311711,
@@ -299,6 +299,8 @@ class Schools extends Seeder
         Scholio::portalSocial($aristotelio, 'youtube', 'https://www.youtube.com/channel/UCX7f5qucX_qQDgsaxq20Qjg');
         Scholio::portalSocial($aristotelio, 'google', 'https://plus.google.com/u/0/106662055385826670321');
 
+
+        /*===============  PLATON ================*/
         $platon = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια ΠΛΑΤΩΝ', 'email' => 'mail@platon.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'platon'])->id,
             'address' => 'Γανόχωρα-Κατερίνη, Πιερία',
@@ -327,7 +329,7 @@ class Schools extends Seeder
         Scholio::portalStudy($platon, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
         Scholio::portalStudy($platon, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
         Scholio::portalStudy($platon, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
-        Scholio::portalStudy($platon, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($platon, 'Δημοτικό', 'Γενική Παιδεία', 'Έ Δημοτικού');
         Scholio::portalStudy($platon, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
 
         Scholio::portalStudy($platon, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
@@ -339,6 +341,13 @@ class Schools extends Seeder
 
         Scholio::portalSocial($platon, 'facebook', 'https://www.facebook.com/PlatonSchools');
         Scholio::portalSocial($platon, 'twitter', 'https://twitter.com/PlatonSchools');
+
+
+
+
+        /*===============  39 PLATON ================*/
+
+
 
         $axion = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'ΑΞΙΟΝ', 'email' => 'info@axion.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'axion'])->id,
