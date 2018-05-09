@@ -915,7 +915,7 @@ class Colleges extends Seeder
 
         /*===============  20 Perrotis College Thessaloniki ================*/
         $school20 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Perrotis College', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'perrotis'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Perrotis College', 'email' => 'perrotis@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'perrotis'])->id,
             'address' => 'Μαρίνου Αντύπα 54, Θέρμη',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310492800,

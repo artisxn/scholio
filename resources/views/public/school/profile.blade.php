@@ -980,7 +980,7 @@
                             <div class="col-lg-12" style="">
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
+                                <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">@{{contactInfo.address}}</span>
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <div class="hidden-xs">
@@ -996,14 +996,14 @@
                                     <br>
                                     <div class="pad-top-20"></div>
                                     <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                    <span class="pull-left pad-left-5 "> <a href="mailto:@{{contactInfo.email}}">@{{contactInfo.email}}</a></span>
+                                    <span class="pull-left pad-left-5 ellipsis"> <a href="mailto:@{{contactInfo.email}}">@{{contactInfo.email}}</a></span>
                                 </div>
 
                                 <span ng-if="contactInfo.website">
                                      <br>
                                     <div class="pad-top-20"></div>
                                     <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                    <span class="pull-left pad-left-5"> <a href="http://@{{contactInfo.website}}/" target="_blank">@{{contactInfo.website}}</a></span>
+                                    <span class="pull-left pad-left-5 ellipsis"> <a href="http://@{{contactInfo.website}}/" target="_blank">@{{contactInfo.website}}</a></span>
                                 </span>
 
 

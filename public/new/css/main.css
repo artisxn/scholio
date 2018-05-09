@@ -60,6 +60,15 @@ hr {
     text-overflow: ellipsis;
 }
 
+.ellipsis3{
+    display:inline-block;
+    max-width: 167px;
+    /*max-width: 99%;*/
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+}
+
 .text-incr-78{  font-size: 78%;  }
 .text-incr-85{  font-size: 85%;  }
 .text-incr-90{  font-size: 90%;  }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Scholio\Scholio;
+use Portal\Portal;
 
 class Schools extends Seeder
 {
@@ -34,7 +36,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($vas, 5, 'sxoleio');
+        new Portal($vas, 5, 'school');
 
         Scholio::portalStudy($vas, 'Ιδιωτικό Σχολείο', 'Γυμνάσιο', 'Ά Γυμνασίου');
         Scholio::portalStudy($vas, 'Ιδιωτικό Σχολείο', 'Γυμνάσιο', '΄Β Γυμνασίου');
@@ -66,7 +68,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($fryg, 5, 'sxoleio');
+        new Portal($fryg, 5, 'school');
 
         Scholio::portalStudy($fryg, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
         Scholio::portalStudy($fryg, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
@@ -106,7 +108,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($eap, 5, 'sxoleio');
+        new Portal($eap, 5, 'school');
 
         Scholio::portalStudy($eap, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
         Scholio::portalStudy($eap, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
@@ -146,7 +148,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($adam, 5, 'sxoleio');
+        new Portal($adam, 5, 'school');
 
         Scholio::portalStudy($adam, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
         Scholio::portalStudy($adam, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
@@ -204,7 +206,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($kalam, 5, 'sxoleio');
+        new Portal($kalam, 5, 'school');
 
         Scholio::portalStudy($kalam, 'Ιδιωτικό Σχολείο', 'Γυμνάσιο', 'Ά Γυμνασίου');
         Scholio::portalStudy($kalam, 'Ιδιωτικό Σχολείο', 'Γυμνάσιο', '΄Β Γυμνασίου');
@@ -219,7 +221,7 @@ class Schools extends Seeder
 
         /*===============   Αμερικανική Γεωργική Σχολή Θεσσαλονίκης================*/
         $afs = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Αμερικανική Γεωργική Σχολή Θεσσαλονίκης', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'afsGel'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Αμερικανική Γεωργική Σχολή Θεσσαλονίκης', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'afs'])->id,
             'address' => 'Μαρίνου Αντύπα 54, Θέρμη',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310492700,
@@ -234,7 +236,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($afs, 5, 'sxoleio');
+        new Portal($afs, 5, 'school');
 
         Scholio::portalStudy($afs, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
         Scholio::portalStudy($afs, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
@@ -251,13 +253,13 @@ class Schools extends Seeder
         Scholio::portalStudy($afs, 'Ιδιωτικό Σχολείο', 'Λύκειο', '΄Γ Λυκείου');
 
         Scholio::portalSocial($afs, 'facebook', 'https://www.facebook.com/AmericanFarmSchoolThessaloniki');
-        Scholio::portalSocial($afs, 'intagram', 'https://www.instagram.com/americanfarmschool/');
+        Scholio::portalSocial($afs, 'instagram', 'https://www.instagram.com/americanfarmschool/');
         Scholio::portalSocial($afs, 'flickr', 'https://www.flickr.com/photos/americanfarmschool/');
         Scholio::portalSocial($afs, 'youtube', 'https://www.youtube.com/user/AmericanFarmSchool?feature=mhee');
 
         /*===============   Αριστοτέλειο Κολλέγιο ================*/
         $aristotelio = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Αριστοτέλειο Κολλέγιο', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aristoteleioCollege'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Αριστοτέλειο Κολλέγιο Θεσσαλονίκης', 'email' => 'lykeio@aristotelio.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aristoteleioCollege'])->id,
             'address' => 'Τζων Κέννεντυ, Πυλαία',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310311711,
@@ -273,7 +275,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($aristotelio, 5, 'sxoleio');
+        new Portal($aristotelio, 5, 'school');
 
         Scholio::portalStudy($aristotelio, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
         Scholio::portalStudy($aristotelio, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
@@ -294,7 +296,7 @@ class Schools extends Seeder
         Scholio::portalStudy($aristotelio, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
 
         Scholio::portalSocial($aristotelio, 'facebook', 'https://www.facebook.com/aristotelio');
-        Scholio::portalSocial($aristotelio, 'intagram', 'http://instagram.com/aristoteliokollegio');
+        Scholio::portalSocial($aristotelio, 'instagram', 'http://instagram.com/aristoteliokollegio');
         Scholio::portalSocial($aristotelio, 'twitter', 'http://twitter.com/aristotelioThes');
         Scholio::portalSocial($aristotelio, 'youtube', 'https://www.youtube.com/channel/UCX7f5qucX_qQDgsaxq20Qjg');
         Scholio::portalSocial($aristotelio, 'google', 'https://plus.google.com/u/0/106662055385826670321');
@@ -302,7 +304,7 @@ class Schools extends Seeder
 
         /*===============  PLATON ================*/
         $platon = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια ΠΛΑΤΩΝ', 'email' => 'mail@platon.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'platon'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια ΠΛΑΤΩΝ', 'email' => 'mail@platon.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'platonKat'])->id,
             'address' => 'Γανόχωρα-Κατερίνη, Πιερία',
             'city' => 'Κατερίνη',
             'phone' => 2351031111,
@@ -319,7 +321,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($platon, 5, 'sxoleio');
+        new Portal($platon, 5, 'school');
 
         Scholio::portalStudy($platon, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
         Scholio::portalStudy($platon, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
@@ -367,7 +369,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($axion, 5, 'sxoleio');
+        new Portal($axion, 5, 'school');
 
         Scholio::portalStudy($axion, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($axion, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -392,7 +394,7 @@ class Schools extends Seeder
         Scholio::portalSocial($axion, 'linkedin', 'https://www.linkedin.com/company/4874569?trk=tyah&trkInfo=clickedVertical:company,clickedEntityId:4874569,idx:2-1-2,tarId:1484250427961,tas:axion%20sc');
 
         $aristoseres = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Αριστοτέλειο Εκπαιδευτήριο', 'email' => 'info@aristotelio.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aristoteleioserres'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Αριστοτέλειο Εκπαιδευτήριο Σερρών', 'email' => 'info@aristotelio.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aristoteleioserres'])->id,
             'address' => '6ο Χιλιόμετρο Σερρών-Δράμας',
             'city' => 'Σέρρες',
             'phone' => 2321051111,
@@ -414,7 +416,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($aristoseres, 5, 'sxoleio');
+        new Portal($aristoseres, 5, 'school');
 
         Scholio::portalStudy($aristoseres, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
         Scholio::portalStudy($aristoseres, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
@@ -483,7 +485,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($bakogiannis, 5, 'sxoleio');
+        new Portal($bakogiannis, 5, 'school');
 
         Scholio::portalStudy($bakogiannis, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($bakogiannis, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -536,7 +538,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($karavana, 5, 'sxoleio');
+        new Portal($karavana, 5, 'school');
 
         Scholio::portalStudy($karavana, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($karavana, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -612,7 +614,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($ekanagenisi, 5, 'sxoleio');
+        new Portal($ekanagenisi, 5, 'school');
 
         Scholio::portalStudy($ekanagenisi, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($ekanagenisi, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -658,7 +660,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($pagkriteio, 5, 'sxoleio');
+        new Portal($pagkriteio, 5, 'school');
 
         Scholio::portalStudy($pagkriteio, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($pagkriteio, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -692,7 +694,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($cgs, 5, 'sxoleio');
+        new Portal($cgs, 5, 'school');
 
         Scholio::portalStudy($cgs, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($cgs, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -733,7 +735,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($avgoulea, 5, 'sxoleio');
+        new Portal($avgoulea, 5, 'school');
 
         Scholio::portalStudy($avgoulea, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($avgoulea, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -778,7 +780,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($georgiouzwi, 5, 'sxoleio');
+        new Portal($georgiouzwi, 5, 'school');
 
         Scholio::portalStudy($georgiouzwi, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($georgiouzwi, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -813,7 +815,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($arsakeio, 5, 'sxoleio');
+        new Portal($arsakeio, 5, 'school');
 
         Scholio::portalStudy($arsakeio, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($arsakeio, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -860,7 +862,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($ziridis, 5, 'sxoleio');
+        new Portal($ziridis, 5, 'school');
 
         Scholio::portalStudy($ziridis, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($ziridis, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -896,7 +898,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($haef, 5, 'sxoleio');
+        new Portal($haef, 5, 'school');
 
         Scholio::portalStudy($haef, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
         Scholio::portalStudy($haef, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
@@ -929,7 +931,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($doukas, 5, 'sxoleio');
+        new Portal($doukas, 5, 'school');
 
         Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
         Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
@@ -961,7 +963,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($protypa, 5, 'sxoleio');
+        new Portal($protypa, 5, 'school');
 
         Scholio::portalStudy($protypa, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($protypa, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -1000,7 +1002,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($mandoulides, 5, 'sxoleio');
+        new Portal($mandoulides, 5, 'school');
         Scholio::portalStudy($mandoulides, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
         Scholio::portalStudy($mandoulides, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($mandoulides, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -1038,7 +1040,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($anatolia, 5, 'sxoleio');
+        new Portal($anatolia, 5, 'school');
 
         Scholio::portalStudy($anatolia, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
         Scholio::portalStudy($anatolia, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
@@ -1073,7 +1075,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($helcol, 5, 'sxoleio');
+        new Portal($helcol, 5, 'school');
         Scholio::portalStudy($helcol, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
         Scholio::portalStudy($helcol, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($helcol, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
@@ -1123,7 +1125,7 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($dst, 5, 'sxoleio');
+        new Portal($dst, 5, 'school');
 
         Scholio::portalStudy($dst, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($dst, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
