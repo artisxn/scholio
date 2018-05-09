@@ -26,34 +26,13 @@ class SchoolTypesTableSeeder extends Seeder
             ['id' => 10, 'name' => 'Σχολή Χορού'],
             ['id' => 11, 'name' => 'Ωδείο'],
             ['id' => 12, 'name' => 'Κέντρο Δημιουργικής Απασχόλησης'],
-        ];
-
-        $typesEN = [
-            ['id' => 1, 'name' => 'College'],
-            ['id' => 2, 'name' => 'IEK'],
-            ['id' => 3, 'name' => 'Tutor School for High School'],
-            ['id' => 4, 'name' => 'Tutor School for Foreign Languages and Computer studies'],
-            ['id' => 5, 'name' => 'Tutor School for university students'],
-            ['id' => 6, 'name' => 'Private Lyceum'],
-            ['id' => 7, 'name' => 'Private HighSchool'],
-            ['id' => 8, 'name' => 'Private Primary School'],
-            ['id' => 9, 'name' => 'Kindergarten'],
-            ['id' => 10, 'name' => 'Dance School'],
-            ['id' => 11, 'name' => 'Music School'],
-            ['id' => 12, 'name' => 'Other school type (KDA)'],
+            ['id' => 13, 'name' => 'Ιδιωτικό Σχολείο'],
         ];
 
         foreach ($types as $type) {
             $schoolType = new SchoolTypes;
             $schoolType->id = $type['id'];
             $schoolType->name = $type['name'];
-            $schoolType->save();
-        }
-
-        foreach ($typesEN as $t) {
-            $schoolType = new SchoolTypesEN;
-            $schoolType->id = $t['id'];
-            $schoolType->name = $t['name'];
             $schoolType->save();
         }
     }
