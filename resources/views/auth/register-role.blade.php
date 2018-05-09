@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta name="description" content="Your scholarship is a click away!">
     <meta name="author" content="Schol.io">
+    <meta name="description" content="Αναζήτηση υποτροφιών και εκπαιδευτικών υπηρεσιών.">
+    <meta name="keywords" content="Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, ΙΙΕΚ, Σχολές, Σπουδές, Εκπαιδευτικά Ιδρύματα">
 
     <link rel="shortcut icon" href="/panel/assets/images/favicon_1.ico">
 

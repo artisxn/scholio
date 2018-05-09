@@ -117,9 +117,9 @@ class SocialAuthController extends Controller
                 $info->user_id = $user->id;
                 $info->avatar = $avatar;
                 $info->gender = $profileBuilder['gender'];
-                if (isset($profileBuilder['about']) && $profileBuilder['about'] != '') {
-                    $info->about = $profileBuilder['about'];
-                }
+                // if (isset($profileBuilder['about']) && $profileBuilder['about'] != '') {
+                //     $info->about = $profileBuilder['about'];
+                // }
                 $info->save();
             }
             if ($role == 'parent') {
