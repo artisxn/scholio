@@ -598,7 +598,7 @@ class Schools extends Seeder
             'address' => 'Γηροκομείου 61',
             'city' => 'Πάτρα',
             'phone' => 2610224260,
-            'type_id' => 6,
+            'type_id' => 13,
             'website' => 'http://anagennisiedu.gr',
             'approved' => 1,
             'about' => 'Είμαστε μια ομάδα εκπαιδευτικών, που βασιζόμενοι στην αγάπη μας για την Εκπαίδευση, δημιουργήσαμε στην Πάτρα τα Εκπαιδευτήρια «Αναγέννηση». Κεφάλαιό μας η αγάπη για τη μάθηση και το μαθητή και ισχυρό μας εφόδιο η  πολυετής εμπειρία μας στο χώρο της    ιδιωτικής εκπαίδευσης.
@@ -635,28 +635,27 @@ class Schools extends Seeder
         Scholio::portalSocial($ekanagenisi, 'google', 'https://plus.google.com/share?url=http://anagennisiedu.gr/poioi-eimaste/');
         Scholio::portalSocial($ekanagenisi, 'twitter', 'http://twitter.com/share?url=http://anagennisiedu.gr/poioi-eimaste/&text=%CE%A0%CE%9F%CE%99%CE%9F%CE%99%20%CE%95%CE%99%CE%9C%CE%91%CE%A3%CE%A4%CE%95%20');
 
-
         $pagkriteio = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήριο ΤΟ ΠΑΓΚΡΗΤΙΟΝ', 'email' => 'dimotiko@pagkritio.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'pagkriteio'])->id,
             'address' => 'Οδός Πανδάρεω 61, Φιλοθέη - Αγ. Ιωάννης',
             'city' => 'Ηράκλειο',
             'phone' => 2810230379,
-            'type_id' => 6,
+            'type_id' => 13,
             'website' => 'http://www.pagkritio.gr',
             'approved' => 1,
             'about' => 'Το Εκπαιδευτήριο “ΤΟ ΠΑΓΚΡΗΤΙΟΝ” ιδρύθηκε το 1963 μέσα σε πνεύμα δημιουργίας και ανανέωσης. «Η παιδεία οφείλει να ξεφύγει από τη συντηρητικότητα και να μπει περισσότερο στη γνώση της ζωής και στον αγώνα για μια σωστή ελευθερία του πνεύματος», έγραφε τότε το πρώτο ιστορικό φυλλάδιο γνωριμίας του σχολείου.  Με αφετηρία  αυτές τις σταθερές αρχές, η πορεία του υπήρξε σταθερή και ανοδική. Σήμερα, όλες οι βαθμίδες εκπαίδευσης, Παιδικός Σταθμός, Νηπιαγωγείο, Δημοτικό, Γυμνάσιο, Λύκειο, στελεχώνονται από έμπειρους, καταρτισμένους εκπαιδευτικούς, που αγαπούν τη δουλειά τους και το παιδί. Με τον άρτιο συντονισμό των διδασκόντων, τη διαρκή επιμόρφωσή τους για τον εκσυγχρονισμό των διδακτικών μέσων και την καθημερινή  συνεργασία τους με μαθητές και γονείς, το μάθημα είναι πάντα δημιουργικό και ο ρυθμός δουλειάς αποδοτικός. Παράλληλα, οι πολύπλευρες καλλιτεχνικές και πνευματικές δραστηριότητες του, κάνουν το Εκπαιδευτήριο “ΤΟ ΠΑΓΚΡΗΤΙΟΝ”  να λειτουργεί σαν ένας ζωντανός πυρήνας για την Τέχνη και τον Πολιτισμό στην πόλη του Ηρακλείου.
 
             Πέρα από την εγρήγορση για υψηλού επιπέδου καθημερινή δουλειά και για επιτυχίες στα ανώτατα εκπαιδευτικά ιδρύματα, το Εκπαιδευτήριο σήμερα προσφέρει πολλά παραπάνω. Σε κάθε βαθμίδα αναπτύσσονται πολύπλευρες δραστηριότητες και λειτουργούν ποικίλοι κύκλοι ενδιαφερόντων για την ελεύθερη έκφραση της προσωπικότητας του μαθητή: σχολική ορχήστρα, θεατρική ομάδα, κύκλος εικαστικών και ζωγραφικής, κύκλος φωτογραφίας, κύκλος σχεδίασης ιστοσελίδων στο Διαδίκτυο, ομάδα περιβάλλοντος, ομάδα δημοσιογραφίας. Μέσα από τη δουλειά αυτών των κύκλων, οι μαθητές πάντα δημιουργούν. Όπως η ομάδα δημοσιογραφίας, που εδώ και 25 χρόνια, εκδίδει το ιστορικό πια περιοδικό "Έκφραση και Ενημέρωση" για τη ζωή και τη δραστηριότητα του σχολείου ή την μαθητική έκδοση "Μας πήραν είδηση". Παράλληλα, το Λύκειο εκδίδει τη δική του εφημερίδα με το όνομα "Νεανικές Φωνές", το Γυμνάσιο εκδίδει τη μηνιαία εφημερίδα "Μέρες Σχολέίου" που αποτυπώνει τη ζωή και τις δραστηριότητες της βαθμίδας, ενώ τα μικρά παιδιά του Δημοτικού την "Πένα", έκδοση που το Μάιο του 2010 απέσπασε το βραβείο Καλύτερης Εφημερίδας στον 17ο Πανελλήνιο Διαγωνισμό Μαθητικών Εντύπων της Εφημερίδας "ΤΑ ΝΕΑ".
-            
+
             Δημιουργική δουλειά και μεγάλες επιτυχίες έχει δώσει και η θεατρική ομάδα του Παγκρητίου. Κορυφαίες στιγμές της, θεατρικές παραστάσεις που αγαπήθηκαν και βραβεύτηκαν σε πανελλήνιο επίπεδο, όπως ο "Ήλιος Ηλιάτορας" του Οδυσσέα Ελύτη, "Το τραγούδι του Νεκρού Αδερφού" και οι "Ελεύθεροι Πολιορκοιμένοι" του Διονυσίου Σολωμού.
-            
+
             Σήμερα στο εκπαιδευτήριο λειτουργούν και πολλές απογευματινές, προαιρετικές δραστηριότητες:
-            
+
             τμήματα απογευματινής μελέτης για παιδιά Δημοτικού
             μουσική σχολή με τμήματα κλασσικών, μοντέρνων και παραδοσιακών μουσικών σπουδών για παιδιά Δημοτικού και Γυμνασίου
-            τμήματα για τα πιστοποιημένα διπλώματα πληροφορικής CAMBRIDGE και MOS 
+            τμήματα για τα πιστοποιημένα διπλώματα πληροφορικής CAMBRIDGE και MOS
             απογευματινά προγράμματα Αγγλικών για μαθητές Γυμνασίου που θέλουν να οδηγηθούν  συντομότερα στα διπλώματα Cambridge FCE και κρατικό πιστοποιητικό γλωσσομάθειας',
-            'background' => $background
+            'background' => $background,
         ]);
 
         new Portal($pagkriteio, 5, 'sxoleio');
@@ -680,7 +679,6 @@ class Schools extends Seeder
 
         Scholio::portalSocial($pagkriteio, 'facebook', 'https://www.facebook.com/pagkritio');
 
-
         $cgs = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Κωστέα - Γείτονα CGS', 'email' => 'info@cgs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'cgs'])->id,
             'address' => 'Παλλήνη Αττικής',
@@ -694,29 +692,459 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-            new Portal($cgs, 5, 'sxoleio');
+        new Portal($cgs, 5, 'sxoleio');
 
-            Scholio::portalStudy($cgs, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
-            Scholio::portalStudy($cgs, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+        Scholio::portalStudy($cgs, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($cgs, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
 
-            Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
-            Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
-            Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
-            Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
-            Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
-            Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+        Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($cgs, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
 
-            Scholio::portalStudy($cgs, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
-            Scholio::portalStudy($cgs, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
-            Scholio::portalStudy($cgs, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
-            Scholio::portalStudy($cgs, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
-            Scholio::portalStudy($cgs, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
-            Scholio::portalStudy($cgs, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+        Scholio::portalStudy($cgs, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($cgs, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($cgs, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($cgs, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($cgs, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($cgs, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
 
-            Scholio::portalSocial($cgs, 'facebook', 'https://www.facebook.com/cgs.gr/?pnref=lhc');
-            Scholio::portalSocial($cgs, 'instagram', 'https://www.instagram.com/cgs_school/');
-            Scholio::portalSocial($cgs, 'youtube','https://www.youtube.com/channel/UCn4pw8HK0w63l5dvFVK9UmA');
-            Scholio::portalSocial($cgs, 'linkedin', 'https://www.linkedin.com/company/18204073/');
+        Scholio::portalSocial($cgs, 'facebook', 'https://www.facebook.com/cgs.gr/?pnref=lhc');
+        Scholio::portalSocial($cgs, 'instagram', 'https://www.instagram.com/cgs_school/');
+        Scholio::portalSocial($cgs, 'youtube', 'https://www.youtube.com/channel/UCn4pw8HK0w63l5dvFVK9UmA');
+        Scholio::portalSocial($cgs, 'linkedin', 'https://www.linkedin.com/company/18204073/');
+
+        $avgoulea = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Αυγουλέα - Λιναρδάτου', 'email' => 'info@avgouleaschool.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'avgoulea'])->id,
+            'address' => 'Αρκαδίου 63 - 65 & Λυκούργου, 12132, Περιστέρι',
+            'city' => 'Αθήνα',
+            'phone' => 2115002300,
+            'type_id' => 13,
+            'website' => 'http://www.avgouleaschool.gr/',
+            'approved' => 1,
+            'about' => 'Σας καλωσορίζουμε στον δικτυακό τόπο των Εκπαιδευτηρίων Σ. Αυγουλέα - Λιναρδάτου. Βρίσκεστε σε ένα χώρο με υλικό και πληροφορίες για την εξηνταεφτάχρονη ιστορία της Σχολής μας, τις υλικοτεχνικές της υποδομές, τις κτιριακές της εγκαταστάσεις, τα πρότυπα ποιότητας που εφαρμόζει, τα εκπαιδευτικά προγράμματα που εκπονεί, τις καινοτόμες δράσεις που υλοποιεί, τις αθλητικές δραστηριότητες που προσφέρει, τις πολιτιστικές εκδηλώσεις που διοργανώνει, τις σχολικές εκδόσεις που διανέμει, το ικανό και έμπειρο εκπαιδευτικό δυναμικό που απασχολεί και τα εξαιρετικά αποτελέσματα των μαθητών της σε όλους τους τομείς.
+                Περιηγούμενοι στον ιστοχώρο μας, θα γνωρίσετε την οργάνωση, δομή και λειτουργία του Παιδικού Σταθμού, του Νηπιαγωγείου, του Δημοτικού, του Γυμνασίου και του Λυκείου μας και θα ανακαλύψετε την εκπαιδευτική μας φιλοσοφία και τα παιδαγωγικά μας «πιστεύω».
+                Η περιήγηση στον δικτυακό μας χώρο παρέχει σίγουρα πολλές κι ενδιαφέρουσες πληροφορίες, αλλά όχι όλες. Θα χαρούμε να έρθετε κοντά μας, να συζητήσουμε και να σας παρουσιάσουμε διά ζώσης το ολοκληρωμένο εκπαιδευτικό πρόγραμμα του Σχολείου μας και τη δυναμική, πολυεπίπεδη μόρφωση που μπορεί να προσφέρει στο παιδί σας.
+                Ωστόσο, ως πρώτη επαφή και εφόσον το επιθυμείτε, μπορείτε να συμπληρώσετε τη φόρμα επικοινωνίας για να σας αποστείλουμε περισσότερες ή ειδικές πληροφορίες μέσω του ηλεκτρονικού ταχυδρομείου (e-mail).
+
+                ',
+            'background' => $background,
+        ]);
+
+        new Portal($avgoulea, 5, 'sxoleio');
+
+        Scholio::portalStudy($avgoulea, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($avgoulea, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($avgoulea, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($avgoulea, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($avgoulea, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($avgoulea, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($avgoulea, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($avgoulea, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($avgoulea, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($avgoulea, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($avgoulea, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($avgoulea, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($avgoulea, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($avgoulea, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($avgoulea, 'facebook', 'http://www.facebook.com/avgoulea.gr');
+        Scholio::portalSocial($avgoulea, 'instagram', 'http://instagram.com/avgouleaschool?ref=badge');
+        Scholio::portalSocial($avgoulea, 'youtube', 'http://youtube.com/avgouleaschool');
+
+        $georgiouzwi = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Γεωργίου Ζώη', 'email' => ' info@zois-school.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'georgiouzwi'])->id,
+            'address' => 'Αβέρωφ 12-14, 16452 Αργυρούπολη',
+            'city' => 'Αθήνα',
+            'phone' => 2109617817,
+            'type_id' => 13,
+            'website' => 'http://www.zois-school.gr/',
+            'approved' => 1,
+            'about' => 'Χαρτογραφώντας μέσα σε λίγες γραμμές την εκπαιδευτική φιλοσοφία των ΕΚΠΑΙΔΕΥΤΗΡΙΩΝ ΓΕΩΡΓΙΟΥ ΖΩΗ, επισημαίνουμε τα εξής:
+
+            Βασική παιδαγωγική αρχή για τα Εκπαιδευτήριά μας είναι: τα πάντα για τους μαθητές μας, που μας χαρίζουν την ευτυχία «χωρίς ζύγι». Προσφορά αφειδώλευτη σ’ όλα τα παιδιά, γιατί στα μάτια όλων των παιδιών τρέχει ανόθευτο το αγίασμα που το λένε μέλλον, που το λένε φως, που το λένε ελπίδα.
+            Καλό σχολείο για μας είναι το χαρούμενο σχολείο, το σχολείο στο οποίο τα παιδιά πηγαίνουν με χαρά και επιστρέφουν στο σπίτι με μεγαλύτερη χαρά. Το σχολείο στο οποίο η κάθε μέρα είναι γιορτή, γιορτή γνώσης, γιορτή σχολικής ζωής.
+            Σύγχρονο σχολείο θεωρούμε το σχολείο που είναι απαλλαγμένο από άχρηστα, περιττά και αναχρονιστικά στοιχεία, που είναι ανοικτό στις ιδέες και στην κοινωνία, στη γνώση και στο μέλλον, και που αξιοποιεί κάθε σύγχρονο εργαλείο (διαδραστικό πίνακα, ψηφιακό εκπαιδευτικό υλικό) με το οποίο διευρύνονται οι ορίζοντες κάθε μαθητή και μαθήτριας, καταργούνται τα σύνορα της γνώσης και διευκολύνεται η επικοινωνία με τον εκπαιδευτικό.
+            Ευθύνη των εκπαιδευτικών μας είναι να προσπαθούν καθημερινά για τη δημιουργία ενός πράσινου σχολείου, το οποίο καλλιεργεί στον μαθητή την περιβαλλοντική συνείδηση, προκειμένου να εξοικονομείται ενέργεια, να διατρέφεται υγιεινά και να σέβεται το περιβάλλον.
+            Για μας η παιδεία είναι «ανθρωποποιία» (Μέγας Αντώνιος) και επιτυγχάνεται αν συνδέεται άρρηκτα με την παράδοσή μας, πυρήνας της οποίας είναι το ήθος της ορθοδοξίας.
+            Θέλουμε τους εκπαιδευτικούς μας να είναι δάσκαλοι και λειτουργοί και όχι «παράγοντες» με υπαλληλική νοοτροπία, που περισσότερο διεκδικούν παρά διακονούν. Θέλουμε εκπαιδευτικούς που σέβονται την προσωπικότητα κάθε μαθητή, έχουν θετικές προσδοκίες για όλα τα παιδιά, καλή επικοινωνία μαζί τους, καθώς και μέτρο στη συμπεριφορά, διατηρώντας έτσι ισορροπία ανάμεσα στο χιούμορ και στην αυστηρότητα.
+            Ρόλος ενός σύγχρονου εκπαιδευτικού οργανισμού είναι για μας να οδηγήσει τα παιδιά «να μάθουν πώς να μαθαίνουν» και πώς να προσαρμόζονται σ’ έναν κόσμο που μεταλλάσσεται ραγδαία, ώστε, διατηρώντας τον ελληνοκεντρικό του χαρακτήρα, να έχει παράλληλα το βλέμμα του στραμμένο στην Ευρώπη και στον κόσμο ολόκληρο, για να μπορέσει να εξοπλίσει γνωσιολογικά τον Έλληνα Ευρωπαίο, τον Έλληνα Πολίτη της Οικουμένης.
+            Σωστό σχολείο θεωρούμε το σχολείο εκείνο που αξιοποιεί και τις κινητικές ικανότητες και κλίσεις όλων των μαθητών μέσα από αθλητικές δραστηριότητες, ώστε να αποκτούν συνήθειες οι οποίες αναβαθμίζουν την ποιότητα της ζωής τους. Στα ΕΚΠΑΙΔΕΥΤΗΡΙΑ ΓΕΩΡΓΙΟΥ ΖΩΗ έχουμε από νωρίς καταλάβει ότι η συμμετοχή στην άθληση σημαίνει συμμετοχή στη ζωή.
+            «Εν κατακλείδι» για τα ΕΚΠΑΙΔΕΥΤΗΡΙΑ ΓΕΩΡΓΙΟΥ ΖΩΗ η παιδεία οφείλει κυρίως να δίνει σταθερά σημεία προσανατολισμού, δοκιμασμένες αξίες και καταξιωμένα ιδεώδη ως βάση του ζην, του συζήν και του ευζην.',
+            'background' => $background,
+        ]);
+
+        new Portal($georgiouzwi, 5, 'sxoleio');
+
+        Scholio::portalStudy($georgiouzwi, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($georgiouzwi, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($georgiouzwi, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($georgiouzwi, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($georgiouzwi, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($georgiouzwi, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($georgiouzwi, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($georgiouzwi, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($georgiouzwi, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($georgiouzwi, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($georgiouzwi, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($georgiouzwi, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($georgiouzwi, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($georgiouzwi, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($georgiouzwi, 'facebook', 'http://www.facebook.com/pages/%CE%95%CE%BA%CF%80%CE%B1%CE%B9%CE%B4%CE%B5%CF%85%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%93%CE%B5%CF%89%CF%81%CE%B3%CE%AF%CE%BF%CF%85-%CE%96%CF%8E%CE%B7/199217543485682');
+        Scholio::portalSocial($georgiouzwi, 'twitter', 'http://twitter.com/ZoisSchool');
+        Scholio::portalSocial($georgiouzwi, 'youtube', 'http://www.youtube.com/user/zoisschool');
+
+        $arsakeio = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Φιλεκπαιδευτική Εταιρεία Αερσάκεια - Τοσιτσεία Σχολεία', 'email' => 'info@arsakeio.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'arsakeio'])->id,
+            'address' => 'Κοκκώνη 18 / Π. Ψυχικό 154 52',
+            'city' => 'Αθήνα',
+            'phone' => 2106755555,
+            'type_id' => 13,
+            'website' => 'http://www.arsakeio.gr/',
+            'approved' => 1,
+            'about' => 'Τα Αρσάκεια - Τοσίτσεια Σχολεία είναι συγκροτήματα σχολικών μονάδων πρωτοβάθμιας και δευτεροβάθμιας εκπαίδευσης, τα οποία ανήκουν στην Φιλεκπαιδευτική Εταιρεία (ΦΕ). Εδρεύουν στην Αθήνα, Παλαιό Ψυχικό και Εκάλη, Πάτρα, Θεσσαλονίκη, Ιωάννινα και Τίρανα (Αλβανία).',
+            'background' => $background,
+        ]);
+
+        new Portal($arsakeio, 5, 'sxoleio');
+
+        Scholio::portalStudy($arsakeio, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($arsakeio, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($arsakeio, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($arsakeio, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($arsakeio, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($arsakeio, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($arsakeio, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($arsakeio, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($arsakeio, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($arsakeio, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($arsakeio, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($arsakeio, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($arsakeio, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($arsakeio, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($arsakeio, 'facebook', 'https://www.facebook.com/ArsakeioClasiko/');
+
+        $ziridis = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Νέα Γενιά Ζηρίδη', 'email' => 'info@ziridis.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ziridi'])->id,
+            'address' => 'ΧΡΙΣΤΟΥΠΟΛΗ, ΣΠΑΤΑ, ΤΚ: 19004',
+            'city' => 'Αθήνα',
+            'phone' => 2106685600,
+            'type_id' => 13,
+            'website' => 'http://www.ziridis.gr',
+            'approved' => 1,
+            'about' => 'Αναζητήστε σχολεία με ιστορία, με παράδοση, με αρχές, με αξίες, με οικογενειακή ιστορία. Ανθρώπινα σχολεία. Ελληνικά σχολεία.
+
+            Αναζητήστε μία θετική, παιδαγωγική ατμόσφαιρα. Ανθρώπους που νοιάζονται. Ανθρώπους που έχουν τυπικά και ουσιαστικά προσόντα.
+
+            Αναζητήστε μεταπτυχιακά, διδακτορικά, ψάξτε για ανθρώπους που έχουν φλόγα στην καρδιά και ενθουσιασμό και αφοσίωση στο έργο τους, που αγαπούν αυτό που κάνουν.
+
+            Αναζητήστε ένα ασφαλές, οικογενειακό, στοργικό κλίμα. Ένα περιβάλλον, που από μόνο του δημιουργεί ερεθίσματα, γιατί στα πρώτα χρόνια είναι που διαμορφώνεται η αντίληψη του ποιοτικού.
+
+            Είναι οι άνθρωποι που γνωρίζουν τα ταλέντα τους, τα χαρίσματά τους και τη μοναδικότητά τους.
+
+            Είναι οι άνθρωποι που έχουν ωριμάσει φυσικά, κοινωνικά, συναισθηματικά, διανοητικά και πνευματικά μέσα σ’ ένα θετικό περιβάλλον.
+
+            Είναι οι άνθρωποι που είναι εξοπλισμένοι με όλες τις δεξιότητες και τα εφόδια που χρειάζεται η ζωή.
+
+            «Γι’ αυτό, μην μου λες σε ποιο Πανεπιστήμιο πήγες, πες μου σε ποιο σχολείο ήσουνα.»',
+            'background' => $background,
+        ]);
+
+        new Portal($ziridis, 5, 'sxoleio');
+
+        Scholio::portalStudy($ziridis, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($ziridis, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($ziridis, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($ziridis, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($ziridis, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($ziridis, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($ziridis, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($ziridis, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($ziridis, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($ziridis, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($ziridis, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($ziridis, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($ziridis, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($ziridis, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($ziridis, 'facebook', 'https://www.facebook.com/ziridis/');
+        Scholio::portalSocial($ziridis, 'instagram', 'https://www.instagram.com/ziridis/');
+        Scholio::portalSocial($ziridis, 'twitter', 'https://twitter.com/neageniaziridis');
+        Scholio::portalSocial($ziridis, 'youtube', 'https://www.youtube.com/user/ziridistv');
+
+        $haef = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Ελληνοαμερικανικόν Εκπαιδευτικόν Ίδρυμα, Κολλέγιο Αθηνών - Κολλέγιο Ψυχικού ', 'email' => 'info@haef.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'haef'])->id,
+            'address' => 'Στεφάνου Δέλτα 15, Ψυχικό',
+            'city' => 'Αθήνα',
+            'phone' => 2106798100,
+            'type_id' => 13,
+            'website' => 'https://www.haef.gr/',
+            'approved' => 1,
+            'about' => '"Αποστολή του ΕΕΙ είναι να προσφέρει παιδεία ανωτάτου επιπέδου -με διεθνή κριτήρια- και να καλλιεργεί στους μαθητές του εκείνες τις ικανότητες της ψυχής, του σώματος και του πνεύματος που είναι αναγκαίες για κάθε υπεύθυνο πολίτη".',
+            'background' => $background,
+        ]);
+
+        new Portal($haef, 5, 'sxoleio');
+
+        Scholio::portalStudy($haef, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($haef, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($haef, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($haef, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($haef, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($haef, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($haef, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($haef, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($haef, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($haef, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($haef, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($haef, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($haef, 'facebook', 'https://www.haef.gr/-/media/Images/HAEF/Icons/fb.ashx?h=16&la=el&w=16');
+        Scholio::portalSocial($haef, 'twitter', 'https://www.haef.gr/-/media/Images/HAEF/Icons/tw.ashx?h=16&la=el&w=16');
+
+        $doukas = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Δούκα', 'email' => 'info@doukas.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'doukas'])->id,
+            'address' => 'Μεσογείων 151, Μαρούσι',
+            'city' => 'Αθήνα',
+            'phone' => 2106186000,
+            'type_id' => 13,
+            'website' => 'http://www.doukas.gr/',
+            'approved' => 1,
+            'about' => '> Εκπαιδεύουμε παγκόσμιους πολίτες με Ελληνική ταυτότητα & ικανότητες 21ου αιώνα
+            Πιστεύουμε στην ισορροπία ανάμεσα στην Παράδοση και την Πρόοδο. Σκοπός μας είναι να βελτιώνουμε διαρκώς την ποιότητα των υπηρεσιών μας και να ξεπερνάμε τις ανάγκες και τις προσδοκίες των μαθητών μας, των γονέων τους καθώς και της ευρύτερης κοινωνίας.
+            Στόχος μας είναι να εκπαιδεύουμε Παγκόσμιους Πολίτες με Ελληνική Ταυτότητα, εφοδιάζοντάς τους με Ικανότητες του 21ου αιώνα, δείχνοντας ταυτόχρονα σεβασμό στη μοναδικότητα του κάθε παιδιού.',
+            'background' => $background,
+        ]);
+
+        new Portal($doukas, 5, 'sxoleio');
+
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($doukas, 'facebook', 'https://www.facebook.com/DoukaSchool');
+        Scholio::portalSocial($doukas, 'instagram', 'https://instagram.com/doukas_school/');
+        Scholio::portalSocial($doukas, 'twitter', 'https://twitter.com/Doukas_School');
+
+        $protypa = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Πρότυπα Εκπαιδευτήρια Θεσσαλονίκης', 'email' => 'info@protypa.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'protypa'])->id,
+            'address' => 'Ελαιώνες Πυλαίας Τ.Κ. 555 36',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310300002,
+            'type_id' => 13,
+            'website' => 'https://www.protypa.gr/frontend/index.php',
+            'approved' => 1,
+            'about' => 'Τα Πρότυπα Εκπαιδευτήρια Θεσσαλονίκης με μια δημιουργική πορεία 40 ετών είναι μια πλήρης μονάδα. Ειδικεύεται στην πρωτοβάθμια εκπαίδευση στην οποία και επικεντρώνεται γνωρίζοντας τη δομική σημασία στη μετέπειτα πορεία των μαθητών. Ως αναγνώριση και επιβεβαίωση του υψηλού επιπέδου σπουδών μας, επισημαίνουμε ότι οι απόφοιτοι των Εκπαιδευτηρίων μας κατέχουν τις πρώτες θέσεις στις εισαγωγικές εξετάσεις κολεγίων, καθώς και τις υψηλότερες βαθμολογίες στα ιδιωτικά και δημόσια Γυμνάσια και Λύκεια της πόλης μας.',
+            'background' => $background,
+        ]);
+
+        new Portal($protypa, 5, 'sxoleio');
+
+        Scholio::portalStudy($protypa, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($protypa, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($protypa, 'facebook', 'http://www.facebook.com/pages/Thessaloniki-Greece/Protypa-Ekpaideuteria-Thessalonikes/170518156295078');
+        Scholio::portalSocial($protypa, 'google', 'https://plus.google.com/117536093537987040966/');
+        Scholio::portalSocial($protypa, 'twitter', 'https://twitter.com/protypa_gr');
+        Scholio::portalSocial($protypa, 'youtube', 'http://www.youtube.com/user/protypa');
+
+        $mandoulides = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Μαντουλίδη', 'email' => 'primary@mandoulides.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mandoulides'])->id,
+            'address' => '6ο χλμ. Χαριλάου - Θέρμης',
+            'city' => 'Θέρμη,Θεσσαλονίκη',
+            'phone' => 2310473813,
+            'type_id' => 13,
+            'website' => 'https://mandoulides.edu.gr/',
+            'approved' => 1,
+            'about' => 'Τα Εκπαιδευτήρια αποτελούν σήμερα μια σύγχρονη και δυναμική κοινότητα παιδείας, πολιτισμού και αθλητισμού, αναγνωρισμένη σε όλη την Ελλάδα.
+
+            Τα Εκπαιδευτήρια περιλαμβάνουν:
+            Παιδικό Σταθμό, Νηπιαγωγείο, Δημοτικό, Γυμνάσιο, Λύκειο, κέντρο συμβουλευτικής και τμήματα προετοιμασίας για σπουδές στο εξωτερικό.',
+            'background' => $background,
+        ]);
+
+        new Portal($mandoulides, 5, 'sxoleio');
+        Scholio::portalStudy($mandoulides, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
+        Scholio::portalStudy($mandoulides, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($mandoulides, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($mandoulides, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($mandoulides, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($mandoulides, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($mandoulides, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($mandoulides, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($mandoulides, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($mandoulides, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($mandoulides, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($mandoulides, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($mandoulides, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($mandoulides, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($mandoulides, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($mandoulides, 'facebook', 'https://www.facebook.com/mandoulides');
+        Scholio::portalSocial($mandoulides, 'instagram', 'https://www.instagram.com/mandoulides_schools/');
+        Scholio::portalSocial($mandoulides, 'twitter', 'https://twitter.com/Mandoulides');
+        Scholio::portalSocial($mandoulides, 'youtube', 'http://www.youtube.com/user/mandoulidesschools');
+        Scholio::portalSocial($mandoulides, 'linkedin', 'https://www.linkedin.com/company/mandoulides');
+
+        $anatolia = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Ανατόλια ', 'email' => 'acagyreg@anatolia.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'anatolia'])->id,
+            'address' => 'Τζων Κέννεντυ 50, Πυλαία',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310398357,
+            'type_id' => 13,
+            'website' => 'http://www.anatolia.edu.gr',
+            'approved' => 1,
+            'about' => 'Στόχος μας είναι να εμφυσήσουμε στους μαθητές μας τη φιλοδοξία και να τους δώσουμε όλα τα απαραίτητα εφόδια να γίνουν πολίτες του κόσμου, υπεύθυνοι και με αρχές, αλλά και κριτικά σκεπτόμενα άτομα με ανοιχτό πνεύμα που αναζητούν με ενεργό τρόπο τη γνώση σε όλη τη διάρκεια της ζωής τους.
+             Όραμά μας είναι να εδραιώσουμε το Ανατόλια ως την πρώτη επιλογή για κάθε ικανό μαθητή και μαθήτρια ανεξαρτήτως οικονομικής δυνατότητας, ως ένα σχολείο-πρότυπο στον τομέα της διαρκούς ανάπτυξης και εφαρμογής νέων εκπαιδευτικών πρακτικών, που προσφέρει πολύτιμα εφόδια και αποτελεί καθοριστικό παράγοντα για τη μελλοντική τους επιτυχία στην ακαδημαϊκή, επαγγελματική και προσωπική τους ζωή. ',
+            'background' => $background,
+        ]);
+
+        new Portal($anatolia, 5, 'sxoleio');
+
+        Scholio::portalStudy($anatolia, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($anatolia, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($anatolia, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($anatolia, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($anatolia, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($anatolia, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($anatolia, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($anatolia, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($anatolia, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($anatolia, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($anatolia, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($anatolia, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($anatolia, 'facebook', 'http://www.facebook.com/search/?q=anatolia#/pages/Thessaloniki-Greece/Anatolia-College/300380195330?ref=ss');
+        Scholio::portalSocial($anatolia, 'twitter', 'https://twitter.com/Anatolia1886');
+        Scholio::portalSocial($anatolia, 'youtube', 'http://www.youtube.com/anatoliacollege');
+
+        $helcol = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Ελληνικό Κολλέγιο Θεσσαλονίκης', 'email' => 'hel-col@otenet.gr
+            ', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'helcol'])->id,
+            'address' => 'Δροσιά Θέρμης, Θέρμη',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310473112,
+            'type_id' => 13,
+            'website' => 'http://www.hellenic-college.gr/index.php',
+            'approved' => 1,
+            'about' => 'Σήμερα, το Ελληνικό Κολλέγιο Θεσσαλονίκης, με τη γόνιμη πείρα των 56 ετών από την ίδρυσή του, έχει επιδείξει ένα σύγχρονο και πρωτοποριακό παιδαγωγικό έργο. Το προσεκτικά επιλεγμένο και άριστα καταρτισμένο διδακτικό προσωπικό μας, χρησιμοποιώντας τα σύγχρονα εποπτικά μέσα και τις σύγχρονες μεθόδους παιδαγωγικής διδασκαλίας, σέβεται τα οράματα και την προσωπικότητα του κάθε μαθητή, παρέχοντάς του έτσι, όχι στείρες γνώσεις, αλλά ουσιαστική παιδεία. Έτσι, στο Ελληνικό Κολλέγιο Θεσσαλονίκης, κάθε μαθητής έχει τη δυνατότητα να αξιοποιήσει τις ικανότητές του, να αυτενεργήσει, να εμβαθύνει και να εμπεδώσει τη γνώση, πειθαρχώντας συνειδητά στους κανόνες του σχολείου.
+            Το εκπαιδευτικό πρόγραμμα που εφαρμόζουμε στοχεύει στην πνευματική εγρήγορση, την καλλιέργεια και την ολόπλευρη ανάπτυξη της προσωπικότητας του μαθητή, προκειμένου να αναδειχτεί νικητής στο στίβο της ζωής.
+            Ο πρωταρχικό στόχος του Ελληνικού Κολλεγίου Θεσσαλονίκης είναι η παροχή υψηλού επιπέδου εκπαίδευσης, που εξασφαλίζει ουσιαστική παιδεία και επιτυχημένη μεταλυκειακή σταδιοδρομία.',
+            'background' => $background,
+        ]);
+
+        new Portal($helcol, 5, 'sxoleio');
+        Scholio::portalStudy($helcol, 'Παιδικός Σταθμός', 'Παιδικός Σταθμός', 'Παιδικός Σταθμός');
+        Scholio::portalStudy($helcol, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($helcol, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($helcol, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($helcol, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($helcol, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($helcol, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($helcol, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($helcol, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($helcol, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($helcol, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($helcol, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($helcol, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($helcol, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($helcol, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($helcol, 'facebook', 'https://www.facebook.com/HellenicCollegeOfThessaloniki');
+        Scholio::portalSocial($helcol, 'pinterest', 'http://www.hellenic-college.gr/organization.php');
+        Scholio::portalSocial($helcol, 'youtube', 'http://www.youtube.com/user/HellenicCollegeThess');
+
+        $dst = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Deutsche Schule Thessaloniki - Γερμανική Σχολή Θεσσαλονίκης', 'email' => 'info@dst.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'dst'])->id,
+            'address' => '9ο χλμ Θεσσαλονίκης – Θέρμης',
+            'city' => 'Θέρμη, Θεσσαλονίκη',
+            'phone' => 2310475900,
+            'type_id' => 13,
+            'website' => 'http://www.dst.gr/?lang=el',
+            'approved' => 1,
+            'about' => 'Η Γερμανική Σχολή Θεσσαλονίκης, έχει ως γερμανικό σχολείο εξωτερικού
+            παράδοση άνω των 120 ετών – τα μαθήματα άρχισαν στις 13 Φεβρουαρίου 1888.
+            Έκτοτε, η Γερμανική Σχολή Θεσσαλονίκης αποτελεί αναπόσπαστο κομμάτι της
+            «Απόδημης Πολιτικής Πολιτισμού και Μόρφωσης» της Γερμανίας, στις
+            διαφορετικές της μορφές: Γερμανική Αυτοκρατορία του Κάιζερ (έως το 1918),
+            Δημοκρατία της Βαϊμάρης (1918-1933), φασιστική Δικτατορία (1933-1945) και
+            τέλος Ομοσπονδιακή Δημοκρατία της Γερμανίας (από το 1949), οι οποίες
+            επηρέασαν κάθε μια με το δικό της τρόπο το μάθημα και την εκπαίδευση στη
+            Γερμανική Σχολή Θεσσαλονίκης, καθώς και τη διαμόρφωση του τρόπου με τον
+            οποίο αντιλαμβάνεται η ελληνική κοινωνία τη σχολή ως ιδιωτικό εκπαιδευτικό
+            ίδρυμα. Σήμερα, η ΓΣΘ, κατέχει μια εξαιρετική φήμη: έχει εδραιωθεί ως ένα από τα
+            καλύτερα ιδιωτικά σχολεία της περιφέρειας και της Ελλάδας γενικότερα. Οι
+            απόφοιτοί της, μετά τις σπουδές τους και την επαγγελματική τους κατάρτιση,
+            καταλαμβάνουν συχνά σημαντικές θέσεις στο κράτος, την οικονομία και την
+            κοινωνία της χώρας. Πολλοί εξ αυτών σπούδασαν στη Γερμανία, ενδυναμώνοντας
+            σημαντικά τους δεσμούς μεταξύ των δύο χωρών.',
+            'background' => $background,
+        ]);
+
+        new Portal($dst, 5, 'sxoleio');
+
+        Scholio::portalStudy($dst, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($dst, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($dst, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($dst, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($dst, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($dst, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($dst, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($dst, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($dst, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($dst, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($dst, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($dst, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($dst, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($dst, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($dst, 'facebook', 'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.dst.gr%2Fdie-schule%2Fdie-geschichte-der-dst%2F%3Flang%3Del');
+        Scholio::portalSocial($dst, 'google', 'https://plus.google.com/share?url=http%3A%2F%2Fwww.dst.gr%2Fdie-schule%2Fdie-geschichte-der-dst%2F%3Flang%3Del');
+        Scholio::portalSocial($dst, 'twitter', 'https://twitter.com/share?text=%CE%97%20%CE%B9%CF%83%CF%84%CE%BF%CF%81%CE%AF%CE%B1%20%CE%BC%CE%B1%CF%82&url=http%3A%2F%2Fwww.dst.gr%2Fdie-schule%2Fdie-geschichte-der-dst%2F%3Flang%3Del');
 
     }
 
