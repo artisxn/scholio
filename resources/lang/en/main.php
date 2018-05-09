@@ -17,17 +17,17 @@ return [
             'student' => 'Are you a school student?',
             'student1' => 'Are you a university student?',
         ],
-        'subtitle' => 'Find the Scholarship that fits you!',
+        'subtitle' => 'Find the Scholarship that suits you!',
         'subtitlePortal' => 'Search for the most popular Educational Institutions',
         'searchbar' => [
             'scholarships' => [
                 'title' => 'Scholarships',
-                'placeholder' => 'Search for a Scholarship ex. Bachelor of Science, Marketing, Private School',
+                'placeholder' => 'Search for a Scholarship e.g. Bachelor of Science, Marketing, Private School',
                 'button' => 'Search',
             ],
             'institutions' => [
                 'title' => 'Institutions',
-                'placeholder' => 'Search for an Institution ex. Private School, German',
+                'placeholder' => 'Search for an Institution e.g. Private School, Marketing',
                 'button' => 'Search',
             ],
         ],
@@ -41,10 +41,10 @@ return [
     ],
     'about' => [
         'title' => 'Find your own Scholarship in 3 steps',
-        'titlePortal' => 'The choice of study is easier than ever',
+        'titlePortal' => 'Chosing your studies is now easier than ever',
         'section1' => [
             'title' => 'Search for Scholarships',
-            'titlePortal' => 'Search for',
+            'titlePortal' => 'Search',
             'subtitle' => 'Choose a category such as College, Vocational Training Institute, Private High School or Private Coaching Schools and the city of your interest',
             'subtitlePortal' => 'Search for a College, for a Vocational Training Institute or for a Private High School and the city of your interest',
         ],
@@ -55,7 +55,7 @@ return [
             'subtitlePortal' => 'Fill in your profile and express your interest in the educational institutions of your choice.',
         ],
         'section3' => [
-            'title' => 'Start your studies',
+            'title' => 'Begin your studies',
             'subtitle' => 'The educational institution examines your request and informs you in detail about further details.',
             'subtitlePortal' => 'The educational institution informs you of the details of your registration.',
 
@@ -64,21 +64,21 @@ return [
         'institutions' => [
             'title' => 'An integrated solution to promote your educational institution',
             'title-xs' => 'An integrated solution to promote your institution',
-            'section1' => 'Create innovative scholarships in an easy way',
+            'section1' => 'Create innovative scholarships',
             'section2' => 'Manage your staff',
-            'section3' => 'Advertise yourself in a purely educational community',
+            'section3' => 'Promote yourself in a purely educational community',
             'button' => 'Educational Institution Registration',
         ],
     ],
     'features' => [
         'title' => 'Our points of excellence',
         'section1' => 'Most Popular Educational Institutions',
-        'section2' => 'Innovative forms of scholarships.',
-        'section3' => 'Study opportunities.',
-        'section4' => 'Amazing messenger chat bot.',
+        'section2' => 'Innovative forms of scholarships',
+        'section3' => 'Study opportunities',
+        'section4' => 'The first chat bot in Education',
     ],
     'institutions' => [
-        'title' => ' Search among the most successful educational institutions.',
+        'title' => ' Find the most successful educational institutions.',
         'colleges' => 'Colleges',
         'frontistirio' => 'Private Coaching Schools',
         'languages1' => 'Foreign',
