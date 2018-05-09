@@ -257,7 +257,7 @@ class Schools extends Seeder
 
         /*===============  37 Αριστοτέλειο Κολλέγιο ================*/
         $aristotelio = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Αριστοτέλειο Κολλέγιο', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aristoteleioCollegeD'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Αριστοτέλειο Κολλέγιο', 'email' => 'info@afs.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'aristoteleioCollege'])->id,
             'address' => 'Τζων Κέννεντυ, Πυλαία',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310311711,
@@ -1115,7 +1115,7 @@ class Schools extends Seeder
         ]);
 
         new Portal($dst, 5, 'sxoleio');
-        
+
         Scholio::portalStudy($dst, 'Νηπιαγωγίο', 'Νήπια', 'Νήπια');
         Scholio::portalStudy($dst, 'Νηπιαγωγίο', 'Προνήπια', 'Προνήπια');
 
