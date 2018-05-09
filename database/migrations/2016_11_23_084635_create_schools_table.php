@@ -21,6 +21,8 @@ class CreateSchoolsTable extends Migration
             $table->string('city')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->string('website')->nullable();
+            $table->string('country')->nullable();
+            $table->string('continent')->nullable();
             $table->string('logo')->default('/upload/school/univ.png');
             $table->integer('background')->unsigned()->nullable();
             $table->text('about')->nullable();

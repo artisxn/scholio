@@ -108,7 +108,7 @@ class IEK extends Seeder
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Ζωγραφική Τέχνη', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/zwgrafiki');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Σχεδιαστής Δομικών Έργων και Γεωπληροφορικής', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/texnikos-domikon-ergon');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Τεχνικός Τεχνολογικών Εφαρμογών & Εγκαταστάσεων', 'https://iek-akmi.edu.gr/index.php/tomeis/109-spoudes/efarmosmenes-texnes/1126-texnikos-texnologikwn-efarmogwn');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management - Αθλητικό Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Δημοσιογραφία, Συντακτών & Ρεπόρτερ', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/dimosiografos');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
@@ -213,7 +213,7 @@ class IEK extends Seeder
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Ζωγραφική Τέχνη', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/zwgrafiki');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Σχεδιαστής Δομικών Έργων και Γεωπληροφορικής', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/texnikos-domikon-ergon');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Τεχνικός Τεχνολογικών Εφαρμογών & Εγκαταστάσεων', 'https://iek-akmi.edu.gr/index.php/tomeis/109-spoudes/efarmosmenes-texnes/1126-texnikos-texnologikwn-efarmogwn');
-        Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
+        Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management - Αθλητικό Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Δημοσιογραφία, Συντακτών & Ρεπόρτερ', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/dimosiografos');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school2, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
@@ -318,7 +318,7 @@ class IEK extends Seeder
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Ζωγραφική Τέχνη', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/zwgrafiki');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Σχεδιαστής Δομικών Έργων και Γεωπληροφορικής', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/texnikos-domikon-ergon');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Τεχνικός Τεχνολογικών Εφαρμογών & Εγκαταστάσεων', 'https://iek-akmi.edu.gr/index.php/tomeis/109-spoudes/efarmosmenes-texnes/1126-texnikos-texnologikwn-efarmogwn');
-        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
+        Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management - Αθλητικό Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Δημοσιογραφία, Συντακτών & Ρεπόρτερ', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/dimosiografos');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school3, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
@@ -424,7 +424,7 @@ class IEK extends Seeder
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Ζωγραφική Τέχνη', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/zwgrafiki');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Σχεδιαστής Δομικών Έργων και Γεωπληροφορικής', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/texnikos-domikon-ergon');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Τεχνικός Τεχνολογικών Εφαρμογών & Εγκαταστάσεων', 'https://iek-akmi.edu.gr/index.php/tomeis/109-spoudes/efarmosmenes-texnes/1126-texnikos-texnologikwn-efarmogwn');
-        Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
+        Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management - Αθλητικό Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Δημοσιογραφία, Συντακτών & Ρεπόρτερ', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/dimosiografos');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school4, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
@@ -529,7 +529,7 @@ class IEK extends Seeder
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Ζωγραφική Τέχνη', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/zwgrafiki');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Σχεδιαστής Δομικών Έργων και Γεωπληροφορικής', 'https://iek-akmi.edu.gr/index.php/tomeis/efarmosmenes-texnes/texnikos-domikon-ergon');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'Εφαρμοσμένες Τέχνες', 'Τεχνικός Τεχνολογικών Εφαρμογών & Εγκαταστάσεων', 'https://iek-akmi.edu.gr/index.php/tomeis/109-spoudes/efarmosmenes-texnes/1126-texnikos-texnologikwn-efarmogwn');
-        Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
+        Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Sports Management - Αθλητικό Management', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/sports-management');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Δημοσιογραφία, Συντακτών & Ρεπόρτερ', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/dimosiografos');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Αθλητική Δημοσιογραφία', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/athlitikos-dimosiografos');
         Scholio::portalStudy($school5, 'Επαγγελματικές Σπουδές', 'ΜΜΕ & Αθλητισμός', 'Προπονητής Αθλημάτων', 'https://iek-akmi.edu.gr/index.php/tomeis/mme-athlitismos/proponitis');
