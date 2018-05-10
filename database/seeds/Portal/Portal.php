@@ -26,6 +26,8 @@ class Portal
     {
         $this->school->background = self::createImages('/upload/school/' . $this->school->admin->username . '/1.jpg')->id;
         $this->school->logo = '/upload/avatar/'. $this->type . '_' . $this->school->admin->username . '.png';
+        $this->school->country = 'Greece';
+        $this->school->continent = 'Europe';
         $this->school->save();
         $this->school->image()->toggle($this->school->background);
         $this->makeSettings();
