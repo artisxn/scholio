@@ -610,7 +610,7 @@
 
                     @if($school->settings->studies)
                     <!-- ======= Σπουδές  slideStudies class========-->
-                        <div ng-if="studies.length && ( true )" id="spoudes" style="overflow-x: hidden">
+                        <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes" style="overflow-x: hidden">
                             <div id="sliderStudies" class=" main-box-2 slideup">
                                 <div class="section-header2">
                                     <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
@@ -618,7 +618,7 @@
                                     </p>
                                 </div>
                                 <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
-                                <div ng-if="true" >
+                                <div ng-if="col_iek_eng_dan_mus" >
                                     <div ng-repeat="(levIndex, level) in levelsName" >
                                         <ul ng-class="[{'col-md-6': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==1 },  'col-sm-12']" style="padding-bottom: 20px;">
                                             <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
