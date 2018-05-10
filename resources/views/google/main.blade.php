@@ -14,9 +14,10 @@
 <div class="fb-customerchat"
   attribution="setup_tool"
   page_id="934370089973049"
-  theme_color="#FD6A33"
-  logged_in_greeting="Γεια σας! Πως μπορουμε να σας βοηθήσουμε?"
-  logged_out_greeting="Γεια σας! Πως μπορουμε να σας βοηθήσουμε?">
+  theme_color="#008da5"
+  logged_in_greeting="Γεια σας, πως μπορουμε να σας βοηθήσουμε;"
+  logged_out_greeting="Γεια σας, πως μπορουμε να σας βοηθήσουμε;">
 </div>
+
 
 <!-- @include('google.meta') -->
