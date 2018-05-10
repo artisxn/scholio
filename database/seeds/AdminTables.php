@@ -15,8 +15,8 @@ class AdminTables extends Seeder
     {
         $keys = new Key;
         $keys->login = 1;
-        $keys->dropdownLogin = 1;
-        $keys->soon = 1;
+        $keys->dropdownLogin = 0;
+        $keys->soon = 0;
         $keys->save();
 
         // Create Admin Users

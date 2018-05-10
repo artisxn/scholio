@@ -56,6 +56,7 @@ class LevelsTableSeeder extends Seeder
             ['id' => 39, 'type_id' => 12, 'name' => 'Τμήμα Ηλικιών 6-10'],
             ['id' => 40, 'type_id' => 12, 'name' => 'Τμήμα Ηλικιών 10-16'],
             ['id' => 41, 'type_id' => 12, 'name' => 'Τμήμα Προχωρημένων'],
+            ['id' => 42, 'type_id' => 1, 'name' => 'Humanities and Social Sciences'],
         ];
 
         foreach ($levels as $level) {

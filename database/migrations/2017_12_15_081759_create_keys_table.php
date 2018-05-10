@@ -17,8 +17,8 @@ class CreateKeysTable extends Migration
             $table->increments('id');
             $table->boolean('login')->default(0);
             $table->boolean('dropdownLogin')->default(0);
-            $table->boolean('soon')->default(1);
-            $table->boolean('stats')->default(1);
+            $table->boolean('soon')->default(0);
+            $table->boolean('stats')->default(0);
             $table->timestamps();
         });
     }

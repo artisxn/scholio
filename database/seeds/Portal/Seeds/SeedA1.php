@@ -23,7 +23,7 @@ class SeedA1 extends Seeder
             'city' => 'Τρίλοφος Θεσσαλονίκης',
             'phone' => 2392400370,
             'type_id' => 12,
-            'website' => 'http://www.robotsetgo.gr',
+            'website' => 'www.robotsetgo.gr',
             'approved' => 1,
             'about' => '<div class="vc_row wpb_row vc_row-fluid">
             <div class="wpb_column vc_column_container vc_col-sm-12">
