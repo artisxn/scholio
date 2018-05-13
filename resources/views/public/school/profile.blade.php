@@ -1394,8 +1394,8 @@
                         .success(function(data) {
                             $scope.schoolStudies = data
                             $scope.showButton = true
-                            console.log('gh')
-                            console.log($scope.studies.length)
+                            
+                            
 
                         })
                     }
@@ -1426,7 +1426,7 @@
                 }
 
                 $scope.uniqueArray = function(arr){
-                    console.log(arr)
+                    
                     return !!arr.reduce(function(a, b){ return (a === b) ? a : NaN; });
                 }
 
@@ -1444,7 +1444,7 @@
 
                 $scope.test = function(scholarship){
                     setTimeout(function() {
-                        console.log(scholarship.userInterested)
+                        
                         if(scholarship.userInterested){
                         $('#i'+ scholarship.id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
                         $('#t'+ scholarship.id).text('@lang('profile.scholarship.button.like')')
@@ -1498,9 +1498,8 @@
                                     }
                                 })
                                 .success(function(data)   {
-                                   console.time('contactInfo API');
                         $scope.contactInfo=data;
-                        console.log(data)
+                        
                         window.totalStars = data.stars
                         $scope.ratings();
                         $scope.studies = data.levels;
@@ -1537,7 +1536,6 @@
                                     }
                                 })
                                 .success(function(data)   {
-                                    console.log(data);
                                     if(data == 'YES'){
                                         $('#t'+ id).text("@lang('profile.scholarship.button.interested')")
                                         $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
@@ -1556,11 +1554,10 @@
                     $scope.studiesUrl=[];
 
                     $scope.initial=function (){
-                        console.time('initial');
                         $scope.getSchoolStudies();
                         /* ========== BUILD levelsName ARRAY============ */
                         $scope.levelsName[0]=$scope.studies[0][0].section[0].level.name
-//                        console.log($scope.levelsName[0])
+//                        
                         var length=0
                         var found= false
                         for (var std in $scope.studies ){
@@ -1573,10 +1570,10 @@
                             if (!found) {
                                 length++
                                 $scope.levelsName[length]=$scope.studies[std][0].section[0].level.name
-//                                console.log($scope.levelsName[length])
+//                                
                             }
                         }
-//                        console.log($scope.levelsName.length)
+//                        
                         /* ========== BUILD sectionsName ARRAY============ */
                         for (lev in $scope.levelsName ){
                             $scope.sectionsName[lev]=[];
@@ -1621,10 +1618,10 @@
                                     if( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name
                                             && $scope.sectionsName[lev][sec]==$scope.studies[std][0].section[0].name
                                     ){
-                                        // console.log($scope.studies[std]);
+                                        // 
                                         $scope.studiesName[lev][sec][study]=$scope.studies[std][0].name
                                         $scope.studiesUrl[lev][sec][study]=$scope.contactInfo.study[std].pivot.url
-                                        // console.log($scope.contactInfo.study[std].pivot.url)
+                                        // 
 
                                     // $scope.studiesIcon[lev][sec][study]=$scope.studies[std][0].icon
                                         study++
@@ -1632,7 +1629,6 @@
                                 }
                             }
                         }
-                        console.timeEnd('initial');
                         @if($school->settings->map)
                             $scope.mapInitial()
                         @endif
@@ -1646,7 +1642,7 @@
                                 }
                             })
                             .success(function(data){
-                                console.log(data);
+                                
                                 if(data == 'YES'){
                                     $scope.contactInfo.scholarship[index].interests++;
                                     $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
@@ -1672,7 +1668,7 @@
                     }
                     var map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
                     var mapXS = new google.maps.Map(document.getElementById("googleMapXS"), myOptions);
-//                    console.log('map')
+//                    
 
                     var marker = new google.maps.Marker({
                         position: myLatlng,
@@ -1756,7 +1752,7 @@
                 }
 
                 $scope.sendInterest = function(){
-                    console.log($scope.interestStudent);
+                    
                     $scope.sendInterestToSchool = $http.post('/api/interest/school', { 'school_id': $scope.contactInfo.id, 'study_id': $scope.interestStudy, 'name': $scope.interestName, 'email': $scope.interestEmail, 'tel': $scope.interestTel, 'student': $scope.interestStudent }, {
                             headers: {
                                 'X-Requested-With': 'XMLHttpRequest',
