@@ -14,11 +14,12 @@
     <title>schol.io | {{ $school->name() }}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />
+    {{--<link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />--}}
+    <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/new/img/favicon-144.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/new/img/favicon-72.ico">
-    <link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">
+    {{--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/new/img/favicon-144.ico">--}}
+    {{--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/new/img/favicon-72.ico">--}}
+    {{--<link rel="apple-touch-icon-precomposed" href="/new/img/favicon-57.ico">--}}
 
     <!--====== CSS  Styles =======-->
     @include('public.styles')
@@ -610,7 +611,7 @@
 
                     @if($school->settings->studies)
                     <!-- ======= Σπουδές  slideStudies class========-->
-                        <div ng-if="studies.length && ( col_iek_eng_dan_mus  )" id="spoudes" style="overflow-x: hidden">
+                        <div ng-if="studies.length && ( col_iek_eng_dan_mus || sxoleio )" id="spoudes" style="overflow-x: hidden">
                             <div id="sliderStudies" class=" main-box-2 slideup">
                                 <div class="section-header2">
                                     <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
@@ -624,12 +625,12 @@
                                             <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
 
 
-                                            <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="[{'col-lg-6': (contactInfo.type_id==2)},{'clearFloat': (( secIndex+1)%2 ==1)}]" style="list-style-type: none;">
+                                            <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="[{'col-lg-6': (contactInfo.type_id==2)},{'clearFloat': (( secIndex+1)%2 ==1)}]" style="list-style-type: none;  padding-top: 16px;">
 
                                                 <li class="margin-top-10 margin-left-10">
                                                     <img ng-src="@{{ sectionsIcon[levIndex][secIndex] }}" alt=""
                                                          style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
-                                                    <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%" >
+                                                    <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%;" >
                                                         @{{ section }}
                                                     </span>
                                                 </li>
@@ -662,9 +663,18 @@
                                     </div>
                                 </div>
 
+                                <!-- Σπουδές Σχολεια -->
+                                <div ng-if="sxoleio" >
+                                    <div ng-repeat="(levIndex, level) in levelsName" >
+                                        <ul ng-class="[{'col-md-4': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==3 },  'col-sm-12']" style="padding-bottom: 20px;">
+                                            <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
+                                        </ul>
+                                    </div>
+                                </div>
+
                             </div>
                             <!-- Show More Studies  -->
-                            <div class="show-more" style="background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">
+                            <div class="show-more" style=" background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">
                                 <div class="pad-top-20">
                                     <!--
                                  <span ng-click="showMoreStudies('spoudes')" >@{{textStudies}}
@@ -1477,6 +1487,7 @@
                     $scope.message = null;
                     $scope.scholarship = ['sd'];
                     $scope.col_iek_eng_dan_mus = false;
+                    $scope.sxoleio = false;
 
                     @if(auth()->check() && auth()->user()->role == 'student')
                         $scope.getSchoolStudies();
@@ -1510,7 +1521,8 @@
                         if( $scope.studies.length) $scope.initial();
 
                         var type=data.type_id
-                        if (type==1 || type==2 || type==4 || type==10 || type==11) $scope.col_iek_eng_dan_mus  = true
+                        if (type==1 || type==2 || type==4 || type==10 || type==11 ) $scope.col_iek_eng_dan_mus  = true
+                        if (type==13) $scope.sxoleio  = true
 
                         $scope.multipleSectionsSelected = {};
                         $scope.mStudies = { };

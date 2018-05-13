@@ -97,6 +97,12 @@ return [
         'students' => 'Parents & Students',
         'institutions' => 'Professors & Educational Institutions',
     ],
+
+    'support' => [
+        'title' => 'With the support of',
+    ],
+
+
     'footer' => [
         'contact' => 'Contact',
         'blog' => 'Blog',

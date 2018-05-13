@@ -204,6 +204,7 @@
 		.bot-text:hover {
 			color: #FD6A33
 		}
+		.img-support{height: 70px;}
 
 		@media (max-width: 2500px) {
 			.sch-reg-title {
@@ -1037,6 +1038,22 @@
 				</div>
 			</div>
 		</section> -->
+
+
+		<!-- SIX Section -->
+		<section id="sc-landing-sec5" class="sc-landing-sec3" style="overflow-x: hidden!important; background-color: #f1f8fa; min-height: 450px!important;" >
+			<div class="container" >
+				<div class="row" >
+					<h2 class="text-center sc-t-white sc-t-dark-grey" style="padding-bottom: 80px;">@lang('main.support.title')</h2>
+
+					<div class="col-sm-3 col-xs-6"><a href="https://www.venturegarden.gr/" target="_blank"><img class="img-support" src="/new/img/support/venturegarden-logo-green.png" alt="" style="height: 110px; display: inline-block; margin-top: -13px;"></a></div>
+					<div class="col-sm-3 col-xs-6"><a href="http://www.thermi-group.com/" target="_blank"><img class="img-support" src="/new/img/support/thermi-logo.png" alt="" style=""></a></div>
+					<div class="col-sm-3 col-xs-6"><a href="http://ideatree.gr/" target="_blank"><img class="img-support" src="/new/img/support/ideatree-logo.png" alt="" style="height: 50px;  display: inline-block; margin-top: 20px;"></a></div>
+					<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank"><img class="img-support" src="/new/img/support/eoelogo.png" alt="" style="height: 50px;  display: inline-block; margin-top: 20px;"></a></div>
+
+				</div>
+			</div>
+		</section>
 
 
 	</main>
