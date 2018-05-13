@@ -344,6 +344,13 @@
 {{--@include('public.footer')--}}
 
 <script>
+    window.MAPLATLNG = '';
+                navigator.geolocation.getCurrentPosition(function(position){
+                   window.MAPLATLNG = position.coords.latitude + ', ' + position.coords.longitude;
+               });
+</script>
+
+<script>
 
     var LAT = '40.60';
     var LNG = '23.00';
@@ -455,7 +462,6 @@
     // PAGE STATES
     // ===========
     function setPageState(state) {
-        console.log(state);
         resetPageState();
         beginPageState(state);
     }
@@ -491,13 +497,14 @@
 
             case PAGE_STATES.AROUND_ME:
                 var ar = LAT + ',' + LNG;
-                algoliaHelper.setQueryParameter('aroundLatLng', '40.60, 23.00');
+                algoliaHelper.setQueryParameter('aroundLatLng', window.MAPLATLNG); // ΕΔΩ ΑΛΛΑΖΟΥΜΕ ΤΟ LAT LNG
                 algoliaHelper.setQueryParameter('aroundRadius', MAX_D);
                 break;
 
             default:
             // No-op
         }
+
 
         fitMapToMarkersAutomatically = true;
         algoliaHelper.search();
@@ -550,13 +557,11 @@
     // DISPLAY RESULTS
     // ===============
     algoliaHelper.on('result', function (content) {
-        // console.log(content);
         renderMap(content);
         // $hits.text(content);
         renderHits(content);
         c = content;
         $searchInput.val(c.query);
-        console.log(c.query);
     });
 
     function renderHits(content) {
@@ -568,7 +573,6 @@
         for (var i = 0; i < content.hits.length; ++i) {
 
             var hit = content.hits[i];
-            // console.log(hit._rankingInfo);
             hit.displayCity = (hit.name === hit.city);
             if (hit._rankingInfo.matchedGeoLocation) {
                 hit.distance = parseInt(hit._rankingInfo.matchedGeoLocation.distance / 1000, 10) + ' km';
@@ -647,7 +651,6 @@
 
     function attachInfoWindow(marker, hit) {
         var message;
-        // console.log(marker);
 
         message = hit.name;
 
@@ -724,7 +727,6 @@
                 $scope.view='card';
                 $scope.changeView= function(view){
                     $scope.view=view;
-                    //console.log(view)
                     if( $scope.view=='map'){  setTimeout(function() { $scope.showMap(); }, 10) }
                 }
 
