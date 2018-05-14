@@ -525,7 +525,7 @@ class Schools extends Seeder
 
 
 
-
+        /*=============== cgs ok ================*/
 
         // $cgs = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Κωστέα - Γείτονα CGS', 'email' => 'info@cgs.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'cgs'])->id,
@@ -563,6 +563,12 @@ class Schools extends Seeder
         // Scholio::portalSocial($cgs, 'instagram', 'https://www.instagram.com/cgs_school/');
         // Scholio::portalSocial($cgs, 'youtube', 'https://www.youtube.com/channel/UCn4pw8HK0w63l5dvFVK9UmA');
         // Scholio::portalSocial($cgs, 'linkedin', 'https://www.linkedin.com/company/18204073/');
+
+
+
+
+        /*=============== avgoulea ok ================*/
+
 
         // $avgoulea = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Αυγουλέα - Λιναρδάτου', 'email' => 'info@avgouleaschool.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'avgoulea'])->id,
@@ -603,6 +609,11 @@ class Schools extends Seeder
         // Scholio::portalSocial($avgoulea, 'facebook', 'http://www.facebook.com/avgoulea.gr');
         // Scholio::portalSocial($avgoulea, 'instagram', 'http://instagram.com/avgouleaschool?ref=badge');
         // Scholio::portalSocial($avgoulea, 'youtube', 'http://youtube.com/avgouleaschool');
+
+
+
+
+        /*=============== georgiouzwi ok ================*/
 
         // $georgiouzwi = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Γεωργίου Ζώη', 'email' => ' info@zois-school.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'georgiouzwi'])->id,
@@ -649,6 +660,11 @@ class Schools extends Seeder
         // Scholio::portalSocial($georgiouzwi, 'twitter', 'http://twitter.com/ZoisSchool');
         // Scholio::portalSocial($georgiouzwi, 'youtube', 'http://www.youtube.com/user/zoisschool');
 
+
+
+
+        /*=============== arsakeio ok ================*/
+
         // $arsakeio = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Φιλεκπαιδευτική Εταιρεία Αερσάκεια - Τοσιτσεία Σχολεία', 'email' => 'info@arsakeio.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'arsakeio'])->id,
         //     'address' => 'Κοκκώνη 18 / Π. Ψυχικό 154 52',
@@ -681,6 +697,20 @@ class Schools extends Seeder
         // Scholio::portalStudy($arsakeio, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
 
         // Scholio::portalSocial($arsakeio, 'facebook', 'https://www.facebook.com/ArsakeioClasiko/');
+
+
+        /*===============================================================*/
+
+
+
+
+
+
+
+
+
+
+
 
         // $ziridis = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Νέα Γενιά Ζηρίδη', 'email' => 'info@ziridis.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ziridi'])->id,
@@ -732,6 +762,11 @@ class Schools extends Seeder
         // Scholio::portalSocial($ziridis, 'twitter', 'https://twitter.com/neageniaziridis');
         // Scholio::portalSocial($ziridis, 'youtube', 'https://www.youtube.com/user/ziridistv');
 
+
+
+
+
+
         // $haef = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Ελληνοαμερικανικόν Εκπαιδευτικόν Ίδρυμα, Κολλέγιο Αθηνών - Κολλέγιο Ψυχικού ', 'email' => 'info@haef.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'haef'])->id,
         //     'address' => 'Στεφάνου Δέλτα 15, Ψυχικό',
@@ -762,6 +797,12 @@ class Schools extends Seeder
 
         // Scholio::portalSocial($haef, 'facebook', 'https://www.haef.gr/-/media/Images/HAEF/Icons/fb.ashx?h=16&la=el&w=16');
         // Scholio::portalSocial($haef, 'twitter', 'https://www.haef.gr/-/media/Images/HAEF/Icons/tw.ashx?h=16&la=el&w=16');
+
+
+
+
+
+
 
         // $doukas = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Δούκα', 'email' => 'info@doukas.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'doukas'])->id,
@@ -796,6 +837,9 @@ class Schools extends Seeder
         // Scholio::portalSocial($doukas, 'facebook', 'https://www.facebook.com/DoukaSchool');
         // Scholio::portalSocial($doukas, 'instagram', 'https://instagram.com/doukas_school/');
         // Scholio::portalSocial($doukas, 'twitter', 'https://twitter.com/Doukas_School');
+
+
+
 
         // $protypa = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Πρότυπα Εκπαιδευτήρια Θεσσαλονίκης', 'email' => 'info@protypa.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'protypa'])->id,
@@ -832,6 +876,11 @@ class Schools extends Seeder
         // Scholio::portalSocial($protypa, 'google', 'https://plus.google.com/117536093537987040966/');
         // Scholio::portalSocial($protypa, 'twitter', 'https://twitter.com/protypa_gr');
         // Scholio::portalSocial($protypa, 'youtube', 'http://www.youtube.com/user/protypa');
+
+
+
+
+
 
         // $mandoulides = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Μαντουλίδη', 'email' => 'primary@mandoulides.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mandoulides'])->id,
@@ -873,6 +922,9 @@ class Schools extends Seeder
         // Scholio::portalSocial($mandoulides, 'youtube', 'http://www.youtube.com/user/mandoulidesschools');
         // Scholio::portalSocial($mandoulides, 'linkedin', 'https://www.linkedin.com/company/mandoulides');
 
+
+
+
         // $anatolia = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Ανατόλια ', 'email' => 'acagyreg@anatolia.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'anatolia'])->id,
         //     'address' => 'Τζων Κέννεντυ 50, Πυλαία',
@@ -905,6 +957,9 @@ class Schools extends Seeder
         // Scholio::portalSocial($anatolia, 'facebook', 'http://www.facebook.com/search/?q=anatolia#/pages/Thessaloniki-Greece/Anatolia-College/300380195330?ref=ss');
         // Scholio::portalSocial($anatolia, 'twitter', 'https://twitter.com/Anatolia1886');
         // Scholio::portalSocial($anatolia, 'youtube', 'http://www.youtube.com/anatoliacollege');
+
+
+
 
         // $helcol = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Ελληνικό Κολλέγιο Θεσσαλονίκης', 'email' => 'hel-col@otenet.gr
@@ -943,6 +998,9 @@ class Schools extends Seeder
         // Scholio::portalSocial($helcol, 'facebook', 'https://www.facebook.com/HellenicCollegeOfThessaloniki');
         // Scholio::portalSocial($helcol, 'pinterest', 'http://www.hellenic-college.gr/organization.php');
         // Scholio::portalSocial($helcol, 'youtube', 'http://www.youtube.com/user/HellenicCollegeThess');
+
+
+
 
         // $dst = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Deutsche Schule Thessaloniki - Γερμανική Σχολή Θεσσαλονίκης', 'email' => 'info@dst.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'dst'])->id,
