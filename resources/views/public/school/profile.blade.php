@@ -1520,7 +1520,7 @@
                         if( $scope.studies.length) $scope.initial();
 
                         var type=data.type_id
-                        if (type==1 || type==2 || type==4 || type==10 || type==11 ) $scope.col_iek_eng_dan_mus  = true
+                        if (type==1 || type==2 || type==4 || type==10 || type==11 || type == 12) $scope.col_iek_eng_dan_mus  = true
                         if (type==13) $scope.sxoleio  = true
 
                         $scope.multipleSectionsSelected = {};
