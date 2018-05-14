@@ -87,6 +87,7 @@ Route::post('/interest/school', function () {
         $interest->user_id = $user->id;
     }
     $interest->save();
+    return 'ok';
 
 })->middleware('api');
 
