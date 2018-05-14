@@ -16,7 +16,7 @@ class SeedA3 extends Seeder
     {
         $background = Portal::createImages('/upload/school/univ.png')->id;
 
-        /*===============  Καλαμαρί ================*/
+        /*===============  Καλαμαρί ok ================*/
         $kalam = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Καλαμαρί', 'email' => 'info@kalamari.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'kalamari'])->id,
             'address' => 'Λεωφ. Γεωργικής Σχολής 44, Πυλαία',
@@ -70,75 +70,84 @@ class SeedA3 extends Seeder
         Scholio::portalSocial($kalam, 'youtube', 'https://www.youtube.com/channel/UC-hZdASj0OHVn8NJsivcLwQ');
         Scholio::portalSocial($kalam, 'google', 'https://www.google.gr/webhp?source=search_app&gws_rd=cr,ssl#bav=on.2,or.r_qf.&ei=7z8SUp_iNsexhAfGjoCgDA&fp=3025ea08a36d24bb&psj=1&q=%CE%95%CE%BB%CE%BB%CE%B7%CE%BD%CE%BF%CE%B3%CE%B1%CE%BB%CE%BB%CE%B9%CE%BA%CE%AE+%CE%A3%CF%87%CE%BF%CE%BB%CE%AE+%CE%9A%CE%B1%CE%BB%CE%B1%CE%BC%CE%B1%CF%81%CE%AF&sa=X&spell=1&ved=0CCcQBSgA');
 
-        // $doukas = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Δούκα', 'email' => 'info@doukas.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'doukas'])->id,
-        //     'address' => 'Μεσογείων 151, Μαρούσι',
-        //     'city' => 'Αθήνα',
-        //     'phone' => 2106186000,
-        //     'type_id' => 13,
-        //     'website' => 'http://www.doukas.gr/',
-        //     'approved' => 1,
-        //     'about' => '> Εκπαιδεύουμε παγκόσμιους πολίτες με Ελληνική ταυτότητα & ικανότητες 21ου αιώνα
-        //     Πιστεύουμε στην ισορροπία ανάμεσα στην Παράδοση και την Πρόοδο. Σκοπός μας είναι να βελτιώνουμε διαρκώς την ποιότητα των υπηρεσιών μας και να ξεπερνάμε τις ανάγκες και τις προσδοκίες των μαθητών μας, των γονέων τους καθώς και της ευρύτερης κοινωνίας.
-        //     Στόχος μας είναι να εκπαιδεύουμε Παγκόσμιους Πολίτες με Ελληνική Ταυτότητα, εφοδιάζοντάς τους με Ικανότητες του 21ου αιώνα, δείχνοντας ταυτόχρονα σεβασμό στη μοναδικότητα του κάθε παιδιού.',
-        //     'background' => $background,
-        // ]);
+       
+       /*===============  doukas ok ================*/
 
-        // new Portal($doukas, 5, 'school');
+        $doukas = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Δούκα', 'email' => 'info@doukas.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'doukas'])->id,
+            'address' => 'Μεσογείων 151, Μαρούσι',
+            'city' => 'Αθήνα',
+            'phone' => 2106186000,
+            'type_id' => 13,
+            'website' => 'www.doukas.gr',
+            'approved' => 1,
+            'about' => '> Εκπαιδεύουμε παγκόσμιους πολίτες με Ελληνική ταυτότητα & ικανότητες 21ου αιώνα
+            Πιστεύουμε στην ισορροπία ανάμεσα στην Παράδοση και την Πρόοδο. Σκοπός μας είναι να βελτιώνουμε διαρκώς την ποιότητα των υπηρεσιών μας και να ξεπερνάμε τις ανάγκες και τις προσδοκίες των μαθητών μας, των γονέων τους καθώς και της ευρύτερης κοινωνίας.
+            Στόχος μας είναι να εκπαιδεύουμε Παγκόσμιους Πολίτες με Ελληνική Ταυτότητα, εφοδιάζοντάς τους με Ικανότητες του 21ου αιώνα, δείχνοντας ταυτόχρονα σεβασμό στη μοναδικότητα του κάθε παιδιού.',
+            'background' => $background,
+        ]);
 
-        // Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
-        // Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
-        // Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
-        // Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
-        // Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
-        // Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+        new Portal($doukas, 5, 'school');
 
-        // Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
-        // Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
-        // Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
-        // Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
-        // Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
-        // Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($doukas, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
 
-        // Scholio::portalSocial($doukas, 'facebook', 'https://www.facebook.com/DoukaSchool');
-        // Scholio::portalSocial($doukas, 'instagram', 'https://instagram.com/doukas_school/');
-        // Scholio::portalSocial($doukas, 'twitter', 'https://twitter.com/Doukas_School');
+        Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($doukas, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($doukas, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
 
-        // $protypa = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => 'Πρότυπα Εκπαιδευτήρια Θεσσαλονίκης', 'email' => 'info@protypa.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'protypa'])->id,
-        //     'address' => 'Ελαιώνες Πυλαίας Τ.Κ. 555 36',
-        //     'city' => 'Θεσσαλονίκη',
-        //     'phone' => 2310300002,
-        //     'type_id' => 13,
-        //     'website' => 'https://www.protypa.gr/frontend/index.php',
-        //     'approved' => 1,
-        //     'about' => 'Τα Πρότυπα Εκπαιδευτήρια Θεσσαλονίκης με μια δημιουργική πορεία 40 ετών είναι μια πλήρης μονάδα. Ειδικεύεται στην πρωτοβάθμια εκπαίδευση στην οποία και επικεντρώνεται γνωρίζοντας τη δομική σημασία στη μετέπειτα πορεία των μαθητών. Ως αναγνώριση και επιβεβαίωση του υψηλού επιπέδου σπουδών μας, επισημαίνουμε ότι οι απόφοιτοι των Εκπαιδευτηρίων μας κατέχουν τις πρώτες θέσεις στις εισαγωγικές εξετάσεις κολεγίων, καθώς και τις υψηλότερες βαθμολογίες στα ιδιωτικά και δημόσια Γυμνάσια και Λύκεια της πόλης μας.',
-        //     'background' => $background,
-        // ]);
+        Scholio::portalSocial($doukas, 'facebook', 'https://www.facebook.com/DoukaSchool');
+        Scholio::portalSocial($doukas, 'instagram', 'https://instagram.com/doukas_school/');
+        Scholio::portalSocial($doukas, 'twitter', 'https://twitter.com/Doukas_School');
 
-        // new Portal($protypa, 5, 'school');
 
-        // Scholio::portalStudy($protypa, 'Νηπιαγωγείο', 'Νήπια', 'Νήπια');
-        // Scholio::portalStudy($protypa, 'Νηπιαγωγείο', 'Προνήπια', 'Προνήπια');
+       /*===============  protypa ok ================*/
 
-        // Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
-        // Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
-        // Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
-        // Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
-        // Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
-        // Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+        $protypa = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Πρότυπα Εκπαιδευτήρια Θεσσαλονίκης', 'email' => 'info@protypa.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'protypa'])->id,
+            'address' => 'Ελαιώνες Πυλαίας Τ.Κ. 555 36',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310300002,
+            'type_id' => 13,
+            'website' => 'https://www.protypa.gr/frontend/index.php',
+            'approved' => 1,
+            'about' => 'Τα Πρότυπα Εκπαιδευτήρια Θεσσαλονίκης με μια δημιουργική πορεία 40 ετών είναι μια πλήρης μονάδα. Ειδικεύεται στην πρωτοβάθμια εκπαίδευση στην οποία και επικεντρώνεται γνωρίζοντας τη δομική σημασία στη μετέπειτα πορεία των μαθητών. Ως αναγνώριση και επιβεβαίωση του υψηλού επιπέδου σπουδών μας, επισημαίνουμε ότι οι απόφοιτοι των Εκπαιδευτηρίων μας κατέχουν τις πρώτες θέσεις στις εισαγωγικές εξετάσεις κολεγίων, καθώς και τις υψηλότερες βαθμολογίες στα ιδιωτικά και δημόσια Γυμνάσια και Λύκεια της πόλης μας.',
+            'background' => $background,
+        ]);
 
-        // Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
-        // Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
-        // Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
-        // Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
-        // Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
-        // Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+        new Portal($protypa, 5, 'school');
 
-        // Scholio::portalSocial($protypa, 'facebook', 'http://www.facebook.com/pages/Thessaloniki-Greece/Protypa-Ekpaideuteria-Thessalonikes/170518156295078');
-        // Scholio::portalSocial($protypa, 'google', 'https://plus.google.com/117536093537987040966/');
-        // Scholio::portalSocial($protypa, 'twitter', 'https://twitter.com/protypa_gr');
-        // Scholio::portalSocial($protypa, 'youtube', 'http://www.youtube.com/user/protypa');
+        Scholio::portalStudy($protypa, 'Νηπιαγωγείο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($protypa, 'Νηπιαγωγείο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($protypa, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($protypa, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($protypa, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($protypa, 'facebook', 'http://www.facebook.com/pages/Thessaloniki-Greece/Protypa-Ekpaideuteria-Thessalonikes/170518156295078');
+        Scholio::portalSocial($protypa, 'google', 'https://plus.google.com/117536093537987040966/');
+        Scholio::portalSocial($protypa, 'twitter', 'https://twitter.com/protypa_gr');
+        Scholio::portalSocial($protypa, 'youtube', 'http://www.youtube.com/user/protypa');
+
+
+        
 
         // $mandoulides = factory(App\Models\School::class)->create([
         //     'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Μαντουλίδη', 'email' => 'primary@mandoulides.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mandoulides'])->id,
