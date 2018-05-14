@@ -1269,7 +1269,6 @@
                                         </optgroup>
                                     </select>
                                 </div>
-
                                 <div class="">
                                     <input type="radio" ng-model="interestStudent" value="student"> Μαθητής<br>
                                     <input type="radio" ng-model="interestStudent" value="guardian"> Γονέας<br>
@@ -1278,7 +1277,7 @@
 
                     <div class="modal-footer" style="margin-bottom: 40px;">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" ng-click="sendInterest()" data-dismiss="modal" class="btn btn-info" ng-class="[{'disabledButton': !(selectedStudy && selectedStatus)}]" ng-disabled="!(interestName && interestTel && interestEmail && interestStudy)">@lang('profile.modal.send')</button>
+                        <button type="button" ng-click="sendInterest()" data-dismiss="modal" class="btn btn-info" ng-class="[{'disabledButton': !(interestStudy && interestName)}]" ng-disabled="!(interestName && interestTel && interestEmail && interestStudy)">@lang('profile.modal.send')</button>
                     </div>
                 </div>
             </div>
