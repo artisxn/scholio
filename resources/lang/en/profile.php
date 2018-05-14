@@ -32,7 +32,8 @@ return [
     'total' => 'Total Rating',
     'more' => 'Show more',
     'less' => 'Show less',
-    'months' => 'μήνες',
+    'months' => 'months',
+    'interest' => 'I am interested for a Scholarship',
     'scholarship' => [
         'interested' => 'Interested',
         'requested' => 'Admissions',

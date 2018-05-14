@@ -33,6 +33,7 @@ return [
     'more' => 'Περισσότερα',
     'less' => 'Λιγότερα',
     'months' => 'μήνες',
+    'interest' => 'Ενδιαφέρομαι για υποτροφία',
     'scholarship' => [
         'interested' => 'Ενδιαφέρθηκαν',
         'requested' => 'Αιτήθηκαν',

@@ -453,7 +453,7 @@
                 <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
                                         data-toggle="modal" data-target="#interest-modal">
                                     <i class="fa fa-pencil pad-right-15" aria-hidden="true"></i>
-                                    Ενδιαφέρομαι
+                                    @lang('profile.interest')
                                 </button>
                 @if($school->admin->subscription->plan_id == 2)
                     @if(auth()->check())
@@ -1113,7 +1113,7 @@
                         <nav data-spy="affix" data-offset-top="1180" id="interestButton" style="top: 120px!important">
                             <button id="interestButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                     data-toggle="modal" data-target="#interest-modal">
-                                <i class="fa fa-pencil pad-right-15" aria-hidden="true"></i>Ενδιαφέρομαι
+                                <i class="fa fa-pencil pad-right-15" aria-hidden="true"></i>@lang('profile.interest')
                             </button>
                         </nav>
 
