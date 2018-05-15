@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://schol.io</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:48+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/auth/facebook</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:48+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/auth/google</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:48+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/lang/el</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/lang/en</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/login</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/password/reset</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/profile/43</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:46+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/scholarships</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:48+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools/map</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:48+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE%BA%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CE%AC%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%B1</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_,%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/register/role</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/register/role/</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/terms</loc>
+    
+    
+        <lastmod>2018-05-15T02:07:47+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+</urlset>

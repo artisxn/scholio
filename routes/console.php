@@ -18,7 +18,9 @@ use Spatie\Sitemap\SitemapGenerator;
  */
 
 Artisan::command('scholio:sitemap', function(){
-    SitemapGenerator::create('https://schol.io/')->writeToFile(public_path() . '/sitemap.xml');
+    foreach(School::all() as $school){
+        SitemapGenerator::create('https://schol.io/public/profile/' . $school->id)->writeToFile(public_path() . '/schoolsitemaps/sitemap' . $school->id . '.xml');
+    }
 })->describe('Generate a sitemap for the site');
 
 Artisan::command('scholio:soon {prop}', function ($prop) {

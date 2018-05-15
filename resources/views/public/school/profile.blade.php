@@ -8,10 +8,17 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
     @include('google.main')
-    <meta name="description" content="{{ $school->name() }}">
+
+    <meta property="og:url" content="{{'https://schol.io/public/profile/' . $school->id}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Schol.io - {{ $school->name() }}" />
+    <meta property="og:description" content="Schol.io - Δημόσιο Προφιλ Εκπαιδευτικού Ιδρύματος" />
+    <meta property="og:image" content="{{url($school->profileImage())}}" />
+
+    <meta name="description" content="Schol.io - {{ $school->name() }}">
     <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
 
-    <title>schol.io | {{ $school->name() }}</title>
+    <title>{{ $school->name() }} - schol.io</title>
 
     <!-- Favicon -->
     {{--<link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />--}}
@@ -270,11 +277,7 @@
     </style>
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp" ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
-
 @include('components.preloader')
-
-
-    {{\Counter::showAndCount('school-profile', $school->id)}}
 <!-- Scholio Header -->
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
