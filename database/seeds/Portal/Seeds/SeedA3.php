@@ -408,5 +408,45 @@ class SeedA3 extends Seeder
 
          Scholio::portalSocial($haef, 'facebook', 'https://www.haef.gr/-/media/Images/HAEF/Icons/fb.ashx?h=16&la=el&w=16');
          Scholio::portalSocial($haef, 'twitter', 'https://www.haef.gr/-/media/Images/HAEF/Icons/tw.ashx?h=16&la=el&w=16');
+
+         /*===============  zagorianakos  ok ================*/
+
+         $zagorianakos = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτηρία Ν. Ζαγοριανάκου ', 'email' => 'enzagorianakos@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'zagorianakos'])->id,
+            'address' => 'Αγίου Ιωάννου 20, Γλυκά Νερά',
+            'city' => 'Αθήνα',
+            'phone' => 2106619761,
+            'type_id' => 13,
+            'website' => 'zagorianakos.edu.gr',
+            'approved' => 1,
+            'about' => '<p>Καλώς ορίσατε στο δικτυακό χώρο των Εκπαιδευτηρίων Ν. Ζαγοριανάκου. Το σχολείο μας ιδρύθηκε και λειτουργεί με σκοπό να αναζητεί και να διευκολύνει την ανάπτυξη του πλούσιου και μοναδικού δυναμικού που υπάρχει στο κάθε παιδί….</p>
+            <h3>Σας περιμένουμε να σας γνωρίσουμε από κοντά...</h3>
+            <p>Στα εκπαιδευτήρια μας φιλοδοξούμε, με την εμπειρία και τη νιότη, να δημιουργήσουμε για τις επόμενες γενιές τις προϋποθέσεις εκείνες που θα τις καταστήσουν πρωταγωνιστή στις νέες εξελίξεις, στα πλαίσια της παγκοσμιοποιημένης πλέον κοινωνίας μας, βασιζόμενη στην Ελληνική παράδοση και τον πολιτισμό μας. Μέσα σε αυτό το πλαίσιο, καθημερινό μέλημά μας είναι η διαμόρφωση νέων ανθρώπων με αυτοπεποίθηση, κατάρτιση, εμπιστοσύνη στον εαυτό τους. Νέων με ομαδική – συμμετοχική διάθεση, ικανών να επιλέγουν να διακρίνουν να προχωράνε με βεβαιότητα στο μέλλον. Αυτή η μεγάλη ευθύνη, πέφτει στους ώμους δυο παραγόντων: των φυσικών γονέων κατά πρώτον και των πνευματικών κατά δεύτερον. Αφού εμείς οι δάσκαλοι εξασφαλίζουμε για τα παιδιά, κατά το Μέγα Αλέξανδρο το ‘ευ ζην’. </p>
+            <p>Ας σταθούμε λοιπόν, όλοι κοντά στα παιδιά μας. Οι σημερινές βιοτικές ανάγκες και οι προκλήσεις της καταναλωτικής κοινωνίας, μας αναγκάζουν να είμαστε μακριά τους. Για τα παιδιά μας όμως, δεν είναι αναγκαία τόσο η αφθονία των υλικών αγαθών, όσο η ίδια η ΠΑΡΟΥΣΙΑ μας. Υπόσχεση και δέσμευση σε όλους τους φίλους και τα αγαπητά μας παιδιά είναι ότι ο αγώνας και η προσπάθεια για συνεχή βελτίωση δε θα παύσει ποτέ από ΄ΕΚΠΑΙΔΕΥΤΗΡΙΑ Ν. ΖΑΓΟΡΙΑΝΑΚΟΥ’. </p>
+            <p style="text-align: right;">Νικόλαος Ζαγοριανάκος </p>
+            <p style="text-align: right;">Φιλόλογος - Θεολόγος  </p>',
+            'background' => $background,
+        ]);
+
+        new Portal($zagorianakos, 5, 'school');
+
+        Scholio::portalStudy($zagorianakos, 'Νηπιαγωγείο', 'Νήπια', 'Νήπια');
+        Scholio::portalStudy($zagorianakos, 'Νηπιαγωγείο', 'Προνήπια', 'Προνήπια');
+
+        Scholio::portalStudy($zagorianakos, 'Δημοτικό', 'Γενική Παιδεία', 'Ά Δημοτικού');
+        Scholio::portalStudy($zagorianakos, 'Δημοτικό', 'Γενική Παιδεία', '΄Β Δημοτικού');
+        Scholio::portalStudy($zagorianakos, 'Δημοτικό', 'Γενική Παιδεία', '΄Γ Δημοτικού');
+        Scholio::portalStudy($zagorianakos, 'Δημοτικό', 'Γενική Παιδεία', '΄Δ Δημοτικού');
+        Scholio::portalStudy($zagorianakos, 'Δημοτικό', 'Γενική Παιδεία', '΄Έ Δημοτικού');
+        Scholio::portalStudy($zagorianakos, 'Δημοτικό', 'Γενική Παιδεία', 'ΣΤ Δημοτικού');
+
+        Scholio::portalStudy($zagorianakos, 'Γυμνάσιο', 'Γενική Παιδεία', 'Ά Γυμνασίου');
+        Scholio::portalStudy($zagorianakos, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Β Γυμνασίου');
+        Scholio::portalStudy($zagorianakos, 'Γυμνάσιο', 'Γενική Παιδεία', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($zagorianakos, 'Λύκειο', 'Γενική Παιδεία', 'Ά Λυκείου');
+        Scholio::portalStudy($zagorianakos, 'Λύκειο', 'Γενική Παιδεία', '΄Β Λυκείου');
+        Scholio::portalStudy($zagorianakos, 'Λύκειο', 'Γενική Παιδεία', '΄Γ Λυκείου');
+
+        Scholio::portalSocial($zagorianakos, 'facebook', 'https://www.facebook.com/%CE%95%CE%BA%CF%80%CE%B1%CE%B9%CE%B4%CE%B5%CF%85%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%9D%CE%96%CE%B1%CE%B3%CE%BF%CF%81%CE%B9%CE%B1%CE%BD%CE%AC%CE%BA%CE%BF%CF%85-518666151634598/');
     }
 }
