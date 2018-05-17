@@ -34,7 +34,7 @@ Auth::routes();
 Route::get('/', 'RoutesController@index');
 Route::get('/public/scholarships/', 'RoutesController@publicscholarships');
 Route::get('/public/schools/', 'RoutesController@schools');
-Route::get('public/schools/map', 'RoutesController@schoolsMap');
+Route::get('/public/schools/map', 'RoutesController@schoolsMap');
 
 // Passwords
 Route::post('/password/change', 'RoutesController@changePassword')->middleware('auth');
@@ -80,7 +80,7 @@ Route::get('/public/scholarship/admission/{scholarship}', 'RoutesController@publ
 Route::get('/student/{user}', 'RoutesController@student')->middleware('is.school:see.student');
 Route::get('/userRole/save', 'RoutesController@userRole');
 
-Route::post('/register/school', 'SchoolRegistrationController@register');
+// Route::post('/register/school', 'SchoolRegistrationController@register');
 Route::post('search/school/type', 'RoutesController@searchSchoolType');
 Route::post('/report/add/{user}/{id}', 'RoutesController@report');
 Route::post('scholarship/{scholarship}/end', 'RoutesController@endScholarship'); // Security...

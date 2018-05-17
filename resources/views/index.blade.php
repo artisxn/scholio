@@ -947,10 +947,10 @@
 										<i class="fa fa-bullhorn text-incr-125 margin-right-10" aria-hidden="true"></i>@lang('main.about.institutions.section3')</div>
 								</div>
 
-								<a href="">
+								<!-- <a href="">
 									<button type="button" id="school-register-button" class="btn sc-orange sc-t-white centered-text btn-school-reg" data-toggle="modal"
 									 data-target="#signUp-school-modal">@lang('main.about.institutions.button')</button>
-								</a>
+								</a> -->
 
 							</div>
 
@@ -1060,13 +1060,13 @@
 
 	 {{--
 	<!-- ======   Modal Εγγραφής  Εκπ. Ιδρύματος=======-->--}}
-	<div id="signUp-school-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<!-- <div id="signUp-school-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				@include('components.modals.registerschool')
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- /.modal -->
 
 	<!-- Footer -->
