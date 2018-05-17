@@ -349,7 +349,7 @@ class SeedA2 extends Seeder
         /*=============== arsakeio ok ================*/
 
         $arsakeio = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φιλεκπαιδευτική Εταιρεία Αερσάκεια - Τοσιτσεία Σχολεία', 'email' => 'info@arsakeio.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'arsakeio'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Φιλεκπαιδευτική Εταιρεία Αρσάκεια - Τοσίτσεια Σχολεία', 'email' => 'info@arsakeio.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'arsakeio'])->id,
             'address' => 'Κοκκώνη 18 / Π. Ψυχικό 154 52',
             'city' => 'Αθήνα',
             'phone' => 2106755555,
