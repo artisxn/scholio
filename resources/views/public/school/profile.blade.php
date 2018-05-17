@@ -11,23 +11,24 @@
      
         @include('google.main')
 
-        <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# business: http://ogp.me/ns/business#">
-            <meta property="fb:app_id" content="1167687200016783" /> 
-            <meta property="og:type" content="business.business" /> 
-    
-        <meta property="og:url" content="{{'https://schol.io/public/profile/' . $school->id}}" />
-        <meta property="og:title" content="Schol.io - {{ $school->name() }}" />
-        <meta property="og:description" content="Schol.io - Δημόσιο Προφιλ Εκπαιδευτικού Ιδρύματος" />
-        <meta property="og:image" content="{{url($school->profileImage())}}" />
-    
-        <meta property="business:contact_data:street_address" content="{{ $school->address }}" />
-        <meta property="business:contact_data:country_name" content="{{ $school->country }}" />
-        <meta property="place:location:latitude" content="{{ $school->lat }}" />
-        <meta property="place:location:longitude" content="{{ $school->lng }}" />
-    
-        <meta name="description" content="Schol.io - {{ $school->name() }}">
         <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
     <title>{{ $school->name() }} - schol.io</title>
+
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# business: http://ogp.me/ns/business#">
+        <meta property="fb:app_id" content="1167687200016783" /> 
+        <meta property="og:type" content="business.business" /> 
+
+    <meta property="og:url" content="{{'https://schol.io/public/profile/' . $school->id}}" />
+    <meta property="og:title" content="Schol.io - {{ $school->name() }}" />
+    <meta property="og:description" content="Schol.io - Δημόσιο Προφιλ Εκπαιδευτικού Ιδρύματος" />
+    <meta property="og:image" content="{{url($school->profileImage())}}" />
+
+    <meta property="business:contact_data:street_address" content="{{ $school->address }}" />
+    <meta property="business:contact_data:country_name" content="{{ $school->country }}" />
+    <meta property="place:location:latitude" content="{{ $school->lat }}" />
+    <meta property="place:location:longitude" content="{{ $school->lng }}" />
+
+    <meta name="description" content="Schol.io - {{ $school->name() }}">
 
     <!-- Favicon -->
     
