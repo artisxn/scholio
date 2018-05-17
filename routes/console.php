@@ -1,9 +1,8 @@
 <?php
 
-use App\Models\Dummy;
+use App\Jobs\Algolia;
 use App\Models\School;
 use App\Scholio\Scholio;
-use App\Jobs\Algolia;
 use Spatie\Sitemap\SitemapGenerator;
 
 /*
@@ -17,8 +16,8 @@ use Spatie\Sitemap\SitemapGenerator;
 |
  */
 
-Artisan::command('scholio:sitemap', function(){
-    foreach(School::all() as $school){
+Artisan::command('scholio:sitemap', function () {
+    foreach (School::all() as $school) {
         SitemapGenerator::create('https://schol.io/public/profile/' . $school->id)->writeToFile(public_path() . '/schoolsitemaps/sitemap' . $school->id . '.xml');
     }
 })->describe('Generate a sitemap for the site');
@@ -131,9 +130,16 @@ Artisan::command('scholio:refresh {--s|show} {--a|algolia} {schools?}', function
 
 })->describe('Refresh the Scholio App');
 
-Artisan::command('scholio:algolia', function(){
-    foreach(School::all() as $school){
+Artisan::command('scholio:algolia', function () {
+    foreach (School::all() as $school) {
         dispatch(new Algolia($school));
         $this->info('School ID: ' . $school->id . ' inserted!');
     }
+})->describe('Insert Schools in Algolia');
+
+Artisan::command('scholio:algolia {school}', function () {
+    $schoolID = $this->argument('school');
+    $school = School::find($schoolID);
+    dispatch(new Algolia($school));
+    $this->info('School ID: ' . $school->id . ' inserted!');
 })->describe('Insert Schools in Algolia');
