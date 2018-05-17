@@ -16,17 +16,20 @@
 
     <head prefix="og: https://schol.io# fb: https://www.facebook.com/scholioapp/# business: http://{{$school->website}}#">
         <meta property="fb:app_id" content="1167687200016783" /> 
-        <meta property="og:type" content="business.business" /> 
+        <!-- <meta property="og:type" content="business.business" />  -->
 
-    <meta property="og:url" content="{{'https://schol.io/public/profile/' . $school->id}}" />
+    <!-- <meta property="og:url" content="{{'https://schol.io/public/profile/' . $school->id}}" /> -->
     <meta property="og:title" content="Schol.io - {{ $school->name() }}" />
     <meta property="og:description" content="Schol.io - Δημόσιο Προφιλ Εκπαιδευτικού Ιδρύματος" />
     <meta property="og:image" content="{{url($school->profileImage())}}" />
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
 
-    <meta property="business:contact_data:street_address" content="{{ $school->address }}" />
+    <!-- <meta property="business:contact_data:street_address" content="{{ $school->address }}" />
     <meta property="business:contact_data:country_name" content="{{ $school->country }}" />
     <meta property="place:location:latitude" content="{{ $school->lat }}" />
-    <meta property="place:location:longitude" content="{{ $school->lng }}" />
+    <meta property="place:location:longitude" content="{{ $school->lng }}" /> -->
 
     <meta name="description" content="Schol.io - {{ $school->name() }}">
 
