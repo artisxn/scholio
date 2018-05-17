@@ -14,7 +14,7 @@
         <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
     <title>{{ $school->name() }} - schol.io</title>
 
-    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# business: http://ogp.me/ns/business#">
+    <head prefix="og: https://schol.io# fb: https://www.facebook.com/scholioapp/# business: http://{{$school->website}}#">
         <meta property="fb:app_id" content="1167687200016783" /> 
         <meta property="og:type" content="business.business" /> 
 
