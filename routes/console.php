@@ -137,7 +137,7 @@ Artisan::command('scholio:algolia', function () {
     }
 })->describe('Insert Schools in Algolia');
 
-Artisan::command('scholio:algolia {school}', function () {
+Artisan::command('scholio:algoliaSchool {school}', function () {
     $schoolID = $this->argument('school');
     $school = School::find($schoolID);
     dispatch(new Algolia($school));
