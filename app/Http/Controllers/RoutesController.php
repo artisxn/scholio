@@ -69,6 +69,9 @@ class RoutesController extends Controller
     public function publicProfile($id)
     {
         $school = School::find($id);
+        if(!$school){
+            abort(453);
+        }
         if (Scholio::ProfileActive($school)) {
             return view('public.school.profile')->withId($id)->withSchool($school);
         }
