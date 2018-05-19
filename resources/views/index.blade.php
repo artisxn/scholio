@@ -32,10 +32,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&subset=greek" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
 
 	<!-- font-awesome -->
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"> {{-- @include('components.modals.styles')--}}
+	<link rel="stylesheet" type="text/css" href="{{ asset('/css/fontawsome.min.css') }}"> {{-- @include('components.modals.styles')--}}
 
 	<link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
 
@@ -63,7 +63,6 @@
 
 	<!-- Bootstrap Select js  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
-
 
 	<!-- GoogleMap API -->
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
@@ -898,7 +897,7 @@
 									<span>
 										<img height="18" width="18" src="{{asset('new/img/check.svg')}}">
 									</span>&nbsp;&nbsp;
-									<a href="https://m.me/scholioapp?ref=Welcome%20message" class="bot-text">@lang('main.features.section4')</a>
+									<a href="m.me/254422275124414" class="bot-text">@lang('main.features.section4')</a>
 								</h5>
 								{{--</div>--}}
 						</div>

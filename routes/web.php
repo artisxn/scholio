@@ -29,6 +29,17 @@ Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 
+// Route::get('/{username}',function($username){
+//     $user = User::where('username', $username)->first();
+//     if(!$user){
+//         dd('fdf');
+//     }
+//     if($user->role == 'school'){
+//         $school = $user->info;
+//         dd($school);
+//     }
+// });
+
 
 // Public
 Route::get('/', 'RoutesController@index');
