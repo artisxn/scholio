@@ -22,12 +22,11 @@
 
 
 	<!-- Google Fonts -->
-	<!--
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i
     |Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i
     |Oxygen:300,400,700
-    |Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=greek" rel="stylesheet">
-    -->
+    |Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=greek" rel="stylesheet"> -->
+    
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&subset=greek" rel="stylesheet">
 
@@ -35,7 +34,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
 
 	<!-- font-awesome -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/fontawsome.min.css') }}"> {{-- @include('components.modals.styles')--}}
+	<!-- <link rel="stylesheet" type="text/css" href="{{ asset('/css/fontawsome.min.css') }}"> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 	<link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
 
@@ -50,212 +50,15 @@
 
 	<link rel="stylesheet" href="{{ asset('new/css/algolia.css') }}">
 
+	<link rel="stylesheet" href="{{ asset('/css/index.css') }}">
+
 	<!--====== Javascript Files =======-->
 
 
 
 	<!-- jQuery js-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-	<!-- Bootstrap js-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-	<!-- Bootstrap Select js  -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
-
-	<!-- GoogleMap API -->
-	<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
-
-	<!-- Knob Circular Counters-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-
-	<!-- Angular js-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-	{{--
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>--}} {{--
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script>--}}
-
-	<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.angular.min.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
-
-	<script src="/new/js/angular-app.js"></script>
-
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-
-	<!-- Local javascript files -->
-	<script src="{{asset('new/js/typed.js')}}"></script>
-
-	<!--  -->
-	<script src="{{asset('new/js/landing.js')}}"></script>
-	<!--  -->
-
-
-	<style>
-		.opacityLow {
-			opacity: 0
-		}
-
-		.opacityFull {
-			opacity: 1
-		}
-
-		#sec2 {
-			-webkit-transition: all 0.9s linear;
-			transition: all 0.9s linear;
-		}
-
-		#sec2,
-		#secNew {
-			-webkit-transition: all 0.3s linear;
-			transition: all 0.3s linear;
-		}
-
-		.right-out {
-			bottom: -750px;
-		}
-
-		.right-in {
-			bottom: -240px;
-		}
-
-		.sch-reg-title {
-			left: 37%;
-			: 400px;
-			position: absolute;
-			max-width: 400px
-		}
-
-		.lang-sel {
-			color: #fff;
-			margin-top: 2px;
-			margin-left: -23px
-		}
-
-		.lang-drop {
-			margin: 4px -13px;
-		}
-
-		.select-white .dropdown-menu>li>a {
-			color: black;
-		}
-
-		.lang-drop .dropdown-menu {
-			background-color: transparent;
-		}
-
-		.trans .dropdown-menu>li>a {
-			color: #fff
-		}
-
-		div>ul>.selected {
-			background-color: transparent;
-			border: none;
-			box-shadow: none;
-		}
-
-		.btn-transparent {
-			background-color: transparent;
-			box-shadow: none
-		}
-
-		.btn-transparent {
-			color: #fff
-		}
-
-		.btn-transparent:focus {
-			box-shadow: none;
-			outline: 0
-		}
-
-		.btn-transparent:hover {
-			color: #00bcd4!important;
-		}
-
-
-		.algolia-image {
-			margin-left: 10px;
-			margin-top: 2px;
-			height: 17px;
-		}
-
-		.algolia-powered {
-			margin-top: -20px;
-			margin-bottom: -10px;
-			padding: 0;
-			color: #ebebeb
-		}
-		/* ===========-----------===================== */
-
-		#school-register-button:focus {
-			color: #fff;
-			outline: none!important;
-		}
-
-		.bot-text,
-		.bot-text:visited {
-			color: black
-		}
-
-		.bot-text:hover {
-			color: #FD6A33
-		}
-		.img-support{height: 70px;}
-
-		@media (max-width: 2500px) {
-			.sch-reg-title {
-				left: 42%;
-				width: 380px;
-			}
-		}
-
-		@media (max-width: 2100px) {
-			.sch-reg-title {
-				left: 41%;
-				width: 380px;
-			}
-		}
-
-
-		@media (max-width: 1800px) {
-			.sch-reg-title {
-				left: 39%;
-				width: 380px;
-			}
-		}
-
-		@media (max-width: 1440px) {
-			.sch-reg-title {
-				left: 35%;
-				width: 370px;
-			}
-		}
-
-		@media (max-width: 1200px) {
-			.sch-reg-title {
-				left: 28%;
-				width: 330px;
-			}
-		}
-
-		@media (min-width: 768px) and (max-width: 991px) {
-			.algolia-input {
-				width: 688px!important;
-			}
-			.algolia-powered {
-				position: absolute;
-				right: -40px
-			}
-			.algolia-image {
-				position: absolute;
-				right: -64px;
-				top: 0px;
-			}
-		}
-	</style>
 
 	@include('javascript_lang')
 
@@ -1070,14 +873,46 @@
 
 	<!-- Footer -->
 	@include('public.footer')
+<!-- Bootstrap js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
+<!-- Bootstrap Select js  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+
+<!-- GoogleMap API -->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+
+<!-- Knob Circular Counters-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+
+<!-- Angular js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+{{--
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>--}} {{--
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script>--}}
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.angular.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+<script src="/new/js/angular-app.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<!-- Local javascript files -->
+<script src="{{asset('new/js/typed.js')}}"></script>
+
+<!--  -->
+<script src="{{asset('new/js/landing.js')}}"></script>
 </body>
 <!--  -->
 <script>
 	jQuery(document).ready(function($) {
     $(function(){
         $(".typed-js").typed({
-            {{--strings: ["@lang('main.first.title.talent')","@lang('main.first.title.student')","@lang('main.first.title.student1')"],--}}
 			strings: ["@lang('main.first.title.student')","@lang('main.first.title.student1')"],
             typeSpeed: 100,
             backSpeed:100,
