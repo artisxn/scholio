@@ -29,16 +29,9 @@ Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 
-// Route::get('/{username}',function($username){
-//     $user = User::where('username', $username)->first();
-//     if(!$user){
-//         dd('fdf');
-//     }
-//     if($user->role == 'school'){
-//         $school = $user->info;
-//         dd($school);
-//     }
-// });
+
+Route::get('@{username}', 'RoutesController@username');
+Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
 
 
 // Public
@@ -68,7 +61,6 @@ Route::get('/terms', 'RoutesController@terms');
 Route::get('/verifyemail/{token}', 'VerifyController@verify');
 Route::get('/lang/{locale}', 'RoutesController@lang');
 Route::get('dashboard/profile', 'RoutesController@dashboardProfile')->middleware('auth');
-Route::get('@{username}', 'RoutesController@username');
 Route::get('/scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('/scholarship/{scholarship}/edit', 'RoutesController@scholarshipEdit');
 // Route::post('/scholarship/{scholarship}/update', 'RoutesController@scholarshipUpdate');
@@ -79,7 +71,6 @@ Route::get('/register/school', 'SchoolRegistrationController@showSchoolRegistrat
 Route::get('/token/register', 'RoutesController@token');
 Route::get('auth/{provider}/', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
-Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
 Route::get('/public/results/','RoutesController@publicResultsAll' );
 Route::get('/public/results/{id}', 'RoutesController@publicResults');
 Route::get('connected/students', 'ApiController@connectedStudents');

@@ -69,13 +69,36 @@ class RoutesController extends Controller
     public function publicProfile($id)
     {
         $school = School::find($id);
-        if(!$school){
-            abort(453);
+        $user = $school->admin;
+        return redirect('@' . $user->username);
+        // $user = User::where('username', $username)->first();
+        // if (!$user) {
+        //     abort(452);
+        // }
+        // $url = '';
+        // if ($user->role == 'teacher') {
+        //     $url = '/public/profile/teacher';
+        // }
+        // if ($user->role == 'school') {
+        //     $url = '/public/profile';
+        // }
+        // return redirect($url . '/' . $user->info->id);
+    }
+
+    public function username($username)
+    {
+        $user = User::where('username', $username)->first();
+        if (!$user) {
+            abort(452);
         }
-        if (Scholio::ProfileActive($school)) {
-            return view('public.school.profile')->withId($id)->withSchool($school);
+        if ($user->role == 'school') {
+            $school = $user->info;
+            if (Scholio::ProfileActive($school)) {
+                return view('public.school.profile')->withId($school->id)->withSchool($school);
+            }
         }
-        abort(404);
+        
+        abort(453);
     }
 
     public function redirectDashboard()
@@ -656,22 +679,6 @@ class RoutesController extends Controller
         }
     }
 
-    public function username($username)
-    {
-        $user = User::where('username', $username)->first();
-        if (!$user) {
-            abort(452);
-        }
-        $url = '';
-        if ($user->role == 'teacher') {
-            $url = '/public/profile/teacher';
-        }
-        if ($user->role == 'school') {
-            $url = '/public/profile';
-        }
-        return redirect($url . '/' . $user->info->id);
-    }
-
     public function confirmConnectionSchoolUser($id)
     {
         Scholio::connectUserWithSchool(auth()->user()->info, User::find($id));
@@ -705,11 +712,13 @@ class RoutesController extends Controller
         return view('public.school.admission', compact('user', 'scholarship', 'settings', 'fields'));
     }
 
-    public function registerRole(){
+    public function registerRole()
+    {
         return view('auth.register-role');
     }
 
-    public function publicscholarships(){
+    public function publicscholarships()
+    {
         return view('public.results.scholarships');
     }
 
