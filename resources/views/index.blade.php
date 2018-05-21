@@ -32,10 +32,16 @@
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 
 	<!-- font-awesome -->
-	<!-- <link rel="stylesheet" type="text/css" href="{{ asset('/css/fontawsome.min.css') }}"> -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" type="text/css" href=""> -->
+	<!-- <link rel="stylesheet" href="{{ asset('/css/fontawesome-all.min.css') }}"> -->
+	<link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
+	<!-- <link rel="stylesheet" href="{{ asset('/css/fa-brands.min.css') }}"> -->
+	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> -->
+
 
 	<link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
 
@@ -54,10 +60,8 @@
 
 	<!--====== Javascript Files =======-->
 
-
-
 	<!-- jQuery js-->
-	<script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script async src="{{asset('/js/jquery224.js')}}"></script>
 
 
 	@include('javascript_lang')
@@ -205,9 +209,6 @@
 
 				<!-- ======= Sandwich Menu =======-->
 				@include('public.sandwich-menu-landing')
-
-
-
 
 			</div>
 
@@ -874,32 +875,30 @@
 	<!-- Footer -->
 	@include('public.footer')
 <!-- Bootstrap js-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{{asset('/js/bootstrap//bootstrap337.min.js')}}"></script>
 
 
 <!-- Bootstrap Select js  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('js/bootstrap/bootstrap-select164.min.js') }}"></script>
 
 <!-- GoogleMap API -->
 <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
 
 <!-- Knob Circular Counters-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+<script src="{{ asset('/js/jquery-knob.min.js')}}"></script>
 
 <!-- Angular js-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-{{--
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>--}} {{--
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script>--}}
+<script src="{{ asset('/js/angular/angular155.min.js')}}"></script>
 
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script>
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.angular.min.js"></script>
+<!-- Algolia-->
+<script src="{{ asset('/js/algolia/algoliasearch.min.js') }}"></script>
+<script src="{{ asset('/js/algolia/autocomplete-angular.min.js')}}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+<script src="{{ asset('/js/bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
 
 <script src="/new/js/angular-app.js"></script>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{{ asset('/js/axios.min.js') }}"></script>
 
 
 <!-- Local javascript files -->
@@ -925,34 +924,5 @@ function validateMyForm(el, id){
     if(id == 1) window.location = '/public/scholarships?q=' + el.text.value;
     if(id == 2)window.location = '/public/schools?q=' + el.text.value;
 }
-
 </script>
-
-<!-- TypeAhead custom dropdown view --->
-<script type="text/ng-template" id="customTemplate.html">
-	<a>
-		{{--
-		<span>@{{ match.model.id }} &nbsp;</span>--}} {{--
-		<img ng-src="@{{match.model.png}}" width="16">--}}
-		<span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
-	</a>
-
-</script>
-
-<script>
-	$('.knob1').val(1790).knob();
-    $('.knob2').val(128).knob();
-    $('.knob3').val(268).knob();
-    $('.knob4').val(130).knob();
-//    var graph = $('.knob');
-//    $({value: 0}).animate({ value: 1790 }, {
-//        duration:900,
-//        easing: 'swing',
-//        progress: function () {graph.val(Math.ceil(this.value)).trigger('change')
-//        }
-//    });
-//
-
-</script>
-
 </html>

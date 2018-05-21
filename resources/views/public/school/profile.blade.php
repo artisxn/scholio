@@ -54,32 +54,6 @@
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-
-
-
-    {{--<!-- GoogleMap API -->--}}
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
-
-
-    <!-- Bootstrap js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Bootstrap Select js  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
-
-    <!-- Angular js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-
-    <!-- Rating js-->
-    <script src="/new/js/jquery.raty-fa.js"></script>
-
-    <!-- BX Slider-->
-    <script src="/new/js/jquery.bxslider412.js"></script>
-    <!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->
-
-    <!--  -->
-    <script src="/new/js/profile.js"></script>
-
     <!-- Angular App-->
     {{--<script src="/new/js/profile-app.js"></script>--}}
     <script>
@@ -330,7 +304,7 @@
                         <li class="langDropWhite " style="margin-top: 15px;">
                             <form method="GET" id="langForm">
                                 <select onchange="changeLang(this)" class="selectpicker select-white landDrop school-profile-lang" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
-                                    <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
+                                    <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; EN</option>
                                     <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                                 </select>
                             </form>
@@ -1344,6 +1318,28 @@
 <!-- Footer -->
 @include('public.footer')
 
+    {{--<!-- GoogleMap API -->--}}
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+
+
+    <!-- Bootstrap js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Select js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+
+    <!-- Angular js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+
+    <!-- Rating js-->
+    <script src="/new/js/jquery.raty-fa.js"></script>
+
+    <!-- BX Slider-->
+    <script src="/new/js/jquery.bxslider412.js"></script>
+    <!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->
+
+    <!--  -->
+    <script src="/new/js/profile.js"></script>
 </body>
 
 <script>

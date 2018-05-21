@@ -82,7 +82,7 @@
 
 
           $scope.getLocation = function(val) {
-              return $http.get('//maps.googleapis.com/maps/api/geocode/json?components=country:GR', {
+              return $http.get('/maps.googleapis.com/maps/api/geocode/json?components=country:GR', {
                   params: {
                       language: 'el',
                       address: val,
@@ -116,8 +116,8 @@
           $scope.input=''
           var client = algolia.Client('N08SZYEUO0', 'e00bc4548ea05c691c81f7c30c100bd7');
           var schools = client.initIndex('dummySchools');
-          var scholarships = client.initIndex('dummyScholarships');
-          var studies = client.initIndex('dummyStudies');
+          // var scholarships = client.initIndex('dummyScholarships');
+          // var studies = client.initIndex('dummyStudies');
 
           $scope.getDatasets1 = function() {
               return [
@@ -135,17 +135,17 @@
                       },
                   }
               },
-              {
-                  source: algolia.sources.hits(scholarships, { hitsPerPage: 2 }),
-                  displayKey: 'study',
-                  templates: {
-                    header: '<div class="aa-suggestions-category2">' + lang.main.first.algolia.search.studies +'</div>',
-                      suggestion: function(suggestion) {
-                          return '<a style="color:black" target="_blank" href="public/scholarships?q='+ suggestion.study +'">' +
-                              '<span>' + suggestion._highlightResult.study.value + ' - ' + suggestion.level + '</span></a>';
-                      }
-                  }
-              }
+              // {
+              //     source: algolia.sources.hits(scholarships, { hitsPerPage: 2 }),
+              //     displayKey: 'study',
+              //     templates: {
+              //       header: '<div class="aa-suggestions-category2">' + lang.main.first.algolia.search.studies +'</div>',
+              //         suggestion: function(suggestion) {
+              //             return '<a style="color:black" target="_blank" href="public/scholarships?q='+ suggestion.study +'">' +
+              //                 '<span>' + suggestion._highlightResult.study.value + ' - ' + suggestion.level + '</span></a>';
+              //         }
+              //     }
+              // }
               ];
           };
 
@@ -160,20 +160,21 @@
                           return '<a style="color: #888;" href="/public/profile/' + suggestion.id +'"><span><img src="'+ suggestion.logo +'" height="30px" style="margin-right: 10px;">' +
                               suggestion._highlightResult.name.value + '</span></a>';
                       },
+                      empty: '<div class="aa-empty">' + lang.main.first.algolia.search.results + '</div>'
                   }
               },
-              {
-                  source: algolia.sources.hits(studies, { hitsPerPage: 2 }),
-                  displayKey: 'name',
-                  templates: {
-                    header: '<div class="aa-suggestions-category2">' + lang.main.first.algolia.search.studies +'</div>',
-                      suggestion: function(suggestion) {
-                          return '<span>' +
-                              suggestion._highlightResult.name.value + '</span>';
-                      },
-                    empty: '<div class="aa-empty">' + lang.main.first.algolia.search.results + '</div>'
-                  }
-              }
+              // {
+              //     source: algolia.sources.hits(studies, { hitsPerPage: 2 }),
+              //     displayKey: 'name',
+              //     templates: {
+              //       header: '<div class="aa-suggestions-category2">' + lang.main.first.algolia.search.studies +'</div>',
+              //         suggestion: function(suggestion) {
+              //             return '<span>' +
+              //                 suggestion._highlightResult.name.value + '</span>';
+              //         },
+              //       empty: '<div class="aa-empty">' + lang.main.first.algolia.search.results + '</div>'
+              //     }
+              // }
               ];
           };
 
