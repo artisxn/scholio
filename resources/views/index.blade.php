@@ -61,7 +61,7 @@
 	<!--====== Javascript Files =======-->
 
 	<!-- jQuery js-->
-	<script async src="{{asset('/js/jquery224.js')}}"></script>
+	<script async src="{{asset('/js/jquery224.min.js')}}"></script>
 
 
 	@include('javascript_lang')
