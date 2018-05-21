@@ -700,7 +700,7 @@
 									<span>
 										<img height="18" width="18" src="{{asset('new/img/check.svg')}}">
 									</span>&nbsp;&nbsp;
-									<a href="m.me/254422275124414" class="bot-text">@lang('main.features.section4')</a>
+									<a href="http://m.me/scholiobot" target="_blank" class="bot-text">@lang('main.features.section4')</a>
 								</h5>
 								{{--</div>--}}
 						</div>
