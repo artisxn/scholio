@@ -32,6 +32,7 @@ ob_start("ob_gzhandler");
     
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&subset=greek" rel="stylesheet">
+	<!-- <link href="{{ asset('/fonts/Roboto-Regular.ttf') }}" rel="stylesheet"> -->
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
