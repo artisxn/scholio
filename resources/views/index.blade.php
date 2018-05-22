@@ -700,9 +700,6 @@
 
 					<h2 class="text-center sc-t-white sc-t-dark-grey margin-bot-50">@lang('main.institutions.title')</h2>
 
-				<h2 class="text-center sc-t-white sc-t-dark-grey margin-bot-50">@lang('main.institutions.title')</h2>
-
-
 				<div class="row">
 
 					<a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">
