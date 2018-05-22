@@ -417,7 +417,7 @@
 							{{--<div class=" col-lg-6 col-md-7 col-sm-8 col-xs-6 col-xxs-12 col-xxxs-12">--}}
 								{{--<div class="grid">--}}
 									{{--<figure class="effect-lily sc-landing-card">--}}
-										{{--<img src="{{asset('new/img/sect-photo/college2.png')}}" alt="student" style="" class="img-responsive " />--}}
+										{{--<img src="{{asset('new/img/sect-photo/college2.jpg')}}" alt="student" style="" class="img-responsive " />--}}
 
 										{{--<figcaption>--}}
 											{{--<div class="centered-text">--}}
@@ -475,7 +475,7 @@
 							{{--<div class="col-lg-3 col-md-7 col-sm-7 col-xs-6 col-xxs-12 col-xxxs-12">--}}
 								{{--<div class="grid">--}}
 									{{--<figure class="effect-lily sc-landing-card ">--}}
-										{{--<img src="{{asset('new/img/sect-photo/belfast2.png')}}" alt="student" style="" class="img-responsive " />--}}
+										{{--<img src="{{asset('new/img/sect-photo/belfast2.jpg')}}" alt="student" style="" class="img-responsive " />--}}
 
 										{{--<figcaption>--}}
 											{{--<div class="centered-text">--}}
@@ -515,7 +515,7 @@
 							{{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-xxs-12 col-xxxs-12">--}}
 								{{--<div class="grid">--}}
 									{{--<figure class="effect-lily sc-landing-card ">--}}
-										{{--<img src="{{asset('new/img/sect-photo/doct2.png')}}" alt="student" style="" class="img-responsive " />--}}
+										{{--<img src="{{asset('new/img/sect-photo/doct2.jpg')}}" alt="student" style="" class="img-responsive " />--}}
 
 										{{--<figcaption>--}}
 											{{--<div class="centered-text">--}}
@@ -554,7 +554,7 @@
 							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card ">
-										<img src="{{asset('new/img/sect-photo/belfast2.png')}}" alt="student" style="" class="img-responsive " />
+										<img src="{{asset('new/img/sect-photo/belfast2.jpg')}}" alt="student" style="" class="img-responsive " />
 
 										<figcaption>
 											<div class="centered-text">
@@ -576,7 +576,7 @@
 							<div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card">
-										<img src="{{asset('new/img/sect-photo/college2.png')}}" alt="student" style="" class="img-responsive " />
+										<img src="{{asset('new/img/sect-photo/college2.jpg')}}" alt="student" style="" class="img-responsive " />
 
 										<figcaption>
 											<div class="centered-text">
@@ -595,7 +595,7 @@
 							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card ">
-										<img src="{{asset('new/img/sect-photo/doct2.png')}}" alt="student" style="" class="img-responsive " />
+										<img src="{{asset('new/img/sect-photo/doct2.jpg')}}" alt="student" style="" class="img-responsive " />
 
 										<figcaption>
 											<div class="centered-text">
