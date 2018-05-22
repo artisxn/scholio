@@ -61,11 +61,11 @@ class BotController extends Controller
                         "url" => "https://schol.io/public/profile/" . $result->id,
                         "title" => "Προβολή",
                     ],
-                    [
-                        "type" => "web_url",
-                        "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
-                        "title" => "Υποτροφίες",
-                    ],
+                    // [
+                    //     "type" => "web_url",
+                    //     "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
+                    //     "title" => "Υποτροφίες",
+                    // ],
                 ),
             );
             if ($index <= 9) {
@@ -91,18 +91,19 @@ class BotController extends Controller
             $array = array(
                 "title" => $result->name,
                 "image_url" => 'https://schol.io' . $result->image,
-                "subtitle" => $result->lengthScholarships . " Υποτροφίες",
+                // "subtitle" => $result->lengthScholarships . " Υποτροφίες",
+                "subtitle" => $result->city,
                 "buttons" => array(
                     [
                         "type" => "web_url",
                         "url" => "https://schol.io/public/profile/" . $result->id,
                         "title" => "Προβολή",
                     ],
-                    [
-                        "type" => "web_url",
-                        "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
-                        "title" => "Υποτροφίες",
-                    ],
+                    // [
+                    //     "type" => "web_url",
+                    //     "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
+                    //     "title" => "Υποτροφίες",
+                    // ],
                 ),
             );
             if ($index <= 9) {
@@ -246,18 +247,19 @@ class BotController extends Controller
             $array = array(
                 "title" => $result->name,
                 "image_url" => 'https://schol.io' . $result->image,
-                "subtitle" => $result->lengthScholarships . " Υποτροφίες",
+                // "subtitle" => $result->lengthScholarships . " Υποτροφίες",
+                "subtitle" => $result->city,
                 "buttons" => array(
                     [
                         "type" => "web_url",
                         "url" => "https://schol.io/public/profile/" . $result->id,
                         "title" => "Προβολή",
                     ],
-                    [
-                        "type" => "web_url",
-                        "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
-                        "title" => "Υποτροφίες",
-                    ],
+                    // [
+                    //     "type" => "web_url",
+                    //     "url" => 'https://schol.io/public/scholarships?q=' . $result->name,
+                    //     "title" => "Υποτροφίες",
+                    // ],
                 ),
             );
             if ($index <= 9) {
