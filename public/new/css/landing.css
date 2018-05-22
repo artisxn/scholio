@@ -1,497 +1,211 @@
-/*General Thing Only for Landng */
-
-#header .active a {
-    padding-bottom: 5px;
-    border-bottom: 2px solid #a1a1a1;
-
-}
-
-.navbar-scroll li a{
-    /*top: -11px;*/
-    /*margin-top: -10px;*/
-}
-
-.navbar-scroll li{
-    /*top: -11px;*/
-    /*padding-top: 10px;*/
-}
-
-
-.nav-web .sc-landing-logo{
-    padding-top: 10px;
-}
-
-.nav-web .sc-landing-logo-sticky{ padding-top: 17px!important;}
-
-  .nav-mobile {
-    padding-top: 11px;
-}
-
-.navbar-fixed-top, .navbar-scroll{ margin-top: -3px; }
-
-section{padding-top:100px!important; padding-bottom:100px!important;}
-/*Landing Header */
+#header .active a{padding-bottom:5px;border-bottom:2px solid #a1a1a1;}
+.navbar-scroll li a{}
+.navbar-scroll li{}
+.nav-web .sc-landing-logo{padding-top:10px;}
+.nav-web .sc-landing-logo-sticky{padding-top:17px!important;}
+.nav-mobile{padding-top:11px;}
+.navbar-fixed-top, .navbar-scroll{margin-top:-3px;}
+section{padding-top:100px!important;padding-bottom:100px!important;}
 .sc-landing-header{height:79px;background:transparent;}
-
 .sc-landing-header-sticky{background:transparent;}
-
 .sc-landing-brand{padding-top:26px!important;}
-
-.sc-landing-menu{  padding-top:10px;
-}
+.sc-landing-menu{padding-top:10px;}
 .sc-landing-menu a{color:#ffffff;}
 .sc-landing-menu li>a:hover{background-color:transparent!important;color:#ffffff;}
 .sc-landing-menu li>a:focus{background-color:transparent!important;color:#ffffff;}
-
 .sc-landing-menu-item{padding:10px 0!important;}
-
-.nav>li>a{ padding: 1px 9px!important;}
-
-.sc-button-landing{margin-top: 1px;}
-
+.nav>li>a{padding:1px 9px!important;}
+.sc-button-landing{margin-top:1px;}
 .sc-landing-logo-sticky{display:none;}
 .sc-landing-logo{}
-
-.sc-landing-menu-mobile-sandwitch{padding-right:20px;margin-top: 25px!important;}
-.sc-landing-menu-sandwitch-button{cursor: pointer; margin-top: 8px;}
+.sc-landing-menu-mobile-sandwitch{padding-right:20px;margin-top:25px!important;}
+.sc-landing-menu-sandwitch-button{cursor:pointer;margin-top:8px;}
 .sc-landing-menu-sandwitch-button:hover{}
-
-
-
-/* =========  delete after change all mobile menu  ======= */
-.sc-landing-menu-mobile-holder{padding:20px;width:230px;height:100%;position:fixed;right:0; top:0;z-index: 999999;display:none;}
+.sc-landing-menu-mobile-holder{padding:20px;width:230px;height:100%;position:fixed;right:0;top:0;z-index:999999;display:none;}
 .sc-landing-menu-mobile-close{font-size:25px;cursor:pointer;}
 .sc-landing-menu-mobile-item{font-size:18px;text-align:right;color:white;font-weight:300;padding-top:20px;}
-
-/* ======================================================= */
-
-.hover1{color: #FD6A33!important;}
-.hover2{color: #00bcd4!important;}
-
-.mobile-hero {min-width: 100%; min-height: 690px;}
-
-/*Mobile Menu*/
-
-
-
-
-/* First Section */
-.sc-landing-sec1{min-height:600px
-
-}
-
+.hover1{color:#FD6A33!important;}
+.hover2{color:#00bcd4!important;}
+.mobile-hero{min-width:100%;min-height:690px;}
+.sc-landing-sec1{min-height:600px}
 .sc-landing-sec1-content{margin-top:110px;}
 .sc-landing-sec1-content h3{font-weight:300;}
 .sc-landing-sec1-content h2{font-weight:300;}
-
-/*Background Video*/
-#video-bg{  }
-video {
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -100;
-    transform:scale(1);
-}
-/*.sc-landing-video-container{  width: 100%;  height:690px!important;  overflow: hidden;  position: absolute;  top: 0;  right: 0;  z-index: -100;  }*/
-.sc-landing-video-container{    height:700px!important;
-    min-width: 100vw;  overflow: hidden;  position: absolute;  top: 0;  right: 0;  z-index: -100;  }
-
-.sc-landing-video-filter{  width:100%;  height:700px!important; z-index:1;  position: absolute;
-    background-image: -webkit-linear-gradient(rgba(5,5,40,0.2), rgba(5,5,20,0.85)),url(""); }
-
-/* ====Search Bar===== */
-.sc-landing-search-bar-holder{
-    width:100%;  height:80px;  opacity: 0.9;
-    top:602px;
-    position: absolute;
-    background:rgba(31,52,63,0.93);  z-index:100;  }
+#video-bg{}
+video{min-width:100%;min-height:100%;z-index:-100;transform:scale(1);}
+.sc-landing-video-container{height:700px!important;min-width:100vw;overflow:hidden;position:absolute;top:0;right:0;z-index:-100;}
+.sc-landing-video-filter{width:100%;height:700px!important;z-index:1;position:absolute;background-image:-webkit-linear-gradient(rgba(5,5,40,0.2), rgba(5,5,20,0.85)),url("");}
+.sc-landing-search-bar-holder{width:100%;height:80px;opacity:0.9;top:602px;position:absolute;background:rgba(31,52,63,0.93);z-index:100;}
 .sc-landing-search-bar-content{padding-top:20px;}
-.sc-landing-search-bar-content input, .sc-landing-search-bar-content #options {margin-bottom: 20px;}
-
-
-.search-container{margin-top: 100px; padding-bottom: 5px;
-    background-color: rgba(31,52,63,0.96); border-radius: 5px;
-    border: 1px solid #999;
-    /* border-top-left-radius: 0;  NA TO ΞΑΒΑΒΑΛΟΥΜΕ ΜΕΤΑ ΤΟ PORTAL */
-    width: 92.5%;
-
-}
-
-.btn-scholarships, .btn-schools{ font-weight:200; top: -48px;  margin-left: -16px; position: absolute;  background:rgba(31,52,63,0.96);
-    border: 1px solid #999;  width: 150px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-
-    }
-
-.btn-schools{margin-left: 138px; width: 195px; }
-
-
-.btn-non-active{border: 1px solid #5f5f5f; border-bottom: 1px solid #999; color: #878787; opacity: 0.9; }
-.btn-active{border: 1px solid #999;  border-bottom: 1px solid #1F343F; color: #d7d7d7; opacity: 1; }
-
-/*-----Second Section------*/
-.sc-landing-sec2{min-height:400px!important;width:100%; background-color: #fff}
+.sc-landing-search-bar-content input, .sc-landing-search-bar-content #options{margin-bottom:20px;}
+.search-container{margin-top:100px;padding-bottom:5px;background-color:rgba(31,52,63,0.96);border-radius:5px;border:1px solid #999;width:92.5%;}
+.btn-scholarships, .btn-schools{font-weight:200;top:-48px;margin-left:-16px;position:absolute;background:rgba(31,52,63,0.96);border:1px solid #999;width:150px;border-bottom-right-radius:0;border-bottom-left-radius:0;}
+.btn-schools{margin-left:138px;width:195px;}
+.btn-non-active{border:1px solid #5f5f5f;border-bottom:1px solid #999;color:#878787;opacity:0.9;}
+.btn-active{border:1px solid #999;border-bottom:1px solid #1F343F;color:#d7d7d7;opacity:1;}
+.sc-landing-sec2{min-height:400px!important;width:100%;background-color:#fff}
 .sc-landing-sec2-content{}
-
 .sc-landing-sec2-content h2{font-weight:300}
 .sc-landing-sec2-content h4{font-weight:300}
-.sc-landing-sec2-content p{color:#8e8e8e; max-width: 400px;}
-
-/*New Section*/
-.sc-landing-secNew {height: 550px; background-color: #deeaed; z-index: -50}
-
-.ipad{height: 590px; width: auto; position: absolute; top:-140px; left: 5px; z-index: 3}
-
-.iphone{height: 290px; width: auto;  position: absolute; top:120px; right: 245px;}
-
-.banner{height: 610px; width: 340px; position: absolute; top:-120px; right: 50px}
-
-.btn-school-reg{ margin-top: 160px; width: 260px; height: 50px;}
-
-.text-container{ position: absolute; right: 50px; width: 300px; color: #444; font-weight: 300;}
-
-.banner-title{ text-shadow: none}
-.banner-content {margin-top: -55px;}
-
-.xxs-small-banner-content{visibility: hidden;  margin-top: -75px;}
-
-#school-register-button:hover{color: #f3f3f3
-}
-
-
-/*Third Section*/
-.sc-landing-sec3 {min-height:670px!important; background-color: #fff;
-                  padding-left: 0; margin-left: -10px;}
-
-.sc-landing-sec3 img{margin-top: 5px; margin-bottom: 25px;}
-.sc-landing-sec3 h2{font-weight: 300; margin-top:0!important;}
-.sc-landing-sec3-text h2{ font-size: 196%;}
-.sc-landing-sec3-text h5{ font-size: 120%; font-weight: 300}
-
-
-/* Fourth Section */
-.sc-landing-sec4{min-height:400px!important; background-color: #f5f5f5}
-
+.sc-landing-sec2-content p{color:#8e8e8e;max-width:400px;}
+.sc-landing-secNew{height:550px;background-color:#deeaed;z-index:-50}
+.ipad{height:590px;width:auto;position:absolute;top:-140px;left:5px;z-index:3}
+.iphone{height:290px;width:auto;position:absolute;top:120px;right:245px;}
+.banner{height:610px;width:340px;position:absolute;top:-120px;right:50px}
+.btn-school-reg{margin-top:160px;width:260px;height:50px;}
+.text-container{position:absolute;right:50px;width:300px;color:#444;font-weight:300;}
+.banner-title{text-shadow:none}
+.banner-content{margin-top:-55px;}
+.xxs-small-banner-content{visibility:hidden;margin-top:-75px;}
+#school-register-button:hover{color:#f3f3f3}
+.sc-landing-sec3{min-height:670px!important;background-color:#fff;padding-left:0;margin-left:-10px;}
+.sc-landing-sec3 img{margin-top:5px;margin-bottom:25px;}
+.sc-landing-sec3 h2{font-weight:300;margin-top:0!important;}
+.sc-landing-sec3-text h2{font-size:196%;}
+.sc-landing-sec3-text h5{font-size:120%;font-weight:300}
+.sc-landing-sec4{min-height:400px!important;background-color:#f5f5f5}
 .sc-landing-sec4-content{}
 .sc-landing-sec4-content a{text-decoration:none!important;}
-
 .sc-landing-sec4-content h2{font-weight:300}
-
-
-.sc-landing-card-filter{background: rgba(0,0,0,0.2); width: 100%; padding-top: 110px; padding-bottom: 112px;}
-
-.sc-landing-card h3{font-weight:300;text-shadow: 2px 2px 7px rgba(0, 0, 0, 1); margin: 0}
-
-
-.sc-landing-card-6 .sc-landing-card-filter{ padding-bottom: 80px;}
-
-.sc-landing-card{
-    height:255px;
-    margin-bottom: 25px;
+.sc-landing-card-filter{background:rgba(0,0,0,0.2);width:100%;padding-top:110px;padding-bottom:112px;}
+.sc-landing-card h3{font-weight:300;text-shadow:2px 2px 7px rgba(0, 0, 0, 1);margin:0}
+.sc-landing-card-6 .sc-landing-card-filter{padding-bottom:80px;}
+.sc-landing-card{height:255px;margin-bottom:25px;}
+.sc-landing-card:hover{}
+.sc-landing-card-1{background:url('/img/sect-photo/college.png') 0 0/cover;}
+.sc-landing-card-2{background:url('/img/sect-photo/student.png') 0 0/cover;}
+.sc-landing-card-6{background:url('/img/sect-photo/lab.png') 0 0/cover;}
+.carousel-select{cursor:pointer}
+#myCarousel{width:52.5%;left:17%;position:absolute;top:14px}
+.carousel-img{width:100%;border-radius:6px;}
+.iphone-ipad-sm{top:20px;position:absolute;width:95%}
+@media(max-width:1199px){#myCarousel{width:51%;left:17.8%;top:12px}
 }
-
-.sc-landing-card:hover{
-    /*
-    opacity: 0.8;
-    -moz-transform: scale(1.02);
-    -webkit-transform: scale(1.02);
-    transform:scale(1.02);
-    */
+@media(max-width:991px){#myCarousel{width:50%;left:18.3%;top:9px;border-radius:5px;}
+.carousel-img{border-radius:5px;}
 }
-
-
-.sc-landing-card-1{ background:url('/img/sect-photo/college.png') 0 0 / cover;}
-
-.sc-landing-card-2 { background:url('/img/sect-photo/student.png') 0 0 / cover; }
-
-.sc-landing-card-6 { background:url('/img/sect-photo/lab.png') 0 0 / cover; }
-
-
-/* //////////////////////  Carousel  ////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////// */
-
-.carousel-select{cursor: pointer}
-#myCarousel{width: 52.5%;  left: 17%; position: absolute; top: 14px}
-.carousel-img{width: 100%; border-radius: 6px; }
-.iphone-ipad-sm{top: 20px; position: absolute; width: 95%}
-
-@media(max-width: 1199px){
-    #myCarousel{width: 51%;  left: 17.8%; top: 12px}
+@media(max-width:767px){#myCarousel{width:52%;left:17.2%;top:13px}
 }
-
-@media(max-width: 991px){
-    #myCarousel{width: 50%;  left: 18.3%; top: 9px; border-radius: 5px;}
-    .carousel-img{border-radius: 5px; }
+@media(max-width:641px){#myCarousel{width:50%;left:18.3%;top:12px}
 }
-
-@media(max-width: 767px){
-    #myCarousel{width: 52%;  left: 17.2%;  top: 13px}
+@media(max-width:468px){#myCarousel{width:49.5%;left:18.6%;top:10px;}
+.carousel-inner .item img{border-radius:3px;}
+.iphone-ipad-sm{top:10px;}
 }
-
-@media(max-width: 641px){
-    #myCarousel{width: 50%;  left: 18.3%; top: 12px}
+@media(max-width:375px){#myCarousel{width:49.5%;left:18.8%;top:6px;}
+.carousel-img{border-radius:1px;}
 }
-
-@media(max-width: 468px){
-    #myCarousel{width: 49.5%;  left: 18.6%; top: 10px;}
-    .carousel-inner .item img{border-radius: 3px; }
-    .iphone-ipad-sm{top: 10px;}
-}
-
-@media(max-width: 375px){
-    #myCarousel{width: 49.5%;  left: 18.8%; top: 6px;}
-    .carousel-img{border-radius: 1px; }
-}
-
-
-/* //////////////////////////////////////////////////////////////////// */
-.counter-icon{margin-top: -150px;}
-.counter-text{margin-top: 50px;}
-
-
-
-/* //////////////////////  Footer  //////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////// */
+.counter-icon{margin-top:-150px;}
+.counter-text{margin-top:50px;}
 .sc-landing-footer{min-height:290px}
-
-
-
-
-
-
-/* //////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////// */
-
-/* For Typed Js */
-.typed-cursor{
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
+.typed-cursor{opacity:1;-webkit-animation:blink 0.7s infinite;-moz-animation:blink 0.7s infinite;animation:blink 0.7s infinite;}
+@keyframes blink{0%{opacity:1;}
+50%{opacity:0;}
+100%{opacity:1;}
 }
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+@-webkit-keyframes blink{0%{opacity:1;}
+50%{opacity:0;}
+100%{opacity:1;}
 }
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+@-moz-keyframes blink{0%{opacity:1;}
+50%{opacity:0;}
+100%{opacity:1;}
 }
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+@media(min-width:1440px){.search-container{width:1370px!important;}
 }
-
-/* //////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////// */
-
-@media(min-width: 1440px){
-    .search-container {  width: 1370px!important;  }
+@media (max-width:991px){.sc-landing-sec3-text h2{font-size:186%;}
+.typed{position:absolute;top:305px;font-size:390%;left:0;right:0;}
+.main-title{position:absolute;top:380px;left:0;right:0;}
+.search-container{position:absolute;top:120px;}
 }
-
-/* Portrait tablets and small desktops */
-@media  (max-width: 991px) {
-.sc-landing-sec3-text h2{ font-size: 186%;}
-
-    .typed{position: absolute; top: 305px; font-size: 390%; left: 0; right: 0;}
-    .main-title{position: absolute; top: 380px; left: 0; right: 0;}
-    .search-container{position: absolute; top: 120px;}
-
+@media (min-width:768px) and (max-width:991px){.sc-landing-search-bar-holder{height:150px;top:530px;}
+.iphone{visibility:hidden!important;}
 }
-
-
-
-/* Portrait tablets and small desktops */
-@media (min-width: 768px) and (max-width: 991px) {
-    /* Search Bar */
-    .sc-landing-search-bar-holder{height:150px;
-        top:530px;}
-    .iphone { visibility: hidden!important;}
+@media (max-width:767px){.sc-landing-sec1-content{margin-top:90px;}
+.sc-landing-search-bar-holder{height:200px;}
+.btn-school-reg{margin-top:30px;margin-left:4%}
+.clear-fix{clear:both;display:block;}
+.banner-content{margin-top:-320px!important;}
+.banner-title{margin-bottom:40px;margin-left:8%;width:70%}
+.btn-school-reg{margin-top:90px;margin-left:1%}
+.sc-landing-sec3{padding-left:15px;margin-left:0;margin-top:-10px;}
+.sc-landing-sec3-text{padding-left:50px}
+.typed{position:absolute;top:270px;font-size:340%;left:0;right:0;}
+.main-title{position:absolute;top:370px;left:0;right:0;}
+.search-container{width:96%}
 }
-
-
-
-/* Landscape phones and portrait tablets */
-
-@media (max-width: 767px) {
-     /*First Section*/
-    .sc-landing-sec1-content{margin-top:90px;}
-    /* Search Bar */
-    .sc-landing-search-bar-holder{height:200px;  }
-    .btn-school-reg{ margin-top: 30px; margin-left: 4%}
-
-    .clear-fix {
-        clear: both;
-        display: block;
-    }
-    .banner-content{ margin-top: -320px!important;}
-    .banner-title{margin-bottom: 40px; margin-left: 8%; width: 70% }
-    .btn-school-reg{ margin-top: 90px; margin-left: 1%}
-    .sc-landing-sec3 { padding-left: 15px; margin-left: 0; margin-top: -10px;}
-    .sc-landing-sec3-text{ padding-left: 50px}
-
-    /* video typed title & text $ search bar */
-    .typed{position: absolute; top: 270px; font-size: 340%; left: 0; right: 0;}
-    .main-title{position: absolute; top: 370px; left: 0; right: 0;}
-    .search-container{width: 96%}
+@media (max-width:480px){.sc-landing-sec1-content{margin-top:90px;}
+.sc-landing-sec1-content h1{font-size:36px !important;}
+.sc-landing-sec1-content h3{font-size:26px !important;}
+.sc-landing-search-bar-holder{height:205px;top:456px;}
+.sc-landing-sec2-content img{width:120px;height:auto}
+.sc-landing-sec3{margin-top:-60px;}
+.grid figure{background-image:none;}
 }
-
-
-
-
-/* Portrait phones and smaller */
-@media (max-width: 480px) {
-    /* First Section */
-    .sc-landing-sec1-content {
-        margin-top: 90px;
-    }
-
-    .sc-landing-sec1-content h1 {
-        font-size: 36px !important;
-    }
-
-    .sc-landing-sec1-content h3 {
-        font-size: 26px !important;
-    }
-
-    /* Search Bar */
-    .sc-landing-search-bar-holder {
-        height: 205px;
-        top: 456px;
-    }
-
-    /*Second Section*/
-    .sc-landing-sec2-content img {
-        width: 120px;
-        height: auto
-    }
-
-    .sc-landing-sec3 { margin-top: -60px;}
-
-
-    .grid figure {
-        /*background: none;*/
-        background-image: none;
-    }
-
+@media (min-width:250px) and (max-width:540px){.iphone{height:260px;right:190px;top:170px;}
 }
-@media (min-width: 250px) and (max-width: 540px) {
-    .iphone { height: 260px; right: 190px; top: 170px;}
-    /*.banner {right: 22px!important;}*/
+@media (min-width:520px) and (max-width:767px){.iphone{height:260px;left:-230px;top:170px;visibility:visible!important;}
 }
-
-
-@media (min-width: 520px) and (max-width: 767px) {
-    .iphone { height: 260px; left: -230px; top: 170px; visibility: visible!important;}
+@media (max-width:519px){.iphone{visibility:hidden!important;}
+.search-container{width:98%}
 }
-
-
-@media (max-width: 519px) {
-    .iphone { visibility: hidden!important;}
-    .search-container{width: 98%}
+@media (min-width:451px) and (max-width:520px){.text-container{left:11%;width:71%;}
+.iphone{height:290px;width:auto;position:absolute;top:120px;right:245px;visibility:hidden}
+.banner-content{margin-top:-320px!important;}
+.banner{left:12%;width:76%;}
+.banner-text{margin-left:10%;}
+.btn-school-reg{margin-top:60px;margin-left:11%}
+.banner-title{margin-bottom:40px;margin-left:7%;width:98%}
 }
-
-@media (min-width: 451px) and (max-width: 520px) {
-    /*New Section*/
-    .text-container{left: 11%; width: 71%;}
-    .iphone{height: 290px; width: auto;  position: absolute; top:120px; right: 245px; visibility: hidden}
-    .banner-content{ margin-top: -320px!important;}
-    .banner{ left: 12%; width: 76%;}
-    .banner-text{ margin-left: 10%;}
-    .btn-school-reg{ margin-top: 60px; margin-left: 11%}
-    .banner-title{margin-bottom: 40px; margin-left: 7%; width: 98% }
+@media (max-width:450px){.text-container{left:15%;width:71%;}
+.iphone{height:290px;width:auto;position:absolute;top:120px;right:245px;visibility:hidden}
+.banner-content{margin-top:-330px!important;margin-left:-90px}
+.banner{left:11%;width:78%;}
+.banner-text{margin-left:3%}
+.btn-school-reg{margin-top:60px;margin-left:4%}
+.banner-title{margin-bottom:40px;margin-left:-2%;width:98%;}
+.mobile-hero{max-width:150%;max-height:620px;}
+.title-extra-top{margin-top:25px;}
 }
-
-
-
-@media (max-width: 450px) {
-    /*New Section*/
-    .text-container{left: 15%; width: 71%;}
-    .iphone{height: 290px; width: auto;  position: absolute; top:120px; right: 245px; visibility: hidden}
-    .banner-content{ margin-top: -330px!important; margin-left: -90px}
-    .banner{ left: 11%; width: 78%;}
-    .banner-text{ margin-left: 3%}
-    .btn-school-reg{ margin-top: 60px; margin-left: 4%}
-    .banner-title{margin-bottom: 40px; margin-left: -2%; width: 98%;}
-    .mobile-hero {max-width: 150%; max-height: 620px;}
-    .title-extra-top{ margin-top: 25px;}
-
-
+@media (max-width:391px){.banner-title{margin-bottom:45px;margin-left:3%;width:98%;}
+.btn-school-reg{margin-top:60px;margin-left:5%;width:235px;}
+.banner-content{margin-top:-370px!important;}
+.btn-scholarships{width:135px;}
+.btn-schools{width:190px;margin-left:122px;}
+.sc-landing-sec3-text{margin-left:-4px;}
+.title-extra-top{margin-top:20px;}
 }
-@media (max-width: 391px) {
-    /*New Section*/
-    .banner-title{margin-bottom: 45px; margin-left: 3%; width: 98%;}
-    .btn-school-reg{ margin-top: 60px;  margin-left: 5%; width: 235px;}
-    .banner-content{ margin-top: -370px!important; }
-    .btn-scholarships{width: 135px;}
-    .btn-schools{width: 190px; margin-left: 122px; }
-    .sc-landing-sec3-text{margin-left: -4px;}
-    .title-extra-top{ margin-top: 20px;}
-
-
+@media (min-width:361px) and (max-width:367px){.banner{height:650px;width:315px;margin-left:-20px;}
+.banner-title{margin-bottom:30px;margin-left:0;width:97%;margin-top:10px;}
+.btn-school-reg{margin-top:40px;margin-left:4%;}
+.title-extra-top{margin-top:90px;}
 }
-
-@media  (min-width: 361px) and  (max-width: 367px) {
-    /*New Section*/
-    .banner{height: 650px; width: 315px; margin-left: -20px;}
-    .banner-title{margin-bottom: 30px; margin-left: 0; width: 97%; margin-top: 10px;}
-    .btn-school-reg{ margin-top: 40px;  margin-left: 4%; }
-    .title-extra-top{ margin-top: 90px;}
-
-
+@media (min-width:351px) and (max-width:360px){.banner-content{margin-top:-390px!important;}
+.banner-title{font-size:90%;margin-left:-40px!important;margin-top:35px;}
+.banner{height:680px;width:89%;margin-left:-20px}
+.btn-school-reg{margin-left:3%;}
+.title-extra-top{margin-top:110px;}
+.sc-landing-sec3{margin-top:-80px;}
+.sc-landing-sec3-text{padding-left:30px;}
 }
-
-
-@media (min-width: 351px) and (max-width: 360px) {
-    /*New Section*/
-    .banner-content{ margin-top: -390px!important;}
-    .banner-title{font-size: 90%; margin-left: -40px!important; margin-top: 35px;}
-    .banner{height: 680px; width: 89%; margin-left: -20px}
-    .btn-school-reg{  margin-left: 3%; }
-    .title-extra-top{ margin-top: 110px;}
-    .sc-landing-sec3{margin-top: -80px;}
-    .sc-landing-sec3-text{padding-left: 30px;}
+@media (max-width:350px){.sc-landing-sec1-content{margin-top:20px;}
+.sc-landing-sec1-content h3{font-size:21px !important;}
+.typed{position:absolute;top:235px;font-size:120%;left:0;right:0;}
+.sc-landing-search-bar-holder{height:200px;top:390px;}
+.main-title{position:absolute;top:315px;left:0;right:0;}
+.mobile-hero{max-width:150%;max-height:560px;}
+.text-container{left:5%;width:81%;}
+.banner-content{visibility:hidden;}
+.xxs-small-banner-content{visibility:visible;margin-top:-100px!important;}
+.banner{left:5%;width:90%;}
+.banner-text{margin-left:13%;}
+.btn-school-reg{margin-top:65px;position:relative;width:240px;margin-left:12%;}
+.banner-title{margin-bottom:30px;margin-left:2%;width:95%;margin-top:-30px!important;}
+.mobile-hero{max-width:150%;max-height:590px;}
+.btn-scholarships{width:125px;}
+.btn-schools{width:190px;margin-left:112px;}
+.title-extra-top{margin-top:20px;}
+.sc-landing-sec3-text{margin-left:-15px;}
 }
-
-
-
-
-@media (max-width: 350px) {
-    /* First Section */
-
-    .sc-landing-sec1-content{margin-top:20px;}
-    .sc-landing-sec1-content h3 {  font-size: 21px !important;  }
-
-    /* Search Bar */
-    .typed{position: absolute; top: 235px; font-size: 120%; left: 0; right: 0;}
-    .sc-landing-search-bar-holder {  height: 200px;  top: 390px;  }
-    .main-title{position: absolute; top: 315px; left: 0; right: 0;}
-    .mobile-hero {max-width: 150%; max-height: 560px;}
-
-    /*New Section*/
-    .text-container{left: 5%; width: 81%;}
-    .banner-content{ visibility: hidden;}
-    .xxs-small-banner-content{visibility: visible;  margin-top: -100px!important;}
-    .banner{ left: 5%; width: 90%;}
-    .banner-text{ margin-left: 13%; }
-    .btn-school-reg{ margin-top: 65px; position: relative;  width: 240px; margin-left: 12%;}
-    .banner-title{margin-bottom: 30px; margin-left: 2%; width: 95%;  margin-top: -30px!important;}
-    .mobile-hero {max-width: 150%; max-height: 590px;}
-    .btn-scholarships{width: 125px;}
-    .btn-schools{width: 190px; margin-left: 112px; }
-    .title-extra-top{ margin-top: 20px;}
-    .sc-landing-sec3-text{margin-left: -15px;}
-
-}
-
-/* ========  Portal changes =========== */
-@media (min-width: 351px) and (max-width: 367px) {
-    .sc-landing-secNew{height: 610px;}
-
+@media (min-width:351px) and (max-width:367px){.sc-landing-secNew{height:610px;}
 }

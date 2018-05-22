@@ -1,0 +1,41 @@
+<style>
+.opacityLow{opacity:0}
+.opacityFull{opacity:1}
+#sec2{-webkit-transition:all 0.9s linear;transition:all 0.9s linear;}
+#sec2,
+#secNew{-webkit-transition:all 0.3s linear;transition:all 0.3s linear;}
+.right-out{bottom:-750px;}
+.right-in{bottom:-240px;}
+.sch-reg-title{left:37%;:400px;position:absolute;max-width:400px}
+.lang-sel{color:#fff;margin-top:2px;margin-left:-23px}
+.lang-drop{margin:4px -13px;}
+.select-white .dropdown-menu>li>a{color:black;}
+.lang-drop .dropdown-menu{background-color:transparent;}
+.trans .dropdown-menu>li>a{color:#fff}
+div>ul>.selected{background-color:transparent;border:none;box-shadow:none;}
+.btn-transparent{background-color:transparent;box-shadow:none}
+.btn-transparent{color:#fff}
+.btn-transparent:focus{box-shadow:none;outline:0}
+.btn-transparent:hover{color:#00bcd4!important;}
+.algolia-image{margin-left:10px;margin-top:2px;height:17px;}
+.algolia-powered{margin-top:-20px;margin-bottom:-10px;padding:0;color:#ebebeb}
+#school-register-button:focus{color:#fff;outline:none!important;}
+.bot-text,
+.bot-text:visited{color:black}
+.bot-text:hover{color:#FD6A33}
+.img-support{height:70px;}
+@media (max-width:2500px){.sch-reg-title{left:42%;width:380px;}
+}
+@media (max-width:2100px){.sch-reg-title{left:41%;width:380px;}
+}
+@media (max-width:1800px){.sch-reg-title{left:39%;width:380px;}
+}
+@media (max-width:1440px){.sch-reg-title{left:35%;width:370px;}
+}
+@media (max-width:1200px){.sch-reg-title{left:28%;width:330px;}
+}
+@media (min-width:768px) and (max-width:991px){.algolia-input{width:688px!important;}
+.algolia-powered{position:absolute;right:-40px}
+.algolia-image{position:absolute;right:-64px;top:0px;}
+}
+</style>
