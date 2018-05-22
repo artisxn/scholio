@@ -1,38 +1,15 @@
 <?php
 
-use App\Events\NewSubscription;
-use App\Events\UserAppliedOnSchool;
-use App\Models\Admission;
-use App\Models\AdmissionField;
-use App\Models\AlgoliaSchool;
-use App\Models\Card;
-use App\Models\Message;
-use App\Models\Report;
-use App\Models\Scholarship;
-use App\Models\School;
-use App\Models\SchoolSetting;
-use App\Models\Study;
 use App\Scholio\Scholio;
-use App\User;
-use Carbon\Carbon;
-use App\Models\AlgoliaScholarship;
-use App\Models\DummyScholarship;
-use App\Jobs\Algolia;
-use App\Jobs\DeleteFromAlgolia;
 use Illuminate\Support\Facades\Route;
-use App\Models\ScholarshipLimit;
-use App\Models\University;
-use App\Models\Subscription;
 
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 
-
 Route::get('@{username}', 'RoutesController@username');
 Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
-
 
 // Public
 Route::get('/', 'RoutesController@index');
@@ -71,7 +48,7 @@ Route::get('/register/school', 'SchoolRegistrationController@showSchoolRegistrat
 Route::get('/token/register', 'RoutesController@token');
 Route::get('auth/{provider}/', 'SocialAuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
-Route::get('/public/results/','RoutesController@publicResultsAll' );
+Route::get('/public/results/', 'RoutesController@publicResultsAll');
 Route::get('/public/results/{id}', 'RoutesController@publicResults');
 Route::get('connected/students', 'ApiController@connectedStudents');
 Route::get('connected/teachers', 'ApiController@connectedTeachers');
