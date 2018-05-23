@@ -1026,7 +1026,7 @@
 
 
 <!-- Bootstrap Select js  -->
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>--}}
+<!-- {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>--}} -->
 <script src="{{ asset('js/bootstrap/bootstrap-select164.min.js') }}"></script>
 
 
@@ -1034,35 +1034,35 @@
 <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
 
 <!-- Knob Circular Counters-->
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>--}}
-<script src="{{ asset('/js/jquery-knob.min.js')}}"></script>
+<!-- {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>--}} -->
+<!-- <script src="{{ asset('/js/jquery-knob.min.js')}}"></script> -->
 
 <!-- Angular js-->
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>--}}
+<!-- {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>--}} -->
 <script src="{{ asset('/js/angular/angular155.min.js')}}"></script>
 
 
 {{--
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script> -->
+<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script> -->
 --}}
 
 <!-- Algolia -->
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script>
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.angular.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.angular.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.angular.min.js"></script> -->
 
 <!-- Algolia-->
-{{--<script src="{{ asset('/js/algolia/algoliasearch.min.js') }}"></script>--}}
-{{--<script src="{{ asset('/js/algolia/autocomplete-angular.min.js')}}"></script>--}}
+<script src="{{ asset('/js/algolia/algoliasearch.min.js') }}"></script>
+<script src="{{ asset('/js/algolia/autocomplete-angular.min.js')}}"></script>
 
 
 
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>--}}
+<!-- {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>--}} -->
 <script src="{{ asset('/js/bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
 
 <script src="/new/js/angular-app.js"></script>
 
-{{--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>--}}
+<!-- {{--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>--}} -->
 <script src="{{ asset('/js/axios.min.js') }}"></script>
 
 
@@ -1073,10 +1073,27 @@
 <script src="{{asset('new/js/landing.js')}}"></script>
 <!--  -->
 
-
-
-
-
+<script type="text/ng-template" id="customTemplate.html">
+    <a>
+        <span>@{{ match.model.id }} &nbsp;</span>        <img ng-src="@{{match.model.png}}" width="16">
+        <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+    </a>
+</script>
+<!-- <script>
+    $('.knob1').val(1790).knob();
+    $('.knob2').val(128).knob();
+    $('.knob3').val(268).knob();
+    $('.knob4').val(130).knob();
+        var graph = $('.knob');
+        $({value: 0}).animate({ value: 1790 }, {
+            duration:900,
+            easing: 'swing',
+            progress: function () {graph.val(Math.ceil(this.value)).trigger('change')
+            }
+        });
+    
+</script> -->
+</html>
 
 
 <script>
@@ -1096,28 +1113,3 @@
 		if(id == 2)window.location = '/public/schools?q=' + el.text.value;
 	}
 </script>
-
-<!-- TypeAhead custom dropdown view --->
-<script type="text/ng-template" id="customTemplate.html">
-	<a>
-		{{--
-		<span>@{{ match.model.id }} &nbsp;</span>--}} {{--
-		<img ng-src="@{{match.model.png}}" width="16">--}}
-		<span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
-	</a>
-</script>
-<script>
-	$('.knob1').val(1790).knob();
-	$('.knob2').val(128).knob();
-	$('.knob3').val(268).knob();
-	$('.knob4').val(130).knob();
-	//    var graph = $('.knob');
-	//    $({value: 0}).animate({ value: 1790 }, {
-	//        duration:900,
-	//        easing: 'swing',
-	//        progress: function () {graph.val(Math.ceil(this.value)).trigger('change')
-	//        }
-	//    });
-	//
-</script>
-</html>
