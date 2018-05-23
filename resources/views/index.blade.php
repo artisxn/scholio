@@ -397,11 +397,11 @@
 		<div class="sc-landing-video-container hidden-xs" style="overflow-x: hidden; z-index: -500">
 			<!-- Video Shadow -->
 			<div class="sc-landing-video-filter"></div>
-			<video autoplay loop muted id="video-bg">
+			<!-- <video autoplay loop muted id="video-bg">
 				<source src="{{asset('new/video/VideoMix6.ogg')}}" type="video/ogg">
-				<source src="{{asset('new/video/VideoMix6.mp4')}}" type="video/mp4"> {{--
-					<source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm">--}}
-			</video>
+				<source src="{{asset('new/video/VideoMix6.mp4')}}" type="video/mp4"> 
+					<!-- <source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm"> -->
+			</video> -->
 		</div>
 
 
