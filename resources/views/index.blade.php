@@ -240,13 +240,13 @@
 				<a class="sc-landing-brand" href="#home">
 					<div class="sc-landing-logo">
 						{{--
-                        <img src="{{asset('new/img/logo-light.png')}}" class="sc-logo" alt="scholio logo">--}}
-						<img src="{{asset('new/img/logoNX-light.png')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
+                        <img src="{{asset('new/img/logo-light.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
+						<img src="{{asset('new/img/logoNX-light.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 62px;">
 					</div>
 					<div class="sc-landing-logo-sticky " style=" padding-top: 15px">
 						{{--
-                        <img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
-						<img src="{{asset('new/img/logoNX.png')}}" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                        <img src="{{asset('new/img/logo.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
+						<img src="{{asset('new/img/logoNX.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 63px; padding-top: 2px;">
 
 					</div>
 				</a>
@@ -257,13 +257,13 @@
 					<a class="" href="#home">
 						<div class="navbar-brand  sc-landing-logo">
 							{{--
-                            <img src="{{asset('new/img/logo-light-m.png')}}" class="sc-logo" alt="scholio logo">--}}
-							<img src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px;">
+                            <img src="{{asset('new/img/logo-light-m.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
+							<img src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 60px;">
 						</div>
 						<div class="navbar-brand  sc-landing-logo-sticky">
 							{{--
-                            <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
-							<img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+                            <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
+							<img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 60px; padding-top: 2px;">
 						</div>
 					</a>
 				</div>
@@ -397,7 +397,7 @@
 		<div class="sc-landing-video-container hidden-xs" style="overflow-x: hidden; z-index: -500">
 			<!-- Video Shadow -->
 			<div class="sc-landing-video-filter"></div>
-			<!-- <video autoplay loop muted id="video-bg">
+			<video autoplay loop muted id="video-bg">
 				<source src="{{asset('new/video/VideoMix6.ogg')}}" type="video/ogg">
 				<source src="{{asset('new/video/VideoMix6.mp4')}}" type="video/mp4"> 
 					<!-- <source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm"> -->
@@ -790,7 +790,7 @@
 							<div class="carousel-inner">
 								<div class="item active">
 									{{--<img src="/new/img/ScreenSchools.jpg" alt="schools image" class="carousel-img">--}}
-									<img src="/new/img/screen1b.jpg" alt="schools image" class="carousel-img">
+									<img data-src="/new/img/screen1b.jpg" alt="schools image" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
@@ -802,7 +802,7 @@
 								</div>
 								<div class="item">
 									{{--<img src="/new/img/ScreenTrophy.jpg" alt="trophy image" class="carousel-img">--}}
-									<img src="/new/img/screen3b.jpg" alt="trophy image" class="carousel-img">
+									<img data-src="/new/img/screen3b.jpg" alt="trophy image" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
@@ -1093,23 +1093,29 @@
         });
     
 </script> -->
+<script src="https://cdn.jsdelivr.net/npm/lozad"></script>
+<script>
+const observer = lozad('.lozad', {
+    rootMargin: '10px 0px', // syntax similar to that of CSS Margin
+    threshold: 0.1 // ratio of element convergence
+});
+observer.observe();
+		jQuery(document).ready(function($) {
+			$(function(){
+				$(".typed-js").typed({
+					{{--strings: ["@lang('main.first.title.talent')","@lang('main.first.title.student')","@lang('main.first.title.student1')"],--}}
+					strings: ["@lang('main.first.title.student')","@lang('main.first.title.student1')"],
+					typeSpeed: 100,
+					backSpeed:100,
+					loop: true
+				});
+			});
+		});
+		function validateMyForm(el, id){
+			if(id == 1) window.location = '/public/scholarships?q=' + el.text.value;
+			if(id == 2)window.location = '/public/schools?q=' + el.text.value;
+		}
+	</script>
 </html>
 
 
-<script>
-	jQuery(document).ready(function($) {
-		$(function(){
-			$(".typed-js").typed({
-				{{--strings: ["@lang('main.first.title.talent')","@lang('main.first.title.student')","@lang('main.first.title.student1')"],--}}
-				strings: ["@lang('main.first.title.student')","@lang('main.first.title.student1')"],
-				typeSpeed: 100,
-				backSpeed:100,
-				loop: true
-			});
-		});
-	});
-	function validateMyForm(el, id){
-		if(id == 1) window.location = '/public/scholarships?q=' + el.text.value;
-		if(id == 2)window.location = '/public/schools?q=' + el.text.value;
-	}
-</script>
