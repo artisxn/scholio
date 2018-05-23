@@ -1,4 +1,7 @@
 @include('google.analytics')
+<meta name="theme-color" content="#008da5">
+<!-- DEEAED -->
+
 
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
