@@ -11,13 +11,13 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <!-- Your customer chat code -->
-<!-- <div class="fb-customerchat"
+<div class="fb-customerchat"
   attribution="setup_tool"
   page_id="934370089973049"
   theme_color="#008da5"
   logged_in_greeting="Γεια σας, πως μπορουμε να σας βοηθήσουμε;"
   logged_out_greeting="Γεια σας, πως μπορουμε να σας βοηθήσουμε;">
-</div> -->
+</div>
 
 
 <!-- @include('google.meta') -->
