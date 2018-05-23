@@ -401,7 +401,7 @@
 				<source src="{{asset('new/video/VideoMix6.ogg')}}" type="video/ogg">
 				<source src="{{asset('new/video/VideoMix6.mp4')}}" type="video/mp4"> 
 					<!-- <source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm"> -->
-			</video> -->
+			</video>
 		</div>
 
 
