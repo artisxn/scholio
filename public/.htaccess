@@ -1,20 +1,271 @@
-<IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
+# <IfModule mod_rewrite.c>
+#     <IfModule mod_negotiation.c>
+#         Options -MultiViews
+#     </IfModule>
 
-    RewriteEngine On
+#     RewriteEngine On
 
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)/$ /$1 [L,R=301]
+#     # Redirect Trailing Slashes If Not A Folder...
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-    # Handle Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+#     # Handle Front Controller...
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteCond %{REQUEST_FILENAME} !-f
+#     RewriteRule ^ index.php [L]
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+#     # Handle Authorization Header
+#     RewriteCond %{HTTP:Authorization} .
+#     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# </IfModule>
+
+# ----------------------------------------------------------------------
+# | Expires headers                                                    |
+# ----------------------------------------------------------------------
+
+# Serve resources with far-future expires headers.
+#
+# (!) If you don't control versioning with filename-based
+# cache busting, you should consider lowering the cache times
+# to something like one week.
+#
+# https://httpd.apache.org/docs/current/mod/mod_expires.html
+asd
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+
+  # CSS
+
+    ExpiresByType text/css                              "access plus 1 year"
+
+
+  # Data interchange
+
+    ExpiresByType application/atom+xml                  "access plus 1 hour"
+    ExpiresByType application/rdf+xml                   "access plus 1 hour"
+    ExpiresByType application/rss+xml                   "access plus 1 hour"
+
+    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/ld+json                   "access plus 0 seconds"
+    ExpiresByType application/schema+json               "access plus 0 seconds"
+    ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
+    ExpiresByType application/xml                       "access plus 0 seconds"
+    ExpiresByType text/calendar                         "access plus 0 seconds"
+    ExpiresByType text/xml                              "access plus 0 seconds"
+
+
+  # Favicon (cannot be renamed!) and cursor images
+
+    ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
+    ExpiresByType image/x-icon                          "access plus 1 week"
+
+  # HTML
+
+    ExpiresByType text/html                             "access plus 0 seconds"
+
+
+  # JavaScript
+
+    ExpiresByType application/javascript                "access plus 1 year"
+    ExpiresByType application/x-javascript              "access plus 1 year"
+    ExpiresByType text/javascript                       "access plus 1 year"
+
+
+  # Manifest files
+
+    ExpiresByType application/manifest+json             "access plus 1 week"
+    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+
+  # Markdown
+
+    ExpiresByType text/markdown                         "access plus 0 seconds"
+
+
+  # Media files
+
+    ExpiresByType audio/ogg                             "access plus 1 month"
+    ExpiresByType image/bmp                             "access plus 1 month"
+    ExpiresByType image/gif                             "access plus 1 month"
+    ExpiresByType image/jpeg                            "access plus 1 month"
+    ExpiresByType image/png                             "access plus 1 month"
+    ExpiresByType image/svg+xml                         "access plus 1 month"
+    ExpiresByType image/webp                            "access plus 1 month"
+    ExpiresByType video/mp4                             "access plus 1 month"
+    ExpiresByType video/ogg                             "access plus 1 month"
+    ExpiresByType video/webm                            "access plus 1 month"
+
+
+  # WebAssembly
+
+    ExpiresByType application/wasm                      "access plus 1 year"
+
+
+  # Web fonts
+
+    # Collection
+    ExpiresByType font/collection                       "access plus 1 month"
+
+    # Embedded OpenType (EOT)
+    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
+    ExpiresByType font/eot                              "access plus 1 month"
+
+    # OpenType
+    ExpiresByType font/opentype                         "access plus 1 month"
+    ExpiresByType font/otf                              "access plus 1 month"
+
+    # TrueType
+    ExpiresByType application/x-font-ttf                "access plus 1 month"
+    ExpiresByType font/ttf                              "access plus 1 month"
+
+    # Web Open Font Format (WOFF) 1.0
+    ExpiresByType application/font-woff                 "access plus 1 month"
+    ExpiresByType application/x-font-woff               "access plus 1 month"
+    ExpiresByType font/woff                             "access plus 1 month"
+
+    # Web Open Font Format (WOFF) 2.0
+    ExpiresByType application/font-woff2                "access plus 1 month"
+    ExpiresByType font/woff2                            "access plus 1 month"
+
+
+  # Other
+
+    ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+
+</IfModule>
+
+# ----------------------------------------------------------------------
+# | Brotli pre-compressed content                                      |
+# ----------------------------------------------------------------------
+
+# Serve brotli compressed CSS, JS, HTML, SVG, ICS and JSON files
+# if they exist and if the client accepts br encoding.
+#
+# (!) To make this part relevant, you need to generate encoded
+# files by your own. Enabling this part will not auto-generate
+# brotlied files.
+#
+# https://httpd.apache.org/docs/current/mod/mod_brotli.html#precompressed
+
+<IfModule mod_headers.c>
+
+    RewriteCond %{HTTP:Accept-Encoding} br
+    RewriteCond %{REQUEST_FILENAME}\.br -f
+    RewriteRule \.(css|ics|js|json|html|svg)$ %{REQUEST_URI}.br [L]
+
+    # Prevent mod_deflate double gzip
+    RewriteRule \.br$ - [E=no-gzip:1]
+
+    <FilesMatch "\.br$">
+
+        <IfModule mod_mime.c>
+            # Serve correct content types
+            AddType text/css              css.br
+            AddType text/calendar         ics.br
+            AddType text/javascript       js.br
+            AddType application/json      json.br
+            AddType text/html             html.br
+            AddType image/svg+xml         svg.br
+
+            # Serve correct content charset
+            AddCharset utf-8 .css.br \
+                             .ics.br \
+                             .js.br \
+                             .json.br
+        </IfModule>
+
+        # Force proxies to cache brotlied and non-brotlied files separately
+        Header append Vary Accept-Encoding
+
+    </FilesMatch>
+
+    # Serve correct encoding type
+    AddEncoding br .br
+
+</IfModule>
+
+# ----------------------------------------------------------------------
+# | GZip pre-compressed content                                        |
+# ----------------------------------------------------------------------
+
+# Serve gzip compressed CSS, JS, HTML, SVG, ICS and JSON files
+# if they exist and if the client accepts gzip encoding.
+#
+# (!) To make this part relevant, you need to generate encoded
+# files by your own. Enabling this part will not auto-generate
+# gziped files.
+#
+# https://httpd.apache.org/docs/current/mod/mod_deflate.html#precompressed
+#
+# (1)
+# Removing default MIME Type for .gz files allowing to add custom
+# sub-types.
+# You may prefer using less generic extensions such as .html_gz in
+# order to keep default behavior regarding .gz files.
+# https://httpd.apache.org/docs/current/mod/mod_mime.html#removetype
+
+<IfModule mod_headers.c>
+
+    RewriteCond %{HTTP:Accept-Encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -f
+    RewriteRule \.(css|ics|js|json|html|svg)$ %{REQUEST_URI}.gz [L]
+
+    # Prevent mod_deflate double gzip
+    RewriteRule \.gz$ - [E=no-gzip:1]
+
+    <FilesMatch "\.gz$">
+
+        # Serve correct content types
+        <IfModule mod_mime.c>
+            # (1)
+            RemoveType gz
+
+            # Serve correct content types
+            AddType text/css              css.gz
+            AddType text/calendar         ics.gz
+            AddType text/javascript       js.gz
+            AddType application/json      json.gz
+            AddType text/html             html.gz
+            AddType image/svg+xml         svg.gz
+
+            # Serve correct content charset
+            AddCharset utf-8 .css.gz \
+                             .ics.gz \
+                             .js.gz \
+                             .json.gz
+        </IfModule>
+
+        # Force proxies to cache gzipped and non-gzipped files separately
+        Header append Vary Accept-Encoding
+
+    </FilesMatch>
+
+    # Serve correct encoding type
+    AddEncoding gzip .gz
+
+</IfModule>
+
+
+
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE image/jpg
+AddOutputFilterByType DEFLATE image/png
+AddOutputFilterByType DEFLATE image/gif
+AddOutputFilterByType DEFLATE image/jpeg
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE font/otf
+AddOutputFilterByType DEFLATE font/ttf
 </IfModule>

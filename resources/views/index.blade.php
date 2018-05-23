@@ -290,14 +290,13 @@
 						</li>
 						<li class="lang-drop">
 							<form method="GET" id="langForm">
-								<select onchange="changeLang(this)" class="trans selectpicker" data-live-search="false" data-mobile="false" data-size='2'
-										data-width="100%" data-style="btn-transparent">
+								<select onchange="changeLang(this)" class="trans selectpicker" data-live-search="false" data-mobile="false" data-size="2" data-width="100%" data-style="btn-transparent">
 									<!-- <option data-icon="fa" value="en" {{ request()->cookie('lang') == 'en' ? 'selected' : '' }}>&nbsp; EN</option> -->
 									<option data-icon="fa" value="el" {{ request()->cookie('lang') == 'el' ? 'selected' : '' }}>&nbsp; GR</option>
 									<option data-icon="fa" value="en" {{ request()->cookie('lang') == 'en' ? 'selected' : '' }}>&nbsp; EN</option>
 								</select>
 							</form>
-							@if(App\Key::find(1)->dropdownLogin)
+							<!-- @if(App\Key::find(1)->dropdownLogin)
 								<form method="GET" action="/fake/login" style="display: inline-block; position: absolute; top: 50px; margin-left: 110px; color: #555">
 									<select onchange="this.form.submit()" style="border: none; background-color: transparent; margin: -15px; width: 250px;" name="userID">
 										@foreach(App\User::all() as $key=>$user) @if(auth()->check() && auth()->user()->id == $user->id)
@@ -309,7 +308,7 @@
 										@endif @endforeach
 									</select>
 								</form>
-							@endif
+							@endif -->
 
 						</li>
 
@@ -421,7 +420,7 @@
 
 				<div class=" sc-landing-search-bar-content">
 
-					<form onsubmit="event.preventDefault(); validateMyForm(this,1);" action="/search/scholarships" id="scholarship" method="post"
+					<!-- <form onsubmit="event.preventDefault(); validateMyForm(this,1);" action="/search/scholarships" id="scholarship" method="post"
 						  ng-if="selectedButton==2">
 						{{ csrf_field() }}
 						<div class="col-md-10 col-sm-10" id="">
@@ -436,7 +435,7 @@
 						<div class="col-md-2 col-sm-12">
 							<input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="@lang('main.first.searchbar.scholarships.button')">
 						</div>
-					</form>
+					</form> -->
 
 					<!-- ΤΟ RADIUS LEFT EINAI STO landing.css 111 grammi -->
 					<form onsubmit="event.preventDefault(); validateMyForm(this,2)" action="/search/scholarships" method="post" ng-if="selectedButton==1">
@@ -453,10 +452,6 @@
 							<input class="sc-no-border sc-green sc-t-white" type="submit" name="" value="@lang('main.first.searchbar.institutions.button')">
 						</div>
 					</form>
-
-
-
-
 				</div>
 			</div>
 		</div>
