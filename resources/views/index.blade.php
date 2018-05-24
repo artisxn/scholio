@@ -231,7 +231,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp"
 	  ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
 
-@include('components.preloader')
+<!-- @include('components.preloader') -->
 
 		<!-- Scholio Header -->
 <header class="navbar navbar-top sc-landing-header" id="header">
@@ -243,13 +243,13 @@
 				<a class="sc-landing-brand" href="#home">
 					<div class="sc-landing-logo">
 						{{--
-                        <img src="{{asset('new/img/logo-light.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
-						<img src="{{asset('new/img/logoNX-light.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 62px;">
+                        <img src="image.png" data-src="{{asset('new/img/logo-light.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
+						<img src="image.png" data-src="{{asset('new/img/logoNX-light.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 62px;">
 					</div>
 					<div class="sc-landing-logo-sticky " style=" padding-top: 15px">
 						{{--
-                        <img src="{{asset('new/img/logo.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
-						<img src="{{asset('new/img/logoNX.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                        <img src="image.png" data-src="{{asset('new/img/logo.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
+						<img src="image.png" data-src="{{asset('new/img/logoNX.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 63px; padding-top: 2px;">
 
 					</div>
 				</a>
@@ -260,13 +260,13 @@
 					<a class="" href="#home">
 						<div class="navbar-brand  sc-landing-logo">
 							{{--
-                            <img src="{{asset('new/img/logo-light-m.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
-							<img src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 60px;">
+                            <img src="image.png" data-src="{{asset('new/img/logo-light-m.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
+							<img src="image.png" data-src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 60px;">
 						</div>
 						<div class="navbar-brand  sc-landing-logo-sticky">
 							{{--
-                            <img src="{{asset('new/img/logo-m.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
-							<img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+                            <img src="image.png" data-src="{{asset('new/img/logo-m.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
+							<img src="image.png" data-src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 60px; padding-top: 2px;">
 						</div>
 					</a>
 				</div>
@@ -359,7 +359,7 @@
 			<div class="col-xs-6 visible-sm visible-xs" style="z-index: 6000; height: 20px;">
 				<div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
 					<div class="sc-landing-menu-sandwitch sc-landing-menu-sandwitch-button ">
-						<img src=" {{asset('new/img/collapse-light2.png')}}" alt="scholio logo"> {{--
+						<img src="image.png" data-src=" {{asset('new/img/collapse-light2.png')}}" class="lozad" alt="scholio logo"> {{--
 							<div style="-webkit-mask-box-image: url({{asset('new/img/collapse-light2.png')}})"></div>--}}
 					</div>
 				</div>
@@ -409,7 +409,7 @@
 
 		<div class="sc-landing-video-container vissible-xs hidden-sm hidden-md hidden-lg" style="overflow-x: hidden">
 			<div class="sc-landing-video-filter"></div>
-			<img class="responsive mobile-hero" src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="hero-img">
+			<img class="responsive mobile-hero lozad" src="image.png" data-src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="hero-img">
 		</div>
 		<!-- Searchbar -->
 
@@ -447,7 +447,7 @@
 							<input name="text" type="text" class="font-weight-300 algolia-input" id="search-input" autocomplete aa-datasets="getDatasets2()"
 								   ng-model="selection2" placeholder="@lang('main.first.searchbar.institutions.placeholder')" />
 							<div class=" font-weight-100 pull-right algolia-powered">powered by
-								<img src="/new/img/algolia_logof.png" alt="algolia-logo" class="pull-right algolia-image">
+								<img src="image.png" data-src="/new/img/algolia_logof.png" alt="algolia-logo" class="pull-right algolia-image lozad">
 							</div>
 						</div>
 
@@ -518,7 +518,7 @@
 				<br>
 				<div class="row">
 					<div class="col-md-4 text-center">
-						<img src="{{asset('new/img/landing-icon-1search.png')}}" alt="title1">
+						<img src="image.png" data-src="image.png" data-src="{{asset('new/img/landing-icon-1search.png')}}" class="lozad" alt="title1">
 						<h5 class="">@lang('main.about.section1.titlePortal')</h5>
 						<p class="centered-text">@lang('main.about.section1.subtitlePortal')</p>
 					</div>
@@ -528,7 +528,7 @@
 						<br>
 					</div>
 					<div class="col-md-4 text-center">
-						<img src="{{asset('new/img/landing-icon-2pencil.png')}}" alt="title2">
+						<img src="image.png" data-src="{{asset('new/img/landing-icon-2pencil.png')}}" class="lozad" alt="title2">
 						<h5>@lang('main.about.section2.titlePortal')</h5>
 						<p class="centered-text">@lang('main.about.section2.subtitlePortal')</p>
 					</div>
@@ -538,7 +538,7 @@
 						<br>
 					</div>
 					<div class="col-md-4 text-center">
-						<img src="{{asset('new/img/landing-icon-3startup.png')}}" alt="title3">
+						<img src="image.png" data-src="{{asset('new/img/landing-icon-3startup.png')}}" class="lozad" alt="title3">
 						<h5>@lang('main.about.section3.title')</h5>
 						<p class="centered-text">@lang('main.about.section3.subtitlePortal')</p>
 					</div>
@@ -702,7 +702,7 @@
 						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  col-xxxs-12">
 							<div class="grid">
 								<figure class="effect-lily sc-landing-card ">
-									<img src="{{asset('new/img/sect-photo/belfast2.jpg')}}" alt="student" style="" class="img-responsive " />
+									<img src="image.png" data-src="{{asset('new/img/sect-photo/belfast2.jpg')}}" alt="student" style="" class="img-responsive lozad" />
 
 									<figcaption>
 										<div class="centered-text">
@@ -722,7 +722,7 @@
 							<div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card">
-										<img src="{{asset('new/img/sect-photo/college2.jpg')}}" alt="student" style="" class="img-responsive " />
+										<img src="image.png" data-src="{{asset('new/img/sect-photo/college2.jpg')}}" alt="student" style="" class="img-responsive lozad" />
 
 									<figcaption>
 										<div class="centered-text">
@@ -740,7 +740,7 @@
 							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card ">
-										<img src="{{asset('new/img/sect-photo/doct2.jpg')}}" alt="student" style="" class="img-responsive " />
+										<img src="image.png" data-src="{{asset('new/img/sect-photo/doct2.jpg')}}" alt="student" style="" class="img-responsive lozad" />
 
 										<figcaption>
 											<div class="centered-text">
@@ -771,7 +771,7 @@
 			<div class="sc-landing-sec3-content">
 				<div class="row ">
 					<div class=" col-sm-7 col-lg-8 col-xs-12 margin-top-50">
-						<img class="img-responsive" src="{{asset('new/img/iMac-sm.png')}}" alt="imac">
+						<img class="img-responsive lozad" src="image.png" data-src="{{asset('new/img/iMac-sm.png')}}" alt="imac">
 
 						<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" style="  ">
 							<!-- Indicators -->
@@ -786,26 +786,26 @@
 							<div class="carousel-inner">
 								<div class="item active">
 									{{--<img src="/new/img/ScreenSchools.jpg" alt="schools image" class="carousel-img">--}}
-									<img data-src="/new/img/screen1b.jpg" alt="schools image" class="carousel-img lozad">
+									<img src="image.png" data-src="/new/img/screen1b.jpg" alt="schools image" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 								<div class="item">
 									{{--<img src="/new/img/ScreenScholarships.jpg" alt="scholarships image" class="carousel-img">--}}
-									<img src="/new/img/screen2b.jpg" alt="scholarships image" class="carousel-img">
+									<img src="image.png" data-src="/new/img/screen2b.jpg" alt="scholarships image" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 								<div class="item">
 									{{--<img src="/new/img/ScreenTrophy.jpg" alt="trophy image" class="carousel-img">--}}
-									<img data-src="/new/img/screen3b.jpg" alt="trophy image" class="carousel-img lozad">
+									<img src="image.png" data-src="/new/img/screen3b.jpg" alt="trophy image" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<img class="img-responsive iphone-ipad-sm" src="{{asset('new/img/iPad-iPhone-macBook-sm.png')}}" alt="macbook">
+						<img class="img-responsive iphone-ipad-sm lozad" src="image.png" data-src="{{asset('new/img/iPad-iPhone-macBook-sm.png')}}" alt="macbook">
 
 
 					</div>
@@ -818,7 +818,7 @@
 							<div class="col-xs-12">--}}
 						<h5 class="text-left">
 									<span>
-										<img height="18" width="18" src="{{asset('new/img/check.svg')}}" alt="check">
+										<img height="18" width="18" class="lozad" src="image.png" data-src="{{asset('new/img/check.svg')}}" alt="check">
 									</span>
 									<span href="#myCarousel" data-slide-to="0" class="carousel-select">
 										&nbsp;&nbsp;@lang('main.features.section1')
@@ -828,7 +828,7 @@
 							<div class="col-xs-12">--}}
 						{{--<h5 class="text-left">--}}
 						{{--<span>--}}
-						{{--<img height="18" width="18" src="{{asset('new/img/check.svg')}}">--}}
+						{{--<img height="18" width="18" src="image.png" data-src="{{asset('new/img/check.svg')}}">--}}
 						{{--</span>--}}
 						{{--<span href="#myCarousel" data-slide-to="1" class="carousel-select">--}}
 						{{--&nbsp;&nbsp;@lang('main.features.section2')--}}
@@ -838,7 +838,7 @@
 							<div class="col-xs-12">--}}
 						<h5 class="text-left">
 									<span>
-										<img height="18" width="18" src="{{asset('new/img/check.svg')}}" alt="check2">
+										<img height="18" width="18" src="image.png" data-src="{{asset('new/img/check.svg')}}" alt="check2" class="lozad">
 									</span>
 									<span href="#myCarousel" data-slide-to="2" class="carousel-select">
 										&nbsp;&nbsp;@lang('main.features.section3')
@@ -848,7 +848,7 @@
 							<div class="col-xs-12">--}}
 						<h5 class="text-left">
 									<span>
-										<img height="18" width="18" src="{{asset('new/img/check.svg')}}" alt="check3">
+										<img height="18" width="18" src="image.png" data-src="{{asset('new/img/check.svg')}}" alt="check3" class="lozad">
 									</span>&nbsp;&nbsp;
 							<a href="https://m.me/scholiobot?ref=Welcome%20message" class="bot-text">@lang('main.features.section4')</a>
 						</h5>
@@ -869,14 +869,14 @@
 					<div class="sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm" style="">@lang('main.about.institutions.title')</div>
 
 					<div style="position: relative" class="hidden-xs">
-						<img src="/new/img/ipad6.png" class="ipad" alt="ipad">
+						<img src="image.png" data-src="/new/img/ipad6.png" class="ipad lozad" alt="ipad">
 					</div>
 
 					<div style="position: relative" class="text-incr-125 sc-t-white">
-						<img src="/new/img/BannerVertical3.png" class="banner" style="z-index: 0" alt="banner">
+						<img src="image.png" data-src="/new/img/BannerVertical3.png" class="banner lozad" style="z-index: 0" alt="banner">
 
 						<div class="text-container center-block">
-							<img height="290px" width="auto" src="/new/img/iphone.png" class="iphone" alt="iphone"> {{--
+							<img height="290px" width="auto" src="image.png" data-src="/new/img/iphone.png" class="iphone lozad" alt="iphone"> {{--
 								<div style="height: 400px; width: 300px; background-color: #00b9d2; margin: 20px 0; position: absolute; z-index: 0"></div>--}}
 
 
@@ -987,10 +987,10 @@
 			<div class="row" >
 				<h2 class="text-center sc-t-white sc-t-dark-grey" style="padding-bottom: 80px;">@lang('main.support.title')</h2>
 
-				<div class="col-sm-3 col-xs-6 img-support-container"><a href="https://www.venturegarden.gr/" target="_blank" rel="noopener"><img class="img-support img-support1" src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ></a></div>
-				<div class="col-sm-3 col-xs-6 img-support-container"><a href="http://www.thermi-group.com/" target="_blank" rel="noopener"><img class="img-support img-support2" src="/new/img/support/thermi-logo.png" alt="thermi image"></a></div>
-				<div class="col-sm-3 col-xs-6 cl-fix "><a href="http://ideatree.gr/" target="_blank" rel="noopener"><img class="img-support img-support3" src="/new/img/support/ideatree-logo.png" alt="ideatree image"></a></div>
-				<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank" rel="noopener"><img class="img-support img-support4" src="/new/img/support/eoelogo.png" alt="eoe image"></a></div>
+				<div class="col-sm-3 col-xs-6 img-support-container"><a href="https://www.venturegarden.gr/" target="_blank" rel="noopener"><img class="img-support img-support1 lozad" src="image.png" data-src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ></a></div>
+				<div class="col-sm-3 col-xs-6 img-support-container"><a href="http://www.thermi-group.com/" target="_blank" rel="noopener"><img class="img-support img-support2 lozad" src="image.png" data-src="/new/img/support/thermi-logo.png" alt="thermi image"></a></div>
+				<div class="col-sm-3 col-xs-6 cl-fix "><a href="http://ideatree.gr/" target="_blank" rel="noopener"><img class="img-support img-support3 lozad" src="image.png" data-src="/new/img/support/ideatree-logo.png" alt="ideatree image"></a></div>
+				<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank" rel="noopener"><img class="img-support img-support4 lozad" src="image.png" data-src="/new/img/support/eoelogo.png" alt="eoe image"></a></div>
 
 			</div>
 		</div>
@@ -1073,7 +1073,7 @@
 
 <script type="text/ng-template" id="customTemplate.html">
     <a>
-        <span>@{{ match.model.id }} &nbsp;</span>        <img ng-src="@{{match.model.png}}" width="16" alt="model">
+        <span>@{{ match.model.id }} &nbsp;</span>        <img ng-src="@{{match.model.png}}" width="16" alt="model" class="lozad">
         <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
     </a>
 </script>
