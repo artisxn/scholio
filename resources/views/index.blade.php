@@ -64,20 +64,9 @@
 	<link rel="stylesheet" href="{{ asset('new/css/algolia.css') }}">
 
 	<!--====== Javascript Files =======-->
-	<script>
-			window.q = [];
-			window.$ = function(f) {
-			  q.push(f)
-			}
-			</script>
+	<!-- jQuery js-->
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 
-<script type=”text/javascript”>
-	$(function() {
-	  $('.MyClassName').click(function() {
-		$(this).next().toggle();
-	  });
-	});
-	</script>
 
 	<!-- <script async src="{{asset('/js/jquery224.js')}}"></script> -->
 
@@ -237,7 +226,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp"
 	  ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
 
-<!-- @include('components.preloader') -->
+@include('components.preloader')
 
 		<!-- Scholio Header -->
 <header class="navbar navbar-top sc-landing-header" id="header">
@@ -1021,20 +1010,7 @@
 
 
 </body>
-<!-- jQuery js-->
-<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-<script>
-		var ExecuteFunctions;
-		function runJquery() {
-		  if (window.$.each) { // Checks if JQuery is loaded
-			clearInterval(ExecuteFunctions); // Stops the interval
-			$.each(q,function(index,f) { // Loops stored functions
-			  $(f); // Execute function
-			});
-		  }
-		}
-		ExecuteFunctions = setInterval(runJquery, 200);
-		</script>
+
 <!--  -->
 
 <!-- Bootstrap js-->
