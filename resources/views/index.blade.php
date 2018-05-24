@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" prefix="og: http://ogp.me/ns#">
 
 <head>
 		<meta property="fb:app_id" content="1167687200016783" /> 
