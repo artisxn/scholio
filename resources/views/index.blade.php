@@ -15,7 +15,7 @@
 	<meta property="og:url" content="https://schol.io">
 	<meta property="og:title" content="Schol.io - Still looking for the perfect study?" />
     <meta property="og:description" content="Στο Schol.io θα βρεις τα δημοφιλέστερα εκπαιδευτικά ιδρύματα!" />
-    <meta property="og:image" content="{{url('/new/img/metamini.jpg')}}" />
+    <meta property="og:image" content="https://github.com/schol-io/scholio/blob/master/public/new/img/metamini.jpg" />
     <meta property="og:image:type" content="image/jpg">
 
 	@include('google.main')
