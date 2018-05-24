@@ -514,7 +514,7 @@
                                     <span ng-if="contactInfo.website">
                                         <div class="pad-top-10"></div>
                                         <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                        <span class="pad-left-5"> <a href="https://@{{contactInfo.website}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
+                                        <span class="pad-left-5"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
                                     </span>
 
                                 </div>
@@ -623,8 +623,8 @@
                                                 {{--@{{levIndex}} , , @{{secIndex}}--}}
                                                 <ul ng-repeat="study in studiesName[levIndex][secIndex]" style="list-style-type: none;">
                                                     <li class="pad-top-7 margin-left-10">
-                                                        <span class="  font-weight-300" style="" ng-if="studiesUrl[levIndex][secIndex][$index]">
-                                                            <a href="@{{ studiesUrl[levIndex][secIndex][$index] }}" target="_blank">@{{ study }}</a>
+                                                        <span class="font-weight-300" style="" ng-if="studiesUrl[levIndex][secIndex][$index]">
+                                                            <a href="/studylink/redirect/{{ $school->id }}/@{{ studiesID[levIndex][secIndex][$index] }}" target="_blank">@{{ study }}</a>
                                                         </span>
                                                         <span class="  font-weight-300" style="" ng-if="!studiesUrl[levIndex][secIndex][$index]">
                                                             @{{ study }}
@@ -1570,6 +1570,7 @@
                     $scope.sectionsIcon=[];
                     $scope.studiesName=[];
                     $scope.studiesUrl=[];
+                    $scope.studiesID=[];
 
                     $scope.initial=function (){
                         $scope.getSchoolStudies();
@@ -1627,9 +1628,11 @@
                         for (lev in $scope.levelsName ){
                             $scope.studiesName[lev]=[];
                             $scope.studiesUrl[lev]=[];
+                            $scope.studiesID[lev]=[];
                             for (sec in $scope.sectionsName[lev] ){
                                 $scope.studiesName[lev][sec]=[];
                                 $scope.studiesUrl[lev][sec]=[];
+                                $scope.studiesID[lev][sec]=[];
 
                                 study=0
                                 for (std in $scope.studies){
@@ -1638,6 +1641,9 @@
                                     ){
                                         // 
                                         $scope.studiesName[lev][sec][study]=$scope.studies[std][0].name
+                                        $scope.studiesID[lev][sec][study]=$scope.studies[std][0].id
+                                        // console.log($scope.studiesID[lev][sec][study])
+                                        // $scope.studiesID[lev][sec][study]=$scope.studies[std][0].id
                                         $scope.studiesUrl[lev][sec][study]=$scope.contactInfo.study[std].pivot.url
                                         // 
 

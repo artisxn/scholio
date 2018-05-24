@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\School;
+use App\Models\SchoolLinks;
+use App\Models\Study;
+use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Illuminate\Support\Facades\Route;
 
@@ -7,6 +11,49 @@ use Illuminate\Support\Facades\Route;
 Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
+
+Route::get('/studylink/redirect/{school}/{study}/', function (School $school, Study $study) {
+
+    if ($school->study->contains($study)) {
+        $link = $school->study->find($study)->pivot->url;
+        $ifnew = StudyLinks::where('study_id', $study->id)->where('school_id', $school->id)->first();
+        if ($ifnew) {
+            $ifnew->count = $ifnew->count + 1;
+            $ifnew->save();
+        } else {
+            $newLink = new StudyLinks;
+            $newLink->school_id = $school->id;
+            $newLink->study_id = $study->id;
+            $newLink->count = $newLink->count + 1;
+            $newLink->save();
+        }
+
+        return redirect($link);
+    }
+
+    abort(404);
+
+});
+
+Route::get('/schoolink/redirect/{school}/', function (School $school) {
+    if (!$school) {
+        abort(404);
+    }
+
+    $ifnew = SchoolLinks::where('school_id', $school->id)->first();
+    if ($ifnew) {
+        $ifnew->count = $ifnew->count + 1;
+        $ifnew->save();
+    } else {
+        $newLink = new SchoolLinks;
+        $newLink->school_id = $school->id;
+        $newLink->count = $newLink->count + 1;
+        $newLink->save();
+    }
+
+    return redirect('http://' . $school->website);
+
+});
 
 Route::get('@{username}', 'RoutesController@username');
 Route::get('/public/profile/{id}', 'RoutesController@publicProfile')->name('profile/school');
