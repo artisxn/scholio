@@ -127,7 +127,6 @@
 
 
 <script>
-
     var sandwitch = $('.sc-landing-menu-sandwitch-button');    //<<===>>//
     var mobilemenu =$('.menu-mobile-holder');
     var material=$('.material-content');
