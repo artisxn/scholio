@@ -987,10 +987,10 @@
 			<div class="row" >
 				<h2 class="text-center sc-t-white sc-t-dark-grey" style="padding-bottom: 80px;">@lang('main.support.title')</h2>
 
-				<div class="col-sm-3 col-xs-6 img-support-container"><a href="https://www.venturegarden.gr/" target="_blank"><img class="img-support img-support1" src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ></a></div>
-				<div class="col-sm-3 col-xs-6 img-support-container"><a href="http://www.thermi-group.com/" target="_blank"><img class="img-support img-support2" src="/new/img/support/thermi-logo.png" alt="thermi image"></a></div>
-				<div class="col-sm-3 col-xs-6 cl-fix "><a href="http://ideatree.gr/" target="_blank"><img class="img-support img-support3" src="/new/img/support/ideatree-logo.png" alt="ideatree image"></a></div>
-				<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank"><img class="img-support img-support4" src="/new/img/support/eoelogo.png" alt="eoe image"></a></div>
+				<div class="col-sm-3 col-xs-6 img-support-container"><a href="https://www.venturegarden.gr/" target="_blank" rel="noopener"><img class="img-support img-support1" src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ></a></div>
+				<div class="col-sm-3 col-xs-6 img-support-container"><a href="http://www.thermi-group.com/" target="_blank" rel="noopener"><img class="img-support img-support2" src="/new/img/support/thermi-logo.png" alt="thermi image"></a></div>
+				<div class="col-sm-3 col-xs-6 cl-fix "><a href="http://ideatree.gr/" target="_blank" rel="noopener"><img class="img-support img-support3" src="/new/img/support/ideatree-logo.png" alt="ideatree image"></a></div>
+				<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank" rel="noopener"><img class="img-support img-support4" src="/new/img/support/eoelogo.png" alt="eoe image"></a></div>
 
 			</div>
 		</div>
