@@ -518,7 +518,7 @@
 				<br>
 				<div class="row">
 					<div class="col-md-4 text-center">
-						<img src="image.png" data-src="image.png" data-src="{{asset('new/img/landing-icon-1search.png')}}" class="lozad" alt="title1">
+						<img src="image.png" data-src="{{asset('new/img/landing-icon-1search.png')}}" class="lozad" alt="title1">
 						<h5 class="">@lang('main.about.section1.titlePortal')</h5>
 						<p class="centered-text">@lang('main.about.section1.subtitlePortal')</p>
 					</div>
