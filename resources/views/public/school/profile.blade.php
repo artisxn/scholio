@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+        <meta property="fb:app_id" content="1167687200016783" /> 
+        <!-- <meta property="og:type" content="business.business" />  -->
+
+    <meta property="og:url" content="{{'https://schol.io/@' . $school->admin->username}}" />
+    <meta property="og:title" content="Schol.io - {{ $school->name() }}" />
+    <meta property="og:description" content="Schol.io - Δημόσιο Προφιλ Εκπαιδευτικού Ιδρύματος" />
+    <meta property="og:image" content="{{url($school->profileImage())}}" />
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
         <meta charset="utf-8">
         <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
     
@@ -14,17 +23,8 @@
         <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
     <title>{{ $school->name() }} - schol.io</title>
 
-    <head prefix="og: https://schol.io# fb: https://www.facebook.com/scholioapp/# business: http://{{$school->website}}#">
-        <meta property="fb:app_id" content="1167687200016783" /> 
-        <!-- <meta property="og:type" content="business.business" />  -->
-
-    <meta property="og:url" content="{{'https://schol.io/@' . $school->admin->username}}" />
-    <meta property="og:title" content="Schol.io - {{ $school->name() }}" />
-    <meta property="og:description" content="Schol.io - Δημόσιο Προφιλ Εκπαιδευτικού Ιδρύματος" />
-    <meta property="og:image" content="{{url($school->profileImage())}}" />
-    <meta property="og:image:type" content="image/jpg">
-    <meta property="og:image:width" content="600">
-    <meta property="og:image:height" content="400">
+    <!-- <head prefix="og: https://schol.io# fb: https://www.facebook.com/scholioapp/# business: http://{{$school->website}}#"> -->
+        
 
     <!-- <meta property="business:contact_data:street_address" content="{{ $school->address }}" />
     <meta property="business:contact_data:country_name" content="{{ $school->country }}" />
