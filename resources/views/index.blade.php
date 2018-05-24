@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!-- prevent zoomIn in mobile inputs,selects,etc -->
 	<meta property="fb:pages" content="934370089973049" />
-	<meta name="description" content="Αναζήτηση υποτροφιών και εκπαιδευτικών υπηρεσιών.">
+	<meta name="description" content="Στο Schol.io θα βρεις τα δημοφιλέστερα εκπαιδευτικά ιδρύματα!">
 	<meta name="keywords" content="Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, ΙΙΕΚ, Σχολές, Σπουδές, Εκπαιδευτικά Ιδρύματα">
 
 	<meta property="og:title" content="Schol.io - Still looking for the perfect study?" />
@@ -16,7 +16,7 @@
     <meta property="og:image:type" content="image/jpg">
 
 	@include('google.main')
-	<title>schol.io | Your Scholarship is a Click Away</title>
+	<title>Schol.io - Still looking for the perfect study?</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
