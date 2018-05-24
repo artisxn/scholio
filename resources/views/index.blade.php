@@ -409,7 +409,7 @@
 
 		<div class="sc-landing-video-container vissible-xs hidden-sm hidden-md hidden-lg" style="overflow-x: hidden">
 			<div class="sc-landing-video-filter"></div>
-			<img class="responsive mobile-hero" src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="">
+			<img class="responsive mobile-hero" src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="hero-img">
 		</div>
 		<!-- Searchbar -->
 
@@ -447,7 +447,7 @@
 							<input name="text" type="text" class="font-weight-300 algolia-input" id="search-input" autocomplete aa-datasets="getDatasets2()"
 								   ng-model="selection2" placeholder="@lang('main.first.searchbar.institutions.placeholder')" />
 							<div class=" font-weight-100 pull-right algolia-powered">powered by
-								<img src="/new/img/algolia_logof.png" alt="" class="pull-right algolia-image">
+								<img src="/new/img/algolia_logof.png" alt="algolia-logo" class="pull-right algolia-image">
 							</div>
 						</div>
 
@@ -518,7 +518,7 @@
 				<br>
 				<div class="row">
 					<div class="col-md-4 text-center">
-						<img src="{{asset('new/img/landing-icon-1search.png')}}">
+						<img src="{{asset('new/img/landing-icon-1search.png')}}" alt="title1">
 						<h5 class="">@lang('main.about.section1.titlePortal')</h5>
 						<p class="centered-text">@lang('main.about.section1.subtitlePortal')</p>
 					</div>
@@ -528,7 +528,7 @@
 						<br>
 					</div>
 					<div class="col-md-4 text-center">
-						<img src="{{asset('new/img/landing-icon-2pencil.png')}}">
+						<img src="{{asset('new/img/landing-icon-2pencil.png')}}" alt="title2">
 						<h5>@lang('main.about.section2.titlePortal')</h5>
 						<p class="centered-text">@lang('main.about.section2.subtitlePortal')</p>
 					</div>
@@ -538,7 +538,7 @@
 						<br>
 					</div>
 					<div class="col-md-4 text-center">
-						<img src="{{asset('new/img/landing-icon-3startup.png')}}">
+						<img src="{{asset('new/img/landing-icon-3startup.png')}}" alt="title3">
 						<h5>@lang('main.about.section3.title')</h5>
 						<p class="centered-text">@lang('main.about.section3.subtitlePortal')</p>
 					</div>
@@ -771,7 +771,7 @@
 			<div class="sc-landing-sec3-content">
 				<div class="row ">
 					<div class=" col-sm-7 col-lg-8 col-xs-12 margin-top-50">
-						<img class="img-responsive" src="{{asset('new/img/iMac-sm.png')}}">
+						<img class="img-responsive" src="{{asset('new/img/iMac-sm.png')}}" alt="imac">
 
 						<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" style="  ">
 							<!-- Indicators -->
@@ -805,7 +805,7 @@
 							</div>
 						</div>
 
-						<img class="img-responsive iphone-ipad-sm" src="{{asset('new/img/iPad-iPhone-macBook-sm.png')}}">
+						<img class="img-responsive iphone-ipad-sm" src="{{asset('new/img/iPad-iPhone-macBook-sm.png')}}" alt="macbook">
 
 
 					</div>
@@ -818,7 +818,7 @@
 							<div class="col-xs-12">--}}
 						<h5 class="text-left">
 									<span>
-										<img height="18" width="18" src="{{asset('new/img/check.svg')}}">
+										<img height="18" width="18" src="{{asset('new/img/check.svg')}}" alt="check">
 									</span>
 									<span href="#myCarousel" data-slide-to="0" class="carousel-select">
 										&nbsp;&nbsp;@lang('main.features.section1')
@@ -838,7 +838,7 @@
 							<div class="col-xs-12">--}}
 						<h5 class="text-left">
 									<span>
-										<img height="18" width="18" src="{{asset('new/img/check.svg')}}">
+										<img height="18" width="18" src="{{asset('new/img/check.svg')}}" alt="check2">
 									</span>
 									<span href="#myCarousel" data-slide-to="2" class="carousel-select">
 										&nbsp;&nbsp;@lang('main.features.section3')
@@ -848,7 +848,7 @@
 							<div class="col-xs-12">--}}
 						<h5 class="text-left">
 									<span>
-										<img height="18" width="18" src="{{asset('new/img/check.svg')}}">
+										<img height="18" width="18" src="{{asset('new/img/check.svg')}}" alt="check3">
 									</span>&nbsp;&nbsp;
 							<a href="https://m.me/scholiobot?ref=Welcome%20message" class="bot-text">@lang('main.features.section4')</a>
 						</h5>
@@ -869,14 +869,14 @@
 					<div class="sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm" style="">@lang('main.about.institutions.title')</div>
 
 					<div style="position: relative" class="hidden-xs">
-						<img src="/new/img/ipad6.png" class="ipad">
+						<img src="/new/img/ipad6.png" class="ipad" alt="ipad">
 					</div>
 
 					<div style="position: relative" class="text-incr-125 sc-t-white">
-						<img src="/new/img/BannerVertical3.png" class="banner" style="z-index: 0">
+						<img src="/new/img/BannerVertical3.png" class="banner" style="z-index: 0" alt="banner">
 
 						<div class="text-container center-block">
-							<img height="290px" width="auto" src="/new/img/iphone.png" class="iphone"> {{--
+							<img height="290px" width="auto" src="/new/img/iphone.png" class="iphone" alt="iphone"> {{--
 								<div style="height: 400px; width: 300px; background-color: #00b9d2; margin: 20px 0; position: absolute; z-index: 0"></div>--}}
 
 
@@ -1073,7 +1073,7 @@
 
 <script type="text/ng-template" id="customTemplate.html">
     <a>
-        <span>@{{ match.model.id }} &nbsp;</span>        <img ng-src="@{{match.model.png}}" width="16">
+        <span>@{{ match.model.id }} &nbsp;</span>        <img ng-src="@{{match.model.png}}" width="16" alt="model">
         <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
     </a>
 </script>
