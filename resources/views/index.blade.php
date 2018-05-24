@@ -10,6 +10,7 @@
 	<meta name="description" content="Στο Schol.io θα βρεις τα δημοφιλέστερα εκπαιδευτικά ιδρύματα!">
 	<meta name="keywords" content="Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, ΙΙΕΚ, Σχολές, Σπουδές, Εκπαιδευτικά Ιδρύματα">
 
+	<meta property="fb:app_id" content="1167687200016783" /> 
 	<meta property="og:url" content="https://schol.io">
 	<meta property="og:title" content="Schol.io - Still looking for the perfect study?" />
     <meta property="og:description" content="Στο Schol.io θα βρεις τα δημοφιλέστερα εκπαιδευτικά ιδρύματα!" />

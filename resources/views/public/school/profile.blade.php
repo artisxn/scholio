@@ -18,7 +18,7 @@
         <meta property="fb:app_id" content="1167687200016783" /> 
         <!-- <meta property="og:type" content="business.business" />  -->
 
-    <!-- <meta property="og:url" content="{{'https://schol.io/public/profile/' . $school->id}}" /> -->
+    <meta property="og:url" content="{{'https://schol.io/@' . $school->admin->username}}" />
     <meta property="og:title" content="Schol.io - {{ $school->name() }}" />
     <meta property="og:description" content="Schol.io - Δημόσιο Προφιλ Εκπαιδευτικού Ιδρύματος" />
     <meta property="og:image" content="{{url($school->profileImage())}}" />
