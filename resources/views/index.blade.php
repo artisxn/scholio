@@ -118,9 +118,13 @@
 		.lang-drop .dropdown-menu {
 			background-color: transparent;
 		}
-		.trans .dropdown-menu>li>a {
-			color: #fff
+
+		.trans{
+			display: inline-block; margin: -3px 20px auto 20px; background-color: transparent; width: 50px; border: none; color: #ccc;
 		}
+		/*.trans .dropdown-menu>li>a {*/
+			/*color: #fff*/
+		/*}*/
 		div>ul>.selected {
 			background-color: transparent;
 			border: none;
@@ -163,9 +167,11 @@
 		.bot-text:hover {
 			color: #FD6A33
 		}
-		.img-support{filter: grayscale(0.7); opacity: 0.7; display: block; margin-right: auto; margin-left: auto;}
+		.imgGray{filter: grayscale(0.8); opacity: 0.6;}
+		.imgFull{filter: none; opacity: 1; zoom: 1.05; margin-top: 2px!important;}
+		.img-support{display: block; margin-right: auto; margin-left: auto;}
 
-		.img-support1{height: 61px;  }
+		.img-support1{height: 68px;  }
 		.img-support2{height: 55px;  }
 		.img-support3{height: 50px;  }
 		.img-support4{height: 50px;  }
@@ -233,6 +239,7 @@
 
 <!-- @include('components.preloader') -->
 
+
 		<!-- Scholio Header -->
 <header class="navbar navbar-top sc-landing-header" id="header">
 	<div class="container">
@@ -293,7 +300,7 @@
 						</li>
 						<li class="lang-drop">
 							<form method="GET" id="langForm">
-								<select onchange="changeLang(this)" class="trans selectpicker" data-live-search="false" data-mobile="false" data-size="2" data-width="100%" data-style="btn-transparent">
+								<select onchange="changeLang(this)" class="trans">
 									<!-- <option data-icon="fa" value="en" {{ request()->cookie('lang') == 'en' ? 'selected' : '' }}>&nbsp; EN</option> -->
 									<option data-icon="fa" value="el" {{ request()->cookie('lang') == 'el' ? 'selected' : '' }}>&nbsp; GR</option>
 									<option data-icon="fa" value="en" {{ request()->cookie('lang') == 'en' ? 'selected' : '' }}>&nbsp; EN</option>
@@ -447,7 +454,7 @@
 							<input name="text" type="text" class="font-weight-300 algolia-input" id="search-input" autocomplete aa-datasets="getDatasets2()"
 								   ng-model="selection2" placeholder="@lang('main.first.searchbar.institutions.placeholder')" />
 							<div class=" font-weight-100 pull-right algolia-powered">powered by
-								<img src="image.png" data-src="/new/img/algolia_logof.png" alt="algolia-logo" class="pull-right algolia-image lozad">
+								<img src="/new/img/algolia_logof.png" alt="algolia-logo" class="pull-right algolia-image lozad">
 							</div>
 						</div>
 
@@ -987,10 +994,31 @@
 			<div class="row" >
 				<h2 class="text-center sc-t-white sc-t-dark-grey" style="padding-bottom: 80px;">@lang('main.support.title')</h2>
 
-				<div class="col-sm-3 col-xs-6 img-support-container"><a href="https://www.venturegarden.gr/" target="_blank" rel="noopener"><img class="img-support img-support1 lozad" src="image.png" data-src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ></a></div>
+				<!-- <div class="col-sm-3 col-xs-6 img-support-container"><a href="https://www.venturegarden.gr/" target="_blank" rel="noopener"><img class="img-support img-support1 lozad" src="image.png" data-src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ></a></div>
 				<div class="col-sm-3 col-xs-6 img-support-container"><a href="http://www.thermi-group.com/" target="_blank" rel="noopener"><img class="img-support img-support2 lozad" src="image.png" data-src="/new/img/support/thermi-logo.png" alt="thermi image"></a></div>
 				<div class="col-sm-3 col-xs-6 cl-fix "><a href="http://ideatree.gr/" target="_blank" rel="noopener"><img class="img-support img-support3 lozad" src="image.png" data-src="/new/img/support/ideatree-logo.png" alt="ideatree image"></a></div>
-				<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank" rel="noopener"><img class="img-support img-support4 lozad" src="image.png" data-src="/new/img/support/eoelogo.png" alt="eoe image"></a></div>
+				<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank" rel="noopener"><img class="img-support img-support4 lozad" src="image.png" data-src="/new/img/support/eoelogo.png" alt="eoe image"></a></div> -->
+				<div class="col-sm-3 col-xs-6 img-support-container">
+					<a href="https://www.venturegarden.gr/" target="_blank">
+						<img class="imgGray img-support img-support1" src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ng-mouseover="overVenture=true"  ng-mouseleave="overVenture=false" ng-class="{imgFull: (overVenture==true)}">
+					</a>
+				</div>
+
+				<div class="col-sm-3 col-xs-6 img-support-container">
+					<a href="http://www.thermi-group.com/" target="_blank">
+						<img class="imgGray img-support img-support2" src="/new/img/support/thermi-logo.png" alt="thermi image" ng-mouseover="overThermi=true"  ng-mouseleave="overThermi=false" ng-class="{imgFull: (overThermi==true)}">
+					</a>
+				</div>
+				<div class="col-sm-3 col-xs-6 cl-fix ">
+					<a href="http://ideatree.gr/" target="_blank">
+						<img class="imgGray img-support img-support3" src="/new/img/support/ideatree-logo.png" alt="ideatree image" ng-mouseover="overIdeatree=true"  ng-mouseleave="overIdeatree=false" ng-class="{imgFull: (overIdeatree==true)}">
+					</a>
+				</div>
+				<div class="col-sm-3 col-xs-6">
+					<a href="http://www.eoellas.org/" target="_blank">
+						<img class="imgGray img-support img-support4" src="/new/img/support/eoelogo.png" alt="eoe image" ng-mouseover="overEoe=true"  ng-mouseleave="overEoe=false" ng-class="{imgFull: (overEoe==true)}">
+					</a>
+				</div>
 
 			</div>
 		</div>
