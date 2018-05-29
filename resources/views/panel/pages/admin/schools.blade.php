@@ -25,7 +25,8 @@
                                             <!-- <th>Phone</th> -->
                                             <!-- <th>Website</th> -->
                                             <!-- <th>Approved</th> -->
-                                            <th>Reports</th>
+                                            <!-- <th>Reports</th> -->
+                                            <th>PageViews</th>
                                             <th>Created At</th>
                                             <th>Delete from Algolia</th>
                                             <th>Delete From Scholio</th>
@@ -47,7 +48,8 @@
                                             <!-- <td>{{ $school->phone }}</td> -->
                                             <!-- <td>{{ $school->website }}</td> -->
                                             <!-- <td>{{ $school->approved }}</td> -->
-                                            <td>{{ count($school->admin->report) }}</td>
+                                            <!-- <td>{{ count($school->admin->report) }}</td> -->
+                                            <td>{{ Counter::show('school-profile', $school->id) }}</td>
                                             <td>{{ Carbon\Carbon::parse($school->created_at)->format('d-m-Y') }}</td>
                                             <td><form method="POST" action="/school/deleteAlgolia/{{$school->id}}">
                                                 {{ csrf_field() }}

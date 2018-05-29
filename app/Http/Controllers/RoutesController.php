@@ -270,6 +270,10 @@ class RoutesController extends Controller
             return redirect('/dashboard');
         }
 
+        if(auth()->user()->role == 'admin'){
+            return redirect('/panel/admin/dashboard');
+        }
+
         return redirect('/dashboard');
     }
 
