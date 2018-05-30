@@ -407,8 +407,8 @@
 			<!-- Video Shadow -->
 			<div class="sc-landing-video-filter"></div>
 			<video autoplay loop muted id="video-bg">
-				<source src="{{asset('new/video/VideoMix6.ogg')}}" type="video/ogg">
-				<source src="{{asset('new/video/VideoMix6.mp4')}}" type="video/mp4"> 
+				<source src="{{asset('new/video/VideoMix6ShortX.ogg')}}" type="video/ogg">
+				<source src="{{asset('new/video/VideoMix6ShortX.mp4')}}" type="video/mp4"> 
 					<!-- <source src="{{asset('new/video/VideoMix2.webm')}}" type="video/webm"> -->
 			</video>
 		</div>
