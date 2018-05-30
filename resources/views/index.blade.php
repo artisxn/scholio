@@ -69,8 +69,6 @@
 	<link rel="stylesheet" href="{{ asset('new/css/algolia.css') }}">
 
 	<!--====== Javascript Files =======-->
-	<!-- jQuery js-->
-<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 
 
 	<!-- <script async src="{{asset('/js/jquery224.js')}}"></script> -->
@@ -373,7 +371,7 @@
 			</div>
 
 			<!-- ======= Sandwich Menu =======-->
-			@include('public.sandwich-menu-landing')
+			<!-- @include('public.sandwich-menu-landing') -->
 
 
 
@@ -1040,7 +1038,8 @@
 
 <!-- Footer -->
 @include('public.footer')
-
+	<!-- jQuery js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
 
 </body>
 
