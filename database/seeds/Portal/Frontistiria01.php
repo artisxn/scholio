@@ -15,7 +15,8 @@ class Schools extends Seeder
     {
         $background = Portal::createImages('/upload/school/univ.png')->id;
 
-        /*===============  Φροντιστήριο Επίκεντρο ================*/
+
+        /*===============  1 Φροντιστήριο Επίκεντρο ================*/
         $epik = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Επίκεντρο', 'email' => 'epicedro@otenet.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'epikentro'])->id,
             'address' => 'Ναυάρχου Βότση 46, Σταυρούπολη',
@@ -55,7 +56,8 @@ class Schools extends Seeder
 
 
 
-        /*=============== Φροντιστήριο Τσακανίκας ================*/
+
+        /*=============== 2 Φροντιστήριο Τσακανίκας ================*/
 
         $tsak = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => '', 'email' => 'tsakanikasedu@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'tsakanikas'])->id,
@@ -63,7 +65,7 @@ class Schools extends Seeder
             'city' => 'Επανομή',
             'phone' => 2392045123,
             'type_id' => 3,
-            'website' => 'tsakanikas.edu.gr',
+            'website' => 'facebook.com/tsakanikas.edu.gr',
             'approved' => 1,
             'about' => '
 
@@ -88,7 +90,10 @@ class Schools extends Seeder
 //        Scholio::portalSocial($tsak, 'instagram', 'https://www.instagram.com/');
 //        Scholio::portalSocial($tsak, 'youtube', 'https://www.youtube.com/');
 
-        /*=============== To Φροντιστήριο ================*/
+
+
+
+        /*=============== 3 To Φροντιστήριο ================*/
 
         $tofront = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Το Φροντιστήριο', 'email' => 'info@tofrodistirio.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'tofrodistirio'])->id,
@@ -124,7 +129,10 @@ class Schools extends Seeder
 //        Scholio::portalSocial($tofront, 'instagram', 'https://www.instagram.com/');
 //        Scholio::portalSocial($tofront, 'youtube', 'https://www.youtube.com/');
 
-        /*=============== Φροντιστήριο Βακάλης Κέντρο ================*/
+
+
+
+        /*=============== 4 Φροντιστήριο Βακάλης Κέντρο ================*/
 
         $vak = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Βακάλης', 'email' => 'kentro@vakalis.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'vakalis'])->id,
@@ -161,7 +169,10 @@ class Schools extends Seeder
         Scholio::portalSocial($vak, 'youtube', 'https://www.youtube.com/channel/UCmPwzv20nkIZYUjRLwmyMxg');
 
 
-        /*=============== Φροντιστήριο Elix Κέντρο ================*/
+
+
+
+        /*=============== 5 Φροντιστήριο Elix Κέντρο ================*/
 
         $elix = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Έλιξ Φροντιστήρια Υψηλών Στόχων', 'email' => 'aristotelous@elix.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'elix'])->id,
@@ -197,7 +208,11 @@ class Schools extends Seeder
         Scholio::portalSocial($elix, 'youtube', 'https://www.youtube.com/channel/UCw25zj59U5jI8CezDjgWdIw');
         Scholio::portalSocial($elix, 'linkedin', 'https://www.linkedin.com/company/%CF%86%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%AD%CE%BB%CE%B9%CE%BE/');
 
-        /*=============== Φροντιστήριο e-εκπαίδευση ================*/
+
+
+
+
+        /*=============== 6 Φροντιστήριο e-εκπαίδευση ================*/
 
         $ekpd = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια e-εκπαίδευση', 'email' => 'info@ekpedefsiedu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ekpedefsi'])->id,
@@ -237,8 +252,196 @@ class Schools extends Seeder
         Scholio::portalSocial($ekpd, 'instagram', 'https://www.instagram.com/frontistiria_ekpedefsi/');
         Scholio::portalSocial($ekpd, 'twitter', 'https://twitter.com/ekpaidefsi');
 
-        /*===============  ================*/
 
+
+
+        /*=============== 7 Φροντιστήριο Σύγχρονο  Κέντρο ================*/
+
+        $sygh = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Σύγχρονο', 'email' => 'syghrono@yahoo.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'syghrono'])->id,
+            'address' => 'Τσιμισκή 47',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310270727,
+            'type_id' => 3,
+            'website' => 'syghrono.gr',
+            'approved' => 1,
+            'about' => '
+            Τα φροντιστήρια "σύγχρονο" έχουν καταξιωθεί στο χώρο της εκπαίδευσης για την υψηλή ποιότητα του παρεχόμενου έργου τους, το οποίο επικεντρώνεται σε τρεις βασικές συνιστώσες της εκπαίδευσης: διδάσκοντες, περιεχόμενο σπουδών, υλικοτεχνική υποδομή.
+Κατάλληλος Προγραμματισμός
+Στην επιτυχία του εκπαιδευτικού μας έργου συμβάλλει και ο κατάλληλος προγραμματισμός που στηρίζεται στη συνεκτίμηση της ύλης που πρέπει να διδαχθεί και του χρόνου στον οπόιο πρέπει να διδαχθεί. Κάθε διδακτική ώρα καθόλη τη διάρκεια της χρονιάς γίνεται με προγραμματισμό και όχι τυχαία ή με στιγμιαίους αυτοσχεδιασμούς. Έτσι η εξεταστέα ύλη ολοκληρώνεται στα τέλη Φεβρουαρίου και ακολουθούν επαναλήψεις για πλατύτερη αφομοίωση της ύλης.
+Σύγχρονες εξεταστικές μέθοδοι
+Με σύγχρονες και ποικίλες εξεταστικές μεθόδος ελέγχεται η κατανόηση, η εμπέδωση και ο βαθμός αφομοίωσης της εξεταστέας ύλης καθώς και η γνωστική εξέλιξη του κάθε μαθητή. Κυρίως όμως με ταπρογραμματισμένα τρίωρα επαναληπτικά διαγωνίσματα καθόλη τη διάρκεια της σχολικής χρονιάς, που διενεργούνται σε συνθήκες παρόμοιες με εκείνες των εισαγωγικών εξετάσεων. Η αυστηρή επιτήρηση, η τήρηση του μέγιστου δυνατού χρόνου αποχώρησης, το επίπεδο των θεμάτων, εξοικιώνουν τους σπουδαστές όλων των τάξεων του λυκείου με τις εξετάσεις και τους προετοιμάζουν ώστε να αντιμετωπίσουν μετέπειτα την πρόκληση των Πανελληνίων εξετάσεων.
+            ',
+            'background' => $background,
+        ]);
+
+        new Portal($sygh, 5, 'school');
+
+        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
+        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
+        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($sygh, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+        Scholio::portalStudy($sygh, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+        Scholio::portalStudy($sygh, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+        Scholio::portalStudy($sygh, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+        Scholio::portalStudy($sygh, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+        Scholio::portalStudy($sygh, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+
+
+        Scholio::portalSocial($sygh, 'facebook', 'https://www.facebook.com/syghrono/');
+//        Scholio::portalSocial($sygh, 'instagram', 'https://www.instagram.com/');
+//        Scholio::portalSocial($sygh, 'youtube', 'https://www.youtube.com/');
+
+
+
+
+
+        /*=============== 8 Φροντιστήριο Υποδομή ================*/
+
+        $ypo = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Υποδομή', 'email' => 'info@ypodomi.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ypodomi'])->id,
+            'address' => 'Κουγιουμτζίδη 7',
+            'city' => 'Γιαννιτσά',
+            'phone' => 2382027799,
+            'type_id' => 3,
+            'website' => 'ypodomi.com',
+            'approved' => 1,
+            'about' => '
+            Αγαπητέ μαθητή/τρια, γνωρίζουμε πολύ καλά ότι δεν υπάρχει τίποτε καλύτερο και υψηλότερο για ένα νέο άνθρωπο, απόφοιτο Λυκείου, από το να επιτύχει την είσοδό του στο Πανεπιστήμιο. Όταν μάλιστα η είσοδος αυτή ανταποκρίνεται και στην πρώτη σχολή την οποία επέλεξε, τότε είναι σίγουρο πως η επαγγελματική του σταδιοδρομία είναι εξασφαλισμένη και επιτυχημένη.
+
+Η επιτυχία σου δεν είναι θέμα τύχης, επιφάνειας και εντύπωσης, αλλά μόχθου, βάθους και ουσίας. Η υλοποίηση των υψηλών στόχων προϋποθέτει όχι μόνο ατομική θέληση, άλλα και υπεύθυνη προετοιμασία, τόσο σε γνωστικό όσο και σε ψυχολογικό επίπεδο.
+
+Το πρόγραμμα μαθημάτων του φροντιστηρίου στηρίζεται στις παρακάτω αρχές:
+
+Διαρκής ανανέωση και βελτίωση
+Κλειστά ομοιογενή τμήματα και γκρουπ
+Επιλογή άριστα καταρτισμένων καθηγητών
+Υψηλό επίπεδο διδασκαλίας
+Καλλιεργούμε και αναπτύσσουμε μεθόδους
+Επαναληπτικά Διαγωνίσματα
+Πρόσθετες ώρες και διαγωνίσματα
+Συνεργασία με τους γονείς
+Σύσκεψη Καθηγητών
+Οργάνωση και λειτουργικότητα
+
+
+Διαρκής ανανέωση και βελτίωση
+
+Η ανοδική πορεία μας είναι σταθερή και η εξέλιξη συνεχής. Κανένα άλλο Φροντιστήριο δεν έχει να παρουσιάσει τόσες επιτυχίες, τον πρώτο χρόνο λειτουργίας του. Η επιτυχία στις ανώτατες σχολές εξασφαλίζεται:
+
+Με ανελλιπή παρακολούθηση των μαθημάτων μας
+Με σκληρή, επίπονη και επίμονη προσωπική μελέτη
+Με υποχρεωτική συμμετοχή στα διαγωνίσματα
+
+Κλειστά ομοιογενή τμήματα και γκρουπ
+
+Οι μαθητές χωρίζονται με βάση το πραγματικό τους επίπεδο και όχι με κριτήριο το λύκειο στο οποίο φοιτούν. Το πρόγραμμα του κάθε τμήματος θα είναι ανάλογα διαμορφωμένο και οι μαθητές που θα φοιτούν σ’ αυτά τα τμήματα θα έχουν την δυνατότητα να δουλέψουν σωστά, ώστε και στο σχολείο να μην έχουν καμία δυσκολία, αλλά και το σπουδαιότερο, με άνεση θα μπορούν να στοχεύουν το άριστα στις εξετάσεις της Α’ ,  Β’ Λυκείου, όπως και στις Πανελλαδικές Εξετάσεις της Γ΄ Λυκείου.
+
+            ',
+            'background' => $background,
+        ]);
+
+        new Portal($ypo, 5, 'school');
+
+//        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
+//        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
+//        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($ypo, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+        Scholio::portalStudy($ypo, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+        Scholio::portalStudy($ypo, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+        Scholio::portalStudy($ypo, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+        Scholio::portalStudy($ypo, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+        Scholio::portalStudy($ypo, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+
+
+        Scholio::portalSocial($ypo, 'facebook', 'https://www.facebook.com/ypodomigiannitsa/');
+//        Scholio::portalSocial($ypo, 'instagram', 'https://www.instagram.com/');
+//        Scholio::portalSocial($ypo, 'youtube', 'https://www.youtube.com/');
+
+
+
+
+
+        /*===============  9 Φροντιστήριο Βογιατζής ================*/
+
+        $bogia = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Βογιατζής', 'email' => 'frontvog@otenet.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'vogiatzis'])->id,
+            'address' => 'Μακρυγιάννη 39',
+            'city' => 'Θέρμη',
+            'phone' => 2310463263,
+            'type_id' => 3,
+            'website' => 'facebook.com/educationVogiatzis',
+            'approved' => 1,
+            'about' => '
+
+            ',
+            'background' => $background,
+        ]);
+
+        new Portal($bogia, 5, 'school');
+
+        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
+        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
+        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($bogia, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+        Scholio::portalStudy($bogia, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+        Scholio::portalStudy($bogia, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+        Scholio::portalStudy($bogia, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+        Scholio::portalStudy($bogia, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+        Scholio::portalStudy($bogia, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+
+
+        Scholio::portalSocial($bogia, 'facebook', 'https://www.facebook.com/educationVogiatzis/');
+//        Scholio::portalSocial($bogia, 'instagram', 'https://www.instagram.com/');
+//        Scholio::portalSocial($bogia, 'youtube', 'https://www.youtube.com/');
+
+
+
+
+
+        /*===============  10 Φροντιστήρια Μπαχαράκη ================*/
+
+        $baha = factory(App\Models\School::class)->create([
+            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Μπαχαράκη', 'email' => 'aristotelous@baharakis.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'baharakis'])->id,
+            'address' => 'Λεωφόρος Νίκης 13 - Πλατεία Αριστοτέλους',
+            'city' => 'Θεσσαλονίκη',
+            'phone' => 2310262411,
+            'type_id' => 3,
+            'website' => 'baharakis.gr',
+            'approved' => 1,
+            'about' => '
+            Τα φροντιστήρια μέσης εκπαίδευσης Μπαχαράκη λειτουργούν στη Θεσσαλονίκη εδώ και 55 χρόνια. Διασφαλίζοντας την υψηλότερη ποιότητα διδασκαλίας και ακολουθώντας τις πιο σύγχρονες μεθόδους φέρνουν πρώτους τους μαθητές τους, με υψηλά ποσοστά επιτυχίας στις πανελλήνιες εξετάσεις για όλες τις ομάδες προσανατολισμού (Ανθρωπιστικών σπουδών, Θετικών σπουδών και Σπουδών Οικονομίας και Πληροφορικής).
+  Με παραρτήματα στο κέντρο της Θεσσαλονίκης (Αριστοτέλους), στην Ανατολική Θεσσαλονίκη (Παπαναστασίου), στη Δυτική Θεσσαλονίκη (Εύοσμος) και στην Καλαμαριά και τη Θέρμη καλύπτουν γεωγραφικά όλες τις περιοχές της πόλης.
+  Οι προσεγμένες και άρτια εξοπλισμένες αίθουσες διδασκαλίας, με διαδραστικούς πίνακες και πλήθος εποπτικών μέσων, αποτελούν πρότυπο εγκαταστάσεων.
+  Το κατάλληλα επιμορφωμένο και αυστηρά εξειδικευμένο σταθερό εκπαιδευτικό και διοικητικό προσωπικό στέκεται δίπλα στους μαθητές, ενισχύοντας στο μέγιστο τις δυνατότητες τους.
+  Τα φροντιστήρια Μπαχαράκη, ολοκληρώνουν τις υπηρεσίες τους ως φροντιστήρια μέσης εκπαίδευσης, παρέχοντας πλήρη κάλυψη των μαθητών τους και σε ειδικά μαθήματα (σχέδιο, προετοιμασία για εξετάσεις φυσικής αγωγής, ξένων γλωσσών κτλ).
+
+            ',
+            'background' => $background,
+        ]);
+
+        new Portal($baha, 5, 'school');
+
+        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
+        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
+        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($baha, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+        Scholio::portalStudy($baha, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+        Scholio::portalStudy($baha, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+        Scholio::portalStudy($baha, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+        Scholio::portalStudy($baha, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+        Scholio::portalStudy($baha, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+
+
+//        Scholio::portalSocial($baha, 'facebook', 'https://www.facebook.com/');
+//        Scholio::portalSocial($baha, 'instagram', 'https://www.instagram.com/');
+//        Scholio::portalSocial($baha, 'youtube', 'https://www.youtube.com/');
+
+
+
+
+
+        /*===============  ================*/
 
         $fake = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
@@ -270,6 +473,7 @@ class Schools extends Seeder
 //        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
 //        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+
 
 
 
