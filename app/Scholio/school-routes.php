@@ -7,6 +7,7 @@ use App\Models\Lecture;
 use App\Models\Study;
 use App\User;
 use Carbon\Carbon;
+use App\Models\SchoolInterest;
 
 Route::get('scholarship/{scholarship}', 'RoutesController@scholarship');
 Route::get('scholarships/create', 'AdminPanelController@scholarshipCreate')->name('scholarship-create');
@@ -22,6 +23,13 @@ Route::post('profile/{id}', 'AdminPanelController@updateProfile');
 Route::get('requests', 'AdminPanelController@requests')->name('requests')->middleware('is.vip');
 Route::post('profile/images/upload', 'AdminPanelController@imagesUpload');
 Route::delete('profile/images/upload', 'AdminPanelController@imageDelete');
+
+Route::get('/interests', function(){
+    $school = auth()->user()->info;
+    $interests = SchoolInterest::where('school_id', $school->id)->get();
+
+    return view('panel.pages.school.interests', compact('interests'));
+});
 
 Route::post('/card/create', function () {
 

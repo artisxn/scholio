@@ -15,12 +15,12 @@ use App\Models\Message;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\Section;
+use App\Models\SocialLink;
 use App\Models\Study;
 use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
-use App\Models\SocialLink;
 
 class Scholio
 {
@@ -576,7 +576,20 @@ class Scholio
             $newStudy->save();
 
             $new = true;
+        } else {
+            if (count($newStudy->section)) {
+                $newStudy = new Study;
+                $newStudy->name = $study;
+                $newStudy->save();
+
+                $new = true;
+            }
         }
+
+        // dd($newStudy->section);
+
+        // echo ($newSection);
+        // dd($newStudy->id);
 
         if ($new) {
             $newStudy->section()->attach($newSection);
@@ -593,11 +606,11 @@ class Scholio
             $social->name = $name;
             $social->link = $link;
             return $social->save();
-        }else{
+        } else {
             $social = $school->admin->socialLinks;
             $s = $social->where('name', $name)->first();
             $s->link = $link;
             return $s->save();
-        }  
+        }
     }
 }

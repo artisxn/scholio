@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Scholio\Scholio;
+use Illuminate\Database\Seeder;
 use Portal\Portal;
 
-class Schools extends Seeder
+class Frontistiria extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,6 @@ class Schools extends Seeder
     public function run()
     {
         $background = Portal::createImages('/upload/school/univ.png')->id;
-
 
         /*===============  1 Φροντιστήριο Επίκεντρο ================*/
         $epik = factory(App\Models\School::class)->create([
@@ -36,11 +35,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($epik, 5, 'school');
+        new Portal($epik, 5, 'frontistirio');
 
-        Scholio::portalStudy($epik, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($epik, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($epik, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($epik, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($epik, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($epik, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($epik, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($epik, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($epik, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -48,19 +47,14 @@ class Schools extends Seeder
         Scholio::portalStudy($epik, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($epik, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($epik, 'facebook', 'https://www.facebook.com/Επίκεντρο-Φροντιστήριο-Μέσης-Εκπαίδευσης-1434744540176860/');
 //        Scholio::portalSocial($epik, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($epik, 'youtube', 'https://www.youtube.com/');
-
-
-
-
+        //        Scholio::portalSocial($epik, 'youtube', 'https://www.youtube.com/');
 
         /*=============== 2 Φροντιστήριο Τσακανίκας ================*/
 
         $tsak = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => '', 'email' => 'tsakanikasedu@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'tsakanikas'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Τσακανίκας', 'email' => 'tsakanikasedu@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'tsakanikas'])->id,
             'address' => 'Νέο Πάρκο Επανομής, 57500',
             'city' => 'Επανομή',
             'phone' => 2392045123,
@@ -68,16 +62,16 @@ class Schools extends Seeder
             'website' => 'facebook.com/tsakanikas.edu.gr',
             'approved' => 1,
             'about' => '
-
+            Φροντιστήριο Τσακανίκας
             ',
             'background' => $background,
         ]);
 
-        new Portal($tsak, 5, 'school');
+        new Portal($tsak, 5, 'frontistirio');
 
-        Scholio::portalStudy($tsak, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($tsak, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($tsak, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($tsak, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($tsak, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($tsak, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($tsak, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($tsak, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($tsak, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -85,13 +79,9 @@ class Schools extends Seeder
         Scholio::portalStudy($tsak, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($tsak, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($tsak, 'facebook', 'https://www.facebook.com/tsakanikas.edu.gr');
 //        Scholio::portalSocial($tsak, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($tsak, 'youtube', 'https://www.youtube.com/');
-
-
-
+        //        Scholio::portalSocial($tsak, 'youtube', 'https://www.youtube.com/');
 
         /*=============== 3 To Φροντιστήριο ================*/
 
@@ -112,11 +102,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($tofront, 5, 'school');
+        new Portal($tofront, 5, 'frontistirio');
 
-        Scholio::portalStudy($tofront, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($tofront, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($tofront, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($tofront, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($tofront, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($tofront, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($tofront, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($tofront, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($tofront, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -124,13 +114,9 @@ class Schools extends Seeder
         Scholio::portalStudy($tofront, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($tofront, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($tofront, 'facebook', 'https://www.facebook.com/tofrontistirio.thessaloniki');
 //        Scholio::portalSocial($tofront, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($tofront, 'youtube', 'https://www.youtube.com/');
-
-
-
+        //        Scholio::portalSocial($tofront, 'youtube', 'https://www.youtube.com/');
 
         /*=============== 4 Φροντιστήριο Βακάλης Κέντρο ================*/
 
@@ -151,11 +137,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($vak, 5, 'school');
+        new Portal($vak, 5, 'frontistirio');
 
-        Scholio::portalStudy($vak, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($vak, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($vak, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($vak, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($vak, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($vak, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($vak, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($vak, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($vak, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -163,14 +149,9 @@ class Schools extends Seeder
         Scholio::portalStudy($vak, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($vak, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($vak, 'facebook', 'https://www.facebook.com/vakalis.frontistiria/');
         Scholio::portalSocial($vak, 'instagram', 'https://www.instagram.com/vakalis_frontistiria');
         Scholio::portalSocial($vak, 'youtube', 'https://www.youtube.com/channel/UCmPwzv20nkIZYUjRLwmyMxg');
-
-
-
-
 
         /*=============== 5 Φροντιστήριο Elix Κέντρο ================*/
 
@@ -190,11 +171,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($elix, 5, 'school');
+        new Portal($elix, 5, 'frontistirio');
 
-        Scholio::portalStudy($elix, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($elix, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($elix, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($elix, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($elix, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($elix, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($elix, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($elix, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($elix, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -202,15 +183,10 @@ class Schools extends Seeder
         Scholio::portalStudy($elix, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($elix, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($elix, 'facebook', 'https://www.facebook.com/elix.edu.gr');
 //        Scholio::portalSocial($elix, 'instagram', 'https://www.instagram.com/');
         Scholio::portalSocial($elix, 'youtube', 'https://www.youtube.com/channel/UCw25zj59U5jI8CezDjgWdIw');
         Scholio::portalSocial($elix, 'linkedin', 'https://www.linkedin.com/company/%CF%86%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%AD%CE%BB%CE%B9%CE%BE/');
-
-
-
-
 
         /*=============== 6 Φροντιστήριο e-εκπαίδευση ================*/
 
@@ -235,11 +211,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($ekpd, 5, 'school');
+        new Portal($ekpd, 5, 'frontistirio');
 
-        Scholio::portalStudy($ekpd, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($ekpd, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($ekpd, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($ekpd, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($ekpd, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($ekpd, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($ekpd, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($ekpd, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($ekpd, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -247,13 +223,9 @@ class Schools extends Seeder
         Scholio::portalStudy($ekpd, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($ekpd, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($ekpd, 'facebook', 'https://www.facebook.com/frontistiria.ekpedefsi');
         Scholio::portalSocial($ekpd, 'instagram', 'https://www.instagram.com/frontistiria_ekpedefsi/');
         Scholio::portalSocial($ekpd, 'twitter', 'https://twitter.com/ekpaidefsi');
-
-
-
 
         /*=============== 7 Φροντιστήριο Σύγχρονο  Κέντρο ================*/
 
@@ -275,11 +247,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($sygh, 5, 'school');
+        new Portal($sygh, 5, 'frontistirio');
 
-        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($sygh, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($sygh, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($sygh, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($sygh, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -287,14 +259,9 @@ class Schools extends Seeder
         Scholio::portalStudy($sygh, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($sygh, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($sygh, 'facebook', 'https://www.facebook.com/syghrono/');
 //        Scholio::portalSocial($sygh, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($sygh, 'youtube', 'https://www.youtube.com/');
-
-
-
-
+        //        Scholio::portalSocial($sygh, 'youtube', 'https://www.youtube.com/');
 
         /*=============== 8 Φροντιστήριο Υποδομή ================*/
 
@@ -341,11 +308,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($ypo, 5, 'school');
+        new Portal($ypo, 5, 'frontistirio');
 
-//        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-//        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-//        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+//        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        //        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        //        Scholio::portalStudy($ypo, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($ypo, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($ypo, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($ypo, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -353,14 +320,9 @@ class Schools extends Seeder
         Scholio::portalStudy($ypo, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($ypo, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($ypo, 'facebook', 'https://www.facebook.com/ypodomigiannitsa/');
 //        Scholio::portalSocial($ypo, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($ypo, 'youtube', 'https://www.youtube.com/');
-
-
-
-
+        //        Scholio::portalSocial($ypo, 'youtube', 'https://www.youtube.com/');
 
         /*===============  9 Φροντιστήριο Βογιατζής ================*/
 
@@ -378,11 +340,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($bogia, 5, 'school');
+        new Portal($bogia, 5, 'frontistirio');
 
-        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($bogia, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($bogia, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($bogia, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($bogia, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -390,14 +352,9 @@ class Schools extends Seeder
         Scholio::portalStudy($bogia, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($bogia, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
         Scholio::portalSocial($bogia, 'facebook', 'https://www.facebook.com/educationVogiatzis/');
 //        Scholio::portalSocial($bogia, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($bogia, 'youtube', 'https://www.youtube.com/');
-
-
-
-
+        //        Scholio::portalSocial($bogia, 'youtube', 'https://www.youtube.com/');
 
         /*===============  10 Φροντιστήρια Μπαχαράκη ================*/
 
@@ -420,11 +377,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($baha, 5, 'school');
+        new Portal($baha, 5, 'frontistirio');
 
-        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($baha, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($baha, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($baha, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($baha, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -432,14 +389,9 @@ class Schools extends Seeder
         Scholio::portalStudy($baha, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($baha, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
 //        Scholio::portalSocial($baha, 'facebook', 'https://www.facebook.com/');
-//        Scholio::portalSocial($baha, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($baha, 'youtube', 'https://www.youtube.com/');
-
-
-
-
+        //        Scholio::portalSocial($baha, 'instagram', 'https://www.instagram.com/');
+        //        Scholio::portalSocial($baha, 'youtube', 'https://www.youtube.com/');
 
         /*===============  ================*/
 
@@ -457,11 +409,11 @@ class Schools extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($fake, 5, 'school');
+        new Portal($fake, 5, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Ά Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', '΄Β Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', '΄Γ Γυμνασίου');
+        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
         Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
         Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
         Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
@@ -469,14 +421,9 @@ class Schools extends Seeder
         Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
         Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-
 //        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/');
-//        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
-
-
-
-
+        //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
+        //        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
     }
 

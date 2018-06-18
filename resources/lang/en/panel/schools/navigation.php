@@ -7,6 +7,7 @@ return [
     so that you have full rights of publicity and search for your educational provider.',
     'close'=>'Close',
     'tourStart'=>'Start Tour',
+    'interests'=>'Interests',
 
     'menu' => [
         'profile' => 'Profile',

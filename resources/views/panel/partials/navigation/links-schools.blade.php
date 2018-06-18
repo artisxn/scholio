@@ -66,6 +66,13 @@
             </a></li>
         </ul>
     </li>
+    
+    <li class="link hidden-xs hidden-sm">
+        <a href="{{ url('panel/school/interests') }}" class="{{ 0 === strpos(request()->path(), 'panel/school/interests') ? 'active' : ''}}">
+            <i class="fa fa-pencil"></i> <span >@lang('panel/schools/navigation.interests')</span> 
+        </a>
+    </li>
+    
 
     {{--<li class="has_sub">--}}
         {{--<a href="#"><i class="fa fa-cogs"></i><span> @lang('panel/schools/navigation.settings.title') </span></a>--}}

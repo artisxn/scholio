@@ -12,6 +12,11 @@ Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 
+Route::get('/qqq', function(){
+    $epik = App\Models\School::find(75);
+    Scholio::portalStudy($epik, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+});
+
 Route::get('/studylink/redirect/{school}/{study}/', function (School $school, Study $study) {
 
     if ($school->study->contains($study)) {
