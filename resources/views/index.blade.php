@@ -70,6 +70,9 @@
 
 	<!--====== Javascript Files =======-->
 
+	<!-- jQuery js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
+
 
 	<!-- <script async src="{{asset('/js/jquery224.js')}}"></script> -->
 
@@ -371,7 +374,7 @@
 			</div>
 
 			<!-- ======= Sandwich Menu =======-->
-			<!-- @include('public.sandwich-menu-landing') -->
+			@include('public.sandwich-menu-landing')
 
 
 
@@ -998,23 +1001,23 @@
 				<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank" rel="noopener"><img class="img-support img-support4 lozad" src="image.png" data-src="/new/img/support/eoelogo.png" alt="eoe image"></a></div> -->
 				<div class="col-sm-3 col-xs-6 img-support-container">
 					<a href="https://www.venturegarden.gr/" target="_blank">
-						<img class="imgGray img-support img-support1" src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ng-mouseover="overVenture=true"  ng-mouseleave="overVenture=false" ng-class="{imgFull: (overVenture==true)}">
+						<img class="imgGray img-support img-support1"  rel="noopener" src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ng-mouseover="overVenture=true"  ng-mouseleave="overVenture=false" ng-class="{imgFull: (overVenture==true)}">
 					</a>
 				</div>
 
 				<div class="col-sm-3 col-xs-6 img-support-container">
 					<a href="http://www.thermi-group.com/" target="_blank">
-						<img class="imgGray img-support img-support2" src="/new/img/support/thermi-logo.png" alt="thermi image" ng-mouseover="overThermi=true"  ng-mouseleave="overThermi=false" ng-class="{imgFull: (overThermi==true)}">
+						<img class="imgGray img-support img-support2"  rel="noopener" src="/new/img/support/thermi-logo.png" alt="thermi image" ng-mouseover="overThermi=true"  ng-mouseleave="overThermi=false" ng-class="{imgFull: (overThermi==true)}">
 					</a>
 				</div>
 				<div class="col-sm-3 col-xs-6 cl-fix ">
 					<a href="http://ideatree.gr/" target="_blank">
-						<img class="imgGray img-support img-support3" src="/new/img/support/ideatree-logo.png" alt="ideatree image" ng-mouseover="overIdeatree=true"  ng-mouseleave="overIdeatree=false" ng-class="{imgFull: (overIdeatree==true)}">
+						<img class="imgGray img-support img-support3"  rel="noopener" src="/new/img/support/ideatree-logo.png" alt="ideatree image" ng-mouseover="overIdeatree=true"  ng-mouseleave="overIdeatree=false" ng-class="{imgFull: (overIdeatree==true)}">
 					</a>
 				</div>
 				<div class="col-sm-3 col-xs-6">
 					<a href="http://www.eoellas.org/" target="_blank">
-						<img class="imgGray img-support img-support4" src="/new/img/support/eoelogo.png" alt="eoe image" ng-mouseover="overEoe=true"  ng-mouseleave="overEoe=false" ng-class="{imgFull: (overEoe==true)}">
+						<img class="imgGray img-support img-support4"  rel="noopener" src="/new/img/support/eoelogo.png" alt="eoe image" ng-mouseover="overEoe=true"  ng-mouseleave="overEoe=false" ng-class="{imgFull: (overEoe==true)}">
 					</a>
 				</div>
 
@@ -1038,8 +1041,6 @@
 
 <!-- Footer -->
 @include('public.footer')
-	<!-- jQuery js-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
 
 </body>
 
