@@ -20,6 +20,7 @@ class All extends Seeder
         $this->call(SeedA1::class);
         $this->call(SeedA2::class);
         $this->call(SeedA3::class);
+        $this->call(SeedA4::class);
         $this->call(Frontistiria::class);
     }
 
