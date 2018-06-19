@@ -201,8 +201,9 @@
                                             <option value="allumni">{{ lang('["panel/schools"].resource.students.alumni') }}</option>
                                         </select>
                                     </div>
+<!-- DO NOT DELETE                                    Για να συνδεθει με καρτα μαθητη -->
 
-                                    <div style="margin-top: 50px" class="modal-input-container">
+                                    <!-- <div style="margin-top: 50px" class="modal-input-container">
                                         <div class="section-text centered-text">
                                             <img class="modal-icon" src="/new/img/teacher/team.png" alt="">{{ lang('resource.requests.table.matchingCard') }}</div>
                                         <select v-model="selectedCard" v-if="availableCards" class="modal-select student-select-pad">
@@ -214,7 +215,7 @@
                                                 <option v-for="card in availableCards" v-if="card && card.id != exact_id" :value="card.id">{{ card.name }}</option>
                                             </optgroup>
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -440,6 +441,8 @@
                 axios.get('/api/notifications/requests')
                     .then(response => {
                         this.notifications = response.data
+                        console.log('notifications')
+                        console.log(this.notifications)
                     });
             },
 
@@ -448,7 +451,6 @@
                 axios.get('/api/notifications/getSchoolLevelStudies').then(({data})=>{
                     this.studies = data
                     console.log(this.studies)
-                    
                 })
             },
 

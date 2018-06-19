@@ -81,7 +81,7 @@
     import Croppie from 'croppie'
 
     export default {
-        props: ['imgUrl', 'imgWidth', 'imgHeight', 'imgData'],
+        props: ['imgUrl', 'imgWidth', 'imgHeight', 'imgData', 'outSizewidth', 'outSizeheight'],
 
         data() {
             return {
@@ -113,10 +113,10 @@
                 }
                 this.croppie.result({
                     type: 'canvas',
-                    size: {width: 750, height: 500},
+                    size: {width: this.imgWidth, height: this.imgHeight},
                     resultSize: {
-                        width: 750,
-                        height: 500
+                        width: this.imgWidth,
+                        height: this.imgHeight
 				    }
                 }).then((response) => {
                     this.image = response
@@ -189,13 +189,13 @@
             setUpImageResolution(){
                 // widthHeightRatio:1.4,
                 if (this.imgWidth) {
-                    this.width = parseInt(this.imgWidth)
+                    this.width = parseInt(this.outSizewidth)
                 } else {
                     this.width = 870
                 }
 
                 if (this.imgHeight) {
-                    this.height = parseInt(this.imgHeight)
+                    this.height = parseInt(this.outSizeheight)
                 } else {
                     this.height = 600
                 }

@@ -12,8 +12,6 @@
 
 
     <style>
-
-
         .photo-box{ height: 285px;
             background-size: cover;
             background-position: center;
@@ -197,8 +195,6 @@
 
             <div class="container" style="position: relative">
 
-                {{--<div class="upper"></div>--}}
-
                 <div class="photo-box"></div>
 
                 <img src="{{ auth()->user()->info->avatar }}" class="avatar img-circle" >
@@ -209,19 +205,8 @@
                 </span>
 
                 </div>
-                {{--  @if(!auth()->user()->works->isEmpty())
-                    <span class="pull-left work xs-hidden">{{auth()->user()->works->first()->name}} </span>
-                    <div class="work xs-centered xs-display">{{auth()->user()->works->first()->name}} </div>
-                @endif  --}}
+        
                 <span class="pull-right work hidden-xs mail margin-right-15"> <i class="fa fa-envelope"></i> {{ auth()->user()->info->email() }} </span>
-
-
-                {{--  ΝΑ ΤΟ ΒΑΛΛΟΥΜΕ ΣΤΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ ΣΤΟΝ ΠΙΝΑΚΑ teachers με field "title"  --}}
-                {{--<div class="col-sm-6 basic-studies" style="margin: 110px 0 0 0; max-width: 350px">--}}
-                {{--<input type="text" label="Βασικές Σπουδές/Ειδικότητα:" name="basic-studies" class="demo-form ad-input " value="{{ auth()->user()->info->title }}" id="">--}}
-                    {{--<i class="icon-inp fa fa-graduation-cap"></i>--}}
-                    {{--<img src="/new/img/teacher/graduationMono.png" style="height: 22px; margin-top: -92px" alt="">--}}
-                {{--</div>--}}
 
                 <div class="basic-title">
                     <span>{{ auth()->user()->info->title }} </span>
@@ -237,7 +222,6 @@
                     <div class=" margin-bot-15 sc-t-dark-grey">
                         {{-- TEACHER STARTS HERE --}}
                         <div class="row">
-                            {{--<div class="up"></div>--}}
                             <div class="col-xs-12">
 
                                 <img class="up png-title" src="/new/img/teacher/info.png" alt="">
@@ -330,9 +314,6 @@
 
                             </div>
 
-                            {{--<div class="col-lg-3 hidden-md hidden-xs">--}}
-                            {{--<div class="sidebar"></div>--}}
-                            {{--</div>--}}
                         </div>
 
                     </div>
@@ -514,8 +495,8 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
                             <button type="button" onClick="document.getElementById('form-studies').submit()" data-dismiss="modal" class="btn btn-info">@lang('teacher_profile.save')</button>
                         </div>
-                </form>
-            </div>
+                    </form>
+                </div>
         </div>
     </div><!-- /.modal -->
 
@@ -914,6 +895,87 @@
             callback: {onInit: function () {}}
         });
     });
+</script>
+
+<script>
+    $(function () {
+            $("#datepickerWorkFromEdit-{{ $work->id }}").datepicker(
+                {
+                    dateFormat: "mm/yy",
+                    changeMonth: true,
+                    changeYear: true,
+                    showButtonPanel: true,
+                    yearRange: "1980:",
+                    onClose: function (dateText, inst) {
+
+
+                        function isDonePressed() {
+                            return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                        }
+
+                        if (isDonePressed()) {
+                            datestr = $(this).val()
+                            var year = datestr.substring(datestr.length - 4, datestr.length);
+                            var month = datestr.substring(0, 2);
+                            // var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                            // var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                            $(this).datepicker('setDate', new Date(year, month -1, 1)).trigger('change');
+
+                            $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                        }
+                    },
+                    beforeShow: function (input, inst) {
+
+                        inst.dpDiv.addClass('month_year_datepicker')
+                        
+                        if ((datestr = $(this).val()).length > 0) {
+                            year = datestr.substring(datestr.length - 4, datestr.length);
+                            month = datestr.substring(0, 2);
+                            $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+                            $(this).datepicker('setDate', new Date(year, month - 1, 1));
+                            $(".ui-datepicker-calendar").hide();
+                        }
+                    }
+                });
+        });
+
+        $(function () {
+                $("#datepickerWorkEndEdit-{{$work->id}}").datepicker(
+                    {
+                        dateFormat: "mm/yy",
+                        changeMonth: true,
+                        changeYear: true,
+                        showButtonPanel: true,
+                        yearRange: "1980:",
+                        onClose: function (dateText, inst) {
+
+
+                            function isDonePressed() {
+                                return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                            }
+
+                            if (isDonePressed()) {
+                                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+                                $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                            }
+                        },
+                        beforeShow: function (input, inst) {
+
+                            inst.dpDiv.addClass('month_year_datepicker')
+
+                            if ((datestr = $(this).val()).length > 0) {
+                                year = datestr.substring(datestr.length - 4, datestr.length);
+                                month = datestr.substring(0, 2);
+                                $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+                                $(this).datepicker('setDate', new Date(year, month - 1, 1));
+                                $(".ui-datepicker-calendar").hide();
+                            }
+                        }
+                    })
+            });
 </script>
 
 @endsection

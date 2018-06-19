@@ -482,11 +482,13 @@ Route::get('/getScholarshipFullAdmissions', function () {
 
 Route::post('/request/school', function () {
     if (auth()->user()->role != 'school') {
+        $school = App\Models\School::find(request()->school);
         auth()->user()->apply()->toggle(request()->school);
+        
         if (auth()->user()->role == 'student') {
-            event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school), Study::find(request()->study), request()->status));
+            event(new UserAppliedOnSchool(auth()->user(), User::find($school->user_id), Study::find(request()->study), request()->status));
         } else {
-            event(new UserAppliedOnSchool(auth()->user(), User::find(request()->school), request()->study, request()->status));
+            event(new UserAppliedOnSchool(auth()->user(), User::find($school->user_id), request()->study, request()->status));
         }
 
         return 'OK';
@@ -510,7 +512,9 @@ Route::post('/connection/{id}/deny', function ($id) {
     foreach (auth()->user()->unreadNotifications as $notification) {
         if ($notification->id == $id) {
             $user = User::find(request()->user);
-            $user->apply()->toggle(School::find($notification->notifiable_id));
+            $school_user = User::find($notification->notifiable_id);
+
+            $user->apply()->toggle($school_user->info->id);
             $notification->delete();
         }
     }

@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row" >
             <div class="pull-left pad-top-50 text-incr-125 left-section" >
-                <a href="#" class="sc-t-white margin-right-20 social-link">@lang('main.footer.contact')</a>
+                <a href="https://blog.schol.io/contact/" class="sc-t-white margin-right-20 social-link">@lang('main.footer.contact')</a>
                 <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="https://blog.schol.io/" target="_blank" rel="noopener" class="sc-t-white margin-right-20 social-link">@lang('main.footer.blog')</a></span>
                 <span class="">  <a href="{{ url('terms') }}" class="sc-t-white social-link">@lang('main.footer.terms')</a></span>
             </div>
@@ -27,7 +27,7 @@
                 <div style="width: 20px; height: 10px;"></div>
                 <span>  <a href="https://www.linkedin.com/company/18063117/" target="_blank" rel="noopener" class="sc-t-white social-link"><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
                 <span>  <a href="https://www.instagram.com/schol.io/" target="_blank" rel="noopener" class="sc-t-white margin-left-20 social-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
-                <span>  <a href="#" class="sc-t-white margin-left-20 social-link"><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
+                <span>  <a href="https://www.youtube.com/channel/UCvjhFZreE17xlGyBewKpYoA/" class="sc-t-white margin-left-20 social-link"><i class="fa fa-youtube" aria-hidden="true"></i></a></span>
             </div>
         </div>
 

@@ -28,9 +28,9 @@
                 <div class="section2-container ">
                     <div class="inner-section2">
                         @if($type == "avatar" || $type == "logo")
-                            <image-crop img-width="120" img-height="120" img-data="{{ $type }}"></image-crop>
+                            <image-crop img-width="150" img-height="150" out-sizewidth="300" out-sizeheight="300" img-data="{{ $type }}"></image-crop>
                         @else
-                            <image-crop img-width="800" img-height="600" img-data="{{ $type }}"></image-crop>
+                            <image-crop img-width="800" img-height="600" out-sizewidth="600" out-sizeheight="400" img-data="{{ $type }}"></image-crop>
                         @endif
                     </div>
                 </div>

@@ -214,7 +214,7 @@
                     <div class="section2-container ">
                         <div class="inner-section2">
                             <!-- widthHeightRatio:15/10 -->
-                            <image-crop img-width="600" img-height="400" img-data="school"></image-crop>
+                            <image-crop img-width="750" img-height="500" out-sizewidth="600" out-sizeheight="400" img-data="school"></image-crop>
                         </div>
                     </div>
                 </div>

@@ -88,6 +88,7 @@ class RegisterController extends Controller
         } else {
             if ($data['role'] == 'student') {
                 $this->newInfo(new Student, $user, $data, new Cv);
+                $redirectTo = '/panel/users/student/studentCv';
             } else if ($data['role'] == 'parent') {
                 $this->newInfo(new Guardian, $user, $data);
             } else {

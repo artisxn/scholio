@@ -26,13 +26,13 @@
                         <span class="search-counter" >{{ studentCounter }} <i class="fa fa-graduation-cap"></i></span>
             </span>
             </div>
-
-        <span class="tool">
+<!-- DO NOT DELETE                                    Για να συνδεθει με καρτα μαθητη -->
+        <!-- <span class="tool">
              <div class="addStudent"><i class="fa fa-user-plus" data-toggle="modal" data-target="#ModalAddStudent"></i></div>
              <span class="tooltiptext  tooltiptext2 ">
                   {{ lang('resource.students.modal.addStudent') }}
              </span>
-        </span>
+        </span> -->
 
 
             <!--<div class="search-counter" v-else>{{ studentCounter }} Σπουδαστές</div>-->
@@ -63,10 +63,10 @@
 
                                             <div class="frame-cont">
                                                 <img src="/new/img/photoFrame.png" class="frame" alt="">
-                                                <img :src="scholio + student.avatar" class="avatar2" alt="">
+                                                <img :src="student.avatar" class="avatar2" alt="">
                                                 <img src="/new/img/clip2.png" class="clip" alt="">
                                             </div>
-                                            <div class="img-cont img-contSAFARI"><img class="img-circle sc-img" width="70" :src="scholio + student.avatar" alt=""/></div>
+                                            <div class="img-cont img-contSAFARI"><img class="img-circle sc-img" width="70" :src="student.avatar" alt=""/></div>
                                             <div class="name nameSAFARI"> {{student.name}} </div>
                                             <div class="email emailSAFARI"><a :href="'mailto:'+student.email">{{student.email}}</a></div>
 
@@ -191,12 +191,13 @@
                                 <div class="studies-selection-container" >
                                     <div class="first-study-text">
                                         {{ lang('resource.students.modal.study1') }}
-                                        <span class="tool">
+<!-- DO NOT DELETE                           Για το επιπλεον study                                         -->
+                                        <!-- <span class="tool">
                                             <i class="fa fa-plus" @click="study2 = true" v-if="!secondStudy && selectedStudy && !study2"></i>
                                             <span class="tooltiptext">
                                                 {{ lang('resource.students.modal.addStudy') }}
                                                 </span>
-                                        </span>
+                                        </span> -->
 
                                     </div>
                                     <div class="">
@@ -247,8 +248,8 @@
 
                                     </div>
 
-
-                                    <div class="matching" v-if="availableCards && info.role == 'student'">
+<!-- DO NOT DELETE                                    Για να συνδεθει με καρτα μαθητη -->
+                                    <!-- <div class="matching" v-if="availableCards && info.role == 'student'">
                                         <div class="info-title">
                                             {{lang('resource.students.modal.matching') }}
                                         </div>
@@ -265,7 +266,7 @@
                                         <i class="fa fa-id-card select-icon"></i>
                                         <div class="col-xl-line"></div>
 
-                                    </div>
+                                    </div> -->
                                 </div>
 
 
