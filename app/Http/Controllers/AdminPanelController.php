@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\Algolia;
 use App\Models\Image;
 use App\Models\School;
 use App\Models\SchoolTypes;
+use App\Models\SocialLink;
 use App\Scholio\Scholio;
 use GuzzleHttp\Psr7\Request;
-use App\Models\SocialLink;
-use App\Jobs\Algolia;
 
 class AdminPanelController extends Controller
 {
@@ -192,6 +192,7 @@ class AdminPanelController extends Controller
         $school->address = request()->address;
         $school->phone = request()->phone;
         $school->about = request()->about;
+        $school->public_email = request()->public_email;
 
         $school->save();
 
@@ -255,17 +256,18 @@ class AdminPanelController extends Controller
             } catch (Exception $e) {
             }
         }
+        if (!\App::environment('local')) {
+            dispatch(new Algolia($school));
+        }
 
-        dispatch(new Algolia($school));
-
-        session()->flash('updated_profile', 'Your profile has been updated');
+        session()->flash('updated_profile', trans('school_profile.update_profile'));
 
         return back();
     }
 
     /**
-    * @return
-    */
+     * @return
+     */
     public function saveSocialLinks($link, $name)
     {
         if (!auth()->user()->socialLinks->pluck('name')->contains($name)) {
@@ -274,17 +276,17 @@ class AdminPanelController extends Controller
             $social->name = $name;
             $social->link = $link;
             return $social->save();
-        }else{
+        } else {
             $social = auth()->user()->socialLinks;
             $s = $social->where('name', $name)->first();
             $s->link = $link;
             return $s->save();
-        }  
+        }
     }
 
     /**
-    * @return
-    */
+     * @return
+     */
     public function deleteIfExists($name)
     {
         // dd(auth()->user()->);
@@ -321,7 +323,9 @@ class AdminPanelController extends Controller
             $school->image()->toggle($i);
         }
 
-        dispatch(new Algolia($school));
+        if (!\App::environment('local')) {
+            dispatch(new Algolia($school));
+        }
 
         return back();
     }
@@ -336,9 +340,11 @@ class AdminPanelController extends Controller
 
         $school->image()->toggle($image);
 
-        unlink(public_path() . '/upload/school/'. $school->type->name . '_' . auth()->user()->id . '_' . auth()->user()->name . '/' . $image->name);
+        unlink(public_path() . '/upload/school/' . $school->type->name . '_' . auth()->user()->id . '_' . auth()->user()->name . '/' . $image->name);
 
-        dispatch(new Algolia($school));
+        if (!\App::environment('local')) {
+            dispatch(new Algolia($school));
+        }
 
         return back();
     }

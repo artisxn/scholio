@@ -9,12 +9,14 @@ return [
     'city' => 'City',
     'name' => 'Name',
     'address' => 'Address',
-    'email' => 'Email',
+    'email' => 'Email (Login)',
     'password' => 'Password',
     'phone' => 'Phone Number',
     'manager' => 'Contact Manager Name',
     'contact' => 'Contact info',
     'social' => 'Links to social media',
+    'public_email' => 'Public Communication Email',
+    'update_profile' => 'Your profile has been updated',
 
 
     'about' => 'Write a short description here',

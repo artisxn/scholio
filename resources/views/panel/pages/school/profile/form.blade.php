@@ -233,6 +233,11 @@
                         <i class="icon-inp fa fa-university"></i>
                     </div>
 
+                    <div class="input-container col-xs-12 col-sm-6 col-xl-3">
+                            <input type="text" label="@lang('school_profile.public_email')" name="public_email" class="demo-form ad-input" value="{{ $school->public_email ?? auth()->user()->email }}">
+                            <i class="icon-inp fa fa-envelope"></i>
+                        </div>
+
                     <div class=" input-container col-xs-12 col-sm-6 col-xl-3">
                         <input type="text" label="@lang('school_profile.website')" name="website" class="demo-form ad-input" value="<?php echo e($school->website); ?>" >
                         <i class="icon-inp fa fa-globe"></i>
