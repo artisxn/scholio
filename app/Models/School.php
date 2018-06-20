@@ -172,6 +172,9 @@ class School extends Model
 
     public function email()
     {
+        if($this->public_email){
+            return $this->public_email;
+        }
         return $this->admin->email;
     }
 

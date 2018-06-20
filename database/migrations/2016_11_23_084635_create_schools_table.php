@@ -17,6 +17,7 @@ class CreateSchoolsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('type_id')->unsigned();
+            $table->string('public_email')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->bigInteger('phone')->nullable();
