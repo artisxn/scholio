@@ -198,6 +198,8 @@ echo json_encode($trans);
             console.log(window.navBar)
             
             function startTour(){
+            console.log('srartTour')
+
                 var b = 'bottom';
                 var t = 'top';
                 var r = 'right';
@@ -244,6 +246,14 @@ echo json_encode($trans);
                 var tour = {
                     id: "my-intro",
                     steps: [
+                            newTour('logoBtn',         lang.tourSchools.title0,  lang.tourSchools.text0,  r,   0,  -110),
+                            newTour('photosBtn',       lang.tourSchools.titleS,  lang.tourSchools.textS,  b,   4,  10),
+
+                        
+                        newTour('notificationsBtn',lang.tourSchools.title8,  lang.tourSchools.text8,  l,   0,   10),
+                        newTour('navDashoboard',   lang.tourSchools.title12, lang.tourSchools.text12, r, -10,  -100),
+                        newTour('navProfile',      lang.tourSchools.title14, lang.tourSchools.text14, r, -10,  -100),
+                        newTour('navScholarships', lang.tourSchools.title15, lang.tourSchools.text15, r, -10,  -95),
                         
                     ],
                     showPrevButton: true
