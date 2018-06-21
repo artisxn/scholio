@@ -137,6 +137,15 @@ Artisan::command('scholio:algolia', function () {
     }
 })->describe('Insert Schools in Algolia');
 
+Artisan::command('scholio:school_algolia {username?}', function () {
+    $username = $this->argument('username');
+    $user = App\User::where('username', $username)->first();
+    if($user->role == 'school'){
+        $school = $user->info;
+        dispatch(new Algolia($school));
+    }
+})->describe('Insert School in Algolia');
+
 Artisan::command('scholio:algoliaSchool {school}', function () {
     $schoolID = $this->argument('school');
     $school = School::find($schoolID);
