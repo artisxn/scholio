@@ -12,6 +12,10 @@ Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 
+Route::domain('demo.scholio.test')->group(function () {
+    Route::get('/', 'RoutesController@index');
+});
+
 Route::get('/studylink/redirect/{school}/{study}/', function (School $school, Study $study) {
 
     if ($school->study->contains($study)) {
