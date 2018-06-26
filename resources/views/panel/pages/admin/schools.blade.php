@@ -28,6 +28,7 @@
                                             <!-- <th>Reports</th> -->
                                             <th>PageViews</th>
                                             <th>PageClicks</th>
+                                            <th>StudyClicks</th>
                                             <th>Created At</th>
                                             <th>Delete from Algolia</th>
                                             <th>Delete From Scholio</th>
@@ -52,6 +53,13 @@
                                             <!-- <td>{{ count($school->admin->report) }}</td> -->
                                             <td>{{ Counter::show('school-profile', $school->id) }}</td>
                                             <td>{{ App\Models\SchoolLinks::where('school_id', $school->id)->first()->count ?? 0 }}</td>
+                                            <?php
+                                            $countAll = 0;
+                                            ?>
+                                            @foreach(App\Models\StudyLinks::where('school_id',$school->id)->get() as $link)
+                                                <?php $countAll += $link->count; ?>
+                                            @endforeach
+                                            <td>{{ $countAll }}</td>
                                             <td>{{ Carbon\Carbon::parse($school->created_at)->format('d-m-Y') }}</td>
                                             <td><form method="POST" action="/school/deleteAlgolia/{{$school->id}}">
                                                 {{ csrf_field() }}
