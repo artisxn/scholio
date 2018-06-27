@@ -12,8 +12,24 @@ Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 
-Route::domain('demo.scholio.test')->group(function () {
-    Route::get('/', 'RoutesController@index');
+Route::get('siteGen', function(){
+    foreach(School::all() as $school){
+        echo htmlspecialchars('
+        <url>
+        <loc>https://schol.io/@' . $school->admin->username .'</loc>
+    
+    
+        <lastmod>2018-05-15T02:05:59+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>');
+
+    echo '<br>';
+    }
+
+    return '------';
 });
 
 Route::get('/studylink/redirect/{school}/{study}/', function (School $school, Study $study) {
