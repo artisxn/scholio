@@ -159,35 +159,6 @@ class SeedA5 extends Seeder
         Scholio::portalSocial($elek, 'instagram', 'https://instagram.com/www.ellek-edu.gr');
 
 //school
-        $delasalle = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Κολέγιο ΔΕΛΑΣΑΛ', 'email' => 'info@delasalle.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'delasalle'])->id,
-            'address' => 'Πεύκα',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310673252,
-            'type_id' => 6,
-            'website' => 'www.delasalle.gr',
-            'approved' => 1,
-            'about' => '  Το Κολέγιο «ΔΕΛΑΣΑΛ», ένα λασαλιανό σχολείο που ιδρύθηκε το 1888 στη Θεσσαλονίκη, στηρίζεται στην εμπειρία, στον διάλογο, στη συνεργασία και την πίστη σε κοινές αξίες (χριστιανικές και ανθρωπιστικές), οι οποίες προσδίδουν στο «Λασαλιανό Εκπαιδευτικό Σχέδιο» μια ανθρωπιστική και πνευματική δυναμική.
-
-    Το «ΔΕΛΑΣΑΛ», σεβόμενο απόλυτα την ελευθερία συνείδησης του ατόμου, δέχεται μαθητές χωρίς θρησκευτικές, δογματικές, πολιτικές, φυλετικές, οικονομικές και κοινωνικές διακρίσεις. Έτσι, εξασφαλίζει την αποδοχή της διαφορετικότητας του άλλου, την αμοιβαία κατανόηση και την εκτίμηση, καθώς και τον σεβασμό της ιδιαιτερότητας του καθενός. Με τον τρόπο αυτόν, συμβάλλει τα μέγιστα στην αγάπη και την ειρήνη ανάμεσα στους ανθρώπους. Ο μαθητής βρίσκεται στο κέντρο του ενδιαφέροντος της εκπαιδευτικής πράξης, η οποία πάνω απ’ όλα είναι έργο αγάπης.
-
-    Οι λασαλιανοί εκπαιδευτικοί έχουν συνείδηση ότι επιτελούν λειτούργημα, αφοσιώνονται στη μόρφωση και την αγωγή των νέων, πιστοί στην προτροπή του Ιωάννη-Βαπτιστή Δελασάλ, ιδρυτή των σχολείων τους: «Πρέπει το παράδειγμά σας να ανταποκρίνεται σ’ αυτά που λέτε …».
-
-    Σήμερα, στην εποχή της παγκοσμιοποίησης, της ισοπέδωσης και της σύγχυσης αρχών και αξιών, το λασαλιανό σχολείο, επίκαιρο όσο ποτέ, βοηθάει τους μαθητές του όχι μόνο να αποκτήσουν γνώσεις και εφόδια, αλλά και να δώσουν νόημα στη ζωή τους.
-
-     ',
-            'background' => $background,
-        ]);
-
-        Scholio::portalStudy($delasalle, 'Παιδικός Σταθμός - Νηπιαγωγείο', '', '', 'http://petit.delasalle.gr/');
-        Scholio::portalStudy($delasalle, 'Δημοτικό', '', '', 'http://www.elementary.delasalle.gr/');
-        Scholio::portalStudy($delasalle, 'Γυμνάσιο - Λύκειο', '', '', 'http://www.gymlyk.delasalle.gr/');
-
-        Scholio::portalSocial($delasalle, 'facebook', 'https://www.facebook.com/DeLaSalle.Thes');
-        Scholio::portalSocial($delasalle, 'twitter', 'https://twitter.com/DeLaSalle_Thes');
-        Scholio::portalSocial($delasalle, 'youtube', 'https://www.youtube.com/user/DeLaSalleCollegeThes');
-
-//school
         $andreadis = factory(App\Models\School::class)->create([
             'user_id' => factory(App\User::class)->create(['name' => 'Εκπαιδευτήρια Ανδρεάδη', 'email' => 'info@andreadis-school.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'andreadis'])->id,
             'address' => 'Ωραιόκαστρο',

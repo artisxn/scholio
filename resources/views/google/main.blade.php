@@ -13,6 +13,25 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "https://schol.io",
+    "logo": "https://schol.io/new/img/logoNXsquareBg.png",
+    "contactPoint": [{
+      "@type": "Education Technology",
+    }],
+    "sameAs": [
+      "https://www.facebook.com/scholioapp/",
+      "https://twitter.com/ScholioApp",
+      "https://www.instagram.com/schol.io/",
+      "https://www.linkedin.com/company/18063117/",
+      "https://www.youtube.com/channel/UCvjhFZreE17xlGyBewKpYoA/"
+  ]
+  }
+  </script>
+
 <!-- Your customer chat code -->
 <div class="fb-customerchat"
   attribution="setup_tool"
