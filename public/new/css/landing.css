@@ -210,6 +210,11 @@ video{min-width:100%;min-height:100%;z-index:-100;transform:scale(1);}
 @media (min-width:351px) and (max-width:367px){.sc-landing-secNew{height:610px;}
 }
 
+
+@media (max-width:420px){
+    .main-title{top:358px; font-size: 195%;}
+}
+
 @media (max-width:403px){
     .main-title{top:350px; font-size: 190%;}
 }
