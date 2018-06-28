@@ -6,7 +6,7 @@ use App\Models\Study;
 use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Illuminate\Support\Facades\Route;
-use App\Scholio\Algolia;
+use App\Jobs\Algolia;
 
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
