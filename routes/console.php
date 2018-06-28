@@ -157,5 +157,5 @@ Artisan::command('scholio:algoliaScholarship {scholarship}', function () {
     $scholarshipID = $this->argument('scholarship');
     $scholarship = School::find($scholarshipID);
     dispatch(new Algolia($scholarship));
-    $this->info('School ID: ' . $school->id . ' inserted!');
+    $this->info('Scholarship ID: ' . $scholarship->id . ' inserted!');
 })->describe('Insert Schools in Algolia');
