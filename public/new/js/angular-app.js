@@ -78,6 +78,7 @@
         $scope.input = ''
         var client = algolia.Client('N08SZYEUO0', 'e00bc4548ea05c691c81f7c30c100bd7');
         var schools = client.initIndex('dummySchools');
+        var scholarships = client.initIndex('dummyScholarships');
         $scope.getDatasets1 = function() {
             return [{
                 source: algolia.sources.hits(scholarships, {
