@@ -650,6 +650,8 @@ angular.module("scholarshipsResultsApp",[])
                 @{{^multiple}}
                 <div class="text-content">@{{{_highlightResult.study.value}}}</div>
                 @{{/multiple}}
+                <div class="text-title">Title</div>
+                <div class="text-content">@{{title}}</div>
 
                 <div class="text-title">@lang('scholarships.cards.level')</div>
                 <div class="text-content">@{{{_highlightResult.level.value}}}</div>

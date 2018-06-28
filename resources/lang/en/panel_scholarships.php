@@ -9,6 +9,7 @@ return [
         'selectStudySubject' => 'Select Field of Studies',
         'studiesLevel' => 'Level of Studies',
         'studiesSubject' => 'Field of Studies',
+        'title'=>'Title',
 
         'available' => ' available',
         'multiple' => 'Multiple Studies',

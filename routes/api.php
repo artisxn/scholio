@@ -99,6 +99,7 @@ Route::post('/school/scholarshipSave', function () {
         $scholarship->financial_id = request()->financial;
         $scholarship->financial_amount = request()->financial_amount;
         $scholarship->price = request()->price;
+        $scholarship->title = request()->title;
         if (count(request()->studies) == 1) {
             $scholarship->study_id = request()->studies[0]['id'];
             $scholarship->multiple = 0;

@@ -254,6 +254,7 @@ class Algolia implements ShouldQueue
         $dummy->level = $scholarship->level->name;
         $dummy->criteria = $scholarship->criteria->name;
         $dummy->criteria_id = $scholarship->criteria->id;
+        $dummy->title = $scholarship->title;
 
         $dummy->school = $scholarship->school->name();
         $dummy->school_id = $scholarship->school->id;

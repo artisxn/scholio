@@ -12,10 +12,7 @@ use App\Jobs\Algolia;
 Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
-Route::get('test/1', function(){
-    $scholarship = App\Models\Scholarship::find(25);
-    dispatch(new Algolia($scholarship));
-});
+
 Route::get('siteGen', function(){
     foreach(School::all() as $school){
         echo htmlspecialchars('

@@ -368,12 +368,12 @@
 
 
                             <!-- ================  For portal only ==================== -->
-                            {{--<li class="sc-landing-menu-item">--}}
-                            {{--<a href="{{url('public/scholarships')}}" class="btn-change-search">--}}
-                                {{--<i class="fa fa-trophy margin-right-5"></i>--}}
-                                {{--@lang('schools.navigation.search_scholarship')--}}
-                            {{--</a>--}}
-                            {{--</li>--}}
+                            <li class="sc-landing-menu-item">
+                            <a href="{{url('public/scholarships')}}" class="btn-change-search">
+                                <i class="fa fa-trophy margin-right-5"></i>
+                                @lang('schools.navigation.search_scholarship')
+                            </a>
+                            </li>
                             <!-- ======================================================= -->
                             @if(auth()->check())
                                 <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>

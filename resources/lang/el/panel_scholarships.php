@@ -9,6 +9,7 @@ return [
         'selectStudySubject' => 'Επιλέξτε Αντικείμενο Σπουδών',
         'studiesLevel' => 'Επίπεδο Σπουδών',
         'studiesSubject' => 'Αντικείμενο Σπουδών',
+        'title'=>'Τίτλος',
 
         'available' => ' διαθέσιμες',
         'multiple' => 'Πολλαπλά Αντικείμενα Σπουδών',

@@ -30,6 +30,7 @@ class CreateScholarshipsTable extends Migration
             $table->boolean('multiple')->default(0);
             $table->integer('admissions_limit')->default(10000);
             $table->float('price', 10, 2)->nullable();
+            $table->string('title')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

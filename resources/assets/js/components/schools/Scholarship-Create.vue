@@ -380,7 +380,7 @@
                                 <div class="clearfix hidden-mdlg"></div>
 
                                 <span class="mobile-hidden">
-                                    <div class=" col-sm-4 col-lg-4 col-xs-6s" style="text-align: center;" v-if="">
+                                    <div class=" col-sm-3 col-lg-3 col-xs-6s" style="text-align: center;" v-if="">
                                         <div class="amount-text" > {{ lang('panel_scholarships.create.tuitionAmount') }}</div>
                                         <div class="input-group " style="width: 240px; margin-left: auto; margin-right: auto; text-align: center;">
                                             <input type="text" class="form-control" style="text-align: center;" placeholder="" aria-describedby="basic-addon2" id="price" v-model="price">
@@ -388,7 +388,7 @@
                                         </div>
                                     </div>
 
-                                    <div class=" col-sm-4 col-lg-4 col-xs-6s" style="margin: 17px 0 0 0; padding: 0!important;" v-if="criteria_value.id != 1">
+                                    <div class=" col-sm-3 col-lg-3 col-xs-6s" style="margin: 17px 0 0 0; padding: 0!important;" v-if="criteria_value.id != 1">
                                         <div class="funkyradio" style="margin: 8px 0 0 0; text-align: center">
                                             <div class="funkyradio-success exams-container" style="z-index: 3; position: relative;">
                                                 <input type="checkbox" id="exams" v-model="exams" :disabled="criteria_value.id == 1">
@@ -397,7 +397,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-4 col-lg-4 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important; margin-top: 18px;" v-show="exams" v-if="criteria_value.id != 1">
+                                    <div class="col-sm-3 col-lg-3 datepicker-outer col-xs-6s" style="text-align: center; padding: 0!important; margin-top: 18px;" v-show="exams" v-if="criteria_value.id != 1">
                                         <div> {{ lang('panel_scholarships.create.examsDate') }} </div>
                                         <div style="z-index: 3; position: relative;">
                                             <input type="text" id="examsdate" size="32" class="ll-skin-cangas datepicker-input" style="text-align: center; height: 37px; margin-top: 1px;"
@@ -405,12 +405,19 @@
                                         </div>
                                     </div>
 
+                                    <div class=" col-sm-3 col-lg-3 col-xs-6s" style="text-align: center;" v-if="">
+                                            <div class="amount-text" > {{ lang('panel_scholarships.create.title') }}</div>
+                                            <div class="input-group " style="width: 240px; margin-left: auto; margin-right: auto; text-align: center;">
+                                                <input type="text" class="form-control" style="text-align: center;" placeholder="" aria-describedby="basic-addon2" id="title" v-model="title">
+                                            </div>
+                                        </div>
+
                                 </span>
 
                                 <!--<div class=" col-sm-4 col-lg-4 col-xs-12s" style="margin: 8px 0 0 0; padding: 0!important;" v-if="">-->
                                     <!--<div class="" style="margin: 8px 0 0 0; text-align: center">-->
                                         <!--<div class="funkyradio-success exams-container" style="">-->
-                                            <!--Ενδεικτικό αρχικό ποσό διδάκτρων-->
+                                            <!--Ενδεικτικό αρχικό ποσό ddδιδάκτρων-->
                                             <!--<input type="number" id="price" v-model="price">-->
                                         <!--</div>-->
                                     <!--</div>-->
@@ -1551,6 +1558,7 @@
                 end_at: null,
                 today: null,
                 exams: false,
+                title: null,
                 exams_date: null,
                 price: null,
                 content: '',
@@ -1680,6 +1688,7 @@
                     'exams_date': this.exams_date,
                     'terms': this.terms,
                     'tags': this.value,
+                    'title': this.title,
                     'allWinners': this.allWinners,
                     'winners': this.winners,
                     'price': this.price
