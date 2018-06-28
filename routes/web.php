@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Route;
 Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
-
+Route::get('test/1', function(){
+    $s = App\Models\Scholarship::find(24);
+    Scholio::dummyScholarshipCreate($s);
+    // $algolia = new Algolia($scholarship);
+});
 Route::get('siteGen', function(){
     foreach(School::all() as $school){
         echo htmlspecialchars('

@@ -712,7 +712,7 @@
 						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  col-xxxs-12">
 							<div class="grid">
 								<figure class="effect-lily sc-landing-card ">
-									<img src="image.png" data-src="{{asset('new/img/sect-photo/belfast2.jpg')}}" alt="student" style="" class="img-responsive lozad" />
+									<img src="image.png" data-src="{{asset('new/img/sect-photo/belfast2.jpg')}}" alt="Ιδιωτικά Σχολεία" style="" class="img-responsive lozad" />
 
 									<figcaption>
 										<div class="centered-text">
@@ -732,7 +732,7 @@
 							<div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card">
-										<img src="image.png" data-src="{{asset('new/img/sect-photo/college2.jpg')}}" alt="student" style="" class="img-responsive lozad" />
+										<img src="image.png" data-src="{{asset('new/img/sect-photo/college2.jpg')}}" alt="Κολλέγια" style="" class="img-responsive lozad" />
 
 									<figcaption>
 										<div class="centered-text">
@@ -750,7 +750,7 @@
 							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card ">
-										<img src="image.png" data-src="{{asset('new/img/sect-photo/doct2.jpg')}}" alt="student" style="" class="img-responsive lozad" />
+										<img src="image.png" data-src="{{asset('new/img/sect-photo/doct2.jpg')}}" alt="ΙΕΚ" style="" class="img-responsive lozad" />
 
 										<figcaption>
 											<div class="centered-text">

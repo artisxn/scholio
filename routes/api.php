@@ -68,6 +68,7 @@ Route::get('/results/{type}', 'ApiController@results')->middleware('api');
 Route::get('/profile/{school}', 'ApiController@schoolProfile')->middleware('api');
 Route::get('/profile/auth/{school}', 'ApiController@schoolAuthProfile')->middleware('auth:api');
 Route::post('/scholarship/save', 'ApiController@scholarshipSave')->middleware('auth:api');
+
 Route::get('/scholarship/get/{scholarship}', 'ApiController@getScholarship')->middleware('api');
 Route::post('/interested/save', 'ApiController@interestedSave')->middleware('auth:api');
 Route::get('/interested/check', 'ApiController@interestedCheck')->middleware('auth:api');

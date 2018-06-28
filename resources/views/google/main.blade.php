@@ -28,7 +28,8 @@
       "https://www.instagram.com/schol.io/",
       "https://www.linkedin.com/company/18063117/",
       "https://www.youtube.com/channel/UCvjhFZreE17xlGyBewKpYoA/"
-  ]
+    ],
+    
   }
   </script>
 
