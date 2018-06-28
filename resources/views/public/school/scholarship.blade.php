@@ -337,7 +337,9 @@
             </span>
             <span class="col-xxxs-5 col-xs-4 col-sm-5 col-md-5 col-lg-5 align-right">
                 <div class="margin-top-10">@{{scholarship.created}}</div>
+                <!--
                  <div class="margin-top-10" >{{ $scholarship->admissions_limit }}</div>
+                -->
 
             </span>
 

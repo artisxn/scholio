@@ -563,9 +563,11 @@
                             <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
                         </span>
                         <span class="col-lg-4 text-right">
+                            <!--
                             <div class="" style="float: right">
                                 {{ $scholarship->admissions_limit }}
                             </div>
+                            -->
                             @if($scholarship->exam)
                                 <div class="margin-top-10" style="float: right">
 

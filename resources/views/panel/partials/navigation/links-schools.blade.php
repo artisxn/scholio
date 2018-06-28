@@ -57,7 +57,9 @@
             <li><a href="{{ url('panel/school/settings/scholarships') }}" class="{{ request()->path() == 'panel/school/settings/scholarships' ? 'active' : ''}}">@lang('panel/schools/navigation.scholarships.settings')</a></li>
             <li class="hidden-xs">
                 <a href="/panel/school/scholarships/create" class="{{ request()->path() == 'panel/school/scholarships/create' ? 'active' : ''}}">@lang('panel/schools/navigation.scholarships.add')
-                    <span class="pull-right badge badge-danger badge-nav">{{auth()->user()->info->allScholarshipLimits()}}</span></a>
+                    <span class="pull-right badge badge-danger badge-nav">
+                            {{--{{auth()->user()->info->allScholarshipLimits()}}--}}
+                    </span></a>
             </li>
             <li ><a href="/panel/school/scholarships/view" class="{{ request()->path() == 'panel/school/scholarships/view' ? 'active' : ''}}">@lang('panel/schools/navigation.scholarships.show')
                 <span class="pull-right badge  badge-nav">{{ count(auth()->user()->info->activeScholarships())}}</span></a></li>
