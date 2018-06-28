@@ -14,7 +14,7 @@ Scholio::bot();
 Auth::routes();
 Route::get('test/1', function(){
     $scholarship = App\Models\Scholarship::find(24);
-    $algolia = new Algolia($scholarship);
+    dispatch(new Algolia($scholarship));
 });
 Route::get('siteGen', function(){
     foreach(School::all() as $school){
