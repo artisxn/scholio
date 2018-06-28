@@ -13,7 +13,7 @@ Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 Route::get('test/1', function(){
-    $scholarship = App\Models\Scholarship::find(24);
+    $scholarship = App\Models\Scholarship::find(25);
     dispatch(new Algolia($scholarship));
 });
 Route::get('siteGen', function(){

@@ -17,7 +17,7 @@ use App\Models\Skill;
 use App\Models\Study;
 use App\Models\Tag;
 use App\Models\Temp;
-use App\Scholio\Algolia;
+use App\Jobs\Algolia;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -144,7 +144,7 @@ Route::post('/school/scholarshipSave', function () {
         $data = ['message' => 'SAVED SUCCESSFULLY', 'url' => '/panel/school/scholarship/' . $scholarship->id];
         // Scholio::updateDummy($scholarship->school);
         Scholio::dummyScholarshipCreate($scholarship);
-        $algolia = new Algolia($scholarship);
+        dispatch(new Algolia($scholarship));
     } catch (\Exception $e) {
         $data = ['message' => 'ERROR ' . $e];
     }
