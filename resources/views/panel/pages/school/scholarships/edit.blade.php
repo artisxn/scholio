@@ -559,7 +559,7 @@
                 <div class="hidden-sm hidden-md hidden-xs col-xxxs-12 col-lg-4">
                     <div class="inner-column">
                         <span class="col-lg-8">
-                            <div class="">  <i class="fa fa-user-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>
+                            <!--<div class="">  <i class="fa fa-user-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>-->
                             <div class="margin-top-10">  <i class="fa fa-calendar margin-right-10"></i>@lang('scholarship_view.top.exam_date'):</div>
                         </span>
                         <span class="col-lg-4 text-right">

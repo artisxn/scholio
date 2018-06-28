@@ -332,7 +332,7 @@
             {{--col-lg-offset-1--}}
             <span class=" col-xxxs-7 col-xs-8 col-sm-7  col-md-7 col-lg-6  ">
                 <div class="margin-top-10">  <i class="fa fa-thumb-tack margin-right-10"></i>@lang('scholarship_view.top.posted'):</div>
-                <div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>
+                <!--<div class="margin-top-10">  <i class="fa fa-pencil-square-o margin-right-10"></i>@lang('scholarship_view.edit.limit'):</div>-->
 
             </span>
             <span class="col-xxxs-5 col-xs-4 col-sm-5 col-md-5 col-lg-5 align-right">
