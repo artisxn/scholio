@@ -507,15 +507,17 @@ class Scholio
         $dummy->financial_metric = $scholarship->financial->metric;
         if ($scholarship->study_id == 0) {
             $dummy->study_name = 'Multiple Studies';
+            $dummy->section_icon = '/panel/assets/images/steps/studies.png';
         } else {
             $dummy->study_name = $scholarship->study->name;
+            $dummy->section_icon = $scholarship->study->section[0]->name;
         }
         $dummy->level_name = $scholarship->level->name;
         $dummy->criteria_name = $scholarship->criteria->name;
         $dummy->criteria_icon = $scholarship->criteria->name;
         $dummy->end_at = $scholarship->end_at;
         $dummy->admissions_length = count($scholarship->admission);
-        $dummy->section_icon = $scholarship->study->section[0]->name;
+        
         $dummy->active = $scholarship->active || 1;
 
         $dummy->save();
