@@ -505,7 +505,11 @@ class Scholio
         $dummy->financial_icon = $scholarship->financial->icon;
         $dummy->financial_amount = $scholarship->financial_amount;
         $dummy->financial_metric = $scholarship->financial->metric;
-        $dummy->study_name = $scholarship->study->name;
+        if ($scholarship->study->id == 0) {
+            $dummy->study_name = 'Multiple Studies';
+        } else {
+            $dummy->study_name = $scholarship->study->name;
+        }
         $dummy->level_name = $scholarship->level->name;
         $dummy->criteria_name = $scholarship->criteria->name;
         $dummy->criteria_icon = $scholarship->criteria->name;
