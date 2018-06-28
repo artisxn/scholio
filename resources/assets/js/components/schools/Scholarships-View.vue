@@ -163,7 +163,7 @@
                                                 {{ scholarship.admissions_limit }}
                                             </td>
                                             <!-- <td>{{ scholarship.winner_id }}</td> -->
-                                            <td><button v-on:click="onEdit(scholarship.id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
+                                            <td><button v-on:click="onEdit(scholarship.scholarship_id)" class="btn btn-success">{{ lang('panel_scholarships.view.show') }}</button></td>
                                             <!--<td><button v-on:click="onDelete(scholarship.id)" class="btn btn-primary">Διαγραφή</button></td>-->
                                             
                                         </tr>

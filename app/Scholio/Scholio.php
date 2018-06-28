@@ -507,7 +507,7 @@ class Scholio
         $dummy->financial_metric = $scholarship->financial->metric;
         if ($scholarship->study_id == 0) {
             $dummy->study_name = 'Multiple Studies';
-            $dummy->section_icon = '/panel/assets/images/steps/studies.png';
+            $dummy->section_icon = 'studies';
         } else {
             $dummy->study_name = $scholarship->study->name;
             $dummy->section_icon = $scholarship->study->section[0]->name;
