@@ -6,12 +6,16 @@ use App\Models\Study;
 use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Illuminate\Support\Facades\Route;
+use App\Scholio\Algolia;
 
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
-
+Route::get('test/1', function(){
+    $scholarship = App\Models\Scholarship::find(24);
+    $algolia = new Algolia($scholarship);
+});
 Route::get('siteGen', function(){
     foreach(School::all() as $school){
         echo htmlspecialchars('
