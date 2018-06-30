@@ -17,7 +17,8 @@
             <div class="pull-left pad-top-50 text-incr-125 left-section" >
                 <a href="https://blog.schol.io/contact/" target="_blank" class="sc-t-white margin-right-20 social-link">@lang('main.footer.contact')</a>
                 <span  class="pad-top-10 pad-bot-10 clear-fix">  <a href="https://blog.schol.io/" target="_blank" rel="noopener" class="sc-t-white margin-right-20 social-link">@lang('main.footer.blog')</a></span>
-                <span class="">  <a href="{{ url('terms') }}" class="sc-t-white social-link">@lang('main.footer.terms')</a></span>
+                <span class="margin-right-20">  <a href="{{ url('terms') }}" class="sc-t-white social-link">@lang('main.footer.terms')</a></span>
+                <span class="">  <a href="{{ url('terms') }}" class="sc-t-white social-link">@lang('main.footer.gdpr')</a></span>
             </div>
 
             <div class="pull-right pad-top-45 text-incr-175  pad-right-20">
