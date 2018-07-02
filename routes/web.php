@@ -13,6 +13,8 @@ Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 
+Route::view('gdpr', 'gdpr');
+
 Route::get('siteGen', function(){
     foreach(School::all() as $school){
         echo htmlspecialchars('

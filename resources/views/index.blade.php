@@ -419,7 +419,7 @@
 
 		<div class="sc-landing-video-container vissible-xs hidden-sm hidden-md hidden-lg" style="overflow-x: hidden">
 			<div class="sc-landing-video-filter"></div>
-			<img class="responsive mobile-hero lozad" src="image.png" data-src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="hero-img">
+			<img class="responsive mobile-hero lozad" src="image.png" data-src="{{asset('new/img/mobile/hero15b.jpg')}}" alt="scholio-hero-img">
 		</div>
 		<!-- Searchbar -->
 
@@ -441,7 +441,7 @@
 								   ng-model="selection1" placeholder="@lang('main.first.searchbar.scholarships.placeholder')" />
 
 							<div class=" font-weight-100 pull-right algolia-powered">powered by
-								<img src="/new/img/algolia_logof.png" alt="" class="pull-right algolia-image">
+								<img src="/new/img/algolia_logof.png" alt="algolia-logo" class="pull-right algolia-image">
 							</div>
 						</div>
 
@@ -528,7 +528,7 @@
 				<br>
 				<div class="row">
 					<div class="col-md-4 text-center">
-						<img src="image.png" data-src="{{asset('new/img/landing-icon-1search.png')}}" class="lozad" alt="title1">
+						<img src="image.png" data-src="{{asset('new/img/landing-icon-1search.png')}}" class="lozad" alt="Αναζήτηση Κολλεγίων">
 						<h5 class="">@lang('main.about.section1.titlePortal')</h5>
 						<p class="centered-text">@lang('main.about.section1.subtitlePortal')</p>
 					</div>
@@ -538,7 +538,7 @@
 						<br>
 					</div>
 					<div class="col-md-4 text-center">
-						<img src="image.png" data-src="{{asset('new/img/landing-icon-2pencil.png')}}" class="lozad" alt="title2">
+						<img src="image.png" data-src="{{asset('new/img/landing-icon-2pencil.png')}}" class="lozad" alt="Εγγραφή Μαθητή">
 						<h5>@lang('main.about.section2.titlePortal')</h5>
 						<p class="centered-text">@lang('main.about.section2.subtitlePortal')</p>
 					</div>
@@ -548,7 +548,7 @@
 						<br>
 					</div>
 					<div class="col-md-4 text-center">
-						<img src="image.png" data-src="{{asset('new/img/landing-icon-3startup.png')}}" class="lozad" alt="title3">
+						<img src="image.png" data-src="{{asset('new/img/landing-icon-3startup.png')}}" class="lozad" alt="Έναρξη Σπουδών">
 						<h5>@lang('main.about.section3.title')</h5>
 						<p class="centered-text">@lang('main.about.section3.subtitlePortal')</p>
 					</div>
@@ -781,7 +781,7 @@
 			<div class="sc-landing-sec3-content">
 				<div class="row ">
 					<div class=" col-sm-7 col-lg-8 col-xs-12 margin-top-50">
-						<img class="img-responsive lozad" src="image.png" data-src="{{asset('new/img/iMac-sm.png')}}" alt="imac">
+						<img class="img-responsive lozad" src="image.png" data-src="{{asset('new/img/iMac-sm.png')}}" alt="scholio Features">
 
 						<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" style="  ">
 							<!-- Indicators -->
@@ -796,26 +796,26 @@
 							<div class="carousel-inner">
 								<div class="item active">
 									{{--<img src="/new/img/ScreenSchools.jpg" alt="schools image" class="carousel-img">--}}
-									<img src="image.png" data-src="/new/img/screen1b.jpg" alt="schools image" class="carousel-img lozad">
+									<img src="image.png" data-src="/new/img/screen1b.jpg" alt="Σχολεία" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 								<div class="item">
 									{{--<img src="/new/img/ScreenScholarships.jpg" alt="scholarships image" class="carousel-img">--}}
-									<img src="image.png" data-src="/new/img/screen2b.jpg" alt="scholarships image" class="carousel-img lozad">
+									<img src="image.png" data-src="/new/img/screen2b.jpg" alt="Υποτροφίες" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 								<div class="item">
 									{{--<img src="/new/img/ScreenTrophy.jpg" alt="trophy image" class="carousel-img">--}}
-									<img src="image.png" data-src="/new/img/screen3b.jpg" alt="trophy image" class="carousel-img lozad">
+									<img src="image.png" data-src="/new/img/screen3b.jpg" alt="Διεκδίκηση Υποτροφιών" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<img class="img-responsive iphone-ipad-sm lozad" src="image.png" data-src="{{asset('new/img/iPad-iPhone-macBook-sm.png')}}" alt="macbook">
+						<img class="img-responsive iphone-ipad-sm lozad" src="image.png" data-src="{{asset('new/img/iPad-iPhone-macBook-sm.png')}}" alt="Ιδιωτικά Σχολεία">
 
 
 					</div>
