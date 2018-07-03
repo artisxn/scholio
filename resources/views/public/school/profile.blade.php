@@ -6,7 +6,7 @@
 
     <meta property="og:url" content="{{'https://schol.io/@' . $school->admin->username}}" />
     <meta property="og:title" content="Schol.io - {{ $school->name() }}" />
-    <meta property="og:description" content="{{$school->city | $school->phone}}" />
+    <meta property="og:description" content="{{$school->city}} | {{$school->phone}}" />
     <meta property="og:image" content="{{url($school->profileImage())}}" />
     <meta property="og:image:type" content="image/jpg">
     <meta property="og:image:width" content="600">
