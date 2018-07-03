@@ -1014,7 +1014,7 @@
                                      <br>
                                     <div class="pad-top-20"></div>
                                     <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                    <span class="pull-left pad-left-5 ellipsis"> <a href="http://@{{contactInfo.website}}/" target="_blank">@{{contactInfo.website}}</a></span>
+                                    <span class="pull-left pad-left-5 ellipsis"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank">@{{contactInfo.website}}</a></span>
                                 </span>
 
 

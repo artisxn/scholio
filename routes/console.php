@@ -4,6 +4,7 @@ use App\Jobs\Algolia;
 use App\Models\School;
 use App\Scholio\Scholio;
 use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Crawler\Url;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,14 @@ use Spatie\Sitemap\SitemapGenerator;
  */
 
 Artisan::command('scholio:sitemap', function () {
-    SitemapGenerator::create('https://schol.io')->writeToFile(public_path() . '/newsitemap.xml');
-    
+    // SitemapGenerator::create('https://schol.io')->writeToFile(public_path() . '/sitemap.xml');
+
+    SitemapGenerator::create('https://schol.io')
+   ->shouldCrawl(function (Url $url) {
+       return ($url->segment(1) !== 'studylink') || ($url->segment(1) !== 'schoolink');
+   })
+   ->writeToFile(public_path() . '/newsitemap.xml');
+
 })->describe('Generate a sitemap for the site');
 
 Artisan::command('scholio:soon {prop}', function ($prop) {

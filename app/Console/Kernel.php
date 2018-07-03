@@ -24,6 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('scholio:sitemap')->daily();
         // $schedule->command('inspire')
         //          ->hourly();
     }
