@@ -1258,11 +1258,22 @@
                                     <input type="radio" ng-model="interestStudent" value="student"> Μαθητής<br>
                                     <input type="radio" ng-model="interestStudent" value="guardian"> Γονέας<br>
                                 </div>
+
+                                <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <div class="checkbox checkbox-primary">
+                                                <input ng-model="checkbox" id="checkbox-signup" type="checkbox" name="terms" onclick="checkboxClicked()" required>
+                                                <label for="checkbox-signup" >@lang('register-step2.accept')<a href="{{ url('terms') }}"> <span class=" orange-hover">@lang('register-step2.terms')</span></a></label>
+                                            </div>
+                                        </div>
+                                    </div>
                     </div>
+
+                    
 
                     <div class="modal-footer" style="margin-bottom: 40px;">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
-                        <button type="button" ng-click="sendInterest()" data-dismiss="modal" class="btn btn-info" ng-class="[{'disabledButton': !(interestStudy && interestName)}]" ng-disabled="!(interestName && interestTel && interestEmail && interestStudy)">@lang('profile.modal.send')</button>
+                        <button type="button" ng-click="sendInterest()" data-dismiss="modal" class="btn btn-info" ng-class="[{'disabledButton': !(interestStudy && interestName)}]" ng-disabled="!(interestName && interestTel && interestEmail && interestStudy && checkbox)">@lang('profile.modal.send')</button>
                     </div>
                 </div>
             </div>
@@ -1306,6 +1317,8 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
                         <button type="button" class="btn btn-info">@lang('profile.modal.request')</button>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
