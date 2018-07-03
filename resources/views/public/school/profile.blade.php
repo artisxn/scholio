@@ -11,16 +11,16 @@
     <meta property="og:image:type" content="image/jpg">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="400">
-        <meta charset="utf-8">
-        <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
-    
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <!-- prevent zoomIn in mobile inputs,selects,etc -->
-     
-        @include('google.main')
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
 
-        <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- prevent zoomIn in mobile inputs,selects,etc -->
+    
+    @include('google.main')
+
+    <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
     <title>{{ $school->name() }} - schol.io</title>
 
     <!-- <head prefix="og: https://schol.io# fb: https://www.facebook.com/scholioapp/# business: http://{{$school->website}}#"> -->
@@ -31,7 +31,7 @@
     <meta property="place:location:latitude" content="{{ $school->lat }}" />
     <meta property="place:location:longitude" content="{{ $school->lng }}" /> -->
 
-    <meta name="description" content="Schol.io - {{ $school->name() }}">
+    <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }} | {{ $school->about }}">
 
     <!-- Favicon -->
     
@@ -65,6 +65,14 @@
     @include('public.window-lang')
 
     <style>
+        .schoolname{
+            font-size: 160%; 
+        }
+        .schooltype{
+            display: inline;
+            font-size: 100%;
+            font-weight: 400;
+        }
         
         .bx-img{
             cursor: pointer;}
@@ -374,7 +382,7 @@
                     </div>
 
                     <div class=" xs-centered-text">
-                                                <h4 class="xs-h4">@{{contactInfo.name}}</h4>
+                                                <h2 class="xs-h4 schoolname">@{{contactInfo.name}}</h2>
                         @if($school->settings->reviews && count($school->reviews) >0)
                                                  <span class="pad-top-5 xs-pad-top xs-review">
 
@@ -495,6 +503,7 @@
                                 <div class="col-xs-7 col-sm-7 pad-left-0 xxs-custom-contact">
 
                                     <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
+                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">ΙΔΙΩΤΙΚΟ ΣΧΟΛΕΙΟ</span>
                                     <span class=" pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
 
                                     <div class="pad-top-10"></div>
@@ -970,9 +979,16 @@
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30 right-side-bar">
                 @if($school->settings->info)
                     <div >
-                        <div class="box left-box1" style="height: 240px;">
+                        <div class="box left-box1" style="height: 250px;">
 
                             <div class="col-lg-12" style="">
+                                <div class="pad-top-20"></div>
+                                <span><i class="fa fa-university pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
+                                <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">
+                                    <h1 class="schooltype">{{ $school->type->name }}</h1>
+
+                                    </span>
+                                <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">@{{contactInfo.address}}</span>
