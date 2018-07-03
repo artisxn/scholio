@@ -15,13 +15,21 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
-Route::get('/site-map/schools', function(){
-    $schools = App\Models\School::all();
+foreach(App\Models\SchoolTypes::all() as $type){
+    Route::get('/s/'.$type->name, function() use ($type){
+        $schools = App\Models\School::where('type_id', $type->id)->get();
+        return view('sitemap.schools', compact('schools'));
+    });
+}
 
-    return view('sitemap.schools', compact('schools'));
+
+Route::get('/s/schools', function(){
+    $types = App\Models\SchoolTypes::all();
+
+    return view('sitemap.types', compact('types'));
 });
 
-Route::get('/site-map/scholarships', function(){
+Route::get('/s/scholarships', function(){
     $scholarships = App\Models\Scholarship::all();
 
     return view('sitemap.scholarships', compact('scholarships'));
