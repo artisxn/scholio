@@ -15,6 +15,18 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
+Route::get('/site-map/schools', function(){
+    $schools = App\Models\School::all();
+
+    return view('sitemap.schools', compact('schools'));
+});
+
+Route::get('/site-map/scholarships', function(){
+    $scholarships = App\Models\Scholarship::all();
+
+    return view('sitemap.scholarships', compact('scholarships'));
+});
+
 Route::get('siteGen', function(){
     foreach(School::all() as $school){
         echo htmlspecialchars('

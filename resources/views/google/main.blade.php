@@ -19,6 +19,8 @@
   ],
 
 -->
+
+<meta name="google-site-verification" content="gIvgFOmd0fljlwlSORv5tswdbBGRoT9zU5reco2Ni0c" />
   
 @include('google.analytics')
 @include('cookieConsent::index')
@@ -52,13 +54,13 @@
     bottom: 0;
     right: 0;
     left: 0;
-    
     height: 60px;
     text-align: center;
     color: white;
     background-color: #999;
     /*background-color: #FD6A33;*/
     z-index: 100;
+    opacity: 0.9;
   }
 
   .cookie-consent__message{
