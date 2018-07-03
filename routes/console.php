@@ -23,7 +23,7 @@ Artisan::command('scholio:sitemap', function () {
 
    SitemapGenerator::create('https://schol.io')
    ->hasCrawled(function (Url $url) {
-       if ($url->segment(1) === 'studylink' || $url->segment(1) === 'schoolink') {
+       if ($url->segment(1) === 'studylink' || $url->segment(1) === 'schoolink' || $url->segment(1) === 'lang') {
            return;
        }
 
