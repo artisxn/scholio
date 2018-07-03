@@ -1,4 +1,27 @@
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "https://schol.io",
+  }
+  </script>
+
+  <!--
+  "contactPoint": [{
+    "@type": "Education Technology",
+  }],
+  "sameAs": [
+    "https://www.facebook.com/scholioapp/",
+    "https://twitter.com/ScholioApp",
+    "https://www.instagram.com/schol.io/",
+    "https://www.linkedin.com/company/18063117/",
+    "https://www.youtube.com/channel/UCvjhFZreE17xlGyBewKpYoA/"
+  ],
+
+-->
+  
 @include('google.analytics')
+@include('cookieConsent::index')
 <meta name="theme-color" content="#008da5">
 <!-- DEEAED -->
 
@@ -13,26 +36,6 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "url": "https://schol.io",
-    "logo": "https://schol.io/new/img/logoNXsquareBg.png",
-    "contactPoint": [{
-      "@type": "Education Technology",
-    }],
-    "sameAs": [
-      "https://www.facebook.com/scholioapp/",
-      "https://twitter.com/ScholioApp",
-      "https://www.instagram.com/schol.io/",
-      "https://www.linkedin.com/company/18063117/",
-      "https://www.youtube.com/channel/UCvjhFZreE17xlGyBewKpYoA/"
-    ],
-    
-  }
-  </script>
-
 <!-- Your customer chat code -->
 <div class="fb-customerchat"
   attribution="setup_tool"
@@ -41,6 +44,36 @@
   logged_in_greeting="Γεια σας, πως μπορουμε να σας βοηθήσουμε;"
   logged_out_greeting="Γεια σας, πως μπορουμε να σας βοηθήσουμε;">
 </div>
+
+<style>
+  .cookie-consent{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    
+    height: 60px;
+    text-align: center;
+    color: white;
+    background-color: #999;
+    /*background-color: #FD6A33;*/
+    z-index: 100;
+  }
+
+  .cookie-consent__message{
+    margin-top: 20px;
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  .cookie-consent__agree{
+    background-color: #777;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: none;
+  }
+</style>
 
 
 <!-- @include('google.meta') -->

@@ -107,8 +107,8 @@
 
                     <div class="form-group m-b-0 text-center">
                         <div class="col-xs-12">
-                            <a href="/auth/facebook/" class="btn btn-facebook sc-t-white btn-social">Facebook</a>
-                            <a href="/auth/google/" class="btn btn-googleplus sc-t-white btn-social">Google+</a>
+                            <a href="/auth/facebook/" class="btn btn-facebook sc-t-white btn-social disabled" id="facebook">Facebook</a>
+                            <a href="/auth/google/" class="btn btn-googleplus sc-t-white btn-social disabled" id="google">Google+</a>
 
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                     <div class="form-group">
                         <div class="col-xs-12">
                             <div class="checkbox checkbox-primary">
-                                <input id="checkbox-signup" type="checkbox" name="terms" required>
+                                <input id="checkbox-signup" type="checkbox" name="terms" onclick="checkboxClicked()" required>
                                 <label for="checkbox-signup" >@lang('register-step2.accept')<a href="{{ url('terms') }}"> <span class=" orange-hover">@lang('register-step2.terms')</span></a></label>
                             </div>
                         </div>
@@ -224,6 +224,20 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
         <script>
+            function checkboxClicked(){
+                var checkBox = document.getElementById("checkbox-signup");
+                var facebook = document.getElementById("facebook");
+                var google = document.getElementById("google");
+
+                if (checkBox.checked == true){
+                    facebook.classList.remove('disabled')
+                    google.classList.remove('disabled')
+                  } else {
+                    facebook.classList.add('disabled')
+                    google.classList.add('disabled')
+                  }
+            }
+            
             function social(){
                 axios.post('/api/registration/social', {
                     role: document.getElementById('type').value,
