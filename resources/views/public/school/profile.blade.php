@@ -503,7 +503,7 @@
                                 <div class="col-xs-7 col-sm-7 pad-left-0 xxs-custom-contact">
 
                                     <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">ΙΔΙΩΤΙΚΟ ΣΧΟΛΕΙΟ</span>
+                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">{{$school->type->name}}</span>
                                     <span class=" pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
 
                                     <div class="pad-top-10"></div>

@@ -108,6 +108,8 @@ return [
         'blog' => 'Blog',
         'terms' => 'Terms of use',
         'message' => '© 2017 schol.io All rights reserved.',
-        'gdpr' => 'GDPR'
+        'gdpr' => 'GDPR',
+        'schools' => 'Educational Institutions',
+        'scholarships' => 'Scholarships',
     ],
 ];
