@@ -15,6 +15,14 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
+
+Route::get('qqqq', function(){
+    foreach(App\Models\AlgoliaSchool::all() as $school){
+        $school->scholioranking = 100;
+        $school->save();
+    }
+});
+
 foreach(App\Models\SchoolTypes::all() as $type){
     Route::get('/s/'.$type->name, function() use ($type){
         $schools = App\Models\School::where('type_id', $type->id)->get();
