@@ -718,7 +718,7 @@ class RoutesController extends Controller
     public function publicScholarshipAdmission(Scholarship $scholarship)
     {
         $settings = $scholarship->school->settings;
-        $fields = AdmissionField::all();
+        $fields = \App\Models\AdmissionField::all();
         $user = auth()->user();
         return view('public.school.admission', compact('user', 'scholarship', 'settings', 'fields'));
     }
