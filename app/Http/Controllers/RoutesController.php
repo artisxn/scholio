@@ -555,6 +555,7 @@ class RoutesController extends Controller
     {
         $school->scholioranking = request()->ranking;
         $school->save();
+        return back();
     }
 
     public function adminDisapproveSchool(School $school)
