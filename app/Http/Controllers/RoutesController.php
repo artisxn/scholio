@@ -553,7 +553,7 @@ class RoutesController extends Controller
 
     public function adminRankingSchool(\App\Models\AlgoliaSchool $school)
     {
-        $school->scholioranking = request()->ranking;
+        $school->scholioranking = (int) request()->ranking;
         $school->save();
         return back();
     }
