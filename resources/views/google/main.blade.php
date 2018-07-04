@@ -80,6 +80,10 @@
     .cookie-consent{
       height: 120px;
     }
+
+    .cookie-consent__message{
+      margin-bottom: 10px;
+    }
   }
 </style>
 
