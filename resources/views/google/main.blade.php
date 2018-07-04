@@ -75,6 +75,12 @@
     border-radius: 5px;
     border: none;
   }
+
+  @media(max-width: 480px){
+    .cookie-consent{
+      height: 120px;
+    }
+  }
 </style>
 
 
