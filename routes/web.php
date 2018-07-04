@@ -18,7 +18,7 @@ Route::view('gdpr', 'gdpr');
 
 Route::get('qqqq', function(){
     foreach(App\Models\AlgoliaSchool::all() as $school){
-        $school->scholioranking = 100;
+        $school->scholioranking = 50;
         $school->save();
     }
 });
