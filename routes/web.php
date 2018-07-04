@@ -16,12 +16,12 @@ Auth::routes();
 Route::view('gdpr', 'gdpr');
 
 
-Route::get('qqqq', function(){
-    foreach(App\Models\AlgoliaSchool::all() as $school){
-        $school->scholioranking = 50;
-        $school->save();
-    }
-});
+// Route::get('qqqq', function(){
+//     foreach(App\Models\AlgoliaSchool::all() as $school){
+//         $school->scholioranking = 50;
+//         $school->save();
+//     }
+// });
 
 foreach(App\Models\SchoolTypes::all() as $type){
     Route::get('/s/'.$type->name, function() use ($type){
@@ -129,6 +129,7 @@ Route::post('/school/deleteAlgolia/{school}', 'RoutesController@adminDeleteAlgol
 Route::post('/report/delete/{report}', 'RoutesController@adminDeleteReport')->middleware('is.admin');
 Route::post('/report/delete/all/{user}', 'RoutesController@adminDeleteAllReports')->middleware('is.admin');
 Route::post('/admin/subscription', 'RoutesController@adminSubscriptionMake')->middleware(['auth', 'is.admin']);
+Route::post('/school/ranking/{school}', 'RoutesController@adminRankingSchool')->middleware('is.admin');
 
 // Other
 Route::get('/card/{card}/delete', 'RoutesController@cardDelete');

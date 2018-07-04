@@ -10,4 +10,6 @@ Route::view('/newsub', 'panel.pages.admin.newsub')->name('admin-newsub');
 
 Route::view('/approve', 'panel.pages.admin.approve')->name('admin-approve');
 
+Route::view('/ranking', 'panel.pages.admin.ranking')->name('admin-ranking');
+
 

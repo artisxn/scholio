@@ -20,6 +20,10 @@
         <li>
             <a href="{{ url('/panel/admin/approve') }}" class="{{ request()->path() == 'panel/admin/approve' ? 'active' : ''}}">Approve</a>
         </li>
+
+        <li>
+                <a href="{{ url('/panel/admin/ranking') }}" class="{{ request()->path() == 'panel/admin/ranking' ? 'active' : ''}}">Ranking</a>
+            </li>
     </ul>
 </li>
 

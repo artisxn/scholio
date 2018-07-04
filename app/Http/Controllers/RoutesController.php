@@ -551,6 +551,12 @@ class RoutesController extends Controller
         dispatch(new Algolia($school));
     }
 
+    public function adminRankingSchool(\App\Models\AlgoliaSchool $school)
+    {
+        $school->scholioranking = request()->ranking;
+        $school->save();
+    }
+
     public function adminDisapproveSchool(School $school)
     {
         $school->approved = false;
