@@ -1,3 +1,14 @@
+
+<!-- Global site tag (gtag.js) - Google AdWords: 799029410 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-799029410"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-799029410');
+</script>
+
 <div class="left side-menu"  style="position: fixed;">
     <div class="user-details">
         @if(auth()->user()->role != 'admin')

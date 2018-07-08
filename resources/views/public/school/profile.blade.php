@@ -1333,7 +1333,6 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
                         <button type="button" class="btn btn-info">@lang('profile.modal.request')</button>
                     </div>
-
                     
                 </div>
             </div>
@@ -1369,6 +1368,18 @@
 
     <!--  -->
     <script src="/new/js/profile.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-799029410"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-799029410');
+</script>
+    
+
+    
 </body>
 
 <script>
@@ -1805,6 +1816,9 @@
                 }
 
                 $scope.sendInterest = function(){
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-799029410/Q5PICN2dvIUBEKLxgP0C'
+                    });
                     
                     $scope.sendInterestToSchool = $http.post('/api/interest/school', { 'school_id': $scope.contactInfo.id, 'study_id': $scope.interestStudy, 'name': $scope.interestName, 'email': $scope.interestEmail, 'tel': $scope.interestTel, 'student': $scope.interestStudent }, {
                             headers: {

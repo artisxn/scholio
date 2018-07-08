@@ -1,3 +1,9 @@
+
+<!-- Event snippet for User Registration conversion page -->
+<script>
+    gtag('event', 'conversion', {'send_to': 'AW-799029410/u05kCMC1pIUBEKLxgP0C'});
+  </script>
+    
 <li class="link" style="margin-top: 80px">
     <a href="{{ url('panel/dashboard') }}" class="{{ request()->path() == 'panel/dashboard' ? 'active' : ''}}">
         <i class="fa fa-tachometer"></i>
