@@ -15,22 +15,6 @@
         
         <!-- Favicon -->
 	<link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
-
-
-		<style>
-			/* ======  avoid filled autocomplete input yellow background on chrome ============ */
-			input:-webkit-autofill,
-			input:-webkit-autofill:hover,
-			input:-webkit-autofill:focus,
-			input:-webkit-autofill:active{
-				-webkit-box-shadow: 0 0 0 30px #FFFFFF inset;
-				-webkit-text-fill-color: #555;
-			}
-			.fs-anim-lower:focus{background-color: transparent!important;}
-			.fs-field-label {text-align: center; margin: auto auto 20px auto;}
-			.fs-anim-lower{font-size: 100%!important;}
-			/* =========================================================== */
-		</style>
 	</head>
 	<body>
 		<div class="container">
@@ -38,18 +22,18 @@
 			<div class="fs-form-wrap" id="fs-form-wrap">
 				<div class="fs-title">
 					<h1>
-						<img src="/new/img/logoNX.png" width="170px">
+						<img src="/new/img/logoNX.png" width="250px">
 					</h1>
 				</div>
 				<form id="myform" class="fs-form fs-form-full" autocomplete="off">
 					<ol class="fs-fields">
 						<li>
-							<label class="fs-field-label fs-anim-upper" for="q1">Είσαι απόφοιτος λυκείου και αναζητάς σπουδές σε δημοφιλή κολλέγια και επαγγελματικές σχολές;</label>
+							<label class="fs-field-label fs-anim-upper" for="q1">Ονοματεπώνυμο:</label>
 							<input class="fs-anim-lower" name="q1" type="text" placeholder="Ονοματεπώνυμο" required/>
 						</li>
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">Email:</label>
-							<input class="fs-anim-lower" name="q2" type="email" placeholder="name@provider.com" required/>
+							<input class="fs-anim-lower" name="q2" type="email" placeholder="sakis@rouvas.gr" required/>
 						</li>
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q5">Τηλέφωνο:</label>
@@ -86,14 +70,11 @@
 			(function() {
 				var formWrap = document.getElementById( 'fs-form-wrap' );
 
-
 				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
 					new SelectFx( el, {
 						stickyPlaceholder: false,
-
 						onChange: function(val){
 							document.querySelector('span.cs-placeholder').style.backgroundColor = val;
-
 						}
 					});
 				} );
