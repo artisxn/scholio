@@ -51,7 +51,13 @@
 							<label class="fs-field-label fs-anim-upper" for="q4">Περιέγραψε τη σχολή που θες να σπουδάσεις:</label>
 							<textarea class="fs-anim-lower" name="q4" placeholder="πχ. Διοικηση Επιχειρησεων, Μάρκετινγκ" required></textarea>
 						</li>
-					</ol><!-- /fs-fields -->
+                    </ol><!-- /fs-fields -->
+                    <div class="fs-submit">
+                            <label class="fs-field-label fs-anim-upper">Αποδέχομαι τους <a href="{{ url('/terms') }}" target="_blank">όρους χρήσης</a>:</label>
+                        <input type="checkbox" name="gdpr">
+                    </div>
+                    <br>
+                    <br>
 					<button class="fs-submit" type="submit">Αποστολή Στοιχείων</button>
 				</form><!-- /fs-form -->
 			</div><!-- /fs-form-wrap -->
