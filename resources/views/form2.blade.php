@@ -6,6 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<title>Schol.io Form</title>
 		<link rel="shortcut icon" href="../favicon.ico">
+
+		<!-- Bootstrap -->
+		{{--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">--}}
+
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
@@ -26,10 +30,21 @@
 				-webkit-box-shadow: 0 0 0 30px #FFFFFF inset;
 				-webkit-text-fill-color: #555;
 			}
+			/* =========================================================== */
+
+			.text-cyan{color: #49A6FE!important;;}
+			.text-blue{color: #6D63FF!important;}
+			.text-magenta{color: #BE3D74!important;;}
+			.text-white{color: #ffffff!important;;}
+			.text-orange{color: #FFDD4C!important;}
+
 			.fs-anim-lower:focus{background-color: transparent!important;}
 			.fs-field-label {text-align: center; margin: auto auto 20px auto;}
 			.fs-anim-lower{font-size: 100%!important;}
-			/* =========================================================== */
+			.subTitle{text-align: center; margin: auto auto 40px auto; font-size: 80%;}
+			.imgTrophy{ opacity: 0.3; height:240px; position: absolute; top: -210px; left: 0; right: 0; margin-left: auto;  margin-right: auto;}
+			.imgContainer{position: relative;}
+
 		</style>
 	</head>
 	<body>
@@ -44,7 +59,11 @@
 				<form id="myform" class="fs-form fs-form-full" autocomplete="off">
 					<ol class="fs-fields">
 						<li>
-							<label class="fs-field-label fs-anim-upper" for="q1">Είσαι απόφοιτος λυκείου και αναζητάς σπουδές σε δημοφιλή κολλέγια και επαγγελματικές σχολές;</label>
+							<div class="imgContainer">
+								<img class="imgTrophy" src="new/img/form/image01.png" alt="trophy">
+							</div>
+							<label class="fs-field-label fs-anim-upper text-magenta" for="q1">Είσαι απόφοιτος λυκείου και αναζητάς σπουδές σε δημοφιλή κολλέγια και επαγγελματικές σχολές;</label>
+							<div class="subTitle text-cyan">ξεκίνα και διεκδίκησε υποτροφίες και προνομιακές τιμές </div>
 							<input class="fs-anim-lower" name="q1" type="text" placeholder="Ονοματεπώνυμο" required/>
 						</li>
 						<li>
