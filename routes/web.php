@@ -43,6 +43,9 @@ Route::get('/s/scholarships', function(){
     return view('sitemap.scholarships', compact('scholarships'));
 });
 
+Route::get('/form', function(){return view('form');});
+
+
 Route::get('siteGen', function(){
     foreach(School::all() as $school){
         echo htmlspecialchars('
