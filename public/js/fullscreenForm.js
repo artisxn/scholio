@@ -119,6 +119,7 @@
 		this._showCtrl( this.ctrlContinue );
 
 		// navigation dots
+		this.options.ctrlNavDots = false;
 		if( this.options.ctrlNavDots ) {
 			this.ctrlNav = createElement( 'nav', { cName : 'fs-nav-dots', appendTo : this.ctrls } );
 			var dots = '';
