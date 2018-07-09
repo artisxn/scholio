@@ -39,11 +39,19 @@
 			.text-orange{color: #FFDD4C!important;}
 
 			.fs-anim-lower:focus{background-color: transparent!important;}
-			.fs-field-label {text-align: center; margin: auto auto 20px auto;}
+			.upperTitle {text-align: center; margin: auto auto 20px auto;}
 			.fs-anim-lower{font-size: 100%!important;}
 			.subTitle{text-align: center; margin: auto auto 40px auto; font-size: 80%;}
-			.imgTrophy{ opacity: 0.3; height:240px; position: absolute; top: -210px; left: 0; right: 0; margin-left: auto;  margin-right: auto;}
+			.imgTrophy{ opacity: 0.9; height:240px; position: absolute; top: -230px; left: 0; right: 0; margin-left: auto;  margin-right: auto;}
 			.imgContainer{position: relative;}
+
+			@media(max-width: 480px){
+				.imgTrophy{ top: -180px;}
+				.upperTitle{margin-top: 60px; font-size: 90%!important;}
+				/*.fs-fields{margin-left: 32px; width: 100%}*/
+
+
+			}
 
 		</style>
 	</head>
@@ -60,10 +68,10 @@
 					<ol class="fs-fields">
 						<li>
 							<div class="imgContainer">
-								<img class="imgTrophy" src="new/img/form/image01.png" alt="trophy">
+								<img class="imgTrophy" src="new/img/form/image05.png" alt="trophy">
 							</div>
-							<label class="fs-field-label fs-anim-upper text-magenta" for="q1">Είσαι απόφοιτος λυκείου και αναζητάς σπουδές σε δημοφιλή κολλέγια και επαγγελματικές σχολές;</label>
-							<div class="subTitle text-cyan">ξεκίνα και διεκδίκησε υποτροφίες και προνομιακές τιμές </div>
+							<label class="fs-field-label fs-anim-upper text-blue upperTitle" for="q1">Είσαι απόφοιτος λυκείου και αναζητάς σπουδές σε δημοφιλή κολλέγια και επαγγελματικές σχολές;</label>
+							<div class="subTitle fs-anim-upper text-cyan">ξεκίνα και διεκδίκησε υποτροφίες και προνομιακές τιμές </div>
 							<input class="fs-anim-lower" name="q1" type="text" placeholder="Ονοματεπώνυμο" required/>
 						</li>
 						<li>

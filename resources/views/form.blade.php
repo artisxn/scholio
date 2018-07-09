@@ -97,6 +97,7 @@
 
         }
         .imgTrophy{max-width: 100%; height:530px; margin-top: 130px;}
+        .imgApply{max-width: 100%; height:330px; margin-top: 250px; margin-left: auto; margin-right: auto; display: block;}
         .title01,.title02{margin-top: 170px; text-align: center;}
         .title01{font-size: 280%; font-weight: 300; }
         .title02{font-size: 290%; font-weight: 400; }
@@ -107,21 +108,57 @@
         .imgMan{height:250px; position: absolute; right: -70px; top:-30px;}
 
         @media( max-width: 1170px){
+            .imgTrophy{width: 37%; height: auto; }
+            .title01{ font-size: 230%; font-weight: 400; width: 60%; float: right; margin-top: -320px;}
+            .title02{margin-top: 120px; font-size: 210%;}
 
             .formContainer {
-                top: 640px;
+                top: 890px;
                 left: 10%;
                 width: 80%;
             }
+            .imgApply{ height:270px; margin-top: 55px;}
+
+        }
+
+        @media( max-width: 1024px){
+            .imgTrophy{width: 37%; height: auto; }
+            .title01{ font-size: 230%; font-weight: 400; width: 60%; float: right; margin-top: -250px;}
+            .title02{margin-top: 170px; font-size: 210%;}
+
+            .formContainer {
+                top: 810px;
+            }
+            .imgApply{ height:250px; margin-top: 60px;}
+
+        }
+
+        @media( max-width: 768px){
+            .imgTrophy{width: 37%; height: auto; }
+            .title01{ font-size: 230%; font-weight: 400; width: 60%; float: right; margin-top: -230px;}
+            .title02{margin-top: 210px; font-size: 200%;}
+
+            .formContainer {
+                top: 750px;
+            }
+
 
         }
 
         @media( max-width: 470px){
 
             .formContainer {
-                left: 4%;
-                width: 92%;
+                top: 730px;
+                left: 3%;
+                width: 94%;
+                padding: 15px 0;
             }
+            .nav-web{margin-left: 14px;}
+            .imgTrophy{width: 70%; height: auto; margin: 90px  15% 20px 15%;}
+            .title01{margin-top: 5px; font-size: 150%; font-weight: 400; width: 100%; float: none}
+            .title02{margin-top: 115px; font-size: 140%; }
+            .imgApply{ height:230px; margin-top: 90px;}
+
 
         }
     </style>
@@ -135,10 +172,12 @@
 <header class="navbar navbar-top navbar-fixed-top" id="header">
     <div class="container">
         <div class="row">
-            <div class="pull-left visible-lg visible-md nav-web">
+            <div class="pull-left nav-web">
                 <!-- Scholio Branding -->
-                    <div class="">
-                        <img src="new/img/logoNX.png" class="" alt="scholio logo" style="height: 60px;">
+                    <div class=" ">
+                        <img src="new/img/logoNX.png" class="visible-lg visible-md " alt="scholio logo" style="height: 60px;">
+                        <img src="new/img/logoNX-m.png" class="visible-xs visible-sm hidden-md " alt="scholio logo" style="height: 40px;">
+
                     </div>
             </div>
         </div>
@@ -198,7 +237,7 @@
                 <hr class="line mr-t-40"/>
 
 
-                <div class="col-lg-6 inputTitle ">Επίπεδο Σπουδών
+                <div class="col-lg-6 inputTitle">Επίπεδο Σπουδών
                     <select class="">
                         <option value="1">Προπτυχιακά - Bachelor</option>
                         <option value="2">Μεταπτυχιακά - Master</option>
@@ -212,6 +251,11 @@
                         <option value="2">Θεσσαλονίκη</option>
                         <option value="3">Λάρισα</option>
                     </select>
+                </div>
+
+                <div class="">
+                    <img class="imgApply" src="new/img/form/image03.png" alt="trophy">
+
                 </div>
 
 
