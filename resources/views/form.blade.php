@@ -16,10 +16,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&subset=greek" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&subset=greek" >
 
     <!-- font-awesome -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    <!--Bootstrap Select  minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
     <!-- Main CSS -->
     <link href="{{asset('new/css/main.css')}}" rel="stylesheet">
@@ -34,8 +37,9 @@
     <!-- Bootstrap js-->
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
 
-    <!-- Bootstrap Select js  -->
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>--}}
+    <!-- Bootstrap Select minified JavaScript -->
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>--}}
+
 
 
     <style>
@@ -43,6 +47,26 @@
             background-color: #fff;
             font-family: Roboto, Helvetica, Arial, sans-serif;
         }
+
+        .line{ height: 2px; background-color: #49A6FE; width: 95%; margin-left: 2.5%; display: inline-block;}
+
+        .text-cyan{color: #49A6FE;}
+        .text-blue{color: #6D63FF}
+        .text-magenta{color: #BE3D74}
+        .text-white{color: #ffffff}
+        .text-orange{color: #FFDD4C}
+
+        .mar-t-10{margin-top: 10px;}
+        .mar-t-20{margin-top: 20px;}
+        .mar-t-30{margin-top: 30px;}
+        .mar-t-40{margin-top: 40px;}
+
+        .mar-b-30{margin-bottom: 30px;}
+
+        .pad-t-20{padding-top: 20px;}
+        .pad-t-30{padding-top: 30px;}
+        .pad-t-40{padding-top: 40px;}
+
         .navbar-top{
             background: #eee;
             border-bottom: 1px solid #d4d4d4;
@@ -58,23 +82,26 @@
 
 
         .formContainer{
+            z-index: 90;
             position: absolute;
             top: 400px;
             right:40px;
 
-            width: 45%;
+            width: 51%;
             height: 900px;
             border-radius: 5px;
             background-color: #FFDD4C;
             border: 1px solid #49A6FE;
-            box-shadow: 0 0  20px #999;
+            box-shadow: 0 0  30px #888;
             padding: 20px 10px;
 
         }
         .imgTrophy{max-width: 100%; height:530px; margin-top: 130px;}
-        .title01{color: #49A6FE; font-size: 290%; font-weight: 300; margin-top: 180px; text-align: center;}
+        .title01,.title02{margin-top: 170px; text-align: center;}
+        .title01{font-size: 280%; font-weight: 300; }
+        .title02{font-size: 290%; font-weight: 400; }
 
-        .inputTitle{font-size: 130%; color: #49A6FE; font-weight: 500; padding: auto 1px; margin: 8px auto;}
+        .inputTitle{font-size: 130%;  font-weight: 500; padding: auto 1px; margin: 8px auto;}
         .inputField{ border: 1px solid #49A6FE}
         .imgContainer{}
         .imgMan{height:250px; position: absolute; right: -70px; top:-30px;}
@@ -123,33 +150,71 @@
 
     <div class="section01">
         <div class="container">
-            <div class="col-lg-6">
-                <img class="imgTrophy" src="new/img/form/image01.png" alt="trophy">
+            <div class="row">
+                <div class="col-lg-5">
+                    <img class="imgTrophy" src="new/img/form/image01.png" alt="trophy">
+
+                </div>
+                <div class="col-lg-7 title01 text-cyan">
+                    Είσαι απόφοιτος λυκείου και ψάχνεις σπουδές με μέλλον στα δημοφιλέστερα Κολλέγια και ΙΕΚ ;
+
+                </div>
 
             </div>
-            <div class="col-lg-6 title01">
+
+
+            <div class="row col-lg-5 title02 text-blue">
                 Συμπλήρωσε τη φόρμα, και διεκδίκησε μοναδικές υποτροφίες !
 
             </div>
 
 
-            <div class="formContainer">
+
+            <div class="formContainer text-cyan">
                 
-                <div class="imgContainer">
-                    <img class="imgMan" src="/new/img/form/man.png" alt="">
-                </div>
+                {{--<div class="imgContainer hidden-md hidden-sm hidden-xs ">--}}
+                    {{--<img class="imgMan" src="/new/img/form/man.png" alt="">--}}
+                {{--</div>--}}
                 
-                <div class="col-lg-8 inputTitle">Όνομα
+                <div class="col-lg-6 inputTitle">Όνομα
                     <div><input class="inputField" type="text"></div>
                 </div>
-                <div class="clearfix">
+                {{--<div class="clearfix"></div>--}}
 
-                </div>
-
-
-                <div class="col-lg-8 inputTitle">Επώνυμο
+                <div class="col-lg-6 inputTitle">Επώνυμο
                     <div><input class="inputField" type="text"></div>
                 </div>
+
+
+                <div class="col-lg-6 inputTitle pad-t-20">Τηλέφωνο
+                    <div><input class="inputField" type="text"></div>
+                </div>
+                <div class="col-lg-6 inputTitle pad-t-20">e-Mail
+                    <div><input class="inputField" type="text"></div>
+                </div>
+
+                {{--<div class="line"></div>--}}
+
+                <hr class="line mr-t-40"/>
+
+
+                <div class="col-lg-6 inputTitle ">Επίπεδο Σπουδών
+                    <select class="">
+                        <option value="1">Προπτυχιακά - Bachelor</option>
+                        <option value="2">Μεταπτυχιακά - Master</option>
+                        <option value="3">IEK - Επαγγελματικες Σπουδές</option>
+                    </select>
+
+                </div>
+                <div class="col-lg-6 inputTitle">Επιθυμητή Πόλη Σπουδών
+                    <select class="">
+                        <option value="1">Αθήνα</option>
+                        <option value="2">Θεσσαλονίκη</option>
+                        <option value="3">Λάρισα</option>
+                    </select>
+                </div>
+
+
 
             </div>
 
