@@ -44,6 +44,7 @@ Route::get('/s/scholarships', function(){
 });
 
 Route::get('/form', function(){return view('form');});
+Route::get('/form2', function(){return view('form2');});
 
 
 Route::get('siteGen', function(){
