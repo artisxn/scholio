@@ -51,17 +51,30 @@
         .line{ height: 2px; background-color: #49A6FE; width: 95%; margin-left: 2.5%; display: inline-block;}
 
         .text-cyan{color: #49A6FE;}
-        .text-blue{color: #6D63FF}
-        .text-magenta{color: #BE3D74}
-        .text-white{color: #ffffff}
-        .text-orange{color: #FFDD4C}
+        .text-blue{color: #6D63FF;}
+        .text-magenta{color: #BE3D74;}
+        .text-white{color: #ffffff;}
+        .text-orange{color: #FFDD4C;}
+        .text-green{color: #22E1C2;}
+        .text-gray{color: #F1F4F5;}
 
         .mar-t-10{margin-top: 10px;}
         .mar-t-20{margin-top: 20px;}
         .mar-t-30{margin-top: 30px;}
         .mar-t-40{margin-top: 40px;}
 
+        .mar-r-10{margin-right: 10px;}
+        .mar-r-20{margin-right: 20px;}
+        .mar-r-30{margin-right: 30px;}
+
+        .mar-l-10{margin-left: 10px;}
+        .mar-l-20{margin-left: 20px;}
+        .mar-l-30{margin-left: 30px;}
+
+
+        .mar-b-20{margin-bottom: 20px;}
         .mar-b-30{margin-bottom: 30px;}
+        .mar-b-40{margin-bottom: 40px;}
 
         .pad-t-20{padding-top: 20px;}
         .pad-t-30{padding-top: 30px;}
@@ -74,11 +87,14 @@
             opacity: 0.9;
         }
         .container{position: relative;}
+        .hoverLink{color: #49A6FE!important;}
+        .hoverLink:hover{color: #6D63FF!important;}
 
         .nav-web{margin: 8px auto 4px auto;}
         .section01{height: 600px; background-color: #ffffff; position: relative;}
         .section02{height: 600px; background-color: #CEE4F1;}
-        .section03{height: 600px; background-color: #F1F4F5;}
+        .section03{height: 600px; background-color: #f5f8f9;}
+        .section04{height: 600px; background-color: #d2f5f5;}
 
 
         .formContainer{
@@ -88,7 +104,7 @@
             right:40px;
 
             width: 51%;
-            height: 900px;
+            height: 920px;
             border-radius: 5px;
             background-color: #FFDD4C;
             border: 1px solid #49A6FE;
@@ -96,18 +112,32 @@
             padding: 20px 10px;
 
         }
-        .imgTrophy{max-width: 100%; height:530px; margin-top: 130px;}
+        .imgTrophy{max-width: 110%; height:530px; margin-top: 130px;}
+        .imgParty{position: absolute; right: -40px; top: -165px; opacity: 0.15; z-index: 0; width: 520px;}
         .imgApply{max-width: 100%; height:330px; margin-top: 250px; margin-left: auto; margin-right: auto; display: block;}
-        .title01,.title02{margin-top: 170px; text-align: center;}
+        .imgPeople{max-width: 110%; height:340px; margin-top: 90px; margin-left: auto; margin-right: auto; display: block;}
+        .title01,.title02,.title03{margin-top: 170px; text-align: center;}
         .title01{font-size: 280%; font-weight: 300; }
-        .title02{font-size: 290%; font-weight: 400; }
+        .title02{font-size: 290%; font-weight: 400; margin-top: 150px;}
+        .title03{font-size: 270%; font-weight: 300; margin-top: 190px;}
+
+
+        .logos{margin-top: 30px;}
+        .logo{display: inline-block; float: left; height: 80px; margin-right: 12px;}
 
         .inputTitle{font-size: 130%;  font-weight: 500; padding: auto 1px; margin: 8px auto;}
         .inputField{ border: 1px solid #49A6FE}
-        .imgContainer{}
         .imgMan{height:250px; position: absolute; right: -70px; top:-30px;}
+        .btn-register{border: none;  background-color:  #6D63FF; padding: 12px 34px; font-size: 70%; font-weight: 300; color: #fff;}
+        .btn-register:hover{background-color: #574fbe; border: none; color: #fff;}
 
-        @media( max-width: 1170px){
+
+        .btn-schools{border: none;  background-color:  #FFDD4C; padding: 12px;  width: 150px; font-size: 70%; font-weight: 400; color: #6D63FF;}
+        .btn-schools:hover{background-color: #dabd40; border: none; color: #5c52c0;}
+
+
+
+        @media( max-width: 1199px){
             .imgTrophy{width: 37%; height: auto; }
             .title01{ font-size: 230%; font-weight: 400; width: 60%; float: right; margin-top: -320px;}
             .title02{margin-top: 120px; font-size: 210%;}
@@ -117,7 +147,9 @@
                 left: 10%;
                 width: 80%;
             }
-            .imgApply{ height:270px; margin-top: 55px;}
+            .imgApply{ height:270px; margin-top: 90px;}
+            .imgParty{ right: 0; opacity: 0.08; top:-185px;}
+            .section04{height: 890px;}
 
         }
 
@@ -129,7 +161,8 @@
             .formContainer {
                 top: 810px;
             }
-            .imgApply{ height:250px; margin-top: 60px;}
+            .imgApply{ height:250px; margin-top: 20px;}
+
 
         }
 
@@ -141,6 +174,7 @@
             .formContainer {
                 top: 750px;
             }
+            .section04{height: 840px;}
 
 
         }
@@ -156,8 +190,16 @@
             .nav-web{margin-left: 14px;}
             .imgTrophy{width: 70%; height: auto; margin: 90px  15% 20px 15%;}
             .title01{margin-top: 5px; font-size: 150%; font-weight: 400; width: 100%; float: none}
-            .title02{margin-top: 115px; font-size: 140%; }
-            .imgApply{ height:230px; margin-top: 90px;}
+            .title02{margin-top: 115px; font-size: 165%; }
+            .imgApply{ height:230px; margin-top: 40px;}
+
+            .section04{height: 700px;}
+            .sec4TitleContainer{margin-top: 420px;}
+            .sec4TitleContainer div{font-size:80%}
+            .imgPeopleContainer{margin-top: -680px;}
+
+            .btn-schools{width: 130px; font-size: 60%}
+
 
 
         }
@@ -194,7 +236,8 @@
                     <img class="imgTrophy" src="new/img/form/image01.png" alt="trophy">
 
                 </div>
-                <div class="col-lg-7 title01 text-cyan">
+                <div class="col-lg-7 title01 text-cyan" style="position: relative;">
+                    <img class="imgParty visible-md visible-lg" src="new/img/form/party.png" alt="party">
                     Είσαι απόφοιτος λυκείου και ψάχνεις σπουδές με μέλλον στα δημοφιλέστερα Κολλέγια και ΙΕΚ ;
 
                 </div>
@@ -203,7 +246,15 @@
 
 
             <div class="row col-lg-5 title02 text-blue">
-                Συμπλήρωσε τη φόρμα, και διεκδίκησε μοναδικές υποτροφίες !
+                Συμπλήρωσε τα στοιχεία σου και διεκδίκησε μοναδικές υποτροφίες !
+                {{--<div class="logos visible-lg">--}}
+                    {{--<img class="logo" src="upload/avatar/college_medThess.png" alt="logo">--}}
+                    {{--<img class="logo" src="upload/avatar/college_amcAth.png" alt="logo">--}}
+                    {{--<img class="logo" src="upload/avatar/college_icbsthess.png" alt="logo">--}}
+                    {{--<img class="logo" src="upload/avatar/college_nycthess.png" alt="logo">--}}
+                    {{--<img class="logo" src="upload/avatar/iek_iekalfa.png" alt="logo">--}}
+                    {{--<img class="logo" src="upload/avatar/iek_akmi.png" alt="logo">--}}
+                {{--</div>--}}
 
             </div>
 
@@ -215,20 +266,20 @@
                     {{--<img class="imgMan" src="/new/img/form/man.png" alt="">--}}
                 {{--</div>--}}
                 
-                <div class="col-lg-6 inputTitle">Όνομα
+                <div class="col-md-6 inputTitle">Όνομα
                     <div><input class="inputField" type="text"></div>
                 </div>
                 {{--<div class="clearfix"></div>--}}
 
-                <div class="col-lg-6 inputTitle">Επώνυμο
+                <div class="col-md-6 inputTitle">Επώνυμο
                     <div><input class="inputField" type="text"></div>
                 </div>
 
 
-                <div class="col-lg-6 inputTitle pad-t-20">Τηλέφωνο
+                <div class="col-md-6 inputTitle pad-t-20">Τηλέφωνο
                     <div><input class="inputField" type="text"></div>
                 </div>
-                <div class="col-lg-6 inputTitle pad-t-20">e-Mail
+                <div class="col-md-6 inputTitle pad-t-20">e-Mail
                     <div><input class="inputField" type="text"></div>
                 </div>
 
@@ -253,10 +304,46 @@
                     </select>
                 </div>
 
+                <div class="col-lg-12 inputTitle">Αντικείμενο Σπουδών
+                    <select class="">
+                        <option value="1">Οικονομικά / Διοίκηση / Marketing</option>
+                        <option value="2">Τουριστικά</option>
+                        <option value="3">Πληροφορική</option>
+                        <option value="4">Επιστήμες Υγείας</option>
+                        <option value="5">Παιδαγωγικά</option>
+                        <option value="6">Ανθρωπιστικές Επιστήμες</option>
+                        <option value="7">Πολυτεχνικές Σχολές</option>
+                        <option value="8">Ναυτιλιακά</option>
+                        <option value="9">Arts & Design</option>
+                        <option value="10">Πολιτισμός & Επικοινωνία</option>
+                        <option value="11">Μόδα & Ομορφιά</option>
+
+
+                    </select>
+                </div>
+
+                <div class="">
+                    <div class="col-xs-12">
+                        <div class="checkbox checkbox-primary">
+                            <input id="checkbox-signup" name="terms" type="checkbox" required>
+                            <label for="checkbox-signup">Αποδέχομαι τους <a class="hoverLink" href="{{ url('terms') }}">Όρους Χρήσης </a> και την <a class="hoverLink" href="{{ url('gdpr') }}">Πολιτική Απορρήτου</a></label>
+
+                            @if ($errors->has('terms'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('terms') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="">
                     <img class="imgApply" src="new/img/form/image03.png" alt="trophy">
 
                 </div>
+
+
 
 
 
@@ -273,8 +360,47 @@
          </div>
      </div>
 
+
     <div class="section03">
+        <div class="container visible-lg">
+            <div class="col-lg-5">
+                <img class="imgTrophy" src="new/img/form/image02.png" alt="trophy2">
+
+            </div>
+            <div class="row col-lg-7 title03 text-blue mar-b-40">
+               <div>Κανε εγγραφή και φτιάξε το βιογραφικό σου.
+                   Υποτροφίες ταλέντου θα είναι σύντομα διαθεσιμες.
+               </div>
+                <div class="text-center mar-t-30">
+                    <button type="button" class="btn btn-default btn-register">Εγγραφή</button>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="section04">
         <div class="container">
+            <div class="clearfix"></div>
+
+            <div class="col-lg-7 title03 text-blue mar-t-30 sec4TitleContainer" >
+                <div class="mar-b-30">Μην ψάχνεις άσκοπα εδώ κι εκεί ! To schol.io είναι εδώ</div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-schools mar-r-20">Κολλέγια</button>
+                    <button type="button" class="btn btn-default btn-schools">ΙΕΚ</button>
+                </div>
+            </div>
+
+
+            <div class="col-lg-5 imgPeopleContainer">
+                <img class="imgPeople" src="new/img/form/image06.png" alt="people">
+
+            </div>
 
 
         </div>

@@ -38,17 +38,21 @@
 			.text-white{color: #ffffff!important;;}
 			.text-orange{color: #FFDD4C!important;}
 
-			.fs-anim-lower:focus{background-color: transparent!important;}
-			.upperTitle {text-align: center; margin: auto auto 20px auto;}
-			.fs-anim-lower{font-size: 100%!important;}
-			.subTitle{text-align: center; margin: auto auto 40px auto; font-size: 80%;}
-			.imgTrophy{ opacity: 0.9; height:240px; position: absolute; top: -230px; left: 0; right: 0; margin-left: auto;  margin-right: auto;}
-			.imgContainer{position: relative;}
+			/*.set1{position: absolute; border: 1px solid #aaa; border-radius: 10px; background-color: #fafafa; box-shadow: 0 0 15px #888; height: 400px; top: -220px; padding: 12px;}*/
+			/*.set2{position: absolute; top:220px; left: 0; right: 0; margin-right: auto; margin-left: auto;}*/
 
-			@media(max-width: 480px){
-				.imgTrophy{ top: -180px;}
-				.upperTitle{margin-top: 60px; font-size: 90%!important;}
-				/*.fs-fields{margin-left: 32px; width: 100%}*/
+			/*.fs-anim-lower:focus{background-color: transparent!important;}*/
+
+			/*.fs-anim-lower{font-size: 100%!important;}*/
+			/*.subTitle{text-align: center; margin: auto auto 40px auto; font-size: 80%;}*/
+			/*.imgTrophy{ opacity: 0.9; height: 220px;  margin: 20px auto; display: block;}*/
+			/*.imgContainer{position: relative;}*/
+			/*.upperTitle {text-align: center; margin: auto auto 20px auto; font-size: 90%}*/
+
+			/*@media(max-width: 480px){*/
+				/*.imgTrophy{ top: -180px;}*/
+				/*.upperTitle{margin-top: 60px; font-size: 90%!important;}*/
+				/*!*.fs-fields{margin-left: 32px; width: 100%}*!*/
 
 
 			}
@@ -66,13 +70,20 @@
 				</div>
 				<form id="myform" class="fs-form fs-form-full" autocomplete="off">
 					<ol class="fs-fields">
-						<li>
-							<div class="imgContainer">
-								<img class="imgTrophy" src="new/img/form/image05.png" alt="trophy">
+						<li style="position: relative">
+							{{--<div class="set1">--}}
+								{{--<div class="imgContainer">--}}
+									{{--<img class="imgTrophy" src="new/img/form/image05.png" alt="trophy">--}}
+								{{--</div>--}}
+								{{--<label class="fs-field-label fs-anim-upper text-blue upperTitle" for="q1">Είσαι απόφοιτος λυκείου και αναζητάς σπουδές σε δημοφιλή κολλέγια και επαγγελματικές σχολές;</label>--}}
+
+							{{--</div>--}}
+
+							<div class="set2">
+								<div class="subTitle fs-anim-upper text-cyan">συμπλήρωσε τα στοιχεία σου και διεκδίκησε προνομιακές τιμές </div>
+								<input class="fs-anim-lower" name="q1" type="text" placeholder="Ονοματεπώνυμο" required/>
 							</div>
-							<label class="fs-field-label fs-anim-upper text-blue upperTitle" for="q1">Είσαι απόφοιτος λυκείου και αναζητάς σπουδές σε δημοφιλή κολλέγια και επαγγελματικές σχολές;</label>
-							<div class="subTitle fs-anim-upper text-cyan">ξεκίνα και διεκδίκησε υποτροφίες και προνομιακές τιμές </div>
-							<input class="fs-anim-lower" name="q1" type="text" placeholder="Ονοματεπώνυμο" required/>
+
 						</li>
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">Email:</label>
