@@ -13,8 +13,8 @@ class Frontistiria2 extends Seeder
      */
     public function run()
     {
-
-
+        $background = Portal::createImages('/upload/school/univ.png')->id;
+        
         /*=============== 1  Oidaniko ================*/
 
         $fake = factory(App\Models\School::class)->create([
