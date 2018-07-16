@@ -230,9 +230,6 @@
 
 
     <script>
-
-
-
         window.axios.defaults.headers.common = {
             'X-CSRF-TOKEN': Scholio.csrfToken,
             'X-Requested-With': 'XMLHttpRequest'

@@ -741,7 +741,7 @@ Route::post('/image/background/save', function () {
     $school = auth()->user()->info;
     $school->background = request()->image;
     $school->save();
-    // Scholio::updateDummy($school);
+    dispatch(new Algolia($school));
     return 'OK';
 })->middleware('auth:api');
 
