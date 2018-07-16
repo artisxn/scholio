@@ -206,7 +206,9 @@
         @media(max-width: 480px) {
             .xxs-custom-contact{width: 99%}
             .xxs-custom-stats{width: 60%; float: left!important; margin-top: 35px;}
-            .xxs-custom-line{display: block}
+            .xxs-custom-line{display: block; top: 195px;}
+            .socials{margin-top: 5px!important;}
+
         }
 
         @media(max-width: 410px) {
@@ -242,7 +244,7 @@
         }*/
 
         @media (max-width: 991px) {
-            #xs-submButton{ eight: 41px; z-index: 2000; bottom: 10px; left: 13%;   width: 74%; right: auto; position: fixed; }
+            #xs-submButton{ height: 41px; z-index: 99; bottom: 10px; left: 13%;   width: 74%; right: auto; position: fixed; }
         }
 
 
@@ -395,11 +397,7 @@
 
                          @else
 
-                         <style>
-                         .socials{
-                            margin-top: -65px;
-                         }
-                            </style>
+                         <style>.socials{  margin-top: -65px; }</style>
 
                          @endif
 
@@ -502,8 +500,11 @@
 
                                 <div class="col-xs-7 col-sm-7 pad-left-0 xxs-custom-contact">
 
-                                    <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
+                                    <span><i class="fa fa-university pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                                     <span class=" pad-left-8 xs-text-incr-85 text-incr-95">{{$school->type->name}}</span>
+                                    <div class="pad-top-10"></div>
+
+                                    <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                                     <span class=" pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
 
                                     <div class="pad-top-10"></div>

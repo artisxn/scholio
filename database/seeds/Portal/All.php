@@ -21,7 +21,14 @@ class All extends Seeder
         $this->call(SeedA2::class);
         $this->call(SeedA3::class);
         $this->call(SeedA4::class);
+//        $this->call(SeedA5::class);
+        $this->call(SeedA6::class);
+        $this->call(SeedA7::class);
+        $this->call(SeedA8::class);
         $this->call(Frontistiria::class);
+        $this->call(Frontistiria1::class);
+        $this->call(Frontistiria3::class);
+
     }
 
 
