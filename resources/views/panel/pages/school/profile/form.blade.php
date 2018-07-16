@@ -131,7 +131,7 @@
             'visualblocks  fullscreen',
             'insertdatetime media table paste '
         ],
-        toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link table',
+        toolbar: 'undo redo | insert | styleselect | fontsizeselect bold italic blockquote | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link table',
 
         setup: function (ed) {
             ed.on("KeyDown", function (ed, evt) {
