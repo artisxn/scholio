@@ -106,7 +106,7 @@
             width: 51%;
             height: 920px;
             border-radius: 5px;
-            background-color: #FFDD4C;
+            background-color: #cae2fe;
             border: 1px solid #49A6FE;
             box-shadow: 0 0  30px #888;
             padding: 20px 10px;
@@ -128,8 +128,10 @@
         .inputTitle{font-size: 130%;  font-weight: 500; padding: auto 1px; margin: 8px auto;}
         .inputField{ border: 1px solid #49A6FE}
         .imgMan{height:250px; position: absolute; right: -70px; top:-30px;}
-        .btn-register{border: none;  background-color:  #6D63FF; padding: 12px 34px; font-size: 70%; font-weight: 300; color: #fff;}
-        .btn-register:hover{background-color: #574fbe; border: none; color: #fff;}
+        .btn-register, .btn-accept{border: none;  background-color:  #6D63FF; padding: 12px 34px; font-size: 70%; font-weight: 300; color: #fff;}
+        .btn-register:hover,.btn-accept:hover{background-color: #574fbe; border: none; color: #fff;}
+
+        .btn-accept{font-size: 120%; background-color: #41afff; margin-bottom: 20px;}
 
 
         .btn-schools{border: none;  background-color:  #FFDD4C; padding: 12px;  width: 150px; font-size: 70%; font-weight: 400; color: #6D63FF;}
@@ -146,6 +148,7 @@
                 top: 890px;
                 left: 10%;
                 width: 80%;
+                height: 930px;
             }
             .imgApply{ height:270px; margin-top: 90px;}
             .imgParty{ right: 0; opacity: 0.08; top:-185px;}
@@ -160,6 +163,7 @@
 
             .formContainer {
                 top: 810px;
+                height: 1050px;
             }
             .imgApply{ height:250px; margin-top: 20px;}
 
@@ -169,12 +173,13 @@
         @media( max-width: 768px){
             .imgTrophy{width: 37%; height: auto; }
             .title01{ font-size: 230%; font-weight: 400; width: 60%; float: right; margin-top: -230px;}
-            .title02{margin-top: 210px; font-size: 200%;}
+            .title02{margin-top: 240px; font-size: 200%;}
 
             .formContainer {
                 top: 750px;
+                height: 1070px;
             }
-            .section04{height: 840px;}
+            .section04{height: 890px;}
 
 
         }
@@ -186,6 +191,7 @@
                 left: 3%;
                 width: 94%;
                 padding: 15px 0;
+                height: 1040px;
             }
             .nav-web{margin-left: 14px;}
             .imgTrophy{width: 70%; height: auto; margin: 90px  15% 20px 15%;}
@@ -246,7 +252,7 @@
 
 
             <div class="row col-lg-5 title02 text-blue">
-                Συμπλήρωσε τα στοιχεία σου και διεκδίκησε μοναδικές υποτροφίες !
+                Συμπλήρωσε τα στοιχεία σου και διεκδίκησε μοναδικές υποτροφίες
                 {{--<div class="logos visible-lg">--}}
                     {{--<img class="logo" src="upload/avatar/college_medThess.png" alt="logo">--}}
                     {{--<img class="logo" src="upload/avatar/college_amcAth.png" alt="logo">--}}
@@ -305,21 +311,25 @@
                 </div>
 
                 <div class="col-lg-12 inputTitle">Αντικείμενο Σπουδών
-                    <select class="">
-                        <option value="1">Οικονομικά / Διοίκηση / Marketing</option>
-                        <option value="2">Τουριστικά</option>
-                        <option value="3">Πληροφορική</option>
-                        <option value="4">Επιστήμες Υγείας</option>
-                        <option value="5">Παιδαγωγικά</option>
-                        <option value="6">Ανθρωπιστικές Επιστήμες</option>
-                        <option value="7">Πολυτεχνικές Σχολές</option>
-                        <option value="8">Ναυτιλιακά</option>
-                        <option value="9">Arts & Design</option>
-                        <option value="10">Πολιτισμός & Επικοινωνία</option>
-                        <option value="11">Μόδα & Ομορφιά</option>
+                    <div>
+                        <textarea name="" id="" cols="" rows="3" style="width: 100%" placeholder=""></textarea>
+                    </div>
+
+                    {{--<select class="">--}}
+                        {{--<option value="1">Οικονομικά / Διοίκηση / Marketing</option>--}}
+                        {{--<option value="2">Τουριστικά</option>--}}
+                        {{--<option value="3">Πληροφορική</option>--}}
+                        {{--<option value="4">Επιστήμες Υγείας</option>--}}
+                        {{--<option value="5">Παιδαγωγικά</option>--}}
+                        {{--<option value="6">Ανθρωπιστικές Επιστήμες</option>--}}
+                        {{--<option value="7">Πολυτεχνικές Σχολές</option>--}}
+                        {{--<option value="8">Ναυτιλιακά</option>--}}
+                        {{--<option value="9">Arts & Design</option>--}}
+                        {{--<option value="10">Πολιτισμός & Επικοινωνία</option>--}}
+                        {{--<option value="11">Μόδα & Ομορφιά</option>--}}
 
 
-                    </select>
+                    {{--</select>--}}
                 </div>
 
                 <div class="">
@@ -333,6 +343,10 @@
                                         <strong>{{ $errors->first('terms') }}</strong>
                                     </span>
                             @endif
+                        </div>
+
+                        <div class="text-center mar-t-10">
+                            <button type="button" class="btn btn-default btn-accept">Αποδοχή</button>
                         </div>
                     </div>
                 </div>
@@ -369,7 +383,7 @@
             </div>
             <div class="row col-lg-7 title03 text-blue mar-b-40">
                <div>Κανε εγγραφή και φτιάξε το βιογραφικό σου.
-                   Υποτροφίες ταλέντου θα είναι σύντομα διαθεσιμες.
+                   Υποτροφίες ταλέντου θα είναι σύντομα διαθέσιμες.
                </div>
                 <div class="text-center mar-t-30">
                     <button type="button" class="btn btn-default btn-register">Εγγραφή</button>

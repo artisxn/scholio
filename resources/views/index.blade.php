@@ -433,8 +433,7 @@
 
 				<div class=" sc-landing-search-bar-content">
 
-					<form onsubmit="event.preventDefault(); validateMyForm(this,1);" action="/search/scholarships" id="scholarship" method="post"
-						  ng-if="selectedButton==1">
+					<form onsubmit="event.preventDefault(); validateMyForm(this,1);" action="/search/scholarships" id="scholarship" method="post" ng-if="selectedButton==1">
 						{{ csrf_field() }}
 						<div class="col-md-10 col-sm-10" id="">
 							<input name="text" type="text" class="font-weight-300 algolia-input" id="search-input" autocomplete aa-datasets="getDatasets1()"
@@ -709,7 +708,7 @@
 				<div class="row">
 
 					<a href="{{url('public/schools?q=Ιδιωτικά Σχολεία')}}">
-						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  col-xxxs-12">
+						<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12  col-xxxs-12">
 							<div class="grid">
 								<figure class="effect-lily sc-landing-card ">
 									<img src="image.png" data-src="{{asset('new/img/sect-photo/belfast2.jpg')}}" alt="Ιδιωτικά Σχολεία" style="" class="img-responsive lozad" />
@@ -729,10 +728,10 @@
 					</a>
 
 						<a href="{{url('public/schools?q=κολλέγια')}}">
-							<div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 col-xxxs-12">
+							<div class=" col-lg-7 col-md-7 col-sm-6 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card">
-										<img src="image.png" data-src="{{asset('new/img/sect-photo/college2.jpg')}}" alt="Κολλέγια" style="" class="img-responsive lozad" />
+										<img src="image.png" data-src="{{asset('new/img/sect-photo/college.jpg')}}" alt="Κολλέγια" style="" class="img-responsive lozad" />
 
 									<figcaption>
 										<div class="centered-text">
@@ -747,10 +746,10 @@
 					</a>
 
 						<a href="{{url('public/schools?q=ΙΕΚ, Επαγγελματική Σχολή')}}">
-							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-xxxs-12">
+							<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card ">
-										<img src="image.png" data-src="{{asset('new/img/sect-photo/doct2.jpg')}}" alt="ΙΕΚ" style="" class="img-responsive lozad" />
+										<img src="image.png" data-src="{{asset('new/img/sect-photo/doctor.jpg')}}" alt="ΙΕΚ" style="" class="img-responsive lozad" />
 
 										<figcaption>
 											<div class="centered-text">
@@ -764,8 +763,55 @@
 									</figure>
 								</div>
 							</div>
+						</a>
+
+					<a href="{{url('public/schools?q=Φροντιστήρια')}}">
+						<div class=" col-lg-5 col-md-5  col-sm-6 col-xs-12 col-xxxs-12">
+							<div class="grid">
+								<figure class="effect-lily sc-landing-card ">
+									<img src="{{asset('new/img/sect-photo/student.jpg')}}" alt="Φροντιστήρια" style="" class="img-responsive " />
+
+									<figcaption>
+										<div class="centered-text">
+											<h2>@lang('main.institutions.frontistirio')
+												<span></span>
+											</h2>
+											<p>@lang('main.institutions.button')</p>
+										</div>
+										@lang('main.institutions.button')
+									</figcaption>
+								</figure>
+							</div>
 						</div>
 					</a>
+
+					{{--<a href="{{url('public/schools?q=Ξένες Γλώσσες')}}">--}}
+						{{--<div class=" col-lg-6 col-md-4  col-sm-6 col-xs-12 col-xxxs-12">--}}
+							{{--<div class="grid">--}}
+								{{--<figure class="effect-lily sc-landing-card ">--}}
+									{{--<img src="{{asset('new/img/sect-photo/Schoolchildren2.png')}}" alt="student" style="" class="img-responsive " />--}}
+
+									{{--<figcaption>--}}
+										{{--<div class="centered-text">--}}
+											{{--<h2>@lang('main.institutions.languages1')--}}
+												{{--<span>@lang('main.institutions.languages2')</span>--}}
+											{{--</h2>--}}
+											{{--<p>@lang('main.institutions.button')</p>--}}
+										{{--</div>--}}
+										{{--@lang('main.institutions.button')--}}
+									{{--</figcaption>--}}
+								{{--</figure>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+					{{--</a>--}}
+
+
+
+
+
+
+
+
 
 				</div>
 			</div>

@@ -20,7 +20,7 @@
             });
         }
         fetchTypes();
-        $scope.selectedButton = 1;
+        $scope.selectedButton = 2;
         var _selected;
         $scope.selected = 'all';
         $scope.ngModelOptionsSelected = function(value) {

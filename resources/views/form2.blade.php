@@ -98,7 +98,7 @@
 							<div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
 								<span><input id="q3b" name="q3" type="radio" value="conversion"/><label for="q3b" class="radio-conversion">Κολλέγιο</label></span>
 								<span><input id="q3c" name="q3" type="radio" value="social"/><label for="q3c" class="radio-social">ΙΕΚ - Επαγγελματικές Σχολές</label></span>
-								<span><input id="q3a" name="q3" type="radio" value="mobile"/><label for="q3a" class="radio-mobile">Ιδιωτικό Σχολέιο - Φροντηστήριο</label></span>
+								<span><input id="q3a" name="q3" type="radio" value="mobile"/><label for="q3a" class="radio-mobile">Ιδιωτικό Σχολείο - Φροντιστήριο</label></span>
 							</div>
 						</li>
 						<li>
