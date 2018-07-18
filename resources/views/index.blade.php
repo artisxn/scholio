@@ -124,6 +124,8 @@
 
 		.trans{
 			display: inline-block; margin: -3px 20px auto 20px; background-color: transparent; width: 50px; border: none; color: #ccc;
+			-webkit-appearance: none;
+			-moz-appearance: none;
 		}
 		/*.trans .dropdown-menu>li>a {*/
 			/*color: #fff*/

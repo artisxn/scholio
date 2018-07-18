@@ -60,6 +60,7 @@
         .text{ width: 410px; font-size: 110%; text-align: center; margin-top: 15px; margin-bottom: 30px; margin-left: auto; margin-right: auto;}
         .photo-container {margin-left: -15px; }
         h3 {font-weight: 300;}
+        .limit{text-align: center; margin: 0 auto 20px auto; font-size: 110%; color: #888;}
 
         @media (min-width: 1881px) {
             .span-cont {pading: 0 0.3%; width: 19.8%;}
@@ -214,6 +215,7 @@
                     <div class="section2-container ">
                         <div class="inner-section2">
                             <!-- widthHeightRatio:15/10 -->
+                            <div class="limit">@lang('school_photos.limit')</div>
                             <image-crop img-width="750" img-height="500" out-sizewidth="600" out-sizeheight="400" img-data="school"></image-crop>
                         </div>
                     </div>

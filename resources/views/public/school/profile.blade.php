@@ -192,8 +192,14 @@
 
 
 
+        @media(max-width: 1349px) {
+            .ellipsis{width: 91%}
+        }
+
+
         @media(max-width: 1109px) {
         .school-profile-nav-link{padding-right: 8px!important; padding-left: 8px!important; font-size: 95%;}
+            .ellipsis{width: 89%}
         }
 
 

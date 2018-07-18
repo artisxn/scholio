@@ -230,8 +230,7 @@ class SeedA3 extends Seeder
         /*===============  helcol  οκ ================*/
 
          $helcol = factory(App\Models\School::class)->create([
-             'user_id' => factory(App\User::class)->create(['name' => 'Ελληνικό Κολλέγιο Θεσσαλονίκης', 'email' => 'hel-col@otenet.gr
-             ', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'helcol'])->id,
+             'user_id' => factory(App\User::class)->create(['name' => 'Ελληνικό Κολλέγιο Θεσσαλονίκης', 'email' => 'hel-col@otenet.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'helcol'])->id,
              'address' => 'Δροσιά Θέρμης, Θέρμη',
              'city' => 'Θεσσαλονίκη',
              'phone' => 2310473112,
