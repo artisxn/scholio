@@ -4,67 +4,62 @@ use App\Scholio\Scholio;
 use Illuminate\Database\Seeder;
 use Portal\Portal;
 
-class Frontistiria4 extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        $background = Portal::createImages('/upload/school/univ.png')->id;
+class Frontistiria4 extends Seeder {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run() {
+		$background = Portal::createImages('/upload/school/univ.png')->id;
 
-        /*=============== 1 Μαθητεία ================*/
+		/*=============== 1 Μαθητεία ================*/
 
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Μαθητεία', 'email' => 'info@mathiteia.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mathiteia'])->id,
-            'address' => 'Πολυτεχνίου 45, Νέα Ραιδεστός',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310462071,
-            'type_id' => 3,
-            'website' => 'mathiteia.edu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Μαθητεία', 'email' => 'info@mathiteia.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'mathiteia'])->id,
+			'address' => 'Πολυτεχνίου 45, Νέα Ραιδεστός',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310462071,
+			'type_id' => 3,
+			'website' => 'mathiteia.edu.gr',
+			'approved' => 1,
+			'about' => '
             Ομάδες Προσανατολισμού Γ΄Λυκείου. Τμήματα Γυμνασίου, Α΄ και Β΄Λυκείου και Αποφοίτων.
 
             -Προετοιμασία για την εισαγωγή στις Ανώτατες και Ανώτερες Σχολές
             -Προσανατολισμοί Γ΄Λυκείου
             -Τμήματα Γυμνασίου, Α΄ Λυκείου, Β΄Λυκείου, Αποφοίτων
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 7, 'frontistirio');
+		new Portal($fake, 7, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/mathiteia1');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/mathiteia1');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 2  Methexis ================*/
 
-
-
-        /*=============== 2  Methexis ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστηριο Μέθεξις', 'email' => ' info@methexis.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'methexis'])->id,
-            'address' => 'Λόρδου Βύρωνος 19, Νεάπολη',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2311293330,
-            'type_id' => 3,
-            'website' => 'methexis.edu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστηριο Μέθεξις', 'email' => 'info@methexis.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'methexis'])->id,
+			'address' => 'Λόρδου Βύρωνος 19, Νεάπολη',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2311293330,
+			'type_id' => 3,
+			'website' => 'methexis.edu.gr',
+			'approved' => 1,
+			'about' => '
                 Το φροντιστήριο ΜΕΘΕΞΙΣ
                 Aποτελείται από μία έμπειρη, παράλληλα όμως νεανική ομάδα καθηγητών με πολύ όρεξη, μεράκι και πραγματικό ενδιαφέρον και αγάπη για τον κάθε μαθητή χωριστά. Στόχος της διεύθυνσης του φροντιστηρίου, δεν είναι  ο πλουτισμός μέσω μιας επιχείρησης, αλλά η παροχή εκπαίδευσης και παιδείας σε πολύ υψηλά επίπεδα! Γι’ αυτό τον λόγο το φροντιστήριό μας, δεν δίνει συνηθισμένες παροχές ενός κοινού φροντιστηρίου. Το φροντιστήριο ΜΕΘΕΞΙΣ δίνει σε μαθητές και γονείς την πραγματική διάσταση της εκπαίδευσης.
 
@@ -82,38 +77,36 @@ class Frontistiria4 extends Seeder
                 Νοιαζόμαστε!
                 Νοιαζόμαστε για το παιδί σας και με υπευθυνότητα, ειλικρίνεια και αξιοπιστία καταβάλουμε όλες μας τις δυνάμεις για να οδηγήσουμε τον μαθητή στην επιτυχία δίχως άγχος, αλλά με ευχάριστο και υγιή τρόπο! Θα χαρούμε πολύ να σας ενημερώσουμε για τις ιδιαίτερες παροχές μας και από κοντά…
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 6, 'frontistirio');
+		new Portal($fake, 6, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%AE%CF%81%CE%B9%CE%BF-%CE%9C%CE%AD%CE%B8%CE%B5%CE%BE%CE%B9%CF%82-256536234548691/');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%AE%CF%81%CE%B9%CE%BF-%CE%9C%CE%AD%CE%B8%CE%B5%CE%BE%CE%B9%CF%82-256536234548691/');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 3  Μέθοδος ================*/
 
-
-        /*=============== 3  Μέθοδος ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Μέθοδος', 'email' => 'methodos.edu@hotmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-            'address' => 'Ποσειδώνος 2 - Λ. Δημοκρατίας, Ωραιόκαστρο',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310692145,
-            'type_id' => 3,
-            'website' => 'methodos-edu.eu',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Μέθοδος', 'email' => 'methodos.edu@hotmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
+			'address' => 'Ποσειδώνος 2 - Λ. Δημοκρατίας, Ωραιόκαστρο',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310692145,
+			'type_id' => 3,
+			'website' => 'methodos-edu.eu',
+			'approved' => 1,
+			'about' => '
                 Το Φροντιστήριο Μέσης Εκπαίδευσης «ΜΕΘΟΔΟΣ- Πρότυπα τμήματα» ιδρύθηκε το 1994, από τους Ζάχο Ηλία και Πετρίδη Πέτρο, Φυσικό και Μαθηµατικό αντίστοιχα.
                 Με οδηγό το πάθος µας για υψηλή ποιοτική εκπαίδευση, μεθοδικά και χωρίς υπερβολές, εδώ και 25 έτη χτίσαμε µια αληθινή σχέση εμπιστοσύνης µε τους γονείς και τους μαθητές. Μια σχέση που κάθε χρόνο δικαιώνει την προσπάθεια όλων μας.
                 Στην μακρόχρονη πορεία μας είχαμε ένα και μοναδικό στόχο: την παροχή ποιοτικής εκπαίδευσης στους μαθητές μας, υψηλού επιπέδου, ανώτερης του μέσου όρου του κλάδου. Αυτό ήταν και το ανταγωνιστικό μας πλεονέκτημα το οποίο δεν μπόρεσε κανείς να αντιγράψει γιατί ήταν και είναι θέμα συνδυασμού κουλτούρας, γνώσης, τεχνολογικών συστημάτων, εμπειρίας και πάθους.
@@ -122,37 +115,36 @@ class Frontistiria4 extends Seeder
                 Σε αυτά τα 25 σχεδόν χρόνια λειτουργίας πέρασαν από τις τάξεις της Μεθόδου περισσότεροι από 4.000 μαθητές, που στη µεγάλη πλειοψηφία τους είναι σήµερα επιστήµονες και επιτυχημένοι επαγγελματίες.
                 Οι επιτυχίες των μαθητών μας είναι αυτές που μας δίνουν δύναµη και έµπνευση για να προχωρήσουμε ακόµα πιο δυναµικά, χωρίς να θυσιάσουμε καµιά από τις αρχές και τις αξίες μας.
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 10, 'frontistirio');
+		new Portal($fake, 10, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/methodos.edu.eu');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/methodos.edu.eu');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 4  Νεο Δυναμικό ================*/
 
-        /*=============== 4  Νεο Δυναμικό ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Νέο Δυναμικό', 'email' => 'neodynamiko@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'neodynamiko'])->id,
-            'address' => 'Εθνικής Αντιστάσεως 76, Δρυμός',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2394033070,
-            'type_id' => 3,
-            'website' => 'neodynamiko.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Νέο Δυναμικό', 'email' => 'neodynamiko@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'neodynamiko'])->id,
+			'address' => 'Εθνικής Αντιστάσεως 76, Δρυμός',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2394033070,
+			'type_id' => 3,
+			'website' => 'neodynamiko.gr',
+			'approved' => 1,
+			'about' => '
             Στο φροντιστήριο ΝΕΟ ΔΥΝΑΜΙΚΟ είμαστε μια ομάδα καθηγητών - φροντιστών που από το 1987
             εργαζόμαστε με επαγγελματισμό, συνέπεια, μεθοδικότητα και κυρίως αγάπη για του νέους.
 
@@ -167,75 +159,70 @@ class Frontistiria4 extends Seeder
             στην οδό Χάνι Γραβιάς 33 (τηλ. 2310.667857) και στο Δρυμό, στην οδό Εθνικής Αντιστάσεως 76 (τηλ. 23940.33070).
 
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 10, 'frontistirio');
+		new Portal($fake, 10, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/neodynamiko');
-        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/frontistiria_neodynamiko');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/neodynamiko');
+		Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/frontistiria_neodynamiko');
 //        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 5  Νέο Φροντιστήριο ================*/
 
-
-        /*=============== 5  Νέο Φροντιστήριο ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Νέο Φροντιστήριο', 'email' => 'info@neo.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'neo_frontistirio'])->id,
-            'address' => 'Θεμιστοκλή Σοφούλη 2, Καλαμαριά',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310411444,
-            'type_id' => 3,
-            'website' => 'neo.edu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Νέο Φροντιστήριο', 'email' => 'info@neo.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'neo_frontistirio'])->id,
+			'address' => 'Θεμιστοκλή Σοφούλη 2, Καλαμαριά',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310411444,
+			'type_id' => 3,
+			'website' => 'neo.edu.gr',
+			'approved' => 1,
+			'about' => '
             Η απόφαση της ίδρυσης του οργανισμού που θα δημιουργούσε την πλουσιότερη φροντιστηριακή παράδοση ανήκει στον διδάκτορα Ιστορίας Νικόλαο Κόλλια. Το πρώτο φροντιστήριο στεγάστηκε τη γωνία Σίνα και Ακαδημίας . Μεταξύ των συνιδρυτών του φροντιστηρίου ήταν ο Στέφανος Πατάκης ο μετέπειτα εκδότης, και στα επόμενα χρόνια αρωγοί στην προσπάθεια του Νικόλαου Κόλλια ήταν ο αδερφός του Σεραφείμ και ο Ανδρέας Βαρνακιώτης. Η ακαδημαϊκή υπεροχή του έμψυχου δυναμικού του φροντιστηρίου προσέλκυσε περί τους 3500 μαθητές από όλη την Ελλάδα στο νέο κτήριο, στην οδό Πανεπιστημίου 39 ,στο Μέγαρο Πρωίας.
 
             Σήμερα αποτελεί ένα σύνολο 59 εκπαιδευτικών κέντρων με 500 καθηγητές, 70 συνεργάτες διευθυντές σπουδών κάθε ειδικότητας, πλήρη σειρά εκδόσεων και πλούσιο ηλεκτρονικό εκπαιδευτικό υλικό. Η πλούσια ακαδημαϊκή του παράδοση διατηρείται με συνεχή σεμινάρια επιμόρφωσης των καθηγητών του καταδεικνύοντας τη διαχρονική πρωτοκαθεδρία του οργανισμού στην προετοιμασία των μαθητών για την τριτοβάθμια εκπαίδευση, ανεξαρτήτως του τρόπου εισαγωγής τους στα ανώτατα εκπαιδευτικά ιδρύματα.
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 5, 'frontistirio');
+		new Portal($fake, 5, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/neofrontistirio');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/neofrontistirio');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/user/NeoFrontistirio');
+		Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/user/NeoFrontistirio');
 
+		/*=============== 6 Ντόντης ================*/
 
-
-
-        /*=============== 6 Ντόντης ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Ντόντης', 'email' => 'info@ntontis.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ntontis'])->id,
-            'address' => 'Παναγή Τσαλδάρη 12, Σταυρούπολη',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310663209,
-            'type_id' => 3,
-            'website' => 'ntontis.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Ντόντης', 'email' => 'info@ntontis.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ntontis'])->id,
+			'address' => 'Παναγή Τσαλδάρη 12, Σταυρούπολη',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310663209,
+			'type_id' => 3,
+			'website' => 'ntontis.gr',
+			'approved' => 1,
+			'about' => '
 
             Τα Φροντιστήρια ΝΤΟΝΤΗΣ στόχο τους έχουν:
             Να προσφέρουν στους μαθητές τους εκπαιδευτικές υπηρεσίες υψηλής στάθμης με άρτια οργάνωση και αυστηρό προγραμματισμό.
@@ -246,41 +233,38 @@ class Frontistiria4 extends Seeder
             Να συνδυάσουν οι μαθητές του τη γνώση με την ευρύτερη παιδεία και το ενδιαφέρον για την κοινωνία, το περιβάλλον και τον πολιτισμό.
 
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 15, 'frontistirio');
+		new Portal($fake, 15, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/ntontisedu');
-        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/ntontisedu');
-        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/channel/UC9APBzDsyLCP6iph3jG3gew');
-        Scholio::portalSocial($fake, 'google-plus', 'https://plus.google.com/u/1/collection/8cF2RE');
-        Scholio::portalSocial($fake, 'twitter', 'https://twitter.com/NtontisEdu');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/ntontisedu');
+		Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/ntontisedu');
+		Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/channel/UC9APBzDsyLCP6iph3jG3gew');
+		Scholio::portalSocial($fake, 'google-plus', 'https://plus.google.com/u/1/collection/8cF2RE');
+		Scholio::portalSocial($fake, 'twitter', 'https://twitter.com/NtontisEdu');
 
+		/*=============== 7 Παλμός ================*/
 
-
-
-        /*=============== 7 Παλμός ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Παλμός', 'email' => 'info@palmos-edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'palmos'])->id,
-            'address' => 'Κομνηνών 51, Ωραιόκαστρο',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310692250,
-            'type_id' => 3,
-            'website' => 'palmos-edu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Παλμός', 'email' => 'info@palmos-edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'palmos'])->id,
+			'address' => 'Κομνηνών 51, Ωραιόκαστρο',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310692250,
+			'type_id' => 3,
+			'website' => 'palmos-edu.gr',
+			'approved' => 1,
+			'about' => '
             Καλώς ήρθατε στα Φροντιστήρια Παλμός!
             Στα Φροντιστήρια Παλμός εδώ και 12 χρόνια ανταποκρινόμαστε στις απαιτήσεις και στα όνειρα των υποψηφίων, μεταδίδοντας τους την εμπειρία και τη γνώση που κατέχουμε με υπευθυνότητα.
             Επειδή θωρούμε πολύ σημαντικό το θέμα της επαγγελματικής αποκατάστασης που σχετίζεται άμεσα με τη σχολή που θα επιλέξει το κάθε παιδί καθιερώσαμε σε ετήσια βάση ημερίδα επαγγελματικού προσανατολισμού, ώστε να ενημερώνονται οι γονείς και οι μαθητές για τις σχολές που θα επιλέξουν.
@@ -288,37 +272,36 @@ class Frontistiria4 extends Seeder
             Επειδή το οργανωμένο και συστηματικό διάβασμα αποτελεί σημαντικότατο παράγοντα επιτυχίας, εφαρμόζουμε το Εξατομικευμένο Πρόγραμμα οργάνωσης χρόνου για να μπορεί ο κάθε μαθητής να οργανώνει αποτελεσματικά το χρόνο μελέτης του.
             Τα ποσοστά επιτυχίας μας ξεπερνάνε κάθε χρόνο το 96%, με αποτέλεσμα να έχουμε δημιουργήσει μία παράδοση υψηλών απαιτήσεων στο Ωραιόκαστρο και στη Θεσσαλονίκη. Η σκληρή δουλειά, η μεθοδικότητα, τα προγράμματά, ο τρόπος διδασκαλίας, τα συγγράμματα μας, η δημιουργία της νέας διαδικτυακής πλατφόρμας και το καταξιωμένο εκπαιδευτικό δυναμικό του Φροντιστηρίου μας, θα λέγαμε πως είναι οι βασικοί πυλώνες της Επιτυχίας!
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 10, 'frontistirio');
+		new Portal($fake, 10, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/palmos.edu.gr');
-        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/palmosedu');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/palmos.edu.gr');
+		Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/palmosedu');
 //        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 8 Πεχλιβανίδης ================*/
 
-        /*=============== 8 Πεχλιβανίδης ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Πεχλιβανίδης', 'email' => 'info@pechlivanidis.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'pechlivanidis'])->id,
-            'address' => 'Γρ. Λαμπράκη 197, Τούμπα',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310901335,
-            'type_id' => 3,
-            'website' => 'pechlivanidis.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Πεχλιβανίδης', 'email' => 'info@pechlivanidis.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'pechlivanidis'])->id,
+			'address' => 'Γρ. Λαμπράκη 197, Τούμπα',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310901335,
+			'type_id' => 3,
+			'website' => 'pechlivanidis.gr',
+			'approved' => 1,
+			'about' => '
             Ποιοι είμαστε
             Τα φροντιστήρια ΠΕΧΛΙΒΑΝΙΔΗ με συνεχή επιτυχημένη παρουσία στη μέση εκπαίδευση για περισσότερο από 10 χρόνια στη Θεσσαλονίκη δικαιώνουν γονείς και μαθητές που τα εμπιστεύονται, εξασφαλίζοντας την επιτυχία στις σχολές της προτίμησής τους.
             Εγγύηση, οι επιτυχίες μας
@@ -331,261 +314,240 @@ class Frontistiria4 extends Seeder
             Το φροντιστήριο μας στέκεται πάντα υπεύθυνα κοντά σας τόσο στο επίπεδο της ποιοτικής εκπαίδευσης όσο και της υπεύθυνης πληροφόρησης. Διοργανώνοντας ημερίδες επαγγεματικού προσανατολισμού και παρέχοντας εργαλεία εξεύρεσης των επαγγελματικών κλίσεων του κάθε παιδιού παράλληλα με τη μεθοδευμένη διδασκαλία προετοιμάζει τους επιστήμονες του αύριο.
             Οι επιτυχίες μας και οι πολλές εκατοντάδες μαθητών μας που υλοποίησαν τα όνειρά τους είναι η καλύτερη πιστοποίηση της εκπαιδευτικής μας προσφοράς
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 10, 'frontistirio');
+		new Portal($fake, 10, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/frontistiria.pechlivanidis');
-        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/pechlivanidis.frontistiria');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/frontistiria.pechlivanidis');
+		Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/pechlivanidis.frontistiria');
 //        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 9 Πολύγωνο ================*/
 
-        /*=============== 9 Πολύγωνο ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Πολύγωνο', 'email' => 'polygono@hotmail.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'polygono'])->id,
-            'address' => 'Κωνσταντίνου Καραμανλή 30, Λητή',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2394072466,
-            'type_id' => 3,
-            'website' => 'polygono.edu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Πολύγωνο', 'email' => 'polygono@hotmail.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'polygono'])->id,
+			'address' => 'Κωνσταντίνου Καραμανλή 30, Λητή',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2394072466,
+			'type_id' => 3,
+			'website' => 'polygono.edu.gr',
+			'approved' => 1,
+			'about' => '
             Φροντιστήρια Πολύγωνο, Λητή, Δρυμός, Μελισσοχώρι, Μέση εκπαίδευση
 
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 7, 'frontistirio');
+		new Portal($fake, 7, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/polygono.edu');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/polygono.edu');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 10 Πολυμάθεια ================*/
 
-
-
-        /*=============== 10 Πολυμάθεια ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Πολυμάθεια', 'email' => 'polimatheia@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'polymatheia'])->id,
-            'address' => 'Ηρακλείτου 5, Σταυρούπολη',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310668399,
-            'type_id' => 3,
-            'website' => 'polymatheia-frontistirio.blogspot.com',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Πολυμάθεια', 'email' => 'polimatheia@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'polymatheia'])->id,
+			'address' => 'Ηρακλείτου 5, Σταυρούπολη',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310668399,
+			'type_id' => 3,
+			'website' => 'polymatheia-frontistirio.blogspot.com',
+			'approved' => 1,
+			'about' => '
               Αγαπητές μαθήτριες
               Αγαπητοί μαθητές
               Αγαπητοί γονείς
             Καλώς ήρθατε στην ηλεκτρονική εγκατάσταση του φροντιστηριακού οργανισμού ΠΟΛΥΜΑΘΕΙΑ. Μέσα από την ιστοσελίδα μας θα έχετε την ευκαιρία να μας γνωρίσετε, έτσι ώστε να λύσουμε οποιαδήποτε απορία σας σχετικά με τα εκπαιδευτικά ζητήματα.
             Στόχος μας είναι να υποστηρίξουμε,να ενισχύσουμε και να ενδυναμώσουμε με κάθε δυνατό τρόπο την μεγάλη προσπάθεια που καταβάλλουν όλοι οι μαθητές της Β\' θμιας εκπαίδευσης με απώτερο σκοπό την εισαγωγή τους στα ΑΕΙ και ΤΕΙ της χώρας μας
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 5, 'frontistirio');
+		new Portal($fake, 5, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/PolymatheiaFrontistirio');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/PolymatheiaFrontistirio');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 11 Πρότυπο  ================*/
 
-
-        /*=============== 11 Πρότυπο  ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Πρότυπο', 'email' => 'info@protipoedu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'protipo'])->id,
-            'address' => 'Γ. Ιωαννίδη 3, Πανόραμα',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310341518,
-            'type_id' => 3,
-            'website' => 'protipoedu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Πρότυπο', 'email' => 'info@protipoedu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'protipo'])->id,
+			'address' => 'Γ. Ιωαννίδη 3, Πανόραμα',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310341518,
+			'type_id' => 3,
+			'website' => 'protipoedu.gr',
+			'approved' => 1,
+			'about' => '
                 Το φροντιστήριο Πρότυπο ιδρύθηκε το 1988 απο τη μαθηματικό Δήμητρα Χατζηγεωργιάδου στο Πανόραμα. Μάλιστα είναι ένα απο τα παλαιότερα φροντιστήρια στη Θεσσαλονίκη και το Πανόραμα. Στα 30 χρόνια λειτουργίας μας έχουμε καταξιωθεί ως κορυφαίοι δημιουργώντας παράδοση ευθύνης, ποιότητας και υπεροχής. Η αποτελεσματικότητά μας δοκιμάζεται και επιβραβεύεται κάθε χρόνο απο τις επιδόσεις των μαθητών μας, που συγκεντρώνουν τις υψηλότερες βαθμολογίες πανελλαδικά. Ανανεωμένοι και αισιόδοξοι πιστεύουμε οτι μόνο μια επιλογή υπάρχει: Να γινόμαστε πάντα καλύτεροι και να παραμένουμε οι καλύτεροι.
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 7, 'frontistirio');
+		new Portal($fake, 7, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/protipoedu');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/protipoedu');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 12 Πρωτοποριακό ================*/
 
-
-
-        /*=============== 12 Πρωτοποριακό ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Πρωτοποριακό', 'email' => 'info@protoporiako.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'protoporiako'])->id,
-            'address' => 'Πολυβίου Ιστορικού 12, Άνω Τούμπα',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310933600,
-            'type_id' => 3,
-            'website' => 'protoporiako.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Πρωτοποριακό', 'email' => 'info@protoporiako.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'protoporiako'])->id,
+			'address' => 'Πολυβίου Ιστορικού 12, Άνω Τούμπα',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310933600,
+			'type_id' => 3,
+			'website' => 'protoporiako.gr',
+			'approved' => 1,
+			'about' => '
                 Το φροντιστηριακό συγκρότημα "ΠΡΩΤΟΠΟΡΙΑΚΟ"
                 με 28 χρόνια εμπειρίας στη μέση εκπαίδευση, προσφέρει έργο υψηλού επιπέδου και μεγάλα ποσοστά επιτυχίας στις πανελλαδικές εξετάσεις.
                 Οι καθηγητές μας άρτια καταρτισμένοι, απόλυτα εξειδικευμένοι στο γνωστικό τους αντικείμενο και με νέες ιδέες, είναι η βάση της επιτυχίας.
 
                 Το ειδικά μελετημένο πρόγραμμά μας διαμορφωμένο πάνω στις ανάγκες του κάθε μαθητή, δίνει τη σωστή καθοδήγηση στο δρόμο για Ανώτατες Σχολές και τα Τ.Ε.Ι.
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 5, 'frontistirio');
+		new Portal($fake, 5, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/Φροντιστήριο-Πρωτοποριακό-405197722930750');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/Φροντιστήριο-Πρωτοποριακό-405197722930750');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 13 Πυθαγόρειο ================*/
 
-
-        /*=============== 13 Πυθαγόρειο ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Πυθαγόρειο', 'email' => 'info@pythagorio.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'pythagorio'])->id,
-            'address' => 'Παύλου Μελά 18',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310285858,
-            'type_id' => 3,
-            'website' => 'pythagorio.edu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Πυθαγόρειο', 'email' => 'info@pythagorio.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'pythagorio'])->id,
+			'address' => 'Παύλου Μελά 18',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310285858,
+			'type_id' => 3,
+			'website' => 'pythagorio.edu.gr',
+			'approved' => 1,
+			'about' => '
             Στο ΠΥΘΑΓΟΡΕΙΟ κρατάμε ψηλά το επίπεδο σπουδών και απαριθμούμε επιτυχίες και αριστεύσεις στις πανελλαδικές εξετάσεις.
 Δουλεύουμε συστηματικά, καλύπτουμε τα κενά και προετοιμάζουμε τους μαθητές μας μεθοδικά για τους πιο υψηλούς στόχους.
                     Το φροντιστήριό μας βρίσκεται στην καρδιά της θεσσαλονίκης. Σ\' ένα νεοκλασικό κτίριο με άνετους και λειτουργικούς χώρους και με άμεση πρόσβαση σε όλες τις γραμμές της αστικής συγκοινωνίας. Με την μακρόχρονη εμπειρία μας παρέχουμε υψηλού επιπέδου εκπαίδευση στους μαθητές μας και τους διασφαλίζουμε την καλύτερη δυνατή στήριξη για την άνετη πρόσβαση στην τριτοβάθμια εκπαίδευση, και μάλιστα σε σχολές υψηλής ζήτησης.
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 5, 'frontistirio');
+		new Portal($fake, 5, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
 //        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
 //        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
 //        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/');
-//        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 14 Σπουδάζω ================*/
 
-
-
-
-
-        /*=============== 14 Σπουδάζω ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Σπουδάζω', 'email' => 'info@spoudazw.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'spoudazw'])->id,
-            'address' => 'Προφήτη Ηλία 47, Πυλαία',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310304443,
-            'type_id' => 3,
-            'website' => 'spoudazw.edu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Σπουδάζω', 'email' => 'info@spoudazw.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'spoudazw'])->id,
+			'address' => 'Προφήτη Ηλία 47, Πυλαία',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310304443,
+			'type_id' => 3,
+			'website' => 'spoudazw.edu.gr',
+			'approved' => 1,
+			'about' => '
                 Στόχος μας είναι να συνεισφέρουμε στην τοπική και ευρύτερη κοινωνία, εισάγοντας τους μαθητές σε πανεπιστημιακές σχολές της πρώτης προτίμησής τους.
                 Κάνοντας στρατηγικές επιλογές, έγκαιρη και ισχυρή προετοιμασία, λειτουργούμε ως πολλαπλασιαστής της μαθητικής προσπάθειας. Το πολυτιμότερο κεφάλαιό μας είναι το άριστο εκπαιδευτικό προσωπικό, στη διάθεση του οποίου υπάρχει ό,τι πιο σύγχρονο στο χώρο της παιδείας.
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake,16, 'frontistirio');
+		new Portal($fake, 16, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/spoudazw.gr');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/spoudazw.gr');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 15 Συν(+)εργασία  ================*/
 
-
-
-
-
-        /*=============== 15 Συν(+)εργασία  ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Συν(+)εργασία Πεύκα', 'email' => 'info@synergasia.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'synergasia'])->id,
-            'address' => 'Γ.Παπανικολάου 98, Πεύκα',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310674555,
-            'type_id' => 3,
-            'website' => 'synergasia.edu.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Συν(+)εργασία Πεύκα', 'email' => 'info@synergasia.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'synergasia'])->id,
+			'address' => 'Γ.Παπανικολάου 98, Πεύκα',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310674555,
+			'type_id' => 3,
+			'website' => 'synergasia.edu.gr',
+			'approved' => 1,
+			'about' => '
             Τα φροντιστήρια ΣΥΝ(+)ΕΡΓΑΣΙΑ ξεκίνησαν τη λειτουργία τους από το έτος 2003 στην περιοχή της Χαριλάου (Θεσσαλονίκη) με στόχο να προσφέρουν εκπαίδευση υψηλού επιπέδου στους μαθητές. Καθώς οι απαιτήσεις των πανελληνίων εξετάσεων και οι επιδόσεις στο σχολείο ολοένα αυξάνουν τον πήχυ, τα φροντιστήριά μας επιδίωξαν και πραγματοποίησαν μια τομή στα εκπαιδευτικά δεδομένα της περιοχής.
             Οι συγκεκριμένες κατευθύνσεις και διαδικασίες στον τρόπο διδασκαλίας, η οργανωμένη προσπάθεια και η εφαρμογή συστηματικών προγραμμάτων συντέλεσαν σε μια εντυπωσιακά ανοδική πορεία. Ο δρόμος σ’ αυτά τα χρόνια λειτουργίας στέφθηκε από σημαντικές επιτυχίες των μαθητών μας σε ΑΕΙ και ΤΕΙ.
             Έχουμε σημειώσει υψηλά ποσοστά επιτυχιών και μάλιστα στις πρώτες σχολές επιθυμίας. Έχουμε κάνει πράξη τα όνειρα των μαθητών και κατορθώσαμε όλα εκείνα για τα οποία μας εμπιστεύτηκαν.
@@ -598,79 +560,70 @@ class Frontistiria4 extends Seeder
             Με έμφαση στις διαρκείς επαναλήψεις της ύλης έχουν καθοριστεί 5 κύκλοι διαγωνισμάτων κατά τη διάρκεια της σχολικής χρονιάς. Τα διαγωνίσματα είναι τρίωρα και καλύπτουν όλο το φάσμα της διδακτέας ύλης.
 
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 8, 'frontistirio');
+		new Portal($fake, 8, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/synergasia.edu.gr/sinergasia');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/synergasia.edu.gr/sinergasia');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 16 Σύστημα ================*/
 
-
-
-
-
-        /*=============== 16 Σύστημα ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Σύστημα Ντεπώ', 'email' => 'info@systima.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'systima'])->id,
-            'address' => 'Βασ. Όλγας 168, Ντεπώ',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310428400,
-            'type_id' => 3,
-            'website' => 'systima.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Σύστημα Ντεπώ', 'email' => 'info@systima.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'systima'])->id,
+			'address' => 'Βασ. Όλγας 168, Ντεπώ',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310428400,
+			'type_id' => 3,
+			'website' => 'systima.gr',
+			'approved' => 1,
+			'about' => '
                 Τα Φροντιστήρια Σύστημα έχουν καταξιωθεί στα εκπαιδευτικά δρώμενα της Θεσσαλονίκης από το 1987 και αποτελούν την πλέον αξιόπιστη και υπεύθυνη επιλογή των μαθητών και των οικογενειών τους. Η εμπειρία, η συνέπεια, ο επαγγελματισμός αλλά και η παιδαγωγική προσέγγιση χαρακτηρίζει τη διεύθυνση, τους εκπαιδευτικούς και τη γραμματεία. Με γνώμονα πάντα την επίτευξη των στόχων των μαθητών παρέχει ένα άρτιο και δοκιμασμένο πρόγραμμα σπουδών, με πλήρη σειρά αξιόπιστων εγχειριδίων.
                 Παράλληλα, στηρίζει ψυχολογικά τον υποψήφιο και συνδράμει ουσιαστικά στον επαγγελματικό προσανατολισμό με ένα καινοτόμο, πολυδιάστατο και επιστημονικό πλαίσιο συμβουλευτικής σε συνεργασία με αξιόπιστους επιστημονικούς φορείς. Με ευθύνη των καθηγητών το φροντιστήριο γίνεται ένας χώρος μαθησιακής και ψυχολογικής στήριξης και προσδιορίζεται μέθοδος που θα οδηγήσει τον μαθητή στην αυτογνωσία, στην αυτοπεποίθηση και στη βελτίωση.
                 Μέλημα της διεύθυνσης και των συνεργατών είναι η παροχή εκπαίδευσης υψηλού επιπέδου και η πολυδιάστατη στήριξη του μαθητή στον αγώνα του για την εισαγωγή στην τριτοβάθμια εκπαίδευση. Εγγύηση για αυτό αποτελεί το άριστο επιτελείο καθηγητών και απόδειξη τα υψηλά ποσοστά εισαγωγής των μαθητών μας στην τριτοβάθμια εκπαίδευση όλα αυτά τα χρόνια. Οι επιτυχίες τους μας δίνουν τη δύναμη να συνεχίσουμε να παράγουμε πλούσιο και ποιοτικό έργο εκπληρώνοντας με συνέπεια τις αρχές μιας εκπαίδευσης που μεταδίδει γνώσεις, σμιλεύει το ήθος και εμπνέει την πειθαρχία.
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 5, 'frontistirio');
+		new Portal($fake, 5, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/frontistiria.systima');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/frontistiria.systima');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
+		/*=============== 17 Υποδομή ================*/
 
-
-
-
-        /*=============== 17 Υποδομή ================*/
-
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Υποδομή', 'email' => 'ipodomi@yahoo.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ipodomi'])->id,
-            'address' => 'Ανδρέα Παπανδρέου 97, Νεάπολη',
-            'city' => 'Θεσσαλονίκη',
-            'phone' => 2310614515,
-            'type_id' => 3,
-            'website' => 'ipodomi.gr',
-            'approved' => 1,
-            'about' => '
+		$fake = factory(App\Models\School::class)->create([
+			'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Υποδομή', 'email' => 'ipodomi@yahoo.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ipodomi'])->id,
+			'address' => 'Ανδρέα Παπανδρέου 97, Νεάπολη',
+			'city' => 'Θεσσαλονίκη',
+			'phone' => 2310614515,
+			'type_id' => 3,
+			'website' => 'ipodomi.gr',
+			'approved' => 1,
+			'about' => '
                 Αγαπητοί γονείς και μαθητές σας καλωσορίζουμε στη διαδικτυακή σελίδα μας!
                 Το Φροντιστήριο ΥΠΟΔΟΜΗ 30 χρόνια τώρα στηρίζει τον μαθητή οδηγώντας τον στην επιτυχία. Προετοιμάζει μαθητές από τις πρώτες τάξεις του γυμνασίου μέχρι το πέρας των Πανελληνίων Εξετάσεων, στοχεύοντας στην εισαγωγή τους στα Τμήματα των Πανεπιστημίων και των Τ.Ε.Ι.
                 Με έμπειρους και καταξιωμένους καθηγητές που ακολουθούν ένα σωστά οργανωμένο πρόγραμμα σπουδών παρέχει στους μαθητές τα απαραίτητα εφόδια για την επιτυχία τους στις Πανελλήνιες Εξετάσεις έχοντας ως όραμα να δώσει στην φροντιστηριακή εκπαίδευση την διάσταση της παιδείας.
@@ -680,65 +633,59 @@ class Frontistiria4 extends Seeder
                 Εμπιστευτείτε μας!
                 Σύγχρονη Παιδεία, Νέοι Ορίζοντες!
             ',
-            'background' => $background,
-        ]);
+			'background' => $background,
+		]);
 
-        new Portal($fake, 9, 'frontistirio');
+		new Portal($fake, 9, 'frontistirio');
 
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/Φροντιστήρια-ΥΠΟΔΟΜΗ-Official-ΝΕΑΠΟΛΗ-ΣΥΚΙΕΣ-210404275641878');
+		Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/Φροντιστήρια-ΥΠΟΔΟΜΗ-Official-ΝΕΑΠΟΛΗ-ΣΥΚΙΕΣ-210404275641878');
 //        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
-
-
-        /*=============== 18================*/
+		/*=============== 18================*/
 
 //        $fake = factory(App\Models\School::class)->create([
-//            'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-//            'address' => '',
-//            'city' => 'Θεσσαλονίκη',
-//            'phone' => 2310,
-//            'type_id' => 3,
-//            'website' => '',
-//            'approved' => 1,
-//            'about' => '
-//
-//            ',
-//            'background' => $background,
-//        ]);
-//
-//        new Portal($fake, 5, 'frontistirio');
-//
-//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-//        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-//        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-//        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
-//
-////        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/');
-////        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-////        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
-//
-//
+		//            'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
+		//            'address' => '',
+		//            'city' => 'Θεσσαλονίκη',
+		//            'phone' => 2310,
+		//            'type_id' => 3,
+		//            'website' => '',
+		//            'approved' => 1,
+		//            'about' => '
+		//
+		//            ',
+		//            'background' => $background,
+		//        ]);
+		//
+		//        new Portal($fake, 5, 'frontistirio');
+		//
+		//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+		//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+		//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+		//        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+		//        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		//        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+		//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+		//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+		//
+		////        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/');
+		////        Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
+		////        Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
+		//
+		//
 
-
-
-    }
-
-
+	}
 
 }
