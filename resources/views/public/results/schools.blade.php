@@ -513,7 +513,7 @@
                             @lang('schools.show_map')
 
                             <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
-                            <a href="/public/schools/map" style="position: relative; z-index: -5;">MAPS</a>
+                            <a href="/public/schools/map" style="position: relative; z-index: -5; opacity: 0.1">MAPS</a>
                             <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
                             
                         </button>
