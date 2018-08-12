@@ -235,41 +235,41 @@ class Frontistiria6 extends Seeder
 
         /*=============== 6 Νέα Παιδεία ================*/
 
-        $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Νέα Παιδεία', 'email' => 'info@nea-paideia.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'neaPaideia'])->id,
-            'address' => 'Γρ. Λαμπράκη 409, Αμφιάλη',
-            'city' => 'Αθήνα',
-            'phone' => 2104008671,
-            'type_id' => 3,
-            'website' => 'nea-paideia.gr',
-            'approved' => 1,
-            'about' => '
-                Στην Αμφιάλη το φροντιστήριό μας ξεκίνησε τη λειτουργία του το 1996.Η ίδρυσή και λειτουργία στον ιδιόκτητο χώρο μας ήταν συνέχεια μιας επιτυχημένης πορείας που ξεκίνησε το 1987 με φροντιστηριακές συνεργασίες στις περιοχές Νίκαιας και Κορυδαλλού ,συνεχίστηκε το 1988 με την ίδρυση φροντιστηρίου στην Αμφιθέα (Παλαιό Φάληρο) και τη λειτουργία από το 1991 ως και το 1995 φροντιστηρίου στον Πειραιά (Δημοτικό Θέατρο).
-            ',
-            'background' => $background,
-        ]);
-
-        new Portal($fake, 8, 'frontistirio');
-
-
-        Scholio::portalStudy($fake, 'Δημοτικό', 'Δραστηριότητες', 'Συστηματική Μελέτη');
-        Scholio::portalStudy($fake, 'Δημοτικό', 'Δραστηριότητες', 'Δημιουργική Απασχόληση');
-        Scholio::portalStudy($fake, 'Δημοτικό', 'Δραστηριότητες', 'Εκπαιδευτική Ρομποτική (STEAM)');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
-        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
-        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
-
-       Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/frontistirioneapaideia');
-       Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/nea_paideia');
-       Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/channel/UCf941Sj2XTAkBouScPPLnRQ');
-       Scholio::portalSocial($fake, 'google-plus', 'https://plus.google.com/115290071406119852990');
-       Scholio::portalSocial($fake, 'linkedin', 'https://www.linkedin.com/in/nea-paideia-30116a96/');
+//        $fake = factory(App\Models\School::class)->create([
+//            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Νέα Παιδεία', 'email' => 'info@nea-paideia.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'neaPaideia'])->id,
+//            'address' => 'Γρ. Λαμπράκη 409, Αμφιάλη',
+//            'city' => 'Αθήνα',
+//            'phone' => 2104008671,
+//            'type_id' => 3,
+//            'website' => 'nea-paideia.gr',
+//            'approved' => 1,
+//            'about' => '
+//                Στην Αμφιάλη το φροντιστήριό μας ξεκίνησε τη λειτουργία του το 1996.Η ίδρυσή και λειτουργία στον ιδιόκτητο χώρο μας ήταν συνέχεια μιας επιτυχημένης πορείας που ξεκίνησε το 1987 με φροντιστηριακές συνεργασίες στις περιοχές Νίκαιας και Κορυδαλλού ,συνεχίστηκε το 1988 με την ίδρυση φροντιστηρίου στην Αμφιθέα (Παλαιό Φάληρο) και τη λειτουργία από το 1991 ως και το 1995 φροντιστηρίου στον Πειραιά (Δημοτικό Θέατρο).
+//            ',
+//            'background' => $background,
+//        ]);
+//
+//        new Portal($fake, 8, 'frontistirio');
+//
+//
+//        Scholio::portalStudy($fake, 'Δημοτικό', 'Δραστηριότητες', 'Συστηματική Μελέτη');
+//        Scholio::portalStudy($fake, 'Δημοτικό', 'Δραστηριότητες', 'Δημιουργική Απασχόληση');
+//        Scholio::portalStudy($fake, 'Δημοτικό', 'Δραστηριότητες', 'Εκπαιδευτική Ρομποτική (STEAM)');
+//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+//        Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+//        Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+//        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+//        Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+//        Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+//
+//       Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/frontistirioneapaideia');
+//       Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/nea_paideia');
+//       Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/channel/UCf941Sj2XTAkBouScPPLnRQ');
+//       Scholio::portalSocial($fake, 'google-plus', 'https://plus.google.com/115290071406119852990');
+//       Scholio::portalSocial($fake, 'linkedin', 'https://www.linkedin.com/in/nea-paideia-30116a96/');
 
 
 
