@@ -195,7 +195,7 @@ E-learning
      Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
      Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
-     Scholio::portalStudy($fake, 'Λύκειο', 'Προγράμμα IB', 'International Baccalaureate Diploma');
+     Scholio::portalStudy($fake, 'Λύκειο', 'Προγράμμα IB', 'International Baccalaureate Diploma (I.B.)');
 
      Scholio::portalStudy($fake, 'Πανεπιστημιακό Φροντιστήριο', 'Προπτυχιακά', 'Φοιτητικά Μαθήματα');
 
