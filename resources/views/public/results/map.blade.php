@@ -229,30 +229,30 @@
 
 <div class="row pad-0-mar-0">
     <div class="col-sm-5 col-md-5 school-slider left-320" style="" id="school-slider">
-        <header  class="container-left container-up" style="">
+        {{--<header  class="container-left container-up" style="">--}}
             {{--My Cordinates--}}
             {{--<div id="demo" style=" margin: 0 0 20px 0 "></div>--}}
-            <p class="">@lang('map.select')</p>
-            <a href="" class="change_page_state btn btn-info" data-mode="around" data-state="ip" ng-click="status='around'">
-                <i class="fa fa-map-marker margin-right-10 fa-hidden"></i>
-                @lang('map.near')
-            </a>
-            <a href="" class="change_page_state btn btn-info active" data-mode="bounding" data-state="rectangle" ng-click="status='rectangle'">
-                <i class="fa fa-search-plus margin-right-10 fa-hidden" ></i>
-                @lang('map.scan')
-            </a>
-        </header>
+            {{--<p class="">@lang('map.select')</p>--}}
+            {{--<a href="" class="change_page_state btn btn-info" data-mode="around" data-state="ip" ng-click="status='around'">--}}
+                {{--<i class="fa fa-map-marker margin-right-10 fa-hidden"></i>--}}
+                {{--@lang('map.near')--}}
+            {{--</a>--}}
+            {{--<a href="" class="change_page_state btn btn-info active" data-mode="bounding" data-state="rectangle" ng-click="status='rectangle'">--}}
+                {{--<i class="fa fa-search-plus margin-right-10 fa-hidden" ></i>--}}
+                {{--@lang('map.scan')--}}
+            {{--</a>--}}
+        {{--</header>--}}
 
 
-        <div class="col-sm-12 container-left">
+        <div class="col-sm-12 container-left" style="margin-top: 70px">
             <div class="col-sm-6 pad-right-0" >
                 <input id="search-input" class="form-control search-contain" placeholder="@lang('map.placeholder')"/>
-                <div ng-if="status=='around'" class="search-div" style="">
-                    <div  class="top-range" style="left: @{{ range*4.4 }}%">@{{range }} km</div>
-                    <input type="range" id="qqq" min="1" max="20" value="10" class="range-input" onchange="rerender()"  style="" ng-model="range">
-                    <div class="pull-left km-low"> 1 km</div>
-                    <div class="pull-right km-high"> 20 km</div>
-                </div>
+                {{--<div ng-if="status=='around'" class="search-div" style="">--}}
+                    {{--<div  class="top-range" style="left: @{{ range*4.4 }}%">@{{range }} km</div>--}}
+                    {{--<input type="range" id="qqq" min="1" max="20" value="10" class="range-input" onchange="rerender()"  style="" ng-model="range">--}}
+                    {{--<div class="pull-left km-low"> 1 km</div>--}}
+                    {{--<div class="pull-right km-high"> 20 km</div>--}}
+                {{--</div>--}}
 
             </div>
 

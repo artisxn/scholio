@@ -101,7 +101,7 @@ class Frontistiria4 extends Seeder
         /*=============== 3  Μέθοδος ================*/
 
         $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Μέθοδος', 'email' => 'methodos.edu@hotmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήριο Μέθοδος', 'email' => 'methodos.edu@hotmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'methodos'])->id,
             'address' => 'Ποσειδώνος 2 - Λ. Δημοκρατίας, Ωραιόκαστρο',
             'city' => 'Θεσσαλονίκη',
             'phone' => 2310692145,
@@ -164,7 +164,7 @@ class Frontistiria4 extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($fake, 10, 'frontistirio');
+        new Portal($fake, 9, 'frontistirio');
 
         Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
         Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
@@ -277,7 +277,7 @@ class Frontistiria4 extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($fake, 10, 'frontistirio');
+        new Portal($fake, 9, 'frontistirio');
 
         Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
         Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');

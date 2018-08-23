@@ -103,7 +103,7 @@
         }
 
         .main-box2  ul li{text-indent: -20px;}
-        .bx-wrapper img {height: 260px !important;}
+        .bx-wrapper img {height: 230px !important;}
         .slideup, .slidedown {
             background-color: #fff;
             overflow-y: hidden;
@@ -433,9 +433,9 @@
             
                 <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
                     <div class="row xl-margin-right " style="padding-left: 7px;">
-                        <ul class="bxslider "  data-bx-slider="
+                        <ul class="bxslider"  data-bx-slider="
                     pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
-                    slideWidth: 380, slideMargin:15, infiniteLoop: true, hideControlOnEnd: false">
+                    slideWidth: 333, slideMargin:10, infiniteLoop: true, hideControlOnEnd: false">
                             @if($school->image->count() >= 4)
                                 <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
                                     <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
@@ -511,7 +511,7 @@
                                     <div class="pad-top-10"></div>
 
                                     <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
+                                    <span class="pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
 
                                     <div class="pad-top-10"></div>
                                     <div class="">
@@ -593,7 +593,7 @@
                                     <i class="fa fa-info-circle fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.about') </span>
                                 </p>
                             </div>
-                            <div class="margin-left-20 margin-right-20 sc-t-grey text-justify">
+                            <div class=" sc-t-grey text-justify">
                                 <div class="margin-top-10" id="about-li" >
                                     <div ng-bind-html="trustAsHtml(contactInfo.about)"></div>
                                 </div>
