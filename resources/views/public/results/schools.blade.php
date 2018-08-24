@@ -175,6 +175,11 @@
         .text-Large{right: -18px;}
     }
 
+
+    @media (min-width:1200px) and (max-width:1260px){
+            span h5{font-size: 17px;}
+    }
+
     @media (max-width:1199px){
         .pos-right{right: -30px}
         .ribbonMed,.ribbonLarge{ right: -54px}
