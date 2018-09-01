@@ -1365,7 +1365,7 @@ class Frontistiria9 extends Seeder
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Τούρκικα');
 
 
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα ', 'Πληροφορική', 'Πληροφορική');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Πληροφορική', 'Πληροφορική');
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Πληροφορική', 'Πληροφορική');
 
 
