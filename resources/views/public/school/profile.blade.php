@@ -403,7 +403,7 @@
 
                          @else
 
-                         <style>.socials{  margin-top: -65px; }</style>
+                         <style>.socials{  margin-top: -54px; }</style>
 
                          @endif
 

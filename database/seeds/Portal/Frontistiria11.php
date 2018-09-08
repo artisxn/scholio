@@ -121,7 +121,7 @@ class Frontistiria11 extends Seeder
         /*=============== 3 thePro ================*/
 
         $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Ξένες Γλώσσες thePro', 'email' => 'thessaloniki@thepro.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'thePro'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Ξένες Γλώσσες the Pro', 'email' => 'thessaloniki@thepro.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'thePro'])->id,
             'address' => 'Παύλου Μελά 18',
             'city' => 'Θεσσσαλονίκη',
             'phone' => 2316009404,
@@ -1023,45 +1023,7 @@ class Frontistiria11 extends Seeder
         Scholio::portalStudy($fake, 'Τμήματα Φοιτητών - Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'GMAT');
 
 
-//       Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/');
-//       Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//       Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
-
-
-
-
-        /*=============== 21 ================*/
-//
-//        $fake = factory(App\Models\School::class)->create([
-//            'user_id' => factory(App\User::class)->create(['name' => 'Ξένες Γλώσσες', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-//            'address' => '',
-//            'city' => 'Θεσσσαλονίκη',
-//            'phone' => 2310,
-//            'type_id' => 4,
-//            'website' => '',
-//            'approved' => 1,
-//            'about' => '
-//
-//            ',
-//            'background' => $background,
-//        ]);
-//
-//        new Portal($fake, 5, 'frontistirio');
-//
-//
-//        Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά');
-//        Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά');
-//        Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά');
-//        Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά');
-//        Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά');
-//        Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Κινέζικα');
-//        Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ρωσικά');
-//        Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Τούρκικα');
-
-//       Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/');
-//       Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//       Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
 
     }
