@@ -225,6 +225,9 @@ input:-webkit-autofill:active{-webkit-box-shadow:0 0 0 30px white inset!importan
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em{font-weight:bold;font-style:normal;}
 .filter-title{color:#008da5;}
 .btn-change-search{border:1px solid #777;border-radius:5px;padding:9px 13px!important;margin-top:4px;margin-right:15px;}
+
+
+
 .sc-landing-menu-item>.btn-change-search:hover{border-color:#008da5!important;color:#008da5!important;}
 .clear-filter{width:100%;margin-left:0;}
 .clear-filter-mobile{width:230px;margin-left:0;}

@@ -35,6 +35,7 @@ return [
     ],
     'show_map' => 'Show Map',
     'search_institution' => 'Search for an Institution',
+    'search_institution_short' => 'Search',
     'error' => 'Results not found',
     'prev_page' => 'Previous Page',
     'next_page' => 'Next Page',

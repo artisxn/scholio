@@ -80,6 +80,10 @@ section{padding-top:100px!important; padding-bottom:100px!important;}
 /*.sc-landing-menu li>a:hover{color:#ffffff;}*/
 /*.sc-landing-menu li>a:focus{color:#ffffff;}*/
 
+
+.sc-landing-menu .btn-change-search-profile{color: #00a7bd;}
+.btn-change-search-profile:hover{color: #008a9a; !important;}
+
 .sc-landing-menu-item{padding-top:8px;}
 
 .sc-button-landing{margin-top:-4px;}
@@ -246,7 +250,7 @@ body {
 .scholar-title{top: 7px; position: absolute}
 
 #img1 {height: 88px}
-.social{color: #888; font-size: 105%;}
+.social{color: #888; font-size: 109%;}
 .socials{margin:-35px -5px; padding:0;}
 .lg-pull-left{float: left;}
 

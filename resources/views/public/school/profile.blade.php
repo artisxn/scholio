@@ -309,6 +309,14 @@
             <div class="pull-right visible-md visible-lg" >
                 <ul class="nav navbar-nav navbar-right sc-landing-menu" >
 
+
+                    <li class="sc-landing-menu-item">
+                        <a href="{{url('public/schools')}}" class="btn-change-search-profile">
+                            <i class="fa fa-university margin-right-5"></i>
+                            @lang('scholarships.search_institution_short')
+                        </a>
+                    </li>
+
                     @if($school->settings->about)<li class="sc-landing-menu-item "><a href="#sxetika" class="school-profile-nav-link ">@lang('profile.navigation.about')</a></li>@endif
                     @if($school->settings->studies && count($school->study) > 0)<li ng-show="studies.length && col_iek_eng_dan_mus" class="sc-landing-menu-item"><a href="#spoudes" class="school-profile-nav-link ">@lang('profile.navigation.studies')</a></li>@endif
                     @if($school->settings->scholarships && count($school->scholarship) > 0)<li class="sc-landing-menu-item"><a href="#ypotrofies" class="school-profile-nav-link">@lang('profile.navigation.scholarships')</a></li>@endif
