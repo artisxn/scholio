@@ -175,6 +175,17 @@
         .text-Large{right: -18px;}
     }
 
+
+    @media (min-width:1200px) and (max-width:1250px){
+            span h5{font-size: 14px;}
+            #img1{margin-left: -30px;}
+    }
+
+    @media (min-width:1251px) and (max-width:1300px){
+        span h5{font-size: 15px;}
+        #img1{margin-left: -25px;}
+    }
+
     @media (max-width:1199px){
         .pos-right{right: -30px}
         .ribbonMed,.ribbonLarge{ right: -54px}
@@ -264,6 +275,13 @@
 
 
     /* ====== Portal CSS Changes ========*/
+
+    @media (min-width:1200px) and (max-width:1300px) {
+        .margin-portal {  margin-top: -10px;  }
+        .col-xl-custom{max-height: 240px;}
+
+
+    }
 
     @media (max-width:766px) {
         .margin-portal {  margin-top: -100px;  }
@@ -804,7 +822,7 @@ angular.module("schoolsResultsApp",[])
                 <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="@{{logo}}">
                 </a>
                 <span class="pull-left">
-                    <h5 class="pad-top-10"> <a href="/public/profile/@{{school_id}}"> @{{name}}</a></h5>
+                    <h5 class="pad-top-10 titleName"> <a href="/public/profile/@{{school_id}}"> @{{name}}</a></h5>
                     @{{#review}}
                     <span>
                     <span class="product-rating">@{{#rating}}<span class="ais-star-rating--star@{{^.}}__empty@{{/.}}"></span>@{{/rating}}</span>

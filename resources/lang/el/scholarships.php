@@ -35,6 +35,7 @@ return [
 
     'show_map' => 'Προβολή Χάρτη',
     'search_institution' => 'Αναζήτησε Εκπαιδευτικά Ιδρ.',
+    'search_institution_short' => 'Εκπ. Ιδρύματα',
     'error' => 'Δεν βρέθηκαν αποτελέσματα',
     'prev_page' => 'Προηγούμενη Σελίδα',
     'next_page' => 'Επόμενη Σελίδα',
