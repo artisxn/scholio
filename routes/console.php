@@ -20,16 +20,15 @@ use Spatie\Sitemap\Tags\Url;
 Artisan::command('scholio:sitemap', function () {
     // SitemapGenerator::create('https://schol.io')->writeToFile(public_path() . '/sitemap.xml');
 
+    SitemapGenerator::create('https://schol.io')
+        ->hasCrawled(function (Url $url) {
+            if ($url->segment(1) === 'studylink' || $url->segment(1) === 'schoolink' || $url->segment(1) === 'lang') {
+                return;
+            }
 
-   SitemapGenerator::create('https://schol.io')
-   ->hasCrawled(function (Url $url) {
-       if ($url->segment(1) === 'studylink' || $url->segment(1) === 'schoolink' || $url->segment(1) === 'lang') {
-           return;
-       }
-
-       return $url;
-   })
-   ->writeToFile(public_path() . '/sitemap.xml');
+            return $url;
+        })
+        ->writeToFile(public_path() . '/sitemap.xml');
 
 })->describe('Generate a sitemap for the site');
 
@@ -148,10 +147,20 @@ Artisan::command('scholio:algolia', function () {
     }
 })->describe('Insert Schools in Algolia');
 
+Artisan::command('scholio:algoliaForeach {from}', function () {
+    $from = $this->argument('from');
+    foreach (School::all() as $school) {
+        if ($school->id >= $from) {
+            dispatch(new Algolia($school));
+        }
+        $this->info('School ID: ' . $school->id . ' inserted!');
+    }
+})->describe('Insert Schools in Algolia');
+
 Artisan::command('scholio:school_algolia {username?}', function () {
     $username = $this->argument('username');
     $user = App\User::where('username', $username)->first();
-    if($user->role == 'school'){
+    if ($user->role == 'school') {
         $school = $user->info;
         dispatch(new Algolia($school));
     }

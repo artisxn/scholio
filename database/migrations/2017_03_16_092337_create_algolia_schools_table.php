@@ -37,7 +37,7 @@ class CreateAlgoliaSchoolsTable extends Migration
             $table->integer('reviews')->nullable();
             $table->text('tags')->nullable();
             $table->integer('subscription')->nullable();
-            $table->integer('scholioranking')->default(100);
+            $table->integer('scholioranking')->default(50);
 
             $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
         });
