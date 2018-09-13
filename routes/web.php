@@ -6,7 +6,6 @@ use App\Models\Study;
 use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Illuminate\Support\Facades\Route;
-use App\Jobs\Algolia;
 
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
@@ -15,7 +14,6 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
-
 // Route::get('qqqq', function(){
 //     foreach(App\Models\AlgoliaSchool::all() as $school){
 //         $school->scholioranking = 50;
@@ -23,45 +21,53 @@ Route::view('gdpr', 'gdpr');
 //     }
 // });
 
-foreach(App\Models\SchoolTypes::all() as $type){
-    Route::get('/s/'.$type->name, function() use ($type){
+Route::get('/qqww', function () {
+    foreach (App\Models\AlgoliaSchool::all() as $school) {
+        if ($school->scholioranking == 100) {
+            $school->scholioranking = 50;
+            $school->save();
+        }
+
+    }
+});
+
+foreach (App\Models\SchoolTypes::all() as $type) {
+    Route::get('/s/' . $type->name, function () use ($type) {
         $schools = App\Models\School::where('type_id', $type->id)->get();
         return view('sitemap.schools', compact('schools'));
     });
 }
 
-
-Route::get('/s/schools', function(){
+Route::get('/s/schools', function () {
     $types = App\Models\SchoolTypes::all();
 
     return view('sitemap.types', compact('types'));
 });
 
-Route::get('/s/scholarships', function(){
+Route::get('/s/scholarships', function () {
     $scholarships = App\Models\Scholarship::all();
 
     return view('sitemap.scholarships', compact('scholarships'));
 });
 
-Route::get('/form', function(){return view('form');});
-Route::get('/form2', function(){return view('form2');});
+Route::get('/form', function () {return view('form');});
+Route::get('/form2', function () {return view('form2');});
 
-
-Route::get('siteGen', function(){
-    foreach(School::all() as $school){
+Route::get('siteGen', function () {
+    foreach (School::all() as $school) {
         echo htmlspecialchars('
         <url>
-        <loc>https://schol.io/@' . $school->admin->username .'</loc>
-    
-    
+        <loc>https://schol.io/@' . $school->admin->username . '</loc>
+
+
         <lastmod>2018-05-15T02:05:59+00:00</lastmod>
-    
+
         <changefreq>daily</changefreq>
-    
+
         <priority>0.8</priority>
     </url>');
 
-    echo '<br>';
+        echo '<br>';
     }
 
     return '------';
