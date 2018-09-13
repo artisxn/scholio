@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta property="fb:app_id" content="1167687200016783" /> 
+        <meta property="fb:app_id" content="1167687200016783" />
         <!-- <meta property="og:type" content="business.business" />  -->
 
     <meta property="og:url" content="{{'https://schol.io/@' . $school->admin->username}}" />
@@ -17,14 +17,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- prevent zoomIn in mobile inputs,selects,etc -->
-    
+
     @include('google.main')
 
     <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
     <title>{{ $school->name() }} - schol.io</title>
 
     <!-- <head prefix="og: https://schol.io# fb: https://www.facebook.com/scholioapp/# business: http://{{$school->website}}#"> -->
-        
+
 
     <!-- <meta property="business:contact_data:street_address" content="{{ $school->address }}" />
     <meta property="business:contact_data:country_name" content="{{ $school->country }}" />
@@ -34,7 +34,7 @@
     <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }} | {{ $school->about }}">
 
     <!-- Favicon -->
-    
+
 
     <!--====== CSS  Styles =======-->
     @include('public.styles')
@@ -66,14 +66,14 @@
 
     <style>
         .schoolname{
-            font-size: 160%; 
+            font-size: 160%;
         }
         .schooltype{
             display: inline;
             font-size: 100%;
             font-weight: 400;
         }
-        
+
         .bx-img{
             cursor: pointer;}
 
@@ -438,7 +438,7 @@
             </div>
 
             <!-- BX SLIDER -->
-            
+
                 <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
                     <div class="row xl-margin-right " style="padding-left: 7px;">
                         <ul class="bxslider"  data-bx-slider="
@@ -452,7 +452,7 @@
                         </ul>
                     </div>
                 </div>
-            
+
 
             <div class="row">
                 <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
@@ -548,7 +548,7 @@
 
 
 
-                              
+
                               <div class="xxs-custom-line"></div>
                               <div class="col-xs-5 col-sm-4 pad-left-0 pull-right xxs-custom-stats">
 
@@ -586,7 +586,7 @@
 
                                  @endif
                               </div>
-                               
+
 
                             </div>
 
@@ -844,7 +844,7 @@
                             </div>
                     @endif
 
-                            
+
                     @if($school->settings->teachers && count($school->teachers) > 0)
                         <!-- Διδακτικό Προσωπικό  -->
                         <div class="slideTeachers slideup margin-bot-25" id="faculty" style="overflow-x: hidden">
@@ -1039,14 +1039,14 @@
                  @endif
 
                     <div class="">
-                    
+
                         <div class=" box left-box2 sc-t-grey">
                             <div class="col-lg-12 margin-top-30" id="box-2nd" style="">
                                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-5">@lang('profile.statistics.scholarships')</span>
                                 <span class="pull-right badge" style="margin-right: -4px"> @{{contactInfo.activeScholarships}}</span>
                                 <br>
-                                
+
                                 <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
                                     <div class="pad-top-20"></div>
                                     <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
@@ -1074,7 +1074,7 @@
 
                             <div class="clearfix"></div>
                         </div>
-                        
+
 
                         @if($school->settings->map)
                         <div class="box" style="margin-top: 30px; margin-bottom: 90px;">
@@ -1300,7 +1300,7 @@
                                     </div>
                     </div>
 
-                    
+
 
                     <div class="modal-footer" style="margin-bottom: 40px;">
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
@@ -1316,8 +1316,8 @@
                 <div class="modal-content">
 
                     <img src="/" id="bigImage" width="120%" height="auto"/>
-        
-                
+
+
                         </div>
                     </div>
                 </div>
@@ -1348,7 +1348,7 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('profile.modal.abort')</button>
                         <button type="button" class="btn btn-info">@lang('profile.modal.request')</button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -1362,7 +1362,7 @@
 @include('public.footer')
 
     {{--<!-- GoogleMap API -->--}}
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyDCdWDTJpvexNyV0DzIpbR69XatKp9Litg"></script>
 
 
     <!-- Bootstrap js-->
@@ -1392,9 +1392,9 @@
 
   gtag('config', 'AW-799029410');
 </script>
-    
 
-    
+
+
 </body>
 
 <script>
@@ -1465,8 +1465,8 @@
                         .success(function(data) {
                             $scope.schoolStudies = data
                             $scope.showButton = true
-                            
-                            
+
+
 
                         })
                     }
@@ -1497,7 +1497,7 @@
                 }
 
                 $scope.uniqueArray = function(arr){
-                    
+
                     return !!arr.reduce(function(a, b){ return (a === b) ? a : NaN; });
                 }
 
@@ -1515,7 +1515,7 @@
 
                 $scope.test = function(scholarship){
                     setTimeout(function() {
-                        
+
                         if(scholarship.userInterested){
                         $('#i'+ scholarship.id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
                         $('#t'+ scholarship.id).text('@lang('profile.scholarship.button.like')')
@@ -1571,7 +1571,7 @@
                                 })
                                 .success(function(data)   {
                         $scope.contactInfo=data;
-                        
+
                         window.totalStars = data.stars
                         $scope.ratings();
                         $scope.studies = data.levels;
@@ -1631,7 +1631,7 @@
                         $scope.getSchoolStudies();
                         /* ========== BUILD levelsName ARRAY============ */
                         $scope.levelsName[0]=$scope.studies[0][0].section[0].level.name
-//                        
+//
                         var length=0
                         var found= false
                         for (var std in $scope.studies ){
@@ -1644,10 +1644,10 @@
                             if (!found) {
                                 length++
                                 $scope.levelsName[length]=$scope.studies[std][0].section[0].level.name
-//                                
+//
                             }
                         }
-//                        
+//
                         /* ========== BUILD sectionsName ARRAY============ */
                         for (lev in $scope.levelsName ){
                             $scope.sectionsName[lev]=[];
@@ -1694,13 +1694,13 @@
                                     if( $scope.levelsName[lev]==$scope.studies[std][0].section[0].level.name
                                             && $scope.sectionsName[lev][sec]==$scope.studies[std][0].section[0].name
                                     ){
-                                        // 
+                                        //
                                         $scope.studiesName[lev][sec][study]=$scope.studies[std][0].name
                                         $scope.studiesID[lev][sec][study]=$scope.studies[std][0].id
                                         // console.log($scope.studiesID[lev][sec][study])
                                         // $scope.studiesID[lev][sec][study]=$scope.studies[std][0].id
                                         $scope.studiesUrl[lev][sec][study]=$scope.contactInfo.study[std].pivot.url
-                                        // 
+                                        //
 
                                     // $scope.studiesIcon[lev][sec][study]=$scope.studies[std][0].icon
                                         study++
@@ -1721,7 +1721,7 @@
                                 }
                             })
                             .success(function(data){
-                                
+
                                 if(data == 'YES'){
                                     $scope.contactInfo.scholarship[index].interests++;
                                     $('#i'+ id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
@@ -1747,7 +1747,7 @@
                     }
                     var map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
                     var mapXS = new google.maps.Map(document.getElementById("googleMapXS"), myOptions);
-//                    
+//
 
                     var marker = new google.maps.Marker({
                         position: myLatlng,
@@ -1834,7 +1834,7 @@
                     gtag('event', 'conversion', {
                         'send_to': 'AW-799029410/Q5PICN2dvIUBEKLxgP0C'
                     });
-                    
+
                     $scope.sendInterestToSchool = $http.post('/api/interest/school', { 'school_id': $scope.contactInfo.id, 'study_id': $scope.interestStudy, 'name': $scope.interestName, 'email': $scope.interestEmail, 'tel': $scope.interestTel, 'student': $scope.interestStudent }, {
                             headers: {
                                 'X-Requested-With': 'XMLHttpRequest',
