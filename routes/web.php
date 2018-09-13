@@ -21,16 +21,6 @@ Route::view('gdpr', 'gdpr');
 //     }
 // });
 
-Route::get('/qqww', function () {
-    foreach (App\Models\AlgoliaSchool::all() as $school) {
-        if ($school->scholioranking == 100) {
-            $school->scholioranking = 50;
-            $school->save();
-        }
-
-    }
-});
-
 foreach (App\Models\SchoolTypes::all() as $type) {
     Route::get('/s/' . $type->name, function () use ($type) {
         $schools = App\Models\School::where('type_id', $type->id)->get();

@@ -256,9 +256,10 @@ class AdminPanelController extends Controller
             } catch (Exception $e) {
             }
         }
-        if (!\App::environment('local')) {
-            dispatch(new Algolia($school));
-        }
+        dispatch(new Algolia($school));
+        // if (!\App::environment('local')) {
+
+        // }
 
         session()->flash('updated_profile', trans('school_profile.update_profile'));
 
