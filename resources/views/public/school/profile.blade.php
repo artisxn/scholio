@@ -190,11 +190,7 @@
         .input-text-interest{margin-top: 40px; font-size: 110%; color: #777; margin-bottom: -10px; }
         .cursor-hand{cursor: pointer;}
 
-
-
-        @media(max-width: 1349px) {
-            .ellipsis{width: 91%}
-        }
+            .ellipsis{width: 90%}
 
 
         @media(max-width: 1109px) {
