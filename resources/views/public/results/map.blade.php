@@ -285,9 +285,9 @@
             <div class="card clear-fix margin-bot-15">
                 <con>
                     <photo class="col-sm-2 col-md-4 pad-0-mar-0" >
-                        <a href="/public/profile/@{{school_id}}" class="hidden-xs hidden-sm">
+{{--                         <a href="/public/profile/@{{school_id}}" class="hidden-xs hidden-sm">
                             <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(@{{image}}) ">
-                        </a>
+                        </a> --}}
                         <a href="/public/profile/@{{school_id}}" target="_blank">
                             <img id="img1"  style="" class=" img-mini  photo-mini" src="@{{logo}}">
                         </a>
