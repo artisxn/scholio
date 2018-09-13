@@ -1,108 +1,527 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-<loc>https://schol.io</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/</loc>
-<lastmod>2018-05-01T10:49:03+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/auth/facebook</loc>
-<lastmod>2018-05-01T10:49:05+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/auth/google</loc>
-<lastmod>2018-05-01T10:49:05+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/lang/el</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/lang/en</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/login</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/password/reset</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/public/scholarships</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/public/schools</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>
-https://schol.io/public/schools?q=%CE%BA%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1
-</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>
-https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CE%AC%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%B1
-</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>
-https://schol.io/public/schools?q=%CE_%CE_%CE_,%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE
-</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/register/role</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/register/role/</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://schol.io/terms</loc>
-<lastmod>2018-05-01T10:49:04+00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.8</priority>
-</url>
-<url> <loc>https://schol.io/@act</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+        <loc>https://schol.io/</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/auth/facebook</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:41+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/auth/google</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/gdpr</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/lang/el</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/lang/en</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/login</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/password/reset</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/profile/21</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:42+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/scholarships</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/scholarships?q=Mediterranean%20College%20Thessaloniki</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:42+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools/map</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE%A6%CF_%CE%BF%CE%BD%CF_%CE%B9%CF_%CF_%CE%AE%CF_%CE%B9%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE%A6%CF_%CE%BF%CE%BD%CF_%CE%B9%CF_%CF_%CE%AE%CF_%CE%B9%CE%BF%20%CE_%CE%AD%CE%BD%CF_%CE%BD%20%CE_%CE%BB%CF_%CF_%CF_%CF_%CE%BD%20/%20%CE%A0%CE%BB%CE%B7%CF_%CE%BF%CF_%CE%BF%CF_%CE%B9%CE%BA%CE%AE%CF_%20-%20%CE_%CE%B5%CF_%CF_%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE%A6%CF_%CE%BF%CE%BD%CF_%CE%B9%CF_%CF_%CE%AE%CF_%CE%B9%CE%BF%20%CE_%CE%AD%CE%BD%CF_%CE%BD%20%CE_%CE%BB%CF_%CF_%CF_%CF_%CE%BD%20/%20%CE%A0%CE%BB%CE%B7%CF_%CE%BF%CF_%CE%BF%CF_%CE%B9%CE%BA%CE%AE%CF_%20-%20%CE_%CE%B8%CE%AE%CE%BD%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE%A6%CF_%CE%BF%CE%BD%CF_%CE%B9%CF_%CF_%CE%AE%CF_%CE%B9%CE%BF%20%CE_%CE%AD%CF_%CE%B7%CF_%20%CE_%CE%BA%CF_%CE%B1%CE%AF%CE%B4%CE%B5%CF_%CF_%CE%B7%CF_%20-%20%CE_%CE%B5%CF_%CF_%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE%A6%CF_%CE%BF%CE%BD%CF_%CE%B9%CF_%CF_%CE%AE%CF_%CE%B9%CE%BF%20%CE_%CE%AD%CF_%CE%B7%CF_%20%CE_%CE%BA%CF_%CE%B1%CE%AF%CE%B4%CE%B5%CF_%CF_%CE%B7%CF_%20-%20%CE_%CE%B8%CE%AE%CE%BD%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE%A6%CF_%CE%BF%CE%BD%CF_%CE%B9%CF_%CF_%CE%AE%CF_%CE%B9%CE%BF%20%CE_%CE%AD%CF_%CE%B7%CF_%20%CE_%CE%BA%CF_%CE%B1%CE%AF%CE%B4%CE%B5%CF_%CF_%CE%B7%CF_%20-%20%CE_%CE%B9%CE%B1%CE%BD%CE%BD%CE%B9%CF_%CF_%CE%AC</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE%BA%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%AD%CE%BD%CF_%CF_%CE%BF%20%CE_%CE%B7%CE%BC%CE%B9%CE%BF%CF_%CF_%CE%B3%CE%B9%CE%BA%CE%AE%CF_%20%CE_%CF_%CE%B1%CF_%CF_%CF_%CE%BB%CE%B7%CF_%CE%B7%CF_%20-%20%CE_%CE%B5%CF_%CF_%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%AD%CE%BD%CF_%CF_%CE%BF%20%CE_%CE%B7%CE%BC%CE%B9%CE%BF%CF_%CF_%CE%B3%CE%B9%CE%BA%CE%AE%CF_%20%CE_%CF_%CE%B1%CF_%CF_%CF_%CE%BB%CE%B7%CF_%CE%B7%CF_%20-%20%CE_%CE%B8%CE%AE%CE%BD%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CE%AC%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE%A0%CE%AC%CF_%CF_%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE%A3%CE%AD%CF_%CF_%CE%B5%CF_</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE%A4%CF_%CE%AF%CE%BA%CE%B1%CE%BB%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE_%CE%AC%CE%BD%CE%B8%CE%B7</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE_%CE%AC%CF_%CE%B9%CF_%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE_%CE%B1%CF_%CE%B5%CF_%CE%AF%CE%BD%CE%B7</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE_%CE%B5%CF_%CF_%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE_%CE%B8%CE%AE%CE%BD%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE_%CF_%CE%AC%CE%BA%CE%BB%CE%B5%CE%B9%CE%BF</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CF_%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%BF%20-%20%CE_%CF_%CE%BB%CE%BF%CF_</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%BF%20-%20%CE_%CE%AC%CF_%CE%B9%CF_%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%BF%20-%20%CE_%CE%B5%CF_%CF_%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%BF%20-%20%CE_%CE%B8%CE%AE%CE%BD%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%BF%20-%20%CE_%CF_%CE%AC%CE%BA%CE%BB%CE%B5%CE%B9%CE%BF%20%CE_%CF_%CE%AE%CF_%CE%B7%CF_</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_%20-%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE%20-%20%CE_%CE_%CE_%CE_%20-%20%CE_%CE%AC%CF_%CE%B9%CF_%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_%20-%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE%20-%20%CE_%CE_%CE_%CE_%20-%20%CE_%CE%B5%CF_%CF_%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_%20-%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE%20-%20%CE_%CE_%CE_%CE_%20-%20%CE_%CE%B8%CE%AE%CE%BD%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_%20-%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE%20-%20%CE_%CE_%CE_%CE_%20-%20%CE_%CF_%CE%AC%CE%BA%CE%BB%CE%B5%CE%B9%CE%BF%20%CE_%CF_%CE%AE%CF_%CE%B7%CF_</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_%20-%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE%20-%20%CE_%CE_%CE_%CE_%20-%20%CE_%CF_%CE%AC%CE%BD%CE%BD%CE%B9%CE%BD%CE%B1</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_,%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/register/role</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/register/role/</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/s/scholarships</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/s/schools</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/scholarship/24</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/scholarship/25</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:40+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/scholarship/26</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:41+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/schoolink/redirect/21/</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:42+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://schol.io/terms</loc>
+    
+    
+        <lastmod>2018-09-13T16:47:39+00:00</lastmod>
+    
+        <changefreq>daily</changefreq>
+    
+        <priority>0.8</priority>
+    </url>
+
+    <url> <loc>https://schol.io/@act</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@amcAth</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@nycath</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@haec</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
@@ -208,7 +627,7 @@ https://schol.io/public/schools?q=%CE_%CE_%CE_,%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%
 <url> <loc>https://schol.io/@ilios</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@mathiteia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@methexis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/@</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@methodos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@neodynamiko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@neo_frontistirio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@ntontis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
@@ -239,7 +658,7 @@ https://schol.io/public/schools?q=%CE_%CE_%CE_,%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%
 <url> <loc>https://schol.io/@diakrotimaPagrati</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@exeisprooptiki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@empedosi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/@11</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@alimpinisis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@bakoulas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@pigasos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@epagogi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
