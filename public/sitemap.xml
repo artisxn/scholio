@@ -1,166 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-        <loc>https://schol.io</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:03+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/auth/facebook</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:05+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/auth/google</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:05+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/lang/el</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/lang/en</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/login</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/password/reset</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/scholarships</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%BA%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CE%AC%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%B1</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_,%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/register/role</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/register/role/</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/terms</loc>
-    
-    
-        <lastmod>2018-05-01T10:49:04+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url> <loc>https://schol.io/@act</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<loc>https://schol.io</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/</loc>
+<lastmod>2018-05-01T10:49:03+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/auth/facebook</loc>
+<lastmod>2018-05-01T10:49:05+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/auth/google</loc>
+<lastmod>2018-05-01T10:49:05+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/lang/el</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/lang/en</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/login</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/password/reset</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/public/scholarships</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/public/schools</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>
+https://schol.io/public/schools?q=%CE%BA%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1
+</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>
+https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CE%AC%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%B1
+</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>
+https://schol.io/public/schools?q=%CE_%CE_%CE_,%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE
+</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/register/role</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/register/role/</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://schol.io/terms</loc>
+<lastmod>2018-05-01T10:49:04+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+<url> <loc>https://schol.io/@act</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@amcAth</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@nycath</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@haec</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
@@ -291,4 +233,175 @@
 <url> <loc>https://schol.io/@theoriaPraxi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@kousournas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@spoudastirio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@mathisinet</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@prosanatolismos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@protasi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@diakrotimaPagrati</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@exeisprooptiki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@empedosi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@11</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@bakoulas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@pigasos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@epagogi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@methodosAgiaParaskeyi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@prooptikiKeratea</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@orosimoAthens</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@roulamakri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@entaksi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@spoudifrontistiria</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@logismos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@koufopoulou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@pros</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@sygchrono</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ormigroup</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@dialektiko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@anelixi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@kefalas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@salari</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@phifrontistirio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@axiaxalandrikatw</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@prismafme</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@peripaideias</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@enavsma</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@anodiko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@methodikofro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@anodosEdu</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@bachourou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@pixoida</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@methodikoΝet</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ergastirimathisis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@pediognosis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@enGnosei</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@orizontesFro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@eidenai</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@basi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@pezou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ropi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@apolyto</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@prooptikiNet</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@symvoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@sygxronoGalatsi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@akadimosPallini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@harisis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@synolo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@kosmognosi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@prooptikiMarathonas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@upodomi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@perantinos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@tosymbolo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@grammatoupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@romvok</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@simmetria</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@dimokritos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@efstathopoulos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@filomathia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@loukidi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@themelioPeiraias</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@pirinas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@tomellon</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@oroshmo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@methodikal</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@kallitheiko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@anagnostirio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@salteris</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@vafeiadakisAigaleo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@anelixi2</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@triptyxo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@fasmaedu</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ekpaideyshvergiopoulos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@nika</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@aristevein2</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@aristevein</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@synchronoAgiaParaskevi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@synchronoGlykaNera</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@neorama</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@papadeaefi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ekmathisi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@polixorosgnosis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@kuttaroNeoHrakleio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@aristovathmio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@dynamico</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@mathepilogi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@axonasTayros</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@mouratos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@atomoGroup</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@pyxida201</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@anodos_edu</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ropifront</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@kybosedu</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ereuna</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@noima</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@piliedu</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@diamesos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@epikouros85</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@areimanioKallithea</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@epityxein</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@roussos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@protypoedu</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@diatrivi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@themelioNet</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@speak</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@highpass</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@thePro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@assos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@soeasy</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@lelaki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@avanti</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@hitoglouFytoka</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@status</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@axonToumpa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@albani</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@axonKalamarias</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@kalograia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@toptsi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@eurognosiKalamaria</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@eurognosiThermi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@eurognosiEvzonon</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@xperience</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@spyroglou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@rootmodernenglish</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@logos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@idrogios</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@yes</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@laura</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@goethe</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@vafopoulou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@genesis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@genius</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@jubilee</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@vision</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@xefteri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ypsilandio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@hadzopoulos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@concorde</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@englishworld</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@galileogalilei</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@planet</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@lingua</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@linguaearte</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@almadeutsch</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@panyeah</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@meletiouOikonomou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@fun2learn</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@axonElliniko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@victoriaSchool</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@stegas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@babiniotouDougekou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@grapsa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@primers</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@sakkaEugenia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@stamatopoulou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@katseli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@eurognosiGlyfada</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@eurognosiAigaleocenter</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@eurognosiAcharnai</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@eurognosiGerakas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@sage</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@teachersPefki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@karakosta</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@veroudakis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@papastergiou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@rethinkEdu</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@goulis</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@kozatzanidi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 </urlset>
