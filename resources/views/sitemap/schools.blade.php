@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>schol.io | Terms</title>
+    <title>schol.io | Schools</title>
 
 
 
 
     <!--====== CSS  Styles =======-->
     @include('public.styles')
+
+    @include('google.analytics')
 
 
     <!-- Profile  CSS -->
@@ -145,7 +147,7 @@
 
 <div class="container mainBody">
     <div class="outerBox">
-  <h2>Εκ. Ιδρύματα</h2>        
+  <h2>Εκ. Ιδρύματα</h2>
   <table class="table table-hover">
     <thead>
       <tr>

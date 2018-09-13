@@ -145,7 +145,7 @@
 
 <div class="container mainBody">
     <div class="outerBox">
-  <h2>Εκ. Ιδρύματα</h2>        
+  <h2>Εκ. Ιδρύματα</h2>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -165,8 +165,18 @@
         @endforeach
     </tbody>
   </table>
+  <hr>
+
+<div>
+    @foreach($arr as $school)
+       <a href="https://schol.io/public/schools?q={{ $school }}">{{ $school }}</a>
+       <br>
+    @endforeach
 </div>
 </div>
+</div>
+
+
 
 
 

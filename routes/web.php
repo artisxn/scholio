@@ -29,8 +29,8 @@ foreach (App\Models\SchoolTypes::all() as $type) {
 }
 
 // Route::get('/qqww', function () {
-//     foreach(App\Models\AlgoliaSchool::all() as $school){
-//         if($school->city == 'Θεσσσαλονίκη'){
+//     foreach (App\Models\AlgoliaSchool::all() as $school) {
+//         if ($school->city == 'θεσσσαλονίκη') {
 //             $school->city = 'Θεσσαλονίκη';
 //             $school->save();
 //         }
@@ -40,7 +40,20 @@ foreach (App\Models\SchoolTypes::all() as $type) {
 Route::get('/s/schools', function () {
     $types = App\Models\SchoolTypes::all();
 
-    return view('sitemap.types', compact('types'));
+    $arr = [];
+    $same = '';
+    foreach ($types as $type) {
+        if (count($type->schools) > 0) {
+            foreach ($type->schools as $school) {
+                $txt = $type->name . ' - ' . $school->city;
+                if (!in_array($txt, $arr)) {
+                    array_push($arr, $txt);
+                }
+            }
+        }
+    }
+
+    return view('sitemap.types', compact('types', 'arr'));
 });
 
 Route::get('/s/scholarships', function () {
