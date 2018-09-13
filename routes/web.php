@@ -28,6 +28,15 @@ foreach (App\Models\SchoolTypes::all() as $type) {
     });
 }
 
+Route::get('/qqww', function () {
+    foreach (App\Models\AlgoliaSchool::all() as $school) {
+        if ($school->city == 'Θεσσσαλονίκη') {
+            $school->city = 'Θεσσαλονίκη';
+            $school->save();
+        }
+    }
+});
+
 Route::get('/s/schools', function () {
     $types = App\Models\SchoolTypes::all();
 
