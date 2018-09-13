@@ -2,17 +2,17 @@
 
 namespace App\Jobs;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
+use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
 use App\Models\Scholarship;
 use App\Models\School;
-use Carbon\Carbon;
-use App\Models\AlgoliaScholarship;
 use App\Scholio\Scholio;
+use Carbon\Carbon;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class Algolia implements ShouldQueue
 {
@@ -40,12 +40,12 @@ class Algolia implements ShouldQueue
      */
     public function handle()
     {
-        if($this->model instanceof School){
+        if ($this->model instanceof School) {
             $this->prepeareSchool();
         }
 
         if ($this->model instanceof Scholarship) {
-            $this->prepeareScholarship();   
+            $this->prepeareScholarship();
         }
     }
 
@@ -165,7 +165,8 @@ class Algolia implements ShouldQueue
         $this->geoloc($dummy);
     }
 
-    public function geoloc($algolia){
+    public function geoloc($algolia)
+    {
         $algolia->_geoloc = collect(['lat' => (double) $this->school->lat, 'lng' => (double) $this->school->lng]);
         $algolia->searchable();
     }
@@ -175,6 +176,7 @@ class Algolia implements ShouldQueue
         $studyDummy = '';
         $tagsDummy = '';
         $dummy = AlgoliaSchool::where('school_id', $this->school->id)->first();
+        $dummy->name = $this->school->name();
         $dummy->phone = $this->school->phone;
         $dummy->city = $this->school->city;
         $dummy->address = $this->school->address;
