@@ -56,12 +56,14 @@
     .col-sm-5, .col-md-5{padding-right: 4px; }
 
     .card-photo{max-height: 180px;  width: 100%; }
-    .card{background-color: #fff; height: 180px;}
+    .card{background-color: #fff; height: 180px;  margin-bottom: 12px; border: 1px solid #ccc;}
 
     .school-filter-m{display: none}
     .container-up{margin-top: 50px; margin-bottom: 10px; padding-right:0;}
     .margin-bottom{height: 40px; width: 20px; margin-bottom: 110px;}
     .photo-mini{position: absolute; top: 6px; left: 6px;}
+    .photo-mini2{position: absolute; top: 54px; margin-left: auto;  margin-right: auto;  left: 0;  right: 0;}
+    .heightNew{height: 140px;}
 
 
     .search-contain,.btn-list{ clear: both; display: block;  margin-left: auto; margin-right: auto; }
@@ -70,13 +72,18 @@
     .range-input,.search-div{ text-align: center; margin-left: auto; margin-right: auto; }
     .km-low{margin-left: -4px;}
     .km-high{margin-right: -2px;}
-    .col-sm-5{padding-left: 7px; }
+    .col-sm-5{padding-left: 10px; padding-right: 10px;}
     .col-sm-7{padding-right: 4px; }
 
 
+    @media  (min-width: 1441px) {
+        .col-sm-5{padding-left: 18px; padding-right: 18px;}
+        .card{ box-shadow: 0 0 20px 1px #999;  border-radius: 6px; margin-bottom: 30px;}
+    }
+
     @media  (max-width: 990px) {
-        photo{padding-right: 0!important;}
-        photo a img{padding-top:17px;!important;}
+        .photo{padding-right: 0!important;}
+        .photo a img{padding-top:17px;!important;}
         .info{}
         /*.btn-list{margin-left: -20px; }*/
     }
@@ -89,31 +96,57 @@
         .school-slider{ background-color: #fafafa; width: 320px; z-index: 5; border-radius: 6px; border: 1px solid #999; box-shadow: 0 0 10px 2px #aaa; position: fixed; top: 75px; bottom: 15px; height: auto;  overflow-y: auto}
         .left-320{left: -320px; transition: all 0.2s}
         .left10{left: 10px; transition: all 0.2s}
-        .card{border: 1px solid #ccc; border-radius: 5px}
+        .card{border: 1px solid #ccc; border-radius: 5px; padding-top: 9px; padding-left: 10px; }
         .container-up{margin-top: 0}
         .info-title{margin-left: 40px ; margin-top: -21px}
         .info-content{position: absolute; left: 7px; bottom: -152px}
         .margin-bottom{margin-bottom: 0;}
         .photo-mini{top: -2px}
+        .photo-mini2{top: 2px; border: 1px solid #ccc; box-shadow: 0 0 10px 1px #999; border-radius: 5px;}
         .top-range{bottom: 20px; margin-left: -5px;}
         /*.search-div,.range-input{background-color: greenyellow; z-index: 99!important;}*/
         .btn-list{margin-top: 40px;}
+        .mobile-info-content{margin-left: -5px; top: 70px; width:100%!important;}
     }
 
 
     @media  (max-width: 399px) {
         /*.fa-xxs{display: none;}*/
         .school-slider{width: 305px;}
-        .search-contain{font-size: 90%; padding-left: 0; margin-left: -10px; margin-bottom: 40px}
+        .search-contain{font-size: 93%; padding-left: 5px; margin-left: -10px; margin-bottom: 40px;}
     }
-    @media  (max-width: 360px) {
-        /*.fa-xxs{display: none;}*/
-        .school-slider{width: 285px;}
 
-        }
+    @media  (max-width: 320px) {
+        .search-contain{font-size: 91%; padding-left: 3px;}
+    }
+
+    @media  (min-width: 375px) and (max-width: 413px) {
+        .school-slider{width: 354px;}
+        .left-320{left: -370px;}
+    }
+    @media  (min-width: 414px) and (max-width: 767px)  {
+        .school-slider{width: 390px;}
+        .left-320{left: -410px;}
+    }
+
+    @media  (min-width: 320px) and (max-width: 374px)  {
+        .school-slider{width: 298px;}
+    }
+
+
+
 
     @media  (max-width: 1200px) {
         .card-photo,.card{height: 155px!important;}
+    }
+
+
+    @media  (min-width: 768px) and (max-width:990px) {
+        .info {padding-left: 8px}
+        .con, .card{position: relative}
+        .middle {right: 15px; bottom: 123px; position: absolute;}
+        .photo-mini2{position: absolute;  z-index: 5; opacity: 0.5; filter: grayscale(0.1); -webkit-filter: grayscale(0.7)}
+
     }
 
 
@@ -282,31 +315,46 @@
             {{--<span class="hit-distance" ng-if="false"> @{{ distance }}</span>--}}
             {{--</div>--}}
 
-            <div class="card clear-fix margin-bot-15">
+            <div class="card clear-fix margin-bot-15 heightNew" >
+                {{--<con>--}}
+                    {{--<photo class="col-sm-2 col-md-4 pad-0-mar-0" >--}}
+                        {{--<a href="/public/profile/@{{school_id}}" class="hidden-xs hidden-sm">--}}
+                            {{--<img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(@{{image}}) ">--}}
+                        {{--</a>--}}
+
+                        {{--<a href="/public/profile/@{{school_id}}" target="_blank">--}}
+                            {{--<img id="img1"  style="" class=" img-mini  photo-mini" src="@{{logo}}">--}}
+                        {{--</a>--}}
+                    {{--</photo>--}}
+
+                {{--</con>--}}
+
+
                 <con>
-                    <photo class="col-sm-2 col-md-4 pad-0-mar-0" >
-{{--                         <a href="/public/profile/@{{school_id}}" class="hidden-xs hidden-sm">
-                            <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(@{{image}}) ">
-                        </a> --}}
+                    <photo class="col-sm-2 pad-0-mar-0 middle" >
+                        {{--<a href="/public/profile/@{{school_id}}" class="hidden-xs hidden-sm">--}}
+                            {{--<img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(@{{image}}) ">--}}
+                        {{--</a>--}}
+
                         <a href="/public/profile/@{{school_id}}" target="_blank">
-                            <img id="img1"  style="" class=" img-mini  photo-mini" src="@{{logo}}">
+                            <img id="img1"  style="" class=" img-mini  photo-mini2" src="@{{logo}}">
                         </a>
                     </photo>
 
                 </con>
 
-                <div class="col-sm-10 col-md-8 info">
-                    <div class=" margin-bot-15 info-title">
+                <div class="col-xs-12  col-md-10 info">  {{-- col-md-8 --}}
+                    <div class="  info-title clearfix">
                         <div class="distance">@{{distance}} </div>
-                        <span class="pull-left" style="padding-right: 15px;">
+                        <span class="pull-left " style="padding-right: 15px;">
                              <h5 class="pad-top-10 font-weight-400"> <a href="/public/profile/@{{school_id}}"  style="color: #008da5;"> @{{name}}</a></h5>
                          </span>
                     </div>
 
-                    <div class="info-content">
+                    <div class="info-content mobile-info-content">
                         <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12 sc-t-grey pad-left-0">
                             <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 fa-xxs" aria-hidden="true"></i></span>
-                            <span class="pull-left pad-left-3 xs-text-incr-85 text-incr-95">@{{address}}</span>
+                            <span class="pull-left pad-left-3 xs-text-incr-85 text-incr-95 ellipsis">@{{address}}</span>
                             <br>
                             <div class="">
                                 <span><i class="fa fa-street-view pull-left pad-top-3 fa-xxs" aria-hidden="true"></i></span>

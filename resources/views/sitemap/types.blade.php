@@ -33,8 +33,10 @@
         }
         h1{font-size: 170%; font-weight: 400; color: #667; margin-top: 50px;}
         h2{font-size: 150%; font-weight: 400; color: #667; margin-top: 40px;}
-        h3{font-size: 130%; font-weight: 300; color: #778; margin-top: 25px;}
-        h5{font-size: 115%; font-weight: 300; color: #997; margin-top: 25px;}
+        h3{font-size: 130%; font-weight: 300; color: #778!important; margin-top: 25px;}
+        h4{font-size: 110%; font-weight: 300; color: #778; margin:0; display: inline-block}
+        h5{font-size: 105%; font-weight: 300; color: #997; margin-top: 5px;}
+
         .dropdown-menu{background-color: #eee; padding-top: 20px}
         .mainBody{min-height: 1100px;}
         .outerBox{min-height: 800px; background: #fafafa; border: 1px solid #ccc; border-radius: 6px; width: 80%;  margin: 120px auto 50px auto; padding: 30px;}
@@ -145,35 +147,57 @@
 
 <div class="container mainBody">
     <div class="outerBox">
-  <h2>Εκ. Ιδρύματα</h2>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Τύπος Εκ. Ιδρύματος</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($types as $type)
-        @if(count($type->schools) > 0)
-        <tr>
-            <td>
-              <a href="/s/{{ $type->name }}">
-                {{ $type->name }}</td>
-              </a>
-        </tr>
-        @endif
-        @endforeach
-    </tbody>
-  </table>
-  <hr>
+        <h2>Εκπαιδευτικά Ιδρύματα</h2>
 
-<div>
-    @foreach($arr as $school)
-       <a href="https://schol.io/public/schools?q={{ $school }}">{{ $school }}</a>
-       <br>
-    @endforeach
-</div>
-</div>
+
+        <table class="table table-hover">
+
+            <thead>
+            <tr>
+                <h3>
+                    <th>Εκπαιδευτικά Ιδρύματα ανά Πόλη</th>
+                </h3>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($arr as $school)
+                <tr>
+                    <td>
+                        <h4>
+                            <a href="https://schol.io/public/schools?q={{ $school }}">{{ $school }}</a>
+                        </h4>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
+        <hr>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Τύπος Εκπαιδευτικού Ιδρύματος</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach($types as $type)
+            @if(count($type->schools) > 0)
+            <tr>
+                <td>
+                  <a href="/s/{{ $type->name }}">
+                    {{ $type->name }}
+                  </a>
+                </td>
+            </tr>
+            @endif
+            @endforeach
+        </tbody>
+      </table>
+
+
+
+    </div>
 </div>
 
 

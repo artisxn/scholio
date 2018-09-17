@@ -138,6 +138,20 @@
 
 
 
+    @media(max-width: 1199px){
+        .card-portal{ border: 1px #ddd solid; border-radius: 6px;}
+        .card-photo{border-top-left-radius: 6px; }
+    }
+
+    @media(max-width: 767px){
+        .card-photo{  border-top-right-radius: 6px;}
+    }
+
+
+
+
+
+
     @media(min-width: 768px){
         .pad-top{padding-top: 10px;}
     }
@@ -306,7 +320,7 @@
     }
 
     @media (max-width:415px) {
-        .margin-portal {  margin-top: -100px;  }
+        .margin-portal {  margin-top: -115px;  }
         .card-portal {  height: 430px;  }
 
     }
@@ -919,8 +933,8 @@ angular.module("schoolsResultsApp",[])
 
             <div class="" >
                 <div class="col-lg-7 col-sm-7 col-xs-12 sc-t-grey pad-rl-2"  style="z-index: 4; position relative; ">
-                    <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                    <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95 ellipsis">@{{address}}</span>
+                    <span><i class="fa fa-map-marker pull-left pad-top-3 " aria-hidden="true"></i></span> {{--xs-text-incr-85 text-incr-95 --}}
+                    <span class="pull-left pad-left-6  ellipsis">@{{address}}</span>  {{--xs-text-incr-85 text-incr-95 --}}
                     <br>
                     <div class="hidden-xs pad-top">
                         <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
@@ -1003,7 +1017,7 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hits({
                 container: '#schools',
-                hitsPerPage: 5,
+                hitsPerPage: 8,
                 templates: {
                     empty: noResultsTemplate,
                     item: hitTemplate
@@ -1055,10 +1069,14 @@ angular.module("schoolsResultsApp",[])
                     active: 'active'
                 },
                 labels: {
-                    previous: '<i class="fa fa-angle-left fa-2x"></i> @lang('schools.prev_page')',
-                    next: '@lang('schools.next_page') <i class="fa fa-angle-right fa-2x"></i>'
+                    previous: '' +
+//                    '<i class="fa fa-angle-left fa-2x"></i>' +
+                    ' @lang('schools.prev_page')',
+                    next: '@lang('schools.next_page') '
+
+//                            '<i class="fa fa-angle-right fa-2x"></i> '
                 },
-                showFirstLast: false
+                showFirstLast: true
             })
     );
 
