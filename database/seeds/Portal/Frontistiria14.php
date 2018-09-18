@@ -265,10 +265,10 @@ class Frontistiria14 extends Seeder
 
 
 
-        /*=============== 7 Παπαήλιου ================*/
+        /*=============== 7 Παπαηλιού ================*/
 
         $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Κέντρα Ξένων Γλωσσών Παπαήλιου', 'email' => 'karaiskou@papaeliou.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'papaeliou'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Κέντρα Ξένων Γλωσσών Παπαηλιού', 'email' => 'karaiskou@papaeliou.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'papaeliou'])->id,
             'address' => 'Καραΐσκου 111, Πειραιάς',
             'city' => 'Αθήνα',
             'phone' => 2104173892,
