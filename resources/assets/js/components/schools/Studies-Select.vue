@@ -54,6 +54,7 @@
 
                     <hr style=" height: 10px;!important; border: 0; box-shadow: 0 10px 10px -10px #324c5a inset; margin-top: 30px; margin-left: 10px; margin-right: 30px;">
 
+
                     <button class="btn btn-info" v-on:click="clearAllStudies" style="margin-top: 20px; margin-left: 10px;" v-if="checkedStudies.length">
                         <i class="fa fa-trash-o"  aria-hidden="true" style="margin-right: 10px;"></i>
                         {{ lang('school_profile.studies.delete') }}
@@ -74,10 +75,13 @@
                                     <span v-if="studiesStatus[indexLevel][indexSection][indexStudy]">
                                         {{study.name}}
                                         <span>
-                                              <i class="fa fa-trash btn-del"
-                                                 @click="deleteStudy(indexLevel,indexSection,indexStudy,study.id, studies[indexLevel].id, studies[indexLevel].section[indexSection].id )"
-                                                 style="margin-left: 10px;">
-                                              </i>
+
+                                             <i class="fa fa-trash btn-del"
+                                                @click="deleteStudy(indexLevel,indexSection,indexStudy,study.id, studies[indexLevel].id, studies[indexLevel].section[indexSection].id )"
+                                                style="margin-left: 10px;">
+                                             </i>
+
+
                                         </span>
                                     </span>
                                     </div>

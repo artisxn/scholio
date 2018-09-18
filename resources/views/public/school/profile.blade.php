@@ -191,6 +191,7 @@
         .cursor-hand{cursor: pointer;}
 
             .ellipsis{width: 90%}
+            .webHover:hover{color:#FD6A33!important;}
 
 
         @media(max-width: 1109px) {
@@ -1024,8 +1025,10 @@
                                 <span ng-if="contactInfo.website">
                                      <br>
                                     <div class="pad-top-20"></div>
+                                    <a class="webHover" href="/schoolink/redirect/{{$school->id}}/" target="_blank">
                                     <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                    <span class="pull-left pad-left-5 ellipsis"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank">@{{contactInfo.website}}</a></span>
+                                    <span class="pull-left pad-left-5 ellipsis"> @{{contactInfo.website}}</span>
+                                    </a>
                                 </span>
 
 

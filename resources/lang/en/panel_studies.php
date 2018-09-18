@@ -13,6 +13,7 @@ return [
     'selected'=>'Selected Studies',
     'delete-all'=>'Delete All Studies',
     'modal-message'=>'Do you want to delete all your selected studies so far?',
+    'modal-link-message'=>'Add an optional link that will lead to the specific studies on your site.',
     'modal-reject'=>'Discard',
     'modal-submit'=>'Accept',
 ];
