@@ -136,9 +136,14 @@
                                             </span>
 
 
-                                            <span><i class="fa fa-trash-o btn-delete" style="" aria-hidden="true" @click="deleteStudy(study.study.id)"
+                                            <span><i class="fa fa-external-link btn-delete" style="margin-left: -25px; margin-right: 10px;" aria-hidden="true" @click=""
+                                                     data-toggle="modal" data-target="#link-modal"
                                                      @mouseover="hoverStudy(index+'study'+sc+'_'+st)" @mouseleave="leaveStudy()">
                                             </i></span>
+
+                                              <span><i class="fa fa-trash-o btn-delete" style="" aria-hidden="true" @click="deleteStudy(study.study.id)"
+                                                       @mouseover="hoverStudy(index+'study'+sc+'_'+st)" @mouseleave="leaveStudy()">
+                                              </i></span>
 
                                         </div>
                                     </div>
@@ -192,6 +197,45 @@
                 </div>
             </div>
         </div><!-- /.modal -->
+
+
+
+
+        <!-- ====== Modal Link Study =======-->
+        <div id="link-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="panel " style="background-color: #324c5a; height: 62px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+                        <div class="panel-heading" style="height: 55px; color: #fff">
+                            <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
+                                x
+
+                            </button>
+                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: 2px;">
+
+                        </div>
+
+                    </div>
+                    <div class="panel-body link-panel-body">
+
+                        <span>{{ lang('panel_studies.modal-link-message') }}</span>
+                        <div class="clerafix"></div>
+                        <input v-model="link" placeholder="https://mySchool.gr/" type="text" class="form-control linkInput">
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <div  class="btn btn-default btn-modal1" data-dismiss="modal"> {{ lang('panel_studies.modal-reject') }}</div>
+                        <div  class="btn btn-primary btn-modal2" data-dismiss="modal" @click="">
+                            {{ lang('panel_studies.modal-submit') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+
 
 
 
@@ -287,6 +331,9 @@
     .btn-save{padding: 10px 50px!important;}
     .btn-deleteAll-container{clear: both; padding-top: 40px; margin-left: auto; margin-right: auto; text-align: center;}
     .container-centered{margin-left: auto; margin-right: auto; text-align: center;}
+
+    .linkInput{margin: 20px auto;}
+    .link-panel-body{height: auto;}
 
 
 

@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
-    <meta name="description" content="Αναζήτηση εκπαιδευτικών ιρδυμάτων και των υπηρεσιών τους.">
-    <meta name="keywords" content="Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, ΙΙΕΚ, Σχολές, Σπουδές,">
+    <meta name="description" content="Αναζήτηση εκπαιδευτικών ιδρυμάτων και υποτροφιών">
+    <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές,">
     @include('google.main')
 
-    <title>schol.io | Αναζήτηση εκπαιδευτικών ιρδυμάτων</title>
+    <title>schol.io | Αναζήτηση Εκπαιδευτικών Ιδρυμάτων</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />
@@ -135,6 +135,20 @@
 
     .backImageSm{ height: 170px; width: 80%; left: 40px; bottom: -36px; }
     .backImageLg{ height: 260px; width: 101%; left: 10px; bottom: -30px;}
+
+
+
+    @media(max-width: 1199px){
+        .card-portal{ border: 1px #ddd solid; border-radius: 6px;}
+        .card-photo{border-top-left-radius: 6px; }
+    }
+
+    @media(max-width: 767px){
+        .card-photo{  border-top-right-radius: 6px;}
+    }
+
+
+
 
 
 
@@ -306,7 +320,7 @@
     }
 
     @media (max-width:415px) {
-        .margin-portal {  margin-top: -100px;  }
+        .margin-portal {  margin-top: -115px;  }
         .card-portal {  height: 430px;  }
 
     }
@@ -919,8 +933,8 @@ angular.module("schoolsResultsApp",[])
 
             <div class="" >
                 <div class="col-lg-7 col-sm-7 col-xs-12 sc-t-grey pad-rl-2"  style="z-index: 4; position relative; ">
-                    <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                    <span class="pull-left pad-left-6 xs-text-incr-85 text-incr-95 ellipsis">@{{address}}</span>
+                    <span><i class="fa fa-map-marker pull-left pad-top-3 " aria-hidden="true"></i></span> {{--xs-text-incr-85 text-incr-95 --}}
+                    <span class="pull-left pad-left-6  ellipsis">@{{address}}</span>  {{--xs-text-incr-85 text-incr-95 --}}
                     <br>
                     <div class="hidden-xs pad-top">
                         <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
@@ -1003,7 +1017,7 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hits({
                 container: '#schools',
-                hitsPerPage: 5,
+                hitsPerPage: 8,
                 templates: {
                     empty: noResultsTemplate,
                     item: hitTemplate
@@ -1055,10 +1069,14 @@ angular.module("schoolsResultsApp",[])
                     active: 'active'
                 },
                 labels: {
-                    previous: '<i class="fa fa-angle-left fa-2x"></i> @lang('schools.prev_page')',
-                    next: '@lang('schools.next_page') <i class="fa fa-angle-right fa-2x"></i>'
+                    previous: '' +
+//                    '<i class="fa fa-angle-left fa-2x"></i>' +
+                    ' @lang('schools.prev_page')',
+                    next: '@lang('schools.next_page') '
+
+//                            '<i class="fa fa-angle-right fa-2x"></i> '
                 },
-                showFirstLast: false
+                showFirstLast: true
             })
     );
 

@@ -10,6 +10,8 @@
       font-weight: 300;
       padding: 0 12px;
     }
+
+
 </style>
 <link href="{{'/panel/assets/css/vue-multiselect.css'}}" rel="stylesheet"/>
 
