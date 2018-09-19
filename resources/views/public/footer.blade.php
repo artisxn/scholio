@@ -43,6 +43,13 @@
 
 
         </div>
+
+        <div class="entered-text margin-bot-50">
+            <p class="sc-t-white margin-top-50">
+                <a href="https://scholio.test/public/schools?q=%CE%9A%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7">Κολλεγια Θεσσαλονικη</a><br>
+                <a href="https://scholio.test/public/schools?q=%CE%9A%CE%BF%CE%BB%CE%BB%CE%B5%CE%B3%CE%B9%CE%B1%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1">Κολλεγια Αθηνα</a><br>
+            </p>
+        </div>
     </div>
 </footer>
 

@@ -16,7 +16,7 @@
     <script>
         var x = window.location.href.indexOf('q=');
         var s =  window.location.href.substring(x+2);
-        document.title = unescape(s);
+        document.title = unescape(decodeURIComponent(s)) + ' | Schol.io'  ;
     </script>
 
     <!-- Favicon -->
