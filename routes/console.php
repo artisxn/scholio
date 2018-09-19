@@ -3,6 +3,7 @@
 use App\Jobs\Algolia;
 use App\Models\School;
 use App\Scholio\Scholio;
+use Illuminate\Support\Facades\Url;
 use Spatie\Sitemap\SitemapGenerator;
 
 /*
