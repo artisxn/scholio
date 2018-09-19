@@ -3,7 +3,6 @@
 use App\Jobs\Algolia;
 use App\Models\School;
 use App\Scholio\Scholio;
-use Illuminate\Support\Facades\Url;
 use Spatie\Sitemap\SitemapGenerator;
 
 /*
@@ -21,7 +20,7 @@ Artisan::command('scholio:sitemap', function () {
     // SitemapGenerator::create('https://schol.io')->writeToFile(public_path() . '/sitemap-TEST-1.xml');
 
     SitemapGenerator::create('https://schol.io')
-        ->hasCrawled(function (Url $url) {
+        ->hasCrawled(function (Illuminate\Support\Facades\Url $url) {
             if ($url->segment(1) === 'studylink' || $url->segment(1) === 'schoolink' || $url->segment(1) === 'lang') {
                 return;
             }
