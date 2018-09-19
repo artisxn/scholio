@@ -22,13 +22,13 @@
 
 <script type=”application/ld+json”>
 {
-“@context”: “http://schema.org”,
-“@type”: “WebSite”,
-“url”: “https://schol.io/”,
-“potentialAction”: {
-  “@type”: “SearchAction”,
-  “target”: “https://schol.io/public/schools?q={search_term_string}”,
-  “query-input”: “required name=search_term_string”
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "http://schol.io",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://schol.io/public/schools?q={q}",
+    "query-input": "required name=q"
   }
 }
 </script>
