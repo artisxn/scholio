@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>schol.io | Schools</title>
 
 
@@ -12,7 +13,7 @@
     <!--====== CSS  Styles =======-->
     @include('public.styles')
 
-    @include('google.analytics')
+    @include('google.main')
 
 
     <!-- Profile  CSS -->
@@ -30,6 +31,7 @@
 
 
     <style>
+
         body {
             background-color: #F1F4F5;
         }
@@ -158,9 +160,8 @@
         @foreach($schools as $school)
         <tr>
             <td>
-              <a href="/{{'@' . $school->admin->username }}">
-              {{ $school->admin->name }} - {{ $school->city }}</td>
-              </a>
+                  <a href="/{{'@' . $school->admin->username }}">{{ $school->admin->name }} - {{ $school->city }}</a>
+              </td>
         </tr>
         @endforeach
     </tbody>

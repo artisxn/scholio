@@ -413,7 +413,17 @@
     var algoliaHelper = algoliasearchHelper(algolia, INDEX_NAME, PARAMS);
     algoliaHelper.setQueryParameter('getRankingInfo', true);
     // algoliaHelper.setQueryParameter('urlSync', true);
-    var map = new google.maps.Map(document.getElementById('map'), { scrollwheel: false, streetViewControl: false, mapTypeControl: false, zoom: 4, minZoom: 3, maxZoom: 12});
+    var map = new google.maps.Map(document.getElementById('map'), {
+     scrollwheel: false, streetViewControl: false, mapTypeControl: true, zoom: 4, minZoom: 3, maxZoom: 12,
+          mapTypeControlOptions: {
+              style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+              position: google.maps.ControlPosition.TOP_CENTER
+          },
+     zoomControl: true,
+          zoomControlOptions: {
+              position: google.maps.ControlPosition.RIGHT_TOP
+          }
+ });
 
     // DOM and Templates binding
     var $map = $('#map');
