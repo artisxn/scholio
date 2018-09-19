@@ -17,7 +17,7 @@ use Spatie\Sitemap\SitemapGenerator;
  */
 
 Artisan::command('scholio:sitemap', function () {
-    SitemapGenerator::create('https://schol.io')->writeToFile(public_path() . '/sitemap-TEST.xml');
+    SitemapGenerator::create('https://schol.io')->writeToFile(public_path() . '/sitemap-TEST-1.xml');
 
     // SitemapGenerator::create('https://schol.io')
     //     ->hasCrawled(function (Url $url) {

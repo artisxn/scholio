@@ -22,10 +22,10 @@ Route::view('gdpr', 'gdpr');
 // });
 
 foreach (App\Models\SchoolTypes::all() as $type) {
-    Route::get('/s/' . $type->name, function () use ($type) {
-        $schools = App\Models\School::where('type_id', $type->id)->get();
-        return view('sitemap.schools', compact('schools'));
-    });
+    // Route::get('/s/' . $type->name, function () use ($type) {
+    //     $schools = App\Models\School::where('type_id', $type->id)->get();
+    //     return view('sitemap.schools', compact('schools'));
+    // });
 }
 
 // Route::get('/qqww', function () {
@@ -37,24 +37,24 @@ foreach (App\Models\SchoolTypes::all() as $type) {
 //     }
 // });
 
-Route::get('/s/schools', function () {
-    $types = App\Models\SchoolTypes::all();
+// Route::get('/s/schools', function () {
+//     $types = App\Models\SchoolTypes::all();
 
-    $arr = [];
-    $same = '';
-    foreach ($types as $type) {
-        if (count($type->schools) > 0) {
-            foreach ($type->schools as $school) {
-                $txt = $type->name . ' - ' . $school->city;
-                if (!in_array($txt, $arr)) {
-                    array_push($arr, $txt);
-                }
-            }
-        }
-    }
+//     $arr = [];
+//     $same = '';
+//     foreach ($types as $type) {
+//         if (count($type->schools) > 0) {
+//             foreach ($type->schools as $school) {
+//                 $txt = $type->name . ' - ' . $school->city;
+//                 if (!in_array($txt, $arr)) {
+//                     array_push($arr, $txt);
+//                 }
+//             }
+//         }
+//     }
 
-    return view('sitemap.types', compact('types', 'arr'));
-});
+//     return view('sitemap.types', compact('types', 'arr'));
+// });
 
 Route::get('/s/scholarships', function () {
     $scholarships = App\Models\Scholarship::all();
