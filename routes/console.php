@@ -20,7 +20,7 @@ Artisan::command('scholio:sitemap', function () {
     // SitemapGenerator::create('https://schol.io')->writeToFile(public_path() . '/sitemap-TEST-1.xml');
 
     SitemapGenerator::create('https://schol.io')
-        ->hasCrawled(function (Illuminate\Support\Facades\Url $url) {
+        ->hasCrawled(function (Spatie\Sitemap\Tags\Url $url) {
             if ($url->segment(1) === 'studylink' || $url->segment(1) === 'schoolink' || $url->segment(1) === 'lang') {
                 return;
             }
