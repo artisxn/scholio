@@ -24,7 +24,7 @@
 {
   "@context": "http://schema.org",
   "@type": "WebSite",
-  "url": "http://schol.io",
+  "url": "https://schol.io",
   "potentialAction": {
     "@type": "SearchAction",
     "target": "https://schol.io/public/schools?q={q}",
