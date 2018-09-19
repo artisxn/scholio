@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
@@ -9,7 +9,15 @@
     <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές,">
     @include('google.main')
 
-    <title>schol.io | Αναζήτηση Εκπαιδευτικών Ιδρυμάτων</title>
+
+
+    <title></title>
+
+    <script>
+        var x = window.location.href.indexOf('q=');
+        var s =  window.location.href.substring(x+2);
+        document.title = unescape(s);
+    </script>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/new/img/favicon.ico" type="image/x-icon" />
@@ -547,7 +555,7 @@
                             <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
                             <a href="/public/schools/map" style="position: relative; z-index: -5; opacity: 0.1">MAPS</a>
                             <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
-                            
+
                         </button>
                         </a>
                     </div>
@@ -584,7 +592,7 @@
                             <div id="categoriesLevel"></div> --}}
                              {{--
                                 <div class="filter-container">
-                                    <div id="rating" class="facet"></div> 
+                                    <div id="rating" class="facet"></div>
                                 </div>
                             --}}
                             {{--<div id="financial" class="facet"></div>--}}
@@ -677,8 +685,8 @@
     window.STATS = {{$settings}}
 angular.module("schoolsResultsApp",[])
         .controller("schoolsResultsCtrl",function ($scope,$http) {
-            
-            
+
+
             $scope.over=false;
             $scope.over2=false;
             $scope.over3=false;
@@ -691,7 +699,7 @@ angular.module("schoolsResultsApp",[])
 
 
             $scope.rate = function(id, stars){
-                
+
             setTimeout(function() {
                 $('#Rating-' + id).raty({
                     score    : stars,
@@ -846,7 +854,7 @@ angular.module("schoolsResultsApp",[])
                 </span>
             </div>
 
-            
+
             @{{#stats}}
             <div class=" col-md-9  col-lg-5 col-sm-9 col-xs-12 kf-margin-top" id="card2@{{school_id}}">
                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
@@ -1053,7 +1061,7 @@ angular.module("schoolsResultsApp",[])
                     if (window.REVIEWS[hit.id-1] == 1) {
                         hit.review.push(true);
                     }
-                    
+
                     for (var i = 1; i <= 5; ++i) {
                         hit.rating.push(i <= hit.stars);
                     }
