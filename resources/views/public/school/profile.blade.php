@@ -783,13 +783,13 @@
                                                     </div>
 
                                                     <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
-                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.interests>3">
+                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.interests>3">
                                                             <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
                                                                 @lang('profile.scholarship.interested'): <span class="pull-right" ng-bind="scholarship.interests"></span>
                                                             </span>
                                                         </div>
 
-                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.length>2">
+                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.length>2">
                                                             <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
                                                                 @lang('profile.scholarship.requested'): <span class="pull-right"> @{{ scholarship.length}}</span>
                                                             </span>
