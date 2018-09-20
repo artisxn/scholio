@@ -151,8 +151,10 @@ Artisan::command('scholio:algoliaForeach {from}', function () {
     foreach (School::all() as $school) {
         if ($school->id >= $from) {
             dispatch(new Algolia($school));
+            $this->info('School ID: ' . $school->id . ' inserted!');
+        }else{
+            $this->error('Skip ' . $school->id . '!');
         }
-        $this->info('School ID: ' . $school->id . ' inserted!');
     }
 })->describe('Insert Schools in Algolia');
 
