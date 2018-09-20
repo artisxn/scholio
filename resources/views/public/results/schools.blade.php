@@ -105,7 +105,6 @@
     <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
     <script>
-        alert(finaltext);
         $('meta[name=description]').remove();
         $('head').append('<meta name="description content="Αναζήτησε ' + finaltext + '">');
     </script>
