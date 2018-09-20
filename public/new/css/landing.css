@@ -97,7 +97,7 @@ video{min-width:100%;min-height:100%;z-index:-100;transform:scale(1);}
 }
 .counter-icon{margin-top:-150px;}
 .counter-text{margin-top:50px;}
-.sc-landing-footer{min-height:290px}
+.sc-landing-footer{min-height:320px}
 .typed-cursor{opacity:1;-webkit-animation:blink 0.7s infinite;-moz-animation:blink 0.7s infinite;animation:blink 0.7s infinite;}
 @keyframes blink{0%{opacity:1;}
 50%{opacity:0;}
