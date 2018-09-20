@@ -30,22 +30,7 @@ $school1 = factory(App\Models\School::class)->create([
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Τουρισμός', 'Θρησκευτικού Τουρισμού & Προσκυνηματικών Περιηγήσεων', 'https://www.iekalfa.gr/tomeis-spoydwn/tourismos/%CE%B8%CF%81%CE%B7%CF%83%CE%BA%CE%B5%CF%85%CF%84%CE%B9%CE%BA%CE%BF%CF%8D-%CF%84%CE%BF%CF%85%CF%81%CE%B9%CF%83%CE%BC%CE%BF%CF%8D-%CF%80%CF%81%CE%BF%CF%83%CE%BA%CF%85%CE%BD%CE%B7%CE%BC%CE%B1%CF%84/');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Τουρισμός', 'Στέλεχος Διοίκησης και Οικονομίας στον Τομέα του Τουρισμού', 'https://www.iekalfa.gr/tomeis-spoydwn/tourismos/ypallhlos-toyristikoy-grafeioy/');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Τουρισμός', 'Τεχνικός Τουριστικών Μονάδων και Επιχειρήσεων Φιλοξενίας', 'https://www.iekalfa.gr/tomeis-spoydwn/tourismos/ypeythynos-ypodochhs-kai-filoxenias/');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '', '');
+
 
 
 
@@ -220,7 +205,7 @@ $school1 = factory(App\Models\School::class)->create([
             'city' => 'Αθήνα',
             'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ INTERGRAPHICS', 'email' => 'info@intergraphics.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
             'address' => 'ΑΚΑΔΗΜΙΑΣ 98-100',
-            'phone' => 210 38 38 808
+            'phone' => 2103838808
             'type_id' => 6,
             'website' => 'http://intergraphics.gr/',
             'approved' => 1,
@@ -260,16 +245,11 @@ $school1 = factory(App\Models\School::class)->create([
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
         Πληροφορική & Νέες Τεχνολογίες', '
         Τεχνικός συστημάτων Η/Υ', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/texnikos-sistimatwn-hy.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Πληροφορική & Νέες Τεχνολογίες', 'Ειδικός εφαρμογών πληροφορικής', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/eidikos-efarmogwn-pliroforikis.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Πληροφορική & Νέες Τεχνολογίες', '
-        Προγραμματιστής Video Games', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/programmatistis-video.html');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Πληροφορική & Νέες Τεχνολογίες', 'Ειδικός εφαρμογών πληροφορικής', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/eidikos-efarmogwn-pliroforikis.html');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Πληροφορική & Νέες Τεχνολογίες', 'Προγραμματιστής Video Games', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/programmatistis-video.html');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Διοικητικό & Οικονομικό Στέλεχος επιχειρήσεων', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/dioikitiko-oikonomiko-stelexos.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', '
-        Ειδικός μηχανογραφημένου λογιστηρίου', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/mixanografimeno-logistirio.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Ειδικός Φοροτεχνικού Γραφείου', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/forotexnis.html');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Ειδικός μηχανογραφημένου λογιστηρίου', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/mixanografimeno-logistirio.html');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Ειδικός Φοροτεχνικού Γραφείου', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/forotexnis.html');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
         Οικονομία & Διοίκηση', 'Ειδικός ασφαλιστικών εργασιών', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/2009-07-29-16-45-35.html');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
@@ -349,8 +329,7 @@ $school1 = factory(App\Models\School::class)->create([
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Μασάζ', 'http://www.spoudes-varosi.gr/massage/');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Βασικό', 'http://www.spoudes-varosi.gr/%CE%B2%CE%B1%CF%83%CE%B9%CE%BA%CF%8C/');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Professional 2μηνο', 'http://www.spoudes-varosi.gr/professional-2%CE%BC%CE%B7%CE%BD%CE%BF/');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Professional 6μηνο ΚΔΒΜ-1
-        ', 'http://www.spoudes-varosi.gr/professional-6%CE%BC%CE%B7%CE%BD%CE%BF-%CE%BA%CE%B4%CE%B2%CE%BC-1/');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Professional 6μηνο ΚΔΒΜ-1', 'http://www.spoudes-varosi.gr/professional-6%CE%BC%CE%B7%CE%BD%CE%BF-%CE%BA%CE%B4%CE%B2%CE%BC-1/');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Nail Art Basic', 'http://www.spoudes-varosi.gr/nail-art-basic/');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Nail Art Professional Level I', 'http://www.spoudes-varosi.gr/nail-art-professional-level-i/');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Nail Art Professional Level II', 'http://www.spoudes-varosi.gr/nail-art-professional-level-ii/');

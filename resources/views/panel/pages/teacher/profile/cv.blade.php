@@ -899,7 +899,7 @@
 
 <script>
     $(function () {
-            $("#datepickerWorkFromEdit-{{ $work->id }}").datepicker(
+            $("#datepickerWorkFromEdit").datepicker(
                 {
                     dateFormat: "mm/yy",
                     changeMonth: true,
@@ -940,7 +940,7 @@
         });
 
         $(function () {
-                $("#datepickerWorkEndEdit-{{$work->id}}").datepicker(
+                $("#datepickerWorkEndEdit").datepicker(
                     {
                         dateFormat: "mm/yy",
                         changeMonth: true,
