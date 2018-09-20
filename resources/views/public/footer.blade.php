@@ -51,24 +51,24 @@
                     <div class="margin-bot-3"><a class="sc-t-light-gray"  href="https://schol.io/public/schools?q=%CE%9A%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7">Κολλεγια Θεσσαλονικη</a></div>
 
                     <div class="sc-t-white rowTitle margin-top-20 margin-bot-3">Ιδιωτικά Σχολεία</div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray" href="">Ιδιωτικα Σχολεια Αθηνα</a></div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="">Ιδιωτικα Σχολεια Θεσσαλονικη</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray" href="https://schol.io/public/schools?q=%CE%99%CE%B4%CE%B9%CF%89%CF%84%CE%B9%CE%BA%CE%B1%20%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CE%B9%CE%B1%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1">Ιδιωτικα Σχολεια Αθηνα</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="https://schol.io/public/schools?q=%CE%99%CE%B4%CE%B9%CF%89%CF%84%CE%B9%CE%BA%CE%B1%20%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CE%B9%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7">Ιδιωτικα Σχολεια Θεσσαλονικη</a></div>
                 </div>
 
 
                 <div class="col-sm-6 col-lg-3 margin-top-20">
                     <div class="sc-t-white rowTitle margin-bot-3">I.E.K.</div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray" href="">IEK Αθηνα</a></div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="">IEK Θεσσαλονικη</a></div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="">IEK Ιωαννινα</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray" href="https://schol.io/public/schools?q=IEK%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1">IEK Αθηνα</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="https://schol.io/public/schools?q=IEK%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7">IEK Θεσσαλονικη</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="https://schol.io/public/schools?q=IEK%20%CE%99%CF%89%CE%B1%CE%BD%CE%BD%CE%B9%CE%BD%CE%B1">IEK Ιωαννινα</a></div>
                 </div>
 
                 <div class="col-sm-6 col-lg-3 margin-top-20">
                     <div class="sc-t-white rowTitle margin-bot-3">Φροντιστήρια Μέσης Εκπαίδευσης</div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray" href="">Φροντιστηρια Θεσσαλονικη</a></div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="">Φροντιστηρια Πειραιας</a></div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="">Φροντιστηρια Μαρουσι</a></div>
-                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="">Φροντιστηρια Περιστερι</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray" href="https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7">Φροντιστηρια Θεσσαλονικη</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%A0%CE%B5%CE%B9%CF%81%CE%B1%CE%B9%CE%B1%CF%82">Φροντιστηρια Πειραιας</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%9C%CE%B1%CF%81%CE%BF%CF%85%CF%83%CE%B9">Φροντιστηρια Μαρουσι</a></div>
+                    <div class="margin-bot-3"><a class="sc-t-light-gray"  href="https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%A0%CE%B5%CF%81%CE%B9%CF%83%CF%84%CE%B5%CF%81%CE%B9">Φροντιστηρια Περιστερι</a></div>
                     <div class="margin-bot-3"><a class="sc-t-light-gray"  href="">Φροντιστηρια Καλλιθεα</a></div>
                     <div class="margin-bot-3"><a class="sc-t-light-gray"  href="">Φροντιστηρια Ηλιουπολη</a></div>
 
