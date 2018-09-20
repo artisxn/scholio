@@ -783,13 +783,13 @@
                                                     </div>
 
                                                     <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
-                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.interests>3">
+                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.interests>3">
                                                             <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
                                                                 @lang('profile.scholarship.interested'): <span class="pull-right" ng-bind="scholarship.interests"></span>
                                                             </span>
                                                         </div>
 
-                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.length>2">
+                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.length>2">
                                                             <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
                                                                 @lang('profile.scholarship.requested'): <span class="pull-right"> @{{ scholarship.length}}</span>
                                                             </span>
@@ -1085,7 +1085,7 @@
                             @if(auth()->check())
                                 @if(auth()->user()->role != 'school')
                                         @if(auth()->user()->apply->contains($school))
-                                        <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
+                                        <nav data-spy="affix" data-offset-top="1160" id="connectionButton" style="top: 120px!important"
                                             <button id="submButton" type="button" class="affix-button  sc-t-white center-block" style="background-color: #7fafbb" disabled>
                                                 <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
                                                 @lang('profile.pending')
@@ -1095,14 +1095,14 @@
                                         @else
 
                                             @if(auth()->user()->connectedSchool->contains($school))
-                                            <nav data-spy="affix" data-offset-top="1160" id="connectionButton">
+                                            <nav data-spy="affix" data-offset-top="1160" id="connectionButton" style="top: 120px!important">
                                                 <button id="submButton" type="button" class="affix-button sc-t-white center-block" style="background-color: #bbb" disabled >
                                                 <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
                                                 @lang('profile.connected')
                                                 </button>
                                             </nav>
                                             @else
-                                                <nav data-spy="affix" data-offset-top="1170" id="connectionButton">
+                                                <nav data-spy="affix" data-offset-top="1170" id="connectionButton" style="top: 120px!important">
                                                 <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                                         data-toggle="modal" data-target="#connect-modal" ng-disabled="!showButton">
                                                     <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
@@ -1114,7 +1114,7 @@
                                     @endif
 
                                 @else
-                                    <nav data-spy="affix" data-offset-top="1240" id="connectionButton">
+                                    <nav data-spy="affix" data-offset-top="1240" id="connectionButton" style="top: 120px!important">
                                         <a href="{{ url('/login') }}">
                                             <button id="submButton" type="button" class="affix-button sc-orange sc-t-white center-block">
                                                 <i class="fa fa-link pad-right-15" aria-hidden="true"></i>@lang('profile.request')
@@ -1125,7 +1125,7 @@
                             @endif
                         @endif
 
-                        <nav data-spy="affix" data-offset-top="1180" id="interestButton" style="top: 120px!important">
+                        <nav data-spy="affix" data-offset-top="1180" id="interestButton">
                             <button id="interestButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                     data-toggle="modal" data-target="#interest-modal">
                                 <i class="fa fa-pencil pad-right-15" aria-hidden="true"></i>@lang('profile.interest')
