@@ -658,6 +658,7 @@
                                 </div>
 
                                 <!-- Σπουδές Φροντιστηρια  -->
+                                <!-- 
                                 <div ng-if=" (contactInfo.type_id==3 || contactInfo.type_id==6)" style="overflow-x: hidden">
                                     <div class="col-md-6 col-sm-12" style="margin-bottom: 40px;">
                                         <div class="pad-left-5 text-incr-150 font-weight-300  margin-left-10" >Τμήματα
@@ -668,7 +669,8 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                -->
+                                
                                 <!-- Σπουδές Σχολεια -->
                                 <div ng-if="sxoleio" >
                                     <div ng-repeat="(levIndex, level) in levelsName" >
