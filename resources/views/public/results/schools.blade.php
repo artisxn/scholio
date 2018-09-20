@@ -15,14 +15,19 @@
 
     <script>
         var x = window.location.href.indexOf('q=');
-        var s =  window.location.href.substring(x+2);
-        var decodedText = unescape(decodeURIComponent(s));
-        var finaltext = decodedText;
-        var ind = decodedText.indexOf('&')
-        if(ind > 0){
-            finaltext = decodedText.substring(0,ind);
+        var finaltext = 'Αναζήτησε δημοφιλή Εκπαιδευτικά Ιδρύματα';
+        if(x > 0){
+            var s =  window.location.href.substring(x+2);
+            if(s != ''){
+                var decodedText = unescape(decodeURIComponent(s));
+                finaltext = decodedText;
+                var ind = decodedText.indexOf('&')
+                if(ind > 0){
+                    finaltext = decodedText.substring(0,ind);
+                }
+            }
         }
-        
+
         document.title = finaltext + ' | Schol.io';
     </script>
 

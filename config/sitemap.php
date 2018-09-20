@@ -27,7 +27,7 @@ return [
         /*
          * The timeout of the request in seconds. Use 0 to wait indefinitely.
          */
-        RequestOptions::TIMEOUT => 10,
+        RequestOptions::TIMEOUT => 0,
 
         /*
          * Describes the redirect behavior of a request.
