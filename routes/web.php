@@ -108,6 +108,10 @@ Route::get('/studylink/redirect/{school}/{study}/', function (School $school, St
 
 });
 
+Route::get('/search/kollegio/athina', function(){
+    return redirect('https://schol.io/public/schools?q=%CE%9A%CE%BF%CE%BB%CE%BB%CE%B5%CE%B3%CE%B9%CE%B1%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1');
+});
+
 Route::get('/schoolink/redirect/{school}/', function (School $school) {
     if (!$school) {
         abort(404);

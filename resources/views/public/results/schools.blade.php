@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
     <meta name="description" content="Αναζήτηση εκπαιδευτικών ιδρυμάτων και υποτροφιών">
-    <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές,">
+    <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές">
     @include('google.main')
 
 
@@ -16,7 +16,14 @@
     <script>
         var x = window.location.href.indexOf('q=');
         var s =  window.location.href.substring(x+2);
-        document.title = unescape(decodeURIComponent(s)) + ' | Schol.io'  ;
+        var decodedText = unescape(decodeURIComponent(s));
+        var finaltext = decodedText;
+        var ind = decodedText.indexOf('&')
+        if(ind > 0){
+            finaltext = decodedText.substring(0,ind);
+        }
+        
+        document.title = finaltext + ' | Schol.io';
     </script>
 
     <!-- Favicon -->
@@ -97,11 +104,14 @@
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
+    <script>
+        alert(finaltext);
+        $('meta[name=description]').remove();
+        $('head').append('<meta name="description content="Αναζήτησε ' + finaltext + '">');
+    </script>
 
 <script>
     window.REVIEWS = {{ $reviews }};
-
-
 </script>
 </head>
 
