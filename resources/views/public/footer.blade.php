@@ -39,7 +39,7 @@
         </div>
 
 
-        <hr class="sc-hr">
+        <!--<hr class="sc-hr">-->
 
         <div class="entered-text margin-bot-50 margin-top-10">
 
