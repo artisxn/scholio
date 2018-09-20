@@ -6,7 +6,7 @@
     .social-link:visited,.social-link:active,.social-link:focus{color: #fff}
     .social-link:hover{color: #FD6A33}
 
-    .sc-hr {  border-top: 1px solid #777; margin-top: 50px; }
+    .sc-hr {  border-top: 1px solid #777; margin-top: 20px; }
 
 
 </style>
@@ -41,7 +41,7 @@
 
         <hr class="sc-hr">
 
-        <div class="entered-text margin-bot-50 margin-top-50">
+        <div class="entered-text margin-bot-50 margin-top-10">
 
             <div class="row font-weight-300">
 
