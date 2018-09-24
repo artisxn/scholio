@@ -137,7 +137,7 @@
 
 
                                             <span><i class="fa fa-external-link btn-delete" style="margin-left: -25px; margin-right: 10px;" aria-hidden="true" @click=""
-                                                     data-toggle="modal" data-target="#link-modal"
+                                                     data-toggle="modal" :data-target="'#link-modal-' + study.study.id"
                                                      @mouseover="hoverStudy(index+'study'+sc+'_'+st)" @mouseleave="leaveStudy()">
                                             </i></span>
 
@@ -146,6 +146,46 @@
                                               </i></span>
 
                                         </div>
+
+                                        <!-- ====== Modal Link Study =======-->
+                                        <div :id="'link-modal-' + study.study.id" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
+                                            <form action="/saveStudyLink" method="GET">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <div class="panel " style="background-color: #324c5a; height: 62px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+                                                        <div class="panel-heading" style="height: 55px; color: #fff">
+                                                            <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
+                                                                x
+
+                                                            </button>
+                                                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: 2px;">
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="panel-body link-panel-body">
+
+                                                        <span>{{ lang('panel_studies.modal-link-message') }}</span>
+                                                        <div class="clerafix"></div>
+                                                        <input :value="study.link" placeholder="https://mySchool.com" type="text" class="form-control linkInput" name="link">
+                                                        <input type="hidden" :value="study.study.id" name="study">
+
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <div  class="btn btn-default btn-modal1" data-dismiss="modal"> {{ lang('panel_studies.modal-reject') }}</div>
+                                                        <button class="btn btn-primary btn-modal2" type="submit">{{ lang('panel_studies.modal-submit') }}</button>
+                                                        <!-- <div  class="btn btn-primary btn-modal2" data-dismiss="modal" @click="">
+                                                            {{ lang('panel_studies.modal-submit') }}
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        </div><!-- /.modal -->
+
+
                                     </div>
                             </div>
                         </div>
@@ -197,53 +237,6 @@
                 </div>
             </div>
         </div><!-- /.modal -->
-
-
-
-
-        <!-- ====== Modal Link Study =======-->
-        <div id="link-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="top: 100px;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="panel " style="background-color: #324c5a; height: 62px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
-                        <div class="panel-heading" style="height: 55px; color: #fff">
-                            <button type="button" class="btn pull-right" data-dismiss="modal" style="background-color: transparent" >
-                                x
-
-                            </button>
-                            <img src="/new/img/logoNX-light.png" alt="scholio logo" class="pull-left sc-logo" style="margin-top: 2px;">
-
-                        </div>
-
-                    </div>
-                    <div class="panel-body link-panel-body">
-
-                        <span>{{ lang('panel_studies.modal-link-message') }}</span>
-                        <div class="clerafix"></div>
-                        <input v-model="link" placeholder="https://mySchool.gr/" type="text" class="form-control linkInput">
-
-                    </div>
-
-                    <div class="modal-footer">
-                        <div  class="btn btn-default btn-modal1" data-dismiss="modal"> {{ lang('panel_studies.modal-reject') }}</div>
-                        <div  class="btn btn-primary btn-modal2" data-dismiss="modal" @click="">
-                            {{ lang('panel_studies.modal-submit') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- /.modal -->
-
-
-
-
-
-
-
-
-
-
     </div>
 
 
@@ -388,7 +381,8 @@
                 saveDisabled: true,
                 appear: false,
                 studiesCounter: 0,
-                counterMessage: ''
+                counterMessage: '',
+                link: ''
             }
         },
 
@@ -454,6 +448,7 @@
 
             _loadStudies({data}){
                 this.currentStudies = data
+                console.log('sssssssssssss')
                 console.log(data)
             },
 
