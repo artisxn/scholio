@@ -22,6 +22,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use App\Models\AlgoliaSchool;
 
 class RoutesController extends Controller
 {
@@ -671,9 +672,10 @@ class RoutesController extends Controller
 
     public function schools()
     {
+        $schools = AlgoliaSchool::search(request()->q)->get();
         $settings = SchoolSetting::all()->pluck('statistics');
         $reviews = SchoolSetting::all()->pluck('reviews');
-        return view('public.results.schools')->withSettings($settings)->withReviews($reviews);
+        return view('public.results.schools')->withSettings($settings)->withReviews($reviews)->withSchools($schools);
     }
 
     public function dashboardProfile()

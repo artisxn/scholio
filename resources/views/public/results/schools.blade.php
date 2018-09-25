@@ -626,7 +626,9 @@
 
                     {{--<div id="map" class="hidden-xs" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>--}}
 
-                    <main id="schools"></main>
+                    <main id="schools">
+                        @include('resultsPHP')
+                    </main>
 
                     <section id="pagination"></section>
                 </div><!-- //col-lg-9-->
