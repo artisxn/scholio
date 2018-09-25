@@ -1463,8 +1463,9 @@
                             'X-Requested-With': 'XMLHttpRequest',
                             'X-CSRF-TOKEN': window.Scholio.csrfToken}})
                         .success(function(data) {
-                            $scope.schoolStudies = data
-                            $scope.showButton = true
+                            setTimeout(function(){ $scope.schoolStudies = data
+                                $scope.showButton = true }, 13000);
+                            
 
 
 
