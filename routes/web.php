@@ -7,7 +7,7 @@ use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Illuminate\Support\Facades\Route;
 use App\Models\AlgoliaSchool;
-auth()->loginUsingId(4);
+// auth()->loginUsingId(4);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
 Scholio::bot();
