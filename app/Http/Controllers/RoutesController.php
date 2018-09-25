@@ -672,10 +672,14 @@ class RoutesController extends Controller
 
     public function schools()
     {
-        $schools = AlgoliaSchool::search(request()->q)->get();
+        $title = request()->q;
+        $schools = AlgoliaSchool::search($title)->get();
         $settings = SchoolSetting::all()->pluck('statistics');
         $reviews = SchoolSetting::all()->pluck('reviews');
-        return view('public.results.schools')->withSettings($settings)->withReviews($reviews)->withSchools($schools);
+        if(!$title){
+            $title = 'Αναζήτησε δημοφιλή Εκπαιδευτικά Ιδρύματα';
+        }
+        return view('public.results.schools')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title);
     }
 
     public function dashboardProfile()
