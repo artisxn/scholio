@@ -6,13 +6,53 @@ use App\Models\Study;
 use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\AlgoliaSchool;
+auth()->loginUsingId(4);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
 Scholio::bot();
 Auth::routes();
 
 Route::view('gdpr', 'gdpr');
+
+Route::get('aaqq', function(){
+    return AlgoliaSchool::search('Amaerican College')->get();
+});
+
+Route::get('/saveStudyLink', function () {
+
+    $message = 'OK';
+    try {
+        $link = request('link');
+        $study = request('study');
+        $school = auth()->user()->info;
+
+        $studyLink = $school->study()->where('study_id', $study)->first();
+        $studyLink->pivot->url = $link;
+        $studyLink->pivot->save();
+        
+    } catch (\Exception $e) {
+        $message = $e;
+    }
+
+    return back();
+});
+
+Route::get('www', function(){
+    
+
+    $school = auth()->user()->info;
+
+    $study = Study::find(2);
+
+    return $school->study()->where('study_id', $study->id)->first()->pivot->url;
+
+    if($school->study()->where('study_id', $study->id)->exists()){
+        return 'NAI';
+    }
+
+    return 'OXI';
+});
 
 // Route::get('qqqq', function(){
 //     foreach(App\Models\AlgoliaSchool::all() as $school){

@@ -576,7 +576,7 @@ class Scholio
             $newSection->name = $section;
             $newSection->level_id = $newLevel->id;
             $newSection->save();
-
+        
             $new = true;
         }
 

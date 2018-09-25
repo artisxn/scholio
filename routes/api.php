@@ -2,6 +2,7 @@
 
 use App\Events\SchoolConfirmsUser;
 use App\Events\UserAppliedOnSchool;
+use App\Jobs\Algolia;
 use App\Models\Card;
 use App\Models\CategoryReview as Category;
 use App\Models\Cvteacherstudy;
@@ -12,12 +13,12 @@ use App\Models\Review;
 use App\Models\Scholarship;
 use App\Models\ScholarshipLimit;
 use App\Models\School;
+use App\Models\SchoolInterest;
 use App\Models\Section;
 use App\Models\Skill;
 use App\Models\Study;
 use App\Models\Tag;
 use App\Models\Temp;
-use App\Jobs\Algolia;
 use App\Scholio\Scholio;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -25,7 +26,6 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
-use App\Models\SchoolInterest;
 
 Scholio::bot();
 
@@ -84,7 +84,7 @@ Route::post('/interest/school', function () {
     $interest->study_id = request()->study_id;
     $interest->school_id = request()->school_id;
     $interest->student = request()->student == 'student' ? true : false;
-    if(count($user) > 0){
+    if (count($user) > 0) {
         $interest->user_id = $user->id;
     }
     $interest->save();
@@ -486,7 +486,7 @@ Route::post('/request/school', function () {
     if (auth()->user()->role != 'school') {
         $school = App\Models\School::find(request()->school);
         auth()->user()->apply()->toggle(request()->school);
-        
+
         if (auth()->user()->role == 'student') {
             event(new UserAppliedOnSchool(auth()->user(), User::find($school->user_id), Study::find(request()->study), request()->status));
         } else {
@@ -878,7 +878,7 @@ Route::get('/getSchoolCurrentStudies', function () {
     foreach ($schoolLevels as $level) {
         foreach ($school->section($level) as $section) {
             foreach ($school->studyFromSection($section) as $study) {
-                array_push($studies, ['study' => Study::find($study)->load('user')]);
+                array_push($studies, ['study' => Study::find($study)->load('user'), 'link'=>$school->study()->where('study_id', $study)->first()->pivot->url]);
             }
 
             array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
@@ -890,3 +890,21 @@ Route::get('/getSchoolCurrentStudies', function () {
 
     return $data;
 })->middleware('auth:api');
+
+// Route::post('/saveStudyLink', function () {
+
+//     $message = 'OK';
+//     try {
+//         $link = request('link');
+//         $study = request('study');
+//         $school = auth()->user()->info;
+
+//         $school->study()->where('study_id', $study->id)->detach();
+
+//         $school->study()->attach($study, ['url' => $link]);
+//     } catch (\Exception $e) {
+//         $message = $e;
+//     }
+
+//     return $message;
+// })->middleware('auth:api');

@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
-    <meta name="description" content="Αναζήτηση εκπαιδευτικών ιδρυμάτων και υποτροφιών">
+    <meta name="description" content="{{ $title }}">
     <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές">
     @include('google.main')
 
 
 
-    <title></title>
+    <title>{{ $title }} | Schol.io</title>
 
     <script>
         var x = window.location.href.indexOf('q=');
@@ -28,7 +28,7 @@
             }
         }
 
-        document.title = finaltext + ' | Schol.io';
+        //document.title = finaltext + ' | Schol.io';
     </script>
 
     <!-- Favicon -->
@@ -108,11 +108,6 @@
 
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
-
-    <script>
-        $('meta[name=description]').remove();
-        $('head').append('<meta name="description content="Αναζήτησε ' + finaltext + '">');
-    </script>
 
 <script>
     window.REVIEWS = {{ $reviews }};
@@ -626,7 +621,9 @@
 
                     {{--<div id="map" class="hidden-xs" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>--}}
 
-                    <main id="schools"></main>
+                    <main id="schools">
+                        @include('resultsPHP')
+                    </main>
 
                     <section id="pagination"></section>
                 </div><!-- //col-lg-9-->

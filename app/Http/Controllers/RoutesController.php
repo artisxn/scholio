@@ -22,6 +22,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use App\Models\AlgoliaSchool;
 
 class RoutesController extends Controller
 {
@@ -671,9 +672,14 @@ class RoutesController extends Controller
 
     public function schools()
     {
+        $title = request()->q;
+        $schools = AlgoliaSchool::search($title)->get();
         $settings = SchoolSetting::all()->pluck('statistics');
         $reviews = SchoolSetting::all()->pluck('reviews');
-        return view('public.results.schools')->withSettings($settings)->withReviews($reviews);
+        if(!$title){
+            $title = 'Αναζήτησε δημοφιλή Εκπαιδευτικά Ιδρύματα';
+        }
+        return view('public.results.schools')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title);
     }
 
     public function dashboardProfile()
