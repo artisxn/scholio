@@ -1114,7 +1114,7 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCity',
-                attributes: ['city', 'region'],
+                attributes: ['categories.lvl0', 'categories.lvl1'],
                 templates: {
                     item: menuTemplate
                   }

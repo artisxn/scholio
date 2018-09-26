@@ -27,7 +27,7 @@ Route::get('aaqq', function(){
             $alg->save();
 
             $alg->{'categories.lvl0'} = $school->city;
-            $alg->{'categories.lvl1'} = $school->city .  '>' . $school->region;
+            $alg->{'categories.lvl1'} = $school->region;
             $alg->searchable();
     }
 });
