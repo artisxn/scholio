@@ -23,8 +23,8 @@ Route::get('aaqq', function(){
         }
 
         $alg = AlgoliaSchool::where('school_id', $school->id)->first();
-            $alg->region = $school->region;
-            $alg->save();
+            // $alg->region = $school->region;
+            // $alg->save();
 
             $alg->{'categories.lvl0'} = $school->city;
             $alg->{'categories.lvl1'} = $school->region;
