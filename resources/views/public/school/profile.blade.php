@@ -272,7 +272,8 @@
     </style>
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp" ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
-@include('components.preloader')
+<!-- @include('components.preloader') -->
+
 <!-- Scholio Header -->
 
 <header class="spy navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" style="z-index: 99990">
@@ -284,7 +285,6 @@
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                        {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
                         <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
                     </div>
                 </a>
@@ -390,19 +390,16 @@
                     <div class="">
                     <div class="xs-center">
                         <img id="img1"  class=" pull-left margin-right-10 margin-top-15 margin-bot-10"
-                             ng-src="@{{contactInfo.logo}}">
+                             src="{{$school->logo}}">
                     </div>
-
                     <div class=" xs-centered-text">
-                                                <h2 class="xs-h4 schoolname">@{{contactInfo.name}}</h2>
+                                                <h2 class="xs-h4 schoolname">{{ $school->name()}}</h2>
                         @if($school->settings->reviews && count($school->reviews) >0)
                                                  <span class="pad-top-5 xs-pad-top xs-review">
 
-                                        <span ng-show="contactInfo.ratingCounter!=0"> <rating class="text-incr-85 sc-t-orange" id="Rating"></rating>
-                                                </span>
-                                                <span ng-show="contactInfo.ratingCounter!=0" class="sc-t-orange"> @{{  contactInfo.stars}} </span>
-                                                <span class="xs-text-incr-85">  &nbsp; ( @{{contactInfo.reviews.length}}  @lang('profile.reviews'))</span>
-
+                                                <span><rating class="text-incr-85 sc-t-orange" id="Rating"></rating></span>
+                                                <span class="sc-t-orange"> {{ $school->averageStars() }} </span>
+                                                <span class="xs-text-incr-85">  &nbsp; ( {{ $school->countReviews() }}  @lang('profile.reviews'))</span>
                          </span>
 
                          @else
@@ -437,13 +434,14 @@
 
                 <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
                     <div class="row xl-margin-right " style="padding-left: 7px;">
-                        <ul class="bxslider"  data-bx-slider="
-                    pager: false, controls: true, minSlides: 1, maxSlides:5, moveSlides: 1,
-                    slideWidth: 333, slideMargin:10, infiniteLoop: true, hideControlOnEnd: false">
+                        <ul class="bxslider" id="bx" style="visibility: hidden;">
                             @if($school->image->count() >= 4)
-                                <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
+                                <!-- <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
                                     <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
-                                </li>
+                                </li> -->
+                                @foreach($school->image as $image)
+                                    <li><img class="bx-img" id="{{$image->full_path}}" src="{{$image->full_path}}"  onclick="test(event.target)"/></li>
+                                @endforeach
                              @endif
                         </ul>
                     </div>
@@ -485,12 +483,6 @@
                         @endif
                     @endif
                     @endif
-                        {{-- <button id="xs-submButton" type="button" class="hidden-lg hidden-md visible-sm visible-xs sc-button3 sc-orange sc-t-white margin-top-10 center-block"
-                                data-toggle="modal" data-target="#connect-modal">
-                            <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
-
-                            @lang('profile.request')
-                        </button> --}}
 
                 <!-- MAIN Section-->
                 <div class="col-lg-9 col-md-9 margin-top-30 margin-bot-25" >
@@ -511,39 +503,33 @@
                                 <div class="col-xs-7 col-sm-7 pad-left-0 xxs-custom-contact">
 
                                     <span><i class="fa fa-university pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">{{$school->type->name}}</span>
+                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">{{ $school->type->name }}</span>
                                     <div class="pad-top-10"></div>
 
                                     <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                    <span class="pad-left-8 xs-text-incr-85 text-incr-95">@{{contactInfo.address}}</span>
+                                    <span class="pad-left-8 xs-text-incr-85 text-incr-95">{{ $school->address }}</span>
 
                                     <div class="pad-top-10"></div>
                                     <div class="">
                                         <span><i class="fa fa-street-view pad-top-3 " aria-hidden="true"></i></span>
-                                        <span class="pad-left-5">@{{contactInfo.city}}</span>
+                                        <span class="pad-left-5">{{ $school->city }}</span>
                                     </div>
 
                                     <div class="pad-top-10"></div>
                                     <span><i class="fa fa-phone pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
-                                    <span class="pad-left-5">@{{contactInfo.phone}}</span>
+                                    <span class="pad-left-5">{{ $school->phone }}</span>
 
                                     <div class="pad-top-10"></div>
                                     <span><i class="fa fa-envelope  pad-top-2 " aria-hidden="true"></i></span>
-                                    <span class="pad-left-5 "> <a href="mailto:@{{contactInfo.email}}" class="school-links">@{{contactInfo.email}}</a></span>
+                                    <span class="pad-left-5 "> <a href="mailto:{{ $school->email() }}" class="school-links">{{ $school->email() }}</a></span>
 
                                     <span ng-if="contactInfo.website">
                                         <div class="pad-top-10"></div>
                                         <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                        <span class="pad-left-5"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank" class="school-links">@{{contactInfo.website}}</a></span>
+                                        <span class="pad-left-5"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank" class="school-links">{{ $school->website }}</a></span>
                                     </span>
 
                                 </div>
-
-
-
-
-
-
 
                               <div class="xxs-custom-line"></div>
                               <div class="col-xs-5 col-sm-4 pad-left-0 pull-right xxs-custom-stats">
@@ -551,7 +537,7 @@
                                 <span class="">
                                     <i class="fa fa-trophy  pad-top-3 " aria-hidden="true"></i>
                                     <span class="pad-left-5">@lang('profile.statistics.scholarships')</span>
-                                    <span class="badge pull-right" style="margin-right: -4px"> @{{contactInfo.activeScholarships}}</span>
+                                    <span class="badge pull-right" style="margin-right: -4px"> {{ $school->activeScholarships() }}</span>
                                 </span>
 
 
@@ -560,7 +546,7 @@
                                     <span class="">
                                         <i class="fa fa-paint-brush pad-top-3 " aria-hidden="true"></i>
                                         <span class="pad-left-5">@lang('profile.statistics.studies')</span>
-                                        <span class="pull-right">@{{contactInfo.lengthStudies}}</span>
+                                        <span class="pull-right">{{ $school->lengthStudies() }}</span>
                                     </span>
                                   </div>
 
@@ -570,14 +556,14 @@
                                         <i class="fa fa-user pull-left pad-top-2 " aria-hidden="true"></i>
                                         <span class="pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">@lang('profile.statistics.students')</span>
                                         <span class="pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">@lang('profile.statistics.students_s')</span>
-                                     <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
+                                     <span class="pull-right">{{ $school->lengthStudents() }}</span>
                                   </span>
 
                                   <div class="clearfix pad-top-10"></div>
                                   <span class="">
                                         <i class="fa fa-graduation-cap pad-top-3 " aria-hidden="true"></i>
                                         <span class="pad-left-2 pad-bot-10">@lang('profile.statistics.teachers')</span>
-                                         <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
+                                         <span class="pull-right">{{ $school->lengthTeachers() }}</span>
                                   </span>
 
                                  @endif
@@ -599,7 +585,7 @@
                             </div>
                             <div class=" sc-t-grey text-justify">
                                 <div class="margin-top-10" id="about-li" >
-                                    <div ng-bind-html="trustAsHtml(contactInfo.about)"></div>
+                                    <div>{!! $school->about !!}</div>
                                 </div>
                             </div>
                         </div>
@@ -616,7 +602,8 @@
 
                     @if($school->settings->studies)
                     <!-- ======= Σπουδές  slideStudies class========-->
-                        <div ng-if="studies.length && ( col_iek_eng_dan_mus || sxoleio )" id="spoudes" style="overflow-x: hidden">
+                    @if($school->lengthStudies() > 0 && ($school->type->id == 1 || $school->type->id == 2 || $school->type->id == 3 || $school->type->id == 4 || $school->type->id == 10 || $school->type->id == 11 || $school->type->id  == 12) || $school->type->id == 13)
+                        <div id="spoudes" style="overflow-x: hidden">
                             <div id="sliderStudies" class=" main-box-2 slideup">
                                 <div class="section-header2">
                                     <p class="title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
@@ -624,37 +611,62 @@
                                     </p>
                                 </div>
                                 <!-- Σπουδές Κολλέγια & ΙΕΚ  -->
-                                <div ng-if="col_iek_eng_dan_mus" >
-                                    <div ng-repeat="(levIndex, level) in levelsName" >
-                                        <ul ng-class="[{'col-md-6': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==1 },  'col-sm-12']" style="padding-bottom: 20px;">
-                                            <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
+                                @if($school->type->id == 1 || $school->type->id == 2 || $school->type->id == 3 || $school->type->id == 4 || $school->type->id == 10 || $school->type->id == 11 || $school->type->id  == 12)
+                                <div >
+                                    @foreach($data as $key=>$level)
+                                    <div>
+                                        @if($levelsCounter > 1)
+                                        <ul class="col-md-6">
+                                        @elseif($levelsCounter > 1 && ($key+1)%2==1 )
+                                        <ul class="clearFloat">
+                                        @else
+                                        <ul class="col-sm-12">
+                                        @endif
+                                        @if($school->type->id != 2)
+                                            <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0"> 
+                                                 {{ $level["level"]->name }} 
+                                            </div>
+                                        @endif
 
-
-                                            <ul ng-repeat="(secIndex, section) in sectionsName[$index]" ng-class="[{'col-lg-6': (contactInfo.type_id==2)},{'clearFloat': (( secIndex+1)%2 ==1)}]" style="list-style-type: none;  padding-top: 16px;">
+                                        @foreach($level["sections"] as $key2=>$section)
+                                        @if($school->type->id ==2)
+                                        <ul class="col-lg-6" style="list-style-type: none;  padding-top: 16px;">
+                                        @elseif(($key2+1)%2 == 1)
+                                        <ul class="clearFloat" style="list-style-type: none;  padding-top: 16px;">
+                                        @else
+                                        <ul style="list-style-type: none;  padding-top: 16px;">
+                                        @endif
 
                                                 <li class="margin-top-10 margin-left-10">
-                                                    <img ng-src="@{{ sectionsIcon[levIndex][secIndex] }}" alt=""
+                                                    <img src="{{ $section['section']->icon }}" alt=""
                                                          style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
                                                     <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%;" >
-                                                        @{{ section }}
+                                                        {{ $section["section"]->name }}
                                                     </span>
                                                 </li>
 
-                                                {{--@{{levIndex}} , , @{{secIndex}}--}}
-                                                <ul ng-repeat="study in studiesName[levIndex][secIndex]" style="list-style-type: none;">
+                                                @foreach($section["studies"] as $study)
+                                                <ul style="list-style-type: none;">
                                                     <li class="pad-top-7 margin-left-10">
-                                                        <span class="font-weight-300" style="" ng-if="studiesUrl[levIndex][secIndex][$index]">
-                                                            <a href="/studylink/redirect/{{ $school->id }}/@{{ studiesID[levIndex][secIndex][$index] }}" target="_blank">@{{ study }}</a>
+                                                        @if($study["link"] != '')
+                                                        <span class="font-weight-300">
+                                                            <a href="/studylink/redirect/{{ $school->id }}/{{ $study['study']->id }}" target="_blank">{{ $study["study"]->name }}</a>
                                                         </span>
-                                                        <span class="  font-weight-300" style="" ng-if="!studiesUrl[levIndex][secIndex][$index]">
-                                                            @{{ study }}
+                                                        @else
+                                                        <span class="  font-weight-300">
+                                                            {{ $study["study"]->name }}
                                                         </span>
+                                                        @endif
                                                     </li>
                                                 </ul>
+                                                @endforeach
                                             </ul>
+                                        @endforeach
                                         </ul>
                                     </div>
+                                    @endforeach
                                 </div>
+                                @endif
 
                                 <!-- Σπουδές Φροντιστηρια  -->
                                 <!-- 
@@ -671,13 +683,23 @@
                                 -->
                                 
                                 <!-- Σπουδές Σχολεια -->
-                                <div ng-if="sxoleio" >
-                                    <div ng-repeat="(levIndex, level) in levelsName" >
-                                        <ul ng-class="[{'col-md-4': (levelsName.length>1)},{'clearFloat': (levelsName.length>1)&&( levIndex+1)%2 ==3 },  'col-sm-12']" style="padding-bottom: 20px;">
-                                            <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0" ng-if="contactInfo.type_id!=2">  @{{ level }} </div>
+                                @if($school->type->id == 13)
+                                <div>
+                                    @foreach($data as $key3=>$level)
+                                    <div>
+                                            @if($levelsCounter > 1)
+                                            <ul class="col-md-6" style="padding-bottom: 20px;">
+                                            @elseif(($levelsCounter > 1) && ($key+1)%2==1 )
+                                            <ul class="clearFloat" style="padding-bottom: 20px;">
+                                            @else
+                                            <ul class="col-sm-12" style="padding-bottom: 20px;">
+                                            @endif
+                                            <div class="text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0">  {{ $level["level"]->name }} </div>
                                         </ul>
                                     </div>
+                                    @endforeach
                                 </div>
+                                @endif
 
                             </div>
                             <!-- Show More Studies  -->
@@ -690,11 +712,11 @@
                                 </div>
                             </div>
                         </div>
-                     @endif
+                    @endif
+                    @endif
 
-                    @if($school->settings->scholarships && count($school->scholarship) > 0)
-                            <!-- Υποτροφίες -->
-                            <div class="slideup slideScholarships" id="ypotrofies" ng-if="contactInfo.activeScholarships" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
+                    @if($school->settings->scholarships && count($school->scholarship) > 0 && count($school->activeScholarships()) > 0 )
+                            <div class="slideup slideScholarships" id="ypotrofies" style="overflow-x: hidden;" ng-style="(studies.length<6 || !col_iek_eng_dan_mus) && {'margin-top':'30px'}">
                                 <div class="section-header3">
                                     <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
                                         <i class="fa fa-trophy fa-linear4 margin-right-10" aria-hidden="true"></i> <span>@lang('profile.cards.scholarships') </span>
@@ -703,98 +725,110 @@
 
 
                                 <div class=" scholar-box col-sm-12" >
-                                    <div ng-repeat="scholarship in contactInfo.scholarship | limitTo:4" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                                    @foreach($school->scholarship as $key=>$scholarship)
+                                    @if($key <= 6)
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                                          style="height: 400px!important; position: relative; margin: 20px 0 ; padding-left: 40px;">
 
                                             <div class="scholar-frame " ng-class="{'sm-margin-left':($index%2==1)}" >
                                                     <div class="ribbon-wrapper">
                                                         <div class="ribbon-front sc-medium-grey">
-                                                            {{--<i class="fa fa-diamond sc-t-white pad-left-20 text-incr-150 margin-top-10" aria-hidden="true"></i>--}}
                                                             <span class="">
-                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-skills1.png" alt="" ng-if="scholarship.criteria.id==1">
-                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-best.png" alt="" ng-if="scholarship.criteria.id==2">
-                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-help.png" alt="" ng-if="scholarship.criteria.id==3">
-                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-friends.png" alt="" ng-if="scholarship.criteria.id==4">
-                                                                <img  class="criteria-img" ng-src="/panel/assets/images/steps/step3-open.png" alt="" ng-if="scholarship.criteria.id==5">
+                                                                <img  class="criteria-img" src="{{$scholarship->criteria->icon}}" alt="" >
                                                             </span>
 
-                                                            <span class="sc-t-dark-green font-weight-400 text-incr-120 margin-left-10 scholar-title">@{{scholarship.criteria.name}}</span>
+                                                            <span class="sc-t-dark-green font-weight-400 text-incr-120 margin-left-10 scholar-title">{{$scholarship->criteria->name}}</span>
                                                         </div>
                                                         <div class="ribbon-edge-topright"></div>
                                                         <div class="ribbon-edge-bottomright"></div>
                                                         <div class="ribbon-back-right sc-medium-grey"></div>
                                                     </div>
                                                     <div class="hexagon hex1">
-
-                                                        {{--<i class="fa fa-money text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                                        {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
                                                     </div>
                                                     <div class="hexagon hex2">
-
-                                                        {{--<i class="fa fa-line-chart text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                                        {{--style=" position: relative; top: 4px; left: 13px; z-index: 2;"></i>--}}
                                                     </div>
 
-                                                    {{--<div class="hexagon" style="top: 93px;">--}}
-                                                    {{--<i class="fa fa-pencil text-incr-200 sc-t-green text" aria-hidden="true"--}}
-                                                    {{--style=" position: relative; top: 3px; left: 17px; z-index: 2;"></i>--}}
-
-                                                    {{--</div>--}}
-
                                                     <div class="scholar-content sc-t-grey font-weight-400">
-                                                        <p class="scholar-left xxs-up">@{{scholarship.financial.plan}} @{{scholarship.financial_amount}}
-                                                            <span ng-if="scholarship.financial.id==1"> %</span>
-                                                            <span ng-if="scholarship.financial.id==2"> €  </span>
-                                                            <span ng-if="scholarship.financial.id==3"> @lang('profile.months')</span>
+                                                        <p class="scholar-left xxs-up">{{$scholarship->financial->plan}} {{$scholarship->financial_amount}}
+                                                            @if($scholarship->financial->id == 1)
+                                                            <span> %</span>
+                                                            @endif
+                                                            @if($scholarship->financial->id == 2)
+                                                            <span> €  </span>
+                                                            @endif
+                                                            @if($scholarship->financial->id == 3)
+                                                            <span> @lang('profile.months')</span>
+                                                            @endif
                                                         </p>
 
-                                                        <div class="scholar-left xxs-text" style="padding-top: 40px;"ng-if="contactInfo.type_id==1 || contactInfo.type_id==3" >@{{scholarship.level.name}}</div>
-                                                        <div class="margin-top-50 scholar-left xxs-text"  ng-if="contactInfo.type_id==2">@{{scholarship.section[0].name}}</div>
+                                                        @if($school->type->id == 1 || $school->type->id ==3 || $school->type->id == 2)
+                                                            <div class="scholar-left xxs-text" style="padding-top: 40px;" >
+                                                                {{$scholarship->level->name}}
+                                                            </div>
+                                                        @endif
+
+                                                        @if($scholarship->multiple == 0)
+                                                            <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
+                                                                ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }">
+                                                                {{$scholarship->study->name}}
+                                                            </div>
+                                                        @endif
+                                                            
+                                                        @if($scholarship->multiple == 1)
                                                         <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
-                                                             ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }" ng-if="scholarship.multiple == 0">
-                                                            @{{scholarship.study.name}}
-                                                        </div>
-                                                        <div class="scholar-left xxs-up2" style="margin-right: 10px; color: #464646;"
-                                                             ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }" ng-if="scholarship.multiple == 1">
-                                                           <div ng-repeat="st in scholarship.multipleStudies" ng-if="scholarship.multipleStudies.length < 3">
-                                                               @{{ st.name }}
+                                                             ng-class="{'margin-top-50': (contactInfo.type_id!=1 && contactInfo.type_id!=2 && contactInfo.type_id!=3),'margin-top-0': (contactInfo.type_id==1 || contactInfo.type_id==2 || contactInfo.type_id==3) }">
+                                                            @if(count($scholarship->multipleStudies) < 3)
+                                                                @foreach($scholarship->multipleStudies as $ms)
+                                                                    <div>
+                                                                        {{ $ms->name }}
+                                                                    </div>
+                                                                @endforeach
+                                                            @endif
+
+                                                           @if(count($scholarship->multipleStudies) > 2)
+
+                                                           <div>
+                                                               Πολλαπλα αντικείμενα σπουδών: {{ count($scholarship->multipleStudies) }}
                                                            </div>
 
-                                                           <div ng-if="scholarship.multipleStudies.length > 2">
-                                                               Πολλαπλα αντικείμενα σπουδών: @{{ scholarship.multipleStudies.length }}
-                                                           </div>
+                                                           @endif
                                                         </div>
+                                                        @endif
 
                                                         <div>
-                                                            <img  ng-if="scholarship.financial_id==1" style="height: 34px; top: -6px; left: 5px;" class="hex1-img"
-                                                                  ng-src="/panel/assets/images/steps/step1-reduce2.png">
-                                                            <img  ng-if="scholarship.financial_id==2" style="height: 37px; top: -6px; left: 19px;" class="hex1-img"
-                                                                  ng-src="/panel/assets/images/steps/step1-hand2.png">
-                                                            <img  ng-if="scholarship.financial_id==3" style="height: 38px; top: -8px; left: 10px;" class="hex1-img"
-                                                                  ng-src="/panel/assets/images/steps/step1-clock2.png">
+                                                            <img style="height: 34px; top: -6px; left: 5px;" class="hex1-img" src="{{ $scholarship->financial->icon }}">
                                                         </div>
 
-                                                        <img ng-if="scholarship.multiple == 0" class="hex2-img" ng-src="/panel/assets/images/steps/@{{scholarship.section[0].name}}.png">
+                                                        @if($scholarship->multiple == 0)
+                                                            <img class="hex2-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png">
+                                                        
+                                                        @else
 
-                                                        <img ng-if="scholarship.multiple == 1 && multipleSectionsSelected[scholarship.id]" class="hex2-img" ng-src="/panel/assets/images/steps/studies.png">
+                                                        <img class="hex2-img" src="/panel/assets/images/steps/studies.png">
 
-                                                        <img ng-if="scholarship.multiple == 1 && !multipleSectionsSelected[scholarship.id]" class="hex2-img" ng-src="@{{scholarship.section[0]}}">
+                                                        @endif                                                        
+
+                                                        
 
 
                                                     </div>
 
                                                     <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
-                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.interests>3">
+                                                        @if($scholarship->interestsLength() > 3)
+                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey">
                                                             <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
-                                                                @lang('profile.scholarship.interested'): <span class="pull-right" ng-bind="scholarship.interests"></span>
+                                                                @lang('profile.scholarship.interested'): <span class="pull-right">{{ $scholarship->interestsLength() }}</span>
                                                             </span>
                                                         </div>
+                                                        @endif
 
-                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey" ng-if="scholarship.length>2">
+                                                        @if($scholarship->interestsLength() > 2)
+                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey">
                                                             <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
-                                                                @lang('profile.scholarship.requested'): <span class="pull-right"> @{{ scholarship.length}}</span>
+                                                                @lang('profile.scholarship.requested'): <span class="pull-right"> {{ count($scholarship->admission)}}</span>
                                                             </span>
                                                         </div>
+                                                        @endif
 
                                                     </div>
 
@@ -825,6 +859,8 @@
                                                 </div>
 
                                     </div>
+                                    @endif
+                                    @endforeach
 
                                 </div>
 
@@ -910,13 +946,13 @@
                         <div id="total-reviews" class="row col-sm-12">
 
                             <div class="font-weight-400 sc-t-green col-xs-12 col-lg-4 col-lg-push-8 text-center total-score">
-                                <span class="lead">@{{contactInfo.stars}}</span>
+                                <span class="lead">{{ $school->stars}}</span>
                                 <br />
                                 <span class="sc-t-grey">@lang('profile.total')</span>
 
                                 <br />
                                 <div class="raty" id="totalRating"></div>
-                                <span class="sc-t-grey">(@{{contactInfo.reviews.length}} @lang('profile.reviews'))</span>
+                                <span class="sc-t-grey">({{ $school->countReviews() }} @lang('profile.reviews'))</span>
                             </div>
 
                             <div class="row font-weight-400 sc-t-grey col-xs-12 col-lg-8 col-lg-pull-4 xs-stars">
@@ -1004,23 +1040,23 @@
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-map-marker pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">@{{contactInfo.address}}</span>
+                                <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">{{ $school->address}}</span>
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <div class="hidden-xs">
                                     <span><i class="fa fa-street-view pull-left pad-top-3 " aria-hidden="true"></i></span>
-                                    <span class="pull-left pad-left-5">@{{contactInfo.city}}</span>
+                                    <span class="pull-left pad-left-5">{{ $school->city}}</span>
                                     <br>
                                 </div>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-phone pull-left pad-top-2 xs-text-incr-85" aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-5">@{{contactInfo.phone}}</span>
+                                <span class="pull-left pad-left-5">{{ $school->phone}}</span>
 
                                 <div class="hidden-xs ">
                                     <br>
                                     <div class="pad-top-20"></div>
                                     <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                    <span class="pull-left pad-left-5 ellipsis"> <a href="mailto:@{{contactInfo.email}}">@{{contactInfo.email}}</a></span>
+                                    <span class="pull-left pad-left-5 ellipsis"> <a href="mailto:{{ $school->email()}}">{{ $school->email()}}</a></span>
                                 </div>
 
                                 <span ng-if="contactInfo.website">
@@ -1028,7 +1064,7 @@
                                     <div class="pad-top-20"></div>
                                     <a class="webHover" href="/schoolink/redirect/{{$school->id}}/" target="_blank">
                                     <span><i class="fa fa-globe pull-left pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                    <span class="pull-left pad-left-5 ellipsis"> @{{contactInfo.website}}</span>
+                                    <span class="pull-left pad-left-5 ellipsis"> {{ $school->website }}</span>
                                     </a>
                                 </span>
 
@@ -1044,14 +1080,14 @@
                             <div class="col-lg-12 margin-top-30" id="box-2nd" style="">
                                 <span><i class="fa fa-trophy pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-5">@lang('profile.statistics.scholarships')</span>
-                                <span class="pull-right badge" style="margin-right: -4px"> @{{contactInfo.activeScholarships}}</span>
+                                <span class="pull-right badge" style="margin-right: -4px"> {{ count($school->activeScholarships()) }}</span>
                                 <br>
 
                                 <div ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">
                                     <div class="pad-top-20"></div>
                                     <span><i class="fa fa-paint-brush pull-left pad-top-3 " aria-hidden="true"></i></span>
                                     <span class="pull-left pad-left-5">@lang('profile.statistics.studies')</span>
-                                    <span class="pull-right">@{{contactInfo.lengthStudies}}</span>
+                                    <span class="pull-right">{{ $school->lengthStudies() }}</span>
                                     <br>
                                 </div>
 
@@ -1062,12 +1098,12 @@
                                 </span>
                                 <span class="pull-left pad-left-10" ng-show="contactInfo.type_id==1 || contactInfo.type_id==2 ">@lang('profile.statistics.students')</span>
                                 <span class="pull-left pad-left-10" ng-show="contactInfo.type_id!=1 && contactInfo.type_id!=2">@lang('profile.statistics.students_s')</span>
-                                <span class="pull-right">@{{contactInfo.lengthStudents}}</span>
+                                <span class="pull-right">{{ $school->lengthStudents() }}</span>
                                 <br>
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-graduation-cap pull-left pad-top-3 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-2 pad-bot-10">@lang('profile.statistics.teachers')</span>
-                                <span class="pull-right">@{{contactInfo.lengthTeachers}}</span>
+                                <span class="pull-right">{{ $school->lengthTeachers() }}</span>
                                  @endif
 
                             </div>
@@ -1086,7 +1122,7 @@
                             @if(auth()->check())
                                 @if(auth()->user()->role != 'school')
                                         @if(auth()->user()->apply->contains($school))
-                                        <nav data-spy="affix" data-offset-top="1160" id="connectionButton" style="top: 120px!important"
+                                        <nav data-spy="affix" data-offset-top="1160" id="connectionButton" style="top: 120px!important">
                                             <button id="submButton" type="button" class="affix-button  sc-t-white center-block" style="background-color: #7fafbb" disabled>
                                                 <i class="fa fa-link pad-right-15" aria-hidden="true"></i>
                                                 @lang('profile.pending')
@@ -1162,8 +1198,7 @@
 
                     </div>
                     <div class="panel-body">
-                        <img class="pull-left margin-right-10" style="height: 45px;"
-                              ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
+                        <img class="pull-left margin-right-10" style="height: 45px;" src="{{ $school->logo}}">
 
 
                         @if(auth()->check() && auth()->user()->role == 'student')
@@ -1251,8 +1286,6 @@
 
                     </div>
                     <div class="panel-body">
-                        <img class="pull-left margin-right-10" style="height: 45px;"
-                              ng-src="/images/schools/@{{contactInfo.logo.full_path}}">
 
                               <div class="clearfix"></div>
 
@@ -1340,8 +1373,8 @@
                     </div>
                     <div class="panel-body">
                         <img  class="pull-left margin-right-10" style="height: 45px;"
-                              ng-src="@{{contactInfo.logo.full_path}}">
-                        <span>@{{contactInfo.type }} @{{ contactInfo.name }}:   </span>
+                              ng-src="{{ $school->logo}}">
+                        <span>{{ $school->type->name }} {{ $school->name() }}:   </span>
                     </div>
 
                     <div class="modal-footer">
@@ -1396,6 +1429,25 @@
 
 
 </body>
+
+<script>
+    $(function(){
+        $('.bxslider').bxSlider({
+            pager: false, 
+            controls: true, 
+            minSlides: 1, 
+            maxSlides:5, 
+            moveSlides: 1,
+            slideWidth: 333, 
+            slideMargin:10, 
+            infiniteLoop: true, 
+            hideControlOnEnd: false,
+            onSliderLoad: function(){
+                $("#bx").css("visibility", "visible")
+            }
+        });
+    });
+</script>
 
 <script>
     function test(e){
@@ -1938,30 +1990,6 @@
                 }
             })
 
-
-            /* BxSlider Directives for ng-repeat*/
-            .directive('bxSlider', [function () {
-                return {
-                    restrict: 'A',
-                    link: function (scope, element, attrs) {
-                        scope.$on('repeatFinished', function () {
-                            element.bxSlider(scope.$eval('{' + attrs.bxSlider + '}'));
-                        });
-                    }
-                }
-            }])
-            .directive('notifyWhenRepeatFinished', ['$timeout', function ($timeout) {
-                return {
-                    restrict: 'A',
-                    link: function (scope, element, attr) {
-                        if (scope.$last === true) {
-                            $timeout(function () {
-                                scope.$emit('repeatFinished');
-                            });
-                        }
-                    }
-                }
-            }]);
     $(document).ready(function(){
         $("#main").hide().fadeIn(1800);
 

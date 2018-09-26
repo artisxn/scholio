@@ -33,8 +33,6 @@
 }
 </script>
 
-<meta name="google-site-verification" content="gIvgFOmd0fljlwlSORv5tswdbBGRoT9zU5reco2Ni0c" />
-
 @include('google.analytics')
 @include('cookieConsent::index')
 <meta name="theme-color" content="#008da5">

@@ -7,7 +7,7 @@ use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Illuminate\Support\Facades\Route;
 use App\Models\AlgoliaSchool;
-// auth()->loginUsingId(4);
+// auth()->loginUsingId(70);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
 Scholio::bot();
@@ -16,7 +16,17 @@ Auth::routes();
 Route::view('gdpr', 'gdpr');
 
 Route::get('aaqq', function(){
-    return AlgoliaSchool::search('Amaerican College')->get();
+    $school = App\Models\School::find(1);
+
+    echo $school->about;
+
+    return 0;
+    $data = [];
+    foreach ($school->study as $study) {
+        array_push($data, Study::with('section.level')->where('id', $study->id)->get());
+    }
+
+    dd($data);
 });
 
 Route::get('/saveStudyLink', function () {

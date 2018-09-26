@@ -1114,12 +1114,10 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCity',
-                attributes: ['city'],
-                sortBy: ['count'],
-                limit: 5,
+                attributes: ['categories.lvl0', 'categories.lvl1'],
                 templates: {
                     item: menuTemplate
-                }
+                  }
             })
     );
 
@@ -1138,12 +1136,10 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCityMobile',
-                attributes: ['city'],
-                sortBy: ['count'],
-                limit: 5,
+                attributes: ['categories.lvl0', 'categories.lvl1'],
                 templates: {
                     item: menuTemplate
-                }
+                  }
             })
     );
 
