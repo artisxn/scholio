@@ -1116,6 +1116,7 @@ angular.module("schoolsResultsApp",[])
                 container: '#categoriesCity',
                 attributes: ['categories.lvl0', 'categories.lvl1'],
                 sortBy: ['count'],
+                limit:6,
                 templates: {
                     item: menuTemplate
                   }
@@ -1138,6 +1139,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCityMobile',
                 attributes: ['categories.lvl0', 'categories.lvl1'],
+                limit:4,
                 sortBy: ['count'],
                 templates: {
                     item: menuTemplate
