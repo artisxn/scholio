@@ -434,7 +434,7 @@
 
                 <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
                     <div class="row xl-margin-right " style="padding-left: 7px;">
-                        <ul class="bxslider" id="bx" style="visibility: hidden;">
+                        <ul class="bxslider" id="bx">
                             @if($school->image->count() >= 4)
                                 <!-- <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
                                     <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
@@ -1441,10 +1441,7 @@
             slideWidth: 333, 
             slideMargin:10, 
             infiniteLoop: true, 
-            hideControlOnEnd: false,
-            onSliderLoad: function(){
-                $("#bx").css("visibility", "visible")
-            }
+            hideControlOnEnd: false
         });
     });
 </script>
