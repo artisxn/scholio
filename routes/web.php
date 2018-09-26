@@ -16,17 +16,18 @@ Auth::routes();
 Route::view('gdpr', 'gdpr');
 
 Route::get('aaqq', function(){
-    $school = App\Models\School::find(1);
+    foreach(School::all() as $school){
+        if($school->region == '' || !$school->region){
+            $school->region = 'Κέντρο';
+            $school->save();
+        }
 
-    echo $school->about;
-
-    return 0;
-    $data = [];
-    foreach ($school->study as $study) {
-        array_push($data, Study::with('section.level')->where('id', $study->id)->get());
+        $alg = AlgoliaSchool::where('school_id', $school->id)->first();
+            $alg->region = $school->region;
+            $alg->save();
     }
 
-    dd($data);
+
 });
 
 Route::get('/saveStudyLink', function () {
