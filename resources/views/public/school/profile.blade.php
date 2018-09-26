@@ -1198,7 +1198,7 @@
 
                     </div>
                     <div class="panel-body">
-                        <img class="pull-left margin-right-10" style="height: 45px;" src="{{ $school->logo}}">
+                        <img class="pull-left margin-right-10" style="height: 45px;" src="gaa{{ $school->logo}}">
 
 
                         @if(auth()->check() && auth()->user()->role == 'student')
@@ -1499,8 +1499,6 @@
                 $scope.showButton = false
                 $scope.schoolStudies = null
 
-//////////////////////
-
                 $scope.role = function(r){
                     return lang.seeder.role[''+r]
                 }
@@ -1534,7 +1532,7 @@
                         })
 
                     }
-/////////////////////
+
                 $scope.categoryReview = function(index, stars){
                     setTimeout(function() {
                         $('#catReview-' + index).raty({
@@ -1989,18 +1987,6 @@
                         return "?";
                 }
             })
-
-    $(document).ready(function(){
-        $("#main").hide().fadeIn(1800);
-
-    });
-
-    setTimeout(function() {
-        // $(".raty").raty({
-        //     score: window.totalStars,
-        //     readOnly: true
-        // })
-    }, 500);
 
 
 </script>
