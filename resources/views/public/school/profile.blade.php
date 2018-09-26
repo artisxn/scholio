@@ -272,7 +272,7 @@
     </style>
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp" ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
-<!-- @include('components.preloader') -->
+@include('components.preloader')
 
 <!-- Scholio Header -->
 
