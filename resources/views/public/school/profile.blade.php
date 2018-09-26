@@ -272,7 +272,7 @@
     </style>
 </head>
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp" ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
-@include('components.preloader')
+<!-- @include('components.preloader') -->
 
 <!-- Scholio Header -->
 
@@ -434,7 +434,7 @@
 
                 <div class="margin-top-70 xs-slider" style="overflow-x: hidden">
                     <div class="row xl-margin-right " style="padding-left: 7px;">
-                        <ul class="bxslider" id="bx">
+                        <ul class="bxslider" id="bx" style="visibility: hidden;">
                             @if($school->image->count() >= 4)
                                 <!-- <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
                                     <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
@@ -1198,7 +1198,7 @@
 
                     </div>
                     <div class="panel-body">
-                        <img class="pull-left margin-right-10" style="height: 45px;" src="{{ $school->logo}}">
+                        <img class="pull-left margin-right-10" style="height: 45px;" src="gaa{{ $school->logo}}">
 
 
                         @if(auth()->check() && auth()->user()->role == 'student')
@@ -1441,7 +1441,10 @@
             slideWidth: 333, 
             slideMargin:10, 
             infiniteLoop: true, 
-            hideControlOnEnd: false
+            hideControlOnEnd: false,
+            onSliderLoad: function(){
+                $("#bx").css("visibility", "visible")
+            }
         });
     });
 </script>
