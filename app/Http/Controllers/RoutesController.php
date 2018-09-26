@@ -8,6 +8,7 @@ use App\Jobs\Algolia;
 use App\Jobs\DeleteFromAlgolia;
 use App\Key;
 use App\Models\Admission;
+use App\Models\AlgoliaSchool;
 use App\Models\Card;
 use App\Models\DummyScholarship;
 use App\Models\Report;
@@ -22,7 +23,8 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use App\Models\AlgoliaSchool;
+use App\Models\Section;
+use App\Models\Level;
 
 class RoutesController extends Controller
 {
@@ -94,11 +96,33 @@ class RoutesController extends Controller
         }
         if ($user->role == 'school') {
             $school = $user->info;
+            $studies = [];
+            $data = [];
+            $sections = [];
+
+            $schoolLevels = $school->levels();
+            $levelsCounter = 0;
+
+            foreach ($schoolLevels as $level) {
+                $levelsCounter++;
+                foreach ($school->section($level) as $section) {
+                    foreach ($school->studyFromSection($section) as $study) {
+                        array_push($studies, ['study' => Study::find($study)->load('user'), 'link' => $school->study()->where('study_id', $study)->first()->pivot->url]);
+                    }
+
+                    array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+                    $studies = [];
+                }
+                array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+                $sections = [];
+            }
+            // dd($data);
+
             if (Scholio::ProfileActive($school)) {
-                return view('public.school.profile')->withId($school->id)->withSchool($school);
+                return view('public.school.profile')->withId($school->id)->withSchool($school)->withData($data)->withLevelsCounter($levelsCounter);
             }
         }
-        
+
         abort(453);
     }
 
@@ -271,7 +295,7 @@ class RoutesController extends Controller
             return redirect('/dashboard');
         }
 
-        if(auth()->user()->role == 'admin'){
+        if (auth()->user()->role == 'admin') {
             return redirect('/panel/admin/dashboard');
         }
 
@@ -676,7 +700,7 @@ class RoutesController extends Controller
         $schools = AlgoliaSchool::search($title)->get();
         $settings = SchoolSetting::all()->pluck('statistics');
         $reviews = SchoolSetting::all()->pluck('reviews');
-        if(!$title){
+        if (!$title) {
             $title = 'Αναζήτησε δημοφιλή Εκπαιδευτικά Ιδρύματα';
         }
         return view('public.results.schools')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title);

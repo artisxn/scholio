@@ -350,7 +350,7 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="schoolsResultsApp"  ng-controller="schoolsResultsCtrl" data-ng-init="init()"  ng-cloak>
 
-  @include('components.preloader')
+  <!-- @include('components.preloader') -->
 
     <!-- Scholio Header -->
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
@@ -1114,12 +1114,12 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCity',
-                attributes: ['city'],
+                attributes: ['categories.lvl0', 'categories.lvl1'],
                 sortBy: ['count'],
-                limit: 5,
+                limit:6,
                 templates: {
                     item: menuTemplate
-                }
+                  }
             })
     );
 
@@ -1138,12 +1138,12 @@ angular.module("schoolsResultsApp",[])
     search.addWidget(
             instantsearch.widgets.hierarchicalMenu({
                 container: '#categoriesCityMobile',
-                attributes: ['city'],
+                attributes: ['categories.lvl0', 'categories.lvl1'],
+                limit:4,
                 sortBy: ['count'],
-                limit: 5,
                 templates: {
                     item: menuTemplate
-                }
+                  }
             })
     );
 
