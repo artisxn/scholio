@@ -110,11 +110,12 @@
             -webkit-transition: max-height 0.3s ease-in-out;
             transition: max-height 0.3s ease-in-out;
             margin-bottom: 0;
+            padding-bottom: 25px;
         }
         .slidedown {  max-height: 3000px ;   }
         .slideAbout {max-height: 400px;}
         .slideStudies {max-height: 400px;}
-        .slideScholarships {max-height: 522px;}
+        .slideScholarships {}
         .slideReviews {max-height: 500px;}
         .slideTeachers {max-height: 520px;}
 
@@ -537,7 +538,7 @@
                                 <span class="">
                                     <i class="fa fa-trophy  pad-top-3 " aria-hidden="true"></i>
                                     <span class="pad-left-5">@lang('profile.statistics.scholarships')</span>
-                                    <span class="badge pull-right" style="margin-right: -4px"> {{ $school->activeScholarships() }}</span>
+                                    <span class="badge pull-right" style="margin-right: -4px"> {{ count($school->activeScholarships()) }}</span>
                                 </span>
 
 
@@ -703,14 +704,14 @@
 
                             </div>
                             <!-- Show More Studies  -->
-                            <div class="show-more" style=" background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">
-                                <div class="pad-top-20">
+                            {{--<div class="show-more" style=" background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">--}}
+                                <div class="pad-top-30">
                                     <!--
                                  <span ng-click="showMoreStudies('spoudes')" >@{{textStudies}}
                                      <i class="@{{ iconStudies }}"></i></span>
                                      -->
                                 </div>
-                            </div>
+                            {{--</div>--}}
                         </div>
                     @endif
                     @endif
@@ -743,20 +744,23 @@
                                                         <div class="ribbon-edge-bottomright"></div>
                                                         <div class="ribbon-back-right sc-medium-grey"></div>
                                                     </div>
+
                                                     <div class="hexagon hex1">
+                                                            <img class="hex-img"  src="{{ $scholarship->financial->icon }}">
                                                     </div>
                                                     <div class="hexagon hex2">
+                                                        @if($scholarship->multiple == 0)
+                                                            <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png" >
+                                                        @else
+                                                            <img class="hex-img"  src="/panel/assets/images/steps/studies.png">
+                                                        @endif
                                                     </div>
 
                                                     <div class="scholar-content sc-t-grey font-weight-400">
                                                         <p class="scholar-left xxs-up">{{$scholarship->financial->plan}} {{$scholarship->financial_amount}}
-                                                            @if($scholarship->financial->id == 1)
-                                                            <span> %</span>
-                                                            @endif
-                                                            @if($scholarship->financial->id == 2)
-                                                            <span> €  </span>
-                                                            @endif
-                                                            @if($scholarship->financial->id == 3)
+                                                            @if($scholarship->financial->id !=3 )
+                                                            <span> {{$scholarship->financial->metric}}</span>
+                                                            @else
                                                             <span> @lang('profile.months')</span>
                                                             @endif
                                                         </p>
@@ -795,37 +799,22 @@
                                                         </div>
                                                         @endif
 
-                                                        <div>
-                                                            <img style="height: 34px; top: -6px; left: 5px;" class="hex1-img" src="{{ $scholarship->financial->icon }}">
-                                                        </div>
-
-                                                        @if($scholarship->multiple == 0)
-                                                            <img class="hex2-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png">
-                                                        
-                                                        @else
-
-                                                        <img class="hex2-img" src="/panel/assets/images/steps/studies.png">
-
-                                                        @endif                                                        
-
-                                                        
-
 
                                                     </div>
 
-                                                    <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
-                                                        @if($scholarship->interestsLength() > 3)
-                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey">
+                                                    <div class="xxs-text xs-none" ng-class="{'text-up':contactInfo.type_id!=1}" >
+                                                        @if($scholarship->interestsLength() > 3 && count($scholarship->multipleStudies)<3)
+                                                        <div style="position: absolute; top: 300px; width: 145px" class="font-weight-400 sc-t-grey">
                                                             <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
                                                                 @lang('profile.scholarship.interested'): <span class="pull-right">{{ $scholarship->interestsLength() }}</span>
                                                             </span>
                                                         </div>
                                                         @endif
 
-                                                        @if($scholarship->interestsLength() > 2)
-                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey">
+                                                        @if(count($scholarship->admission) > 2 && count($scholarship->multipleStudies)<3)
+                                                        <div style="position: absolute; top: 320px; width: 145px" class="font-weight-400 sc-t-grey">
                                                             <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
-                                                                @lang('profile.scholarship.requested'): <span class="pull-right"> {{ count($scholarship->admission)}}</span>
+                                                                @lang('profile.scholarship.requested'): <span class="pull-right"> {{ count($scholarship->admission) }}</span>
                                                             </span>
                                                         </div>
                                                         @endif
@@ -867,7 +856,7 @@
 
                             </div>
                             <!-- Show More Scholarships  -->
-                            <div class="show-more" style="background-color: #fff">
+                            <div class="show-more" ng-if="contactInfo.lengthScholarships>6" style="background-color: #fff">
                                 {{--ng-if="contactInfo.lengthScholarships>2"--}}
                                 <div class="pad-top-20">
                                     {{-- <span ng-click="showMoreScholarships('ypotrofies')">@{{textScholarships}}
