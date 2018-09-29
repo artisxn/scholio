@@ -195,6 +195,36 @@
             .webHover:hover{color:#FD6A33!important;}
 
 
+        .actionButton{height: 50px; width: 50px; border-radius: 8px;  background: #00bcd4;  z-index: 20; position: absolute; bottom: 10px; right: 10px;;
+            -webkit-transition: width 0.2s linear;
+            -moz-transition: width 0.2s linear;
+            -ms-transition: width 0.2s linear;
+            transition: width 0.1s linear;
+            text-align:center;
+        }
+        .actionButton:hover{ cursor: pointer; width: 95%;}
+
+        .actionButtonIcon{color: #fff; font-size: 180%; margin-top: 14px; }
+
+        .actionButtonText{color: #fff; display: none; margin-top: 6px; font-size: 110%;
+
+        }
+
+        @media(max-width: 1434px) {
+            .actionButtonText{ font-size: 98%;}
+            .actionButton:hover{ cursor: pointer; width: 97%;}
+            }
+
+        @media (min-width: 992px) and (max-width: 1160px) {
+            .affix-button{font-size: 90%;}
+            .fa-pencil{padding-right: 4px!important;}
+            .actionButtonText{font-size: 88%}
+
+        }
+
+
+
+
         @media(max-width: 1109px) {
         .school-profile-nav-link{padding-right: 8px!important; padding-left: 8px!important; font-size: 95%;}
             .ellipsis{width: 89%}
@@ -504,11 +534,11 @@
                                 <div class="col-xs-7 col-sm-7 pad-left-0 xxs-custom-contact">
 
                                     <span><i class="fa fa-university pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">{{ $school->type->name }}</span>
+                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">{{ $school->type->name }}</span>
                                     <div class="pad-top-10"></div>
 
                                     <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                    <span class="pad-left-8 xs-text-incr-85 text-incr-95">{{ $school->address }}</span>
+                                    <span class="pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">{{ $school->address }}</span>
 
                                     <div class="pad-top-10"></div>
                                     <div class="">
@@ -522,12 +552,12 @@
 
                                     <div class="pad-top-10"></div>
                                     <span><i class="fa fa-envelope  pad-top-2 " aria-hidden="true"></i></span>
-                                    <span class="pad-left-5 "> <a href="mailto:{{ $school->email() }}" class="school-links">{{ $school->email() }}</a></span>
+                                    <span class="pad-left-5 ellipsis"> <a href="mailto:{{ $school->email() }}" class="school-links">{{ $school->email() }}</a></span>
 
                                     <span ng-if="contactInfo.website">
                                         <div class="pad-top-10"></div>
                                         <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                        <span class="pad-left-5"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank" class="school-links">{{ $school->website }}</a></span>
+                                        <span class="pad-left-5 ellipsis"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank" class="school-links">{{ $school->website }}</a></span>
                                     </span>
 
                                 </div>
@@ -1015,11 +1045,20 @@
 
                 <!-- Right Sidebar  -->
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30 right-side-bar">
+
+
+
+
+
                 @if($school->settings->info)
                     <div >
                         <div class="box left-box1" style="height: 250px;">
 
                             <div class="col-lg-12" style="">
+
+
+
+
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-university pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">
@@ -1095,6 +1134,12 @@
                                 <span class="pull-right">{{ $school->lengthTeachers() }}</span>
                                  @endif
 
+
+                            </div>
+
+                            <div class="actionButton">
+                                <i class="fa fa-search actionButtonIcon"></i>
+                                <div class="actionButtonText"><a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}  {{ $school->region}}">Αναζήτησε {{ $school->type->name }} σε {{ $school->city}}  {{ $school->region}} </a></div>
                             </div>
 
                             <div class="clearfix"></div>
@@ -1418,6 +1463,22 @@
 
 
 </body>
+
+
+<script>
+    $(document).ready(function(){
+        $(".actionButton").mouseover(function(){
+            $(".actionButtonIcon").css("display", "none");
+            $(".actionButtonText").css("display", "block");
+        });
+        $(".actionButton").mouseout(function(){
+            $(".actionButtonIcon").css("display", "block");
+            $(".actionButtonText").css("display", "none");
+        });
+    });
+</script>
+
+
 
 <script>
     $(function(){

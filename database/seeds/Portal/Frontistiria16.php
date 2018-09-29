@@ -23,11 +23,13 @@ class Frontistiria16 extends Seeder
      $fake = factory(App\Models\School::class)->create([
          'user_id' => factory(App\User::class)->create(['name' => 'Ξένες Γλώσσες', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
          'address' => '',
+         'region' => '',
          'city' => 'Αθήνα',
          'phone' => 210,
          'type_id' => 4,
          'website' => '',
          'approved' => 1,
+         'ranking' => 50,
          'about' => '
 
             ',
