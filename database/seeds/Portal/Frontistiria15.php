@@ -76,15 +76,15 @@ class Frontistiria15 extends Seeder
 
      new Portal($fake, 7, 'frontistirio');
 
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά','http://amourgianos.edu.gr/index.php/english');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά','http://amourgianos.edu.gr/index.php/gallika-germanika');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά','http://amourgianos.edu.gr/index.php/gallika-germanika');
 
 
 
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά','http://amourgianos.edu.gr/index.php/english');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά','http://amourgianos.edu.gr/index.php/gallika-germanika');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά','http://amourgianos.edu.gr/index.php/gallika-germanika');
 
 
 
@@ -118,12 +118,12 @@ class Frontistiria15 extends Seeder
 
 
 
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ρωσικά');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά','https://www.eurodiastasi.gr/agglika');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά','https://www.eurodiastasi.gr/gallika');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά','https://www.eurodiastasi.gr/germanika');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά','https://www.eurodiastasi.gr/ispanika');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά','https://www.eurodiastasi.gr/italika');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ρωσικά','https://www.eurodiastasi.gr/rosika');
 
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'IELTS');
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEFL');
@@ -166,24 +166,24 @@ class Frontistiria15 extends Seeder
 
      new Portal($fake, 10, 'frontistirio');
 
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ιταλικά');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά','https://www.pvlc.gr/el/english-courses');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά','https://www.pvlc.gr/el/french-courses');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά','https://www.pvlc.gr/el/german-courses');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ισπανικά','https://www.pvlc.gr/el/spanish-courses');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ιταλικά','https://www.pvlc.gr/el/italian-courses');
 
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά','https://www.pvlc.gr/el/english-courses');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά','https://www.pvlc.gr/el/french-courses');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά','https://www.pvlc.gr/el/german-courses');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά','https://www.pvlc.gr/el/spanish-courses');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά','https://www.pvlc.gr/el/italian-courses');
 
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'IELTS');
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEFL');
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEIC');
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'ESB');
 
-     Scholio::portalStudy($fake, 'Τμήματα Εφήβων - Ενηλίκων', 'Πληροφορική', 'Πιστοποίηση');
+     Scholio::portalStudy($fake, 'Τμήματα Εφήβων - Ενηλίκων', 'Πληροφορική', 'Πιστοποίηση','https://www.pvlc.gr/el/%CF%80%CE%B9%CF%83%CF%84%CE%BF%CF%80%CE%BF%CE%B9%CE%AE%CF%83%CE%B5%CE%B9%CF%82-%CF%80%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%CF%82');
 
      Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/pvschoolanguages');
 
@@ -215,28 +215,25 @@ class Frontistiria15 extends Seeder
 
      new Portal($fake, 9, 'frontistirio');
 
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ιταλικά');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά','https://www.polyglosso.com/english-lessons/');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά','https://www.polyglosso.com/french-lessons/');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά','https://www.polyglosso.com/german-lessons/');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ισπανικά','https://www.polyglosso.com/spanish-lessons/');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ιταλικά','https://www.polyglosso.com/italian-lessons/');
+
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά','https://www.polyglosso.com/english-lessons/');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά','https://www.polyglosso.com/french-lessons/');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά','https://www.polyglosso.com/german-lessons/');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά','https://www.polyglosso.com/spanish-lessons/');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά','https://www.polyglosso.com/italian-lessons/');
 
 
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'IELTS','https://www.polyglosso.com/toeic-exam-pack/');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEIC','https://www.polyglosso.com/toeic-exam-pack/');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'ELT','https://www.polyglosso.com/online-english/');
 
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά');
-
-
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'IELTS');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEFL');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEIC');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'ELT');
-
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Πληροφορική', 'Πληροφορική e-learning');
-     Scholio::portalStudy($fake, 'Τμήματα Εφήβων - Ενηλίκων', 'Πληροφορική', 'Πιστοποίηση');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Πληροφορική', 'Πληροφορική e-learning','https://www.polyglosso.com/e-training-home-kids/');
+     Scholio::portalStudy($fake, 'Τμήματα Εφήβων - Ενηλίκων', 'Πληροφορική', 'Πιστοποίηση','https://www.polyglosso.com/e-training-lab-edition/');
 
        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/Polyglosso');
 
@@ -265,17 +262,17 @@ class Frontistiria15 extends Seeder
 
      new Portal($fake, 7, 'frontistirio');
 
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ιταλικά');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά','http://www.papavarsami.gr/el/static/agglika_el.aspx');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά','http://www.papavarsami.gr/el/static/gallika_el.aspx');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά','http://www.papavarsami.gr/el/static/germanika_el.aspx');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ισπανικά','http://www.papavarsami.gr/el/static/ispanika_el.aspx');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ιταλικά','http://www.papavarsami.gr/el/static/italika_el.aspx');
 
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά','http://www.papavarsami.gr/el/static/agglika_el.aspx');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά','http://www.papavarsami.gr/el/static/gallika_el.aspx');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά','http://www.papavarsami.gr/el/static/germanika_el.aspx');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά','http://www.papavarsami.gr/el/static/ispanika_el.aspx');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά','http://www.papavarsami.gr/el/static/italika_el.aspx ');
 
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'IELTS');
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEFL');
@@ -319,14 +316,14 @@ class Frontistiria15 extends Seeder
 
      new Portal($fake, 6, 'frontistirio');
 
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά','https://cybersigma.gr/english/');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά','https://cybersigma.gr/french/');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά','https://cybersigma.gr/german/');
 
 
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά','https://cybersigma.gr/english/');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά','https://cybersigma.gr/french/');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά','https://cybersigma.gr/german/');
 
 
        Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/Sigmaschool');
@@ -335,59 +332,96 @@ class Frontistiria15 extends Seeder
 
 
 
-     /*=============== 8 ================*/
+
+     /*=============== 8 Χατζηδάκη ================*/
 
      $fake = factory(App\Models\School::class)->create([
-         'user_id' => factory(App\User::class)->create(['name' => 'Ξένες Γλώσσες', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-         'address' => '',
-         'region' => '',
+         'user_id' => factory(App\User::class)->create(['name' => 'Κέντρα Ξένων Γλωσσών Χατζηδάκη', 'email' => 'info@hatzidaki.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'hatzidaki'])->id,
+         'address' => 'Θρασυβούλου 30, Χαλανδρι',
+         'region' => 'Χαλανδρι',
          'city' => 'Αθήνα',
-         'phone' => 210,
+         'phone' => 2106855200,
          'type_id' => 4,
-         'website' => '',
+         'website' => 'hatzidaki.com',
          'approved' => 1,
          'ranking' => 50,
          'about' => '
-
+            Τα ΚΕΝΤΡΑ ΞΕΝΩΝ ΓΛΩΣΣΩΝ ΧΑΤΖΗΔΑΚΗ δραστηριοποιούνται στο χώρο της ξενόγλωσσης εκπαίδευσης από το 1990, όπου με επιτυχία συμβάλλουν στην άριστη εκμάθηση Ευρωπαϊκών και όχι μόνον γλωσσών, όπως:
+            Αγγλικά,
+            Γαλλικά,
+            Γερμανικά,
+            Ιταλικά,
+            Ισπανικά,
+            Τούρκικα
+            Υπάρχουν τμήματα για όλα τα επίπεδα, τα διπλώματα, τις ηλικίες και τις χρονικές περιόδους καθώς επίσης και ιδιαίτερα μαθήματα.
+            Οι καθηγητές είναι απόλυτα εξειδικευμένοι ανάλογα με την ηλικία των μαθητών που απευθύνονται. Οι αίθουσες διδασκαλίας είναι διαμορφωμένες διαφορετικά για τα παιδιά, για τους εφήβους και για τους ενήλικους. ‘Έτσι η κάθε ομάδα έχοντας την ανάλογη μεταχείριση και το κατάλληλο περιβάλλον εργασίας αποδίδει τα μέγιστα.
+            Πέραν των άριστα κατηρτισμένων καθηγητών και των απόλυτα εργονομικών χώρων, παρέχεται τεχνολογία αιχμής, με διαδραστικούς πίνακες (interactive whiteboards) και στερεοφωνικά συστήματα σε κάθε αίθουσα καθώς επίσης και computers/multimedia για την καλύτερη εμπέδωση της διδακτέας ύλης. Τέλος το δυνατό μας όπλο. Το πάθος για δουλειά τόσο της διδακτικής ομάδας των ΚΕΝΤΡΩΝ ΞΕΝΩΝ ΓΛΩΣΣΩΝ ΧΑΤΖΗΔΑΚΗ, όσο και της ιδρύτριας και διευθύντριας σπουδών Εύης Χατζηδάκη
             ',
          'background' => $background,
      ]);
 
-     new Portal($fake, 5, 'frontistirio');
+     new Portal($fake, 7, 'frontistirio');
 
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ιταλικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ρωσικά');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Τούρκικα');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Αγγλικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γαλλικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Γερμανικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ισπανικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Ιταλικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Ξένες Γλώσσες', 'Τούρκικα','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
 
 
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ρωσικά');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Τούρκικα');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Αγγλικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γαλλικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Γερμανικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ιταλικά','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Τούρκικα','https://www.hatzidaki.com/portal/index.php?option=com_content&view=article&id=6&Itemid=3&lang=el');
 
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'IELTS');
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEFL');
      Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'TOEIC');
-     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'GMAT');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Προετοιμασία Πιστοποίησης', 'GRE');
 
 
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Εκπαιδευτική Ρομποτική', 'Προγραμματισμός με ρομπότ');
-     Scholio::portalStudy($fake, 'Παιδικά Τμήματα', 'Εκπαιδευτική Ρομποτική', 'LEGO Education');
-
-     Scholio::portalStudy($fake, 'Τμήματα Εφήβων - Ενηλίκων', 'Πληροφορική', 'Πιστοποίηση');
-
-//       Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/');
-//       Scholio::portalSocial($fake, 'instagram', 'https://www.instagram.com/');
-//       Scholio::portalSocial($fake, 'youtube', 'https://www.youtube.com/');
 
 
+
+     /*=============== 9 Abanico  ================*/
+
+     $fake = factory(App\Models\School::class)->create([
+         'user_id' => factory(App\User::class)->create(['name' => 'Κέντρο Ξένων Γλωσσών Abanico', 'email' => 'info@abanico.gr ', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'abanico'])->id,
+         'address' => 'Kολοκοτρώνη 12',
+         'region' => 'Κέντρο',
+         'city' => 'Αθήνα',
+         'phone' => 2103251214,
+         'type_id' => 4,
+         'website' => 'abanico.gr',
+         'approved' => 1,
+         'ranking' => 50,
+         'about' => '
+           Tο Abanico γίνεται δεκαοχτώ χρονών! Ενηλικιώνεται με σκληρή δουλειά άλλα ταυτόχρονα και με μεγάλες ικανοποιήσεις. Ιδού το γιατί:
+           Το πρόγραμμα σπουδών του Κέντρου έχει διαμορφωθεί σύμφωνα με το Ευρωπαïκό Πλαίσιο Αναφοράς και τις επίσημες εξετάσεις για τα ισπανικά (DELE), τα πορτογαλικά (PLE) και τα καταλανικά (Certificats A, B, C, D).
+           Κατά τη διάρκεια των κανονικών και των εντατικών μαθημάτων ισπανικών, πορτογαλικών και καταλανικών, ο μαθητής του Abanico μπορεί να ξεκινήσει, να βελτιώσει και να τελειοποιήσει τις γνώσεις του στις τέσσερεις γλωσσικές δεξιότητες (ανάγνωση, γραφή, ακουστική κατανόηση και προφορική έκφραση), ενώ παράλληλα προετοιμάζεται (εάν το επιθυμεί) για τις εξετάσεις που αναφέρουμε παραπάνω.
+           Το διδακτικό προσωπικό του Αbanico απαρτίζεται από καθηγητές με μεγάλη πείρα στη μεθοδολογία ης γλωσσικής διδασκαλίας. Τα τμήματα είναι ολιγάριθμα, οπότε ο μαθητής διατηρεί αδιάκοπα μια επαφή απευθείας με τον καθηγητή του αλλά και το προσωπικό του Κέντρου εν γένει.
+           Τα μαθήματα, σεμινάρια και εργαστήρια με ειδική θεματολογία (λογοτεχνία, κουζίνα, κλπ), το τμήμα μετάφρασης (το διευθύνει ο Νίκος Πρατσίνης) και τα εργαστήρια του, τα οποία παραδίδουν ή/και συντονίζουν αξιόλογοι ισπανιστές και «λουζιτανιστές», επαγγελματίες της μετάφρασης και των ιβηρικών (ισπανικών, πορτογαλικών, καταλανικών, κ.λπ.) και λατινοαμερικανικών σπουδών στην Ελλάδα, απευθύνονται σε μαθητές με επίπεδο γλωσσικών γνώσεων και δεξιοτήτων που αντιστοιχούν στο ανώτερο δίπλωμα και επιθυμούν να εμβαθύνουν στη μελέτη της μιας συγκεκριμένης γλώσσας και πολιτισμού.
+           Kατά την παραμονή τους στο Αbanico, οι μαθητές μπορούν να ετοιμάζουν τον καφέ τους, να διαβάζουν εφημερίδες ή περιοδικά στις τρεις γλώσσες, να τσεκάρουν το e-mail τους, το facebook και το tweeter τους, μιας και το Abanico διαθέτει wifi, ή να πάρουν κάποιο βιβλίο ή μία ταινία από τη δανειστική βιβλιοθήκη ή βιντεοθήκη.
+           Επιπλέον – και αυτό συνιστά βασική κατευθυντήρια αρχή του Abanico – οι παράλληλες δραστηριότητες με πολιτιστικό ή/και ψυχαγωγικό χαρακτήρα επιτρέπουν στο μαθητή να προσεγγίσει το ευρύ και ποικίλο πολιτισμικό φάσμα των χωρών όπου ομιλείται η ισπανική, η πορτογαλική και η καταλανική. Αυτές δε οι δραστηριότητες είναι, εν γένει, δωρεάν και ανοιχτές στο ευρύ κοινό.
+            ',
+         'background' => $background,
+     ]);
+
+     new Portal($fake, 8, 'frontistirio');
+
+
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Ισπανικά','http://www.abanico.gr/courses-gr/languages-gr/spanish-courses');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Πορτογαλικά','http://www.abanico.gr/courses-gr/languages-gr/portuguese-courses');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Ξένες Γλώσσες', 'Καταλανικά','http://www.abanico.gr/courses-gr/languages-gr/catalan-courses/que-es-el-catala');
+
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Τέχνες', 'Θέατρο','http://www.abanico.gr/courses-gr/special-courses/teatro');
+     Scholio::portalStudy($fake, 'Τμήματα Ενηλίκων', 'Τέχνες', 'Λογοτεχνία','http://www.abanico.gr/courses-gr/special-courses/literature');
+
+       Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/ABANICO.atenas');
+       Scholio::portalSocial($fake, 'twitter', 'https://twitter.com/AbanicoAtenas');
 
 
 
