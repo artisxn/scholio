@@ -8,16 +8,23 @@ use App\Models\SchoolSetting;
 use App\Models\Subscription;
 use App\Models\University;
 use App\Scholio\Scholio;
+use App\Models\AlgoliaSchool;
 
 class Portal
 {
     public $school, $imgNum, $type;
 
-    public function __construct($school, $imgNum, $type)
+    public function __construct($school, $imgNum, $type, $ranking = null)
     {
         $this->school = $school;
         $this->imgNum = $imgNum;
         $this->type = $type;
+
+        if($ranking){
+            $alg = AlgoliaSchool::where('school_id', $school->id)->first();
+            $alg->scholioranking = $ranking;
+            $alg->save();
+        }
 
         $this->schoolComplete();
     }

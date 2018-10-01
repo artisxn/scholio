@@ -20,6 +20,7 @@ class CreateSchoolsTable extends Migration
             $table->string('public_email')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
+            $table->string('region')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->string('website')->nullable();
             $table->string('country')->nullable();
