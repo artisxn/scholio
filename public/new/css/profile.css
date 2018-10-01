@@ -865,6 +865,8 @@ body {
 .boxAlso a h1{font-size: 130%; color: #006373; text-align: center; padding: 5px 15px; line-height: 23px
 }
 
+.alsoText:hover{color: #FD6A33}
+
 /* //////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////// /NEW CONTAINER WIDTH //////////////////////////////// */
 
