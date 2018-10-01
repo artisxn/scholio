@@ -1036,6 +1036,47 @@
 
 
 
+                            <!-- Δες Επίσης  -->
+                        <div class="row boxAlsoContainer">
+                            <div class="innerPadding col-sm-4">
+                                <div class="boxAlso">
+                                    <div class="upImgContainer">
+                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/college.jpg" alt="{{ $school->type->name }}" style="">
+                                    </div>
+                                    <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}  {{ $school->region}}">
+                                        <h1 class="alsoText">Αναζήτησε {{ $school->type->name }} σε {{ $school->city}}  {{ $school->region}} </h1>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="innerPadding col-sm-4">
+                                <div class="boxAlso">
+                                    <div class="upImgContainer">
+                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/student.jpg" alt="">
+                                    </div>
+                                    <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}">
+                                        <h1 class="alsoText">Αναζήτησε {{ $school->type->name }} σε {{ $school->city}} </h1>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                            <div class="innerPadding col-sm-4">
+                                <div class="boxAlso">
+                                    <div class="upImgContainer">
+                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/belfast2.jpg" alt="">
+                                    </div>
+                                    <a style="color: #fff" href="">
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
                 </div> <!-- //col-lg-9-->
 
 
