@@ -110,11 +110,12 @@
             -webkit-transition: max-height 0.3s ease-in-out;
             transition: max-height 0.3s ease-in-out;
             margin-bottom: 0;
+            padding-bottom: 25px;
         }
         .slidedown {  max-height: 3000px ;   }
         .slideAbout {max-height: 400px;}
         .slideStudies {max-height: 400px;}
-        .slideScholarships {max-height: 522px;}
+        .slideScholarships {}
         .slideReviews {max-height: 500px;}
         .slideTeachers {max-height: 520px;}
 
@@ -192,6 +193,36 @@
 
             .ellipsis{width: 90%}
             .webHover:hover{color:#FD6A33!important;}
+
+
+        .actionButton{height: 50px; width: 50px; border-radius: 8px;  background: #00bcd4;  z-index: 20; position: absolute; bottom: 10px; right: 10px;;
+            -webkit-transition: width 0.2s linear;
+            -moz-transition: width 0.2s linear;
+            -ms-transition: width 0.2s linear;
+            transition: width 0.1s linear;
+            text-align:center;
+        }
+        .actionButton:hover{ cursor: pointer; width: 95%;}
+
+        .actionButtonIcon{color: #fff; font-size: 180%; margin-top: 14px; }
+
+        .actionButtonText{color: #fff; display: none; margin-top: 6px; font-size: 110%;
+
+        }
+
+        @media(max-width: 1434px) {
+            .actionButtonText{ font-size: 98%;}
+            .actionButton:hover{ cursor: pointer; width: 97%;}
+            }
+
+        @media (min-width: 992px) and (max-width: 1160px) {
+            .affix-button{font-size: 90%;}
+            .fa-pencil{padding-right: 4px!important;}
+            .actionButtonText{font-size: 88%}
+
+        }
+
+
 
 
         @media(max-width: 1109px) {
@@ -503,11 +534,11 @@
                                 <div class="col-xs-7 col-sm-7 pad-left-0 xxs-custom-contact">
 
                                     <span><i class="fa fa-university pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95">{{ $school->type->name }}</span>
+                                    <span class=" pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">{{ $school->type->name }}</span>
                                     <div class="pad-top-10"></div>
 
                                     <span><i class="fa fa-map-marker pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
-                                    <span class="pad-left-8 xs-text-incr-85 text-incr-95">{{ $school->address }}</span>
+                                    <span class="pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">{{ $school->address }}</span>
 
                                     <div class="pad-top-10"></div>
                                     <div class="">
@@ -521,12 +552,12 @@
 
                                     <div class="pad-top-10"></div>
                                     <span><i class="fa fa-envelope  pad-top-2 " aria-hidden="true"></i></span>
-                                    <span class="pad-left-5 "> <a href="mailto:{{ $school->email() }}" class="school-links">{{ $school->email() }}</a></span>
+                                    <span class="pad-left-5 ellipsis"> <a href="mailto:{{ $school->email() }}" class="school-links">{{ $school->email() }}</a></span>
 
                                     <span ng-if="contactInfo.website">
                                         <div class="pad-top-10"></div>
                                         <span><i class="fa fa-globe pad-top-3 xs-text-incr-85" aria-hidden="true"></i></span>
-                                        <span class="pad-left-5"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank" class="school-links">{{ $school->website }}</a></span>
+                                        <span class="pad-left-5 ellipsis"> <a href="/schoolink/redirect/{{$school->id}}/" target="_blank" class="school-links">{{ $school->website }}</a></span>
                                     </span>
 
                                 </div>
@@ -537,7 +568,7 @@
                                 <span class="">
                                     <i class="fa fa-trophy  pad-top-3 " aria-hidden="true"></i>
                                     <span class="pad-left-5">@lang('profile.statistics.scholarships')</span>
-                                    <span class="badge pull-right" style="margin-right: -4px"> {{ $school->activeScholarships() }}</span>
+                                    <span class="badge pull-right" style="margin-right: -4px"> {{ count($school->activeScholarships()) }}</span>
                                 </span>
 
 
@@ -703,14 +734,14 @@
 
                             </div>
                             <!-- Show More Studies  -->
-                            <div class="show-more" style=" background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">
-                                <div class="pad-top-20">
+                            {{--<div class="show-more" style=" background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">--}}
+                                <div class="pad-top-30">
                                     <!--
                                  <span ng-click="showMoreStudies('spoudes')" >@{{textStudies}}
                                      <i class="@{{ iconStudies }}"></i></span>
                                      -->
                                 </div>
-                            </div>
+                            {{--</div>--}}
                         </div>
                     @endif
                     @endif
@@ -743,20 +774,23 @@
                                                         <div class="ribbon-edge-bottomright"></div>
                                                         <div class="ribbon-back-right sc-medium-grey"></div>
                                                     </div>
+
                                                     <div class="hexagon hex1">
+                                                            <img class="hex-img"  src="{{ $scholarship->financial->icon }}">
                                                     </div>
                                                     <div class="hexagon hex2">
+                                                        @if($scholarship->multiple == 0)
+                                                            <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png" >
+                                                        @else
+                                                            <img class="hex-img"  src="/panel/assets/images/steps/studies.png">
+                                                        @endif
                                                     </div>
 
                                                     <div class="scholar-content sc-t-grey font-weight-400">
                                                         <p class="scholar-left xxs-up">{{$scholarship->financial->plan}} {{$scholarship->financial_amount}}
-                                                            @if($scholarship->financial->id == 1)
-                                                            <span> %</span>
-                                                            @endif
-                                                            @if($scholarship->financial->id == 2)
-                                                            <span> €  </span>
-                                                            @endif
-                                                            @if($scholarship->financial->id == 3)
+                                                            @if($scholarship->financial->id !=3 )
+                                                            <span> {{$scholarship->financial->metric}}</span>
+                                                            @else
                                                             <span> @lang('profile.months')</span>
                                                             @endif
                                                         </p>
@@ -795,37 +829,22 @@
                                                         </div>
                                                         @endif
 
-                                                        <div>
-                                                            <img style="height: 34px; top: -6px; left: 5px;" class="hex1-img" src="{{ $scholarship->financial->icon }}">
-                                                        </div>
-
-                                                        @if($scholarship->multiple == 0)
-                                                            <img class="hex2-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png">
-                                                        
-                                                        @else
-
-                                                        <img class="hex2-img" src="/panel/assets/images/steps/studies.png">
-
-                                                        @endif                                                        
-
-                                                        
-
 
                                                     </div>
 
-                                                    <div class="xxs-text" ng-class="{'text-up':contactInfo.type_id!=1}" >
-                                                        @if($scholarship->interestsLength() > 3)
-                                                        <div style="position: absolute; top: 282px; width: 145px" class="font-weight-400 sc-t-grey">
+                                                    <div class="xxs-text xs-none" ng-class="{'text-up':contactInfo.type_id!=1}" >
+                                                        @if($scholarship->interestsLength() > 3 && count($scholarship->multipleStudies)<3)
+                                                        <div style="position: absolute; top: 300px; width: 145px" class="font-weight-400 sc-t-grey">
                                                             <span class="" style=""><i class="fa fa-thumbs-o-up margin-right-5" aria-hidden="true"></i>
                                                                 @lang('profile.scholarship.interested'): <span class="pull-right">{{ $scholarship->interestsLength() }}</span>
                                                             </span>
                                                         </div>
                                                         @endif
 
-                                                        @if($scholarship->interestsLength() > 2)
-                                                        <div style="position: absolute; top: 301px; width: 145px" class="font-weight-400 sc-t-grey">
+                                                        @if(count($scholarship->admission) > 2 && count($scholarship->multipleStudies)<3)
+                                                        <div style="position: absolute; top: 320px; width: 145px" class="font-weight-400 sc-t-grey">
                                                             <span class="" style=""> <i class="fa fa-pencil margin-right-5" aria-hidden="true"></i>
-                                                                @lang('profile.scholarship.requested'): <span class="pull-right"> {{ count($scholarship->admission)}}</span>
+                                                                @lang('profile.scholarship.requested'): <span class="pull-right"> {{ count($scholarship->admission) }}</span>
                                                             </span>
                                                         </div>
                                                         @endif
@@ -867,7 +886,7 @@
 
                             </div>
                             <!-- Show More Scholarships  -->
-                            <div class="show-more" style="background-color: #fff">
+                            <div class="show-more" ng-if="contactInfo.lengthScholarships>6" style="background-color: #fff">
                                 {{--ng-if="contactInfo.lengthScholarships>2"--}}
                                 <div class="pad-top-20">
                                     {{-- <span ng-click="showMoreScholarships('ypotrofies')">@{{textScholarships}}
@@ -1026,11 +1045,20 @@
 
                 <!-- Right Sidebar  -->
                 <div class="col-lg-3 col-md-3 hidden-sm hidden-xs margin-top-30 right-side-bar">
+
+
+
+
+
                 @if($school->settings->info)
                     <div >
                         <div class="box left-box1" style="height: 250px;">
 
                             <div class="col-lg-12" style="">
+
+
+
+
                                 <div class="pad-top-20"></div>
                                 <span><i class="fa fa-university pull-left pad-top-3 xs-text-incr-85 " aria-hidden="true"></i></span>
                                 <span class="pull-left pad-left-8 xs-text-incr-85 text-incr-95 ellipsis">
@@ -1106,6 +1134,12 @@
                                 <span class="pull-right">{{ $school->lengthTeachers() }}</span>
                                  @endif
 
+
+                            </div>
+
+                            <div class="actionButton">
+                                <i class="fa fa-search actionButtonIcon"></i>
+                                <div class="actionButtonText"><a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}  {{ $school->region}}">Αναζήτησε {{ $school->type->name }} σε {{ $school->city}}  {{ $school->region}} </a></div>
                             </div>
 
                             <div class="clearfix"></div>
@@ -1429,6 +1463,22 @@
 
 
 </body>
+
+
+<script>
+    $(document).ready(function(){
+        $(".actionButton").mouseover(function(){
+            $(".actionButtonIcon").css("display", "none");
+            $(".actionButtonText").css("display", "block");
+        });
+        $(".actionButton").mouseout(function(){
+            $(".actionButtonIcon").css("display", "block");
+            $(".actionButtonText").css("display", "none");
+        });
+    });
+</script>
+
+
 
 <script>
     $(function(){
