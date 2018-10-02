@@ -114,7 +114,7 @@ class IEK2 extends Seeder
 
         /*===============  ΣΒΙΕ ================*/
         $school1 = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΣΒΙΕ', 'email' => 'info@sbie.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'ieksvie'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΣΒΙΕ', 'email' => 'info@sbie.edu.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'sbie'])->id,
             'address' => 'Πλ. Κάνιγγος 15-17',
             'city' => 'Αθήνα',
             'region' => 'Κέντρο',
@@ -402,11 +402,9 @@ class IEK2 extends Seeder
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Γενικά Σεμινάρια', 'Aρχιτεκτονικός φωτισμός', 'http://www.infotech.edu.gr/course/architectural-lighting/');
     
         Scholio::portalSocial($school1, 'facebook', 'https://www.facebook.com/infotech.CAD');
-        Scholio::portalSocial($school1, 'instagram', '');
         Scholio::portalSocial($school1, 'twitter', 'https://twitter.com/cad_infotech');
         Scholio::portalSocial($school1, 'youtube', 'https://www.youtube.com/channel/UCx-ZUncRW149HejCYicdkaQ');
         Scholio::portalSocial($school1, 'linkedin', 'https://www.linkedin.com/company/infotech-atc/');
-        Scholio::portalSocial($school1, 'skype', '');
 
         /*===============  Λυδια ================*/
         // $school1 = factory(App\Models\School::class)->create([
