@@ -116,8 +116,7 @@ $school1 = factory(App\Models\School::class)->create([
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Οδοντικής Τεχνολογίας', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/voithos-odontikis-technologias');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Νοσηλευτικής Χειρουργείου', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/nosileutikis-heirourgiou-surgery-nursing-nurse');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Νοσηλευτικής Γενικής Νοσηλείας', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/nosileutikis-genikis-nosileias');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', '
-        Βοηθός Νοσηλευτικής Τραυματολογίας', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/nosileutikis-traumatologias');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Νοσηλευτικής Τραυματολογίας', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/nosileutikis-traumatologias');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Νοσηλευτικής Ατόμων με Ειδικές Παθήσεις', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/nosileutiki-atomwn-me-eidikes-pathiseis');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Νοσηλευτικής Ογκολογικών Παθήσεων', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/nosileutikis-ogkologikon-pathiseon');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Νοσηλευτικής Μαιευτικής', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/voithos-nosileutikis-maieutikis');
@@ -144,8 +143,7 @@ $school1 = factory(App\Models\School::class)->create([
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Πληροφορικής και Νέων Τεχνολογιών', 'Τεχνικός Δικτύων και Τηλεπικοινωνιών', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-pliroforiki-nees-technologies-paster-sxoli/item/technikos-diktyon-kai-tilepikoinonion');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Πληροφορικής και Νέων Τεχνολογιών', 'Τεχνικός Η/Υ', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-pliroforiki-nees-technologies-paster-sxoli/item/technikos-hy');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Πληροφορικής και Νέων Τεχνολογιών', 'Τεχνικός Λογισμικού Η/Υ', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-pliroforiki-nees-technologies-paster-sxoli/item/technikos-logismikou-hy');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Πληροφορικής και Νέων Τεχνολογιών', 'Τεχνικός Εφαρμογών Πληροφορικής (Πολυμέσα - Web Designer - Developer / Video Games)
-        ', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-pliroforiki-nees-technologies-paster-sxoli/item/technikos-efarmogon-pliroforikis');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Πληροφορικής και Νέων Τεχνολογιών', 'Τεχνικός Εφαρμογών Πληροφορικής (Πολυμέσα - Web Designer - Developer / Video Games)', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-pliroforiki-nees-technologies-paster-sxoli/item/technikos-efarmogon-pliroforikis');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Εφαρμοσμένων Τεχνών (ART & DESIGN)', 'Γραφιστική Εντύπου και Ηλεκτρονικών Μέσων', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-efarmosmenes-texnes-art-design-sxoli/item/grafistas-entypon-kai-ilektronikon-meson');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Εφαρμοσμένων Τεχνών (ART & DESIGN)', 'Συντηρητής Έργων Τέχνης και Αρχαιοτήτων', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-efarmosmenes-texnes-art-design-sxoli/item/syntiritis-ergon-technis-kai-arhaiotition');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Εφαρμοσμένων Τεχνών (ART & DESIGN)', 'Εσωτερική Αρχιτεκτονική Διακόσμηση και Σχεδιασμός Αντικειμένων', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-efarmosmenes-texnes-art-design-sxoli/item/esoteriki-architektoniki-diakosmisi-kai-sxediasmos-antikeimenon');
@@ -184,8 +182,7 @@ $school1 = factory(App\Models\School::class)->create([
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Οικονομίας και Διοίκησης', 'Στέλεχος Διοίκησης και Οικονομίας στον Τομέα της Αγροτικής Οικονομίας', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-oikonomias-dioikisis-thessaloniki/item/stelexos-dioikhshs-oikonomias-ston-tomea-agrotikis-oikonomias');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Οικονομίας και Διοίκησης', 'Τεχνικός Αγροτουρισμού', 'http://paster.gr/iek-xrimatopistotikes-dioikitikes-ypiresies/item/texnikos-agrotourismou');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Μηχανολογίας - Ηλεκτρολογίας - Ηλεκτρονικής και Αυτοματισμού', 'Τεχνικός Μηχανοτρονικής', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-mixanologos-ilektrologia-ilektronikon-thessaloniki/item/texnikos-mixanotronikis');      
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Μηχανολογίας - Ηλεκτρολογίας - Ηλεκτρονικής και Αυτοματισμού', '
-        Τεχνικός Μηχανικός Θερμικών Εγκαταστάσεων και Μηχανικός Τεχνολογίας Πετρελαίων και Φυσικού Αερίου', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-mixanologos-ilektrologia-ilektronikon-thessaloniki/item/texnikos-mixanikos-thermikwn-egkatastasewn-mixanikos-texnologias-petrelaiwn-kai-fusikou-aeriou');
+        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Μηχανολογίας - Ηλεκτρολογίας - Ηλεκτρονικής και Αυτοματισμού', 'Τεχνικός Μηχανικός Θερμικών Εγκαταστάσεων και Μηχανικός Τεχνολογίας Πετρελαίων και Φυσικού Αερίου', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-mixanologos-ilektrologia-ilektronikon-thessaloniki/item/texnikos-mixanikos-thermikwn-egkatastasewn-mixanikos-texnologias-petrelaiwn-kai-fusikou-aeriou');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Μηχανολογίας - Ηλεκτρολογίας - Ηλεκτρονικής και Αυτοματισμού', 'Τεχνικός Εγκαταστάσεων Ανανεώσιμων Πηγών Ενέργειας', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-mixanologos-ilektrologia-ilektronikon-thessaloniki/item/texnikos-egkatastasewn-ananewsimwn-pigwn-energeias');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Μηχανολογίας - Ηλεκτρολογίας - Ηλεκτρονικής και Αυτοματισμού', 'Τεχνικός Εγκαταστάσεων Ψύξης Αερισμού και Κλιματισμού', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-mixanologos-ilektrologia-ilektronikon-thessaloniki/item/texnikos-egkatastasewn-psiksis-aerismou-klimatismou');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Μηχανολογίας - Ηλεκτρολογίας - Ηλεκτρονικής και Αυτοματισμού', 'Τεχνικός Ιατρικών Οργάνων', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-mixanologos-ilektrologia-ilektronikon-thessaloniki/item/texnikos-iatrikwn-organwn');
@@ -196,116 +193,12 @@ $school1 = factory(App\Models\School::class)->create([
 
         Scholio::portalSocial($school1, 'facebook', 'https://www.facebook.com/PasterStudies');
         Scholio::portalSocial($school1, 'instagram', 'https://www.instagram.com/paster_studies/');
-        Scholio::portalSocial($school1, 'twitter', 'https://twitter.com/iekpaster'
+        Scholio::portalSocial($school1, 'twitter', 'https://twitter.com/iekpaster');
         Scholio::portalSocial($school1, 'youtube', '');
         Scholio::portalSocial($school1, 'linkedin', '');
         Scholio::portalSocial($school1, 'skype', '');
 
-        $school1 = factory(App\Models\School::class)->create([
-            'city' => 'Αθήνα',
-            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ INTERGRAPHICS', 'email' => 'info@intergraphics.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-            'address' => 'ΑΚΑΔΗΜΙΑΣ 98-100',
-            'phone' => 2103838808
-            'type_id' => 6,
-            'website' => 'http://intergraphics.gr/',
-            'approved' => 1,
-            'about' => 'O Εκπαιδευτικός Όμιλος INTERGRAPHICS ιδρύθηκε το 1990 και - πρώτος στην Ελλάδα - ξεκίνησε να διδάσκει τις νέες Ψηφιακές Τεχνολογίες και την αξιοποίησή τους στις Εφαρμοσμένες Τέχνες και την Πληροφορική και είναι η πιο Εξειδικευμένη Σχολή στους τομείς αυτούς.
 
-            Παρακολουθώντας τις ανάγκες της αγοράς εργασίας, ο Όμιλος διευρύνει συνεχώς τις προσφερόμενες ειδικότητες προς τους σπουδαστές του και επικεντρώνεται σε επαγγέλματα αιχμής, με τη μεγαλύτερη ζήτηση από την αγορά εργασίας, εξασφαλίζοντας άμεση επαγγελματική αποκατάσταση στους αποφοίτους του.
-            
-            Όπως αναφέρει και ο Γενικός Διευθυντής κ. Γιώργος Παπουτσάκης στόχος μας είναι να προσφέρουμε εκπαίδευση εναρμονισμένη στις ανάγκες και τις απαιτήσεις της αγοράς εργασίας. Όταν ο απόφοιτός μας βρεθεί στο χώρο εργασίας, το περιβάλλον να του είναι τόσο οικείο, ούτως ώστε από την πρώτη ημέρα, οι ενέργειές του πάνω στην παραγωγή να ταυτίζονται με εκείνες ενός πεπειραμένου και απόλυτα καταρτισμένου επαγγελματία. Γι’ αυτό, το επίπεδο των σπουδών μας είναι ιδιαίτερα εξειδικευμένο και στοχευμένο.
-            
-            Το πολύ υψηλό επίπεδο εκπαίδευσης και κατάρτισης που εξασφαλίζει ο Όμιλος, σε συνδυασμό με τις άρτιες εγκαταστάσεις, τα υπερσύγχρονα εργαστήρια, τους καταξιωμένους καθηγητές και τις συνεργασίες που έχει συνάψει με γνωστές εταιρίες, τον έχουν κατατάξει ως ένα από τα Κορυφαία Εκπαιδευτήρια στο χώρο της Ανώτερης Εκπαίδευσης στην Ελλάδα.
-            
-            Η Διά Βίου Δωρεάν Επιμόρφωση, στις εξελίξεις της τεχνολογίας & στα νέα δεδομένα της αγοράς εργασίας, αποτελεί μια πολύ σημαντική και μοναδική παροχή που μόνο ο Όμιλος INTERGRAPHICS προσφέρει στους αποφοίτους του.',
-            'background' => $background,
-        ]);
-
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Art & Design', 'ΓΡΑΦΙΣΤΙΚΗ', 'https://intergraphics.gr/index.php/el/art-design/grafistiki.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Art & Design', '3D Animation', 'https://intergraphics.gr/index.php/el/art-design/3d-animation.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Art & Design', 'ΙΕΚ ΔΙΑΚΟΣΜΗΣΗΣ - Διακόσμηση εσωτερικών χώρων', 'https://intergraphics.gr/index.php/el/art-design/diakosmisi.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Art & Design', 'Εικονογράφος - Σκιτσογράφος', 'https://intergraphics.gr/index.php/el/art-design/eikonografos.htm');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Art & Design', 'Εκτυπωτής λιθογραφείου - τυπογράφος', 'https://intergraphics.gr/index.php/el/art-design/ektupotis-lithografeiou.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Art & Design', 'Βιβλιοδέτης', 'https://intergraphics.gr/index.php/el/art-design/bibliodetis.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Art & Design', '
-        IEK Φωτογραφίας & Video', 'https://intergraphics.gr/index.php/el/art-design/iek-fotografias-video.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Μόδα & Ομορφιά', 'Σχεδιαστής μόδας – Ενδυματολόγος', 'https://intergraphics.gr/index.php/el/moda-omorfia/sxediastis-modas-endimatologos.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Μόδα & Ομορφιά', 'Αισθητικός σύμβουλος εμφάνισης - Στυλίστας', 'https://intergraphics.gr/index.php/el/moda-omorfia/stylistas.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Μόδα & Ομορφιά', '
-        ΙΕΚ Κομμωτικής - Hair Styling', 'https://intergraphics.gr/index.php/el/moda-omorfia/kommotis-hair-styling.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Μόδα & Ομορφιά', 'ΙΕΚ ΑΙΣΘΗΤΙΚΗΣ - Ειδικός εφαρμογών αισθητικής', 'https://intergraphics.gr/index.php/el/moda-omorfia/iek-aisthitikis.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Μόδα & Ομορφιά', '
-        Ειδικός περιποίησης νυχιών & ονυχοπλαστικής', 'https://intergraphics.gr/index.php/el/moda-omorfia/eidikos-peripoihshs-nuxiwn-onyxoplastikis.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Μόδα & Ομορφιά', '
-        Ειδικός ποδολογίας & καλλωπισμού άκρων', 'https://intergraphics.gr/index.php/el/moda-omorfia/eidikos-podologias-kallopismou-akrwn.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Μόδα & Ομορφιά', 'Ιεροράπτης', 'https://intergraphics.gr/index.php/el/moda-omorfia/ieroraptis.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Πληροφορική & Νέες Τεχνολογίες', '
-        Web Design-Ειδικός τεχνολογίας Internet', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/web-design-eidikos-texnologias-internet.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Πληροφορική & Νέες Τεχνολογίες', '
-        Τεχνικός συστημάτων Η/Υ', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/texnikos-sistimatwn-hy.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Πληροφορική & Νέες Τεχνολογίες', 'Ειδικός εφαρμογών πληροφορικής', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/eidikos-efarmogwn-pliroforikis.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Πληροφορική & Νέες Τεχνολογίες', 'Προγραμματιστής Video Games', 'https://intergraphics.gr/index.php/el/pliroforiki-nees-texnologies/programmatistis-video.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Διοικητικό & Οικονομικό Στέλεχος επιχειρήσεων', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/dioikitiko-oikonomiko-stelexos.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', 'Ειδικός μηχανογραφημένου λογιστηρίου', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/mixanografimeno-logistirio.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Ειδικός Φοροτεχνικού Γραφείου', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/forotexnis.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Οικονομία & Διοίκηση', 'Ειδικός ασφαλιστικών εργασιών', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/2009-07-29-16-45-35.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Οικονομία & Διοίκηση', '
-        Κτηματομεσίτης - Διαχειριστής Ακίνητης Περιουσίας', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/2009-07-29-17-03-05.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Οικονομία & Διοίκηση', '
-        Στέλεχος Υπηρεσιών Εφοδιαστικής Αλυσίδας - LOGISTICS', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/----logistics.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Οικονομία & Διοίκηση', '
-        Γραμματέας Διεύθυνσης', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/gramateas-dieuthinsis.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Οικονομία & Διοίκηση', 'Στέλεχος Τραπεζικών Εργασιών', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/trapezikwn-ergasiwn.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Οικονομία & Διοίκηση', '
-        Στέλεχος Εκδοτικών Επιχειρήσεων', 'https://intergraphics.gr/index.php/el/oikonomia-dioikisi/stelexos-ekdotikwn-epixeirisewn.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Marketing - Πωλήσεις - Επικοινωνία', 'Διαφήμιση', 'https://intergraphics.gr/index.php/el/marketing-pwliseis-epikoinwnia/diafimisi.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Marketing - Πωλήσεις - Επικοινωνία', 'Ειδικός Πωλήσεων', 'https://intergraphics.gr/index.php/el/marketing-pwliseis-epikoinwnia/eidikos-polisewn.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Marketing - Πωλήσεις - Επικοινωνία', 'Marketing – ανάπτυξη & προώθηση προϊόντων', 'https://intergraphics.gr/index.php/el/marketing-pwliseis-epikoinwnia/marketing-prowthisi-proiontwn.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Ναυτιλία - Τουρισμός', '
-        Στέλεχος Ναυτιλιακών Επιχειρήσεων', 'https://intergraphics.gr/index.php/el/nautilia-tourismos/stelexos-nautiliakwn-epixeirisewn.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Ναυτιλία - Τουρισμός', 'Υπεύθυνος υποδοχής και φιλοξενίας', 'https://intergraphics.gr/index.php/el/nautilia-tourismos/ypeuthinos-upodoxis-filoksenias.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '
-        Ναυτιλία - Τουρισμός', '
-        Στέλεχος τουριστικού γραφείου', 'https://intergraphics.gr/index.php/el/nautilia-tourismos/ypallilos-touristikou-grafeiou.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Δομικών Έργων', '
-        Σχεδιαστής μέσω συστημάτων Η/Υ', 'https://intergraphics.gr/index.php/el/domikwn-ergwn/sxediastis-mesw-hy.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'Δομικών Έργων', '
-        Τεχνικός Δομικών Έργων', 'https://intergraphics.gr/index.php/el/domikwn-ergwn/texnikos-domikwn-ergwn.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Σπουδές Φωτογραφίας & Video Art', 'https://intergraphics.gr/index.php/el/fotografia-video-art.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '
-        Computer Graphics - DTP', 'https://intergraphics.gr/index.php/el/computer-graphics-dtp2.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'ΣΠΟΥΔΕΣ WEB DESIGN & DEVELOPMENT', 'https://intergraphics.gr/index.php/el/web-design-a-development.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Development Programming', 'https://intergraphics.gr/index.php/el/development-programming.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '
-        3D Animation - Multimedia', 'https://intergraphics.gr/index.php/el/3danimation-multimedia.html'); 
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Maya 3D', 'https://intergraphics.gr/index.php/el/maya3d.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '
-        Advanced 3D Animation', 'https://intergraphics.gr/index.php/el/advanced-3d-animation.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Post Production', 'https://intergraphics.gr/index.php/el/post-production.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '
-        New Technologies in Cinema & T.V.', 'https://intergraphics.gr/index.php/el/new-technologies-cinema-tv.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Games Development', 'https://intergraphics.gr/index.php/el/games-development.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', '
-        Σπουδές Σκίτσου & Εικονογράφησης (Comics-Cartoon, Story Board, Παιδικό Βιβλίο, Πολιτική Γελοιογραφία, Editorial)', 'https://intergraphics.gr/index.php/el/skitso-eikonografisi-comics-cartoon-editorial.html');
-        Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', '', 'Διακόσμηση - Αρχιτεκτονική', 'https://intergraphics.gr/index.php/el/diakosmisi-arxitektoniki.html');
-       
-
-
-        Scholio::portalSocial($school1, 'facebook', '');
-        Scholio::portalSocial($school1, 'instagram', '');
-        Scholio::portalSocial($school1, 'twitter', ''
-        Scholio::portalSocial($school1, 'youtube', '');
-        Scholio::portalSocial($school1, 'linkedin', '');
-        Scholio::portalSocial($school1, 'skype', '');
 
         $school1 = factory(App\Models\School::class)->create([
             'city' => 'Θεσσαλονίκη',
