@@ -31,7 +31,7 @@
     <meta property="place:location:latitude" content="{{ $school->lat }}" />
     <meta property="place:location:longitude" content="{{ $school->lng }}" /> -->
 
-    <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }} | {{ $school->about }}">
+    <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
 
     <!-- Favicon -->
 
@@ -302,6 +302,8 @@
 
     </style>
 </head>
+
+
 <body data-spy="scroll" data-target=".spy" data-offset="270" id="home"  ng-app="profileApp" ng-controller="profileCtrl" data-ng-init="init()" ng-cloak>
 <!-- @include('components.preloader') -->
 
