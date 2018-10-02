@@ -7,7 +7,7 @@
     <meta property="fb:pages" content="934370089973049" />
     <meta name="description" content="{{ $title }}">
     <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές">
-    @include('google.main')
+    
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -600,7 +600,7 @@
 
     <!-- Footer -->
     @include('public.footer')
-
+    @include('google.main')
         <!-- Bootstrap js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
