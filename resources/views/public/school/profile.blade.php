@@ -1296,7 +1296,7 @@
 
                     </div>
                     <div class="panel-body">
-                        <img class="pull-left margin-right-10" style="height: 45px;" src="gaa{{ $school->logo}}">
+                        <img class="pull-left margin-right-10" style="height: 45px;" src="{{ $school->logo}}">
 
 
                         @if(auth()->check() && auth()->user()->role == 'student')
