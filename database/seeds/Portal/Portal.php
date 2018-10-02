@@ -20,11 +20,11 @@ class Portal
         $this->imgNum = $imgNum;
         $this->type = $type;
 
-        if($ranking){
-            $alg = AlgoliaSchool::where('school_id', $school->id)->first();
-            $alg->scholioranking = $ranking;
-            $alg->save();
-        }
+        // if($ranking){
+        //     $alg = AlgoliaSchool::where('school_id', $school->id)->first();
+        //     $alg->scholioranking = $ranking;
+        //     $alg->save();
+        // }
 
         $this->schoolComplete();
     }

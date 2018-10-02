@@ -15,9 +15,6 @@ class Frontistiria15 extends Seeder
     {
         $background = Portal::createImages('/upload/school/univ.png')->id;
 
-
-
-
      /*=============== 1 Lets Learn ================*/
 
      $fake = factory(App\Models\School::class)->create([
