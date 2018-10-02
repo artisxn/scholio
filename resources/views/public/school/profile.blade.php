@@ -1034,6 +1034,70 @@
 
 
 
+                    <div class="row" style="padding: 0"><hr></div>
+
+                            <!-- Δες Επίσης  -->
+                        <div class="row boxAlsoContainer">
+
+
+                            <p  class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
+                                <i class="fa fa-university fa-linear4 margin-right-10" aria-hidden="true"></i> <span>Αναζήτησε παρόμοιες σπουδές </span>
+                            </p>
+
+                            <div class="innerPadding col-sm-4">
+                                <div class="boxAlso">
+                                    <div class="upImgContainer">
+                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/college.jpg" alt="{{ $school->type->name }}" style="">
+                                    </div>
+                                    @if($school->type->id==1)
+                                        <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}">
+                                            <h1 class="alsoText">{{ $school->type->name }} </h1>
+                                        </a>
+                                    @else
+                                        <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}  {{ $school->region}}">
+                                            <h1 class="alsoText">{{ $school->type->name }} σε {{ $school->city}}  {{ $school->region}} </h1>
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="innerPadding col-sm-4">
+                                <div class="boxAlso">
+                                    <div class="upImgContainer">
+                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/student.jpg" alt="">
+                                    </div>
+                                    <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}">
+                                        <h1 class="alsoText">{{ $school->type->name }} σε {{ $school->city}} </h1>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                            <div class="innerPadding col-sm-4">
+                                <div class="boxAlso">
+                                    <div class="upImgContainer">
+                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/belfast2.jpg" alt="">
+                                    </div>
+                                    @if($school->type->id==1)
+                                        <a style="color: #fff" href="https://schol.io/public/schools?q=ΙΕΚ">
+                                            <h1 class="alsoText">IEK σε σε {{ $school->city}} </h1>
+                                        </a>
+                                    @elseif($school->type->id!=4)
+                                        <a style="color: #fff" href="https://schol.io/public/schools?q=Κέντρα Ξένων Γλωσσών {{ $school->city}} {{ $school->region}}">
+                                            <h1 class="alsoText">Κέντρα Ξένων Γλωσσών σε {{ $school->city}}  {{ $school->region}} </h1>
+                                        </a>
+                                    @else
+                                        <a style="color: #fff" href="https://schol.io/public/schools?q=Φροντιστήρια Μέσης Εκπαίδευσης {{ $school->city}} {{ $school->region}}">
+                                            <h1 class="alsoText">Φροντιστήρια Μέσης Εκπαίδευσης σε {{ $school->city}}  {{ $school->region}} </h1>
+                                        </a>
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
 
                 </div> <!-- //col-lg-9-->
@@ -1137,10 +1201,10 @@
 
                             </div>
 
-                            <div class="actionButton">
-                                <i class="fa fa-search actionButtonIcon"></i>
-                                <div class="actionButtonText"><a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}  {{ $school->region}}">Αναζήτησε {{ $school->type->name }} σε {{ $school->city}}  {{ $school->region}} </a></div>
-                            </div>
+                            {{--<div class="actionButton">--}}
+                                {{--<i class="fa fa-search actionButtonIcon"></i>--}}
+                                {{--<div class="actionButtonText"><a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}  {{ $school->region}}">Αναζήτησε {{ $school->type->name }} σε {{ $school->city}}  {{ $school->region}} </a></div>--}}
+                            {{--</div>--}}
 
                             <div class="clearfix"></div>
                         </div>
