@@ -165,7 +165,7 @@ class IEK2 extends Seeder
         /*===============  PASTER  ================*/
         $school1 = factory(App\Models\School::class)->create([
             'city' => 'Θεσσαλονίκη',
-            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΠΑΣΤΕΡ', 'email' => 'info@paster.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'iekpaster'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'ΙΕΚ ΠΑΣΤΕΡ', 'email' => 'info@paster.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'paster'])->id,
             'address' => 'Τσιμισκή 45',
             'region' => 'Κέντρο',
             'phone' => 2310281282,
@@ -184,7 +184,7 @@ class IEK2 extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($school1, 5, 'iek');
+        new Portal($school1, 11, 'iek');
 
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Φαρμακείου', 'http://paster.gr/voithos-farmakeiou-iek-thessaloniki');
         Scholio::portalStudy($school1, 'Επαγγελματικές Σπουδές', 'ΙΕΚ Υγειας', 'Βοηθός Φυσικοθεραπείας', 'http://paster.gr/iek-eidikotites-ekpaideysi-sxoli-paster/iek-ygeias-paster-thessaloniki/item/voithos-fysikotherapeias');
