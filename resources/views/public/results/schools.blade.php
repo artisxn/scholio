@@ -9,6 +9,8 @@
     <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές">
     @include('google.main')
 
+    <!-- jQuery js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 
     <title>{{ $title }} | Schol.io</title>
@@ -73,41 +75,6 @@
 
     <!-- Angular Material  CSS -->
     {{-- <link href="{{asset('new/css/angular-material.css')}}" rel="stylesheet">--}}
-
-    <!-- jQuery js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
-    <!-- Bootstrap js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Bootstrap Select js  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
-
-    <!-- Angular js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-
-
-
-    <!-- No error Filter:noArray angular 1.3.20 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
-
-    <!-- javascript Results -->
-    <script src="{{asset('/new/js/results.js')}}"></script>
-
-    <!-- Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
-
-
-    <!-- Algolia InstantSearch.JS -->
-    <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3"></script> -->
-    <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js"></script>
-
-    <!-- Rating js-->
-    <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
-
-    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
 <script>
     window.REVIEWS = {{ $reviews }};
@@ -633,6 +600,38 @@
 
     <!-- Footer -->
     @include('public.footer')
+
+        <!-- Bootstrap js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+        <!-- Bootstrap Select js  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+    
+        <!-- Angular js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    
+    
+    
+        <!-- No error Filter:noArray angular 1.3.20 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    
+        <!-- javascript Results -->
+        <script src="{{asset('/new/js/results.js')}}"></script>
+    
+        <!-- Google Maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+    
+    
+        <!-- Algolia InstantSearch.JS -->
+        <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3"></script> -->
+        <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js"></script>
+    
+        <!-- Rating js-->
+        <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
+    
+        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
 </body>
 
