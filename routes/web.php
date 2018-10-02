@@ -17,18 +17,13 @@ Route::view('gdpr', 'gdpr');
 
 Route::get('aaqq', function(){
     foreach(School::all() as $school){
-        if($school->region == '' || !$school->region){
-            $school->region = 'Κέντρο';
-            $school->save();
-        }
 
-        $alg = AlgoliaSchool::where('school_id', $school->id)->first();
-            // $alg->region = $school->region;
-            // $alg->save();
-
+        if($school->id >= 312){
+            $alg = AlgoliaSchool::where('school_id', $school->id)->first();
             $alg->{'categories.lvl0'} = $school->city;
             $alg->{'categories.lvl1'} = $school->city . " > " . $school->region;
             $alg->searchable();
+        }
     }
 });
 
