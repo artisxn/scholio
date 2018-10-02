@@ -600,38 +600,38 @@
 
     <!-- Footer -->
     @include('public.footer')
-    @include('google.main')
+    
         <!-- Bootstrap js-->
-        <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
         <!-- Bootstrap Select js  -->
-        <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
     
         <!-- Angular js-->
-        <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
     
     
     
         <!-- No error Filter:noArray angular 1.3.20 -->
-        <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     
         <!-- javascript Results -->
-        <scrip async defert src="{{asset('/new/js/results.js')}}"></script>
+        <script src="{{asset('/new/js/results.js')}}"></script>
     
         <!-- Google Maps -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
     
     
         <!-- Algolia InstantSearch.JS -->
-        <script async defer src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
         <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3"></script> -->
-        <script async defer src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js"></script>
     
         <!-- Rating js-->
-        <script async defer src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
+        <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
     
-        <script async defer src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-        <script async defer src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
 </body>
 
