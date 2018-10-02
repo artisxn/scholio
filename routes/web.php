@@ -16,13 +16,17 @@ Auth::routes();
 Route::view('gdpr', 'gdpr');
 
 Route::get('aaqq', function(){
+
+    
     foreach(School::all() as $school){
 
         if($school->id >= 312){
             $alg = AlgoliaSchool::where('school_id', $school->id)->first();
-            $alg->{'categories.lvl0'} = $school->city;
-            $alg->{'categories.lvl1'} = $school->city . " > " . $school->region;
-            $alg->searchable();
+            $alg->scholioranking = 50;
+            $alg->save();
+            // $alg->{'categories.lvl0'} = $school->city;
+            // $alg->{'categories.lvl1'} = $school->city . " > " . $school->region;
+            // $alg->searchable();
         }
     }
 });
