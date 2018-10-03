@@ -195,20 +195,192 @@
             .webHover:hover{color:#FD6A33!important;}
 
 
-        .actionButton{height: 50px; width: 50px; border-radius: 8px;  background: #00bcd4;  z-index: 20; position: absolute; bottom: 10px; right: 10px;;
-            -webkit-transition: width 0.2s linear;
-            -moz-transition: width 0.2s linear;
-            -ms-transition: width 0.2s linear;
-            transition: width 0.1s linear;
-            text-align:center;
+        /*.actionButton{height: 50px; width: 50px; border-radius: 8px;  background: #00bcd4;  z-index: 20; position: absolute; bottom: 10px; right: 10px;;*/
+            /*-webkit-transition: width 0.2s linear;*/
+            /*-moz-transition: width 0.2s linear;*/
+            /*-ms-transition: width 0.2s linear;*/
+            /*transition: width 0.1s linear;*/
+            /*text-align:center;*/
+        /*}*/
+        /*.actionButton:hover{ cursor: pointer; width: 95%;}*/
+
+        /*.actionButtonIcon{color: #fff; font-size: 180%; margin-top: 14px; }*/
+
+        /*.actionButtonText{color: #fff; display: none; margin-top: 6px; font-size: 110%;*/
+
+        /*}*/
+
+
+        /*--------------------------------*/
+        /******* Photo Hover Effect *******/
+        /*--------------------------------*/
+
+        .grid {
+            position: relative;
+            clear: both;
+            margin: 0 auto;
+            padding: 1em 0 4em;
+            max-width: 1000px;
+            list-style: none;
+            text-align: center;
         }
-        .actionButton:hover{ cursor: pointer; width: 95%;}
 
-        .actionButtonIcon{color: #fff; font-size: 180%; margin-top: 14px; }
-
-        .actionButtonText{color: #fff; display: none; margin-top: 6px; font-size: 110%;
-
+        /* Common style */
+        .grid figure {
+            position: relative;
+            float: left;
+            overflow: hidden;
+            margin: 10px 1%;
+            min-width: 100%;
+            width: 100%;
+            height: 230px;
+            background: #3085a3;
+            text-align: center;
+            cursor: pointer;
         }
+
+        @media (min-width: 768px) and (max-width: 1000px) {
+            .grid figure {  height: 160px;  }
+        }
+        @media (min-width: 1001px) and (max-width: 1300px) {
+            .grid figure {  height: 200px;  }
+        }
+
+        .grid figure img {
+            position: relative;
+            display: block;
+            min-height: 100%;
+            max-width: 100%;
+            opacity: 0.8;
+            background: #006c84;
+        }
+
+        .grid figure figcaption {
+            padding: 2em;
+            color: #fff;
+            /*text-transform: uppercase;*/
+            font-size: 2em;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .grid figure figcaption::before,
+        .grid figure figcaption::after {
+            pointer-events: none;
+        }
+
+        .grid figure figcaption,
+        .grid figure figcaption > a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Anchor will cover the whole item by default */
+        /* For some effects it will show as a button */
+        .grid figure figcaption > a {
+            z-index: 1000;
+            text-indent: 200%;
+            white-space: nowrap;
+            font-size: 0;
+            opacity: 0;
+        }
+
+        .grid figure h2 {
+            word-spacing: -0.15em;
+            font-weight: 300;
+            margin: -40px 0 0 -30px ;
+            text-shadow: 1px 1px #555;
+        }
+
+        .grid figure h2 span {
+            font-weight: 800;
+        }
+
+        .grid figure p {
+            margin: 35px -15px 0 0;
+            letter-spacing: 1px;
+            font-size: 68.5%;
+        }
+
+
+        /*--------------------------------*/
+        /************** Apolo *************/
+        /*--------------------------------*/
+        figure.effect-apollo {
+            background: #006c84;
+        }
+
+        figure.effect-apollo img {
+            opacity: 0.85;
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: scale3d(1.05,1.05,1);
+            transform: scale3d(1.05,1.05,1);
+        }
+
+        figure.effect-apollo figcaption::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.5);
+            content: '';
+            -webkit-transition: -webkit-transform 0.6s;
+            transition: transform 0.6s;
+            -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+            transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+        }
+
+        figure.effect-apollo p {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin: 2.4em;
+            padding: 0 1em;
+            max-width: 150px;
+            border-right: 4px solid #fff;
+            text-align: right;
+            opacity: 0;
+            -webkit-transition: opacity 0.35s;
+            transition: opacity 0.35s;
+            font-size: 60%;
+        }
+
+        figure.effect-apollo h2 {
+            text-align: left;
+            font-size: 85%;
+        }
+
+        figure.effect-apollo:hover img {
+            opacity: 0.6;
+            -webkit-transform: scale3d(1,1,1);
+            transform: scale3d(1,1,1);
+        }
+
+        figure.effect-apollo:hover figcaption::before {
+            -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+            transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+        }
+
+        figure.effect-apollo:hover p {
+            opacity: 1;
+            -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+        }
+
+
+
+        /*--------------------------------*/
+        /**********************************/
+        /*--------------------------------*/
+
+
+
+
 
         @media(max-width: 1434px) {
             .actionButtonText{ font-size: 98%;}
@@ -1047,54 +1219,111 @@
                             </p>
 
                             <div class="innerPadding col-sm-4">
-                                <div class="boxAlso">
-                                    <div class="upImgContainer">
-                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/college.jpg" alt="{{ $school->type->name }}" style="">
-                                    </div>
-                                    @if($school->type->id==1)
-                                        <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}">
-                                            <h1 class="alsoText">{{ $school->type->name }} </h1>
-                                        </a>
-                                    @else
-                                        <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}  {{ $school->region}}">
-                                            <h1 class="alsoText">{{ $school->type->name }} σε {{ $school->city}}  {{ $school->region}} </h1>
-                                        </a>
-                                    @endif
+                                {{--<div class="boxAlso">--}}
+                                    {{--<div class="upImgContainer">--}}
+                                        {{--<img class="upImg" src="https://schol.io/new/img/sect-photo/college.jpg" alt="{{ $school->type->name }}" style="">--}}
+                                    {{--</div>--}}
+                                    {{--@if($school->type->id==1)--}}
+                                        {{--<a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}">--}}
+                                            {{--<h1 class="alsoText">{{ $school->type->name }} </h1>--}}
+                                        {{--</a>--}}
+                                    {{--@else--}}
+                                        {{--<a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}  {{ $school->region}}">--}}
+                                            {{--<h1 class="alsoText">{{ $school->type->name }} σε {{ $school->city}}  {{ $school->region}} </h1>--}}
+                                        {{--</a>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+
+                                <div class="grid">
+                                    <figure class="effect-apollo">
+                                        <img src="https://schol.io/new/img/sect-photo/college.jpg" alt="Κολλέγια"/>
+                                        <figcaption>
+                                            @if($school->type->id==1)
+                                                <h2><span>{{ $school->type->name }}</span></h2>
+                                                <p>Ελλάδα</p>
+                                                <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}"></a>
+                                            @else
+                                                <h2><span>{{ $school->type->name }}</span></h2>
+                                                <p>{{ $school->city}} {{ $school->region}}</p>
+                                                <a style="color: #fff" href="https://schol.io/public/schools?hFR%5Btype%5D%5B0%5D={{ $school->type->name }}&is_v=1&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}} > {{ $school->region}} "></a>
+                                            @endif
+                                        </figcaption>
+                                    </figure>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="innerPadding col-sm-4">
+                                {{--<div class="boxAlso">--}}
+                                    {{--<div class="upImgContainer">--}}
+                                        {{--<img class="upImg" src="https://schol.io/new/img/sect-photo/student.jpg" alt="">--}}
+                                    {{--</div>--}}
+                                    {{--<a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}">--}}
+                                        {{--<h1 class="alsoText">{{ $school->type->name }} σε {{ $school->city}} </h1>--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
+                                <div class="grid">
+                                    <figure class="effect-apollo">
+                                        <img src="https://schol.io/new/img/sect-photo/student.jpg" alt="Φροντιστήρια"/>
+                                        <figcaption>
+                                                <h2><span>{{ $school->type->name }}</span></h2>
+                                                <p>{{ $school->city}}</p>
+                                                <a style="color: #fff" href="https://schol.io/public/schools?q=&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}}&hFR%5Btype%5D%5B0%5D={{ $school->type->name }}&is_v=1"></a>
+                                        </figcaption>
+                                    </figure>
                                 </div>
                             </div>
 
                             <div class="innerPadding col-sm-4">
-                                <div class="boxAlso">
-                                    <div class="upImgContainer">
-                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/student.jpg" alt="">
-                                    </div>
-                                    <a style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}  {{ $school->city}}">
-                                        <h1 class="alsoText">{{ $school->type->name }} σε {{ $school->city}} </h1>
-                                    </a>
+                                {{--<div class="boxAlso">--}}
+                                    {{--<div class="upImgContainer">--}}
+                                        {{--<img class="upImg" src="https://schol.io/new/img/sect-photo/belfast2.jpg" alt="">--}}
+                                    {{--</div>--}}
+                                    {{--@if($school->type->id==1)--}}
+                                        {{--<a style="color: #fff" href="https://schol.io/public/schools?q=ΙΕΚ">--}}
+                                            {{--<h1 class="alsoText">IEK σε σε {{ $school->city}} </h1>--}}
+                                        {{--</a>--}}
+                                    {{--@elseif($school->type->id!=4)--}}
+                                        {{--<a style="color: #fff" href="https://schol.io/public/schools?q=Κέντρα Ξένων Γλωσσών {{ $school->city}} {{ $school->region}}">--}}
+                                            {{--<h1 class="alsoText">Κέντρα Ξένων Γλωσσών σε {{ $school->city}}  {{ $school->region}} </h1>--}}
+                                        {{--</a>--}}
+                                    {{--@else--}}
+                                        {{--<a style="color: #fff" href="https://schol.io/public/schools?q=Φροντιστήρια Μέσης Εκπαίδευσης {{ $school->city}} {{ $school->region}}">--}}
+                                            {{--<h1 class="alsoText">Φροντιστήρια Μέσης Εκπαίδευσης σε {{ $school->city}}  {{ $school->region}} </h1>--}}
+                                        {{--</a>--}}
+                                    {{--@endif--}}
 
+                                {{--</div>--}}
+
+
+                                <div class="grid">
+                                    <figure class="effect-apollo">
+                                        <img src="https://schol.io/new/img/sect-photo/belfast2.jpg" alt="Κέντρα Ξένων Γλωσσών"/>
+                                        <figcaption>
+                                            @if($school->type->id==1)
+                                               <h2><span>ΙΕΚ</span></h2>
+                                                <p>{{ $school->city}}</p>
+                                                <a style="color: #fff" href="https://schol.io/public/schools?q=&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}}&hFR%5Btype%5D%5B0%5D=ΙΕΚ%20-%20Επαγγελματική%20Σχολή%20-%20ΚΔΒΜ&is_v=1"></a>
+                                            @elseif($school->type->id!=4)
+                                                <h2><span>Κέντρα Ξένων Γλωσσών</span></h2>
+                                                <p>{{ $school->city}} {{ $school->region}}</p>
+                                                <a style="color: #fff" href="https://schol.io/public/schools?hFR%5Btype%5D%5B0%5D=Φροντιστήριο Ξένων Γλωσσών / Πληροφορικής&is_v=1&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}} > {{ $school->region}} "></a>
+                                            @else
+                                                <h2><span>Φροντιστήρια Μέσης Εκπαίδευσης</span></h2>
+                                                <p>{{ $school->city}} {{ $school->region}}</p>
+                                                <a style="color: #fff" href="https://schol.io/public/schools?hFR%5Btype%5D%5B0%5D=Φροντιστήριο Μέσης Εκπαίδευσης&is_v=1&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}} > {{ $school->region}} "></a>
+                                            @endif
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                            </div>
 
-                            <div class="innerPadding col-sm-4">
-                                <div class="boxAlso">
-                                    <div class="upImgContainer">
-                                        <img class="upImg" src="https://schol.io/new/img/sect-photo/belfast2.jpg" alt="">
-                                    </div>
-                                    @if($school->type->id==1)
-                                        <a style="color: #fff" href="https://schol.io/public/schools?q=ΙΕΚ">
-                                            <h1 class="alsoText">IEK σε σε {{ $school->city}} </h1>
-                                        </a>
-                                    @elseif($school->type->id!=4)
-                                        <a style="color: #fff" href="https://schol.io/public/schools?q=Κέντρα Ξένων Γλωσσών {{ $school->city}} {{ $school->region}}">
-                                            <h1 class="alsoText">Κέντρα Ξένων Γλωσσών σε {{ $school->city}}  {{ $school->region}} </h1>
-                                        </a>
-                                    @else
-                                        <a style="color: #fff" href="https://schol.io/public/schools?q=Φροντιστήρια Μέσης Εκπαίδευσης {{ $school->city}} {{ $school->region}}">
-                                            <h1 class="alsoText">Φροντιστήρια Μέσης Εκπαίδευσης σε {{ $school->city}}  {{ $school->region}} </h1>
-                                        </a>
-                                    @endif
 
-                                </div>
+
+
+
+
                             </div>
                         </div>
 
