@@ -1572,14 +1572,6 @@
 </body>
 
 <script>
-        window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'AW-799029410');
-</script>
-
-<script>
 
     $(document).ready(function () {
 
@@ -1616,20 +1608,6 @@
         });
     });
 </script>
-
-<script type="text/javascript">
-    WebFontConfig = {
-      google: { families: [ 'Roboto:100,300,400,500,700&subset=greek' ] }
-    };
-    (function() {
-      var wf = document.createElement('script');
-      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-        '://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
-      wf.type = 'text/javascript';
-      wf.async = 'true';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(wf, s);
-    })(); </script>
 
 
 

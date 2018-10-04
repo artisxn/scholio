@@ -702,7 +702,7 @@ class RoutesController extends Controller
     public function schools()
     {
         $title = request()->q;
-        $schools = AlgoliaSchool::search($title)->get();
+        $schools = AlgoliaSchool::search($title)->take(5)->get();
         $settings = SchoolSetting::all()->pluck('statistics');
         $reviews = SchoolSetting::all()->pluck('reviews');
         if (!$title) {
