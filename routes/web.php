@@ -43,10 +43,8 @@ Route::get('cwebp', function () {
         // $school->logo = 
         // if($school->id >=251 && $school->id <=330){
         // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $section->icon . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -3) . 'webp');
-
-        $school->logo = substr($school->logo, 0, -4) . 'webp';
-        $school->image = substr($school->image, 0, -4) . 'webp';
-        // dd($school->logo);
+        $school->logo = substr($school->logo, 0, -5) . 'webp';
+        $school->image = substr($school->image, 0, -5) . 'webp';
         $school->save();
         // // foreach($school->image as $image){
         // //     $image->path = substr($image->full_path, 0, -3) . 'webp';
