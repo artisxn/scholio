@@ -11,6 +11,7 @@
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="/js/loadCSS.js"></script>
 
 
     <title>{{ $title }} | Schol.io</title>
@@ -46,35 +47,29 @@
     @include('public.styles')
 
     <!-- Algolia CSS -->
-    {{--<link rel="stylesheet" href="/new/css/algolia.css"></link>--}}
-    <link rel="stylesheet" href="/new/css/algolia-search.css"/>
+    <link as="style" onload="this.rel='stylesheet'" rel="preload" href="/new/css/algolia-search.css"/>
 
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
+    <link as="style" onload="this.rel='stylesheet'" rel="preload" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 
 
     {{--<!-- FontAwesome -->--}}
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+    {{--<link rel="preload" as="style" onload="this.rel='stylesheet'" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
 
     <!-- Bootstrap Select -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+    <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
     <!-- Ribbon CSS -->
-     <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">
+     <link href="{{asset('new/css/ribbon.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
 
     <!-- Hexagon CSS -->
-    <link href="/new/css/Hexagon.css" rel="stylesheet">
+    <link href="/new/css/Hexagon.css" rel="preload" as="style" onload="this.rel='stylesheet'">
 
     <!-- Input Range CSS -->
-    <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">
+    <link href="{{asset('new/css/input-range.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
 
     <!-- Results CSS -->
-    <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
+    <link href="{{asset('new/css/results.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
 
-    <!-- Algolia InstantSearch CSS -->
-    {{--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">--}}
-
-    <!-- Angular Material  CSS -->
-    {{-- <link href="{{asset('new/css/angular-material.css')}}" rel="stylesheet">--}}
 
 <script>
     window.REVIEWS = {{ $reviews }};

@@ -25,6 +25,7 @@
     "chart.js": "^2.5.0",
     "croppie": "^2.5.1",
     "disable-scroll": "^0.4.0",
+    "fg-loadcss": "^2.0.1",
     "fullpage-vue": "^1.8.0",
     "fullpage.js": "^2.9.5",
     "jquery.caret": "^0.3.1",
