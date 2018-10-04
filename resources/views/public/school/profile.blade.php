@@ -449,7 +449,7 @@
                                     <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
                                 </li> -->
                                 @foreach($school->image as $image)
-                                    <li><img class="bx-img" id="{{$image->full_path}}" src="{{$image->full_path}}"  onclick="test(event.target)"/></li>
+                                    <li><img class="bx-img" id="{{$image->full_path}}" src="{{$image->path}}"  onclick="test(event.target)"/></li>
                                 @endforeach
                              @endif
                         </ul>
@@ -633,7 +633,7 @@
                                         @endif
                                         @if($school->type->id != 2)
                                             <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0"> 
-                                                 {{ $level["level"]->name }} 
+                                                 {{ $level["level"]["name"] }} 
                                             </div>
                                         @endif
 
@@ -647,10 +647,10 @@
                                         @endif
 
                                                 <li class="margin-top-10 margin-left-10">
-                                                    <img src="{{ $section['section']->icon }}" alt=""
+                                                    <img src="{{ $section['section']['icon'] }}" alt=""
                                                          style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
                                                     <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%;" >
-                                                        {{ $section["section"]->name }}
+                                                        {{ $section["section"]["name"] }}
                                                     </span>
                                                 </li>
 
@@ -659,11 +659,11 @@
                                                     <li class="pad-top-7 margin-left-10">
                                                         @if($study["link"] != '')
                                                         <span class="font-weight-300">
-                                                            <a href="/studylink/redirect/{{ $school->id }}/{{ $study['study']->id }}" target="_blank">{{ $study["study"]->name }}</a>
+                                                            <a href="/studylink/redirect/{{ $school->id }}/{{ $study['study']['id'] }}" target="_blank">{{ $study["study"]["name"] }}</a>
                                                         </span>
                                                         @else
                                                         <span class="  font-weight-300">
-                                                            {{ $study["study"]->name }}
+                                                            {{ $study["study"]["name"] }}
                                                         </span>
                                                         @endif
                                                     </li>

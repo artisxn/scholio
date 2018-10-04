@@ -1,12 +1,15 @@
 <?php
 
+use App\Models\AlgoliaSchool;
 use App\Models\School;
 use App\Models\SchoolLinks;
 use App\Models\Study;
 use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Illuminate\Support\Facades\Route;
-use App\Models\AlgoliaSchool;
+use App\Models\DummyLevelsData;
+use App\Models\Section;
+use App\Models\Level;
 // auth()->loginUsingId(70);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
@@ -15,12 +18,69 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
-Route::get('aaqq', function(){
+Route::get('cwebp', function () {
 
-    
-    foreach(School::all() as $school){
+    foreach (School::all() as $school) {
+        // if($school->id >=251 && $school->id <=330){
+        // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $school->logo . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $school->logo, 0, -3) . 'webp');
 
-        if($school->id >= 312){
+        // $school->logo = substr($school->logo, 0, -3) . 'webp';
+        // $school->save();
+        // // foreach($school->image as $image){
+        // //     $image->path = substr($image->full_path, 0, -3) . 'webp';
+        // //     $image->save();
+        // //     // dd('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio' . $image->full_path, 0, -3) . 'webp');
+        // //     // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $image->full_path, 0, -3) . 'webp');
+        // // }
+        // echo 'School ' . $school->name() . 'ready <br>';
+        // }
+    }
+
+    // shell_exec($s->);
+});
+
+Route::get('/dummytest/{from}/{to}', function ($from, $to) {
+    ini_set('max_execution_time', 180);
+    foreach (School::all() as $school) {
+        if ($school->id >= $from && $school->id <= $to) {
+
+            $studies = [];
+            $data = [];
+            $sections = [];
+
+            $schoolLevels = $school->levels();
+            $levelsCounter = 0;
+
+            foreach ($schoolLevels as $level) {
+                $levelsCounter++;
+                foreach ($school->section($level) as $section) {
+                    foreach ($school->studyFromSection($section) as $study) {
+                        array_push($studies, ['study' => Study::find($study)->load('user'), 'link' => $school->study()->where('study_id', $study)->first()->pivot->url]);
+                    }
+
+                    array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+                    $studies = [];
+                }
+                array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+                $sections = [];
+            }
+            // dd();
+
+
+
+            $dump = new DummyLevelsData;
+            $dump->school_id = $school->id;
+            $dump->data = json_encode($data);
+            $dump->save();
+        }
+    }
+});
+
+Route::get('aaqq', function () {
+
+    foreach (School::all() as $school) {
+
+        if ($school->id >= 312) {
             $alg = AlgoliaSchool::where('school_id', $school->id)->first();
             $alg->scholioranking = 50;
             $alg->save();
@@ -42,7 +102,7 @@ Route::get('/saveStudyLink', function () {
         $studyLink = $school->study()->where('study_id', $study)->first();
         $studyLink->pivot->url = $link;
         $studyLink->pivot->save();
-        
+
     } catch (\Exception $e) {
         $message = $e;
     }
@@ -50,8 +110,7 @@ Route::get('/saveStudyLink', function () {
     return back();
 });
 
-Route::get('www', function(){
-    
+Route::get('www', function () {
 
     $school = auth()->user()->info;
 
@@ -59,7 +118,7 @@ Route::get('www', function(){
 
     return $school->study()->where('study_id', $study->id)->first()->pivot->url;
 
-    if($school->study()->where('study_id', $study->id)->exists()){
+    if ($school->study()->where('study_id', $study->id)->exists()) {
         return 'NAI';
     }
 
@@ -160,7 +219,7 @@ Route::get('/studylink/redirect/{school}/{study}/', function (School $school, St
 
 });
 
-Route::get('/search/kollegio/athina', function(){
+Route::get('/search/kollegio/athina', function () {
     return redirect('https://schol.io/public/schools?q=%CE%9A%CE%BF%CE%BB%CE%BB%CE%B5%CE%B3%CE%B9%CE%B1%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1');
 });
 
