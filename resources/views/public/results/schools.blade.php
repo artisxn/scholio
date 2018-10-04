@@ -593,9 +593,10 @@
             </div> <!-- //row-->
         </div> <!-- //container-->
     </main>
-
     <!-- Footer -->
     @include('public.footer')
+</body>
+    
     
         <!-- Bootstrap js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -629,7 +630,7 @@
         <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
         <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
-</body>
+
 
 
 <script>
