@@ -713,7 +713,7 @@
 						<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12  col-xxxs-12">
 							<div class="grid">
 								<figure class="effect-lily sc-landing-card ">
-									<img src="image.png" data-src="{{asset('new/img/sect-photo/belfast2.jpg')}}" alt="Ιδιωτικά Σχολεία" style="" class="img-responsive lozad" />
+									<img src="image.png" data-src="{{asset('new/img/sect-photo/belfast2.webp')}}" alt="Ιδιωτικά Σχολεία" style="" class="img-responsive lozad" />
 
 									<figcaption>
 										<div class="centered-text">
@@ -733,7 +733,7 @@
 							<div class=" col-lg-7 col-md-7 col-sm-6 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card">
-										<img src="image.png" data-src="{{asset('new/img/sect-photo/college.jpg')}}" alt="Κολλέγια" style="" class="img-responsive lozad" />
+										<img src="image.png" data-src="{{asset('new/img/sect-photo/college.webp')}}" alt="Κολλέγια" style="" class="img-responsive lozad" />
 
 									<figcaption>
 										<div class="centered-text">
@@ -751,7 +751,7 @@
 							<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 col-xxxs-12">
 								<div class="grid">
 									<figure class="effect-lily sc-landing-card ">
-										<img src="image.png" data-src="{{asset('new/img/sect-photo/doctor.jpg')}}" alt="ΙΕΚ" style="" class="img-responsive lozad" />
+										<img src="image.png" data-src="{{asset('new/img/sect-photo/doctor.webp')}}" alt="ΙΕΚ" style="" class="img-responsive lozad" />
 
 										<figcaption>
 											<div class="centered-text">
@@ -771,7 +771,7 @@
 						<div class=" col-lg-5 col-md-5  col-sm-6 col-xs-12 col-xxxs-12">
 							<div class="grid">
 								<figure class="effect-lily sc-landing-card ">
-									<img src="{{asset('new/img/sect-photo/student.jpg')}}" alt="Φροντιστήρια" style="" class="img-responsive " />
+									<img src="{{asset('new/img/sect-photo/student.webp')}}" alt="Φροντιστήρια" style="" class="img-responsive lozad" />
 
 									<figcaption>
 										<div class="centered-text">
@@ -829,7 +829,7 @@
 			<div class="sc-landing-sec3-content">
 				<div class="row ">
 					<div class=" col-sm-7 col-lg-8 col-xs-12 margin-top-50">
-						<img class="img-responsive lozad" src="image.png" data-src="{{asset('new/img/iMac-sm.png')}}" alt="scholio Features">
+						<img class="img-responsive lozad" src="image.png" data-src="{{asset('new/img/iMac-sm.webp')}}" alt="scholio Features">
 
 						<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" style="  ">
 							<!-- Indicators -->
@@ -844,26 +844,26 @@
 							<div class="carousel-inner">
 								<div class="item active">
 									{{--<img src="/new/img/ScreenSchools.jpg" alt="schools image" class="carousel-img">--}}
-									<img src="image.png" data-src="/new/img/screen1b.jpg" alt="Σχολεία" class="carousel-img lozad">
+									<img src="image.png" data-src="/new/img/screen1b.webp" alt="Σχολεία" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 								<div class="item">
 									{{--<img src="/new/img/ScreenScholarships.jpg" alt="scholarships image" class="carousel-img">--}}
-									<img src="image.png" data-src="/new/img/screen2b.jpg" alt="Υποτροφίες" class="carousel-img lozad">
+									<img src="image.png" data-src="/new/img/screen2b.webp" alt="Υποτροφίες" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 								<div class="item">
 									{{--<img src="/new/img/ScreenTrophy.jpg" alt="trophy image" class="carousel-img">--}}
-									<img src="image.png" data-src="/new/img/screen3b.jpg" alt="Διεκδίκηση Υποτροφιών" class="carousel-img lozad">
+									<img src="image.png" data-src="/new/img/screen3b.webp" alt="Διεκδίκηση Υποτροφιών" class="carousel-img lozad">
 									<div class="carousel-caption">
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<img class="img-responsive iphone-ipad-sm lozad" src="image.png" data-src="{{asset('new/img/iPad-iPhone-macBook-sm.png')}}" alt="Ιδιωτικά Σχολεία">
+						<img class="img-responsive iphone-ipad-sm lozad" src="image.png" data-src="{{asset('new/img/iPad-iPhone-macBook-sm.webp')}}" alt="Ιδιωτικά Σχολεία">
 
 
 					</div>
@@ -927,14 +927,14 @@
 					<div class="sch-reg-title text-incr-175 font-weight-300 centered-text hidden-xs hidden-sm" style="">@lang('main.about.institutions.title')</div>
 
 					<div style="position: relative" class="hidden-xs">
-						<img src="image.png" data-src="/new/img/ipad6.png" class="ipad lozad" alt="ipad">
+						<img src="image.png" data-src="/new/img/ipad6.webp" class="ipad lozad" alt="ipad">
 					</div>
 
 					<div style="position: relative" class="text-incr-125 sc-t-white">
-						<img src="image.png" data-src="/new/img/BannerVertical3.png" class="banner lozad" style="z-index: 0" alt="banner">
+						<img src="image.png" data-src="/new/img/BannerVertical3.webp" class="banner lozad" style="z-index: 0" alt="banner">
 
 						<div class="text-container center-block">
-							<img height="290px" width="auto" src="image.png" data-src="/new/img/iphone.png" class="iphone lozad" alt="iphone"> {{--
+							<img height="290px" width="auto" src="image.png" data-src="/new/img/iphone.webp" class="iphone lozad" alt="iphone"> {{--
 								<div style="height: 400px; width: 300px; background-color: #00b9d2; margin: 20px 0; position: absolute; z-index: 0"></div>--}}
 
 
@@ -1051,23 +1051,23 @@
 				<div class="col-sm-3 col-xs-6"><a href="http://www.eoellas.org/" target="_blank" rel="noopener"><img class="img-support img-support4 lozad" src="image.png" data-src="/new/img/support/eoelogo.png" alt="eoe image"></a></div> -->
 				<div class="col-sm-3 col-xs-6 img-support-container">
 					<a href="https://www.venturegarden.gr/" target="_blank">
-						<img class="imgGray img-support img-support1"  rel="noopener" src="/new/img/support/venturegarden-logo-green.png" alt="venture image" ng-mouseover="overVenture=true"  ng-mouseleave="overVenture=false" ng-class="{imgFull: (overVenture==true)}">
+						<img class="imgGray img-support img-support1"  rel="noopener" src="/new/img/support/venturegarden-logo-green.webp" alt="venture image" ng-mouseover="overVenture=true"  ng-mouseleave="overVenture=false" ng-class="{imgFull: (overVenture==true)}">
 					</a>
 				</div>
 
 				<div class="col-sm-3 col-xs-6 img-support-container">
 					<a href="http://www.thermi-group.com/" target="_blank">
-						<img class="imgGray img-support img-support2"  rel="noopener" src="/new/img/support/thermi-logo.png" alt="thermi image" ng-mouseover="overThermi=true"  ng-mouseleave="overThermi=false" ng-class="{imgFull: (overThermi==true)}">
+						<img class="imgGray img-support img-support2"  rel="noopener" src="/new/img/support/thermi-logo.webp" alt="thermi image" ng-mouseover="overThermi=true"  ng-mouseleave="overThermi=false" ng-class="{imgFull: (overThermi==true)}">
 					</a>
 				</div>
 				<div class="col-sm-3 col-xs-6 cl-fix ">
 					<a href="http://ideatree.gr/" target="_blank">
-						<img class="imgGray img-support img-support3"  rel="noopener" src="/new/img/support/ideatree-logo.png" alt="ideatree image" ng-mouseover="overIdeatree=true"  ng-mouseleave="overIdeatree=false" ng-class="{imgFull: (overIdeatree==true)}">
+						<img class="imgGray img-support img-support3"  rel="noopener" src="/new/img/support/ideatree-logo.webp" alt="ideatree image" ng-mouseover="overIdeatree=true"  ng-mouseleave="overIdeatree=false" ng-class="{imgFull: (overIdeatree==true)}">
 					</a>
 				</div>
 				<div class="col-sm-3 col-xs-6">
 					<a href="http://www.eoellas.org/" target="_blank">
-						<img class="imgGray img-support img-support4"  rel="noopener" src="/new/img/support/eoelogo.png" alt="eoe image" ng-mouseover="overEoe=true"  ng-mouseleave="overEoe=false" ng-class="{imgFull: (overEoe==true)}">
+						<img class="imgGray img-support img-support4"  rel="noopener" src="/new/img/support/eoelogo.webp" alt="eoe image" ng-mouseover="overEoe=true"  ng-mouseleave="overEoe=false" ng-class="{imgFull: (overEoe==true)}">
 					</a>
 				</div>
 
