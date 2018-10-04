@@ -589,7 +589,7 @@
         </div> <!-- //container-->
     </main>
     
-</body>
+
     
     
         <!-- Bootstrap js-->
@@ -625,7 +625,7 @@
         <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
 
-
+    </body>
 
 <script>
     function showMap(){
@@ -1014,7 +1014,7 @@ angular.module("schoolsResultsApp",[])
 
 
     var noResultsTemplate =
-            '<div class="text-center">@lang('schools.error') <strong>@{{query}}</strong>.</div>';
+            "<div class='text-center'>@lang('schools.error') <strong>@{{query}}</strong>.</div>";
 
     var menuTemplate =
             '<a href="javascript:void(0);" class="facet-item @{{#isRefined}}active@{{/isRefined}}"><span class="facet-name"><i class="fa fa-angle-right"></i> @{{name}}</span class="facet-name"><span class="counter">@{{count}}</span></a>';
@@ -1080,8 +1080,8 @@ angular.module("schoolsResultsApp",[])
                 labels: {
                     previous: '' +
 //                    '<i class="fa fa-angle-left fa-2x"></i>' +
-                    ' @lang('schools.prev_page')',
-                    next: '@lang('schools.next_page') '
+                    " @lang('schools.prev_page')",
+                    next: "@lang('schools.next_page') "
 
 //                            '<i class="fa fa-angle-right fa-2x"></i> '
                 },
@@ -1141,7 +1141,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.clearAll({
                 container: '#clear-all',
                 templates: {
-                    link: '<i class="fa fa-ban margin-right-5"></i>@lang('schools.filters.delete')'
+                    link: "<i class='fa fa-ban margin-right-5'></i>@lang('schools.filters.delete')"
                 },
                 cssClasses: {
                     root: 'btn btn-block btn-default'
@@ -1154,7 +1154,7 @@ angular.module("schoolsResultsApp",[])
             instantsearch.widgets.clearAll({
                 container: '#clear-allMobile',
                 templates: {
-                    link: '<i class="fa fa-ban margin-right-5"></i>@lang('schools.filters.delete')'
+                    link: "<i class='fa fa-ban margin-right-5'></i>@lang('schools.filters.delete')"
                 },
                 cssClasses: {
                     root: 'btn btn-block btn-default'

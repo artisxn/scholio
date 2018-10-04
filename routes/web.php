@@ -100,13 +100,10 @@ Route::get('/dummytest/{from}/{to}', function ($from, $to) {
 });
 
 Route::get('aaqq', function () {
-
+    ini_set('max_execution_time', 500);
     foreach (School::all() as $school) {
 
         if ($school->id >= 312) {
-            $alg = AlgoliaSchool::where('school_id', $school->id)->first();
-            $alg->scholioranking = 50;
-            $alg->save();
             $alg->{'categories.lvl0'} = $school->city;
             $alg->{'categories.lvl1'} = $school->city . " > " . $school->region;
             $alg->searchable();

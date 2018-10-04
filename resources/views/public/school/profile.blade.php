@@ -1542,8 +1542,6 @@
     <!-- Footer -->
     @include('public.footer')
 
-    {{--
-    <!-- GoogleMap API -->--}}
     <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyDCdWDTJpvexNyV0DzIpbR69XatKp9Litg"></script>
 
 
@@ -1561,12 +1559,10 @@
 
     <!-- BX Slider-->
     <script src="/new/js/jquery.bxslider412.js"></script>
-    <!--<script src="http://bxslider.com/lib/jquery.bxslider.js"></script>-->
 
     <!--  -->
     <script src="/new/js/profile.js"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-799029410"></script>
 
 
 
@@ -1642,12 +1638,6 @@
 
     var lengthStudents = 0;
 
-    // $.nonbounce();
-
-    // $(document).on("scroll",function(){
-    //     var documentHeight = $(window).height();
-    //     $('#xs-submButton').css('bottom',documentHeight);
-    // });
 
     $(function () {
         var bt = $('#connectionButton');
@@ -1754,7 +1744,7 @@
 
                     if (scholarship.userInterested) {
                         $('#i' + scholarship.id).toggleClass('fa-thumbs-up fa-thumbs-o-up');
-                        $('#t' + scholarship.id).text('@lang('profile.scholarship.button.like')')
+                        $('#t' + scholarship.id).text("@lang('profile.scholarship.button.like')")
                         $('#b' + scholarship.id).css("background-color", "#ccc");
                     }
                 }, 30);
@@ -1786,15 +1776,15 @@
                 $scope.col_iek_eng_dan_mus = false;
                 $scope.sxoleio = false;
 
-                @if (auth() -> check() && auth() -> user() -> role == 'student')
+                @if(auth()->check() && auth()->user()->role == 'student')
                     $scope.getSchoolStudies();
-                @elseif(auth() -> check() && auth() -> user() -> role == 'teacher')
+                @elseif(auth()->check() && auth()->user()-> role == 'teacher')
                 $scope.showButton = true
                 // $scope.getSchoolSections();
                 @endif
 
                 var apiLink = '';
-                @if (auth() -> check())
+                @if(auth()->check())
                     apiLink = '/api/profile/auth/{{ $id }}';
                 @else
                 apiLink = '/api/profile/{{ $id }}';
@@ -1944,7 +1934,7 @@
                             }
                         }
                     }
-                    @if ($school -> settings -> map)
+                    @if($school->settings->map)
                         $scope.mapInitial()
                     @endif
                 }
