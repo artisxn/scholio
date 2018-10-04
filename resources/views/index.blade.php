@@ -261,7 +261,7 @@
 					<div class="sc-landing-logo-sticky " style=" padding-top: 15px">
 						{{--
                         <img src="image.png" data-src="{{asset('new/img/logo.png')}}" class="sc-logo lozad" alt="scholio logo">--}}
-						<img src="image.png" data-src="{{asset('new/img/logoNX.png')}}" class="sc-logo lozad" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+						<img src="image.png" data-src="{{asset('new/img/logoNX.webp')}}" class="sc-logo lozad" alt="scholio logo" style="height: 63px; padding-top: 2px;">
 
 					</div>
 				</a>

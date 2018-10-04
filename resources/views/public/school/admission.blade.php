@@ -298,7 +298,7 @@
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
                         {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
-                        <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                        <img src="{{asset('new/img/logoNX.webp')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
                     </div>
                 </a>
             </div>
@@ -360,7 +360,7 @@
                 <div class="">
                     <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                         <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                            <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                            <img src="{{asset('new/img/collapse-dark2.webp')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
                             {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                         </div>
                     </div>

@@ -324,7 +324,7 @@
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
                         {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
-                        <img src="{{asset('new/img/logoNX.png')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                        <img src="{{asset('new/img/logoNX.webp')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
                     </div>
                 </a>
             </div>
@@ -411,7 +411,7 @@
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                <img src="{{asset('new/img/collapse-dark2.webp')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
                                 {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
@@ -983,11 +983,11 @@ angular.module("schoolsResultsApp",[])
 
 
             @{{^stats}}
-            <img src="/new/img/bars2.png" class="backImageLg" style=""></img>
+            <img src="/new/img/bars2.webp" class="backImageLg" style=""></img>
             @{{/stats}}
 
             @{{#stats}}
-            <img src="/new/img/bars2.png" class="backImageSm" style=""></img>
+            <img src="/new/img/bars2.webp" class="backImageSm" style=""></img>
             @{{/stats}}
             <div class="hidden-xs" style=" height: 100px; width: 40%; position: absolute; z-index: 2; left: 20px; bottom: -26px;
             background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, #fff 100%);

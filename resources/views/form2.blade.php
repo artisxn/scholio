@@ -65,7 +65,7 @@
 			<div class="fs-form-wrap" id="fs-form-wrap">
 				<div class="fs-title">
 					<h1>
-						<img src="/new/img/logoNX.png" width="170px">
+						<img src="/new/img/logoNX.webp" width="170px">
 					</h1>
 				</div>
 				<form id="myform" class="fs-form fs-form-full" autocomplete="off">

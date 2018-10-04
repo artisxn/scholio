@@ -362,7 +362,7 @@
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo" style="height:22px; margin-top: 7px;">
+                                <img src="{{asset('new/img/collapse-dark2.webp')}}" alt="scholio logo" style="height:22px; margin-top: 7px;">
                                 {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
