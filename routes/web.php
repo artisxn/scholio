@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\DummyLevelsData;
 use App\Models\Section;
 use App\Models\Level;
+use App\Models\Image;
 // auth()->loginUsingId(70);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
@@ -38,14 +39,16 @@ Route::get('cwebp', function () {
         
     // }
 
-    foreach (School::all() as $school) {
+    foreach (Image::all() as $image) {
+        $image->path = substr($image->path, 0, -3) . 'webp';;
+        $image->save();
 
         // $school->logo = 
         // if($school->id >=251 && $school->id <=330){
         // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $section->icon . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -3) . 'webp');
-        $school->logo = substr($school->logo, 0, -3) . 'webp';
+        // $school->logo = substr($school->logo, 0, -3) . 'webp';
         // $school->image = substr($school->image, 0, -5) . 'webp';
-        $school->save();
+        // $school->save();
         // // foreach($school->image as $image){
         // //     $image->path = substr($image->full_path, 0, -3) . 'webp';
         // //     $image->save();
