@@ -648,7 +648,7 @@
             var marker = new google.maps.Marker({
                 position: {lat: hit._geoloc.lat, lng: hit._geoloc.lng},
                 map: map,
-                icon:"/../new/img/markers/marker-teal-sm.png",
+                icon:"/../new/img/markers/marker-teal-sm.webp",
                 airport_id: hit.objectID,
                 title: hit.name + ' - ' + hit.city + ' - ' + hit.country
             });

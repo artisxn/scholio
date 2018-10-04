@@ -1989,7 +1989,7 @@
                     position: myLatlng,
                     //animation: google.maps.Animation.DROP,
                     title: $scope.contactInfo.name,
-                    icon: "/../new/img/markers/marker-teal-sm.png",
+                    icon: "/../new/img/markers/marker-teal-sm.webp",
                     map: map,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
 
@@ -1998,7 +1998,7 @@
                     position: myLatlng,
                     //animation: google.maps.Animation.DROP,
                     title: $scope.contactInfo.name,
-                    icon: "/../new/img/markers/marker-teal-sm.png",
+                    icon: "/../new/img/markers/marker-teal-sm.webp",
                     map: mapXS,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
 

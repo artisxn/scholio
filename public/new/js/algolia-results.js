@@ -248,7 +248,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                         animation: google.maps.Animation.DROP,
                         visible: false,
                         //title:filterMark[i].name,
-                        icon:"/../new/img/markers/marker-teal-sm.png",
+                        icon:"/../new/img/markers/marker-teal-sm.webp",
                         map: map
                     });
 
@@ -288,7 +288,7 @@ angular.module("resultsApp",['ui.bootstrap','ngAnimate'])
                 var markers = markers.map(function(location, i) {
                           return new google.maps.Marker({
                             position: location,
-                            icon:"/../new/img/markers/marker-teal-sm.png",
+                            icon:"/../new/img/markers/marker-teal-sm.webp",
                             animation: google.maps.Animation.DROP,
                             label: labels[i % labels.length]
                           });
