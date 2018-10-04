@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Models\Section;
 use App\Models\Level;
+use App\Models\DummyLevelsData;
 
 class RoutesController extends Controller
 {
@@ -97,26 +98,30 @@ class RoutesController extends Controller
         if ($user->role == 'school') {
             $school = $user->info;
             $studies = [];
-            $data = [];
+            // $data = [];
             $sections = [];
 
-            $schoolLevels = $school->levels();
+            // $schoolLevels = $school->levels();
             $levelsCounter = 0;
 
-            foreach ($schoolLevels as $level) {
-                $levelsCounter++;
-                foreach ($school->section($level) as $section) {
-                    foreach ($school->studyFromSection($section) as $study) {
-                        array_push($studies, ['study' => Study::find($study)->load('user'), 'link' => $school->study()->where('study_id', $study)->first()->pivot->url]);
-                    }
+            // foreach ($schoolLevels as $level) {
+            //     $levelsCounter++;
+            //     foreach ($school->section($level) as $section) {
+            //         foreach ($school->studyFromSection($section) as $study) {
+            //             array_push($studies, ['study' => Study::find($study)->load('user'), 'link' => $school->study()->where('study_id', $study)->first()->pivot->url]);
+            //         }
 
-                    array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
-                    $studies = [];
-                }
-                array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
-                $sections = [];
-            }
-            // dd($data);
+            //         array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+            //         $studies = [];
+            //     }
+            //     array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+            //     $sections = [];
+            // }
+
+            $d = DummyLevelsData::where('school_id', 1)->first();
+            // dd($d);
+            $data = json_decode($d->data, true);
+            // dd($data[0]["level"]["name"]);
 
             if (Scholio::ProfileActive($school)) {
                 return view('public.school.profile')->withId($school->id)->withSchool($school)->withData($data)->withLevelsCounter($levelsCounter);
