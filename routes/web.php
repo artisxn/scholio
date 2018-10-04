@@ -46,6 +46,7 @@ Route::get('cwebp', function () {
 
         $school->logo = substr($school->logo, 0, -4) . 'webp';
         $school->image = substr($school->image, 0, -4) . 'webp';
+        // dd($school->logo);
         $school->save();
         // // foreach($school->image as $image){
         // //     $image->path = substr($image->full_path, 0, -3) . 'webp';
