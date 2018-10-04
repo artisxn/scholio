@@ -4,6 +4,10 @@ use App\Jobs\Algolia;
 use App\Models\School;
 use App\Scholio\Scholio;
 use Spatie\Sitemap\SitemapGenerator;
+use App\Models\Study;
+use App\Models\Section;
+use App\Models\Level;
+use App\Models\DummyLevelsData;
 
 /*
 |--------------------------------------------------------------------------
@@ -178,3 +182,35 @@ Artisan::command('scholio:algoliaScholarship {scholarship}', function () {
     dispatch(new Algolia($scholarship));
     $this->info('Scholarship ID: ' . $scholarship->id . ' inserted!');
 })->describe('Insert Schools in Algolia');
+
+Artisan::command('scholio:ppp', function(){
+    ini_set('max_execution_time', 500);
+    foreach (School::all() as $school) {
+
+            $studies = [];
+            $data = [];
+            $sections = [];
+
+            $schoolLevels = $school->levels();
+            $levelsCounter = 0;
+
+            foreach ($schoolLevels as $level) {
+                $levelsCounter++;
+                foreach ($school->section($level) as $section) {
+                    foreach ($school->studyFromSection($section) as $study) {
+                        array_push($studies, ['study' => Study::find($study)->load('user'), 'link' => $school->study()->where('study_id', $study)->first()->pivot->url]);
+                    }
+
+                    array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+                    $studies = [];
+                }
+                array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+                $sections = [];
+            }
+
+            $dump = new DummyLevelsData;
+            $dump->school_id = $school->id;
+            $dump->data = json_encode($data);
+            $dump->save();
+    }
+});

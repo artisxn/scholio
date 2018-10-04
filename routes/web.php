@@ -40,7 +40,7 @@ Route::get('cwebp', function () {
 });
 
 Route::get('/dummytest/{from}/{to}', function ($from, $to) {
-    ini_set('max_execution_time', 180);
+    ini_set('max_execution_time', 500);
     foreach (School::all() as $school) {
         if ($school->id >= $from && $school->id <= $to) {
 
