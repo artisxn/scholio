@@ -19,7 +19,7 @@ Auth::routes();
 Route::view('gdpr', 'gdpr');
 
 Route::get('cwebp', function () {
-
+    ini_set('max_execution_time', 1500);
     foreach(DummyLevelsData::all() as $dummy){
         $data = json_decode($dummy->data, true);
         foreach($data as $d){
