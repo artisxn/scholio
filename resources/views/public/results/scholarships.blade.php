@@ -169,7 +169,7 @@
                         <a class="" href="{{ url('/') }}">
                             <div class="navbar-brand  sc-landing-logo-sticky">
                                 {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
-                                <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+                                <img src="{{asset('new/img/logoNX-m.webp')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                             </div>
                         </a>
                     </div>
@@ -542,7 +542,7 @@ angular.module("scholarshipsResultsApp",[])
            <i id="report" class="fa fa-ellipsis-h report report-scholar" onClick="dropReport(@{{scholarship_id}})" ></i>
                 <!-- =================== Report  Menu ====================-->
             <div class="report-drop report-scholar-drop" id="report-drop@{{scholarship_id}}" style="overflow:hidden!important">
-            <img class="report-logo"  src="/new/img/logoNX-m.png" alt="" style="overflow:hidden!important">
+            <img class="report-logo"  src="/new/img/logoNX-m.webp" alt="" style="overflow:hidden!important">
             <span class="report-title"> Αναφορά </span>
             <form method="POST" action="/report/add/@{{scholarship_id}}/Scholarship" >
             {{ csrf_field() }}

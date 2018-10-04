@@ -88,7 +88,7 @@
                 <div class="panel-heading">
                     <div class="text-center">
                         <a href="/">
-                            {{--<img  class="register-scholio-logo"  src="/new/img/logoNX-m.png" alt="scholio logo">--}}
+                            {{--<img  class="register-scholio-logo"  src="/new/img/logoNX-m.webp" alt="scholio logo">--}}
 
 
                             <svg id="Logo-Defs" class="" baseProfile="tiny">

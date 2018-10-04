@@ -76,7 +76,7 @@
                 <div class="nav-mobile">
                     <a class="" href="{{ url('/') }}">
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            <img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+                            <img src="{{asset('new/img/logoNX-m.webp')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>

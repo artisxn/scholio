@@ -70,7 +70,7 @@
                     <div class="panel-heading">
                         <div class="text-center">
                             <a href="/">
-                                {{--<img src="/new/img/logoNX-m.png" alt="scholio logo" class="register-scholio-logo">--}}
+                                {{--<img src="/new/img/logoNX-m.webp" alt="scholio logo" class="register-scholio-logo">--}}
 
 
                                 <svg id="Logo-Defs" class="" baseProfile="tiny">

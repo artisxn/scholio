@@ -224,7 +224,7 @@
                 <!-- Scholio Branding -->
                     <div class=" ">
                         <img src="new/img/logoNX.png" class="visible-lg visible-md " alt="scholio logo" style="height: 60px;">
-                        <img src="new/img/logoNX-m.png" class="visible-xs visible-sm hidden-md " alt="scholio logo" style="height: 40px;">
+                        <img src="new/img/logoNX-m.webp" class="visible-xs visible-sm hidden-md " alt="scholio logo" style="height: 40px;">
 
                     </div>
             </div>

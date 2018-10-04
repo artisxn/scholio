@@ -4,7 +4,7 @@
         <div class="icon-c-logo">
 
             <img src="/new/img/logoNX-light-m.png" alt="logo-img" class="hidden-xs" height="45px">
-            <img src="/new/img/logoNX-m.png" alt="logo-img" class="visible-xs hidden-sm logo-m" >
+            <img src="/new/img/logoNX-m.webp" alt="logo-img" class="visible-xs hidden-sm logo-m" >
         </div>
           <span>
             <img src="/new/img/logoNX-light.png" alt="logo-img" class="" style="width: 110px; margin-left: -85px;">
