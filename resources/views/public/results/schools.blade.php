@@ -132,10 +132,6 @@
     }
 
 
-
-
-
-
     @media(min-width: 768px){
         .pad-top{padding-top: 10px;}
     }
