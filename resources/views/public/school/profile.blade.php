@@ -281,7 +281,7 @@
                     <!-- Scholio Branding -->
                     <a class="sc-landing-brand" href="{{ url('/') }}">
                         <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                            <img src="{{asset('new/img/logoNX.png')}}" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                            <img src="{{asset('new/img/logoNX.webp')}}" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
                         </div>
                     </a>
                 </div>
@@ -775,7 +775,7 @@
                                             @if($scholarship->multiple == 0)
                                             <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png">
                                             @else
-                                            <img class="hex-img" src="/panel/assets/images/steps/studies.png">
+                                            <img class="hex-img" src="/panel/assets/images/steps/studies.webp">
                                             @endif
                                         </div>
 
