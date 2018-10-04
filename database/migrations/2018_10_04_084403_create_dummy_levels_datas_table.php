@@ -17,6 +17,7 @@ class CreateDummyLevelsDatasTable extends Migration
             $table->increments('id');
             $table->integer('school_id');
             $table->json('data');
+            $table->integer('levelsCounter')->default(0);
             $table->timestamps();
         });
     }
