@@ -183,32 +183,26 @@ Artisan::command('scholio:algoliaScholarship {scholarship}', function () {
     $this->info('Scholarship ID: ' . $scholarship->id . ' inserted!');
 })->describe('Insert Schools in Algolia');
 
-// Artisan::command('scholio:ppp', function () {
-//     $school = School::find(106);
-//             $studies = [];
-//             $data = [];
-//             $sections = [];
+Artisan::command('scholio:ppp', function () {
+    ini_set('max_execution_time', 1500);
 
-//             $schoolLevels = $school->levels();
-//             $levelsCounter = 0;
+    foreach (Section::all() as $section) {
+      dd(substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4));  
+        // $school->logo = 
+        // if($school->id >=251 && $school->id <=330){
+        // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $section->icon . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -3) . 'webp');
+        shell_exec('cwebp -q 35 ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4) . 'png' . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4) . 'webp');
 
-//             foreach ($schoolLevels as $level) {
-//                 $levelsCounter++;
-//                 foreach ($school->section($level) as $section) {
-//                     foreach ($school->studyFromSection($section) as $study) {
-//                         array_push($studies, ['study' => Study::find($study)->load('user'), 'link' => $school->study()->where('study_id', $study)->first()->pivot->url]);
-//                     }
-
-//                     array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
-//                     $studies = [];
-//                 }
-//                 array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
-//                 $sections = [];
-//             }
-
-//             $dump = new DummyLevelsData;
-//             $dump->school_id = $school->id;
-//             $dump->data = json_encode($data);
-//             $dump->levelsCounter = $levelsCounter;
-//             $dump->save();
-// });
+        // $section->icon = substr($section->icon, 0, -3) . 'webp';
+        // $section->save();
+        $this->info('-- ' . $section->name . ' OK! --');
+        // // foreach($school->image as $image){
+        // //     $image->path = substr($image->full_path, 0, -3) . 'webp';
+        // //     $image->save();
+        // //     // dd('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio' . $image->full_path, 0, -3) . 'webp');
+        // //     // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $image->full_path, 0, -3) . 'webp');
+        // // }
+        // echo 'School ' . $school->name() . 'ready <br>';
+        // }
+    }
+});

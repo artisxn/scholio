@@ -20,14 +20,14 @@ Route::view('gdpr', 'gdpr');
 
 Route::get('cwebp', function () {
 
-    foreach (AlgoliaSchool::all() as $school) {
+    foreach (Section::all() as $section) {
         // $school->logo = 
         // if($school->id >=251 && $school->id <=330){
-        // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $school->logo . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $school->logo, 0, -3) . 'webp');
+        shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $section->icon . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -3) . 'webp');
 
-        $school->logo = substr($school->logo, 0, -3) . 'webp';
-        $school->image = substr($school->image, 0, -3) . 'webp';
-        $school->save();
+        $section->icon = substr($section->icon, 0, -3) . 'webp';
+        // $school->image = substr($school->image, 0, -3) . 'webp';
+        $section->save();
         // // foreach($school->image as $image){
         // //     $image->path = substr($image->full_path, 0, -3) . 'webp';
         // //     $image->save();
