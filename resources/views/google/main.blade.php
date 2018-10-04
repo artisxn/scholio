@@ -1,25 +1,3 @@
-{{-- <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "url": "https://schol.io",
-  }
-  </script> --}}
-
-  <!--
-  "contactPoint": [{
-    "@type": "Education Technology",
-  }],
-  "sameAs": [
-    "https://www.facebook.com/scholioapp/",
-    "https://twitter.com/ScholioApp",
-    "https://www.instagram.com/schol.io/",
-    "https://www.linkedin.com/company/18063117/",
-    "https://www.youtube.com/channel/UCvjhFZreE17xlGyBewKpYoA/"
-  ],
-
--->
-
 <script type=”application/ld+json”>
 {
   "@context": "http://schema.org",
@@ -38,7 +16,7 @@
 <meta name="theme-color" content="#008da5">
 <!-- DEEAED -->
 
-
+@if(request()->path() == '/')
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -57,6 +35,7 @@
   logged_in_greeting="Γεια σας, πως μπορουμε να σας βοηθήσουμε;"
   logged_out_greeting="Γεια σας, πως μπορουμε να σας βοηθήσουμε;">
 </div>
+@endif
 
 <style>
   .cookie-consent{
