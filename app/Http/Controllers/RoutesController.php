@@ -101,7 +101,7 @@ class RoutesController extends Controller
             $data = [];
             $sections = [];
 
-            $schoolLevels = $school->levels();
+            // $schoolLevels = $school->levels();
             $levelsCounter = 0;
 
             // foreach ($schoolLevels as $level) {
