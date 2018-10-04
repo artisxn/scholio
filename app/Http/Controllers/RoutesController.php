@@ -121,6 +121,7 @@ class RoutesController extends Controller
             $d = DummyLevelsData::where('school_id', $school->id)->first();
             // dd($d);
             $data = json_decode($d->data, true);
+            $levelsCounter = $d->levelsCounter;
             // dd($data[0]["level"]["name"]);
 
             if (Scholio::ProfileActive($school)) {
