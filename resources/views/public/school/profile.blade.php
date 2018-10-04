@@ -645,7 +645,7 @@
                                     <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
                                 </li> -->
                                 @foreach($school->image as $image)
-                                    <li><img class="bx-img" id="{{$image->full_path}}" src="{{$image->full_path}}"  onclick="test(event.target)"/></li>
+                                    <li><img class="bx-img" id="{{$image->full_path}}" src="{{$image->path}}"  onclick="test(event.target)"/></li>
                                 @endforeach
                              @endif
                         </ul>

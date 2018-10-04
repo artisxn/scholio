@@ -15,6 +15,28 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
+Route::get('cwebp', function(){
+
+    foreach(School::all() as $school){
+        // if($school->id >=251 && $school->id <=330){
+            // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $school->logo . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $school->logo, 0, -3) . 'webp');
+
+            $school->logo = substr($school->logo, 0, -3) . 'webp';
+            $school->save();
+            // foreach($school->image as $image){
+            //     $image->path = substr($image->full_path, 0, -3) . 'webp';
+            //     $image->save();
+            //     // dd('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio' . $image->full_path, 0, -3) . 'webp');
+            //     // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $image->full_path, 0, -3) . 'webp');
+            // }
+            echo 'School ' . $school->name() . 'ready <br>';
+        // }
+    }
+
+    
+    // shell_exec($s->);
+});
+
 Route::get('aaqq', function(){
 
     
