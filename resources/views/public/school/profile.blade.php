@@ -773,7 +773,7 @@
                                         </div>
                                         <div class="hexagon hex2">
                                             @if($scholarship->multiple == 0)
-                                            <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png">
+                                            <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.webp">
                                             @else
                                             <img class="hex-img" src="/panel/assets/images/steps/studies.webp">
                                             @endif
@@ -1328,7 +1328,7 @@
                                         x
 
                                     </button>
-                                    <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left sc-logo"
+                                    <img src="/new/img/logoNX-light-m.webp" alt="scholio logo" class="pull-left sc-logo"
                                         style="margin-top: 14px;">
                                     <h3 class="pull-left panel-title" style="margin: 20px 0 0 15px;">@lang('profile.request')</h3>
                                 </div>
@@ -1424,7 +1424,7 @@
                                         x
 
                                     </button>
-                                    <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left sc-logo"
+                                    <img src="/new/img/logoNX-light-m.webp" alt="scholio logo" class="pull-left sc-logo"
                                         style="margin-top: 14px;">
                                     <h3 class="pull-left panel-title" style="margin: 20px 0 0 15px;">Αίτημα
                                         Ενδιαφέροντος</h3>
@@ -1517,7 +1517,7 @@
                                     x
 
                                 </button>
-                                <img src="/new/img/logoNX-light-m.png" alt="scholio logo" class="pull-left">
+                                <img src="/new/img/logoNX-light-m.webp" alt="scholio logo" class="pull-left">
                                 <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Υποτροφία @{{'>> send
                                     id here <<<'}}</h3> </div> </div> <div class="panel-body">
                                         <img class="pull-left margin-right-10" style="height: 45px;" ng-src="{{ $school->logo}}">
