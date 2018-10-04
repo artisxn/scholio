@@ -101,13 +101,11 @@ Route::get('/dummytest/{from}/{to}', function ($from, $to) {
 
 Route::get('aaqq', function () {
     ini_set('max_execution_time', 500);
-    foreach (School::all() as $school) {
+    foreach (AlgoliaSchool::all() as $alg) {
 
-        if ($school->id >= 312) {
-            $alg->{'categories.lvl0'} = $school->city;
-            $alg->{'categories.lvl1'} = $school->city . " > " . $school->region;
+            $alg->{'categories.lvl0'} = $alg->city;
+            $alg->{'categories.lvl1'} = $alg->city . " > " . $alg->region;
             $alg->searchable();
-        }
     }
 });
 
