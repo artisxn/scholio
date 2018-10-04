@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <script>
-        window.Scholio = <? php echo json_encode([
+        window.Scholio = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
