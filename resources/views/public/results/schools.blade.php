@@ -796,14 +796,28 @@ angular.module("schoolsResultsApp",[])
 
         <con>
 
-            <photo class="">
+            <photo>
                 <a href="/public/profile/@{{school_id}}">
-                    <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url(@{{image}})">
+                    <picture>
+                            <source srcset="@{{image}}" type="image/webp">
+                            <source srcset="@{{image2}}.jpg" type="image/jpeg">
+                            <img id="img0" class="card-photo pull-left" src="@{{image2}}.jpg">
+                    </picture>
                 </a>
             </photo>
             <div class="card-ribbon">
-                <img id="img2" class=" sc-white img-med hidden-lg hidden-xs" src="@{{logo}}">
-                <img id="img3" class=" sc-white img-thumb hidden-lg hidden-md hidden-sm" src="@{{logo)}}">
+                <picture>
+                        <source srcset="@{{logo}}" type="image/webp">
+                        <source srcset="@{{logo2}}.png" type="image/png">
+                        <img id="img2" class="sc-white img-med hidden-lg hidden-xs" src="@{{logo2}}.png" alt="logo">
+                </picture>
+
+                <picture>
+                        <source srcset="@{{logo}}" type="image/webp">
+                        <source srcset="@{{logo2}}.png" type="image/png">
+                        <img id="img3" src="@{{logo2}}.png" class="sc-white img-thumb hidden-lg hidden-md hidden-sm">
+                </picture>
+                
             </div>
         </con>
 
@@ -858,7 +872,12 @@ angular.module("schoolsResultsApp",[])
 
 
                 <a href="/public/profile/@{{school_id}}" target="_blank">
-                <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="@{{logo.substr(0, -4)}}.png">
+                
+                <picture>
+                        <source srcset="@{{logo}}" type="image/webp">
+                        <source srcset="@{{logo2}}.png" type="image/png">
+                            <img id="img1" class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="@{{logo2}}.png">
+                </picture>
                 </a>
                 <span class="pull-left">
                     <h5 class="pad-top-10 titleName"> <a href="/public/profile/@{{school_id}}"> @{{name}}</a></h5>
