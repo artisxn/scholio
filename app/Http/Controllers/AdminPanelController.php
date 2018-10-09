@@ -318,9 +318,7 @@ class AdminPanelController extends Controller
             $i->name = $savedImg;
             $i->alt = $school->name() . '-images';
             $i->extension = $image->getClientOriginalExtension();
-
             $i->save();
-
             $school->image()->toggle($i);
         }
 

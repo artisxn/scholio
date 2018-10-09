@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\Algolia;
 use App\Models\Card;
 use App\Models\Dummy;
 use App\Models\Financial;
+use App\Models\Image;
+use App\Models\Level;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolTypes;
+use App\Models\Section;
 use App\Models\Study;
 use App\Models\Tag;
 use App\Scholio\Scholio;
@@ -15,10 +19,6 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use App\Models\Level;
-use App\Models\Section;
-use App\Models\Image;
-use App\Jobs\Algolia;
 
 class ApiController extends Controller
 {
@@ -551,7 +551,7 @@ class ApiController extends Controller
     public function updateSchoolCard(Card $card, $field, $newValue)
     {
         $card->$field = $newValue;
-        if($field == 'fname' || $field == 'lname'){
+        if ($field == 'fname' || $field == 'lname') {
             $card->name = $card->fname . ' ' . $card->lname;
         }
         $error = null;
@@ -572,19 +572,23 @@ class ApiController extends Controller
         list(, $data) = explode(',', $data);
         $data = base64_decode($data);
         $ext = '.jpg';
-        $imageName = time() . $ext;
+        $name = time();
+        $imageName = $name . $ext;
         $schoolName = auth()->user()->info->type->name . '_' . auth()->user()->id . '_' . auth()->user()->name;
-        $path = public_path('upload/school/' . $schoolName . '/');
+        $path = public_path('upload/school/' . auth()->user()->username . '/');
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
         file_put_contents($path . $imageName, $data);
-        $imageUrl = url('upload/school/' . $schoolName . '/' . $imageName);
+
+        Scholio::makeWebp('upload/school/' . auth()->user()->username . '/' . $imageName, 'jpg');
+
+        $imageUrl = url('upload/school/' . auth()->user()->username . '/' . $imageName);
 
         $image = new Image;
         $image->name = $imageName;
-        $image->path = '/upload/school/' . $schoolName . '/';
-        $image->full_path = '/upload/school/' . $schoolName . '/' . $imageName;
+        $image->path = '/upload/school/' . auth()->user()->username . '/' . $name . '.webp';
+        $image->full_path = '/upload/school/' . auth()->user()->username . '/' . $imageName;
         $image->extension = $ext;
         $image->alt = auth()->user()->name;
         $image->type = 'Image';

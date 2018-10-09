@@ -318,8 +318,11 @@
                 <!-- Scholio Branding -->
                 <a class="sc-landing-brand" href="{{ url('/') }}">
                     <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                        {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
-                        <img src="{{asset('new/img/logoNX.webp')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                        <picture>
+                            <source srcset="/new/img/logoNX-m.webp" type="image/webp">
+                            <source srcset="/new/img/logoNX-m.png" type="image/png">
+                            <img src="/new/img/logoNX-m.png" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                        </picture>
                     </div>
                 </a>
             </div>
@@ -328,8 +331,11 @@
                 <div class="nav-mobile">
                     <a class="" href="{{ url('/') }}">
                         <div class="navbar-brand  sc-landing-logo-sticky">
-                            {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
-                            <img src="{{asset('new/img/logoNX-m.webp')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+                            <picture>
+                                <source srcset="/new/img/logoNX-m.webp" type="image/webp">
+                                <source srcset="/new/img/logoNX-m.png" type="image/png">
+                                <img src="/new/img/logoNX-m.png" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+                            </picture>
                         </div>
                     </a>
                 </div>
@@ -406,7 +412,12 @@
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark2.webp')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+
+                                <picture>
+                                    <source srcset="{{asset('new/img/collapse-dark2.webp')}}" type="image/webp">
+                                    <source srcset="{{asset('new/img/collapse-dark2.png')}}" type="image/png">
+                                        <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                </picture>
                                 {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
@@ -589,7 +600,7 @@
         </div> <!-- //container-->
     </main>
     
-
+    @include('public.footer')
     
     
         <!-- Bootstrap js-->
@@ -792,7 +803,7 @@ angular.module("schoolsResultsApp",[])
             </photo>
             <div class="card-ribbon">
                 <img id="img2" class=" sc-white img-med hidden-lg hidden-xs" src="@{{logo}}">
-                <img id="img3" class=" sc-white img-thumb hidden-lg hidden-md hidden-sm " src="@{{logo}}">
+                <img id="img3" class=" sc-white img-thumb hidden-lg hidden-md hidden-sm" src="@{{logo)}}">
             </div>
         </con>
 
@@ -803,7 +814,12 @@ angular.module("schoolsResultsApp",[])
                 <i id="report" class="fa fa-ellipsis-h report report-portal" onClick="dropReport(@{{school_id}})" ></i>
                 <!-- =================== Report  Menu ====================-->
                 <div class="report-drop report-drop-portal" id="report-drop@{{school_id}}" style="overflow:hidden!important">
-                     <img class="report-logo"  src="/new/img/logoNX-m.webp" alt="" style="overflow:hidden!important">
+                     
+                     <picture>
+                        <source srcset="/new/img/logoNX-m.webp" type="image/webp">
+                        <source srcset="/new/img/logoNX-m.png" type="image/png">
+                            <img class="report-logo"  src="/new/img/logoNX-m.png" alt="" style="overflow:hidden!important">
+                    </picture>
                      <span class="report-title"> Αναφορά </span>
                      <form method="POST" action="/report/add/@{{school_id}}/Profile" >
                      {{ csrf_field() }}
@@ -842,7 +858,7 @@ angular.module("schoolsResultsApp",[])
 
 
                 <a href="/public/profile/@{{school_id}}" target="_blank">
-                <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="@{{logo}}">
+                <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="@{{logo.substr(0, -4)}}.png">
                 </a>
                 <span class="pull-left">
                     <h5 class="pad-top-10 titleName"> <a href="/public/profile/@{{school_id}}"> @{{name}}</a></h5>
@@ -978,11 +994,19 @@ angular.module("schoolsResultsApp",[])
 
 
             @{{^stats}}
-            <img src="/new/img/bars2.webp" class="backImageLg" style=""></img>
+            <picture>
+                <source srcset="/new/img/bars2.webp" type="image/webp">
+                <source srcset="/new/img/bars2.png" type="image/png">
+                <img src="/new/img/bars2.png" class="backImageLg" style="">
+            </picture>
             @{{/stats}}
 
             @{{#stats}}
-            <img src="/new/img/bars2.webp" class="backImageSm" style=""></img>
+            <picture>
+                <source srcset="/new/img/bars2.webp" type="image/webp">
+                <source srcset="/new/img/bars2.png" type="image/png">
+                <img src="/new/img/bars2.png" class="backImageSm" style="">
+            </picture>
             @{{/stats}}
             <div class="hidden-xs" style=" height: 100px; width: 40%; position: absolute; z-index: 2; left: 20px; bottom: -26px;
             background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, #fff 100%);

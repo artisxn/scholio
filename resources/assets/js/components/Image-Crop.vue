@@ -123,7 +123,7 @@
         
                     axios.post(this.postURL, { img: this.image, logo: this.logo })
                         .then((response) => {
-                            // console.log(response)
+                            //console.log(response)
                             location.reload();
                         })
                 })

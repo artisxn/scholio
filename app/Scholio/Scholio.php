@@ -21,6 +21,7 @@ use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use League\Flysystem\Exception;
 
 class Scholio
 {
@@ -625,5 +626,22 @@ class Scholio
             $s->link = $link;
             return $s->save();
         }
+    }
+
+    public static function makeWebp($image, $ext, $q = 35)
+    {
+        $path = '';
+        if (\App::environment('local')) {
+            $path = '/Users/apostolos/Documents/Work/scholio/public/';
+        }else{
+            $path = '/var/www/scholio/public/';
+        }
+
+        try{
+            shell_exec('cwebp -q ' . $q . ' ' . $path . $image . ' -o ' . substr($path . $image, 0, strlen($ext) * -1) . 'webp');
+        }catch(Exception $e){
+            echo $e;
+        }
+        
     }
 }

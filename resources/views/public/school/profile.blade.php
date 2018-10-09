@@ -459,11 +459,10 @@
                             @foreach($school->image as $image)
                             <li>
                                 <picture>
-                                    <source class="bx-img" id="{{$image->full_path}}" srcset="{{$image->path}}" type="image/webp" onclick="test(event.target)">
-                                    <source class="bx-img" id="{{$image->full_path}}" srcset="{{$image->full_path}}" type="image/jpeg" onclick="test(event.target)">
-                                    <img class="bx-img" id="{{$image->full_path}}" src="{{$image->path}}" onclick="test(event.target)" />
+                                    <source srcset="{{$image->path}}" type="image/webp">
+                                    <source srcset="{{$image->full_path}}" type="image/jpeg">
+                                    <img class="bx-img" id="{{$image->full_path}}" src="{{$image->full_path}}" onclick="test(event.target)" />
                                 </picture>
-                                <!-- <img class="bx-img" id="{{$image->full_path}}" src="{{$image->path}}" onclick="test(event.target)" /> -->
                             </li>
                             @endforeach
                             @endif
@@ -736,7 +735,7 @@
                                                 <ul class="col-sm-12" style="padding-bottom: 20px;">
                                                     @endif
                                                     <div class="text-incr-150 font-weight-300 margin-top-30 margin-left-10"
-                                                        style="margin-bottom: 0"> {{ $level["level"]->name }} </div>
+                                                        style="margin-bottom: 0"> {{ $level["level"]["name"] }} </div>
                                                 </ul>
                                     </div>
                                     @endforeach

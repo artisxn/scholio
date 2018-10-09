@@ -187,21 +187,23 @@ Artisan::command('scholio:ppp', function () {
     ini_set('max_execution_time', 1500);
 
     foreach (Section::all() as $section) {
-      dd(substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4));  
+    //   dd(substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4));  
         // $school->logo = 
         // if($school->id >=251 && $school->id <=330){
         // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $section->icon . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -3) . 'webp');
-        shell_exec('cwebp -q 35 ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4) . 'png' . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4) . 'webp');
+        // shell_exec('cwebp -q 35 ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4) . 'png' . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -4) . 'webp');
 
         // $section->icon = substr($section->icon, 0, -3) . 'webp';
         // $section->save();
-        $this->info('-- ' . $section->name . ' OK! --');
-        // // foreach($school->image as $image){
+        // $this->info('-- ' . $section->name . ' OK! --');
+        foreach($school->image as $image){
         // //     $image->path = substr($image->full_path, 0, -3) . 'webp';
-        // //     $image->save();
+        $image->logo2 = substr($image->full_path, 0, -4);
+        $image->image2 = substr($image->full_path, 0, -4);
+        $image->save();
         // //     // dd('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio' . $image->full_path, 0, -3) . 'webp');
         // //     // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $image->full_path, 0, -3) . 'webp');
-        // // }
+        }
         // echo 'School ' . $school->name() . 'ready <br>';
         // }
     }
