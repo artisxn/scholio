@@ -884,7 +884,7 @@
                             @endif
 
                             <ul class="show-btn">
-                                <a href="/scholarship/@{{scholarship.id}}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white provoli">
+                                <a href="/scholarship/{{$scholarship->id}}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white provoli">
                                         <i class="fa fa-file-text-o margin-right-10" aria-hidden="true"></i>
                                         @lang('profile.scholarship.show')</button></a>
                                 {{--<span class="sc-t-grey font-weight-400" style="left: -210px; top: 10px; position: absolute">--}}
