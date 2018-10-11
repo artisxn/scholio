@@ -11,7 +11,7 @@
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="/js/loadCSS.js"></script>
+    <!-- <script src="/js/loadCSS.js"></script> -->
 
 
     <title>{{ $title }} | Schol.io</title>
@@ -50,10 +50,6 @@
     <link rel="stylesheet" href="/new/css/algolia-search.css"/>
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
-
-
-    {{--<!-- FontAwesome -->--}}
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
 
     <!-- Bootstrap Select -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
