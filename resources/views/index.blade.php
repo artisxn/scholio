@@ -214,16 +214,16 @@
 					<a class="sc-landing-brand" href="#home">
 						<div class="sc-landing-logo">
 							<picture>
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX.webp')}}" type="image/webp">
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX.png')}}" type="image/png">
-								<img src="{{asset('new/img/logoNX.webp')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
+								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-lignt.webp')}}" type="image/webp">
+								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-lignt.png')}}" type="image/png">
+								<img src="{{asset('new/img/logoNX-lignt.webp')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
 							</picture>
 						</div>
-						<div class="sc-landing-logo-sticky " style=" padding-top: 15px">
+						<div class="sc-landing-logo-sticky" style=" padding-top: 15px">
 							<picture>
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-m.webp')}}" type="image/webp">
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-m.png')}}" type="image/png">
-								<img src="{{asset('new/img/logoNX-m.webp')}}" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+								<source alt="scholio logo" srcset="{{asset('new/img/logoNX.webp')}}" type="image/webp">
+								<source alt="scholio logo" srcset="{{asset('new/img/logoNX.png')}}" type="image/png">
+								<img src="{{asset('new/img/logoNX.webp')}}" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
 							</picture>
 						</div>
 					</a>
@@ -241,9 +241,9 @@
 							</div>
 							<div class="navbar-brand  sc-landing-logo-sticky">
 								<picture>
-									<source alt="scholio logo" srcset="{{asset('new/img/logoNX-light-m.webp')}}" type="image/webp">
-									<source alt="scholio logo" srcset="{{asset('new/img/logoNX-light-m.png')}}" type="image/png">
-									<img src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+									<source alt="scholio logo" srcset="{{asset('new/img/logoNX-m.webp')}}" type="image/webp">
+									<source alt="scholio logo" srcset="{{asset('new/img/logoNX-m.png')}}" type="image/png">
+									<img src="{{asset('new/img/logoNX-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
 								</picture>
 							</div>
 						</a>
