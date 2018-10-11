@@ -213,11 +213,7 @@
 					<!-- Scholio Branding -->
 					<a class="sc-landing-brand" href="#home">
 						<div class="sc-landing-logo">
-							<picture>
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-light.webp')}}" type="image/webp">
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-light.png')}}" type="image/png">
-								<img src="{{asset('new/img/logoNX-light.webp')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
-							</picture>
+								<img src="{{asset('new/img/logoNX-light.png')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
 						</div>
 						<div class="sc-landing-logo-sticky" style=" padding-top: 15px">
 							<picture>
@@ -233,11 +229,8 @@
 					<div class="nav-mobile">
 						<a class="" href="#home">
 							<div class="navbar-brand  sc-landing-logo">
-								<picture>
-									<source alt="scholio logo" srcset="{{asset('new/img/logoNX-light-m.webp')}}" type="image/webp">
-									<source alt="scholio logo" srcset="{{asset('new/img/logoNX-light-m.png')}}" type="image/png">
-									<img src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px;">
-								</picture>
+
+								<img src="{{asset('new/img/logoNX-light-m.png')}}" class="sc-logo" alt="scholio logo" style="height: 60px;">
 							</div>
 							<div class="navbar-brand  sc-landing-logo-sticky">
 								<picture>
