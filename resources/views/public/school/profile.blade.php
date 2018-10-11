@@ -405,11 +405,7 @@
                         <div class="">
                             <div class="xs-center">
                                 <picture>
-                                    <source srcset="{{$school->logo}}" type="image/webp">
-                                    <source srcset="{{ substr($school->logo, 0, -4)}}png" type="image/png">
-                                        <img id="img1" class="pull-left margin-right-10 margin-top-15 margin-bot-10" src="{{ substr($school->logo, 0, -4)}}png">
-                                </picture>
-                                
+                                <img id="img1" class="pull-left margin-right-10 margin-top-15 margin-bot-10" src="{{ substr($school->logo, 0, -4)}}png">
                             </div>
                             <div class=" xs-centered-text">
                                 <h2 class="xs-h4 schoolname">{{ $school->name()}}</h2>
