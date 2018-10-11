@@ -29,16 +29,16 @@
     @include('public.styles')
 
     <!-- BX Slider CSS -->
-    <link href="/new/css/jquery.bxslider.css">
+    <link href="/new/css/jquery.bxslider.css" rel="preload" as="style" onload="this.rel='stylesheet'">
 
     <!-- Profile  CSS -->
-    <link href="/new/css/profile.css">
+    <link href="/new/css/profile.css" rel="preload" as="style" onload="this.rel='stylesheet'">
 
     <!-- Horizontal Ribbons  CSS -->
-    <link href="/new/css/ribbonHorizontal.css">
+    <link href="/new/css/ribbonHorizontal.css" rel="preload" as="style" onload="this.rel='stylesheet'">
 
     <!-- Hexagon CSS -->
-    <link href="/new/css/Hexagon.css">
+    <link href="/new/css/Hexagon.css" rel="preload" as="style" onload="this.rel='stylesheet'">
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
