@@ -158,8 +158,12 @@
                     <!-- Scholio Branding -->
                     <a class="sc-landing-brand" href="{{ url('/') }}">
                         <div class="sc-landing-logo-sticky" style=" padding-top: 15px">
-                            {{--<img src="{{asset('new/img/logo.png')}}" class="sc-logo" alt="scholio logo">--}}
-                            <img src="{{asset('new/img/logoNX.webp')}}"  class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                                <picture>
+                                        <source srcset="{{asset('new/img/logoNX.webp')}}" type="image/webp">
+                                        <source srcset="{{asset('new/img/logoNX.png')}}" type="image/png">
+                                            <img src="{{asset('new/img/logoNX.webp')}}" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+                                    </picture>
+                            
                         </div>
                     </a>
                 </div>
@@ -168,8 +172,12 @@
                     <div class="nav-mobile">
                         <a class="" href="{{ url('/') }}">
                             <div class="navbar-brand  sc-landing-logo-sticky">
-                                {{--<img src="{{asset('new/img/logo-m.png')}}" class="sc-logo" alt="scholio logo">--}}
-                                <img src="{{asset('new/img/logoNX-m.webp')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+                                    <picture>
+                                            <source srcset="{{asset('new/img/logoNX-m.webp')}}" type="image/webp">
+                                            <source srcset="{{asset('new/img/logoNX-m.png')}}" type="image/png">
+                                                <img src="{{asset('new/img/logoNX-m.webp')}}" class="sc-logo" alt="scholio logo" style="height: 60px; padding-top: 2px;">
+                                        </picture>
+                                
                             </div>
                         </a>
                     </div>
@@ -245,7 +253,7 @@
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark2.webp')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
                                 {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
