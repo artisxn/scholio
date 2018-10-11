@@ -404,7 +404,6 @@
                     <div class=" margin-bot-15 ">
                         <div class="">
                             <div class="xs-center">
-                                <picture>
                                 <img id="img1" class="pull-left margin-right-10 margin-top-15 margin-bot-10" src="{{ substr($school->logo, 0, -4)}}png">
                             </div>
                             <div class=" xs-centered-text">
