@@ -221,9 +221,9 @@
 						</div>
 						<div class="sc-landing-logo-sticky " style=" padding-top: 15px">
 							<picture>
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX.webp')}}" type="image/webp">
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX.png')}}" type="image/png">
-								<img src="{{asset('new/img/logoNX.webp')}}" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
+								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-m.webp')}}" type="image/webp">
+								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-m.png')}}" type="image/png">
+								<img src="{{asset('new/img/logoNX-m.webp')}}" class="sc-logo" alt="scholio logo" style="height: 63px; padding-top: 2px;">
 							</picture>
 						</div>
 					</a>
