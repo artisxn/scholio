@@ -21,42 +21,23 @@ Route::view('gdpr', 'gdpr');
 
 Route::get('cwebp', function () {
     ini_set('max_execution_time', 1500);
-    // foreach(DummyLevelsData::all() as $dummy){
-    //     $data = json_decode($dummy->data, true);
-    //     foreach($data as $d){
-    //         foreach($d["sections"] as $opa){
-    //             $text = $opa["section"]["icon"];
-    //             $pos = strpos($dummy->data, $text);
-    //             if ($pos === false) {
-    //                 dd('NOTFOUND');
-    //             }else{
-    //                 $str = substr_replace($dummy->data,substr($text, 0, -3) . 'webp',$pos,strlen($text));
-    //                 $dummy->data = $str;
-    //                 $dummy->save();
-    //             }
-    //         }
-    //     }
+
+    foreach(DummyLevelsData::all() as $dummy){
+        $data = json_decode($dummy->data, true);
+        foreach($data as $d){
+            foreach($d["sections"] as $opa){
+                $text = $opa["section"]["icon"];
+                $pos = strpos($dummy->data, $text);
+                if ($pos === false) {
+                    dd('NOTFOUND');
+                }else{
+                    $str = substr_replace($dummy->data,substr($text, 0, -4) . 'png',$pos,strlen($text));
+                    $dummy->data = $str;
+                    $dummy->save();
+                }
+            }
+        }
         
-    // }
-
-    foreach (Image::all() as $image) {
-        $image->path = substr($image->path, 0, -3) . 'webp';;
-        $image->save();
-
-        // $school->logo = 
-        // if($school->id >=251 && $school->id <=330){
-        // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $section->icon . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $section->icon, 0, -3) . 'webp');
-        // $school->logo = substr($school->logo, 0, -3) . 'webp';
-        // $school->image = substr($school->image, 0, -5) . 'webp';
-        // $school->save();
-        // // foreach($school->image as $image){
-        // //     $image->path = substr($image->full_path, 0, -3) . 'webp';
-        // //     $image->save();
-        // //     // dd('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio' . $image->full_path, 0, -3) . 'webp');
-        // //     // shell_exec('cwebp -q 35 ' . '/Users/apostolos/Documents/Work/scholio/public' . $image->full_path . ' -o ' . substr('/Users/apostolos/Documents/Work/scholio/public' . $image->full_path, 0, -3) . 'webp');
-        // // }
-        // echo 'School ' . $school->name() . 'ready <br>';
-        // }
     }
 
     // shell_exec($s->);

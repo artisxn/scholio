@@ -418,7 +418,6 @@
                                     <source srcset="{{asset('new/img/collapse-dark2.png')}}" type="image/png">
                                         <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
                                 </picture>
-                                {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
                         </div>
                     </div>
@@ -588,8 +587,6 @@
                 <!-- ========== SCHOLARSHIPS  CONTAINER ============= -->
                 <div class="col-lg-9 col-md-9 col-sm-12 scholarship-container " id="">
 
-                    {{--<div id="map" class="hidden-xs" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>--}}
-
                     <main id="schools">
                         @include('resultsPHP')
                     </main>
@@ -654,11 +651,6 @@
             $('#card4'+school).css('filter','blur(2px)');
             $('#card5'+school).css('filter','blur(2px)');
 
-//            $('#card1'+school).css('opacity','0.3');
-//            $('#card2'+school).css('opacity','0.3');
-//            $('#card3'+school).css('opacity','0.3');
-//            $('#card4'+school).css('opacity','0.3');
-//            $('#card5'+school).css('opacity','0.3');
 
             console.log('blur')
             $('#report-drop'+school).animate({opacity:1, width: 220, height: 260}, 190,"swing");
@@ -672,11 +664,6 @@
             $('#card4'+school).css('filter','blur(0px)');
             $('#card5'+school).css('filter','blur(0px)');
 
-//            $('#card1'+school).css('opacity','1');
-//            $('#card2'+school).css('opacity','1');
-//            $('#card3'+school).css('opacity','1');
-//            $('#card4'+school).css('opacity','1');
-//            $('#card5'+school).css('opacity','1');
         }
         open=!open
     }
@@ -756,28 +743,6 @@ angular.module("schoolsResultsApp",[])
                 container: '#statsMobile'
             })
     );
-
-            // search.addWidget(
-            //         instantsearch.widgets.sortBySelector({
-            //             container: '#sort-by-container',
-            //             indices: [
-            //                 {name: 'dummySchools', label: '@lang('schools.sortby.scholarships')'},
-            //                 {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'},
-            //                 // {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
-            //             ]
-            //         })
-            // );
-
-            // search.addWidget(
-            //         instantsearch.widgets.sortBySelector({
-            //             container: '#sort-by-container-Mobile',
-            //             indices: [
-            //                 {name: 'dummySchools', label: '@lang('schools.sortby.scholarships')'},
-            //                 {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'},
-            //                 // {name: 'dummySchools_students_asc', label: '@lang('schools.sortby.students')'}
-            //             ]
-            //         })
-            // );
 
     search.on('render', function() {
         $('.product-picture img').addClass('transparent');

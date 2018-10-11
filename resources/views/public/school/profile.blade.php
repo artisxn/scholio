@@ -373,7 +373,7 @@
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-                                <img src="{{asset('new/img/collapse-dark2.webp')}}" alt="scholio logo" style="height:22px; margin-top: 7px;">
+                                <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo" style="height:22px; margin-top: 7px;">
                                 
                                 {{--<img src="{{asset('new/img/collapse-dark.png')}}" alt="scholio logo">--}}
                             </div>
@@ -404,7 +404,12 @@
                     <div class=" margin-bot-15 ">
                         <div class="">
                             <div class="xs-center">
-                                <img id="img1" class=" pull-left margin-right-10 margin-top-15 margin-bot-10" src="{{$school->logo}}">
+                                <picture>
+                                    <source srcset="{{$school->logo}}" type="image/webp">
+                                    <source srcset="{{ substr($school->logo, 0, -4)}}png" type="image/png">
+                                        <img id="img1" class=" pull-left margin-right-10 margin-top-15 margin-bot-10" src="{{$school->logo}}">
+                                </picture>
+                                
                             </div>
                             <div class=" xs-centered-text">
                                 <h2 class="xs-h4 schoolname">{{ $school->name()}}</h2>
@@ -659,8 +664,7 @@
                                                 <ul class="col-sm-12">
                                                     @endif
                                                     @if($school->type->id != 2)
-                                                    <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10"
-                                                        style="margin-bottom: 0">
+                                                    <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0">
                                                         {{ $level["level"]["name"] }}
                                                     </div>
                                                     @endif
@@ -675,10 +679,8 @@
                                                                 @endif
 
                                                                 <li class="margin-top-10 margin-left-10">
-                                                                    <img src="{{ $section['section']['icon'] }}" alt=""
-                                                                        style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8">
-                                                                    <span class="pad-left-5 text-incr-125 font-weight-300"
-                                                                        style="text-indent: 100%;">
+                                                                    <img src="{{ $section['section']['icon'] }}" alt="" style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8" />
+                                                                    <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%;">
                                                                         {{ $section["section"]["name"] }}
                                                                     </span>
                                                                 </li>
@@ -689,11 +691,10 @@
                                                                         @if($study["link"] != '')
                                                                         <span class="font-weight-300">
                                                                             <a href="/studylink/redirect/{{ $school->id }}/{{ $study['study']['id'] }}"
-                                                                                target="_blank">{{
-                                                                                $study["study"]["name"] }}</a>
+                                                                                target="_blank">{{ $study["study"]["name"] }}</a>
                                                                         </span>
                                                                         @else
-                                                                        <span class="  font-weight-300">
+                                                                        <span class="font-weight-300">
                                                                             {{ $study["study"]["name"] }}
                                                                         </span>
                                                                         @endif
@@ -707,20 +708,10 @@
                                     @endforeach
                                 </div>
                                 @endif
+                                
 
                                 <!-- Σπουδές Φροντιστηρια  -->
-                                <!-- 
-                                <div ng-if=" (contactInfo.type_id==3 || contactInfo.type_id==6)" style="overflow-x: hidden">
-                                    <div class="col-md-6 col-sm-12" style="margin-bottom: 40px;">
-                                        <div class="pad-left-5 text-incr-150 font-weight-300  margin-left-10" >Τμήματα
-                                        </div>
-                                        <div ng-repeat="(levIndex, level) in levelsName " >
-                                            <ul><div class="pad-left-20 font-weight-300 " style="">  @{{ level}} </div>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                -->
+
 
                                 <!-- Σπουδές Σχολεια -->
                                 @if($school->type->id == 13)
@@ -744,14 +735,9 @@
 
                             </div>
                             <!-- Show More Studies  -->
-                            {{--<div class="show-more" style=" background-color: #fff" ng-if="studies.length>5 && col_iek_eng_dan_mus">--}}
                                 <div class="pad-top-30">
-                                    <!--
-                                 <span ng-click="showMoreStudies('spoudes')" >@{{textStudies}}
-                                     <i class="@{{ iconStudies }}"></i></span>
-                                     -->
                                 </div>
-                                {{--</div>--}}
+
                         </div>
                         @endif
                         @endif
@@ -791,9 +777,9 @@
                                         </div>
                                         <div class="hexagon hex2">
                                             @if($scholarship->multiple == 0)
-                                            <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.webp">
+                                            <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png">
                                             @else
-                                            <img class="hex-img" src="/panel/assets/images/steps/studies.webp">
+                                            <img class="hex-img" src="/panel/assets/images/steps/studies.png">
                                             @endif
                                         </div>
 
@@ -1087,16 +1073,27 @@
                                         @if($school->type->id==1)
                                         <a id="c1" style="color: #fff" href="https://schol.io/public/schools?q={{ $school->type->name }}">
                                             <div id="c1b" class="boxAlso">
-                                                <div class="upImgContainer"><img id="c1im" class="upImg" src="/new/img/sect-photo/college.webp"
-                                                        alt=""></div>
+                                                <div class="upImgContainer">
+                                                    <picture>
+                                                        <source srcset="{{asset('/new/img/sect-photo/college.webp')}}" type="image/webp">
+                                                        <source srcset="{{asset('/new/img/sect-photo/college.jpg')}}" type="image/jpeg">
+                                                        <img id="c1im" class="upImg" src="/new/img/sect-photo/college.webp" alt="">
+                                                    </picture>
+                                                
+                                                </div>
                                                 <h1 id="c1t" class="alsoText">{{ $school->type->name }} σε Ελλάδα</h1>
                                             </div>
                                         </a>
                                         @else
                                         <a id="c1" style="color: #fff" href="https://schol.io/public/schools?hFR%5Btype%5D%5B0%5D={{ $school->type->name }}&is_v=1&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}} > {{ $school->region}}">
                                             <div id="c1b" class="boxAlso">
-                                                <div class="upImgContainer"><img id="c1im" class="upImg" src="/new/img/sect-photo/college.webp"
-                                                        alt=""></div>
+                                                <div class="upImgContainer">
+                                                    <picture>
+                                                        <source srcset="{{asset('/new/img/sect-photo/college.webp')}}" type="image/webp">
+                                                        <source srcset="{{asset('/new/img/sect-photo/college.jpg')}}" type="image/jpeg">
+                                                        <img id="c1im" class="upImg" src="/new/img/sect-photo/college.webp" alt="">
+                                                    </picture>
+                                                </div>
                                                 <h1 id="c1t" class="alsoText">{{ $school->type->name }} σε {{
                                                     $school->city}} {{ $school->region}}</h1>
                                             </div>
@@ -1109,8 +1106,14 @@
                                     <div class="innerPadding col-sm-4">
                                         <a id="c2" style="color: #fff" href="https://schol.io/public/schools?q=&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}}&hFR%5Btype%5D%5B0%5D={{ $school->type->name }}&is_v=1">
                                             <div id="c2b" class="boxAlso">
-                                                <div class="upImgContainer"><img id="c2im" class="upImg" src="/new/img/sect-photo/student.webp"
-                                                        alt=""></div>
+                                                <div class="upImgContainer">
+                                                
+                                                <picture>
+                                                        <source srcset="{{asset('/new/img/sect-photo/student.webp')}}" type="image/webp">
+                                                        <source srcset="{{asset('/new/img/sect-photo/student.jpg')}}" type="image/jpeg">
+                                                            <img id="c2im" class="upImg" src="/new/img/sect-photo/student.webp" alt="">
+                                                    </picture>
+                                                </div>
                                                 <h1 id="c2t" class="alsoText">{{ $school->type->name }} σε {{
                                                     $school->city}} </h1>
                                             </div>
@@ -1123,16 +1126,29 @@
                                         @if($school->type->id==1)
                                         <a id="c3" style="color: #fff" href="https://schol.io/public/schools?q=&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}}&hFR%5Btype%5D%5B0%5D=ΙΕΚ%20-%20Επαγγελματική%20Σχολή%20-%20ΚΔΒΜ&is_v=1">
                                             <div id="c3b" class="boxAlso">
-                                                <div class="upImgContainer"><img id="c3im" class="upImg" src="/new/img/sect-photo/doct2.webp"
-                                                        alt=""></div>
+                                                <div class="upImgContainer">
+                                                    <picture>
+                                                        <source srcset="{{asset('/new/img/sect-photo/doct2.webp')}}" type="image/webp">
+                                                        <source srcset="{{asset('/new/img/sect-photo/doct2.jpg')}}" type="image/jpeg">
+                                                        <img id="c3im" class="upImg" src="/new/img/sect-photo/doct2.webp" alt="">
+                                                    </picture>
+                                                
+                                                
+                                                </div>
                                                 <h1 id="c3t" class="alsoText">IEK σε σε {{ $school->city}} </h1>
                                             </div>
                                         </a>
                                         @elseif($school->type->id!=4)
                                         <a id="c3" style="color: #fff" href="https://schol.io/public/schools?hFR%5Btype%5D%5B0%5D=Φροντιστήριο Ξένων Γλωσσών / Πληροφορικής&is_v=1&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}} > {{ $school->region}}">
                                             <div id="c3b" class="boxAlso">
-                                                <div class="upImgContainer"><img id="c3im" class="upImg" src="new/img/sect-photo/Schoolchildren2.webp"
-                                                        alt=""></div>
+                                                <div class="upImgContainer">
+                                                    <picture>
+                                                        <source srcset="{{asset('/new/img/sect-photo/Schoolchildren2.webp')}}" type="image/webp">
+                                                        <source srcset="{{asset('/new/img/sect-photo/Schoolchildren2.jpg')}}" type="image/jpeg">
+                                                            <img id="c3im" class="upImg" src="new/img/sect-photo/Schoolchildren2.webp" alt="">
+                                                    </picture>
+                                                
+                                                </div>
                                                 <h1 id="c3t" class="alsoText">Κέντρα Ξένων Γλωσσών σε σε {{
                                                     $school->city}} {{ $school->region}}</h1>
                                             </div>
@@ -1140,8 +1156,14 @@
                                         @else
                                         <a id="c3" style="color: #fff" href="https://schol.io/public/schools?hFR%5Btype%5D%5B0%5D=Φροντιστήριο Μέσης Εκπαίδευσης&is_v=1&hPP=8&idx=dummySchools&p=0&hFR%5Bcategories.lvl0%5D%5B0%5D={{ $school->city}} > {{ $school->region}} ">
                                             <div id="c3b" class="boxAlso">
-                                                <div class="upImgContainer"><img id="c3im" class="upImg" src="/new/img/sect-photo/student.webp"
-                                                        alt=""></div>
+                                                <div class="upImgContainer">
+                                                    <picture>
+                                                        <source srcset="{{asset('/new/img/sect-photo/student.webp')}}" type="image/webp">
+                                                        <source srcset="{{asset('/new/img/sect-photo/student.jpg')}}" type="image/jpeg">
+                                                            <img id="c3im" class="upImg" src="/new/img/sect-photo/student.webp" alt="">
+                                                    </picture>
+                                                
+                                                </div>
                                                 <h1 id="c3t" class="alsoText">Φροντιστήρια Μέσης Εκπαίδευσης σε σε {{
                                                     $school->city}} {{ $school->region}}</h1>
                                             </div>
