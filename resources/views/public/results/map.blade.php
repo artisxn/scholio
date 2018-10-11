@@ -337,7 +337,7 @@
                         {{--</a>--}}
 
                         <a href="/public/profile/@{{school_id}}" target="_blank">
-                            <img id="img1"  style="" class=" img-mini  photo-mini2" src="@{{logo}}">
+                            <img id="img1"  style="" class=" img-mini  photo-mini2" src="@{{logo2}}.png">
                         </a>
                     </photo>
 
