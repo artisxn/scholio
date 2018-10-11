@@ -214,9 +214,9 @@
 					<a class="sc-landing-brand" href="#home">
 						<div class="sc-landing-logo">
 							<picture>
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-lignt.webp')}}" type="image/webp">
-								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-lignt.png')}}" type="image/png">
-								<img src="{{asset('new/img/logoNX-lignt.webp')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
+								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-light.webp')}}" type="image/webp">
+								<source alt="scholio logo" srcset="{{asset('new/img/logoNX-light.png')}}" type="image/png">
+								<img src="{{asset('new/img/logoNX-light.webp')}}" class="sc-logo" alt="scholio logo" style="height: 62px;">
 							</picture>
 						</div>
 						<div class="sc-landing-logo-sticky" style=" padding-top: 15px">
