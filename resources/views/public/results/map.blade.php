@@ -713,7 +713,7 @@
         message = hit.name;
 
         var content= '<div class="row"><span class="col-sm-2" >' +
-                '<img style="width: 98%; height: auto; " src="' +''+ hit.logo + '"/></span> ' +
+                '<img style="width: 98%; height: auto; " src="' +''+ hit.logo2 + '"/></span> ' +
                 '<a target="_blank" style="color: #000 !important" href="/public/profile/' +hit.school_id+ '"><span class="col-sm-10 info-window-text" > ' +hit.name+
                 '<div style="padding-top: 3px;"> ' +
                 ' <span class="info-window-text2"><i class="fa fa-trophy margin-right-5"></i>Υποτροφίες: '+hit.lengthScholarships+'</span> </div>' +
