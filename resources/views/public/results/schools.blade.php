@@ -47,28 +47,28 @@
     @include('public.styles')
 
     <!-- Algolia CSS -->
-    <link as="style" onload="this.rel='stylesheet'" rel="preload" href="/new/css/algolia-search.css"/>
+    <link rel="stylesheet" href="/new/css/algolia-search.css"/>
 
-    <link as="style" onload="this.rel='stylesheet'" rel="preload" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 
 
     {{--<!-- FontAwesome -->--}}
-    {{--<link rel="preload" as="style" onload="this.rel='stylesheet'" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
 
     <!-- Bootstrap Select -->
-    <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
     <!-- Ribbon CSS -->
-     <link href="{{asset('new/css/ribbon.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
+     <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">
 
     <!-- Hexagon CSS -->
-    <link href="/new/css/Hexagon.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="/new/css/Hexagon.css" rel="stylesheet">
 
     <!-- Input Range CSS -->
-    <link href="{{asset('new/css/input-range.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">
 
     <!-- Results CSS -->
-    <link href="{{asset('new/css/results.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
 
 <script>

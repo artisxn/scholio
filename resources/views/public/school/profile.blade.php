@@ -21,7 +21,7 @@
     <title>{{ $school->name() }} - schol.io</title>
     <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
 
-    <!-- Favicon -->
+    <!-- Above the fold content -->
     {{-- <script src="/js/loadCSS.js"></script> --}}
 
 
