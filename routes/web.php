@@ -19,6 +19,19 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
+Route::get('zxc', function(){
+    $row = 1;
+if (($handle = fopen("csv/iii.csv", "r")) !== FALSE) {
+  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    if($row > 1){
+        $type_id = $data[0];
+    }
+    $row++;
+  }
+  fclose($handle);
+}
+});
+
 Route::get('cwebp', function () {
     ini_set('max_execution_time', 1500);
 

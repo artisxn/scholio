@@ -22,23 +22,23 @@
     <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
 
     <!-- Above the fold content -->
-    {{-- <script src="/js/loadCSS.js"></script> --}}
+    <script src="/js/loadCSS.js"></script>
 
 
     <!--====== CSS  Styles =======-->
     @include('public.styles')
 
     <!-- BX Slider CSS -->
-    <link href="/new/css/jquery.bxslider.css" rel="stylesheet">
+    <link href="/new/css/jquery.bxslider.css" rel="preload" as="style">
 
     <!-- Profile  CSS -->
-    <link href="/new/css/profile.css" rel="stylesheet">
+    <link href="/new/css/profile.css" rel="preload" as="style">
 
     <!-- Horizontal Ribbons  CSS -->
-    <link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
+    <link href="/new/css/ribbonHorizontal.css" rel="preload" as="style">
 
     <!-- Hexagon CSS -->
-    <link href="/new/css/Hexagon.css" rel="stylesheet">
+    <link href="/new/css/Hexagon.css" rel="preload" as="style">
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -1054,12 +1054,12 @@
 
 
                                 <!-- ================= Δες Επίσης =================  -->
-                                <div class="row boxAlsoContainer">
+                                <div id="otherSchools" class="row boxAlsoContainer">
 
 
                                     <p class=" title margin-left-20 pad-top-40 text-incr-175 font-weight-300">
                                         <i class="fa fa-university fa-linear4 margin-right-10" aria-hidden="true"></i>
-                                        <span>Αναζήτησε παρόμοιες σπουδές </span>
+                                        <span>Αναζήτησε παρόμοιες σπουδές</span>
                                     </p>
 
                                     <div class="innerPadding col-sm-4">
@@ -1164,6 +1164,8 @@
                                         @endif
                                     </div>
                                 </div>
+
+                                
 
 
 
@@ -1340,8 +1342,12 @@
 
                             </div>
 
+                            <!-- <a class="twitter-timeline" href="https://twitter.com/DEREE_ACG?ref_src=twsrc%5Etfw">Tweets by DEREE_ACG</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
 
                         </div><!-- //col-lg-3-->
+
+
 
                     </div>
 
@@ -1595,10 +1601,39 @@
     <!--  -->
     <script src="/new/js/profile.js"></script>
 
+    <script src="/js/in-view.min.js"></script>
+
 
 
 
 </body>
+
+<script>
+    
+
+    $(document).ready(function () {
+        inView('#otherSchools').on('enter', isInView).on('exit', saveAnalytic);
+
+        var seconds;
+
+        function isInView(){
+            seconds = 0;
+            startTimer();
+        }
+
+        function startTimer() {
+            setInterval(function () {
+                seconds++;
+            }, 1000);
+        }
+
+        function saveAnalytic() {
+            console.log(seconds + " seconds");
+            seconds = 0;
+        }
+    });
+
+</script>
 
 <script>
 

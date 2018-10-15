@@ -21,6 +21,6 @@ class AddmissionSeeder extends Seeder {
 	}
 
 	public function stop() {
-        User $user;
+        // User $user;
 	}
 }
