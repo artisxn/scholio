@@ -1333,7 +1333,7 @@
                                 @endif
                                 @endif
 
-                                <nav data-spy="affix" data-offset-top="1180" id="interestButton">
+                                <nav data-spy="affix" data-offset-top="1180">
                                     <button id="interestButton" type="button" class="affix-button sc-orange sc-t-white center-block"
                                         data-toggle="modal" data-target="#interest-modal">
                                         <i class="fa fa-pencil pad-right-15" aria-hidden="true"></i>@lang('profile.interest')
