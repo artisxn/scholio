@@ -19,6 +19,19 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
+Route::get('zxc', function(){
+    $row = 1;
+if (($handle = fopen("csv/iii.csv", "r")) !== FALSE) {
+  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    if($row > 1){
+        $type_id = $data[0];
+    }
+    $row++;
+  }
+  fclose($handle);
+}
+});
+
 Route::get('cwebp', function () {
     ini_set('max_execution_time', 1500);
 
@@ -83,9 +96,11 @@ Route::get('/dummytest/{from}/{to}', function ($from, $to) {
 Route::get('aaqq', function () {
     ini_set('max_execution_time', 500);
     foreach (AlgoliaSchool::all() as $alg) {
-
+             $school = School::find($alg->school_id);
             $alg->{'categories.lvl0'} = $alg->city;
             $alg->{'categories.lvl1'} = $alg->city . " > " . $alg->region;
+            
+            $alg->_geoloc = collect(['lat' => (double) $school->lat, 'lng' => (double) $school->lng]);
             $alg->searchable();
     }
 });
