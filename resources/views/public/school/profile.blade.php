@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width">
     <!-- prevent zoomIn in mobile inputs,selects,etc -->
     @include('google.main')
 
@@ -402,7 +402,7 @@
                     <div class=" margin-bot-15 ">
                         <div class="">
                             <div class="xs-center">
-                                <img id="img1" class="pull-left margin-right-10 margin-top-15 margin-bot-10" src="{{ substr($school->logo, 0, -4)}}png">
+                                <img id="img1" alt="logo" class="pull-left margin-right-10 margin-top-15 margin-bot-10" src="{{ substr($school->logo, 0, -4)}}png">
                             </div>
                             <div class=" xs-centered-text">
                                 <h2 class="xs-h4 schoolname">{{ $school->name()}}</h2>
@@ -452,14 +452,14 @@
                         <ul class="bxslider" id="bx" style="visibility: hidden;">
                             @if($school->image->count() >= 4)
                             <!-- <li data-ng-repeat="image in contactInfo.image" data-notify-when-repeat-finished>
-                                    <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)"/>
+                                    <img class="bx-img" id="@{{image.full_path}}" data-ng-src="@{{image.full_path}}" onclick="test(event.target)" alt="School images"/>
                                 </li> -->
                             @foreach($school->image as $image)
                             <li>
                                 <picture>
                                     <source srcset="{{$image->path}}" type="image/webp">
                                     <source srcset="{{$image->full_path}}" type="image/jpeg">
-                                    <img class="bx-img" id="{{$image->full_path}}" src="{{$image->full_path}}" onclick="test(event.target)" />
+                                    <img class="bx-img" id="bx-img-{{$image->id}}" src="{{$image->full_path}}" onclick="test(event.target)"  alt="School images"/>
                                 </picture>
                             </li>
                             @endforeach
@@ -672,7 +672,7 @@
                                                                 @endif
 
                                                                 <li class="margin-top-10 margin-left-10">
-                                                                    <img src="{{ $section['section']['icon'] }}" alt="" style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8" />
+                                                                    <img src="{{ $section['section']['icon'] }}" alt="section name" style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8" />
                                                                     <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%;">
                                                                         {{ $section["section"]["name"] }}
                                                                     </span>
@@ -755,7 +755,7 @@
                                             <div class="ribbon-front sc-medium-grey">
                                                 <span class="">
                                                     <img class="criteria-img" src="{{$scholarship->criteria->icon}}"
-                                                        alt="">
+                                                        alt="criteria icon">
                                                 </span>
 
                                                 <span class="sc-t-dark-green font-weight-400 text-incr-120 margin-left-10 scholar-title">{{$scholarship->criteria->name}}</span>
@@ -766,13 +766,13 @@
                                         </div>
 
                                         <div class="hexagon hex1">
-                                            <img class="hex-img" src="{{ $scholarship->financial->icon }}">
+                                            <img class="hex-img" src="{{ $scholarship->financial->icon }}" alt="icon">
                                         </div>
                                         <div class="hexagon hex2">
                                             @if($scholarship->multiple == 0)
-                                            <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png">
+                                            <img class="hex-img" src="/panel/assets/images/steps/{{$scholarship->section[0]->name}}.png" alt="icon">
                                             @else
-                                            <img class="hex-img" src="/panel/assets/images/steps/studies.png">
+                                            <img class="hex-img" src="/panel/assets/images/steps/studies.png" alt="icon">
                                             @endif
                                         </div>
 
@@ -921,7 +921,7 @@
                                                         <div class="user-header ">
                                                             <a href="/public/profile/teacher/@{{teacher.info.id}}">
                                                                 <img class="user-img img-circle" ng-src="@{{teacher.info.avatar}}"
-                                                                    alt="">
+                                                                    alt="teacher">
                                                                 <span class="user-name">
                                                                     <span style="color: #fff !important;">@{{teacher.name}}</span>
                                                                 </span>
@@ -936,7 +936,7 @@
                                                     <div class="xs-user-header  center-block centered-text">
                                                         <a href="/public/profile/teacher/@{{teacher.info.id}}">
                                                             <img class="xs-user-img img-circle" ng-src="@{{teacher.info.avatar}}"
-                                                                alt="">
+                                                                alt="teacher">
                                                             <div class="xs-user-name">
                                                                 <span class="xs-name" style="color: #888 !important;">@{{teacher.name}}</span>
                                                             </div>
@@ -1070,7 +1070,7 @@
                                                     <picture>
                                                         <source srcset="{{asset('/new/img/sect-photo/college.webp')}}" type="image/webp">
                                                         <source srcset="{{asset('/new/img/sect-photo/college.jpg')}}" type="image/jpeg">
-                                                        <img id="c1im" class="upImg" src="/new/img/sect-photo/college.webp" alt="">
+                                                        <img id="c1im" class="upImg" src="/new/img/sect-photo/college.webp" alt="icons">
                                                     </picture>
                                                 
                                                 </div>
@@ -1084,7 +1084,7 @@
                                                     <picture>
                                                         <source srcset="{{asset('/new/img/sect-photo/college.webp')}}" type="image/webp">
                                                         <source srcset="{{asset('/new/img/sect-photo/college.jpg')}}" type="image/jpeg">
-                                                        <img id="c1im" class="upImg" src="/new/img/sect-photo/college.webp" alt="">
+                                                        <img id="c1im" class="upImg" src="/new/img/sect-photo/college.webp" alt="icons">
                                                     </picture>
                                                 </div>
                                                 <h1 id="c1t" class="alsoText">{{ $school->type->name }} σε {{
@@ -1104,7 +1104,7 @@
                                                 <picture>
                                                         <source srcset="{{asset('/new/img/sect-photo/student.webp')}}" type="image/webp">
                                                         <source srcset="{{asset('/new/img/sect-photo/student.jpg')}}" type="image/jpeg">
-                                                            <img id="c2im" class="upImg" src="/new/img/sect-photo/student.webp" alt="">
+                                                            <img id="c2im" class="upImg" src="/new/img/sect-photo/student.webp" alt="icons">
                                                     </picture>
                                                 </div>
                                                 <h1 id="c2t" class="alsoText">{{ $school->type->name }} σε {{
@@ -1123,7 +1123,7 @@
                                                     <picture>
                                                         <source srcset="{{asset('/new/img/sect-photo/doct2.webp')}}" type="image/webp">
                                                         <source srcset="{{asset('/new/img/sect-photo/doct2.jpg')}}" type="image/jpeg">
-                                                        <img id="c3im" class="upImg" src="/new/img/sect-photo/doct2.webp" alt="">
+                                                        <img id="c3im" class="upImg" src="/new/img/sect-photo/doct2.webp" alt="icons">
                                                     </picture>
                                                 
                                                 
@@ -1138,7 +1138,7 @@
                                                     <picture>
                                                         <source srcset="{{asset('/new/img/sect-photo/Schoolchildren2.webp')}}" type="image/webp">
                                                         <source srcset="{{asset('/new/img/sect-photo/Schoolchildren2.jpg')}}" type="image/jpeg">
-                                                            <img id="c3im" class="upImg" src="new/img/sect-photo/Schoolchildren2.webp" alt="">
+                                                            <img id="c3im" class="upImg" src="new/img/sect-photo/Schoolchildren2.webp" alt="icons">
                                                     </picture>
                                                 
                                                 </div>
@@ -1153,7 +1153,7 @@
                                                     <picture>
                                                         <source srcset="{{asset('/new/img/sect-photo/student.webp')}}" type="image/webp">
                                                         <source srcset="{{asset('/new/img/sect-photo/student.jpg')}}" type="image/jpeg">
-                                                            <img id="c3im" class="upImg" src="/new/img/sect-photo/student.webp" alt="">
+                                                            <img id="c3im" class="upImg" src="/new/img/sect-photo/student.webp" alt="icons">
                                                     </picture>
                                                 
                                                 </div>
@@ -1368,7 +1368,7 @@
 
                                     </button>
                                     <img src="/new/img/logoNX-light-m.webp" alt="scholio logo" class="pull-left sc-logo"
-                                        style="margin-top: 14px;">
+                                        style="margin-top: 14px;" alt="scholio logo">
                                     <h3 class="pull-left panel-title" style="margin: 20px 0 0 15px;">@lang('profile.request')</h3>
                                 </div>
 
@@ -1385,7 +1385,7 @@
 
                                     <div class="select-container">
                                         <div class="input-text">
-                                            <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">
+                                            <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="icon">
                                             @lang('profile.modal.studiesSelect')
                                         </div>
                                         <select ng-model="selectedStudy" class="modal-select">
@@ -1398,7 +1398,7 @@
 
                                     <div class="select-container">
                                         <div class="input-text">
-                                            <img class="modal-icon" src="/new/img/teacher/team.png" alt="">@lang('profile.modal.statusSelect')
+                                            <img class="modal-icon" src="/new/img/teacher/team.png" alt="icon">@lang('profile.modal.statusSelect')
                                         </div>
                                         <select ng-model="selectedStatus" class="modal-select cursor-hand">
                                             <option value="connected">@lang('panel/schools/resource.students.active')</option>
@@ -1414,7 +1414,7 @@
                                 <div class="input-container">
                                     <div class="select-container">
                                         <div class="input-text">
-                                            <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">Περιγραφή
+                                            <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="icon">Περιγραφή
                                             Βασικής Ειδικότητας/Σπουδών
                                         </div>
                                         <input type="text" ng-model="selectedStudy" class="modal-select" />
@@ -1428,7 +1428,7 @@
 
                                     <div class="select-container">
                                         <div class="input-text">
-                                            <img class="modal-icon" src="/new/img/teacher/team.png" alt="" style="height: 45px">Επιλογή
+                                            <img class="modal-icon" src="/new/img/teacher/team.png" alt="icon" style="height: 45px">Επιλογή
                                             Κατάστασης
                                         </div>
                                         <select ng-model="selectedStatus" class="modal-select cursor-hand">
@@ -1495,7 +1495,7 @@
 
                                 <div class="select-container">
                                     <div class="input-text">
-                                        <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="">
+                                        <img class="modal-icon" src="/new/img/teacher/graduate.png" alt="icon">
                                         @lang('profile.modal.studiesSelect')
                                     </div>
                                     <select ng-model="interestStudy" class="modal-select">
@@ -1538,7 +1538,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
 
-                            <img src="/" id="bigImage" width="120%" height="auto" />
+                            <img src="/" id="bigImage" width="120%" height="auto" alt="icon"/>
 
 
                         </div>
@@ -1559,7 +1559,7 @@
                                 <img src="/new/img/logoNX-light-m.webp" alt="scholio logo" class="pull-left">
                                 <h3 class="pull-left panel-title" style="margin: 8px 0 0 15px;">Υποτροφία @{{'>> send
                                     id here <<<'}}</h3> </div> </div> <div class="panel-body">
-                                        <img class="pull-left margin-right-10" style="height: 45px;" ng-src="{{ $school->logo}}">
+                                        <img class="pull-left margin-right-10" style="height: 45px;" ng-src="{{ $school->logo}}" alt="scholio logo">
                                         <span>{{ $school->type->name }} {{ $school->name() }}: </span>
                             </div>
 
@@ -1674,7 +1674,7 @@
 </script>
 
 
-
+<!-- birme 800 x 560 ratio 1.4285 -->
 <script>
     $(function () {
         $('.bxslider').bxSlider({
