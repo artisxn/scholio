@@ -22,7 +22,6 @@
     <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
 
     <!-- Above the fold content -->
-    <script src="/js/loadCSS.js"></script>
 
 
     <!--====== CSS  Styles =======-->
