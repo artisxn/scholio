@@ -1683,7 +1683,7 @@
             minSlides: 1,
             maxSlides: 5,
             moveSlides: 1,
-            slideWidth: 333,
+            slideWidth: 328.5,
             slideMargin: 10,
             infiniteLoop: true,
             hideControlOnEnd: false,
