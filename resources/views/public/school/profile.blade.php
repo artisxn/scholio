@@ -459,7 +459,7 @@
                                 <picture>
                                     <source srcset="{{$image->path}}" type="image/webp">
                                     <source srcset="{{$image->full_path}}" type="image/jpeg">
-                                    <img class="bx-img" id="bx-img-{{$image->id}}" src="{{$image->full_path}}" onclick="test(event.target)"  alt="School images"/>
+                                    <img class="bx-img" id="bx-img-{{$image->id}}" src="{{$image->full_path}}" onclick="test(event.target)" alt="{{ $school->name() }} Image"/>
                                 </picture>
                             </li>
                             @endforeach
