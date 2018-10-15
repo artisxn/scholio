@@ -10,6 +10,7 @@
     <meta property="og:image:type" content="image/jpg">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="400">
+    <meta name="theme-color" content="#004a6b"/>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
