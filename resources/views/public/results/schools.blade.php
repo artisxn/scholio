@@ -7,6 +7,8 @@
     <meta property="fb:pages" content="934370089973049" />
     <meta name="description" content="{{ $title }}">
     <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές">
+
+    <link rel="manifest" href="manifest.json">
     
 
     <!-- jQuery js-->

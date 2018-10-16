@@ -1,0 +1,15 @@
+{
+  "name": "Schol.io",
+  "icons": [
+
+    {
+      "src": "img/logo1.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "density": 2.0
+    }
+  ],
+  "start_url": "/public/schools",
+  "display": "standalone",
+  "orientation": "landscape"
+}
