@@ -1,15 +1,16 @@
 {
   "name": "Schol.io",
+  "short_name": "Schol.io",
   "icons": [
 
     {
-      "src": "img/logo1.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "density": 2.0
+      "src": "scholio-icon192x192.png",
+      "sizes": "196x196",
+      "type": "image/png"
     }
   ],
   "start_url": "/public/schools",
+  "Theme_color": "#004a6b",
   "display": "standalone",
   "orientation": "landscape"
 }
