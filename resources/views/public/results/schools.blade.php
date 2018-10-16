@@ -101,6 +101,13 @@
     .pos-right{right: -6px}
 
     .pad-rl-2{padding-right: 2px!important; padding-left: 2px!important}
+    .displayFilterOff{
+        display: none;
+    }
+
+    .displayFilterOn{
+        display: block;
+    }
 
 
 
@@ -445,6 +452,63 @@
 
             <div class="row">
                 <!--============ collapse  Menu Mobile Screen =============-->
+                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter displayFilterOff">
+
+
+                            <div class="input-group margin-bot-15 mobile-input">
+
+                                <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
+                            </div>
+
+
+                        <!-- <span class="sort-by-text">@lang('schools.sortby.title')</span> -->
+                        <!-- <div id="sort-by-container-Mobile"></div> -->
+
+
+
+                        <div class="content-wrapper">
+                            <aside>
+
+                                <div id="statsMobile" class="text-muted "></div>
+                                {{--<div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>--}}
+                                <div class="facet-category-title">@lang('schools.filters.title'):
+                                    <a class="" role="button" id="close-btn"
+                                       aria-expanded="false" aria-controls="">
+                                        <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div id="clear-allMobile" class="clear-filter-mobile"> </div>
+
+                                <div class="filter-container">
+                                    <div class="filter-title">
+                                        <i class="fa fa-university fa-linear5 margin-right-5"></i>
+                                        @lang('schools.filters.categories')</div>
+                                    <div id="categoriesTypeMobile"></div>
+                                </div>
+                                <div class="filter-container">
+                                    <div class="filter-title">
+                                        <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                        @lang('schools.filters.cities')</div>
+                                    <div id="categoriesCityMobile"></div>
+                                </div>
+
+                            </aside>
+
+                        </div>
+
+                    <div class="btn-group">
+                        {{-- <a href="{{ url('/public/schools/map') }}"> --}}
+                        <button class="btn btn-primary btn-map-mob" onClick="showMap()">
+                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>
+                            @lang('schools.show_map')
+                        </button>
+                        </a>
+                    </div>
+
+
+
+                </div><!-- collapseMenu -->
+
 
 
                 <!--============ Left Side Menu large Screen =============-->
