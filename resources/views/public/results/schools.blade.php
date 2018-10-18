@@ -804,9 +804,9 @@ angular.module("schoolsResultsApp",[])
 
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-xl-custom" >
 
-
+                <!-- 
                 <i id="report" class="fa fa-ellipsis-h report report-portal" onClick="dropReport(@{{school_id}})" ></i>
-                <!-- =================== Report  Menu ====================-->
+                
                 <div class="report-drop report-drop-portal" id="report-drop@{{school_id}}" style="overflow:hidden!important">
                      
                      <picture>
@@ -827,7 +827,7 @@ angular.module("schoolsResultsApp",[])
                      </form>
                 </div>
 
-                <!-- =====================================================-->
+                =====================================================-->
 
 
 
