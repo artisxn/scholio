@@ -117,7 +117,7 @@
 
 <script type="text/javascript">
     WebFontConfig = {
-      google: { families: [ 'Roboto:300,400&subset=greek' ] }
+      google: { families: [ 'Roboto:300,400,500&subset=greek' ] }
     };
     (function() {
       var wf = document.createElement('script');
