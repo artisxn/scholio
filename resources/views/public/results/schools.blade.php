@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
     <meta property="fb:pages" content="934370089973049" />
     <meta name="description" content="{{ $title }}">
     <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές">
@@ -68,6 +68,7 @@
     <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">
 
     <!-- Results CSS -->
+    <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
 
 <script>
@@ -76,209 +77,6 @@
 </head>
 
 <style>
-        *{font-family:'Roboto', sans-serif;}
-        [ng\:cloak], [ng-cloak], .ng-cloak{display:none !important;}
-        .clear-fix{clear:both;display:block;}
-        #header{background:rgba(240,240,240,0.92);border-bottom:1px solid #c1c1c1;height:61px;}
-        #header .active a{padding-bottom:5px;border-bottom:2px solid #a1a1a1;}
-        .navbar-scroll li{top:-11px;}
-        .nav-web .sc-landing-logo, .nav-web .sc-landing-logo-sticky{padding-top:15px;}
-        .nav-mobile{padding-top:11px;}
-        section{padding-top:100px!important;padding-bottom:100px!important;}
-        .sc-landing-header{height:79px;background:transparent;}
-        .sc-landing-header-sticky{background:transparent;}
-        .sc-landing-brand{padding-top:26px!important;}
-        .sc-landing-menu{padding-top:10px;}
-        .sc-landing-menu a{color:#324c5a;}
-        .sc-landing-menu li>a:hover{background-color:transparent!important;color:#ffffff;}
-        .sc-landing-menu li>a:focus{background-color:transparent!important;color:#ffffff;}
-        .sc-landing-menu-item{padding-top:8px;}
-        .sc-button-landing{margin-top:-4px;}
-        .sc-landing-logo-sticky{display:block}
-        .sc-landing-logo{}
-        .sc-landing-menu-mobile-sandwitch{padding-right:20px;margin-top:25px!important;cursor:pointer;}
-        .sc-landing-menu-button-sandwitch{}
-        .sc-landing-menu-sandwitch-button-sticky{display:block;}
-        .sc-landing-menu-sandwitch{}
-        .sc-landing-menu-mobile-holder{padding:20px;width:230px;height:100%;position:fixed;right:0;top:0;z-index:999999;display:none;}
-        .sc-landing-menu-mobile-close{font-size:25px;cursor:pointer;}
-        .sc-landing-menu-mobile-item{font-size:18px;text-align:right;color:white;font-weight:300;padding-top:20px;}
-        .filter-icon{margin-top:-10px!important;}
-        .landDrop{margin-top:10px;}
-        .langDropWhite{margin-right:10px}
-        .main{min-height:800px;background-color:#F1F4F5;}
-        .up{height:100px;}
-        .box{height:225px;}
-        .left-box1{background-color:#fff;border:solid 1px #e1e1e1;height:245px!important;}
-        .left-box2{background-color:#f5f5f5;border:solid 1px #e1e1e1;border-top:none;height:195px!important;}
-        p{padding:15px;color:#5d5d5d;}
-        .mob-filter{z-index:95;opacity:0.98;position:fixed;top:68px;height:auto;bottom:8px;border-radius:6px;border:1px solid #777;width:250px;box-shadow:2px 3px 40px 6px #4e4e4e;overflow-y:auto;background-color:#e3e3e3;padding:10px 7px 30px 7px;overflow-x:hidden;}
-        .left{left:8px;}
-        .font-90{font-size:80%!important;}
-        .input-group-addon{background-color:#fff;border-right:none;width:20px;}
-        #input1, #Autocomplete{border:none !important;box-shadow:none !important;width:194px;height:34px;border-bottom:1px solid #c4c4c5 !important;border-top:1px solid #c4c4c5 !important;border-right:1px solid #c4c4c5 !important;border-left:none !important;font-size:98%;color:#888;border-top-left-radius:0;border-bottom-left-radius:0;}
-        ::-webkit-input-placeholder{color:#888;}
-        .kf-gray{color:#888;}
-        .form-group input[type="checkbox"]{display:none;}
-        .form-group input[type="checkbox"] + .btn-group > label span{width:20px;}
-        .form-group input[type="checkbox"] + .btn-group > label span:first-child{display:none;}
-        .form-group input[type="checkbox"] + .btn-group > label span:last-child{display:inline-block;}
-        .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child{display:inline-block;}
-        .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child{display:none;}
-        .kf-check{width:185px;}
-        .card-ribbon{position:relative;}
-        .card{background:white;}
-        .card, .card-photo{height:310px;}
-        .card-photo{width:345px;margin-right:8px;background-size:cover;background-position:center;object-fit: cover;object-position: center;}
-        #img2{top:165px;}
-        #img2, #img3{position:absolute;left:29px;-moz-box-shadow:0px 0px 3px 2px #ffffff;-webkit-box-shadow:0px 0px 3px 2px #ffffff;box-shadow:0px 0px 3px 2px #ffffff;}
-        .card-buttons{padding:0;margin:0;}
-        .margin-pad{margin:50px 0;padding:35px 0;}
-        .facet-category-title{font-weight:300;padding-top:20px;margin-bottom:0;padding-bottom:0}
-        .filter-title{font-weight:300;font-size:120%;;margin-top:0;padding-top:0}
-        .algolia-search-container{width:297px;padding:0;margin-left:-16px;margin-right:0}
-        .algolia-search-input{font-size:95%;font-weight:300;border-radius:5px!important;}
-        .filter-container{padding-top:10px;padding-bottom:10px;background-color:#fafafa;border:1px solid #bbb;border-radius:4px;margin:10px 0;padding-left:15px;padding-right:15px;}
-        .report{position:absolute;bottom:-110px;right:20px;font-size:180%;color:#aaa;z-index:50;}
-        .report:hover{color:#FD6A33;cursor:pointer;}
-        .report-logo{height:50px;text-align:left;margin:14px 0 0 14px;opacity:0.3}
-        .report-drop{background:#fafafa;border:1px solid #ddd;box-shadow:0px 0px 10px 2px #ccc;border-radius:6px;width:0;height:0;opacity:0;margin-top:30px;margin-right:10px;display:inline-block;position:absolute;bottom:-110px;right:-1px;z-index:20}
-        .report-title{color:#00475d;opacity:0.3;margin-left:10px;font-size:110%}
-        .report-text{width:100%;height:80px;text-align:justify;font-size:90%;color:#ccc;margin-top:20px;padding:14px 18px;}
-        .report-text:hover{background:#aaa;color:#fff;cursor:pointer;}
-        .report-scholar{bottom:3px;right:163px;}
-        .report-scholar-drop{bottom:3px;right:145px;}
-        .left, .left-240, .left--300{transition:all 0.4s;}
-        .left-240{filter:grayscale(100%);opacity:0.5;}
-        .left--300{left:-275px;}
-        #cards>li{opacity:1;}
-        #cards>li.ng-enter, #cards>li.ng-leave-active, #cards>li.ng-move{transition:0.4s;margin-bottom:3800px;}
-        #cards>li.ng-enter-active ,#cards>li.ng-leave, #cards>li.ng-move-active{margin-bottom:0;}
-        .info-window-text{padding-top:6px;left:12px}
-        .btn-map,.btn-group,.sort-by-text,.ais-sort-by-selector,.mobile-input{margin-left:-16px;}
-        .algolia-search-container,.ais-sort-by-selector{width:110%!important;}
-        .mobile-input{width:108%}
-        .btn-map,.btn-group{width:105%;}
-        .btn-group{margin-top:15px;margin-bottom:15px;}
-        .btn-map{height:40px}
-        .btn-map-mob{width:195px;margin-left:auto;margin-right:auto;text-align:center;position:absolute;left:20px;right:20px!important;}
-        @media (max-width:1239px){.algolia-search-container,.ais-sort-by-selector{width:113%!important;}
-        .btn-map,.btn-group{width:107%;}
-        }
-        @media (max-width:1149px){.algolia-search-container,.ais-sort-by-selector{width:116%!important;}
-        }
-        @media(min-width:1150px){.col-xl-custom{width:59%;}
-        }
-        @media(min-width:1250px){.clear-filter,.filter-container{width:100%}
-        .col-xl-custom{width:60%;padding-right:10px}
-        }
-        @media(min-width:1350px){.col-xl-custom{width:62.5%;}
-        }
-        @media(min-width:1450px){.col-xl-custom{width:64.5%;}
-        }
-        @media(max-width:1249px){.content-wrapper{padding-right:25px;}
-        .clear-filter,.filter-container{width:104%}
-        .algolia-search-container,.ais-sort-by-selector{width:111%!important;}
-        .btn-map,.btn-group{width:105.2%;}
-        }
-        @media(max-width:1199px){.clear-filter,.filter-container{width:99.5%}
-        }
-        @media(max-width:1149px){.content-wrapper{padding-right:45px;}
-        .clear-filter,.filter-container{width:98%}
-        .algolia-search-container,.ais-sort-by-selector{width:113%!important;}
-        .btn-map,.btn-group{width:106%;}
-        }
-        @media(max-width:1049px){.content-wrapper{padding-right:65px;}
-        }
-        @media(max-width:991px){.filter-container{width:237px}
-        .mob-filter{padding-left:21px}
-        .ais-sort-by-selector{width:107.3%!important;}
-        .clear-filter-mobile{width:237px}
-        }
-        @media (min-width:1450px){#input1 ,#Autocomplete{width:225px!important;}
-        .kf-check{width:216px!important;}
-        }
-        @media (max-width:1440px){}
-        @media (min-width:1200px) and (max-width:1449px){#input1,#Autocomplete{width:208px!important;}
-        .kf-check{width:208px!important;}
-        .form-group input[type="checkbox"] + .btn-group > label span{width:10px!important;}
-        }
-        @media (max-width:1238px){}
-        @media (min-width:1200px){.kf-margin-top{margin-top:25px;}
-        .margin-pad{margin-top:110px;padding:3px 0;}
-        }
-        @media (min-width:992px) and (max-width:1199px){#input1 ,#Autocomplete{width:150px;}
-        .kf-check{width:160px;}
-        .form-group input[type="checkbox"] + .btn-group > label span{width:7px;}
-        .card{height:348px;}
-        .card-photo{width:280px;height:197px;margin-bottom:19px;}
-        .but-pad{padding-left:310px;}
-        .margin-pad{margin-top:140px;padding:3px 0;}
-        }
-        @media (min-width:768px) and (max-width:991px){.card{height:340px;}
-        .card-photo{width:265px;height:190px;margin-bottom:32px;}
-        .margin-pad{margin:60px 0;padding:35px 0;}
-        .left-box2{height:900px!important;}
-        }
-        @media (min-width:481px) and (max-width:767px){}
-        @media (min-width:601px) and (max-width:767px){.card{height:715px;}
-        .card-photo{width:100%;height:345px;max-height:350px;}
-        .kf-col-xs-10{width:82%}
-        .kf-col-xs-offset-1{margin-left:11%}
-        #img3{top:293px;}
-        .left--300{left:-343px;}
-        .left--390{left:-393px;}
-        .left-box2{height:900px!important;}
-        .btn-close{margin-left:72%;}
-        }
-        @media (max-width:767px){.info-window-text{padding-top:6px;left:-30px}
-        .info-window-text2{margin-left:90px}
-        }
-        @media (min-width:541px) and (max-width:600px){.card{height:700px;}
-        .card-photo{width:100%;height:324px;max-height:340px;}
-        .kf-col-xs-10{width:88%}
-        .kf-col-xs-offset-1{margin-left:6%}
-        #img3{left:30px;top:273px;}
-        .sm-pull-left{width:66%;float:left!important;}
-        .left-box2{background-color:#ebebeb;height:900px!important;}
-        .btn-close{margin-left:87%;}
-        }
-        @media (min-width:481px) and (max-width:540px){.card{height:670px;}
-        .card-photo{width:100%;height:320px;max-height:300px;}
-        .kf-col-xs-10{width:92%}
-        .kf-col-xs-offset-1{margin-left:4%}
-        #img3{left:30px;top:243px;}
-        .sm-pull-left{width:70%;float:left!important;}
-        .xs-text-incr-80{font-size:81%;}
-        .left-box2{background-color:#ebebeb;height:900px!important;}
-        .btn-close{margin-left:85%;}
-        }
-        @media (max-width:480px){.card{height:600px;}
-        .card-photo{width:100%;height:285px;max-height:270px;}
-        #img3{left:30px;top:218px;}
-        .xs-text-incr-85{font-size:86%;}
-        .xs-text-incr-80{font-size:81%;}
-        .sc-button3{min-width:120px;}
-        .sm-pull-left{width:88%;float:left!important;}
-        .box{height:200px;}
-        .left-box2{background-color:#ebebeb;height:900px!important;}
-        .shortDrop{width:138px!important;}
-        .btn-close{margin-left:83%;}
-        }
-        @media (max-width:400px){.card{height:560px;}
-        .card-photo{width:100%;height:242px;max-height:280px;}
-        #img3{left:30px;top:190px;}
-        .xs-text-incr-80{font-size:81%;}
-        .box{height:170px;}
-        .left-box2{background-color:#ebebeb;height:900px!important;}
-        .shortDrop{width:135px!important;}
-        .btn-close{margin-left:83%;}
-        .selectpicker{width:99%!important;}
-        .report-scholar{right:135px;}
-        .report-scholar-drop{right:120px;}
-        }
-        input[type="text"]:focus,.form-control:focus, input{box-shadow:none;-webkit-box-shadow:none;}
-        .form-control:focus{border-color:#008da5;box-shadow:none!important;}
 
     /*=============================================*/
     /*  /////////////////////////////////////////  */
@@ -555,7 +353,86 @@
 
                 <!-- Scholio Menu -->
 
+                <div class="pull-left">
+                @if(App\Key::find(1)->dropdownLogin)
+                         <form method="GET" action="/fake/login" id="langForm" style="display: inline-block; position: absolute; top: 18px; margin-left: 110px; color: #555">
+                    <select onchange="this.form.submit()" style="border: none; background-color: transparent; margin: -15px; width: 250px;" name="userID">
+                            @foreach(App\User::all() as $key=>$user)
+                                @if(auth()->check() && auth()->user()->id == $user->id)
+                                    <option data-icon="fa" value="{{ $user->id }}" selected="selected">{{ $user->role }}-{{$user->name}} | {{ $user->id }} </option>
+                                @else
+                                @if($key == 0)
+                                <option disabled selected value> -- user -- </option>
+                                @endif
+                                    <option data-icon="fa" value="{{ $user->id }}">{{ $user->role }}-{{$user->name}} | {{ $user->id }} </option>
+                                @endif
+                            @endforeach
+                    </select>
+                </form>
+                @endif
+                </div>
 
+                <!-- Large Menu -->
+                <div class="pull-right visible-md visible-lg">
+                    <div class="">
+                        <ul class="nav navbar-nav navbar-right sc-landing-menu">
+                            {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
+
+
+                        <li class="langDropWhite" style="margin-top: -1px">
+                        <form method="GET" id="langForm">
+                            <select onchange="changeLang(this)" class="selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                                <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
+                                <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
+                            </select>
+                            </form>
+                        </li>
+
+
+                            <!-- ================  For portal only ==================== -->
+                            <li class="sc-landing-menu-item">
+                            <a href="{{url('public/scholarships')}}" class="btn-change-search">
+                                <i class="fa fa-trophy margin-right-5"></i>
+                                @lang('schools.navigation.search_scholarship')
+                            </a>
+                            </li>
+                            <!-- ======================================================= -->
+                            @if(auth()->check())
+                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
+                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
+                            @else
+                                <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#select-modal"--}}
+                                        >@lang('main.navigation.register')</button></a></li>
+                                <li>
+                                    <a href="{{ url('/login') }}">
+                                        <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
+                                                {{--data-toggle="modal" data-target="#signIn-modal"--}}
+                                        >@lang('main.navigation.login')</button>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
+                    <div class="">
+                        <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
+                            <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
+
+                                <picture>
+                                    <source srcset="{{asset('new/img/collapse-dark2.webp')}}" type="image/webp">
+                                    <source srcset="{{asset('new/img/collapse-dark2.png')}}" type="image/png">
+                                    <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
 
                 <!-- ======= Sandwich Menu =======-->
 
@@ -578,15 +455,128 @@
             <div class="row">
                 <!--============ collapse  Menu Mobile Screen =============-->
                 
+                <div id="mobFilt" class="hidden-md hidden-lg" style="margin-top: -20px;">
 
 
+                    <div class="input-group" style="padding: 0 15px; width: 100%;">
+                        <span style="font-size: 120%; color: #537c8f!important;"> Αναζήτησε Εκπαιδευτικά Ιδρύματα </span>
+                        <input type="text" class="form-control algolia-search-input" id="queryMobile"/>
+                    </div>
 
+                    <div class="" style="padding: 0 15px; margin-bottom: 20px;">
+                        <aside>
+                            <div id="statsMobile" class="text-muted "></div>
+
+                            <div class="">
+                                <div class="facet-category-title">@lang('schools.filters.title'):
+                                    <a class="" role="button" id="close-btn"
+                                       aria-expanded="false" aria-controls="">
+                                        <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div id="clear-allMobile" class="clear-filter-mobile" style="width: 100%"> </div>
+
+
+                                <div class="filter-container col-xs-6" style="width: 50%; padding-right: 5px; z-index: 999">
+                                    <div class="filter-title">
+                                        <i class="fa fa-university fa-linear5 margin-right-5"></i>
+                                        @lang('schools.filters.categories')</div>
+                                    <div id="categoriesTypeMobile"></div>
+                                </div>
+
+                                <div class="filter-container col-xs-6" style="width: 50%; padding-left: 5px; z-index: 999">
+                                    <div class="filter-title">
+                                        <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                        @lang('schools.filters.cities')</div>
+                                    <div id="categoriesCityMobile"></div>
+                                </div>
+
+                            </div>
+
+
+                        </aside>
+
+                    </div>
+
+                </div><!-- collapseMenu -->
 
 
 
 
 
                 <!--============ Left Side Menu large Screen =============-->
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs  left-side-container" >
+
+
+                        <div class="input-group margin-bot-15 algolia-search-container">
+                            <input type="text" class="form-control algolia-search-input" id="query"/>
+                        </div>
+
+
+                    <!-- <span class="sort-by-text">@lang('schools.sortby.title')</span> -->
+                    <!-- <div id="sort-by-container"></div> -->
+
+
+
+                    <div class="btn-group">
+
+                        {{-- <a href="{{ url('/public/schools/map') }}"> --}}
+                        <button class="btn btn-primary btn-map" onClick="showMap()">
+                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>
+                            @lang('schools.show_map')
+
+                            <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
+                            <a href="/public/schools/map" style="position: relative; z-index: -5; opacity: 0.1">MAPS</a>
+                            <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
+
+                        </button>
+                        </a>
+                    </div>
+
+
+
+
+                    <!-- <div id="sort-by-container"></div> -->
+
+                    <div class="content-wrapper">
+                        <aside>
+
+                            <div id="stats" class="text-muted "></div>
+                            <div class="facet-category-title facet font-weight-300">
+                                @lang('schools.filters.title'):</div>
+
+                            <div id="clear-all"class="clear-filter"></div>
+
+                            <div class="filter-container">
+                                <div class="filter-title">
+                                    <i class="fa fa-university fa-linear5 margin-right-5"></i>
+                                    @lang('schools.filters.categories')</div>
+                                <div id="categoriesType"></div>
+                            </div>
+                            <div class="filter-container">
+                                <div class="filter-title">
+                                    <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                    @lang('schools.filters.cities')</div>
+                                <div id="categoriesCity"></div>
+                            </div>
+                            {{-- <div class="filter-title">Αντικείμενο Σπουδών</div>
+                            <div id="categoriesSection"></div> --}}
+                            {{-- <div class="filter-title">Επίπεδο Σπουδών</div>
+                            <div id="categoriesLevel"></div> --}}
+                             {{--
+                                <div class="filter-container">
+                                    <div id="rating" class="facet"></div>
+                                </div>
+                            --}}
+                            {{--<div id="financial" class="facet"></div>--}}
+
+
+                        </aside>
+
+                    </div>
+
+
+                </div>  <!-- //col-lg-3-->
 
 
 
