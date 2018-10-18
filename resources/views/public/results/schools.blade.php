@@ -464,7 +464,7 @@
             <div class="row">
                 <!--============ collapse  Menu Mobile Screen =============-->
                 
-                <div id="mobFilt" class="" style="margin-top: -20px;">
+                <div id="mobFilt" class="hidden-md hidden-lg" style="margin-top: -20px;">
 
 
                     <div class="input-group" style="padding: 0 15px; width: 100%;">
@@ -476,7 +476,7 @@
                         <aside>
                             <div id="statsMobile" class="text-muted "></div>
 
-                            <div class="hidden">
+                            <div class="">
                                 <div class="facet-category-title">@lang('schools.filters.title'):
                                     <a class="" role="button" id="close-btn"
                                        aria-expanded="false" aria-controls="">
