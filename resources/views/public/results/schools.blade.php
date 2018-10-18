@@ -373,7 +373,7 @@
                 </div>
 
                 <!-- Large Menu -->
-                <div class="pull-right visible-md visible-lg">
+                <div class="pull-right visible-md visible-lg hidden-xs hidden-sm hidden-md hidden-lg">
                     <div class="">
                         <ul class="nav navbar-nav navbar-right sc-landing-menu">
                             {{--<li class="sc-landing-menu-item"><a href="">ΥΠΟΤΡΟΦΙΕΣ</a></li>--}}
@@ -402,12 +402,10 @@
                                 <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
                             @else
                                 <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
-                                                {{--data-toggle="modal" data-target="#select-modal"--}}
                                         >@lang('main.navigation.register')</button></a></li>
                                 <li>
                                     <a href="{{ url('/login') }}">
                                         <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
-                                                {{--data-toggle="modal" data-target="#signIn-modal"--}}
                                         >@lang('main.navigation.login')</button>
                                     </a>
                                 </li>
@@ -455,6 +453,8 @@
             <div class="row">
                 <!--============ collapse  Menu Mobile Screen =============-->
                 
+
+
                 <div id="mobFilt" class="hidden-md hidden-lg" style="margin-top: -20px;">
 
 
