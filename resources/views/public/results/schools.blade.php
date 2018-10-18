@@ -417,7 +417,7 @@
                 </div>
 
                 <!-- Mobile Menu -->
-                <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
+                <!-- <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
                     <div class="">
                         <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
                             <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
@@ -429,7 +429,7 @@
                                 </picture>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
 
