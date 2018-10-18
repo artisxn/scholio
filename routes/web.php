@@ -97,6 +97,7 @@ Route::get('aaqq', function () {
     ini_set('max_execution_time', 500);
     foreach (AlgoliaSchool::all() as $alg) {
              $school = School::find($alg->school_id);
+             $alg->region = $school->region; 
             $alg->{'categories.lvl0'} = $alg->city;
             $alg->{'categories.lvl1'} = $alg->city . " > " . $alg->region;
             
