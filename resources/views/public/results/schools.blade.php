@@ -464,7 +464,7 @@
             <div class="row">
                 <!--============ collapse  Menu Mobile Screen =============-->
                 
-                <div id="mobFilt" class="hidden-md hidden-lg" style="margin-top: -20px;">
+                <div id="mobFilt" class="" style="margin-top: -20px;">
 
 
                     <div class="input-group" style="padding: 0 15px; width: 100%;">
