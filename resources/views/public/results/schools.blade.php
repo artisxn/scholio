@@ -425,7 +425,7 @@
                                 <picture>
                                     <source srcset="{{asset('new/img/collapse-dark2.webp')}}" type="image/webp">
                                     <source srcset="{{asset('new/img/collapse-dark2.png')}}" type="image/png">
-                                        <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
+                                    <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
                                 </picture>
                             </div>
                         </div>
@@ -443,7 +443,7 @@
                 </div>
 
                 <!-- ======= Sandwich Menu =======-->
-                @include('public.sandwich-menu-resultsSchools')
+                <!-- @include('public.sandwich-menu-resultsSchools') -->
 
             </div>  <!-- row -->
         </div> <!-- container-->
