@@ -122,6 +122,8 @@
     .backImageSm{ height: 170px; width: 80%; left: 40px; bottom: -36px; }
     .backImageLg{ height: 260px; width: 101%; left: 10px; bottom: -30px;}
 
+    .ais-search-box--powered-by-link{display: inline; background-image: none;}
+
 
 
     @media(max-width: 1199px){
@@ -491,7 +493,7 @@
                                     <div id="categoriesTypeMobile"></div>
                                 </div>
 
-                                <div class="filter-container col-xs-6" style="width: 50%; padding-left: 5px;">
+                                <div class="filter-container col-xs-6" style="width: 50%; padding-left: 5px; z-index: 999">
                                     <div class="filter-title">
                                         <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
                                         @lang('schools.filters.cities')</div>
