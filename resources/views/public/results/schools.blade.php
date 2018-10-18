@@ -487,7 +487,7 @@
                         <aside>
                             <div id="statsMobile" class="text-muted "></div>
 
-                            <div class="hidden">
+                            <div class="">
                                 <!-- <div class="facet-category-title">@lang('schools.filters.title'): -->
                                     <!-- <a class="" role="button" id="close-btn"
                                        aria-expanded="false" aria-controls="">
@@ -496,20 +496,21 @@
                                 </div> -->
                                 <div id="clear-allMobile" class="clear-filter-mobile" style="width: 100%"> </div>
 
+                                <span class="hidden">
+                                    <div class="filter-container col-xs-6" style="width: 50%; padding-right: 5px; z-index: 999">
+                                        <div class="filter-title">
+                                            <i class="fa fa-university fa-linear5 margin-right-5"></i>
+                                            @lang('schools.filters.categories')</div>
+                                        <div id="categoriesTypeMobile"></div>
+                                    </div>
 
-                                <div class="filter-container col-xs-6" style="width: 50%; padding-right: 5px; z-index: 999">
-                                    <div class="filter-title">
-                                        <i class="fa fa-university fa-linear5 margin-right-5"></i>
-                                        @lang('schools.filters.categories')</div>
-                                    <div id="categoriesTypeMobile"></div>
-                                </div>
-
-                                <div class="filter-container col-xs-6" style="width: 50%; padding-left: 5px; z-index: 999">
-                                    <div class="filter-title">
-                                        <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
-                                        @lang('schools.filters.cities')</div>
-                                    <div id="categoriesCityMobile"></div>
-                                </div>
+                                    <div class="filter-container col-xs-6" style="width: 50%; padding-left: 5px; z-index: 999">
+                                        <div class="filter-title">
+                                            <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
+                                            @lang('schools.filters.cities')</div>
+                                        <div id="categoriesCityMobile"></div>
+                                    </div>
+                                </span>
 
                             </div>
 
