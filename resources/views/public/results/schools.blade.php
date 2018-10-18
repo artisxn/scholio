@@ -431,11 +431,11 @@
 
                     {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
 
-                        <div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">
-                            <a class="" role="button" href="#" aria-expanded="false">
-                                <i class="fa fa-filter margin-right-10 margin-top-30 text-175 sc-t-dark-grey" style="font-size: 180%; z-index: 5!important;" aria-hidden="true" ></i>
-                            </a>
-                        </div>
+                        {{--<div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">--}}
+                            {{--<a class="" role="button" href="#" aria-expanded="false">--}}
+                                {{--<i class="fa fa-filter margin-right-10 margin-top-30 text-175 sc-t-dark-grey" style="font-size: 180%; z-index: 5!important;" aria-hidden="true" ></i>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
 
 
                 </div>
@@ -454,64 +454,60 @@
 
             </div>
 
+
+
+
+
+
             <div class="row">
                 <!--============ collapse  Menu Mobile Screen =============-->
-                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter displayFilterOff">
+                
+                <div id="mobFilt" class="hidden-md hidden-lg" style="margin-top: -20px;">
 
 
-                            <div class="input-group margin-bot-15 mobile-input">
+                    <div class="input-group" style="padding: 0 15px; width: 100%;">
+                        <span style="font-size: 120%; color: #537c8f!important;"> Αναζήτησε Εκπαιδευτικά Ιδρύματα </span>
+                        <input type="text" class="form-control algolia-search-input" id="queryMobile"/>
+                    </div>
 
-                                <input type="text" class="form-control algolia-search-input" id="queryMobile" style="border-radius: 5px;" />
-                            </div>
+                    <div class="" style="padding: 0 15px; margin-bottom: 20px;">
+                        <aside>
+                            <div id="statsMobile" class="text-muted "></div>
 
-
-                        <!-- <span class="sort-by-text">@lang('schools.sortby.title')</span> -->
-                        <!-- <div id="sort-by-container-Mobile"></div> -->
-
-
-
-                        <div class="content-wrapper">
-                            <aside>
-
-                                <div id="statsMobile" class="text-muted "></div>
-                                {{--<div class="facet-category-title facet font-weight-300">Φίλτρα Αναζήτησης:</div>--}}
+                            <div class="hidden">
                                 <div class="facet-category-title">@lang('schools.filters.title'):
                                     <a class="" role="button" id="close-btn"
                                        aria-expanded="false" aria-controls="">
                                         <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
                                     </a>
                                 </div>
-                                <div id="clear-allMobile" class="clear-filter-mobile"> </div>
+                                <div id="clear-allMobile" class="clear-filter-mobile" style="width: 100%"> </div>
 
-                                <div class="filter-container">
+
+                                <div class="filter-container col-xs-6" style="width: 50%; padding-right: 5px; z-index: 999">
                                     <div class="filter-title">
                                         <i class="fa fa-university fa-linear5 margin-right-5"></i>
                                         @lang('schools.filters.categories')</div>
                                     <div id="categoriesTypeMobile"></div>
                                 </div>
-                                <div class="filter-container">
+
+                                <div class="filter-container col-xs-6" style="width: 50%; padding-left: 5px;">
                                     <div class="filter-title">
                                         <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
                                         @lang('schools.filters.cities')</div>
                                     <div id="categoriesCityMobile"></div>
                                 </div>
 
-                            </aside>
+                            </div>
 
-                        </div>
 
-                    <div class="btn-group">
-                        {{-- <a href="{{ url('/public/schools/map') }}"> --}}
-                        <button class="btn btn-primary btn-map-mob" onClick="showMap()">
-                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>
-                            @lang('schools.show_map')
-                        </button>
-                        </a>
+                        </aside>
+
                     </div>
 
-
-
                 </div><!-- collapseMenu -->
+
+
 
 
 
