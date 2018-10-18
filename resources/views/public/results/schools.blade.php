@@ -3,8 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
-    <meta property="fb:pages" content="934370089973049" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">    <meta property="fb:pages" content="934370089973049" />
     <meta name="description" content="{{ $title }}">
     <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές">
 
@@ -317,7 +316,7 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="schoolsResultsApp"  ng-controller="schoolsResultsCtrl" data-ng-init="init()"  ng-cloak>
 
-  <!-- @include('components.preloader') -->
+  @include('components.preloader')
 
     <!-- Scholio Header -->
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >

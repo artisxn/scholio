@@ -201,7 +201,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp"
  ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
 
-	@include('components.preloader')
+	<!-- @include('components.preloader') -->
 
 
 	<!-- Scholio Header -->
