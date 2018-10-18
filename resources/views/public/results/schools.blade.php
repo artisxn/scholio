@@ -56,14 +56,14 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 
 <!-- Bootstrap Select -->
-<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css" rel="stylesheet" >
+<!-- <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css" rel="stylesheet" > -->
 
 <!-- font-awesome -->
 <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 
 
 <!-- Bootstrap xxs Extension CSS -->
-<link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
+<!-- <link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet"> -->
 
 <!-- Main CSS -->
 <link href="{{asset('new/css/main.css')}}" rel="stylesheet">
@@ -77,16 +77,16 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 
     <!-- Bootstrap Select -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css"> -->
 
     <!-- Ribbon CSS -->
-     <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet">
+     <!-- <link href="{{asset('new/css/ribbon.css')}}" rel="stylesheet"> -->
 
     <!-- Hexagon CSS -->
-    <link href="/new/css/Hexagon.css" rel="stylesheet">
+    <!-- <link href="/new/css/Hexagon.css" rel="stylesheet"> -->
 
     <!-- Input Range CSS -->
-    <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet">
+    <!-- <link href="{{asset('new/css/input-range.css')}}" rel="stylesheet"> -->
 
     <!-- Results CSS -->
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">

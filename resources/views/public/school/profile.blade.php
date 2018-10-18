@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
     <!-- prevent zoomIn in mobile inputs,selects,etc -->
     @include('google.main')
 
@@ -55,7 +55,7 @@
     <link href="/new/css/profile.css" rel="stylesheet">
 
     <!-- Horizontal Ribbons  CSS -->
-    <link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
+    <!-- <link href="/new/css/ribbonHorizontal.css" rel="stylesheet"> -->
 
     <!-- Hexagon CSS -->
     <link href="/new/css/Hexagon.css" rel="stylesheet">
@@ -683,7 +683,7 @@
                                                     @endif
 
                                                     @foreach($level["sections"] as $key2=>$section)
-                                                    @if($school->type->id ==2)
+                                                    @if($school->type->id ==2 || ($school->type->id ==4  && $levelsCounter == 1))
                                                     <ul class="col-lg-6" style="list-style-type: none;  padding-top: 16px;">
                                                         @elseif(($key2+1)%2 == 1)
                                                         <ul class="clearFloat" style="list-style-type: none;  padding-top: 16px;">
