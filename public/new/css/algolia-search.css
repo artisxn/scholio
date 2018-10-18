@@ -9,7 +9,7 @@ aside .facet-item, aside a{color:#000000;}
 aside .facet-item:hover, aside a:hover{color:#B32500;text-decoration:none;}
 aside .facet-item.active, aside a.active{font-weight:bold;}
 aside .facet-item input, aside a input{margin-right:4px;}
-aside .facet-name{width:88%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:inline-block;}
+aside .facet-name{width:84%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:inline-block;}
 aside .facet-count{margin-left:4px;color:#888;}
 aside #colors:after{content:"";display:table;clear:both;}
 aside .facet-color{width:28px;height:28px;border-radius:3px;margin:0 6px 6px;display:block;overflow:hidden;float:left;}

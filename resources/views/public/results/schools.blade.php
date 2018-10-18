@@ -451,11 +451,10 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
                 <!-- ======= Sandwich Menu =======-->
+                @include('public.sandwich-menu-resultsSchools')
 
             </div>  <!-- row -->
         </div> <!-- container-->
@@ -488,13 +487,13 @@
                         <aside>
                             <div id="statsMobile" class="text-muted "></div>
 
-                            <div class="">
-                                <div class="facet-category-title">@lang('schools.filters.title'):
-                                    <a class="" role="button" id="close-btn"
+                            <div class="hidden">
+                                <!-- <div class="facet-category-title">@lang('schools.filters.title'): -->
+                                    <!-- <a class="" role="button" id="close-btn"
                                        aria-expanded="false" aria-controls="">
                                         <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
                                     </a>
-                                </div>
+                                </div> -->
                                 <div id="clear-allMobile" class="clear-filter-mobile" style="width: 100%"> </div>
 
 
@@ -563,8 +562,8 @@
                         <aside>
 
                             <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">
-                                @lang('schools.filters.title'):</div>
+                            <!-- <div class="facet-category-title facet font-weight-300">
+                                @lang('schools.filters.title'):</div> -->
 
                             <div id="clear-all"class="clear-filter"></div>
 
@@ -648,7 +647,7 @@
     
         <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
         <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
-        <script>
+        <!-- <script>
             if ('serviceWorker' in navigator) {
               console.log("Will the service worker register?");
               navigator.serviceWorker.register('/service-worker.js')
@@ -658,7 +657,7 @@
                   console.log("No it didn't. This happened: ", err)
                 });
             }
-          </script>
+          </script> -->
 
     </body>
 
