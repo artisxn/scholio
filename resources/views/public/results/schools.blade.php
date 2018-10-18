@@ -429,21 +429,12 @@
                                 </picture>
                             </div>
                         </div>
-                    </div> -->
-
-                    {{--data-toggle="collapse" aria-controls="collapseMenu" --}}
-
-                        {{--<div class="navbar-right pull-right margin-right-30 filter-icon"  id="filter-btn">--}}
-                            {{--<a class="" role="button" href="#" aria-expanded="false">--}}
-                                {{--<i class="fa fa-filter margin-right-10 margin-top-30 text-175 sc-t-dark-grey" style="font-size: 180%; z-index: 5!important;" aria-hidden="true" ></i>--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
+                    </div>
 
 
-                </div>
+                </div> -->
 
                 <!-- ======= Sandwich Menu =======-->
-                <!-- @include('public.sandwich-menu-resultsSchools') -->
 
             </div>  <!-- row -->
         </div> <!-- container-->
