@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- prevent zoomIn in mobile inputs,selects,etc -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="fb:pages" content="934370089973049" />
     <meta name="description" content="{{ $title }}">
     <meta name="keywords" content="Φροντιστήριο, Ξένες Γλώσσες, Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, Σχολές, Σπουδές">
@@ -378,128 +378,13 @@
                 
 
 
-                <div id="mobFilt" class="hidden-md hidden-lg" style="margin-top: -20px;">
 
-
-                    <div class="input-group" style="padding: 0 15px; width: 100%;">
-                        <span style="font-size: 120%; color: #537c8f!important;"> Αναζήτησε Εκπαιδευτικά Ιδρύματα </span>
-                        <input type="text" class="form-control algolia-search-input" id="queryMobile"/>
-                    </div>
-
-                    <div class="" style="padding: 0 15px; margin-bottom: 20px;">
-                        <aside>
-                            <div id="statsMobile" class="text-muted "></div>
-
-                            <div class="">
-                                <div class="facet-category-title">@lang('schools.filters.title'):
-                                    <a class="" role="button" id="close-btn"
-                                       aria-expanded="false" aria-controls="">
-                                        <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <div id="clear-allMobile" class="clear-filter-mobile" style="width: 100%"> </div>
-
-
-                                <div class="filter-container col-xs-6" style="width: 50%; padding-right: 5px; z-index: 999">
-                                    <div class="filter-title">
-                                        <i class="fa fa-university fa-linear5 margin-right-5"></i>
-                                        @lang('schools.filters.categories')</div>
-                                    <div id="categoriesTypeMobile"></div>
-                                </div>
-
-                                <div class="filter-container col-xs-6" style="width: 50%; padding-left: 5px; z-index: 999">
-                                    <div class="filter-title">
-                                        <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
-                                        @lang('schools.filters.cities')</div>
-                                    <div id="categoriesCityMobile"></div>
-                                </div>
-
-                            </div>
-
-
-                        </aside>
-
-                    </div>
-
-                </div><!-- collapseMenu -->
 
 
 
 
 
                 <!--============ Left Side Menu large Screen =============-->
-                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs  left-side-container" >
-
-
-                        <div class="input-group margin-bot-15 algolia-search-container">
-                            <input type="text" class="form-control algolia-search-input" id="query"/>
-                        </div>
-
-
-                    <!-- <span class="sort-by-text">@lang('schools.sortby.title')</span> -->
-                    <!-- <div id="sort-by-container"></div> -->
-
-
-
-                    <div class="btn-group">
-
-                        {{-- <a href="{{ url('/public/schools/map') }}"> --}}
-                        <button class="btn btn-primary btn-map" onClick="showMap()">
-                            <i class="fa fa-map pad-right-15" aria-hidden="true"></i>
-                            @lang('schools.show_map')
-
-                            <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
-                            <a href="/public/schools/map" style="position: relative; z-index: -5; opacity: 0.1">MAPS</a>
-                            <!-- ΓΙΑ ΤΟ sitemap για google ΜΟΝΟ -->
-
-                        </button>
-                        </a>
-                    </div>
-
-
-
-
-                    <!-- <div id="sort-by-container"></div> -->
-
-                    <div class="content-wrapper">
-                        <aside>
-
-                            <div id="stats" class="text-muted "></div>
-                            <div class="facet-category-title facet font-weight-300">
-                                @lang('schools.filters.title'):</div>
-
-                            <div id="clear-all"class="clear-filter"></div>
-
-                            <div class="filter-container">
-                                <div class="filter-title">
-                                    <i class="fa fa-university fa-linear5 margin-right-5"></i>
-                                    @lang('schools.filters.categories')</div>
-                                <div id="categoriesType"></div>
-                            </div>
-                            <div class="filter-container">
-                                <div class="filter-title">
-                                    <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
-                                    @lang('schools.filters.cities')</div>
-                                <div id="categoriesCity"></div>
-                            </div>
-                            {{-- <div class="filter-title">Αντικείμενο Σπουδών</div>
-                            <div id="categoriesSection"></div> --}}
-                            {{-- <div class="filter-title">Επίπεδο Σπουδών</div>
-                            <div id="categoriesLevel"></div> --}}
-                             {{--
-                                <div class="filter-container">
-                                    <div id="rating" class="facet"></div>
-                                </div>
-                            --}}
-                            {{--<div id="financial" class="facet"></div>--}}
-
-
-                        </aside>
-
-                    </div>
-
-
-                </div>  <!-- //col-lg-3-->
 
 
 
