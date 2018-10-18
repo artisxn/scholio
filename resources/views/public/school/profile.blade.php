@@ -43,22 +43,22 @@
 
 
 <!-- Bootstrap xxs Extension CSS -->
-<link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet">
+<!-- <link href="{{asset('new/css/Bootstrap-xxs-xxxs.css')}}" rel="stylesheet"> -->
 
 <!-- Main CSS -->
 <link href="{{asset('new/css/main.css')}}" rel="stylesheet">
 
     <!-- BX Slider CSS -->
-    <link href="/new/css/jquery.bxslider.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="/new/css/jquery.bxslider.css" rel="stylesheet">
 
     <!-- Profile  CSS -->
-    <link href="/new/css/profile.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="/new/css/profile.css" rel="stylesheet">
 
     <!-- Horizontal Ribbons  CSS -->
-    <link href="/new/css/ribbonHorizontal.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="/new/css/ribbonHorizontal.css" rel="stylesheet">
 
     <!-- Hexagon CSS -->
-    <link href="/new/css/Hexagon.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="/new/css/Hexagon.css" rel="stylesheet">
 
     <!-- jQuery js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
