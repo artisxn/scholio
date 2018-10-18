@@ -314,9 +314,9 @@
 
 </style>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" id="home"  ng-app="schoolsResultsApp"  ng-controller="schoolsResultsCtrl" data-ng-init="init()"  ng-cloak>
+<body data-spy="scroll" data-target=".navbar" id="home"  ng-app="schoolsResultsApp"  ng-controller="schoolsResultsCtrl" data-ng-init="init()"  ng-cloak>
 
-  @include('components.preloader')
+  <!-- @include('components.preloader') -->
 
     <!-- Scholio Header -->
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
