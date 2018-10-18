@@ -1,4 +1,4 @@
-<script src="/js/loadCSS.js"></script>
+<!-- <script src="/js/loadCSS.js"></script> -->
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
@@ -21,12 +21,3 @@
 
 <!-- Main CSS -->
 <link href="{{asset('new/css/main.css')}}" rel="preload" as="style" onload="this.rel='stylesheet'">
-
-<!-- Modals-->
-{{--<link href="/panel/assets/css/components.css" rel="preload" type="text/css" />--}}
-{{--<link href="/panel/assets/css/pages.css" rel="preload" type="text/css" />--}}
-
-<style>
-
-</style>
-
