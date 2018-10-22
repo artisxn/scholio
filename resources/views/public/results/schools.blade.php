@@ -145,6 +145,21 @@
 
     .ais-search-box--powered-by-link{display: inline; background-image: none;}
 
+    .filtersMobile{display: none;}
+    .filtersButton{width: 100%;}
+    .faUp{display: none;}
+
+    .leftCol{margin-right: 1%;}
+    .rightCol{margin-left: 1%;}
+    .leftCol, .rightCol{width: 49%; z-index: 999;}
+
+    @media(max-width: 410px){
+        .leftCol{margin-right: 0;}
+        .rightCol{margin-left: 0;}
+        .leftCol, .rightCol{width:100%}
+        .clear-filter-mobile{ margin-top: 10px;}
+    }
+
 
 
     @media(max-width: 1199px){
@@ -402,7 +417,7 @@
 
                         <li class="langDropWhite" style="margin-top: -1px">
                         <form method="GET" id="langForm">
-                            <select onchange="changeLang(this)" class="selectpicker" data-live-search="false" data-mobile="false" data-size='2' data-width="100%" data-style="btn-white">
+                            <select onchange="changeLang(this)" class="" style="border: none; background-color: transparent; width: 80%; margin-top: 14px!important;">
                                 <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
                                 <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
                             </select>
@@ -487,30 +502,39 @@
                         <aside>
                             <div id="statsMobile" class="text-muted "></div>
 
-                            <div class="">
+
+                            <div class="btn btn-default filtersButton" onClick="filtersMobileClick()">
+                                <i class="fa  fa-angle-down faDown"></i>
+                                <i class="fa  fa-angle-up faUp"></i>
+                                Φίλτρα Αναζήτησης
+                                <i class="fa  fa-angle-down faDown"></i>
+                                <i class="fa  fa-angle-up faUp"></i>
+                            </div>
+
+                            <div class="filtersMobile">
                                 <!-- <div class="facet-category-title">@lang('schools.filters.title'): -->
                                     <!-- <a class="" role="button" id="close-btn"
                                        aria-expanded="false" aria-controls="">
                                         <i class="fa fa-times text-incr-115 sc-t-grey pad-left-35" aria-hidden="true"></i>
                                     </a>
                                 </div> -->
-                                <div id="clear-allMobile" class="clear-filter-mobile" style="width: 100%"> </div>
+                                <div id="clear-allMobile" class="clear-filter-mobile" style="width: 100%; margin-top: 10px;"> </div>
 
-                                <span class="hidden">
-                                    <div class="filter-container col-xs-6" style="width: 50%; padding-right: 5px; z-index: 999">
+
+                                    <div class="filter-container col-xs-6 leftCol">
                                         <div class="filter-title">
                                             <i class="fa fa-university fa-linear5 margin-right-5"></i>
                                             @lang('schools.filters.categories')</div>
                                         <div id="categoriesTypeMobile"></div>
                                     </div>
 
-                                    <div class="filter-container col-xs-6" style="width: 50%; padding-left: 5px; z-index: 999">
+                                    <div class="filter-container col-xs-6 rightCol">
                                         <div class="filter-title">
                                             <i class="fa fa-map-marker fa-linear5 margin-right-5"></i>
                                             @lang('schools.filters.cities')</div>
                                         <div id="categoriesCityMobile"></div>
                                     </div>
-                                </span>
+
 
                             </div>
 
@@ -566,7 +590,7 @@
                             <!-- <div class="facet-category-title facet font-weight-300">
                                 @lang('schools.filters.title'):</div> -->
 
-                            <div id="clear-all"class="clear-filter"></div>
+                            <div id="clear-all" class="clear-filter"></div>
 
                             <div class="filter-container">
                                 <div class="filter-title">
@@ -621,7 +645,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
         <!-- Bootstrap Select js  -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>
+        {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.4/js/bootstrap-select.min.js"></script>--}}
     
         <!-- Angular js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
@@ -686,8 +710,24 @@
 
 
     $( document ).ready(function() {
-
     });
+
+        var filtersOpen = false;
+        function filtersMobileClick(){
+            if (!filtersOpen){
+//              $(".filtersMobile").css("display", "block");
+                $(".filtersMobile").slideDown(300);
+                $(".faDown").css("display", "none");
+                $(".faUp").css("display", "inline-block");
+            }
+            else{
+//              $(".filtersMobile").css("display", "none");
+                $(".filtersMobile").slideUp(250);
+                $(".faDown").css("display", "inline-block");
+                $(".faUp").css("display", "none");
+            }
+            filtersOpen = !filtersOpen;
+        }
 
 </script>
 
