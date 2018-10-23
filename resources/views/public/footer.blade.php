@@ -104,11 +104,6 @@
 
         <div class=" centered-text margin-bot-50">
             <p class="sc-t-white margin-top-50">@lang('main.footer.message')</p>
-            {{--<img height="27px" class="margin-top-20" src="/new/img/laravel-small2.png">--}}
-            {{--<img height="31px" class="margin-top-20 margin-left-20 margin-right-20" src="/new/img/angularjs-logo.png">--}}
-            {{--<img height="30px" class="margin-top-20" src="/new/img/algolia_small.png">--}}
-
-
         </div>
 
 
@@ -121,7 +116,7 @@
     };
     (function() {
       var wf = document.createElement('script');
-      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'https') +
         '://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
       wf.type = 'text/javascript';
       wf.async = 'true';
