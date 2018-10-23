@@ -228,6 +228,7 @@ Artisan::command('scholio:dummyJson {from} {to}', function () {
             $dump->school_id = $school->id;
             $dump->data = json_encode($data);
             $dump->save();
+            $this->info('School ID: ' . $school->id . ' inserted!');
         }
     }
 });
