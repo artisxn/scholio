@@ -284,9 +284,8 @@
 
                         <li class="langDropWhite " style="margin-top: 15px;">
                             <form method="GET" id="langForm">
-                                <select onchange="changeLang(this)" class="selectpicker select-white landDrop school-profile-lang"
-                                    data-live-search="false" data-mobile="false" data-size='2' data-width="100%"
-                                    data-style="btn-white">
+                                <select onchange="changeLang(this)" class="" style="border: none; background-color: transparent; width: 80%; margin-top: -2px!important;"
+                                     data-mobile="false" >
                                     <option style="color: black" data-icon="fa" value="en"
                                         {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; EN</option>
                                     <option style="color: black" data-icon="fa" value="el"
@@ -535,7 +534,6 @@
                         @endif
 
                         @if($school->settings->studies)
-                        
                         @if($school->lengthStudies() > 0 && ($school->type->id == 1 || $school->type->id == 2 ||
                         $school->type->id == 3 || $school->type->id == 4 || $school->type->id == 10 ||
                         $school->type->id == 11 || $school->type->id == 12) || $school->type->id == 13)
@@ -555,23 +553,34 @@
                                     @foreach($data as $key=>$level)
                                     <div>
                                         @if($levelsCounter > 1)
-                                        <ul class="col-md-6">
+                                                @if(($key+1)%2 == 1)
+                                                   <ul class="col-md-6" style="clear: left">
+                                                @else
+                                                   <ul class="col-md-6">
+                                                @endif
+
                                             @elseif($levelsCounter > 1 && ($key+1)%2==1 )
                                             <ul class="clearFloat">
-                                                @else
-                                                <ul class="col-sm-12">
-                                                    @endif
+                                            @elseif($school->type->id != 2 )
+                                            <ul class="col-sm-12 col-md-6">
+                                            @else
+                                            <ul class="col-sm-12 ">
+                                            @endif
+
+
+
+
                                                     @if($school->type->id != 2)
-                                                    <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0">
-                                                        {{ $level["level"]["name"] }}
-                                                    </div>
+                                                            <div class=" text-incr-150 font-weight-300 margin-top-30 margin-left-10" style="margin-bottom: 0;">
+                                                            {{ $level["level"]["name"] }}
+                                                            </div>
                                                     @endif
 
                                                     @foreach($level["sections"] as $key2=>$section)
                                                     @if($school->type->id ==2 || ($school->type->id ==4  && $levelsCounter == 1))
                                                     <ul class="col-lg-6" style="list-style-type: none;  padding-top: 16px;">
                                                         @elseif(($key2+1)%2 == 1)
-                                                        <ul class="clearFloat" style="list-style-type: none;  padding-top: 16px;">
+                                                        <ul class="clearFloat" style="list-style-type: none;  padding-top: 16px;" >
                                                             @else
                                                             <ul style="list-style-type: none;  padding-top: 16px;">
                                                                 @endif
