@@ -1,78 +1,18 @@
-/* //////////////////////// Horizontal ribbon style ////////////////////////////// */
-/* /////////////////////////////////////////////////////////////////////////////// */
-
-
-.ribbon-wrapper {
-    position: relative;
-    top: 20px;
-}
-.ribbon-front {
-    width:84%;   /*++++++++++++*/
-    position: relative;
-    left: 0;
-    z-index: 2;
-    height: 40px;
-    height: 40px;
-}
-
-/*.ribbon-front {background-color: #00bcd4;}*/
-
-
-
+.ribbon-wrapper{position:relative;top:20px;}
+.ribbon-front{width:84%;position:relative;left:0;z-index:2;height:40px;height:40px;}
 .ribbon-front,
-.ribbon-back-right
-{
-    -moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-    -khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-    -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-    -o-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-}
-
+.ribbon-back-right{-moz-box-shadow:0px 0px 4px rgba(0,0,0,0.55);-khtml-box-shadow:0px 0px 4px rgba(0,0,0,0.55);-webkit-box-shadow:0px 0px 4px rgba(0,0,0,0.55);-o-box-shadow:0px 0px 4px rgba(0,0,0,0.55);}
 .ribbon-edge-topright,
 .ribbon-edge-bottomright,
 .ribbon-edge-topright2,
-.ribbon-edge-bottomright2 {
-    position: absolute;
-    z-index: 1;
-    border-style:solid;
-    height:0px;
-    width:0px;
-}
-
-.ribbon-edge-bottomright,.ribbon-edge-bottomright2 {  top: 40px;  }
-
-
+.ribbon-edge-bottomright2{position:absolute;z-index:1;border-style:solid;height:0px;width:0px;}
+.ribbon-edge-bottomright,.ribbon-edge-bottomright2{top:40px;}
 .ribbon-edge-topright,
 .ribbon-edge-bottomright,
 .ribbon-edge-topright2,
-.ribbon-edge-bottomright2 {
-    left: 82%;        /*++++++++++++*/
-    border-color: transparent #008da5;
-    z-index: 1;
-}
-
+.ribbon-edge-bottomright2{left:82%;border-color:transparent #008da5;z-index:1;}
 .ribbon-edge-topright2,
-.ribbon-edge-bottomright2 {
-    border-color: transparent #1d4567;
-}
-
-
-.ribbon-edge-topright,.ribbon-edge-topright2 {
-    top: 0px;
-    border-width: 0px 0 0 10px;
-}
-.ribbon-edge-bottomright,.ribbon-edge-bottomright2 {
-    border-width: 0 0 5px 10px;
-}
-
-
-.ribbon-back-right {
-    position: absolute;
-    top: 5px;
-    left: 82%;        /*++++++++++++*/
-    width: 20px;
-    height: 40px;
-    z-index: 0;
-}
-
-/*.ribbon-back-right {  background-color: #00bcd4;  }*/
+.ribbon-edge-bottomright2{border-color:transparent #1d4567;}
+.ribbon-edge-topright,.ribbon-edge-topright2{top:0px;border-width:0px 0 0 10px;}
+.ribbon-edge-bottomright,.ribbon-edge-bottomright2{border-width:0 0 5px 10px;}
+.ribbon-back-right{position:absolute;top:5px;left:82%;width:20px;height:40px;z-index:0;}
