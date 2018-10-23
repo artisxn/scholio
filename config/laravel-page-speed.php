@@ -25,6 +25,8 @@ return [
     'skip' => [
         '/',
         'public/schools*',
+        'public/scholarships*',
+        'scholarship/*',
         '*.xml',
         '*.less',
         '*.pdf',

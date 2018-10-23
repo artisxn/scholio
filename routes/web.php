@@ -147,12 +147,12 @@ Route::get('www', function () {
 //     }
 // });
 
-foreach (App\Models\SchoolTypes::all() as $type) {
+// foreach (App\Models\SchoolTypes::all() as $type) {
     // Route::get('/s/' . $type->name, function () use ($type) {
     //     $schools = App\Models\School::where('type_id', $type->id)->get();
     //     return view('sitemap.schools', compact('schools'));
     // });
-}
+// }
 
 // Route::get('/qqww', function () {
 //     foreach (App\Models\AlgoliaSchool::all() as $school) {
