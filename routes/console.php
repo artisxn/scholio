@@ -1,6 +1,7 @@
 <?php
 
 use App\Jobs\Algolia;
+use App\Models\AlgoliaSchool;
 use App\Models\DummyLevelsData;
 use App\Models\Level;
 use App\Models\School;
@@ -8,7 +9,6 @@ use App\Models\Section;
 use App\Models\Study;
 use App\Scholio\Scholio;
 use Spatie\Sitemap\SitemapGenerator;
-use App\Models\AlgoliaSchool;
 
 /*
 |--------------------------------------------------------------------------
@@ -187,10 +187,47 @@ Artisan::command('scholio:algoliaScholarship {scholarship}', function () {
 Artisan::command('scholio:ppp', function () {
     ini_set('max_execution_time', 1500);
 
-        foreach(AlgoliaSchool::all() as $school){
+    foreach (AlgoliaSchool::all() as $school) {
         $school->logo2 = substr($school->logo, 0, -5);
         $school->image2 = substr($school->image, 0, -5);
         $school->save();
         $this->info('Insterted ' . $school->id);
+    }
+});
+
+Artisan::command('scholio:dummyJson {from} {to}', function () {
+    $from = $this->argument('from');
+    $to = $this->argument('to');
+    ini_set('max_execution_time', 1500);
+    foreach (School::all() as $school) {
+        if ($school->id >= $from && $school->id <= $to) {
+
+            $studies = [];
+            $data = [];
+            $sections = [];
+
+            $schoolLevels = $school->levels();
+            $levelsCounter = 0;
+
+            foreach ($schoolLevels as $level) {
+                $levelsCounter++;
+                foreach ($school->section($level) as $section) {
+                    foreach ($school->studyFromSection($section) as $study) {
+                        array_push($studies, ['study' => Study::find($study)->load('user'), 'link' => $school->study()->where('study_id', $study)->first()->pivot->url]);
+                    }
+
+                    array_push($sections, ['section' => Section::find($section), 'studies' => $studies]);
+                    $studies = [];
+                }
+                array_push($data, ['level' => Level::find($level), 'sections' => $sections]);
+                $sections = [];
+            }
+            // dd();
+
+            $dump = new DummyLevelsData;
+            $dump->school_id = $school->id;
+            $dump->data = json_encode($data);
+            $dump->save();
+        }
     }
 });
