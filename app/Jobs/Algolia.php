@@ -128,8 +128,11 @@ class Algolia implements ShouldQueue
         $dummy->phone = $this->school->phone;
         $dummy->city = $this->school->city;
         $dummy->address = $this->school->address;
+        $dummy->region = $this->school->region;
         $dummy->logo = $this->school->logo;
+        $dummy->logo2 = substr($this->school->logo, 0, -4) . 'png';
         $dummy->image = $this->school->profileImage();
+        $dummy->image = substr($this->school->profileImage(), 0, -4) . 'jpg';
         $dummy->website = $this->school->website;
         $dummy->lengthStudents = $this->school->lengthStudents();
         $dummy->lengthTeachers = $this->school->lengthTeachers();
@@ -163,6 +166,13 @@ class Algolia implements ShouldQueue
         $dummy->save();
 
         $this->geoloc($dummy);
+        $this->hierarchicalMenu($dummy);
+    }
+
+    public function hierarchicalMenu($algolia){
+        $algolia->{'categories.lvl0'} = $algolia->city;
+        $algolia->{'categories.lvl1'} = $algolia->city . " > " . $algolia->region;
+        $algolia->searchable();
     }
 
     public function geoloc($algolia)
