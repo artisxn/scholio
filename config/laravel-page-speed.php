@@ -23,6 +23,8 @@ return [
     |
     */
     'skip' => [
+        'panel/school/profile',
+        'panel/*',
         '/',
         'public/schools*',
         '*.xml',
