@@ -293,7 +293,7 @@
 
             <div class="row">
                 <!-- ============== collapse Mobile Menu start ============= -->
-                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter left--300">
+                <div id="mobFilt" class="hidden-md hidden-lg col-xs-8 mob-filter">
 
                         <div>
                             <div class="input-group margin-bot-15 mobile-input">
