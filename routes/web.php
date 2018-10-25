@@ -19,6 +19,12 @@ Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
+// Route::view('/public/schools/colleges', 'public/results/seo/seo');
+
+Route::get('/public/schools/colleges', function(){
+
+});
+
 Route::get('zxc', function(){
     $row = 1;
 if (($handle = fopen("csv/iii.csv", "r")) !== FALSE) {
@@ -181,6 +187,20 @@ Route::get('www', function () {
 
 //     return view('sitemap.types', compact('types', 'arr'));
 // });
+
+Route::get('/testalgolia', function(){
+    foreach(AlgoliaSchool::all() as $alg){
+        if($alg->school_id >= 342){
+            $school = School::find($alg->school_id);
+            $alg->logo = $school->logo;
+            $alg->logo2 = substr($school->logo, 0, -4) . 'png';
+            $alg->image = $school->profileImage();
+            $alg->image = substr($school->profileImage(), 0, -4) . 'jpg';
+            $alg->save();
+        }
+    }
+    
+});
 
 Route::get('/s/scholarships', function () {
     $scholarships = App\Models\Scholarship::all();

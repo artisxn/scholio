@@ -351,7 +351,7 @@
 
 </style>
 
-<body data-spy="scroll" data-target=".navbar" id="home"  ng-app="schoolsResultsApp"  ng-controller="schoolsResultsCtrl" data-ng-init="init()"  ng-cloak>
+<body data-spy="scroll" data-target=".navbar" id="home">
 
   <!-- @include('components.preloader') -->
 
@@ -770,6 +770,9 @@ angular.module("schoolsResultsApp",[])
         apiKey: 'e00bc4548ea05c691c81f7c30c100bd7',
         indexName: 'dummySchools',
         urlSync: false,
+        searchParameters: {
+            filters: 'city:"Θεσσαλονίκη"'
+          }
     });
 
     search.addWidget(
