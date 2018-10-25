@@ -563,13 +563,17 @@
                                                    <ul class="col-md-6">
                                                 @endif
 
-                                            @elseif($levelsCounter > 1 && ($key+1)%2==1 )
-                                            <ul class="clearFloat">
-                                            @elseif($school->type->id != 2 )
-                                            <ul class="col-sm-12 col-md-6">
-                                            @else
+                                       @elseif($levelsCounter > 1 && ($key+1)%2==1 )
+                                            <ul class="clearFloat" style="clear: left">
+                                       @elseif($school->type->id != 2 )
+                                                    @if(($key+1)%2 == 1)
+                                                        <ul class="col-sm-12 col-md-6" style="clear: left">
+                                                   @else
+                                                       <ul class="col-sm-12 col-md-6">
+                                                    @endif
+                                       @else
                                             <ul class="col-sm-12 ">
-                                            @endif
+                                       @endif
 
 
 
