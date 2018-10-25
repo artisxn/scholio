@@ -55,24 +55,24 @@ class Frontistiria18 extends Seeder
 
 
 
-        /*=============== 2 ================*/
+        /*=============== 2 Φροντιστήρια Κρόνος ================*/
 
         $fake = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-            'address' => '',
-            'region' => '',
+            'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Κρόνος', 'email' => 'info@frontistiriakronos.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'kronos'])->id,
+            'address' => 'Εγνατίας 45, Θεσσαλονίκη',
+            'region' => 'Κέντρο',
             'city' => 'Θεσσαλονίκη',
-            'phone' => 2310,
+            'phone' => 2310521241,
             'type_id' => 3,
-            'website' => '',
+            'website' => 'frontistiriakronos.gr',
             'approved' => 1,
             'about' => '
-
+                Αγαπητοί Μαθητές, Η μακρόχρονη ιστορία-λειτουργία των φροντιστηρίων “Κρόνος” μας έχει δώσει την απαιτούμενη εμπειρία και μας καθιέρωσε στην πρώτη θέση της προπαρασκευαστικής εκπαίδευσης. Με τη βοήθεια 30 έμπειρων και εκλεκτών συνεργατών, οι οποίοι με σύγχρονες μεθόδους διδασκαλίας και αφοσίωση στο εκπαιδευτικό τους λειτούργημα εξασφαλίζουν ένα υψηλό επίπεδο γνώσεων. Αποκτήστε τη γνώση μέσα σ\' ένα υπεύθυνο και φιλικό περιβάλλον. Με τις βασικές αυτές προϋποθέσεις η επιτυχία είναι εξασφαλισμένη και σίγουρη Κατακτήστε λοιπόν τους στόχους σας, νιώθοντας σιγουριά για το μέλλον με τη συμπαράσταση ενός υπεύθυνου και σοβαρού φροντιστηριακού οργανισμού που αναλύει τα νέα δεδομένα και ανταποκρίνεται με συνέπεια στις ανάγκες του κάθε υποψηφίου. Φιλικά Η Διεύθυνση
             ',
             'background' => $background,
         ]);
 
-        new Portal($fake, 5, 'frontistirio', 50);
+        new Portal($fake, 5, 'frontistirio', 20);
 
         Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
         Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
@@ -85,6 +85,46 @@ class Frontistiria18 extends Seeder
         Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
 
 //     Scholio::portalSocial($fake, 'facebook', '');
+
+
+
+
+     /*=============== 3 Κύκλος, Τούμπα ================*/
+
+     $fake = factory(App\Models\School::class)->create([
+         'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Κύκλος, Τούμπα', 'email' => 'kyklos.lessons@gmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'kyklos'])->id,
+         'address' => 'Απόλλωνος 9, Τούμπα',
+         'region' => 'Κάτω Τούμπα',
+         'city' => 'Θεσσαλονίκη',
+         'phone' => 2314000059,
+         'type_id' => 3,
+         'website' => 'https://www.facebook.com/frontisthrio.Kyklos/',
+         'approved' => 1,
+         'about' => '
+            Μπες στον κύκλο
+            βρες τη σωστή χημεία 
+            εξερεύνησε τη γνώση
+            δημιούργησε ως το άπειρο
+            γράψε τη δική σου ιστορία
+            2314000059,6974926005
+            kyklos.lessons@gmail.com
+            ',
+         'background' => $background,
+     ]);
+
+     new Portal($fake, 5, 'frontistirio', 20);
+
+     Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Α΄ Γυμνασίου');
+     Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'B΄ Γυμνασίου');
+     Scholio::portalStudy($fake, 'Γυμνάσιο', 'Γυμνάσιο', 'Γ΄ Γυμνασίου');
+     Scholio::portalStudy($fake, 'Α΄ Λυκείου', 'Γενική Παιδεία', 'Α΄ Λυκείου');
+     Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+     Scholio::portalStudy($fake, 'B΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+     Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Θετικών Σπουδών');
+     Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Ανθρωπιστικών Σπουδών');
+     Scholio::portalStudy($fake, 'Γ΄ Λυκείου', 'Ομάδα Προσανατολισμού', 'Οικονομικών Σπουδών & Πληροφορικής');
+
+    Scholio::portalSocial($fake, 'facebook', 'https://www.facebook.com/frontisthrio.Kyklos/');
 
 
 
