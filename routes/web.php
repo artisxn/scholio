@@ -14,7 +14,7 @@ use App\Models\Image;
 // auth()->loginUsingId(70);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
-Scholio::bot();
+// Scholio::bot();
 Auth::routes();
 
 Route::view('gdpr', 'gdpr');
