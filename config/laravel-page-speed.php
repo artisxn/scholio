@@ -23,12 +23,14 @@ return [
     |
     */
     'skip' => [
-        'panel/school/profile',
-        'panel/*',
+        
         '/',
+        'api/*',
+        'panel/*',
         'public/schools*',
         'public/scholarships*',
         'scholarship/*',
+        '*.js',
         '*.xml',
         '*.less',
         '*.pdf',

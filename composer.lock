@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8432fd6131eac3215db8a6ae523923cc",
+    "content-hash": "f4a0bb3696e179f55d0446e5c243fa2c",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -59,16 +59,16 @@
         },
         {
             "name": "cakephp/chronos",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "30f5b26bcf76a5e53ecc274700ad1ec49dc05567"
+                "reference": "395110125ff577f080fa064dca5c5608a4e77ee1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/30f5b26bcf76a5e53ecc274700ad1ec49dc05567",
-                "reference": "30f5b26bcf76a5e53ecc274700ad1ec49dc05567",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/395110125ff577f080fa064dca5c5608a4e77ee1",
+                "reference": "395110125ff577f080fa064dca5c5608a4e77ee1",
                 "shasum": ""
             },
             "require": {
@@ -112,7 +112,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-07-11T18:51:56+00:00"
+            "time": "2018-10-18T22:02:21+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -965,16 +965,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.71",
+            "version": "v1.2.72",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "bfb7d00c70d0ad59037bed7f08a2b6c10b1ed2ba"
+                "reference": "92805a35b1fc0fbce7fe390df96891ba10e4a12e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/bfb7d00c70d0ad59037bed7f08a2b6c10b1ed2ba",
-                "reference": "bfb7d00c70d0ad59037bed7f08a2b6c10b1ed2ba",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/92805a35b1fc0fbce7fe390df96891ba10e4a12e",
+                "reference": "92805a35b1fc0fbce7fe390df96891ba10e4a12e",
                 "shasum": ""
             },
             "require": {
@@ -1010,7 +1010,7 @@
                 "crawlerdetect",
                 "php crawler detect"
             ],
-            "time": "2018-10-16T18:51:19+00:00"
+            "time": "2018-10-23T19:00:40+00:00"
         },
         {
             "name": "kryptonit3/counter",
@@ -1404,16 +1404,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v3.1.1",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "65f771ff4f266ebae23de1a3f18efd80a1da2f8d"
+                "reference": "7194c0cd9fb2ce449669252b8ec316b85b7de481"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/65f771ff4f266ebae23de1a3f18efd80a1da2f8d",
-                "reference": "65f771ff4f266ebae23de1a3f18efd80a1da2f8d",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/7194c0cd9fb2ce449669252b8ec316b85b7de481",
+                "reference": "7194c0cd9fb2ce449669252b8ec316b85b7de481",
                 "shasum": ""
             },
             "require": {
@@ -1463,7 +1463,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2018-08-16T12:51:21+00:00"
+            "time": "2018-10-18T03:39:04+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -4501,16 +4501,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.7.9",
+            "version": "v5.7.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "67b8d4a20ce42b32b5f50a141bb0b1ec45aedb53"
+                "reference": "75f5144a2624d113d06e141369560468ac4360a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/67b8d4a20ce42b32b5f50a141bb0b1ec45aedb53",
-                "reference": "67b8d4a20ce42b32b5f50a141bb0b1ec45aedb53",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/75f5144a2624d113d06e141369560468ac4360a6",
+                "reference": "75f5144a2624d113d06e141369560468ac4360a6",
                 "shasum": ""
             },
             "require": {
@@ -4547,7 +4547,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2018-10-09T17:51:58+00:00"
+            "time": "2018-10-24T14:04:44+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -6050,5 +6050,9 @@
     "platform": {
         "php": ">=5.6.4"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "platform-overrides": {
+        "ext-pcntl": "7.2",
+        "ext-posix": "7.2"
+    }
 }
