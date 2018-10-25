@@ -15,11 +15,7 @@
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
-    <script>
-        window.Scholio = <?php echo json_encode([
-    'csrfToken' => csrf_token(),
-]); ?>
-    </script>
+
 </head>
 <body>
     <div id="app">

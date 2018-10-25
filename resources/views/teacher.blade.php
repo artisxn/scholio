@@ -43,12 +43,6 @@
     <script src="/new/js/profile.js"></script>
 
 
-
-    <script>
-        window.Scholio = <?php echo json_encode([
-    'csrfToken' => csrf_token(),
-]); ?>
-    </script>
     @if($teacher->cover != null)
     <style>
     .photo-box{ min-height: 530px;

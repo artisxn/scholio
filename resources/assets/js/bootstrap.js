@@ -1,4 +1,5 @@
 window._ = require('lodash');
+// window.$ = require('jquery')
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -26,9 +27,10 @@ window.Vue = require('vue');
 window.axios = require('axios');
 
 window.axios.defaults.headers.common = {
-    'X-CSRF-TOKEN': Scholio.csrfToken,
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     'X-Requested-With': 'XMLHttpRequest'
 };
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

@@ -5,8 +5,6 @@
     .media-body{padding-top: 8px}
     .media-body>h5:hover{color: #00bcd4}
     .media-heading{padding-bottom: 8px}
-
-
 </style>
 
 <template>
@@ -20,7 +18,8 @@
 
             <ul class="dropdown-menu dropdown-menu-lg" >
                 <li class="notifi-title">
-                    <span class="label label-default"></span>{{ lang('notifications.notifications') }}</li>
+                    <span class="label label-default"></span>{{ lang('notifications.notifications') }}
+                </li>
                 <li class=" nicescroll notification-list">
                 
                    <div v-if="scholarshipNot">
@@ -58,8 +57,6 @@
 </template>
 
 <script>
-
-
 
     export default {
 
