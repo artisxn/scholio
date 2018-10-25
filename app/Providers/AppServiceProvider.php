@@ -33,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
         Horizon::auth(function ($request) {
             return true;
         });
+
+        
     }
 
     /**

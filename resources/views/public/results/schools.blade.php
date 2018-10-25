@@ -9,7 +9,7 @@
 
     <!-- <link rel="manifest" href="manifest.json"> -->
     <!-- <meta name="mobile-web-app-capable" content="yes"> -->
-    <link rel="icon" sizes="92x92" href="/img/logo1.png">
+    <!-- <link rel="icon" sizes="92x92" href="/img/logo1.png"> -->
     
 
     <!-- jQuery js-->

@@ -11,6 +11,10 @@ use App\Models\DummyLevelsData;
 use App\Models\Section;
 use App\Models\Level;
 use App\Models\Image;
+use App\Models\SchoolSetting;
+use App\Scholio\Greeklish;
+use App\Facades\ScholioGreeklishFacade;
+use App\Models\SchoolTypes;
 // auth()->loginUsingId(70);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
@@ -23,6 +27,29 @@ Route::view('gdpr', 'gdpr');
 
 Route::get('/public/schools/colleges', function(){
 
+    // $gr = new Greeklish;
+
+    foreach(SchoolTypes::all() as $type){
+
+        $cities = School::where('type_id', $type->id)->select('city', 'region')->distinct()->get();
+        // dd($city);
+
+        // dd($type->schools->distinct());
+
+        foreach($cities as $city){
+            echo $type->name . ' σε ' . $city['city'] . ' - in ' . $city['region'] . '<br>' ;
+        }
+    }
+
+    return 'ok';
+
+    // $schools = AlgoliaSchool::search('Κολλέγιο Θεσσαλονικη')->get();
+    // $settings = SchoolSetting::all()->pluck('statistics');
+    // $reviews = SchoolSetting::all()->pluck('reviews');
+    // $regions = ['Τουμπα', 'Πυλαία', 'Καλαμαριά', 'Χαριλάου'];
+
+    // $title = 'Αναζήτησε δημοφιλή Εκπαιδευτικά Ιδρύματα';
+    // return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions);
 });
 
 Route::get('zxc', function(){
