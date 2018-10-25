@@ -637,38 +637,40 @@
             </div> <!-- //row-->
         </div> <!-- //container-->
     </main>
-</body>
+    
     @include('public.footer')
     
     
         <!-- Bootstrap js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" async></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
         <!-- Angular js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js" async></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
     
     
     
         <!-- No error Filter:noArray angular 1.3.20 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js" async></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     
         <!-- javascript Results -->
-        <script src="{{asset('/new/js/results.js')}}" async></script>
+        <script src="{{asset('/new/js/results.js')}}"></script>
     
         <!-- Google Maps -->
-        <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA" async></script>
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&language=el&region=GR&key=AIzaSyC18JCENxILnmXA1VGlsjJwBXQi3XZMWVA"></script>
     
     
         <!-- Algolia InstantSearch.JS -->
-        <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js" async></script>
+        <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
         <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3"></script> -->
-        <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js"></script>
     
         <!-- Rating js-->
         <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
     
         <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
         <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+
+    </body>
 
 <script>
     function showMap(){
