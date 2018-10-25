@@ -190,12 +190,9 @@ Route::get('www', function () {
 
 Route::get('/testalgolia', function(){
     foreach(AlgoliaSchool::all() as $alg){
-        if($alg->school_id >= 342){
+        if($alg->school_id >= 329 && $alg->school_id <= 341){
             $school = School::find($alg->school_id);
-            $alg->logo = $school->logo;
-            $alg->logo2 = substr($school->logo, 0, -4) . 'png';
-            $alg->image = $school->profileImage();
-            $alg->image = substr($school->profileImage(), 0, -4) . 'jpg';
+            $alg->region = $school->region;
             $alg->save();
         }
     }
