@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="fb:pages" content="934370089973049" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>schol.io | Διεκδίκησε τώρα την υποτροφία που σου ταιριάζει.</title>
 
@@ -52,13 +53,6 @@
 
     <script src="/new/js/profile.js"></script>
 
-
-
-    <script>
-        window.Scholio = <?php echo json_encode([
-    'csrfToken' => csrf_token(),
-]); ?>
-    </script>
 
 
 
@@ -674,7 +668,7 @@
                     $scope.scholarship = $http.get("/api/scholarship/get/{{$scholarship->id}}", {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
-                            'X-CSRF-TOKEN': window.Scholio.csrfToken
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                     }
                                 })
                             .success(function (data) {
@@ -690,7 +684,7 @@
                     $scope.interested1 = $http.post('/api/interested/save',{'scholarship' : id}, {
                                 headers: {
                                     'X-Requested-With': 'XMLHttpRequest',
-                                    'X-CSRF-TOKEN': window.Scholio.csrfToken
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 }
                             })
                             .success(function(data)   {

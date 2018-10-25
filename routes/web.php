@@ -14,10 +14,16 @@ use App\Models\Image;
 // auth()->loginUsingId(70);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
-Scholio::bot();
+// Scholio::bot();
 Auth::routes();
 
 Route::view('gdpr', 'gdpr');
+
+// Route::view('/public/schools/colleges', 'public/results/seo/seo');
+
+Route::get('/public/schools/colleges', function(){
+
+});
 
 Route::get('zxc', function(){
     $row = 1;
@@ -147,12 +153,12 @@ Route::get('www', function () {
 //     }
 // });
 
-foreach (App\Models\SchoolTypes::all() as $type) {
+// foreach (App\Models\SchoolTypes::all() as $type) {
     // Route::get('/s/' . $type->name, function () use ($type) {
     //     $schools = App\Models\School::where('type_id', $type->id)->get();
     //     return view('sitemap.schools', compact('schools'));
     // });
-}
+// }
 
 // Route::get('/qqww', function () {
 //     foreach (App\Models\AlgoliaSchool::all() as $school) {
@@ -181,6 +187,17 @@ foreach (App\Models\SchoolTypes::all() as $type) {
 
 //     return view('sitemap.types', compact('types', 'arr'));
 // });
+
+Route::get('/testalgolia', function(){
+    foreach(AlgoliaSchool::all() as $alg){
+        if($alg->school_id >= 329 && $alg->school_id <= 341){
+            $school = School::find($alg->school_id);
+            $alg->region = $school->region;
+            $alg->save();
+        }
+    }
+    
+});
 
 Route::get('/s/scholarships', function () {
     $scholarships = App\Models\Scholarship::all();

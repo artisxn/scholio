@@ -187,7 +187,7 @@ class School extends Model
     {
         $img = Image::find($this->background);
         if ($img) {
-            return $img->full_path;
+            return $img->path;
         }
         return;
     }

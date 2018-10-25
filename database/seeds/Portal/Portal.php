@@ -93,7 +93,7 @@ class Portal
     {
         $image = new Image;
         $image->full_path = $path;
-        $image->path = $path;
+        $image->path = substr($path, 0, -3) . 'webp';
         $image->name = $path;
         $image->extension = 'jpg';
         $image->alt = 'School Image';
