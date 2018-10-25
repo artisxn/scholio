@@ -662,13 +662,13 @@
         <!-- Algolia InstantSearch.JS -->
         <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js" async></script>
         <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3"></script> -->
-        <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js" async></script>
+        <script src="https://cdn.jsdelivr.net/instantsearch-googlemaps/1/instantsearch-googlemaps.min.js" ></script>
     
         <!-- Rating js-->
-        <script src="{{asset('/new/js/jquery.raty-fa.js')}}" async></script>
+        <script src="{{asset('/new/js/jquery.raty-fa.js')}}"></script>
     
-        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js" async></script>
-        <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js" async></script>
+        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
 
 <script>
     function showMap(){
