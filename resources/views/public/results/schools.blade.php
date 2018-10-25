@@ -769,7 +769,7 @@ angular.module("schoolsResultsApp",[])
         appId: 'N08SZYEUO0',
         apiKey: 'e00bc4548ea05c691c81f7c30c100bd7',
         indexName: 'dummySchools',
-        urlSync: false,
+        urlSync: true,
     });
 
     search.addWidget(
