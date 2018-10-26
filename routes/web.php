@@ -32,12 +32,11 @@ Route::get('/public/schools/colleges', function(){
     foreach(SchoolTypes::all() as $type){
 
         $cities = School::where('type_id', $type->id)->select('city', 'region')->distinct()->get();
-        // dd($city);
-
-        // dd($type->schools->distinct());
 
         foreach($cities as $city){
-            echo $type->name . ' σε ' . $city['city'] . ' - in ' . $city['region'] . '<br>' ;
+            echo $type->name . ' σε ' . $city['city'] . ' - in ' . $city['region'];
+            $num = School::where('city', $city['city'])->where('region', $city['region'])->where('type_id', $type->id)->get();
+            echo ' [' . count($num) . '] . <br>';
         }
     }
 

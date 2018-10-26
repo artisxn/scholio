@@ -19,6 +19,9 @@
 	<meta name="description" content="Στο Schol.io θα βρεις τα δημοφιλέστερα εκπαιδευτικά ιδρύματα!">
 	<meta name="keywords" content="Κολλέγιο, ΙΕΚ, Σχολείο, Δημοτικό, Γυμνάσιο, Λύκειο, Πανεπιστήμιο, ΚΕΚ, ΙΙΕΚ, Σχολές, Σπουδές, Εκπαιδευτικά Ιδρύματα">
 
+
+
+	@include('google.main')
 	<title>Schol.io - Still looking for the perfect study?</title>
 
 
@@ -195,9 +198,10 @@
 
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp" ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
+<body data-spy="scroll" data-target=".navbar" data-offset="250" id="home" style="overflow-x: hidden!important;" ng-app="landingApp"
+ ng-controller="landCtrl" data-ng-init="fetchTypes" scroll ng-cloak>
 
-	@include('components.preloader')
+	<!-- @include('components.preloader') -->
 
 
 	<!-- Scholio Header -->
@@ -797,15 +801,36 @@
 <script src="{{ asset('/js/axios.min.js') }}"></script>
 <script src="{{asset('new/js/typed.js')}}"></script>
 <script src="{{asset('new/js/landing.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/lozad"></script>
-<script src="{{asset('js/lazy.js')}}"></script>
 
 
 <script type="text/ng-template" id="customTemplate.html">
-    <a>
-        <span>@{{ match.model.id }} &nbsp;</span>        <img ng-src="@{{match.model.png}}" width="16" alt="model" class="lozad">
-        <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
-    </a>
+    <a>
+        <span>@{{ match.model.id }} &nbsp;</span>        <img ng-src="@{{match.model.png}}" width="16" alt="model" class="lozad">
+        <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+    </a>
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/lozad"></script>
+<script>
+	const observer = lozad('.lozad', {
+		rootMargin: '10px 0px', // syntax similar to that of CSS Margin
+		threshold: 0.1 // ratio of element convergence
+	});
+	observer.observe();
+	jQuery(document).ready(function ($) {
+		$(function () {
+			$(".typed-js").typed({
+				strings: ["@lang('main.first.title.student')", "@lang('main.first.title.student1')"],
+				typeSpeed: 100,
+				backSpeed: 100,
+				loop: true
+			});
+		});
+	});
+	function validateMyForm(el, id) {
+		if (id == 1) window.location = '/public/scholarships?q=' + el.text.value;
+		if (id == 2) window.location = '/public/schools?q=' + el.text.value;
+	}
 </script>
 
 </html>
