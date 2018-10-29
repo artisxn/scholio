@@ -323,7 +323,7 @@ class Frontistiria17 extends Seeder
 
 
 
-     /*=============== 8 Φροντιστήρια Επιλέγειν================*/
+     /*=============== 8 Φροντιστήρια Επιλέγειν ================*/
 
      $fake = factory(App\Models\School::class)->create([
          'user_id' => factory(App\User::class)->create(['name' => 'Φροντιστήρια Επιλέγειν Νεοχωρούδα', 'email' => 'epilegein@hotmail.gr', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'epilegein'])->id,
