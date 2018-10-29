@@ -32,12 +32,17 @@ Route::get('/public/schools/colleges', function(){
     foreach(SchoolTypes::all() as $type){
 
         $cities = School::where('type_id', $type->id)->select('city', 'region')->distinct()->get();
-        // dd($city);
-
-        // dd($type->schools->distinct());
 
         foreach($cities as $city){
-            echo $type->name . ' σε ' . $city['city'] . ' - in ' . $city['region'] . '<br>' ;
+            echo '<strong>' . $type->name . ' σε ' . $city['city'] . ' - in ' . $city['region'] . '</strong>';
+            $num = School::where('city', $city['city'])->where('region', $city['region'])->where('type_id', $type->id)->get();
+            echo ' [' . count($num) . '] . <br>************************************<br>';
+
+            foreach($num as $key=>$ss){
+                echo '<br>'. ($key + 1) . '. ' . $ss->name() . '<br>';
+            }
+
+            echo '<br>';
         }
     }
 
@@ -50,6 +55,33 @@ Route::get('/public/schools/colleges', function(){
 
     // $title = 'Αναζήτησε δημοφιλή Εκπαιδευτικά Ιδρύματα';
     // return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions);
+});
+
+Route::get('/public/schools/iek', function(){
+
+    foreach(SchoolTypes::all() as $type){
+
+        $cities = School::where('type_id', $type->id)->select('city')->distinct()->get();
+
+        foreach($cities as $city){
+            echo '<strong>' . $type->name . ' σε ' . $city['city'] . '</strong><br>';
+            $regions = School::where('type_id', $type->id)->where('city', $city['city'])->select('region')->distinct()->get();
+            foreach($regions as $region){
+                echo '<i>' . $region['region'] . '</i>';
+                $num = School::where('city', $city['city'])->where('region', $region['region'])->where('type_id', $type->id)->get();
+                echo ' [' . count($num) . '] . <br>************************************<br>';
+
+                foreach($num as $key=>$ss){
+                    echo '<br>'. ($key + 1) . '. ' . $ss->name() . '<br>';
+                }
+
+                echo '<br>';
+            }
+        }
+    }
+
+    return 'ok';
+
 });
 
 Route::get('zxc', function(){

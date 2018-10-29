@@ -23,6 +23,7 @@ return [
     |
     */
     'skip' => [
+        '/',
         'api/*',
         'panel/*',
         'public/schools*',
