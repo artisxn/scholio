@@ -681,4 +681,30 @@ class Scholio
 
         return $types;
     }
+
+    public function createSeoUrls()
+    {
+        $all = [];
+
+        foreach (SchoolTypes::all() as $type) {
+
+            $cities = School::where('type_id', $type->id)->select('city')->distinct()->get();
+
+            if (count($cities) > 0) {
+                foreach ($cities as $city) {
+                    $regions = School::where('type_id', $type->id)->where('city', $city['city'])->select('region')->orderBy('region')->distinct()->get();
+
+                    foreach ($regions->pluck('region') as $region) {
+                        $url = '/' . ScholioTranslate::translate($type->plural) . '/' . ScholioTranslate::greeklish($city['city'] . '/' . ScholioTranslate::greeklish($region));
+                        array_push($all, $url);
+                    }
+
+                    $url = '/' . ScholioTranslate::translate($type->plural) . '/' . ScholioTranslate::greeklish($city['city']);
+                    array_push($all, $url);
+                }
+            }
+        }
+
+        return $all;
+    }
 }

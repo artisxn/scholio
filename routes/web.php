@@ -169,6 +169,23 @@ Route::get('/form', function () {return view('form');});
 Route::get('/form2', function () {return view('form2');});
 
 Route::get('siteGen', function () {
+
+    foreach(Facades\App\Scholio\Scholio::createSeoUrls() as $ll){
+        echo htmlspecialchars('
+        <url>
+        <loc>https://schol.io/catalog' . $ll . '</loc>
+
+
+        <lastmod>2018-05-15T02:05:59+00:00</lastmod>
+
+        <changefreq>daily</changefreq>
+
+        <priority>0.8</priority>
+    </url>');
+
+        echo '<br>';
+    }
+
     foreach (School::all() as $school) {
         echo htmlspecialchars('
         <url>
@@ -184,6 +201,8 @@ Route::get('siteGen', function () {
 
         echo '<br>';
     }
+
+    
 
     return '------';
 });
