@@ -89,6 +89,6 @@ aside .ais-price-ranges--button:focus{outline:none;box-shadow:inset 0 0 0 1px #F
 .thank-you{text-align:center;font-size:.8em;padding:10px;}
 .counter{color:#aaa;font-weight:300;float:right;}
 @media(max-width: 480px){
-	.counter{font-size: 48%!important; margin-right: -8px;}
+	.counter{font-size: 85%!important; margin-right: -8px;}
 }
 .fa-angle-right{color:#008da5}
