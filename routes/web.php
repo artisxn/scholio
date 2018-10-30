@@ -97,30 +97,6 @@ Route::get('zxc', function () {
     }
 });
 
-Route::get('cwebp', function () {
-    ini_set('max_execution_time', 1500);
-
-    foreach (DummyLevelsData::all() as $dummy) {
-        $data = json_decode($dummy->data, true);
-        foreach ($data as $d) {
-            foreach ($d["sections"] as $opa) {
-                $text = $opa["section"]["icon"];
-                $pos = strpos($dummy->data, $text);
-                if ($pos === false) {
-                    dd('NOTFOUND');
-                } else {
-                    $str = substr_replace($dummy->data, substr($text, 0, -4) . 'png', $pos, strlen($text));
-                    $dummy->data = $str;
-                    $dummy->save();
-                }
-            }
-        }
-
-    }
-
-    // shell_exec($s->);
-});
-
 Route::get('/dummytest/{from}/{to}', function ($from, $to) {
     ini_set('max_execution_time', 500);
     foreach (School::all() as $school) {
@@ -188,79 +164,6 @@ Route::get('/saveStudyLink', function () {
     return back();
 });
 
-Route::get('www', function () {
-
-    $school = auth()->user()->info;
-
-    $study = Study::find(2);
-
-    return $school->study()->where('study_id', $study->id)->first()->pivot->url;
-
-    if ($school->study()->where('study_id', $study->id)->exists()) {
-        return 'NAI';
-    }
-
-    return 'OXI';
-});
-
-// Route::get('qqqq', function(){
-//     foreach(App\Models\AlgoliaSchool::all() as $school){
-//         $school->scholioranking = 50;
-//         $school->save();
-//     }
-// });
-
-// foreach (App\Models\SchoolTypes::all() as $type) {
-// Route::get('/s/' . $type->name, function () use ($type) {
-//     $schools = App\Models\School::where('type_id', $type->id)->get();
-//     return view('sitemap.schools', compact('schools'));
-// });
-// }
-
-// Route::get('/qqww', function () {
-//     foreach (App\Models\AlgoliaSchool::all() as $school) {
-//         if ($school->city == 'θεσσσαλονίκη') {
-//             $school->city = 'Θεσσαλονίκη';
-//             $school->save();
-//         }
-//     }
-// });
-
-// Route::get('/s/schools', function () {
-//     $types = App\Models\SchoolTypes::all();
-
-//     $arr = [];
-//     $same = '';
-//     foreach ($types as $type) {
-//         if (count($type->schools) > 0) {
-//             foreach ($type->schools as $school) {
-//                 $txt = $type->name . ' - ' . $school->city;
-//                 if (!in_array($txt, $arr)) {
-//                     array_push($arr, $txt);
-//                 }
-//             }
-//         }
-//     }
-
-//     return view('sitemap.types', compact('types', 'arr'));
-// });
-
-Route::get('/testalgolia', function () {
-    foreach (AlgoliaSchool::all() as $alg) {
-        if ($alg->school_id >= 329 && $alg->school_id <= 341) {
-            $school = School::find($alg->school_id);
-            $alg->region = $school->region;
-            $alg->save();
-        }
-    }
-
-});
-
-Route::get('/s/scholarships', function () {
-    $scholarships = App\Models\Scholarship::all();
-
-    return view('sitemap.scholarships', compact('scholarships'));
-});
 
 Route::get('/form', function () {return view('form');});
 Route::get('/form2', function () {return view('form2');});
