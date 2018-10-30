@@ -38,7 +38,7 @@ Route::get('/catalog/{type}/{city}/{region}', function ($type, $city, $region) {
 
     $search = $originalType . ' ' . $originalCity . ' ' . $originalRegion;
 
-    $schooltype = SchoolTypes::where('name', $originalType)->get()->first();
+    $schooltype = SchoolTypes::where('plural', $originalType)->get()->first();
     $cities = School::where('type_id', $schooltype->id)->where('city', $originalCity)->select('city', 'region')->orderBy('region')->distinct()->get();
 
     $regions = [];
@@ -51,9 +51,12 @@ Route::get('/catalog/{type}/{city}/{region}', function ($type, $city, $region) {
     $schools = AlgoliaSchool::search($search)->get();
     $settings = SchoolSetting::all()->pluck('statistics');
     $reviews = SchoolSetting::all()->pluck('reviews');
+    
 
     $title = $originalType . ' ' . $originalCity . ' ' . $originalRegion;
-    return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions);
+    $description = 'Ποιά είναι τα καλύτερα και δημοφιλέστερα ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
+
+    return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions)->withDescription($description);
 });
 
 Route::get('/catalog/{type}/{city}/', function ($type, $city) {
@@ -62,7 +65,7 @@ Route::get('/catalog/{type}/{city}/', function ($type, $city) {
 
     $search = $originalType . ' ' . $originalCity;
 
-    $schooltype = SchoolTypes::where('name', $originalType)->get()->first();
+    $schooltype = SchoolTypes::where('plural', $originalType)->get()->first();
     $cities = School::where('type_id', $schooltype->id)->where('city', $originalCity)->select('city', 'region')->orderBy('region')->distinct()->get();
 
     $regions = [];
@@ -77,7 +80,8 @@ Route::get('/catalog/{type}/{city}/', function ($type, $city) {
     $reviews = SchoolSetting::all()->pluck('reviews');
 
     $title = $originalType . ' ' . $originalCity;
-    return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions);
+    $description = 'Ποιά είναι τα καλύτερα και δημοφιλέστερα ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
+    return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions)->withDescription($description);
 });
 
 Route::get('zxc', function () {
