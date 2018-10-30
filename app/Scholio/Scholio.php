@@ -663,17 +663,17 @@ class Scholio
                     $regions = School::where('type_id', $type->id)->where('city', $city['city'])->select('region')->orderBy('region')->distinct()->get();
 
                     foreach ($regions->pluck('region') as $region) {
-                        $url = '/' . ScholioTranslate::translate($type->name) . '/' . ScholioTranslate::greeklish($city['city'] . '/' . ScholioTranslate::greeklish($region));
+                        $url = '/' . ScholioTranslate::translate($type->plural) . '/' . ScholioTranslate::greeklish($city['city'] . '/' . ScholioTranslate::greeklish($region));
                         array_push($r, ['name' => $region, 'url' => $url]);
                     }
 
-                    $url = '/' . ScholioTranslate::translate($type->name) . '/' . ScholioTranslate::greeklish($city['city']);
+                    $url = '/' . ScholioTranslate::translate($type->plural) . '/' . ScholioTranslate::greeklish($city['city']);
                     array_push($c, ['name' => $city['city'], 'url'=> $url, 'region' => $r]);
                     $r = [];
 
                 }
 
-                array_push($types, ['type' => $type->name, 'city' => $c]);
+                array_push($types, ['type' => $type->plural, 'city' => $c]);
 
                 $c = [];
             }
