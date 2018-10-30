@@ -5,7 +5,7 @@
 
                 <div class="">
                     <a href="/public/profile/{{$school->school_id}}">
-                        <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url({{$school->image}})">
+                        <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url({{$school->profileImage()}})">
                     </a>
                 </div>
                 <div class="card-ribbon">
@@ -22,7 +22,7 @@
                 <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="{{$school->logo}}">
                 </a>
                 <span class="pull-left">
-                    <h5 class="pad-top-10 titleName"> <a href="/public/profile/{{$school->school_id}}"> {{$school->name}}</a></h5>
+                    <h5 class="pad-top-10 titleName"> <a href="/public/profile/{{$school->school_id}}"> {{$school->name()}}</a></h5>
                 </span>
             </div>
 
@@ -61,7 +61,7 @@
                    <div class="hidden-xs ">
                                 <div class="pad-top-3"></div>
                                 <span><i class="fa fa-envelope  pull-left pad-top-2 " aria-hidden="true"></i></span>
-                                <span class="pull-left pad-left-3 "> <a class="ellipsis2" href="mailto:{{$school->email}}">{{$school->email}}</a></span>
+                                <span class="pull-left pad-left-3 "> <a class="ellipsis2" href="mailto:{{$school->email()}}">{{$school->admin->email}}</a></span>
                                 <br>
                    </div>
 

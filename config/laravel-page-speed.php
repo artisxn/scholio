@@ -29,6 +29,8 @@ return [
         'public/schools*',
         'public/scholarships*',
         'scholarship/*',
+        '/register/*',
+        '/login/*',
         '*.js',
         '*.xml',
         '*.less',

@@ -21,9 +21,8 @@
                 <a href="https://blog.schol.io/contact/" target="_blank" class="sc-t-white margin-right-20 social-link">@lang('main.footer.contact')</a>
                 <span class="pad-top-10 pad-bot-10 clear-fix margin-right-20 ">  <a href="https://blog.schol.io/" target="_blank" rel="noopener" class="sc-t-white social-link">@lang('main.footer.blog')</a></span>
                 <span class="pad-top-10 pad-bot-10 clear-fix margin-right-20 ">  <a href="{{ url('terms') }}" class="sc-t-white social-link">@lang('main.footer.terms')</a></span>
-                <span class="pad-top-10 pad-bot-10 clear-fix margin-right-20 ">                   <a href="{{ url('gdpr') }}" class="sc-t-white social-link">@lang('main.footer.gdpr')</a></span><br>
-                {{-- <span class="pad-top-10 pad-bot-10 clear-fix margin-right-20 ">                   <a href="{{ url('s/schools') }}" class="sc-t-white social-link">@lang('main.footer.schools')</a></span> --}}
-                {{-- <span class="pad-top-10 pad-bot-10 clear-fix">                   <a href="{{ url('s/scholarships') }}" class="sc-t-white social-link">@lang('main.footer.scholarships')</a></span> --}}
+                <span class="pad-top-10 pad-bot-10 clear-fix margin-right-20 ">  <a href="{{ url('gdpr') }}" class="sc-t-white social-link">@lang('main.footer.gdpr')</a></span>
+                <span class="pad-top-10 pad-bot-10 clear-fix margin-right-20 ">  <a href="{{ url('sitemap/schools') }}" class="sc-t-white social-link">Sitemap</a></span><br>
 
             </div>
 

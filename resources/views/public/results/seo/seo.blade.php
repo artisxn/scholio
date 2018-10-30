@@ -30,7 +30,7 @@
     <link href="{{asset('new/css/main.css')}}" rel="stylesheet">
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
 
 </head>
 
@@ -342,65 +342,6 @@
                 </form>
                 @endif
                 </div>
-
-                <!-- Large Menu -->
-                <div class="pull-right visible-md visible-lg">
-                    <div class="">
-                        <ul class="nav navbar-nav navbar-right sc-landing-menu">
-
-                        <li class="langDropWhite" style="margin-top: -1px">
-                        <form method="GET" id="langForm">
-                            <select onchange="changeLang(this)" class="" style="border: none; background-color: transparent; width: 80%; margin-top: 14px!important;">
-                                <option style="color: black" data-icon="fa" value="en" {{ request()->cookie('lang')=='en' ? 'selected':'' }}>&nbsp; ENG</option>
-                                <option style="color: black" data-icon="fa" value="el" {{ request()->cookie('lang')=='el' ? 'selected':'' }}>&nbsp; GR</option>
-                            </select>
-                            </form>
-                        </li>
-
-
-                            <li class="sc-landing-menu-item">
-                            <a href="{{url('public/scholarships')}}" class="btn-change-search">
-                                <i class="fa fa-trophy margin-right-5"></i>
-                                @lang('schools.navigation.search_scholarship')
-                            </a>
-                            </li>
-
-                            @if(auth()->check())
-                                <li><a href="{{ url('/dashboard') }}"><button type="button" class="sc-button-landing sc-button sc-orange sc-t-white">@lang('main.navigation.admin')</button></a></li>
-                                <li><a href="{{ url('/out') }}"><button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white ">@lang('main.navigation.logout')</button></a></li>
-                            @else
-                                <li><a href="{{ url('/register/role') }}"><button type="button" class="sc-button-landing sc-button sc-green sc-t-white"
-                                                {{--data-toggle="modal" data-target="#select-modal"--}}
-                                        >@lang('main.navigation.register')</button></a></li>
-                                <li>
-                                    <a href="{{ url('/login') }}">
-                                        <button type="button" class="sc-button-landing sc-button sc-dark-green sc-t-white"
-                                                {{--data-toggle="modal" data-target="#signIn-modal"--}}
-                                        >@lang('main.navigation.login')</button>
-                                    </a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-xs-6 visible-sm visible-xs " style="z-index: 6000; height: 20px;">
-                    <div class="">
-                        <div class="sc-landing-menu-mobile-sandwitch nav navbar-nav navbar-right pull-right">
-                            <div class="sc-landing-menu-sandwitch-button-sticky sc-landing-menu-sandwitch">
-
-                                <picture>
-                                    <source srcset="{{asset('new/img/collapse-dark2.webp')}}" type="image/webp">
-                                    <source srcset="{{asset('new/img/collapse-dark2.png')}}" type="image/png">
-                                    <img src="{{asset('new/img/collapse-dark2.png')}}" alt="scholio logo"  style="height:22px; margin-top: 7px;">
-                                </picture>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ======= Sandwich Menu =======-->
-                @include('public.sandwich-menu-resultsSchools')
 
             </div> 
         </div>

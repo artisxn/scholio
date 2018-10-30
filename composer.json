@@ -35,8 +35,7 @@
         },
         "autoload": {
                 "classmap": [
-                        "database",
-                        "app/facades"
+                        "database"
                 ],
                 "psr-4": {
                         "App\\": "app/"

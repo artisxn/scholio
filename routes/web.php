@@ -48,7 +48,7 @@ Route::get('/catalog/{type}/{city}/{region}', function ($type, $city, $region) {
         array_push($regions, ['name' => $c['region'], 'url' => $url]);
     }
 
-    $schools = AlgoliaSchool::search($search)->get();
+    $schools = School::where('city', $originalCity)->where('type_id', $schooltype->id)->where('region', $originalRegion)->get();
     $settings = SchoolSetting::all()->pluck('statistics');
     $reviews = SchoolSetting::all()->pluck('reviews');
     
@@ -75,7 +75,7 @@ Route::get('/catalog/{type}/{city}/', function ($type, $city) {
         array_push($regions, ['name' => $c['region'], 'url' => $url]);
     }
 
-    $schools = AlgoliaSchool::search($search)->get();
+    $schools = School::where('city', $originalCity)->where('type_id', $schooltype->id)->get();
     $settings = SchoolSetting::all()->pluck('statistics');
     $reviews = SchoolSetting::all()->pluck('reviews');
 
