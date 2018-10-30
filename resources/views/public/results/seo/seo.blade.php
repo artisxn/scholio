@@ -23,6 +23,8 @@
     <link href="{{asset('new/css/main.css')}}" rel="stylesheet">
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 </head>
 
 <style>

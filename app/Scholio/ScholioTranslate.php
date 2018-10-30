@@ -30,7 +30,7 @@ class ScholioTranslate
 
         foreach (SchoolTypes::all() as $type) {
 
-            $this->saveTranslation($type->name);
+            $this->saveTranslation($type->plural);
 
             $cities = School::where('type_id', $type->id)->select('city')->distinct()->get();
             $regions = School::where('type_id', $type->id)->select('region')->distinct()->get();
