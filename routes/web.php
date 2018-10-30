@@ -1,20 +1,19 @@
 <?php
 
 use App\Models\AlgoliaSchool;
+use App\Models\DummyLevelsData;
+use App\Models\Level;
 use App\Models\School;
 use App\Models\SchoolLinks;
+use App\Models\SchoolSetting;
+use App\Models\SchoolTypes;
+use App\Models\Section;
 use App\Models\Study;
 use App\Models\StudyLinks;
 use App\Scholio\Scholio;
+use Facades\App\Scholio\ScholioTranslate;
 use Illuminate\Support\Facades\Route;
-use App\Models\DummyLevelsData;
-use App\Models\Section;
-use App\Models\Level;
-use App\Models\Image;
-use App\Models\SchoolSetting;
-use App\Scholio\Greeklish;
-use App\Facades\ScholioGreeklishFacade;
-use App\Models\SchoolTypes;
+use App\Models\Json;
 // auth()->loginUsingId(70);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
@@ -25,97 +24,94 @@ Route::view('gdpr', 'gdpr');
 
 // Route::view('/public/schools/colleges', 'public/results/seo/seo');
 
-Route::get('/public/schools/colleges', function(){
+Route::get('/sitemap/schools', function () {
+    $json = Json::where('name', 'seoRegion')->get()->first()->data;
+    $schools = json_decode($json, true);
 
-    // $gr = new Greeklish;
-
-    foreach(SchoolTypes::all() as $type){
-
-        $cities = School::where('type_id', $type->id)->select('city', 'region')->distinct()->get();
-
-        foreach($cities as $city){
-            echo '<strong>' . $type->name . ' σε ' . $city['city'] . ' - in ' . $city['region'] . '</strong>';
-            $num = School::where('city', $city['city'])->where('region', $city['region'])->where('type_id', $type->id)->get();
-            echo ' [' . count($num) . '] . <br>************************************<br>';
-
-            foreach($num as $key=>$ss){
-                echo '<br>'. ($key + 1) . '. ' . $ss->name() . '<br>';
-            }
-
-            echo '<br>';
-        }
-    }
-
-    return 'ok';
-
-    // $schools = AlgoliaSchool::search('Κολλέγιο Θεσσαλονικη')->get();
-    // $settings = SchoolSetting::all()->pluck('statistics');
-    // $reviews = SchoolSetting::all()->pluck('reviews');
-    // $regions = ['Τουμπα', 'Πυλαία', 'Καλαμαριά', 'Χαριλάου'];
-
-    // $title = 'Αναζήτησε δημοφιλή Εκπαιδευτικά Ιδρύματα';
-    // return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions);
+    return view('public.sitemap-schools', compact('schools'));
 });
 
-Route::get('/public/schools/iek', function(){
+Route::get('/catalog/{type}/{city}/{region}', function ($type, $city, $region) {
+    $originalType = ScholioTranslate::original($type);
+    $originalCity = ScholioTranslate::original($city);
+    $originalRegion = ScholioTranslate::original($region);
 
-    foreach(SchoolTypes::all() as $type){
+    $search = $originalType . ' ' . $originalCity . ' ' . $originalRegion;
 
-        $cities = School::where('type_id', $type->id)->select('city')->distinct()->get();
+    $schooltype = SchoolTypes::where('name', $originalType)->get()->first();
+    $cities = School::where('type_id', $schooltype->id)->where('city', $originalCity)->select('city', 'region')->orderBy('region')->distinct()->get();
 
-        foreach($cities as $city){
-            echo '<strong>' . $type->name . ' σε ' . $city['city'] . '</strong><br>';
-            $regions = School::where('type_id', $type->id)->where('city', $city['city'])->select('region')->distinct()->get();
-            foreach($regions as $region){
-                echo '<i>' . $region['region'] . '</i>';
-                $num = School::where('city', $city['city'])->where('region', $region['region'])->where('type_id', $type->id)->get();
-                echo ' [' . count($num) . '] . <br>************************************<br>';
+    $regions = [];
 
-                foreach($num as $key=>$ss){
-                    echo '<br>'. ($key + 1) . '. ' . $ss->name() . '<br>';
-                }
-
-                echo '<br>';
-            }
-        }
+    foreach ($cities as $c) {
+        $url = '/' . $type . '/' . $city . '/' . ScholioTranslate::greeklish($c['region']);
+        array_push($regions, ['name' => $c['region'], 'url' => $url]);
     }
 
-    return 'ok';
+    $schools = AlgoliaSchool::search($search)->get();
+    $settings = SchoolSetting::all()->pluck('statistics');
+    $reviews = SchoolSetting::all()->pluck('reviews');
 
+    $title = $originalType . ' ' . $originalCity . ' ' . $originalRegion;
+    return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions);
 });
 
-Route::get('zxc', function(){
+Route::get('/catalog/{type}/{city}/', function ($type, $city) {
+    $originalType = ScholioTranslate::original($type);
+    $originalCity = ScholioTranslate::original($city);
+
+    $search = $originalType . ' ' . $originalCity;
+
+    $schooltype = SchoolTypes::where('name', $originalType)->get()->first();
+    $cities = School::where('type_id', $schooltype->id)->where('city', $originalCity)->select('city', 'region')->orderBy('region')->distinct()->get();
+
+    $regions = [];
+
+    foreach ($cities as $c) {
+        $url = '/' . $type . '/' . $city . '/' . ScholioTranslate::greeklish($c['region']);
+        array_push($regions, ['name' => $c['region'], 'url' => $url]);
+    }
+
+    $schools = AlgoliaSchool::search($search)->get();
+    $settings = SchoolSetting::all()->pluck('statistics');
+    $reviews = SchoolSetting::all()->pluck('reviews');
+
+    $title = $originalType . ' ' . $originalCity;
+    return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions);
+});
+
+Route::get('zxc', function () {
     $row = 1;
-if (($handle = fopen("csv/iii.csv", "r")) !== FALSE) {
-  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-    if($row > 1){
-        $type_id = $data[0];
+    if (($handle = fopen("csv/iii.csv", "r")) !== false) {
+        while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+            if ($row > 1) {
+                $type_id = $data[0];
+            }
+            $row++;
+        }
+        fclose($handle);
     }
-    $row++;
-  }
-  fclose($handle);
-}
 });
 
 Route::get('cwebp', function () {
     ini_set('max_execution_time', 1500);
 
-    foreach(DummyLevelsData::all() as $dummy){
+    foreach (DummyLevelsData::all() as $dummy) {
         $data = json_decode($dummy->data, true);
-        foreach($data as $d){
-            foreach($d["sections"] as $opa){
+        foreach ($data as $d) {
+            foreach ($d["sections"] as $opa) {
                 $text = $opa["section"]["icon"];
                 $pos = strpos($dummy->data, $text);
                 if ($pos === false) {
                     dd('NOTFOUND');
-                }else{
-                    $str = substr_replace($dummy->data,substr($text, 0, -4) . 'png',$pos,strlen($text));
+                } else {
+                    $str = substr_replace($dummy->data, substr($text, 0, -4) . 'png', $pos, strlen($text));
                     $dummy->data = $str;
                     $dummy->save();
                 }
             }
         }
-        
+
     }
 
     // shell_exec($s->);
@@ -148,8 +144,6 @@ Route::get('/dummytest/{from}/{to}', function ($from, $to) {
             }
             // dd();
 
-
-
             $dump = new DummyLevelsData;
             $dump->school_id = $school->id;
             $dump->data = json_encode($data);
@@ -161,13 +155,13 @@ Route::get('/dummytest/{from}/{to}', function ($from, $to) {
 Route::get('aaqq', function () {
     ini_set('max_execution_time', 500);
     foreach (AlgoliaSchool::all() as $alg) {
-             $school = School::find($alg->school_id);
-             $alg->region = $school->region; 
-            $alg->{'categories.lvl0'} = $alg->city;
-            $alg->{'categories.lvl1'} = $alg->city . " > " . $alg->region;
-            
-            $alg->_geoloc = collect(['lat' => (double) $school->lat, 'lng' => (double) $school->lng]);
-            $alg->searchable();
+        $school = School::find($alg->school_id);
+        $alg->region = $school->region;
+        $alg->{'categories.lvl0'} = $alg->city;
+        $alg->{'categories.lvl1'} = $alg->city . " > " . $alg->region;
+
+        $alg->_geoloc = collect(['lat' => (double) $school->lat, 'lng' => (double) $school->lng]);
+        $alg->searchable();
     }
 });
 
@@ -213,10 +207,10 @@ Route::get('www', function () {
 // });
 
 // foreach (App\Models\SchoolTypes::all() as $type) {
-    // Route::get('/s/' . $type->name, function () use ($type) {
-    //     $schools = App\Models\School::where('type_id', $type->id)->get();
-    //     return view('sitemap.schools', compact('schools'));
-    // });
+// Route::get('/s/' . $type->name, function () use ($type) {
+//     $schools = App\Models\School::where('type_id', $type->id)->get();
+//     return view('sitemap.schools', compact('schools'));
+// });
 // }
 
 // Route::get('/qqww', function () {
@@ -247,15 +241,15 @@ Route::get('www', function () {
 //     return view('sitemap.types', compact('types', 'arr'));
 // });
 
-Route::get('/testalgolia', function(){
-    foreach(AlgoliaSchool::all() as $alg){
-        if($alg->school_id >= 329 && $alg->school_id <= 341){
+Route::get('/testalgolia', function () {
+    foreach (AlgoliaSchool::all() as $alg) {
+        if ($alg->school_id >= 329 && $alg->school_id <= 341) {
             $school = School::find($alg->school_id);
             $alg->region = $school->region;
             $alg->save();
         }
     }
-    
+
 });
 
 Route::get('/s/scholarships', function () {
@@ -332,6 +326,10 @@ Route::get('/schoolink/redirect/{school}/', function (School $school) {
 
     return redirect('http://' . $school->website);
 
+});
+
+Route::get('eeww', function(){
+    return Facades\App\Scholio\Scholio::createSeoRegion();
 });
 
 Route::get('@{username}', 'RoutesController@username');

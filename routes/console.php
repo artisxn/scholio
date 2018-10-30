@@ -3,11 +3,14 @@
 use App\Jobs\Algolia;
 use App\Models\AlgoliaSchool;
 use App\Models\DummyLevelsData;
+use App\Models\Json;
 use App\Models\Level;
 use App\Models\School;
+use App\Models\SchoolTypes;
 use App\Models\Section;
 use App\Models\Study;
-use App\Scholio\Scholio;
+use Facades\App\Scholio\Scholio;
+use Facades\App\Scholio\ScholioTranslate;
 use Spatie\Sitemap\SitemapGenerator;
 
 /*
@@ -195,7 +198,7 @@ Artisan::command('scholio:ppp', function () {
     }
 });
 
-Artisan::command('scholio:dummyJson {from} {to}', function () {
+Artisan::command('scholio:dummyLevelsDataJson {from} {to}', function () {
     $from = $this->argument('from');
     $to = $this->argument('to');
     ini_set('max_execution_time', 1500);
@@ -231,4 +234,54 @@ Artisan::command('scholio:dummyJson {from} {to}', function () {
             $this->info('School ID: ' . $school->id . ' inserted!');
         }
     }
+});
+
+Artisan::command('scholio:seoRegion', function () {
+    $schools = [];
+    $regions = [];
+
+    foreach (SchoolTypes::all() as $type) {
+
+        $cities = School::where('type_id', $type->id)->select('city', 'region')->distinct()->get();
+
+        foreach ($cities as $city) {
+            $num = School::where('city', $city['city'])->where('region', $city['region'])->where('type_id', $type->id)->get();
+
+            foreach ($num as $key => $ss) {
+                array_push($schools, ['name' => $ss->name(), 'username' => $ss->admin->username]);
+            }
+
+            array_push($regions, ['school_type' => $type->id, 'city' => $city['city'], 'region' => $city['region'], 'num' => count($num), 'schools' => $schools]);
+
+            $schools = [];
+        }
+    }
+
+    $seo = new Json;
+    $seo->name = 'seoRegion';
+    $seo->data = $regions;
+    $seo->save();
+});
+
+Artisan::command('scholio:seoRegionCreate', function () {
+    
+    $json = Scholio::createSeoRegion();
+
+    $seo = new Json;
+    $seo->name = 'seoRegion';
+    $seo->data = json_encode($json);
+    $seo->save();
+});
+
+Artisan::command('scholio:seoRegionRefresh', function () {
+    
+    $json = Scholio::createSeoRegion();
+
+    $seo = Json::where('name', 'seoRegion')->get()->first();
+    $seo->data = json_encode($json);
+    $seo->save();
+});
+
+Artisan::command('scholio:translationRefresh', function () {
+    ScholioTranslate::refresh();
 });

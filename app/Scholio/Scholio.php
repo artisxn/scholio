@@ -14,12 +14,14 @@ use App\Models\Level;
 use App\Models\Message;
 use App\Models\Scholarship;
 use App\Models\School;
+use App\Models\SchoolTypes;
 use App\Models\Section;
 use App\Models\SocialLink;
 use App\Models\Study;
 use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
+use Facades\App\Scholio\ScholioTranslate;
 use Illuminate\Support\Facades\Route;
 use League\Flysystem\Exception;
 
@@ -488,7 +490,7 @@ class Scholio
         $dummy->criteria_icon = $scholarship->criteria->name;
         $dummy->end_at = $scholarship->end_at;
         $dummy->admissions_length = count($scholarship->admission);
-        
+
         $dummy->active = $scholarship->active;
 
         if ($scholarship->study_id == 0) {
@@ -525,7 +527,7 @@ class Scholio
         $dummy->criteria_icon = $scholarship->criteria->name;
         $dummy->end_at = $scholarship->end_at;
         $dummy->admissions_length = count($scholarship->admission);
-        
+
         $dummy->active = $scholarship->active || 1;
 
         $dummy->save();
@@ -577,7 +579,7 @@ class Scholio
             $newSection->name = $section;
             $newSection->level_id = $newLevel->id;
             $newSection->save();
-        
+
             $new = true;
         }
 
@@ -633,15 +635,50 @@ class Scholio
         $path = '';
         if (\App::environment('local')) {
             $path = '/Users/apostolos/Documents/Work/scholio/public/';
-        }else{
+        } else {
             $path = '/var/www/scholio/public/';
         }
 
-        try{
+        try {
             shell_exec('cwebp -q ' . $q . ' ' . $path . $image . ' -o ' . substr($path . $image, 0, strlen($ext) * -1) . 'webp');
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo $e;
         }
-        
+
+    }
+
+    public function createSeoRegion()
+    {
+        $r = [];
+        $c = [];
+        $types = [];
+        $all = [];
+
+        foreach (SchoolTypes::all() as $type) {
+
+            $cities = School::where('type_id', $type->id)->select('city')->distinct()->get();
+
+            if (count($cities) > 0) {
+                foreach ($cities as $city) {
+                    $regions = School::where('type_id', $type->id)->where('city', $city['city'])->select('region')->orderBy('region')->distinct()->get();
+
+                    foreach ($regions->pluck('region') as $region) {
+                        $url = '/' . ScholioTranslate::translate($type->name) . '/' . ScholioTranslate::greeklish($city['city'] . '/' . ScholioTranslate::greeklish($region));
+                        array_push($r, ['name' => $region, 'url' => $url]);
+                    }
+
+                    $url = '/' . ScholioTranslate::translate($type->name) . '/' . ScholioTranslate::greeklish($city['city']);
+                    array_push($c, ['name' => $city['city'], 'url'=> $url, 'region' => $r]);
+                    $r = [];
+
+                }
+
+                array_push($types, ['type' => $type->name, 'city' => $c]);
+
+                $c = [];
+            }
+        }
+
+        return $types;
     }
 }

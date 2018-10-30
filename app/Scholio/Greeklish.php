@@ -15,7 +15,8 @@ class Greeklish {
     protected function expressions() {
         $expressions = array(
             '/[αΑ][ιίΙΊ]/u' => 'ai',
-            '/[οΟΕε][ιίΙΊ]/u' => 'i',
+            '/[οΟ][ιίΙΊ]/u' => 'oi',
+            '/[Εε][ιίΙΊ]/u' => 'εi',
 
             '/[αΑ][υύΥΎ]([θΘκΚξΞπΠσςΣτTφΡχΧψΨ]|\s|$)/u' => 'af$1',
             '/[αΑ][υύΥΎ]/u' => 'av',
@@ -29,7 +30,7 @@ class Greeklish {
             '/[νΝ][τΤ]/u' => 'nt',
             '/[τΤ][σΣ]/u' => 'ts',
             '/[τΤ][ζΖ]/u' => 'tz',
-            '/[γΓ][γΓ]/u' => 'ng',
+            '/[γΓ][γΓ]/u' => 'gg',
             '/[γΓ][κΚ]/u' => 'gk',
             '/[ηΗ][υΥ]([θΘκΚξΞπΠσςΣτTφΡχΧψΨ]|\s|$)/u' => 'if$1',
             '/[ηΗ][υΥ]/u' => 'iu',
@@ -56,7 +57,7 @@ class Greeklish {
             '/[ρΡ]/u' => 'r',
             '/[σςΣ]/u' => 's',
             '/[τΤ]/u' => 't',
-            '/[υύϋΥΎΫ]/u' => 'i',
+            '/[υύϋΥΎΫ]/u' => 'y',
             '/[φΦ]/iu' => 'f',
             '/[ωώ]/iu' => 'o',
 
@@ -80,7 +81,9 @@ class Greeklish {
 
         $expressions = $this->expressions();
 
+        $text = $this->removeSpaces($text);
         $text = preg_replace( array_keys($expressions), array_values($expressions), $text );
+        
 
         return $text;
     }
@@ -158,6 +161,22 @@ class Greeklish {
     public function stopTwo($text) {
 
         return preg_replace('/\s+\D{2}(?!\S)|(?<!\S)\D{2}\s+/', '', $text);
+    }
+
+    public function removeSpaces($text){
+        return $this->removeSlashes($text);
+    }
+
+    public function removeOneSpace($text){
+        return str_replace(' ', '-', $text);
+    }
+
+    public function removeTwoSpaces($text){
+        return $this->removeOneSpace(str_replace(' - ', '-', $text));
+    }
+
+    public function removeSlashes($text){
+        return $this->removeTwoSpaces(str_replace(' / ', '-', $text));
     }
 
 }

@@ -402,9 +402,9 @@
 
             
             <div class="row" style="padding-top: 150px;">
-                    <h1>Κολλέγια στη Θεσσαλονίκη</h1>
+                    <h1>{{ $title }}</h1>
 
-                    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs  left-side-container" >
+                    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs left-side-container" >
 
     
                         <a href="/public/schools"> 
@@ -413,14 +413,10 @@
                             </div>
                         </a>
 
-                        Φροντιστήρια σε: 
                         @foreach($regions as $region)
-                            {{-- <div> --}}
-                                <a href="">
-                                    <div>{{ $region }}</div>
-                                    
+                                <a href="/catalog{{$region['url']}}">
+                                    <div>{{ $region['name'] }}</div>
                                 </a>
-                            {{-- </div> --}}
                         @endforeach
     
     
