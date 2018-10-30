@@ -375,7 +375,7 @@
 
 
                     <main id="schools">
-                        @include('resultsPHP')
+                        @include('resultsPHPseo')
                     </main>
 
                     <section id="pagination"></section>
