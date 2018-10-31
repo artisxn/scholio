@@ -16,8 +16,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, minimum-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        
-    
+
+
         <meta name="keywords" content="">
         <title>{{ $title }} | schol.io</title>
         <meta name="description" content="{{ $description }}">
@@ -282,6 +282,16 @@
 
     }
 
+    /*=============================================*/
+    /*  /////////////////////////////////////////  */
+    /* ------------- New Portal Design ----------- */
+    /*  /////////////////////////////////////////  */
+    /*=============================================*/
+
+    .h1Container{background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; text-align: center; justify-content: center; margin:  -25px 15px 15px; 15px;}
+    .titleResults{font-size: 180%; margin: 10px auto;}
+    .regionContainer{background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px;}
+
 
 
 
@@ -343,48 +353,84 @@
                 @endif
                 </div>
 
-            </div> 
+            </div>
         </div>
     </header>
 
     <main id="main"  class="main">
         <div class="container">
 
-            
+
             <div class="row" style="padding-top: 150px;">
-                    <h1>{{ $title }}</h1>
+                <div class="h1Container">
+                    <h1 class="titleResults">{{ $title }}</h1>
+                </div>
 
-                    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs hidden-xxs left-side-container" >
 
-    
-                        <a href="/public/schools"> 
-                            <div class="btn btn-info" style="width: 100%;"> 
+                    <div class="col-lg-3 col-md-3 col-xs-12" >
+
+                        <a href="/public/schools">
+                            <div class="btn btn-info" style="width: 100%; margin:  0 auto 15px auto;">
                             Νέα Αναζήτηση
                             </div>
                         </a>
 
+
+                        <div class="hidden-lg hidden-md vissible-xs btn btn-default filtersButton" onClick="filtersMobileClick()">
+                            <i class="fa  fa-angle-down faDown"></i>
+                            <i class="fa  fa-angle-up faUp"></i>
+                            Περιοχές
+                            <i class="fa  fa-angle-down faDown"></i>
+                            <i class="fa  fa-angle-up faUp"></i>
+                        </div>
+
+                    <div class="hidden-sm hidden-xs regionContainer filtersMobile">
                         @foreach($regions as $region)
-                                <a href="/catalog{{$region['url']}}">
-                                    <div>{{ $region['name'] }}</div>
-                                </a>
+                            <a href="/catalog{{$region['url']}}">
+                                <div> <li>{{ $region['name'] }}</li></div>
+                            </a>
                         @endforeach
-    
-    
+                    </div>
+
+
                     </div>  <!-- //col-lg-3-->
-                <div class="col-lg-9 col-md-9 scholarship-container" id="">
 
-
-                    <main id="schools">
-                        @include('resultsPHPseo')
-                    </main>
+                    <div class="col-lg-9 col-md-9 scholarship-container" id="">
+                        <main id="schools">
+                            @include('resultsPHPseo')
+                        </main>
 
                     <section id="pagination"></section>
+
                 </div>
             </div>
-        </div> 
+        </div>
     </main>
-    
+
     @include('public.footer')
     </body>
+
+<script>
+
+
+
+    var filtersOpen = false;
+    function filtersMobileClick(){
+        if (!filtersOpen){
+            $(".filtersMobile").slideDown(300);
+            $(".faDown").css("display", "none");
+            $(".faUp").css("display", "inline-block");
+        }
+        else{
+            $(".filtersMobile").slideUp(250);
+            $(".faDown").css("display", "inline-block");
+            $(".faUp").css("display", "none");
+        }
+        filtersOpen = !filtersOpen;
+    }
+
+
+</script>
+
 
 </html>
