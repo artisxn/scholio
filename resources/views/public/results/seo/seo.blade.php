@@ -30,7 +30,7 @@
     <link href="{{asset('new/css/main.css')}}" rel="stylesheet">
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 </head>
 
@@ -80,15 +80,10 @@
     .backImageSm{ height: 170px; width: 80%; left: 40px; bottom: -36px; }
     .backImageLg{ height: 260px; width: 101%; left: 10px; bottom: -30px;}
 
-    .ais-search-box--powered-by-link{display: inline; background-image: none;}
 
-    .filtersMobile{display: none;}
-    .filtersButton{width: 100%;}
-    .faUp{display: none;}
+}
 
-    .leftCol{margin-right: 1%;}
-    .rightCol{margin-left: 1%;}
-    .leftCol, .rightCol{width: 49%; z-index: 999;}
+
 
     @media(max-width: 410px){
         .leftCol{margin-right: 0;}
@@ -290,7 +285,18 @@
 
     .h1Container{background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; text-align: center; justify-content: center; margin:  -25px 15px 15px; 15px;}
     .titleResults{font-size: 180%; margin: 10px auto;}
+    .filtersButton{margin: 0 auto 15px auto;}
     .regionContainer{background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px;}
+
+     .filtersButton{width: 100%; }
+     .leftContainer{z-index: 999;}
+
+
+    @media(max-width:991px){
+      .filtersMobile{display: none;}
+      .faUp{display: none;}
+
+    }
 
 
 
@@ -357,7 +363,7 @@
         </div>
     </header>
 
-    <main id="main"  class="main">
+    <div id=""  class="">
         <div class="container">
 
 
@@ -367,7 +373,7 @@
                 </div>
 
 
-                    <div class="col-lg-3 col-md-3 col-xs-12" >
+                    <div class="col-lg-3 col-md-3 col-xs-12 leftContainer">
 
                         <a href="/public/schools">
                             <div class="btn btn-info" style="width: 100%; margin:  0 auto 15px auto;">
@@ -384,28 +390,48 @@
                             <i class="fa  fa-angle-up faUp"></i>
                         </div>
 
-                    <div class="hidden-sm hidden-xs regionContainer filtersMobile">
-                        @foreach($regions as $region)
-                            <a href="/catalog{{$region['url']}}">
-                                <div> <li>{{ $region['name'] }}</li></div>
-                            </a>
+                    <div class="  filtersMobile">
+
+                     <div class="  col-xs-6">
+                        @foreach($regions as $key => $region)
+                            @if( ($key+1)%2==0 ) 
+                             
+                                <a href="/catalog{{$region['url']}}">
+                                    <div> {{ $region['name'] }}</div>
+                                </a>
+                                @endif
                         @endforeach
+                         
+                        </div>
+                       <div class="  col-xs-6">
+                        @foreach($regions as $ll => $region)
+                            @if(  ($ll+1)%2==1 ) 
+                             
+                                <a href="/catalog{{$region['url']}}">
+                                    <div> {{ $region['name'] }}</div>
+                                </a>
+                                @endif
+                        @endforeach
+                         
+                        </div>
+
                     </div>
 
 
                     </div>  <!-- //col-lg-3-->
 
-                    <div class="col-lg-9 col-md-9 scholarship-container" id="">
-                        <main id="schools">
+                    <div class="col-lg-9 col-md-9">
+                    
+                        <div id="">
                             @include('resultsPHPseo')
-                        </main>
+                        </div>
 
                     <section id="pagination"></section>
 
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     @include('public.footer')
     </body>
