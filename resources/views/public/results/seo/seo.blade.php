@@ -291,11 +291,12 @@
      .filtersButton{width: 100%; }
      .leftContainer{z-index: 999;}
 
+   
+
 
     @media(max-width:991px){
-      .filtersMobile{display: none;}
+      .filtersMobile{display: none; }
       .faUp{display: none;}
-
     }
 
 
@@ -304,7 +305,7 @@
 
 </style>
 
-<body data-spy="scroll" data-target=".navbar" id="home">
+<body>
 
     <!-- Scholio Header -->
     <header class="navbar navbar-fixed-top navbar-scroll sc-landing-header" id="header" >
@@ -363,7 +364,7 @@
         </div>
     </header>
 
-    <div id=""  class="">
+ <div id=""  class="main">
         <div class="container">
 
 
@@ -420,7 +421,7 @@
 
                     </div>  <!-- //col-lg-3-->
 
-                    <div class="col-lg-9 col-md-9">
+                    <div class="col-lg-9 col-md-9 dataContainer">
                     
                         <div id="">
                             @include('resultsPHPseo')
@@ -434,7 +435,7 @@
     </div>
 
     @include('public.footer')
-    </body>
+</body>
 
 <script>
 
