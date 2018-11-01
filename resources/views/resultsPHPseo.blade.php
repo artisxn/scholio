@@ -4,7 +4,7 @@
         <div>
 
                 <div class="">
-                    <a href="/public/profile/{{$school->school_id}}">
+                    <a href="/{{ '@' . $school->admin->username }}">
                         <img id="img0" class="card-photo pull-left" style="background-image:linear-gradient(rgba(206, 255, 255, 0.01), rgba(0, 0, 0, 0.40)), url({{$school->profileImage()}})">
                     </a>
                 </div>
@@ -18,11 +18,11 @@
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 col-xl-custom" >
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bot-15 cardPad" id="card1{{$school->school_id}}">
 
-                <a href="/public/profile/{{$school->school_id}}" target="_blank">
+                <a href="/{{ '@' . $school->admin->username }}" target="_blank">
                 <img id="img1"  class=" img-mini pull-left margin-right-10 margin-top-15 hidden-md hidden-sm hidden-xs" src="{{$school->logo}}">
                 </a>
                 <span class="pull-left">
-                    <h5 class="pad-top-10 titleName"> <a href="/public/profile/{{$school->school_id}}"> {{$school->name()}}</a></h5>
+                    <h5 class="pad-top-10 titleName"> <a href="/{{ '@' . $school->admin->username }}"> {{$school->name()}}</a></h5>
                 </span>
             </div>
 
