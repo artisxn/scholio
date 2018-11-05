@@ -284,9 +284,12 @@
     /*=============================================*/
 
     .h1Container{background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; text-align: center; justify-content: center; margin:  -25px 15px 15px; 15px;}
+    a  h2{font-size: 100%; margin: 12px 4px; font-weight: 400; color: #888;}
+    a  h2:hover{ color: #FD6A33;}
+
     .titleResults{font-size: 180%; margin: 10px auto;}
     .filtersButton{margin: 0 auto 15px auto;}
-    .regionContainer{background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px;}
+    .regionContainer{background-color: #fff; border: 1px solid #ddd; border-radius: 5px; display: inline-block; padding: 0 -10px; width: 100%;}
 
      .filtersButton{width: 100%; }
      .leftContainer{z-index: 999;}
@@ -391,14 +394,14 @@
                             <i class="fa  fa-angle-up faUp"></i>
                         </div>
 
-                    <div class="  filtersMobile">
+                    <div class="regionContainer  filtersMobile">
 
                      <div class="  col-xs-6">
                         @foreach($regions as $key => $region)
-                            @if( ($key+1)%2==0 ) 
+                            @if( ($key+1)%2==1 )
                              
                                 <a href="/catalog{{$region['url']}}">
-                                    <div> {{ $region['name'] }}</div>
+                                    <h2> {{ $region['name'] }}</h2>
                                 </a>
                                 @endif
                         @endforeach
@@ -406,10 +409,10 @@
                         </div>
                        <div class="  col-xs-6">
                         @foreach($regions as $ll => $region)
-                            @if(  ($ll+1)%2==1 ) 
+                            @if(  ($ll+1)%2==0 )
                              
                                 <a href="/catalog{{$region['url']}}">
-                                    <div> {{ $region['name'] }}</div>
+                                    <h2> {{ $region['name'] }}</h2>
                                 </a>
                                 @endif
                         @endforeach
@@ -445,6 +448,7 @@
     function filtersMobileClick(){
         if (!filtersOpen){
             $(".filtersMobile").slideDown(300);
+            $(".filtersMobile").css("display", "inline-block");
             $(".faDown").css("display", "none");
             $(".faUp").css("display", "inline-block");
         }

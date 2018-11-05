@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-
 
     <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -16,14 +13,25 @@
     <link href="{{asset('new/css/results.css')}}" rel="stylesheet">
 
     <style>
-    h1 {font-size: 240%; margin: 70px auto 0 auto;  }
-    h2 { font-size: 200%; margin: 10px auto 0 auto; }
-    h3 { font-size: 110%; margin:  5px auto 0 auto;}
+    h1 {font-size: 170%; margin: 70px auto 0 auto;  }
+    h2 { font-size: 140%; margin: 10px auto 0 auto; }
+    h3 { font-size: 102%; margin:  5px auto 0 auto;}
     h3 a { color: #777;}
+    /*.dataBox{background-color: #fafafa; border: 1px solid #ccc; border-radius: 5px; margin: 10px auto; padding: auto 20px 20px 20px; }*/
+
 
     .dataContainer{margin: 90px auto;}
-        
+    .dataBox{padding-right: 30px;}
+
+    .grid-item { width: 25%;}
+    /*@media(max-width: 1350px){ .grid-item { width: 25%;}  }*/
+    @media(max-width: 1200px){ .grid-item { width: 33.33%;}  }
+    @media(max-width: 991px){  .grid-item { width: 50%;}  }
+    @media(max-width: 591px){
+        .grid-item { width: 100%;}
+        .dataBox{padding-left: 30px;}}
     </style>
+
 
 </head>
 <body>
@@ -64,29 +72,33 @@
     </header>
 
 
-   <div class=" main">
+<div class=" main">
 
 <div class="container ">
-<div class="dataContainer">
-    @foreach($schools as $school)
-    <h1>
-        {{ $school['type'] }}
-    </h1>
-        @foreach($school['city'] as $city)
-        <h2>
-            <a href="/catalog{{ $city['url']}}">
-                {{ $city['name'] }}
-            </a>
-        </h2>
-            @foreach($city['region'] as $region)
-                <h3>
-                    <a href="/catalog{{ $region['url'] }}">
-                            {{ $region['name'] }}
+<div class="dataContainer grid" >
+    @foreach($schools as $key=>$school)
+        <div class="dataBox grid-item">
+            <h1>
+                {{ $school['type'] }}
+            </h1>
+            @foreach($school['city'] as $city)
+                <h2>
+                    <a href="/catalog{{ $city['url']}}">
+                        {{ $city['name'] }}
                     </a>
-                    
-                </h3>
+                </h2>
+                @if($school['type']!='Κολλέγια' && $school['type']!='ΙΕΚ - Επαγγελματικές Σχολές - ΚΔΒΜ')
+                    @foreach($city['region'] as $region)
+                        <h3>
+                            <a href="/catalog{{ $region['url'] }}">
+                                {{ $region['name'] }}
+                            </a>
+
+                        </h3>
+                    @endforeach
+                @endif
             @endforeach
-        @endforeach
+        </div>
     @endforeach
 </div>
      
@@ -94,6 +106,15 @@
    
        
    </div>
-   
+    @include('public.footer')
 </body>
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script>
+    var msnry = new Masonry( '.grid', {
+        itemSelector: '.grid-item',
+        transitionDuration: '0.17s'
+    });
+</script>
+
 </html>
