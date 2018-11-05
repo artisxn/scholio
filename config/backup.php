@@ -147,7 +147,7 @@ return [
      */
     'monitorBackups' => [
         [
-            'name' => env('GOOGLE_DRIVE_FOLDER_ID'),
+            'name' => env('app.name'),
             'disks' => ['google'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,
