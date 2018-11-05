@@ -714,6 +714,6 @@ class Scholio
     }
 
     public function backupDB(){
-        \Artisan::call('php artisan scholio:backup');
+        \Artisan::call('scholio:backup');
     }
 }
