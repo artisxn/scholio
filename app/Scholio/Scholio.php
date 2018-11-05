@@ -712,4 +712,8 @@ class Scholio
     public function seed(){
         ScholioSeed::seed();
     }
+
+    public function backupDB(){
+        \Artisan::call('php artisan backup:run' ['--only-db --disable-notifications --only-to-disk google']);
+    }
 }

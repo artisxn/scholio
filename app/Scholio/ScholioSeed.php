@@ -2,22 +2,23 @@
 
 namespace App\Scholio;
 
+use Facades\App\Scholio\Scholio;
+
 class ScholioSeed
 {
     public function seed()
     {
+        Scholio::backupDB();
         $classes = $this->getClasses();
 
-        foreach ($classes as $class) {
-            try{
-                \Artisan::call('db:seed', [
-                    '--class' => $class,
-                ]);
-            }catch(\Exception $e){
-                dd($e);
-            }
+        // foreach ($classes as $class) {
+        //     try{
+        //         Scholio::backupDB();
+        //     }catch(\Exception $e){
+        //         dd($e);
+        //     }
             
-        }
+        // }
 
     }
 
