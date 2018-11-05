@@ -274,12 +274,7 @@ Artisan::command('scholio:seoRegionCreate', function () {
 });
 
 Artisan::command('scholio:seoRegionRefresh', function () {
-
-    $json = Scholio::createSeoRegion();
-
-    $seo = Json::where('name', 'seoRegion')->get()->first();
-    $seo->data = json_encode($json);
-    $seo->save();
+    Scholio::updateSeoRegion();
 });
 
 Artisan::command('scholio:translationRefresh', function () {

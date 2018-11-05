@@ -8,24 +8,50 @@ class ScholioSeed
 {
     public function seed()
     {
-        $b = Scholio::backupDB();
-        dd($b);
+
         $classes = $this->getClasses();
 
-        // foreach ($classes as $class) {
-        //     try{
-        //         Scholio::backupDB();
-        //     }catch(\Exception $e){
-        //         dd($e);
-        //     }
-            
-        // }
+        // $this->prepeareForSeed();
+
+        foreach ($classes as $class) {
+            try {
+
+            } catch (\Exception $e) {
+                dd($e);
+            }
+        }
+
+        $this->afterInsertionsConfigs();
 
     }
 
-    public function check($class)
+    public function afterInsertionsConfigs()
     {
+        $this->algolia()->dummyLevelsData()->seoRegion();
+    }
 
+    public function algolia()
+    {
+        // Do algolia stuff
+        return $this;
+    }
+
+    public function refreshScholioTranslations()
+    {
+        ScholioTranslate::refresh();
+        return $this;
+    }
+
+    public function dummyLevelsData()
+    {
+        // Do dummy levs stuff
+        return $this;
+    }
+
+    public function seoRegion()
+    {
+        Scholio::updateSeoRegion();
+        return $this;
     }
 
     public function getClasses()
@@ -41,6 +67,6 @@ class ScholioSeed
 
     public function backupDB()
     {
-        // Backup
+        return Scholio::backupDB();
     }
 }

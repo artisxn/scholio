@@ -21,11 +21,12 @@ use App\Models\Study;
 use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
+use Facades\App\Scholio\ScholioSeed;
 use Facades\App\Scholio\ScholioTranslate;
-use Spatie\Backup\Tasks\Backup\BackupJobFactory;
 use Illuminate\Support\Facades\Route;
 use League\Flysystem\Exception;
-use Facades\App\Scholio\ScholioSeed;
+use Spatie\Backup\Tasks\Backup\BackupJobFactory;
+use App\Models\Json;
 
 class Scholio
 {
@@ -670,7 +671,7 @@ class Scholio
                     }
 
                     $url = '/' . ScholioTranslate::translate($type->plural) . '/' . ScholioTranslate::greeklish($city['city']);
-                    array_push($c, ['name' => $city['city'], 'url'=> $url, 'region' => $r]);
+                    array_push($c, ['name' => $city['city'], 'url' => $url, 'region' => $r]);
                     $r = [];
 
                 }
@@ -710,11 +711,23 @@ class Scholio
         return $all;
     }
 
-    public function seed(){
+    public function updateSeoRegion()
+    {
+        $json = $this->createSeoRegion();
+
+        $seo = Json::where('name', 'seoRegion')->get()->first();
+        $seo->data = json_encode($json);
+        $seo->save();
+        return $seo;
+    }
+
+    public function seed()
+    {
         ScholioSeed::seed();
     }
 
-    public function backupDB(){
+    public function backupDB()
+    {
         $message = '';
         try {
             $backupJob = BackupJobFactory::createFromArray(config('backup'));
