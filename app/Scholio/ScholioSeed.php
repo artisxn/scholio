@@ -8,7 +8,8 @@ class ScholioSeed
 {
     public function seed()
     {
-        Scholio::backupDB();
+        $b = Scholio::backupDB();
+        dd($b);
         $classes = $this->getClasses();
 
         // foreach ($classes as $class) {

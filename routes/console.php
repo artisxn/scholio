@@ -11,7 +11,6 @@ use App\Models\Section;
 use App\Models\Study;
 use Facades\App\Scholio\Scholio;
 use Facades\App\Scholio\ScholioTranslate;
-use Spatie\Backup\Tasks\Backup\BackupJobFactory;
 use Spatie\Sitemap\SitemapGenerator;
 
 /*
@@ -288,16 +287,5 @@ Artisan::command('scholio:translationRefresh', function () {
 });
 
 Artisan::command('scholio:backup', function () {
-    try {
-        $backupJob = BackupJobFactory::createFromArray(config('backup'));
-        $backupJob->dontBackupFilesystem();
-        $backupJob->onlyBackupTo('google');
-        $backupJob->disableNotifications();
-        $backupJob->run();
-        $this->comment('Backup completed!');
-    } catch (Exception $exception) {
-        $this->error("Backup failed because: {$exception->getMessage()}.");
-
-        return 1;
-    }
+    
 });

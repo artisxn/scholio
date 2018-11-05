@@ -22,6 +22,7 @@ use App\Models\Subscription;
 use App\User;
 use Carbon\Carbon;
 use Facades\App\Scholio\ScholioTranslate;
+use Spatie\Backup\Tasks\Backup\BackupJobFactory;
 use Illuminate\Support\Facades\Route;
 use League\Flysystem\Exception;
 use Facades\App\Scholio\ScholioSeed;
@@ -714,6 +715,18 @@ class Scholio
     }
 
     public function backupDB(){
-        \Artisan::call('scholio:backup');
+        $message = '';
+        try {
+            $backupJob = BackupJobFactory::createFromArray(config('backup'));
+            $backupJob->dontBackupFilesystem();
+            $backupJob->onlyBackupTo('google');
+            $backupJob->disableNotifications();
+            $backupJob->run();
+            $message = 'OK';
+        } catch (Exception $exception) {
+            $message = $exception->getMessage();
+        }
+
+        return $message;
     }
 }
