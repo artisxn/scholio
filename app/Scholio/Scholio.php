@@ -714,6 +714,6 @@ class Scholio
     }
 
     public function backupDB(){
-        \Artisan::call('php artisan backup:run --only-db --disable-notifications --only-to-disk google');
+        \Artisan::call('php artisan scholio:backup');
     }
 }

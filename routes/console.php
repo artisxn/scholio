@@ -11,6 +11,7 @@ use App\Models\Section;
 use App\Models\Study;
 use Facades\App\Scholio\Scholio;
 use Facades\App\Scholio\ScholioTranslate;
+use Spatie\Backup\Tasks\Backup\BackupJobFactory;
 use Spatie\Sitemap\SitemapGenerator;
 
 /*
@@ -264,7 +265,7 @@ Artisan::command('scholio:seoRegion', function () {
 });
 
 Artisan::command('scholio:seoRegionCreate', function () {
-    
+
     $json = Scholio::createSeoRegion();
 
     $seo = new Json;
@@ -274,7 +275,7 @@ Artisan::command('scholio:seoRegionCreate', function () {
 });
 
 Artisan::command('scholio:seoRegionRefresh', function () {
-    
+
     $json = Scholio::createSeoRegion();
 
     $seo = Json::where('name', 'seoRegion')->get()->first();
@@ -284,4 +285,23 @@ Artisan::command('scholio:seoRegionRefresh', function () {
 
 Artisan::command('scholio:translationRefresh', function () {
     ScholioTranslate::refresh();
+});
+
+Artisan::command('scholio:backup', function () {
+    try {
+        $backupJob = BackupJobFactory::createFromArray(config('backup'));
+        $backupJob->dontBackupFilesystem();
+        $backupJob->onlyBackupTo($this->option('only-to-disk'));
+        $backupJob->disableNotifications();
+        $backupJob->run();
+        $this->comment('Backup completed!');
+    } catch (Exception $exception) {
+        $this->error("Backup failed because: {$exception->getMessage()}.");
+
+        if (!$disableNotifications) {
+            event(new BackupHasFailed($exception));
+        }
+
+        return 1;
+    }
 });
