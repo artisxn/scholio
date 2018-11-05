@@ -147,7 +147,7 @@ return [
      */
     'monitorBackups' => [
         [
-            'name' => env('app.name'),
+            'name' => env('APP_URL'),
             'disks' => ['google'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,
