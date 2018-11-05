@@ -291,7 +291,7 @@ Artisan::command('scholio:backup', function () {
     try {
         $backupJob = BackupJobFactory::createFromArray(config('backup'));
         $backupJob->dontBackupFilesystem();
-        $backupJob->onlyBackupTo($this->option('only-to-disk'));
+        $backupJob->onlyBackupTo('google');
         $backupJob->disableNotifications();
         $backupJob->run();
         $this->comment('Backup completed!');
