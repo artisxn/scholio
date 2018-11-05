@@ -130,9 +130,9 @@ class Algolia implements ShouldQueue
         $dummy->address = $this->school->address;
         $dummy->region = $this->school->region;
         $dummy->logo = $this->school->logo;
-        $dummy->logo2 = substr($this->school->logo, 0, -4) . 'png';
+        $dummy->logo2 = substr($this->school->logo, 0, -4);
         $dummy->image = $this->school->profileImage();
-        $dummy->image = substr($this->school->profileImage(), 0, -4) . 'jpg';
+        $dummy->image2 = substr($this->school->profileImage(), 0, -4);
         $dummy->website = $this->school->website;
         $dummy->lengthStudents = $this->school->lengthStudents();
         $dummy->lengthTeachers = $this->school->lengthTeachers();

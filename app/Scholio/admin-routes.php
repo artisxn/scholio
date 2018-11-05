@@ -12,4 +12,6 @@ Route::view('/approve', 'panel.pages.admin.approve')->name('admin-approve');
 
 Route::view('/ranking', 'panel.pages.admin.ranking')->name('admin-ranking');
 
+Route::view('/seed', 'panel.pages.admin.seed')->name('admin-seed');
+
 

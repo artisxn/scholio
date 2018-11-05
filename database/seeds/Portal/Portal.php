@@ -8,23 +8,19 @@ use App\Models\SchoolSetting;
 use App\Models\Subscription;
 use App\Models\University;
 use App\Scholio\Scholio;
-use App\Models\AlgoliaSchool;
 
 class Portal
 {
     public $school, $imgNum, $type;
 
-    public function __construct($school, $imgNum, $type, $ranking = null)
+    public function __construct($school, $imgNum, $type, $ranking = 50)
     {
         $this->school = $school;
         $this->imgNum = $imgNum;
         $this->type = $type;
 
-        // if($ranking){
-        //     $alg = AlgoliaSchool::where('school_id', $school->id)->first();
-        //     $alg->scholioranking = $ranking;
-        //     $alg->save();
-        // }
+        $school->ranking = $ranking;
+        $school->save();
 
         $this->schoolComplete();
     }
@@ -32,7 +28,7 @@ class Portal
     public function schoolComplete()
     {
         $this->school->background = self::createImages('/upload/school/' . $this->school->admin->username . '/1.jpg')->id;
-        $this->school->logo = '/upload/avatar/'. $this->type . '_' . $this->school->admin->username . '.png';
+        $this->school->logo = '/upload/avatar/' . $this->type . '_' . $this->school->admin->username . '.png';
         $this->school->country = 'Greece';
         $this->school->continent = 'Europe';
         $this->school->save();

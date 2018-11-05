@@ -24,6 +24,10 @@ Route::view('gdpr', 'gdpr');
 
 // Route::view('/public/schools/colleges', 'public/results/seo/seo');
 
+Route::get('/test', function () {
+    Facades\App\Scholio\Scholio::seed();
+});
+
 Route::get('/sitemap/schools', function () {
     $json = Json::where('name', 'seoRegion')->get()->first()->data;
     $schools = json_decode($json, true);

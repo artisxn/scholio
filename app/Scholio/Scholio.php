@@ -24,6 +24,7 @@ use Carbon\Carbon;
 use Facades\App\Scholio\ScholioTranslate;
 use Illuminate\Support\Facades\Route;
 use League\Flysystem\Exception;
+use Facades\App\Scholio\ScholioSeed;
 
 class Scholio
 {
@@ -706,5 +707,9 @@ class Scholio
         }
 
         return $all;
+    }
+
+    public function seed(){
+        ScholioSeed::seed();
     }
 }

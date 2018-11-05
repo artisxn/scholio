@@ -36,4 +36,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    /**
+     * The user has been authenticated.
+     * Method copied from "Illumunate\Foundation\Auth\AuthenticateUsers.php"
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(\Illuminate\Http\Request $request, $user)
+    {
+        if (auth()->user()->role == 'admin') {
+            return redirect()->route('admin-seed');
+        }
+    }
 }
