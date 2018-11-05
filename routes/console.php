@@ -298,10 +298,6 @@ Artisan::command('scholio:backup', function () {
     } catch (Exception $exception) {
         $this->error("Backup failed because: {$exception->getMessage()}.");
 
-        if (!$disableNotifications) {
-            event(new BackupHasFailed($exception));
-        }
-
         return 1;
     }
 });
