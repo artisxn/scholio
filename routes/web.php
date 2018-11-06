@@ -67,8 +67,12 @@ Route::get('/catalog/{type}/{city}/{region}', function ($type, $city, $region) {
     $settings = SchoolSetting::all()->pluck('statistics');
     $reviews = SchoolSetting::all()->pluck('reviews');
 
-    $title = $originalType . ' ' . $originalCity . ' ' . $originalRegion;
-    $description = 'Ποιά είναι τα καλύτερα και δημοφιλέστερα ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
+    if($schooltype->id == 4){
+        $originalType = 'Φροντιστήρια Ξένων Γλωσσών (Αγγικά - Γερμανικά)';
+    }
+    $title = $originalType . ' ' . $originalRegion . ' ' . $originalCity;
+
+    $description = 'Βρες ' . $schooltype->plural . ' στην περιοχή ' . $originalRegion . ' στην πόλη ' . $originalCity;
 
     return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions)->withDescription($description);
 });
@@ -94,7 +98,7 @@ Route::get('/catalog/{type}/{city}/', function ($type, $city) {
     $reviews = SchoolSetting::all()->pluck('reviews');
 
     $title = $originalType . ' ' . $originalCity;
-    $description = 'Ποιά είναι τα καλύτερα και δημοφιλέστερα ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
+    $description = 'Βρες ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
     return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions)->withDescription($description);
 });
 

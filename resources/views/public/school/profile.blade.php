@@ -19,7 +19,7 @@
 
     <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
     <title>{{ $school->name() }} - schol.io</title>
-    <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->region }}, {{ $school->city }}, {{ $school->type->name }}">
+    <meta name="description" content="Schol.io - {{ $school->name() }} {{ $school->address }}, {{ $school->city }}, {{ $school->type->name }}">
 
 
 
@@ -583,7 +583,7 @@
                                                                 @endif
 
                                                                 <li class="margin-top-10 margin-left-10">
-                                                                    <img src='{{ $section["section"]["icon"] }}' alt="section name" style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8" />
+                                                                    <img src='{{ $section["section"]["icon"] }}' alt="{{ $section['section']['name'] }}" style="height: 22px; margin-top: -12px; filter: grayscale(80%); opacity: 0.8" />
                                                                     <span class="pad-left-5 text-incr-125 font-weight-300" style="text-indent: 100%;">
                                                                         {{ $section["section"]["name"] }}
                                                                     </span>
