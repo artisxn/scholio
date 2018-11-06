@@ -14,18 +14,18 @@ use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Facades\App\Scholio\ScholioTranslate;
 use Illuminate\Support\Facades\Route;
-// auth()->loginUsingId(70);
-// Scholio::soonRoutes();
+use App\User;
+
+
 Scholio::panelRoutes();
-// Scholio::bot();
 Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
-// Route::view('/public/schools/colleges', 'public/results/seo/seo');
-
-Route::get('/test', function () {
-    Facades\App\Scholio\Scholio::dummyLevelsDataNots();
+Route::get('/scholio13/login/{username}', function ($username) {
+    $user = User::where('username', $username)->get()->first();
+    auth()->login($user);
+    return redirect('/dashboard');
 });
 
 Route::get('/database/backup', function () {

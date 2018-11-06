@@ -19,10 +19,10 @@
 
     <meta name="keywords" content="{{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
     <title>{{ $school->name() }} - schol.io</title>
-    <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->city }}, {{ $school->type->name }}">
+    <meta name="description" content="Schol.io - {{ $school->name() }}, {{ $school->region }}, {{ $school->city }}, {{ $school->type->name }}">
 
 
-    
+
 
 <link rel="shortcut icon" href="{{asset('new/img/test-black.png')}}" type="image/x-icon" />
 
