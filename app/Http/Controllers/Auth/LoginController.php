@@ -47,7 +47,7 @@ class LoginController extends Controller
     protected function authenticated(\Illuminate\Http\Request $request, $user)
     {
         if (auth()->user()->role == 'admin') {
-            return redirect()->route('admin-seed');
+            return redirect()->route('admin-dashboard');
         }
     }
 }

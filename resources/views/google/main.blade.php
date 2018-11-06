@@ -11,8 +11,6 @@
 }
 </script>
 
-
-@include('google.analytics')
 @include('cookieConsent::index')
 <meta name="theme-color" content="#004a6b"/>
 <!-- <link rel="manifest" href="/manifest.json"> -->

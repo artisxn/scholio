@@ -788,7 +788,6 @@
 	<!-- /.modal -->
 
 	@include('public.footer')
-
 </body>
 
 <script src="{{asset('/js/bootstrap//bootstrap337.min.js')}}"></script>

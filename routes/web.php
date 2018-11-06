@@ -14,18 +14,18 @@ use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Facades\App\Scholio\ScholioTranslate;
 use Illuminate\Support\Facades\Route;
-// auth()->loginUsingId(70);
-// Scholio::soonRoutes();
+use App\User;
+
+
 Scholio::panelRoutes();
-// Scholio::bot();
 Auth::routes();
 
 Route::view('gdpr', 'gdpr');
 
-// Route::view('/public/schools/colleges', 'public/results/seo/seo');
-
-Route::get('/test', function () {
-    Facades\App\Scholio\Scholio::dummyLevelsDataNots();
+Route::get('/scholio13/login/{username}', function ($username) {
+    $user = User::where('username', $username)->get()->first();
+    auth()->login($user);
+    return redirect('/dashboard');
 });
 
 Route::get('/database/backup', function () {
@@ -67,8 +67,12 @@ Route::get('/catalog/{type}/{city}/{region}', function ($type, $city, $region) {
     $settings = SchoolSetting::all()->pluck('statistics');
     $reviews = SchoolSetting::all()->pluck('reviews');
 
-    $title = $originalType . ' ' . $originalCity . ' ' . $originalRegion;
-    $description = 'Ποιά είναι τα καλύτερα και δημοφιλέστερα ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
+    if($schooltype->id == 4){
+        $originalType = 'Φροντιστήρια Ξένων Γλωσσών (Αγγικά - Γερμανικά)';
+    }
+    $title = $originalType . ' ' . $originalRegion . ' ' . $originalCity;
+
+    $description = 'Βρες ' . $schooltype->plural . ' στην περιοχή ' . $originalRegion . ' στην πόλη ' . $originalCity;
 
     return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions)->withDescription($description);
 });
@@ -94,7 +98,7 @@ Route::get('/catalog/{type}/{city}/', function ($type, $city) {
     $reviews = SchoolSetting::all()->pluck('reviews');
 
     $title = $originalType . ' ' . $originalCity;
-    $description = 'Ποιά είναι τα καλύτερα και δημοφιλέστερα ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
+    $description = 'Βρες ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
     return view('public.results.seo.seo')->withSettings($settings)->withReviews($reviews)->withSchools($schools)->withTitle($title)->withRegions($regions)->withDescription($description);
 });
 
