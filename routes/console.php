@@ -275,7 +275,7 @@ Artisan::command('scholio:backup', function () {
 });
 
 Artisan::command('scholio:seed {--class=} {--no-algolia} {--no-webp} {--no-backup}', function () {
-    // ini_set('max_execution_time', 1000);
+    ini_set('max_execution_time', 2000);
     if ($class = $this->option('class')) {
         $lastSchoolID = School::latest()->first()->id; // It has to take the last ID before the new seeds. We will need it later
 
@@ -297,7 +297,8 @@ Artisan::command('scholio:seed {--class=} {--no-algolia} {--no-webp} {--no-backu
         $this->comment('Start Seeding...');
 
         try {
-            ScholioSeed::seed($class);
+            // ScholioSeed::seed($class);
+            $this->call('db:seed', ['--class' => $class]);
         } catch (\Exception $e) {
             $this->error($e->getMessage());
             die();
@@ -376,7 +377,7 @@ Artisan::command('scholio:seed {--class=} {--no-algolia} {--no-webp} {--no-backu
         }
 
         $this->info('Checks Done!');
-    }else{
+    } else {
         $this->error('You have to specify the class name');
     }
 
