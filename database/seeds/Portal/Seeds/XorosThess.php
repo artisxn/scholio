@@ -148,7 +148,7 @@ class XorosThess extends Seeder
 
         /*===============   Vida Loca   ================*/
         $s = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => 'Σχολή Χορού Vida Loca Dance Studio', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'vidaloca'])->id,
+            'user_id' => factory(App\User::class)->create(['name' => 'Σχολή Χορού Vida Loca Dance Studio', 'email' => 'vidalocadance@hotmail.com', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => 'vidaloca'])->id,
             'address' => '25ης Μαρτίου 91 & Εθνικής Αντιστάσεως, Εύοσμος',
             'city' => 'Θεσσαλονίκη',
             'region' => 'Εύοσμος',
