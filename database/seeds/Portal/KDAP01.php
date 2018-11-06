@@ -15,9 +15,6 @@ class Kdap01 extends Seeder
     {
         $background = Portal::createImages('/upload/school/univ.png')->id;
 
-
-
-
      /*=============== 1 Νηπιαγωγείο Ντεκρολί ================*/
 
      $fake = factory(App\Models\School::class)->create([
@@ -29,7 +26,7 @@ class Kdap01 extends Seeder
          'type_id' => 9,
          'website' => 'ntekroli.gr',
          'approved' => 1,
-         'ranking'=>50,
+         'ranking'=> 50,
          'about' => '
  Ο παιδικός σταθμός – νηπιαγωγείο Ντεκρολί ιδρύθηκε το 1987 από τους εκπαιδευτικούς Νίκο Κυριακίδη και Ειρήνη Αργυριάδου. Το όνομά του το οφείλει στον σημαντικό Βέλγο παιδαγωγό Οβίδιο Ντεκρολί, του οποίου την εκπαιδευτική φιλοσοφία εφαρμόζει από την πρώτη μέρα της λειτουργίας του.
   Αρχικά ο σταθμός στεγάστηκε σε μία μονοκατοικία στον οικισμό Γαλήνη του Ωραιοκάστρου. Σύντομα η μεγάλη αύξηση του αριθμού των παιδιών δημιούργησε την ανάγκη για μεγαλύτερους χώρους. Έτσι, το 1993 το Ντεκρολί μεταφέρθηκε στο κτίριο όπου στεγάζεται και σήμερα, στην ίδια περιοχή.
@@ -136,7 +133,7 @@ class Kdap01 extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($fake, 6, 'frontistirio');
+        new Portal($fake, 6, 'kdap');
 
         Scholio::portalStudy($fake, 'Δημιουργική Απασχόληση', 'Δραστηριότητες', 'Σχολική Μελέτη');
         Scholio::portalStudy($fake, 'Δημιουργική Απασχόληση', 'Δραστηριότητες', 'Γυμναστική');
@@ -174,7 +171,7 @@ class Kdap01 extends Seeder
             'background' => $background,
         ]);
 
-        new Portal($fake, 11, 'kdap';
+        new Portal($fake, 11, 'kdap');
 
         Scholio::portalStudy($fake, 'Τμήματα', 'Βρεφικό', 'Παιδιά ηλικίας 2 μηνών-1,5 χρονών');        
         Scholio::portalStudy($fake, 'Τμήματα', 'Μεταβρεφικό', 'Παιδιά ηλικίας 1,5 - 2 χρονών');
