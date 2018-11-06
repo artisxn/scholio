@@ -142,6 +142,7 @@ class Algolia implements ShouldQueue
         $dummy->reviews = $this->school->countReviews();
         $dummy->username = $this->school->admin->username ?? 'nousername';
         $dummy->subscription = $this->school->admin->subscription->plan_id;
+        $dummy->scholioranking = $this->school->ranking;
         $dummy->activeScholarships = $this->school->lengthScholarships() > 0 ? 'υποτροφια, scholarship, υποτροφιες' : '';
 
         foreach ($this->school->study as $study) {

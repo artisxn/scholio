@@ -297,7 +297,6 @@ Artisan::command('scholio:seed {--class=} {--no-algolia} {--no-webp} {--no-backu
         $this->comment('Start Seeding...');
 
         try {
-            // ScholioSeed::seed($class);
             $this->call('db:seed', ['--class' => $class]);
         } catch (\Exception $e) {
             $this->error($e->getMessage());

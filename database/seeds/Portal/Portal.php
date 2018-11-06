@@ -13,14 +13,11 @@ class Portal
 {
     public $school, $imgNum, $type;
 
-    public function __construct($school, $imgNum, $type, $ranking = 50)
+    public function __construct($school, $imgNum, $type)
     {
         $this->school = $school;
         $this->imgNum = $imgNum;
         $this->type = $type;
-
-        $school->ranking = $ranking;
-        $school->save();
 
         $this->schoolComplete();
     }
@@ -28,7 +25,7 @@ class Portal
     public function schoolComplete()
     {
         $this->school->background = self::createImages('/upload/school/' . $this->school->admin->username . '/1.jpg')->id;
-        $this->school->logo = '/upload/avatar/' . $this->type . '_' . $this->school->admin->username . '.png';
+        $this->school->logo = '/upload/avatar/' . $this->type . '_' . $this->school->admin->username . '.webp';
         $this->school->country = 'Greece';
         $this->school->continent = 'Europe';
         $this->school->save();
