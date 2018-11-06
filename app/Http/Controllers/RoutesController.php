@@ -23,6 +23,7 @@ use App\Models\Study;
 use App\Scholio\Scholio;
 use App\User;
 use Carbon\Carbon;
+use Facades\App\Scholio\ScholioSeed;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Portal\Portal;
@@ -795,6 +796,50 @@ class RoutesController extends Controller
             'background' => $background,
         ]);
 
+        $prefix = '';
+
+        switch ($type) {
+            case 1:
+                $prefix = 'college';
+                break;
+            case 2:
+                $prefix = 'iek';
+                break;
+            case 3:
+                $prefix = 'frontistirio';
+                break;
+            case 4:
+                $prefix = 'frontistirio';
+                break;
+            case 5:
+                $prefix = 'frontistirio';
+                break;
+            case 6:
+                $prefix = 'lykeio';
+                break;
+            case 7:
+                $prefix = 'gymnasio';
+                break;
+            case 8:
+                $prefix = 'dimotiko';
+                break;
+            case 9:
+                $prefix = 'nipia';
+                break;
+            case 10:
+                $prefix = 'xoros';
+                break;
+            case 11:
+                $prefix = 'odeio';
+                break;
+            case 12:
+                $prefix = 'school';
+                break;
+            case 13:
+                $prefix = 'kdap';
+                break;
+        }
+
         new Portal($s, (int) request()->photos, 'xoros');
 
         if ($facebook = request()->facebook) {
@@ -819,6 +864,15 @@ class RoutesController extends Controller
 
         if ($linkedin = request()->linkedin) {
             Scholio::portalSocial($s, 'linkedin', request()->linkedin);
+        }
+
+        try {
+            ScholioSeed::refreshScholioTranslations();
+            ScholioSeed::seoRegion();
+            ScholioSeed::dummyLevelsData();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+            die();
         }
     }
 
