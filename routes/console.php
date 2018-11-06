@@ -275,7 +275,7 @@ Artisan::command('scholio:backup', function () {
 });
 
 Artisan::command('scholio:seed {--class=} {--no-algolia} {--no-webp} {--no-backup}', function () {
-    ini_set('max_execution_time', 2000);
+    ini_set('max_execution_time', 1000);
     if ($class = $this->option('class')) {
         $lastSchoolID = School::latest()->first()->id; // It has to take the last ID before the new seeds. We will need it later
 
