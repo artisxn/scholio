@@ -438,6 +438,7 @@
     </div>
 
     @include('public.footer')
+    @include('google.analytics')
 </body>
 
 <script>

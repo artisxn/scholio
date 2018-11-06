@@ -871,7 +871,7 @@ class RoutesController extends Controller
         try {
             ScholioSeed::refreshScholioTranslations();
             ScholioSeed::seoRegion();
-            // ScholioSeed::dummyLevelsData();
+            ScholioSeed::dummyLevelszData();
         } catch (\Exception $e) {
             $this->error($e->getMessage());
             die();

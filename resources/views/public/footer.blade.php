@@ -109,6 +109,8 @@
     </div>
 </footer>
 
+@include('google.analytics')
+
 <script type="text/javascript">
     WebFontConfig = {
       google: { families: [ 'Roboto:300,400,500&subset=greek' ] }
