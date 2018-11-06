@@ -2,6 +2,7 @@
 
 use App\Models\AlgoliaSchool;
 use App\Models\DummyLevelsData;
+use App\Models\Json;
 use App\Models\Level;
 use App\Models\School;
 use App\Models\SchoolLinks;
@@ -13,7 +14,6 @@ use App\Models\StudyLinks;
 use App\Scholio\Scholio;
 use Facades\App\Scholio\ScholioTranslate;
 use Illuminate\Support\Facades\Route;
-use App\Models\Json;
 // auth()->loginUsingId(70);
 // Scholio::soonRoutes();
 Scholio::panelRoutes();
@@ -25,7 +25,18 @@ Route::view('gdpr', 'gdpr');
 // Route::view('/public/schools/colleges', 'public/results/seo/seo');
 
 Route::get('/test', function () {
-    Facades\App\Scholio\Scholio::seed();
+    Facades\App\Scholio\Scholio::dummyLevelsDataNots();
+});
+
+Route::get('/database/backup', function () {
+    // try {
+    //     Facades\App\Scholio\Scholio::backupDB();
+    // } catch (\Exception $e) {
+    //     dd($e->getMessage());
+    // }
+
+    session()->flash('backup_db', 'Database Backup Done!');
+    return back();
 });
 
 Route::get('/sitemap/schools', function () {
@@ -55,7 +66,6 @@ Route::get('/catalog/{type}/{city}/{region}', function ($type, $city, $region) {
     $schools = School::where('city', $originalCity)->where('type_id', $schooltype->id)->where('region', $originalRegion)->get();
     $settings = SchoolSetting::all()->pluck('statistics');
     $reviews = SchoolSetting::all()->pluck('reviews');
-    
 
     $title = $originalType . ' ' . $originalCity . ' ' . $originalRegion;
     $description = 'Ποιά είναι τα καλύτερα και δημοφιλέστερα ' . $schooltype->plural . ' στην πόλη ' . $originalCity;
@@ -168,13 +178,12 @@ Route::get('/saveStudyLink', function () {
     return back();
 });
 
-
 Route::get('/form', function () {return view('form');});
 Route::get('/form2', function () {return view('form2');});
 
 Route::get('siteGen', function () {
 
-    foreach(Facades\App\Scholio\Scholio::createSeoUrls() as $ll){
+    foreach (Facades\App\Scholio\Scholio::createSeoUrls() as $ll) {
         echo htmlspecialchars('
         <url>
         <loc>https://schol.io/catalog' . $ll . '</loc>
@@ -205,8 +214,6 @@ Route::get('siteGen', function () {
 
         echo '<br>';
     }
-
-    
 
     return '------';
 });
@@ -258,7 +265,7 @@ Route::get('/schoolink/redirect/{school}/', function (School $school) {
 
 });
 
-Route::get('eeww', function(){
+Route::get('eeww', function () {
     return Facades\App\Scholio\Scholio::createSeoRegion();
 });
 
@@ -286,6 +293,7 @@ Route::post('/report/delete/{report}', 'RoutesController@adminDeleteReport')->mi
 Route::post('/report/delete/all/{user}', 'RoutesController@adminDeleteAllReports')->middleware('is.admin');
 Route::post('/admin/subscription', 'RoutesController@adminSubscriptionMake')->middleware(['auth', 'is.admin']);
 Route::post('/school/ranking/{school}', 'RoutesController@adminRankingSchool')->middleware('is.admin');
+Route::post('/panel/admin/seed', 'RoutesController@adminSeeding')->middleware(['auth', 'is.admin']);
 
 // Other
 Route::get('/card/{card}/delete', 'RoutesController@cardDelete');

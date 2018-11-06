@@ -1,7 +1,6 @@
 <?php
 
 use App\Jobs\Algolia;
-use App\Models\AlgoliaSchool;
 use App\Models\DummyLevelsData;
 use App\Models\Json;
 use App\Models\Level;
@@ -10,6 +9,7 @@ use App\Models\SchoolTypes;
 use App\Models\Section;
 use App\Models\Study;
 use Facades\App\Scholio\Scholio;
+use Facades\App\Scholio\ScholioSeed;
 use Facades\App\Scholio\ScholioTranslate;
 use Spatie\Sitemap\SitemapGenerator;
 
@@ -187,17 +187,6 @@ Artisan::command('scholio:algoliaScholarship {scholarship}', function () {
     $this->info('Scholarship ID: ' . $scholarship->id . ' inserted!');
 })->describe('Insert Schools in Algolia');
 
-Artisan::command('scholio:ppp', function () {
-    ini_set('max_execution_time', 1500);
-
-    foreach (AlgoliaSchool::all() as $school) {
-        $school->logo2 = substr($school->logo, 0, -5);
-        $school->image2 = substr($school->image, 0, -5);
-        $school->save();
-        $this->info('Insterted ' . $school->id);
-    }
-});
-
 Artisan::command('scholio:dummyLevelsDataJson {from} {to}', function () {
     $from = $this->argument('from');
     $to = $this->argument('to');
@@ -282,5 +271,111 @@ Artisan::command('scholio:translationRefresh', function () {
 });
 
 Artisan::command('scholio:backup', function () {
-    
+
+});
+
+Artisan::command('scholio:seed {--class=} {--no-algolia} {--no-webp} {--no-backup}', function () {
+    ini_set('max_execution_time', 2000);
+    if ($class = $this->option('class')) {
+        $lastSchoolID = School::latest()->first()->id; // It has to take the last ID before the new seeds. We will need it later
+
+        if (!$this->option('no-backup')) {
+            $this->comment('Start DB Backup in Google Drive...');
+
+            try {
+                if (!\App::environment('local')) {
+                    Scholio::backupDB();
+                }
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
+                die();
+            }
+
+            $this->info('Backup Done!');
+        }
+
+        $this->comment('Start Seeding...');
+
+        try {
+            ScholioSeed::seed($class);
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+            die();
+        }
+
+        $this->info('Seeding Done!');
+
+        if (!$this->option('no-webp')) {
+            $this->comment('Start Creating Webp Images...');
+
+            try {
+                ScholioSeed::makeWebpImages($lastSchoolID);
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
+                die();
+            }
+
+            $this->info('Webp Images Done!');
+        }
+
+        $this->comment('Start Scholio Translations...');
+
+        try {
+            ScholioSeed::refreshScholioTranslations();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+            die();
+        }
+
+        $this->info('Scholio Translations Done!');
+
+        $this->comment('Start Creating Seo Regions...');
+
+        try {
+            ScholioSeed::seoRegion();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+            die();
+        }
+
+        $this->info('Seo Regions Done!');
+
+        $this->comment('Start Creating DummyLevelsData...');
+
+        try {
+            ScholioSeed::dummyLevelsData();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+            die();
+        }
+
+        $this->info('DummyLevelsData Done!');
+
+        if (!$this->option('no-algolia')) {
+            $this->comment('Start Uploading in Algolia...');
+
+            try {
+                ScholioSeed::algolia();
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
+                die();
+            }
+
+            $this->info('Algolia Done!');
+        }
+
+        $this->comment('Start Checking...');
+
+        try {
+            // foreach(School::where('id', '>', $lastSchoolID)->get() as $schools){
+
+            // }
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+            die();
+        }
+
+        $this->info('Checks Done!');
+    }
+
 });

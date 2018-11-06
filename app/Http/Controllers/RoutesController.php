@@ -10,11 +10,13 @@ use App\Key;
 use App\Models\Admission;
 use App\Models\AlgoliaSchool;
 use App\Models\Card;
+use App\Models\DummyLevelsData;
 use App\Models\DummyScholarship;
 use App\Models\Report;
 use App\Models\Scholarship;
 use App\Models\School;
 use App\Models\SchoolSetting;
+use App\Models\Section;
 use App\Models\SocialLink;
 use App\Models\Student;
 use App\Models\Study;
@@ -23,9 +25,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use App\Models\Section;
-use App\Models\Level;
-use App\Models\DummyLevelsData;
+use Portal\Portal;
 
 class RoutesController extends Controller
 {
@@ -767,6 +767,59 @@ class RoutesController extends Controller
     public function publicscholarships()
     {
         return view('public.results.scholarships');
+    }
+
+    public function adminSeeding()
+    {
+        request()->validate([
+            'email' => 'required|unique:users|max:255',
+            'username' => 'required|unique:users|max:255',
+            'phone' => 'required|integer',
+            'photos' => 'required|integer',
+            'ranking' => 'required|integer',
+        ]);
+
+        $background = Portal::createImages('/upload/school/univ.png')->id;
+
+        $s = factory(\App\Models\School::class)->create([
+            'user_id' => factory(\App\User::class)->create(['name' => request()->name, 'email' => request()->email, 'password' => bcrypt('123456'), 'role' => 'school', 'username' => request()->username])->id,
+            'address' => request()->address,
+            'city' => request()->city,
+            'region' => request()->region,
+            'phone' => (int) request()->phone,
+            'type_id' => (int) request()->type,
+            'website' => request()->website,
+            'ranking' => (int) request()->ranking,
+            'approved' => 1,
+            'about' => request()->about,
+            'background' => $background,
+        ]);
+
+        new Portal($s, (int) request()->photos, 'xoros');
+
+        if ($facebook = request()->facebook) {
+            Scholio::portalSocial($s, 'facebook', request()->facebook);
+        }
+
+        if ($twitter = request()->twitter) {
+            Scholio::portalSocial($s, 'twitter', request()->twitter);
+        }
+
+        if ($google = request()->google) {
+            Scholio::portalSocial($s, 'google', request()->google);
+        }
+
+        if ($instagram = request()->instagram) {
+            Scholio::portalSocial($s, 'instagram', request()->instagram);
+        }
+
+        if ($youtube = request()->youtube) {
+            Scholio::portalSocial($s, 'youtube', request()->youtube);
+        }
+
+        if ($linkedin = request()->linkedin) {
+            Scholio::portalSocial($s, 'linkedin', request()->linkedin);
+        }
     }
 
 }

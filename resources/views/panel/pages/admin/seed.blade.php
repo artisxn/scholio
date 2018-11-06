@@ -5,6 +5,9 @@
 @endsection
 @section('content')
 <div class="container">
+    @if(session()->has('backup_db'))
+    <h3 class="verify-title"><i class="fa fa-check-circle" style="margin-right: 20px;"></i>{{ session('backup_db') }}</h3>
+    @endif
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
@@ -16,7 +19,10 @@
                         <p class="text-muted font-13">
                             <hr>
                         </p>
-                        <form>
+                        <a href="/database/backup" class="btn btn-primary">BackUp Database</a>
+
+                        <form method="POST" action="/panel/admin/seed">
+                            {{ csrf_field() }}
                             <div class="form-row">
                                 <div class="col-md-4 mb-4">
                                     <label for="validationDefault01">Name</label>
@@ -28,20 +34,30 @@
                                     <input type="text" class="form-control" id="validationDefault02" placeholder="Email"
                                         name="email" required>
                                 </div>
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                                 <div class="col-md-4 mb-4">
                                     <label for="validationDefault03">Username</label>
                                     <input type="text" class="form-control" id="validationDefault03" placeholder="Email"
                                         name="username" required>
                                 </div>
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="form-row">
                                 <div class="col-md-12 mb-12">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">School_Type</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" id="exampleFormControlSelect1" name="type">
                                             @foreach(App\Models\SchoolTypes::all() as $type)
-                                            <option>{{ $type->name }}</option>
+                                            <option value="{{ $type->id }}">{{ $type->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -67,7 +83,7 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-6">
                                     <label for="validationDefault04">Phone</label>
-                                    <input type="text" class="form-control" id="validationDefault04" placeholder="Phone"
+                                    <input type="number" min="0" step="1" class="form-control" id="validationDefault04" placeholder="Phone"
                                         name="phone" required>
                                 </div>
                                 <div class="col-md-6 mb-6">
@@ -86,47 +102,38 @@
 
                             <div class="form-row">
                                 <div class="col-md-4"><label for="facebook">Facebook</label>
-                                    <input type="text" class="form-control" id="facebook" name="facebook" required>
+                                    <input type="text" class="form-control" id="facebook" name="facebook">
                                 </div>
                                 <div class="col-md-4"><label for="twitter">Twitter</label>
-                                    <input type="text" class="form-control" id="twitter" name="twitter" required>
+                                    <input type="text" class="form-control" id="twitter" name="twitter">
                                 </div>
                                 <div class="col-md-4"><label for="instagram">Instagram</label>
-                                    <input type="text" class="form-control" id="instagram" name="instagram" required>
+                                    <input type="text" class="form-control" id="instagram" name="instagram">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col-md-4"><label for="youtube">Youtube</label>
-                                    <input type="text" class="form-control" id="youtube" name="youtube" required>
+                                    <input type="text" class="form-control" id="youtube" name="youtube">
                                 </div>
                                 <div class="col-md-4"><label for="google">Google</label>
-                                    <input type="text" class="form-control" id="google" name="google" required>
+                                    <input type="text" class="form-control" id="google" name="google">
                                 </div>
-                                <div class="col-md-4"><label for="flickr">Flickr</label>
-                                    <input type="text" class="form-control" id="flickr" name="flickr" required>
+                                <div class="col-md-4"><label for="linkedin">LinkedIn</label>
+                                    <input type="text" class="form-control" id="linkedin" name="linkedin">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col-md-2"><label for="validationDefault04"># of Photos</label>
-                                    <input type="text" class="form-control" id="validationDefault04" name="photos"
+                                    <input type="number" min="0" step="1" class="form-control" id="validationDefault04" name="photos"
                                         required>
                                 </div>
                                 <div class="col-md-2"><label for="ranking">Ranking</label>
-                                    <input type="text" class="form-control" id="ranking" name="ranking" required>
+                                    <input type="number" min="0" step="1" class="form-control" id="ranking" name="ranking" required>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary" style="margin-top:25px;" type="submit">Create
-                                        School and Push with Algolia</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-warning" style="margin-top:25px;" type="submit">Create
-                                        School no Algolia</button>
-                                </div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-info" style="margin-top:25px;" type="submit">Create
-                                        webp images</button>
+                                    <button class="btn btn-primary" style="margin-top:25px;" type="submit">Create School</button>
                                 </div>
                             </div>
 

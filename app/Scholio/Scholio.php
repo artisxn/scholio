@@ -2,14 +2,18 @@
 
 namespace App\Scholio;
 
+use App\Jobs\Algolia;
+use App\Jobs\GenerateDummyLevelsData;
 use App\Models\AlgoliaDonorScholarship;
 use App\Models\AlgoliaScholarship;
 use App\Models\AlgoliaSchool;
 use App\Models\AlgoliaStudy;
 use App\Models\DonatedScholarship;
 use App\Models\Dummy;
+use App\Models\DummyLevelsData;
 use App\Models\DummyScholarship;
 use App\Models\Image;
+use App\Models\Json;
 use App\Models\Level;
 use App\Models\Message;
 use App\Models\Scholarship;
@@ -26,7 +30,6 @@ use Facades\App\Scholio\ScholioTranslate;
 use Illuminate\Support\Facades\Route;
 use League\Flysystem\Exception;
 use Spatie\Backup\Tasks\Backup\BackupJobFactory;
-use App\Models\Json;
 
 class Scholio
 {
@@ -633,8 +636,10 @@ class Scholio
         }
     }
 
-    public static function makeWebp($image, $ext, $q = 35)
+    public static function makeWebp($image, $q = 35)
     {
+        $pos = strrpos($image, '.', -1);
+        $file = substr($image, 0, $pos);
         $path = '';
         if (\App::environment('local')) {
             $path = '/Users/apostolos/Documents/Work/scholio/public/';
@@ -643,7 +648,9 @@ class Scholio
         }
 
         try {
-            shell_exec('cwebp -q ' . $q . ' ' . $path . $image . ' -o ' . substr($path . $image, 0, strlen($ext) * -1) . 'webp');
+            shell_exec('cwebp -q ' . $q . ' ' . $path . $image . ' -o ' . $file . 'webp');
+
+            // shell_exec('cwebp -q ' . $q . ' ' . $path . $image . ' -o ' . substr($path . $image, 0, strlen($ext) * -1) . 'webp');
         } catch (Exception $e) {
             echo $e;
         }
@@ -728,18 +735,39 @@ class Scholio
 
     public function backupDB()
     {
-        $message = '';
-        try {
-            $backupJob = BackupJobFactory::createFromArray(config('backup'));
-            $backupJob->dontBackupFilesystem();
-            $backupJob->onlyBackupTo('google');
-            $backupJob->disableNotifications();
-            $backupJob->run();
-            $message = 'OK';
-        } catch (Exception $exception) {
-            $message = $exception->getMessage();
-        }
+        $backupJob = BackupJobFactory::createFromArray(config('backup'));
+        $backupJob->dontBackupFilesystem();
+        $backupJob->onlyBackupTo('google');
+        $backupJob->disableNotifications();
+        $backupJob->run();
+    }
 
-        return $message;
+    /*
+     * Upload on Algolia all Schools that are on Mysql but not on Algolia
+     *
+     * @return void
+     */
+    public function algoliaNots()
+    {
+        $lastAlgoliaSchoolID = AlgoliaSchool::latest()->first()->school_id;
+
+        foreach (School::where('id', '>', $lastAlgoliaSchoolID) as $school) {
+            dispatch(new Algolia($school));
+        }
+    }
+
+    /*
+     * Upload on Algolia all Schools that are on Mysql but not on Algolia
+     *
+     * @return void
+     */
+    public function dummyLevelsDataNots()
+    {
+        
+        $lastDummyLevelsDataSchoolID = DummyLevelsData::latest()->first()->school_id;
+
+        foreach (School::where('id', '>', $lastDummyLevelsDataSchoolID)->get() as $school) {
+            dispatch(new GenerateDummyLevelsData($school));
+        }
     }
 }
