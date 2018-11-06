@@ -29,11 +29,11 @@ Route::get('/test', function () {
 });
 
 Route::get('/database/backup', function () {
-    // try {
-    //     Facades\App\Scholio\Scholio::backupDB();
-    // } catch (\Exception $e) {
-    //     dd($e->getMessage());
-    // }
+    try {
+        Facades\App\Scholio\Scholio::backupDB();
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+    }
 
     session()->flash('backup_db', 'Database Backup Done!');
     return back();
