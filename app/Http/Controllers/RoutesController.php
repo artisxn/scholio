@@ -782,6 +782,8 @@ class RoutesController extends Controller
 
         $background = Portal::createImages('/upload/school/univ.png')->id;
 
+        ini_set('max_execution_time', 2000);
+
         $s = factory(\App\Models\School::class)->create([
             'user_id' => factory(\App\User::class)->create(['name' => request()->name, 'email' => request()->email, 'password' => bcrypt('123456'), 'role' => 'school', 'username' => request()->username])->id,
             'address' => request()->address,
@@ -840,7 +842,7 @@ class RoutesController extends Controller
                 break;
         }
 
-        new Portal($s, (int) request()->photos, 'xoros');
+        new Portal($s, (int) request()->photos, $prefix);
 
         if ($facebook = request()->facebook) {
             Scholio::portalSocial($s, 'facebook', request()->facebook);
@@ -869,7 +871,7 @@ class RoutesController extends Controller
         try {
             ScholioSeed::refreshScholioTranslations();
             ScholioSeed::seoRegion();
-            ScholioSeed::dummyLevelsData();
+            // ScholioSeed::dummyLevelsData();
         } catch (\Exception $e) {
             $this->error($e->getMessage());
             die();

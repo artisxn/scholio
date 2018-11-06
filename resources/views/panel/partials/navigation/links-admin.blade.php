@@ -11,7 +11,8 @@
             <a href="{{ url('/panel/admin/schools') }}" class="{{ request()->path() == 'panel/admin/schools' ? 'active' : ''}}">List</a>
         </li>
         <li>
-            <a href="{{ url('/panel/admin/newsub') }}" class="{{ request()->path() == 'panel/admin/newsub' ? 'active' : ''}}">New Subscription</a>
+            <a href="{{ url('/panel/admin/newsub') }}" class="{{ request()->path() == 'panel/admin/newsub' ? 'active' : ''}}">New
+                Subscription</a>
         </li>
         <li>
             <a href="{{ url('/panel/admin/reports') }}" class="{{ request()->path() == 'panel/admin/reports' ? 'active' : ''}}">Reports</a>
@@ -22,9 +23,15 @@
         </li>
 
         <li>
-                <a href="{{ url('/panel/admin/ranking') }}" class="{{ request()->path() == 'panel/admin/ranking' ? 'active' : ''}}">Ranking</a>
-            </li>
+            <a href="{{ url('/panel/admin/ranking') }}" class="{{ request()->path() == 'panel/admin/ranking' ? 'active' : ''}}">Ranking</a>
+        </li>
     </ul>
+</li>
+
+<li class="list-unstyled">
+    <a href="/panel/admin/seed" class="{{ request()->path() == 'panel/admin/seed' ? 'active' : ''}}"><i class="ti-home"></i>
+        <span> Seed </span>
+    </a>
 </li>
 
 <li class="list-unstyled">
