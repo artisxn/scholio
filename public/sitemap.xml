@@ -21,26 +21,6 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://schol.io/login</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:10+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/password/reset</loc>
-    
-    
-        <lastmod>2018-09-20T12:50:00+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>https://schol.io/public/scholarships</loc>
     
     
@@ -65,346 +45,6 @@
     
     
         <lastmod>2018-09-20T12:50:11+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%91%CE%B3%CE%B3%CE%BB%CE%B9%CE%BA%CE%B1%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Bcity%5D%5B0%5D=%CE%91%CE%B8%CE%AE%CE%BD%CE%B1&amp;hFR%5Btype%5D%5B0%5D=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%AE%CF%81%CE%B9%CE%BF%20%CE%9E%CE%AD%CE%BD%CF%89%CE%BD%20%CE%93%CE%BB%CF%89%CF%83%CF%83%CF%8E%CE%BD%20%2F%20%CE%A0%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%CF%82&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:50:02+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%91%CE%B3%CE%B3%CE%BB%CE%B9%CE%BA%CE%B1%20%CE%97%CF%81%CE%B1%CE%BA%CE%BB%CE%B5%CE%B9%CE%BF</loc>
-    
-    
-        <lastmod>2018-09-20T12:50:08+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%91%CE%B3%CE%B3%CE%BB%CE%B9%CE%BA%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Bcity%5D%5B0%5D=%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7&amp;hFR%5Btype%5D%5B0%5D=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%AE%CF%81%CE%B9%CE%BF%20%CE%9E%CE%AD%CE%BD%CF%89%CE%BD%20%CE%93%CE%BB%CF%89%CF%83%CF%83%CF%8E%CE%BD%20%2F%20%CE%A0%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%CF%82&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:50+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%91%CE%B3%CE%B3%CE%BB%CE%B9%CE%BA%CE%B1%20%CE%A0%CE%B5%CE%B9%CF%81%CE%B1%CE%B9%CE%B1%CF%82&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:50:05+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%93%CE%B5%CF%81%CE%BC%CE%B1%CE%BD%CE%B9%CE%BA%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Bcity%5D%5B0%5D=%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7&amp;hFR%5Btype%5D%5B0%5D=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%AE%CF%81%CE%B9%CE%BF%20%CE%9E%CE%AD%CE%BD%CF%89%CE%BD%20%CE%93%CE%BB%CF%89%CF%83%CF%83%CF%8E%CE%BD%20%2F%20%CE%A0%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%CF%82&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:54+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%99%CE%B4%CE%B9%CF%89%CF%84%CE%B9%CE%BA%CE%B1%20%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CE%B9%CE%B1%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:43+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%99%CE%B4%CE%B9%CF%89%CF%84%CE%B9%CE%BA%CE%B1%20%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CE%B9%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:46+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%99%CE%B4%CE%B9%CF%89%CF%84%CE%B9%CE%BA%CE%B1%20%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CE%B9%CE%B1%20%CE%9B%CE%B1%CF%81%CE%B9%CF%83%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:49+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%9A%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:39+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%9A%CE%BF%CE%BB%CE%BB%CE%B5%CE%B3%CE%B9%CE%B1%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:29+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%9E%CE%B5%CE%BD%CE%B5%CF%82%20%CE%93%CE%BB%CF%89%CF%83%CF%83%CE%B5%CF%82%20%CE%97%CE%BB%CE%B9%CE%BF%CF%85%CF%80%CE%BF%CE%BB%CE%B7</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:47+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%9E%CE%B5%CE%BD%CE%B5%CF%82%20%CE%93%CE%BB%CF%89%CF%83%CF%83%CE%B5%CF%82%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:41+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%9E%CE%B5%CE%BD%CE%B5%CF%82%20%CE%93%CE%BB%CF%89%CF%83%CF%83%CE%B5%CF%82%20%CE%A0%CE%B5%CE%B9%CF%81%CE%B1%CE%B9%CE%B1%CF%82</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:44+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A1%CF%89%CF%83%CE%B9%CE%BA%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Bcity%5D%5B0%5D=%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7&amp;hFR%5Btype%5D%5B0%5D=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%AE%CF%81%CE%B9%CE%BF%20%CE%9E%CE%AD%CE%BD%CF%89%CE%BD%20%CE%93%CE%BB%CF%89%CF%83%CF%83%CF%8E%CE%BD%20%2F%20%CE%A0%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%CF%82&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:57+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CF%82%20%CE%91%CE%B9%CF%83%CE%B8%CE%B7%CF%84%CE%B9%CE%BA%CE%B7%CF%82&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Btype%5D%5B0%5D=%CE%99%CE%95%CE%9A%20-%20%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AE%20%CE%A3%CF%87%CE%BF%CE%BB%CE%AE%20-%20%CE%9A%CE%94%CE%92%CE%9C&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:06+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CF%82%20%CE%94%CE%B9%CE%BF%CE%B9%CE%BA%CE%B7%CF%83%CE%B7%CF%82%20%CE%95%CF%80%CE%B9%CF%87%CE%B9%CF%81%CE%B7%CF%83%CE%B5%CF%89%CE%BD&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Btype%5D%5B0%5D=%CE%99%CE%95%CE%9A%20-%20%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AE%20%CE%A3%CF%87%CE%BF%CE%BB%CE%AE%20-%20%CE%9A%CE%94%CE%92%CE%9C&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:19+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CF%82%20%CE%9A%CE%BF%CE%BC%CE%BC%CF%89%CF%84%CE%B9%CE%BA%CE%B7%CF%82&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Btype%5D%5B0%5D=%CE%99%CE%95%CE%9A%20-%20%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AE%20%CE%A3%CF%87%CE%BF%CE%BB%CE%AE%20-%20%CE%9A%CE%94%CE%92%CE%9C&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:09+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CF%82%20%CE%9C%CE%B1%CE%B3%CE%B5%CE%B9%CF%81%CE%B9%CE%BA%CE%B7%CF%82&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Btype%5D%5B0%5D=%CE%99%CE%95%CE%9A%20-%20%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AE%20%CE%A3%CF%87%CE%BF%CE%BB%CE%AE%20-%20%CE%9A%CE%94%CE%92%CE%9C&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:13+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A3%CF%87%CE%BF%CE%BB%CE%B5%CF%82%20%CE%9D%CE%BF%CF%83%CE%B7%CE%BB%CE%B5%CF%85%CF%84%CE%B9%CE%BA%CE%B7%CF%82&amp;hPP=8&amp;idx=dummySchools&amp;p=0&amp;hFR%5Btype%5D%5B0%5D=%CE%99%CE%95%CE%9A%20-%20%CE%95%CF%80%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AE%20%CE%A3%CF%87%CE%BF%CE%BB%CE%AE%20-%20%CE%9A%CE%94%CE%92%CE%9C&amp;is_v=1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:15+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%97%CE%BB%CE%B9%CE%BF%CF%85%CF%80%CE%BF%CE%BB%CE%B7</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:38+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:22+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%9A%CE%B1%CE%BB%CE%BB%CE%B9%CE%B8%CE%B5%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:35+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%9C%CE%B1%CF%81%CE%BF%CF%85%CF%83%CE%B9</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:29+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%A0%CE%B5%CE%B9%CF%81%CE%B1%CE%B9%CE%B1%CF%82</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:25+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A6%CF%81%CE%BF%CE%BD%CF%84%CE%B9%CF%83%CF%84%CE%B7%CF%81%CE%B9%CE%B1%20%CE%A0%CE%B5%CF%81%CE%B9%CF%83%CF%84%CE%B5%CF%81%CE%B9</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:32+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%A6%CF_%CE%BF%CE%BD%CF_%CE%B9%CF_%CF_%CE%AE%CF_%CE%B9%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:22+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE%BA%CE%BF%CE%BB%CE%BB%CE%AD%CE%B3%CE%B9%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:16+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE_%CE%B4%CE%B9%CF_%CF_%CE%B9%CE%BA%CE%AC%20%CE%A3%CF_%CE%BF%CE%BB%CE%B5%CE%AF%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:13+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=%CE_%CE_%CE_,%20%CE_%CF_%CE%B1%CE%B3%CE%B3%CE%B5%CE%BB%CE%BC%CE%B1%CF_%CE%B9%CE%BA%CE%AE%20%CE%A3%CF_%CE%BF%CE%BB%CE%AE</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:20+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=IEK%20%CE%91%CE%B8%CE%B7%CE%BD%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:52+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=IEK%20%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%B9%CE%BA%CE%B7</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:00+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/public/schools?q=IEK%20%CE%99%CF%89%CE%B1%CE%BD%CE%BD%CE%B9%CE%BD%CE%B1</loc>
-    
-    
-        <lastmod>2018-09-20T12:49:03+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/register/role</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:08+00:00</lastmod>
-    
-        <changefreq>daily</changefreq>
-    
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://schol.io/register/role/</loc>
-    
-    
-        <lastmod>2018-09-20T12:48:11+00:00</lastmod>
     
         <changefreq>daily</changefreq>
     
@@ -450,11 +90,11 @@
 <url> <loc>https://schol.io/catalog/iek-epaggelmatikes-sxoles-kdvm/ioannina</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/iek-epaggelmatikes-sxoles-kdvm/katerini/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/iek-epaggelmatikes-sxoles-kdvm/katerini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/agios-athanasios</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/ampelokipoi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/analipsi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/ano-toumpa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/drymos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/epanomi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/efkarpia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/evosmos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
@@ -463,8 +103,10 @@
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/kalamaria</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/kato-toumpa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/liti</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/malakopi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/menemeni</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/nea-raidestos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/neapoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/neoxorouda</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/thessaloniki/ntepo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
@@ -543,87 +185,105 @@
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/athina/xaidari</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/athina/xalandri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/catalog/frontistiria-mesis-ekpaidefsis/athina</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/agia-paraskevi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/aigaleo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/ampelokipoi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/ano-glyfada</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/ano-ilisia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/ano-liosia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/ano-patisia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/axarnai</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/vari</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/vyronas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/galatsi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/gerakas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/glyfada</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/elliniko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/kallithea</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/kamatero</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/keratsini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/melissia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/nea-penteli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/nea-smyrni</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/nea-filadelfeia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/nea-filadelfia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/neo-irakleio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/neos-kosmos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/nikaia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/pagkrati</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/palaio-faliro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/pallini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/peiraias</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/peristeri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/pefki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/plateia-kaniggos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina/xalandri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/athina</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/ano-ilioupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/evosmos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/ilioupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/thermi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/kalamaria</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/neapoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/pylaia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/stavroupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/toumpa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki/xarilaou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/frontistirio-xenon-glosson-pliroforikis/thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/kentro-dimiourgikis-apasxolisis/thessaloniki/trilofos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/kentro-dimiourgikis-apasxolisis/thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/kentro-dimiourgikis-apasxolisis/athina/peiraias</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/kentro-dimiourgikis-apasxolisis/athina</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/thessaloniki/thermi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/thessaloniki/polixni</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/thessaloniki/pylaia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/katerini/ganoxora</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/katerini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/xanthi/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/xanthi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/serres/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/serres</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/volos/nea-ionia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/volos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/larisa/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/larisa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/trikala/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/trikala</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/patra/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/patra</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/irakleio/filothei</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/irakleio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/argyroupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/glyka-nera</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/keratsini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/marousi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/palaio-psyxiko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/peristeri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/spata</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina/psyxiko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
-<url> <loc>https://schol.io/catalog/idiotiko-sxoleio/athina</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/agia-paraskevi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/aigaleo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/ampelokipoi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/ano-glyfada</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/ano-ilisia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/ano-liosia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/ano-patisia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/axarnai</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/vari</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/vyronas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/galatsi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/gerakas</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/glyfada</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/elliniko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/kallithea</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/kamatero</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/keratsini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/melissia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/nea-penteli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/nea-smyrni</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/nea-filadelfeia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/nea-filadelfia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/neo-irakleio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/neos-kosmos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/nikaia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/pagkrati</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/palaio-faliro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/pallini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/peiraias</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/peristeri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/pefki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/plateia-kaniggos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina/xalandri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/athina</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/ano-ilioupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/evosmos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/ilioupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/thermi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/kalamaria</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/neapoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/pylaia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/stavroupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/toumpa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki/xarilaou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/frontistiria-xenon-glosson-pliroforikis/thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/paidikoi-stathmoi-nipiagogia/thessaloniki/ano-toumpa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/paidikoi-stathmoi-nipiagogia/thessaloniki/efkarpia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/paidikoi-stathmoi-nipiagogia/thessaloniki/evosmos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/paidikoi-stathmoi-nipiagogia/thessaloniki/pylaia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/paidikoi-stathmoi-nipiagogia/thessaloniki/retziki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/paidikoi-stathmoi-nipiagogia/thessaloniki/oraiokastro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/paidikoi-stathmoi-nipiagogia/thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/ampelokipoi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/evosmos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/thermi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/kalamaria</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/neapoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/toumpa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/faliro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki/xarilaou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/sxoles-xorou/thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/kentra-dimiourgikis-apasxolisis/thessaloniki/pylaia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/kentra-dimiourgikis-apasxolisis/thessaloniki/trilofos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/kentra-dimiourgikis-apasxolisis/thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/kentra-dimiourgikis-apasxolisis/athina/peiraias</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/kentra-dimiourgikis-apasxolisis/athina</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/thessaloniki/thermi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/thessaloniki/polixni</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/thessaloniki/pylaia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/katerini/ganoxora</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/katerini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/xanthi/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/xanthi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/serres/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/serres</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/volos/nea-ionia</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/volos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/larisa/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/larisa</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/trikala/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/trikala</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/patra/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/patra</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/irakleio/filothei</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/irakleio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/argyroupoli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/glyka-nera</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/kentro</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/keratsini</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/marousi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/palaio-psyxiko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/peristeri</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/spata</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina/psyxiko</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/catalog/idiotika-sxoleia/athina</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@act</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@amcAth</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@nycath</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
@@ -975,4 +635,23 @@
 <url> <loc>https://schol.io/@kyklos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@kyttaro-analipsi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 <url> <loc>https://schol.io/@mavromihalis-plagiari</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@svigka</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@xoroxoros</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@evafevgidou</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@vidaloca</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@goldensteps</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@dancecoolStudio</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@dancesoul</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@dancemania</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@danzafuerte</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@stepup</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@vistadance</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@kafantari</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ntekroli</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@nipiakosKipos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@agapiKaiAgogi</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@happyKiddo</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@ouranio-Toxo-Thessaloniki</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@gela-xamogela</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
+<url> <loc>https://schol.io/@Paidikos-Stathmos-Stroumfokosmos</loc> <lastmod>2018-05-15T02:05:59+00:00</lastmod> <changefreq>daily</changefreq> <priority>0.8</priority> </url>
 </urlset>
