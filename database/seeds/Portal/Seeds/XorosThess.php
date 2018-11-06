@@ -659,178 +659,20 @@ class XorosThess extends Seeder
 
         new Portal($s, 5, 'xoros');
 
-        Scholio::portalStudy($s, '', '', '', '');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Latin', 'http://sxolesxoroukafantari.gr/classes/%CF%83%CF%85%CE%BD%CE%B5%CF%81%CE%B3%CE%B1%CF%83%CE%B9%CE%B1-%CE%BC%CE%B5-%CF%84%CE%B7%CE%BD-%CF%83%CF%87%CE%BF%CE%BB%CE%B7-%CF%87%CE%BF%CF%81%CE%BF%CF%85-bailando/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Yoga', 'http://sxolesxoroukafantari.gr/classes/yoga-2/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Flamenco', 'http://sxolesxoroukafantari.gr/classes/flamenco/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Hip Hop', 'http://sxolesxoroukafantari.gr/classes/hip-hop/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Pilates', 'http://sxolesxoroukafantari.gr/classes/pilates/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Modern Jazz', 'http://sxolesxoroukafantari.gr/classes/modernos/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Μοντέρνο Παιδικό', 'http://sxolesxoroukafantari.gr/classes/%CE%BC%CE%BF%CE%BD%CF%84%CE%B5%CF%81%CE%BD%CE%BF-%CF%80%CE%B1%CE%B9%CE%B4%CE%B9%CE%BA%CE%BF/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Σύγχρονος χορός', 'http://sxolesxoroukafantari.gr/classes/%CF%83%CF%8D%CE%B3%CF%87%CF%81%CE%BF%CE%BD%CE%BF%CF%82/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Κλασικό μπαλέτο', 'http://sxolesxoroukafantari.gr/classes/%CE%BA%CE%BB%CE%B1%CF%83%CE%B9%CE%BA%CE%BF/');
+        Scholio::portalStudy($s, 'Διάφοροι Χοροί', 'Τμήματα Χορού', 'Μουσικοκινητική Αγωγή', 'http://sxolesxoroukafantari.gr/classes/%CE%BC%CE%BF%CF%85%CF%83%CE%B9%CE%BA%CE%BF%CE%BA%CE%B9%CE%BD%CE%B7%CF%84%CE%B9%CE%BA%CE%B7-%CE%B1%CE%B3%CF%89%CE%B3%CE%B7-%CF%80%CF%81%CE%BF%CF%83%CF%87%CE%BF%CE%BB%CE%B9%CE%BA%CE%B7%CF%83-%CE%B7/');
 
-        Scholio::portalSocial($s, 'facebook', '');
-        Scholio::portalSocial($s, 'youtube', '');
+        Scholio::portalSocial($s, 'facebook', 'https://www.facebook.com/kafantaris.dance?fref=ts');
+        Scholio::portalSocial($s, 'instagram', 'https://www.instagram.com/sxolesxoroukafantari');
 
-        /*===============   svigka   ================*/
-        $s = factory(App\Models\School::class)->create([
-            'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-            'address' => '',
-            'city' => '',
-            'region' => '',
-            'phone' => 2310936355,
-            'type_id' => 10,
-            'website' => '',
-            'approved' => 1,
-            'about' => '',
-            'background' => $background,
-        ]);
-
-        new Portal($s, 5, 'xoros');
-
-        Scholio::portalStudy($s, '', '', '', '');
-
-        Scholio::portalSocial($s, 'facebook', '');
-        Scholio::portalSocial($s, 'youtube', '');
-
-        // /*===============   svigka   ================*/
-        // $s = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-        //     'address' => '',
-        //     'city' => '',
-        //     'region' => '',
-        //     'phone' => 2310936355,
-        //     'type_id' => 10,
-        //     'website' => '',
-        //     'approved' => 1,
-        //     'about' => '',
-        //     'background' => $background,
-        // ]);
-
-        // new Portal($s, 5, 'xoros');
-
-        // Scholio::portalStudy($s, '', '', '', '');
-
-        // Scholio::portalSocial($s, 'facebook', '');
-        // Scholio::portalSocial($s, 'youtube', '');
-
-        // /*===============   svigka   ================*/
-        // $s = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-        //     'address' => '',
-        //     'city' => '',
-        //     'region' => '',
-        //     'phone' => 2310936355,
-        //     'type_id' => 10,
-        //     'website' => '',
-        //     'approved' => 1,
-        //     'about' => '',
-        //     'background' => $background,
-        // ]);
-
-        // new Portal($s, 5, 'xoros');
-
-        // Scholio::portalStudy($s, '', '', '', '');
-
-        // Scholio::portalSocial($s, 'facebook', '');
-        // Scholio::portalSocial($s, 'youtube', '');
-
-        // /*===============   svigka   ================*/
-        // $s = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-        //     'address' => '',
-        //     'city' => '',
-        //     'region' => '',
-        //     'phone' => 2310936355,
-        //     'type_id' => 10,
-        //     'website' => '',
-        //     'approved' => 1,
-        //     'about' => '',
-        //     'background' => $background,
-        // ]);
-
-        // new Portal($s, 5, 'xoros');
-
-        // Scholio::portalStudy($s, '', '', '', '');
-
-        // Scholio::portalSocial($s, 'facebook', '');
-        // Scholio::portalSocial($s, 'youtube', '');
-
-        // /*===============   svigka   ================*/
-        // $s = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-        //     'address' => '',
-        //     'city' => '',
-        //     'region' => '',
-        //     'phone' => 2310936355,
-        //     'type_id' => 10,
-        //     'website' => '',
-        //     'approved' => 1,
-        //     'about' => '',
-        //     'background' => $background,
-        // ]);
-
-        // new Portal($s, 5, 'xoros');
-
-        // Scholio::portalStudy($s, '', '', '', '');
-
-        // Scholio::portalSocial($s, 'facebook', '');
-        // Scholio::portalSocial($s, 'youtube', '');
-
-        // /*===============   svigka   ================*/
-        // $s = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-        //     'address' => '',
-        //     'city' => '',
-        //     'region' => '',
-        //     'phone' => 2310936355,
-        //     'type_id' => 10,
-        //     'website' => '',
-        //     'approved' => 1,
-        //     'about' => '',
-        //     'background' => $background,
-        // ]);
-
-        // new Portal($s, 5, 'xoros');
-
-        // Scholio::portalStudy($s, '', '', '', '');
-
-        // Scholio::portalSocial($s, 'facebook', '');
-        // Scholio::portalSocial($s, 'youtube', '');
-
-        // /*===============   svigka   ================*/
-        // $s = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-        //     'address' => '',
-        //     'city' => '',
-        //     'region' => '',
-        //     'phone' => 2310936355,
-        //     'type_id' => 10,
-        //     'website' => '',
-        //     'approved' => 1,
-        //     'about' => '',
-        //     'background' => $background,
-        // ]);
-
-        // new Portal($s, 5, 'xoros');
-
-        // Scholio::portalStudy($s, '', '', '', '');
-
-        // Scholio::portalSocial($s, 'facebook', '');
-        // Scholio::portalSocial($s, 'youtube', '');
-
-        // /*===============   svigka   ================*/
-        // $s = factory(App\Models\School::class)->create([
-        //     'user_id' => factory(App\User::class)->create(['name' => '', 'email' => '', 'password' => bcrypt('123456'), 'role' => 'school', 'username' => ''])->id,
-        //     'address' => '',
-        //     'city' => '',
-        //     'region' => '',
-        //     'phone' => 2310936355,
-        //     'type_id' => 10,
-        //     'website' => '',
-        //     'approved' => 1,
-        //     'about' => '',
-        //     'background' => $background,
-        // ]);
-
-        // new Portal($s, 5, 'xoros');
-
-        // Scholio::portalStudy($s, '', '', '', '');
-
-        // Scholio::portalSocial($s, 'facebook', '');
-        // Scholio::portalSocial($s, 'youtube', '');
 
         // /*===============   svigka   ================*/
         // $s = factory(App\Models\School::class)->create([
